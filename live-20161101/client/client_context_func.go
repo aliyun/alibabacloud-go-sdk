@@ -2,117 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-qingdao":                  dara.String("live.aliyuncs.com"),
-		"cn-beijing":                  dara.String("live.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("live.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("live.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("live.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("live.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("live.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("live.aliyuncs.com"),
-		"eu-central-1":                dara.String("live.aliyuncs.com"),
-		"ap-south-1":                  dara.String("live.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("live.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("live.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("live.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("live.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("live.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("live.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("live.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("live.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("live.aliyuncs.com"),
-		"cn-fujian":                   dara.String("live.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("live.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("live.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("live.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("live.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("live.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("live.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("live.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("live.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("live.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("live.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("live.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("live.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("live.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("live.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("live.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("live.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("live.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("live.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("live.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("live.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("live.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("live.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("live.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("live.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("live.aliyuncs.com"),
-		"eu-west-1":                   dara.String("live.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("live.aliyuncs.com"),
-		"me-east-1":                   dara.String("live.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("live.aliyuncs.com"),
-		"us-east-1":                   dara.String("live.aliyuncs.com"),
-		"us-west-1":                   dara.String("live.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("live"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -131,7 +24,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterComponentResponse
-func (client *Client) AddCasterComponentWithOptions(request *AddCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterComponentResponse, _err error) {
+func (client *Client) AddCasterComponentWithContext(ctx context.Context, request *AddCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -204,37 +97,11 @@ func (client *Client) AddCasterComponentWithOptions(request *AddCasterComponentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a component to a production studio.
-//
-// Description:
-//
-// Before you call this operation to add a component to a production studio, you must first create the production studio and learn about the production studio layouts. You can call this operation to add three types of components: image, text, and subtitle. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddCasterComponentRequest
-//
-// @return AddCasterComponentResponse
-func (client *Client) AddCasterComponent(request *AddCasterComponentRequest) (_result *AddCasterComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterComponentResponse{}
-	_body, _err := client.AddCasterComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -261,7 +128,7 @@ func (client *Client) AddCasterComponent(request *AddCasterComponentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterEpisodeResponse
-func (client *Client) AddCasterEpisodeWithOptions(request *AddCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeResponse, _err error) {
+func (client *Client) AddCasterEpisodeWithContext(ctx context.Context, request *AddCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -322,43 +189,11 @@ func (client *Client) AddCasterEpisodeWithOptions(request *AddCasterEpisodeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterEpisodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an episode to a production studio.
-//
-// Description:
-//
-// To call this operation, you must obtain the production studio ID in advance. The production studio ID is generated after the production studio is created.
-//
-//   - If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
-//
-//   - If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
-//
-// >  You can find the ID of the production studio in the Instance ID/Name column.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddCasterEpisodeRequest
-//
-// @return AddCasterEpisodeResponse
-func (client *Client) AddCasterEpisode(request *AddCasterEpisodeRequest) (_result *AddCasterEpisodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterEpisodeResponse{}
-	_body, _err := client.AddCasterEpisodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -379,7 +214,7 @@ func (client *Client) AddCasterEpisode(request *AddCasterEpisodeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterEpisodeGroupResponse
-func (client *Client) AddCasterEpisodeGroupWithOptions(request *AddCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupResponse, _err error) {
+func (client *Client) AddCasterEpisodeGroupWithContext(ctx context.Context, request *AddCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -436,37 +271,11 @@ func (client *Client) AddCasterEpisodeGroupWithOptions(request *AddCasterEpisode
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterEpisodeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an episode list to a production studio.
-//
-// Description:
-//
-// You need to create a production studio and obtain the production studio configurations before you call this operation to create an episode list in the production studio. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddCasterEpisodeGroupRequest
-//
-// @return AddCasterEpisodeGroupResponse
-func (client *Client) AddCasterEpisodeGroup(request *AddCasterEpisodeGroupRequest) (_result *AddCasterEpisodeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterEpisodeGroupResponse{}
-	_body, _err := client.AddCasterEpisodeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -487,7 +296,7 @@ func (client *Client) AddCasterEpisodeGroup(request *AddCasterEpisodeGroupReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterEpisodeGroupContentResponse
-func (client *Client) AddCasterEpisodeGroupContentWithOptions(request *AddCasterEpisodeGroupContentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupContentResponse, _err error) {
+func (client *Client) AddCasterEpisodeGroupContentWithContext(ctx context.Context, request *AddCasterEpisodeGroupContentRequest, runtime *dara.RuntimeOptions) (_result *AddCasterEpisodeGroupContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -524,37 +333,11 @@ func (client *Client) AddCasterEpisodeGroupContentWithOptions(request *AddCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterEpisodeGroupContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds information about an episode list in a production studio.
-//
-// Description:
-//
-// You need to create a production studio and add an episode list to the production studio before you call this operation to add information about the episode list in the production studio. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddCasterEpisodeGroupContentRequest
-//
-// @return AddCasterEpisodeGroupContentResponse
-func (client *Client) AddCasterEpisodeGroupContent(request *AddCasterEpisodeGroupContentRequest) (_result *AddCasterEpisodeGroupContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterEpisodeGroupContentResponse{}
-	_body, _err := client.AddCasterEpisodeGroupContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -575,7 +358,7 @@ func (client *Client) AddCasterEpisodeGroupContent(request *AddCasterEpisodeGrou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterLayoutResponse
-func (client *Client) AddCasterLayoutWithOptions(request *AddCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddCasterLayoutResponse, _err error) {
+func (client *Client) AddCasterLayoutWithContext(ctx context.Context, request *AddCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddCasterLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -624,37 +407,11 @@ func (client *Client) AddCasterLayoutWithOptions(request *AddCasterLayoutRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a layout for a production studio.
-//
-// Description:
-//
-// First, create a director desk and add video resources to the director desk, then call this interface to add the director desk layout. To create a director desk using the API, refer to [Create Director Desk](https://help.aliyun.com/document_detail/69338.html).
-//
-// ## QPS Limitation
-//
-// The per-user QPS limit for this interface is 10 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use the API reasonably. For more information, see [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddCasterLayoutRequest
-//
-// @return AddCasterLayoutResponse
-func (client *Client) AddCasterLayout(request *AddCasterLayoutRequest) (_result *AddCasterLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterLayoutResponse{}
-	_body, _err := client.AddCasterLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -675,7 +432,7 @@ func (client *Client) AddCasterLayout(request *AddCasterLayoutRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterProgramResponse
-func (client *Client) AddCasterProgramWithOptions(request *AddCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *AddCasterProgramResponse, _err error) {
+func (client *Client) AddCasterProgramWithContext(ctx context.Context, request *AddCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *AddCasterProgramResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -712,37 +469,11 @@ func (client *Client) AddCasterProgramWithOptions(request *AddCasterProgramReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterProgramResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds the episode list for carousel playback in a production studio.
-//
-// Description:
-//
-// Create a production studio, add input sources to the production studio, and then call this operation to add the episode list for carousel playback in the production studio. This operation supports videos and components as episodes. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddCasterProgramRequest
-//
-// @return AddCasterProgramResponse
-func (client *Client) AddCasterProgram(request *AddCasterProgramRequest) (_result *AddCasterProgramResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterProgramResponse{}
-	_body, _err := client.AddCasterProgramWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -765,7 +496,7 @@ func (client *Client) AddCasterProgram(request *AddCasterProgramRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCasterVideoResourceResponse
-func (client *Client) AddCasterVideoResourceWithOptions(request *AddCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *AddCasterVideoResourceResponse, _err error) {
+func (client *Client) AddCasterVideoResourceWithContext(ctx context.Context, request *AddCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *AddCasterVideoResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -846,39 +577,11 @@ func (client *Client) AddCasterVideoResourceWithOptions(request *AddCasterVideoR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCasterVideoResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an input source to a production studio. The number of input sources is limited by the number of input channels of the production studio.
-//
-// Description:
-//
-// ##
-//
-// Create a production studio, and then call this operation to add a video source to the production studio. The number of video sources is limited by the number of input channels of the production studio. For information about how to create a production studio by calling an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/69338.html).
-//
-// ## QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddCasterVideoResourceRequest
-//
-// @return AddCasterVideoResourceResponse
-func (client *Client) AddCasterVideoResource(request *AddCasterVideoResourceRequest) (_result *AddCasterVideoResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCasterVideoResourceResponse{}
-	_body, _err := client.AddCasterVideoResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -909,7 +612,7 @@ func (client *Client) AddCasterVideoResource(request *AddCasterVideoResourceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCustomLiveStreamTranscodeResponse
-func (client *Client) AddCustomLiveStreamTranscodeWithOptions(request *AddCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLiveStreamTranscodeResponse, _err error) {
+func (client *Client) AddCustomLiveStreamTranscodeWithContext(ctx context.Context, request *AddCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1034,47 +737,11 @@ func (client *Client) AddCustomLiveStreamTranscodeWithOptions(request *AddCustom
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCustomLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a custom transcoding configuration for a streaming domain.
-//
-// Description:
-//
-// This operation supports the following types of custom transcoding templates:
-//
-//   - h264: H.264
-//
-//   - h264-nbhd: H.264 Narrowband HD™
-//
-//   - h265: H.265
-//
-//   - h265-nbhd: H.265 Narrowband HD™
-//
-//   - audio: audio-only
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddCustomLiveStreamTranscodeRequest
-//
-// @return AddCustomLiveStreamTranscodeResponse
-func (client *Client) AddCustomLiveStreamTranscode(request *AddCustomLiveStreamTranscodeRequest) (_result *AddCustomLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddCustomLiveStreamTranscodeResponse{}
-	_body, _err := client.AddCustomLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1105,7 +772,7 @@ func (client *Client) AddCustomLiveStreamTranscode(request *AddCustomLiveStreamT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAIProduceRulesResponse
-func (client *Client) AddLiveAIProduceRulesWithOptions(request *AddLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAIProduceRulesResponse, _err error) {
+func (client *Client) AddLiveAIProduceRulesWithContext(ctx context.Context, request *AddLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAIProduceRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1166,47 +833,11 @@ func (client *Client) AddLiveAIProduceRulesWithOptions(request *AddLiveAIProduce
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAIProduceRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a subtitle rule.
-//
-// Description:
-//
-//	  After you call the [AddLiveAISubtitle](https://help.aliyun.com/document_detail/2848222.html) operation to add a subtitle template, you can call this operation to create a subtitle rule for the template.
-//
-//		- You must add "_Subtitle template name" after the stream name in the streaming URL to play the subtitle stream.
-//
-//	    	- RTMP: rtmp://example.aliyundoc.com/app/stream_{Subtitle template name}?auth_key={Access token}
-//
-//	    	- FLV: http://example.aliyundoc.com/app/stream_{Subtitle template name}.flv?auth_key={Access token}
-//
-//	    	- M3U8: http://example.aliyundoc.com/app/stream_{Subtitle template name}.m3u8?auth_key={Access token}
-//
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveAIProduceRulesRequest
-//
-// @return AddLiveAIProduceRulesResponse
-func (client *Client) AddLiveAIProduceRules(request *AddLiveAIProduceRulesRequest) (_result *AddLiveAIProduceRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAIProduceRulesResponse{}
-	_body, _err := client.AddLiveAIProduceRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1235,7 +866,7 @@ func (client *Client) AddLiveAIProduceRules(request *AddLiveAIProduceRulesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAISubtitleResponse
-func (client *Client) AddLiveAISubtitleWithOptions(tmpReq *AddLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAISubtitleResponse, _err error) {
+func (client *Client) AddLiveAISubtitleWithContext(ctx context.Context, tmpReq *AddLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAISubtitleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1338,45 +969,11 @@ func (client *Client) AddLiveAISubtitleWithOptions(tmpReq *AddLiveAISubtitleRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAISubtitleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a subtitle template.
-//
-// Description:
-//
-// ## Instructions
-//
-// - This interface supports adding live caption template configurations, with templates configurable to describe caption content, layout, and more.
-//
-// - After adding caption templates, you also need to call the [AddLiveAIProduceRules](https://help.aliyun.com/document_detail/2799676.html) interface to add caption rules. Restarting the stream will then enable captions in the broadcast.
-//
-// - Real-time captions are currently supported in Beijing, Shanghai, Singapore, Indonesia, and Saudi regions.
-//
-//	Notice: The real-time caption feature is currently in beta testing. Each user can add up to 300 caption templates.
-//
-// ## QPS Limit
-//
-// The QPS limit for this interface per user is 60 requests/second. Exceeding this limit will result in API throttling, which may impact your services. Please use judiciously. For more information, refer to [QPS Limitations](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddLiveAISubtitleRequest
-//
-// @return AddLiveAISubtitleResponse
-func (client *Client) AddLiveAISubtitle(request *AddLiveAISubtitleRequest) (_result *AddLiveAISubtitleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAISubtitleResponse{}
-	_body, _err := client.AddLiveAISubtitleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1399,7 +996,7 @@ func (client *Client) AddLiveAISubtitle(request *AddLiveAISubtitleRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAppRecordConfigResponse
-func (client *Client) AddLiveAppRecordConfigWithOptions(request *AddLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppRecordConfigResponse, _err error) {
+func (client *Client) AddLiveAppRecordConfigWithContext(ctx context.Context, request *AddLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppRecordConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1476,39 +1073,11 @@ func (client *Client) AddLiveAppRecordConfigWithOptions(request *AddLiveAppRecor
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAppRecordConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configure APP recording, with output saved to OSS.
-//
-// Description:
-//
-// The live stream recording feature allows you to record a live stream and stores the recordings in a specified location. You can view the recordings whenever you want to. Recordings that are stored in OSS support multiple formats, such as Transport Stream (TS), MP4, Flash Video (FLV), and Common Media Application Format (CMAF). You can use different recording policies, including automatic recording, on-demand recording, and manual recording. By calling this operation, you can configure the recording template. For more information about live stream recording, see [Live stream recording](https://help.aliyun.com/document_detail/199357.html).
-//
-// A configuration is identified by the DomainName, AppName, and StreamName parameters all together. If you try to call this operation to add a configuration that has the same DomainName, AppName, and StreamName parameters as an existing configuration, an error indicating that the configuration already exists is returned.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveAppRecordConfigRequest
-//
-// @return AddLiveAppRecordConfigResponse
-func (client *Client) AddLiveAppRecordConfig(request *AddLiveAppRecordConfigRequest) (_result *AddLiveAppRecordConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAppRecordConfigResponse{}
-	_body, _err := client.AddLiveAppRecordConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1535,7 +1104,7 @@ func (client *Client) AddLiveAppRecordConfig(request *AddLiveAppRecordConfigRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAppSnapshotConfigResponse
-func (client *Client) AddLiveAppSnapshotConfigWithOptions(request *AddLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppSnapshotConfigResponse, _err error) {
+func (client *Client) AddLiveAppSnapshotConfigWithContext(ctx context.Context, request *AddLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAppSnapshotConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1596,43 +1165,11 @@ func (client *Client) AddLiveAppSnapshotConfigWithOptions(request *AddLiveAppSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAppSnapshotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures the snapshot feature for a streaming domain. The captured snapshots are stored in Object Storage Service (OSS). The configuration takes effect after you restart stream ingest.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of live stream snapshots in ApsaraVideo Live. For more information, see [Billing of live stream snapshots](https://help.aliyun.com/document_detail/195286.html).
-//
-//		- Make sure that Object Storage Service (OSS) is activated and a specific bucket is created. This way, ApsaraVideo Live can store live stream snapshots in the bucket. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
-//
-//		- If you store snapshots in OSS, storage fees are generated. For more information, see [Storage fees](https://help.aliyun.com/document_detail/173534.html).
-//
-//		- The OSS bucket must reside in the same region as the live center of the streaming domain. Cross-region snapshot capture is not supported.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveAppSnapshotConfigRequest
-//
-// @return AddLiveAppSnapshotConfigResponse
-func (client *Client) AddLiveAppSnapshotConfig(request *AddLiveAppSnapshotConfigRequest) (_result *AddLiveAppSnapshotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAppSnapshotConfigResponse{}
-	_body, _err := client.AddLiveAppSnapshotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1655,7 +1192,7 @@ func (client *Client) AddLiveAppSnapshotConfig(request *AddLiveAppSnapshotConfig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAudioAuditConfigResponse
-func (client *Client) AddLiveAudioAuditConfigWithOptions(request *AddLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditConfigResponse, _err error) {
+func (client *Client) AddLiveAudioAuditConfigWithContext(ctx context.Context, request *AddLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1712,39 +1249,11 @@ func (client *Client) AddLiveAudioAuditConfigWithOptions(request *AddLiveAudioAu
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAudioAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an audio moderation configuration.
-//
-// Description:
-//
-//	  The content moderation feature detects undesirable sensitive content in the audio from live streams and returns callbacks to notify you of the violations. Then, you can manually review the content and take actions accordingly.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveAudioAuditConfigRequest
-//
-// @return AddLiveAudioAuditConfigResponse
-func (client *Client) AddLiveAudioAuditConfig(request *AddLiveAudioAuditConfigRequest) (_result *AddLiveAudioAuditConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAudioAuditConfigResponse{}
-	_body, _err := client.AddLiveAudioAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1767,7 +1276,7 @@ func (client *Client) AddLiveAudioAuditConfig(request *AddLiveAudioAuditConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveAudioAuditNotifyConfigResponse
-func (client *Client) AddLiveAudioAuditNotifyConfigWithOptions(request *AddLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditNotifyConfigResponse, _err error) {
+func (client *Client) AddLiveAudioAuditNotifyConfigWithContext(ctx context.Context, request *AddLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveAudioAuditNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1808,39 +1317,11 @@ func (client *Client) AddLiveAudioAuditNotifyConfigWithOptions(request *AddLiveA
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures callbacks for audio moderation results.
-//
-// Description:
-//
-//	  The content moderation feature returns the audio moderation results based on the configured callback template.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveAudioAuditNotifyConfigRequest
-//
-// @return AddLiveAudioAuditNotifyConfigResponse
-func (client *Client) AddLiveAudioAuditNotifyConfig(request *AddLiveAudioAuditNotifyConfigRequest) (_result *AddLiveAudioAuditNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.AddLiveAudioAuditNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1857,7 +1338,7 @@ func (client *Client) AddLiveAudioAuditNotifyConfig(request *AddLiveAudioAuditNo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveCenterTransferResponse
-func (client *Client) AddLiveCenterTransferWithOptions(request *AddLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *AddLiveCenterTransferResponse, _err error) {
+func (client *Client) AddLiveCenterTransferWithContext(ctx context.Context, request *AddLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *AddLiveCenterTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1914,33 +1395,11 @@ func (client *Client) AddLiveCenterTransferWithOptions(request *AddLiveCenterTra
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveCenterTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a configuration of live center stream relay.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveCenterTransferRequest
-//
-// @return AddLiveCenterTransferResponse
-func (client *Client) AddLiveCenterTransfer(request *AddLiveCenterTransferRequest) (_result *AddLiveCenterTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveCenterTransferResponse{}
-	_body, _err := client.AddLiveCenterTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1963,7 +1422,7 @@ func (client *Client) AddLiveCenterTransfer(request *AddLiveCenterTransferReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveDetectNotifyConfigResponse
-func (client *Client) AddLiveDetectNotifyConfigWithOptions(request *AddLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDetectNotifyConfigResponse, _err error) {
+func (client *Client) AddLiveDetectNotifyConfigWithContext(ctx context.Context, request *AddLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDetectNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2000,39 +1459,11 @@ func (client *Client) AddLiveDetectNotifyConfigWithOptions(request *AddLiveDetec
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveDetectNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures callbacks for video moderation results. As a result, a callback URL that is used to receive the callback notifications is added.
-//
-// Description:
-//
-//	  The automated review feature sends notifications about violations to the callback URL in real time. Then, you can manually review the content and take actions accordingly.
-//
-//		- Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - AddLiveDetectNotifyConfigRequest
-//
-// @return AddLiveDetectNotifyConfigResponse
-func (client *Client) AddLiveDetectNotifyConfig(request *AddLiveDetectNotifyConfigRequest) (_result *AddLiveDetectNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveDetectNotifyConfigResponse{}
-	_body, _err := client.AddLiveDetectNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2063,7 +1494,7 @@ func (client *Client) AddLiveDetectNotifyConfig(request *AddLiveDetectNotifyConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveDomainResponse
-func (client *Client) AddLiveDomainWithOptions(request *AddLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainResponse, _err error) {
+func (client *Client) AddLiveDomainWithContext(ctx context.Context, request *AddLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2128,47 +1559,11 @@ func (client *Client) AddLiveDomainWithOptions(request *AddLiveDomainRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a domain name to ApsaraVideo Live. This operation allows you to add only one domain name at a time.
-//
-// Description:
-//
-//	  You must activate ApsaraVideo Live before you add a domain name. For more information, see [Activate ApsaraVideo Live](https://help.aliyun.com/document_detail/195292.html).
-//
-//		- ApsaraVideo Live verifies the ownership of a new domain name that you add. After the verification is passed, the domain name is added to ApsaraVideo Live. ApsaraVideo Live allows you to use a Domain Name System (DNS) record or a verification file to verify the ownership of a domain name. For more information, see [Verify the ownership of a domain name](https://help.aliyun.com/document_detail/184466.html).
-//
-//		- To use ApsaraVideo Live to ingest and play streams, you must add an ingest domain and a streaming domain. You can add only one domain name at a time.
-//
-//		- After you add a domain name, you must configure a CNAME record for the domain name. For more information, see [Add a CNAME record](https://help.aliyun.com/document_detail/84929.html).
-//
-//		- After you add an ingest domain and a streaming domain, you must associate the streaming domain with the ingest domain. For more information, see [Associate a streaming domain with an ingest domain](https://help.aliyun.com/document_detail/199338.html).
-//
-// >  From February 19, 2019, domain names that are added by calling the AddLiveDomain operation do not support live center ingest. Domain names that are added by using Alibaba Cloud CDN also do not support live center ingest. When you call the AddLiveDomain operation, you can set the LiveDomainType parameter to liveEdge to add an ingest domain that uses edge ingest or set the LiveDomainType parameter to liveVideo to add a streaming domain. You can associate a streaming domain with an ingest domain by calling the AddLiveDomainMapping operation. Domain names added before February 19, 2019, for which live center ingest was configured, are not affected.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveDomainRequest
-//
-// @return AddLiveDomainResponse
-func (client *Client) AddLiveDomain(request *AddLiveDomainRequest) (_result *AddLiveDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveDomainResponse{}
-	_body, _err := client.AddLiveDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2189,7 +1584,7 @@ func (client *Client) AddLiveDomain(request *AddLiveDomainRequest) (_result *Add
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveDomainMappingResponse
-func (client *Client) AddLiveDomainMappingWithOptions(request *AddLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainMappingResponse, _err error) {
+func (client *Client) AddLiveDomainMappingWithContext(ctx context.Context, request *AddLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainMappingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2226,37 +1621,11 @@ func (client *Client) AddLiveDomainMappingWithOptions(request *AddLiveDomainMapp
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveDomainMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates the mapping between a streaming domain and an ingest domain.
-//
-// Description:
-//
-// Call the [AddLiveDomain](https://help.aliyun.com/document_detail/88327.html) operation to add a streaming domain and an ingest domain, and then call this operation to create the mapping between the two domain names.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddLiveDomainMappingRequest
-//
-// @return AddLiveDomainMappingResponse
-func (client *Client) AddLiveDomainMapping(request *AddLiveDomainMappingRequest) (_result *AddLiveDomainMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveDomainMappingResponse{}
-	_body, _err := client.AddLiveDomainMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2277,7 +1646,7 @@ func (client *Client) AddLiveDomainMapping(request *AddLiveDomainMappingRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveDomainPlayMappingResponse
-func (client *Client) AddLiveDomainPlayMappingWithOptions(request *AddLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainPlayMappingResponse, _err error) {
+func (client *Client) AddLiveDomainPlayMappingWithContext(ctx context.Context, request *AddLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *AddLiveDomainPlayMappingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2314,37 +1683,11 @@ func (client *Client) AddLiveDomainPlayMappingWithOptions(request *AddLiveDomain
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveDomainPlayMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Maps a sub-streaming domain to a main streaming domain.
-//
-// Description:
-//
-// You can call the [AddLiveDomain](https://help.aliyun.com/document_detail/88327.html) operation to add a main streaming domain and a sub-streaming domain and then call this operation to map the sub-streaming domain to the main streaming domain.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveDomainPlayMappingRequest
-//
-// @return AddLiveDomainPlayMappingResponse
-func (client *Client) AddLiveDomainPlayMapping(request *AddLiveDomainPlayMappingRequest) (_result *AddLiveDomainPlayMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveDomainPlayMappingResponse{}
-	_body, _err := client.AddLiveDomainPlayMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2365,7 +1708,7 @@ func (client *Client) AddLiveDomainPlayMapping(request *AddLiveDomainPlayMapping
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveMessageGroupBandResponse
-func (client *Client) AddLiveMessageGroupBandWithOptions(tmpReq *AddLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *AddLiveMessageGroupBandResponse, _err error) {
+func (client *Client) AddLiveMessageGroupBandWithContext(ctx context.Context, tmpReq *AddLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *AddLiveMessageGroupBandResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2408,37 +1751,11 @@ func (client *Client) AddLiveMessageGroupBandWithOptions(tmpReq *AddLiveMessageG
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveMessageGroupBandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Mutes one or more users.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveMessageGroupBandRequest
-//
-// @return AddLiveMessageGroupBandResponse
-func (client *Client) AddLiveMessageGroupBand(request *AddLiveMessageGroupBandRequest) (_result *AddLiveMessageGroupBandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveMessageGroupBandResponse{}
-	_body, _err := client.AddLiveMessageGroupBandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2463,7 +1780,7 @@ func (client *Client) AddLiveMessageGroupBand(request *AddLiveMessageGroupBandRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLivePackageConfigResponse
-func (client *Client) AddLivePackageConfigWithOptions(request *AddLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePackageConfigResponse, _err error) {
+func (client *Client) AddLivePackageConfigWithContext(ctx context.Context, request *AddLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePackageConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2524,41 +1841,11 @@ func (client *Client) AddLivePackageConfigWithOptions(request *AddLivePackageCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLivePackageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a live stream encapsulation configuration.
-//
-// Description:
-//
-//	  The first time you configure encapsulation for a domain name, domain acceleration is automatically configured and takes effect in 3 to 5 minutes.
-//
-//		- If the streaming domain resides in a region outside China, including Singapore, Germany (Frankfurt), Japan (Tokyo), and Indonesia (Jakarta), you may encounter high latency issues. We recommend that you test and verify whether the settings meet expectations.
-//
-//		- You can call this operation to add a live stream encapsulation configuration. The configuration takes effect only after you re-ingest the stream.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLivePackageConfigRequest
-//
-// @return AddLivePackageConfigResponse
-func (client *Client) AddLivePackageConfig(request *AddLivePackageConfigRequest) (_result *AddLivePackageConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLivePackageConfigResponse{}
-	_body, _err := client.AddLivePackageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2589,7 +1876,7 @@ func (client *Client) AddLivePackageConfig(request *AddLivePackageConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLivePullStreamInfoConfigResponse
-func (client *Client) AddLivePullStreamInfoConfigWithOptions(request *AddLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePullStreamInfoConfigResponse, _err error) {
+func (client *Client) AddLivePullStreamInfoConfigWithContext(ctx context.Context, request *AddLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLivePullStreamInfoConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2642,47 +1929,11 @@ func (client *Client) AddLivePullStreamInfoConfigWithOptions(request *AddLivePul
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLivePullStreamInfoConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a stream pulling configuration for a live stream, which includes parameters such as the origin URL, start time, and end time.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of stream pulling in ApsaraVideo Live. For more information, see [Billing of standard streaming](https://help.aliyun.com/document_detail/195284.html).
-//
-//		- Stream pulling refers to the process of pulling live streams from third-party streaming URLs to a live center of ApsaraVideo Live for CDN acceleration.
-//
-//		- You can call this operation only for regular stream pulling. That is, you can specify the start time and end time to pull live streams.
-//
-//		- Regular stream pulling and triggered stream pulling are supported in the ApsaraVideo Live console. For more information, see [Configure stream pulling](https://help.aliyun.com/document_detail/199452.html).
-//
-//		- You can specify custom values for the AppName and StreamName parameters. Streaming URLs that are generated vary based on different values of the AppName and StreamName parameters. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a streaming URL.
-//
-//		- A configuration is identified by the DomainName, AppName, and StreamName parameters all together. If you try to call this operation to add a configuration that has the same DomainName, AppName, and StreamName parameters as an existing configuration, an error indicating that the configuration already exists is returned.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLivePullStreamInfoConfigRequest
-//
-// @return AddLivePullStreamInfoConfigResponse
-func (client *Client) AddLivePullStreamInfoConfig(request *AddLivePullStreamInfoConfigRequest) (_result *AddLivePullStreamInfoConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLivePullStreamInfoConfigResponse{}
-	_body, _err := client.AddLivePullStreamInfoConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2703,7 +1954,7 @@ func (client *Client) AddLivePullStreamInfoConfig(request *AddLivePullStreamInfo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveRecordNotifyConfigResponse
-func (client *Client) AddLiveRecordNotifyConfigWithOptions(request *AddLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordNotifyConfigResponse, _err error) {
+func (client *Client) AddLiveRecordNotifyConfigWithContext(ctx context.Context, request *AddLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2748,37 +1999,11 @@ func (client *Client) AddLiveRecordNotifyConfigWithOptions(request *AddLiveRecor
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveRecordNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures recording callbacks for a domain name.
-//
-// Description:
-//
-// Before you call this operation to configure recording callbacks for a domain name, you can query whether the domain name already has recording callbacks configured. For more information, see [DescribeLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847893.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveRecordNotifyConfigRequest
-//
-// @return AddLiveRecordNotifyConfigResponse
-func (client *Client) AddLiveRecordNotifyConfig(request *AddLiveRecordNotifyConfigRequest) (_result *AddLiveRecordNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveRecordNotifyConfigResponse{}
-	_body, _err := client.AddLiveRecordNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2801,7 +2026,7 @@ func (client *Client) AddLiveRecordNotifyConfig(request *AddLiveRecordNotifyConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveRecordVodConfigResponse
-func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordVodConfigResponse, _err error) {
+func (client *Client) AddLiveRecordVodConfigWithContext(ctx context.Context, request *AddLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveRecordVodConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2866,39 +2091,11 @@ func (client *Client) AddLiveRecordVodConfigWithOptions(request *AddLiveRecordVo
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveRecordVodConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a Live-to-VOD configuration to store recordings in the media library of ApsaraVideo VOD.
-//
-// Description:
-//
-// You can call this operation to configure the Live-to-VOD feature to store recordings in the media library of ApsaraVideo VOD.
-//
-// >  You cannot configure the Live-to-VOD feature by using a Finance Cloud account.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveRecordVodConfigRequest
-//
-// @return AddLiveRecordVodConfigResponse
-func (client *Client) AddLiveRecordVodConfig(request *AddLiveRecordVodConfigRequest) (_result *AddLiveRecordVodConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveRecordVodConfigResponse{}
-	_body, _err := client.AddLiveRecordVodConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2921,7 +2118,7 @@ func (client *Client) AddLiveRecordVodConfig(request *AddLiveRecordVodConfigRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveSnapshotDetectPornConfigResponse
-func (client *Client) AddLiveSnapshotDetectPornConfigWithOptions(request *AddLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotDetectPornConfigResponse, _err error) {
+func (client *Client) AddLiveSnapshotDetectPornConfigWithContext(ctx context.Context, request *AddLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotDetectPornConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2978,39 +2175,11 @@ func (client *Client) AddLiveSnapshotDetectPornConfigWithOptions(request *AddLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a video moderation configuration for live streams in an application under a domain name.
-//
-// Description:
-//
-// - The live streaming audit function identifies and reviews违规sensitive content at the domain and App level, and promptly notifies users of such violations via callbacks. Users can then review the content and take appropriate actions.
-//
-// - Currently, only some live streaming centers support intelligent auditing. For a list of live streaming centers that support this feature, please refer to [Service Regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## QPS Limitation
-//
-// The QPS limit for this API per user is 30 requests/second. Exceeding this limit will result in API throttling, which may impact your services. Please use the API judiciously. For more information, see [QPS Limitations](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddLiveSnapshotDetectPornConfigRequest
-//
-// @return AddLiveSnapshotDetectPornConfigResponse
-func (client *Client) AddLiveSnapshotDetectPornConfig(request *AddLiveSnapshotDetectPornConfigRequest) (_result *AddLiveSnapshotDetectPornConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.AddLiveSnapshotDetectPornConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3029,7 +2198,7 @@ func (client *Client) AddLiveSnapshotDetectPornConfig(request *AddLiveSnapshotDe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveSnapshotNotifyConfigResponse
-func (client *Client) AddLiveSnapshotNotifyConfigWithOptions(request *AddLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
+func (client *Client) AddLiveSnapshotNotifyConfigWithContext(ctx context.Context, request *AddLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3074,35 +2243,11 @@ func (client *Client) AddLiveSnapshotNotifyConfigWithOptions(request *AddLiveSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures snapshot callbacks.
-//
-// Description:
-//
-// ### QPS Limit
-//
-// The QPS limit for this API per user is 30 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use the API reasonably. For more information, please refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddLiveSnapshotNotifyConfigRequest
-//
-// @return AddLiveSnapshotNotifyConfigResponse
-func (client *Client) AddLiveSnapshotNotifyConfig(request *AddLiveSnapshotNotifyConfigRequest) (_result *AddLiveSnapshotNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.AddLiveSnapshotNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3119,7 +2264,7 @@ func (client *Client) AddLiveSnapshotNotifyConfig(request *AddLiveSnapshotNotify
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveStreamMergeResponse
-func (client *Client) AddLiveStreamMergeWithOptions(request *AddLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamMergeResponse, _err error) {
+func (client *Client) AddLiveStreamMergeWithContext(ctx context.Context, request *AddLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamMergeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3188,33 +2333,11 @@ func (client *Client) AddLiveStreamMergeWithOptions(request *AddLiveStreamMergeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveStreamMergeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Invoke AddLiveStreamMerge to add primary and backup stream merging configuration.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveStreamMergeRequest
-//
-// @return AddLiveStreamMergeResponse
-func (client *Client) AddLiveStreamMerge(request *AddLiveStreamMergeRequest) (_result *AddLiveStreamMergeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveStreamMergeResponse{}
-	_body, _err := client.AddLiveStreamMergeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3235,7 +2358,7 @@ func (client *Client) AddLiveStreamMerge(request *AddLiveStreamMergeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveStreamTranscodeResponse
-func (client *Client) AddLiveStreamTranscodeWithOptions(request *AddLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamTranscodeResponse, _err error) {
+func (client *Client) AddLiveStreamTranscodeWithContext(ctx context.Context, request *AddLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3284,37 +2407,11 @@ func (client *Client) AddLiveStreamTranscodeWithOptions(request *AddLiveStreamTr
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds transcoding configurations for a streaming domain.
-//
-// Description:
-//
-// You must obtain the customer master key (CMK) in Key Management Service (KMS) before you call this operation to add transcoding configurations. Only standard transcoding templates and Narrowband HD™ transcoding templates are supported for this operation.
-//
-// ## QPS limits
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - AddLiveStreamTranscodeRequest
-//
-// @return AddLiveStreamTranscodeResponse
-func (client *Client) AddLiveStreamTranscode(request *AddLiveStreamTranscodeRequest) (_result *AddLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveStreamTranscodeResponse{}
-	_body, _err := client.AddLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3337,7 +2434,7 @@ func (client *Client) AddLiveStreamTranscode(request *AddLiveStreamTranscodeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveStreamWatermarkResponse
-func (client *Client) AddLiveStreamWatermarkWithOptions(request *AddLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkResponse, _err error) {
+func (client *Client) AddLiveStreamWatermarkWithContext(ctx context.Context, request *AddLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3414,39 +2511,11 @@ func (client *Client) AddLiveStreamWatermarkWithOptions(request *AddLiveStreamWa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveStreamWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a watermark template.
-//
-// Description:
-//
-//	  You can call this operation to create a watermark template and configure information such as the watermark content and layout in the template.
-//
-//		- After you create a watermark template, you must also call the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation to add a watermark rule. A live stream in progress can contain the watermark only after the stream is re-ingested.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddLiveStreamWatermarkRequest
-//
-// @return AddLiveStreamWatermarkResponse
-func (client *Client) AddLiveStreamWatermark(request *AddLiveStreamWatermarkRequest) (_result *AddLiveStreamWatermarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveStreamWatermarkResponse{}
-	_body, _err := client.AddLiveStreamWatermarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3467,7 +2536,7 @@ func (client *Client) AddLiveStreamWatermark(request *AddLiveStreamWatermarkRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLiveStreamWatermarkRuleResponse
-func (client *Client) AddLiveStreamWatermarkRuleWithOptions(request *AddLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkRuleResponse, _err error) {
+func (client *Client) AddLiveStreamWatermarkRuleWithContext(ctx context.Context, request *AddLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *AddLiveStreamWatermarkRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3520,37 +2589,11 @@ func (client *Client) AddLiveStreamWatermarkRuleWithOptions(request *AddLiveStre
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a watermark rule.
-//
-// Description:
-//
-// After calling the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/469416.html) API to add a watermark template, you can use this interface to add watermark rules.
-//
-// ## QPS Limit
-//
-//	The QPS limit for this interface per user is 60 times/second. Exceeding the limit will result in API calls being throttled, which may impact your business. Please use it reasonably. For more information, see [QPS Limit](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddLiveStreamWatermarkRuleRequest
-//
-// @return AddLiveStreamWatermarkRuleResponse
-func (client *Client) AddLiveStreamWatermarkRule(request *AddLiveStreamWatermarkRuleRequest) (_result *AddLiveStreamWatermarkRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.AddLiveStreamWatermarkRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3571,7 +2614,7 @@ func (client *Client) AddLiveStreamWatermarkRule(request *AddLiveStreamWatermark
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddPlaylistItemsResponse
-func (client *Client) AddPlaylistItemsWithOptions(request *AddPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *AddPlaylistItemsResponse, _err error) {
+func (client *Client) AddPlaylistItemsWithContext(ctx context.Context, request *AddPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *AddPlaylistItemsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3616,37 +2659,11 @@ func (client *Client) AddPlaylistItemsWithOptions(request *AddPlaylistItemsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddPlaylistItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds episodes to an episode list.
-//
-// Description:
-//
-// Create a production studio, add a layout and components to the production studio, and then call this operation to add episodes. If no episode list exists in the production studio, this operation creates an episode list for the production studio. For more information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddPlaylistItemsRequest
-//
-// @return AddPlaylistItemsResponse
-func (client *Client) AddPlaylistItems(request *AddPlaylistItemsRequest) (_result *AddPlaylistItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddPlaylistItemsResponse{}
-	_body, _err := client.AddPlaylistItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3667,7 +2684,7 @@ func (client *Client) AddPlaylistItems(request *AddPlaylistItemsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddRtsLiveStreamTranscodeResponse
-func (client *Client) AddRtsLiveStreamTranscodeWithOptions(request *AddRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddRtsLiveStreamTranscodeResponse, _err error) {
+func (client *Client) AddRtsLiveStreamTranscodeWithContext(ctx context.Context, request *AddRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *AddRtsLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3768,37 +2785,11 @@ func (client *Client) AddRtsLiveStreamTranscodeWithOptions(request *AddRtsLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddRtsLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Real-Time Streaming (RTS) transcoding configuration for a streaming domain.
-//
-// Description:
-//
-// You can call this operation to add an RTS transcoding configuration. This operation supports four template types: h264, h264-nbhd, h264-origin, and audio.
-//
-// ## QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - AddRtsLiveStreamTranscodeRequest
-//
-// @return AddRtsLiveStreamTranscodeResponse
-func (client *Client) AddRtsLiveStreamTranscode(request *AddRtsLiveStreamTranscodeRequest) (_result *AddRtsLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddRtsLiveStreamTranscodeResponse{}
-	_body, _err := client.AddRtsLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3827,7 +2818,7 @@ func (client *Client) AddRtsLiveStreamTranscode(request *AddRtsLiveStreamTransco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddShowIntoShowListResponse
-func (client *Client) AddShowIntoShowListWithOptions(request *AddShowIntoShowListRequest, runtime *dara.RuntimeOptions) (_result *AddShowIntoShowListResponse, _err error) {
+func (client *Client) AddShowIntoShowListWithContext(ctx context.Context, request *AddShowIntoShowListRequest, runtime *dara.RuntimeOptions) (_result *AddShowIntoShowListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3900,45 +2891,11 @@ func (client *Client) AddShowIntoShowListWithOptions(request *AddShowIntoShowLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddShowIntoShowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds an episode to an episode list.
-//
-// Description:
-//
-// You must create a production studio in the new playlist mode and add media resources to the production studio before you can call this operation. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-// You can add up to 1,000 episodes to an episode list.
-//
-// >
-//
-//   - When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
-//
-//   - When you add media resources to a production studio, we recommend that you select resources from ApsaraVideo Live and ApsaraVideo VOD. If you add a third-party stream by specifying a streaming URL, there is a possibility that the stream fails to be played. You must pay attention to the quality and validity of the third-party stream.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddShowIntoShowListRequest
-//
-// @return AddShowIntoShowListResponse
-func (client *Client) AddShowIntoShowList(request *AddShowIntoShowListRequest) (_result *AddShowIntoShowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddShowIntoShowListResponse{}
-	_body, _err := client.AddShowIntoShowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3959,7 +2916,7 @@ func (client *Client) AddShowIntoShowList(request *AddShowIntoShowListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddStudioLayoutResponse
-func (client *Client) AddStudioLayoutWithOptions(request *AddStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddStudioLayoutResponse, _err error) {
+func (client *Client) AddStudioLayoutWithContext(ctx context.Context, request *AddStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *AddStudioLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4020,37 +2977,11 @@ func (client *Client) AddStudioLayoutWithOptions(request *AddStudioLayoutRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddStudioLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures a layout for a virtual studio.
-//
-// Description:
-//
-// You can call this operation to configure a common layout or a studio layout for a virtual studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddStudioLayoutRequest
-//
-// @return AddStudioLayoutResponse
-func (client *Client) AddStudioLayout(request *AddStudioLayoutRequest) (_result *AddStudioLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddStudioLayoutResponse{}
-	_body, _err := client.AddStudioLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4071,7 +3002,7 @@ func (client *Client) AddStudioLayout(request *AddStudioLayoutRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddTrancodeSEIResponse
-func (client *Client) AddTrancodeSEIWithOptions(request *AddTrancodeSEIRequest, runtime *dara.RuntimeOptions) (_result *AddTrancodeSEIResponse, _err error) {
+func (client *Client) AddTrancodeSEIWithContext(ctx context.Context, request *AddTrancodeSEIRequest, runtime *dara.RuntimeOptions) (_result *AddTrancodeSEIResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4128,37 +3059,11 @@ func (client *Client) AddTrancodeSEIWithOptions(request *AddTrancodeSEIRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddTrancodeSEIResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Inserts supplemental enhancement information (SEI) to transcoded streams.
-//
-// Description:
-//
-// Obtain the streaming domain, and then call this operation to insert SEI to the transcoded streams. Make sure that the stream name is the name of the source stream. This way, the SEI is inserted to all the transcoded streams.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - AddTrancodeSEIRequest
-//
-// @return AddTrancodeSEIResponse
-func (client *Client) AddTrancodeSEI(request *AddTrancodeSEIRequest) (_result *AddTrancodeSEIResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddTrancodeSEIResponse{}
-	_body, _err := client.AddTrancodeSEIWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4179,7 +3084,7 @@ func (client *Client) AddTrancodeSEI(request *AddTrancodeSEIRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BanLiveMessageGroupResponse
-func (client *Client) BanLiveMessageGroupWithOptions(tmpReq *BanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *BanLiveMessageGroupResponse, _err error) {
+func (client *Client) BanLiveMessageGroupWithContext(ctx context.Context, tmpReq *BanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *BanLiveMessageGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4222,37 +3127,11 @@ func (client *Client) BanLiveMessageGroupWithOptions(tmpReq *BanLiveMessageGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &BanLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Mutes a group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - BanLiveMessageGroupRequest
-//
-// @return BanLiveMessageGroupResponse
-func (client *Client) BanLiveMessageGroup(request *BanLiveMessageGroupRequest) (_result *BanLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BanLiveMessageGroupResponse{}
-	_body, _err := client.BanLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4273,7 +3152,7 @@ func (client *Client) BanLiveMessageGroup(request *BanLiveMessageGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDeleteLiveDomainConfigsResponse
-func (client *Client) BatchDeleteLiveDomainConfigsWithOptions(request *BatchDeleteLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteLiveDomainConfigsResponse, _err error) {
+func (client *Client) BatchDeleteLiveDomainConfigsWithContext(ctx context.Context, request *BatchDeleteLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteLiveDomainConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4314,37 +3193,11 @@ func (client *Client) BatchDeleteLiveDomainConfigsWithOptions(request *BatchDele
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDeleteLiveDomainConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configurations of multiple domain names at a time.
-//
-// Description:
-//
-// Obtain the domain names for which you want to delete the configurations, and then call this operation to delete the configurations of these domain domains at a time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - BatchDeleteLiveDomainConfigsRequest
-//
-// @return BatchDeleteLiveDomainConfigsResponse
-func (client *Client) BatchDeleteLiveDomainConfigs(request *BatchDeleteLiveDomainConfigsRequest) (_result *BatchDeleteLiveDomainConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchDeleteLiveDomainConfigsResponse{}
-	_body, _err := client.BatchDeleteLiveDomainConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4367,7 +3220,7 @@ func (client *Client) BatchDeleteLiveDomainConfigs(request *BatchDeleteLiveDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchGetOnlineUsersResponse
-func (client *Client) BatchGetOnlineUsersWithOptions(request *BatchGetOnlineUsersRequest, runtime *dara.RuntimeOptions) (_result *BatchGetOnlineUsersResponse, _err error) {
+func (client *Client) BatchGetOnlineUsersWithContext(ctx context.Context, request *BatchGetOnlineUsersRequest, runtime *dara.RuntimeOptions) (_result *BatchGetOnlineUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4400,39 +3253,11 @@ func (client *Client) BatchGetOnlineUsersWithOptions(request *BatchGetOnlineUser
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchGetOnlineUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据一个或多个用户uid查询用户是否在线
-//
-// Description:
-//
-// ## Usage notes
-//
-// You can query whether up to 20 users are online at a time.
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - BatchGetOnlineUsersRequest
-//
-// @return BatchGetOnlineUsersResponse
-func (client *Client) BatchGetOnlineUsers(request *BatchGetOnlineUsersRequest) (_result *BatchGetOnlineUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchGetOnlineUsersResponse{}
-	_body, _err := client.BatchGetOnlineUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4453,7 +3278,7 @@ func (client *Client) BatchGetOnlineUsers(request *BatchGetOnlineUsersRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchSetLiveDomainConfigsResponse
-func (client *Client) BatchSetLiveDomainConfigsWithOptions(request *BatchSetLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchSetLiveDomainConfigsResponse, _err error) {
+func (client *Client) BatchSetLiveDomainConfigsWithContext(ctx context.Context, request *BatchSetLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *BatchSetLiveDomainConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4494,37 +3319,11 @@ func (client *Client) BatchSetLiveDomainConfigsWithOptions(request *BatchSetLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchSetLiveDomainConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures multiple domain names at a time.
-//
-// Description:
-//
-// Obtain the domain names that you want to configure, and then call this operation to configure the domain names in batches.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - BatchSetLiveDomainConfigsRequest
-//
-// @return BatchSetLiveDomainConfigsResponse
-func (client *Client) BatchSetLiveDomainConfigs(request *BatchSetLiveDomainConfigsRequest) (_result *BatchSetLiveDomainConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchSetLiveDomainConfigsResponse{}
-	_body, _err := client.BatchSetLiveDomainConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4543,7 +3342,7 @@ func (client *Client) BatchSetLiveDomainConfigs(request *BatchSetLiveDomainConfi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelMuteAllGroupUserResponse
-func (client *Client) CancelMuteAllGroupUserWithOptions(request *CancelMuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteAllGroupUserResponse, _err error) {
+func (client *Client) CancelMuteAllGroupUserWithContext(ctx context.Context, request *CancelMuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteAllGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4580,35 +3379,11 @@ func (client *Client) CancelMuteAllGroupUserWithOptions(request *CancelMuteAllGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelMuteAllGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unmutes a message group.
-//
-// Description:
-//
-// ## QPS限制
-//
-// 本接口的单用户QPS限制为100次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。更多信息，请参见[QPS限制](https://help.aliyun.com/document_detail/343507.html)。
-//
-// @param request - CancelMuteAllGroupUserRequest
-//
-// @return CancelMuteAllGroupUserResponse
-func (client *Client) CancelMuteAllGroupUser(request *CancelMuteAllGroupUserRequest) (_result *CancelMuteAllGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelMuteAllGroupUserResponse{}
-	_body, _err := client.CancelMuteAllGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4627,7 +3402,7 @@ func (client *Client) CancelMuteAllGroupUser(request *CancelMuteAllGroupUserRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelMuteGroupUserResponse
-func (client *Client) CancelMuteGroupUserWithOptions(tmpReq *CancelMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteGroupUserResponse, _err error) {
+func (client *Client) CancelMuteGroupUserWithContext(ctx context.Context, tmpReq *CancelMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *CancelMuteGroupUserResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4674,35 +3449,11 @@ func (client *Client) CancelMuteGroupUserWithOptions(tmpReq *CancelMuteGroupUser
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelMuteGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unmutes members in a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - CancelMuteGroupUserRequest
-//
-// @return CancelMuteGroupUserResponse
-func (client *Client) CancelMuteGroupUser(request *CancelMuteGroupUserRequest) (_result *CancelMuteGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelMuteGroupUserResponse{}
-	_body, _err := client.CancelMuteGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4719,7 +3470,7 @@ func (client *Client) CancelMuteGroupUser(request *CancelMuteGroupUserRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeLiveDomainResourceGroupResponse
-func (client *Client) ChangeLiveDomainResourceGroupWithOptions(request *ChangeLiveDomainResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeLiveDomainResourceGroupResponse, _err error) {
+func (client *Client) ChangeLiveDomainResourceGroupWithContext(ctx context.Context, request *ChangeLiveDomainResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeLiveDomainResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4756,33 +3507,11 @@ func (client *Client) ChangeLiveDomainResourceGroupWithOptions(request *ChangeLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeLiveDomainResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which a domain name belongs. In this case, you move the domain name from the original resource group to another resource group.
-//
-// Description:
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ChangeLiveDomainResourceGroupRequest
-//
-// @return ChangeLiveDomainResourceGroupResponse
-func (client *Client) ChangeLiveDomainResourceGroup(request *ChangeLiveDomainResourceGroupRequest) (_result *ChangeLiveDomainResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeLiveDomainResourceGroupResponse{}
-	_body, _err := client.ChangeLiveDomainResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4803,7 +3532,7 @@ func (client *Client) ChangeLiveDomainResourceGroup(request *ChangeLiveDomainRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckLiveMessageUsersInGroupResponse
-func (client *Client) CheckLiveMessageUsersInGroupWithOptions(tmpReq *CheckLiveMessageUsersInGroupRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersInGroupResponse, _err error) {
+func (client *Client) CheckLiveMessageUsersInGroupWithContext(ctx context.Context, tmpReq *CheckLiveMessageUsersInGroupRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersInGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4846,37 +3575,11 @@ func (client *Client) CheckLiveMessageUsersInGroupWithOptions(tmpReq *CheckLiveM
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckLiveMessageUsersInGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether a user is in an interactive messaging group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CheckLiveMessageUsersInGroupRequest
-//
-// @return CheckLiveMessageUsersInGroupResponse
-func (client *Client) CheckLiveMessageUsersInGroup(request *CheckLiveMessageUsersInGroupRequest) (_result *CheckLiveMessageUsersInGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckLiveMessageUsersInGroupResponse{}
-	_body, _err := client.CheckLiveMessageUsersInGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4893,7 +3596,7 @@ func (client *Client) CheckLiveMessageUsersInGroup(request *CheckLiveMessageUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckLiveMessageUsersOnlineResponse
-func (client *Client) CheckLiveMessageUsersOnlineWithOptions(tmpReq *CheckLiveMessageUsersOnlineRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersOnlineResponse, _err error) {
+func (client *Client) CheckLiveMessageUsersOnlineWithContext(ctx context.Context, tmpReq *CheckLiveMessageUsersOnlineRequest, runtime *dara.RuntimeOptions) (_result *CheckLiveMessageUsersOnlineResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4932,33 +3635,11 @@ func (client *Client) CheckLiveMessageUsersOnlineWithOptions(tmpReq *CheckLiveMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckLiveMessageUsersOnlineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether one or more specified users are online.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CheckLiveMessageUsersOnlineRequest
-//
-// @return CheckLiveMessageUsersOnlineResponse
-func (client *Client) CheckLiveMessageUsersOnline(request *CheckLiveMessageUsersOnlineRequest) (_result *CheckLiveMessageUsersOnlineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckLiveMessageUsersOnlineResponse{}
-	_body, _err := client.CheckLiveMessageUsersOnlineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4979,7 +3660,7 @@ func (client *Client) CheckLiveMessageUsersOnline(request *CheckLiveMessageUsers
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseLiveShiftResponse
-func (client *Client) CloseLiveShiftWithOptions(request *CloseLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *CloseLiveShiftResponse, _err error) {
+func (client *Client) CloseLiveShiftWithContext(ctx context.Context, request *CloseLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *CloseLiveShiftResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5020,37 +3701,11 @@ func (client *Client) CloseLiveShiftWithOptions(request *CloseLiveShiftRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseLiveShiftResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables time shifting for a domain name, or an application or a live stream under the domain name.
-//
-// Description:
-//
-// Obtain the streaming domain, and then call this operation to disable time shifting for the streaming domain or an application or a live stream under the streaming domain.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CloseLiveShiftRequest
-//
-// @return CloseLiveShiftResponse
-func (client *Client) CloseLiveShift(request *CloseLiveShiftRequest) (_result *CloseLiveShiftResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CloseLiveShiftResponse{}
-	_body, _err := client.CloseLiveShiftWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5071,7 +3726,7 @@ func (client *Client) CloseLiveShift(request *CloseLiveShiftRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyCasterResponse
-func (client *Client) CopyCasterWithOptions(request *CopyCasterRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterResponse, _err error) {
+func (client *Client) CopyCasterWithContext(ctx context.Context, request *CopyCasterRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5112,37 +3767,11 @@ func (client *Client) CopyCasterWithOptions(request *CopyCasterRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Duplicates a production studio.
-//
-// Description:
-//
-// You can call this operation to duplicate a production studio. This way, a new, identical production studio is created.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CopyCasterRequest
-//
-// @return CopyCasterResponse
-func (client *Client) CopyCaster(request *CopyCasterRequest) (_result *CopyCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyCasterResponse{}
-	_body, _err := client.CopyCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5167,7 +3796,7 @@ func (client *Client) CopyCaster(request *CopyCasterRequest) (_result *CopyCaste
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CopyCasterSceneConfigResponse
-func (client *Client) CopyCasterSceneConfigWithOptions(request *CopyCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterSceneConfigResponse, _err error) {
+func (client *Client) CopyCasterSceneConfigWithContext(ctx context.Context, request *CopyCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyCasterSceneConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5208,41 +3837,11 @@ func (client *Client) CopyCasterSceneConfigWithOptions(request *CopyCasterSceneC
 		BodyType:    dara.String("json"),
 	}
 	_result = &CopyCasterSceneConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies the configuration of a PVW scene to a PGM scene.
-//
-// Description:
-//
-//	  Streaming fees and transcoding fees are calculated based on the corresponding output resolutions and durations. For more information, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
-//
-//		- You can call this operation to apply the configuration of a source scene to a destination scene. This operation takes effect only if the source scene is a PVW scene and the destination scene is a PGM scene. A PVW scene is a preview scene, and a PGM scene is a program scene.
-//
-//		- The PVW scene and PGM scene must be in the same production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CopyCasterSceneConfigRequest
-//
-// @return CopyCasterSceneConfigResponse
-func (client *Client) CopyCasterSceneConfig(request *CopyCasterSceneConfigRequest) (_result *CopyCasterSceneConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CopyCasterSceneConfigResponse{}
-	_body, _err := client.CopyCasterSceneConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5265,7 +3864,7 @@ func (client *Client) CopyCasterSceneConfig(request *CopyCasterSceneConfigReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCasterResponse
-func (client *Client) CreateCasterWithOptions(request *CreateCasterRequest, runtime *dara.RuntimeOptions) (_result *CreateCasterResponse, _err error) {
+func (client *Client) CreateCasterWithContext(ctx context.Context, request *CreateCasterRequest, runtime *dara.RuntimeOptions) (_result *CreateCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5330,39 +3929,11 @@ func (client *Client) CreateCasterWithOptions(request *CreateCasterRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a production studio.
-//
-// Description:
-//
-// You must enable the production studio feature before you can call this operation to create a production studio. For more information, see [Enable the production studio feature](https://help.aliyun.com/document_detail/60361.html).
-//
-// You can call this operation to create production studios in general mode or playlist mode. Production studios in playlist mode can be used for carousel playback.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateCasterRequest
-//
-// @return CreateCasterResponse
-func (client *Client) CreateCaster(request *CreateCasterRequest) (_result *CreateCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCasterResponse{}
-	_body, _err := client.CreateCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5383,7 +3954,7 @@ func (client *Client) CreateCaster(request *CreateCasterRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomTemplateResponse
-func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomTemplateResponse, _err error) {
+func (client *Client) CreateCustomTemplateWithContext(ctx context.Context, request *CreateCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5420,37 +3991,11 @@ func (client *Client) CreateCustomTemplateWithOptions(request *CreateCustomTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom stream mixing template.
-//
-// Description:
-//
-// After you call this operation to create a custom template, record the template name. When you call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task, you can set the MixStreamTemplate parameter to the name of the custom template. This way, you can use the custom template for stream mixing.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateCustomTemplateRequest
-//
-// @return CreateCustomTemplateResponse
-func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest) (_result *CreateCustomTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCustomTemplateResponse{}
-	_body, _err := client.CreateCustomTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5473,7 +4018,7 @@ func (client *Client) CreateCustomTemplate(request *CreateCustomTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEdgeTranscodeJobResponse
-func (client *Client) CreateEdgeTranscodeJobWithOptions(request *CreateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeTranscodeJobResponse, _err error) {
+func (client *Client) CreateEdgeTranscodeJobWithContext(ctx context.Context, request *CreateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *CreateEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5522,39 +4067,11 @@ func (client *Client) CreateEdgeTranscodeJobWithOptions(request *CreateEdgeTrans
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an edge transcoding task.
-//
-// Description:
-//
-//	  You can call this operation to create an edge transcoding task.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateEdgeTranscodeJobRequest
-//
-// @return CreateEdgeTranscodeJobResponse
-func (client *Client) CreateEdgeTranscodeJob(request *CreateEdgeTranscodeJobRequest) (_result *CreateEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEdgeTranscodeJobResponse{}
-	_body, _err := client.CreateEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5575,7 +4092,7 @@ func (client *Client) CreateEdgeTranscodeJob(request *CreateEdgeTranscodeJobRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEventSubResponse
-func (client *Client) CreateEventSubWithOptions(request *CreateEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateEventSubResponse, _err error) {
+func (client *Client) CreateEventSubWithContext(ctx context.Context, request *CreateEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5616,37 +4133,11 @@ func (client *Client) CreateEventSubWithOptions(request *CreateEventSubRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a callback to subscribe to channel or user events.
-//
-// Description:
-//
-// You can call this operation to create a callback to subscribe to channel or user events. When you create a callback, you can configure parameters such as the callback URL and event type.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateEventSubRequest
-//
-// @return CreateEventSubResponse
-func (client *Client) CreateEventSub(request *CreateEventSubRequest) (_result *CreateEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateEventSubResponse{}
-	_body, _err := client.CreateEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5663,7 +4154,7 @@ func (client *Client) CreateEventSub(request *CreateEventSubRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveAIStudioResponse
-func (client *Client) CreateLiveAIStudioWithOptions(tmpReq *CreateLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveAIStudioResponse, _err error) {
+func (client *Client) CreateLiveAIStudioWithContext(ctx context.Context, tmpReq *CreateLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveAIStudioResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5754,33 +4245,11 @@ func (client *Client) CreateLiveAIStudioWithOptions(tmpReq *CreateLiveAIStudioRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveAIStudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a lightweight virtual studio template.
-//
-// Description:
-//
-// >  The lightweight virtual studio feature is in invitational preview. You can add up to 300 virtual studio templates.
-//
-// @param request - CreateLiveAIStudioRequest
-//
-// @return CreateLiveAIStudioResponse
-func (client *Client) CreateLiveAIStudio(request *CreateLiveAIStudioRequest) (_result *CreateLiveAIStudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveAIStudioResponse{}
-	_body, _err := client.CreateLiveAIStudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5801,7 +4270,7 @@ func (client *Client) CreateLiveAIStudio(request *CreateLiveAIStudioRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveDelayConfigResponse
-func (client *Client) CreateLiveDelayConfigWithOptions(request *CreateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveDelayConfigResponse, _err error) {
+func (client *Client) CreateLiveDelayConfigWithContext(ctx context.Context, request *CreateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5850,37 +4319,11 @@ func (client *Client) CreateLiveDelayConfigWithOptions(request *CreateLiveDelayC
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a stream delay configuration.
-//
-// Description:
-//
-// Stream delay is different from latency caused by streaming protocols. Stream delay is a feature that allows you to delay the playback of a live stream that is processed in the cloud.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLiveDelayConfigRequest
-//
-// @return CreateLiveDelayConfigResponse
-func (client *Client) CreateLiveDelayConfig(request *CreateLiveDelayConfigRequest) (_result *CreateLiveDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveDelayConfigResponse{}
-	_body, _err := client.CreateLiveDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5903,7 +4346,7 @@ func (client *Client) CreateLiveDelayConfig(request *CreateLiveDelayConfigReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveMessageAppResponse
-func (client *Client) CreateLiveMessageAppWithOptions(request *CreateLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageAppResponse, _err error) {
+func (client *Client) CreateLiveMessageAppWithContext(ctx context.Context, request *CreateLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5948,39 +4391,11 @@ func (client *Client) CreateLiveMessageAppWithOptions(request *CreateLiveMessage
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an interactive messaging application.
-//
-// Description:
-//
-//	  When you call other operations to manage the interactive messaging application, you must specify the same data center in which the application is created.
-//
-//		- You can create up to 300 interactive messaging applications in an Alibaba Cloud account.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLiveMessageAppRequest
-//
-// @return CreateLiveMessageAppResponse
-func (client *Client) CreateLiveMessageApp(request *CreateLiveMessageAppRequest) (_result *CreateLiveMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveMessageAppResponse{}
-	_body, _err := client.CreateLiveMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6003,7 +4418,7 @@ func (client *Client) CreateLiveMessageApp(request *CreateLiveMessageAppRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveMessageGroupResponse
-func (client *Client) CreateLiveMessageGroupWithOptions(tmpReq *CreateLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageGroupResponse, _err error) {
+func (client *Client) CreateLiveMessageGroupWithContext(ctx context.Context, tmpReq *CreateLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveMessageGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6058,39 +4473,11 @@ func (client *Client) CreateLiveMessageGroupWithOptions(tmpReq *CreateLiveMessag
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an interactive messaging group.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you have called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create an interactive messaging application.
-//
-//		- You can create up to 5,000 interactive messaging groups in an interactive messaging application.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLiveMessageGroupRequest
-//
-// @return CreateLiveMessageGroupResponse
-func (client *Client) CreateLiveMessageGroup(request *CreateLiveMessageGroupRequest) (_result *CreateLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveMessageGroupResponse{}
-	_body, _err := client.CreateLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6113,7 +4500,7 @@ func (client *Client) CreateLiveMessageGroup(request *CreateLiveMessageGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLivePrivateLineResponse
-func (client *Client) CreateLivePrivateLineWithOptions(request *CreateLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePrivateLineResponse, _err error) {
+func (client *Client) CreateLivePrivateLineWithContext(ctx context.Context, request *CreateLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePrivateLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6178,39 +4565,11 @@ func (client *Client) CreateLivePrivateLineWithOptions(request *CreateLivePrivat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLivePrivateLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Global Accelerator (GA) instance and binds it to an acceleration circuit.
-//
-// Description:
-//
-//	  You can call this operation to create a GA instance and bind it to an acceleration circuit. The granularity is at the stream level. You need to specify the access points where the acceleration circuit starts and ends.
-//
-//		- The settings take effect only if the value of AppName and the value of StreamName are the same as the application name and stream name that are specified in the streaming URL.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLivePrivateLineRequest
-//
-// @return CreateLivePrivateLineResponse
-func (client *Client) CreateLivePrivateLine(request *CreateLivePrivateLineRequest) (_result *CreateLivePrivateLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLivePrivateLineResponse{}
-	_body, _err := client.CreateLivePrivateLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6241,7 +4600,7 @@ func (client *Client) CreateLivePrivateLine(request *CreateLivePrivateLineReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLivePullToPushResponse
-func (client *Client) CreateLivePullToPushWithOptions(tmpReq *CreateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePullToPushResponse, _err error) {
+func (client *Client) CreateLivePullToPushWithContext(ctx context.Context, tmpReq *CreateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *CreateLivePullToPushResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6332,47 +4691,11 @@ func (client *Client) CreateLivePullToPushWithOptions(tmpReq *CreateLivePullToPu
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a pulled-stream relay task.
-//
-// Description:
-//
-// >  The pulled-stream relay feature is in public preview. You can use it free of charge. After the public preview ends, fees will be charged. The specific end time will be announced.
-//
-//   - You can call this operation to create a pulled-stream relay task.
-//
-//   - The pulled source can be a live stream or video-on-demand (VOD) resources.
-//
-//   - After a task is created, it starts at the specified start time and ends at the specified end time. A task that ends is automatically deleted.
-//
-//   - Make sure that the destination URL specified in the task is not used by another task. Otherwise, conflicts occur and stream ingest fails.
-//
-//   - The events for pulled-stream relay callbacks include state changes of a pulled-stream relay task and exit of a pulled-stream relay task. For more information, see [Pulled-stream relay callbacks](https://help.aliyun.com/document_detail/2846768.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLivePullToPushRequest
-//
-// @return CreateLivePullToPushResponse
-func (client *Client) CreateLivePullToPush(request *CreateLivePullToPushRequest) (_result *CreateLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLivePullToPushResponse{}
-	_body, _err := client.CreateLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6397,7 +4720,7 @@ func (client *Client) CreateLivePullToPush(request *CreateLivePullToPushRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveRealTimeLogDeliveryResponse
-func (client *Client) CreateLiveRealTimeLogDeliveryWithOptions(request *CreateLiveRealTimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveRealTimeLogDeliveryResponse, _err error) {
+func (client *Client) CreateLiveRealTimeLogDeliveryWithContext(ctx context.Context, request *CreateLiveRealTimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveRealTimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6418,41 +4741,11 @@ func (client *Client) CreateLiveRealTimeLogDeliveryWithOptions(request *CreateLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveRealTimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures real-time log delivery for a domain name.
-//
-// Description:
-//
-// ##
-//
-// Obtain the streaming domain, and then call this operation to configure real-time log delivery for the streaming domain.
-//
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
-//
-// ## QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - CreateLiveRealTimeLogDeliveryRequest
-//
-// @return CreateLiveRealTimeLogDeliveryResponse
-func (client *Client) CreateLiveRealTimeLogDelivery(request *CreateLiveRealTimeLogDeliveryRequest) (_result *CreateLiveRealTimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveRealTimeLogDeliveryResponse{}
-	_body, _err := client.CreateLiveRealTimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6473,7 +4766,7 @@ func (client *Client) CreateLiveRealTimeLogDelivery(request *CreateLiveRealTimeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveStreamMonitorResponse
-func (client *Client) CreateLiveStreamMonitorWithOptions(request *CreateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamMonitorResponse, _err error) {
+func (client *Client) CreateLiveStreamMonitorWithContext(ctx context.Context, request *CreateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6538,37 +4831,11 @@ func (client *Client) CreateLiveStreamMonitorWithOptions(request *CreateLiveStre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveStreamMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a monitoring session.
-//
-// Description:
-//
-// You can call this operation to create a monitoring session. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLiveStreamMonitorRequest
-//
-// @return CreateLiveStreamMonitorResponse
-func (client *Client) CreateLiveStreamMonitor(request *CreateLiveStreamMonitorRequest) (_result *CreateLiveStreamMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveStreamMonitorResponse{}
-	_body, _err := client.CreateLiveStreamMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6603,7 +4870,7 @@ func (client *Client) CreateLiveStreamMonitor(request *CreateLiveStreamMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLiveStreamRecordIndexFilesResponse
-func (client *Client) CreateLiveStreamRecordIndexFilesWithOptions(request *CreateLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamRecordIndexFilesResponse, _err error) {
+func (client *Client) CreateLiveStreamRecordIndexFilesWithContext(ctx context.Context, request *CreateLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *CreateLiveStreamRecordIndexFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6668,51 +4935,11 @@ func (client *Client) CreateLiveStreamRecordIndexFilesWithOptions(request *Creat
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an M3U8 index file for a recording in a specified time period.
-//
-// Description:
-//
-// You must have configured Object Storage Service (OSS) before you call this operation. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html). ApsaraVideo Live allows you to record a live stream in the M3U8 format and store the M3U8 file in OSS. You can edit the TS segments that are included in the stored M3U8 file in real time.
-//
-// >
-//
-//   - You can create an index file only after a live stream is ingested. If no live stream is available within the specified time range or the name of the specified live stream is invalid, the index file fails to be created.
-//
-//   - The time range that is specified by the StartTime and EndTime parameters must be the duration of at least one TS segment. The default duration of a TS segment is 30 seconds.
-//
-//   - ApsaraVideo Live stores the information about TS segments for only three months. You can create M3U8 index files only for the recordings of the last three months.
-//
-//   - OSS stores TS segments for a time period that is specified by the storage configuration in OSS. For more information, see [Configure lifecycle rules](https://help.aliyun.com/document_detail/31904.html).
-//
-//   - ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months.
-//
-//   - OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 45 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateLiveStreamRecordIndexFilesRequest
-//
-// @return CreateLiveStreamRecordIndexFilesResponse
-func (client *Client) CreateLiveStreamRecordIndexFiles(request *CreateLiveStreamRecordIndexFilesRequest) (_result *CreateLiveStreamRecordIndexFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.CreateLiveStreamRecordIndexFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6731,7 +4958,7 @@ func (client *Client) CreateLiveStreamRecordIndexFiles(request *CreateLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMessageAppResponse
-func (client *Client) CreateMessageAppWithOptions(tmpReq *CreateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageAppResponse, _err error) {
+func (client *Client) CreateMessageAppWithContext(ctx context.Context, tmpReq *CreateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageAppResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6774,35 +5001,11 @@ func (client *Client) CreateMessageAppWithOptions(tmpReq *CreateMessageAppReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an interactive messaging application.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - CreateMessageAppRequest
-//
-// @return CreateMessageAppResponse
-func (client *Client) CreateMessageApp(request *CreateMessageAppRequest) (_result *CreateMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateMessageAppResponse{}
-	_body, _err := client.CreateMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6821,7 +5024,7 @@ func (client *Client) CreateMessageApp(request *CreateMessageAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMessageGroupResponse
-func (client *Client) CreateMessageGroupWithOptions(tmpReq *CreateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageGroupResponse, _err error) {
+func (client *Client) CreateMessageGroupWithContext(ctx context.Context, tmpReq *CreateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateMessageGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6860,35 +5063,11 @@ func (client *Client) CreateMessageGroupWithOptions(tmpReq *CreateMessageGroupRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - CreateMessageGroupRequest
-//
-// @return CreateMessageGroupResponse
-func (client *Client) CreateMessageGroup(request *CreateMessageGroupRequest) (_result *CreateMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateMessageGroupResponse{}
-	_body, _err := client.CreateMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6911,7 +5090,7 @@ func (client *Client) CreateMessageGroup(request *CreateMessageGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMixStreamResponse
-func (client *Client) CreateMixStreamWithOptions(request *CreateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *CreateMixStreamResponse, _err error) {
+func (client *Client) CreateMixStreamWithContext(ctx context.Context, request *CreateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *CreateMixStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6960,39 +5139,11 @@ func (client *Client) CreateMixStreamWithOptions(request *CreateMixStreamRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMixStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a stream mixing task.
-//
-// Description:
-//
-// You can call this operation to create a stream mixing task. This operation supports preset layouts and custom layouts.
-//
-// If you have any questions or suggestions about the use of the stream mixing feature, you are welcome to search the group ID 34935990 in DingTalk to join the developer group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateMixStreamRequest
-//
-// @return CreateMixStreamResponse
-func (client *Client) CreateMixStream(request *CreateMixStreamRequest) (_result *CreateMixStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateMixStreamResponse{}
-	_body, _err := client.CreateMixStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7005,7 +5156,7 @@ func (client *Client) CreateMixStream(request *CreateMixStreamRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRTCWhipStreamAddressResponse
-func (client *Client) CreateRTCWhipStreamAddressWithOptions(request *CreateRTCWhipStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRTCWhipStreamAddressResponse, _err error) {
+func (client *Client) CreateRTCWhipStreamAddressWithContext(ctx context.Context, request *CreateRTCWhipStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRTCWhipStreamAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7050,29 +5201,11 @@ func (client *Client) CreateRTCWhipStreamAddressWithOptions(request *CreateRTCWh
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRTCWhipStreamAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建房间whip协议推流地址
-//
-// @param request - CreateRTCWhipStreamAddressRequest
-//
-// @return CreateRTCWhipStreamAddressResponse
-func (client *Client) CreateRTCWhipStreamAddress(request *CreateRTCWhipStreamAddressRequest) (_result *CreateRTCWhipStreamAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRTCWhipStreamAddressResponse{}
-	_body, _err := client.CreateRTCWhipStreamAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7109,7 +5242,7 @@ func (client *Client) CreateRTCWhipStreamAddress(request *CreateRTCWhipStreamAdd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRoomRealTimeStreamAddressResponse
-func (client *Client) CreateRoomRealTimeStreamAddressWithOptions(request *CreateRoomRealTimeStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRoomRealTimeStreamAddressResponse, _err error) {
+func (client *Client) CreateRoomRealTimeStreamAddressWithContext(ctx context.Context, request *CreateRoomRealTimeStreamAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateRoomRealTimeStreamAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7130,53 +5263,11 @@ func (client *Client) CreateRoomRealTimeStreamAddressWithOptions(request *Create
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRoomRealTimeStreamAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
-//
-// Description:
-//
-// ### [](#)Usage notes
-//
-// To use the interactive streaming feature, you must use ApsaraVideo Real-time Communication (ARTC) SDK to join a channel and ingest streams over Real-Time Communication (RTC). In specific scenarios, you can ingest streams over Real-Time Messaging Protocol (RTMP) by using tools such as Open Broadcaster Software (OBS). Then, ApsaraVideo Live automatically converts the RTMP streams to RTC streams and distributes the RTC streams to viewers. You can call this operation to generate an ingest URL in the RTMP format. After you ingest RTMP streams, ApsaraVideo Live automatically converts the streams to RTC streams. Do not call this operation if you require only regular live streaming. To quickly ingest RTMP streams and start live streaming, see [Get started with ApsaraVideo Live](https://help.aliyun.com/document_detail/198676.html).
-//
-// ## [](#)Procedure
-//
-// 1.  Call this operation to generate an ingest URL in the RTMP format.
-//
-// 2.  Ingest a stream by using the ingest URL. Other users in the channel can watch the stream.
-//
-// 3.  Stop ingesting the stream. Other users in the channel see that the user who ingested the stream leaves the channel.
-//
-// >
-//
-//   - You can repeat Steps 2 and 3 within the validity period of the ingest URL.
-//
-//   - We recommend that you call the [DescribeChannelParticipants](https://help.aliyun.com/document_detail/610801.html) operation to query online users in the channel at regular intervals. This way, you can check whether the user who ingests the stream is still in the channel. If the user who ingests the stream is not in the channel, the stream may be interrupted. In this case, we recommend that you stop ingesting the stream and perform Step 2.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - CreateRoomRealTimeStreamAddressRequest
-//
-// @return CreateRoomRealTimeStreamAddressResponse
-func (client *Client) CreateRoomRealTimeStreamAddress(request *CreateRoomRealTimeStreamAddressRequest) (_result *CreateRoomRealTimeStreamAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRoomRealTimeStreamAddressResponse{}
-	_body, _err := client.CreateRoomRealTimeStreamAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7197,7 +5288,7 @@ func (client *Client) CreateRoomRealTimeStreamAddress(request *CreateRoomRealTim
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRtcAsrTaskResponse
-func (client *Client) CreateRtcAsrTaskWithOptions(request *CreateRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcAsrTaskResponse, _err error) {
+func (client *Client) CreateRtcAsrTaskWithContext(ctx context.Context, request *CreateRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcAsrTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7278,37 +5369,11 @@ func (client *Client) CreateRtcAsrTaskWithOptions(request *CreateRtcAsrTaskReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRtcAsrTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a live subtitle task to transcribe an audio stream to text in real time.
-//
-// Description:
-//
-// You can call this operation to create a live subtitle task that transcribes audio in a live stream to text in real time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateRtcAsrTaskRequest
-//
-// @return CreateRtcAsrTaskResponse
-func (client *Client) CreateRtcAsrTask(request *CreateRtcAsrTaskRequest) (_result *CreateRtcAsrTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRtcAsrTaskResponse{}
-	_body, _err := client.CreateRtcAsrTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7329,7 +5394,7 @@ func (client *Client) CreateRtcAsrTask(request *CreateRtcAsrTaskRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRtcMPUEventSubResponse
-func (client *Client) CreateRtcMPUEventSubWithOptions(request *CreateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcMPUEventSubResponse, _err error) {
+func (client *Client) CreateRtcMPUEventSubWithContext(ctx context.Context, request *CreateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *CreateRtcMPUEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7362,37 +5427,11 @@ func (client *Client) CreateRtcMPUEventSubWithOptions(request *CreateRtcMPUEvent
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRtcMPUEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a subscription to mixed-stream relay events.
-//
-// Description:
-//
-// You can call this operation to create a subscription to mixed-stream relay events. You can configure parameters such as the callback URL, application to which you want to subscribe, and channel information when you create a subscription.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - CreateRtcMPUEventSubRequest
-//
-// @return CreateRtcMPUEventSubResponse
-func (client *Client) CreateRtcMPUEventSub(request *CreateRtcMPUEventSubRequest) (_result *CreateRtcMPUEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRtcMPUEventSubResponse{}
-	_body, _err := client.CreateRtcMPUEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7417,7 +5456,7 @@ func (client *Client) CreateRtcMPUEventSub(request *CreateRtcMPUEventSubRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterResponse
-func (client *Client) DeleteCasterWithOptions(request *DeleteCasterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterResponse, _err error) {
+func (client *Client) DeleteCasterWithContext(ctx context.Context, request *DeleteCasterRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7450,41 +5489,11 @@ func (client *Client) DeleteCasterWithOptions(request *DeleteCasterRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a production studio.
-//
-// Description:
-//
-//	  You can delete only production studios that are closed.
-//
-//		- When a production studio is deleted, the scenes, components, and layouts of the production studio are also deleted.
-//
-//		- You cannot recover a deleted production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCasterRequest
-//
-// @return DeleteCasterResponse
-func (client *Client) DeleteCaster(request *DeleteCasterRequest) (_result *DeleteCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterResponse{}
-	_body, _err := client.DeleteCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7505,7 +5514,7 @@ func (client *Client) DeleteCaster(request *DeleteCasterRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterComponentResponse
-func (client *Client) DeleteCasterComponentWithOptions(request *DeleteCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterComponentResponse, _err error) {
+func (client *Client) DeleteCasterComponentWithContext(ctx context.Context, request *DeleteCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7542,37 +5551,11 @@ func (client *Client) DeleteCasterComponentWithOptions(request *DeleteCasterComp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a component in a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to delete a component in the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCasterComponentRequest
-//
-// @return DeleteCasterComponentResponse
-func (client *Client) DeleteCasterComponent(request *DeleteCasterComponentRequest) (_result *DeleteCasterComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterComponentResponse{}
-	_body, _err := client.DeleteCasterComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7593,7 +5576,7 @@ func (client *Client) DeleteCasterComponent(request *DeleteCasterComponentReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterEpisodeResponse
-func (client *Client) DeleteCasterEpisodeWithOptions(request *DeleteCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeResponse, _err error) {
+func (client *Client) DeleteCasterEpisodeWithContext(ctx context.Context, request *DeleteCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7630,37 +5613,11 @@ func (client *Client) DeleteCasterEpisodeWithOptions(request *DeleteCasterEpisod
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterEpisodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an episode in a production studio.
-//
-// Description:
-//
-// Before you call this operation to delete an episode in a production studio, you must obtain the ID of the production studio and the ID of the episode.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCasterEpisodeRequest
-//
-// @return DeleteCasterEpisodeResponse
-func (client *Client) DeleteCasterEpisode(request *DeleteCasterEpisodeRequest) (_result *DeleteCasterEpisodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterEpisodeResponse{}
-	_body, _err := client.DeleteCasterEpisodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7681,7 +5638,7 @@ func (client *Client) DeleteCasterEpisode(request *DeleteCasterEpisodeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterEpisodeGroupResponse
-func (client *Client) DeleteCasterEpisodeGroupWithOptions(request *DeleteCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeGroupResponse, _err error) {
+func (client *Client) DeleteCasterEpisodeGroupWithContext(ctx context.Context, request *DeleteCasterEpisodeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterEpisodeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7714,37 +5671,11 @@ func (client *Client) DeleteCasterEpisodeGroupWithOptions(request *DeleteCasterE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterEpisodeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an episode list in a production studio.
-//
-// Description:
-//
-// Before you call this operation to delete an episode list in a production studio, make sure that you have called the [AddCasterEpisodeGroup](https://help.aliyun.com/document_detail/2848071.html) operation to add the episode list in the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCasterEpisodeGroupRequest
-//
-// @return DeleteCasterEpisodeGroupResponse
-func (client *Client) DeleteCasterEpisodeGroup(request *DeleteCasterEpisodeGroupRequest) (_result *DeleteCasterEpisodeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterEpisodeGroupResponse{}
-	_body, _err := client.DeleteCasterEpisodeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7765,7 +5696,7 @@ func (client *Client) DeleteCasterEpisodeGroup(request *DeleteCasterEpisodeGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterLayoutResponse
-func (client *Client) DeleteCasterLayoutWithOptions(request *DeleteCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterLayoutResponse, _err error) {
+func (client *Client) DeleteCasterLayoutWithContext(ctx context.Context, request *DeleteCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7802,37 +5733,11 @@ func (client *Client) DeleteCasterLayoutWithOptions(request *DeleteCasterLayoutR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a layout in a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to delete a layout in the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteCasterLayoutRequest
-//
-// @return DeleteCasterLayoutResponse
-func (client *Client) DeleteCasterLayout(request *DeleteCasterLayoutRequest) (_result *DeleteCasterLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterLayoutResponse{}
-	_body, _err := client.DeleteCasterLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7853,7 +5758,7 @@ func (client *Client) DeleteCasterLayout(request *DeleteCasterLayoutRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterProgramResponse
-func (client *Client) DeleteCasterProgramWithOptions(request *DeleteCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterProgramResponse, _err error) {
+func (client *Client) DeleteCasterProgramWithContext(ctx context.Context, request *DeleteCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterProgramResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7886,37 +5791,11 @@ func (client *Client) DeleteCasterProgramWithOptions(request *DeleteCasterProgra
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterProgramResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the episode list for carousel playback in a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to delete the episode list for carousel playback in the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCasterProgramRequest
-//
-// @return DeleteCasterProgramResponse
-func (client *Client) DeleteCasterProgram(request *DeleteCasterProgramRequest) (_result *DeleteCasterProgramResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterProgramResponse{}
-	_body, _err := client.DeleteCasterProgramWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7937,7 +5816,7 @@ func (client *Client) DeleteCasterProgram(request *DeleteCasterProgramRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterSceneConfigResponse
-func (client *Client) DeleteCasterSceneConfigWithOptions(request *DeleteCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterSceneConfigResponse, _err error) {
+func (client *Client) DeleteCasterSceneConfigWithContext(ctx context.Context, request *DeleteCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterSceneConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7978,37 +5857,11 @@ func (client *Client) DeleteCasterSceneConfigWithOptions(request *DeleteCasterSc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterSceneConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the settings of a scene.
-//
-// Description:
-//
-// You can call this operation to delete the settings of a scene, such as the component setting, layout setting, or both of them.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteCasterSceneConfigRequest
-//
-// @return DeleteCasterSceneConfigResponse
-func (client *Client) DeleteCasterSceneConfig(request *DeleteCasterSceneConfigRequest) (_result *DeleteCasterSceneConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterSceneConfigResponse{}
-	_body, _err := client.DeleteCasterSceneConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8029,7 +5882,7 @@ func (client *Client) DeleteCasterSceneConfig(request *DeleteCasterSceneConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCasterVideoResourceResponse
-func (client *Client) DeleteCasterVideoResourceWithOptions(request *DeleteCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterVideoResourceResponse, _err error) {
+func (client *Client) DeleteCasterVideoResourceWithContext(ctx context.Context, request *DeleteCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCasterVideoResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8066,37 +5919,11 @@ func (client *Client) DeleteCasterVideoResourceWithOptions(request *DeleteCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCasterVideoResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes an input source from a production studio.
-//
-// Description:
-//
-// Before you call this operation to remove an input source from a production studio, make sure that you have called the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteCasterVideoResourceRequest
-//
-// @return DeleteCasterVideoResourceResponse
-func (client *Client) DeleteCasterVideoResource(request *DeleteCasterVideoResourceRequest) (_result *DeleteCasterVideoResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCasterVideoResourceResponse{}
-	_body, _err := client.DeleteCasterVideoResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8115,7 +5942,7 @@ func (client *Client) DeleteCasterVideoResource(request *DeleteCasterVideoResour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChannelResponse
-func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
+func (client *Client) DeleteChannelWithContext(ctx context.Context, request *DeleteChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteChannelResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8144,35 +5971,11 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a channel.
-//
-// Description:
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteChannelRequest
-//
-// @return DeleteChannelResponse
-func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *DeleteChannelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChannelResponse{}
-	_body, _err := client.DeleteChannelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8193,7 +5996,7 @@ func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomTemplateResponse
-func (client *Client) DeleteCustomTemplateWithOptions(request *DeleteCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomTemplateResponse, _err error) {
+func (client *Client) DeleteCustomTemplateWithContext(ctx context.Context, request *DeleteCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8226,37 +6029,11 @@ func (client *Client) DeleteCustomTemplateWithOptions(request *DeleteCustomTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom stream mixing template.
-//
-// Description:
-//
-// Obtain the name of the custom stream mixing template that you want to delete, and then call this operation to delete the template.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteCustomTemplateRequest
-//
-// @return DeleteCustomTemplateResponse
-func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest) (_result *DeleteCustomTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomTemplateResponse{}
-	_body, _err := client.DeleteCustomTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8279,7 +6056,7 @@ func (client *Client) DeleteCustomTemplate(request *DeleteCustomTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEdgeTranscodeJobResponse
-func (client *Client) DeleteEdgeTranscodeJobWithOptions(request *DeleteEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEdgeTranscodeJobResponse, _err error) {
+func (client *Client) DeleteEdgeTranscodeJobWithContext(ctx context.Context, request *DeleteEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8316,39 +6093,11 @@ func (client *Client) DeleteEdgeTranscodeJobWithOptions(request *DeleteEdgeTrans
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an edge transcoding task.
-//
-// Description:
-//
-//	  You can call this operation to delete an edge transcoding task.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteEdgeTranscodeJobRequest
-//
-// @return DeleteEdgeTranscodeJobResponse
-func (client *Client) DeleteEdgeTranscodeJob(request *DeleteEdgeTranscodeJobRequest) (_result *DeleteEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEdgeTranscodeJobResponse{}
-	_body, _err := client.DeleteEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8369,7 +6118,7 @@ func (client *Client) DeleteEdgeTranscodeJob(request *DeleteEdgeTranscodeJobRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEventSubResponse
-func (client *Client) DeleteEventSubWithOptions(request *DeleteEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventSubResponse, _err error) {
+func (client *Client) DeleteEventSubWithContext(ctx context.Context, request *DeleteEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8398,37 +6147,11 @@ func (client *Client) DeleteEventSubWithOptions(request *DeleteEventSubRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a callback that is used to subscribe to channel or user events.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateEventSubscribe](https://help.aliyun.com/document_detail/2848209.html) operation to create a callback that is used to subscribe to channel or user events.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteEventSubRequest
-//
-// @return DeleteEventSubResponse
-func (client *Client) DeleteEventSub(request *DeleteEventSubRequest) (_result *DeleteEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEventSubResponse{}
-	_body, _err := client.DeleteEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8451,7 +6174,7 @@ func (client *Client) DeleteEventSub(request *DeleteEventSubRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAIProduceRulesResponse
-func (client *Client) DeleteLiveAIProduceRulesWithOptions(request *DeleteLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIProduceRulesResponse, _err error) {
+func (client *Client) DeleteLiveAIProduceRulesWithContext(ctx context.Context, request *DeleteLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIProduceRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8496,39 +6219,11 @@ func (client *Client) DeleteLiveAIProduceRulesWithOptions(request *DeleteLiveAIP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAIProduceRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a subtitle rule.
-//
-// Description:
-//
-// You can call this operation to delete a specified subtitle rule.
-//
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveAIProduceRulesRequest
-//
-// @return DeleteLiveAIProduceRulesResponse
-func (client *Client) DeleteLiveAIProduceRules(request *DeleteLiveAIProduceRulesRequest) (_result *DeleteLiveAIProduceRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAIProduceRulesResponse{}
-	_body, _err := client.DeleteLiveAIProduceRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8547,7 +6242,7 @@ func (client *Client) DeleteLiveAIProduceRules(request *DeleteLiveAIProduceRules
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAIStudioResponse
-func (client *Client) DeleteLiveAIStudioWithOptions(request *DeleteLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIStudioResponse, _err error) {
+func (client *Client) DeleteLiveAIStudioWithContext(ctx context.Context, request *DeleteLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAIStudioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8580,35 +6275,11 @@ func (client *Client) DeleteLiveAIStudioWithOptions(request *DeleteLiveAIStudioR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAIStudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a virtual studio template.
-//
-// Description:
-//
-// To delete a virtual studio template, you must first unbind the rules. Otherwise, an error occurs.
-//
-// >  The lightweight virtual studio feature is in invitational preview. You can add up to 300 virtual studio templates.
-//
-// @param request - DeleteLiveAIStudioRequest
-//
-// @return DeleteLiveAIStudioResponse
-func (client *Client) DeleteLiveAIStudio(request *DeleteLiveAIStudioRequest) (_result *DeleteLiveAIStudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAIStudioResponse{}
-	_body, _err := client.DeleteLiveAIStudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8631,7 +6302,7 @@ func (client *Client) DeleteLiveAIStudio(request *DeleteLiveAIStudioRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAISubtitleResponse
-func (client *Client) DeleteLiveAISubtitleWithOptions(request *DeleteLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAISubtitleResponse, _err error) {
+func (client *Client) DeleteLiveAISubtitleWithContext(ctx context.Context, request *DeleteLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAISubtitleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8668,39 +6339,11 @@ func (client *Client) DeleteLiveAISubtitleWithOptions(request *DeleteLiveAISubti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAISubtitleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified subtitle template.
-//
-// Description:
-//
-// You can call this operation to delete a specified subtitle template for live streaming.
-//
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveAISubtitleRequest
-//
-// @return DeleteLiveAISubtitleResponse
-func (client *Client) DeleteLiveAISubtitle(request *DeleteLiveAISubtitleRequest) (_result *DeleteLiveAISubtitleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAISubtitleResponse{}
-	_body, _err := client.DeleteLiveAISubtitleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8721,7 +6364,7 @@ func (client *Client) DeleteLiveAISubtitle(request *DeleteLiveAISubtitleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAppRecordConfigResponse
-func (client *Client) DeleteLiveAppRecordConfigWithOptions(request *DeleteLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppRecordConfigResponse, _err error) {
+func (client *Client) DeleteLiveAppRecordConfigWithContext(ctx context.Context, request *DeleteLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppRecordConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8762,37 +6405,11 @@ func (client *Client) DeleteLiveAppRecordConfigWithOptions(request *DeleteLiveAp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAppRecordConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a recording configuration at the application level.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to delete a recording configuration at the application level.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveAppRecordConfigRequest
-//
-// @return DeleteLiveAppRecordConfigResponse
-func (client *Client) DeleteLiveAppRecordConfig(request *DeleteLiveAppRecordConfigRequest) (_result *DeleteLiveAppRecordConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAppRecordConfigResponse{}
-	_body, _err := client.DeleteLiveAppRecordConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8813,7 +6430,7 @@ func (client *Client) DeleteLiveAppRecordConfig(request *DeleteLiveAppRecordConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAppSnapshotConfigResponse
-func (client *Client) DeleteLiveAppSnapshotConfigWithOptions(request *DeleteLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppSnapshotConfigResponse, _err error) {
+func (client *Client) DeleteLiveAppSnapshotConfigWithContext(ctx context.Context, request *DeleteLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAppSnapshotConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8850,37 +6467,11 @@ func (client *Client) DeleteLiveAppSnapshotConfigWithOptions(request *DeleteLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAppSnapshotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the snapshot configuration for live streams in an application. The deletion takes effect after you restart stream ingest.
-//
-// Description:
-//
-// You can call this operation to delete the snapshot configuration for live streams in an application. The deletion takes effect after you restart stream ingest.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveAppSnapshotConfigRequest
-//
-// @return DeleteLiveAppSnapshotConfigResponse
-func (client *Client) DeleteLiveAppSnapshotConfig(request *DeleteLiveAppSnapshotConfigRequest) (_result *DeleteLiveAppSnapshotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAppSnapshotConfigResponse{}
-	_body, _err := client.DeleteLiveAppSnapshotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8903,7 +6494,7 @@ func (client *Client) DeleteLiveAppSnapshotConfig(request *DeleteLiveAppSnapshot
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAudioAuditConfigResponse
-func (client *Client) DeleteLiveAudioAuditConfigWithOptions(request *DeleteLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditConfigResponse, _err error) {
+func (client *Client) DeleteLiveAudioAuditConfigWithContext(ctx context.Context, request *DeleteLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8944,39 +6535,11 @@ func (client *Client) DeleteLiveAudioAuditConfigWithOptions(request *DeleteLiveA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAudioAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an audio moderation configuration.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to delete an audio moderation configuration.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveAudioAuditConfigRequest
-//
-// @return DeleteLiveAudioAuditConfigResponse
-func (client *Client) DeleteLiveAudioAuditConfig(request *DeleteLiveAudioAuditConfigRequest) (_result *DeleteLiveAudioAuditConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAudioAuditConfigResponse{}
-	_body, _err := client.DeleteLiveAudioAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8999,7 +6562,7 @@ func (client *Client) DeleteLiveAudioAuditConfig(request *DeleteLiveAudioAuditCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveAudioAuditNotifyConfigResponse
-func (client *Client) DeleteLiveAudioAuditNotifyConfigWithOptions(request *DeleteLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditNotifyConfigResponse, _err error) {
+func (client *Client) DeleteLiveAudioAuditNotifyConfigWithContext(ctx context.Context, request *DeleteLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveAudioAuditNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9032,39 +6595,11 @@ func (client *Client) DeleteLiveAudioAuditNotifyConfigWithOptions(request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of callbacks for audio moderation results.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for audio moderation results.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveAudioAuditNotifyConfigRequest
-//
-// @return DeleteLiveAudioAuditNotifyConfigResponse
-func (client *Client) DeleteLiveAudioAuditNotifyConfig(request *DeleteLiveAudioAuditNotifyConfigRequest) (_result *DeleteLiveAudioAuditNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.DeleteLiveAudioAuditNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9081,7 +6616,7 @@ func (client *Client) DeleteLiveAudioAuditNotifyConfig(request *DeleteLiveAudioA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveCenterTransferResponse
-func (client *Client) DeleteLiveCenterTransferWithOptions(request *DeleteLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveCenterTransferResponse, _err error) {
+func (client *Client) DeleteLiveCenterTransferWithContext(ctx context.Context, request *DeleteLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveCenterTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9126,33 +6661,11 @@ func (client *Client) DeleteLiveCenterTransferWithOptions(request *DeleteLiveCen
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveCenterTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a configuration of live center stream relay.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveCenterTransferRequest
-//
-// @return DeleteLiveCenterTransferResponse
-func (client *Client) DeleteLiveCenterTransfer(request *DeleteLiveCenterTransferRequest) (_result *DeleteLiveCenterTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveCenterTransferResponse{}
-	_body, _err := client.DeleteLiveCenterTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9169,7 +6682,7 @@ func (client *Client) DeleteLiveCenterTransfer(request *DeleteLiveCenterTransfer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveDelayConfigResponse
-func (client *Client) DeleteLiveDelayConfigWithOptions(request *DeleteLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDelayConfigResponse, _err error) {
+func (client *Client) DeleteLiveDelayConfigWithContext(ctx context.Context, request *DeleteLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9210,33 +6723,11 @@ func (client *Client) DeleteLiveDelayConfigWithOptions(request *DeleteLiveDelayC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a stream delay configuration.
-//
-// Description:
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveDelayConfigRequest
-//
-// @return DeleteLiveDelayConfigResponse
-func (client *Client) DeleteLiveDelayConfig(request *DeleteLiveDelayConfigRequest) (_result *DeleteLiveDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveDelayConfigResponse{}
-	_body, _err := client.DeleteLiveDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9261,7 +6752,7 @@ func (client *Client) DeleteLiveDelayConfig(request *DeleteLiveDelayConfigReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveDetectNotifyConfigResponse
-func (client *Client) DeleteLiveDetectNotifyConfigWithOptions(request *DeleteLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDetectNotifyConfigResponse, _err error) {
+func (client *Client) DeleteLiveDetectNotifyConfigWithContext(ctx context.Context, request *DeleteLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDetectNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9294,41 +6785,11 @@ func (client *Client) DeleteLiveDetectNotifyConfigWithOptions(request *DeleteLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveDetectNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of callbacks for video moderation results.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for video moderation results.
-//
-//   - Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveDetectNotifyConfigRequest
-//
-// @return DeleteLiveDetectNotifyConfigResponse
-func (client *Client) DeleteLiveDetectNotifyConfig(request *DeleteLiveDetectNotifyConfigRequest) (_result *DeleteLiveDetectNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveDetectNotifyConfigResponse{}
-	_body, _err := client.DeleteLiveDetectNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9353,7 +6814,7 @@ func (client *Client) DeleteLiveDetectNotifyConfig(request *DeleteLiveDetectNoti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveDomainResponse
-func (client *Client) DeleteLiveDomainWithOptions(request *DeleteLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainResponse, _err error) {
+func (client *Client) DeleteLiveDomainWithContext(ctx context.Context, request *DeleteLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9390,41 +6851,11 @@ func (client *Client) DeleteLiveDomainWithOptions(request *DeleteLiveDomainReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a domain name from ApsaraVideo Live.
-//
-// Description:
-//
-//	  After you successfully call the DeleteLiveDomain operation, all records of the specified domain name are deleted. Exercise caution when you perform this operation.
-//
-//		- We recommend that you restore to an A record for the domain name at the DNS provider before you remove the domain name. Otherwise, the domain name may become inaccessible. If your domain name is registered with Alibaba Cloud, log on to the [Alibaba Cloud DNS console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdns.console.aliyun.com%2F%3Fspm%3Da2c4g.11186623.0.0.3cda841fcvk7Qs\\&lang=zh) and navigate to the **Domain Name Resolution*	- page. Find the domain name and then click **DNS Settings*	- in the Actions column. On the page that appears, change the CNAME record to an A record. If your domain name is registered with another DNS provider, configure similar settings on the platform of that DNS provider.
-//
-//		- If you want to only suspend the use of the domain name, we recommend that you call the [StopLiveDomain](https://help.aliyun.com/document_detail/88329.html) operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveDomainRequest
-//
-// @return DeleteLiveDomainResponse
-func (client *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (_result *DeleteLiveDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveDomainResponse{}
-	_body, _err := client.DeleteLiveDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9445,7 +6876,7 @@ func (client *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveDomainMappingResponse
-func (client *Client) DeleteLiveDomainMappingWithOptions(request *DeleteLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainMappingResponse, _err error) {
+func (client *Client) DeleteLiveDomainMappingWithContext(ctx context.Context, request *DeleteLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainMappingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9482,37 +6913,11 @@ func (client *Client) DeleteLiveDomainMappingWithOptions(request *DeleteLiveDoma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveDomainMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the mapping between a streaming domain and an ingest domain.
-//
-// Description:
-//
-// Make sure that the streaming domain has been mapped to the ingest domain before you call this operation to delete the mapping. For more information about how to map a streaming domain to an ingest domain, see [AddLiveDomainMapping](https://help.aliyun.com/document_detail/88782.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveDomainMappingRequest
-//
-// @return DeleteLiveDomainMappingResponse
-func (client *Client) DeleteLiveDomainMapping(request *DeleteLiveDomainMappingRequest) (_result *DeleteLiveDomainMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveDomainMappingResponse{}
-	_body, _err := client.DeleteLiveDomainMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9533,7 +6938,7 @@ func (client *Client) DeleteLiveDomainMapping(request *DeleteLiveDomainMappingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveDomainPlayMappingResponse
-func (client *Client) DeleteLiveDomainPlayMappingWithOptions(request *DeleteLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainPlayMappingResponse, _err error) {
+func (client *Client) DeleteLiveDomainPlayMappingWithContext(ctx context.Context, request *DeleteLiveDomainPlayMappingRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveDomainPlayMappingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9570,37 +6975,11 @@ func (client *Client) DeleteLiveDomainPlayMappingWithOptions(request *DeleteLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveDomainPlayMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the mapping between a main streaming domain and a sub-streaming domain.
-//
-// Description:
-//
-// Before you call this operation, make sure that the mapping between the main streaming domain and the sub-streaming domain is created. For more information about how to call an operation to create the mapping between a main streaming domain and a sub-streaming domain, see [AddLiveDomainPlayMapping](https://help.aliyun.com/document_detail/173091.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveDomainPlayMappingRequest
-//
-// @return DeleteLiveDomainPlayMappingResponse
-func (client *Client) DeleteLiveDomainPlayMapping(request *DeleteLiveDomainPlayMappingRequest) (_result *DeleteLiveDomainPlayMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveDomainPlayMappingResponse{}
-	_body, _err := client.DeleteLiveDomainPlayMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9631,7 +7010,7 @@ func (client *Client) DeleteLiveDomainPlayMapping(request *DeleteLiveDomainPlayM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveEdgeTransferResponse
-func (client *Client) DeleteLiveEdgeTransferWithOptions(request *DeleteLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveEdgeTransferResponse, _err error) {
+func (client *Client) DeleteLiveEdgeTransferWithContext(ctx context.Context, request *DeleteLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveEdgeTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9664,47 +7043,11 @@ func (client *Client) DeleteLiveEdgeTransferWithOptions(request *DeleteLiveEdgeT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveEdgeTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of edge stream relay.
-//
-// Description:
-//
-// You can call the DeleteLiveEdgeTransfer operation to delete the configuration of edge stream relay for a specific domain name. Ingested streams that are already relayed based on the configuration are not affected. The following table describes the scenarios in which edge stream relay takes effect or not.
-//
-// |Scenario|Analysis|Result|
-//
-// |---|---|---|
-//
-// |1\\. You ingest a stream after you call the SetLiveEdgeTransfer operation to configure edge stream relay. Then, you call the DeleteLiveEdgeTransfer operation to delete the configuration.|The configuration of edge stream relay is available when you ingest the stream.|The ingested stream is not affected, and stream relay is not interrupted.|
-//
-// |2\\. You call the DeleteLiveEdgeTransfer operation to delete the configuration of edge stream relay after you ingest a stream. Then, you disconnect and resume the ingested stream.|The configuration of edge stream relay is not available after you resume the ingested stream.|Edge stream relay does not take effect.|
-//
-// |3\\. You call the DeleteLiveEdgeTransfer operation before you ingest a stream.|The configuration of edge stream relay is not available.|Edge stream relay does not take effect.|
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveEdgeTransferRequest
-//
-// @return DeleteLiveEdgeTransferResponse
-func (client *Client) DeleteLiveEdgeTransfer(request *DeleteLiveEdgeTransferRequest) (_result *DeleteLiveEdgeTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveEdgeTransferResponse{}
-	_body, _err := client.DeleteLiveEdgeTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9725,7 +7068,7 @@ func (client *Client) DeleteLiveEdgeTransfer(request *DeleteLiveEdgeTransferRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveLazyPullStreamInfoConfigResponse
-func (client *Client) DeleteLiveLazyPullStreamInfoConfigWithOptions(request *DeleteLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveLazyPullStreamInfoConfigResponse, _err error) {
+func (client *Client) DeleteLiveLazyPullStreamInfoConfigWithContext(ctx context.Context, request *DeleteLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveLazyPullStreamInfoConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9762,37 +7105,11 @@ func (client *Client) DeleteLiveLazyPullStreamInfoConfigWithOptions(request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveLazyPullStreamInfoConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a configuration of triggered stream pulling.
-//
-// Description:
-//
-// This operation is application to triggered stream pulling. You can call this operation to delete a configuration of triggered stream pulling. If you set the AppName parameter to ali_all_app, configurations of triggered stream pulling for all applications under the domain name are deleted.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveLazyPullStreamInfoConfigRequest
-//
-// @return DeleteLiveLazyPullStreamInfoConfigResponse
-func (client *Client) DeleteLiveLazyPullStreamInfoConfig(request *DeleteLiveLazyPullStreamInfoConfigRequest) (_result *DeleteLiveLazyPullStreamInfoConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveLazyPullStreamInfoConfigResponse{}
-	_body, _err := client.DeleteLiveLazyPullStreamInfoConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9817,7 +7134,7 @@ func (client *Client) DeleteLiveLazyPullStreamInfoConfig(request *DeleteLiveLazy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveMessageGroupResponse
-func (client *Client) DeleteLiveMessageGroupWithOptions(request *DeleteLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupResponse, _err error) {
+func (client *Client) DeleteLiveMessageGroupWithContext(ctx context.Context, request *DeleteLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9854,41 +7171,11 @@ func (client *Client) DeleteLiveMessageGroupWithOptions(request *DeleteLiveMessa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an interactive messaging group.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-//		- After you delete an interactive messaging group, it is no longer available. Every user in the group is notified that the group is closed.
-//
-//		- After you delete an interactive messaging group, messages in the group are retained for 30 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveMessageGroupRequest
-//
-// @return DeleteLiveMessageGroupResponse
-func (client *Client) DeleteLiveMessageGroup(request *DeleteLiveMessageGroupRequest) (_result *DeleteLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveMessageGroupResponse{}
-	_body, _err := client.DeleteLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9905,7 +7192,7 @@ func (client *Client) DeleteLiveMessageGroup(request *DeleteLiveMessageGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveMessageGroupMessageResponse
-func (client *Client) DeleteLiveMessageGroupMessageWithOptions(request *DeleteLiveMessageGroupMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupMessageResponse, _err error) {
+func (client *Client) DeleteLiveMessageGroupMessageWithContext(ctx context.Context, request *DeleteLiveMessageGroupMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageGroupMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -9950,33 +7237,11 @@ func (client *Client) DeleteLiveMessageGroupMessageWithOptions(request *DeleteLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveMessageGroupMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a message that was sent to an interactive messaging group.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveMessageGroupMessageRequest
-//
-// @return DeleteLiveMessageGroupMessageResponse
-func (client *Client) DeleteLiveMessageGroupMessage(request *DeleteLiveMessageGroupMessageRequest) (_result *DeleteLiveMessageGroupMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveMessageGroupMessageResponse{}
-	_body, _err := client.DeleteLiveMessageGroupMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -9995,7 +7260,7 @@ func (client *Client) DeleteLiveMessageGroupMessage(request *DeleteLiveMessageGr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveMessageUserMessageResponse
-func (client *Client) DeleteLiveMessageUserMessageWithOptions(request *DeleteLiveMessageUserMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageUserMessageResponse, _err error) {
+func (client *Client) DeleteLiveMessageUserMessageWithContext(ctx context.Context, request *DeleteLiveMessageUserMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveMessageUserMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10040,35 +7305,11 @@ func (client *Client) DeleteLiveMessageUserMessageWithOptions(request *DeleteLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveMessageUserMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a message that is sent to a user.
-//
-// Description:
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveMessageUserMessageRequest
-//
-// @return DeleteLiveMessageUserMessageResponse
-func (client *Client) DeleteLiveMessageUserMessage(request *DeleteLiveMessageUserMessageRequest) (_result *DeleteLiveMessageUserMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveMessageUserMessageResponse{}
-	_body, _err := client.DeleteLiveMessageUserMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10085,7 +7326,7 @@ func (client *Client) DeleteLiveMessageUserMessage(request *DeleteLiveMessageUse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivePackageConfigResponse
-func (client *Client) DeleteLivePackageConfigWithOptions(request *DeleteLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageConfigResponse, _err error) {
+func (client *Client) DeleteLivePackageConfigWithContext(ctx context.Context, request *DeleteLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePackageConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10126,33 +7367,11 @@ func (client *Client) DeleteLivePackageConfigWithOptions(request *DeleteLivePack
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivePackageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// You can call this operation to delete a live stream encapsulation configuration. The deletion takes effect after you re-ingest the stream.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLivePackageConfigRequest
-//
-// @return DeleteLivePackageConfigResponse
-func (client *Client) DeleteLivePackageConfig(request *DeleteLivePackageConfigRequest) (_result *DeleteLivePackageConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLivePackageConfigResponse{}
-	_body, _err := client.DeleteLivePackageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10173,7 +7392,7 @@ func (client *Client) DeleteLivePackageConfig(request *DeleteLivePackageConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivePrivateLineResponse
-func (client *Client) DeleteLivePrivateLineWithOptions(request *DeleteLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePrivateLineResponse, _err error) {
+func (client *Client) DeleteLivePrivateLineWithContext(ctx context.Context, request *DeleteLivePrivateLineRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePrivateLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10218,37 +7437,11 @@ func (client *Client) DeleteLivePrivateLineWithOptions(request *DeleteLivePrivat
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivePrivateLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds a Global Accelerator (GA) instance from an acceleration circuit.
-//
-// Description:
-//
-// After you unbind a GA instance from an acceleration circuit, your stream ingest and streaming are no longer accelerated by the GA instance. The GA instance still exists. If you want to release the GA instance, delete it in the GA console.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLivePrivateLineRequest
-//
-// @return DeleteLivePrivateLineResponse
-func (client *Client) DeleteLivePrivateLine(request *DeleteLivePrivateLineRequest) (_result *DeleteLivePrivateLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLivePrivateLineResponse{}
-	_body, _err := client.DeleteLivePrivateLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10269,7 +7462,7 @@ func (client *Client) DeleteLivePrivateLine(request *DeleteLivePrivateLineReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivePullStreamInfoConfigResponse
-func (client *Client) DeleteLivePullStreamInfoConfigWithOptions(request *DeleteLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullStreamInfoConfigResponse, _err error) {
+func (client *Client) DeleteLivePullStreamInfoConfigWithContext(ctx context.Context, request *DeleteLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullStreamInfoConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10310,37 +7503,11 @@ func (client *Client) DeleteLivePullStreamInfoConfigWithOptions(request *DeleteL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivePullStreamInfoConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a stream pulling configuration.
-//
-// Description:
-//
-// This operation is applicable to regular stream pulling. You can call this operation to delete a configuration of regular stream pulling.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLivePullStreamInfoConfigRequest
-//
-// @return DeleteLivePullStreamInfoConfigResponse
-func (client *Client) DeleteLivePullStreamInfoConfig(request *DeleteLivePullStreamInfoConfigRequest) (_result *DeleteLivePullStreamInfoConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLivePullStreamInfoConfigResponse{}
-	_body, _err := client.DeleteLivePullStreamInfoConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10363,7 +7530,7 @@ func (client *Client) DeleteLivePullStreamInfoConfig(request *DeleteLivePullStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLivePullToPushResponse
-func (client *Client) DeleteLivePullToPushWithOptions(request *DeleteLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullToPushResponse, _err error) {
+func (client *Client) DeleteLivePullToPushWithContext(ctx context.Context, request *DeleteLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DeleteLivePullToPushResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10384,39 +7551,11 @@ func (client *Client) DeleteLivePullToPushWithOptions(request *DeleteLivePullToP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a pulled-stream relay task.
-//
-// Description:
-//
-//	  You can call this operation to delete a pulled-stream relay task.
-//
-//		- If you delete a running task, the task is immediately stopped and cannot be restarted.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLivePullToPushRequest
-//
-// @return DeleteLivePullToPushResponse
-func (client *Client) DeleteLivePullToPush(request *DeleteLivePullToPushRequest) (_result *DeleteLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLivePullToPushResponse{}
-	_body, _err := client.DeleteLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10439,7 +7578,7 @@ func (client *Client) DeleteLivePullToPush(request *DeleteLivePullToPushRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveRealTimeLogLogstoreResponse
-func (client *Client) DeleteLiveRealTimeLogLogstoreWithOptions(request *DeleteLiveRealTimeLogLogstoreRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealTimeLogLogstoreResponse, _err error) {
+func (client *Client) DeleteLiveRealTimeLogLogstoreWithContext(ctx context.Context, request *DeleteLiveRealTimeLogLogstoreRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealTimeLogLogstoreResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10460,39 +7599,11 @@ func (client *Client) DeleteLiveRealTimeLogLogstoreWithOptions(request *DeleteLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveRealTimeLogLogstoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the Logstore that is specified by a configuration of real-time log delivery.
-//
-// Description:
-//
-//	  You can call this operation to delete the Logstore that is specified by a configuration of real-time log delivery. Make sure that all parameters meet the requirements when you call this operation.
-//
-//		- You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) operation to query the Project, Logstore, and Region parameters.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveRealTimeLogLogstoreRequest
-//
-// @return DeleteLiveRealTimeLogLogstoreResponse
-func (client *Client) DeleteLiveRealTimeLogLogstore(request *DeleteLiveRealTimeLogLogstoreRequest) (_result *DeleteLiveRealTimeLogLogstoreResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveRealTimeLogLogstoreResponse{}
-	_body, _err := client.DeleteLiveRealTimeLogLogstoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10515,7 +7626,7 @@ func (client *Client) DeleteLiveRealTimeLogLogstore(request *DeleteLiveRealTimeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveRealtimeLogDeliveryResponse
-func (client *Client) DeleteLiveRealtimeLogDeliveryWithOptions(request *DeleteLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) DeleteLiveRealtimeLogDeliveryWithContext(ctx context.Context, request *DeleteLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10536,39 +7647,11 @@ func (client *Client) DeleteLiveRealtimeLogDeliveryWithOptions(request *DeleteLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configurations of real-time log delivery for one or more domain names.
-//
-// Description:
-//
-//   - - This operation is applicable to only streaming domains. If you want to configure real-tome log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
-//
-//   - You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query the Project, Logstore, and Region parameters.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveRealtimeLogDeliveryRequest
-//
-// @return DeleteLiveRealtimeLogDeliveryResponse
-func (client *Client) DeleteLiveRealtimeLogDelivery(request *DeleteLiveRealtimeLogDeliveryRequest) (_result *DeleteLiveRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.DeleteLiveRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10589,7 +7672,7 @@ func (client *Client) DeleteLiveRealtimeLogDelivery(request *DeleteLiveRealtimeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveRecordNotifyConfigResponse
-func (client *Client) DeleteLiveRecordNotifyConfigWithOptions(request *DeleteLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordNotifyConfigResponse, _err error) {
+func (client *Client) DeleteLiveRecordNotifyConfigWithContext(ctx context.Context, request *DeleteLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10622,37 +7705,11 @@ func (client *Client) DeleteLiveRecordNotifyConfigWithOptions(request *DeleteLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveRecordNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of callbacks for live stream recording under a domain name.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for live stream recording under the main streaming domain.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveRecordNotifyConfigRequest
-//
-// @return DeleteLiveRecordNotifyConfigResponse
-func (client *Client) DeleteLiveRecordNotifyConfig(request *DeleteLiveRecordNotifyConfigRequest) (_result *DeleteLiveRecordNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveRecordNotifyConfigResponse{}
-	_body, _err := client.DeleteLiveRecordNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10673,7 +7730,7 @@ func (client *Client) DeleteLiveRecordNotifyConfig(request *DeleteLiveRecordNoti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveRecordVodConfigResponse
-func (client *Client) DeleteLiveRecordVodConfigWithOptions(request *DeleteLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordVodConfigResponse, _err error) {
+func (client *Client) DeleteLiveRecordVodConfigWithContext(ctx context.Context, request *DeleteLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveRecordVodConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10714,37 +7771,11 @@ func (client *Client) DeleteLiveRecordVodConfigWithOptions(request *DeleteLiveRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveRecordVodConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Live-to-VOD configuration.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to delete a Live-to-VOD configuration.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveRecordVodConfigRequest
-//
-// @return DeleteLiveRecordVodConfigResponse
-func (client *Client) DeleteLiveRecordVodConfig(request *DeleteLiveRecordVodConfigRequest) (_result *DeleteLiveRecordVodConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveRecordVodConfigResponse{}
-	_body, _err := client.DeleteLiveRecordVodConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10767,7 +7798,7 @@ func (client *Client) DeleteLiveRecordVodConfig(request *DeleteLiveRecordVodConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveSnapshotDetectPornConfigResponse
-func (client *Client) DeleteLiveSnapshotDetectPornConfigWithOptions(request *DeleteLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotDetectPornConfigResponse, _err error) {
+func (client *Client) DeleteLiveSnapshotDetectPornConfigWithContext(ctx context.Context, request *DeleteLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotDetectPornConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10804,39 +7835,11 @@ func (client *Client) DeleteLiveSnapshotDetectPornConfigWithOptions(request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a video moderation configuration.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to delete a video moderation configuration.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveSnapshotDetectPornConfigRequest
-//
-// @return DeleteLiveSnapshotDetectPornConfigResponse
-func (client *Client) DeleteLiveSnapshotDetectPornConfig(request *DeleteLiveSnapshotDetectPornConfigRequest) (_result *DeleteLiveSnapshotDetectPornConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.DeleteLiveSnapshotDetectPornConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10853,7 +7856,7 @@ func (client *Client) DeleteLiveSnapshotDetectPornConfig(request *DeleteLiveSnap
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveSnapshotNotifyConfigResponse
-func (client *Client) DeleteLiveSnapshotNotifyConfigWithOptions(request *DeleteLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
+func (client *Client) DeleteLiveSnapshotNotifyConfigWithContext(ctx context.Context, request *DeleteLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10886,33 +7889,11 @@ func (client *Client) DeleteLiveSnapshotNotifyConfigWithOptions(request *DeleteL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of snapshot callbacks.
-//
-// Description:
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveSnapshotNotifyConfigRequest
-//
-// @return DeleteLiveSnapshotNotifyConfigResponse
-func (client *Client) DeleteLiveSnapshotNotifyConfig(request *DeleteLiveSnapshotNotifyConfigRequest) (_result *DeleteLiveSnapshotNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.DeleteLiveSnapshotNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -10935,7 +7916,7 @@ func (client *Client) DeleteLiveSnapshotNotifyConfig(request *DeleteLiveSnapshot
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveSpecificStagingConfigResponse
-func (client *Client) DeleteLiveSpecificStagingConfigWithOptions(request *DeleteLiveSpecificStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSpecificStagingConfigResponse, _err error) {
+func (client *Client) DeleteLiveSpecificStagingConfigWithContext(ctx context.Context, request *DeleteLiveSpecificStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveSpecificStagingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -10972,39 +7953,11 @@ func (client *Client) DeleteLiveSpecificStagingConfigWithOptions(request *Delete
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveSpecificStagingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes domain configurations in the canary release environment.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Before you call this operation to delete a domain configuration in the canary release environment, you can call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation to obtain the configuration ID.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveSpecificStagingConfigRequest
-//
-// @return DeleteLiveSpecificStagingConfigResponse
-func (client *Client) DeleteLiveSpecificStagingConfig(request *DeleteLiveSpecificStagingConfigRequest) (_result *DeleteLiveSpecificStagingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveSpecificStagingConfigResponse{}
-	_body, _err := client.DeleteLiveSpecificStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11025,7 +7978,7 @@ func (client *Client) DeleteLiveSpecificStagingConfig(request *DeleteLiveSpecifi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamBlockResponse
-func (client *Client) DeleteLiveStreamBlockWithOptions(request *DeleteLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamBlockResponse, _err error) {
+func (client *Client) DeleteLiveStreamBlockWithContext(ctx context.Context, request *DeleteLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11066,37 +8019,11 @@ func (client *Client) DeleteLiveStreamBlockWithOptions(request *DeleteLiveStream
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a configuration of stream-level region blocking.
-//
-// Description:
-//
-// You can call this operation to delete a configuration of stream-level region blocking.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamBlockRequest
-//
-// @return DeleteLiveStreamBlockResponse
-func (client *Client) DeleteLiveStreamBlock(request *DeleteLiveStreamBlockRequest) (_result *DeleteLiveStreamBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamBlockResponse{}
-	_body, _err := client.DeleteLiveStreamBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11113,7 +8040,7 @@ func (client *Client) DeleteLiveStreamBlock(request *DeleteLiveStreamBlockReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamMergeResponse
-func (client *Client) DeleteLiveStreamMergeWithOptions(request *DeleteLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMergeResponse, _err error) {
+func (client *Client) DeleteLiveStreamMergeWithContext(ctx context.Context, request *DeleteLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMergeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11154,33 +8081,11 @@ func (client *Client) DeleteLiveStreamMergeWithOptions(request *DeleteLiveStream
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamMergeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an active mixed stream.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamMergeRequest
-//
-// @return DeleteLiveStreamMergeResponse
-func (client *Client) DeleteLiveStreamMerge(request *DeleteLiveStreamMergeRequest) (_result *DeleteLiveStreamMergeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamMergeResponse{}
-	_body, _err := client.DeleteLiveStreamMergeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11203,7 +8108,7 @@ func (client *Client) DeleteLiveStreamMerge(request *DeleteLiveStreamMergeReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamMonitorResponse
-func (client *Client) DeleteLiveStreamMonitorWithOptions(request *DeleteLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMonitorResponse, _err error) {
+func (client *Client) DeleteLiveStreamMonitorWithContext(ctx context.Context, request *DeleteLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11236,39 +8141,11 @@ func (client *Client) DeleteLiveStreamMonitorWithOptions(request *DeleteLiveStre
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a monitoring session.
-//
-// Description:
-//
-// Before you call this operation, obtain the monitoring session ID from the response parameter **MonitorId*	- of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
-//
-// >  You cannot delete a monitoring session that is in the started state. If you try to delete it, a 400 error is reported.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamMonitorRequest
-//
-// @return DeleteLiveStreamMonitorResponse
-func (client *Client) DeleteLiveStreamMonitor(request *DeleteLiveStreamMonitorRequest) (_result *DeleteLiveStreamMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamMonitorResponse{}
-	_body, _err := client.DeleteLiveStreamMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11285,7 +8162,7 @@ func (client *Client) DeleteLiveStreamMonitor(request *DeleteLiveStreamMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamRecordIndexFilesResponse
-func (client *Client) DeleteLiveStreamRecordIndexFilesWithOptions(request *DeleteLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamRecordIndexFilesResponse, _err error) {
+func (client *Client) DeleteLiveStreamRecordIndexFilesWithContext(ctx context.Context, request *DeleteLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamRecordIndexFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11334,33 +8211,11 @@ func (client *Client) DeleteLiveStreamRecordIndexFilesWithOptions(request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes live stream recordings.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamRecordIndexFilesRequest
-//
-// @return DeleteLiveStreamRecordIndexFilesResponse
-func (client *Client) DeleteLiveStreamRecordIndexFiles(request *DeleteLiveStreamRecordIndexFilesRequest) (_result *DeleteLiveStreamRecordIndexFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.DeleteLiveStreamRecordIndexFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11381,7 +8236,7 @@ func (client *Client) DeleteLiveStreamRecordIndexFiles(request *DeleteLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamTranscodeResponse
-func (client *Client) DeleteLiveStreamTranscodeWithOptions(request *DeleteLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamTranscodeResponse, _err error) {
+func (client *Client) DeleteLiveStreamTranscodeWithContext(ctx context.Context, request *DeleteLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11422,37 +8277,11 @@ func (client *Client) DeleteLiveStreamTranscodeWithOptions(request *DeleteLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a transcoding configuration.
-//
-// Description:
-//
-// Standard transcoding templates, Narrowband HD™ transcoding templates, and custom transcoding templates are supported for this operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamTranscodeRequest
-//
-// @return DeleteLiveStreamTranscodeResponse
-func (client *Client) DeleteLiveStreamTranscode(request *DeleteLiveStreamTranscodeRequest) (_result *DeleteLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamTranscodeResponse{}
-	_body, _err := client.DeleteLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11473,7 +8302,7 @@ func (client *Client) DeleteLiveStreamTranscode(request *DeleteLiveStreamTransco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamWatermarkResponse
-func (client *Client) DeleteLiveStreamWatermarkWithOptions(request *DeleteLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkResponse, _err error) {
+func (client *Client) DeleteLiveStreamWatermarkWithContext(ctx context.Context, request *DeleteLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11506,37 +8335,11 @@ func (client *Client) DeleteLiveStreamWatermarkWithOptions(request *DeleteLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified watermark template.
-//
-// Description:
-//
-// This interface supports deleting the watermark template with the specified TemplateId for live streaming.
-//
-// ## QPS Limitation
-//
-//	The per-user QPS limit for this interface is 60 times/second. Exceeding this limit will result in API throttling, which may impact your business operations. Please use it reasonably. For more information, please refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteLiveStreamWatermarkRequest
-//
-// @return DeleteLiveStreamWatermarkResponse
-func (client *Client) DeleteLiveStreamWatermark(request *DeleteLiveStreamWatermarkRequest) (_result *DeleteLiveStreamWatermarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamWatermarkResponse{}
-	_body, _err := client.DeleteLiveStreamWatermarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11557,7 +8360,7 @@ func (client *Client) DeleteLiveStreamWatermark(request *DeleteLiveStreamWaterma
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamWatermarkRuleResponse
-func (client *Client) DeleteLiveStreamWatermarkRuleWithOptions(request *DeleteLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkRuleResponse, _err error) {
+func (client *Client) DeleteLiveStreamWatermarkRuleWithContext(ctx context.Context, request *DeleteLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamWatermarkRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11602,37 +8405,11 @@ func (client *Client) DeleteLiveStreamWatermarkRuleWithOptions(request *DeleteLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a watermark rule.
-//
-// Description:
-//
-// You can call this operation to delete a watermark rule with a specified ID.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamWatermarkRuleRequest
-//
-// @return DeleteLiveStreamWatermarkRuleResponse
-func (client *Client) DeleteLiveStreamWatermarkRule(request *DeleteLiveStreamWatermarkRuleRequest) (_result *DeleteLiveStreamWatermarkRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.DeleteLiveStreamWatermarkRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11653,7 +8430,7 @@ func (client *Client) DeleteLiveStreamWatermarkRule(request *DeleteLiveStreamWat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLiveStreamsNotifyUrlConfigResponse
-func (client *Client) DeleteLiveStreamsNotifyUrlConfigWithOptions(request *DeleteLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamsNotifyUrlConfigResponse, _err error) {
+func (client *Client) DeleteLiveStreamsNotifyUrlConfigWithContext(ctx context.Context, request *DeleteLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteLiveStreamsNotifyUrlConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11686,37 +8463,11 @@ func (client *Client) DeleteLiveStreamsNotifyUrlConfigWithOptions(request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the callback configuration for stream ingest under an ingest domain.
-//
-// Description:
-//
-// Obtain the ingest domain, and then call this operation to delete the callback configuration for stream ingest under the ingest domain.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteLiveStreamsNotifyUrlConfigRequest
-//
-// @return DeleteLiveStreamsNotifyUrlConfigResponse
-func (client *Client) DeleteLiveStreamsNotifyUrlConfig(request *DeleteLiveStreamsNotifyUrlConfigRequest) (_result *DeleteLiveStreamsNotifyUrlConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.DeleteLiveStreamsNotifyUrlConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11735,7 +8486,7 @@ func (client *Client) DeleteLiveStreamsNotifyUrlConfig(request *DeleteLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMessageAppResponse
-func (client *Client) DeleteMessageAppWithOptions(request *DeleteMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageAppResponse, _err error) {
+func (client *Client) DeleteMessageAppWithContext(ctx context.Context, request *DeleteMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11760,35 +8511,11 @@ func (client *Client) DeleteMessageAppWithOptions(request *DeleteMessageAppReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an interactive messaging application.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteMessageAppRequest
-//
-// @return DeleteMessageAppResponse
-func (client *Client) DeleteMessageApp(request *DeleteMessageAppRequest) (_result *DeleteMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMessageAppResponse{}
-	_body, _err := client.DeleteMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11809,7 +8536,7 @@ func (client *Client) DeleteMessageApp(request *DeleteMessageAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMixStreamResponse
-func (client *Client) DeleteMixStreamWithOptions(request *DeleteMixStreamRequest, runtime *dara.RuntimeOptions) (_result *DeleteMixStreamResponse, _err error) {
+func (client *Client) DeleteMixStreamWithContext(ctx context.Context, request *DeleteMixStreamRequest, runtime *dara.RuntimeOptions) (_result *DeleteMixStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11854,37 +8581,11 @@ func (client *Client) DeleteMixStreamWithOptions(request *DeleteMixStreamRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMixStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a stream mixing task.
-//
-// Description:
-//
-// You can call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task and then call this operation to delete the stream mixing task. If you no longer need a mixed stream, be sure to delete it. Mixed streams that are not deleted are continuously ingested.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteMixStreamRequest
-//
-// @return DeleteMixStreamResponse
-func (client *Client) DeleteMixStream(request *DeleteMixStreamRequest) (_result *DeleteMixStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMixStreamResponse{}
-	_body, _err := client.DeleteMixStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11905,7 +8606,7 @@ func (client *Client) DeleteMixStream(request *DeleteMixStreamRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePlaylistResponse
-func (client *Client) DeletePlaylistWithOptions(request *DeletePlaylistRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistResponse, _err error) {
+func (client *Client) DeletePlaylistWithContext(ctx context.Context, request *DeletePlaylistRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -11938,37 +8639,11 @@ func (client *Client) DeletePlaylistWithOptions(request *DeletePlaylistRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an episode list.
-//
-// Description:
-//
-// Before you call this operation to delete an episode list, make sure that you have called the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to create the episode list.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeletePlaylistRequest
-//
-// @return DeletePlaylistResponse
-func (client *Client) DeletePlaylist(request *DeletePlaylistRequest) (_result *DeletePlaylistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePlaylistResponse{}
-	_body, _err := client.DeletePlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -11989,7 +8664,7 @@ func (client *Client) DeletePlaylist(request *DeletePlaylistRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePlaylistItemsResponse
-func (client *Client) DeletePlaylistItemsWithOptions(request *DeletePlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistItemsResponse, _err error) {
+func (client *Client) DeletePlaylistItemsWithContext(ctx context.Context, request *DeletePlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *DeletePlaylistItemsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12026,37 +8701,11 @@ func (client *Client) DeletePlaylistItemsWithOptions(request *DeletePlaylistItem
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePlaylistItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes episodes from an episode list.
-//
-// Description:
-//
-// Before you call this operation to remove an episode, make sure that you have called the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add the episode.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeletePlaylistItemsRequest
-//
-// @return DeletePlaylistItemsResponse
-func (client *Client) DeletePlaylistItems(request *DeletePlaylistItemsRequest) (_result *DeletePlaylistItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePlaylistItemsResponse{}
-	_body, _err := client.DeletePlaylistItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12073,7 +8722,7 @@ func (client *Client) DeletePlaylistItems(request *DeletePlaylistItemsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRtcAsrTaskResponse
-func (client *Client) DeleteRtcAsrTaskWithOptions(request *DeleteRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcAsrTaskResponse, _err error) {
+func (client *Client) DeleteRtcAsrTaskWithContext(ctx context.Context, request *DeleteRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcAsrTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12106,33 +8755,11 @@ func (client *Client) DeleteRtcAsrTaskWithOptions(request *DeleteRtcAsrTaskReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRtcAsrTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a live subtitle task.
-//
-// Description:
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteRtcAsrTaskRequest
-//
-// @return DeleteRtcAsrTaskResponse
-func (client *Client) DeleteRtcAsrTask(request *DeleteRtcAsrTaskRequest) (_result *DeleteRtcAsrTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRtcAsrTaskResponse{}
-	_body, _err := client.DeleteRtcAsrTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12155,7 +8782,7 @@ func (client *Client) DeleteRtcAsrTask(request *DeleteRtcAsrTaskRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRtcMPUEventSubResponse
-func (client *Client) DeleteRtcMPUEventSubWithOptions(request *DeleteRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcMPUEventSubResponse, _err error) {
+func (client *Client) DeleteRtcMPUEventSubWithContext(ctx context.Context, request *DeleteRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DeleteRtcMPUEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12180,39 +8807,11 @@ func (client *Client) DeleteRtcMPUEventSubWithOptions(request *DeleteRtcMPUEvent
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRtcMPUEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a subscription to mixed-stream relay events.
-//
-// Description:
-//
-//	  You can call this operation to delete a subscription to mixed-stream relay events.
-//
-//		- Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DeleteRtcMPUEventSubRequest
-//
-// @return DeleteRtcMPUEventSubResponse
-func (client *Client) DeleteRtcMPUEventSub(request *DeleteRtcMPUEventSubRequest) (_result *DeleteRtcMPUEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRtcMPUEventSubResponse{}
-	_body, _err := client.DeleteRtcMPUEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12233,7 +8832,7 @@ func (client *Client) DeleteRtcMPUEventSub(request *DeleteRtcMPUEventSubRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotCallbackAuthResponse
-func (client *Client) DeleteSnapshotCallbackAuthWithOptions(request *DeleteSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotCallbackAuthResponse, _err error) {
+func (client *Client) DeleteSnapshotCallbackAuthWithContext(ctx context.Context, request *DeleteSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotCallbackAuthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12266,37 +8865,11 @@ func (client *Client) DeleteSnapshotCallbackAuthWithOptions(request *DeleteSnaps
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotCallbackAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the configuration of authentication for snapshot callbacks.
-//
-// Description:
-//
-// You can call this operation to delete the configuration of authentication for snapshot callbacks for a main streaming domain. For an ongoing live stream, the deletion takes effect after you re-ingest the stream. Snapshot callbacks for the stream are no longer authenticated.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteSnapshotCallbackAuthRequest
-//
-// @return DeleteSnapshotCallbackAuthResponse
-func (client *Client) DeleteSnapshotCallbackAuth(request *DeleteSnapshotCallbackAuthRequest) (_result *DeleteSnapshotCallbackAuthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnapshotCallbackAuthResponse{}
-	_body, _err := client.DeleteSnapshotCallbackAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12317,7 +8890,7 @@ func (client *Client) DeleteSnapshotCallbackAuth(request *DeleteSnapshotCallback
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotFilesResponse
-func (client *Client) DeleteSnapshotFilesWithOptions(request *DeleteSnapshotFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotFilesResponse, _err error) {
+func (client *Client) DeleteSnapshotFilesWithContext(ctx context.Context, request *DeleteSnapshotFilesRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12366,37 +8939,11 @@ func (client *Client) DeleteSnapshotFilesWithOptions(request *DeleteSnapshotFile
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes snapshots.
-//
-// Description:
-//
-// You can delete only snapshots that were captured in the last year.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteSnapshotFilesRequest
-//
-// @return DeleteSnapshotFilesResponse
-func (client *Client) DeleteSnapshotFiles(request *DeleteSnapshotFilesRequest) (_result *DeleteSnapshotFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnapshotFilesResponse{}
-	_body, _err := client.DeleteSnapshotFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12417,7 +8964,7 @@ func (client *Client) DeleteSnapshotFiles(request *DeleteSnapshotFilesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteStudioLayoutResponse
-func (client *Client) DeleteStudioLayoutWithOptions(request *DeleteStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteStudioLayoutResponse, _err error) {
+func (client *Client) DeleteStudioLayoutWithContext(ctx context.Context, request *DeleteStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *DeleteStudioLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12454,37 +9001,11 @@ func (client *Client) DeleteStudioLayoutWithOptions(request *DeleteStudioLayoutR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteStudioLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a layout in a virtual studio.
-//
-// Description:
-//
-// You can call this operation to delete a layout in a virtual studio. You can delete only one layout in a call.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DeleteStudioLayoutRequest
-//
-// @return DeleteStudioLayoutResponse
-func (client *Client) DeleteStudioLayout(request *DeleteStudioLayoutRequest) (_result *DeleteStudioLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteStudioLayoutResponse{}
-	_body, _err := client.DeleteStudioLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12505,7 +9026,7 @@ func (client *Client) DeleteStudioLayout(request *DeleteStudioLayoutRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAutoShowListTasksResponse
-func (client *Client) DescribeAutoShowListTasksWithOptions(request *DescribeAutoShowListTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoShowListTasksResponse, _err error) {
+func (client *Client) DescribeAutoShowListTasksWithContext(ctx context.Context, request *DescribeAutoShowListTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAutoShowListTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12538,37 +9059,11 @@ func (client *Client) DescribeAutoShowListTasksWithOptions(request *DescribeAuto
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAutoShowListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries scheduled tasks that are used to start and stop playing an episode list at specified points in time.
-//
-// Description:
-//
-// You can call this operation to query scheduled tasks that are used to start and stop playing an episode list at specified points in time. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeAutoShowListTasksRequest
-//
-// @return DescribeAutoShowListTasksResponse
-func (client *Client) DescribeAutoShowListTasks(request *DescribeAutoShowListTasksRequest) (_result *DescribeAutoShowListTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAutoShowListTasksResponse{}
-	_body, _err := client.DescribeAutoShowListTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12589,7 +9084,7 @@ func (client *Client) DescribeAutoShowListTasks(request *DescribeAutoShowListTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterChannelsResponse
-func (client *Client) DescribeCasterChannelsWithOptions(request *DescribeCasterChannelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterChannelsResponse, _err error) {
+func (client *Client) DescribeCasterChannelsWithContext(ctx context.Context, request *DescribeCasterChannelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterChannelsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12622,37 +9117,11 @@ func (client *Client) DescribeCasterChannelsWithOptions(request *DescribeCasterC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the channels of a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the channels of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterChannelsRequest
-//
-// @return DescribeCasterChannelsResponse
-func (client *Client) DescribeCasterChannels(request *DescribeCasterChannelsRequest) (_result *DescribeCasterChannelsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterChannelsResponse{}
-	_body, _err := client.DescribeCasterChannelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12673,7 +9142,7 @@ func (client *Client) DescribeCasterChannels(request *DescribeCasterChannelsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterComponentsResponse
-func (client *Client) DescribeCasterComponentsWithOptions(request *DescribeCasterComponentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterComponentsResponse, _err error) {
+func (client *Client) DescribeCasterComponentsWithContext(ctx context.Context, request *DescribeCasterComponentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterComponentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12710,37 +9179,11 @@ func (client *Client) DescribeCasterComponentsWithOptions(request *DescribeCaste
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterComponentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the components of a production studio.
-//
-// Description:
-//
-// You can call the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation to add components to a production studio and then call this operation to query the components of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterComponentsRequest
-//
-// @return DescribeCasterComponentsResponse
-func (client *Client) DescribeCasterComponents(request *DescribeCasterComponentsRequest) (_result *DescribeCasterComponentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterComponentsResponse{}
-	_body, _err := client.DescribeCasterComponentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12761,7 +9204,7 @@ func (client *Client) DescribeCasterComponents(request *DescribeCasterComponents
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterConfigResponse
-func (client *Client) DescribeCasterConfigWithOptions(request *DescribeCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterConfigResponse, _err error) {
+func (client *Client) DescribeCasterConfigWithContext(ctx context.Context, request *DescribeCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12794,37 +9237,11 @@ func (client *Client) DescribeCasterConfigWithOptions(request *DescribeCasterCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the configurations of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterConfigRequest
-//
-// @return DescribeCasterConfigResponse
-func (client *Client) DescribeCasterConfig(request *DescribeCasterConfigRequest) (_result *DescribeCasterConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterConfigResponse{}
-	_body, _err := client.DescribeCasterConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12845,7 +9262,7 @@ func (client *Client) DescribeCasterConfig(request *DescribeCasterConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterLayoutsResponse
-func (client *Client) DescribeCasterLayoutsWithOptions(request *DescribeCasterLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterLayoutsResponse, _err error) {
+func (client *Client) DescribeCasterLayoutsWithContext(ctx context.Context, request *DescribeCasterLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterLayoutsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12882,37 +9299,11 @@ func (client *Client) DescribeCasterLayoutsWithOptions(request *DescribeCasterLa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterLayoutsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a specified layout or all layouts of a production studio.
-//
-// Description:
-//
-// You can call this operation to query layouts of a production studio. If no layout ID is specified, the operation returns all layouts of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterLayoutsRequest
-//
-// @return DescribeCasterLayoutsResponse
-func (client *Client) DescribeCasterLayouts(request *DescribeCasterLayoutsRequest) (_result *DescribeCasterLayoutsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterLayoutsResponse{}
-	_body, _err := client.DescribeCasterLayoutsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -12933,7 +9324,7 @@ func (client *Client) DescribeCasterLayouts(request *DescribeCasterLayoutsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterProgramResponse
-func (client *Client) DescribeCasterProgramWithOptions(request *DescribeCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterProgramResponse, _err error) {
+func (client *Client) DescribeCasterProgramWithContext(ctx context.Context, request *DescribeCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterProgramResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -12994,37 +9385,11 @@ func (client *Client) DescribeCasterProgramWithOptions(request *DescribeCasterPr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterProgramResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the episode list for carousel playback in a production studio.
-//
-// Description:
-//
-// You can call this operation to query episodes in the episode list for carousel playback. The supported types of episodes include video resource and component.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterProgramRequest
-//
-// @return DescribeCasterProgramResponse
-func (client *Client) DescribeCasterProgram(request *DescribeCasterProgramRequest) (_result *DescribeCasterProgramResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterProgramResponse{}
-	_body, _err := client.DescribeCasterProgramWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13047,7 +9412,7 @@ func (client *Client) DescribeCasterProgram(request *DescribeCasterProgramReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterSceneAudioResponse
-func (client *Client) DescribeCasterSceneAudioWithOptions(request *DescribeCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterSceneAudioResponse, _err error) {
+func (client *Client) DescribeCasterSceneAudioWithContext(ctx context.Context, request *DescribeCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterSceneAudioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13084,39 +9449,11 @@ func (client *Client) DescribeCasterSceneAudioWithOptions(request *DescribeCaste
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterSceneAudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the audio configurations of a scene.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to query the audio configurations of a scene in the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeCasterSceneAudioRequest
-//
-// @return DescribeCasterSceneAudioResponse
-func (client *Client) DescribeCasterSceneAudio(request *DescribeCasterSceneAudioRequest) (_result *DescribeCasterSceneAudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterSceneAudioResponse{}
-	_body, _err := client.DescribeCasterSceneAudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13137,7 +9474,7 @@ func (client *Client) DescribeCasterSceneAudio(request *DescribeCasterSceneAudio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterScenesResponse
-func (client *Client) DescribeCasterScenesWithOptions(request *DescribeCasterScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterScenesResponse, _err error) {
+func (client *Client) DescribeCasterScenesWithContext(ctx context.Context, request *DescribeCasterScenesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterScenesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13174,37 +9511,11 @@ func (client *Client) DescribeCasterScenesWithOptions(request *DescribeCasterSce
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterScenesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the scenes of a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to query the scenes of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeCasterScenesRequest
-//
-// @return DescribeCasterScenesResponse
-func (client *Client) DescribeCasterScenes(request *DescribeCasterScenesRequest) (_result *DescribeCasterScenesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterScenesResponse{}
-	_body, _err := client.DescribeCasterScenesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13225,7 +9536,7 @@ func (client *Client) DescribeCasterScenes(request *DescribeCasterScenesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterStreamUrlResponse
-func (client *Client) DescribeCasterStreamUrlWithOptions(request *DescribeCasterStreamUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterStreamUrlResponse, _err error) {
+func (client *Client) DescribeCasterStreamUrlWithContext(ctx context.Context, request *DescribeCasterStreamUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterStreamUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13258,37 +9569,11 @@ func (client *Client) DescribeCasterStreamUrlWithOptions(request *DescribeCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterStreamUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the streaming URLs of a production studio.
-//
-// Description:
-//
-// You must create a production studio before calling this operation to query the information.
-//
-// ## QPS limit
-//
-// A single user can perform a maximum of 15 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
-//
-// @param request - DescribeCasterStreamUrlRequest
-//
-// @return DescribeCasterStreamUrlResponse
-func (client *Client) DescribeCasterStreamUrl(request *DescribeCasterStreamUrlRequest) (_result *DescribeCasterStreamUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterStreamUrlResponse{}
-	_body, _err := client.DescribeCasterStreamUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13309,7 +9594,7 @@ func (client *Client) DescribeCasterStreamUrl(request *DescribeCasterStreamUrlRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCasterVideoResourcesResponse
-func (client *Client) DescribeCasterVideoResourcesWithOptions(request *DescribeCasterVideoResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterVideoResourcesResponse, _err error) {
+func (client *Client) DescribeCasterVideoResourcesWithContext(ctx context.Context, request *DescribeCasterVideoResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCasterVideoResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13342,37 +9627,11 @@ func (client *Client) DescribeCasterVideoResourcesWithOptions(request *DescribeC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCasterVideoResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the input sources of a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the input sources of the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCasterVideoResourcesRequest
-//
-// @return DescribeCasterVideoResourcesResponse
-func (client *Client) DescribeCasterVideoResources(request *DescribeCasterVideoResourcesRequest) (_result *DescribeCasterVideoResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCasterVideoResourcesResponse{}
-	_body, _err := client.DescribeCasterVideoResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13393,7 +9652,7 @@ func (client *Client) DescribeCasterVideoResources(request *DescribeCasterVideoR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCastersResponse
-func (client *Client) DescribeCastersWithOptions(request *DescribeCastersRequest, runtime *dara.RuntimeOptions) (_result *DescribeCastersResponse, _err error) {
+func (client *Client) DescribeCastersWithContext(ctx context.Context, request *DescribeCastersRequest, runtime *dara.RuntimeOptions) (_result *DescribeCastersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13470,37 +9729,11 @@ func (client *Client) DescribeCastersWithOptions(request *DescribeCastersRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCastersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of production studios.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848012.html) operation to create a production studio and then call this operation to query the production studio list. The status of a production studio can be idle or streaming.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeCastersRequest
-//
-// @return DescribeCastersResponse
-func (client *Client) DescribeCasters(request *DescribeCastersRequest) (_result *DescribeCastersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCastersResponse{}
-	_body, _err := client.DescribeCastersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13521,7 +9754,7 @@ func (client *Client) DescribeCasters(request *DescribeCastersRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeChannelParticipantsResponse
-func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeChannelParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelParticipantsResponse, _err error) {
+func (client *Client) DescribeChannelParticipantsWithContext(ctx context.Context, request *DescribeChannelParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelParticipantsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13562,37 +9795,11 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeChannelParticipantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries online users in a channel.
-//
-// Description:
-//
-// You can call this operation to query online users in a channel. The returned result does not include details about the users.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeChannelParticipantsRequest
-//
-// @return DescribeChannelParticipantsResponse
-func (client *Client) DescribeChannelParticipants(request *DescribeChannelParticipantsRequest) (_result *DescribeChannelParticipantsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeChannelParticipantsResponse{}
-	_body, _err := client.DescribeChannelParticipantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13613,7 +9820,7 @@ func (client *Client) DescribeChannelParticipants(request *DescribeChannelPartic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeChannelUsersResponse
-func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelUsersResponse, _err error) {
+func (client *Client) DescribeChannelUsersWithContext(ctx context.Context, request *DescribeChannelUsersRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13642,37 +9849,11 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeChannelUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of online users in a channel.
-//
-// Description:
-//
-// You can call this operation to query information about online users in a channel, such as the total number of users during live streaming.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeChannelUsersRequest
-//
-// @return DescribeChannelUsersResponse
-func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest) (_result *DescribeChannelUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeChannelUsersResponse{}
-	_body, _err := client.DescribeChannelUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13709,7 +9890,7 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainUsageDataResponse
-func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomainUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainUsageDataResponse, _err error) {
+func (client *Client) DescribeDomainUsageDataWithContext(ctx context.Context, request *DescribeDomainUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13770,53 +9951,11 @@ func (client *Client) DescribeDomainUsageDataWithOptions(request *DescribeDomain
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDomainUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource usage data of specific domain names in a specified billable region.
-//
-// Description:
-//
-// You can query the resource usage data of up to 100 domain names at a time. Separate multiple domain names with commas (,). If you do not specify the DomainName parameter, the resource usage data of all domain names within your Alibaba Cloud account is returned.
-//
-//   - The resource usage data includes network traffic that is measured in bytes, bandwidth that is measured in bit/s, and the number of requests.
-//
-//   - If you do not specify the Interval parameter, you can query the resource usage data in the last 12 months that spans a period of up to 31 days per call. If you specify a time range of 1 to 3 days in a call, the time interval between the entries that are returned is 1 hour. If you specify a time range of more than 3 days in a call, the time interval between the entries that are returned is 1 day.
-//
-//   - The following table describes the maximum time range per query, the time period within which historical data is available, and the data delay if you specify the Interval parameter.
-//
-// |Time granularity|Maximum time range per query|Historical data available|Data delay|
-//
-// |---|---|---|---|
-//
-// |5 minutes|3 days|93 days|15 minutes|
-//
-// |1 hour|31 days|186 days|4 hours|
-//
-// |1 day|90 days|366 days|04:00 on the next day|
-//
-// ## QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeDomainUsageDataRequest
-//
-// @return DescribeDomainUsageDataResponse
-func (client *Client) DescribeDomainUsageData(request *DescribeDomainUsageDataRequest) (_result *DescribeDomainUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDomainUsageDataResponse{}
-	_body, _err := client.DescribeDomainUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13837,7 +9976,7 @@ func (client *Client) DescribeDomainUsageData(request *DescribeDomainUsageDataRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainWithIntegrityResponse
-func (client *Client) DescribeDomainWithIntegrityWithOptions(request *DescribeDomainWithIntegrityRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainWithIntegrityResponse, _err error) {
+func (client *Client) DescribeDomainWithIntegrityWithContext(ctx context.Context, request *DescribeDomainWithIntegrityRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainWithIntegrityResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13858,37 +9997,11 @@ func (client *Client) DescribeDomainWithIntegrityWithOptions(request *DescribeDo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDomainWithIntegrityResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains domain integrity.
-//
-// Description:
-//
-// You can call this operation to obtain domain integrity.
-//
-// ## [](#qps-)QPS limits
-//
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeDomainWithIntegrityRequest
-//
-// @return DescribeDomainWithIntegrityResponse
-func (client *Client) DescribeDomainWithIntegrity(request *DescribeDomainWithIntegrityRequest) (_result *DescribeDomainWithIntegrityResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDomainWithIntegrityResponse{}
-	_body, _err := client.DescribeDomainWithIntegrityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13909,7 +10022,7 @@ func (client *Client) DescribeDomainWithIntegrity(request *DescribeDomainWithInt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHlsLiveStreamRealTimeBpsDataResponse
-func (client *Client) DescribeHlsLiveStreamRealTimeBpsDataWithOptions(request *DescribeHlsLiveStreamRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeHlsLiveStreamRealTimeBpsDataResponse, _err error) {
+func (client *Client) DescribeHlsLiveStreamRealTimeBpsDataWithContext(ctx context.Context, request *DescribeHlsLiveStreamRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeHlsLiveStreamRealTimeBpsDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -13930,37 +10043,11 @@ func (client *Client) DescribeHlsLiveStreamRealTimeBpsDataWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHlsLiveStreamRealTimeBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about HTTP Live Streaming (HLS) streams, such as the number of online users and bandwidth.
-//
-// Description:
-//
-// You can call this operation to query the information about HTTP Live Streaming (HLS) streams, such as the number of online users and bandwidth.
-//
-//   - The number of online users for an HLS stream is counted based on the universally unique identifiers (UUIDs) of users that are placed after the M3U8 URL.
-//
-//   - You can query the data of up to 100 domain names in a single request. If the DomainName parameter is left empty, the data of all domain names under the account is queried.
-//
-// @param request - DescribeHlsLiveStreamRealTimeBpsDataRequest
-//
-// @return DescribeHlsLiveStreamRealTimeBpsDataResponse
-func (client *Client) DescribeHlsLiveStreamRealTimeBpsData(request *DescribeHlsLiveStreamRealTimeBpsDataRequest) (_result *DescribeHlsLiveStreamRealTimeBpsDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHlsLiveStreamRealTimeBpsDataResponse{}
-	_body, _err := client.DescribeHlsLiveStreamRealTimeBpsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -13983,7 +10070,7 @@ func (client *Client) DescribeHlsLiveStreamRealTimeBpsData(request *DescribeHlsL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveAIProduceRulesResponse
-func (client *Client) DescribeLiveAIProduceRulesWithOptions(request *DescribeLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIProduceRulesResponse, _err error) {
+func (client *Client) DescribeLiveAIProduceRulesWithContext(ctx context.Context, request *DescribeLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIProduceRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14036,39 +10123,11 @@ func (client *Client) DescribeLiveAIProduceRulesWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveAIProduceRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries subtitle rules.
-//
-// Description:
-//
-// You can call this operation to query subtitle rules. Make sure that the parameter settings meet the requirements.
-//
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveAIProduceRulesRequest
-//
-// @return DescribeLiveAIProduceRulesResponse
-func (client *Client) DescribeLiveAIProduceRules(request *DescribeLiveAIProduceRulesRequest) (_result *DescribeLiveAIProduceRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveAIProduceRulesResponse{}
-	_body, _err := client.DescribeLiveAIProduceRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14081,7 +10140,7 @@ func (client *Client) DescribeLiveAIProduceRules(request *DescribeLiveAIProduceR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveAIStudioResponse
-func (client *Client) DescribeLiveAIStudioWithOptions(request *DescribeLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIStudioResponse, _err error) {
+func (client *Client) DescribeLiveAIStudioWithContext(ctx context.Context, request *DescribeLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAIStudioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14126,29 +10185,11 @@ func (client *Client) DescribeLiveAIStudioWithOptions(request *DescribeLiveAIStu
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveAIStudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the virtual studio templates within your Alibaba Cloud account.
-//
-// @param request - DescribeLiveAIStudioRequest
-//
-// @return DescribeLiveAIStudioResponse
-func (client *Client) DescribeLiveAIStudio(request *DescribeLiveAIStudioRequest) (_result *DescribeLiveAIStudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveAIStudioResponse{}
-	_body, _err := client.DescribeLiveAIStudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14171,7 +10212,7 @@ func (client *Client) DescribeLiveAIStudio(request *DescribeLiveAIStudioRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveAISubtitleResponse
-func (client *Client) DescribeLiveAISubtitleWithOptions(request *DescribeLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAISubtitleResponse, _err error) {
+func (client *Client) DescribeLiveAISubtitleWithContext(ctx context.Context, request *DescribeLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAISubtitleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14220,39 +10261,11 @@ func (client *Client) DescribeLiveAISubtitleWithOptions(request *DescribeLiveAIS
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveAISubtitleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries subtitle templates.
-//
-// Description:
-//
-// This interface supports querying the list of subtitle template information with specified pagination parameters. Ensure that the parameter settings meet the requirements when calling.
-//
-//	Notice: The real-time subtitle function is currently in the beta testing phase, and each user can add up to 300 subtitle templates.
-//
-// ## QPS Limit
-//
-// The QPS limit for this interface per user is 60 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use it reasonably. For more information, refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveAISubtitleRequest
-//
-// @return DescribeLiveAISubtitleResponse
-func (client *Client) DescribeLiveAISubtitle(request *DescribeLiveAISubtitleRequest) (_result *DescribeLiveAISubtitleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveAISubtitleResponse{}
-	_body, _err := client.DescribeLiveAISubtitleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14275,7 +10288,7 @@ func (client *Client) DescribeLiveAISubtitle(request *DescribeLiveAISubtitleRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveAudioAuditConfigResponse
-func (client *Client) DescribeLiveAudioAuditConfigWithOptions(request *DescribeLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditConfigResponse, _err error) {
+func (client *Client) DescribeLiveAudioAuditConfigWithContext(ctx context.Context, request *DescribeLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14316,39 +10329,11 @@ func (client *Client) DescribeLiveAudioAuditConfigWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveAudioAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries audio moderation configurations.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to query audio moderation configurations.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveAudioAuditConfigRequest
-//
-// @return DescribeLiveAudioAuditConfigResponse
-func (client *Client) DescribeLiveAudioAuditConfig(request *DescribeLiveAudioAuditConfigRequest) (_result *DescribeLiveAudioAuditConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveAudioAuditConfigResponse{}
-	_body, _err := client.DescribeLiveAudioAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14371,7 +10356,7 @@ func (client *Client) DescribeLiveAudioAuditConfig(request *DescribeLiveAudioAud
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveAudioAuditNotifyConfigResponse
-func (client *Client) DescribeLiveAudioAuditNotifyConfigWithOptions(request *DescribeLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditNotifyConfigResponse, _err error) {
+func (client *Client) DescribeLiveAudioAuditNotifyConfigWithContext(ctx context.Context, request *DescribeLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveAudioAuditNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14404,39 +10389,11 @@ func (client *Client) DescribeLiveAudioAuditNotifyConfigWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of callbacks for audio moderation results.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for audio moderation results.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveAudioAuditNotifyConfigRequest
-//
-// @return DescribeLiveAudioAuditNotifyConfigResponse
-func (client *Client) DescribeLiveAudioAuditNotifyConfig(request *DescribeLiveAudioAuditNotifyConfigRequest) (_result *DescribeLiveAudioAuditNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.DescribeLiveAudioAuditNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14445,7 +10402,7 @@ func (client *Client) DescribeLiveAudioAuditNotifyConfig(request *DescribeLiveAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveCdnDiagnoseInfoResponse
-func (client *Client) DescribeLiveCdnDiagnoseInfoWithOptions(request *DescribeLiveCdnDiagnoseInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCdnDiagnoseInfoResponse, _err error) {
+func (client *Client) DescribeLiveCdnDiagnoseInfoWithContext(ctx context.Context, request *DescribeLiveCdnDiagnoseInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCdnDiagnoseInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14506,25 +10463,11 @@ func (client *Client) DescribeLiveCdnDiagnoseInfoWithOptions(request *DescribeLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveCdnDiagnoseInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeLiveCdnDiagnoseInfoRequest
-//
-// @return DescribeLiveCdnDiagnoseInfoResponse
-func (client *Client) DescribeLiveCdnDiagnoseInfo(request *DescribeLiveCdnDiagnoseInfoRequest) (_result *DescribeLiveCdnDiagnoseInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveCdnDiagnoseInfoResponse{}
-	_body, _err := client.DescribeLiveCdnDiagnoseInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14545,7 +10488,7 @@ func (client *Client) DescribeLiveCdnDiagnoseInfo(request *DescribeLiveCdnDiagno
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveCenterStreamRateDataResponse
-func (client *Client) DescribeLiveCenterStreamRateDataWithOptions(request *DescribeLiveCenterStreamRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterStreamRateDataResponse, _err error) {
+func (client *Client) DescribeLiveCenterStreamRateDataWithContext(ctx context.Context, request *DescribeLiveCenterStreamRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterStreamRateDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14586,37 +10529,11 @@ func (client *Client) DescribeLiveCenterStreamRateDataWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveCenterStreamRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the audio and video frame rates and bitrates of a stream in a live center.
-//
-// Description:
-//
-// The time granularity for the returned data is 5 seconds. The maximum time range to query is 3 hours. You can query data in the last 30 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveCenterStreamRateDataRequest
-//
-// @return DescribeLiveCenterStreamRateDataResponse
-func (client *Client) DescribeLiveCenterStreamRateData(request *DescribeLiveCenterStreamRateDataRequest) (_result *DescribeLiveCenterStreamRateDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveCenterStreamRateDataResponse{}
-	_body, _err := client.DescribeLiveCenterStreamRateDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14633,7 +10550,7 @@ func (client *Client) DescribeLiveCenterStreamRateData(request *DescribeLiveCent
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveCenterTransferResponse
-func (client *Client) DescribeLiveCenterTransferWithOptions(request *DescribeLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterTransferResponse, _err error) {
+func (client *Client) DescribeLiveCenterTransferWithContext(ctx context.Context, request *DescribeLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCenterTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14678,33 +10595,11 @@ func (client *Client) DescribeLiveCenterTransferWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveCenterTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a configuration of live center stream relay.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveCenterTransferRequest
-//
-// @return DescribeLiveCenterTransferResponse
-func (client *Client) DescribeLiveCenterTransfer(request *DescribeLiveCenterTransferRequest) (_result *DescribeLiveCenterTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveCenterTransferResponse{}
-	_body, _err := client.DescribeLiveCenterTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14725,7 +10620,7 @@ func (client *Client) DescribeLiveCenterTransfer(request *DescribeLiveCenterTran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveCertificateDetailResponse
-func (client *Client) DescribeLiveCertificateDetailWithOptions(request *DescribeLiveCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateDetailResponse, _err error) {
+func (client *Client) DescribeLiveCertificateDetailWithContext(ctx context.Context, request *DescribeLiveCertificateDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14758,37 +10653,11 @@ func (client *Client) DescribeLiveCertificateDetailWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveCertificateDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a certificate.
-//
-// Description:
-//
-// You can obtain the certificate name on the [Certificates](https://help.aliyun.com/document_detail/2584962.html) page of the ApsaraVideo Live console and then call this operation to query the certificate details.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveCertificateDetailRequest
-//
-// @return DescribeLiveCertificateDetailResponse
-func (client *Client) DescribeLiveCertificateDetail(request *DescribeLiveCertificateDetailRequest) (_result *DescribeLiveCertificateDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveCertificateDetailResponse{}
-	_body, _err := client.DescribeLiveCertificateDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14809,7 +10678,7 @@ func (client *Client) DescribeLiveCertificateDetail(request *DescribeLiveCertifi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveCertificateListResponse
-func (client *Client) DescribeLiveCertificateListWithOptions(request *DescribeLiveCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateListResponse, _err error) {
+func (client *Client) DescribeLiveCertificateListWithContext(ctx context.Context, request *DescribeLiveCertificateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveCertificateListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14842,37 +10711,11 @@ func (client *Client) DescribeLiveCertificateListWithOptions(request *DescribeLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveCertificateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the certificates of one or more specified domain names or all certificates within your Alibaba Cloud account.
-//
-// Description:
-//
-// If you specify one or more domain names in the request, the certificates of the domain names are returned. If you do not specify a domain name in the request, all certificates within your Alibaba Cloud account are returned.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveCertificateListRequest
-//
-// @return DescribeLiveCertificateListResponse
-func (client *Client) DescribeLiveCertificateList(request *DescribeLiveCertificateListRequest) (_result *DescribeLiveCertificateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveCertificateListResponse{}
-	_body, _err := client.DescribeLiveCertificateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14891,7 +10734,7 @@ func (client *Client) DescribeLiveCertificateList(request *DescribeLiveCertifica
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDelayConfigResponse
-func (client *Client) DescribeLiveDelayConfigWithOptions(request *DescribeLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayConfigResponse, _err error) {
+func (client *Client) DescribeLiveDelayConfigWithContext(ctx context.Context, request *DescribeLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -14932,35 +10775,11 @@ func (client *Client) DescribeLiveDelayConfigWithOptions(request *DescribeLiveDe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a stream delay configuration.
-//
-// Description:
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDelayConfigRequest
-//
-// @return DescribeLiveDelayConfigResponse
-func (client *Client) DescribeLiveDelayConfig(request *DescribeLiveDelayConfigRequest) (_result *DescribeLiveDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDelayConfigResponse{}
-	_body, _err := client.DescribeLiveDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -14987,7 +10806,7 @@ func (client *Client) DescribeLiveDelayConfig(request *DescribeLiveDelayConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDelayedStreamingUsageResponse
-func (client *Client) DescribeLiveDelayedStreamingUsageWithOptions(request *DescribeLiveDelayedStreamingUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayedStreamingUsageResponse, _err error) {
+func (client *Client) DescribeLiveDelayedStreamingUsageWithContext(ctx context.Context, request *DescribeLiveDelayedStreamingUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDelayedStreamingUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15044,43 +10863,11 @@ func (client *Client) DescribeLiveDelayedStreamingUsageWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDelayedStreamingUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream delay usage data.
-//
-// Description:
-//
-//	  You can call this operation to query your stream delay usage data. The default time granularity is 1 hour.
-//
-//		- The maximum time range for a query is 31 days.
-//
-//		- The minimum time granularity for a query is 1 hour.
-//
-//		- You can query the data in the last 31 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDelayedStreamingUsageRequest
-//
-// @return DescribeLiveDelayedStreamingUsageResponse
-func (client *Client) DescribeLiveDelayedStreamingUsage(request *DescribeLiveDelayedStreamingUsageRequest) (_result *DescribeLiveDelayedStreamingUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDelayedStreamingUsageResponse{}
-	_body, _err := client.DescribeLiveDelayedStreamingUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15103,7 +10890,7 @@ func (client *Client) DescribeLiveDelayedStreamingUsage(request *DescribeLiveDel
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDetectNotifyConfigResponse
-func (client *Client) DescribeLiveDetectNotifyConfigWithOptions(request *DescribeLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectNotifyConfigResponse, _err error) {
+func (client *Client) DescribeLiveDetectNotifyConfigWithContext(ctx context.Context, request *DescribeLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15136,39 +10923,11 @@ func (client *Client) DescribeLiveDetectNotifyConfigWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDetectNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of callbacks for video moderation results.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for video moderation results.
-//
-//		- Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - DescribeLiveDetectNotifyConfigRequest
-//
-// @return DescribeLiveDetectNotifyConfigResponse
-func (client *Client) DescribeLiveDetectNotifyConfig(request *DescribeLiveDetectNotifyConfigRequest) (_result *DescribeLiveDetectNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDetectNotifyConfigResponse{}
-	_body, _err := client.DescribeLiveDetectNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15193,7 +10952,7 @@ func (client *Client) DescribeLiveDetectNotifyConfig(request *DescribeLiveDetect
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDetectPornDataResponse
-func (client *Client) DescribeLiveDetectPornDataWithOptions(request *DescribeLiveDetectPornDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectPornDataResponse, _err error) {
+func (client *Client) DescribeLiveDetectPornDataWithContext(ctx context.Context, request *DescribeLiveDetectPornDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDetectPornDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15258,41 +11017,11 @@ func (client *Client) DescribeLiveDetectPornDataWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDetectPornDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage data of content moderation.
-//
-// Description:
-//
-//	  The minimum data granularity is 5 minutes. If you do not specify the `StartTime` parameter, data in the last 24 hours is queried.
-//
-//		- You can query data in the last 90 days.
-//
-//		- You can call this operation to query the bandwidth at each interval.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDetectPornDataRequest
-//
-// @return DescribeLiveDetectPornDataResponse
-func (client *Client) DescribeLiveDetectPornData(request *DescribeLiveDetectPornDataRequest) (_result *DescribeLiveDetectPornDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDetectPornDataResponse{}
-	_body, _err := client.DescribeLiveDetectPornDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15321,7 +11050,7 @@ func (client *Client) DescribeLiveDetectPornData(request *DescribeLiveDetectPorn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainBpsDataResponse
-func (client *Client) DescribeLiveDomainBpsDataWithOptions(request *DescribeLiveDomainBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainBpsDataWithContext(ctx context.Context, request *DescribeLiveDomainBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15374,45 +11103,11 @@ func (client *Client) DescribeLiveDomainBpsDataWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bandwidth data for one or more streaming domains.
-//
-// Description:
-//
-//	  You can specify both the StartTime and EndTime parameters to query the data in the specified period of time. If you do not specify the StartTime and EndTime parameters, the data of the last hour is queried by default.
-//
-//		- If you specify only the StartTime parameter but not the EndTime parameter, the data of the hour following the specified start time is queried.
-//
-//		- If you specify only the EndTime parameter but not the StartTime parameter, the data of the hour preceding the specified end time is queried.
-//
-//		- You can query the data in the last 90 days.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainBpsDataRequest
-//
-// @return DescribeLiveDomainBpsDataResponse
-func (client *Client) DescribeLiveDomainBpsData(request *DescribeLiveDomainBpsDataRequest) (_result *DescribeLiveDomainBpsDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainBpsDataResponse{}
-	_body, _err := client.DescribeLiveDomainBpsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15441,7 +11136,7 @@ func (client *Client) DescribeLiveDomainBpsData(request *DescribeLiveDomainBpsDa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainBpsDataByLayerResponse
-func (client *Client) DescribeLiveDomainBpsDataByLayerWithOptions(request *DescribeLiveDomainBpsDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataByLayerResponse, _err error) {
+func (client *Client) DescribeLiveDomainBpsDataByLayerWithContext(ctx context.Context, request *DescribeLiveDomainBpsDataByLayerRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainBpsDataByLayerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15498,45 +11193,11 @@ func (client *Client) DescribeLiveDomainBpsDataByLayerWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainBpsDataByLayerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bandwidth and traffic data by protocol for one or more domain names.
-//
-// Description:
-//
-// You can query data in the last 90 days. You can specify up to 500 domain names. Separate multiple domain names with commas (,). The data of multiple domain names is aggregated and returned. The following section describes the time granularities of the data entries returned depending on the time range specified by the **StartTime*	- and **EndTime*	- parameters:
-//
-//   - If the time range is smaller than or equal to 3 days, the time granularity is 5 minutes.
-//
-//   - If the time range is larger than 3 days but smaller than or equal to 31 days, the time granularity is 1 hour.
-//
-//   - If the time range is larger than 31 days, the time granularity is 1 day.
-//
-// >  If neither the **StartTime*	- nor the **EndTime*	- parameter is specified, the data of the last 24 hours is returned.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainBpsDataByLayerRequest
-//
-// @return DescribeLiveDomainBpsDataByLayerResponse
-func (client *Client) DescribeLiveDomainBpsDataByLayer(request *DescribeLiveDomainBpsDataByLayerRequest) (_result *DescribeLiveDomainBpsDataByLayerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainBpsDataByLayerResponse{}
-	_body, _err := client.DescribeLiveDomainBpsDataByLayerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15557,7 +11218,7 @@ func (client *Client) DescribeLiveDomainBpsDataByLayer(request *DescribeLiveDoma
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainByCertificateResponse
-func (client *Client) DescribeLiveDomainByCertificateWithOptions(request *DescribeLiveDomainByCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainByCertificateResponse, _err error) {
+func (client *Client) DescribeLiveDomainByCertificateWithContext(ctx context.Context, request *DescribeLiveDomainByCertificateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainByCertificateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15594,37 +11255,11 @@ func (client *Client) DescribeLiveDomainByCertificateWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainByCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the accelerated domain names that match a certificate.
-//
-// Description:
-//
-// You can call this operation to query the accelerated domain names that match a certificate.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainByCertificateRequest
-//
-// @return DescribeLiveDomainByCertificateResponse
-func (client *Client) DescribeLiveDomainByCertificate(request *DescribeLiveDomainByCertificateRequest) (_result *DescribeLiveDomainByCertificateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainByCertificateResponse{}
-	_body, _err := client.DescribeLiveDomainByCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15645,7 +11280,7 @@ func (client *Client) DescribeLiveDomainByCertificate(request *DescribeLiveDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainCertificateInfoResponse
-func (client *Client) DescribeLiveDomainCertificateInfoWithOptions(request *DescribeLiveDomainCertificateInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainCertificateInfoResponse, _err error) {
+func (client *Client) DescribeLiveDomainCertificateInfoWithContext(ctx context.Context, request *DescribeLiveDomainCertificateInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainCertificateInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15678,37 +11313,11 @@ func (client *Client) DescribeLiveDomainCertificateInfoWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainCertificateInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries certificate information about a domain name.
-//
-// Description:
-//
-// Obtain a domain name, and then call this operation to query certificate information about the domain name.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainCertificateInfoRequest
-//
-// @return DescribeLiveDomainCertificateInfoResponse
-func (client *Client) DescribeLiveDomainCertificateInfo(request *DescribeLiveDomainCertificateInfoRequest) (_result *DescribeLiveDomainCertificateInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainCertificateInfoResponse{}
-	_body, _err := client.DescribeLiveDomainCertificateInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15729,7 +11338,7 @@ func (client *Client) DescribeLiveDomainCertificateInfo(request *DescribeLiveDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainConfigsResponse
-func (client *Client) DescribeLiveDomainConfigsWithOptions(request *DescribeLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainConfigsResponse, _err error) {
+func (client *Client) DescribeLiveDomainConfigsWithContext(ctx context.Context, request *DescribeLiveDomainConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15766,37 +11375,11 @@ func (client *Client) DescribeLiveDomainConfigsWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more configurations of a domain name.
-//
-// Description:
-//
-// You can call this operation to query multiple configurations at a time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainConfigsRequest
-//
-// @return DescribeLiveDomainConfigsResponse
-func (client *Client) DescribeLiveDomainConfigs(request *DescribeLiveDomainConfigsRequest) (_result *DescribeLiveDomainConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainConfigsResponse{}
-	_body, _err := client.DescribeLiveDomainConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15819,7 +11402,7 @@ func (client *Client) DescribeLiveDomainConfigs(request *DescribeLiveDomainConfi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainDetailResponse
-func (client *Client) DescribeLiveDomainDetailWithOptions(request *DescribeLiveDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainDetailResponse, _err error) {
+func (client *Client) DescribeLiveDomainDetailWithContext(ctx context.Context, request *DescribeLiveDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15852,39 +11435,11 @@ func (client *Client) DescribeLiveDomainDetailWithOptions(request *DescribeLiveD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the basic information about a domain name.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call this operation to query the basic information about an ingest domain or a streaming domain. If you want to query a newly added domain name, wait a few minutes until the configuration of the domain name is completed in ApsaraVideo Live.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainDetailRequest
-//
-// @return DescribeLiveDomainDetailResponse
-func (client *Client) DescribeLiveDomainDetail(request *DescribeLiveDomainDetailRequest) (_result *DescribeLiveDomainDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainDetailResponse{}
-	_body, _err := client.DescribeLiveDomainDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15897,7 +11452,7 @@ func (client *Client) DescribeLiveDomainDetail(request *DescribeLiveDomainDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainEdgeLogResponse
-func (client *Client) DescribeLiveDomainEdgeLogWithOptions(request *DescribeLiveDomainEdgeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainEdgeLogResponse, _err error) {
+func (client *Client) DescribeLiveDomainEdgeLogWithContext(ctx context.Context, request *DescribeLiveDomainEdgeLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainEdgeLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -15946,29 +11501,11 @@ func (client *Client) DescribeLiveDomainEdgeLogWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainEdgeLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 直播离线日志查询地址
-//
-// @param request - DescribeLiveDomainEdgeLogRequest
-//
-// @return DescribeLiveDomainEdgeLogResponse
-func (client *Client) DescribeLiveDomainEdgeLog(request *DescribeLiveDomainEdgeLogRequest) (_result *DescribeLiveDomainEdgeLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainEdgeLogResponse{}
-	_body, _err := client.DescribeLiveDomainEdgeLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -15991,7 +11528,7 @@ func (client *Client) DescribeLiveDomainEdgeLog(request *DescribeLiveDomainEdgeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainFrameRateAndBitRateDataResponse
-func (client *Client) DescribeLiveDomainFrameRateAndBitRateDataWithOptions(request *DescribeLiveDomainFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainFrameRateAndBitRateDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainFrameRateAndBitRateDataWithContext(ctx context.Context, request *DescribeLiveDomainFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainFrameRateAndBitRateDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16028,39 +11565,11 @@ func (client *Client) DescribeLiveDomainFrameRateAndBitRateDataWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainFrameRateAndBitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the frame rates and bitrates of all live streams under an ingest domain.
-//
-// Description:
-//
-// You can call this operation to query the real-time bitrates and frame rates of live streams, which helps you evaluate the stream ingest quality. A delay exists in data collection and statistics. We recommend that you query the data of more than 5 minutes ago.
-//
-// >  Use this operation to replace the deprecated DescribeLiveStreamsFrameRateAndBitRateData operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainFrameRateAndBitRateDataRequest
-//
-// @return DescribeLiveDomainFrameRateAndBitRateDataResponse
-func (client *Client) DescribeLiveDomainFrameRateAndBitRateData(request *DescribeLiveDomainFrameRateAndBitRateDataRequest) (_result *DescribeLiveDomainFrameRateAndBitRateDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainFrameRateAndBitRateDataResponse{}
-	_body, _err := client.DescribeLiveDomainFrameRateAndBitRateDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16081,7 +11590,7 @@ func (client *Client) DescribeLiveDomainFrameRateAndBitRateData(request *Describ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainLimitResponse
-func (client *Client) DescribeLiveDomainLimitWithOptions(request *DescribeLiveDomainLimitRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLimitResponse, _err error) {
+func (client *Client) DescribeLiveDomainLimitWithContext(ctx context.Context, request *DescribeLiveDomainLimitRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLimitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16114,37 +11623,11 @@ func (client *Client) DescribeLiveDomainLimitWithOptions(request *DescribeLiveDo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the maximum numbers of ingested and transcoded streams for a streaming domain.
-//
-// Description:
-//
-// This operation applies only to main streaming domains.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainLimitRequest
-//
-// @return DescribeLiveDomainLimitResponse
-func (client *Client) DescribeLiveDomainLimit(request *DescribeLiveDomainLimitRequest) (_result *DescribeLiveDomainLimitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainLimitResponse{}
-	_body, _err := client.DescribeLiveDomainLimitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16169,7 +11652,7 @@ func (client *Client) DescribeLiveDomainLimit(request *DescribeLiveDomainLimitRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainLogResponse
-func (client *Client) DescribeLiveDomainLogWithOptions(request *DescribeLiveDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogResponse, _err error) {
+func (client *Client) DescribeLiveDomainLogWithContext(ctx context.Context, request *DescribeLiveDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16218,41 +11701,11 @@ func (client *Client) DescribeLiveDomainLogWithOptions(request *DescribeLiveDoma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the address from which you can download the raw access logs of a domain name.
-//
-// Description:
-//
-//	  You can call this operation to query the offline logs of a single domain name.
-//
-//		- The StartTime and EndTime parameters are optional. You can specify both the parameters to query logs that are generated within the specified time period.
-//
-//		- If you do not specify the StartTime and EndTime parameters, logs that are generated in the last 24 hours are queried by default.
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainLogRequest
-//
-// @return DescribeLiveDomainLogResponse
-func (client *Client) DescribeLiveDomainLog(request *DescribeLiveDomainLogRequest) (_result *DescribeLiveDomainLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainLogResponse{}
-	_body, _err := client.DescribeLiveDomainLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16265,7 +11718,7 @@ func (client *Client) DescribeLiveDomainLog(request *DescribeLiveDomainLogReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainLogExTtlResponse
-func (client *Client) DescribeLiveDomainLogExTtlWithOptions(request *DescribeLiveDomainLogExTtlRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogExTtlResponse, _err error) {
+func (client *Client) DescribeLiveDomainLogExTtlWithContext(ctx context.Context, request *DescribeLiveDomainLogExTtlRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainLogExTtlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16314,29 +11767,11 @@ func (client *Client) DescribeLiveDomainLogExTtlWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainLogExTtlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 直播离线日志扩展接口(大客定制)
-//
-// @param request - DescribeLiveDomainLogExTtlRequest
-//
-// @return DescribeLiveDomainLogExTtlResponse
-func (client *Client) DescribeLiveDomainLogExTtl(request *DescribeLiveDomainLogExTtlRequest) (_result *DescribeLiveDomainLogExTtlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainLogExTtlResponse{}
-	_body, _err := client.DescribeLiveDomainLogExTtlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16357,7 +11792,7 @@ func (client *Client) DescribeLiveDomainLogExTtl(request *DescribeLiveDomainLogE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainMappingResponse
-func (client *Client) DescribeLiveDomainMappingWithOptions(request *DescribeLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMappingResponse, _err error) {
+func (client *Client) DescribeLiveDomainMappingWithContext(ctx context.Context, request *DescribeLiveDomainMappingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMappingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16378,37 +11813,11 @@ func (client *Client) DescribeLiveDomainMappingWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainMappingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the mappings of an ingest domain, a main streaming domain, or a sub-streaming domain.
-//
-// Description:
-//
-// Obtain the ingest domain, main streaming domain, or sub-streaming domain, and then call this operation to query the mappings of the domain name.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 500 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainMappingRequest
-//
-// @return DescribeLiveDomainMappingResponse
-func (client *Client) DescribeLiveDomainMapping(request *DescribeLiveDomainMappingRequest) (_result *DescribeLiveDomainMappingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainMappingResponse{}
-	_body, _err := client.DescribeLiveDomainMappingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16435,7 +11844,7 @@ func (client *Client) DescribeLiveDomainMapping(request *DescribeLiveDomainMappi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainMonitoringUsageDataResponse
-func (client *Client) DescribeLiveDomainMonitoringUsageDataWithOptions(request *DescribeLiveDomainMonitoringUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMonitoringUsageDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainMonitoringUsageDataWithContext(ctx context.Context, request *DescribeLiveDomainMonitoringUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMonitoringUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16492,43 +11901,11 @@ func (client *Client) DescribeLiveDomainMonitoringUsageDataWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainMonitoringUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the live monitoring usage data for one or more domain names.
-//
-// Description:
-//
-//	  You can specify one or more domain names. Separate multiple domain names with commas (,).
-//
-//		- You can query data in the last 90 days.
-//
-//		- The data is queried by hour or day.
-//
-//		- The maximum time range for a query is 31 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainMonitoringUsageDataRequest
-//
-// @return DescribeLiveDomainMonitoringUsageDataResponse
-func (client *Client) DescribeLiveDomainMonitoringUsageData(request *DescribeLiveDomainMonitoringUsageDataRequest) (_result *DescribeLiveDomainMonitoringUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainMonitoringUsageDataResponse{}
-	_body, _err := client.DescribeLiveDomainMonitoringUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16541,7 +11918,7 @@ func (client *Client) DescribeLiveDomainMonitoringUsageData(request *DescribeLiv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainMultiStreamConfigResponse
-func (client *Client) DescribeLiveDomainMultiStreamConfigWithOptions(request *DescribeLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMultiStreamConfigResponse, _err error) {
+func (client *Client) DescribeLiveDomainMultiStreamConfigWithContext(ctx context.Context, request *DescribeLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainMultiStreamConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16562,29 +11939,11 @@ func (client *Client) DescribeLiveDomainMultiStreamConfigWithOptions(request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainMultiStreamConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration status of dual-stream disaster recovery.
-//
-// @param request - DescribeLiveDomainMultiStreamConfigRequest
-//
-// @return DescribeLiveDomainMultiStreamConfigResponse
-func (client *Client) DescribeLiveDomainMultiStreamConfig(request *DescribeLiveDomainMultiStreamConfigRequest) (_result *DescribeLiveDomainMultiStreamConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainMultiStreamConfigResponse{}
-	_body, _err := client.DescribeLiveDomainMultiStreamConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16607,7 +11966,7 @@ func (client *Client) DescribeLiveDomainMultiStreamConfig(request *DescribeLiveD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainOnlineUserNumResponse
-func (client *Client) DescribeLiveDomainOnlineUserNumWithOptions(request *DescribeLiveDomainOnlineUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainOnlineUserNumResponse, _err error) {
+func (client *Client) DescribeLiveDomainOnlineUserNumWithContext(ctx context.Context, request *DescribeLiveDomainOnlineUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainOnlineUserNumResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16644,39 +12003,11 @@ func (client *Client) DescribeLiveDomainOnlineUserNumWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainOnlineUserNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of online users at a specified point in time for all live streams under a specified domain name.
-//
-// Description:
-//
-// You can call this operation to collect statistics on the number of online users for only Flash Video (FLV), Real-Time Streaming (RTS), and Real-Time Messaging Protocol (RTMP) streams, but not HTTP Live Streaming (HLS) streams. A delay exists in data collection and statistics. We recommend that you query the data of more than 5 minutes ago.
-//
-// >  Use this operation to replace the deprecated DescribeLiveStreamOnlineUserNum operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 200 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainOnlineUserNumRequest
-//
-// @return DescribeLiveDomainOnlineUserNumResponse
-func (client *Client) DescribeLiveDomainOnlineUserNum(request *DescribeLiveDomainOnlineUserNumRequest) (_result *DescribeLiveDomainOnlineUserNumResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainOnlineUserNumResponse{}
-	_body, _err := client.DescribeLiveDomainOnlineUserNumWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16701,7 +12032,7 @@ func (client *Client) DescribeLiveDomainOnlineUserNum(request *DescribeLiveDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainPublishErrorCodeResponse
-func (client *Client) DescribeLiveDomainPublishErrorCodeWithOptions(request *DescribeLiveDomainPublishErrorCodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPublishErrorCodeResponse, _err error) {
+func (client *Client) DescribeLiveDomainPublishErrorCodeWithContext(ctx context.Context, request *DescribeLiveDomainPublishErrorCodeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPublishErrorCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16746,41 +12077,11 @@ func (client *Client) DescribeLiveDomainPublishErrorCodeWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainPublishErrorCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the HTTP status codes that are returned within a specified period of time under an ingest domain.
-//
-// Description:
-//
-//	  This operation is used to monitor data. The returned data cannot be used as a reference to calculate resource usage for billing.
-//
-//		- You can query data within the previous 90 days.
-//
-//		- The data is delayed for 3 to 5 minutes.
-//
-// ## [](#qps-)QPS limits
-//
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainPublishErrorCodeRequest
-//
-// @return DescribeLiveDomainPublishErrorCodeResponse
-func (client *Client) DescribeLiveDomainPublishErrorCode(request *DescribeLiveDomainPublishErrorCodeRequest) (_result *DescribeLiveDomainPublishErrorCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainPublishErrorCodeResponse{}
-	_body, _err := client.DescribeLiveDomainPublishErrorCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16807,7 +12108,7 @@ func (client *Client) DescribeLiveDomainPublishErrorCode(request *DescribeLiveDo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainPushBpsDataResponse
-func (client *Client) DescribeLiveDomainPushBpsDataWithOptions(request *DescribeLiveDomainPushBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushBpsDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainPushBpsDataWithContext(ctx context.Context, request *DescribeLiveDomainPushBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushBpsDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16860,43 +12161,11 @@ func (client *Client) DescribeLiveDomainPushBpsDataWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainPushBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bandwidth data for one or more ingest domains.
-//
-// Description:
-//
-//	  The bandwidth unit is bit/s.
-//
-//		- You can specify multiple domain names by separating them with commas (,).
-//
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainPushBpsDataRequest
-//
-// @return DescribeLiveDomainPushBpsDataResponse
-func (client *Client) DescribeLiveDomainPushBpsData(request *DescribeLiveDomainPushBpsDataRequest) (_result *DescribeLiveDomainPushBpsDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainPushBpsDataResponse{}
-	_body, _err := client.DescribeLiveDomainPushBpsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -16923,7 +12192,7 @@ func (client *Client) DescribeLiveDomainPushBpsData(request *DescribeLiveDomainP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainPushTrafficDataResponse
-func (client *Client) DescribeLiveDomainPushTrafficDataWithOptions(request *DescribeLiveDomainPushTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushTrafficDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainPushTrafficDataWithContext(ctx context.Context, request *DescribeLiveDomainPushTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPushTrafficDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -16976,43 +12245,11 @@ func (client *Client) DescribeLiveDomainPushTrafficDataWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainPushTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network traffic data for one or more ingest domains.
-//
-// Description:
-//
-//	  The traffic unit is bytes.
-//
-//		- You can specify multiple domain names by separating them with commas (,).
-//
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainPushTrafficDataRequest
-//
-// @return DescribeLiveDomainPushTrafficDataResponse
-func (client *Client) DescribeLiveDomainPushTrafficData(request *DescribeLiveDomainPushTrafficDataRequest) (_result *DescribeLiveDomainPushTrafficDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainPushTrafficDataResponse{}
-	_body, _err := client.DescribeLiveDomainPushTrafficDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17039,7 +12276,7 @@ func (client *Client) DescribeLiveDomainPushTrafficData(request *DescribeLiveDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainPvUvDataResponse
-func (client *Client) DescribeLiveDomainPvUvDataWithOptions(request *DescribeLiveDomainPvUvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPvUvDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainPvUvDataWithContext(ctx context.Context, request *DescribeLiveDomainPvUvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainPvUvDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17080,43 +12317,11 @@ func (client *Client) DescribeLiveDomainPvUvDataWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainPvUvDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the data of page views (PVs) and unique visitors (UVs) of a streaming domain.
-//
-// Description:
-//
-//	  You can call this operation to query the geographical distribution of viewers, the visitor ranking of a streaming domain, and the number of independent requests from IP addresses under a streaming domain within a specified time period.
-//
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
-//
-//		- You can specify only one streaming domain in each request.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainPvUvDataRequest
-//
-// @return DescribeLiveDomainPvUvDataResponse
-func (client *Client) DescribeLiveDomainPvUvData(request *DescribeLiveDomainPvUvDataRequest) (_result *DescribeLiveDomainPvUvDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainPvUvDataResponse{}
-	_body, _err := client.DescribeLiveDomainPvUvDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17143,7 +12348,7 @@ func (client *Client) DescribeLiveDomainPvUvData(request *DescribeLiveDomainPvUv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainRealTimeBpsDataResponse
-func (client *Client) DescribeLiveDomainRealTimeBpsDataWithOptions(request *DescribeLiveDomainRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeBpsDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainRealTimeBpsDataWithContext(ctx context.Context, request *DescribeLiveDomainRealTimeBpsDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeBpsDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17164,43 +12369,11 @@ func (client *Client) DescribeLiveDomainRealTimeBpsDataWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainRealTimeBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bandwidth data that is collected every minute for one or more domain names.
-//
-// Description:
-//
-//	  You can call this operation to query the bandwidth usage of one or more specified domain names.
-//
-//		- You can query data in the last seven days. The time range that is specified by the StartTime and EndTime parameters cannot exceed 24 hours for a query.
-//
-//		- If you specify neither the StartTime parameter nor the EndTime parameter, the data of the last hour is returned.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainRealTimeBpsDataRequest
-//
-// @return DescribeLiveDomainRealTimeBpsDataResponse
-func (client *Client) DescribeLiveDomainRealTimeBpsData(request *DescribeLiveDomainRealTimeBpsDataRequest) (_result *DescribeLiveDomainRealTimeBpsDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainRealTimeBpsDataResponse{}
-	_body, _err := client.DescribeLiveDomainRealTimeBpsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17233,7 +12406,7 @@ func (client *Client) DescribeLiveDomainRealTimeBpsData(request *DescribeLiveDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainRealTimeHttpCodeDataResponse
-func (client *Client) DescribeLiveDomainRealTimeHttpCodeDataWithOptions(request *DescribeLiveDomainRealTimeHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeHttpCodeDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainRealTimeHttpCodeDataWithContext(ctx context.Context, request *DescribeLiveDomainRealTimeHttpCodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeHttpCodeDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17282,49 +12455,11 @@ func (client *Client) DescribeLiveDomainRealTimeHttpCodeDataWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainRealTimeHttpCodeDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the proportions of HTTP status codes returned for one or more domain names. Data is collected every minute.
-//
-// Description:
-//
-// The following table describes the time granularities supported by this operation.
-//
-// |Time granularity|Maximum time range per query|Historical data available|Data delay|
-//
-// |---|---|---|---|
-//
-// |1 minute|1 hour|7 days|5 minutes|
-//
-// |5 minutes|3 days|93 days|15 minutes|
-//
-// |1 hour|31 days|186 days|Usually 4 hours|
-//
-// |1 day|Unlimited|366 days|After 04:00 on the next day|
-//
-// ## QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainRealTimeHttpCodeDataRequest
-//
-// @return DescribeLiveDomainRealTimeHttpCodeDataResponse
-func (client *Client) DescribeLiveDomainRealTimeHttpCodeData(request *DescribeLiveDomainRealTimeHttpCodeDataRequest) (_result *DescribeLiveDomainRealTimeHttpCodeDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainRealTimeHttpCodeDataResponse{}
-	_body, _err := client.DescribeLiveDomainRealTimeHttpCodeDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17351,7 +12486,7 @@ func (client *Client) DescribeLiveDomainRealTimeHttpCodeData(request *DescribeLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainRealTimeTrafficDataResponse
-func (client *Client) DescribeLiveDomainRealTimeTrafficDataWithOptions(request *DescribeLiveDomainRealTimeTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeTrafficDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainRealTimeTrafficDataWithContext(ctx context.Context, request *DescribeLiveDomainRealTimeTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealTimeTrafficDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17400,43 +12535,11 @@ func (client *Client) DescribeLiveDomainRealTimeTrafficDataWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainRealTimeTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network traffic data that is collected in real time for one or more domain names.
-//
-// Description:
-//
-//	  You can call this operation to query the real-time traffic in a region for an Internet service provider (ISP) within a specified period of time under one or more streaming domains.
-//
-//		- If you do not specify the StartTime parameter or the EndTime parameter, the data of the last hour is returned. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// This operation does not have a queries per second (QPS) limit on a single user. You can call this operation based on your business requirements.
-//
-// @param request - DescribeLiveDomainRealTimeTrafficDataRequest
-//
-// @return DescribeLiveDomainRealTimeTrafficDataResponse
-func (client *Client) DescribeLiveDomainRealTimeTrafficData(request *DescribeLiveDomainRealTimeTrafficDataRequest) (_result *DescribeLiveDomainRealTimeTrafficDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainRealTimeTrafficDataResponse{}
-	_body, _err := client.DescribeLiveDomainRealTimeTrafficDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17457,7 +12560,7 @@ func (client *Client) DescribeLiveDomainRealTimeTrafficData(request *DescribeLiv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainRealtimeLogDeliveryResponse
-func (client *Client) DescribeLiveDomainRealtimeLogDeliveryWithOptions(request *DescribeLiveDomainRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) DescribeLiveDomainRealtimeLogDeliveryWithContext(ctx context.Context, request *DescribeLiveDomainRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17478,37 +12581,11 @@ func (client *Client) DescribeLiveDomainRealtimeLogDeliveryWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about real-time log delivery for a domain name.
-//
-// Description:
-//
-// You can call this operation to query the status of real-time log delivery for a domain name. Make sure that the parameter settings meet the requirements.
-//
-// ## QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainRealtimeLogDeliveryRequest
-//
-// @return DescribeLiveDomainRealtimeLogDeliveryResponse
-func (client *Client) DescribeLiveDomainRealtimeLogDelivery(request *DescribeLiveDomainRealtimeLogDeliveryRequest) (_result *DescribeLiveDomainRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainRealtimeLogDeliveryResponse{}
-	_body, _err := client.DescribeLiveDomainRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17539,7 +12616,7 @@ func (client *Client) DescribeLiveDomainRealtimeLogDelivery(request *DescribeLiv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainRecordUsageDataResponse
-func (client *Client) DescribeLiveDomainRecordUsageDataWithOptions(request *DescribeLiveDomainRecordUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRecordUsageDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainRecordUsageDataWithContext(ctx context.Context, request *DescribeLiveDomainRecordUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainRecordUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17592,47 +12669,11 @@ func (client *Client) DescribeLiveDomainRecordUsageDataWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainRecordUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the numbers of live recording channels and container format conversions.
-//
-// Description:
-//
-//	  You can call this operation to query the number of concurrent recording channels on each day and event tracking data at different time intervals. This way, you can measure the peak number of concurrent recording channels on each day or month.
-//
-//		- The number of time shifting channels is not included in the number of recording channels.
-//
-//		- You can query data by domain name or query data for multiple domain names at a time. If you specify multiple domain names, separate them with commas (,).
-//
-//		- If you set the data granularity to 1 minute, the maximum time range to query is 24 hours. You can query data in the last 60 days.
-//
-//		- If you set the data granularity to 1 hour, the maximum time range to query is 31 days. You can query data in the last 180 days.
-//
-//		- If you set the data granularity to 1 day, the maximum time range to query is 90 days. You can query data in the last 366 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainRecordUsageDataRequest
-//
-// @return DescribeLiveDomainRecordUsageDataResponse
-func (client *Client) DescribeLiveDomainRecordUsageData(request *DescribeLiveDomainRecordUsageDataRequest) (_result *DescribeLiveDomainRecordUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainRecordUsageDataResponse{}
-	_body, _err := client.DescribeLiveDomainRecordUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17655,7 +12696,7 @@ func (client *Client) DescribeLiveDomainRecordUsageData(request *DescribeLiveDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainSnapshotDataResponse
-func (client *Client) DescribeLiveDomainSnapshotDataWithOptions(request *DescribeLiveDomainSnapshotDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainSnapshotDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainSnapshotDataWithContext(ctx context.Context, request *DescribeLiveDomainSnapshotDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainSnapshotDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17696,39 +12737,11 @@ func (client *Client) DescribeLiveDomainSnapshotDataWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainSnapshotDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of snapshots for one or more streaming domains.
-//
-// Description:
-//
-//	  You can call this operation to collect statistics on the total number of snapshots on a day.
-//
-//		- You can query data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// This operation does not have a queries per second (QPS) limit on a single user. You can call this operation based on your business requirements.
-//
-// @param request - DescribeLiveDomainSnapshotDataRequest
-//
-// @return DescribeLiveDomainSnapshotDataResponse
-func (client *Client) DescribeLiveDomainSnapshotData(request *DescribeLiveDomainSnapshotDataRequest) (_result *DescribeLiveDomainSnapshotDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainSnapshotDataResponse{}
-	_body, _err := client.DescribeLiveDomainSnapshotDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17751,7 +12764,7 @@ func (client *Client) DescribeLiveDomainSnapshotData(request *DescribeLiveDomain
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainStagingConfigResponse
-func (client *Client) DescribeLiveDomainStagingConfigWithOptions(request *DescribeLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStagingConfigResponse, _err error) {
+func (client *Client) DescribeLiveDomainStagingConfigWithContext(ctx context.Context, request *DescribeLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStagingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17788,39 +12801,11 @@ func (client *Client) DescribeLiveDomainStagingConfigWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainStagingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the feature configurations of an accelerated domain name in the canary release environment.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call this operation to query the feature configurations of an accelerated domain name in the canary release environment.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDomainStagingConfigRequest
-//
-// @return DescribeLiveDomainStagingConfigResponse
-func (client *Client) DescribeLiveDomainStagingConfig(request *DescribeLiveDomainStagingConfigRequest) (_result *DescribeLiveDomainStagingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainStagingConfigResponse{}
-	_body, _err := client.DescribeLiveDomainStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17849,7 +12834,7 @@ func (client *Client) DescribeLiveDomainStagingConfig(request *DescribeLiveDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainStreamTranscodeDataResponse
-func (client *Client) DescribeLiveDomainStreamTranscodeDataWithOptions(request *DescribeLiveDomainStreamTranscodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainStreamTranscodeDataWithContext(ctx context.Context, request *DescribeLiveDomainStreamTranscodeDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -17902,45 +12887,11 @@ func (client *Client) DescribeLiveDomainStreamTranscodeDataWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainStreamTranscodeDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the transcoding length for one or more domain names.
-//
-// Description:
-//
-//	  You can call this operation to collect the transcoding usage data at each time interval.
-//
-//		- You can specify multiple domain names by separating them with commas (,).
-//
-//		- You can query data in the last 90 days.
-//
-//		- The time granularity of data is 1 hour or 1 day.
-//
-//		- For information about the billing of different transcoding types and transcoding resolutions, see the description about billing of different transcoding specifications in transcoding bills in the [Billing of live stream transcoding](https://help.aliyun.com/document_detail/90424.html) section of the ApsaraVideo Live pricing page.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainStreamTranscodeDataRequest
-//
-// @return DescribeLiveDomainStreamTranscodeDataResponse
-func (client *Client) DescribeLiveDomainStreamTranscodeData(request *DescribeLiveDomainStreamTranscodeDataRequest) (_result *DescribeLiveDomainStreamTranscodeDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainStreamTranscodeDataResponse{}
-	_body, _err := client.DescribeLiveDomainStreamTranscodeDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -17967,7 +12918,7 @@ func (client *Client) DescribeLiveDomainStreamTranscodeData(request *DescribeLiv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainTimeShiftDataResponse
-func (client *Client) DescribeLiveDomainTimeShiftDataWithOptions(request *DescribeLiveDomainTimeShiftDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTimeShiftDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainTimeShiftDataWithContext(ctx context.Context, request *DescribeLiveDomainTimeShiftDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTimeShiftDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18012,43 +12963,11 @@ func (client *Client) DescribeLiveDomainTimeShiftDataWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainTimeShiftDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource usage data of time shifting for one or more domain names.
-//
-// Description:
-//
-//	  You can call this operation to query the time shifting usage data at each time interval.
-//
-//		- You can query data in the last 90 days.
-//
-//		- The time interval is 1 hour.
-//
-//		- The maximum time range for a query is 31 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainTimeShiftDataRequest
-//
-// @return DescribeLiveDomainTimeShiftDataResponse
-func (client *Client) DescribeLiveDomainTimeShiftData(request *DescribeLiveDomainTimeShiftDataRequest) (_result *DescribeLiveDomainTimeShiftDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainTimeShiftDataResponse{}
-	_body, _err := client.DescribeLiveDomainTimeShiftDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18071,7 +12990,7 @@ func (client *Client) DescribeLiveDomainTimeShiftData(request *DescribeLiveDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainTrafficDataResponse
-func (client *Client) DescribeLiveDomainTrafficDataWithOptions(request *DescribeLiveDomainTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTrafficDataResponse, _err error) {
+func (client *Client) DescribeLiveDomainTrafficDataWithContext(ctx context.Context, request *DescribeLiveDomainTrafficDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTrafficDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18124,39 +13043,11 @@ func (client *Client) DescribeLiveDomainTrafficDataWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network traffic data for one or more domain names.
-//
-// Description:
-//
-//	  If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is returned.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveDomainTrafficDataRequest
-//
-// @return DescribeLiveDomainTrafficDataResponse
-func (client *Client) DescribeLiveDomainTrafficData(request *DescribeLiveDomainTrafficDataRequest) (_result *DescribeLiveDomainTrafficDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainTrafficDataResponse{}
-	_body, _err := client.DescribeLiveDomainTrafficDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18165,7 +13056,7 @@ func (client *Client) DescribeLiveDomainTrafficData(request *DescribeLiveDomainT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDomainTranscodeParamsResponse
-func (client *Client) DescribeLiveDomainTranscodeParamsWithOptions(request *DescribeLiveDomainTranscodeParamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTranscodeParamsResponse, _err error) {
+func (client *Client) DescribeLiveDomainTranscodeParamsWithContext(ctx context.Context, request *DescribeLiveDomainTranscodeParamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDomainTranscodeParamsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18202,25 +13093,11 @@ func (client *Client) DescribeLiveDomainTranscodeParamsWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDomainTranscodeParamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeLiveDomainTranscodeParamsRequest
-//
-// @return DescribeLiveDomainTranscodeParamsResponse
-func (client *Client) DescribeLiveDomainTranscodeParams(request *DescribeLiveDomainTranscodeParamsRequest) (_result *DescribeLiveDomainTranscodeParamsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDomainTranscodeParamsResponse{}
-	_body, _err := client.DescribeLiveDomainTranscodeParamsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18241,7 +13118,7 @@ func (client *Client) DescribeLiveDomainTranscodeParams(request *DescribeLiveDom
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveDrmUsageDataResponse
-func (client *Client) DescribeLiveDrmUsageDataWithOptions(request *DescribeLiveDrmUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDrmUsageDataResponse, _err error) {
+func (client *Client) DescribeLiveDrmUsageDataWithContext(ctx context.Context, request *DescribeLiveDrmUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveDrmUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18290,37 +13167,11 @@ func (client *Client) DescribeLiveDrmUsageDataWithOptions(request *DescribeLiveD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveDrmUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// ### [](#)Usage notes
-//
-//   - You can query data in the previous 90 days.
-//
-//   - The maximum time range to query is 31 days.
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveDrmUsageDataRequest
-//
-// @return DescribeLiveDrmUsageDataResponse
-func (client *Client) DescribeLiveDrmUsageData(request *DescribeLiveDrmUsageDataRequest) (_result *DescribeLiveDrmUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveDrmUsageDataResponse{}
-	_body, _err := client.DescribeLiveDrmUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18341,7 +13192,7 @@ func (client *Client) DescribeLiveDrmUsageData(request *DescribeLiveDrmUsageData
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveEdgeTransferResponse
-func (client *Client) DescribeLiveEdgeTransferWithOptions(request *DescribeLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveEdgeTransferResponse, _err error) {
+func (client *Client) DescribeLiveEdgeTransferWithContext(ctx context.Context, request *DescribeLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveEdgeTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18374,37 +13225,11 @@ func (client *Client) DescribeLiveEdgeTransferWithOptions(request *DescribeLiveE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveEdgeTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of edge stream relay.
-//
-// Description:
-//
-// Obtain the ingest domain, and then call this operation to query the configuration of edge stream relay.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveEdgeTransferRequest
-//
-// @return DescribeLiveEdgeTransferResponse
-func (client *Client) DescribeLiveEdgeTransfer(request *DescribeLiveEdgeTransferRequest) (_result *DescribeLiveEdgeTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveEdgeTransferResponse{}
-	_body, _err := client.DescribeLiveEdgeTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18429,7 +13254,7 @@ func (client *Client) DescribeLiveEdgeTransfer(request *DescribeLiveEdgeTransfer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveGrtnDurationResponse
-func (client *Client) DescribeLiveGrtnDurationWithOptions(request *DescribeLiveGrtnDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveGrtnDurationResponse, _err error) {
+func (client *Client) DescribeLiveGrtnDurationWithContext(ctx context.Context, request *DescribeLiveGrtnDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveGrtnDurationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18478,41 +13303,11 @@ func (client *Client) DescribeLiveGrtnDurationWithOptions(request *DescribeLiveG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveGrtnDurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the co-streaming usage data.
-//
-// Description:
-//
-//	  The maximum time range for a query is 31 days.
-//
-//		- The minimum time granularity for a query is 5 minutes.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveGrtnDurationRequest
-//
-// @return DescribeLiveGrtnDurationResponse
-func (client *Client) DescribeLiveGrtnDuration(request *DescribeLiveGrtnDurationRequest) (_result *DescribeLiveGrtnDurationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveGrtnDurationResponse{}
-	_body, _err := client.DescribeLiveGrtnDurationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18533,7 +13328,7 @@ func (client *Client) DescribeLiveGrtnDuration(request *DescribeLiveGrtnDuration
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveHttpsDomainListResponse
-func (client *Client) DescribeLiveHttpsDomainListWithOptions(request *DescribeLiveHttpsDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveHttpsDomainListResponse, _err error) {
+func (client *Client) DescribeLiveHttpsDomainListWithContext(ctx context.Context, request *DescribeLiveHttpsDomainListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveHttpsDomainListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18574,37 +13369,11 @@ func (client *Client) DescribeLiveHttpsDomainListWithOptions(request *DescribeLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveHttpsDomainListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about all certificates that you have configured.
-//
-// Description:
-//
-// You can call this operation to query the information about all certificates that you have configured.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveHttpsDomainListRequest
-//
-// @return DescribeLiveHttpsDomainListResponse
-func (client *Client) DescribeLiveHttpsDomainList(request *DescribeLiveHttpsDomainListRequest) (_result *DescribeLiveHttpsDomainListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveHttpsDomainListResponse{}
-	_body, _err := client.DescribeLiveHttpsDomainListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18627,7 +13396,7 @@ func (client *Client) DescribeLiveHttpsDomainList(request *DescribeLiveHttpsDoma
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveInteractionMetricDataResponse
-func (client *Client) DescribeLiveInteractionMetricDataWithOptions(request *DescribeLiveInteractionMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveInteractionMetricDataResponse, _err error) {
+func (client *Client) DescribeLiveInteractionMetricDataWithContext(ctx context.Context, request *DescribeLiveInteractionMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveInteractionMetricDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18672,39 +13441,11 @@ func (client *Client) DescribeLiveInteractionMetricDataWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveInteractionMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metric data of ApsaraVideo Real-time Communication (ARTC).
-//
-// Description:
-//
-//	  You can query data in the last 30 days. The time range for a query cannot exceed 24 hours.
-//
-//		- The time granularity for a query is 5 minutes.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveInteractionMetricDataRequest
-//
-// @return DescribeLiveInteractionMetricDataResponse
-func (client *Client) DescribeLiveInteractionMetricData(request *DescribeLiveInteractionMetricDataRequest) (_result *DescribeLiveInteractionMetricDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveInteractionMetricDataResponse{}
-	_body, _err := client.DescribeLiveInteractionMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18723,7 +13464,7 @@ func (client *Client) DescribeLiveInteractionMetricData(request *DescribeLiveInt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveIpInfoResponse
-func (client *Client) DescribeLiveIpInfoWithOptions(request *DescribeLiveIpInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveIpInfoResponse, _err error) {
+func (client *Client) DescribeLiveIpInfoWithContext(ctx context.Context, request *DescribeLiveIpInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveIpInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18756,35 +13497,11 @@ func (client *Client) DescribeLiveIpInfoWithOptions(request *DescribeLiveIpInfoR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveIpInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether a specified IP address belongs to an Alibaba Cloud point of presence (POP).
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveIpInfoRequest
-//
-// @return DescribeLiveIpInfoResponse
-func (client *Client) DescribeLiveIpInfo(request *DescribeLiveIpInfoRequest) (_result *DescribeLiveIpInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveIpInfoResponse{}
-	_body, _err := client.DescribeLiveIpInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18807,7 +13524,7 @@ func (client *Client) DescribeLiveIpInfo(request *DescribeLiveIpInfoRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveLazyPullStreamConfigResponse
-func (client *Client) DescribeLiveLazyPullStreamConfigWithOptions(request *DescribeLiveLazyPullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveLazyPullStreamConfigResponse, _err error) {
+func (client *Client) DescribeLiveLazyPullStreamConfigWithContext(ctx context.Context, request *DescribeLiveLazyPullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveLazyPullStreamConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18844,39 +13561,11 @@ func (client *Client) DescribeLiveLazyPullStreamConfigWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveLazyPullStreamConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of triggered stream pulling for a streaming domain.
-//
-// Description:
-//
-// ##
-//
-// This operation is applicable to regular stream pulling. You can call this operation to query the configurations of regular stream pulling for a domain name.
-//
-// ## QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveLazyPullStreamConfigRequest
-//
-// @return DescribeLiveLazyPullStreamConfigResponse
-func (client *Client) DescribeLiveLazyPullStreamConfig(request *DescribeLiveLazyPullStreamConfigRequest) (_result *DescribeLiveLazyPullStreamConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveLazyPullStreamConfigResponse{}
-	_body, _err := client.DescribeLiveLazyPullStreamConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18893,7 +13582,7 @@ func (client *Client) DescribeLiveLazyPullStreamConfig(request *DescribeLiveLazy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveMessageAppResponse
-func (client *Client) DescribeLiveMessageAppWithOptions(request *DescribeLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageAppResponse, _err error) {
+func (client *Client) DescribeLiveMessageAppWithContext(ctx context.Context, request *DescribeLiveMessageAppRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -18922,33 +13611,11 @@ func (client *Client) DescribeLiveMessageAppWithOptions(request *DescribeLiveMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Interactive Message App
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveMessageAppRequest
-//
-// @return DescribeLiveMessageAppResponse
-func (client *Client) DescribeLiveMessageApp(request *DescribeLiveMessageAppRequest) (_result *DescribeLiveMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveMessageAppResponse{}
-	_body, _err := client.DescribeLiveMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -18969,7 +13636,7 @@ func (client *Client) DescribeLiveMessageApp(request *DescribeLiveMessageAppRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveMessageGroupResponse
-func (client *Client) DescribeLiveMessageGroupWithOptions(request *DescribeLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupResponse, _err error) {
+func (client *Client) DescribeLiveMessageGroupWithContext(ctx context.Context, request *DescribeLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19002,37 +13669,11 @@ func (client *Client) DescribeLiveMessageGroupWithOptions(request *DescribeLiveM
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an interactive messaging group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848162.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveMessageGroupRequest
-//
-// @return DescribeLiveMessageGroupResponse
-func (client *Client) DescribeLiveMessageGroup(request *DescribeLiveMessageGroupRequest) (_result *DescribeLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveMessageGroupResponse{}
-	_body, _err := client.DescribeLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19053,7 +13694,7 @@ func (client *Client) DescribeLiveMessageGroup(request *DescribeLiveMessageGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveMessageGroupBandResponse
-func (client *Client) DescribeLiveMessageGroupBandWithOptions(request *DescribeLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupBandResponse, _err error) {
+func (client *Client) DescribeLiveMessageGroupBandWithContext(ctx context.Context, request *DescribeLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveMessageGroupBandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19086,37 +13727,11 @@ func (client *Client) DescribeLiveMessageGroupBandWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveMessageGroupBandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the mute status of users.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveMessageGroupBandRequest
-//
-// @return DescribeLiveMessageGroupBandResponse
-func (client *Client) DescribeLiveMessageGroupBand(request *DescribeLiveMessageGroupBandRequest) (_result *DescribeLiveMessageGroupBandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveMessageGroupBandResponse{}
-	_body, _err := client.DescribeLiveMessageGroupBandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19133,7 +13748,7 @@ func (client *Client) DescribeLiveMessageGroupBand(request *DescribeLiveMessageG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePackageConfigResponse
-func (client *Client) DescribeLivePackageConfigWithOptions(request *DescribeLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePackageConfigResponse, _err error) {
+func (client *Client) DescribeLivePackageConfigWithContext(ctx context.Context, request *DescribeLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePackageConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19186,33 +13801,11 @@ func (client *Client) DescribeLivePackageConfigWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePackageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query live stream encapsulation configurations.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePackageConfigRequest
-//
-// @return DescribeLivePackageConfigResponse
-func (client *Client) DescribeLivePackageConfig(request *DescribeLivePackageConfigRequest) (_result *DescribeLivePackageConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePackageConfigResponse{}
-	_body, _err := client.DescribeLivePackageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19233,7 +13826,7 @@ func (client *Client) DescribeLivePackageConfig(request *DescribeLivePackageConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePrivateLineAreasResponse
-func (client *Client) DescribeLivePrivateLineAreasWithOptions(request *DescribeLivePrivateLineAreasRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAreasResponse, _err error) {
+func (client *Client) DescribeLivePrivateLineAreasWithContext(ctx context.Context, request *DescribeLivePrivateLineAreasRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAreasResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19266,37 +13859,11 @@ func (client *Client) DescribeLivePrivateLineAreasWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePrivateLineAreasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available access points where acceleration circuits start.
-//
-// Description:
-//
-// Before you call the CreateLivePrivateLine operation, you can call this operation to query available acceleration regions, which are access points where acceleration circuits start.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePrivateLineAreasRequest
-//
-// @return DescribeLivePrivateLineAreasResponse
-func (client *Client) DescribeLivePrivateLineAreas(request *DescribeLivePrivateLineAreasRequest) (_result *DescribeLivePrivateLineAreasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePrivateLineAreasResponse{}
-	_body, _err := client.DescribeLivePrivateLineAreasWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19317,7 +13884,7 @@ func (client *Client) DescribeLivePrivateLineAreas(request *DescribeLivePrivateL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePrivateLineAvailGAResponse
-func (client *Client) DescribeLivePrivateLineAvailGAWithOptions(request *DescribeLivePrivateLineAvailGARequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAvailGAResponse, _err error) {
+func (client *Client) DescribeLivePrivateLineAvailGAWithContext(ctx context.Context, request *DescribeLivePrivateLineAvailGARequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePrivateLineAvailGAResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19370,37 +13937,11 @@ func (client *Client) DescribeLivePrivateLineAvailGAWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePrivateLineAvailGAResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the binding information between Global Accelerator (GA) instances and acceleration circuits.
-//
-// Description:
-//
-// If you set the IsGaInstance parameter to yes, the status of GA instances is queried. If you set the IsGaInstance parameter to no, the binding information between GA instances and acceleration circuits is queried.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePrivateLineAvailGARequest
-//
-// @return DescribeLivePrivateLineAvailGAResponse
-func (client *Client) DescribeLivePrivateLineAvailGA(request *DescribeLivePrivateLineAvailGARequest) (_result *DescribeLivePrivateLineAvailGAResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePrivateLineAvailGAResponse{}
-	_body, _err := client.DescribeLivePrivateLineAvailGAWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19421,7 +13962,7 @@ func (client *Client) DescribeLivePrivateLineAvailGA(request *DescribeLivePrivat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveProducerUsageDataResponse
-func (client *Client) DescribeLiveProducerUsageDataWithOptions(request *DescribeLiveProducerUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveProducerUsageDataResponse, _err error) {
+func (client *Client) DescribeLiveProducerUsageDataWithContext(ctx context.Context, request *DescribeLiveProducerUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveProducerUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19486,37 +14027,11 @@ func (client *Client) DescribeLiveProducerUsageDataWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveProducerUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the production studio usage data.
-//
-// Description:
-//
-// The minimum time granularity for a query is 1 hour. The maximum time range for a query is 31 days. You can query the production studio usage data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveProducerUsageDataRequest
-//
-// @return DescribeLiveProducerUsageDataResponse
-func (client *Client) DescribeLiveProducerUsageData(request *DescribeLiveProducerUsageDataRequest) (_result *DescribeLiveProducerUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveProducerUsageDataResponse{}
-	_body, _err := client.DescribeLiveProducerUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19539,7 +14054,7 @@ func (client *Client) DescribeLiveProducerUsageData(request *DescribeLiveProduce
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePullStreamConfigResponse
-func (client *Client) DescribeLivePullStreamConfigWithOptions(request *DescribeLivePullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullStreamConfigResponse, _err error) {
+func (client *Client) DescribeLivePullStreamConfigWithContext(ctx context.Context, request *DescribeLivePullStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullStreamConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19572,39 +14087,11 @@ func (client *Client) DescribeLivePullStreamConfigWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePullStreamConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream pulling configurations for a domain name.
-//
-// Description:
-//
-// ##
-//
-// This operation is applicable to regular stream pulling. You can call this operation to query the regular stream pulling configurations for a domain name.
-//
-// ## QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLivePullStreamConfigRequest
-//
-// @return DescribeLivePullStreamConfigResponse
-func (client *Client) DescribeLivePullStreamConfig(request *DescribeLivePullStreamConfigRequest) (_result *DescribeLivePullStreamConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePullStreamConfigResponse{}
-	_body, _err := client.DescribeLivePullStreamConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19627,7 +14114,7 @@ func (client *Client) DescribeLivePullStreamConfig(request *DescribeLivePullStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePullToPushResponse
-func (client *Client) DescribeLivePullToPushWithOptions(request *DescribeLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushResponse, _err error) {
+func (client *Client) DescribeLivePullToPushWithContext(ctx context.Context, request *DescribeLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19648,39 +14135,11 @@ func (client *Client) DescribeLivePullToPushWithOptions(request *DescribeLivePul
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries pulled-stream relay tasks.
-//
-// Description:
-//
-//	  You can call this operation to query the information about a pulled-stream relay task.
-//
-//		- This operation allows you to query the configurations and status of a task with a specified ID.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePullToPushRequest
-//
-// @return DescribeLivePullToPushResponse
-func (client *Client) DescribeLivePullToPush(request *DescribeLivePullToPushRequest) (_result *DescribeLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePullToPushResponse{}
-	_body, _err := client.DescribeLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19703,7 +14162,7 @@ func (client *Client) DescribeLivePullToPush(request *DescribeLivePullToPushRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePullToPushListResponse
-func (client *Client) DescribeLivePullToPushListWithOptions(request *DescribeLivePullToPushListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushListResponse, _err error) {
+func (client *Client) DescribeLivePullToPushListWithContext(ctx context.Context, request *DescribeLivePullToPushListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePullToPushListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19724,39 +14183,11 @@ func (client *Client) DescribeLivePullToPushListWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePullToPushListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries pulled-stream relay tasks. Fuzzy match is supported.
-//
-// Description:
-//
-//	  You can call this operation to query pulled-stream relay tasks.
-//
-//		- You can query tasks by page. Fuzzy search is supported based on task IDs, task names, and destination URLs.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePullToPushListRequest
-//
-// @return DescribeLivePullToPushListResponse
-func (client *Client) DescribeLivePullToPushList(request *DescribeLivePullToPushListRequest) (_result *DescribeLivePullToPushListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePullToPushListResponse{}
-	_body, _err := client.DescribeLivePullToPushListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19781,7 +14212,7 @@ func (client *Client) DescribeLivePullToPushList(request *DescribeLivePullToPush
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePushProxyLogResponse
-func (client *Client) DescribeLivePushProxyLogWithOptions(request *DescribeLivePushProxyLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyLogResponse, _err error) {
+func (client *Client) DescribeLivePushProxyLogWithContext(ctx context.Context, request *DescribeLivePushProxyLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19830,41 +14261,11 @@ func (client *Client) DescribeLivePushProxyLogWithOptions(request *DescribeLiveP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePushProxyLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream relay logs, which are available for download.
-//
-// Description:
-//
-//	  The time granularity of the data is 1 hour.
-//
-//		- You can query data in the last 31 days.
-//
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePushProxyLogRequest
-//
-// @return DescribeLivePushProxyLogResponse
-func (client *Client) DescribeLivePushProxyLog(request *DescribeLivePushProxyLogRequest) (_result *DescribeLivePushProxyLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePushProxyLogResponse{}
-	_body, _err := client.DescribeLivePushProxyLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -19891,7 +14292,7 @@ func (client *Client) DescribeLivePushProxyLog(request *DescribeLivePushProxyLog
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLivePushProxyUsageDataResponse
-func (client *Client) DescribeLivePushProxyUsageDataWithOptions(request *DescribeLivePushProxyUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyUsageDataResponse, _err error) {
+func (client *Client) DescribeLivePushProxyUsageDataWithContext(ctx context.Context, request *DescribeLivePushProxyUsageDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLivePushProxyUsageDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -19940,43 +14341,11 @@ func (client *Client) DescribeLivePushProxyUsageDataWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLivePushProxyUsageDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage data of live center stream relay.
-//
-// Description:
-//
-//	  You can call this operation to query the usage data of live center stream relay.
-//
-//		- The maximum time range for a query is 31 days.
-//
-//		- The minimum time granularity for a query is 1 day.
-//
-//		- You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLivePushProxyUsageDataRequest
-//
-// @return DescribeLivePushProxyUsageDataResponse
-func (client *Client) DescribeLivePushProxyUsageData(request *DescribeLivePushProxyUsageDataRequest) (_result *DescribeLivePushProxyUsageDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLivePushProxyUsageDataResponse{}
-	_body, _err := client.DescribeLivePushProxyUsageDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20001,7 +14370,7 @@ func (client *Client) DescribeLivePushProxyUsageData(request *DescribeLivePushPr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRealtimeDeliveryAccResponse
-func (client *Client) DescribeLiveRealtimeDeliveryAccWithOptions(request *DescribeLiveRealtimeDeliveryAccRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeDeliveryAccResponse, _err error) {
+func (client *Client) DescribeLiveRealtimeDeliveryAccWithContext(ctx context.Context, request *DescribeLiveRealtimeDeliveryAccRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeDeliveryAccResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20054,41 +14423,11 @@ func (client *Client) DescribeLiveRealtimeDeliveryAccWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRealtimeDeliveryAccResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of real-time log deliveries.
-//
-// Description:
-//
-//	  You can collect statistics on the number of real-time log deliveries. The number of failed real-time log deliveries and the number of successful real-time log deliveries are counted.
-//
-//		- You can query the data by UID.
-//
-//		- You are charged for both successful and failed real-time log deliveries.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveRealtimeDeliveryAccRequest
-//
-// @return DescribeLiveRealtimeDeliveryAccResponse
-func (client *Client) DescribeLiveRealtimeDeliveryAcc(request *DescribeLiveRealtimeDeliveryAccRequest) (_result *DescribeLiveRealtimeDeliveryAccResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRealtimeDeliveryAccResponse{}
-	_body, _err := client.DescribeLiveRealtimeDeliveryAccWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20109,7 +14448,7 @@ func (client *Client) DescribeLiveRealtimeDeliveryAcc(request *DescribeLiveRealt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRealtimeLogAuthorizedResponse
-func (client *Client) DescribeLiveRealtimeLogAuthorizedWithOptions(request *DescribeLiveRealtimeLogAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeLogAuthorizedResponse, _err error) {
+func (client *Client) DescribeLiveRealtimeLogAuthorizedWithContext(ctx context.Context, request *DescribeLiveRealtimeLogAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRealtimeLogAuthorizedResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20130,37 +14469,11 @@ func (client *Client) DescribeLiveRealtimeLogAuthorizedWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRealtimeLogAuthorizedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of authorization for real-time log delivery.
-//
-// Description:
-//
-// You can call this operation to query the status of authorization for real-time log delivery.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveRealtimeLogAuthorizedRequest
-//
-// @return DescribeLiveRealtimeLogAuthorizedResponse
-func (client *Client) DescribeLiveRealtimeLogAuthorized(request *DescribeLiveRealtimeLogAuthorizedRequest) (_result *DescribeLiveRealtimeLogAuthorizedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRealtimeLogAuthorizedResponse{}
-	_body, _err := client.DescribeLiveRealtimeLogAuthorizedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20181,7 +14494,7 @@ func (client *Client) DescribeLiveRealtimeLogAuthorized(request *DescribeLiveRea
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRecordConfigResponse
-func (client *Client) DescribeLiveRecordConfigWithOptions(request *DescribeLiveRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordConfigResponse, _err error) {
+func (client *Client) DescribeLiveRecordConfigWithContext(ctx context.Context, request *DescribeLiveRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20234,37 +14547,11 @@ func (client *Client) DescribeLiveRecordConfigWithOptions(request *DescribeLiveR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRecordConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all recording configurations of an application for a streaming domain.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the recording configurations of all applications under the main streaming domain.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveRecordConfigRequest
-//
-// @return DescribeLiveRecordConfigResponse
-func (client *Client) DescribeLiveRecordConfig(request *DescribeLiveRecordConfigRequest) (_result *DescribeLiveRecordConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRecordConfigResponse{}
-	_body, _err := client.DescribeLiveRecordConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20285,7 +14572,7 @@ func (client *Client) DescribeLiveRecordConfig(request *DescribeLiveRecordConfig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRecordNotifyConfigResponse
-func (client *Client) DescribeLiveRecordNotifyConfigWithOptions(request *DescribeLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyConfigResponse, _err error) {
+func (client *Client) DescribeLiveRecordNotifyConfigWithContext(ctx context.Context, request *DescribeLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20318,37 +14605,11 @@ func (client *Client) DescribeLiveRecordNotifyConfigWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRecordNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of callbacks for live stream recording under a domain name.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for live stream recording under the domain name.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveRecordNotifyConfigRequest
-//
-// @return DescribeLiveRecordNotifyConfigResponse
-func (client *Client) DescribeLiveRecordNotifyConfig(request *DescribeLiveRecordNotifyConfigRequest) (_result *DescribeLiveRecordNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRecordNotifyConfigResponse{}
-	_body, _err := client.DescribeLiveRecordNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20365,7 +14626,7 @@ func (client *Client) DescribeLiveRecordNotifyConfig(request *DescribeLiveRecord
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRecordNotifyRecordsResponse
-func (client *Client) DescribeLiveRecordNotifyRecordsWithOptions(request *DescribeLiveRecordNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyRecordsResponse, _err error) {
+func (client *Client) DescribeLiveRecordNotifyRecordsWithContext(ctx context.Context, request *DescribeLiveRecordNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordNotifyRecordsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20426,33 +14687,11 @@ func (client *Client) DescribeLiveRecordNotifyRecordsWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRecordNotifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the recording callback records that are stored in Object Storage Service (OSS).
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveRecordNotifyRecordsRequest
-//
-// @return DescribeLiveRecordNotifyRecordsResponse
-func (client *Client) DescribeLiveRecordNotifyRecords(request *DescribeLiveRecordNotifyRecordsRequest) (_result *DescribeLiveRecordNotifyRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRecordNotifyRecordsResponse{}
-	_body, _err := client.DescribeLiveRecordNotifyRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20475,7 +14714,7 @@ func (client *Client) DescribeLiveRecordNotifyRecords(request *DescribeLiveRecor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveRecordVodConfigsResponse
-func (client *Client) DescribeLiveRecordVodConfigsWithOptions(request *DescribeLiveRecordVodConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordVodConfigsResponse, _err error) {
+func (client *Client) DescribeLiveRecordVodConfigsWithContext(ctx context.Context, request *DescribeLiveRecordVodConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveRecordVodConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20524,39 +14763,11 @@ func (client *Client) DescribeLiveRecordVodConfigsWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveRecordVodConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Live-to-VOD configurations.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Obtain the streaming domain, and then call this operation to query the Live-to-VOD configurations.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveRecordVodConfigsRequest
-//
-// @return DescribeLiveRecordVodConfigsResponse
-func (client *Client) DescribeLiveRecordVodConfigs(request *DescribeLiveRecordVodConfigsRequest) (_result *DescribeLiveRecordVodConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveRecordVodConfigsResponse{}
-	_body, _err := client.DescribeLiveRecordVodConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20577,7 +14788,7 @@ func (client *Client) DescribeLiveRecordVodConfigs(request *DescribeLiveRecordVo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveShiftConfigsResponse
-func (client *Client) DescribeLiveShiftConfigsWithOptions(request *DescribeLiveShiftConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveShiftConfigsResponse, _err error) {
+func (client *Client) DescribeLiveShiftConfigsWithContext(ctx context.Context, request *DescribeLiveShiftConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveShiftConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20610,37 +14821,11 @@ func (client *Client) DescribeLiveShiftConfigsWithOptions(request *DescribeLiveS
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveShiftConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the time shifting configurations under a domain name.
-//
-// Description:
-//
-// This operation is applicable to the streaming domains.
-//
-// ## QPS limit
-//
-// A single user can perform a maximum of 10 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
-//
-// @param request - DescribeLiveShiftConfigsRequest
-//
-// @return DescribeLiveShiftConfigsResponse
-func (client *Client) DescribeLiveShiftConfigs(request *DescribeLiveShiftConfigsRequest) (_result *DescribeLiveShiftConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveShiftConfigsResponse{}
-	_body, _err := client.DescribeLiveShiftConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20661,7 +14846,7 @@ func (client *Client) DescribeLiveShiftConfigs(request *DescribeLiveShiftConfigs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveSnapshotConfigResponse
-func (client *Client) DescribeLiveSnapshotConfigWithOptions(request *DescribeLiveSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotConfigResponse, _err error) {
+func (client *Client) DescribeLiveSnapshotConfigWithContext(ctx context.Context, request *DescribeLiveSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20710,37 +14895,11 @@ func (client *Client) DescribeLiveSnapshotConfigWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveSnapshotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the snapshot configurations of a streaming domain.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the snapshot configurations.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveSnapshotConfigRequest
-//
-// @return DescribeLiveSnapshotConfigResponse
-func (client *Client) DescribeLiveSnapshotConfig(request *DescribeLiveSnapshotConfigRequest) (_result *DescribeLiveSnapshotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveSnapshotConfigResponse{}
-	_body, _err := client.DescribeLiveSnapshotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20763,7 +14922,7 @@ func (client *Client) DescribeLiveSnapshotConfig(request *DescribeLiveSnapshotCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveSnapshotDetectPornConfigResponse
-func (client *Client) DescribeLiveSnapshotDetectPornConfigWithOptions(request *DescribeLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotDetectPornConfigResponse, _err error) {
+func (client *Client) DescribeLiveSnapshotDetectPornConfigWithContext(ctx context.Context, request *DescribeLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotDetectPornConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20812,39 +14971,11 @@ func (client *Client) DescribeLiveSnapshotDetectPornConfigWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries video moderation configurations.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to query video moderation configurations. The configurations can be sorted in ascending or descending order.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveSnapshotDetectPornConfigRequest
-//
-// @return DescribeLiveSnapshotDetectPornConfigResponse
-func (client *Client) DescribeLiveSnapshotDetectPornConfig(request *DescribeLiveSnapshotDetectPornConfigRequest) (_result *DescribeLiveSnapshotDetectPornConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.DescribeLiveSnapshotDetectPornConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20861,7 +14992,7 @@ func (client *Client) DescribeLiveSnapshotDetectPornConfig(request *DescribeLive
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveSnapshotNotifyConfigResponse
-func (client *Client) DescribeLiveSnapshotNotifyConfigWithOptions(request *DescribeLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
+func (client *Client) DescribeLiveSnapshotNotifyConfigWithContext(ctx context.Context, request *DescribeLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20894,33 +15025,11 @@ func (client *Client) DescribeLiveSnapshotNotifyConfigWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of snapshot callbacks.
-//
-// Description:
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveSnapshotNotifyConfigRequest
-//
-// @return DescribeLiveSnapshotNotifyConfigResponse
-func (client *Client) DescribeLiveSnapshotNotifyConfig(request *DescribeLiveSnapshotNotifyConfigRequest) (_result *DescribeLiveSnapshotNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.DescribeLiveSnapshotNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -20937,7 +15046,7 @@ func (client *Client) DescribeLiveSnapshotNotifyConfig(request *DescribeLiveSnap
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamAuthCheckingResponse
-func (client *Client) DescribeLiveStreamAuthCheckingWithOptions(request *DescribeLiveStreamAuthCheckingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
+func (client *Client) DescribeLiveStreamAuthCheckingWithContext(ctx context.Context, request *DescribeLiveStreamAuthCheckingRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -20974,33 +15083,11 @@ func (client *Client) DescribeLiveStreamAuthCheckingWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamAuthCheckingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the authentication status of an active stream.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamAuthCheckingRequest
-//
-// @return DescribeLiveStreamAuthCheckingResponse
-func (client *Client) DescribeLiveStreamAuthChecking(request *DescribeLiveStreamAuthCheckingRequest) (_result *DescribeLiveStreamAuthCheckingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamAuthCheckingResponse{}
-	_body, _err := client.DescribeLiveStreamAuthCheckingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21021,7 +15108,7 @@ func (client *Client) DescribeLiveStreamAuthChecking(request *DescribeLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamBitRateDataResponse
-func (client *Client) DescribeLiveStreamBitRateDataWithOptions(request *DescribeLiveStreamBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamBitRateDataResponse, _err error) {
+func (client *Client) DescribeLiveStreamBitRateDataWithContext(ctx context.Context, request *DescribeLiveStreamBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamBitRateDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21070,37 +15157,11 @@ func (client *Client) DescribeLiveStreamBitRateDataWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamBitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the frame rates and bitrates of a Real-Time Messaging Protocol (RTMP) stream within a specified time period. You can call this operation to query historical data.
-//
-// Description:
-//
-// This operation allows you to query the frame rates and bitrates of an RTMP stream within a specified time period. You can call this operation to query historical data.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamBitRateDataRequest
-//
-// @return DescribeLiveStreamBitRateDataResponse
-func (client *Client) DescribeLiveStreamBitRateData(request *DescribeLiveStreamBitRateDataRequest) (_result *DescribeLiveStreamBitRateDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamBitRateDataResponse{}
-	_body, _err := client.DescribeLiveStreamBitRateDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21121,7 +15182,7 @@ func (client *Client) DescribeLiveStreamBitRateData(request *DescribeLiveStreamB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamCountResponse
-func (client *Client) DescribeLiveStreamCountWithOptions(request *DescribeLiveStreamCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamCountResponse, _err error) {
+func (client *Client) DescribeLiveStreamCountWithContext(ctx context.Context, request *DescribeLiveStreamCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamCountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21142,37 +15203,11 @@ func (client *Client) DescribeLiveStreamCountWithOptions(request *DescribeLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the numbers of online source streams and transcoded streams.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the numbers of online source streams and transcoded streams. The streams that are returned by calling this operation are encoded in H.264 or H.265.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation once per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamCountRequest
-//
-// @return DescribeLiveStreamCountResponse
-func (client *Client) DescribeLiveStreamCount(request *DescribeLiveStreamCountRequest) (_result *DescribeLiveStreamCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamCountResponse{}
-	_body, _err := client.DescribeLiveStreamCountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21193,7 +15228,7 @@ func (client *Client) DescribeLiveStreamCount(request *DescribeLiveStreamCountRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamDelayConfigResponse
-func (client *Client) DescribeLiveStreamDelayConfigWithOptions(request *DescribeLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDelayConfigResponse, _err error) {
+func (client *Client) DescribeLiveStreamDelayConfigWithContext(ctx context.Context, request *DescribeLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21226,37 +15261,11 @@ func (client *Client) DescribeLiveStreamDelayConfigWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the live streaming latency.
-//
-// Description:
-//
-// Obtain the streaming domain, and then call this operation to query the live streaming latency.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamDelayConfigRequest
-//
-// @return DescribeLiveStreamDelayConfigResponse
-func (client *Client) DescribeLiveStreamDelayConfig(request *DescribeLiveStreamDelayConfigRequest) (_result *DescribeLiveStreamDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamDelayConfigResponse{}
-	_body, _err := client.DescribeLiveStreamDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21281,7 +15290,7 @@ func (client *Client) DescribeLiveStreamDelayConfig(request *DescribeLiveStreamD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamDetailFrameRateAndBitRateDataResponse
-func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateDataWithOptions(request *DescribeLiveStreamDetailFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDetailFrameRateAndBitRateDataResponse, _err error) {
+func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateDataWithContext(ctx context.Context, request *DescribeLiveStreamDetailFrameRateAndBitRateDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamDetailFrameRateAndBitRateDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21330,41 +15339,11 @@ func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateDataWithOptions
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamDetailFrameRateAndBitRateDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the audio and video frame rates and bitrates of a Real-Time Messaging Protocol (RTMP) stream.
-//
-// Description:
-//
-//	  You can call this operation to query a set of audio and video frame rates and bitrates of an RTMP stream within a specified time range.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-//		- You can query data in the last 90 days.
-//
-//		- The data is delayed for 3 to 5 minutes.
-//
-//		- The maximum time range that you can specify is 1 hour.
-//
-// @param request - DescribeLiveStreamDetailFrameRateAndBitRateDataRequest
-//
-// @return DescribeLiveStreamDetailFrameRateAndBitRateDataResponse
-func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateData(request *DescribeLiveStreamDetailFrameRateAndBitRateDataRequest) (_result *DescribeLiveStreamDetailFrameRateAndBitRateDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamDetailFrameRateAndBitRateDataResponse{}
-	_body, _err := client.DescribeLiveStreamDetailFrameRateAndBitRateDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21389,7 +15368,7 @@ func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateData(request *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamHistoryUserNumResponse
-func (client *Client) DescribeLiveStreamHistoryUserNumWithOptions(request *DescribeLiveStreamHistoryUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamHistoryUserNumResponse, _err error) {
+func (client *Client) DescribeLiveStreamHistoryUserNumWithContext(ctx context.Context, request *DescribeLiveStreamHistoryUserNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamHistoryUserNumResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21438,41 +15417,11 @@ func (client *Client) DescribeLiveStreamHistoryUserNumWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamHistoryUserNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of historical online users for a live stream.
-//
-// Description:
-//
-//	  The data returned by this operation is delayed for an average of 2 to 5 minutes.
-//
-//		- This operation queries the number of historical online users for only Flash Video (FLV) and Real-Time Messaging Protocol (RTMP) streams.
-//
-//		- This operation does not query the number of viewers that are watching transcoded streams.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamHistoryUserNumRequest
-//
-// @return DescribeLiveStreamHistoryUserNumResponse
-func (client *Client) DescribeLiveStreamHistoryUserNum(request *DescribeLiveStreamHistoryUserNumRequest) (_result *DescribeLiveStreamHistoryUserNumResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamHistoryUserNumResponse{}
-	_body, _err := client.DescribeLiveStreamHistoryUserNumWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21489,7 +15438,7 @@ func (client *Client) DescribeLiveStreamHistoryUserNum(request *DescribeLiveStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamMergeResponse
-func (client *Client) DescribeLiveStreamMergeWithOptions(request *DescribeLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMergeResponse, _err error) {
+func (client *Client) DescribeLiveStreamMergeWithContext(ctx context.Context, request *DescribeLiveStreamMergeRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMergeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21534,33 +15483,11 @@ func (client *Client) DescribeLiveStreamMergeWithOptions(request *DescribeLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamMergeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Invoke DescribeLiveStreamMerge to query the primary-standby stream merging configuration.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamMergeRequest
-//
-// @return DescribeLiveStreamMergeResponse
-func (client *Client) DescribeLiveStreamMerge(request *DescribeLiveStreamMergeRequest) (_result *DescribeLiveStreamMergeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamMergeResponse{}
-	_body, _err := client.DescribeLiveStreamMergeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21603,7 +15530,7 @@ func (client *Client) DescribeLiveStreamMerge(request *DescribeLiveStreamMergeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamMetricDetailDataResponse
-func (client *Client) DescribeLiveStreamMetricDetailDataWithOptions(request *DescribeLiveStreamMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMetricDetailDataResponse, _err error) {
+func (client *Client) DescribeLiveStreamMetricDetailDataWithContext(ctx context.Context, request *DescribeLiveStreamMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMetricDetailDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21660,59 +15587,11 @@ func (client *Client) DescribeLiveStreamMetricDetailDataWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamMetricDetailDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monitoring data of streams for a specified domain name. Up to 5,000 rows of data can be returned per call.
-//
-// Description:
-//
-// If you call this operation to query the monitoring data of streams under a domain name for the first time, you must [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex) for backend configuration. Provide the following information in the ticket:
-//
-//   - The domain name that you want to query
-//
-//   - The maximum number of concurrent streams under the domain name
-//
-//   - The maximum number of concurrent online users in each stream
-//
-//   - The protocols used for the client requests
-//
-// >  The review is expected to be completed within one business day after you submit the ticket.
-//
-// ## [](#)Usage limits
-//
-//   - By default, statistics on the number of viewers who watch streams over the HTTP Live Streaming (HLS) protocol cannot be collected.
-//
-//   - You can specify only one domain name in each call.
-//
-//   - The maximum time range to query is 24 hours.
-//
-//   - The minimum data granularity to query is 1 minute.
-//
-//   - You can query data in the last 31 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamMetricDetailDataRequest
-//
-// @return DescribeLiveStreamMetricDetailDataResponse
-func (client *Client) DescribeLiveStreamMetricDetailData(request *DescribeLiveStreamMetricDetailDataRequest) (_result *DescribeLiveStreamMetricDetailDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamMetricDetailDataResponse{}
-	_body, _err := client.DescribeLiveStreamMetricDetailDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21733,7 +15612,7 @@ func (client *Client) DescribeLiveStreamMetricDetailData(request *DescribeLiveSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamMonitorListResponse
-func (client *Client) DescribeLiveStreamMonitorListWithOptions(request *DescribeLiveStreamMonitorListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMonitorListResponse, _err error) {
+func (client *Client) DescribeLiveStreamMonitorListWithContext(ctx context.Context, request *DescribeLiveStreamMonitorListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamMonitorListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21782,37 +15661,11 @@ func (client *Client) DescribeLiveStreamMonitorListWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamMonitorListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of created monitoring sessions.
-//
-// Description:
-//
-// [Create monitoring sessions](https://help.aliyun.com/document_detail/2848129.html) before you call this operation to query the monitoring session list. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamMonitorListRequest
-//
-// @return DescribeLiveStreamMonitorListResponse
-func (client *Client) DescribeLiveStreamMonitorList(request *DescribeLiveStreamMonitorListRequest) (_result *DescribeLiveStreamMonitorListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamMonitorListResponse{}
-	_body, _err := client.DescribeLiveStreamMonitorListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21833,7 +15686,7 @@ func (client *Client) DescribeLiveStreamMonitorList(request *DescribeLiveStreamM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamPreloadTasksResponse
-func (client *Client) DescribeLiveStreamPreloadTasksWithOptions(request *DescribeLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPreloadTasksResponse, _err error) {
+func (client *Client) DescribeLiveStreamPreloadTasksWithContext(ctx context.Context, request *DescribeLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPreloadTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -21894,37 +15747,11 @@ func (client *Client) DescribeLiveStreamPreloadTasksWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamPreloadTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries prefetch tasks in the last three days.
-//
-// Description:
-//
-// You can call this operation to query prefetch tasks in the last three days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamPreloadTasksRequest
-//
-// @return DescribeLiveStreamPreloadTasksResponse
-func (client *Client) DescribeLiveStreamPreloadTasks(request *DescribeLiveStreamPreloadTasksRequest) (_result *DescribeLiveStreamPreloadTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamPreloadTasksResponse{}
-	_body, _err := client.DescribeLiveStreamPreloadTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -21953,7 +15780,7 @@ func (client *Client) DescribeLiveStreamPreloadTasks(request *DescribeLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamPushMetricDetailDataResponse
-func (client *Client) DescribeLiveStreamPushMetricDetailDataWithOptions(request *DescribeLiveStreamPushMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPushMetricDetailDataResponse, _err error) {
+func (client *Client) DescribeLiveStreamPushMetricDetailDataWithContext(ctx context.Context, request *DescribeLiveStreamPushMetricDetailDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamPushMetricDetailDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22006,45 +15833,11 @@ func (client *Client) DescribeLiveStreamPushMetricDetailDataWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamPushMetricDetailDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream ingest data of a specified domain name at the application level and the stream level.
-//
-// Description:
-//
-//	  You can query data of a single domain name in each request. If you specify multiple domain names, an error is returned.
-//
-//		- The maximum time range to query is 24 hours.
-//
-//		- The minimum data granularity to query is 1 minute.
-//
-//		- You can query data in the last 31 days.
-//
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamPushMetricDetailDataRequest
-//
-// @return DescribeLiveStreamPushMetricDetailDataResponse
-func (client *Client) DescribeLiveStreamPushMetricDetailData(request *DescribeLiveStreamPushMetricDetailDataRequest) (_result *DescribeLiveStreamPushMetricDetailDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamPushMetricDetailDataResponse{}
-	_body, _err := client.DescribeLiveStreamPushMetricDetailDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22065,7 +15858,7 @@ func (client *Client) DescribeLiveStreamPushMetricDetailData(request *DescribeLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamRecordContentResponse
-func (client *Client) DescribeLiveStreamRecordContentWithOptions(request *DescribeLiveStreamRecordContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordContentResponse, _err error) {
+func (client *Client) DescribeLiveStreamRecordContentWithContext(ctx context.Context, request *DescribeLiveStreamRecordContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22114,37 +15907,11 @@ func (client *Client) DescribeLiveStreamRecordContentWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the recordings of a live stream.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the recordings of the live stream.
-//
-// ## QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - DescribeLiveStreamRecordContentRequest
-//
-// @return DescribeLiveStreamRecordContentResponse
-func (client *Client) DescribeLiveStreamRecordContent(request *DescribeLiveStreamRecordContentRequest) (_result *DescribeLiveStreamRecordContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamRecordContentResponse{}
-	_body, _err := client.DescribeLiveStreamRecordContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22165,7 +15932,7 @@ func (client *Client) DescribeLiveStreamRecordContent(request *DescribeLiveStrea
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamRecordIndexFileResponse
-func (client *Client) DescribeLiveStreamRecordIndexFileWithOptions(request *DescribeLiveStreamRecordIndexFileRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFileResponse, _err error) {
+func (client *Client) DescribeLiveStreamRecordIndexFileWithContext(ctx context.Context, request *DescribeLiveStreamRecordIndexFileRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22210,37 +15977,11 @@ func (client *Client) DescribeLiveStreamRecordIndexFileWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamRecordIndexFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an index file.
-//
-// Description:
-//
-// ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months. OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamRecordIndexFileRequest
-//
-// @return DescribeLiveStreamRecordIndexFileResponse
-func (client *Client) DescribeLiveStreamRecordIndexFile(request *DescribeLiveStreamRecordIndexFileRequest) (_result *DescribeLiveStreamRecordIndexFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamRecordIndexFileResponse{}
-	_body, _err := client.DescribeLiveStreamRecordIndexFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22263,7 +16004,7 @@ func (client *Client) DescribeLiveStreamRecordIndexFile(request *DescribeLiveStr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamRecordIndexFilesResponse
-func (client *Client) DescribeLiveStreamRecordIndexFilesWithOptions(request *DescribeLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFilesResponse, _err error) {
+func (client *Client) DescribeLiveStreamRecordIndexFilesWithContext(ctx context.Context, request *DescribeLiveStreamRecordIndexFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamRecordIndexFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22324,39 +16065,11 @@ func (client *Client) DescribeLiveStreamRecordIndexFilesWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all index files within a specific time period.
-//
-// Description:
-//
-//	  ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months.
-//
-//		- OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamRecordIndexFilesRequest
-//
-// @return DescribeLiveStreamRecordIndexFilesResponse
-func (client *Client) DescribeLiveStreamRecordIndexFiles(request *DescribeLiveStreamRecordIndexFilesRequest) (_result *DescribeLiveStreamRecordIndexFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamRecordIndexFilesResponse{}
-	_body, _err := client.DescribeLiveStreamRecordIndexFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22377,7 +16090,7 @@ func (client *Client) DescribeLiveStreamRecordIndexFiles(request *DescribeLiveSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamSnapshotInfoResponse
-func (client *Client) DescribeLiveStreamSnapshotInfoWithOptions(request *DescribeLiveStreamSnapshotInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamSnapshotInfoResponse, _err error) {
+func (client *Client) DescribeLiveStreamSnapshotInfoWithContext(ctx context.Context, request *DescribeLiveStreamSnapshotInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamSnapshotInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22434,37 +16147,11 @@ func (client *Client) DescribeLiveStreamSnapshotInfoWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamSnapshotInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the snapshots that were captured within a specific time period.
-//
-// Description:
-//
-// You can query only snapshots that were captured in the last year.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamSnapshotInfoRequest
-//
-// @return DescribeLiveStreamSnapshotInfoResponse
-func (client *Client) DescribeLiveStreamSnapshotInfo(request *DescribeLiveStreamSnapshotInfoRequest) (_result *DescribeLiveStreamSnapshotInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamSnapshotInfoResponse{}
-	_body, _err := client.DescribeLiveStreamSnapshotInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22485,7 +16172,7 @@ func (client *Client) DescribeLiveStreamSnapshotInfo(request *DescribeLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamStateResponse
-func (client *Client) DescribeLiveStreamStateWithOptions(request *DescribeLiveStreamStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamStateResponse, _err error) {
+func (client *Client) DescribeLiveStreamStateWithContext(ctx context.Context, request *DescribeLiveStreamStateRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamStateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22526,37 +16213,11 @@ func (client *Client) DescribeLiveStreamStateWithOptions(request *DescribeLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of a stream in real time.
-//
-// Description:
-//
-// Obtain the streaming domain, and then call this operation to query the status of a stream in real time. If the stream is in the offline status, you can check the stream ingest callback to learn about the reason that causes the offline status. This operation does not provide detailed information.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamStateRequest
-//
-// @return DescribeLiveStreamStateResponse
-func (client *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest) (_result *DescribeLiveStreamStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamStateResponse{}
-	_body, _err := client.DescribeLiveStreamStateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22577,7 +16238,7 @@ func (client *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamTranscodeInfoResponse
-func (client *Client) DescribeLiveStreamTranscodeInfoWithOptions(request *DescribeLiveStreamTranscodeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeInfoResponse, _err error) {
+func (client *Client) DescribeLiveStreamTranscodeInfoWithContext(ctx context.Context, request *DescribeLiveStreamTranscodeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22614,37 +16275,11 @@ func (client *Client) DescribeLiveStreamTranscodeInfoWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamTranscodeInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the transcoding configurations of a streaming domain.
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to query the transcoding configurations.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamTranscodeInfoRequest
-//
-// @return DescribeLiveStreamTranscodeInfoResponse
-func (client *Client) DescribeLiveStreamTranscodeInfo(request *DescribeLiveStreamTranscodeInfoRequest) (_result *DescribeLiveStreamTranscodeInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamTranscodeInfoResponse{}
-	_body, _err := client.DescribeLiveStreamTranscodeInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22669,7 +16304,7 @@ func (client *Client) DescribeLiveStreamTranscodeInfo(request *DescribeLiveStrea
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamTranscodeMetricDataResponse
-func (client *Client) DescribeLiveStreamTranscodeMetricDataWithOptions(request *DescribeLiveStreamTranscodeMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeMetricDataResponse, _err error) {
+func (client *Client) DescribeLiveStreamTranscodeMetricDataWithContext(ctx context.Context, request *DescribeLiveStreamTranscodeMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeMetricDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22722,41 +16357,11 @@ func (client *Client) DescribeLiveStreamTranscodeMetricDataWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamTranscodeMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the transcoding data of a specified domain name at the application level and the stream level.
-//
-// Description:
-//
-//	  The maximum time range for a query is 24 hours.
-//
-//		- The minimum time granularity for a query is 5 minutes.
-//
-//		- You can query data in the last 31 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamTranscodeMetricDataRequest
-//
-// @return DescribeLiveStreamTranscodeMetricDataResponse
-func (client *Client) DescribeLiveStreamTranscodeMetricData(request *DescribeLiveStreamTranscodeMetricDataRequest) (_result *DescribeLiveStreamTranscodeMetricDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamTranscodeMetricDataResponse{}
-	_body, _err := client.DescribeLiveStreamTranscodeMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22773,7 +16378,7 @@ func (client *Client) DescribeLiveStreamTranscodeMetricData(request *DescribeLiv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamTranscodeStreamNumResponse
-func (client *Client) DescribeLiveStreamTranscodeStreamNumWithOptions(request *DescribeLiveStreamTranscodeStreamNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeStreamNumResponse, _err error) {
+func (client *Client) DescribeLiveStreamTranscodeStreamNumWithContext(ctx context.Context, request *DescribeLiveStreamTranscodeStreamNumRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamTranscodeStreamNumResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22810,33 +16415,11 @@ func (client *Client) DescribeLiveStreamTranscodeStreamNumWithOptions(request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamTranscodeStreamNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of transcoded streams in real time.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamTranscodeStreamNumRequest
-//
-// @return DescribeLiveStreamTranscodeStreamNumResponse
-func (client *Client) DescribeLiveStreamTranscodeStreamNum(request *DescribeLiveStreamTranscodeStreamNumRequest) (_result *DescribeLiveStreamTranscodeStreamNumResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamTranscodeStreamNumResponse{}
-	_body, _err := client.DescribeLiveStreamTranscodeStreamNumWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22857,7 +16440,7 @@ func (client *Client) DescribeLiveStreamTranscodeStreamNum(request *DescribeLive
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamWatermarkRulesResponse
-func (client *Client) DescribeLiveStreamWatermarkRulesWithOptions(request *DescribeLiveStreamWatermarkRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarkRulesResponse, _err error) {
+func (client *Client) DescribeLiveStreamWatermarkRulesWithContext(ctx context.Context, request *DescribeLiveStreamWatermarkRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarkRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22898,37 +16481,11 @@ func (client *Client) DescribeLiveStreamWatermarkRulesWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamWatermarkRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries watermark rules.
-//
-// Description:
-//
-// When you call this operation, you can specify the PageNumber and PageSize parameters to view watermark rules on separate pages. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamWatermarkRulesRequest
-//
-// @return DescribeLiveStreamWatermarkRulesResponse
-func (client *Client) DescribeLiveStreamWatermarkRules(request *DescribeLiveStreamWatermarkRulesRequest) (_result *DescribeLiveStreamWatermarkRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamWatermarkRulesResponse{}
-	_body, _err := client.DescribeLiveStreamWatermarkRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -22949,7 +16506,7 @@ func (client *Client) DescribeLiveStreamWatermarkRules(request *DescribeLiveStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamWatermarksResponse
-func (client *Client) DescribeLiveStreamWatermarksWithOptions(request *DescribeLiveStreamWatermarksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarksResponse, _err error) {
+func (client *Client) DescribeLiveStreamWatermarksWithContext(ctx context.Context, request *DescribeLiveStreamWatermarksRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamWatermarksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -22994,37 +16551,11 @@ func (client *Client) DescribeLiveStreamWatermarksWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamWatermarksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries watermark templates.
-//
-// Description:
-//
-// You can call this operation to query watermark templates. You can use the PageNumber parameter to view results on separate pages. Make sure that you configure parameters properly when you call this operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamWatermarksRequest
-//
-// @return DescribeLiveStreamWatermarksResponse
-func (client *Client) DescribeLiveStreamWatermarks(request *DescribeLiveStreamWatermarksRequest) (_result *DescribeLiveStreamWatermarksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamWatermarksResponse{}
-	_body, _err := client.DescribeLiveStreamWatermarksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23045,7 +16576,7 @@ func (client *Client) DescribeLiveStreamWatermarks(request *DescribeLiveStreamWa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsBlockListResponse
-func (client *Client) DescribeLiveStreamsBlockListWithOptions(request *DescribeLiveStreamsBlockListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsBlockListResponse, _err error) {
+func (client *Client) DescribeLiveStreamsBlockListWithContext(ctx context.Context, request *DescribeLiveStreamsBlockListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsBlockListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23086,37 +16617,11 @@ func (client *Client) DescribeLiveStreamsBlockListWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsBlockListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the blacklist of live stream URLs under a main streaming domain.
-//
-// Description:
-//
-// The stream URLs refer to the URLs for playing in particular.
-//
-// ## QPS limit
-//
-// A single user can perform a maximum of 50 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
-//
-// @param request - DescribeLiveStreamsBlockListRequest
-//
-// @return DescribeLiveStreamsBlockListResponse
-func (client *Client) DescribeLiveStreamsBlockList(request *DescribeLiveStreamsBlockListRequest) (_result *DescribeLiveStreamsBlockListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsBlockListResponse{}
-	_body, _err := client.DescribeLiveStreamsBlockListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23137,7 +16642,7 @@ func (client *Client) DescribeLiveStreamsBlockList(request *DescribeLiveStreamsB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsControlHistoryResponse
-func (client *Client) DescribeLiveStreamsControlHistoryWithOptions(request *DescribeLiveStreamsControlHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsControlHistoryResponse, _err error) {
+func (client *Client) DescribeLiveStreamsControlHistoryWithContext(ctx context.Context, request *DescribeLiveStreamsControlHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsControlHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23182,37 +16687,11 @@ func (client *Client) DescribeLiveStreamsControlHistoryWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsControlHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operation history of live streams under a domain name or in an application.
-//
-// Description:
-//
-// You can call this operation to query the operation history of live streams under a domain name or in an application. The operations include all API operations that were called on live streams.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamsControlHistoryRequest
-//
-// @return DescribeLiveStreamsControlHistoryResponse
-func (client *Client) DescribeLiveStreamsControlHistory(request *DescribeLiveStreamsControlHistoryRequest) (_result *DescribeLiveStreamsControlHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsControlHistoryResponse{}
-	_body, _err := client.DescribeLiveStreamsControlHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23229,7 +16708,7 @@ func (client *Client) DescribeLiveStreamsControlHistory(request *DescribeLiveStr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsNotifyRecordsResponse
-func (client *Client) DescribeLiveStreamsNotifyRecordsWithOptions(request *DescribeLiveStreamsNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
+func (client *Client) DescribeLiveStreamsNotifyRecordsWithContext(ctx context.Context, request *DescribeLiveStreamsNotifyRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23290,33 +16769,11 @@ func (client *Client) DescribeLiveStreamsNotifyRecordsWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsNotifyRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries stream ingest callback records.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamsNotifyRecordsRequest
-//
-// @return DescribeLiveStreamsNotifyRecordsResponse
-func (client *Client) DescribeLiveStreamsNotifyRecords(request *DescribeLiveStreamsNotifyRecordsRequest) (_result *DescribeLiveStreamsNotifyRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsNotifyRecordsResponse{}
-	_body, _err := client.DescribeLiveStreamsNotifyRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23329,7 +16786,7 @@ func (client *Client) DescribeLiveStreamsNotifyRecords(request *DescribeLiveStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsNotifyUrlConfigResponse
-func (client *Client) DescribeLiveStreamsNotifyUrlConfigWithOptions(request *DescribeLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyUrlConfigResponse, _err error) {
+func (client *Client) DescribeLiveStreamsNotifyUrlConfigWithContext(ctx context.Context, request *DescribeLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsNotifyUrlConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23362,29 +16819,11 @@ func (client *Client) DescribeLiveStreamsNotifyUrlConfigWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the callback configuration for stream ingest under an ingest domain.
-//
-// @param request - DescribeLiveStreamsNotifyUrlConfigRequest
-//
-// @return DescribeLiveStreamsNotifyUrlConfigResponse
-func (client *Client) DescribeLiveStreamsNotifyUrlConfig(request *DescribeLiveStreamsNotifyUrlConfigRequest) (_result *DescribeLiveStreamsNotifyUrlConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.DescribeLiveStreamsNotifyUrlConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23411,7 +16850,7 @@ func (client *Client) DescribeLiveStreamsNotifyUrlConfig(request *DescribeLiveSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsOnlineListResponse
-func (client *Client) DescribeLiveStreamsOnlineListWithOptions(request *DescribeLiveStreamsOnlineListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsOnlineListResponse, _err error) {
+func (client *Client) DescribeLiveStreamsOnlineListWithContext(ctx context.Context, request *DescribeLiveStreamsOnlineListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsOnlineListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23472,43 +16911,11 @@ func (client *Client) DescribeLiveStreamsOnlineListWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsOnlineListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about all active streams under a specified domain name or the active streams of an application under a specified domain name.
-//
-// Description:
-//
-// You can call this operation to query the following types of streams.
-//
-//   - all: all streams.
-//
-//   - raw: source streams.
-//
-//   - trans: transcoded streams.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamsOnlineListRequest
-//
-// @return DescribeLiveStreamsOnlineListResponse
-func (client *Client) DescribeLiveStreamsOnlineList(request *DescribeLiveStreamsOnlineListRequest) (_result *DescribeLiveStreamsOnlineListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsOnlineListResponse{}
-	_body, _err := client.DescribeLiveStreamsOnlineListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23539,7 +16946,7 @@ func (client *Client) DescribeLiveStreamsOnlineList(request *DescribeLiveStreams
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsPublishListResponse
-func (client *Client) DescribeLiveStreamsPublishListWithOptions(request *DescribeLiveStreamsPublishListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsPublishListResponse, _err error) {
+func (client *Client) DescribeLiveStreamsPublishListWithContext(ctx context.Context, request *DescribeLiveStreamsPublishListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsPublishListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23608,47 +17015,11 @@ func (client *Client) DescribeLiveStreamsPublishListWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsPublishListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream ingest records of a domain name or an application or stream under a domain name.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// This operation allows you to query streams in the last 30 days. The information of active streams during the queried period is returned. This operation supports the following sorting methods.
-//
-//   - stream_name_desc: sorts the entries in descending order by stream name.
-//
-//   - stream_name_asc: sorts the entries in ascending order by stream name.
-//
-//   - publish_time_desc: sorts the entries in descending order by stream ingest time.
-//
-//   - publish_time_asc: sorts the entries in ascending order by stream ingest time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 3 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveStreamsPublishListRequest
-//
-// @return DescribeLiveStreamsPublishListResponse
-func (client *Client) DescribeLiveStreamsPublishList(request *DescribeLiveStreamsPublishListRequest) (_result *DescribeLiveStreamsPublishListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsPublishListResponse{}
-	_body, _err := client.DescribeLiveStreamsPublishListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23671,7 +17042,7 @@ func (client *Client) DescribeLiveStreamsPublishList(request *DescribeLiveStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveStreamsTotalCountResponse
-func (client *Client) DescribeLiveStreamsTotalCountWithOptions(request *DescribeLiveStreamsTotalCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsTotalCountResponse, _err error) {
+func (client *Client) DescribeLiveStreamsTotalCountWithContext(ctx context.Context, request *DescribeLiveStreamsTotalCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveStreamsTotalCountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23716,39 +17087,11 @@ func (client *Client) DescribeLiveStreamsTotalCountWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveStreamsTotalCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the total number of live streams within a specified time range. Data is collected on a daily basis.
-//
-// Description:
-//
-//	  The maximum time range for a query is 15 days.
-//
-//		- You can query data in the last 18 months.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveStreamsTotalCountRequest
-//
-// @return DescribeLiveStreamsTotalCountResponse
-func (client *Client) DescribeLiveStreamsTotalCount(request *DescribeLiveStreamsTotalCountRequest) (_result *DescribeLiveStreamsTotalCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveStreamsTotalCountResponse{}
-	_body, _err := client.DescribeLiveStreamsTotalCountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23771,7 +17114,7 @@ func (client *Client) DescribeLiveStreamsTotalCount(request *DescribeLiveStreams
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveTopDomainsByFlowResponse
-func (client *Client) DescribeLiveTopDomainsByFlowWithOptions(request *DescribeLiveTopDomainsByFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTopDomainsByFlowResponse, _err error) {
+func (client *Client) DescribeLiveTopDomainsByFlowWithContext(ctx context.Context, request *DescribeLiveTopDomainsByFlowRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTopDomainsByFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23812,39 +17155,11 @@ func (client *Client) DescribeLiveTopDomainsByFlowWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveTopDomainsByFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the top domain names ranked by traffic.
-//
-// Description:
-//
-//	  If you do not specify the StartTime or EndTime parameter, data of the current month is queried by default. To query data within a specific time range, you must specify both the StartTime and EndTime parameters.
-//
-//		- You can query data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeLiveTopDomainsByFlowRequest
-//
-// @return DescribeLiveTopDomainsByFlowResponse
-func (client *Client) DescribeLiveTopDomainsByFlow(request *DescribeLiveTopDomainsByFlowRequest) (_result *DescribeLiveTopDomainsByFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveTopDomainsByFlowResponse{}
-	_body, _err := client.DescribeLiveTopDomainsByFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23857,7 +17172,7 @@ func (client *Client) DescribeLiveTopDomainsByFlow(request *DescribeLiveTopDomai
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveTrafficDomainLogResponse
-func (client *Client) DescribeLiveTrafficDomainLogWithOptions(request *DescribeLiveTrafficDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTrafficDomainLogResponse, _err error) {
+func (client *Client) DescribeLiveTrafficDomainLogWithContext(ctx context.Context, request *DescribeLiveTrafficDomainLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveTrafficDomainLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23906,29 +17221,11 @@ func (client *Client) DescribeLiveTrafficDomainLogWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveTrafficDomainLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取直播指定域名的原始访问日志的下载地址
-//
-// @param request - DescribeLiveTrafficDomainLogRequest
-//
-// @return DescribeLiveTrafficDomainLogResponse
-func (client *Client) DescribeLiveTrafficDomainLog(request *DescribeLiveTrafficDomainLogRequest) (_result *DescribeLiveTrafficDomainLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveTrafficDomainLogResponse{}
-	_body, _err := client.DescribeLiveTrafficDomainLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -23955,7 +17252,7 @@ func (client *Client) DescribeLiveTrafficDomainLog(request *DescribeLiveTrafficD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUpVideoAudioInfoResponse
-func (client *Client) DescribeLiveUpVideoAudioInfoWithOptions(request *DescribeLiveUpVideoAudioInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUpVideoAudioInfoResponse, _err error) {
+func (client *Client) DescribeLiveUpVideoAudioInfoWithContext(ctx context.Context, request *DescribeLiveUpVideoAudioInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUpVideoAudioInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -23996,43 +17293,11 @@ func (client *Client) DescribeLiveUpVideoAudioInfoWithOptions(request *DescribeL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUpVideoAudioInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the audio and video data of an ingested stream within a specific period of time.
-//
-// Description:
-//
-// ### Usage notes
-//
-// - The maximum time range for a query is 24 hours.
-//
-// - The minimum time range for a query is 1 hour.
-//
-// - You can query data in the last 31 days.
-//
-// ### QPS limit
-//
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveUpVideoAudioInfoRequest
-//
-// @return DescribeLiveUpVideoAudioInfoResponse
-func (client *Client) DescribeLiveUpVideoAudioInfo(request *DescribeLiveUpVideoAudioInfoRequest) (_result *DescribeLiveUpVideoAudioInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUpVideoAudioInfoResponse{}
-	_body, _err := client.DescribeLiveUpVideoAudioInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24063,7 +17328,7 @@ func (client *Client) DescribeLiveUpVideoAudioInfo(request *DescribeLiveUpVideoA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUserBillPredictionResponse
-func (client *Client) DescribeLiveUserBillPredictionWithOptions(request *DescribeLiveUserBillPredictionRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserBillPredictionResponse, _err error) {
+func (client *Client) DescribeLiveUserBillPredictionWithContext(ctx context.Context, request *DescribeLiveUserBillPredictionRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserBillPredictionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24100,47 +17365,11 @@ func (client *Client) DescribeLiveUserBillPredictionWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUserBillPredictionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the estimated bills of ApsaraVideo Live in your Alibaba Cloud account.
-//
-// Description:
-//
-// You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the month. You can call this operation to estimate resource usage of only the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the month and ends 2 hours earlier than the current time.
-//
-//   - Pay by monthly 95th percentile bandwidth: The top 5% values between the start time and end time are excluded. The highest value among the remaining values is the estimated value.
-//
-//   - Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
-//
-//   - Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
-//
-//   - Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
-//
-//   - Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The highest value among the remaining values is the estimated value.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation once per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveUserBillPredictionRequest
-//
-// @return DescribeLiveUserBillPredictionResponse
-func (client *Client) DescribeLiveUserBillPrediction(request *DescribeLiveUserBillPredictionRequest) (_result *DescribeLiveUserBillPredictionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUserBillPredictionResponse{}
-	_body, _err := client.DescribeLiveUserBillPredictionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24163,7 +17392,7 @@ func (client *Client) DescribeLiveUserBillPrediction(request *DescribeLiveUserBi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUserDomainsResponse
-func (client *Client) DescribeLiveUserDomainsWithOptions(request *DescribeLiveUserDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserDomainsResponse, _err error) {
+func (client *Client) DescribeLiveUserDomainsWithContext(ctx context.Context, request *DescribeLiveUserDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserDomainsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24228,39 +17457,11 @@ func (client *Client) DescribeLiveUserDomainsWithOptions(request *DescribeLiveUs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUserDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries domain names of ApsaraVideo Live in your Alibaba Cloud account.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call this operation to query all domain names of ApsaraVideo Live within your Alibaba Cloud account. The supported types of domain names are streaming domains and edge ingest domains.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeLiveUserDomainsRequest
-//
-// @return DescribeLiveUserDomainsResponse
-func (client *Client) DescribeLiveUserDomains(request *DescribeLiveUserDomainsRequest) (_result *DescribeLiveUserDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUserDomainsResponse{}
-	_body, _err := client.DescribeLiveUserDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24273,7 +17474,7 @@ func (client *Client) DescribeLiveUserDomains(request *DescribeLiveUserDomainsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUserStreamMetricDataResponse
-func (client *Client) DescribeLiveUserStreamMetricDataWithOptions(request *DescribeLiveUserStreamMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserStreamMetricDataResponse, _err error) {
+func (client *Client) DescribeLiveUserStreamMetricDataWithContext(ctx context.Context, request *DescribeLiveUserStreamMetricDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserStreamMetricDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24326,29 +17527,11 @@ func (client *Client) DescribeLiveUserStreamMetricDataWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUserStreamMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询指定域名流粒度批量数据
-//
-// @param request - DescribeLiveUserStreamMetricDataRequest
-//
-// @return DescribeLiveUserStreamMetricDataResponse
-func (client *Client) DescribeLiveUserStreamMetricData(request *DescribeLiveUserStreamMetricDataRequest) (_result *DescribeLiveUserStreamMetricDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUserStreamMetricDataResponse{}
-	_body, _err := client.DescribeLiveUserStreamMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24357,7 +17540,7 @@ func (client *Client) DescribeLiveUserStreamMetricData(request *DescribeLiveUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUserTagsResponse
-func (client *Client) DescribeLiveUserTagsWithOptions(request *DescribeLiveUserTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTagsResponse, _err error) {
+func (client *Client) DescribeLiveUserTagsWithContext(ctx context.Context, request *DescribeLiveUserTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTagsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24386,25 +17569,11 @@ func (client *Client) DescribeLiveUserTagsWithOptions(request *DescribeLiveUserT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUserTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeLiveUserTagsRequest
-//
-// @return DescribeLiveUserTagsResponse
-func (client *Client) DescribeLiveUserTags(request *DescribeLiveUserTagsRequest) (_result *DescribeLiveUserTagsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUserTagsResponse{}
-	_body, _err := client.DescribeLiveUserTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24417,7 +17586,7 @@ func (client *Client) DescribeLiveUserTags(request *DescribeLiveUserTagsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveUserTrafficLogResponse
-func (client *Client) DescribeLiveUserTrafficLogWithOptions(request *DescribeLiveUserTrafficLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTrafficLogResponse, _err error) {
+func (client *Client) DescribeLiveUserTrafficLogWithContext(ctx context.Context, request *DescribeLiveUserTrafficLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveUserTrafficLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24466,29 +17635,11 @@ func (client *Client) DescribeLiveUserTrafficLogWithOptions(request *DescribeLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveUserTrafficLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取直播指定域名的原始访问日志的下载地址
-//
-// @param request - DescribeLiveUserTrafficLogRequest
-//
-// @return DescribeLiveUserTrafficLogResponse
-func (client *Client) DescribeLiveUserTrafficLog(request *DescribeLiveUserTrafficLogRequest) (_result *DescribeLiveUserTrafficLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveUserTrafficLogResponse{}
-	_body, _err := client.DescribeLiveUserTrafficLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24513,7 +17664,7 @@ func (client *Client) DescribeLiveUserTrafficLog(request *DescribeLiveUserTraffi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLiveVerifyContentResponse
-func (client *Client) DescribeLiveVerifyContentWithOptions(request *DescribeLiveVerifyContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveVerifyContentResponse, _err error) {
+func (client *Client) DescribeLiveVerifyContentWithContext(ctx context.Context, request *DescribeLiveVerifyContentRequest, runtime *dara.RuntimeOptions) (_result *DescribeLiveVerifyContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24546,41 +17697,11 @@ func (client *Client) DescribeLiveVerifyContentWithOptions(request *DescribeLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLiveVerifyContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the ownership verification content of a domain name.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - You can call this operation to query the ownership verification content of a single domain name.
-//
-//   - You can call this operation up to 30 times per second per account.
-//
-//   - When you call this operation, you need to specify a domain name as a request parameter.
-//
-//   - After a successful call, the verification content and request ID are returned, which can be used for subsequent operations.
-//
-// @param request - DescribeLiveVerifyContentRequest
-//
-// @return DescribeLiveVerifyContentResponse
-func (client *Client) DescribeLiveVerifyContent(request *DescribeLiveVerifyContentRequest) (_result *DescribeLiveVerifyContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeLiveVerifyContentResponse{}
-	_body, _err := client.DescribeLiveVerifyContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24607,7 +17728,7 @@ func (client *Client) DescribeLiveVerifyContent(request *DescribeLiveVerifyConte
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMeterLiveBypassDurationResponse
-func (client *Client) DescribeMeterLiveBypassDurationWithOptions(request *DescribeMeterLiveBypassDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterLiveBypassDurationResponse, _err error) {
+func (client *Client) DescribeMeterLiveBypassDurationWithContext(ctx context.Context, request *DescribeMeterLiveBypassDurationRequest, runtime *dara.RuntimeOptions) (_result *DescribeMeterLiveBypassDurationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24644,43 +17765,11 @@ func (client *Client) DescribeMeterLiveBypassDurationWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMeterLiveBypassDurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DescribeMeterLiveBypassDuration
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - The maximum time range for a query is 31 days.
-//
-//   - The minimum time granularity for a query is 5 minutes.
-//
-//   - You can query the data in the last 90 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeMeterLiveBypassDurationRequest
-//
-// @return DescribeMeterLiveBypassDurationResponse
-func (client *Client) DescribeMeterLiveBypassDuration(request *DescribeMeterLiveBypassDurationRequest) (_result *DescribeMeterLiveBypassDurationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMeterLiveBypassDurationResponse{}
-	_body, _err := client.DescribeMeterLiveBypassDurationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24701,7 +17790,7 @@ func (client *Client) DescribeMeterLiveBypassDuration(request *DescribeMeterLive
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeMixStreamListResponse
-func (client *Client) DescribeMixStreamListWithOptions(request *DescribeMixStreamListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMixStreamListResponse, _err error) {
+func (client *Client) DescribeMixStreamListWithContext(ctx context.Context, request *DescribeMixStreamListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMixStreamListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24762,37 +17851,11 @@ func (client *Client) DescribeMixStreamListWithOptions(request *DescribeMixStrea
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeMixStreamListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries stream mixing tasks.
-//
-// Description:
-//
-// You can call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create stream mixing tasks and then call this operation to query the list of stream mixing tasks.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeMixStreamListRequest
-//
-// @return DescribeMixStreamListResponse
-func (client *Client) DescribeMixStreamList(request *DescribeMixStreamListRequest) (_result *DescribeMixStreamListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeMixStreamListResponse{}
-	_body, _err := client.DescribeMixStreamListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24809,7 +17872,7 @@ func (client *Client) DescribeMixStreamList(request *DescribeMixStreamListReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRTSNativeSDKFirstFrameCostResponse
-func (client *Client) DescribeRTSNativeSDKFirstFrameCostWithOptions(tmpReq *DescribeRTSNativeSDKFirstFrameCostRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameCostResponse, _err error) {
+func (client *Client) DescribeRTSNativeSDKFirstFrameCostWithContext(ctx context.Context, tmpReq *DescribeRTSNativeSDKFirstFrameCostRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameCostResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24852,33 +17915,11 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameCostWithOptions(tmpReq *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRTSNativeSDKFirstFrameCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the factors that cause latency of first frames within a specified period of time.
-//
-// Description:
-//
-// You can call this operation to query the information about the factors that cause latency of first frames within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
-//
-// @param request - DescribeRTSNativeSDKFirstFrameCostRequest
-//
-// @return DescribeRTSNativeSDKFirstFrameCostResponse
-func (client *Client) DescribeRTSNativeSDKFirstFrameCost(request *DescribeRTSNativeSDKFirstFrameCostRequest) (_result *DescribeRTSNativeSDKFirstFrameCostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRTSNativeSDKFirstFrameCostResponse{}
-	_body, _err := client.DescribeRTSNativeSDKFirstFrameCostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24895,7 +17936,7 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameCost(request *DescribeRTSNat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRTSNativeSDKFirstFrameDelayResponse
-func (client *Client) DescribeRTSNativeSDKFirstFrameDelayWithOptions(tmpReq *DescribeRTSNativeSDKFirstFrameDelayRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameDelayResponse, _err error) {
+func (client *Client) DescribeRTSNativeSDKFirstFrameDelayWithContext(ctx context.Context, tmpReq *DescribeRTSNativeSDKFirstFrameDelayRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKFirstFrameDelayResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -24938,33 +17979,11 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameDelayWithOptions(tmpReq *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRTSNativeSDKFirstFrameDelayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the average latency of first frames within a specified period of time.
-//
-// Description:
-//
-// You can call this operation to query the average latency of first frames within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
-//
-// @param request - DescribeRTSNativeSDKFirstFrameDelayRequest
-//
-// @return DescribeRTSNativeSDKFirstFrameDelayResponse
-func (client *Client) DescribeRTSNativeSDKFirstFrameDelay(request *DescribeRTSNativeSDKFirstFrameDelayRequest) (_result *DescribeRTSNativeSDKFirstFrameDelayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRTSNativeSDKFirstFrameDelayResponse{}
-	_body, _err := client.DescribeRTSNativeSDKFirstFrameDelayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -24981,7 +18000,7 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameDelay(request *DescribeRTSNa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRTSNativeSDKPlayFailStatusResponse
-func (client *Client) DescribeRTSNativeSDKPlayFailStatusWithOptions(tmpReq *DescribeRTSNativeSDKPlayFailStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayFailStatusResponse, _err error) {
+func (client *Client) DescribeRTSNativeSDKPlayFailStatusWithContext(ctx context.Context, tmpReq *DescribeRTSNativeSDKPlayFailStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayFailStatusResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25024,33 +18043,11 @@ func (client *Client) DescribeRTSNativeSDKPlayFailStatusWithOptions(tmpReq *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRTSNativeSDKPlayFailStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the causes of playback failures that occurred within a specified period of time. The causes are returned in the form of status codes.
-//
-// Description:
-//
-// You can call this operation to query the causes of playback failures that occurred within a specified period of time. The causes are returned in the form of status codes. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
-//
-// @param request - DescribeRTSNativeSDKPlayFailStatusRequest
-//
-// @return DescribeRTSNativeSDKPlayFailStatusResponse
-func (client *Client) DescribeRTSNativeSDKPlayFailStatus(request *DescribeRTSNativeSDKPlayFailStatusRequest) (_result *DescribeRTSNativeSDKPlayFailStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRTSNativeSDKPlayFailStatusResponse{}
-	_body, _err := client.DescribeRTSNativeSDKPlayFailStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25067,7 +18064,7 @@ func (client *Client) DescribeRTSNativeSDKPlayFailStatus(request *DescribeRTSNat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRTSNativeSDKPlayTimeResponse
-func (client *Client) DescribeRTSNativeSDKPlayTimeWithOptions(tmpReq *DescribeRTSNativeSDKPlayTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayTimeResponse, _err error) {
+func (client *Client) DescribeRTSNativeSDKPlayTimeWithContext(ctx context.Context, tmpReq *DescribeRTSNativeSDKPlayTimeRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKPlayTimeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25110,33 +18107,11 @@ func (client *Client) DescribeRTSNativeSDKPlayTimeWithOptions(tmpReq *DescribeRT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRTSNativeSDKPlayTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the playback duration within a specified period of time.
-//
-// Description:
-//
-// You can query the playback duration within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
-//
-// @param request - DescribeRTSNativeSDKPlayTimeRequest
-//
-// @return DescribeRTSNativeSDKPlayTimeResponse
-func (client *Client) DescribeRTSNativeSDKPlayTime(request *DescribeRTSNativeSDKPlayTimeRequest) (_result *DescribeRTSNativeSDKPlayTimeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRTSNativeSDKPlayTimeResponse{}
-	_body, _err := client.DescribeRTSNativeSDKPlayTimeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25153,7 +18128,7 @@ func (client *Client) DescribeRTSNativeSDKPlayTime(request *DescribeRTSNativeSDK
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRTSNativeSDKVvDataResponse
-func (client *Client) DescribeRTSNativeSDKVvDataWithOptions(tmpReq *DescribeRTSNativeSDKVvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKVvDataResponse, _err error) {
+func (client *Client) DescribeRTSNativeSDKVvDataWithContext(ctx context.Context, tmpReq *DescribeRTSNativeSDKVvDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeRTSNativeSDKVvDataResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25196,33 +18171,11 @@ func (client *Client) DescribeRTSNativeSDKVvDataWithOptions(tmpReq *DescribeRTSN
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRTSNativeSDKVvDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the total number of playbacks and the number of successful playbacks within a specified period of time.
-//
-// Description:
-//
-// QPS limit You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
-//
-// @param request - DescribeRTSNativeSDKVvDataRequest
-//
-// @return DescribeRTSNativeSDKVvDataResponse
-func (client *Client) DescribeRTSNativeSDKVvData(request *DescribeRTSNativeSDKVvDataRequest) (_result *DescribeRTSNativeSDKVvDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRTSNativeSDKVvDataResponse{}
-	_body, _err := client.DescribeRTSNativeSDKVvDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25235,7 +18188,7 @@ func (client *Client) DescribeRTSNativeSDKVvData(request *DescribeRTSNativeSDKVv
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRtcCloudRecordingFilesResponse
-func (client *Client) DescribeRtcCloudRecordingFilesWithOptions(request *DescribeRtcCloudRecordingFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcCloudRecordingFilesResponse, _err error) {
+func (client *Client) DescribeRtcCloudRecordingFilesWithContext(ctx context.Context, request *DescribeRtcCloudRecordingFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcCloudRecordingFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25260,29 +18213,11 @@ func (client *Client) DescribeRtcCloudRecordingFilesWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRtcCloudRecordingFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询rtc云端录制文件与任务信息
-//
-// @param request - DescribeRtcCloudRecordingFilesRequest
-//
-// @return DescribeRtcCloudRecordingFilesResponse
-func (client *Client) DescribeRtcCloudRecordingFiles(request *DescribeRtcCloudRecordingFilesRequest) (_result *DescribeRtcCloudRecordingFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRtcCloudRecordingFilesResponse{}
-	_body, _err := client.DescribeRtcCloudRecordingFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25307,7 +18242,7 @@ func (client *Client) DescribeRtcCloudRecordingFiles(request *DescribeRtcCloudRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRtcMPUEventSubResponse
-func (client *Client) DescribeRtcMPUEventSubWithOptions(request *DescribeRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcMPUEventSubResponse, _err error) {
+func (client *Client) DescribeRtcMPUEventSubWithContext(ctx context.Context, request *DescribeRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *DescribeRtcMPUEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25332,41 +18267,11 @@ func (client *Client) DescribeRtcMPUEventSubWithOptions(request *DescribeRtcMPUE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRtcMPUEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about a subscription to mixed-stream relay events.
-//
-// Description:
-//
-// ### Usage notes
-//
-// - You can call this operation to query information about a subscription to mixed-stream relay events.
-//
-// - Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
-//
-// ### QPS limit
-//
-// - You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeRtcMPUEventSubRequest
-//
-// @return DescribeRtcMPUEventSubResponse
-func (client *Client) DescribeRtcMPUEventSub(request *DescribeRtcMPUEventSubRequest) (_result *DescribeRtcMPUEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRtcMPUEventSubResponse{}
-	_body, _err := client.DescribeRtcMPUEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25387,7 +18292,7 @@ func (client *Client) DescribeRtcMPUEventSub(request *DescribeRtcMPUEventSubRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeShowListResponse
-func (client *Client) DescribeShowListWithOptions(request *DescribeShowListRequest, runtime *dara.RuntimeOptions) (_result *DescribeShowListResponse, _err error) {
+func (client *Client) DescribeShowListWithContext(ctx context.Context, request *DescribeShowListRequest, runtime *dara.RuntimeOptions) (_result *DescribeShowListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25420,37 +18325,11 @@ func (client *Client) DescribeShowListWithOptions(request *DescribeShowListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeShowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of the episode list.
-//
-// Description:
-//
-// You cannot call this operation if the episode list is empty. For information about how to add episodes to the episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeShowListRequest
-//
-// @return DescribeShowListResponse
-func (client *Client) DescribeShowList(request *DescribeShowListRequest) (_result *DescribeShowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeShowListResponse{}
-	_body, _err := client.DescribeShowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25471,7 +18350,7 @@ func (client *Client) DescribeShowList(request *DescribeShowListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStreamLocationBlockResponse
-func (client *Client) DescribeStreamLocationBlockWithOptions(request *DescribeStreamLocationBlockRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamLocationBlockResponse, _err error) {
+func (client *Client) DescribeStreamLocationBlockWithContext(ctx context.Context, request *DescribeStreamLocationBlockRequest, runtime *dara.RuntimeOptions) (_result *DescribeStreamLocationBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25524,37 +18403,11 @@ func (client *Client) DescribeStreamLocationBlockWithOptions(request *DescribeSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStreamLocationBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries configurations of stream-level region blocking.
-//
-// Description:
-//
-// Queries configurations of stream-level region blocking.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeStreamLocationBlockRequest
-//
-// @return DescribeStreamLocationBlockResponse
-func (client *Client) DescribeStreamLocationBlock(request *DescribeStreamLocationBlockRequest) (_result *DescribeStreamLocationBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStreamLocationBlockResponse{}
-	_body, _err := client.DescribeStreamLocationBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25575,7 +18428,7 @@ func (client *Client) DescribeStreamLocationBlock(request *DescribeStreamLocatio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeStudioLayoutsResponse
-func (client *Client) DescribeStudioLayoutsWithOptions(request *DescribeStudioLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStudioLayoutsResponse, _err error) {
+func (client *Client) DescribeStudioLayoutsWithContext(ctx context.Context, request *DescribeStudioLayoutsRequest, runtime *dara.RuntimeOptions) (_result *DescribeStudioLayoutsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25612,37 +18465,11 @@ func (client *Client) DescribeStudioLayoutsWithOptions(request *DescribeStudioLa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeStudioLayoutsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more layouts of a virtual studio.
-//
-// Description:
-//
-// You must call the [AddStudioLayout](https://help.aliyun.com/document_detail/215388.html) operation to configure layouts for a virtual studio before you call this operation to query layouts.
-//
-// ## QPS limits
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - DescribeStudioLayoutsRequest
-//
-// @return DescribeStudioLayoutsResponse
-func (client *Client) DescribeStudioLayouts(request *DescribeStudioLayoutsRequest) (_result *DescribeStudioLayoutsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeStudioLayoutsResponse{}
-	_body, _err := client.DescribeStudioLayoutsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25663,7 +18490,7 @@ func (client *Client) DescribeStudioLayouts(request *DescribeStudioLayoutsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeToutiaoLivePlayResponse
-func (client *Client) DescribeToutiaoLivePlayWithOptions(request *DescribeToutiaoLivePlayRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePlayResponse, _err error) {
+func (client *Client) DescribeToutiaoLivePlayWithContext(ctx context.Context, request *DescribeToutiaoLivePlayRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePlayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25712,37 +18539,11 @@ func (client *Client) DescribeToutiaoLivePlayWithOptions(request *DescribeToutia
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeToutiaoLivePlayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stream pulling information about a live stream of a headline.
-//
-// Description:
-//
-// You can call this operation to query the stream pulling information about a live stream of a headline.
-//
-// ## [](#qps-)QPS limits
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeToutiaoLivePlayRequest
-//
-// @return DescribeToutiaoLivePlayResponse
-func (client *Client) DescribeToutiaoLivePlay(request *DescribeToutiaoLivePlayRequest) (_result *DescribeToutiaoLivePlayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeToutiaoLivePlayResponse{}
-	_body, _err := client.DescribeToutiaoLivePlayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25763,7 +18564,7 @@ func (client *Client) DescribeToutiaoLivePlay(request *DescribeToutiaoLivePlayRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeToutiaoLivePublishResponse
-func (client *Client) DescribeToutiaoLivePublishWithOptions(request *DescribeToutiaoLivePublishRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePublishResponse, _err error) {
+func (client *Client) DescribeToutiaoLivePublishWithContext(ctx context.Context, request *DescribeToutiaoLivePublishRequest, runtime *dara.RuntimeOptions) (_result *DescribeToutiaoLivePublishResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25812,37 +18613,11 @@ func (client *Client) DescribeToutiaoLivePublishWithOptions(request *DescribeTou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeToutiaoLivePublishResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the ingest information of a specified live stream that is ingested to Toutiao.
-//
-// Description:
-//
-// You can call this operation to query the ingest information of a specified live stream that is ingested to Toutiao.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeToutiaoLivePublishRequest
-//
-// @return DescribeToutiaoLivePublishResponse
-func (client *Client) DescribeToutiaoLivePublish(request *DescribeToutiaoLivePublishRequest) (_result *DescribeToutiaoLivePublishResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeToutiaoLivePublishResponse{}
-	_body, _err := client.DescribeToutiaoLivePublishWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25855,7 +18630,7 @@ func (client *Client) DescribeToutiaoLivePublish(request *DescribeToutiaoLivePub
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUidOnlineStreamsResponse
-func (client *Client) DescribeUidOnlineStreamsWithOptions(request *DescribeUidOnlineStreamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUidOnlineStreamsResponse, _err error) {
+func (client *Client) DescribeUidOnlineStreamsWithContext(ctx context.Context, request *DescribeUidOnlineStreamsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUidOnlineStreamsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25876,29 +18651,11 @@ func (client *Client) DescribeUidOnlineStreamsWithOptions(request *DescribeUidOn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUidOnlineStreamsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新增查询 uid 级别或域名app级别在线流
-//
-// @param request - DescribeUidOnlineStreamsRequest
-//
-// @return DescribeUidOnlineStreamsResponse
-func (client *Client) DescribeUidOnlineStreams(request *DescribeUidOnlineStreamsRequest) (_result *DescribeUidOnlineStreamsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUidOnlineStreamsResponse{}
-	_body, _err := client.DescribeUidOnlineStreamsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -25919,7 +18676,7 @@ func (client *Client) DescribeUidOnlineStreams(request *DescribeUidOnlineStreams
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUpBpsPeakDataResponse
-func (client *Client) DescribeUpBpsPeakDataWithOptions(request *DescribeUpBpsPeakDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakDataResponse, _err error) {
+func (client *Client) DescribeUpBpsPeakDataWithContext(ctx context.Context, request *DescribeUpBpsPeakDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -25964,37 +18721,11 @@ func (client *Client) DescribeUpBpsPeakDataWithOptions(request *DescribeUpBpsPea
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUpBpsPeakDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the daily peak inbound bandwidth.
-//
-// Description:
-//
-// You can call this operation to query the daily peak inbound bandwidth.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeUpBpsPeakDataRequest
-//
-// @return DescribeUpBpsPeakDataResponse
-func (client *Client) DescribeUpBpsPeakData(request *DescribeUpBpsPeakDataRequest) (_result *DescribeUpBpsPeakDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUpBpsPeakDataResponse{}
-	_body, _err := client.DescribeUpBpsPeakDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26015,7 +18746,7 @@ func (client *Client) DescribeUpBpsPeakData(request *DescribeUpBpsPeakDataReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUpBpsPeakOfLineResponse
-func (client *Client) DescribeUpBpsPeakOfLineWithOptions(request *DescribeUpBpsPeakOfLineRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakOfLineResponse, _err error) {
+func (client *Client) DescribeUpBpsPeakOfLineWithContext(ctx context.Context, request *DescribeUpBpsPeakOfLineRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpBpsPeakOfLineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26064,37 +18795,11 @@ func (client *Client) DescribeUpBpsPeakOfLineWithOptions(request *DescribeUpBpsP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUpBpsPeakOfLineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the daily peak inbound bandwidth of a leased line.
-//
-// Description:
-//
-// You can call this operation to query the daily peak inbound bandwidth of a leased line.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeUpBpsPeakOfLineRequest
-//
-// @return DescribeUpBpsPeakOfLineResponse
-func (client *Client) DescribeUpBpsPeakOfLine(request *DescribeUpBpsPeakOfLineRequest) (_result *DescribeUpBpsPeakOfLineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUpBpsPeakOfLineResponse{}
-	_body, _err := client.DescribeUpBpsPeakOfLineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26115,7 +18820,7 @@ func (client *Client) DescribeUpBpsPeakOfLine(request *DescribeUpBpsPeakOfLineRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUpPeakPublishStreamDataResponse
-func (client *Client) DescribeUpPeakPublishStreamDataWithOptions(request *DescribeUpPeakPublishStreamDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpPeakPublishStreamDataResponse, _err error) {
+func (client *Client) DescribeUpPeakPublishStreamDataWithContext(ctx context.Context, request *DescribeUpPeakPublishStreamDataRequest, runtime *dara.RuntimeOptions) (_result *DescribeUpPeakPublishStreamDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26160,37 +18865,11 @@ func (client *Client) DescribeUpPeakPublishStreamDataWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUpPeakPublishStreamDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the daily peak number of concurrently ingested streams.
-//
-// Description:
-//
-// You can call this operation to query the daily peak number of concurrently ingested streams.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - DescribeUpPeakPublishStreamDataRequest
-//
-// @return DescribeUpPeakPublishStreamDataResponse
-func (client *Client) DescribeUpPeakPublishStreamData(request *DescribeUpPeakPublishStreamDataRequest) (_result *DescribeUpPeakPublishStreamDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUpPeakPublishStreamDataResponse{}
-	_body, _err := client.DescribeUpPeakPublishStreamDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26213,7 +18892,7 @@ func (client *Client) DescribeUpPeakPublishStreamData(request *DescribeUpPeakPub
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableLiveRealtimeLogDeliveryResponse
-func (client *Client) DisableLiveRealtimeLogDeliveryWithOptions(request *DisableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DisableLiveRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) DisableLiveRealtimeLogDeliveryWithContext(ctx context.Context, request *DisableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *DisableLiveRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26234,39 +18913,11 @@ func (client *Client) DisableLiveRealtimeLogDeliveryWithOptions(request *Disable
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Suspends real-time log delivery for one or more domain names.
-//
-// Description:
-//
-// Obtain a domain name for which real-time log delivery is enabled, and then call this operation to suspend real-time log delivery for the domain name.
-//
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DisableLiveRealtimeLogDeliveryRequest
-//
-// @return DisableLiveRealtimeLogDeliveryResponse
-func (client *Client) DisableLiveRealtimeLogDelivery(request *DisableLiveRealtimeLogDeliveryRequest) (_result *DisableLiveRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.DisableLiveRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26287,7 +18938,7 @@ func (client *Client) DisableLiveRealtimeLogDelivery(request *DisableLiveRealtim
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DynamicUpdateWaterMarkStreamRuleResponse
-func (client *Client) DynamicUpdateWaterMarkStreamRuleWithOptions(request *DynamicUpdateWaterMarkStreamRuleRequest, runtime *dara.RuntimeOptions) (_result *DynamicUpdateWaterMarkStreamRuleResponse, _err error) {
+func (client *Client) DynamicUpdateWaterMarkStreamRuleWithContext(ctx context.Context, request *DynamicUpdateWaterMarkStreamRuleRequest, runtime *dara.RuntimeOptions) (_result *DynamicUpdateWaterMarkStreamRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26332,37 +18983,11 @@ func (client *Client) DynamicUpdateWaterMarkStreamRuleWithOptions(request *Dynam
 		BodyType:    dara.String("json"),
 	}
 	_result = &DynamicUpdateWaterMarkStreamRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Dynamically updates a watermark.
-//
-// Description:
-//
-// Dynamically updating a watermark means replacing the watermark template ID during live streaming. Before you call this operation to update a watermark, you must prepare the watermark template ID that is used for replacement. The watermark template ID is specified by the **TemplateId*	- parameter of this operation. You can call the [DescribeLiveStreamWatermarks](https://help.aliyun.com/document_detail/2848102.html) operation to obtain available watermark template IDs.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DynamicUpdateWaterMarkStreamRuleRequest
-//
-// @return DynamicUpdateWaterMarkStreamRuleResponse
-func (client *Client) DynamicUpdateWaterMarkStreamRule(request *DynamicUpdateWaterMarkStreamRuleRequest) (_result *DynamicUpdateWaterMarkStreamRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DynamicUpdateWaterMarkStreamRuleResponse{}
-	_body, _err := client.DynamicUpdateWaterMarkStreamRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26383,7 +19008,7 @@ func (client *Client) DynamicUpdateWaterMarkStreamRule(request *DynamicUpdateWat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditPlaylistResponse
-func (client *Client) EditPlaylistWithOptions(request *EditPlaylistRequest, runtime *dara.RuntimeOptions) (_result *EditPlaylistResponse, _err error) {
+func (client *Client) EditPlaylistWithContext(ctx context.Context, request *EditPlaylistRequest, runtime *dara.RuntimeOptions) (_result *EditPlaylistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26424,37 +19049,11 @@ func (client *Client) EditPlaylistWithOptions(request *EditPlaylistRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &EditPlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Edits an episode list.
-//
-// Description:
-//
-// You can call this operation to update all configurations of episodes in an episode list or replace the episodes.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - EditPlaylistRequest
-//
-// @return EditPlaylistResponse
-func (client *Client) EditPlaylist(request *EditPlaylistRequest) (_result *EditPlaylistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EditPlaylistResponse{}
-	_body, _err := client.EditPlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26475,7 +19074,7 @@ func (client *Client) EditPlaylist(request *EditPlaylistRequest) (_result *EditP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditShowAndReplaceResponse
-func (client *Client) EditShowAndReplaceWithOptions(request *EditShowAndReplaceRequest, runtime *dara.RuntimeOptions) (_result *EditShowAndReplaceResponse, _err error) {
+func (client *Client) EditShowAndReplaceWithContext(ctx context.Context, request *EditShowAndReplaceRequest, runtime *dara.RuntimeOptions) (_result *EditShowAndReplaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26528,37 +19127,11 @@ func (client *Client) EditShowAndReplaceWithOptions(request *EditShowAndReplaceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EditShowAndReplaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an editing task.
-//
-// Description:
-//
-// You can call this operation to create an editing task by specifying the production studio ID and the episode ID. You will not receive a notification after the editing task is created. You can call the [GetEditingJobInfo](https://help.aliyun.com/document_detail/2848059.html) operation to query the status of the editing task.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - EditShowAndReplaceRequest
-//
-// @return EditShowAndReplaceResponse
-func (client *Client) EditShowAndReplace(request *EditShowAndReplaceRequest) (_result *EditShowAndReplaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EditShowAndReplaceResponse{}
-	_body, _err := client.EditShowAndReplaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26579,7 +19152,7 @@ func (client *Client) EditShowAndReplace(request *EditShowAndReplaceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EffectCasterUrgentResponse
-func (client *Client) EffectCasterUrgentWithOptions(request *EffectCasterUrgentRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterUrgentResponse, _err error) {
+func (client *Client) EffectCasterUrgentWithContext(ctx context.Context, request *EffectCasterUrgentRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterUrgentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26616,37 +19189,11 @@ func (client *Client) EffectCasterUrgentWithOptions(request *EffectCasterUrgentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &EffectCasterUrgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Switches a scene to the standby resource in a production studio.
-//
-// Description:
-//
-// You can call this operation to switch a specified scene to the standby resource. Only a PGM scene is supported.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - EffectCasterUrgentRequest
-//
-// @return EffectCasterUrgentResponse
-func (client *Client) EffectCasterUrgent(request *EffectCasterUrgentRequest) (_result *EffectCasterUrgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EffectCasterUrgentResponse{}
-	_body, _err := client.EffectCasterUrgentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26667,7 +19214,7 @@ func (client *Client) EffectCasterUrgent(request *EffectCasterUrgentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EffectCasterVideoResourceResponse
-func (client *Client) EffectCasterVideoResourceWithOptions(request *EffectCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterVideoResourceResponse, _err error) {
+func (client *Client) EffectCasterVideoResourceWithContext(ctx context.Context, request *EffectCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *EffectCasterVideoResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26708,37 +19255,11 @@ func (client *Client) EffectCasterVideoResourceWithOptions(request *EffectCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &EffectCasterVideoResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the standby resource in a specified scene.
-//
-// Description:
-//
-// Make sure that the resource is referenced by the scene.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - EffectCasterVideoResourceRequest
-//
-// @return EffectCasterVideoResourceResponse
-func (client *Client) EffectCasterVideoResource(request *EffectCasterVideoResourceRequest) (_result *EffectCasterVideoResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EffectCasterVideoResourceResponse{}
-	_body, _err := client.EffectCasterVideoResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26761,7 +19282,7 @@ func (client *Client) EffectCasterVideoResource(request *EffectCasterVideoResour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableLiveRealtimeLogDeliveryResponse
-func (client *Client) EnableLiveRealtimeLogDeliveryWithOptions(request *EnableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *EnableLiveRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) EnableLiveRealtimeLogDeliveryWithContext(ctx context.Context, request *EnableLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *EnableLiveRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26782,39 +19303,11 @@ func (client *Client) EnableLiveRealtimeLogDeliveryWithOptions(request *EnableLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables real-time log delivery for one or more domain names.
-//
-// Description:
-//
-// ##
-//
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
-//
-// ## QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - EnableLiveRealtimeLogDeliveryRequest
-//
-// @return EnableLiveRealtimeLogDeliveryResponse
-func (client *Client) EnableLiveRealtimeLogDelivery(request *EnableLiveRealtimeLogDeliveryRequest) (_result *EnableLiveRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.EnableLiveRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26841,7 +19334,7 @@ func (client *Client) EnableLiveRealtimeLogDelivery(request *EnableLiveRealtimeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ForbidLiveStreamResponse
-func (client *Client) ForbidLiveStreamWithOptions(request *ForbidLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ForbidLiveStreamResponse, _err error) {
+func (client *Client) ForbidLiveStreamWithContext(ctx context.Context, request *ForbidLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ForbidLiveStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26894,43 +19387,11 @@ func (client *Client) ForbidLiveStreamWithOptions(request *ForbidLiveStreamReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ForbidLiveStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a live stream. You can specify the time when the live stream is resumed.
-//
-// Description:
-//
-// You can call this operation to disable a live stream and specify the time when the live stream is resumed. If the time is not specified, you can call the [ResumeLiveStream](https://help.aliyun.com/document_detail/2847831.html) operation to resume the live stream. This operation supports only the live streams ingested by streamers.
-//
-// >
-//
-//   - This operation disables a live stream by adding the stream to the blacklist. You can disable up to 10,000 live streams. If the limit is reached, you cannot disable any more live streams. Pay attention to the number of live streams that are disabled. You can call the [DescribeLiveStreamsBlockList](https://help.aliyun.com/document_detail/2847825.html) operation to query the number of live streams that are disabled.
-//
-//   - An interrupted live stream is not added to the blacklist and does not occupy the quota.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ForbidLiveStreamRequest
-//
-// @return ForbidLiveStreamResponse
-func (client *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (_result *ForbidLiveStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ForbidLiveStreamResponse{}
-	_body, _err := client.ForbidLiveStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -26951,7 +19412,7 @@ func (client *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAllCustomTemplatesResponse
-func (client *Client) GetAllCustomTemplatesWithOptions(request *GetAllCustomTemplatesRequest, runtime *dara.RuntimeOptions) (_result *GetAllCustomTemplatesResponse, _err error) {
+func (client *Client) GetAllCustomTemplatesWithContext(ctx context.Context, request *GetAllCustomTemplatesRequest, runtime *dara.RuntimeOptions) (_result *GetAllCustomTemplatesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -26984,37 +19445,11 @@ func (client *Client) GetAllCustomTemplatesWithOptions(request *GetAllCustomTemp
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAllCustomTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all custom stream mixing templates.
-//
-// Description:
-//
-// You can call this operation to query all custom stream mixing templates. A list of template names and template configurations is returned.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - GetAllCustomTemplatesRequest
-//
-// @return GetAllCustomTemplatesResponse
-func (client *Client) GetAllCustomTemplates(request *GetAllCustomTemplatesRequest) (_result *GetAllCustomTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAllCustomTemplatesResponse{}
-	_body, _err := client.GetAllCustomTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27035,7 +19470,7 @@ func (client *Client) GetAllCustomTemplates(request *GetAllCustomTemplatesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCustomTemplateResponse
-func (client *Client) GetCustomTemplateWithOptions(request *GetCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCustomTemplateResponse, _err error) {
+func (client *Client) GetCustomTemplateWithContext(ctx context.Context, request *GetCustomTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCustomTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27068,37 +19503,11 @@ func (client *Client) GetCustomTemplateWithOptions(request *GetCustomTemplateReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCustomTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a custom stream mixing template.
-//
-// Description:
-//
-// Obtain the name of the custom stream mixing template, and then call this operation to query the information about the template.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - GetCustomTemplateRequest
-//
-// @return GetCustomTemplateResponse
-func (client *Client) GetCustomTemplate(request *GetCustomTemplateRequest) (_result *GetCustomTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCustomTemplateResponse{}
-	_body, _err := client.GetCustomTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27119,7 +19528,7 @@ func (client *Client) GetCustomTemplate(request *GetCustomTemplateRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEdgeTranscodeJobResponse
-func (client *Client) GetEdgeTranscodeJobWithOptions(request *GetEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeJobResponse, _err error) {
+func (client *Client) GetEdgeTranscodeJobWithContext(ctx context.Context, request *GetEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27156,37 +19565,11 @@ func (client *Client) GetEdgeTranscodeJobWithOptions(request *GetEdgeTranscodeJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an edge transcoding task.
-//
-// Description:
-//
-// To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - GetEdgeTranscodeJobRequest
-//
-// @return GetEdgeTranscodeJobResponse
-func (client *Client) GetEdgeTranscodeJob(request *GetEdgeTranscodeJobRequest) (_result *GetEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetEdgeTranscodeJobResponse{}
-	_body, _err := client.GetEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27209,7 +19592,7 @@ func (client *Client) GetEdgeTranscodeJob(request *GetEdgeTranscodeJobRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEdgeTranscodeTemplateResponse
-func (client *Client) GetEdgeTranscodeTemplateWithOptions(request *GetEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeTemplateResponse, _err error) {
+func (client *Client) GetEdgeTranscodeTemplateWithContext(ctx context.Context, request *GetEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetEdgeTranscodeTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27246,39 +19629,11 @@ func (client *Client) GetEdgeTranscodeTemplateWithOptions(request *GetEdgeTransc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEdgeTranscodeTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an edge transcoding template.
-//
-// Description:
-//
-//	  You can call this operation to query the details of an edge transcoding template.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - GetEdgeTranscodeTemplateRequest
-//
-// @return GetEdgeTranscodeTemplateResponse
-func (client *Client) GetEdgeTranscodeTemplate(request *GetEdgeTranscodeTemplateRequest) (_result *GetEdgeTranscodeTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetEdgeTranscodeTemplateResponse{}
-	_body, _err := client.GetEdgeTranscodeTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27303,7 +19658,7 @@ func (client *Client) GetEdgeTranscodeTemplate(request *GetEdgeTranscodeTemplate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEditingJobInfoResponse
-func (client *Client) GetEditingJobInfoWithOptions(request *GetEditingJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetEditingJobInfoResponse, _err error) {
+func (client *Client) GetEditingJobInfoWithContext(ctx context.Context, request *GetEditingJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetEditingJobInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27340,41 +19695,11 @@ func (client *Client) GetEditingJobInfoWithOptions(request *GetEditingJobInfoReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEditingJobInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about editing tasks.
-//
-// Description:
-//
-//	  When you call this operation, you can specify the CasterId and ShowId parameters to query the information about specific editing tasks. Make sure that the parameter settings meet the requirements.
-//
-//		- If you specify the ShowId parameter in the request, the information about the editing tasks for the specified episode is returned.
-//
-//		- If you do not specify the ShowId parameter in the request, the information about the editing tasks for the entire episode list is returned.
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - GetEditingJobInfoRequest
-//
-// @return GetEditingJobInfoResponse
-func (client *Client) GetEditingJobInfo(request *GetEditingJobInfoRequest) (_result *GetEditingJobInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetEditingJobInfoResponse{}
-	_body, _err := client.GetEditingJobInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27393,7 +19718,7 @@ func (client *Client) GetEditingJobInfo(request *GetEditingJobInfoRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageAppResponse
-func (client *Client) GetMessageAppWithOptions(request *GetMessageAppRequest, runtime *dara.RuntimeOptions) (_result *GetMessageAppResponse, _err error) {
+func (client *Client) GetMessageAppWithContext(ctx context.Context, request *GetMessageAppRequest, runtime *dara.RuntimeOptions) (_result *GetMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27418,35 +19743,11 @@ func (client *Client) GetMessageAppWithOptions(request *GetMessageAppRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a specified interactive messaging application.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - GetMessageAppRequest
-//
-// @return GetMessageAppResponse
-func (client *Client) GetMessageApp(request *GetMessageAppRequest) (_result *GetMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMessageAppResponse{}
-	_body, _err := client.GetMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27463,7 +19764,7 @@ func (client *Client) GetMessageApp(request *GetMessageAppRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageGroupResponse
-func (client *Client) GetMessageGroupWithOptions(request *GetMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *GetMessageGroupResponse, _err error) {
+func (client *Client) GetMessageGroupWithContext(ctx context.Context, request *GetMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *GetMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27492,33 +19793,11 @@ func (client *Client) GetMessageGroupWithOptions(request *GetMessageGroupRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a message group.
-//
-// Description:
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - GetMessageGroupRequest
-//
-// @return GetMessageGroupResponse
-func (client *Client) GetMessageGroup(request *GetMessageGroupRequest) (_result *GetMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMessageGroupResponse{}
-	_body, _err := client.GetMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27541,7 +19820,7 @@ func (client *Client) GetMessageGroup(request *GetMessageGroupRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageTokenResponse
-func (client *Client) GetMessageTokenWithOptions(request *GetMessageTokenRequest, runtime *dara.RuntimeOptions) (_result *GetMessageTokenResponse, _err error) {
+func (client *Client) GetMessageTokenWithContext(ctx context.Context, request *GetMessageTokenRequest, runtime *dara.RuntimeOptions) (_result *GetMessageTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27578,39 +19857,11 @@ func (client *Client) GetMessageTokenWithOptions(request *GetMessageTokenRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a token that the client can use to establish a persistent connection over the LWP protocol and based on atomic capabilities.
-//
-// Description:
-//
-// ##
-//
-// Obtain the user ID, device ID, and device type of the client, and then pass the information to the server. When you call this operation, the server obtains a token and returns the token to the client. Different users have different user IDs, and different devices have different device IDs.
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - GetMessageTokenRequest
-//
-// @return GetMessageTokenResponse
-func (client *Client) GetMessageToken(request *GetMessageTokenRequest) (_result *GetMessageTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMessageTokenResponse{}
-	_body, _err := client.GetMessageTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27619,7 +19870,7 @@ func (client *Client) GetMessageToken(request *GetMessageTokenRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTranscodeTaskStatusResponse
-func (client *Client) GetTranscodeTaskStatusWithOptions(request *GetTranscodeTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTranscodeTaskStatusResponse, _err error) {
+func (client *Client) GetTranscodeTaskStatusWithContext(ctx context.Context, request *GetTranscodeTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *GetTranscodeTaskStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27660,25 +19911,11 @@ func (client *Client) GetTranscodeTaskStatusWithOptions(request *GetTranscodeTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTranscodeTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetTranscodeTaskStatusRequest
-//
-// @return GetTranscodeTaskStatusResponse
-func (client *Client) GetTranscodeTaskStatus(request *GetTranscodeTaskStatusRequest) (_result *GetTranscodeTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTranscodeTaskStatusResponse{}
-	_body, _err := client.GetTranscodeTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27697,7 +19934,7 @@ func (client *Client) GetTranscodeTaskStatus(request *GetTranscodeTaskStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return HotLiveRtcStreamResponse
-func (client *Client) HotLiveRtcStreamWithOptions(request *HotLiveRtcStreamRequest, runtime *dara.RuntimeOptions) (_result *HotLiveRtcStreamResponse, _err error) {
+func (client *Client) HotLiveRtcStreamWithContext(ctx context.Context, request *HotLiveRtcStreamRequest, runtime *dara.RuntimeOptions) (_result *HotLiveRtcStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27758,35 +19995,11 @@ func (client *Client) HotLiveRtcStreamWithOptions(request *HotLiveRtcStreamReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &HotLiveRtcStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures prefetch for a live stream that is ingested based on Real-Time Communication (RTC).
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - HotLiveRtcStreamRequest
-//
-// @return HotLiveRtcStreamResponse
-func (client *Client) HotLiveRtcStream(request *HotLiveRtcStreamRequest) (_result *HotLiveRtcStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &HotLiveRtcStreamResponse{}
-	_body, _err := client.HotLiveRtcStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27807,7 +20020,7 @@ func (client *Client) HotLiveRtcStream(request *HotLiveRtcStreamRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InitializeAutoShowListTaskResponse
-func (client *Client) InitializeAutoShowListTaskWithOptions(request *InitializeAutoShowListTaskRequest, runtime *dara.RuntimeOptions) (_result *InitializeAutoShowListTaskResponse, _err error) {
+func (client *Client) InitializeAutoShowListTaskWithContext(ctx context.Context, request *InitializeAutoShowListTaskRequest, runtime *dara.RuntimeOptions) (_result *InitializeAutoShowListTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27860,37 +20073,11 @@ func (client *Client) InitializeAutoShowListTaskWithOptions(request *InitializeA
 		BodyType:    dara.String("json"),
 	}
 	_result = &InitializeAutoShowListTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a scheduled task to start and stop the playback of a playlist at specified points in time.
-//
-// Description:
-//
-// You can call this operation to create a scheduled task to start and stop the playback of an episode list at specified points in time. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - InitializeAutoShowListTaskRequest
-//
-// @return InitializeAutoShowListTaskResponse
-func (client *Client) InitializeAutoShowListTask(request *InitializeAutoShowListTaskRequest) (_result *InitializeAutoShowListTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InitializeAutoShowListTaskResponse{}
-	_body, _err := client.InitializeAutoShowListTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27907,7 +20094,7 @@ func (client *Client) InitializeAutoShowListTask(request *InitializeAutoShowList
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return JoinMessageGroupResponse
-func (client *Client) JoinMessageGroupWithOptions(request *JoinMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinMessageGroupResponse, _err error) {
+func (client *Client) JoinMessageGroupWithContext(ctx context.Context, request *JoinMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *JoinMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -27948,33 +20135,11 @@ func (client *Client) JoinMessageGroupWithOptions(request *JoinMessageGroupReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &JoinMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Joins a message group.
-//
-// Description:
-//
-// You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - JoinMessageGroupRequest
-//
-// @return JoinMessageGroupResponse
-func (client *Client) JoinMessageGroup(request *JoinMessageGroupRequest) (_result *JoinMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &JoinMessageGroupResponse{}
-	_body, _err := client.JoinMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -27995,7 +20160,7 @@ func (client *Client) JoinMessageGroup(request *JoinMessageGroupRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return KickLiveMessageGroupUserResponse
-func (client *Client) KickLiveMessageGroupUserWithOptions(request *KickLiveMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *KickLiveMessageGroupUserResponse, _err error) {
+func (client *Client) KickLiveMessageGroupUserWithContext(ctx context.Context, request *KickLiveMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *KickLiveMessageGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28032,37 +20197,11 @@ func (client *Client) KickLiveMessageGroupUserWithOptions(request *KickLiveMessa
 		BodyType:    dara.String("json"),
 	}
 	_result = &KickLiveMessageGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a user from an interactive messaging group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - KickLiveMessageGroupUserRequest
-//
-// @return KickLiveMessageGroupUserResponse
-func (client *Client) KickLiveMessageGroupUser(request *KickLiveMessageGroupUserRequest) (_result *KickLiveMessageGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &KickLiveMessageGroupUserResponse{}
-	_body, _err := client.KickLiveMessageGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28081,7 +20220,7 @@ func (client *Client) KickLiveMessageGroupUser(request *KickLiveMessageGroupUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LeaveMessageGroupResponse
-func (client *Client) LeaveMessageGroupWithOptions(request *LeaveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *LeaveMessageGroupResponse, _err error) {
+func (client *Client) LeaveMessageGroupWithContext(ctx context.Context, request *LeaveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *LeaveMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28122,35 +20261,11 @@ func (client *Client) LeaveMessageGroupWithOptions(request *LeaveMessageGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &LeaveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Leaves a message group.
-//
-// Description:
-//
-// ##
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - LeaveMessageGroupRequest
-//
-// @return LeaveMessageGroupResponse
-func (client *Client) LeaveMessageGroup(request *LeaveMessageGroupRequest) (_result *LeaveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LeaveMessageGroupResponse{}
-	_body, _err := client.LeaveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28175,7 +20290,7 @@ func (client *Client) LeaveMessageGroup(request *LeaveMessageGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEdgeTranscodeJobResponse
-func (client *Client) ListEdgeTranscodeJobWithOptions(request *ListEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeJobResponse, _err error) {
+func (client *Client) ListEdgeTranscodeJobWithContext(ctx context.Context, request *ListEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28232,41 +20347,11 @@ func (client *Client) ListEdgeTranscodeJobWithOptions(request *ListEdgeTranscode
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries edge transcoding tasks.
-//
-// Description:
-//
-//	  You can call this operation to query edge transcoding tasks.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-//		- You can query only tasks created or modified in the last 180 days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListEdgeTranscodeJobRequest
-//
-// @return ListEdgeTranscodeJobResponse
-func (client *Client) ListEdgeTranscodeJob(request *ListEdgeTranscodeJobRequest) (_result *ListEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEdgeTranscodeJobResponse{}
-	_body, _err := client.ListEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28289,7 +20374,7 @@ func (client *Client) ListEdgeTranscodeJob(request *ListEdgeTranscodeJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEdgeTranscodeTemplateResponse
-func (client *Client) ListEdgeTranscodeTemplateWithOptions(request *ListEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeTemplateResponse, _err error) {
+func (client *Client) ListEdgeTranscodeTemplateWithContext(ctx context.Context, request *ListEdgeTranscodeTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListEdgeTranscodeTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28346,39 +20431,11 @@ func (client *Client) ListEdgeTranscodeTemplateWithOptions(request *ListEdgeTran
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEdgeTranscodeTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the list of edge transcoding templates.
-//
-// Description:
-//
-//	  You can call this operation to query the list of edge transcoding templates.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListEdgeTranscodeTemplateRequest
-//
-// @return ListEdgeTranscodeTemplateResponse
-func (client *Client) ListEdgeTranscodeTemplate(request *ListEdgeTranscodeTemplateRequest) (_result *ListEdgeTranscodeTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEdgeTranscodeTemplateResponse{}
-	_body, _err := client.ListEdgeTranscodeTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28395,7 +20452,7 @@ func (client *Client) ListEdgeTranscodeTemplate(request *ListEdgeTranscodeTempla
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEventSubResponse
-func (client *Client) ListEventSubWithOptions(request *ListEventSubRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubResponse, _err error) {
+func (client *Client) ListEventSubWithContext(ctx context.Context, request *ListEventSubRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28416,33 +20473,11 @@ func (client *Client) ListEventSubWithOptions(request *ListEventSubRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the events generated in channels to which you subscribe.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListEventSubRequest
-//
-// @return ListEventSubResponse
-func (client *Client) ListEventSub(request *ListEventSubRequest) (_result *ListEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEventSubResponse{}
-	_body, _err := client.ListEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28467,7 +20502,7 @@ func (client *Client) ListEventSub(request *ListEventSubRequest) (_result *ListE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEventSubEventResponse
-func (client *Client) ListEventSubEventWithOptions(request *ListEventSubEventRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubEventResponse, _err error) {
+func (client *Client) ListEventSubEventWithContext(ctx context.Context, request *ListEventSubEventRequest, runtime *dara.RuntimeOptions) (_result *ListEventSubEventResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28488,41 +20523,11 @@ func (client *Client) ListEventSubEventWithOptions(request *ListEventSubEventReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEventSubEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries callback records.
-//
-// Description:
-//
-//	  The maximum time range to query is seven days.
-//
-//		- The minimum time granularity to query is 1 minute.
-//
-//		- You can query data in the last seven days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListEventSubEventRequest
-//
-// @return ListEventSubEventResponse
-func (client *Client) ListEventSubEvent(request *ListEventSubEventRequest) (_result *ListEventSubEventResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEventSubEventResponse{}
-	_body, _err := client.ListEventSubEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28539,7 +20544,7 @@ func (client *Client) ListEventSubEvent(request *ListEventSubEventRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveDelayConfigResponse
-func (client *Client) ListLiveDelayConfigWithOptions(request *ListLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *ListLiveDelayConfigResponse, _err error) {
+func (client *Client) ListLiveDelayConfigWithContext(ctx context.Context, request *ListLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *ListLiveDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28580,33 +20585,11 @@ func (client *Client) ListLiveDelayConfigWithOptions(request *ListLiveDelayConfi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries stream delay configurations.
-//
-// Description:
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveDelayConfigRequest
-//
-// @return ListLiveDelayConfigResponse
-func (client *Client) ListLiveDelayConfig(request *ListLiveDelayConfigRequest) (_result *ListLiveDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveDelayConfigResponse{}
-	_body, _err := client.ListLiveDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28623,7 +20606,7 @@ func (client *Client) ListLiveDelayConfig(request *ListLiveDelayConfigRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveMessageAppsResponse
-func (client *Client) ListLiveMessageAppsWithOptions(request *ListLiveMessageAppsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageAppsResponse, _err error) {
+func (client *Client) ListLiveMessageAppsWithContext(ctx context.Context, request *ListLiveMessageAppsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28656,33 +20639,11 @@ func (client *Client) ListLiveMessageAppsWithOptions(request *ListLiveMessageApp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveMessageAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries interactive messaging applications.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveMessageAppsRequest
-//
-// @return ListLiveMessageAppsResponse
-func (client *Client) ListLiveMessageApps(request *ListLiveMessageAppsRequest) (_result *ListLiveMessageAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveMessageAppsResponse{}
-	_body, _err := client.ListLiveMessageAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28703,7 +20664,7 @@ func (client *Client) ListLiveMessageApps(request *ListLiveMessageAppsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveMessageGroupByPageResponse
-func (client *Client) ListLiveMessageGroupByPageWithOptions(request *ListLiveMessageGroupByPageRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupByPageResponse, _err error) {
+func (client *Client) ListLiveMessageGroupByPageWithContext(ctx context.Context, request *ListLiveMessageGroupByPageRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupByPageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28724,37 +20685,11 @@ func (client *Client) ListLiveMessageGroupByPageWithOptions(request *ListLiveMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveMessageGroupByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries interactive messaging groups by page.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveMessageGroupByPageRequest
-//
-// @return ListLiveMessageGroupByPageResponse
-func (client *Client) ListLiveMessageGroupByPage(request *ListLiveMessageGroupByPageRequest) (_result *ListLiveMessageGroupByPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveMessageGroupByPageResponse{}
-	_body, _err := client.ListLiveMessageGroupByPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28775,7 +20710,7 @@ func (client *Client) ListLiveMessageGroupByPage(request *ListLiveMessageGroupBy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveMessageGroupMessagesResponse
-func (client *Client) ListLiveMessageGroupMessagesWithOptions(request *ListLiveMessageGroupMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupMessagesResponse, _err error) {
+func (client *Client) ListLiveMessageGroupMessagesWithContext(ctx context.Context, request *ListLiveMessageGroupMessagesRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupMessagesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28832,37 +20767,11 @@ func (client *Client) ListLiveMessageGroupMessagesWithOptions(request *ListLiveM
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveMessageGroupMessagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the messages sent in a group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveMessageGroupMessagesRequest
-//
-// @return ListLiveMessageGroupMessagesResponse
-func (client *Client) ListLiveMessageGroupMessages(request *ListLiveMessageGroupMessagesRequest) (_result *ListLiveMessageGroupMessagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveMessageGroupMessagesResponse{}
-	_body, _err := client.ListLiveMessageGroupMessagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28885,7 +20794,7 @@ func (client *Client) ListLiveMessageGroupMessages(request *ListLiveMessageGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveMessageGroupUsersResponse
-func (client *Client) ListLiveMessageGroupUsersWithOptions(request *ListLiveMessageGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupUsersResponse, _err error) {
+func (client *Client) ListLiveMessageGroupUsersWithContext(ctx context.Context, request *ListLiveMessageGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupUsersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -28930,39 +20839,11 @@ func (client *Client) ListLiveMessageGroupUsersWithOptions(request *ListLiveMess
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveMessageGroupUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the users in an interactive messaging group.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-//		- For a super group, which has more than 2,000 users, the user list cannot be queried. In addition, the notifications about users entering or leaving the group are sent at an interval of at least of 5 seconds. These notifications display the accurate number of users in the group for the time being, but do not display the list of all users entering or leaving the group. Once a group is upgraded to a super group, the user list of the group is immediately cleared. The super group cannot be restored to a normal group until all users in the group leave the group (that is, the group is closed). After you reopen the group, it is restored to a normal group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveMessageGroupUsersRequest
-//
-// @return ListLiveMessageGroupUsersResponse
-func (client *Client) ListLiveMessageGroupUsers(request *ListLiveMessageGroupUsersRequest) (_result *ListLiveMessageGroupUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveMessageGroupUsersResponse{}
-	_body, _err := client.ListLiveMessageGroupUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -28983,7 +20864,7 @@ func (client *Client) ListLiveMessageGroupUsers(request *ListLiveMessageGroupUse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveMessageGroupsResponse
-func (client *Client) ListLiveMessageGroupsWithOptions(request *ListLiveMessageGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupsResponse, _err error) {
+func (client *Client) ListLiveMessageGroupsWithContext(ctx context.Context, request *ListLiveMessageGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveMessageGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29024,37 +20905,11 @@ func (client *Client) ListLiveMessageGroupsWithOptions(request *ListLiveMessageG
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveMessageGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the interactive messaging groups in an interactive messaging application.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveMessageGroupsRequest
-//
-// @return ListLiveMessageGroupsResponse
-func (client *Client) ListLiveMessageGroups(request *ListLiveMessageGroupsRequest) (_result *ListLiveMessageGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveMessageGroupsResponse{}
-	_body, _err := client.ListLiveMessageGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29075,7 +20930,7 @@ func (client *Client) ListLiveMessageGroups(request *ListLiveMessageGroupsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveRealtimeLogDeliveryResponse
-func (client *Client) ListLiveRealtimeLogDeliveryWithOptions(request *ListLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) ListLiveRealtimeLogDeliveryWithContext(ctx context.Context, request *ListLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29096,37 +20951,11 @@ func (client *Client) ListLiveRealtimeLogDeliveryWithOptions(request *ListLiveRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all configurations of real-time log delivery under an Alibaba Cloud account.
-//
-// Description:
-//
-// You can call this operation to query all configurations of real-time log delivery under an account. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveRealtimeLogDeliveryRequest
-//
-// @return ListLiveRealtimeLogDeliveryResponse
-func (client *Client) ListLiveRealtimeLogDelivery(request *ListLiveRealtimeLogDeliveryRequest) (_result *ListLiveRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.ListLiveRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29149,7 +20978,7 @@ func (client *Client) ListLiveRealtimeLogDelivery(request *ListLiveRealtimeLogDe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveRealtimeLogDeliveryDomainsResponse
-func (client *Client) ListLiveRealtimeLogDeliveryDomainsWithOptions(request *ListLiveRealtimeLogDeliveryDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryDomainsResponse, _err error) {
+func (client *Client) ListLiveRealtimeLogDeliveryDomainsWithContext(ctx context.Context, request *ListLiveRealtimeLogDeliveryDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryDomainsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29170,39 +20999,11 @@ func (client *Client) ListLiveRealtimeLogDeliveryDomainsWithOptions(request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveRealtimeLogDeliveryDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all domain names that are associated with a specific configuration of real-time log delivery.
-//
-// Description:
-//
-//	  You can call this operation to query all domain names that are associated with a specific configuration of real-time log delivery. The returned results indicate whether real-time log delivery is enabled or disabled for the domain names.
-//
-//		- You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query the Project, Logstore, and Region parameters.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveRealtimeLogDeliveryDomainsRequest
-//
-// @return ListLiveRealtimeLogDeliveryDomainsResponse
-func (client *Client) ListLiveRealtimeLogDeliveryDomains(request *ListLiveRealtimeLogDeliveryDomainsRequest) (_result *ListLiveRealtimeLogDeliveryDomainsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveRealtimeLogDeliveryDomainsResponse{}
-	_body, _err := client.ListLiveRealtimeLogDeliveryDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29223,7 +21024,7 @@ func (client *Client) ListLiveRealtimeLogDeliveryDomains(request *ListLiveRealti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLiveRealtimeLogDeliveryInfosResponse
-func (client *Client) ListLiveRealtimeLogDeliveryInfosWithOptions(request *ListLiveRealtimeLogDeliveryInfosRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryInfosResponse, _err error) {
+func (client *Client) ListLiveRealtimeLogDeliveryInfosWithContext(ctx context.Context, request *ListLiveRealtimeLogDeliveryInfosRequest, runtime *dara.RuntimeOptions) (_result *ListLiveRealtimeLogDeliveryInfosResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29244,37 +21045,11 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfosWithOptions(request *ListL
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLiveRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all configurations of real-time log delivery.
-//
-// Description:
-//
-// You can call this operation to query all configurations of real-time log delivery. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListLiveRealtimeLogDeliveryInfosRequest
-//
-// @return ListLiveRealtimeLogDeliveryInfosResponse
-func (client *Client) ListLiveRealtimeLogDeliveryInfos(request *ListLiveRealtimeLogDeliveryInfosRequest) (_result *ListLiveRealtimeLogDeliveryInfosResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLiveRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.ListLiveRealtimeLogDeliveryInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29293,7 +21068,7 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfos(request *ListLiveRealtime
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageResponse
-func (client *Client) ListMessageWithOptions(request *ListMessageRequest, runtime *dara.RuntimeOptions) (_result *ListMessageResponse, _err error) {
+func (client *Client) ListMessageWithContext(ctx context.Context, request *ListMessageRequest, runtime *dara.RuntimeOptions) (_result *ListMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29338,35 +21113,11 @@ func (client *Client) ListMessageWithOptions(request *ListMessageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries messages.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMessageRequest
-//
-// @return ListMessageResponse
-func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageResponse{}
-	_body, _err := client.ListMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29385,7 +21136,7 @@ func (client *Client) ListMessage(request *ListMessageRequest) (_result *ListMes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageAppResponse
-func (client *Client) ListMessageAppWithOptions(request *ListMessageAppRequest, runtime *dara.RuntimeOptions) (_result *ListMessageAppResponse, _err error) {
+func (client *Client) ListMessageAppWithContext(ctx context.Context, request *ListMessageAppRequest, runtime *dara.RuntimeOptions) (_result *ListMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29418,35 +21169,11 @@ func (client *Client) ListMessageAppWithOptions(request *ListMessageAppRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries interactive messaging applications.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMessageAppRequest
-//
-// @return ListMessageAppResponse
-func (client *Client) ListMessageApp(request *ListMessageAppRequest) (_result *ListMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageAppResponse{}
-	_body, _err := client.ListMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29465,7 +21192,7 @@ func (client *Client) ListMessageApp(request *ListMessageAppRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageGroupResponse
-func (client *Client) ListMessageGroupWithOptions(request *ListMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupResponse, _err error) {
+func (client *Client) ListMessageGroupWithContext(ctx context.Context, request *ListMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29506,35 +21233,11 @@ func (client *Client) ListMessageGroupWithOptions(request *ListMessageGroupReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the message groups of a specified user.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMessageGroupRequest
-//
-// @return ListMessageGroupResponse
-func (client *Client) ListMessageGroup(request *ListMessageGroupRequest) (_result *ListMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageGroupResponse{}
-	_body, _err := client.ListMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29553,7 +21256,7 @@ func (client *Client) ListMessageGroup(request *ListMessageGroupRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageGroupUserResponse
-func (client *Client) ListMessageGroupUserWithOptions(request *ListMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserResponse, _err error) {
+func (client *Client) ListMessageGroupUserWithContext(ctx context.Context, request *ListMessageGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29594,35 +21297,11 @@ func (client *Client) ListMessageGroupUserWithOptions(request *ListMessageGroupU
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the members of a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMessageGroupUserRequest
-//
-// @return ListMessageGroupUserResponse
-func (client *Client) ListMessageGroupUser(request *ListMessageGroupUserRequest) (_result *ListMessageGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageGroupUserResponse{}
-	_body, _err := client.ListMessageGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29641,7 +21320,7 @@ func (client *Client) ListMessageGroupUser(request *ListMessageGroupUserRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageGroupUserByIdResponse
-func (client *Client) ListMessageGroupUserByIdWithOptions(tmpReq *ListMessageGroupUserByIdRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserByIdResponse, _err error) {
+func (client *Client) ListMessageGroupUserByIdWithContext(ctx context.Context, tmpReq *ListMessageGroupUserByIdRequest, runtime *dara.RuntimeOptions) (_result *ListMessageGroupUserByIdResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29680,35 +21359,11 @@ func (client *Client) ListMessageGroupUserByIdWithOptions(tmpReq *ListMessageGro
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageGroupUserByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries user information by user ID.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMessageGroupUserByIdRequest
-//
-// @return ListMessageGroupUserByIdResponse
-func (client *Client) ListMessageGroupUserById(request *ListMessageGroupUserByIdRequest) (_result *ListMessageGroupUserByIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageGroupUserByIdResponse{}
-	_body, _err := client.ListMessageGroupUserByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29727,7 +21382,7 @@ func (client *Client) ListMessageGroupUserById(request *ListMessageGroupUserById
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMuteGroupUserResponse
-func (client *Client) ListMuteGroupUserWithOptions(request *ListMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMuteGroupUserResponse, _err error) {
+func (client *Client) ListMuteGroupUserWithContext(ctx context.Context, request *ListMuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *ListMuteGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29768,35 +21423,11 @@ func (client *Client) ListMuteGroupUserWithOptions(request *ListMuteGroupUserReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMuteGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries muted members in a messaging group.
-//
-// Description:
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ListMuteGroupUserRequest
-//
-// @return ListMuteGroupUserResponse
-func (client *Client) ListMuteGroupUser(request *ListMuteGroupUserRequest) (_result *ListMuteGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMuteGroupUserResponse{}
-	_body, _err := client.ListMuteGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29817,7 +21448,7 @@ func (client *Client) ListMuteGroupUser(request *ListMuteGroupUserRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPlaylistResponse
-func (client *Client) ListPlaylistWithOptions(request *ListPlaylistRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistResponse, _err error) {
+func (client *Client) ListPlaylistWithContext(ctx context.Context, request *ListPlaylistRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29858,37 +21489,11 @@ func (client *Client) ListPlaylistWithOptions(request *ListPlaylistRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more episode lists.
-//
-// Description:
-//
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episode lists and then call this operation to query the episode lists.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListPlaylistRequest
-//
-// @return ListPlaylistResponse
-func (client *Client) ListPlaylist(request *ListPlaylistRequest) (_result *ListPlaylistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPlaylistResponse{}
-	_body, _err := client.ListPlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29909,7 +21514,7 @@ func (client *Client) ListPlaylist(request *ListPlaylistRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPlaylistItemsResponse
-func (client *Client) ListPlaylistItemsWithOptions(request *ListPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistItemsResponse, _err error) {
+func (client *Client) ListPlaylistItemsWithContext(ctx context.Context, request *ListPlaylistItemsRequest, runtime *dara.RuntimeOptions) (_result *ListPlaylistItemsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -29946,37 +21551,11 @@ func (client *Client) ListPlaylistItemsWithOptions(request *ListPlaylistItemsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPlaylistItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about episodes in an episode list.
-//
-// Description:
-//
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to query the episodes in the episode list
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListPlaylistItemsRequest
-//
-// @return ListPlaylistItemsResponse
-func (client *Client) ListPlaylistItems(request *ListPlaylistItemsRequest) (_result *ListPlaylistItemsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPlaylistItemsResponse{}
-	_body, _err := client.ListPlaylistItemsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -29997,7 +21576,7 @@ func (client *Client) ListPlaylistItems(request *ListPlaylistItemsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRtcMPUEventSubRecordResponse
-func (client *Client) ListRtcMPUEventSubRecordWithOptions(request *ListRtcMPUEventSubRecordRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUEventSubRecordResponse, _err error) {
+func (client *Client) ListRtcMPUEventSubRecordWithContext(ctx context.Context, request *ListRtcMPUEventSubRecordRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUEventSubRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30042,37 +21621,11 @@ func (client *Client) ListRtcMPUEventSubRecordWithOptions(request *ListRtcMPUEve
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRtcMPUEventSubRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the callback records of a subscription to mixed-stream relay events.
-//
-// Description:
-//
-// You can call this operation to query the callback records of a subscription to mixed-stream relay events in the last seven days.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListRtcMPUEventSubRecordRequest
-//
-// @return ListRtcMPUEventSubRecordResponse
-func (client *Client) ListRtcMPUEventSubRecord(request *ListRtcMPUEventSubRecordRequest) (_result *ListRtcMPUEventSubRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRtcMPUEventSubRecordResponse{}
-	_body, _err := client.ListRtcMPUEventSubRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30095,7 +21648,7 @@ func (client *Client) ListRtcMPUEventSubRecord(request *ListRtcMPUEventSubRecord
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRtcMPUTaskDetailResponse
-func (client *Client) ListRtcMPUTaskDetailWithOptions(request *ListRtcMPUTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUTaskDetailResponse, _err error) {
+func (client *Client) ListRtcMPUTaskDetailWithContext(ctx context.Context, request *ListRtcMPUTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *ListRtcMPUTaskDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30132,39 +21685,11 @@ func (client *Client) ListRtcMPUTaskDetailWithOptions(request *ListRtcMPUTaskDet
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRtcMPUTaskDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the parameters of mixed-stream relay tasks.
-//
-// Description:
-//
-//	  You can call the ListRtcMPUTaskDetail operation to query the parameters of mixed-stream relay tasks that were created by calling the StartLiveMPUTask operation.
-//
-//		- By default, the query results are sorted in reverse chronological order based on the task update time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ListRtcMPUTaskDetailRequest
-//
-// @return ListRtcMPUTaskDetailResponse
-func (client *Client) ListRtcMPUTaskDetail(request *ListRtcMPUTaskDetailRequest) (_result *ListRtcMPUTaskDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRtcMPUTaskDetailResponse{}
-	_body, _err := client.ListRtcMPUTaskDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30177,7 +21702,7 @@ func (client *Client) ListRtcMPUTaskDetail(request *ListRtcMPUTaskDetailRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LiveUpstreamQosDataResponse
-func (client *Client) LiveUpstreamQosDataWithOptions(tmpReq *LiveUpstreamQosDataRequest, runtime *dara.RuntimeOptions) (_result *LiveUpstreamQosDataResponse, _err error) {
+func (client *Client) LiveUpstreamQosDataWithContext(ctx context.Context, tmpReq *LiveUpstreamQosDataRequest, runtime *dara.RuntimeOptions) (_result *LiveUpstreamQosDataResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30268,29 +21793,11 @@ func (client *Client) LiveUpstreamQosDataWithOptions(tmpReq *LiveUpstreamQosData
 		BodyType:    dara.String("json"),
 	}
 	_result = &LiveUpstreamQosDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 直播回源监控数据
-//
-// @param request - LiveUpstreamQosDataRequest
-//
-// @return LiveUpstreamQosDataResponse
-func (client *Client) LiveUpstreamQosData(request *LiveUpstreamQosDataRequest) (_result *LiveUpstreamQosDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LiveUpstreamQosDataResponse{}
-	_body, _err := client.LiveUpstreamQosDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30303,7 +21810,7 @@ func (client *Client) LiveUpstreamQosData(request *LiveUpstreamQosDataRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MiguLivePullToPushStartResponse
-func (client *Client) MiguLivePullToPushStartWithOptions(request *MiguLivePullToPushStartRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStartResponse, _err error) {
+func (client *Client) MiguLivePullToPushStartWithContext(ctx context.Context, request *MiguLivePullToPushStartRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStartResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30340,29 +21847,11 @@ func (client *Client) MiguLivePullToPushStartWithOptions(request *MiguLivePullTo
 		BodyType:    dara.String("json"),
 	}
 	_result = &MiguLivePullToPushStartResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 咪咕定制直播拉转推启动接口
-//
-// @param request - MiguLivePullToPushStartRequest
-//
-// @return MiguLivePullToPushStartResponse
-func (client *Client) MiguLivePullToPushStart(request *MiguLivePullToPushStartRequest) (_result *MiguLivePullToPushStartResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MiguLivePullToPushStartResponse{}
-	_body, _err := client.MiguLivePullToPushStartWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30375,7 +21864,7 @@ func (client *Client) MiguLivePullToPushStart(request *MiguLivePullToPushStartRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MiguLivePullToPushStatusResponse
-func (client *Client) MiguLivePullToPushStatusWithOptions(request *MiguLivePullToPushStatusRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStatusResponse, _err error) {
+func (client *Client) MiguLivePullToPushStatusWithContext(ctx context.Context, request *MiguLivePullToPushStatusRequest, runtime *dara.RuntimeOptions) (_result *MiguLivePullToPushStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30412,29 +21901,11 @@ func (client *Client) MiguLivePullToPushStatusWithOptions(request *MiguLivePullT
 		BodyType:    dara.String("json"),
 	}
 	_result = &MiguLivePullToPushStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 咪咕定制直播拉转推启动接口
-//
-// @param request - MiguLivePullToPushStatusRequest
-//
-// @return MiguLivePullToPushStatusResponse
-func (client *Client) MiguLivePullToPushStatus(request *MiguLivePullToPushStatusRequest) (_result *MiguLivePullToPushStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MiguLivePullToPushStatusResponse{}
-	_body, _err := client.MiguLivePullToPushStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30455,7 +21926,7 @@ func (client *Client) MiguLivePullToPushStatus(request *MiguLivePullToPushStatus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCasterComponentResponse
-func (client *Client) ModifyCasterComponentWithOptions(request *ModifyCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterComponentResponse, _err error) {
+func (client *Client) ModifyCasterComponentWithContext(ctx context.Context, request *ModifyCasterComponentRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30520,37 +21991,11 @@ func (client *Client) ModifyCasterComponentWithOptions(request *ModifyCasterComp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCasterComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a component of a production studio.
-//
-// Description:
-//
-// You can call this operation to modify a text, image, or subtitle component.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyCasterComponentRequest
-//
-// @return ModifyCasterComponentResponse
-func (client *Client) ModifyCasterComponent(request *ModifyCasterComponentRequest) (_result *ModifyCasterComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCasterComponentResponse{}
-	_body, _err := client.ModifyCasterComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30571,7 +22016,7 @@ func (client *Client) ModifyCasterComponent(request *ModifyCasterComponentReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCasterEpisodeResponse
-func (client *Client) ModifyCasterEpisodeWithOptions(request *ModifyCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterEpisodeResponse, _err error) {
+func (client *Client) ModifyCasterEpisodeWithContext(ctx context.Context, request *ModifyCasterEpisodeRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterEpisodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30632,37 +22077,11 @@ func (client *Client) ModifyCasterEpisodeWithOptions(request *ModifyCasterEpisod
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCasterEpisodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an episode in a production studio. You cannot change the episode type.
-//
-// Description:
-//
-// You can call this operation to modify the configurations of an episode in a production studio. You cannot change the episode type.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyCasterEpisodeRequest
-//
-// @return ModifyCasterEpisodeResponse
-func (client *Client) ModifyCasterEpisode(request *ModifyCasterEpisodeRequest) (_result *ModifyCasterEpisodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCasterEpisodeResponse{}
-	_body, _err := client.ModifyCasterEpisodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30683,7 +22102,7 @@ func (client *Client) ModifyCasterEpisode(request *ModifyCasterEpisodeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCasterLayoutResponse
-func (client *Client) ModifyCasterLayoutWithOptions(request *ModifyCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterLayoutResponse, _err error) {
+func (client *Client) ModifyCasterLayoutWithContext(ctx context.Context, request *ModifyCasterLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30736,37 +22155,11 @@ func (client *Client) ModifyCasterLayoutWithOptions(request *ModifyCasterLayoutR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCasterLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the layout configurations pf a production studio. You need to pass only parameters that you want to modify.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to modify a layout of the production studio. This operation supports the default and adaptive scaling modes.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyCasterLayoutRequest
-//
-// @return ModifyCasterLayoutResponse
-func (client *Client) ModifyCasterLayout(request *ModifyCasterLayoutRequest) (_result *ModifyCasterLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCasterLayoutResponse{}
-	_body, _err := client.ModifyCasterLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30787,7 +22180,7 @@ func (client *Client) ModifyCasterLayout(request *ModifyCasterLayoutRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCasterProgramResponse
-func (client *Client) ModifyCasterProgramWithOptions(request *ModifyCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterProgramResponse, _err error) {
+func (client *Client) ModifyCasterProgramWithContext(ctx context.Context, request *ModifyCasterProgramRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterProgramResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30824,37 +22217,11 @@ func (client *Client) ModifyCasterProgramWithOptions(request *ModifyCasterProgra
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCasterProgramResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the episode list for carousel playback in a production studio.
-//
-// Description:
-//
-// You can call the [AddCasterProgram](https://help.aliyun.com/document_detail/2848074.html) operation to add the episode list for carousel playback in a production studio and then call this operation to modify the episode list. The supported types of episodes include video resource and component.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyCasterProgramRequest
-//
-// @return ModifyCasterProgramResponse
-func (client *Client) ModifyCasterProgram(request *ModifyCasterProgramRequest) (_result *ModifyCasterProgramResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCasterProgramResponse{}
-	_body, _err := client.ModifyCasterProgramWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30877,7 +22244,7 @@ func (client *Client) ModifyCasterProgram(request *ModifyCasterProgramRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCasterVideoResourceResponse
-func (client *Client) ModifyCasterVideoResourceWithOptions(request *ModifyCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterVideoResourceResponse, _err error) {
+func (client *Client) ModifyCasterVideoResourceWithContext(ctx context.Context, request *ModifyCasterVideoResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifyCasterVideoResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -30954,39 +22321,11 @@ func (client *Client) ModifyCasterVideoResourceWithOptions(request *ModifyCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCasterVideoResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the video source for a production studio.
-//
-// Description:
-//
-// ## Usage notes
-//
-// You must call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio before you call this operation to modify input sources of the production studio.
-//
-// ## QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - ModifyCasterVideoResourceRequest
-//
-// @return ModifyCasterVideoResourceResponse
-func (client *Client) ModifyCasterVideoResource(request *ModifyCasterVideoResourceRequest) (_result *ModifyCasterVideoResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCasterVideoResourceResponse{}
-	_body, _err := client.ModifyCasterVideoResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -30999,7 +22338,7 @@ func (client *Client) ModifyCasterVideoResource(request *ModifyCasterVideoResour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveAIStudioResponse
-func (client *Client) ModifyLiveAIStudioWithOptions(tmpReq *ModifyLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveAIStudioResponse, _err error) {
+func (client *Client) ModifyLiveAIStudioWithContext(ctx context.Context, tmpReq *ModifyLiveAIStudioRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveAIStudioResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31090,29 +22429,11 @@ func (client *Client) ModifyLiveAIStudioWithOptions(tmpReq *ModifyLiveAIStudioRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveAIStudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a virtual studio template.
-//
-// @param request - ModifyLiveAIStudioRequest
-//
-// @return ModifyLiveAIStudioResponse
-func (client *Client) ModifyLiveAIStudio(request *ModifyLiveAIStudioRequest) (_result *ModifyLiveAIStudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveAIStudioResponse{}
-	_body, _err := client.ModifyLiveAIStudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31131,7 +22452,7 @@ func (client *Client) ModifyLiveAIStudio(request *ModifyLiveAIStudioRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveDomainSchdmByPropertyResponse
-func (client *Client) ModifyLiveDomainSchdmByPropertyWithOptions(request *ModifyLiveDomainSchdmByPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveDomainSchdmByPropertyResponse, _err error) {
+func (client *Client) ModifyLiveDomainSchdmByPropertyWithContext(ctx context.Context, request *ModifyLiveDomainSchdmByPropertyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveDomainSchdmByPropertyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31168,35 +22489,11 @@ func (client *Client) ModifyLiveDomainSchdmByPropertyWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveDomainSchdmByPropertyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the acceleration region of a domain name.
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveDomainSchdmByPropertyRequest
-//
-// @return ModifyLiveDomainSchdmByPropertyResponse
-func (client *Client) ModifyLiveDomainSchdmByProperty(request *ModifyLiveDomainSchdmByPropertyRequest) (_result *ModifyLiveDomainSchdmByPropertyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveDomainSchdmByPropertyResponse{}
-	_body, _err := client.ModifyLiveDomainSchdmByPropertyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31213,7 +22510,7 @@ func (client *Client) ModifyLiveDomainSchdmByProperty(request *ModifyLiveDomainS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageAppAuditResponse
-func (client *Client) ModifyLiveMessageAppAuditWithOptions(request *ModifyLiveMessageAppAuditRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppAuditResponse, _err error) {
+func (client *Client) ModifyLiveMessageAppAuditWithContext(ctx context.Context, request *ModifyLiveMessageAppAuditRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppAuditResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31250,33 +22547,11 @@ func (client *Client) ModifyLiveMessageAppAuditWithOptions(request *ModifyLiveMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageAppAuditResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the content moderation settings of an interactive messaging application.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveMessageAppAuditRequest
-//
-// @return ModifyLiveMessageAppAuditResponse
-func (client *Client) ModifyLiveMessageAppAudit(request *ModifyLiveMessageAppAuditRequest) (_result *ModifyLiveMessageAppAuditResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageAppAuditResponse{}
-	_body, _err := client.ModifyLiveMessageAppAuditWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31293,7 +22568,7 @@ func (client *Client) ModifyLiveMessageAppAudit(request *ModifyLiveMessageAppAud
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageAppCallbackResponse
-func (client *Client) ModifyLiveMessageAppCallbackWithOptions(request *ModifyLiveMessageAppCallbackRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppCallbackResponse, _err error) {
+func (client *Client) ModifyLiveMessageAppCallbackWithContext(ctx context.Context, request *ModifyLiveMessageAppCallbackRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppCallbackResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31326,33 +22601,11 @@ func (client *Client) ModifyLiveMessageAppCallbackWithOptions(request *ModifyLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageAppCallbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the callback settings of an interactive messaging application.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveMessageAppCallbackRequest
-//
-// @return ModifyLiveMessageAppCallbackResponse
-func (client *Client) ModifyLiveMessageAppCallback(request *ModifyLiveMessageAppCallbackRequest) (_result *ModifyLiveMessageAppCallbackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageAppCallbackResponse{}
-	_body, _err := client.ModifyLiveMessageAppCallbackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31369,7 +22622,7 @@ func (client *Client) ModifyLiveMessageAppCallback(request *ModifyLiveMessageApp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageAppDisableResponse
-func (client *Client) ModifyLiveMessageAppDisableWithOptions(request *ModifyLiveMessageAppDisableRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppDisableResponse, _err error) {
+func (client *Client) ModifyLiveMessageAppDisableWithContext(ctx context.Context, request *ModifyLiveMessageAppDisableRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageAppDisableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31402,33 +22655,11 @@ func (client *Client) ModifyLiveMessageAppDisableWithOptions(request *ModifyLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageAppDisableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables or enables an interactive messaging application.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveMessageAppDisableRequest
-//
-// @return ModifyLiveMessageAppDisableResponse
-func (client *Client) ModifyLiveMessageAppDisable(request *ModifyLiveMessageAppDisableRequest) (_result *ModifyLiveMessageAppDisableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageAppDisableResponse{}
-	_body, _err := client.ModifyLiveMessageAppDisableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31449,7 +22680,7 @@ func (client *Client) ModifyLiveMessageAppDisable(request *ModifyLiveMessageAppD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageGroupResponse
-func (client *Client) ModifyLiveMessageGroupWithOptions(tmpReq *ModifyLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupResponse, _err error) {
+func (client *Client) ModifyLiveMessageGroupWithContext(ctx context.Context, tmpReq *ModifyLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31504,37 +22735,11 @@ func (client *Client) ModifyLiveMessageGroupWithOptions(tmpReq *ModifyLiveMessag
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about an interactive messaging group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveMessageGroupRequest
-//
-// @return ModifyLiveMessageGroupResponse
-func (client *Client) ModifyLiveMessageGroup(request *ModifyLiveMessageGroupRequest) (_result *ModifyLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageGroupResponse{}
-	_body, _err := client.ModifyLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31555,7 +22760,7 @@ func (client *Client) ModifyLiveMessageGroup(request *ModifyLiveMessageGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageGroupBandResponse
-func (client *Client) ModifyLiveMessageGroupBandWithOptions(tmpReq *ModifyLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupBandResponse, _err error) {
+func (client *Client) ModifyLiveMessageGroupBandWithContext(ctx context.Context, tmpReq *ModifyLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageGroupBandResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31610,37 +22815,11 @@ func (client *Client) ModifyLiveMessageGroupBandWithOptions(tmpReq *ModifyLiveMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageGroupBandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the mute status of users.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveMessageGroupBandRequest
-//
-// @return ModifyLiveMessageGroupBandResponse
-func (client *Client) ModifyLiveMessageGroupBand(request *ModifyLiveMessageGroupBandRequest) (_result *ModifyLiveMessageGroupBandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageGroupBandResponse{}
-	_body, _err := client.ModifyLiveMessageGroupBandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31653,7 +22832,7 @@ func (client *Client) ModifyLiveMessageGroupBand(request *ModifyLiveMessageGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveMessageUserInfoResponse
-func (client *Client) ModifyLiveMessageUserInfoWithOptions(request *ModifyLiveMessageUserInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageUserInfoResponse, _err error) {
+func (client *Client) ModifyLiveMessageUserInfoWithContext(ctx context.Context, request *ModifyLiveMessageUserInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveMessageUserInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31690,29 +22869,11 @@ func (client *Client) ModifyLiveMessageUserInfoWithOptions(request *ModifyLiveMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveMessageUserInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the information about a user.
-//
-// @param request - ModifyLiveMessageUserInfoRequest
-//
-// @return ModifyLiveMessageUserInfoResponse
-func (client *Client) ModifyLiveMessageUserInfo(request *ModifyLiveMessageUserInfoRequest) (_result *ModifyLiveMessageUserInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveMessageUserInfoResponse{}
-	_body, _err := client.ModifyLiveMessageUserInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31737,7 +22898,7 @@ func (client *Client) ModifyLiveMessageUserInfo(request *ModifyLiveMessageUserIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLiveRealtimeLogDeliveryResponse
-func (client *Client) ModifyLiveRealtimeLogDeliveryWithOptions(request *ModifyLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveRealtimeLogDeliveryResponse, _err error) {
+func (client *Client) ModifyLiveRealtimeLogDeliveryWithContext(ctx context.Context, request *ModifyLiveRealtimeLogDeliveryRequest, runtime *dara.RuntimeOptions) (_result *ModifyLiveRealtimeLogDeliveryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31758,41 +22919,11 @@ func (client *Client) ModifyLiveRealtimeLogDeliveryWithOptions(request *ModifyLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of real-time log delivery for a domain name.
-//
-// Description:
-//
-//	You can call this operation to modify the configuration of real-time log delivery for a domain name. Logs for a domain name can be delivered to only one Logstore.
-//
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
-//
-//   - You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) operation to query the Project, Logstore, and Region parameters.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyLiveRealtimeLogDeliveryRequest
-//
-// @return ModifyLiveRealtimeLogDeliveryResponse
-func (client *Client) ModifyLiveRealtimeLogDelivery(request *ModifyLiveRealtimeLogDeliveryRequest) (_result *ModifyLiveRealtimeLogDeliveryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLiveRealtimeLogDeliveryResponse{}
-	_body, _err := client.ModifyLiveRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31813,7 +22944,7 @@ func (client *Client) ModifyLiveRealtimeLogDelivery(request *ModifyLiveRealtimeL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyShowListResponse
-func (client *Client) ModifyShowListWithOptions(request *ModifyShowListRequest, runtime *dara.RuntimeOptions) (_result *ModifyShowListResponse, _err error) {
+func (client *Client) ModifyShowListWithContext(ctx context.Context, request *ModifyShowListRequest, runtime *dara.RuntimeOptions) (_result *ModifyShowListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31866,37 +22997,11 @@ func (client *Client) ModifyShowListWithOptions(request *ModifyShowListRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyShowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the attributes of an episode list.
-//
-// Description:
-//
-// This operation allows you to change the position of an episode in an episode list, how many times an episode list is played, and the specific point in time at which the episode of the highest priority in an episode list is played.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyShowListRequest
-//
-// @return ModifyShowListResponse
-func (client *Client) ModifyShowList(request *ModifyShowListRequest) (_result *ModifyShowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyShowListResponse{}
-	_body, _err := client.ModifyShowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -31917,7 +23022,7 @@ func (client *Client) ModifyShowList(request *ModifyShowListRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyStudioLayoutResponse
-func (client *Client) ModifyStudioLayoutWithOptions(request *ModifyStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyStudioLayoutResponse, _err error) {
+func (client *Client) ModifyStudioLayoutWithContext(ctx context.Context, request *ModifyStudioLayoutRequest, runtime *dara.RuntimeOptions) (_result *ModifyStudioLayoutResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -31978,37 +23083,11 @@ func (client *Client) ModifyStudioLayoutWithOptions(request *ModifyStudioLayoutR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyStudioLayoutResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a layout of a virtual studio.
-//
-// Description:
-//
-// You can call this operation to modify a layout of a virtual studio. When you call this operation, specify only the parameters that you want to modify.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ModifyStudioLayoutRequest
-//
-// @return ModifyStudioLayoutResponse
-func (client *Client) ModifyStudioLayout(request *ModifyStudioLayoutRequest) (_result *ModifyStudioLayoutResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyStudioLayoutResponse{}
-	_body, _err := client.ModifyStudioLayoutWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32027,7 +23106,7 @@ func (client *Client) ModifyStudioLayout(request *ModifyStudioLayoutRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MuteAllGroupUserResponse
-func (client *Client) MuteAllGroupUserWithOptions(request *MuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteAllGroupUserResponse, _err error) {
+func (client *Client) MuteAllGroupUserWithContext(ctx context.Context, request *MuteAllGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteAllGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32064,35 +23143,11 @@ func (client *Client) MuteAllGroupUserWithOptions(request *MuteAllGroupUserReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &MuteAllGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Mutes a message group. In this case, all members of the message group are muted.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - MuteAllGroupUserRequest
-//
-// @return MuteAllGroupUserResponse
-func (client *Client) MuteAllGroupUser(request *MuteAllGroupUserRequest) (_result *MuteAllGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MuteAllGroupUserResponse{}
-	_body, _err := client.MuteAllGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32111,7 +23166,7 @@ func (client *Client) MuteAllGroupUser(request *MuteAllGroupUserRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MuteGroupUserResponse
-func (client *Client) MuteGroupUserWithOptions(tmpReq *MuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteGroupUserResponse, _err error) {
+func (client *Client) MuteGroupUserWithContext(ctx context.Context, tmpReq *MuteGroupUserRequest, runtime *dara.RuntimeOptions) (_result *MuteGroupUserResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32162,35 +23217,11 @@ func (client *Client) MuteGroupUserWithOptions(tmpReq *MuteGroupUserRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &MuteGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Mutes members in a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - MuteGroupUserRequest
-//
-// @return MuteGroupUserResponse
-func (client *Client) MuteGroupUser(request *MuteGroupUserRequest) (_result *MuteGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MuteGroupUserResponse{}
-	_body, _err := client.MuteGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32211,7 +23242,7 @@ func (client *Client) MuteGroupUser(request *MuteGroupUserRequest) (_result *Mut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenLiveShiftResponse
-func (client *Client) OpenLiveShiftWithOptions(request *OpenLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *OpenLiveShiftResponse, _err error) {
+func (client *Client) OpenLiveShiftWithContext(ctx context.Context, request *OpenLiveShiftRequest, runtime *dara.RuntimeOptions) (_result *OpenLiveShiftResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32264,37 +23295,11 @@ func (client *Client) OpenLiveShiftWithOptions(request *OpenLiveShiftRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenLiveShiftResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables time shifting for a domain name, or an application or a live stream under the domain name.
-//
-// Description:
-//
-// You cannot configure time shifting and delayed transcoding at the same time.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - OpenLiveShiftRequest
-//
-// @return OpenLiveShiftResponse
-func (client *Client) OpenLiveShift(request *OpenLiveShiftRequest) (_result *OpenLiveShiftResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenLiveShiftResponse{}
-	_body, _err := client.OpenLiveShiftWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32315,7 +23320,7 @@ func (client *Client) OpenLiveShift(request *OpenLiveShiftRequest) (_result *Ope
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PlayChoosenShowResponse
-func (client *Client) PlayChoosenShowWithOptions(request *PlayChoosenShowRequest, runtime *dara.RuntimeOptions) (_result *PlayChoosenShowResponse, _err error) {
+func (client *Client) PlayChoosenShowWithContext(ctx context.Context, request *PlayChoosenShowRequest, runtime *dara.RuntimeOptions) (_result *PlayChoosenShowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32352,37 +23357,11 @@ func (client *Client) PlayChoosenShowWithOptions(request *PlayChoosenShowRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &PlayChoosenShowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Switches to a specified episode.
-//
-// Description:
-//
-// After you add episodes to an episode list and start live streaming, you can call this operation to switch among episodes. For information about how to add episodes to an episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - PlayChoosenShowRequest
-//
-// @return PlayChoosenShowResponse
-func (client *Client) PlayChoosenShow(request *PlayChoosenShowRequest) (_result *PlayChoosenShowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PlayChoosenShowResponse{}
-	_body, _err := client.PlayChoosenShowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32403,7 +23382,7 @@ func (client *Client) PlayChoosenShow(request *PlayChoosenShowRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishLiveStagingConfigToProductionResponse
-func (client *Client) PublishLiveStagingConfigToProductionWithOptions(request *PublishLiveStagingConfigToProductionRequest, runtime *dara.RuntimeOptions) (_result *PublishLiveStagingConfigToProductionResponse, _err error) {
+func (client *Client) PublishLiveStagingConfigToProductionWithContext(ctx context.Context, request *PublishLiveStagingConfigToProductionRequest, runtime *dara.RuntimeOptions) (_result *PublishLiveStagingConfigToProductionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32440,37 +23419,11 @@ func (client *Client) PublishLiveStagingConfigToProductionWithOptions(request *P
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishLiveStagingConfigToProductionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Publishes the configurations of an accelerated domain name from the canary release environment to the production environment.
-//
-// Description:
-//
-// Function name is required for calling this operation. You can get the function name by calling the [DescribeLiveDomainStagingConfig](~~297374#doc-api-live-DescribeLiveDomainStagingConfig~~ "Queries the configurations in the canary release environment.") operation.
-//
-// ## QPS limit
-//
-// A single user can perform a maximum of 30 queries per minute. Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
-//
-// @param request - PublishLiveStagingConfigToProductionRequest
-//
-// @return PublishLiveStagingConfigToProductionResponse
-func (client *Client) PublishLiveStagingConfigToProduction(request *PublishLiveStagingConfigToProductionRequest) (_result *PublishLiveStagingConfigToProductionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishLiveStagingConfigToProductionResponse{}
-	_body, _err := client.PublishLiveStagingConfigToProductionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32483,7 +23436,7 @@ func (client *Client) PublishLiveStagingConfigToProduction(request *PublishLiveS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryLiveDomainMultiStreamListResponse
-func (client *Client) QueryLiveDomainMultiStreamListWithOptions(request *QueryLiveDomainMultiStreamListRequest, runtime *dara.RuntimeOptions) (_result *QueryLiveDomainMultiStreamListResponse, _err error) {
+func (client *Client) QueryLiveDomainMultiStreamListWithContext(ctx context.Context, request *QueryLiveDomainMultiStreamListRequest, runtime *dara.RuntimeOptions) (_result *QueryLiveDomainMultiStreamListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32504,29 +23457,11 @@ func (client *Client) QueryLiveDomainMultiStreamListWithOptions(request *QueryLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryLiveDomainMultiStreamListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the dual-stream disaster recovery records of online streams.
-//
-// @param request - QueryLiveDomainMultiStreamListRequest
-//
-// @return QueryLiveDomainMultiStreamListResponse
-func (client *Client) QueryLiveDomainMultiStreamList(request *QueryLiveDomainMultiStreamListRequest) (_result *QueryLiveDomainMultiStreamListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryLiveDomainMultiStreamListResponse{}
-	_body, _err := client.QueryLiveDomainMultiStreamListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32545,7 +23480,7 @@ func (client *Client) QueryLiveDomainMultiStreamList(request *QueryLiveDomainMul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryMessageAppResponse
-func (client *Client) QueryMessageAppWithOptions(request *QueryMessageAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMessageAppResponse, _err error) {
+func (client *Client) QueryMessageAppWithContext(ctx context.Context, request *QueryMessageAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMessageAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32586,35 +23521,11 @@ func (client *Client) QueryMessageAppWithOptions(request *QueryMessageAppRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries interactive messaging applications based on specified conditions.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - QueryMessageAppRequest
-//
-// @return QueryMessageAppResponse
-func (client *Client) QueryMessageApp(request *QueryMessageAppRequest) (_result *QueryMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryMessageAppResponse{}
-	_body, _err := client.QueryMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32631,7 +23542,7 @@ func (client *Client) QueryMessageApp(request *QueryMessageAppRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRtcAsrTasksResponse
-func (client *Client) QueryRtcAsrTasksWithOptions(request *QueryRtcAsrTasksRequest, runtime *dara.RuntimeOptions) (_result *QueryRtcAsrTasksResponse, _err error) {
+func (client *Client) QueryRtcAsrTasksWithContext(ctx context.Context, request *QueryRtcAsrTasksRequest, runtime *dara.RuntimeOptions) (_result *QueryRtcAsrTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32664,33 +23575,11 @@ func (client *Client) QueryRtcAsrTasksWithOptions(request *QueryRtcAsrTasksReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRtcAsrTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of a speech-to-text or translation task.
-//
-// Description:
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - QueryRtcAsrTasksRequest
-//
-// @return QueryRtcAsrTasksResponse
-func (client *Client) QueryRtcAsrTasks(request *QueryRtcAsrTasksRequest) (_result *QueryRtcAsrTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRtcAsrTasksResponse{}
-	_body, _err := client.QueryRtcAsrTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32711,7 +23600,7 @@ func (client *Client) QueryRtcAsrTasks(request *QueryRtcAsrTasksRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySnapshotCallbackAuthResponse
-func (client *Client) QuerySnapshotCallbackAuthWithOptions(request *QuerySnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *QuerySnapshotCallbackAuthResponse, _err error) {
+func (client *Client) QuerySnapshotCallbackAuthWithContext(ctx context.Context, request *QuerySnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *QuerySnapshotCallbackAuthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32744,37 +23633,11 @@ func (client *Client) QuerySnapshotCallbackAuthWithOptions(request *QuerySnapsho
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySnapshotCallbackAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of authentication for snapshot callbacks.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have configured authentication for snapshot callbacks. For more information, see [SetSnapshotCallbackAuth](https://help.aliyun.com/document_detail/2847907.html). You can call this operation to query the configuration of authentication for snapshot callbacks for a main streaming domain. Make sure that the parameter settings meet the requirements.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - QuerySnapshotCallbackAuthRequest
-//
-// @return QuerySnapshotCallbackAuthResponse
-func (client *Client) QuerySnapshotCallbackAuth(request *QuerySnapshotCallbackAuthRequest) (_result *QuerySnapshotCallbackAuthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySnapshotCallbackAuthResponse{}
-	_body, _err := client.QuerySnapshotCallbackAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32803,7 +23666,7 @@ func (client *Client) QuerySnapshotCallbackAuth(request *QuerySnapshotCallbackAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RealTimeRecordCommandResponse
-func (client *Client) RealTimeRecordCommandWithOptions(request *RealTimeRecordCommandRequest, runtime *dara.RuntimeOptions) (_result *RealTimeRecordCommandResponse, _err error) {
+func (client *Client) RealTimeRecordCommandWithContext(ctx context.Context, request *RealTimeRecordCommandRequest, runtime *dara.RuntimeOptions) (_result *RealTimeRecordCommandResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32848,45 +23711,11 @@ func (client *Client) RealTimeRecordCommandWithOptions(request *RealTimeRecordCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &RealTimeRecordCommandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Controls recordings manually on demand. For example, you can call this operation to start or stop recording at a specific point in time.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of live stream recording in ApsaraVideo Live. For more information, see [Billing of live stream recording](https://help.aliyun.com/document_detail/195287.html).
-//
-//		- If a live stream is being automatically or manually recorded, you can call this operation to stop recording the live stream.
-//
-//		- If you call this operation to start recording a live stream while it is being recorded, a TaskAlreadyStarted error is returned, indicating that the task has been started.
-//
-//		- If a live stream that you manually record is interrupted, the recording stops.
-//
-//		- If automatic recording is not configured for the live stream, ApsaraVideo Live does not automatically record the live stream after it is resumed.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RealTimeRecordCommandRequest
-//
-// @return RealTimeRecordCommandResponse
-func (client *Client) RealTimeRecordCommand(request *RealTimeRecordCommandRequest) (_result *RealTimeRecordCommandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RealTimeRecordCommandResponse{}
-	_body, _err := client.RealTimeRecordCommandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32909,7 +23738,7 @@ func (client *Client) RealTimeRecordCommand(request *RealTimeRecordCommandReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoverLiveMessageDeletedGroupResponse
-func (client *Client) RecoverLiveMessageDeletedGroupWithOptions(request *RecoverLiveMessageDeletedGroupRequest, runtime *dara.RuntimeOptions) (_result *RecoverLiveMessageDeletedGroupResponse, _err error) {
+func (client *Client) RecoverLiveMessageDeletedGroupWithContext(ctx context.Context, request *RecoverLiveMessageDeletedGroupRequest, runtime *dara.RuntimeOptions) (_result *RecoverLiveMessageDeletedGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -32942,39 +23771,11 @@ func (client *Client) RecoverLiveMessageDeletedGroupWithOptions(request *Recover
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoverLiveMessageDeletedGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restores a deleted interactive messaging group.
-//
-// Description:
-//
-//	  You can call this operation to restore a deleted interactive messaging group within 30 days after you call the [DeleteLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) to delete the group.
-//
-//		- After you restore a group, the messages that were stored in the group before it was deleted can still be queried.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RecoverLiveMessageDeletedGroupRequest
-//
-// @return RecoverLiveMessageDeletedGroupResponse
-func (client *Client) RecoverLiveMessageDeletedGroup(request *RecoverLiveMessageDeletedGroupRequest) (_result *RecoverLiveMessageDeletedGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoverLiveMessageDeletedGroupResponse{}
-	_body, _err := client.RecoverLiveMessageDeletedGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -32995,7 +23796,7 @@ func (client *Client) RecoverLiveMessageDeletedGroup(request *RecoverLiveMessage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveLiveMessageGroupBandResponse
-func (client *Client) RemoveLiveMessageGroupBandWithOptions(tmpReq *RemoveLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *RemoveLiveMessageGroupBandResponse, _err error) {
+func (client *Client) RemoveLiveMessageGroupBandWithContext(ctx context.Context, tmpReq *RemoveLiveMessageGroupBandRequest, runtime *dara.RuntimeOptions) (_result *RemoveLiveMessageGroupBandResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33038,37 +23839,11 @@ func (client *Client) RemoveLiveMessageGroupBandWithOptions(tmpReq *RemoveLiveMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveLiveMessageGroupBandResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unmutes one or more users.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RemoveLiveMessageGroupBandRequest
-//
-// @return RemoveLiveMessageGroupBandResponse
-func (client *Client) RemoveLiveMessageGroupBand(request *RemoveLiveMessageGroupBandRequest) (_result *RemoveLiveMessageGroupBandResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveLiveMessageGroupBandResponse{}
-	_body, _err := client.RemoveLiveMessageGroupBandWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33091,7 +23866,7 @@ func (client *Client) RemoveLiveMessageGroupBand(request *RemoveLiveMessageGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveShowFromShowListResponse
-func (client *Client) RemoveShowFromShowListWithOptions(request *RemoveShowFromShowListRequest, runtime *dara.RuntimeOptions) (_result *RemoveShowFromShowListResponse, _err error) {
+func (client *Client) RemoveShowFromShowListWithContext(ctx context.Context, request *RemoveShowFromShowListRequest, runtime *dara.RuntimeOptions) (_result *RemoveShowFromShowListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33136,39 +23911,11 @@ func (client *Client) RemoveShowFromShowListWithOptions(request *RemoveShowFromS
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveShowFromShowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a specified episode from an episode list.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You cannot use this operation on empty episode lists. For information about how to add episodes to an episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/370861.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - RemoveShowFromShowListRequest
-//
-// @return RemoveShowFromShowListResponse
-func (client *Client) RemoveShowFromShowList(request *RemoveShowFromShowListRequest) (_result *RemoveShowFromShowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveShowFromShowListResponse{}
-	_body, _err := client.RemoveShowFromShowListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33189,7 +23936,7 @@ func (client *Client) RemoveShowFromShowList(request *RemoveShowFromShowListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveTerminalsResponse
-func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest, runtime *dara.RuntimeOptions) (_result *RemoveTerminalsResponse, _err error) {
+func (client *Client) RemoveTerminalsWithContext(ctx context.Context, request *RemoveTerminalsRequest, runtime *dara.RuntimeOptions) (_result *RemoveTerminalsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33222,37 +23969,11 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveTerminalsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes users from a channel.
-//
-// Description:
-//
-// You can call this operation to remove one or more users from a channel.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RemoveTerminalsRequest
-//
-// @return RemoveTerminalsResponse
-func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result *RemoveTerminalsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveTerminalsResponse{}
-	_body, _err := client.RemoveTerminalsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33275,7 +23996,7 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartCasterResponse
-func (client *Client) RestartCasterWithOptions(request *RestartCasterRequest, runtime *dara.RuntimeOptions) (_result *RestartCasterResponse, _err error) {
+func (client *Client) RestartCasterWithContext(ctx context.Context, request *RestartCasterRequest, runtime *dara.RuntimeOptions) (_result *RestartCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33308,39 +24029,11 @@ func (client *Client) RestartCasterWithOptions(request *RestartCasterRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts a production studio.
-//
-// Description:
-//
-//	  Only product studios in playlist mode and general mode are supported. Virtual studios are not supported.
-//
-//		- After you restart a production studio, the current settings such as the resolution and screen orientation are reloaded to restore the previous playback status.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RestartCasterRequest
-//
-// @return RestartCasterResponse
-func (client *Client) RestartCaster(request *RestartCasterRequest) (_result *RestartCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartCasterResponse{}
-	_body, _err := client.RestartCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33369,7 +24062,7 @@ func (client *Client) RestartCaster(request *RestartCasterRequest) (_result *Res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartLivePullToPushResponse
-func (client *Client) RestartLivePullToPushWithOptions(request *RestartLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *RestartLivePullToPushResponse, _err error) {
+func (client *Client) RestartLivePullToPushWithContext(ctx context.Context, request *RestartLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *RestartLivePullToPushResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33390,45 +24083,11 @@ func (client *Client) RestartLivePullToPushWithOptions(request *RestartLivePullT
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts a pulled-stream relay task.
-//
-// Description:
-//
-//	  You can call this operation to restart a pulled-stream relay task.
-//
-//		- You can restart a task that is running (even if the task is in an abnormal retry state) or a task that is stopped. For a task that is running, this operation stops and then restarts it. For a task that is stopped, this operation directly starts it.
-//
-//		- You cannot restart a task if the start time specified for the task has not been reached.
-//
-//		- If a task is restarted, the task runs based on the latest configuration of the task. This interrupts stream ingest.
-//
-//		- If a task for a list of ApsaraVideo VOD resources is restarted, the list plays from the beginning based on the latest configuration. You can call an operation to update the video index and playback progress to achieve successive playback.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - RestartLivePullToPushRequest
-//
-// @return RestartLivePullToPushResponse
-func (client *Client) RestartLivePullToPush(request *RestartLivePullToPushRequest) (_result *RestartLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartLivePullToPushResponse{}
-	_body, _err := client.RestartLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33437,7 +24096,7 @@ func (client *Client) RestartLivePullToPush(request *RestartLivePullToPushReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartTranscodeTaskResponse
-func (client *Client) RestartTranscodeTaskWithOptions(request *RestartTranscodeTaskRequest, runtime *dara.RuntimeOptions) (_result *RestartTranscodeTaskResponse, _err error) {
+func (client *Client) RestartTranscodeTaskWithContext(ctx context.Context, request *RestartTranscodeTaskRequest, runtime *dara.RuntimeOptions) (_result *RestartTranscodeTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33478,25 +24137,11 @@ func (client *Client) RestartTranscodeTaskWithOptions(request *RestartTranscodeT
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartTranscodeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RestartTranscodeTaskRequest
-//
-// @return RestartTranscodeTaskResponse
-func (client *Client) RestartTranscodeTask(request *RestartTranscodeTaskRequest) (_result *RestartTranscodeTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartTranscodeTaskResponse{}
-	_body, _err := client.RestartTranscodeTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33517,7 +24162,7 @@ func (client *Client) RestartTranscodeTask(request *RestartTranscodeTaskRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResumeLiveStreamResponse
-func (client *Client) ResumeLiveStreamWithOptions(request *ResumeLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ResumeLiveStreamResponse, _err error) {
+func (client *Client) ResumeLiveStreamWithContext(ctx context.Context, request *ResumeLiveStreamRequest, runtime *dara.RuntimeOptions) (_result *ResumeLiveStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33562,37 +24207,11 @@ func (client *Client) ResumeLiveStreamWithOptions(request *ResumeLiveStreamReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeLiveStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resumes the ingest of a live stream.
-//
-// Description:
-//
-// You can call this operation to resume the ingest of a stream. This operation supports only the live streams ingested by streamers.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - ResumeLiveStreamRequest
-//
-// @return ResumeLiveStreamResponse
-func (client *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (_result *ResumeLiveStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResumeLiveStreamResponse{}
-	_body, _err := client.ResumeLiveStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33613,7 +24232,7 @@ func (client *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RollbackLiveStagingConfigResponse
-func (client *Client) RollbackLiveStagingConfigWithOptions(request *RollbackLiveStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *RollbackLiveStagingConfigResponse, _err error) {
+func (client *Client) RollbackLiveStagingConfigWithContext(ctx context.Context, request *RollbackLiveStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *RollbackLiveStagingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33650,37 +24269,11 @@ func (client *Client) RollbackLiveStagingConfigWithOptions(request *RollbackLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &RollbackLiveStagingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rolls back the configurations of an accelerated domain name in the canary release environment.
-//
-// Description:
-//
-// Function name is required for calling this operation. You can get the function name by calling the [DescribeLiveDomainStagingConfig](~~297374#doc-api-live-DescribeLiveDomainStagingConfig~~ "Queries the configurations in the canary release environment.") operation.
-//
-// ## QPS limit
-//
-// A single user can perform a maximum of 30 queries per minute. Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
-//
-// @param request - RollbackLiveStagingConfigRequest
-//
-// @return RollbackLiveStagingConfigResponse
-func (client *Client) RollbackLiveStagingConfig(request *RollbackLiveStagingConfigRequest) (_result *RollbackLiveStagingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RollbackLiveStagingConfigResponse{}
-	_body, _err := client.RollbackLiveStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33699,7 +24292,7 @@ func (client *Client) RollbackLiveStagingConfig(request *RollbackLiveStagingConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendLikeResponse
-func (client *Client) SendLikeWithOptions(request *SendLikeRequest, runtime *dara.RuntimeOptions) (_result *SendLikeResponse, _err error) {
+func (client *Client) SendLikeWithContext(ctx context.Context, request *SendLikeRequest, runtime *dara.RuntimeOptions) (_result *SendLikeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33740,35 +24333,11 @@ func (client *Client) SendLikeWithOptions(request *SendLikeRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendLikeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures likes in a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - SendLikeRequest
-//
-// @return SendLikeResponse
-func (client *Client) SendLike(request *SendLikeRequest) (_result *SendLikeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendLikeResponse{}
-	_body, _err := client.SendLikeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33789,7 +24358,7 @@ func (client *Client) SendLike(request *SendLikeRequest) (_result *SendLikeRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendLiveMessageGroupResponse
-func (client *Client) SendLiveMessageGroupWithOptions(request *SendLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageGroupResponse, _err error) {
+func (client *Client) SendLiveMessageGroupWithContext(ctx context.Context, request *SendLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33858,37 +24427,11 @@ func (client *Client) SendLiveMessageGroupWithOptions(request *SendLiveMessageGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a message to a group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group. You can send messages to a group only if the group is active, which requires that one or more users have joined the group. Offline messages are not supported. If you fail to send a message, check whether users exist in the group. If you want to send a message when all users are offline, we recommend that you store the message locally and send it after users get online.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SendLiveMessageGroupRequest
-//
-// @return SendLiveMessageGroupResponse
-func (client *Client) SendLiveMessageGroup(request *SendLiveMessageGroupRequest) (_result *SendLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendLiveMessageGroupResponse{}
-	_body, _err := client.SendLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -33905,7 +24448,7 @@ func (client *Client) SendLiveMessageGroup(request *SendLiveMessageGroupRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendLiveMessageUserResponse
-func (client *Client) SendLiveMessageUserWithOptions(request *SendLiveMessageUserRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageUserResponse, _err error) {
+func (client *Client) SendLiveMessageUserWithContext(ctx context.Context, request *SendLiveMessageUserRequest, runtime *dara.RuntimeOptions) (_result *SendLiveMessageUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -33966,33 +24509,11 @@ func (client *Client) SendLiveMessageUserWithOptions(request *SendLiveMessageUse
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendLiveMessageUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a message to a specified user. The user is identified by ReceiverId.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SendLiveMessageUserRequest
-//
-// @return SendLiveMessageUserResponse
-func (client *Client) SendLiveMessageUser(request *SendLiveMessageUserRequest) (_result *SendLiveMessageUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendLiveMessageUserResponse{}
-	_body, _err := client.SendLiveMessageUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34011,7 +24532,7 @@ func (client *Client) SendLiveMessageUser(request *SendLiveMessageUserRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendMessageToGroupResponse
-func (client *Client) SendMessageToGroupWithOptions(request *SendMessageToGroupRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupResponse, _err error) {
+func (client *Client) SendMessageToGroupWithContext(ctx context.Context, request *SendMessageToGroupRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34058,35 +24579,11 @@ func (client *Client) SendMessageToGroupWithOptions(request *SendMessageToGroupR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendMessageToGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a message to all members in a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - SendMessageToGroupRequest
-//
-// @return SendMessageToGroupResponse
-func (client *Client) SendMessageToGroup(request *SendMessageToGroupRequest) (_result *SendMessageToGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendMessageToGroupResponse{}
-	_body, _err := client.SendMessageToGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34105,7 +24602,7 @@ func (client *Client) SendMessageToGroup(request *SendMessageToGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendMessageToGroupUsersResponse
-func (client *Client) SendMessageToGroupUsersWithOptions(tmpReq *SendMessageToGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupUsersResponse, _err error) {
+func (client *Client) SendMessageToGroupUsersWithContext(ctx context.Context, tmpReq *SendMessageToGroupUsersRequest, runtime *dara.RuntimeOptions) (_result *SendMessageToGroupUsersResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34162,35 +24659,11 @@ func (client *Client) SendMessageToGroupUsersWithOptions(tmpReq *SendMessageToGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendMessageToGroupUsersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a message to specified users in a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - SendMessageToGroupUsersRequest
-//
-// @return SendMessageToGroupUsersResponse
-func (client *Client) SendMessageToGroupUsers(request *SendMessageToGroupUsersRequest) (_result *SendMessageToGroupUsersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendMessageToGroupUsersResponse{}
-	_body, _err := client.SendMessageToGroupUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34211,7 +24684,7 @@ func (client *Client) SendMessageToGroupUsers(request *SendMessageToGroupUsersRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetCasterChannelResponse
-func (client *Client) SetCasterChannelWithOptions(request *SetCasterChannelRequest, runtime *dara.RuntimeOptions) (_result *SetCasterChannelResponse, _err error) {
+func (client *Client) SetCasterChannelWithContext(ctx context.Context, request *SetCasterChannelRequest, runtime *dara.RuntimeOptions) (_result *SetCasterChannelResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34264,37 +24737,11 @@ func (client *Client) SetCasterChannelWithOptions(request *SetCasterChannelReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetCasterChannelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures a channel of a production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to configure a channel for the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetCasterChannelRequest
-//
-// @return SetCasterChannelResponse
-func (client *Client) SetCasterChannel(request *SetCasterChannelRequest) (_result *SetCasterChannelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetCasterChannelResponse{}
-	_body, _err := client.SetCasterChannelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34315,7 +24762,7 @@ func (client *Client) SetCasterChannel(request *SetCasterChannelRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetCasterConfigResponse
-func (client *Client) SetCasterConfigWithOptions(request *SetCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterConfigResponse, _err error) {
+func (client *Client) SetCasterConfigWithContext(ctx context.Context, request *SetCasterConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34420,37 +24867,11 @@ func (client *Client) SetCasterConfigWithOptions(request *SetCasterConfigRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetCasterConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures a production studio. For example, you can specify the name of the production studio, configure the transcoding settings, and configure the recording settings.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to configure the production studio. This operation completely replaces existing configurations. If you leave a parameter empty, the corresponding configuration is cleared for the production studio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetCasterConfigRequest
-//
-// @return SetCasterConfigResponse
-func (client *Client) SetCasterConfig(request *SetCasterConfigRequest) (_result *SetCasterConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetCasterConfigResponse{}
-	_body, _err := client.SetCasterConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34473,7 +24894,7 @@ func (client *Client) SetCasterConfig(request *SetCasterConfigRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetCasterSceneConfigResponse
-func (client *Client) SetCasterSceneConfigWithOptions(request *SetCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterSceneConfigResponse, _err error) {
+func (client *Client) SetCasterSceneConfigWithContext(ctx context.Context, request *SetCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *SetCasterSceneConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34518,39 +24939,11 @@ func (client *Client) SetCasterSceneConfigWithOptions(request *SetCasterSceneCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetCasterSceneConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures all settings of a scene. This is done by clearing all previous settings of the scene and applying new settings, including the layout setting, to the scene.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// This operation configures a scene by clearing all previous settings of the scene and applying new settings, including the layout setting, to the scene.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - SetCasterSceneConfigRequest
-//
-// @return SetCasterSceneConfigResponse
-func (client *Client) SetCasterSceneConfig(request *SetCasterSceneConfigRequest) (_result *SetCasterSceneConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetCasterSceneConfigResponse{}
-	_body, _err := client.SetCasterSceneConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34571,7 +24964,7 @@ func (client *Client) SetCasterSceneConfig(request *SetCasterSceneConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveDomainCertificateResponse
-func (client *Client) SetLiveDomainCertificateWithOptions(request *SetLiveDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainCertificateResponse, _err error) {
+func (client *Client) SetLiveDomainCertificateWithContext(ctx context.Context, request *SetLiveDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainCertificateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34628,37 +25021,11 @@ func (client *Client) SetLiveDomainCertificateWithOptions(request *SetLiveDomain
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveDomainCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables the certificate of a domain name, and modifies the certificate information.
-//
-// Description:
-//
-// Obtain the domain name, and then call this operation to enable or disable the certificate of a domain name and modify the certificate information.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveDomainCertificateRequest
-//
-// @return SetLiveDomainCertificateResponse
-func (client *Client) SetLiveDomainCertificate(request *SetLiveDomainCertificateRequest) (_result *SetLiveDomainCertificateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveDomainCertificateResponse{}
-	_body, _err := client.SetLiveDomainCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34679,7 +25046,7 @@ func (client *Client) SetLiveDomainCertificate(request *SetLiveDomainCertificate
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveDomainMultiStreamConfigResponse
-func (client *Client) SetLiveDomainMultiStreamConfigWithOptions(request *SetLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamConfigResponse, _err error) {
+func (client *Client) SetLiveDomainMultiStreamConfigWithContext(ctx context.Context, request *SetLiveDomainMultiStreamConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34700,37 +25067,11 @@ func (client *Client) SetLiveDomainMultiStreamConfigWithOptions(request *SetLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveDomainMultiStreamConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures dual-stream disaster recovery for a streaming domain.
-//
-// Description:
-//
-// You can call this operation to configure dual-stream disaster recovery for a streaming domain, which allows you to ingest two streams that have the same name.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveDomainMultiStreamConfigRequest
-//
-// @return SetLiveDomainMultiStreamConfigResponse
-func (client *Client) SetLiveDomainMultiStreamConfig(request *SetLiveDomainMultiStreamConfigRequest) (_result *SetLiveDomainMultiStreamConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveDomainMultiStreamConfigResponse{}
-	_body, _err := client.SetLiveDomainMultiStreamConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34743,7 +25084,7 @@ func (client *Client) SetLiveDomainMultiStreamConfig(request *SetLiveDomainMulti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveDomainMultiStreamMasterResponse
-func (client *Client) SetLiveDomainMultiStreamMasterWithOptions(request *SetLiveDomainMultiStreamMasterRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamMasterResponse, _err error) {
+func (client *Client) SetLiveDomainMultiStreamMasterWithContext(ctx context.Context, request *SetLiveDomainMultiStreamMasterRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamMasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34764,29 +25105,11 @@ func (client *Client) SetLiveDomainMultiStreamMasterWithOptions(request *SetLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveDomainMultiStreamMasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Manually switches between the active stream and standby stream.
-//
-// @param request - SetLiveDomainMultiStreamMasterRequest
-//
-// @return SetLiveDomainMultiStreamMasterResponse
-func (client *Client) SetLiveDomainMultiStreamMaster(request *SetLiveDomainMultiStreamMasterRequest) (_result *SetLiveDomainMultiStreamMasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveDomainMultiStreamMasterResponse{}
-	_body, _err := client.SetLiveDomainMultiStreamMasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34799,7 +25122,7 @@ func (client *Client) SetLiveDomainMultiStreamMaster(request *SetLiveDomainMulti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveDomainMultiStreamOptimalModeResponse
-func (client *Client) SetLiveDomainMultiStreamOptimalModeWithOptions(request *SetLiveDomainMultiStreamOptimalModeRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamOptimalModeResponse, _err error) {
+func (client *Client) SetLiveDomainMultiStreamOptimalModeWithContext(ctx context.Context, request *SetLiveDomainMultiStreamOptimalModeRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainMultiStreamOptimalModeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34820,29 +25143,11 @@ func (client *Client) SetLiveDomainMultiStreamOptimalModeWithOptions(request *Se
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveDomainMultiStreamOptimalModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures the auto mode of dual-stream disaster recovery.
-//
-// @param request - SetLiveDomainMultiStreamOptimalModeRequest
-//
-// @return SetLiveDomainMultiStreamOptimalModeResponse
-func (client *Client) SetLiveDomainMultiStreamOptimalMode(request *SetLiveDomainMultiStreamOptimalModeRequest) (_result *SetLiveDomainMultiStreamOptimalModeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveDomainMultiStreamOptimalModeResponse{}
-	_body, _err := client.SetLiveDomainMultiStreamOptimalModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34865,7 +25170,7 @@ func (client *Client) SetLiveDomainMultiStreamOptimalMode(request *SetLiveDomain
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveDomainStagingConfigResponse
-func (client *Client) SetLiveDomainStagingConfigWithOptions(request *SetLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainStagingConfigResponse, _err error) {
+func (client *Client) SetLiveDomainStagingConfigWithContext(ctx context.Context, request *SetLiveDomainStagingConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveDomainStagingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -34902,39 +25207,11 @@ func (client *Client) SetLiveDomainStagingConfigWithOptions(request *SetLiveDoma
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveDomainStagingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets or modifies domain name configurations in the canary release environment.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// Obtain the accelerated domain name, and then call this operation to set or modify the domain name configurations in the canary release environment. For more information, see **Format of the Functions parameter**.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - SetLiveDomainStagingConfigRequest
-//
-// @return SetLiveDomainStagingConfigResponse
-func (client *Client) SetLiveDomainStagingConfig(request *SetLiveDomainStagingConfigRequest) (_result *SetLiveDomainStagingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveDomainStagingConfigResponse{}
-	_body, _err := client.SetLiveDomainStagingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -34965,7 +25242,7 @@ func (client *Client) SetLiveDomainStagingConfig(request *SetLiveDomainStagingCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveEdgeTransferResponse
-func (client *Client) SetLiveEdgeTransferWithOptions(request *SetLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *SetLiveEdgeTransferResponse, _err error) {
+func (client *Client) SetLiveEdgeTransferWithContext(ctx context.Context, request *SetLiveEdgeTransferRequest, runtime *dara.RuntimeOptions) (_result *SetLiveEdgeTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35018,47 +25295,11 @@ func (client *Client) SetLiveEdgeTransferWithOptions(request *SetLiveEdgeTransfe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveEdgeTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the configuration of edge stream relay.
-//
-// Description:
-//
-// You can call the SetLiveEdgeTransfer operation to configure edge stream relay. The configuration takes effect for ingested streams that start after edge stream relay is configured. The following table describes the scenarios in which edge stream relay takes effect or not.
-//
-// |Scenario|Analysis|Result|
-//
-// |---|---|---|
-//
-// |1\\. You ingest a stream before you call the SetLiveEdgeTransfer operation.|The configuration of edge stream relay is not available.|The ingested stream is not affected by your call of the SetLiveEdgeTransfer operation. Edge stream relay does not take effect.|
-//
-// |2\\. You disconnect an ingested stream that started before you called the SetLiveEdgeTransfer operation, and then resume the ingested stream.|The configuration of edge stream relay is available.|Edge stream relay takes effect for the resumed ingested stream based on the configuration.|
-//
-// |3\\. You ingest a stream after you call the SetLiveEdgeTransfer operation.|The configuration of edge stream relay is available.|Edge stream relay takes effect for the ingested stream based on the configuration.|
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveEdgeTransferRequest
-//
-// @return SetLiveEdgeTransferResponse
-func (client *Client) SetLiveEdgeTransfer(request *SetLiveEdgeTransferRequest) (_result *SetLiveEdgeTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveEdgeTransferResponse{}
-	_body, _err := client.SetLiveEdgeTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35081,7 +25322,7 @@ func (client *Client) SetLiveEdgeTransfer(request *SetLiveEdgeTransferRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveLazyPullStreamInfoConfigResponse
-func (client *Client) SetLiveLazyPullStreamInfoConfigWithOptions(request *SetLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveLazyPullStreamInfoConfigResponse, _err error) {
+func (client *Client) SetLiveLazyPullStreamInfoConfigWithContext(ctx context.Context, request *SetLiveLazyPullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveLazyPullStreamInfoConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35134,39 +25375,11 @@ func (client *Client) SetLiveLazyPullStreamInfoConfigWithOptions(request *SetLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveLazyPullStreamInfoConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a configuration of triggered stream pulling.
-//
-// Description:
-//
-// You can call this operation to configure triggered stream pulling. The configuration lets ApsaraVideo Live automatically pull live streams from the origin server when the origin server starts to play live streams.
-//
-// >  The IPv6 protocol is not supported.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveLazyPullStreamInfoConfigRequest
-//
-// @return SetLiveLazyPullStreamInfoConfigResponse
-func (client *Client) SetLiveLazyPullStreamInfoConfig(request *SetLiveLazyPullStreamInfoConfigRequest) (_result *SetLiveLazyPullStreamInfoConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveLazyPullStreamInfoConfigResponse{}
-	_body, _err := client.SetLiveLazyPullStreamInfoConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35189,7 +25402,7 @@ func (client *Client) SetLiveLazyPullStreamInfoConfig(request *SetLiveLazyPullSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveMpuTaskSeiResponse
-func (client *Client) SetLiveMpuTaskSeiWithOptions(request *SetLiveMpuTaskSeiRequest, runtime *dara.RuntimeOptions) (_result *SetLiveMpuTaskSeiResponse, _err error) {
+func (client *Client) SetLiveMpuTaskSeiWithContext(ctx context.Context, request *SetLiveMpuTaskSeiRequest, runtime *dara.RuntimeOptions) (_result *SetLiveMpuTaskSeiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35222,39 +25435,11 @@ func (client *Client) SetLiveMpuTaskSeiWithOptions(request *SetLiveMpuTaskSeiReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveMpuTaskSeiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures custom supplemental enhancement information (SEI) for co-streaming.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// You can call this operation to configure custom SEI for a mixed-stream relay task.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveMpuTaskSeiRequest
-//
-// @return SetLiveMpuTaskSeiResponse
-func (client *Client) SetLiveMpuTaskSei(request *SetLiveMpuTaskSeiRequest) (_result *SetLiveMpuTaskSeiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveMpuTaskSeiResponse{}
-	_body, _err := client.SetLiveMpuTaskSeiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35275,7 +25460,7 @@ func (client *Client) SetLiveMpuTaskSei(request *SetLiveMpuTaskSeiRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveStreamBlockResponse
-func (client *Client) SetLiveStreamBlockWithOptions(request *SetLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamBlockResponse, _err error) {
+func (client *Client) SetLiveStreamBlockWithContext(ctx context.Context, request *SetLiveStreamBlockRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamBlockResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35328,37 +25513,11 @@ func (client *Client) SetLiveStreamBlockWithOptions(request *SetLiveStreamBlockR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveStreamBlockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures stream-level region blocking.
-//
-// Description:
-//
-// You can configure up to 200 stream-level region blocking rules for a domain name. If there are rules in which the same application name and the same stream name are specified, the rule that is updated the most recently takes effect.
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveStreamBlockRequest
-//
-// @return SetLiveStreamBlockResponse
-func (client *Client) SetLiveStreamBlock(request *SetLiveStreamBlockRequest) (_result *SetLiveStreamBlockResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveStreamBlockResponse{}
-	_body, _err := client.SetLiveStreamBlockWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35391,7 +25550,7 @@ func (client *Client) SetLiveStreamBlock(request *SetLiveStreamBlockRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveStreamDelayConfigResponse
-func (client *Client) SetLiveStreamDelayConfigWithOptions(request *SetLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamDelayConfigResponse, _err error) {
+func (client *Client) SetLiveStreamDelayConfigWithContext(ctx context.Context, request *SetLiveStreamDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35448,49 +25607,11 @@ func (client *Client) SetLiveStreamDelayConfigWithOptions(request *SetLiveStream
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveStreamDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures the live streaming latency.
-//
-// Description:
-//
-//	  You can call this operation to configure the latency of a streaming domain.
-//
-//		- Because an integer number of groups of pictures (GOPs) are cached, the latency is not less than the GOP size. The actual latency is calculated based on the GOP size. For example, if RtmpDelay is set to 4 seconds and the GOP size is 2 seconds, the minimum latency is 2 seconds (4 seconds minus 2 seconds) and the maximum latency is 6 seconds (4 seconds plus 2 seconds). If the GOP size is greater than the value of RtmpDelay, for example, the GOP size is 5 seconds and RtmpDelay is set to 4 seconds, the latency ranges from 0 to 9 seconds.
-//
-//		- Configuration for the latency of an audio-only stream is invalid. By default, the latency is close to 0.
-//
-//		- For HTTP Live Streaming (HLS)-based playback, the segment size equals the latency divided by 3. Round the value down to the nearest integer. The value cannot be less than 1 second. Then, calculate the maximum number of segments. If the segment size is greater than or equal to 3 seconds, the maximum number of segments is 4. Otherwise, the maximum number of segments is 6.
-//
-//		- The actual HLS segment size is not smaller than the GOP size.
-//
-//		- The latency of HLS-based playback equals the configured segment size times 3.
-//
-//		- If you do not call this operation, the default latency is 2 seconds for Real-Time Messaging Protocol (RTMP)-based playback and 4 seconds for Flash Video (FLV)-based playback. By default, the size of an HLS segment is 5 seconds. In this case, the latency is 15 seconds and the maximum number of segments is 6.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveStreamDelayConfigRequest
-//
-// @return SetLiveStreamDelayConfigResponse
-func (client *Client) SetLiveStreamDelayConfig(request *SetLiveStreamDelayConfigRequest) (_result *SetLiveStreamDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveStreamDelayConfigResponse{}
-	_body, _err := client.SetLiveStreamDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35513,7 +25634,7 @@ func (client *Client) SetLiveStreamDelayConfig(request *SetLiveStreamDelayConfig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveStreamPreloadTasksResponse
-func (client *Client) SetLiveStreamPreloadTasksWithOptions(request *SetLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamPreloadTasksResponse, _err error) {
+func (client *Client) SetLiveStreamPreloadTasksWithContext(ctx context.Context, request *SetLiveStreamPreloadTasksRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamPreloadTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35562,39 +25683,11 @@ func (client *Client) SetLiveStreamPreloadTasksWithOptions(request *SetLiveStrea
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveStreamPreloadTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures a prefetch task. You can specify multiple URLs to prefetch at a time.
-//
-// Description:
-//
-//	  You can call this operation to specify multiple URLs to prefetch at a time. You can specify up to 100 URLs in a request.
-//
-//		- URLs in the HTTP Live Steaming (HLS) format are not supported.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveStreamPreloadTasksRequest
-//
-// @return SetLiveStreamPreloadTasksResponse
-func (client *Client) SetLiveStreamPreloadTasks(request *SetLiveStreamPreloadTasksRequest) (_result *SetLiveStreamPreloadTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveStreamPreloadTasksResponse{}
-	_body, _err := client.SetLiveStreamPreloadTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35617,7 +25710,7 @@ func (client *Client) SetLiveStreamPreloadTasks(request *SetLiveStreamPreloadTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetLiveStreamsNotifyUrlConfigResponse
-func (client *Client) SetLiveStreamsNotifyUrlConfigWithOptions(request *SetLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamsNotifyUrlConfigResponse, _err error) {
+func (client *Client) SetLiveStreamsNotifyUrlConfigWithContext(ctx context.Context, request *SetLiveStreamsNotifyUrlConfigRequest, runtime *dara.RuntimeOptions) (_result *SetLiveStreamsNotifyUrlConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35666,39 +25759,11 @@ func (client *Client) SetLiveStreamsNotifyUrlConfigWithOptions(request *SetLiveS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures stream ingest callbacks under an ingest domain.
-//
-// Description:
-//
-//	  You can call this operation to configure the callback URL and authentication information of an ingest domain.
-//
-//		- If you configure callbacks for stream ingest status, you can receive callback notifications about successful or interrupted stream ingest in a timely manner. For more information, see [Format of stream ingest callbacks](https://help.aliyun.com/document_detail/54787.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetLiveStreamsNotifyUrlConfigRequest
-//
-// @return SetLiveStreamsNotifyUrlConfigResponse
-func (client *Client) SetLiveStreamsNotifyUrlConfig(request *SetLiveStreamsNotifyUrlConfigRequest) (_result *SetLiveStreamsNotifyUrlConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetLiveStreamsNotifyUrlConfigResponse{}
-	_body, _err := client.SetLiveStreamsNotifyUrlConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35727,7 +25792,7 @@ func (client *Client) SetLiveStreamsNotifyUrlConfig(request *SetLiveStreamsNotif
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetShowListBackgroundResponse
-func (client *Client) SetShowListBackgroundWithOptions(request *SetShowListBackgroundRequest, runtime *dara.RuntimeOptions) (_result *SetShowListBackgroundResponse, _err error) {
+func (client *Client) SetShowListBackgroundWithContext(ctx context.Context, request *SetShowListBackgroundRequest, runtime *dara.RuntimeOptions) (_result *SetShowListBackgroundResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35772,45 +25837,11 @@ func (client *Client) SetShowListBackgroundWithOptions(request *SetShowListBackg
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetShowListBackgroundResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures the background of the episode list.
-//
-// Description:
-//
-//	  Create a production studio in playlist mode, and then call this operation to add the background material. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
-//
-//		- You can call this operation to create, update, or delete the background of the episode list. To delete the background, leave the ResourceType, ResourceUrl, and MaterialId parameters empty.
-//
-// >
-//
-//   - When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
-//
-//   - When you add media resources to a production studio, we recommend that you select resources from ApsaraVideo Live and ApsaraVideo VOD. If you add a third-party stream by specifying a streaming URL, there is a possibility that the stream fails to be played. You must pay attention to the quality and validity of the third-party stream.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetShowListBackgroundRequest
-//
-// @return SetShowListBackgroundResponse
-func (client *Client) SetShowListBackground(request *SetShowListBackgroundRequest) (_result *SetShowListBackgroundResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetShowListBackgroundResponse{}
-	_body, _err := client.SetShowListBackgroundWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35835,7 +25866,7 @@ func (client *Client) SetShowListBackground(request *SetShowListBackgroundReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetSnapshotCallbackAuthResponse
-func (client *Client) SetSnapshotCallbackAuthWithOptions(request *SetSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *SetSnapshotCallbackAuthResponse, _err error) {
+func (client *Client) SetSnapshotCallbackAuthWithContext(ctx context.Context, request *SetSnapshotCallbackAuthRequest, runtime *dara.RuntimeOptions) (_result *SetSnapshotCallbackAuthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35876,41 +25907,11 @@ func (client *Client) SetSnapshotCallbackAuthWithOptions(request *SetSnapshotCal
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetSnapshotCallbackAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures authentication for snapshot callbacks.
-//
-// Description:
-//
-//	  Before you configure authentication for snapshot callbacks, you need to specify the callback URL. For more information, see [AddLiveAppSnapshotConfig](https://help.aliyun.com/document_detail/2847897.html).
-//
-//		- You can call this operation to configure authentication for snapshot callbacks for a main streaming domain. Make sure that the parameter settings meet the requirements.
-//
-//		- ApsaraVideo Live allows you to add a specific signature header to each HTTP or HTTPS callback request. This way, the server that receives callback messages can authenticate the signature to prevent illegal or invalid requests. For more information, see [Usage notes for callback authentication](https://help.aliyun.com/document_detail/417349.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - SetSnapshotCallbackAuthRequest
-//
-// @return SetSnapshotCallbackAuthResponse
-func (client *Client) SetSnapshotCallbackAuth(request *SetSnapshotCallbackAuthRequest) (_result *SetSnapshotCallbackAuthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetSnapshotCallbackAuthResponse{}
-	_body, _err := client.SetSnapshotCallbackAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -35931,7 +25932,7 @@ func (client *Client) SetSnapshotCallbackAuth(request *SetSnapshotCallbackAuthRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartCasterResponse
-func (client *Client) StartCasterWithOptions(request *StartCasterRequest, runtime *dara.RuntimeOptions) (_result *StartCasterResponse, _err error) {
+func (client *Client) StartCasterWithContext(ctx context.Context, request *StartCasterRequest, runtime *dara.RuntimeOptions) (_result *StartCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -35964,37 +25965,11 @@ func (client *Client) StartCasterWithOptions(request *StartCasterRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a production studio. If the production studio does not have a PVW scene or a PGM scene, this operation creates and starts such scenes and starts audio and video processing tasks.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to start the production studio. If the production studio does not have a PVW scene or a PGM scene, this operation creates and starts such scenes and starts audio and video processing tasks.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartCasterRequest
-//
-// @return StartCasterResponse
-func (client *Client) StartCaster(request *StartCasterRequest) (_result *StartCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartCasterResponse{}
-	_body, _err := client.StartCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36015,7 +25990,7 @@ func (client *Client) StartCaster(request *StartCasterRequest) (_result *StartCa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartCasterSceneResponse
-func (client *Client) StartCasterSceneWithOptions(request *StartCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartCasterSceneResponse, _err error) {
+func (client *Client) StartCasterSceneWithContext(ctx context.Context, request *StartCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StartCasterSceneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36052,37 +26027,11 @@ func (client *Client) StartCasterSceneWithOptions(request *StartCasterSceneReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartCasterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a specified preview (PVW) scene.
-//
-// Description:
-//
-// You can call this operation to start a specified PVW scene.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartCasterSceneRequest
-//
-// @return StartCasterSceneResponse
-func (client *Client) StartCasterScene(request *StartCasterSceneRequest) (_result *StartCasterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartCasterSceneResponse{}
-	_body, _err := client.StartCasterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36105,7 +26054,7 @@ func (client *Client) StartCasterScene(request *StartCasterSceneRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartEdgeTranscodeJobResponse
-func (client *Client) StartEdgeTranscodeJobWithOptions(request *StartEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StartEdgeTranscodeJobResponse, _err error) {
+func (client *Client) StartEdgeTranscodeJobWithContext(ctx context.Context, request *StartEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StartEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36142,39 +26091,11 @@ func (client *Client) StartEdgeTranscodeJobWithOptions(request *StartEdgeTransco
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts an edge transcoding task.
-//
-// Description:
-//
-//	  You can call this operation to start an edge transcoding task.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is not started.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartEdgeTranscodeJobRequest
-//
-// @return StartEdgeTranscodeJobResponse
-func (client *Client) StartEdgeTranscodeJob(request *StartEdgeTranscodeJobRequest) (_result *StartEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartEdgeTranscodeJobResponse{}
-	_body, _err := client.StartEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36195,7 +26116,7 @@ func (client *Client) StartEdgeTranscodeJob(request *StartEdgeTranscodeJobReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartLiveDomainResponse
-func (client *Client) StartLiveDomainWithOptions(request *StartLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StartLiveDomainResponse, _err error) {
+func (client *Client) StartLiveDomainWithContext(ctx context.Context, request *StartLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StartLiveDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36228,37 +26149,11 @@ func (client *Client) StartLiveDomainWithOptions(request *StartLiveDomainRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartLiveDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a disabled domain name. After the domain name is enabled, its status changes to online.
-//
-// Description:
-//
-// This operation does not work if the Alibaba Cloud account to which the domain name belongs has overdue payments or the domain name is invalid.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartLiveDomainRequest
-//
-// @return StartLiveDomainResponse
-func (client *Client) StartLiveDomain(request *StartLiveDomainRequest) (_result *StartLiveDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartLiveDomainResponse{}
-	_body, _err := client.StartLiveDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36311,7 +26206,7 @@ func (client *Client) StartLiveDomain(request *StartLiveDomainRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartLiveMPUTaskResponse
-func (client *Client) StartLiveMPUTaskWithOptions(tmpReq *StartLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StartLiveMPUTaskResponse, _err error) {
+func (client *Client) StartLiveMPUTaskWithContext(ctx context.Context, tmpReq *StartLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StartLiveMPUTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36394,69 +26289,11 @@ func (client *Client) StartLiveMPUTaskWithOptions(tmpReq *StartLiveMPUTaskReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartLiveMPUTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a mixed-stream relay task.
-//
-// Description:
-//
-// By default, you can create up to 200 single-stream relay tasks and up to 40 mixed-stream relay tasks for an application. To increase the quota, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
-//
-// ### [](#)Lifecycle of a stream relay task
-//
-// **Start**
-//
-//   - Call the StartLiveMPUTask operation to create a task.
-//
-//   - If no user joins the channel, an error indicating that the channel does not exist is returned.
-//
-//   - Stream relay is not performed if no stream is ingested. In this case, no relayed stream is available for playback.
-//
-//   - If the task is in the mixed-stream relay mode, make sure that at least one user is ingesting a stream, which can be relayed for playback. A black screen is displayed in the pane of a user who is not ingesting a stream.
-//
-//   - We recommend that you record the task status, task mode, and task parameters on your business server.
-//
-//   - Task status: started or stopped.
-//
-//   - Task mode: single-stream relay or mixed-stream relay.
-//
-//   - Task parameters: the latest input parameters. For example, after your call of the UpdateLiveMPUTask operation is successful, record the task parameters, which are the latest.
-//
-//   - In co-streaming or battle scenarios, the task is in the mixed-stream relay mode. If the streamer leaves the channel due to exceptions and re-joins the channel, you can directly call the StartLiveMPUTask operation on your business server to start stream relay based on the recorded task parameters.
-//
-//   - If the task has not been automatically cleared by the system, the task is directly started.
-//
-//   - If the task has not been automatically cleared by the system, a message indicating that **the task already exists*	- is returned.
-//
-// **End**
-//
-//   - After the streamer leaves the channel, you need to call the [StopLiveMPUTask](https://help.aliyun.com/document_detail/2362742.html) operation to stop the task.
-//
-//   - If all users specified in the task have left the channel, but you do not call the StopLiveMPUTask operation, the system stops the task in 2 minutes.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartLiveMPUTaskRequest
-//
-// @return StartLiveMPUTaskResponse
-func (client *Client) StartLiveMPUTask(request *StartLiveMPUTaskRequest) (_result *StartLiveMPUTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartLiveMPUTaskResponse{}
-	_body, _err := client.StartLiveMPUTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36477,7 +26314,7 @@ func (client *Client) StartLiveMPUTask(request *StartLiveMPUTaskRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartLiveStreamMonitorResponse
-func (client *Client) StartLiveStreamMonitorWithOptions(request *StartLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StartLiveStreamMonitorResponse, _err error) {
+func (client *Client) StartLiveStreamMonitorWithContext(ctx context.Context, request *StartLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StartLiveStreamMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36510,37 +26347,11 @@ func (client *Client) StartLiveStreamMonitorWithOptions(request *StartLiveStream
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartLiveStreamMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts live monitoring.
-//
-// Description:
-//
-// You can call the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to create a monitoring session, obtain the value of the response parameter **MonitorId**, and then start live monitoring.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartLiveStreamMonitorRequest
-//
-// @return StartLiveStreamMonitorResponse
-func (client *Client) StartLiveStreamMonitor(request *StartLiveStreamMonitorRequest) (_result *StartLiveStreamMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartLiveStreamMonitorResponse{}
-	_body, _err := client.StartLiveStreamMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36561,7 +26372,7 @@ func (client *Client) StartLiveStreamMonitor(request *StartLiveStreamMonitorRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartPlaylistResponse
-func (client *Client) StartPlaylistWithOptions(request *StartPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StartPlaylistResponse, _err error) {
+func (client *Client) StartPlaylistWithContext(ctx context.Context, request *StartPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StartPlaylistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36606,37 +26417,11 @@ func (client *Client) StartPlaylistWithOptions(request *StartPlaylistRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartPlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts playing an episode list.
-//
-// Description:
-//
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to start playing the episode list.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StartPlaylistRequest
-//
-// @return StartPlaylistResponse
-func (client *Client) StartPlaylist(request *StartPlaylistRequest) (_result *StartPlaylistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartPlaylistResponse{}
-	_body, _err := client.StartPlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36649,7 +26434,7 @@ func (client *Client) StartPlaylist(request *StartPlaylistRequest) (_result *Sta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartRtcCloudRecordingResponse
-func (client *Client) StartRtcCloudRecordingWithOptions(tmpReq *StartRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StartRtcCloudRecordingResponse, _err error) {
+func (client *Client) StartRtcCloudRecordingWithContext(ctx context.Context, tmpReq *StartRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StartRtcCloudRecordingResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36724,29 +26509,11 @@ func (client *Client) StartRtcCloudRecordingWithOptions(tmpReq *StartRtcCloudRec
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartRtcCloudRecordingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动rtc云端录制任务
-//
-// @param request - StartRtcCloudRecordingRequest
-//
-// @return StartRtcCloudRecordingResponse
-func (client *Client) StartRtcCloudRecording(request *StartRtcCloudRecordingRequest) (_result *StartRtcCloudRecordingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartRtcCloudRecordingResponse{}
-	_body, _err := client.StartRtcCloudRecordingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36767,7 +26534,7 @@ func (client *Client) StartRtcCloudRecording(request *StartRtcCloudRecordingRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopCasterResponse
-func (client *Client) StopCasterWithOptions(request *StopCasterRequest, runtime *dara.RuntimeOptions) (_result *StopCasterResponse, _err error) {
+func (client *Client) StopCasterWithContext(ctx context.Context, request *StopCasterRequest, runtime *dara.RuntimeOptions) (_result *StopCasterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36800,37 +26567,11 @@ func (client *Client) StopCasterWithOptions(request *StopCasterRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopCasterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a production studio. This stops the PVW and PGM scenes of the production studio.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and call this operation to stop the production studio. When a production studio is stopped, its PVW and PGM scenes are stopped.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopCasterRequest
-//
-// @return StopCasterResponse
-func (client *Client) StopCaster(request *StopCasterRequest) (_result *StopCasterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopCasterResponse{}
-	_body, _err := client.StopCasterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36849,7 +26590,7 @@ func (client *Client) StopCaster(request *StopCasterRequest) (_result *StopCaste
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopCasterSceneResponse
-func (client *Client) StopCasterSceneWithOptions(request *StopCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopCasterSceneResponse, _err error) {
+func (client *Client) StopCasterSceneWithContext(ctx context.Context, request *StopCasterSceneRequest, runtime *dara.RuntimeOptions) (_result *StopCasterSceneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36886,35 +26627,11 @@ func (client *Client) StopCasterSceneWithOptions(request *StopCasterSceneRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopCasterSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a specified preview scene.
-//
-// Description:
-//
-// ## Usage note
-//
-// This operation is only applicable to the PVW scenes.
-//
-// @param request - StopCasterSceneRequest
-//
-// @return StopCasterSceneResponse
-func (client *Client) StopCasterScene(request *StopCasterSceneRequest) (_result *StopCasterSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopCasterSceneResponse{}
-	_body, _err := client.StopCasterSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -36937,7 +26654,7 @@ func (client *Client) StopCasterScene(request *StopCasterSceneRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopEdgeTranscodeJobResponse
-func (client *Client) StopEdgeTranscodeJobWithOptions(request *StopEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StopEdgeTranscodeJobResponse, _err error) {
+func (client *Client) StopEdgeTranscodeJobWithContext(ctx context.Context, request *StopEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *StopEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -36974,39 +26691,11 @@ func (client *Client) StopEdgeTranscodeJobWithOptions(request *StopEdgeTranscode
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops an edge transcoding task.
-//
-// Description:
-//
-//	  You can call this operation to stop an edge transcoding task.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is running.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopEdgeTranscodeJobRequest
-//
-// @return StopEdgeTranscodeJobResponse
-func (client *Client) StopEdgeTranscodeJob(request *StopEdgeTranscodeJobRequest) (_result *StopEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopEdgeTranscodeJobResponse{}
-	_body, _err := client.StopEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37027,7 +26716,7 @@ func (client *Client) StopEdgeTranscodeJob(request *StopEdgeTranscodeJobRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopLiveDomainResponse
-func (client *Client) StopLiveDomainWithOptions(request *StopLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StopLiveDomainResponse, _err error) {
+func (client *Client) StopLiveDomainWithContext(ctx context.Context, request *StopLiveDomainRequest, runtime *dara.RuntimeOptions) (_result *StopLiveDomainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37060,37 +26749,11 @@ func (client *Client) StopLiveDomainWithOptions(request *StopLiveDomainRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopLiveDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables an enabled domain name. After the domain name is disabled, its status changes to offline.
-//
-// Description:
-//
-// After you disable a domain name, the information about the domain name is retained. ApsaraVideo Live automatically reroutes all requests that are destined for the domain name to the origin.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopLiveDomainRequest
-//
-// @return StopLiveDomainResponse
-func (client *Client) StopLiveDomain(request *StopLiveDomainRequest) (_result *StopLiveDomainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopLiveDomainResponse{}
-	_body, _err := client.StopLiveDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37113,7 +26776,7 @@ func (client *Client) StopLiveDomain(request *StopLiveDomainRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopLiveMPUTaskResponse
-func (client *Client) StopLiveMPUTaskWithOptions(request *StopLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StopLiveMPUTaskResponse, _err error) {
+func (client *Client) StopLiveMPUTaskWithContext(ctx context.Context, request *StopLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *StopLiveMPUTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37142,39 +26805,11 @@ func (client *Client) StopLiveMPUTaskWithOptions(request *StopLiveMPUTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopLiveMPUTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a mixed-stream relay task.
-//
-// Description:
-//
-//	  Make sure that a mixed-stream relay task is started before you call this operation. You can call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation to start a mixed-stream relay task.
-//
-//		- If a mixed-stream relay task becomes abnormal, the task is automatically stopped 2 minutes after the last person leaves the channel. In this case, you do not need to call the StopLiveMPUTask operation. If you need to resume a mixed-stream relay task that is stopped, call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation again.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopLiveMPUTaskRequest
-//
-// @return StopLiveMPUTaskResponse
-func (client *Client) StopLiveMPUTask(request *StopLiveMPUTaskRequest) (_result *StopLiveMPUTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopLiveMPUTaskResponse{}
-	_body, _err := client.StopLiveMPUTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37197,7 +26832,7 @@ func (client *Client) StopLiveMPUTask(request *StopLiveMPUTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopLivePullToPushResponse
-func (client *Client) StopLivePullToPushWithOptions(request *StopLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *StopLivePullToPushResponse, _err error) {
+func (client *Client) StopLivePullToPushWithContext(ctx context.Context, request *StopLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *StopLivePullToPushResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37218,39 +26853,11 @@ func (client *Client) StopLivePullToPushWithOptions(request *StopLivePullToPushR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a pulled-stream relay task.
-//
-// Description:
-//
-//	  You can call this operation to stop a pulled-stream relay task.
-//
-//		- You can stop a task that is running (even if the task is in an abnormal retry state). You cannot stop a task that is not running.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopLivePullToPushRequest
-//
-// @return StopLivePullToPushResponse
-func (client *Client) StopLivePullToPush(request *StopLivePullToPushRequest) (_result *StopLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopLivePullToPushResponse{}
-	_body, _err := client.StopLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37271,7 +26878,7 @@ func (client *Client) StopLivePullToPush(request *StopLivePullToPushRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopLiveStreamMonitorResponse
-func (client *Client) StopLiveStreamMonitorWithOptions(request *StopLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StopLiveStreamMonitorResponse, _err error) {
+func (client *Client) StopLiveStreamMonitorWithContext(ctx context.Context, request *StopLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *StopLiveStreamMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37304,37 +26911,11 @@ func (client *Client) StopLiveStreamMonitorWithOptions(request *StopLiveStreamMo
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopLiveStreamMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops live monitoring.
-//
-// Description:
-//
-// Before you call this operation to stop live monitoring, make sure that live monitoring is started. You can call the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to create a monitoring session, obtain the value of the response parameter **MonitorId**, and then start live monitoring.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopLiveStreamMonitorRequest
-//
-// @return StopLiveStreamMonitorResponse
-func (client *Client) StopLiveStreamMonitor(request *StopLiveStreamMonitorRequest) (_result *StopLiveStreamMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopLiveStreamMonitorResponse{}
-	_body, _err := client.StopLiveStreamMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37355,7 +26936,7 @@ func (client *Client) StopLiveStreamMonitor(request *StopLiveStreamMonitorReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopPlaylistResponse
-func (client *Client) StopPlaylistWithOptions(request *StopPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StopPlaylistResponse, _err error) {
+func (client *Client) StopPlaylistWithContext(ctx context.Context, request *StopPlaylistRequest, runtime *dara.RuntimeOptions) (_result *StopPlaylistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37388,37 +26969,11 @@ func (client *Client) StopPlaylistWithOptions(request *StopPlaylistRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopPlaylistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops playing an episode list.
-//
-// Description:
-//
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to stop playing the episode list.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopPlaylistRequest
-//
-// @return StopPlaylistResponse
-func (client *Client) StopPlaylist(request *StopPlaylistRequest) (_result *StopPlaylistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopPlaylistResponse{}
-	_body, _err := client.StopPlaylistWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37435,7 +26990,7 @@ func (client *Client) StopPlaylist(request *StopPlaylistRequest) (_result *StopP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopRtcAsrTaskResponse
-func (client *Client) StopRtcAsrTaskWithOptions(request *StopRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *StopRtcAsrTaskResponse, _err error) {
+func (client *Client) StopRtcAsrTaskWithContext(ctx context.Context, request *StopRtcAsrTaskRequest, runtime *dara.RuntimeOptions) (_result *StopRtcAsrTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37468,33 +27023,11 @@ func (client *Client) StopRtcAsrTaskWithOptions(request *StopRtcAsrTaskRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopRtcAsrTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a live subtitle task.
-//
-// Description:
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - StopRtcAsrTaskRequest
-//
-// @return StopRtcAsrTaskResponse
-func (client *Client) StopRtcAsrTask(request *StopRtcAsrTaskRequest) (_result *StopRtcAsrTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopRtcAsrTaskResponse{}
-	_body, _err := client.StopRtcAsrTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37507,7 +27040,7 @@ func (client *Client) StopRtcAsrTask(request *StopRtcAsrTaskRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopRtcCloudRecordingResponse
-func (client *Client) StopRtcCloudRecordingWithOptions(request *StopRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StopRtcCloudRecordingResponse, _err error) {
+func (client *Client) StopRtcCloudRecordingWithContext(ctx context.Context, request *StopRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *StopRtcCloudRecordingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37532,29 +27065,11 @@ func (client *Client) StopRtcCloudRecordingWithOptions(request *StopRtcCloudReco
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopRtcCloudRecordingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止rtc云端录制任务
-//
-// @param request - StopRtcCloudRecordingRequest
-//
-// @return StopRtcCloudRecordingResponse
-func (client *Client) StopRtcCloudRecording(request *StopRtcCloudRecordingRequest) (_result *StopRtcCloudRecordingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopRtcCloudRecordingResponse{}
-	_body, _err := client.StopRtcCloudRecordingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37571,7 +27086,7 @@ func (client *Client) StopRtcCloudRecording(request *StopRtcCloudRecordingReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagLiveResourcesResponse
-func (client *Client) TagLiveResourcesWithOptions(request *TagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagLiveResourcesResponse, _err error) {
+func (client *Client) TagLiveResourcesWithContext(ctx context.Context, request *TagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagLiveResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37612,33 +27127,11 @@ func (client *Client) TagLiveResourcesWithOptions(request *TagLiveResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagLiveResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The N tags that you want to add for the resource.
-//
-// Description:
-//
-// The key of the tag. Valid values of N: **1 to 20**.
-//
-// @param request - TagLiveResourcesRequest
-//
-// @return TagLiveResourcesResponse
-func (client *Client) TagLiveResources(request *TagLiveResourcesRequest) (_result *TagLiveResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagLiveResourcesResponse{}
-	_body, _err := client.TagLiveResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37647,7 +27140,7 @@ func (client *Client) TagLiveResources(request *TagLiveResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnTagLiveResourcesResponse
-func (client *Client) UnTagLiveResourcesWithOptions(request *UnTagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagLiveResourcesResponse, _err error) {
+func (client *Client) UnTagLiveResourcesWithContext(ctx context.Context, request *UnTagLiveResourcesRequest, runtime *dara.RuntimeOptions) (_result *UnTagLiveResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37692,25 +27185,11 @@ func (client *Client) UnTagLiveResourcesWithOptions(request *UnTagLiveResourcesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnTagLiveResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UnTagLiveResourcesRequest
-//
-// @return UnTagLiveResourcesResponse
-func (client *Client) UnTagLiveResources(request *UnTagLiveResourcesRequest) (_result *UnTagLiveResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnTagLiveResourcesResponse{}
-	_body, _err := client.UnTagLiveResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37733,7 +27212,7 @@ func (client *Client) UnTagLiveResources(request *UnTagLiveResourcesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbanLiveMessageGroupResponse
-func (client *Client) UnbanLiveMessageGroupWithOptions(request *UnbanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UnbanLiveMessageGroupResponse, _err error) {
+func (client *Client) UnbanLiveMessageGroupWithContext(ctx context.Context, request *UnbanLiveMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UnbanLiveMessageGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37766,39 +27245,11 @@ func (client *Client) UnbanLiveMessageGroupWithOptions(request *UnbanLiveMessage
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbanLiveMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unmutes a group.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
-//
-//		- If a user was muted by calling the AddLiveMessageGroupBand operation, the user remains muted even after you call the UnbanLiveMessageGroup operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UnbanLiveMessageGroupRequest
-//
-// @return UnbanLiveMessageGroupResponse
-func (client *Client) UnbanLiveMessageGroup(request *UnbanLiveMessageGroupRequest) (_result *UnbanLiveMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbanLiveMessageGroupResponse{}
-	_body, _err := client.UnbanLiveMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37821,7 +27272,7 @@ func (client *Client) UnbanLiveMessageGroup(request *UnbanLiveMessageGroupReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCasterResourceGroupResponse
-func (client *Client) UpdateCasterResourceGroupWithOptions(request *UpdateCasterResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterResourceGroupResponse, _err error) {
+func (client *Client) UpdateCasterResourceGroupWithContext(ctx context.Context, request *UpdateCasterResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37858,39 +27309,11 @@ func (client *Client) UpdateCasterResourceGroupWithOptions(request *UpdateCaster
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCasterResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which a production studio belongs.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-// To call this operation to change the resource group to which a production studio belongs, you must have access permissions on the original resource group and the destination resource group.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - UpdateCasterResourceGroupRequest
-//
-// @return UpdateCasterResourceGroupResponse
-func (client *Client) UpdateCasterResourceGroup(request *UpdateCasterResourceGroupRequest) (_result *UpdateCasterResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCasterResourceGroupResponse{}
-	_body, _err := client.UpdateCasterResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -37911,7 +27334,7 @@ func (client *Client) UpdateCasterResourceGroup(request *UpdateCasterResourceGro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCasterSceneAudioResponse
-func (client *Client) UpdateCasterSceneAudioWithOptions(request *UpdateCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneAudioResponse, _err error) {
+func (client *Client) UpdateCasterSceneAudioWithContext(ctx context.Context, request *UpdateCasterSceneAudioRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneAudioResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -37960,37 +27383,11 @@ func (client *Client) UpdateCasterSceneAudioWithOptions(request *UpdateCasterSce
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCasterSceneAudioResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the audio configurations of a scene. This operation also allows you to add an audio configuration or apply an existing audio configuration to a new scene.
-//
-// Description:
-//
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to modify the audio configurations of a scene in the production studio. This operation supports the audio mixing mode and the audio follows video (AFV) mode.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateCasterSceneAudioRequest
-//
-// @return UpdateCasterSceneAudioResponse
-func (client *Client) UpdateCasterSceneAudio(request *UpdateCasterSceneAudioRequest) (_result *UpdateCasterSceneAudioResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCasterSceneAudioResponse{}
-	_body, _err := client.UpdateCasterSceneAudioWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38011,7 +27408,7 @@ func (client *Client) UpdateCasterSceneAudio(request *UpdateCasterSceneAudioRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCasterSceneConfigResponse
-func (client *Client) UpdateCasterSceneConfigWithOptions(request *UpdateCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneConfigResponse, _err error) {
+func (client *Client) UpdateCasterSceneConfigWithContext(ctx context.Context, request *UpdateCasterSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCasterSceneConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38056,37 +27453,11 @@ func (client *Client) UpdateCasterSceneConfigWithOptions(request *UpdateCasterSc
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCasterSceneConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a scene, including the layout, without invalidating the previous configurations. This operation is more efficient than the SetCasterSceneConfig operation.
-//
-// Description:
-//
-// You can call this operation to modify a scene, including the layout, without invalidating the previous configurations. This operation is more efficient than the SetCasterSceneConfig operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateCasterSceneConfigRequest
-//
-// @return UpdateCasterSceneConfigResponse
-func (client *Client) UpdateCasterSceneConfig(request *UpdateCasterSceneConfigRequest) (_result *UpdateCasterSceneConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCasterSceneConfigResponse{}
-	_body, _err := client.UpdateCasterSceneConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38117,7 +27488,7 @@ func (client *Client) UpdateCasterSceneConfig(request *UpdateCasterSceneConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCustomLiveStreamTranscodeResponse
-func (client *Client) UpdateCustomLiveStreamTranscodeWithOptions(request *UpdateCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLiveStreamTranscodeResponse, _err error) {
+func (client *Client) UpdateCustomLiveStreamTranscodeWithContext(ctx context.Context, request *UpdateCustomLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38230,47 +27601,11 @@ func (client *Client) UpdateCustomLiveStreamTranscodeWithOptions(request *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a custom transcoding configuration.
-//
-// Description:
-//
-// This operation supports the following types of custom transcoding templates:
-//
-//   - h264: custom H.264 standard transcoding.
-//
-//   - h264-nbhd: custom H.264 Narrowband HD™ transcoding.
-//
-//   - h265: custom H.265 standard transcoding.
-//
-//   - h265-nbhd: custom H.265 Narrowband HD™ transcoding.
-//
-//   - audio: audio-only transcoding.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account.
-//
-// @param request - UpdateCustomLiveStreamTranscodeRequest
-//
-// @return UpdateCustomLiveStreamTranscodeResponse
-func (client *Client) UpdateCustomLiveStreamTranscode(request *UpdateCustomLiveStreamTranscodeRequest) (_result *UpdateCustomLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCustomLiveStreamTranscodeResponse{}
-	_body, _err := client.UpdateCustomLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38293,7 +27628,7 @@ func (client *Client) UpdateCustomLiveStreamTranscode(request *UpdateCustomLiveS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEdgeTranscodeJobResponse
-func (client *Client) UpdateEdgeTranscodeJobWithOptions(request *UpdateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEdgeTranscodeJobResponse, _err error) {
+func (client *Client) UpdateEdgeTranscodeJobWithContext(ctx context.Context, request *UpdateEdgeTranscodeJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateEdgeTranscodeJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38346,39 +27681,11 @@ func (client *Client) UpdateEdgeTranscodeJobWithOptions(request *UpdateEdgeTrans
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEdgeTranscodeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an edge transcoding task.
-//
-// Description:
-//
-//	  You can call this operation to update an edge transcoding task.
-//
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is not started.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateEdgeTranscodeJobRequest
-//
-// @return UpdateEdgeTranscodeJobResponse
-func (client *Client) UpdateEdgeTranscodeJob(request *UpdateEdgeTranscodeJobRequest) (_result *UpdateEdgeTranscodeJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEdgeTranscodeJobResponse{}
-	_body, _err := client.UpdateEdgeTranscodeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38403,7 +27710,7 @@ func (client *Client) UpdateEdgeTranscodeJob(request *UpdateEdgeTranscodeJobRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEventSubResponse
-func (client *Client) UpdateEventSubWithOptions(request *UpdateEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventSubResponse, _err error) {
+func (client *Client) UpdateEventSubWithContext(ctx context.Context, request *UpdateEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38448,41 +27755,11 @@ func (client *Client) UpdateEventSubWithOptions(request *UpdateEventSubRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a callback that is used to subscribe to channel or user events.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that you have called the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation to create a callback that is used to subscribe to channel or user events.
-//
-//		- An existing channel that you specify in this operation still uses its original callback configuration. The updated configuration can apply to the channel only if you restart the channel after it is closed for longer than 20 minutes.
-//
-//		- If you only want to update specific parameters, you must also specify the other required parameters with their original values.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateEventSubRequest
-//
-// @return UpdateEventSubResponse
-func (client *Client) UpdateEventSub(request *UpdateEventSubRequest) (_result *UpdateEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEventSubResponse{}
-	_body, _err := client.UpdateEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38505,7 +27782,7 @@ func (client *Client) UpdateEventSub(request *UpdateEventSubRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAIProduceRulesResponse
-func (client *Client) UpdateLiveAIProduceRulesWithOptions(request *UpdateLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAIProduceRulesResponse, _err error) {
+func (client *Client) UpdateLiveAIProduceRulesWithContext(ctx context.Context, request *UpdateLiveAIProduceRulesRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAIProduceRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38574,39 +27851,11 @@ func (client *Client) UpdateLiveAIProduceRulesWithOptions(request *UpdateLiveAIP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAIProduceRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a subtitle rule.
-//
-// Description:
-//
-// You can call this operation to modify the parameters of a specified subtitle rule.
-//
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveAIProduceRulesRequest
-//
-// @return UpdateLiveAIProduceRulesResponse
-func (client *Client) UpdateLiveAIProduceRules(request *UpdateLiveAIProduceRulesRequest) (_result *UpdateLiveAIProduceRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAIProduceRulesResponse{}
-	_body, _err := client.UpdateLiveAIProduceRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38619,7 +27868,7 @@ func (client *Client) UpdateLiveAIProduceRules(request *UpdateLiveAIProduceRules
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAISubtitleResponse
-func (client *Client) UpdateLiveAISubtitleWithOptions(tmpReq *UpdateLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAISubtitleResponse, _err error) {
+func (client *Client) UpdateLiveAISubtitleWithContext(ctx context.Context, tmpReq *UpdateLiveAISubtitleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAISubtitleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38722,29 +27971,11 @@ func (client *Client) UpdateLiveAISubtitleWithOptions(tmpReq *UpdateLiveAISubtit
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAISubtitleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a subtitle template.
-//
-// @param request - UpdateLiveAISubtitleRequest
-//
-// @return UpdateLiveAISubtitleResponse
-func (client *Client) UpdateLiveAISubtitle(request *UpdateLiveAISubtitleRequest) (_result *UpdateLiveAISubtitleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAISubtitleResponse{}
-	_body, _err := client.UpdateLiveAISubtitleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38765,7 +27996,7 @@ func (client *Client) UpdateLiveAISubtitle(request *UpdateLiveAISubtitleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAppRecordConfigResponse
-func (client *Client) UpdateLiveAppRecordConfigWithOptions(request *UpdateLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppRecordConfigResponse, _err error) {
+func (client *Client) UpdateLiveAppRecordConfigWithContext(ctx context.Context, request *UpdateLiveAppRecordConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppRecordConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38838,37 +28069,11 @@ func (client *Client) UpdateLiveAppRecordConfigWithOptions(request *UpdateLiveAp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAppRecordConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a recording configuration for an application. The recordings are stored in Object Storage Service (OSS).
-//
-// Description:
-//
-// Obtain the main streaming domain, and then call this operation to update a recording configuration.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveAppRecordConfigRequest
-//
-// @return UpdateLiveAppRecordConfigResponse
-func (client *Client) UpdateLiveAppRecordConfig(request *UpdateLiveAppRecordConfigRequest) (_result *UpdateLiveAppRecordConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAppRecordConfigResponse{}
-	_body, _err := client.UpdateLiveAppRecordConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -38889,7 +28094,7 @@ func (client *Client) UpdateLiveAppRecordConfig(request *UpdateLiveAppRecordConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAppSnapshotConfigResponse
-func (client *Client) UpdateLiveAppSnapshotConfigWithOptions(request *UpdateLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppSnapshotConfigResponse, _err error) {
+func (client *Client) UpdateLiveAppSnapshotConfigWithContext(ctx context.Context, request *UpdateLiveAppSnapshotConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAppSnapshotConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -38950,37 +28155,11 @@ func (client *Client) UpdateLiveAppSnapshotConfigWithOptions(request *UpdateLive
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAppSnapshotConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a snapshot configuration of a streaming domain. The captured snapshots are stored in Object Storage Service (OSS). The modification takes effect after you restart stream ingest.
-//
-// Description:
-//
-// You can call this operation to modify a snapshot configuration of a streaming domain. The captured snapshots are stored in OSS. The modification takes effect after you restart stream ingest.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveAppSnapshotConfigRequest
-//
-// @return UpdateLiveAppSnapshotConfigResponse
-func (client *Client) UpdateLiveAppSnapshotConfig(request *UpdateLiveAppSnapshotConfigRequest) (_result *UpdateLiveAppSnapshotConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAppSnapshotConfigResponse{}
-	_body, _err := client.UpdateLiveAppSnapshotConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39003,7 +28182,7 @@ func (client *Client) UpdateLiveAppSnapshotConfig(request *UpdateLiveAppSnapshot
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAudioAuditConfigResponse
-func (client *Client) UpdateLiveAudioAuditConfigWithOptions(request *UpdateLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditConfigResponse, _err error) {
+func (client *Client) UpdateLiveAudioAuditConfigWithContext(ctx context.Context, request *UpdateLiveAudioAuditConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39060,39 +28239,11 @@ func (client *Client) UpdateLiveAudioAuditConfigWithOptions(request *UpdateLiveA
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAudioAuditConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies an audio moderation configuration.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to modify an audio moderation configuration.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveAudioAuditConfigRequest
-//
-// @return UpdateLiveAudioAuditConfigResponse
-func (client *Client) UpdateLiveAudioAuditConfig(request *UpdateLiveAudioAuditConfigRequest) (_result *UpdateLiveAudioAuditConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAudioAuditConfigResponse{}
-	_body, _err := client.UpdateLiveAudioAuditConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39105,7 +28256,7 @@ func (client *Client) UpdateLiveAudioAuditConfig(request *UpdateLiveAudioAuditCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveAudioAuditNotifyConfigResponse
-func (client *Client) UpdateLiveAudioAuditNotifyConfigWithOptions(request *UpdateLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditNotifyConfigResponse, _err error) {
+func (client *Client) UpdateLiveAudioAuditNotifyConfigWithContext(ctx context.Context, request *UpdateLiveAudioAuditNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveAudioAuditNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39146,29 +28297,11 @@ func (client *Client) UpdateLiveAudioAuditNotifyConfigWithOptions(request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of callbacks for audio moderation results.
-//
-// @param request - UpdateLiveAudioAuditNotifyConfigRequest
-//
-// @return UpdateLiveAudioAuditNotifyConfigResponse
-func (client *Client) UpdateLiveAudioAuditNotifyConfig(request *UpdateLiveAudioAuditNotifyConfigRequest) (_result *UpdateLiveAudioAuditNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveAudioAuditNotifyConfigResponse{}
-	_body, _err := client.UpdateLiveAudioAuditNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39189,7 +28322,7 @@ func (client *Client) UpdateLiveAudioAuditNotifyConfig(request *UpdateLiveAudioA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveCenterTransferResponse
-func (client *Client) UpdateLiveCenterTransferWithOptions(request *UpdateLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveCenterTransferResponse, _err error) {
+func (client *Client) UpdateLiveCenterTransferWithContext(ctx context.Context, request *UpdateLiveCenterTransferRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveCenterTransferResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39246,37 +28379,11 @@ func (client *Client) UpdateLiveCenterTransferWithOptions(request *UpdateLiveCen
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveCenterTransferResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of live center stream relay.
-//
-// Description:
-//
-// You can call this operation to modify only the **time-related*	- parameters, including TransferArgs, StartTime, and EndTime.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveCenterTransferRequest
-//
-// @return UpdateLiveCenterTransferResponse
-func (client *Client) UpdateLiveCenterTransfer(request *UpdateLiveCenterTransferRequest) (_result *UpdateLiveCenterTransferResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveCenterTransferResponse{}
-	_body, _err := client.UpdateLiveCenterTransferWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39295,7 +28402,7 @@ func (client *Client) UpdateLiveCenterTransfer(request *UpdateLiveCenterTransfer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveDelayConfigResponse
-func (client *Client) UpdateLiveDelayConfigWithOptions(request *UpdateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDelayConfigResponse, _err error) {
+func (client *Client) UpdateLiveDelayConfigWithContext(ctx context.Context, request *UpdateLiveDelayConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDelayConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39344,35 +28451,11 @@ func (client *Client) UpdateLiveDelayConfigWithOptions(request *UpdateLiveDelayC
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveDelayConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a stream delay configuration.
-//
-// Description:
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - UpdateLiveDelayConfigRequest
-//
-// @return UpdateLiveDelayConfigResponse
-func (client *Client) UpdateLiveDelayConfig(request *UpdateLiveDelayConfigRequest) (_result *UpdateLiveDelayConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveDelayConfigResponse{}
-	_body, _err := client.UpdateLiveDelayConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39395,7 +28478,7 @@ func (client *Client) UpdateLiveDelayConfig(request *UpdateLiveDelayConfigReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveDetectNotifyConfigResponse
-func (client *Client) UpdateLiveDetectNotifyConfigWithOptions(request *UpdateLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDetectNotifyConfigResponse, _err error) {
+func (client *Client) UpdateLiveDetectNotifyConfigWithContext(ctx context.Context, request *UpdateLiveDetectNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveDetectNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39432,39 +28515,11 @@ func (client *Client) UpdateLiveDetectNotifyConfigWithOptions(request *UpdateLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveDetectNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of callbacks for video moderation results. As a result, the callback URL that is used to receive the callback notifications is changed.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to modify the configuration of callbacks for video moderation results.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveDetectNotifyConfigRequest
-//
-// @return UpdateLiveDetectNotifyConfigResponse
-func (client *Client) UpdateLiveDetectNotifyConfig(request *UpdateLiveDetectNotifyConfigRequest) (_result *UpdateLiveDetectNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveDetectNotifyConfigResponse{}
-	_body, _err := client.UpdateLiveDetectNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39485,7 +28540,7 @@ func (client *Client) UpdateLiveDetectNotifyConfig(request *UpdateLiveDetectNoti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveMPUTaskResponse
-func (client *Client) UpdateLiveMPUTaskWithOptions(tmpReq *UpdateLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveMPUTaskResponse, _err error) {
+func (client *Client) UpdateLiveMPUTaskWithContext(ctx context.Context, tmpReq *UpdateLiveMPUTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveMPUTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39560,37 +28615,11 @@ func (client *Client) UpdateLiveMPUTaskWithOptions(tmpReq *UpdateLiveMPUTaskRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveMPUTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a mixed-stream relay task.
-//
-// Description:
-//
-// Make sure that a mixed-stream relay task is created before you call this operation. You can call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation to create a mixed-stream relay task.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveMPUTaskRequest
-//
-// @return UpdateLiveMPUTaskResponse
-func (client *Client) UpdateLiveMPUTask(request *UpdateLiveMPUTaskRequest) (_result *UpdateLiveMPUTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveMPUTaskResponse{}
-	_body, _err := client.UpdateLiveMPUTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39611,7 +28640,7 @@ func (client *Client) UpdateLiveMPUTask(request *UpdateLiveMPUTaskRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLivePackageConfigResponse
-func (client *Client) UpdateLivePackageConfigWithOptions(request *UpdateLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageConfigResponse, _err error) {
+func (client *Client) UpdateLivePackageConfigWithContext(ctx context.Context, request *UpdateLivePackageConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePackageConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39672,37 +28701,11 @@ func (client *Client) UpdateLivePackageConfigWithOptions(request *UpdateLivePack
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLivePackageConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a live stream encapsulation configuration.
-//
-// Description:
-//
-// You can call this operation to update a live stream encapsulation configuration. The update takes effect only after you re-ingest the stream.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLivePackageConfigRequest
-//
-// @return UpdateLivePackageConfigResponse
-func (client *Client) UpdateLivePackageConfig(request *UpdateLivePackageConfigRequest) (_result *UpdateLivePackageConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLivePackageConfigResponse{}
-	_body, _err := client.UpdateLivePackageConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39725,7 +28728,7 @@ func (client *Client) UpdateLivePackageConfig(request *UpdateLivePackageConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLivePullStreamInfoConfigResponse
-func (client *Client) UpdateLivePullStreamInfoConfigWithOptions(request *UpdateLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullStreamInfoConfigResponse, _err error) {
+func (client *Client) UpdateLivePullStreamInfoConfigWithContext(ctx context.Context, request *UpdateLivePullStreamInfoConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullStreamInfoConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39746,39 +28749,11 @@ func (client *Client) UpdateLivePullStreamInfoConfigWithOptions(request *UpdateL
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLivePullStreamInfoConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the stream pulling settings of a live stream, including the origin URL, start time, and end time.
-//
-// Description:
-//
-// This operation is applicable to regular stream pulling. You can call this operation to modify the stream pulling settings of a live stream, including the origin URL, start time, and end time.
-//
-// >  After this operation is complete, ApsaraVideo Live uses the updated settings for regular stream pulling. Make sure that the modification does not affect your business.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLivePullStreamInfoConfigRequest
-//
-// @return UpdateLivePullStreamInfoConfigResponse
-func (client *Client) UpdateLivePullStreamInfoConfig(request *UpdateLivePullStreamInfoConfigRequest) (_result *UpdateLivePullStreamInfoConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLivePullStreamInfoConfigResponse{}
-	_body, _err := client.UpdateLivePullStreamInfoConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39805,7 +28780,7 @@ func (client *Client) UpdateLivePullStreamInfoConfig(request *UpdateLivePullStre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLivePullToPushResponse
-func (client *Client) UpdateLivePullToPushWithOptions(tmpReq *UpdateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullToPushResponse, _err error) {
+func (client *Client) UpdateLivePullToPushWithContext(ctx context.Context, tmpReq *UpdateLivePullToPushRequest, runtime *dara.RuntimeOptions) (_result *UpdateLivePullToPushResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39832,43 +28807,11 @@ func (client *Client) UpdateLivePullToPushWithOptions(tmpReq *UpdateLivePullToPu
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLivePullToPushResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a pulled-stream relay task.
-//
-// Description:
-//
-//	  You can call this operation to update a pulled-stream relay task.
-//
-//		- As long as the specified start time of a task has not been reached, you can modify the SourceType, Region, and DstUrl parameters of the task.
-//
-//		- If a task is running (even if the task is in an abnormal retry state), you can modify only the CallbackUrl and RepeatTime parameters of the task. The update takes effect immediately.
-//
-//		- If a task is stopped, you can modify all parameters of the task except SourceType, Region, and DstUrl.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLivePullToPushRequest
-//
-// @return UpdateLivePullToPushResponse
-func (client *Client) UpdateLivePullToPush(request *UpdateLivePullToPushRequest) (_result *UpdateLivePullToPushResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLivePullToPushResponse{}
-	_body, _err := client.UpdateLivePullToPushWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39895,7 +28838,7 @@ func (client *Client) UpdateLivePullToPush(request *UpdateLivePullToPushRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveRecordNotifyConfigResponse
-func (client *Client) UpdateLiveRecordNotifyConfigWithOptions(request *UpdateLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordNotifyConfigResponse, _err error) {
+func (client *Client) UpdateLiveRecordNotifyConfigWithContext(ctx context.Context, request *UpdateLiveRecordNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -39940,43 +28883,11 @@ func (client *Client) UpdateLiveRecordNotifyConfigWithOptions(request *UpdateLiv
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveRecordNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the recording callback configuration of a streaming domain.
-//
-// Description:
-//
-// You can call this operation to modify the following settings:
-//
-//   - The callback URL that is used to receive notifications about recording events and status. For more information, see [Recording event callbacks](https://help.aliyun.com/document_detail/55016.html).
-//
-//   - The callback URL for on-demand recordings. For more information, see [On-demand recording callbacks](https://help.aliyun.com/document_detail/85910.html).
-//
-//   - The setting that specifies whether to enable callbacks for recording status.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveRecordNotifyConfigRequest
-//
-// @return UpdateLiveRecordNotifyConfigResponse
-func (client *Client) UpdateLiveRecordNotifyConfig(request *UpdateLiveRecordNotifyConfigRequest) (_result *UpdateLiveRecordNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveRecordNotifyConfigResponse{}
-	_body, _err := client.UpdateLiveRecordNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -39993,7 +28904,7 @@ func (client *Client) UpdateLiveRecordNotifyConfig(request *UpdateLiveRecordNoti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveRecordVodConfigResponse
-func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordVodConfigResponse, _err error) {
+func (client *Client) UpdateLiveRecordVodConfigWithContext(ctx context.Context, request *UpdateLiveRecordVodConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveRecordVodConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40054,33 +28965,11 @@ func (client *Client) UpdateLiveRecordVodConfigWithOptions(request *UpdateLiveRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveRecordVodConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a Live-to-VOD configuration.
-//
-// Description:
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveRecordVodConfigRequest
-//
-// @return UpdateLiveRecordVodConfigResponse
-func (client *Client) UpdateLiveRecordVodConfig(request *UpdateLiveRecordVodConfigRequest) (_result *UpdateLiveRecordVodConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveRecordVodConfigResponse{}
-	_body, _err := client.UpdateLiveRecordVodConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40103,7 +28992,7 @@ func (client *Client) UpdateLiveRecordVodConfig(request *UpdateLiveRecordVodConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveSnapshotDetectPornConfigResponse
-func (client *Client) UpdateLiveSnapshotDetectPornConfigWithOptions(request *UpdateLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotDetectPornConfigResponse, _err error) {
+func (client *Client) UpdateLiveSnapshotDetectPornConfigWithContext(ctx context.Context, request *UpdateLiveSnapshotDetectPornConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotDetectPornConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40160,39 +29049,11 @@ func (client *Client) UpdateLiveSnapshotDetectPornConfigWithOptions(request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a video moderation configuration.
-//
-// Description:
-//
-//	  Obtain the main streaming domain, and then call this operation to modify a video moderation configuration.
-//
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveSnapshotDetectPornConfigRequest
-//
-// @return UpdateLiveSnapshotDetectPornConfigResponse
-func (client *Client) UpdateLiveSnapshotDetectPornConfig(request *UpdateLiveSnapshotDetectPornConfigRequest) (_result *UpdateLiveSnapshotDetectPornConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveSnapshotDetectPornConfigResponse{}
-	_body, _err := client.UpdateLiveSnapshotDetectPornConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40209,7 +29070,7 @@ func (client *Client) UpdateLiveSnapshotDetectPornConfig(request *UpdateLiveSnap
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveSnapshotNotifyConfigResponse
-func (client *Client) UpdateLiveSnapshotNotifyConfigWithOptions(request *UpdateLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
+func (client *Client) UpdateLiveSnapshotNotifyConfigWithContext(ctx context.Context, request *UpdateLiveSnapshotNotifyConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40254,33 +29115,11 @@ func (client *Client) UpdateLiveSnapshotNotifyConfigWithOptions(request *UpdateL
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configuration of snapshot callbacks.
-//
-// Description:
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveSnapshotNotifyConfigRequest
-//
-// @return UpdateLiveSnapshotNotifyConfigResponse
-func (client *Client) UpdateLiveSnapshotNotifyConfig(request *UpdateLiveSnapshotNotifyConfigRequest) (_result *UpdateLiveSnapshotNotifyConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveSnapshotNotifyConfigResponse{}
-	_body, _err := client.UpdateLiveSnapshotNotifyConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40301,7 +29140,7 @@ func (client *Client) UpdateLiveSnapshotNotifyConfig(request *UpdateLiveSnapshot
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveStreamMonitorResponse
-func (client *Client) UpdateLiveStreamMonitorWithOptions(request *UpdateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamMonitorResponse, _err error) {
+func (client *Client) UpdateLiveStreamMonitorWithContext(ctx context.Context, request *UpdateLiveStreamMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamMonitorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40370,37 +29209,11 @@ func (client *Client) UpdateLiveStreamMonitorWithOptions(request *UpdateLiveStre
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveStreamMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configurations of a monitoring session.
-//
-// Description:
-//
-// You can call this operation to update the configurations of a monitoring session. The updates that you make to the input source configurations when the monitoring session is in the Running state immediately take effect.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveStreamMonitorRequest
-//
-// @return UpdateLiveStreamMonitorResponse
-func (client *Client) UpdateLiveStreamMonitor(request *UpdateLiveStreamMonitorRequest) (_result *UpdateLiveStreamMonitorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveStreamMonitorResponse{}
-	_body, _err := client.UpdateLiveStreamMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40421,7 +29234,7 @@ func (client *Client) UpdateLiveStreamMonitor(request *UpdateLiveStreamMonitorRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveStreamTranscodeResponse
-func (client *Client) UpdateLiveStreamTranscodeWithOptions(request *UpdateLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamTranscodeResponse, _err error) {
+func (client *Client) UpdateLiveStreamTranscodeWithContext(ctx context.Context, request *UpdateLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40470,37 +29283,11 @@ func (client *Client) UpdateLiveStreamTranscodeWithOptions(request *UpdateLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a default transcoding configuration.
-//
-// Description:
-//
-// You must obtain the customer master key (CMK) in Key Management Service (KMS) before you call this operation to update a transcoding configuration. Only standard transcoding templates and Narrowband HD™ transcoding templates are supported for this operation.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account.
-//
-// @param request - UpdateLiveStreamTranscodeRequest
-//
-// @return UpdateLiveStreamTranscodeResponse
-func (client *Client) UpdateLiveStreamTranscode(request *UpdateLiveStreamTranscodeRequest) (_result *UpdateLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveStreamTranscodeResponse{}
-	_body, _err := client.UpdateLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40521,7 +29308,7 @@ func (client *Client) UpdateLiveStreamTranscode(request *UpdateLiveStreamTransco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveStreamWatermarkResponse
-func (client *Client) UpdateLiveStreamWatermarkWithOptions(request *UpdateLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkResponse, _err error) {
+func (client *Client) UpdateLiveStreamWatermarkWithContext(ctx context.Context, request *UpdateLiveStreamWatermarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40594,37 +29381,11 @@ func (client *Client) UpdateLiveStreamWatermarkWithOptions(request *UpdateLiveSt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveStreamWatermarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a watermark template.
-//
-// Description:
-//
-// This operation allows you to modify the parameters of a watermark template with a specified ID.
-//
-// ## QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
-//
-// @param request - UpdateLiveStreamWatermarkRequest
-//
-// @return UpdateLiveStreamWatermarkResponse
-func (client *Client) UpdateLiveStreamWatermark(request *UpdateLiveStreamWatermarkRequest) (_result *UpdateLiveStreamWatermarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveStreamWatermarkResponse{}
-	_body, _err := client.UpdateLiveStreamWatermarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40645,7 +29406,7 @@ func (client *Client) UpdateLiveStreamWatermark(request *UpdateLiveStreamWaterma
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLiveStreamWatermarkRuleResponse
-func (client *Client) UpdateLiveStreamWatermarkRuleWithOptions(request *UpdateLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkRuleResponse, _err error) {
+func (client *Client) UpdateLiveStreamWatermarkRuleWithContext(ctx context.Context, request *UpdateLiveStreamWatermarkRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateLiveStreamWatermarkRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40690,37 +29451,11 @@ func (client *Client) UpdateLiveStreamWatermarkRuleWithOptions(request *UpdateLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a watermark rule.
-//
-// Description:
-//
-// This operation allows you to modify the parameters of a watermark rule with a specified ID.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateLiveStreamWatermarkRuleRequest
-//
-// @return UpdateLiveStreamWatermarkRuleResponse
-func (client *Client) UpdateLiveStreamWatermarkRule(request *UpdateLiveStreamWatermarkRuleRequest) (_result *UpdateLiveStreamWatermarkRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLiveStreamWatermarkRuleResponse{}
-	_body, _err := client.UpdateLiveStreamWatermarkRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40739,7 +29474,7 @@ func (client *Client) UpdateLiveStreamWatermarkRule(request *UpdateLiveStreamWat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMessageAppResponse
-func (client *Client) UpdateMessageAppWithOptions(tmpReq *UpdateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageAppResponse, _err error) {
+func (client *Client) UpdateMessageAppWithContext(ctx context.Context, tmpReq *UpdateMessageAppRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageAppResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40786,35 +29521,11 @@ func (client *Client) UpdateMessageAppWithOptions(tmpReq *UpdateMessageAppReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMessageAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configurations of an interactive message application.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - UpdateMessageAppRequest
-//
-// @return UpdateMessageAppResponse
-func (client *Client) UpdateMessageApp(request *UpdateMessageAppRequest) (_result *UpdateMessageAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMessageAppResponse{}
-	_body, _err := client.UpdateMessageAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40833,7 +29544,7 @@ func (client *Client) UpdateMessageApp(request *UpdateMessageAppRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMessageGroupResponse
-func (client *Client) UpdateMessageGroupWithOptions(tmpReq *UpdateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageGroupResponse, _err error) {
+func (client *Client) UpdateMessageGroupWithContext(ctx context.Context, tmpReq *UpdateMessageGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40872,35 +29583,11 @@ func (client *Client) UpdateMessageGroupWithOptions(tmpReq *UpdateMessageGroupRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMessageGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a message group.
-//
-// Description:
-//
-// ## QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - UpdateMessageGroupRequest
-//
-// @return UpdateMessageGroupResponse
-func (client *Client) UpdateMessageGroup(request *UpdateMessageGroupRequest) (_result *UpdateMessageGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMessageGroupResponse{}
-	_body, _err := client.UpdateMessageGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -40921,7 +29608,7 @@ func (client *Client) UpdateMessageGroup(request *UpdateMessageGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMixStreamResponse
-func (client *Client) UpdateMixStreamWithOptions(request *UpdateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *UpdateMixStreamResponse, _err error) {
+func (client *Client) UpdateMixStreamWithContext(ctx context.Context, request *UpdateMixStreamRequest, runtime *dara.RuntimeOptions) (_result *UpdateMixStreamResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -40966,37 +29653,11 @@ func (client *Client) UpdateMixStreamWithOptions(request *UpdateMixStreamRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMixStreamResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a stream mixing task.
-//
-// Description:
-//
-// You can call this operation to update a stream mixing task. This operation allows you to modify the input sources and layout, but not other parameters such as the output resolution.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateMixStreamRequest
-//
-// @return UpdateMixStreamResponse
-func (client *Client) UpdateMixStream(request *UpdateMixStreamRequest) (_result *UpdateMixStreamResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMixStreamResponse{}
-	_body, _err := client.UpdateMixStreamWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41009,7 +29670,7 @@ func (client *Client) UpdateMixStream(request *UpdateMixStreamRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRtcCloudRecordingResponse
-func (client *Client) UpdateRtcCloudRecordingWithOptions(tmpReq *UpdateRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcCloudRecordingResponse, _err error) {
+func (client *Client) UpdateRtcCloudRecordingWithContext(ctx context.Context, tmpReq *UpdateRtcCloudRecordingRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcCloudRecordingResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41052,29 +29713,11 @@ func (client *Client) UpdateRtcCloudRecordingWithOptions(tmpReq *UpdateRtcCloudR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRtcCloudRecordingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新rtc云端录制任务
-//
-// @param request - UpdateRtcCloudRecordingRequest
-//
-// @return UpdateRtcCloudRecordingResponse
-func (client *Client) UpdateRtcCloudRecording(request *UpdateRtcCloudRecordingRequest) (_result *UpdateRtcCloudRecordingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRtcCloudRecordingResponse{}
-	_body, _err := client.UpdateRtcCloudRecordingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41097,7 +29740,7 @@ func (client *Client) UpdateRtcCloudRecording(request *UpdateRtcCloudRecordingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRtcMPUEventSubResponse
-func (client *Client) UpdateRtcMPUEventSubWithOptions(request *UpdateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcMPUEventSubResponse, _err error) {
+func (client *Client) UpdateRtcMPUEventSubWithContext(ctx context.Context, request *UpdateRtcMPUEventSubRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtcMPUEventSubResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41130,39 +29773,11 @@ func (client *Client) UpdateRtcMPUEventSubWithOptions(request *UpdateRtcMPUEvent
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRtcMPUEventSubResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a subscription to mixed-stream relay events.
-//
-// Description:
-//
-//	  You can call this operation to update a subscription to mixed-stream relay events. You can modify parameters such as the callback URL and channel IDs.
-//
-//		- Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - UpdateRtcMPUEventSubRequest
-//
-// @return UpdateRtcMPUEventSubResponse
-func (client *Client) UpdateRtcMPUEventSub(request *UpdateRtcMPUEventSubRequest) (_result *UpdateRtcMPUEventSubResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRtcMPUEventSubResponse{}
-	_body, _err := client.UpdateRtcMPUEventSubWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41183,7 +29798,7 @@ func (client *Client) UpdateRtcMPUEventSub(request *UpdateRtcMPUEventSubRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRtsLiveStreamTranscodeResponse
-func (client *Client) UpdateRtsLiveStreamTranscodeWithOptions(request *UpdateRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtsLiveStreamTranscodeResponse, _err error) {
+func (client *Client) UpdateRtsLiveStreamTranscodeWithContext(ctx context.Context, request *UpdateRtsLiveStreamTranscodeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRtsLiveStreamTranscodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41284,37 +29899,11 @@ func (client *Client) UpdateRtsLiveStreamTranscodeWithOptions(request *UpdateRts
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRtsLiveStreamTranscodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a custom Real-Time Streaming (RTS) transcoding configuration.
-//
-// Description:
-//
-// This operation supports the following types of custom transcoding templates: h264, h264-nbhd, h264-origin, and audio.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account.
-//
-// @param request - UpdateRtsLiveStreamTranscodeRequest
-//
-// @return UpdateRtsLiveStreamTranscodeResponse
-func (client *Client) UpdateRtsLiveStreamTranscode(request *UpdateRtsLiveStreamTranscodeRequest) (_result *UpdateRtsLiveStreamTranscodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRtsLiveStreamTranscodeResponse{}
-	_body, _err := client.UpdateRtsLiveStreamTranscodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -41333,7 +29922,7 @@ func (client *Client) UpdateRtsLiveStreamTranscode(request *UpdateRtsLiveStreamT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyLiveDomainOwnerResponse
-func (client *Client) VerifyLiveDomainOwnerWithOptions(request *VerifyLiveDomainOwnerRequest, runtime *dara.RuntimeOptions) (_result *VerifyLiveDomainOwnerResponse, _err error) {
+func (client *Client) VerifyLiveDomainOwnerWithContext(ctx context.Context, request *VerifyLiveDomainOwnerRequest, runtime *dara.RuntimeOptions) (_result *VerifyLiveDomainOwnerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -41370,34 +29959,10 @@ func (client *Client) VerifyLiveDomainOwnerWithOptions(request *VerifyLiveDomain
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyLiveDomainOwnerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies the ownership of a domain name.
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
-//
-// @param request - VerifyLiveDomainOwnerRequest
-//
-// @return VerifyLiveDomainOwnerResponse
-func (client *Client) VerifyLiveDomainOwner(request *VerifyLiveDomainOwnerRequest) (_result *VerifyLiveDomainOwnerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyLiveDomainOwnerResponse{}
-	_body, _err := client.VerifyLiveDomainOwnerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

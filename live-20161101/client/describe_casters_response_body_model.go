@@ -204,7 +204,7 @@ type DescribeCastersResponseBodyCasterListCaster struct {
 	// example:
 	//
 	// rg-aekzw******
-	ResourceGroupId *int32 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The time when the production studio was started. This parameter is returned if the production studio is in the streaming status.
 	//
 	// example:
@@ -281,7 +281,7 @@ func (s *DescribeCastersResponseBodyCasterListCaster) GetPurchaseTime() *string 
 	return s.PurchaseTime
 }
 
-func (s *DescribeCastersResponseBodyCasterListCaster) GetResourceGroupId() *int32 {
+func (s *DescribeCastersResponseBodyCasterListCaster) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
@@ -357,7 +357,7 @@ func (s *DescribeCastersResponseBodyCasterListCaster) SetPurchaseTime(v string) 
 	return s
 }
 
-func (s *DescribeCastersResponseBodyCasterListCaster) SetResourceGroupId(v int32) *DescribeCastersResponseBodyCasterListCaster {
+func (s *DescribeCastersResponseBodyCasterListCaster) SetResourceGroupId(v string) *DescribeCastersResponseBodyCasterListCaster {
 	s.ResourceGroupId = &v
 	return s
 }
