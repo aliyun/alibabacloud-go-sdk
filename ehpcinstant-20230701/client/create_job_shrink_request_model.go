@@ -9,6 +9,8 @@ type iCreateJobShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDependencyPolicyShrink(v string) *CreateJobShrinkRequest
+	GetDependencyPolicyShrink() *string
 	SetDeploymentPolicyShrink(v string) *CreateJobShrinkRequest
 	GetDeploymentPolicyShrink() *string
 	SetJobDescription(v string) *CreateJobShrinkRequest
@@ -24,6 +26,7 @@ type iCreateJobShrinkRequest interface {
 }
 
 type CreateJobShrinkRequest struct {
+	DependencyPolicyShrink *string `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty"`
 	DeploymentPolicyShrink *string `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty"`
 	// example:
 	//
@@ -49,6 +52,10 @@ func (s CreateJobShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateJobShrinkRequest) GetDependencyPolicyShrink() *string {
+	return s.DependencyPolicyShrink
+}
+
 func (s *CreateJobShrinkRequest) GetDeploymentPolicyShrink() *string {
 	return s.DeploymentPolicyShrink
 }
@@ -71,6 +78,11 @@ func (s *CreateJobShrinkRequest) GetSecurityPolicyShrink() *string {
 
 func (s *CreateJobShrinkRequest) GetTasksShrink() *string {
 	return s.TasksShrink
+}
+
+func (s *CreateJobShrinkRequest) SetDependencyPolicyShrink(v string) *CreateJobShrinkRequest {
+	s.DependencyPolicyShrink = &v
+	return s
 }
 
 func (s *CreateJobShrinkRequest) SetDeploymentPolicyShrink(v string) *CreateJobShrinkRequest {

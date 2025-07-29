@@ -9,6 +9,8 @@ type iCreateJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDependencyPolicy(v *CreateJobRequestDependencyPolicy) *CreateJobRequest
+	GetDependencyPolicy() *CreateJobRequestDependencyPolicy
 	SetDeploymentPolicy(v *CreateJobRequestDeploymentPolicy) *CreateJobRequest
 	GetDeploymentPolicy() *CreateJobRequestDeploymentPolicy
 	SetJobDescription(v string) *CreateJobRequest
@@ -24,6 +26,7 @@ type iCreateJobRequest interface {
 }
 
 type CreateJobRequest struct {
+	DependencyPolicy *CreateJobRequestDependencyPolicy `json:"DependencyPolicy,omitempty" xml:"DependencyPolicy,omitempty" type:"Struct"`
 	DeploymentPolicy *CreateJobRequestDeploymentPolicy `json:"DeploymentPolicy,omitempty" xml:"DeploymentPolicy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -49,6 +52,10 @@ func (s CreateJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateJobRequest) GetDependencyPolicy() *CreateJobRequestDependencyPolicy {
+	return s.DependencyPolicy
+}
+
 func (s *CreateJobRequest) GetDeploymentPolicy() *CreateJobRequestDeploymentPolicy {
 	return s.DeploymentPolicy
 }
@@ -71,6 +78,11 @@ func (s *CreateJobRequest) GetSecurityPolicy() *CreateJobRequestSecurityPolicy {
 
 func (s *CreateJobRequest) GetTasks() []*CreateJobRequestTasks {
 	return s.Tasks
+}
+
+func (s *CreateJobRequest) SetDependencyPolicy(v *CreateJobRequestDependencyPolicy) *CreateJobRequest {
+	s.DependencyPolicy = v
+	return s
 }
 
 func (s *CreateJobRequest) SetDeploymentPolicy(v *CreateJobRequestDeploymentPolicy) *CreateJobRequest {
@@ -104,6 +116,67 @@ func (s *CreateJobRequest) SetTasks(v []*CreateJobRequestTasks) *CreateJobReques
 }
 
 func (s *CreateJobRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateJobRequestDependencyPolicy struct {
+	JobDependency []*CreateJobRequestDependencyPolicyJobDependency `json:"JobDependency,omitempty" xml:"JobDependency,omitempty" type:"Repeated"`
+}
+
+func (s CreateJobRequestDependencyPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestDependencyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestDependencyPolicy) GetJobDependency() []*CreateJobRequestDependencyPolicyJobDependency {
+	return s.JobDependency
+}
+
+func (s *CreateJobRequestDependencyPolicy) SetJobDependency(v []*CreateJobRequestDependencyPolicyJobDependency) *CreateJobRequestDependencyPolicy {
+	s.JobDependency = v
+	return s
+}
+
+func (s *CreateJobRequestDependencyPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateJobRequestDependencyPolicyJobDependency struct {
+	// This parameter is required.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateJobRequestDependencyPolicyJobDependency) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestDependencyPolicyJobDependency) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestDependencyPolicyJobDependency) GetJobId() *string {
+	return s.JobId
+}
+
+func (s *CreateJobRequestDependencyPolicyJobDependency) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateJobRequestDependencyPolicyJobDependency) SetJobId(v string) *CreateJobRequestDependencyPolicyJobDependency {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateJobRequestDependencyPolicyJobDependency) SetType(v string) *CreateJobRequestDependencyPolicyJobDependency {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateJobRequestDependencyPolicyJobDependency) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -460,7 +533,8 @@ func (s *CreateJobRequestTasksExecutorPolicyArraySpec) Validate() error {
 }
 
 type CreateJobRequestTasksTaskSpec struct {
-	Resource *CreateJobRequestTasksTaskSpecResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	Resource    *CreateJobRequestTasksTaskSpecResource    `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	RetryPolicy *CreateJobRequestTasksTaskSpecRetryPolicy `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty" type:"Struct"`
 	// This parameter is required.
 	TaskExecutor []*CreateJobRequestTasksTaskSpecTaskExecutor `json:"TaskExecutor,omitempty" xml:"TaskExecutor,omitempty" type:"Repeated"`
 	VolumeMount  []*CreateJobRequestTasksTaskSpecVolumeMount  `json:"VolumeMount,omitempty" xml:"VolumeMount,omitempty" type:"Repeated"`
@@ -478,6 +552,10 @@ func (s *CreateJobRequestTasksTaskSpec) GetResource() *CreateJobRequestTasksTask
 	return s.Resource
 }
 
+func (s *CreateJobRequestTasksTaskSpec) GetRetryPolicy() *CreateJobRequestTasksTaskSpecRetryPolicy {
+	return s.RetryPolicy
+}
+
 func (s *CreateJobRequestTasksTaskSpec) GetTaskExecutor() []*CreateJobRequestTasksTaskSpecTaskExecutor {
 	return s.TaskExecutor
 }
@@ -488,6 +566,11 @@ func (s *CreateJobRequestTasksTaskSpec) GetVolumeMount() []*CreateJobRequestTask
 
 func (s *CreateJobRequestTasksTaskSpec) SetResource(v *CreateJobRequestTasksTaskSpecResource) *CreateJobRequestTasksTaskSpec {
 	s.Resource = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpec) SetRetryPolicy(v *CreateJobRequestTasksTaskSpecRetryPolicy) *CreateJobRequestTasksTaskSpec {
+	s.RetryPolicy = v
 	return s
 }
 
@@ -604,6 +687,78 @@ func (s *CreateJobRequestTasksTaskSpecResourceDisks) SetType(v string) *CreateJo
 }
 
 func (s *CreateJobRequestTasksTaskSpecResourceDisks) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateJobRequestTasksTaskSpecRetryPolicy struct {
+	ExitCodeActions []*CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions `json:"ExitCodeActions,omitempty" xml:"ExitCodeActions,omitempty" type:"Repeated"`
+	RetryCount      *int32                                                     `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+}
+
+func (s CreateJobRequestTasksTaskSpecRetryPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestTasksTaskSpecRetryPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicy) GetExitCodeActions() []*CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions {
+	return s.ExitCodeActions
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicy) GetRetryCount() *int32 {
+	return s.RetryCount
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicy) SetExitCodeActions(v []*CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) *CreateJobRequestTasksTaskSpecRetryPolicy {
+	s.ExitCodeActions = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicy) SetRetryCount(v int32) *CreateJobRequestTasksTaskSpecRetryPolicy {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions struct {
+	// This parameter is required.
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// This parameter is required.
+	ExitCode *int64 `json:"ExitCode,omitempty" xml:"ExitCode,omitempty"`
+}
+
+func (s CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) GetAction() *string {
+	return s.Action
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) GetExitCode() *int64 {
+	return s.ExitCode
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) SetAction(v string) *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions {
+	s.Action = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) SetExitCode(v int64) *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions {
+	s.ExitCode = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecRetryPolicyExitCodeActions) Validate() error {
 	return dara.Validate(s)
 }
 
