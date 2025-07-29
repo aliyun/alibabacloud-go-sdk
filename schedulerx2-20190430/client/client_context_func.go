@@ -2,64 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":  dara.String("schedulerx.cn-beijing.aliyuncs.com"),
-		"cn-hangzhou": dara.String("schedulerx.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai": dara.String("schedulerx.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen": dara.String("schedulerx.cn-shenzhen.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("schedulerx2"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -88,7 +34,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDeleteJobsResponse
-func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteJobsResponse, _err error) {
+func (client *Client) BatchDeleteJobsWithContext(ctx context.Context, request *BatchDeleteJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -131,47 +77,11 @@ func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDeleteJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes multiple jobs at a time.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-// ```xml
-//
-// <dependency>
-//
-//	<groupId>com.aliyun</groupId>
-//
-//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	<version>1.0.4</version>
-//
-// </dependency>
-//
-// ```
-//
-// @param request - BatchDeleteJobsRequest
-//
-// @return BatchDeleteJobsResponse
-func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result *BatchDeleteJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchDeleteJobsResponse{}
-	_body, _err := client.BatchDeleteJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -184,7 +94,7 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDeleteRouteStrategyResponse
-func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteRouteStrategyResponse, _err error) {
+func (client *Client) BatchDeleteRouteStrategyWithContext(ctx context.Context, request *BatchDeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteRouteStrategyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -223,29 +133,11 @@ func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRo
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDeleteRouteStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The additional information that is returned.
-//
-// @param request - BatchDeleteRouteStrategyRequest
-//
-// @return BatchDeleteRouteStrategyResponse
-func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategyRequest) (_result *BatchDeleteRouteStrategyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchDeleteRouteStrategyResponse{}
-	_body, _err := client.BatchDeleteRouteStrategyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -276,7 +168,7 @@ func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategy
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDisableJobsResponse
-func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDisableJobsResponse, _err error) {
+func (client *Client) BatchDisableJobsWithContext(ctx context.Context, request *BatchDisableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchDisableJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -319,47 +211,11 @@ func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDisableJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables multiple jobs at a time.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-// ```xml
-//
-// <dependency>
-//
-//	<groupId>com.aliyun</groupId>
-//
-//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	<version>1.0.4</version>
-//
-// </dependency>
-//
-// ```
-//
-// @param request - BatchDisableJobsRequest
-//
-// @return BatchDisableJobsResponse
-func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_result *BatchDisableJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchDisableJobsResponse{}
-	_body, _err := client.BatchDisableJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -390,7 +246,7 @@ func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchEnableJobsResponse
-func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchEnableJobsResponse, _err error) {
+func (client *Client) BatchEnableJobsWithContext(ctx context.Context, request *BatchEnableJobsRequest, runtime *dara.RuntimeOptions) (_result *BatchEnableJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -433,47 +289,11 @@ func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchEnableJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables multiple jobs at a time.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-// ```xml
-//
-// <dependency>
-//
-//	<groupId>com.aliyun</groupId>
-//
-//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	<version>1.0.4</version>
-//
-// </dependency>
-//
-// ```
-//
-// @param request - BatchEnableJobsRequest
-//
-// @return BatchEnableJobsResponse
-func (client *Client) BatchEnableJobs(request *BatchEnableJobsRequest) (_result *BatchEnableJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchEnableJobsResponse{}
-	_body, _err := client.BatchEnableJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -486,7 +306,7 @@ func (client *Client) BatchEnableJobs(request *BatchEnableJobsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppGroupResponse
-func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppGroupResponse, _err error) {
+func (client *Client) CreateAppGroupWithContext(ctx context.Context, request *CreateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -507,29 +327,11 @@ func (client *Client) CreateAppGroupWithOptions(request *CreateAppGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAppGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an application group. The AppKey is returned.
-//
-// @param request - CreateAppGroupRequest
-//
-// @return CreateAppGroupResponse
-func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *CreateAppGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAppGroupResponse{}
-	_body, _err := client.CreateAppGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -542,7 +344,7 @@ func (client *Client) CreateAppGroup(request *CreateAppGroupRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateJobResponse
-func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJobRequest, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -713,29 +515,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a job and obtains the job ID.
-//
-// @param request - CreateJobRequest
-//
-// @return CreateJobResponse
-func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -748,7 +532,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNamespaceResponse
-func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+func (client *Client) CreateNamespaceWithContext(ctx context.Context, request *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -785,29 +569,11 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a namespace.
-//
-// @param request - CreateNamespaceRequest
-//
-// @return CreateNamespaceResponse
-func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -820,7 +586,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRouteStrategyResponse
-func (client *Client) CreateRouteStrategyWithOptions(request *CreateRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteStrategyResponse, _err error) {
+func (client *Client) CreateRouteStrategyWithContext(ctx context.Context, request *CreateRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteStrategyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -873,29 +639,11 @@ func (client *Client) CreateRouteStrategyWithOptions(request *CreateRouteStrateg
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRouteStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a routing policy.
-//
-// @param request - CreateRouteStrategyRequest
-//
-// @return CreateRouteStrategyResponse
-func (client *Client) CreateRouteStrategy(request *CreateRouteStrategyRequest) (_result *CreateRouteStrategyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRouteStrategyResponse{}
-	_body, _err := client.CreateRouteStrategyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -908,7 +656,7 @@ func (client *Client) CreateRouteStrategy(request *CreateRouteStrategyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWorkflowResponse
-func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
+func (client *Client) CreateWorkflowWithContext(ctx context.Context, request *CreateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *CreateWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -969,29 +717,11 @@ func (client *Client) CreateWorkflowWithOptions(request *CreateWorkflowRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
-//
-// @param request - CreateWorkflowRequest
-//
-// @return CreateWorkflowResponse
-func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *CreateWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateWorkflowResponse{}
-	_body, _err := client.CreateWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1004,7 +734,7 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppGroupResponse
-func (client *Client) DeleteAppGroupWithOptions(request *DeleteAppGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppGroupResponse, _err error) {
+func (client *Client) DeleteAppGroupWithContext(ctx context.Context, request *DeleteAppGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1041,29 +771,11 @@ func (client *Client) DeleteAppGroupWithOptions(request *DeleteAppGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The additional information that is returned.
-//
-// @param request - DeleteAppGroupRequest
-//
-// @return DeleteAppGroupResponse
-func (client *Client) DeleteAppGroup(request *DeleteAppGroupRequest) (_result *DeleteAppGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppGroupResponse{}
-	_body, _err := client.DeleteAppGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1076,7 +788,7 @@ func (client *Client) DeleteAppGroup(request *DeleteAppGroupRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteJobResponse
-func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
+func (client *Client) DeleteJobWithContext(ctx context.Context, request *DeleteJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1097,29 +809,11 @@ func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified job.
-//
-// @param request - DeleteJobRequest
-//
-// @return DeleteJobResponse
-func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteJobResponse{}
-	_body, _err := client.DeleteJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1132,7 +826,7 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNamespaceResponse
-func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1161,29 +855,11 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除命名空间
-//
-// @param request - DeleteNamespaceRequest
-//
-// @return DeleteNamespaceResponse
-func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1196,7 +872,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRouteStrategyResponse
-func (client *Client) DeleteRouteStrategyWithOptions(request *DeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteStrategyResponse, _err error) {
+func (client *Client) DeleteRouteStrategyWithContext(ctx context.Context, request *DeleteRouteStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteStrategyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1233,29 +909,11 @@ func (client *Client) DeleteRouteStrategyWithOptions(request *DeleteRouteStrateg
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRouteStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a routing policy.
-//
-// @param request - DeleteRouteStrategyRequest
-//
-// @return DeleteRouteStrategyResponse
-func (client *Client) DeleteRouteStrategy(request *DeleteRouteStrategyRequest) (_result *DeleteRouteStrategyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRouteStrategyResponse{}
-	_body, _err := client.DeleteRouteStrategyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1268,7 +926,7 @@ func (client *Client) DeleteRouteStrategy(request *DeleteRouteStrategyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWorkflowResponse
-func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
+func (client *Client) DeleteWorkflowWithContext(ctx context.Context, request *DeleteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1289,29 +947,11 @@ func (client *Client) DeleteWorkflowWithOptions(request *DeleteWorkflowRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a workflow.
-//
-// @param request - DeleteWorkflowRequest
-//
-// @return DeleteWorkflowResponse
-func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *DeleteWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteWorkflowResponse{}
-	_body, _err := client.DeleteWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1324,7 +964,7 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1349,29 +989,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Returns available regions.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1384,7 +1006,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DesignateWorkersResponse
-func (client *Client) DesignateWorkersWithOptions(request *DesignateWorkersRequest, runtime *dara.RuntimeOptions) (_result *DesignateWorkersResponse, _err error) {
+func (client *Client) DesignateWorkersWithContext(ctx context.Context, request *DesignateWorkersRequest, runtime *dara.RuntimeOptions) (_result *DesignateWorkersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1405,29 +1027,11 @@ func (client *Client) DesignateWorkersWithOptions(request *DesignateWorkersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DesignateWorkersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Designates machines.
-//
-// @param request - DesignateWorkersRequest
-//
-// @return DesignateWorkersResponse
-func (client *Client) DesignateWorkers(request *DesignateWorkersRequest) (_result *DesignateWorkersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DesignateWorkersResponse{}
-	_body, _err := client.DesignateWorkersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1440,7 +1044,7 @@ func (client *Client) DesignateWorkers(request *DesignateWorkersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableJobResponse
-func (client *Client) DisableJobWithOptions(request *DisableJobRequest, runtime *dara.RuntimeOptions) (_result *DisableJobResponse, _err error) {
+func (client *Client) DisableJobWithContext(ctx context.Context, request *DisableJobRequest, runtime *dara.RuntimeOptions) (_result *DisableJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1461,29 +1065,11 @@ func (client *Client) DisableJobWithOptions(request *DisableJobRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a job.
-//
-// @param request - DisableJobRequest
-//
-// @return DisableJobResponse
-func (client *Client) DisableJob(request *DisableJobRequest) (_result *DisableJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableJobResponse{}
-	_body, _err := client.DisableJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1496,7 +1082,7 @@ func (client *Client) DisableJob(request *DisableJobRequest) (_result *DisableJo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableWorkflowResponse
-func (client *Client) DisableWorkflowWithOptions(request *DisableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DisableWorkflowResponse, _err error) {
+func (client *Client) DisableWorkflowWithContext(ctx context.Context, request *DisableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *DisableWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1517,29 +1103,11 @@ func (client *Client) DisableWorkflowWithOptions(request *DisableWorkflowRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a specified workflow.
-//
-// @param request - DisableWorkflowRequest
-//
-// @return DisableWorkflowResponse
-func (client *Client) DisableWorkflow(request *DisableWorkflowRequest) (_result *DisableWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableWorkflowResponse{}
-	_body, _err := client.DisableWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1552,7 +1120,7 @@ func (client *Client) DisableWorkflow(request *DisableWorkflowRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableJobResponse
-func (client *Client) EnableJobWithOptions(request *EnableJobRequest, runtime *dara.RuntimeOptions) (_result *EnableJobResponse, _err error) {
+func (client *Client) EnableJobWithContext(ctx context.Context, request *EnableJobRequest, runtime *dara.RuntimeOptions) (_result *EnableJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1573,29 +1141,11 @@ func (client *Client) EnableJobWithOptions(request *EnableJobRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a job.
-//
-// @param request - EnableJobRequest
-//
-// @return EnableJobResponse
-func (client *Client) EnableJob(request *EnableJobRequest) (_result *EnableJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableJobResponse{}
-	_body, _err := client.EnableJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1608,7 +1158,7 @@ func (client *Client) EnableJob(request *EnableJobRequest) (_result *EnableJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableWorkflowResponse
-func (client *Client) EnableWorkflowWithOptions(request *EnableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *EnableWorkflowResponse, _err error) {
+func (client *Client) EnableWorkflowWithContext(ctx context.Context, request *EnableWorkflowRequest, runtime *dara.RuntimeOptions) (_result *EnableWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1629,29 +1179,11 @@ func (client *Client) EnableWorkflowWithOptions(request *EnableWorkflowRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a specified workflow.
-//
-// @param request - EnableWorkflowRequest
-//
-// @return EnableWorkflowResponse
-func (client *Client) EnableWorkflow(request *EnableWorkflowRequest) (_result *EnableWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableWorkflowResponse{}
-	_body, _err := client.EnableWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1668,7 +1200,7 @@ func (client *Client) EnableWorkflow(request *EnableWorkflowRequest) (_result *E
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteJobResponse
-func (client *Client) ExecuteJobWithOptions(request *ExecuteJobRequest, runtime *dara.RuntimeOptions) (_result *ExecuteJobResponse, _err error) {
+func (client *Client) ExecuteJobWithContext(ctx context.Context, request *ExecuteJobRequest, runtime *dara.RuntimeOptions) (_result *ExecuteJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1689,33 +1221,11 @@ func (client *Client) ExecuteJobWithOptions(request *ExecuteJobRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Triggers a job to immediately run once.
-//
-// Description:
-//
-// > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
-//
-// @param request - ExecuteJobRequest
-//
-// @return ExecuteJobResponse
-func (client *Client) ExecuteJob(request *ExecuteJobRequest) (_result *ExecuteJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecuteJobResponse{}
-	_body, _err := client.ExecuteJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1728,7 +1238,7 @@ func (client *Client) ExecuteJob(request *ExecuteJobRequest) (_result *ExecuteJo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteWorkflowResponse
-func (client *Client) ExecuteWorkflowWithOptions(request *ExecuteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ExecuteWorkflowResponse, _err error) {
+func (client *Client) ExecuteWorkflowWithContext(ctx context.Context, request *ExecuteWorkflowRequest, runtime *dara.RuntimeOptions) (_result *ExecuteWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1749,29 +1259,11 @@ func (client *Client) ExecuteWorkflowWithOptions(request *ExecuteWorkflowRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Immediately triggers a workflow.
-//
-// @param request - ExecuteWorkflowRequest
-//
-// @return ExecuteWorkflowResponse
-func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result *ExecuteWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecuteWorkflowResponse{}
-	_body, _err := client.ExecuteWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1784,7 +1276,7 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppGroupResponse
-func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppGroupResponse, _err error) {
+func (client *Client) GetAppGroupWithContext(ctx context.Context, request *GetAppGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1817,29 +1309,11 @@ func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
-//
-// @param request - GetAppGroupRequest
-//
-// @return GetAppGroupResponse
-func (client *Client) GetAppGroup(request *GetAppGroupRequest) (_result *GetAppGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAppGroupResponse{}
-	_body, _err := client.GetAppGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1852,7 +1326,7 @@ func (client *Client) GetAppGroup(request *GetAppGroupRequest) (_result *GetAppG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobInfoResponse
-func (client *Client) GetJobInfoWithOptions(request *GetJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetJobInfoResponse, _err error) {
+func (client *Client) GetJobInfoWithContext(ctx context.Context, request *GetJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetJobInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1873,29 +1347,11 @@ func (client *Client) GetJobInfoWithOptions(request *GetJobInfoRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
-//
-// @param request - GetJobInfoRequest
-//
-// @return GetJobInfoResponse
-func (client *Client) GetJobInfo(request *GetJobInfoRequest) (_result *GetJobInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJobInfoResponse{}
-	_body, _err := client.GetJobInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1908,7 +1364,7 @@ func (client *Client) GetJobInfo(request *GetJobInfoRequest) (_result *GetJobInf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobInstanceResponse
-func (client *Client) GetJobInstanceWithOptions(request *GetJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceResponse, _err error) {
+func (client *Client) GetJobInstanceWithContext(ctx context.Context, request *GetJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1929,29 +1385,11 @@ func (client *Client) GetJobInstanceWithOptions(request *GetJobInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a job instance. You can view the status and progress of the job instance.
-//
-// @param request - GetJobInstanceRequest
-//
-// @return GetJobInstanceResponse
-func (client *Client) GetJobInstance(request *GetJobInstanceRequest) (_result *GetJobInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJobInstanceResponse{}
-	_body, _err := client.GetJobInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1964,7 +1402,7 @@ func (client *Client) GetJobInstance(request *GetJobInstanceRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobInstanceListResponse
-func (client *Client) GetJobInstanceListWithOptions(request *GetJobInstanceListRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceListResponse, _err error) {
+func (client *Client) GetJobInstanceListWithContext(ctx context.Context, request *GetJobInstanceListRequest, runtime *dara.RuntimeOptions) (_result *GetJobInstanceListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1985,29 +1423,11 @@ func (client *Client) GetJobInstanceListWithOptions(request *GetJobInstanceListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobInstanceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent 10 execution instances of a job.
-//
-// @param request - GetJobInstanceListRequest
-//
-// @return GetJobInstanceListResponse
-func (client *Client) GetJobInstanceList(request *GetJobInstanceListRequest) (_result *GetJobInstanceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetJobInstanceListResponse{}
-	_body, _err := client.GetJobInstanceListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2020,7 +1440,7 @@ func (client *Client) GetJobInstanceList(request *GetJobInstanceListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLogResponse
-func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *dara.RuntimeOptions) (_result *GetLogResponse, _err error) {
+func (client *Client) GetLogWithContext(ctx context.Context, request *GetLogRequest, runtime *dara.RuntimeOptions) (_result *GetLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2041,29 +1461,11 @@ func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operational logs of a job. You can call this operation only in the professional edition.
-//
-// @param request - GetLogRequest
-//
-// @return GetLogResponse
-func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLogResponse{}
-	_body, _err := client.GetLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2076,7 +1478,7 @@ func (client *Client) GetLog(request *GetLogRequest) (_result *GetLogResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOverviewResponse
-func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtime *dara.RuntimeOptions) (_result *GetOverviewResponse, _err error) {
+func (client *Client) GetOverviewWithContext(ctx context.Context, request *GetOverviewRequest, runtime *dara.RuntimeOptions) (_result *GetOverviewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2129,29 +1531,11 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询概览数据信息
-//
-// @param request - GetOverviewRequest
-//
-// @return GetOverviewResponse
-func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOverviewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOverviewResponse{}
-	_body, _err := client.GetOverviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2164,7 +1548,7 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkFlowResponse
-func (client *Client) GetWorkFlowWithOptions(request *GetWorkFlowRequest, runtime *dara.RuntimeOptions) (_result *GetWorkFlowResponse, _err error) {
+func (client *Client) GetWorkFlowWithContext(ctx context.Context, request *GetWorkFlowRequest, runtime *dara.RuntimeOptions) (_result *GetWorkFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2185,29 +1569,11 @@ func (client *Client) GetWorkFlowWithOptions(request *GetWorkFlowRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the information about a workflow.
-//
-// @param request - GetWorkFlowRequest
-//
-// @return GetWorkFlowResponse
-func (client *Client) GetWorkFlow(request *GetWorkFlowRequest) (_result *GetWorkFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWorkFlowResponse{}
-	_body, _err := client.GetWorkFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2220,7 +1586,7 @@ func (client *Client) GetWorkFlow(request *GetWorkFlowRequest) (_result *GetWork
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkerListResponse
-func (client *Client) GetWorkerListWithOptions(request *GetWorkerListRequest, runtime *dara.RuntimeOptions) (_result *GetWorkerListResponse, _err error) {
+func (client *Client) GetWorkerListWithContext(ctx context.Context, request *GetWorkerListRequest, runtime *dara.RuntimeOptions) (_result *GetWorkerListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2241,29 +1607,11 @@ func (client *Client) GetWorkerListWithOptions(request *GetWorkerListRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the list of workers that are connected to an application.
-//
-// @param request - GetWorkerListRequest
-//
-// @return GetWorkerListResponse
-func (client *Client) GetWorkerList(request *GetWorkerListRequest) (_result *GetWorkerListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWorkerListResponse{}
-	_body, _err := client.GetWorkerListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2276,7 +1624,7 @@ func (client *Client) GetWorkerList(request *GetWorkerListRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkflowInstanceResponse
-func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
+func (client *Client) GetWorkflowInstanceWithContext(ctx context.Context, request *GetWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetWorkflowInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2297,29 +1645,11 @@ func (client *Client) GetWorkflowInstanceWithOptions(request *GetWorkflowInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWorkflowInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
-//
-// @param request - GetWorkflowInstanceRequest
-//
-// @return GetWorkflowInstanceResponse
-func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (_result *GetWorkflowInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWorkflowInstanceResponse{}
-	_body, _err := client.GetWorkflowInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2332,7 +1662,7 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantPermissionResponse
-func (client *Client) GrantPermissionWithOptions(request *GrantPermissionRequest, runtime *dara.RuntimeOptions) (_result *GrantPermissionResponse, _err error) {
+func (client *Client) GrantPermissionWithContext(ctx context.Context, request *GrantPermissionRequest, runtime *dara.RuntimeOptions) (_result *GrantPermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2381,29 +1711,11 @@ func (client *Client) GrantPermissionWithOptions(request *GrantPermissionRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions to an application group.
-//
-// @param request - GrantPermissionRequest
-//
-// @return GrantPermissionResponse
-func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result *GrantPermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GrantPermissionResponse{}
-	_body, _err := client.GrantPermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2434,7 +1746,7 @@ func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGroupsResponse
-func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
+func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2471,47 +1783,11 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of applications.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-// ```xml
-//
-// <dependency>
-//
-//	<groupId>com.aliyun</groupId>
-//
-//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	<version>1.0.5</version>
-//
-// </dependency>
-//
-// ```
-//
-// @param request - ListGroupsRequest
-//
-// @return ListGroupsResponse
-func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListGroupsResponse{}
-	_body, _err := client.ListGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2524,7 +1800,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobScriptHistoryResponse
-func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
+func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, request *ListJobScriptHistoryRequest, runtime *dara.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2565,29 +1841,11 @@ func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHist
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobScriptHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务脚本历史列表
-//
-// @param request - ListJobScriptHistoryRequest
-//
-// @return ListJobScriptHistoryResponse
-func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest) (_result *ListJobScriptHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListJobScriptHistoryResponse{}
-	_body, _err := client.ListJobScriptHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2614,7 +1872,7 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobsResponse
-func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListJobsWithContext(ctx context.Context, request *ListJobsRequest, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2635,43 +1893,11 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries jobs.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-//	<dependency>
-//
-//	      <groupId>com.aliyun</groupId>
-//
-//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	      <version>1.0.5</version>
-//
-//	</dependency>
-//
-// @param request - ListJobsRequest
-//
-// @return ListJobsResponse
-func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2698,7 +1924,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNamespacesResponse
-func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
+func (client *Client) ListNamespacesWithContext(ctx context.Context, request *ListNamespacesRequest, runtime *dara.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2731,43 +1957,11 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNamespacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries namespaces.
-//
-// Description:
-//
-// Before you call this operation, you must add the following dependency to the pom.xml file:
-//
-//	<dependency>
-//
-//	    <groupId>com.aliyun</groupId>
-//
-//	    <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
-//
-//	    <version>1.0.5</version>
-//
-//	</dependency>
-//
-// @param request - ListNamespacesRequest
-//
-// @return ListNamespacesResponse
-func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *ListNamespacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNamespacesResponse{}
-	_body, _err := client.ListNamespacesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2780,7 +1974,7 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWorkflowInstanceResponse
-func (client *Client) ListWorkflowInstanceWithOptions(request *ListWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstanceResponse, _err error) {
+func (client *Client) ListWorkflowInstanceWithContext(ctx context.Context, request *ListWorkflowInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListWorkflowInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2801,29 +1995,11 @@ func (client *Client) ListWorkflowInstanceWithOptions(request *ListWorkflowInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWorkflowInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution history of a workflow. You can call this operation only in the professional edition.
-//
-// @param request - ListWorkflowInstanceRequest
-//
-// @return ListWorkflowInstanceResponse
-func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest) (_result *ListWorkflowInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListWorkflowInstanceResponse{}
-	_body, _err := client.ListWorkflowInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2836,7 +2012,7 @@ func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ManageSchedulerxJobSyncResponse
-func (client *Client) ManageSchedulerxJobSyncWithOptions(tmpReq *ManageSchedulerxJobSyncRequest, runtime *dara.RuntimeOptions) (_result *ManageSchedulerxJobSyncResponse, _err error) {
+func (client *Client) ManageSchedulerxJobSyncWithContext(ctx context.Context, tmpReq *ManageSchedulerxJobSyncRequest, runtime *dara.RuntimeOptions) (_result *ManageSchedulerxJobSyncResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2891,29 +2067,11 @@ func (client *Client) ManageSchedulerxJobSyncWithOptions(tmpReq *ManageScheduler
 		BodyType:    dara.String("json"),
 	}
 	_result = &ManageSchedulerxJobSyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 同步任务
-//
-// @param request - ManageSchedulerxJobSyncRequest
-//
-// @return ManageSchedulerxJobSyncResponse
-func (client *Client) ManageSchedulerxJobSync(request *ManageSchedulerxJobSyncRequest) (_result *ManageSchedulerxJobSyncResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ManageSchedulerxJobSyncResponse{}
-	_body, _err := client.ManageSchedulerxJobSyncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2926,7 +2084,7 @@ func (client *Client) ManageSchedulerxJobSync(request *ManageSchedulerxJobSyncRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadSchedulerxDesignateDetailResponse
-func (client *Client) ReadSchedulerxDesignateDetailWithOptions(request *ReadSchedulerxDesignateDetailRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
+func (client *Client) ReadSchedulerxDesignateDetailWithContext(ctx context.Context, request *ReadSchedulerxDesignateDetailRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2971,29 +2129,11 @@ func (client *Client) ReadSchedulerxDesignateDetailWithOptions(request *ReadSche
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadSchedulerxDesignateDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取机器详细信息
-//
-// @param request - ReadSchedulerxDesignateDetailRequest
-//
-// @return ReadSchedulerxDesignateDetailResponse
-func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesignateDetailRequest) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadSchedulerxDesignateDetailResponse{}
-	_body, _err := client.ReadSchedulerxDesignateDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3006,7 +2146,7 @@ func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesig
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadSchedulerxDesignateInfoResponse
-func (client *Client) ReadSchedulerxDesignateInfoWithOptions(request *ReadSchedulerxDesignateInfoRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateInfoResponse, _err error) {
+func (client *Client) ReadSchedulerxDesignateInfoWithContext(ctx context.Context, request *ReadSchedulerxDesignateInfoRequest, runtime *dara.RuntimeOptions) (_result *ReadSchedulerxDesignateInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3047,29 +2187,11 @@ func (client *Client) ReadSchedulerxDesignateInfoWithOptions(request *ReadSchedu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadSchedulerxDesignateInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取指定机器基本信息
-//
-// @param request - ReadSchedulerxDesignateInfoRequest
-//
-// @return ReadSchedulerxDesignateInfoResponse
-func (client *Client) ReadSchedulerxDesignateInfo(request *ReadSchedulerxDesignateInfoRequest) (_result *ReadSchedulerxDesignateInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadSchedulerxDesignateInfoResponse{}
-	_body, _err := client.ReadSchedulerxDesignateInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3082,7 +2204,7 @@ func (client *Client) ReadSchedulerxDesignateInfo(request *ReadSchedulerxDesigna
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RerunJobResponse
-func (client *Client) RerunJobWithOptions(request *RerunJobRequest, runtime *dara.RuntimeOptions) (_result *RerunJobResponse, _err error) {
+func (client *Client) RerunJobWithContext(ctx context.Context, request *RerunJobRequest, runtime *dara.RuntimeOptions) (_result *RerunJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3135,29 +2257,11 @@ func (client *Client) RerunJobWithOptions(request *RerunJobRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &RerunJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
-//
-// @param request - RerunJobRequest
-//
-// @return RerunJobResponse
-func (client *Client) RerunJob(request *RerunJobRequest) (_result *RerunJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RerunJobResponse{}
-	_body, _err := client.RerunJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3170,7 +2274,7 @@ func (client *Client) RerunJob(request *RerunJobRequest) (_result *RerunJobRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetryJobInstanceResponse
-func (client *Client) RetryJobInstanceWithOptions(request *RetryJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *RetryJobInstanceResponse, _err error) {
+func (client *Client) RetryJobInstanceWithContext(ctx context.Context, request *RetryJobInstanceRequest, runtime *dara.RuntimeOptions) (_result *RetryJobInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3215,29 +2319,11 @@ func (client *Client) RetryJobInstanceWithOptions(request *RetryJobInstanceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryJobInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Reruns a successful or failed job instance. You can call this operation only in the professional edition.
-//
-// @param request - RetryJobInstanceRequest
-//
-// @return RetryJobInstanceResponse
-func (client *Client) RetryJobInstance(request *RetryJobInstanceRequest) (_result *RetryJobInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RetryJobInstanceResponse{}
-	_body, _err := client.RetryJobInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3250,7 +2336,7 @@ func (client *Client) RetryJobInstance(request *RetryJobInstanceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokePermissionResponse
-func (client *Client) RevokePermissionWithOptions(request *RevokePermissionRequest, runtime *dara.RuntimeOptions) (_result *RevokePermissionResponse, _err error) {
+func (client *Client) RevokePermissionWithContext(ctx context.Context, request *RevokePermissionRequest, runtime *dara.RuntimeOptions) (_result *RevokePermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3291,29 +2377,11 @@ func (client *Client) RevokePermissionWithOptions(request *RevokePermissionReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokePermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
-//
-// @param request - RevokePermissionRequest
-//
-// @return RevokePermissionResponse
-func (client *Client) RevokePermission(request *RevokePermissionRequest) (_result *RevokePermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokePermissionResponse{}
-	_body, _err := client.RevokePermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3326,7 +2394,7 @@ func (client *Client) RevokePermission(request *RevokePermissionRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetJobInstanceSuccessResponse
-func (client *Client) SetJobInstanceSuccessWithOptions(request *SetJobInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetJobInstanceSuccessResponse, _err error) {
+func (client *Client) SetJobInstanceSuccessWithContext(ctx context.Context, request *SetJobInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetJobInstanceSuccessResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3371,29 +2439,11 @@ func (client *Client) SetJobInstanceSuccessWithOptions(request *SetJobInstanceSu
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetJobInstanceSuccessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
-//
-// @param request - SetJobInstanceSuccessRequest
-//
-// @return SetJobInstanceSuccessResponse
-func (client *Client) SetJobInstanceSuccess(request *SetJobInstanceSuccessRequest) (_result *SetJobInstanceSuccessResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetJobInstanceSuccessResponse{}
-	_body, _err := client.SetJobInstanceSuccessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3406,7 +2456,7 @@ func (client *Client) SetJobInstanceSuccess(request *SetJobInstanceSuccessReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetWfInstanceSuccessResponse
-func (client *Client) SetWfInstanceSuccessWithOptions(request *SetWfInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetWfInstanceSuccessResponse, _err error) {
+func (client *Client) SetWfInstanceSuccessWithContext(ctx context.Context, request *SetWfInstanceSuccessRequest, runtime *dara.RuntimeOptions) (_result *SetWfInstanceSuccessResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3451,29 +2501,11 @@ func (client *Client) SetWfInstanceSuccessWithOptions(request *SetWfInstanceSucc
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetWfInstanceSuccessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
-//
-// @param request - SetWfInstanceSuccessRequest
-//
-// @return SetWfInstanceSuccessResponse
-func (client *Client) SetWfInstanceSuccess(request *SetWfInstanceSuccessRequest) (_result *SetWfInstanceSuccessResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetWfInstanceSuccessResponse{}
-	_body, _err := client.SetWfInstanceSuccessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3486,7 +2518,7 @@ func (client *Client) SetWfInstanceSuccess(request *SetWfInstanceSuccessRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopInstanceResponse
-func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
+func (client *Client) StopInstanceWithContext(ctx context.Context, request *StopInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3507,29 +2539,11 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a job instance in the running state.
-//
-// @param request - StopInstanceRequest
-//
-// @return StopInstanceResponse
-func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopInstanceResponse{}
-	_body, _err := client.StopInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3542,7 +2556,7 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAppGroupResponse
-func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppGroupResponse, _err error) {
+func (client *Client) UpdateAppGroupWithContext(ctx context.Context, request *UpdateAppGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3595,29 +2609,11 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAppGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the application group.
-//
-// @param request - UpdateAppGroupRequest
-//
-// @return UpdateAppGroupResponse
-func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *UpdateAppGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAppGroupResponse{}
-	_body, _err := client.UpdateAppGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3630,7 +2626,7 @@ func (client *Client) UpdateAppGroup(request *UpdateAppGroupRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateJobResponse
-func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
+func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJobRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3805,29 +2801,11 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
-//
-// @param request - UpdateJobRequest
-//
-// @return UpdateJobResponse
-func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateJobResponse{}
-	_body, _err := client.UpdateJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3840,7 +2818,7 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateJobScriptResponse
-func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
+func (client *Client) UpdateJobScriptWithContext(ctx context.Context, request *UpdateJobScriptRequest, runtime *dara.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3889,29 +2867,11 @@ func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateJobScriptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新任务执行脚本
-//
-// @param request - UpdateJobScriptRequest
-//
-// @return UpdateJobScriptResponse
-func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result *UpdateJobScriptResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateJobScriptResponse{}
-	_body, _err := client.UpdateJobScriptWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3924,7 +2884,7 @@ func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNamespaceResponse
-func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+func (client *Client) UpdateNamespaceWithContext(ctx context.Context, request *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3961,29 +2921,11 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新命名空间
-//
-// @param request - UpdateNamespaceRequest
-//
-// @return UpdateNamespaceResponse
-func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.UpdateNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3996,7 +2938,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWorkflowResponse
-func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
+func (client *Client) UpdateWorkflowWithContext(ctx context.Context, request *UpdateWorkflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4055,29 +2997,11 @@ func (client *Client) UpdateWorkflowWithOptions(request *UpdateWorkflowRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWorkflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the basic information about a workflow. You can call this operation only in the professional edition.
-//
-// @param request - UpdateWorkflowRequest
-//
-// @return UpdateWorkflowResponse
-func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *UpdateWorkflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWorkflowResponse{}
-	_body, _err := client.UpdateWorkflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4090,7 +3014,7 @@ func (client *Client) UpdateWorkflow(request *UpdateWorkflowRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateWorkflowDagResponse
-func (client *Client) UpdateWorkflowDagWithOptions(request *UpdateWorkflowDagRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowDagResponse, _err error) {
+func (client *Client) UpdateWorkflowDagWithContext(ctx context.Context, request *UpdateWorkflowDagRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowDagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4137,28 +3061,10 @@ func (client *Client) UpdateWorkflowDagWithOptions(request *UpdateWorkflowDagReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWorkflowDagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
-//
-// @param request - UpdateWorkflowDagRequest
-//
-// @return UpdateWorkflowDagResponse
-func (client *Client) UpdateWorkflowDag(request *UpdateWorkflowDagRequest) (_result *UpdateWorkflowDagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateWorkflowDagResponse{}
-	_body, _err := client.UpdateWorkflowDagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
