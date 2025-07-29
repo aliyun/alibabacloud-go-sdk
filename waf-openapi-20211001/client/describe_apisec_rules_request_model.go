@@ -11,6 +11,8 @@ type iDescribeApisecRulesRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DescribeApisecRulesRequest
 	GetInstanceId() *string
+	SetLang(v string) *DescribeApisecRulesRequest
+	GetLang() *string
 	SetLevel(v string) *DescribeApisecRulesRequest
 	GetLevel() *string
 	SetName(v string) *DescribeApisecRulesRequest
@@ -42,6 +44,7 @@ type DescribeApisecRulesRequest struct {
 	//
 	// waf_elasticity-cn-0x***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The level of the policy.
 	//
 	// If Type is set to risk or event, you can set this parameter to one of the following values:
@@ -160,6 +163,10 @@ func (s *DescribeApisecRulesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeApisecRulesRequest) GetLang() *string {
+	return s.Lang
+}
+
 func (s *DescribeApisecRulesRequest) GetLevel() *string {
 	return s.Level
 }
@@ -198,6 +205,11 @@ func (s *DescribeApisecRulesRequest) GetType() *string {
 
 func (s *DescribeApisecRulesRequest) SetInstanceId(v string) *DescribeApisecRulesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecRulesRequest) SetLang(v string) *DescribeApisecRulesRequest {
+	s.Lang = &v
 	return s
 }
 

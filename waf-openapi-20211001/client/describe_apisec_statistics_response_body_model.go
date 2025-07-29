@@ -110,7 +110,9 @@ type DescribeApisecStatisticsResponseBodyData struct {
 	// example:
 	//
 	// 10
-	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	Medium      *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	NotFixed    *int64 `json:"NotFixed,omitempty" xml:"NotFixed,omitempty"`
+	SystemFixed *int64 `json:"SystemFixed,omitempty" xml:"SystemFixed,omitempty"`
 	// The number of events to be confirmed.
 	//
 	// example:
@@ -122,7 +124,8 @@ type DescribeApisecStatisticsResponseBodyData struct {
 	// example:
 	//
 	// 10
-	ToBeFixed *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
+	ToBeFixed    *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
+	ToBeVerified *int64 `json:"ToBeVerified,omitempty" xml:"ToBeVerified,omitempty"`
 	// The number of new high-risk events today.
 	//
 	// example:
@@ -199,12 +202,24 @@ func (s *DescribeApisecStatisticsResponseBodyData) GetMedium() *int64 {
 	return s.Medium
 }
 
+func (s *DescribeApisecStatisticsResponseBodyData) GetNotFixed() *int64 {
+	return s.NotFixed
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) GetSystemFixed() *int64 {
+	return s.SystemFixed
+}
+
 func (s *DescribeApisecStatisticsResponseBodyData) GetToBeConfirmed() *int64 {
 	return s.ToBeConfirmed
 }
 
 func (s *DescribeApisecStatisticsResponseBodyData) GetToBeFixed() *int64 {
 	return s.ToBeFixed
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) GetToBeVerified() *int64 {
+	return s.ToBeVerified
 }
 
 func (s *DescribeApisecStatisticsResponseBodyData) GetTodayHigh() *string {
@@ -272,6 +287,16 @@ func (s *DescribeApisecStatisticsResponseBodyData) SetMedium(v int64) *DescribeA
 	return s
 }
 
+func (s *DescribeApisecStatisticsResponseBodyData) SetNotFixed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.NotFixed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetSystemFixed(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.SystemFixed = &v
+	return s
+}
+
 func (s *DescribeApisecStatisticsResponseBodyData) SetToBeConfirmed(v int64) *DescribeApisecStatisticsResponseBodyData {
 	s.ToBeConfirmed = &v
 	return s
@@ -279,6 +304,11 @@ func (s *DescribeApisecStatisticsResponseBodyData) SetToBeConfirmed(v int64) *De
 
 func (s *DescribeApisecStatisticsResponseBodyData) SetToBeFixed(v int64) *DescribeApisecStatisticsResponseBodyData {
 	s.ToBeFixed = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsResponseBodyData) SetToBeVerified(v int64) *DescribeApisecStatisticsResponseBodyData {
+	s.ToBeVerified = &v
 	return s
 }
 

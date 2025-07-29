@@ -94,7 +94,8 @@ type DescribeApisecUserOperationsResponseBodyData struct {
 	// example:
 	//
 	// 24d997acc48a67a01e09b9c5ad861287
-	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectId        *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	OperationSource *string `json:"OperationSource,omitempty" xml:"OperationSource,omitempty"`
 	// The time at which the operation was performed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
@@ -165,6 +166,10 @@ func (s *DescribeApisecUserOperationsResponseBodyData) GetObjectId() *string {
 	return s.ObjectId
 }
 
+func (s *DescribeApisecUserOperationsResponseBodyData) GetOperationSource() *string {
+	return s.OperationSource
+}
+
 func (s *DescribeApisecUserOperationsResponseBodyData) GetTime() *int64 {
 	return s.Time
 }
@@ -193,6 +198,11 @@ func (s *DescribeApisecUserOperationsResponseBodyData) SetNote(v string) *Descri
 
 func (s *DescribeApisecUserOperationsResponseBodyData) SetObjectId(v string) *DescribeApisecUserOperationsResponseBodyData {
 	s.ObjectId = &v
+	return s
+}
+
+func (s *DescribeApisecUserOperationsResponseBodyData) SetOperationSource(v string) *DescribeApisecUserOperationsResponseBodyData {
+	s.OperationSource = &v
 	return s
 }
 

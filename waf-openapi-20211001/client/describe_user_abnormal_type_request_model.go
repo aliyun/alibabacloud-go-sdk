@@ -21,6 +21,8 @@ type iDescribeUserAbnormalTypeRequest interface {
 	GetResourceManagerResourceGroupId() *string
 	SetStartTime(v int64) *DescribeUserAbnormalTypeRequest
 	GetStartTime() *int64
+	SetUserStatusList(v []*string) *DescribeUserAbnormalTypeRequest
+	GetUserStatusList() []*string
 }
 
 type DescribeUserAbnormalTypeRequest struct {
@@ -69,7 +71,8 @@ type DescribeUserAbnormalTypeRequest struct {
 	// example:
 	//
 	// 1723435200
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUserAbnormalTypeRequest) String() string {
@@ -104,6 +107,10 @@ func (s *DescribeUserAbnormalTypeRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *DescribeUserAbnormalTypeRequest) GetUserStatusList() []*string {
+	return s.UserStatusList
+}
+
 func (s *DescribeUserAbnormalTypeRequest) SetClusterId(v string) *DescribeUserAbnormalTypeRequest {
 	s.ClusterId = &v
 	return s
@@ -131,6 +138,11 @@ func (s *DescribeUserAbnormalTypeRequest) SetResourceManagerResourceGroupId(v st
 
 func (s *DescribeUserAbnormalTypeRequest) SetStartTime(v int64) *DescribeUserAbnormalTypeRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUserAbnormalTypeRequest) SetUserStatusList(v []*string) *DescribeUserAbnormalTypeRequest {
+	s.UserStatusList = v
 	return s
 }
 

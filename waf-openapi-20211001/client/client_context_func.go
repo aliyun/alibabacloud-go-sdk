@@ -2874,6 +2874,10 @@ func (client *Client) DescribeApisecRulesWithContext(ctx context.Context, reques
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
 	if !dara.IsNil(request.Level) {
 		query["Level"] = request.Level
 	}
@@ -3142,6 +3146,10 @@ func (client *Client) DescribeApisecStatisticsWithContext(ctx context.Context, r
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3154,8 +3162,16 @@ func (client *Client) DescribeApisecStatisticsWithContext(ctx context.Context, r
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UserStatusList) {
+		query["UserStatusList"] = request.UserStatusList
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8368,6 +8384,10 @@ func (client *Client) DescribeUserAbnormalTypeWithContext(ctx context.Context, r
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.UserStatusList) {
+		query["UserStatusList"] = request.UserStatusList
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8614,6 +8634,10 @@ func (client *Client) DescribeUserEventTypeWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserStatusList) {
+		query["UserStatusList"] = request.UserStatusList
 	}
 
 	req := &openapiutil.OpenApiRequest{

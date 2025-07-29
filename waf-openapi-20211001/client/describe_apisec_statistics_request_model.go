@@ -11,14 +11,20 @@ type iDescribeApisecStatisticsRequest interface {
 	GoString() string
 	SetClusterId(v string) *DescribeApisecStatisticsRequest
 	GetClusterId() *string
+	SetEndTime(v int64) *DescribeApisecStatisticsRequest
+	GetEndTime() *int64
 	SetInstanceId(v string) *DescribeApisecStatisticsRequest
 	GetInstanceId() *string
 	SetRegionId(v string) *DescribeApisecStatisticsRequest
 	GetRegionId() *string
 	SetResourceManagerResourceGroupId(v string) *DescribeApisecStatisticsRequest
 	GetResourceManagerResourceGroupId() *string
+	SetStartTime(v int64) *DescribeApisecStatisticsRequest
+	GetStartTime() *int64
 	SetType(v string) *DescribeApisecStatisticsRequest
 	GetType() *string
+	SetUserStatusList(v []*string) *DescribeApisecStatisticsRequest
+	GetUserStatusList() []*string
 }
 
 type DescribeApisecStatisticsRequest struct {
@@ -30,6 +36,7 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland
@@ -58,6 +65,7 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// rg-aek2***uwbs5q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	StartTime                      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the statistics. Valid values:
 	//
 	// 	- **risk**: risk-related statistics.
@@ -67,7 +75,8 @@ type DescribeApisecStatisticsRequest struct {
 	// example:
 	//
 	// asset_num
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeApisecStatisticsRequest) String() string {
@@ -82,6 +91,10 @@ func (s *DescribeApisecStatisticsRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DescribeApisecStatisticsRequest) GetEndTime() *int64 {
+	return s.EndTime
+}
+
 func (s *DescribeApisecStatisticsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -94,12 +107,25 @@ func (s *DescribeApisecStatisticsRequest) GetResourceManagerResourceGroupId() *s
 	return s.ResourceManagerResourceGroupId
 }
 
+func (s *DescribeApisecStatisticsRequest) GetStartTime() *int64 {
+	return s.StartTime
+}
+
 func (s *DescribeApisecStatisticsRequest) GetType() *string {
 	return s.Type
 }
 
+func (s *DescribeApisecStatisticsRequest) GetUserStatusList() []*string {
+	return s.UserStatusList
+}
+
 func (s *DescribeApisecStatisticsRequest) SetClusterId(v string) *DescribeApisecStatisticsRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetEndTime(v int64) *DescribeApisecStatisticsRequest {
+	s.EndTime = &v
 	return s
 }
 
@@ -118,8 +144,18 @@ func (s *DescribeApisecStatisticsRequest) SetResourceManagerResourceGroupId(v st
 	return s
 }
 
+func (s *DescribeApisecStatisticsRequest) SetStartTime(v int64) *DescribeApisecStatisticsRequest {
+	s.StartTime = &v
+	return s
+}
+
 func (s *DescribeApisecStatisticsRequest) SetType(v string) *DescribeApisecStatisticsRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeApisecStatisticsRequest) SetUserStatusList(v []*string) *DescribeApisecStatisticsRequest {
+	s.UserStatusList = v
 	return s
 }
 

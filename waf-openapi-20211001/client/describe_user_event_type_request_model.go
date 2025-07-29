@@ -21,6 +21,8 @@ type iDescribeUserEventTypeRequest interface {
 	GetResourceManagerResourceGroupId() *string
 	SetStartTime(v int64) *DescribeUserEventTypeRequest
 	GetStartTime() *int64
+	SetUserStatusList(v []*string) *DescribeUserEventTypeRequest
+	GetUserStatusList() []*string
 }
 
 type DescribeUserEventTypeRequest struct {
@@ -69,7 +71,8 @@ type DescribeUserEventTypeRequest struct {
 	// example:
 	//
 	// 1723435200
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime      *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUserEventTypeRequest) String() string {
@@ -104,6 +107,10 @@ func (s *DescribeUserEventTypeRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *DescribeUserEventTypeRequest) GetUserStatusList() []*string {
+	return s.UserStatusList
+}
+
 func (s *DescribeUserEventTypeRequest) SetClusterId(v string) *DescribeUserEventTypeRequest {
 	s.ClusterId = &v
 	return s
@@ -131,6 +138,11 @@ func (s *DescribeUserEventTypeRequest) SetResourceManagerResourceGroupId(v strin
 
 func (s *DescribeUserEventTypeRequest) SetStartTime(v int64) *DescribeUserEventTypeRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUserEventTypeRequest) SetUserStatusList(v []*string) *DescribeUserEventTypeRequest {
+	s.UserStatusList = v
 	return s
 }
 
