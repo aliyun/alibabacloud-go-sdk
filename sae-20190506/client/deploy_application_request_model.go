@@ -57,6 +57,8 @@ type iDeployApplicationRequest interface {
 	GetEnvs() *string
 	SetGpuConfig(v string) *DeployApplicationRequest
 	GetGpuConfig() *string
+	SetHtml(v string) *DeployApplicationRequest
+	GetHtml() *string
 	SetImagePullSecrets(v string) *DeployApplicationRequest
 	GetImagePullSecrets() *string
 	SetImageUrl(v string) *DeployApplicationRequest
@@ -414,6 +416,7 @@ type DeployApplicationRequest struct {
 	// [{"name":"envtmp","value":"0"}]
 	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
+	Html      *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -1100,6 +1103,10 @@ func (s *DeployApplicationRequest) GetGpuConfig() *string {
 	return s.GpuConfig
 }
 
+func (s *DeployApplicationRequest) GetHtml() *string {
+	return s.Html
+}
+
 func (s *DeployApplicationRequest) GetImagePullSecrets() *string {
 	return s.ImagePullSecrets
 }
@@ -1421,6 +1428,11 @@ func (s *DeployApplicationRequest) SetEnvs(v string) *DeployApplicationRequest {
 
 func (s *DeployApplicationRequest) SetGpuConfig(v string) *DeployApplicationRequest {
 	s.GpuConfig = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetHtml(v string) *DeployApplicationRequest {
+	s.Html = &v
 	return s
 }
 

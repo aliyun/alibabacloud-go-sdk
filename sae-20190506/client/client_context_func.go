@@ -489,6 +489,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		query["GpuConfig"] = request.GpuConfig
 	}
 
+	if !dara.IsNil(request.Html) {
+		query["Html"] = request.Html
+	}
+
 	if !dara.IsNil(request.ImagePullSecrets) {
 		query["ImagePullSecrets"] = request.ImagePullSecrets
 	}
@@ -2511,6 +2515,10 @@ func (client *Client) DeployApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.GpuConfig) {
 		query["GpuConfig"] = request.GpuConfig
+	}
+
+	if !dara.IsNil(request.Html) {
+		query["Html"] = request.Html
 	}
 
 	if !dara.IsNil(request.ImagePullSecrets) {

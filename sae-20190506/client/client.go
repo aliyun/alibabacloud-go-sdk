@@ -666,6 +666,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["GpuConfig"] = request.GpuConfig
 	}
 
+	if !dara.IsNil(request.Html) {
+		query["Html"] = request.Html
+	}
+
 	if !dara.IsNil(request.ImagePullSecrets) {
 		query["ImagePullSecrets"] = request.ImagePullSecrets
 	}
@@ -3218,6 +3222,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(request.GpuConfig) {
 		query["GpuConfig"] = request.GpuConfig
+	}
+
+	if !dara.IsNil(request.Html) {
+		query["Html"] = request.Html
 	}
 
 	if !dara.IsNil(request.ImagePullSecrets) {

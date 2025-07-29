@@ -57,6 +57,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetEnvs() *string
 	SetGpuConfig(v string) *DeployApplicationShrinkRequest
 	GetGpuConfig() *string
+	SetHtml(v string) *DeployApplicationShrinkRequest
+	GetHtml() *string
 	SetImagePullSecrets(v string) *DeployApplicationShrinkRequest
 	GetImagePullSecrets() *string
 	SetImageUrl(v string) *DeployApplicationShrinkRequest
@@ -414,6 +416,7 @@ type DeployApplicationShrinkRequest struct {
 	// [{"name":"envtmp","value":"0"}]
 	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
+	Html      *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -1100,6 +1103,10 @@ func (s *DeployApplicationShrinkRequest) GetGpuConfig() *string {
 	return s.GpuConfig
 }
 
+func (s *DeployApplicationShrinkRequest) GetHtml() *string {
+	return s.Html
+}
+
 func (s *DeployApplicationShrinkRequest) GetImagePullSecrets() *string {
 	return s.ImagePullSecrets
 }
@@ -1421,6 +1428,11 @@ func (s *DeployApplicationShrinkRequest) SetEnvs(v string) *DeployApplicationShr
 
 func (s *DeployApplicationShrinkRequest) SetGpuConfig(v string) *DeployApplicationShrinkRequest {
 	s.GpuConfig = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetHtml(v string) *DeployApplicationShrinkRequest {
+	s.Html = &v
 	return s
 }
 

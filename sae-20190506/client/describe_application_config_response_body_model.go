@@ -393,6 +393,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	Envs     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	GpuCount *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	GpuType  *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	Html     *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding secret dictionary.
 	//
 	// example:
@@ -1056,6 +1057,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetGpuType() *string {
 	return s.GpuType
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetHtml() *string {
+	return s.Html
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetImagePullSecrets() *string {
 	return s.ImagePullSecrets
 }
@@ -1433,6 +1438,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetGpuCount(v string) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetGpuType(v string) *DescribeApplicationConfigResponseBodyData {
 	s.GpuType = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetHtml(v string) *DescribeApplicationConfigResponseBodyData {
+	s.Html = &v
 	return s
 }
 
