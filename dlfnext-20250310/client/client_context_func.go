@@ -656,6 +656,39 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, catalog *string
 
 // Summary:
 //
+// 查看数据湖Catalog
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogByIdResponse
+func (client *Client) GetCatalogByIdWithContext(ctx context.Context, id *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogByIdResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCatalogById"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/catalogs/id/" + dara.PercentEncode(dara.StringValue(id))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCatalogByIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看表
 //
 // @param headers - map

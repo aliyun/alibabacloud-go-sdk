@@ -1,3 +1,7 @@
+2025-07-29 Version: v2.4.0
+- Support API GetCatalogById.
+
+
 2025-07-28 Version: v2.3.0
 - Support API ListDatabaseDetails.
 
