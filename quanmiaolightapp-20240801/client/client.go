@@ -2146,6 +2146,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
+		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
+	}
+
 	if !dara.IsNil(request.ExcludeGenerateOptionsShrink) {
 		body["excludeGenerateOptions"] = request.ExcludeGenerateOptionsShrink
 	}
@@ -2630,6 +2634,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
+		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
+	}
+
 	if !dara.IsNil(request.DeduplicationId) {
 		body["deduplicationId"] = request.DeduplicationId
 	}

@@ -9,6 +9,8 @@ type iRunVideoAnalysisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisRequest
+	GetAutoRoleRecognitionVideoUrl() *string
 	SetExcludeGenerateOptions(v []*string) *RunVideoAnalysisRequest
 	GetExcludeGenerateOptions() []*string
 	SetFaceIdentitySimilarityMinScore(v float32) *RunVideoAnalysisRequest
@@ -52,6 +54,7 @@ type iRunVideoAnalysisRequest interface {
 }
 
 type RunVideoAnalysisRequest struct {
+	AutoRoleRecognitionVideoUrl    *string                                   `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	ExcludeGenerateOptions         []*string                                 `json:"excludeGenerateOptions,omitempty" xml:"excludeGenerateOptions,omitempty" type:"Repeated"`
 	FaceIdentitySimilarityMinScore *float32                                  `json:"faceIdentitySimilarityMinScore,omitempty" xml:"faceIdentitySimilarityMinScore,omitempty"`
 	FrameSampleMethod              *RunVideoAnalysisRequestFrameSampleMethod `json:"frameSampleMethod,omitempty" xml:"frameSampleMethod,omitempty" type:"Struct"`
@@ -104,6 +107,10 @@ func (s RunVideoAnalysisRequest) String() string {
 
 func (s RunVideoAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisRequest) GetAutoRoleRecognitionVideoUrl() *string {
+	return s.AutoRoleRecognitionVideoUrl
 }
 
 func (s *RunVideoAnalysisRequest) GetExcludeGenerateOptions() []*string {
@@ -184,6 +191,11 @@ func (s *RunVideoAnalysisRequest) GetVideoShotFaceIdentityCount() *int32 {
 
 func (s *RunVideoAnalysisRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *RunVideoAnalysisRequest) SetAutoRoleRecognitionVideoUrl(v string) *RunVideoAnalysisRequest {
+	s.AutoRoleRecognitionVideoUrl = &v
+	return s
 }
 
 func (s *RunVideoAnalysisRequest) SetExcludeGenerateOptions(v []*string) *RunVideoAnalysisRequest {
@@ -486,9 +498,11 @@ func (s *RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions) Validate() error 
 }
 
 type RunVideoAnalysisRequestVideoRoles struct {
-	RoleInfo *string   `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
-	RoleName *string   `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	Urls     []*string `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
+	IsAutoRecognition *bool                                             `json:"isAutoRecognition,omitempty" xml:"isAutoRecognition,omitempty"`
+	RoleInfo          *string                                           `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
+	RoleName          *string                                           `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	TimeIntervals     []*RunVideoAnalysisRequestVideoRolesTimeIntervals `json:"timeIntervals,omitempty" xml:"timeIntervals,omitempty" type:"Repeated"`
+	Urls              []*string                                         `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
 }
 
 func (s RunVideoAnalysisRequestVideoRoles) String() string {
@@ -499,6 +513,10 @@ func (s RunVideoAnalysisRequestVideoRoles) GoString() string {
 	return s.String()
 }
 
+func (s *RunVideoAnalysisRequestVideoRoles) GetIsAutoRecognition() *bool {
+	return s.IsAutoRecognition
+}
+
 func (s *RunVideoAnalysisRequestVideoRoles) GetRoleInfo() *string {
 	return s.RoleInfo
 }
@@ -507,8 +525,17 @@ func (s *RunVideoAnalysisRequestVideoRoles) GetRoleName() *string {
 	return s.RoleName
 }
 
+func (s *RunVideoAnalysisRequestVideoRoles) GetTimeIntervals() []*RunVideoAnalysisRequestVideoRolesTimeIntervals {
+	return s.TimeIntervals
+}
+
 func (s *RunVideoAnalysisRequestVideoRoles) GetUrls() []*string {
 	return s.Urls
+}
+
+func (s *RunVideoAnalysisRequestVideoRoles) SetIsAutoRecognition(v bool) *RunVideoAnalysisRequestVideoRoles {
+	s.IsAutoRecognition = &v
+	return s
 }
 
 func (s *RunVideoAnalysisRequestVideoRoles) SetRoleInfo(v string) *RunVideoAnalysisRequestVideoRoles {
@@ -521,11 +548,51 @@ func (s *RunVideoAnalysisRequestVideoRoles) SetRoleName(v string) *RunVideoAnaly
 	return s
 }
 
+func (s *RunVideoAnalysisRequestVideoRoles) SetTimeIntervals(v []*RunVideoAnalysisRequestVideoRolesTimeIntervals) *RunVideoAnalysisRequestVideoRoles {
+	s.TimeIntervals = v
+	return s
+}
+
 func (s *RunVideoAnalysisRequestVideoRoles) SetUrls(v []*string) *RunVideoAnalysisRequestVideoRoles {
 	s.Urls = v
 	return s
 }
 
 func (s *RunVideoAnalysisRequestVideoRoles) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunVideoAnalysisRequestVideoRolesTimeIntervals struct {
+	EndTime   *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s RunVideoAnalysisRequestVideoRolesTimeIntervals) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisRequestVideoRolesTimeIntervals) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestVideoRolesTimeIntervals) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *RunVideoAnalysisRequestVideoRolesTimeIntervals) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *RunVideoAnalysisRequestVideoRolesTimeIntervals) SetEndTime(v int64) *RunVideoAnalysisRequestVideoRolesTimeIntervals {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestVideoRolesTimeIntervals) SetStartTime(v int64) *RunVideoAnalysisRequestVideoRolesTimeIntervals {
+	s.StartTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisRequestVideoRolesTimeIntervals) Validate() error {
 	return dara.Validate(s)
 }

@@ -213,6 +213,7 @@ type RunVideoAnalysisResponseBodyPayloadOutput struct {
 	VideoGenerateResult            *RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResult            `json:"videoGenerateResult,omitempty" xml:"videoGenerateResult,omitempty" type:"Struct"`
 	VideoGenerateResults           []*RunVideoAnalysisResponseBodyPayloadOutputVideoGenerateResults         `json:"videoGenerateResults,omitempty" xml:"videoGenerateResults,omitempty" type:"Repeated"`
 	VideoMindMappingGenerateResult *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult `json:"videoMindMappingGenerateResult,omitempty" xml:"videoMindMappingGenerateResult,omitempty" type:"Struct"`
+	VideoRoleRecognitionResult     *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult     `json:"videoRoleRecognitionResult,omitempty" xml:"videoRoleRecognitionResult,omitempty" type:"Struct"`
 	VideoShotSnapshotResult        *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult        `json:"videoShotSnapshotResult,omitempty" xml:"videoShotSnapshotResult,omitempty" type:"Struct"`
 	VideoTitleGenerateResult       *RunVideoAnalysisResponseBodyPayloadOutputVideoTitleGenerateResult       `json:"videoTitleGenerateResult,omitempty" xml:"videoTitleGenerateResult,omitempty" type:"Struct"`
 }
@@ -247,6 +248,10 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutput) GetVideoGenerateResults() []
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutput) GetVideoMindMappingGenerateResult() *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult {
 	return s.VideoMindMappingGenerateResult
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutput) GetVideoRoleRecognitionResult() *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult {
+	return s.VideoRoleRecognitionResult
 }
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutput) GetVideoShotSnapshotResult() *RunVideoAnalysisResponseBodyPayloadOutputVideoShotSnapshotResult {
@@ -284,6 +289,11 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoGenerateResults(v []
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoMindMappingGenerateResult(v *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult) *RunVideoAnalysisResponseBodyPayloadOutput {
 	s.VideoMindMappingGenerateResult = v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutput) SetVideoRoleRecognitionResult(v *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) *RunVideoAnalysisResponseBodyPayloadOutput {
+	s.VideoRoleRecognitionResult = v
 	return s
 }
 
@@ -1100,6 +1110,151 @@ func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResult
 }
 
 func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult struct {
+	VideoRoles []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles `json:"videoRoles,omitempty" xml:"videoRoles,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) GetVideoRoles() []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	return s.VideoRoles
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) SetVideoRoles(v []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult {
+	s.VideoRoles = v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles struct {
+	IsAutoRecognition *bool                                                                                         `json:"isAutoRecognition,omitempty" xml:"isAutoRecognition,omitempty"`
+	Ratio             *float32                                                                                      `json:"ratio,omitempty" xml:"ratio,omitempty"`
+	RoleInfo          *string                                                                                       `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
+	RoleName          *string                                                                                       `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	TimeIntervals     []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals `json:"timeIntervals,omitempty" xml:"timeIntervals,omitempty" type:"Repeated"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GetIsAutoRecognition() *bool {
+	return s.IsAutoRecognition
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GetRatio() *float32 {
+	return s.Ratio
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GetRoleInfo() *string {
+	return s.RoleInfo
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GetRoleName() *string {
+	return s.RoleName
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) GetTimeIntervals() []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals {
+	return s.TimeIntervals
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) SetIsAutoRecognition(v bool) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	s.IsAutoRecognition = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) SetRatio(v float32) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	s.Ratio = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) SetRoleInfo(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	s.RoleInfo = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) SetRoleName(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	s.RoleName = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) SetTimeIntervals(v []*RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles {
+	s.TimeIntervals = v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRoles) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals struct {
+	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Timestamp *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) GoString() string {
+	return s.String()
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) GetTimestamp() *int64 {
+	return s.Timestamp
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) GetUrl() *string {
+	return s.Url
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) SetEndTime(v int64) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) SetStartTime(v int64) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals {
+	s.StartTime = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) SetTimestamp(v int64) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) SetUrl(v string) *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals {
+	s.Url = &v
+	return s
+}
+
+func (s *RunVideoAnalysisResponseBodyPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals) Validate() error {
 	return dara.Validate(s)
 }
 

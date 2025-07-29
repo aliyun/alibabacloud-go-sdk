@@ -9,6 +9,8 @@ type iSubmitVideoAnalysisTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest
+	GetAutoRoleRecognitionVideoUrl() *string
 	SetDeduplicationId(v string) *SubmitVideoAnalysisTaskShrinkRequest
 	GetDeduplicationId() *string
 	SetExcludeGenerateOptionsShrink(v string) *SubmitVideoAnalysisTaskShrinkRequest
@@ -50,6 +52,7 @@ type iSubmitVideoAnalysisTaskShrinkRequest interface {
 }
 
 type SubmitVideoAnalysisTaskShrinkRequest struct {
+	AutoRoleRecognitionVideoUrl *string `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	// example:
 	//
 	// 1
@@ -103,6 +106,10 @@ func (s SubmitVideoAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitVideoAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) GetAutoRoleRecognitionVideoUrl() *string {
+	return s.AutoRoleRecognitionVideoUrl
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) GetDeduplicationId() *string {
@@ -179,6 +186,11 @@ func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoShotFaceIdentityCount() *
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *SubmitVideoAnalysisTaskShrinkRequest) SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskShrinkRequest {
+	s.AutoRoleRecognitionVideoUrl = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskShrinkRequest) SetDeduplicationId(v string) *SubmitVideoAnalysisTaskShrinkRequest {

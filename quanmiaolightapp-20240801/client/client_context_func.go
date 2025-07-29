@@ -1606,6 +1606,10 @@ func (client *Client) RunVideoAnalysisWithContext(ctx context.Context, workspace
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
+		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
+	}
+
 	if !dara.IsNil(request.ExcludeGenerateOptionsShrink) {
 		body["excludeGenerateOptions"] = request.ExcludeGenerateOptionsShrink
 	}
@@ -2014,6 +2018,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithContext(ctx context.Context, wo
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRoleRecognitionVideoUrl) {
+		body["autoRoleRecognitionVideoUrl"] = request.AutoRoleRecognitionVideoUrl
+	}
+
 	if !dara.IsNil(request.DeduplicationId) {
 		body["deduplicationId"] = request.DeduplicationId
 	}

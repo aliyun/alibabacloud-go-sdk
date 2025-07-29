@@ -9,6 +9,8 @@ type iSubmitVideoAnalysisTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskRequest
+	GetAutoRoleRecognitionVideoUrl() *string
 	SetDeduplicationId(v string) *SubmitVideoAnalysisTaskRequest
 	GetDeduplicationId() *string
 	SetExcludeGenerateOptions(v []*string) *SubmitVideoAnalysisTaskRequest
@@ -50,6 +52,7 @@ type iSubmitVideoAnalysisTaskRequest interface {
 }
 
 type SubmitVideoAnalysisTaskRequest struct {
+	AutoRoleRecognitionVideoUrl *string `json:"autoRoleRecognitionVideoUrl,omitempty" xml:"autoRoleRecognitionVideoUrl,omitempty"`
 	// example:
 	//
 	// 1
@@ -103,6 +106,10 @@ func (s SubmitVideoAnalysisTaskRequest) String() string {
 
 func (s SubmitVideoAnalysisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) GetAutoRoleRecognitionVideoUrl() *string {
+	return s.AutoRoleRecognitionVideoUrl
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) GetDeduplicationId() *string {
@@ -179,6 +186,11 @@ func (s *SubmitVideoAnalysisTaskRequest) GetVideoShotFaceIdentityCount() *int32 
 
 func (s *SubmitVideoAnalysisTaskRequest) GetVideoUrl() *string {
 	return s.VideoUrl
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) SetAutoRoleRecognitionVideoUrl(v string) *SubmitVideoAnalysisTaskRequest {
+	s.AutoRoleRecognitionVideoUrl = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) SetDeduplicationId(v string) *SubmitVideoAnalysisTaskRequest {
@@ -485,9 +497,11 @@ func (s *SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions) Validate()
 }
 
 type SubmitVideoAnalysisTaskRequestVideoRoles struct {
-	RoleInfo *string   `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
-	RoleName *string   `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	Urls     []*string `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
+	IsAutoRecognition *bool                                                    `json:"isAutoRecognition,omitempty" xml:"isAutoRecognition,omitempty"`
+	RoleInfo          *string                                                  `json:"roleInfo,omitempty" xml:"roleInfo,omitempty"`
+	RoleName          *string                                                  `json:"roleName,omitempty" xml:"roleName,omitempty"`
+	TimeIntervals     []*SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals `json:"timeIntervals,omitempty" xml:"timeIntervals,omitempty" type:"Repeated"`
+	Urls              []*string                                                `json:"urls,omitempty" xml:"urls,omitempty" type:"Repeated"`
 }
 
 func (s SubmitVideoAnalysisTaskRequestVideoRoles) String() string {
@@ -498,6 +512,10 @@ func (s SubmitVideoAnalysisTaskRequestVideoRoles) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) GetIsAutoRecognition() *bool {
+	return s.IsAutoRecognition
+}
+
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) GetRoleInfo() *string {
 	return s.RoleInfo
 }
@@ -506,8 +524,17 @@ func (s *SubmitVideoAnalysisTaskRequestVideoRoles) GetRoleName() *string {
 	return s.RoleName
 }
 
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) GetTimeIntervals() []*SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals {
+	return s.TimeIntervals
+}
+
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) GetUrls() []*string {
 	return s.Urls
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetIsAutoRecognition(v bool) *SubmitVideoAnalysisTaskRequestVideoRoles {
+	s.IsAutoRecognition = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetRoleInfo(v string) *SubmitVideoAnalysisTaskRequestVideoRoles {
@@ -520,11 +547,51 @@ func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetRoleName(v string) *Submit
 	return s
 }
 
+func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetTimeIntervals(v []*SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) *SubmitVideoAnalysisTaskRequestVideoRoles {
+	s.TimeIntervals = v
+	return s
+}
+
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetUrls(v []*string) *SubmitVideoAnalysisTaskRequestVideoRoles {
 	s.Urls = v
 	return s
 }
 
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals struct {
+	EndTime   *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) SetEndTime(v int64) *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) SetStartTime(v int64) *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals {
+	s.StartTime = &v
+	return s
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals) Validate() error {
 	return dara.Validate(s)
 }
