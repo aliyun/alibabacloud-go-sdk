@@ -11714,6 +11714,10 @@ func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModi
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -12828,6 +12832,10 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 	if !dara.IsNil(request.PeriodUnit) {
 		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.RegionId) {

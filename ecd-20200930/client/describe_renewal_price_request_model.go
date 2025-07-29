@@ -17,6 +17,8 @@ type iDescribeRenewalPriceRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *DescribeRenewalPriceRequest
 	GetPeriodUnit() *string
+	SetPromotionId(v string) *DescribeRenewalPriceRequest
+	GetPromotionId() *string
 	SetRegionId(v string) *DescribeRenewalPriceRequest
 	GetRegionId() *string
 	SetResellerOwnerUid(v int64) *DescribeRenewalPriceRequest
@@ -63,7 +65,8 @@ type DescribeRenewalPriceRequest struct {
 	// example:
 	//
 	// Month
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
@@ -113,6 +116,10 @@ func (s *DescribeRenewalPriceRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *DescribeRenewalPriceRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *DescribeRenewalPriceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -142,6 +149,11 @@ func (s *DescribeRenewalPriceRequest) SetPeriod(v int32) *DescribeRenewalPriceRe
 
 func (s *DescribeRenewalPriceRequest) SetPeriodUnit(v string) *DescribeRenewalPriceRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetPromotionId(v string) *DescribeRenewalPriceRequest {
+	s.PromotionId = &v
 	return s
 }
 

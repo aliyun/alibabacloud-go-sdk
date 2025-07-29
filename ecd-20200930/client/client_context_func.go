@@ -9195,6 +9195,10 @@ func (client *Client) DescribeModificationPriceWithContext(ctx context.Context, 
 		query["InstanceType"] = request.InstanceType
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -10061,6 +10065,10 @@ func (client *Client) DescribeRenewalPriceWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.PeriodUnit) {
 		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.RegionId) {

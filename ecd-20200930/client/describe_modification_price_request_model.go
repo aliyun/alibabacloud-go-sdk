@@ -15,6 +15,8 @@ type iDescribeModificationPriceRequest interface {
 	GetInstanceId() *string
 	SetInstanceType(v string) *DescribeModificationPriceRequest
 	GetInstanceType() *string
+	SetPromotionId(v string) *DescribeModificationPriceRequest
+	GetPromotionId() *string
 	SetRegionId(v string) *DescribeModificationPriceRequest
 	GetRegionId() *string
 	SetResellerOwnerUid(v int64) *DescribeModificationPriceRequest
@@ -90,6 +92,7 @@ type DescribeModificationPriceRequest struct {
 	//
 	// eds.enterprise_office.8c16g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PromotionId  *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
@@ -150,6 +153,10 @@ func (s *DescribeModificationPriceRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
 
+func (s *DescribeModificationPriceRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *DescribeModificationPriceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -186,6 +193,11 @@ func (s *DescribeModificationPriceRequest) SetInstanceId(v string) *DescribeModi
 
 func (s *DescribeModificationPriceRequest) SetInstanceType(v string) *DescribeModificationPriceRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetPromotionId(v string) *DescribeModificationPriceRequest {
+	s.PromotionId = &v
 	return s
 }
 
