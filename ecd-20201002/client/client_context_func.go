@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("ecd"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApproveFotaUpdateResponse
-func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateRequest, runtime *dara.RuntimeOptions) (_result *ApproveFotaUpdateResponse, _err error) {
+func (client *Client) ApproveFotaUpdateWithContext(ctx context.Context, request *ApproveFotaUpdateRequest, runtime *dara.RuntimeOptions) (_result *ApproveFotaUpdateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -118,29 +69,11 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApproveFotaUpdateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 允许桌面FOTA升级
-//
-// @param request - ApproveFotaUpdateRequest
-//
-// @return ApproveFotaUpdateResponse
-func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_result *ApproveFotaUpdateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApproveFotaUpdateResponse{}
-	_body, _err := client.ApproveFotaUpdateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -153,7 +86,7 @@ func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangePasswordResponse
-func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, runtime *dara.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
+func (client *Client) ChangePasswordWithContext(ctx context.Context, request *ChangePasswordRequest, runtime *dara.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -206,29 +139,11 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangePasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the password of a user account.
-//
-// @param request - ChangePasswordRequest
-//
-// @return ChangePasswordResponse
-func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *ChangePasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangePasswordResponse{}
-	_body, _err := client.ChangePasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -237,7 +152,7 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFingerPrintTemplateResponse
-func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteFingerPrintTemplateResponse, _err error) {
+func (client *Client) DeleteFingerPrintTemplateWithContext(ctx context.Context, request *DeleteFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteFingerPrintTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -282,25 +197,11 @@ func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFinger
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteFingerPrintTemplateRequest
-//
-// @return DeleteFingerPrintTemplateResponse
-func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTemplateRequest) (_result *DeleteFingerPrintTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFingerPrintTemplateResponse{}
-	_body, _err := client.DeleteFingerPrintTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -313,7 +214,7 @@ func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTempla
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDirectoriesResponse
-func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectoriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDirectoriesResponse, _err error) {
+func (client *Client) DescribeDirectoriesWithContext(ctx context.Context, request *DescribeDirectoriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDirectoriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -346,29 +247,11 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries directory details.
-//
-// @param request - DescribeDirectoriesRequest
-//
-// @return DescribeDirectoriesResponse
-func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (_result *DescribeDirectoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDirectoriesResponse{}
-	_body, _err := client.DescribeDirectoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -381,7 +264,7 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFingerPrintTemplatesResponse
-func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeFingerPrintTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
+func (client *Client) DescribeFingerPrintTemplatesWithContext(ctx context.Context, request *DescribeFingerPrintTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -418,29 +301,11 @@ func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeF
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFingerPrintTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries fingerprint templates.
-//
-// @param request - DescribeFingerPrintTemplatesRequest
-//
-// @return DescribeFingerPrintTemplatesResponse
-func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintTemplatesRequest) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFingerPrintTemplatesResponse{}
-	_body, _err := client.DescribeFingerPrintTemplatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -449,7 +314,7 @@ func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGlobalDesktopsResponse
-func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalDesktopsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalDesktopsResponse, _err error) {
+func (client *Client) DescribeGlobalDesktopsWithContext(ctx context.Context, request *DescribeGlobalDesktopsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalDesktopsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -550,25 +415,11 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGlobalDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeGlobalDesktopsRequest
-//
-// @return DescribeGlobalDesktopsResponse
-func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequest) (_result *DescribeGlobalDesktopsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeGlobalDesktopsResponse{}
-	_body, _err := client.DescribeGlobalDesktopsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -577,7 +428,7 @@ func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOfficeSitesResponse
-func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSitesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOfficeSitesResponse, _err error) {
+func (client *Client) DescribeOfficeSitesWithContext(ctx context.Context, request *DescribeOfficeSitesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOfficeSitesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -610,25 +461,11 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOfficeSitesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeOfficeSitesRequest
-//
-// @return DescribeOfficeSitesResponse
-func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (_result *DescribeOfficeSitesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOfficeSitesResponse{}
-	_body, _err := client.DescribeOfficeSitesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -637,7 +474,7 @@ func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -666,25 +503,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -697,7 +520,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSnapshotsResponse
-func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
+func (client *Client) DescribeSnapshotsWithContext(ctx context.Context, request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -750,29 +573,11 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举快照
-//
-// @param request - DescribeSnapshotsRequest
-//
-// @return DescribeSnapshotsResponse
-func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -785,7 +590,7 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserResourcesResponse
-func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserResourcesResponse, _err error) {
+func (client *Client) DescribeUserResourcesWithContext(ctx context.Context, request *DescribeUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -910,29 +715,11 @@ func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserReso
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询用户资源列表
-//
-// @param request - DescribeUserResourcesRequest
-//
-// @return DescribeUserResourcesResponse
-func (client *Client) DescribeUserResources(request *DescribeUserResourcesRequest) (_result *DescribeUserResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserResourcesResponse{}
-	_body, _err := client.DescribeUserResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -945,7 +732,7 @@ func (client *Client) DescribeUserResources(request *DescribeUserResourcesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EncryptPasswordResponse
-func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest, runtime *dara.RuntimeOptions) (_result *EncryptPasswordResponse, _err error) {
+func (client *Client) EncryptPasswordWithContext(ctx context.Context, request *EncryptPasswordRequest, runtime *dara.RuntimeOptions) (_result *EncryptPasswordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -994,29 +781,11 @@ func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &EncryptPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Encrypts a password.
-//
-// @param request - EncryptPasswordRequest
-//
-// @return EncryptPasswordResponse
-func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result *EncryptPasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EncryptPasswordResponse{}
-	_body, _err := client.EncryptPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1029,7 +798,7 @@ func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCloudDriveServiceMountTokenResponse
-func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetCloudDriveServiceMountTokenRequest, runtime *dara.RuntimeOptions) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
+func (client *Client) GetCloudDriveServiceMountTokenWithContext(ctx context.Context, request *GetCloudDriveServiceMountTokenRequest, runtime *dara.RuntimeOptions) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1070,29 +839,11 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCloudDriveServiceMountTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取无影云盘的免密token
-//
-// @param request - GetCloudDriveServiceMountTokenRequest
-//
-// @return GetCloudDriveServiceMountTokenResponse
-func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServiceMountTokenRequest) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCloudDriveServiceMountTokenResponse{}
-	_body, _err := client.GetCloudDriveServiceMountTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1101,7 +852,7 @@ func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
+func (client *Client) GetConnectionTicketWithContext(ctx context.Context, request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1182,25 +933,11 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetConnectionTicketRequest
-//
-// @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.GetConnectionTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1213,7 +950,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLoginTokenResponse
-func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
+func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1316,29 +1053,11 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains logon credentials.
-//
-// @param request - GetLoginTokenRequest
-//
-// @return GetLoginTokenResponse
-func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *GetLoginTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLoginTokenResponse{}
-	_body, _err := client.GetLoginTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1351,7 +1070,7 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return IsKeepAliveResponse
-func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtime *dara.RuntimeOptions) (_result *IsKeepAliveResponse, _err error) {
+func (client *Client) IsKeepAliveWithContext(ctx context.Context, request *IsKeepAliveRequest, runtime *dara.RuntimeOptions) (_result *IsKeepAliveResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1384,29 +1103,11 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &IsKeepAliveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 是否保持登录判断接口
-//
-// @param request - IsKeepAliveRequest
-//
-// @return IsKeepAliveResponse
-func (client *Client) IsKeepAlive(request *IsKeepAliveRequest) (_result *IsKeepAliveResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &IsKeepAliveResponse{}
-	_body, _err := client.IsKeepAliveWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1419,7 +1120,7 @@ func (client *Client) IsKeepAlive(request *IsKeepAliveRequest) (_result *IsKeepA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryEdsAgentReportConfigResponse
-func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgentReportConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryEdsAgentReportConfigResponse, _err error) {
+func (client *Client) QueryEdsAgentReportConfigWithContext(ctx context.Context, request *QueryEdsAgentReportConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryEdsAgentReportConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1452,29 +1153,11 @@ func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgen
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryEdsAgentReportConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询Agent需要上报的配置信息
-//
-// @param request - QueryEdsAgentReportConfigRequest
-//
-// @return QueryEdsAgentReportConfigResponse
-func (client *Client) QueryEdsAgentReportConfig(request *QueryEdsAgentReportConfigRequest) (_result *QueryEdsAgentReportConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryEdsAgentReportConfigResponse{}
-	_body, _err := client.QueryEdsAgentReportConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1487,7 +1170,7 @@ func (client *Client) QueryEdsAgentReportConfig(request *QueryEdsAgentReportConf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebootDesktopsResponse
-func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, runtime *dara.RuntimeOptions) (_result *RebootDesktopsResponse, _err error) {
+func (client *Client) RebootDesktopsWithContext(ctx context.Context, request *RebootDesktopsRequest, runtime *dara.RuntimeOptions) (_result *RebootDesktopsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1552,29 +1235,11 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restart cloud computers.
-//
-// @param request - RebootDesktopsRequest
-//
-// @return RebootDesktopsResponse
-func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *RebootDesktopsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RebootDesktopsResponse{}
-	_body, _err := client.RebootDesktopsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1583,7 +1248,7 @@ func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshLoginTokenResponse
-func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
+func (client *Client) RefreshLoginTokenWithContext(ctx context.Context, request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1632,25 +1297,11 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RefreshLoginTokenRequest
-//
-// @return RefreshLoginTokenResponse
-func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_result *RefreshLoginTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.RefreshLoginTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1663,7 +1314,7 @@ func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportEdsAgentInfoResponse
-func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *ReportEdsAgentInfoResponse, _err error) {
+func (client *Client) ReportEdsAgentInfoWithContext(ctx context.Context, request *ReportEdsAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *ReportEdsAgentInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1700,29 +1351,11 @@ func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportEdsAgentInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 上报edsAgent的信息
-//
-// @param request - ReportEdsAgentInfoRequest
-//
-// @return ReportEdsAgentInfoResponse
-func (client *Client) ReportEdsAgentInfo(request *ReportEdsAgentInfoRequest) (_result *ReportEdsAgentInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportEdsAgentInfoResponse{}
-	_body, _err := client.ReportEdsAgentInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1731,7 +1364,7 @@ func (client *Client) ReportEdsAgentInfo(request *ReportEdsAgentInfoRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportSessionStatusResponse
-func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportSessionStatusResponse, _err error) {
+func (client *Client) ReportSessionStatusWithContext(ctx context.Context, request *ReportSessionStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportSessionStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1776,25 +1409,11 @@ func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportSessionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ReportSessionStatusRequest
-//
-// @return ReportSessionStatusResponse
-func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (_result *ReportSessionStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportSessionStatusResponse{}
-	_body, _err := client.ReportSessionStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1807,7 +1426,7 @@ func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetPasswordResponse
-func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetPasswordResponse, _err error) {
+func (client *Client) ResetPasswordWithContext(ctx context.Context, request *ResetPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetPasswordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1856,29 +1475,11 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resets a password.
-//
-// @param request - ResetPasswordRequest
-//
-// @return ResetPasswordResponse
-func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *ResetPasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetPasswordResponse{}
-	_body, _err := client.ResetPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1891,7 +1492,7 @@ func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *Res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetSnapshotResponse
-func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ResetSnapshotResponse, _err error) {
+func (client *Client) ResetSnapshotWithContext(ctx context.Context, request *ResetSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ResetSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1940,29 +1541,11 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restores the data of a disk from a snapshot.
-//
-// @param request - ResetSnapshotRequest
-//
-// @return ResetSnapshotResponse
-func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *ResetSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetSnapshotResponse{}
-	_body, _err := client.ResetSnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1975,7 +1558,7 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendTokenCodeResponse
-func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, runtime *dara.RuntimeOptions) (_result *SendTokenCodeResponse, _err error) {
+func (client *Client) SendTokenCodeWithContext(ctx context.Context, request *SendTokenCodeRequest, runtime *dara.RuntimeOptions) (_result *SendTokenCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2028,29 +1611,11 @@ func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendTokenCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a logon verification code.
-//
-// @param request - SendTokenCodeRequest
-//
-// @return SendTokenCodeResponse
-func (client *Client) SendTokenCode(request *SendTokenCodeRequest) (_result *SendTokenCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendTokenCodeResponse{}
-	_body, _err := client.SendTokenCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2059,7 +1624,7 @@ func (client *Client) SendTokenCode(request *SendTokenCodeRequest) (_result *Sen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetFingerPrintTemplateResponse
-func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateResponse, _err error) {
+func (client *Client) SetFingerPrintTemplateWithContext(ctx context.Context, request *SetFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2120,25 +1685,11 @@ func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintT
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetFingerPrintTemplateRequest
-//
-// @return SetFingerPrintTemplateResponse
-func (client *Client) SetFingerPrintTemplate(request *SetFingerPrintTemplateRequest) (_result *SetFingerPrintTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetFingerPrintTemplateResponse{}
-	_body, _err := client.SetFingerPrintTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2147,7 +1698,7 @@ func (client *Client) SetFingerPrintTemplate(request *SetFingerPrintTemplateRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetFingerPrintTemplateDescriptionResponse
-func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetFingerPrintTemplateDescriptionRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
+func (client *Client) SetFingerPrintTemplateDescriptionWithContext(ctx context.Context, request *SetFingerPrintTemplateDescriptionRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2196,25 +1747,11 @@ func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetF
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetFingerPrintTemplateDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetFingerPrintTemplateDescriptionRequest
-//
-// @return SetFingerPrintTemplateDescriptionResponse
-func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintTemplateDescriptionRequest) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetFingerPrintTemplateDescriptionResponse{}
-	_body, _err := client.SetFingerPrintTemplateDescriptionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2231,7 +1768,7 @@ func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDesktopsResponse
-func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StartDesktopsResponse, _err error) {
+func (client *Client) StartDesktopsWithContext(ctx context.Context, request *StartDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StartDesktopsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2288,33 +1825,11 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Start cloud computers.
-//
-// Description:
-//
-// The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
-//
-// @param request - StartDesktopsRequest
-//
-// @return StartDesktopsResponse
-func (client *Client) StartDesktops(request *StartDesktopsRequest) (_result *StartDesktopsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartDesktopsResponse{}
-	_body, _err := client.StartDesktopsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2323,7 +1838,7 @@ func (client *Client) StartDesktops(request *StartDesktopsRequest) (_result *Sta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartRecordContentResponse
-func (client *Client) StartRecordContentWithOptions(request *StartRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StartRecordContentResponse, _err error) {
+func (client *Client) StartRecordContentWithContext(ctx context.Context, request *StartRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StartRecordContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2376,25 +1891,11 @@ func (client *Client) StartRecordContentWithOptions(request *StartRecordContentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - StartRecordContentRequest
-//
-// @return StartRecordContentResponse
-func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_result *StartRecordContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartRecordContentResponse{}
-	_body, _err := client.StartRecordContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2411,7 +1912,7 @@ func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopDesktopsResponse
-func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StopDesktopsResponse, _err error) {
+func (client *Client) StopDesktopsWithContext(ctx context.Context, request *StopDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StopDesktopsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2476,33 +1977,11 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops cloud computers.
-//
-// Description:
-//
-// The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
-//
-// @param request - StopDesktopsRequest
-//
-// @return StopDesktopsResponse
-func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopDesktopsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopDesktopsResponse{}
-	_body, _err := client.StopDesktopsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2511,7 +1990,7 @@ func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopRecordContentResponse
-func (client *Client) StopRecordContentWithOptions(request *StopRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StopRecordContentResponse, _err error) {
+func (client *Client) StopRecordContentWithContext(ctx context.Context, request *StopRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StopRecordContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2560,25 +2039,11 @@ func (client *Client) StopRecordContentWithOptions(request *StopRecordContentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - StopRecordContentRequest
-//
-// @return StopRecordContentResponse
-func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_result *StopRecordContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopRecordContentResponse{}
-	_body, _err := client.StopRecordContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2591,7 +2056,7 @@ func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindUserDesktopResponse
-func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopRequest, runtime *dara.RuntimeOptions) (_result *UnbindUserDesktopResponse, _err error) {
+func (client *Client) UnbindUserDesktopWithContext(ctx context.Context, request *UnbindUserDesktopRequest, runtime *dara.RuntimeOptions) (_result *UnbindUserDesktopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2640,29 +2105,11 @@ func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindUserDesktopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds end users from cloud computers.
-//
-// @param request - UnbindUserDesktopRequest
-//
-// @return UnbindUserDesktopResponse
-func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_result *UnbindUserDesktopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindUserDesktopResponse{}
-	_body, _err := client.UnbindUserDesktopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2671,7 +2118,7 @@ func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyCredentialResponse
-func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialRequest, runtime *dara.RuntimeOptions) (_result *VerifyCredentialResponse, _err error) {
+func (client *Client) VerifyCredentialWithContext(ctx context.Context, request *VerifyCredentialRequest, runtime *dara.RuntimeOptions) (_result *VerifyCredentialResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2724,24 +2171,10 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - VerifyCredentialRequest
-//
-// @return VerifyCredentialResponse
-func (client *Client) VerifyCredential(request *VerifyCredentialRequest) (_result *VerifyCredentialResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyCredentialResponse{}
-	_body, _err := client.VerifyCredentialWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
