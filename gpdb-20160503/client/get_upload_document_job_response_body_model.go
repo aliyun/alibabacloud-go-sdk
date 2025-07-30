@@ -126,7 +126,8 @@ type GetUploadDocumentJobResponseBodyChunkResult struct {
 	// example:
 	//
 	// http://xxx/test.jsonl
-	ChunkFileUrl *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	ChunkFileUrl                *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
+	DocumentLoaderResultFileUrl *string `json:"DocumentLoaderResultFileUrl,omitempty" xml:"DocumentLoaderResultFileUrl,omitempty"`
 	// The URL of the file that does not contain metadata after chunking. The validity period of the URL is 2 hours. The file is in the TXT format. Each line is a chunk. The file can be easily used for embedding.
 	//
 	// example:
@@ -147,12 +148,21 @@ func (s *GetUploadDocumentJobResponseBodyChunkResult) GetChunkFileUrl() *string 
 	return s.ChunkFileUrl
 }
 
+func (s *GetUploadDocumentJobResponseBodyChunkResult) GetDocumentLoaderResultFileUrl() *string {
+	return s.DocumentLoaderResultFileUrl
+}
+
 func (s *GetUploadDocumentJobResponseBodyChunkResult) GetPlainChunkFileUrl() *string {
 	return s.PlainChunkFileUrl
 }
 
 func (s *GetUploadDocumentJobResponseBodyChunkResult) SetChunkFileUrl(v string) *GetUploadDocumentJobResponseBodyChunkResult {
 	s.ChunkFileUrl = &v
+	return s
+}
+
+func (s *GetUploadDocumentJobResponseBodyChunkResult) SetDocumentLoaderResultFileUrl(v string) *GetUploadDocumentJobResponseBodyChunkResult {
+	s.DocumentLoaderResultFileUrl = &v
 	return s
 }
 

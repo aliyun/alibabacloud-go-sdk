@@ -15,6 +15,8 @@ type iDescribeDocumentResponseBody interface {
 	GetDocsCount() *int32
 	SetDocumentLoader(v string) *DescribeDocumentResponseBody
 	GetDocumentLoader() *string
+	SetDocumentLoaderResultFileUrl(v string) *DescribeDocumentResponseBody
+	GetDocumentLoaderResultFileUrl() *string
 	SetFileExt(v string) *DescribeDocumentResponseBody
 	GetFileExt() *string
 	SetFileMd5(v string) *DescribeDocumentResponseBody
@@ -61,7 +63,8 @@ type DescribeDocumentResponseBody struct {
 	// example:
 	//
 	// RapidOCRPDFLoader
-	DocumentLoader *string `json:"DocumentLoader,omitempty" xml:"DocumentLoader,omitempty"`
+	DocumentLoader              *string `json:"DocumentLoader,omitempty" xml:"DocumentLoader,omitempty"`
+	DocumentLoaderResultFileUrl *string `json:"DocumentLoaderResultFileUrl,omitempty" xml:"DocumentLoaderResultFileUrl,omitempty"`
 	// File extension.
 	//
 	// example:
@@ -166,6 +169,10 @@ func (s *DescribeDocumentResponseBody) GetDocumentLoader() *string {
 	return s.DocumentLoader
 }
 
+func (s *DescribeDocumentResponseBody) GetDocumentLoaderResultFileUrl() *string {
+	return s.DocumentLoaderResultFileUrl
+}
+
 func (s *DescribeDocumentResponseBody) GetFileExt() *string {
 	return s.FileExt
 }
@@ -230,6 +237,11 @@ func (s *DescribeDocumentResponseBody) SetDocsCount(v int32) *DescribeDocumentRe
 
 func (s *DescribeDocumentResponseBody) SetDocumentLoader(v string) *DescribeDocumentResponseBody {
 	s.DocumentLoader = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetDocumentLoaderResultFileUrl(v string) *DescribeDocumentResponseBody {
+	s.DocumentLoaderResultFileUrl = &v
 	return s
 }
 
