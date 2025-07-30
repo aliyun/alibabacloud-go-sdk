@@ -15,6 +15,8 @@ type iCreateIndexRequest interface {
 	GetChunkSize() *int32
 	SetColumns(v []*CreateIndexRequestColumns) *CreateIndexRequest
 	GetColumns() []*CreateIndexRequestColumns
+	SetCreateIndexType(v string) *CreateIndexRequest
+	GetCreateIndexType() *string
 	SetDataSource(v *CreateIndexRequestDataSource) *CreateIndexRequest
 	GetDataSource() *CreateIndexRequestDataSource
 	SetDescription(v string) *CreateIndexRequest
@@ -23,6 +25,8 @@ type iCreateIndexRequest interface {
 	GetDocumentIds() []*string
 	SetEmbeddingModelName(v string) *CreateIndexRequest
 	GetEmbeddingModelName() *string
+	SetEnableRewrite(v bool) *CreateIndexRequest
+	GetEnableRewrite() *bool
 	SetName(v string) *CreateIndexRequest
 	GetName() *string
 	SetOverlapSize(v int32) *CreateIndexRequest
@@ -43,6 +47,8 @@ type iCreateIndexRequest interface {
 	GetSourceType() *string
 	SetStructureType(v string) *CreateIndexRequest
 	GetStructureType() *string
+	SetTableIds(v []*string) *CreateIndexRequest
+	GetTableIds() []*string
 	SetChunkMode(v string) *CreateIndexRequest
 	GetChunkMode() *string
 	SetEnableHeaders(v bool) *CreateIndexRequest
@@ -63,8 +69,9 @@ type CreateIndexRequest struct {
 	// example:
 	//
 	// 128
-	ChunkSize *int32                       `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	Columns   []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	ChunkSize       *int32                       `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	Columns         []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	CreateIndexType *string                      `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
 	// >  This parameter is not available. Do not specify this parameter.
 	DataSource *CreateIndexRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
@@ -81,6 +88,7 @@ type CreateIndexRequest struct {
 	//
 	// text-embedding-v2
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	EnableRewrite      *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	// The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
@@ -200,6 +208,7 @@ type CreateIndexRequest struct {
 	//
 	// structured
 	StructureType      *string                                 `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	TableIds           []*string                               `json:"TableIds,omitempty" xml:"TableIds,omitempty" type:"Repeated"`
 	ChunkMode          *string                                 `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
 	EnableHeaders      *bool                                   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	MetaExtractColumns []*CreateIndexRequestMetaExtractColumns `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty" type:"Repeated"`
@@ -225,6 +234,10 @@ func (s *CreateIndexRequest) GetColumns() []*CreateIndexRequestColumns {
 	return s.Columns
 }
 
+func (s *CreateIndexRequest) GetCreateIndexType() *string {
+	return s.CreateIndexType
+}
+
 func (s *CreateIndexRequest) GetDataSource() *CreateIndexRequestDataSource {
 	return s.DataSource
 }
@@ -239,6 +252,10 @@ func (s *CreateIndexRequest) GetDocumentIds() []*string {
 
 func (s *CreateIndexRequest) GetEmbeddingModelName() *string {
 	return s.EmbeddingModelName
+}
+
+func (s *CreateIndexRequest) GetEnableRewrite() *bool {
+	return s.EnableRewrite
 }
 
 func (s *CreateIndexRequest) GetName() *string {
@@ -281,6 +298,10 @@ func (s *CreateIndexRequest) GetStructureType() *string {
 	return s.StructureType
 }
 
+func (s *CreateIndexRequest) GetTableIds() []*string {
+	return s.TableIds
+}
+
 func (s *CreateIndexRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
@@ -308,6 +329,11 @@ func (s *CreateIndexRequest) SetColumns(v []*CreateIndexRequestColumns) *CreateI
 	return s
 }
 
+func (s *CreateIndexRequest) SetCreateIndexType(v string) *CreateIndexRequest {
+	s.CreateIndexType = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetDataSource(v *CreateIndexRequestDataSource) *CreateIndexRequest {
 	s.DataSource = v
 	return s
@@ -325,6 +351,11 @@ func (s *CreateIndexRequest) SetDocumentIds(v []*string) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetEmbeddingModelName(v string) *CreateIndexRequest {
 	s.EmbeddingModelName = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetEnableRewrite(v bool) *CreateIndexRequest {
+	s.EnableRewrite = &v
 	return s
 }
 
@@ -375,6 +406,11 @@ func (s *CreateIndexRequest) SetSourceType(v string) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetStructureType(v string) *CreateIndexRequest {
 	s.StructureType = &v
+	return s
+}
+
+func (s *CreateIndexRequest) SetTableIds(v []*string) *CreateIndexRequest {
+	s.TableIds = v
 	return s
 }
 

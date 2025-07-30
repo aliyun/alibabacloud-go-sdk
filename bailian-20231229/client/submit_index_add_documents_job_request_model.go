@@ -17,6 +17,8 @@ type iSubmitIndexAddDocumentsJobRequest interface {
 	GetChunkSize() *int32
 	SetDocumentIds(v []*string) *SubmitIndexAddDocumentsJobRequest
 	GetDocumentIds() []*string
+	SetEnableHeaders(v bool) *SubmitIndexAddDocumentsJobRequest
+	GetEnableHeaders() *bool
 	SetIndexId(v string) *SubmitIndexAddDocumentsJobRequest
 	GetIndexId() *string
 	SetOverlapSize(v int32) *SubmitIndexAddDocumentsJobRequest
@@ -33,7 +35,8 @@ type SubmitIndexAddDocumentsJobRequest struct {
 	ChunkMode   *string   `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
 	ChunkSize   *int32    `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	// The list of the primary key IDs of the documents.
-	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	DocumentIds   []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	EnableHeaders *bool     `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// This parameter is required.
@@ -84,6 +87,10 @@ func (s *SubmitIndexAddDocumentsJobRequest) GetDocumentIds() []*string {
 	return s.DocumentIds
 }
 
+func (s *SubmitIndexAddDocumentsJobRequest) GetEnableHeaders() *bool {
+	return s.EnableHeaders
+}
+
 func (s *SubmitIndexAddDocumentsJobRequest) GetIndexId() *string {
 	return s.IndexId
 }
@@ -117,6 +124,11 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetChunkSize(v int32) *SubmitIndexAd
 
 func (s *SubmitIndexAddDocumentsJobRequest) SetDocumentIds(v []*string) *SubmitIndexAddDocumentsJobRequest {
 	s.DocumentIds = v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetEnableHeaders(v bool) *SubmitIndexAddDocumentsJobRequest {
+	s.EnableHeaders = &v
 	return s
 }
 

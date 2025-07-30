@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("bailian"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddCategoryResponse
-func (client *Client) AddCategoryWithOptions(WorkspaceId *string, request *AddCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddCategoryResponse, _err error) {
+func (client *Client) AddCategoryWithContext(ctx context.Context, WorkspaceId *string, request *AddCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddCategoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -100,30 +52,11 @@ func (client *Client) AddCategoryWithOptions(WorkspaceId *string, request *AddCa
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 添加类目
-//
-// @param request - AddCategoryRequest
-//
-// @return AddCategoryResponse
-func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryRequest) (_result *AddCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddCategoryResponse{}
-	_body, _err := client.AddCategoryWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -150,7 +83,7 @@ func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddFileResponse
-func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFileResponse, _err error) {
+func (client *Client) AddFileWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFileResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -202,42 +135,11 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Imports an unstructured document stored in the temporary storage space to Data Management. You cannot use the API to import structured documents. Use the console instead.
-//
-// Description:
-//
-//	Before you call this operation, make sure that you have obtained the lease and uploaded the document to the temporary storage space by using the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. For more information, see [Upload files by calling API](https://www.alibabacloud.com/help/en/model-studio/developer-reference/upload-files-by-calling-api).
-//
-// >  After you call this operation, the used lease ID expires immediately. Do not use the same lease ID to submit new requests.
-//
-//   - You must call this operation within 12 hours after you call the [ApplyFileUploadLease](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-applyfileuploadlease) operation. Otherwise, the lease expires and the request fails.
-//
-//   - After you call this operation, the system parses and imports your document. The process takes some time.
-//
-//   - This interface is not idempotent.
-//
-// @param request - AddFileRequest
-//
-// @return AddFileResponse
-func (client *Client) AddFile(WorkspaceId *string, request *AddFileRequest) (_result *AddFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddFileResponse{}
-	_body, _err := client.AddFileWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -252,7 +154,7 @@ func (client *Client) AddFile(WorkspaceId *string, request *AddFileRequest) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddFilesFromAuthorizedOssResponse
-func (client *Client) AddFilesFromAuthorizedOssWithOptions(WorkspaceId *string, tmpReq *AddFilesFromAuthorizedOssRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFilesFromAuthorizedOssResponse, _err error) {
+func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddFilesFromAuthorizedOssRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddFilesFromAuthorizedOssResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -308,30 +210,11 @@ func (client *Client) AddFilesFromAuthorizedOssWithOptions(WorkspaceId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddFilesFromAuthorizedOssResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 将已授权OSS Bucket中的文件添加到百炼应用数据
-//
-// @param request - AddFilesFromAuthorizedOssRequest
-//
-// @return AddFilesFromAuthorizedOssResponse
-func (client *Client) AddFilesFromAuthorizedOss(WorkspaceId *string, request *AddFilesFromAuthorizedOssRequest) (_result *AddFilesFromAuthorizedOssResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddFilesFromAuthorizedOssResponse{}
-	_body, _err := client.AddFilesFromAuthorizedOssWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -356,7 +239,7 @@ func (client *Client) AddFilesFromAuthorizedOss(WorkspaceId *string, request *Ad
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyFileUploadLeaseResponse
-func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, WorkspaceId *string, request *ApplyFileUploadLeaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyFileUploadLeaseResponse, _err error) {
+func (client *Client) ApplyFileUploadLeaseWithContext(ctx context.Context, CategoryId *string, WorkspaceId *string, request *ApplyFileUploadLeaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ApplyFileUploadLeaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -398,40 +281,11 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyFileUploadLeaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Applies for a document upload lease to upload a document.
-//
-// Description:
-//
-//	  This operation returns an HTTP URL that can be used to upload an unstructured document (the lease) and parameters required for the upload. Structured documents are not supported.
-//
-//		- The HTTP URL returned by this operation is valid only for minutes. Upload the document before the URL expires.
-//
-//		- After you apply for a lease and upload a document, the document is stored in a temporary storage space for 12 hours.
-//
-//		- This interface is not idempotent.
-//
-// @param request - ApplyFileUploadLeaseRequest
-//
-// @return ApplyFileUploadLeaseResponse
-func (client *Client) ApplyFileUploadLease(CategoryId *string, WorkspaceId *string, request *ApplyFileUploadLeaseRequest) (_result *ApplyFileUploadLeaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ApplyFileUploadLeaseResponse{}
-	_body, _err := client.ApplyFileUploadLeaseWithOptions(CategoryId, WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -446,7 +300,7 @@ func (client *Client) ApplyFileUploadLease(CategoryId *string, WorkspaceId *stri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAndPulishAgentResponse
-func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpReq *CreateAndPulishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndPulishAgentResponse, _err error) {
+func (client *Client) CreateAndPulishAgentWithContext(ctx context.Context, workspaceId *string, tmpReq *CreateAndPulishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndPulishAgentResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -498,30 +352,11 @@ func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAndPulishAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建并发布智能体应用
-//
-// @param request - CreateAndPulishAgentRequest
-//
-// @return CreateAndPulishAgentResponse
-func (client *Client) CreateAndPulishAgent(workspaceId *string, request *CreateAndPulishAgentRequest) (_result *CreateAndPulishAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateAndPulishAgentResponse{}
-	_body, _err := client.CreateAndPulishAgentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -544,7 +379,7 @@ func (client *Client) CreateAndPulishAgent(workspaceId *string, request *CreateA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateIndexResponse
-func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *CreateIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
+func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *string, tmpReq *CreateIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -684,38 +519,11 @@ func (client *Client) CreateIndexWithOptions(WorkspaceId *string, tmpReq *Create
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an unstructured knowledge base and imports one or more parsed documents into the knowledge base. You cannot create a structured knowledge base by calling an API operation. Use the console instead.
-//
-// Description:
-//
-// 1.  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-//
-// 2.  This operation only initializes a knowledge base creation job. You must also call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to complete the job.
-//
-// 3.  This interface is not idempotent.
-//
-// @param request - CreateIndexRequest
-//
-// @return CreateIndexResponse
-func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexRequest) (_result *CreateIndexResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateIndexResponse{}
-	_body, _err := client.CreateIndexWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -730,7 +538,7 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMemoryResponse
-func (client *Client) CreateMemoryWithOptions(workspaceId *string, request *CreateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryResponse, _err error) {
+func (client *Client) CreateMemoryWithContext(ctx context.Context, workspaceId *string, request *CreateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -756,30 +564,11 @@ func (client *Client) CreateMemoryWithOptions(workspaceId *string, request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Memory
-//
-// @param request - CreateMemoryRequest
-//
-// @return CreateMemoryResponse
-func (client *Client) CreateMemory(workspaceId *string, request *CreateMemoryRequest) (_result *CreateMemoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateMemoryResponse{}
-	_body, _err := client.CreateMemoryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -794,7 +583,7 @@ func (client *Client) CreateMemory(workspaceId *string, request *CreateMemoryReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateMemoryNodeResponse
-func (client *Client) CreateMemoryNodeWithOptions(workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryNodeResponse, _err error) {
+func (client *Client) CreateMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryNodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -820,30 +609,11 @@ func (client *Client) CreateMemoryNodeWithOptions(workspaceId *string, memoryId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建记忆Node
-//
-// @param request - CreateMemoryNodeRequest
-//
-// @return CreateMemoryNodeResponse
-func (client *Client) CreateMemoryNode(workspaceId *string, memoryId *string, request *CreateMemoryNodeRequest) (_result *CreateMemoryNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateMemoryNodeResponse{}
-	_body, _err := client.CreateMemoryNodeWithOptions(workspaceId, memoryId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -858,7 +628,7 @@ func (client *Client) CreateMemoryNode(workspaceId *string, memoryId *string, re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePromptTemplateResponse
-func (client *Client) CreatePromptTemplateWithOptions(workspaceId *string, request *CreatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePromptTemplateResponse, _err error) {
+func (client *Client) CreatePromptTemplateWithContext(ctx context.Context, workspaceId *string, request *CreatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePromptTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -888,30 +658,11 @@ func (client *Client) CreatePromptTemplateWithOptions(workspaceId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a prompt template.
-//
-// @param request - CreatePromptTemplateRequest
-//
-// @return CreatePromptTemplateResponse
-func (client *Client) CreatePromptTemplate(workspaceId *string, request *CreatePromptTemplateRequest) (_result *CreatePromptTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePromptTemplateResponse{}
-	_body, _err := client.CreatePromptTemplateWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -924,7 +675,7 @@ func (client *Client) CreatePromptTemplate(workspaceId *string, request *CreateP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAgentResponse
-func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+func (client *Client) DeleteAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -940,28 +691,11 @@ func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除智能体
-//
-// @return DeleteAgentResponse
-func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result *DeleteAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAgentResponse{}
-	_body, _err := client.DeleteAgentWithOptions(workspaceId, appCode, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -974,7 +708,7 @@ func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCategoryResponse
-func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -990,28 +724,11 @@ func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除类目
-//
-// @return DeleteCategoryResponse
-func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_result *DeleteCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteCategoryResponse{}
-	_body, _err := client.DeleteCategoryWithOptions(CategoryId, WorkspaceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1024,7 +741,7 @@ func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFileResponse
-func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteFileWithContext(ctx context.Context, FileId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1040,28 +757,11 @@ func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除文档
-//
-// @return DeleteFileResponse
-func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *DeleteFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteFileResponse{}
-	_body, _err := client.DeleteFileWithOptions(FileId, WorkspaceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1088,7 +788,7 @@ func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIndexResponse
-func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *DeleteIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
+func (client *Client) DeleteIndexWithContext(ctx context.Context, WorkspaceId *string, request *DeleteIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1114,42 +814,11 @@ func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *Delet
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a specified knowledge base permanently.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- If a knowledge base is being called by an application, disassociate the knowledge base before you can delete it. To disassociate the knowledge base, you must use the console. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base).
-//
-//		- After you delete a knowledge base, it cannot be recovered. We recommend that you proceed with caution.
-//
-//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
-//
-//		- This interface is idempotent.
-//
-// @param request - DeleteIndexRequest
-//
-// @return DeleteIndexResponse
-func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexRequest) (_result *DeleteIndexResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteIndexResponse{}
-	_body, _err := client.DeleteIndexWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1176,7 +845,7 @@ func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIndexDocumentResponse
-func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq *DeleteIndexDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexDocumentResponse, _err error) {
+func (client *Client) DeleteIndexDocumentWithContext(ctx context.Context, WorkspaceId *string, tmpReq *DeleteIndexDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIndexDocumentResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1212,42 +881,11 @@ func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIndexDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes one or more documents from a specified unstructured knowledge base permanently.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- Only documents with the INSERT_ERROR and FINISH states can be deleted. To query the status of documents in a specified knowledge base, call the [ListIndexDocuments](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-listindexdocuments) operation.
-//
-//		- After you delete a document, it cannot be recovered and the [Retrieve](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-retrieve) operation cannot query information about the document. We recommend that you proceed with caution.
-//
-//		- Imported documents are not deleted from the [Data Management](https://bailian.console.aliyun.com/#/data-center) if you call this operation.
-//
-//		- This interface is idempotent.
-//
-// @param request - DeleteIndexDocumentRequest
-//
-// @return DeleteIndexDocumentResponse
-func (client *Client) DeleteIndexDocument(WorkspaceId *string, request *DeleteIndexDocumentRequest) (_result *DeleteIndexDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteIndexDocumentResponse{}
-	_body, _err := client.DeleteIndexDocumentWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1260,7 +898,7 @@ func (client *Client) DeleteIndexDocument(WorkspaceId *string, request *DeleteIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1276,28 +914,11 @@ func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除memory
-//
-// @return DeleteMemoryResponse
-func (client *Client) DeleteMemory(workspaceId *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteMemoryResponse{}
-	_body, _err := client.DeleteMemoryWithOptions(workspaceId, memoryId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1310,7 +931,7 @@ func (client *Client) DeleteMemory(workspaceId *string, memoryId *string) (_resu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryNodeResponse
-func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+func (client *Client) DeleteMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1326,28 +947,11 @@ func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除记忆Node
-//
-// @return DeleteMemoryNodeResponse
-func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *DeleteMemoryNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteMemoryNodeResponse{}
-	_body, _err := client.DeleteMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1360,7 +964,7 @@ func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, me
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePromptTemplateResponse
-func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+func (client *Client) DeletePromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1376,28 +980,11 @@ func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a prompt template based on the template ID.
-//
-// @return DeletePromptTemplateResponse
-func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId *string) (_result *DeletePromptTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeletePromptTemplateResponse{}
-	_body, _err := client.DeletePromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1420,7 +1007,7 @@ func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFileResponse
-func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
+func (client *Client) DescribeFileWithContext(ctx context.Context, WorkspaceId *string, FileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1436,38 +1023,11 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an unstructured document.
-//
-// Description:
-//
-// Before you call this API, make sure that your document is uploaded to the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page of Alibaba Cloud Model Studio.
-//
-//   - You can also call this operation to query unstructured documents that you upload on the [Data Management](https://bailian.console.aliyun.com/knowledge-base#/data-center) page.
-//
-//   - This operation is idempotent.
-//
-// **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
-//
-// @return DescribeFileResponse
-func (client *Client) DescribeFile(WorkspaceId *string, FileId *string) (_result *DescribeFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeFileResponse{}
-	_body, _err := client.DescribeFileWithOptions(WorkspaceId, FileId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1490,7 +1050,7 @@ func (client *Client) DescribeFile(WorkspaceId *string, FileId *string) (_result
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIndexJobStatusResponse
-func (client *Client) GetIndexJobStatusWithOptions(WorkspaceId *string, request *GetIndexJobStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIndexJobStatusResponse, _err error) {
+func (client *Client) GetIndexJobStatusWithContext(ctx context.Context, WorkspaceId *string, request *GetIndexJobStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIndexJobStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1528,38 +1088,11 @@ func (client *Client) GetIndexJobStatusWithOptions(WorkspaceId *string, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIndexJobStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the current status of a specified knowledge base creation or add document job.
-//
-// Description:
-//
-// 1.  A knowledge base job is running. You can call the [SubmitIndexJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexjob) operation to create a creation job or the [SubmitIndexAddDocumentsJob](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-submitindexadddocumentsjob) operation to create a add document job. Then, obtain the `JobId` returned by the operations.
-//
-// 2.  We recommend that you call this operation at intervals of more than 5 seconds.
-//
-// 3.  This interface is idempotent.
-//
-// @param request - GetIndexJobStatusRequest
-//
-// @return GetIndexJobStatusResponse
-func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJobStatusRequest) (_result *GetIndexJobStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetIndexJobStatusResponse{}
-	_body, _err := client.GetIndexJobStatusWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1572,7 +1105,7 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryResponse
-func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1588,28 +1121,11 @@ func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取memory
-//
-// @return GetMemoryResponse
-func (client *Client) GetMemory(workspaceId *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMemoryResponse{}
-	_body, _err := client.GetMemoryWithOptions(workspaceId, memoryId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1622,7 +1138,7 @@ func (client *Client) GetMemory(workspaceId *string, memoryId *string) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryNodeResponse
-func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+func (client *Client) GetMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1638,28 +1154,11 @@ func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取记忆Node
-//
-// @return GetMemoryNodeResponse
-func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *GetMemoryNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMemoryNodeResponse{}
-	_body, _err := client.GetMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1672,7 +1171,7 @@ func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPromptTemplateResponse
-func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+func (client *Client) GetPromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1688,28 +1187,11 @@ func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a prompt template based on the template ID.
-//
-// @return GetPromptTemplateResponse
-func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *string) (_result *GetPromptTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPromptTemplateResponse{}
-	_body, _err := client.GetPromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1722,7 +1204,7 @@ func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPublishedAgentResponse
-func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+func (client *Client) GetPublishedAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1738,28 +1220,11 @@ func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPublishedAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取发布态智能体应用
-//
-// @return GetPublishedAgentResponse
-func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_result *GetPublishedAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPublishedAgentResponse{}
-	_body, _err := client.GetPublishedAgentWithOptions(workspaceId, appCode, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1774,7 +1239,7 @@ func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCategoryResponse
-func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *ListCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
+func (client *Client) ListCategoryWithContext(ctx context.Context, WorkspaceId *string, request *ListCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1816,30 +1281,11 @@ func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCategoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListCategory
-//
-// @param request - ListCategoryRequest
-//
-// @return ListCategoryResponse
-func (client *Client) ListCategory(WorkspaceId *string, request *ListCategoryRequest) (_result *ListCategoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListCategoryResponse{}
-	_body, _err := client.ListCategoryWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1860,7 +1306,7 @@ func (client *Client) ListCategory(WorkspaceId *string, request *ListCategoryReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChunksResponse
-func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListChunksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListChunksResponse, _err error) {
+func (client *Client) ListChunksWithContext(ctx context.Context, WorkspaceId *string, request *ListChunksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListChunksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1906,36 +1352,11 @@ func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListCh
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChunksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// For unstructured knowledge base, obtains the details of all chunks of a specified document; for structured knowledge base, obtains the details of all chunks.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- This interface is idempotent.
-//
-// @param request - ListChunksRequest
-//
-// @return ListChunksResponse
-func (client *Client) ListChunks(WorkspaceId *string, request *ListChunksRequest) (_result *ListChunksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListChunksResponse{}
-	_body, _err := client.ListChunksWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1950,7 +1371,7 @@ func (client *Client) ListChunks(WorkspaceId *string, request *ListChunksRequest
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFileResponse
-func (client *Client) ListFileWithOptions(WorkspaceId *string, request *ListFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFileResponse, _err error) {
+func (client *Client) ListFileWithContext(ctx context.Context, WorkspaceId *string, request *ListFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1988,30 +1409,11 @@ func (client *Client) ListFileWithOptions(WorkspaceId *string, request *ListFile
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取文档列表
-//
-// @param request - ListFileRequest
-//
-// @return ListFileResponse
-func (client *Client) ListFile(WorkspaceId *string, request *ListFileRequest) (_result *ListFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListFileResponse{}
-	_body, _err := client.ListFileWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2032,7 +1434,7 @@ func (client *Client) ListFile(WorkspaceId *string, request *ListFileRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIndexDocumentsResponse
-func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request *ListIndexDocumentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndexDocumentsResponse, _err error) {
+func (client *Client) ListIndexDocumentsWithContext(ctx context.Context, WorkspaceId *string, request *ListIndexDocumentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndexDocumentsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2078,36 +1480,11 @@ func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIndexDocumentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of one or more documents in a specified knowledge base.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- This interface is idempotent.
-//
-// @param request - ListIndexDocumentsRequest
-//
-// @return ListIndexDocumentsResponse
-func (client *Client) ListIndexDocuments(WorkspaceId *string, request *ListIndexDocumentsRequest) (_result *ListIndexDocumentsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListIndexDocumentsResponse{}
-	_body, _err := client.ListIndexDocumentsWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2126,7 +1503,7 @@ func (client *Client) ListIndexDocuments(WorkspaceId *string, request *ListIndex
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIndicesResponse
-func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListIndicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
+func (client *Client) ListIndicesWithContext(ctx context.Context, WorkspaceId *string, request *ListIndicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2160,34 +1537,11 @@ func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIndicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists knowledge bases in a specified workspace.
-//
-// Description:
-//
-// This interface is idempotent.
-//
-// @param request - ListIndicesRequest
-//
-// @return ListIndicesResponse
-func (client *Client) ListIndices(WorkspaceId *string, request *ListIndicesRequest) (_result *ListIndicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListIndicesResponse{}
-	_body, _err := client.ListIndicesWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2202,7 +1556,7 @@ func (client *Client) ListIndices(WorkspaceId *string, request *ListIndicesReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMemoriesResponse
-func (client *Client) ListMemoriesWithOptions(workspaceId *string, request *ListMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoriesResponse, _err error) {
+func (client *Client) ListMemoriesWithContext(ctx context.Context, workspaceId *string, request *ListMemoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2232,30 +1586,11 @@ func (client *Client) ListMemoriesWithOptions(workspaceId *string, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMemoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取memory
-//
-// @param request - ListMemoriesRequest
-//
-// @return ListMemoriesResponse
-func (client *Client) ListMemories(workspaceId *string, request *ListMemoriesRequest) (_result *ListMemoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListMemoriesResponse{}
-	_body, _err := client.ListMemoriesWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2270,7 +1605,7 @@ func (client *Client) ListMemories(workspaceId *string, request *ListMemoriesReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMemoryNodesResponse
-func (client *Client) ListMemoryNodesWithOptions(workspaceId *string, memoryId *string, request *ListMemoryNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryNodesResponse, _err error) {
+func (client *Client) ListMemoryNodesWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *ListMemoryNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMemoryNodesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2300,30 +1635,11 @@ func (client *Client) ListMemoryNodesWithOptions(workspaceId *string, memoryId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMemoryNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取记忆Node列表
-//
-// @param request - ListMemoryNodesRequest
-//
-// @return ListMemoryNodesResponse
-func (client *Client) ListMemoryNodes(workspaceId *string, memoryId *string, request *ListMemoryNodesRequest) (_result *ListMemoryNodesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListMemoryNodesResponse{}
-	_body, _err := client.ListMemoryNodesWithOptions(workspaceId, memoryId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2338,7 +1654,7 @@ func (client *Client) ListMemoryNodes(workspaceId *string, memoryId *string, req
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPromptTemplatesResponse
-func (client *Client) ListPromptTemplatesWithOptions(workspaceId *string, request *ListPromptTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPromptTemplatesResponse, _err error) {
+func (client *Client) ListPromptTemplatesWithContext(ctx context.Context, workspaceId *string, request *ListPromptTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPromptTemplatesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2376,30 +1692,11 @@ func (client *Client) ListPromptTemplatesWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPromptTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a list of prompt templates.
-//
-// @param request - ListPromptTemplatesRequest
-//
-// @return ListPromptTemplatesResponse
-func (client *Client) ListPromptTemplates(workspaceId *string, request *ListPromptTemplatesRequest) (_result *ListPromptTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPromptTemplatesResponse{}
-	_body, _err := client.ListPromptTemplatesWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2414,7 +1711,7 @@ func (client *Client) ListPromptTemplates(workspaceId *string, request *ListProm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPublishedAgentResponse
-func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request *ListPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
+func (client *Client) ListPublishedAgentWithContext(ctx context.Context, workspaceId *string, request *ListPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2444,30 +1741,11 @@ func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublishedAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询已发布的智能体应用列表
-//
-// @param request - ListPublishedAgentRequest
-//
-// @return ListPublishedAgentResponse
-func (client *Client) ListPublishedAgent(workspaceId *string, request *ListPublishedAgentRequest) (_result *ListPublishedAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPublishedAgentResponse{}
-	_body, _err := client.ListPublishedAgentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2490,7 +1768,7 @@ func (client *Client) ListPublishedAgent(workspaceId *string, request *ListPubli
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetrieveResponse
-func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetrieveResponse, _err error) {
+func (client *Client) RetrieveWithContext(ctx context.Context, WorkspaceId *string, tmpReq *RetrieveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RetrieveResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2590,38 +1868,11 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetrieveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information from a specified knowledge base.
-//
-// Description:
-//
-//	  Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- The response time may be long because this operation involves complex retrieval and matching. We recommend that you set appropriate timeout and retry policy for requests.
-//
-//		- This interface is idempotent.
-//
-// @param request - RetrieveRequest
-//
-// @return RetrieveResponse
-func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_result *RetrieveResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RetrieveResponse{}
-	_body, _err := client.RetrieveWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2646,7 +1897,7 @@ func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitIndexAddDocumentsJobResponse
-func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string, tmpReq *SubmitIndexAddDocumentsJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
+func (client *Client) SubmitIndexAddDocumentsJobWithContext(ctx context.Context, WorkspaceId *string, tmpReq *SubmitIndexAddDocumentsJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2714,40 +1965,11 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitIndexAddDocumentsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds parsed documents to an unstructured knowledge base.
-//
-// Description:
-//
-//	  You must first upload documents to [Data Management](https://bailian.console.aliyun.com/#/data-center) and obtain the `FileId`. The documents are the knowledge source of the knowledge base. For more information, see [Import Data](https://www.alibabacloud.com/help/en/model-studio/user-guide/data-import-instructions).
-//
-//		- Before you call this operation, make sure that your knowledge base is created and is not deleted. That is, the primary key ID of the knowledge base `IndexId` is valid.
-//
-//		- After you call this operation, you can call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation to query the status of the job. More than 20 calls to the GetIndexJobStatus operation per minute may trigger throttling.
-//
-//		- Execution takes a period of time after this operation is called. Do not make new request before the request is returned. This interface is not idempotent.
-//
-// @param request - SubmitIndexAddDocumentsJobRequest
-//
-// @return SubmitIndexAddDocumentsJobResponse
-func (client *Client) SubmitIndexAddDocumentsJob(WorkspaceId *string, request *SubmitIndexAddDocumentsJobRequest) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SubmitIndexAddDocumentsJobResponse{}
-	_body, _err := client.SubmitIndexAddDocumentsJobWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2772,7 +1994,7 @@ func (client *Client) SubmitIndexAddDocumentsJob(WorkspaceId *string, request *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitIndexJobResponse
-func (client *Client) SubmitIndexJobWithOptions(WorkspaceId *string, request *SubmitIndexJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexJobResponse, _err error) {
+func (client *Client) SubmitIndexJobWithContext(ctx context.Context, WorkspaceId *string, request *SubmitIndexJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitIndexJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2798,40 +2020,11 @@ func (client *Client) SubmitIndexJobWithOptions(WorkspaceId *string, request *Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitIndexJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a specified CreateIndex job to complete knowledge base creation.
-//
-// Description:
-//
-// 1.  Before you call this operation, you must call the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation and obtain the `IndexId`.
-//
-// 2.  Execution takes a period of time after this operation is called. Do not make new request before the request is returned.
-//
-// 3.  If you want to query the execution status of the job after you call this operation, call the [GetIndexJobStatus](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-getindexjobstatus) operation.
-//
-// 4.  This interface is not idempotent.
-//
-// @param request - SubmitIndexJobRequest
-//
-// @return SubmitIndexJobResponse
-func (client *Client) SubmitIndexJob(WorkspaceId *string, request *SubmitIndexJobRequest) (_result *SubmitIndexJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SubmitIndexJobResponse{}
-	_body, _err := client.SubmitIndexJobWithOptions(WorkspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2846,7 +2039,7 @@ func (client *Client) SubmitIndexJob(WorkspaceId *string, request *SubmitIndexJo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAndPublishAgentResponse
-func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentResponse, _err error) {
+func (client *Client) UpdateAndPublishAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2898,30 +2091,11 @@ func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appC
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAndPublishAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新并发布智能体应用
-//
-// @param request - UpdateAndPublishAgentRequest
-//
-// @return UpdateAndPublishAgentResponse
-func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string, request *UpdateAndPublishAgentRequest) (_result *UpdateAndPublishAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateAndPublishAgentResponse{}
-	_body, _err := client.UpdateAndPublishAgentWithOptions(workspaceId, appCode, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2936,7 +2110,7 @@ func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAndPublishAgentSelectiveResponse
-func (client *Client) UpdateAndPublishAgentSelectiveWithOptions(workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentSelectiveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
+func (client *Client) UpdateAndPublishAgentSelectiveWithContext(ctx context.Context, workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentSelectiveRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2988,30 +2162,11 @@ func (client *Client) UpdateAndPublishAgentSelectiveWithOptions(workspaceId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAndPublishAgentSelectiveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 选择更新并发布智能体应用
-//
-// @param request - UpdateAndPublishAgentSelectiveRequest
-//
-// @return UpdateAndPublishAgentSelectiveResponse
-func (client *Client) UpdateAndPublishAgentSelective(workspaceId *string, appCode *string, request *UpdateAndPublishAgentSelectiveRequest) (_result *UpdateAndPublishAgentSelectiveResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateAndPublishAgentSelectiveResponse{}
-	_body, _err := client.UpdateAndPublishAgentSelectiveWithOptions(workspaceId, appCode, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3026,7 +2181,7 @@ func (client *Client) UpdateAndPublishAgentSelective(workspaceId *string, appCod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFileTagResponse
-func (client *Client) UpdateFileTagWithOptions(WorkspaceId *string, FileId *string, tmpReq *UpdateFileTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFileTagResponse, _err error) {
+func (client *Client) UpdateFileTagWithContext(ctx context.Context, WorkspaceId *string, FileId *string, tmpReq *UpdateFileTagRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFileTagResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3058,30 +2213,11 @@ func (client *Client) UpdateFileTagWithOptions(WorkspaceId *string, FileId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFileTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新文档Tag
-//
-// @param request - UpdateFileTagRequest
-//
-// @return UpdateFileTagResponse
-func (client *Client) UpdateFileTag(WorkspaceId *string, FileId *string, request *UpdateFileTagRequest) (_result *UpdateFileTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateFileTagResponse{}
-	_body, _err := client.UpdateFileTagWithOptions(WorkspaceId, FileId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3096,7 +2232,7 @@ func (client *Client) UpdateFileTag(WorkspaceId *string, FileId *string, request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMemoryResponse
-func (client *Client) UpdateMemoryWithOptions(workspaceId *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
+func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3122,30 +2258,11 @@ func (client *Client) UpdateMemoryWithOptions(workspaceId *string, memoryId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMemoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新memory
-//
-// @param request - UpdateMemoryRequest
-//
-// @return UpdateMemoryResponse
-func (client *Client) UpdateMemory(workspaceId *string, memoryId *string, request *UpdateMemoryRequest) (_result *UpdateMemoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateMemoryResponse{}
-	_body, _err := client.UpdateMemoryWithOptions(workspaceId, memoryId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3160,7 +2277,7 @@ func (client *Client) UpdateMemory(workspaceId *string, memoryId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMemoryNodeResponse
-func (client *Client) UpdateMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryNodeResponse, _err error) {
+func (client *Client) UpdateMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryNodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3186,30 +2303,11 @@ func (client *Client) UpdateMemoryNodeWithOptions(workspaceId *string, memoryId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMemoryNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新记忆Node
-//
-// @param request - UpdateMemoryNodeRequest
-//
-// @return UpdateMemoryNodeResponse
-func (client *Client) UpdateMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string, request *UpdateMemoryNodeRequest) (_result *UpdateMemoryNodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateMemoryNodeResponse{}
-	_body, _err := client.UpdateMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3224,7 +2322,7 @@ func (client *Client) UpdateMemoryNode(workspaceId *string, memoryId *string, me
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePromptTemplateResponse
-func (client *Client) UpdatePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePromptTemplateResponse, _err error) {
+func (client *Client) UpdatePromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePromptTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3254,29 +2352,10 @@ func (client *Client) UpdatePromptTemplateWithOptions(workspaceId *string, promp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePromptTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a prompt template based on the template ID.
-//
-// @param request - UpdatePromptTemplateRequest
-//
-// @return UpdatePromptTemplateResponse
-func (client *Client) UpdatePromptTemplate(workspaceId *string, promptTemplateId *string, request *UpdatePromptTemplateRequest) (_result *UpdatePromptTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdatePromptTemplateResponse{}
-	_body, _err := client.UpdatePromptTemplateWithOptions(workspaceId, promptTemplateId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

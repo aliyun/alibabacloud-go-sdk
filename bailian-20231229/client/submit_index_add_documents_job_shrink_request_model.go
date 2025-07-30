@@ -17,6 +17,8 @@ type iSubmitIndexAddDocumentsJobShrinkRequest interface {
 	GetChunkSize() *int32
 	SetDocumentIdsShrink(v string) *SubmitIndexAddDocumentsJobShrinkRequest
 	GetDocumentIdsShrink() *string
+	SetEnableHeaders(v bool) *SubmitIndexAddDocumentsJobShrinkRequest
+	GetEnableHeaders() *bool
 	SetIndexId(v string) *SubmitIndexAddDocumentsJobShrinkRequest
 	GetIndexId() *string
 	SetOverlapSize(v int32) *SubmitIndexAddDocumentsJobShrinkRequest
@@ -34,6 +36,7 @@ type SubmitIndexAddDocumentsJobShrinkRequest struct {
 	ChunkSize         *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	// The list of the primary key IDs of the documents.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	EnableHeaders     *bool   `json:"EnableHeaders,omitempty" xml:"EnableHeaders,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// This parameter is required.
@@ -84,6 +87,10 @@ func (s *SubmitIndexAddDocumentsJobShrinkRequest) GetDocumentIdsShrink() *string
 	return s.DocumentIdsShrink
 }
 
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) GetEnableHeaders() *bool {
+	return s.EnableHeaders
+}
+
 func (s *SubmitIndexAddDocumentsJobShrinkRequest) GetIndexId() *string {
 	return s.IndexId
 }
@@ -117,6 +124,11 @@ func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetChunkSize(v int32) *SubmitI
 
 func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetDocumentIdsShrink(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
 	s.DocumentIdsShrink = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetEnableHeaders(v bool) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.EnableHeaders = &v
 	return s
 }
 

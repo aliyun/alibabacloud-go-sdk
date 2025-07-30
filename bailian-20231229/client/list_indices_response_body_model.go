@@ -205,7 +205,8 @@ type ListIndicesResponseBodyDataIndices struct {
 	// example:
 	//
 	// 5
-	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ChunkSize  *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ConfgModel *string `json:"ConfgModel,omitempty" xml:"ConfgModel,omitempty"`
 	// The description of the knowledge base.
 	//
 	// example:
@@ -222,6 +223,7 @@ type ListIndicesResponseBodyDataIndices struct {
 	//
 	// conv-rewrite-qwen-1.8b
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	EnableRewrite      *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
 	//
 	// example:
@@ -344,6 +346,10 @@ func (s *ListIndicesResponseBodyDataIndices) GetChunkSize() *int32 {
 	return s.ChunkSize
 }
 
+func (s *ListIndicesResponseBodyDataIndices) GetConfgModel() *string {
+	return s.ConfgModel
+}
+
 func (s *ListIndicesResponseBodyDataIndices) GetDescription() *string {
 	return s.Description
 }
@@ -354,6 +360,10 @@ func (s *ListIndicesResponseBodyDataIndices) GetDocumentIds() []*string {
 
 func (s *ListIndicesResponseBodyDataIndices) GetEmbeddingModelName() *string {
 	return s.EmbeddingModelName
+}
+
+func (s *ListIndicesResponseBodyDataIndices) GetEnableRewrite() *bool {
+	return s.EnableRewrite
 }
 
 func (s *ListIndicesResponseBodyDataIndices) GetId() *string {
@@ -405,6 +415,11 @@ func (s *ListIndicesResponseBodyDataIndices) SetChunkSize(v int32) *ListIndicesR
 	return s
 }
 
+func (s *ListIndicesResponseBodyDataIndices) SetConfgModel(v string) *ListIndicesResponseBodyDataIndices {
+	s.ConfgModel = &v
+	return s
+}
+
 func (s *ListIndicesResponseBodyDataIndices) SetDescription(v string) *ListIndicesResponseBodyDataIndices {
 	s.Description = &v
 	return s
@@ -417,6 +432,11 @@ func (s *ListIndicesResponseBodyDataIndices) SetDocumentIds(v []*string) *ListIn
 
 func (s *ListIndicesResponseBodyDataIndices) SetEmbeddingModelName(v string) *ListIndicesResponseBodyDataIndices {
 	s.EmbeddingModelName = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetEnableRewrite(v bool) *ListIndicesResponseBodyDataIndices {
+	s.EnableRewrite = &v
 	return s
 }
 

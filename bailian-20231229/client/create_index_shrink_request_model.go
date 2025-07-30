@@ -15,6 +15,8 @@ type iCreateIndexShrinkRequest interface {
 	GetChunkSize() *int32
 	SetColumnsShrink(v string) *CreateIndexShrinkRequest
 	GetColumnsShrink() *string
+	SetCreateIndexType(v string) *CreateIndexShrinkRequest
+	GetCreateIndexType() *string
 	SetDataSourceShrink(v string) *CreateIndexShrinkRequest
 	GetDataSourceShrink() *string
 	SetDescription(v string) *CreateIndexShrinkRequest
@@ -23,6 +25,8 @@ type iCreateIndexShrinkRequest interface {
 	GetDocumentIdsShrink() *string
 	SetEmbeddingModelName(v string) *CreateIndexShrinkRequest
 	GetEmbeddingModelName() *string
+	SetEnableRewrite(v bool) *CreateIndexShrinkRequest
+	GetEnableRewrite() *bool
 	SetName(v string) *CreateIndexShrinkRequest
 	GetName() *string
 	SetOverlapSize(v int32) *CreateIndexShrinkRequest
@@ -43,6 +47,8 @@ type iCreateIndexShrinkRequest interface {
 	GetSourceType() *string
 	SetStructureType(v string) *CreateIndexShrinkRequest
 	GetStructureType() *string
+	SetTableIdsShrink(v string) *CreateIndexShrinkRequest
+	GetTableIdsShrink() *string
 	SetChunkMode(v string) *CreateIndexShrinkRequest
 	GetChunkMode() *string
 	SetEnableHeaders(v bool) *CreateIndexShrinkRequest
@@ -63,8 +69,9 @@ type CreateIndexShrinkRequest struct {
 	// example:
 	//
 	// 128
-	ChunkSize     *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	ChunkSize       *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	ColumnsShrink   *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	CreateIndexType *string `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
 	// >  This parameter is not available. Do not specify this parameter.
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
@@ -81,6 +88,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// text-embedding-v2
 	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	EnableRewrite      *bool   `json:"EnableRewrite,omitempty" xml:"EnableRewrite,omitempty"`
 	// The name of the knowledge base. The name must be 1 to 20 characters in length and can contain characters classified as letter in Unicode, including English letters, Chinese characters, digits, among others. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// This parameter is required.
@@ -200,6 +208,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// structured
 	StructureType            *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	TableIdsShrink           *string `json:"TableIds,omitempty" xml:"TableIds,omitempty"`
 	ChunkMode                *string `json:"chunkMode,omitempty" xml:"chunkMode,omitempty"`
 	EnableHeaders            *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	MetaExtractColumnsShrink *string `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty"`
@@ -225,6 +234,10 @@ func (s *CreateIndexShrinkRequest) GetColumnsShrink() *string {
 	return s.ColumnsShrink
 }
 
+func (s *CreateIndexShrinkRequest) GetCreateIndexType() *string {
+	return s.CreateIndexType
+}
+
 func (s *CreateIndexShrinkRequest) GetDataSourceShrink() *string {
 	return s.DataSourceShrink
 }
@@ -239,6 +252,10 @@ func (s *CreateIndexShrinkRequest) GetDocumentIdsShrink() *string {
 
 func (s *CreateIndexShrinkRequest) GetEmbeddingModelName() *string {
 	return s.EmbeddingModelName
+}
+
+func (s *CreateIndexShrinkRequest) GetEnableRewrite() *bool {
+	return s.EnableRewrite
 }
 
 func (s *CreateIndexShrinkRequest) GetName() *string {
@@ -281,6 +298,10 @@ func (s *CreateIndexShrinkRequest) GetStructureType() *string {
 	return s.StructureType
 }
 
+func (s *CreateIndexShrinkRequest) GetTableIdsShrink() *string {
+	return s.TableIdsShrink
+}
+
 func (s *CreateIndexShrinkRequest) GetChunkMode() *string {
 	return s.ChunkMode
 }
@@ -308,6 +329,11 @@ func (s *CreateIndexShrinkRequest) SetColumnsShrink(v string) *CreateIndexShrink
 	return s
 }
 
+func (s *CreateIndexShrinkRequest) SetCreateIndexType(v string) *CreateIndexShrinkRequest {
+	s.CreateIndexType = &v
+	return s
+}
+
 func (s *CreateIndexShrinkRequest) SetDataSourceShrink(v string) *CreateIndexShrinkRequest {
 	s.DataSourceShrink = &v
 	return s
@@ -325,6 +351,11 @@ func (s *CreateIndexShrinkRequest) SetDocumentIdsShrink(v string) *CreateIndexSh
 
 func (s *CreateIndexShrinkRequest) SetEmbeddingModelName(v string) *CreateIndexShrinkRequest {
 	s.EmbeddingModelName = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetEnableRewrite(v bool) *CreateIndexShrinkRequest {
+	s.EnableRewrite = &v
 	return s
 }
 
@@ -375,6 +406,11 @@ func (s *CreateIndexShrinkRequest) SetSourceType(v string) *CreateIndexShrinkReq
 
 func (s *CreateIndexShrinkRequest) SetStructureType(v string) *CreateIndexShrinkRequest {
 	s.StructureType = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetTableIdsShrink(v string) *CreateIndexShrinkRequest {
+	s.TableIdsShrink = &v
 	return s
 }
 
