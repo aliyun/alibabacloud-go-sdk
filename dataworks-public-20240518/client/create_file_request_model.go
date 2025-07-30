@@ -193,6 +193,8 @@ type CreateFileRequest struct {
 	//
 	// 375827434852437
 	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group for the task deployed from the file. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page. In the left-side navigation pane, click **Resource Group*	- to obtain the ID of the resource group associated with the current workspace.
+	//
 	// example:
 	//
 	// S_res_group_559_1613715566828

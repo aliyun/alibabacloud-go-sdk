@@ -23,6 +23,10 @@ type iCreateWorkflowInstancesRequest interface {
 	GetPeriods() *CreateWorkflowInstancesRequestPeriods
 	SetProjectId(v int64) *CreateWorkflowInstancesRequest
 	GetProjectId() *int64
+	SetTagCreationPolicy(v string) *CreateWorkflowInstancesRequest
+	GetTagCreationPolicy() *string
+	SetTags(v []*CreateWorkflowInstancesRequestTags) *CreateWorkflowInstancesRequest
+	GetTags() []*CreateWorkflowInstancesRequestTags
 	SetTaskParameters(v string) *CreateWorkflowInstancesRequest
 	GetTaskParameters() *string
 	SetType(v string) *CreateWorkflowInstancesRequest
@@ -75,7 +79,9 @@ type CreateWorkflowInstancesRequest struct {
 	// example:
 	//
 	// 100
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId         *int64                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TagCreationPolicy *string                               `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
+	Tags              []*CreateWorkflowInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
@@ -162,6 +168,14 @@ func (s *CreateWorkflowInstancesRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
+func (s *CreateWorkflowInstancesRequest) GetTagCreationPolicy() *string {
+	return s.TagCreationPolicy
+}
+
+func (s *CreateWorkflowInstancesRequest) GetTags() []*CreateWorkflowInstancesRequestTags {
+	return s.Tags
+}
+
 func (s *CreateWorkflowInstancesRequest) GetTaskParameters() *string {
 	return s.TaskParameters
 }
@@ -210,6 +224,16 @@ func (s *CreateWorkflowInstancesRequest) SetPeriods(v *CreateWorkflowInstancesRe
 
 func (s *CreateWorkflowInstancesRequest) SetProjectId(v int64) *CreateWorkflowInstancesRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetTagCreationPolicy(v string) *CreateWorkflowInstancesRequest {
+	s.TagCreationPolicy = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequest) SetTags(v []*CreateWorkflowInstancesRequestTags) *CreateWorkflowInstancesRequest {
+	s.Tags = v
 	return s
 }
 
@@ -743,5 +767,40 @@ func (s *CreateWorkflowInstancesRequestPeriodsBizDates) SetStartBizDate(v string
 }
 
 func (s *CreateWorkflowInstancesRequestPeriodsBizDates) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWorkflowInstancesRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateWorkflowInstancesRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWorkflowInstancesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkflowInstancesRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateWorkflowInstancesRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateWorkflowInstancesRequestTags) SetKey(v string) *CreateWorkflowInstancesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestTags) SetValue(v string) *CreateWorkflowInstancesRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesRequestTags) Validate() error {
 	return dara.Validate(s)
 }

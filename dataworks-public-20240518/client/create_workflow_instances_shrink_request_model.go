@@ -23,6 +23,10 @@ type iCreateWorkflowInstancesShrinkRequest interface {
 	GetPeriodsShrink() *string
 	SetProjectId(v int64) *CreateWorkflowInstancesShrinkRequest
 	GetProjectId() *int64
+	SetTagCreationPolicy(v string) *CreateWorkflowInstancesShrinkRequest
+	GetTagCreationPolicy() *string
+	SetTagsShrink(v string) *CreateWorkflowInstancesShrinkRequest
+	GetTagsShrink() *string
 	SetTaskParameters(v string) *CreateWorkflowInstancesShrinkRequest
 	GetTaskParameters() *string
 	SetType(v string) *CreateWorkflowInstancesShrinkRequest
@@ -75,7 +79,9 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// 100
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
+	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
@@ -162,6 +168,14 @@ func (s *CreateWorkflowInstancesShrinkRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
+func (s *CreateWorkflowInstancesShrinkRequest) GetTagCreationPolicy() *string {
+	return s.TagCreationPolicy
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
+}
+
 func (s *CreateWorkflowInstancesShrinkRequest) GetTaskParameters() *string {
 	return s.TaskParameters
 }
@@ -210,6 +224,16 @@ func (s *CreateWorkflowInstancesShrinkRequest) SetPeriodsShrink(v string) *Creat
 
 func (s *CreateWorkflowInstancesShrinkRequest) SetProjectId(v int64) *CreateWorkflowInstancesShrinkRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetTagCreationPolicy(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.TagCreationPolicy = &v
+	return s
+}
+
+func (s *CreateWorkflowInstancesShrinkRequest) SetTagsShrink(v string) *CreateWorkflowInstancesShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 

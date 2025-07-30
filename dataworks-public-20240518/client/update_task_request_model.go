@@ -98,8 +98,6 @@ type UpdateTaskRequest struct {
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The name.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// SQL node
@@ -107,8 +105,6 @@ type UpdateTaskRequest struct {
 	// The output information.
 	Outputs *UpdateTaskRequestOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
 	// The account ID of the task owner.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -128,8 +124,6 @@ type UpdateTaskRequest struct {
 	//
 	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// AllAllowed
@@ -141,8 +135,6 @@ type UpdateTaskRequest struct {
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
-	//
-	// This parameter is required.
 	RuntimeResource *UpdateTaskRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
 	// The script information.
 	Script *UpdateTaskRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
@@ -155,8 +147,6 @@ type UpdateTaskRequest struct {
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The trigger method.
-	//
-	// This parameter is required.
 	Trigger *UpdateTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -691,8 +681,6 @@ type UpdateTaskRequestRuntimeResource struct {
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The ID of the resource group for scheduling configured for task running.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// S_res_group_524258031846018_1684XXXXXXXXX
@@ -866,8 +854,6 @@ type UpdateTaskRequestTrigger struct {
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
 	// 	- Manual: manual trigger
-	//
-	// This parameter is required.
 	//
 	// example:
 	//

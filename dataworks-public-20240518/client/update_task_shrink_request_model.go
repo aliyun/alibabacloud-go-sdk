@@ -98,8 +98,6 @@ type UpdateTaskShrinkRequest struct {
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The name.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// SQL node
@@ -107,8 +105,6 @@ type UpdateTaskShrinkRequest struct {
 	// The output information.
 	OutputsShrink *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The account ID of the task owner.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -128,8 +124,6 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// AllAllowed
@@ -141,8 +135,6 @@ type UpdateTaskShrinkRequest struct {
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The configurations of the runtime environment, such as the resource group information.
-	//
-	// This parameter is required.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
 	// The script information.
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
@@ -155,8 +147,6 @@ type UpdateTaskShrinkRequest struct {
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// The trigger method.
-	//
-	// This parameter is required.
 	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 

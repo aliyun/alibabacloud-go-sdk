@@ -16,7 +16,7 @@ type iListDeploymentPackageFilesResponseBody interface {
 }
 
 type ListDeploymentPackageFilesResponseBody struct {
-	// The pagination information.
+	// The pagination details.
 	PagingInfo *ListDeploymentPackageFilesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -57,7 +57,7 @@ func (s *ListDeploymentPackageFilesResponseBody) Validate() error {
 }
 
 type ListDeploymentPackageFilesResponseBodyPagingInfo struct {
-	// The details of the versions of the files to be deployed.
+	// The list of files pending deployment.
 	DeploymentPackageFiles []*ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles `json:"DeploymentPackageFiles,omitempty" xml:"DeploymentPackageFiles,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1.
 	//
@@ -308,23 +308,35 @@ type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles stru
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The test status in the development environment.
 	SmokeTestStatus *string `json:"SmokeTestStatus,omitempty" xml:"SmokeTestStatus,omitempty"`
-	// The status of the code for the file of the current version. Valid values:
+	// The status of the code file of the current version. Valid values:
 	//
-	// 	- 10: committing
+	// 	- 2: Commit check in progress.
 	//
-	// 	- 11: committed to the development environment of the scheduling system
+	// 	- 3: Commit check passed.
 	//
-	// 	- 20: review passed
+	// 	- 4: Commit check failed.
 	//
-	// 	- 21: review failed
+	// 	- 10: Committing.
 	//
-	// 	- 80: deployment package creation succeeded
+	// 	- 11: Committed.
 	//
-	// 	- 100: deploying
+	// 	- 20: Approved.
 	//
-	// 	- 101: deployed to the production environment
+	// 	- 21: Rejected.
 	//
-	// 	- 200: cancelled
+	// 	- 22: Warning detected during checking.
+	//
+	// 	- 23: Under code review.
+	//
+	// 	- 24: Code review rejected.
+	//
+	// 	- 80: Deployment package created.
+	//
+	// 	- 100: Deploying.
+	//
+	// 	- 101: Deployed to the production environment.
+	//
+	// 	- 200: Cancelled.
 	//
 	// example:
 	//
