@@ -1,0 +1,61 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iModifyInstanceBandwidthResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetOrderId(v string) *ModifyInstanceBandwidthResponseBody
+	GetOrderId() *string
+	SetRequestId(v string) *ModifyInstanceBandwidthResponseBody
+	GetRequestId() *string
+}
+
+type ModifyInstanceBandwidthResponseBody struct {
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 236934422960904
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D622714-AEDD-4609-9167-F5DDD3D1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceBandwidthResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyInstanceBandwidthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) GetOrderId() *string {
+	return s.OrderId
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) SetOrderId(v string) *ModifyInstanceBandwidthResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) SetRequestId(v string) *ModifyInstanceBandwidthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyInstanceBandwidthResponseBody) Validate() error {
+	return dara.Validate(s)
+}
