@@ -59,6 +59,8 @@ type iCreateApplicationRequest interface {
 	GetEnvs() *string
 	SetGpuConfig(v string) *CreateApplicationRequest
 	GetGpuConfig() *string
+	SetHeadlessPvtzDiscoverySvc(v string) *CreateApplicationRequest
+	GetHeadlessPvtzDiscoverySvc() *string
 	SetHtml(v string) *CreateApplicationRequest
 	GetHtml() *string
 	SetImagePullSecrets(v string) *CreateApplicationRequest
@@ -414,9 +416,10 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
-	Html      *string `json:"Html,omitempty" xml:"Html,omitempty"`
+	Envs                     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig                *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
+	HeadlessPvtzDiscoverySvc *string `json:"HeadlessPvtzDiscoverySvc,omitempty" xml:"HeadlessPvtzDiscoverySvc,omitempty"`
+	Html                     *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -1050,6 +1053,10 @@ func (s *CreateApplicationRequest) GetGpuConfig() *string {
 	return s.GpuConfig
 }
 
+func (s *CreateApplicationRequest) GetHeadlessPvtzDiscoverySvc() *string {
+	return s.HeadlessPvtzDiscoverySvc
+}
+
 func (s *CreateApplicationRequest) GetHtml() *string {
 	return s.Html
 }
@@ -1388,6 +1395,11 @@ func (s *CreateApplicationRequest) SetEnvs(v string) *CreateApplicationRequest {
 
 func (s *CreateApplicationRequest) SetGpuConfig(v string) *CreateApplicationRequest {
 	s.GpuConfig = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetHeadlessPvtzDiscoverySvc(v string) *CreateApplicationRequest {
+	s.HeadlessPvtzDiscoverySvc = &v
 	return s
 }
 

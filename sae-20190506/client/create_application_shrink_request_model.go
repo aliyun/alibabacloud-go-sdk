@@ -59,6 +59,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetEnvs() *string
 	SetGpuConfig(v string) *CreateApplicationShrinkRequest
 	GetGpuConfig() *string
+	SetHeadlessPvtzDiscoverySvc(v string) *CreateApplicationShrinkRequest
+	GetHeadlessPvtzDiscoverySvc() *string
 	SetHtml(v string) *CreateApplicationShrinkRequest
 	GetHtml() *string
 	SetImagePullSecrets(v string) *CreateApplicationShrinkRequest
@@ -414,9 +416,10 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
-	Html      *string `json:"Html,omitempty" xml:"Html,omitempty"`
+	Envs                     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig                *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
+	HeadlessPvtzDiscoverySvc *string `json:"HeadlessPvtzDiscoverySvc,omitempty" xml:"HeadlessPvtzDiscoverySvc,omitempty"`
+	Html                     *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -1050,6 +1053,10 @@ func (s *CreateApplicationShrinkRequest) GetGpuConfig() *string {
 	return s.GpuConfig
 }
 
+func (s *CreateApplicationShrinkRequest) GetHeadlessPvtzDiscoverySvc() *string {
+	return s.HeadlessPvtzDiscoverySvc
+}
+
 func (s *CreateApplicationShrinkRequest) GetHtml() *string {
 	return s.Html
 }
@@ -1388,6 +1395,11 @@ func (s *CreateApplicationShrinkRequest) SetEnvs(v string) *CreateApplicationShr
 
 func (s *CreateApplicationShrinkRequest) SetGpuConfig(v string) *CreateApplicationShrinkRequest {
 	s.GpuConfig = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetHeadlessPvtzDiscoverySvc(v string) *CreateApplicationShrinkRequest {
+	s.HeadlessPvtzDiscoverySvc = &v
 	return s
 }
 

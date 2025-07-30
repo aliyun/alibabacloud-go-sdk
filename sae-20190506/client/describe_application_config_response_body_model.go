@@ -227,7 +227,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// 495fc79c-ae61-4600-866d-a09d68******
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CmsServiceId *string `json:"CmsServiceId,omitempty" xml:"CmsServiceId,omitempty"`
 	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
 	//
 	// ```
@@ -390,10 +391,11 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
-	Envs     *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GpuCount *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	GpuType  *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	Html     *string `json:"Html,omitempty" xml:"Html,omitempty"`
+	Envs                  *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuCount              *string `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuType               *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	HeadlessPvtzDiscovery *string `json:"HeadlessPvtzDiscovery,omitempty" xml:"HeadlessPvtzDiscovery,omitempty"`
+	Html                  *string `json:"Html,omitempty" xml:"Html,omitempty"`
 	// The ID of the corresponding secret dictionary.
 	//
 	// example:
@@ -985,6 +987,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetCmsServiceId() *string {
+	return s.CmsServiceId
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetCommand() *string {
 	return s.Command
 }
@@ -1055,6 +1061,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetGpuCount() *string {
 
 func (s *DescribeApplicationConfigResponseBodyData) GetGpuType() *string {
 	return s.GpuType
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) GetHeadlessPvtzDiscovery() *string {
+	return s.HeadlessPvtzDiscovery
 }
 
 func (s *DescribeApplicationConfigResponseBodyData) GetHtml() *string {
@@ -1351,6 +1361,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetClusterId(v string) *Desc
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetCmsServiceId(v string) *DescribeApplicationConfigResponseBodyData {
+	s.CmsServiceId = &v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetCommand(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Command = &v
 	return s
@@ -1438,6 +1453,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetGpuCount(v string) *Descr
 
 func (s *DescribeApplicationConfigResponseBodyData) SetGpuType(v string) *DescribeApplicationConfigResponseBodyData {
 	s.GpuType = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetHeadlessPvtzDiscovery(v string) *DescribeApplicationConfigResponseBodyData {
+	s.HeadlessPvtzDiscovery = &v
 	return s
 }
 

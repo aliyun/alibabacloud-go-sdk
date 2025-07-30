@@ -666,6 +666,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["GpuConfig"] = request.GpuConfig
 	}
 
+	if !dara.IsNil(request.HeadlessPvtzDiscoverySvc) {
+		query["HeadlessPvtzDiscoverySvc"] = request.HeadlessPvtzDiscoverySvc
+	}
+
 	if !dara.IsNil(request.Html) {
 		query["Html"] = request.Html
 	}
