@@ -791,7 +791,8 @@ type DescribePriceRequestSchedulerOptions struct {
 	// example:
 	//
 	// dh-bp67acfmxazb4p****
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DedicatedHostId       *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	DeploymentSetStrategy *string `json:"DeploymentSetStrategy,omitempty" xml:"DeploymentSetStrategy,omitempty"`
 }
 
 func (s DescribePriceRequestSchedulerOptions) String() string {
@@ -806,8 +807,17 @@ func (s *DescribePriceRequestSchedulerOptions) GetDedicatedHostId() *string {
 	return s.DedicatedHostId
 }
 
+func (s *DescribePriceRequestSchedulerOptions) GetDeploymentSetStrategy() *string {
+	return s.DeploymentSetStrategy
+}
+
 func (s *DescribePriceRequestSchedulerOptions) SetDedicatedHostId(v string) *DescribePriceRequestSchedulerOptions {
 	s.DedicatedHostId = &v
+	return s
+}
+
+func (s *DescribePriceRequestSchedulerOptions) SetDeploymentSetStrategy(v string) *DescribePriceRequestSchedulerOptions {
+	s.DeploymentSetStrategy = &v
 	return s
 }
 
