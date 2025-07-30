@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("starrocks"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -104,30 +56,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 资源转组
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -142,7 +75,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceV1Response
-func (client *Client) CreateInstanceV1WithOptions(request *CreateInstanceV1Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceV1Response, _err error) {
+func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *CreateInstanceV1Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceV1Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -256,30 +189,11 @@ func (client *Client) CreateInstanceV1WithOptions(request *CreateInstanceV1Reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceV1Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建StarRocks集群
-//
-// @param request - CreateInstanceV1Request
-//
-// @return CreateInstanceV1Response
-func (client *Client) CreateInstanceV1(request *CreateInstanceV1Request) (_result *CreateInstanceV1Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateInstanceV1Response{}
-	_body, _err := client.CreateInstanceV1WithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -292,7 +206,7 @@ func (client *Client) CreateInstanceV1(request *CreateInstanceV1Request) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceLinkedRoleResponse
-func (client *Client) CreateServiceLinkedRoleWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
+func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -308,28 +222,11 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(headers map[string]*str
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 为用户创建AliyunServiceRoleForEMRStarRocks
-//
-// @return CreateServiceLinkedRoleResponse
-func (client *Client) CreateServiceLinkedRole() (_result *CreateServiceLinkedRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateServiceLinkedRoleResponse{}
-	_body, _err := client.CreateServiceLinkedRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -344,7 +241,7 @@ func (client *Client) CreateServiceLinkedRole() (_result *CreateServiceLinkedRol
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesResponse
-func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *DescribeInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -404,30 +301,11 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据集群ID或者名称等信息过滤集群
-//
-// @param request - DescribeInstancesRequest
-//
-// @return DescribeInstancesResponse
-func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DescribeInstancesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -460,7 +338,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCuResponse
-func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuResponse, _err error) {
+func (client *Client) ModifyCuWithContext(ctx context.Context, request *ModifyCuRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -502,48 +380,11 @@ func (client *Client) ModifyCuWithOptions(request *ModifyCuRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCuResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the number of CUs for a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances.
-//
-// Before you call this operation, take note of the following items:
-//
-//   - You can modify the number of CUs for a warehouse of only StarRocks instances of Standard Edition.
-//
-//   - You can increase the number of disks only for warehouses of the standard specifications.
-//
-//   - The instance must be in the Running state.
-//
-// After you modify the number of CUs for a warehouse, the billing of CUs has the following changes:
-//
-//   - Pay-as-you-go StarRocks instances: You are charged based on the number of CUs.
-//
-//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of CUs before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
-//
-// @param request - ModifyCuRequest
-//
-// @return ModifyCuResponse
-func (client *Client) ModifyCu(request *ModifyCuRequest) (_result *ModifyCuResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyCuResponse{}
-	_body, _err := client.ModifyCuWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -558,7 +399,7 @@ func (client *Client) ModifyCu(request *ModifyCuRequest) (_result *ModifyCuRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCuPreCheckResponse
-func (client *Client) ModifyCuPreCheckWithOptions(request *ModifyCuPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuPreCheckResponse, _err error) {
+func (client *Client) ModifyCuPreCheckWithContext(ctx context.Context, request *ModifyCuPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyCuPreCheckResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -592,30 +433,11 @@ func (client *Client) ModifyCuPreCheckWithOptions(request *ModifyCuPreCheckReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCuPreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs a precheck before you modify the number of CUs for a warehouse.
-//
-// @param request - ModifyCuPreCheckRequest
-//
-// @return ModifyCuPreCheckResponse
-func (client *Client) ModifyCuPreCheck(request *ModifyCuPreCheckRequest) (_result *ModifyCuPreCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyCuPreCheckResponse{}
-	_body, _err := client.ModifyCuPreCheckWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -646,7 +468,7 @@ func (client *Client) ModifyCuPreCheck(request *ModifyCuPreCheckRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskNumberResponse
-func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskNumberResponse, _err error) {
+func (client *Client) ModifyDiskNumberWithContext(ctx context.Context, request *ModifyDiskNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskNumberResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -688,46 +510,11 @@ func (client *Client) ModifyDiskNumberWithOptions(request *ModifyDiskNumberReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Increases the number of disks for a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
-//
-//   - You can increase the number of disks only for StarRocks instances of Standard Edition.
-//
-//   - You can increase the number of disks only for warehouses of the standard specifications.
-//
-//   - The instance must be in the Running state.
-//
-// After you increase the number of disks for a warehouse, the billing of disks has the following changes:
-//
-//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
-//
-//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of disks before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
-//
-// @param request - ModifyDiskNumberRequest
-//
-// @return ModifyDiskNumberResponse
-func (client *Client) ModifyDiskNumber(request *ModifyDiskNumberRequest) (_result *ModifyDiskNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyDiskNumberResponse{}
-	_body, _err := client.ModifyDiskNumberWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -764,7 +551,7 @@ func (client *Client) ModifyDiskNumber(request *ModifyDiskNumberRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskPerformanceLevelResponse
-func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskPerformanceLevelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskPerformanceLevelResponse, _err error) {
+func (client *Client) ModifyDiskPerformanceLevelWithContext(ctx context.Context, request *ModifyDiskPerformanceLevelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskPerformanceLevelResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -802,52 +589,11 @@ func (client *Client) ModifyDiskPerformanceLevelWithOptions(request *ModifyDiskP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskPerformanceLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the disk performance level for a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.alibabacloud.com/en/product/ecs?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.47c9281fkIZGiB#pricing) of EMR Serverless StarRocks instances.
-//
-// Before you call this operation, take note of the following items:
-//
-//   - You can modify the disk performance level only for StarRocks instances of Standard Edition.
-//
-//   - You can modify the disk performance level only for warehouses of the standard specifications.
-//
-//   - The instance must be in the Running state.
-//
-//   - You cannot downgrade the performance level to PL0.
-//
-//   - The performance level of an Enterprise SSD (ESSD) is limited by the ESSD disk size. If you cannot upgrade the performance level of an ESSD, expand the ESSD and try again. For more information, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
-//
-// After the disk performance level is changed, the billing of the disk has the following changes:
-//
-//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk type.
-//
-//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk performance level before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
-//
-// @param request - ModifyDiskPerformanceLevelRequest
-//
-// @return ModifyDiskPerformanceLevelResponse
-func (client *Client) ModifyDiskPerformanceLevel(request *ModifyDiskPerformanceLevelRequest) (_result *ModifyDiskPerformanceLevelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyDiskPerformanceLevelResponse{}
-	_body, _err := client.ModifyDiskPerformanceLevelWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -878,7 +624,7 @@ func (client *Client) ModifyDiskPerformanceLevel(request *ModifyDiskPerformanceL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDiskSizeResponse
-func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskSizeResponse, _err error) {
+func (client *Client) ModifyDiskSizeWithContext(ctx context.Context, request *ModifyDiskSizeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyDiskSizeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -916,46 +662,11 @@ func (client *Client) ModifyDiskSizeWithOptions(request *ModifyDiskSizeRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDiskSizeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Expands the disk size for a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
-//
-//   - You can expand the disk size only for StarRocks instances of Standard Edition.
-//
-//   - You can expand the disk size only for warehouses of the standard specifications.
-//
-//   - The instance must be in the Running state.
-//
-// After you expand the disk size, the billing of disks has the following changes:
-//
-//   - Pay-as-you-go StarRocks instances: You are charged for the disk based on the new disk size.
-//
-//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the disk size before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
-//
-// @param request - ModifyDiskSizeRequest
-//
-// @return ModifyDiskSizeResponse
-func (client *Client) ModifyDiskSize(request *ModifyDiskSizeRequest) (_result *ModifyDiskSizeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyDiskSizeResponse{}
-	_body, _err := client.ModifyDiskSizeWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -986,7 +697,7 @@ func (client *Client) ModifyDiskSize(request *ModifyDiskSizeRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNodeNumberResponse
-func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberResponse, _err error) {
+func (client *Client) ModifyNodeNumberWithContext(ctx context.Context, request *ModifyNodeNumberRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1024,46 +735,11 @@ func (client *Client) ModifyNodeNumberWithOptions(request *ModifyNodeNumberReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNodeNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the number of nodes in a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// Before you call this operation, make sure that you understand the billing methods and [billable items](https://www.alibabacloud.com/help/en/emr/emr-serverless-starrocks/product-overview/billable-items?spm=a2c63.p38356.help-menu-28066.d_0_1_0.3aaf4b0b69jN1P) of EMR Serverless StarRocks instances. Before you call this operation, take note of the following items:
-//
-//   - You can modify the number of nodes in a warehouse of only StarRocks instances of Standard Edition.
-//
-//   - The instance must be in the Running state.
-//
-//   - The number of frontend nodes (FEs) cannot be an even number, and you cannot reduce the number of FE nodes.
-//
-// After you modify the number of nodes in a warehouse, the billing of nodes has the following changes:
-//
-//   - Pay-as-you-go StarRocks instances: You are charged based on the number of nodes.
-//
-//   - Subscription StarRocks instances: You are charged additionally based on the price difference between the number of nodes before and after the change and the remaining days of the billing cycle. The billing cycle starts from 00:00 the next day until the end of the subscription period.
-//
-// @param request - ModifyNodeNumberRequest
-//
-// @return ModifyNodeNumberResponse
-func (client *Client) ModifyNodeNumber(request *ModifyNodeNumberRequest) (_result *ModifyNodeNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyNodeNumberResponse{}
-	_body, _err := client.ModifyNodeNumberWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1078,7 +754,7 @@ func (client *Client) ModifyNodeNumber(request *ModifyNodeNumberRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNodeNumberPreCheckResponse
-func (client *Client) ModifyNodeNumberPreCheckWithOptions(request *ModifyNodeNumberPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberPreCheckResponse, _err error) {
+func (client *Client) ModifyNodeNumberPreCheckWithContext(ctx context.Context, request *ModifyNodeNumberPreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyNodeNumberPreCheckResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1112,30 +788,11 @@ func (client *Client) ModifyNodeNumberPreCheckWithOptions(request *ModifyNodeNum
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNodeNumberPreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs a precheck before you modify the number of nodes in a warehouse of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// @param request - ModifyNodeNumberPreCheckRequest
-//
-// @return ModifyNodeNumberPreCheckResponse
-func (client *Client) ModifyNodeNumberPreCheck(request *ModifyNodeNumberPreCheckRequest) (_result *ModifyNodeNumberPreCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyNodeNumberPreCheckResponse{}
-	_body, _err := client.ModifyNodeNumberPreCheckWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1150,7 +807,7 @@ func (client *Client) ModifyNodeNumberPreCheck(request *ModifyNodeNumberPreCheck
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryUpgradableVersionsResponse
-func (client *Client) QueryUpgradableVersionsWithOptions(request *QueryUpgradableVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryUpgradableVersionsResponse, _err error) {
+func (client *Client) QueryUpgradableVersionsWithContext(ctx context.Context, request *QueryUpgradableVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryUpgradableVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1180,30 +837,11 @@ func (client *Client) QueryUpgradableVersionsWithOptions(request *QueryUpgradabl
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryUpgradableVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the versions of an E-MapReduce (EMR) Serverless StarRocks instance that the versions that you can upgrade to. The versions of a StarRocks instance include the major version and minor version. You can view the major version and minor version of a StarRocks instance in the Version Information section of the Instance Details tab in the EMR console. You can call this operation to query the minor versions or major versions that the versions that you can upgrade to.
-//
-// @param request - QueryUpgradableVersionsRequest
-//
-// @return QueryUpgradableVersionsResponse
-func (client *Client) QueryUpgradableVersions(request *QueryUpgradableVersionsRequest) (_result *QueryUpgradableVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryUpgradableVersionsResponse{}
-	_body, _err := client.QueryUpgradableVersionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1224,7 +862,7 @@ func (client *Client) QueryUpgradableVersions(request *QueryUpgradableVersionsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseInstanceResponse
-func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
+func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1250,36 +888,11 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a pay-as-you-go E-MapReduce (EMR) Serverless StarRocks instance. To unsubscribe from a subscription instance, go to the Unsubscribe page of the Expenses and Costs console.
-//
-// Description:
-//
-// *
-//
-// **Warning:*	- After an instance is released, all physical resources used by the instance are recycled. Relevant data is erased and cannot be restored.
-//
-// @param request - ReleaseInstanceRequest
-//
-// @return ReleaseInstanceResponse
-func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.ReleaseInstanceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1298,7 +911,7 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartInstanceResponse
-func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
+func (client *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1328,34 +941,11 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Restarts an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// Description:
-//
-// This operation is an asynchronous operation. After you call this operation to restart a StarRocks instance, the operation sets the status of the instance to Restarting and begins the restart process. When the status of the instance changes to Running, the instance is restarted.
-//
-// @param request - RestartInstanceRequest
-//
-// @return RestartInstanceResponse
-func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RestartInstanceResponse{}
-	_body, _err := client.RestartInstanceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1370,7 +960,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1408,30 +998,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 打标
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1446,7 +1017,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnTagResourcesResponse
-func (client *Client) UnTagResourcesWithOptions(tmpReq *UnTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
+func (client *Client) UnTagResourcesWithContext(ctx context.Context, tmpReq *UnTagResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1498,30 +1069,11 @@ func (client *Client) UnTagResourcesWithOptions(tmpReq *UnTagResourcesRequest, h
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除标签
-//
-// @param request - UnTagResourcesRequest
-//
-// @return UnTagResourcesResponse
-func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UnTagResourcesResponse{}
-	_body, _err := client.UnTagResourcesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1536,7 +1088,7 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
+func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1566,30 +1118,11 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name of an E-MapReduce (EMR) Serverless StarRocks instance.
-//
-// @param request - UpdateInstanceNameRequest
-//
-// @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_result *UpdateInstanceNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.UpdateInstanceNameWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1608,7 +1141,7 @@ func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeVersionResponse
-func (client *Client) UpgradeVersionWithOptions(request *UpgradeVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeVersionResponse, _err error) {
+func (client *Client) UpgradeVersionWithContext(ctx context.Context, request *UpgradeVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpgradeVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1646,33 +1179,10 @@ func (client *Client) UpgradeVersionWithOptions(request *UpgradeVersionRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades the version of an E-MapReduce (EMR) Serverless StarRocks instance. The versions of a StarRocks instance include the major version and minor version. You can view the major version and minor version of a StarRocks instance in the Version Information section of the Instance Details tab in the EMR console. This operation can be used to upgrade the minor version or major version of a StarRocks instance. You can call the QueryUpgradableVersions operation to query the versions that you can upgrade to.
-//
-// Description:
-//
-// The instance must be in the Running state when you call this operation.
-//
-// @param request - UpgradeVersionRequest
-//
-// @return UpgradeVersionResponse
-func (client *Client) UpgradeVersion(request *UpgradeVersionRequest) (_result *UpgradeVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpgradeVersionResponse{}
-	_body, _err := client.UpgradeVersionWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
