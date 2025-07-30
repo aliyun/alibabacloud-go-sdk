@@ -23,6 +23,10 @@ type iAddLiveStreamMergeRequest interface {
 	GetInStreamName1() *string
 	SetInStreamName2(v string) *AddLiveStreamMergeRequest
 	GetInStreamName2() *string
+	SetLiveMerger(v string) *AddLiveStreamMergeRequest
+	GetLiveMerger() *string
+	SetMergeParameters(v string) *AddLiveStreamMergeRequest
+	GetMergeParameters() *string
 	SetOwnerId(v int64) *AddLiveStreamMergeRequest
 	GetOwnerId() *int64
 	SetProtocol(v string) *AddLiveStreamMergeRequest
@@ -95,8 +99,10 @@ type AddLiveStreamMergeRequest struct {
 	// example:
 	//
 	// stream2
-	InStreamName2 *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InStreamName2   *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
+	LiveMerger      *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
+	MergeParameters *string `json:"MergeParameters,omitempty" xml:"MergeParameters,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The streaming protocol. Valid values:
 	//
 	// 	- **rtmp**: This is the default value.
@@ -164,6 +170,14 @@ func (s *AddLiveStreamMergeRequest) GetInStreamName2() *string {
 	return s.InStreamName2
 }
 
+func (s *AddLiveStreamMergeRequest) GetLiveMerger() *string {
+	return s.LiveMerger
+}
+
+func (s *AddLiveStreamMergeRequest) GetMergeParameters() *string {
+	return s.MergeParameters
+}
+
 func (s *AddLiveStreamMergeRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -216,6 +230,16 @@ func (s *AddLiveStreamMergeRequest) SetInStreamName1(v string) *AddLiveStreamMer
 
 func (s *AddLiveStreamMergeRequest) SetInStreamName2(v string) *AddLiveStreamMergeRequest {
 	s.InStreamName2 = &v
+	return s
+}
+
+func (s *AddLiveStreamMergeRequest) SetLiveMerger(v string) *AddLiveStreamMergeRequest {
+	s.LiveMerger = &v
+	return s
+}
+
+func (s *AddLiveStreamMergeRequest) SetMergeParameters(v string) *AddLiveStreamMergeRequest {
+	s.MergeParameters = &v
 	return s
 }
 

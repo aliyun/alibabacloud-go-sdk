@@ -135,7 +135,9 @@ type DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge struc
 	// example:
 	//
 	// stream2
-	InStreamName2 *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
+	InStreamName2   *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
+	LiveMerger      *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
+	MergeParameters *string `json:"MergeParameters,omitempty" xml:"MergeParameters,omitempty"`
 	// The streaming protocol.
 	//
 	// example:
@@ -206,6 +208,14 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) 
 	return s.InStreamName2
 }
 
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) GetLiveMerger() *string {
+	return s.LiveMerger
+}
+
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) GetMergeParameters() *string {
+	return s.MergeParameters
+}
+
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) GetProtocol() *string {
 	return s.Protocol
 }
@@ -264,6 +274,16 @@ func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) 
 
 func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetInStreamName2(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
 	s.InStreamName2 = &v
+	return s
+}
+
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetLiveMerger(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
+	s.LiveMerger = &v
+	return s
+}
+
+func (s *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge) SetMergeParameters(v string) *DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge {
+	s.MergeParameters = &v
 	return s
 }
 

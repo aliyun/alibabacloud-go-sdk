@@ -2298,6 +2298,14 @@ func (client *Client) AddLiveStreamMergeWithContext(ctx context.Context, request
 		query["InStreamName2"] = request.InStreamName2
 	}
 
+	if !dara.IsNil(request.LiveMerger) {
+		query["LiveMerger"] = request.LiveMerger
+	}
+
+	if !dara.IsNil(request.MergeParameters) {
+		query["MergeParameters"] = request.MergeParameters
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}
