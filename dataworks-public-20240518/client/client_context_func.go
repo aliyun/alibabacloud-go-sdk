@@ -699,6 +699,70 @@ func (client *Client) CreateDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 创建数据质量告警规则
+//
+// @param tmpReq - CreateDataQualityAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityAlertRuleResponse
+func (client *Client) CreateDataQualityAlertRuleWithContext(ctx context.Context, tmpReq *CreateDataQualityAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDataQualityAlertRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityAlertRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Notification) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, dara.String("Notification"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Target) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, dara.String("Target"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Condition) {
+		body["Condition"] = request.Condition
+	}
+
+	if !dara.IsNil(request.NotificationShrink) {
+		body["Notification"] = request.NotificationShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TargetShrink) {
+		body["Target"] = request.TargetShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataQualityAlertRule"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataQualityAlertRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a monitor in DataWorks Data Quality.
 //
 // Description:
@@ -1021,6 +1085,224 @@ func (client *Client) CreateDataQualityRuleTemplateWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量监控
+//
+// @param tmpReq - CreateDataQualityScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityScanResponse
+func (client *Client) CreateDataQualityScanWithContext(ctx context.Context, tmpReq *CreateDataQualityScanRequest, runtime *dara.RuntimeOptions) (_result *CreateDataQualityScanResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityScanShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ComputeResource) {
+		request.ComputeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComputeResource, dara.String("ComputeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Hooks) {
+		request.HooksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hooks, dara.String("Hooks"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Trigger) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, dara.String("Trigger"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ComputeResourceShrink) {
+		body["ComputeResource"] = request.ComputeResourceShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HooksShrink) {
+		body["Hooks"] = request.HooksShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	if !dara.IsNil(request.TriggerShrink) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataQualityScan"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataQualityScanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量监控运行实例
+//
+// @param tmpReq - CreateDataQualityScanRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityScanRunResponse
+func (client *Client) CreateDataQualityScanRunWithContext(ctx context.Context, tmpReq *CreateDataQualityScanRunRequest, runtime *dara.RuntimeOptions) (_result *CreateDataQualityScanRunResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataQualityScanRunShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataQualityScanId) {
+		body["DataQualityScanId"] = request.DataQualityScanId
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataQualityScanRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataQualityScanRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量模板
+//
+// @param request - CreateDataQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataQualityTemplateResponse
+func (client *Client) CreateDataQualityTemplateWithContext(ctx context.Context, request *CreateDataQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateDataQualityTemplateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataQualityTemplate"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataQualityTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2671,6 +2953,48 @@ func (client *Client) DeleteDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 删除数据质量告警规则
+//
+// @param request - DeleteDataQualityAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityAlertRuleResponse
+func (client *Client) DeleteDataQualityAlertRuleWithContext(ctx context.Context, request *DeleteDataQualityAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataQualityAlertRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataQualityAlertRule"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataQualityAlertRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a data quality monitoring task.
 //
 // @param request - DeleteDataQualityEvaluationTaskRequest
@@ -2799,6 +3123,94 @@ func (client *Client) DeleteDataQualityRuleTemplateWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据质量监控
+//
+// @param request - DeleteDataQualityScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityScanResponse
+func (client *Client) DeleteDataQualityScanWithContext(ctx context.Context, request *DeleteDataQualityScanRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataQualityScanResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataQualityScan"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataQualityScanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据质量模板
+//
+// @param request - DeleteDataQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataQualityTemplateResponse
+func (client *Client) DeleteDataQualityTemplateWithContext(ctx context.Context, request *DeleteDataQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataQualityTemplateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataQualityTemplate"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataQualityTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4301,6 +4713,48 @@ func (client *Client) GetDIJobLogWithContext(ctx context.Context, request *GetDI
 
 // Summary:
 //
+// 查询数据质量告警规则详情
+//
+// @param request - GetDataQualityAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityAlertRuleResponse
+func (client *Client) GetDataQualityAlertRuleWithContext(ctx context.Context, request *GetDataQualityAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *GetDataQualityAlertRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataQualityAlertRule"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataQualityAlertRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a monitor.
 //
 // @param request - GetDataQualityEvaluationTaskRequest
@@ -4451,6 +4905,178 @@ func (client *Client) GetDataQualityRuleTemplateWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据质量监控详情
+//
+// @param request - GetDataQualityScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityScanResponse
+func (client *Client) GetDataQualityScanWithContext(ctx context.Context, request *GetDataQualityScanRequest, runtime *dara.RuntimeOptions) (_result *GetDataQualityScanResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataQualityScan"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataQualityScanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量监控运行实例
+//
+// @param request - GetDataQualityScanRunRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityScanRunResponse
+func (client *Client) GetDataQualityScanRunWithContext(ctx context.Context, request *GetDataQualityScanRunRequest, runtime *dara.RuntimeOptions) (_result *GetDataQualityScanRunResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataQualityScanRun"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataQualityScanRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据质量监控运行实例
+//
+// @param request - GetDataQualityScanRunLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityScanRunLogResponse
+func (client *Client) GetDataQualityScanRunLogWithContext(ctx context.Context, request *GetDataQualityScanRunLogRequest, runtime *dara.RuntimeOptions) (_result *GetDataQualityScanRunLogResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataQualityScanRunLog"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataQualityScanRunLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据质量模板详情
+//
+// @param request - GetDataQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataQualityTemplateResponse
+func (client *Client) GetDataQualityTemplateWithContext(ctx context.Context, request *GetDataQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetDataQualityTemplateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataQualityTemplate"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataQualityTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6465,6 +7091,64 @@ func (client *Client) ListDataAssetsWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
+// 查询数据质量告警规则列表
+//
+// @param request - ListDataQualityAlertRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityAlertRulesResponse
+func (client *Client) ListDataQualityAlertRulesWithContext(ctx context.Context, request *ListDataQualityAlertRulesRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityAlertRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataQualityScanId) {
+		query["DataQualityScanId"] = request.DataQualityScanId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataQualityAlertRules"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataQualityAlertRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of instances generated by a data quality monitoring task by page.
 //
 // Description:
@@ -6657,6 +7341,196 @@ func (client *Client) ListDataQualityRulesWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataQualityRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据质量监控运行实例列表
+//
+// @param request - ListDataQualityScanRunsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityScanRunsResponse
+func (client *Client) ListDataQualityScanRunsWithContext(ctx context.Context, request *ListDataQualityScanRunsRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityScanRunsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreateTimeFrom) {
+		query["CreateTimeFrom"] = request.CreateTimeFrom
+	}
+
+	if !dara.IsNil(request.CreateTimeTo) {
+		query["CreateTimeTo"] = request.CreateTimeTo
+	}
+
+	if !dara.IsNil(request.DataQualityScanId) {
+		query["DataQualityScanId"] = request.DataQualityScanId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataQualityScanRuns"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataQualityScanRunsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据质量监控详情
+//
+// @param request - ListDataQualityScansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityScansResponse
+func (client *Client) ListDataQualityScansWithContext(ctx context.Context, request *ListDataQualityScansRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityScansResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Table) {
+		query["Table"] = request.Table
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataQualityScans"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataQualityScansResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据质量模板详情
+//
+// @param request - ListDataQualityTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataQualityTemplatesResponse
+func (client *Client) ListDataQualityTemplatesWithContext(ctx context.Context, request *ListDataQualityTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListDataQualityTemplatesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Catalog) {
+		query["Catalog"] = request.Catalog
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataQualityTemplates"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataQualityTemplatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10593,6 +11467,74 @@ func (client *Client) UpdateDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 更新数据质量告警规则
+//
+// @param tmpReq - UpdateDataQualityAlertRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityAlertRuleResponse
+func (client *Client) UpdateDataQualityAlertRuleWithContext(ctx context.Context, tmpReq *UpdateDataQualityAlertRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataQualityAlertRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataQualityAlertRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Notification) {
+		request.NotificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Notification, dara.String("Notification"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Target) {
+		request.TargetShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Target, dara.String("Target"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Condition) {
+		body["Condition"] = request.Condition
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.NotificationShrink) {
+		body["Notification"] = request.NotificationShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TargetShrink) {
+		body["Target"] = request.TargetShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataQualityAlertRule"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataQualityAlertRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a monitor.
 //
 // Description:
@@ -10859,6 +11801,166 @@ func (client *Client) UpdateDataQualityRuleTemplateWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDataQualityRuleTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据质量监控
+//
+// @param tmpReq - UpdateDataQualityScanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityScanResponse
+func (client *Client) UpdateDataQualityScanWithContext(ctx context.Context, tmpReq *UpdateDataQualityScanRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataQualityScanResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDataQualityScanShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ComputeResource) {
+		request.ComputeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComputeResource, dara.String("ComputeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Hooks) {
+		request.HooksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hooks, dara.String("Hooks"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RuntimeResource) {
+		request.RuntimeResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RuntimeResource, dara.String("RuntimeResource"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Trigger) {
+		request.TriggerShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Trigger, dara.String("Trigger"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComputeResourceShrink) {
+		body["ComputeResource"] = request.ComputeResourceShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HooksShrink) {
+		body["Hooks"] = request.HooksShrink
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RuntimeResourceShrink) {
+		body["RuntimeResource"] = request.RuntimeResourceShrink
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	if !dara.IsNil(request.TriggerShrink) {
+		body["Trigger"] = request.TriggerShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataQualityScan"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataQualityScanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据质量模板
+//
+// @param request - UpdateDataQualityTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataQualityTemplateResponse
+func (client *Client) UpdateDataQualityTemplateWithContext(ctx context.Context, request *UpdateDataQualityTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataQualityTemplateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataQualityTemplate"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataQualityTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
