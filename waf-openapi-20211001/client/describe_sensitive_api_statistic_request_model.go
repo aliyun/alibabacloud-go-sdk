@@ -27,6 +27,8 @@ type iDescribeSensitiveApiStatisticRequest interface {
 	GetResourceManagerResourceGroupId() *string
 	SetStartTime(v int64) *DescribeSensitiveApiStatisticRequest
 	GetStartTime() *int64
+	SetType(v string) *DescribeSensitiveApiStatisticRequest
+	GetType() *string
 }
 
 type DescribeSensitiveApiStatisticRequest struct {
@@ -97,7 +99,8 @@ type DescribeSensitiveApiStatisticRequest struct {
 	// example:
 	//
 	// 1672502400
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSensitiveApiStatisticRequest) String() string {
@@ -144,6 +147,10 @@ func (s *DescribeSensitiveApiStatisticRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *DescribeSensitiveApiStatisticRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *DescribeSensitiveApiStatisticRequest) SetClusterId(v string) *DescribeSensitiveApiStatisticRequest {
 	s.ClusterId = &v
 	return s
@@ -186,6 +193,11 @@ func (s *DescribeSensitiveApiStatisticRequest) SetResourceManagerResourceGroupId
 
 func (s *DescribeSensitiveApiStatisticRequest) SetStartTime(v int64) *DescribeSensitiveApiStatisticRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSensitiveApiStatisticRequest) SetType(v string) *DescribeSensitiveApiStatisticRequest {
+	s.Type = &v
 	return s
 }
 

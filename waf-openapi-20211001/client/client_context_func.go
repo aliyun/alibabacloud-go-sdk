@@ -7472,6 +7472,10 @@ func (client *Client) DescribeSensitiveApiStatisticWithContext(ctx context.Conte
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
