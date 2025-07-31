@@ -173,7 +173,8 @@ type DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNoti
 	// example:
 	//
 	// {\\"action\\":\\"publish_done\\",\\"app\\":\\"push.example1.com\\"}
-	NotifyContent *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	NotifyContent  *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	NotifyResponse *string `json:"NotifyResponse,omitempty" xml:"NotifyResponse,omitempty"`
 	// The callback result. Valid values:
 	//
 	// 	- success
@@ -238,6 +239,10 @@ func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStream
 	return s.NotifyContent
 }
 
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) GetNotifyResponse() *string {
+	return s.NotifyResponse
+}
+
 func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) GetNotifyResult() *string {
 	return s.NotifyResult
 }
@@ -275,6 +280,11 @@ func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStream
 
 func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyContent(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
 	s.NotifyContent = &v
+	return s
+}
+
+func (s *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo) SetNotifyResponse(v string) *DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNotifyRecordsInfo {
+	s.NotifyResponse = &v
 	return s
 }
 
