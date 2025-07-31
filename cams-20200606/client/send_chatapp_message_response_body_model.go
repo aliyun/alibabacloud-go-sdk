@@ -9,6 +9,8 @@ type iSendChatappMessageResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessDeniedDetail(v string) *SendChatappMessageResponseBody
+	GetAccessDeniedDetail() *string
 	SetCode(v string) *SendChatappMessageResponseBody
 	GetCode() *string
 	SetMessage(v string) *SendChatappMessageResponseBody
@@ -20,6 +22,7 @@ type iSendChatappMessageResponseBody interface {
 }
 
 type SendChatappMessageResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The HTTP status code returned.
 	//
 	// 	- A value of OK indicates that the call is successful.
@@ -58,6 +61,10 @@ func (s SendChatappMessageResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *SendChatappMessageResponseBody) GetAccessDeniedDetail() *string {
+	return s.AccessDeniedDetail
+}
+
 func (s *SendChatappMessageResponseBody) GetCode() *string {
 	return s.Code
 }
@@ -72,6 +79,11 @@ func (s *SendChatappMessageResponseBody) GetMessageId() *string {
 
 func (s *SendChatappMessageResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *SendChatappMessageResponseBody) SetAccessDeniedDetail(v string) *SendChatappMessageResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *SendChatappMessageResponseBody) SetCode(v string) *SendChatappMessageResponseBody {

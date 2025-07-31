@@ -39,12 +39,18 @@ type iSendChatappMessageShrinkRequest interface {
 	GetLanguage() *string
 	SetMessageType(v string) *SendChatappMessageShrinkRequest
 	GetMessageType() *string
+	SetOwnerId(v int64) *SendChatappMessageShrinkRequest
+	GetOwnerId() *int64
 	SetPayloadShrink(v string) *SendChatappMessageShrinkRequest
 	GetPayloadShrink() *string
 	SetProductActionShrink(v string) *SendChatappMessageShrinkRequest
 	GetProductActionShrink() *string
 	SetRecipientType(v string) *SendChatappMessageShrinkRequest
 	GetRecipientType() *string
+	SetResourceOwnerAccount(v string) *SendChatappMessageShrinkRequest
+	GetResourceOwnerAccount() *string
+	SetResourceOwnerId(v int64) *SendChatappMessageShrinkRequest
+	GetResourceOwnerId() *int64
 	SetTag(v string) *SendChatappMessageShrinkRequest
 	GetTag() *string
 	SetTaskId(v string) *SendChatappMessageShrinkRequest
@@ -66,19 +72,11 @@ type iSendChatappMessageShrinkRequest interface {
 }
 
 type SendChatappMessageShrinkRequest struct {
-	// The channel type. Valid values:
-	//
-	// 	- **whatsapp**
-	//
-	// 	- **viber**
-	//
-	// 	- **line*	- (under development)
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// whatsapp
+	// 示例值示例值
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The message content.
 	//
@@ -126,206 +124,101 @@ type SendChatappMessageShrinkRequest struct {
 	//
 	// {\\"text\\": \\"hello whatsapp\\", \\"link\\": \\"\\", \\"caption\\": \\"\\", \\"fileName\\": \\"\\" }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the reply message.
-	//
 	// example:
 	//
-	// 61851ccb2f1365b16aee****
+	// 示例值
 	ContextMessageId *string `json:"ContextMessageId,omitempty" xml:"ContextMessageId,omitempty"`
-	// The space ID of the user.
-	//
 	// example:
 	//
-	// 28251486512358****
+	// 示例值示例值示例值
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Deprecated
-	//
-	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
-	//
-	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
-	//
 	// example:
 	//
-	// 65921621816****
+	// 示例值示例值
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The content of the fallback message.
-	//
 	// example:
 	//
-	// This is a fallback message.
-	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent*	- or **the message receipt that indicates the message is not delivered to clients*	- is received. Unit: seconds. Valid values: 60 to 43200.
-	//
+	// 示例值
+	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// example:
 	//
-	// 120
-	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
-	//
-	// example:
-	//
-	// S_000001
+	// 示例值示例值示例值
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// The fallback rule. Valid values:
-	//
-	// 	- **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
-	//
-	// 	- **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
-	//
 	// example:
 	//
-	// undelivered
-	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
-	// The Flow action.
+	// 示例值示例值
+	FallBackRule     *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	FlowActionShrink *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
-	// The mobile phone number of the message sender.
-	//
-	// >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1360000****
+	// 示例值示例值
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
-	//
 	// example:
 	//
-	// skdi3kksloslikdkkdk
+	// 示例值
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
-	//
-	// 	- **promotion**
-	//
-	// 	- **transaction**
-	//
 	// example:
 	//
-	// promotion
+	// 示例值
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
-	//
 	// example:
 	//
-	// en
+	// 示例值示例值示例值
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
-	//
-	// **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**
-	//
-	// 	- **text**: a text message.
-	//
-	// 	- **image**: an image message.
-	//
-	// 	- **video**: a video message.
-	//
-	// 	- **audio**: an audio message.
-	//
-	// 	- **document**: a document message.
-	//
-	// 	- **interactive**: an interactive message.
-	//
-	// 	- **contacts**: a contact message.
-	//
-	// 	- **location**: a location message.
-	//
-	// 	- **sticker**: a sticker message.
-	//
-	// 	- **reaction**: a reaction message.
-	//
-	// **Valid values of MessageType when you set the ChannelType parameter to viber:**
-	//
-	// 	- **text**: a text message.
-	//
-	// 	- **image**: an image message.
-	//
-	// 	- **video**: a video message.
-	//
-	// 	- **document**: a document message.
-	//
-	// 	- **text_button**: a message that contains the text and button media objects.
-	//
-	// 	- **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
-	//
-	// 	- **text_video**: a message that contains the text and video media objects.
-	//
-	// 	- **text_video_button**: a message that contains multiple media objects, including text, video, and button.
-	//
-	// 	- **text_image**: a message that contains the text and image media objects.
-	//
-	// > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
-	//
 	// example:
 	//
-	// text
+	// 示例值
 	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The payload of the button.
 	//
 	// example:
 	//
 	// payloadtext1,payloadtext2,payloadtext3
-	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	// The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
+	PayloadShrink       *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
 	ProductActionShrink *string `json:"ProductAction,omitempty" xml:"ProductAction,omitempty"`
-	RecipientType       *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
-	// The tag information of the Viber message.
-	//
 	// example:
 	//
-	// tag
+	// individual
+	RecipientType        *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 示例值示例值
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The task ID.
-	//
 	// example:
 	//
-	// 100000001
+	// 示例值示例值
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The code of the message template. This parameter is required only if you set the Type parameter to **template**.
-	//
 	// example:
 	//
-	// 744c4b5c79c9432497a075bdfca3****
+	// 示例值示例值示例值
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The name of the message template.
-	//
 	// example:
 	//
-	// test_name
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The variables of the message template.
+	// 示例值示例值示例值
+	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TemplateParamsShrink *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// The mobile phone number of the message receiver.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1390000****
+	// 示例值示例值示例值
 	To *string `json:"To,omitempty" xml:"To,omitempty"`
-	// The tracking data of the Viber message.
-	//
 	// example:
 	//
-	// tracking_id:123456
+	// 示例值示例值
 	TrackingData *string `json:"TrackingData,omitempty" xml:"TrackingData,omitempty"`
-	// The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
-	//
-	// example:
-	//
-	// 50
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The message type. Valid values:
-	//
-	// 	- **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
-	//
-	// 	- **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
-	//
+	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// template
+	// 示例值
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -397,6 +290,10 @@ func (s *SendChatappMessageShrinkRequest) GetMessageType() *string {
 	return s.MessageType
 }
 
+func (s *SendChatappMessageShrinkRequest) GetOwnerId() *int64 {
+	return s.OwnerId
+}
+
 func (s *SendChatappMessageShrinkRequest) GetPayloadShrink() *string {
 	return s.PayloadShrink
 }
@@ -407,6 +304,14 @@ func (s *SendChatappMessageShrinkRequest) GetProductActionShrink() *string {
 
 func (s *SendChatappMessageShrinkRequest) GetRecipientType() *string {
 	return s.RecipientType
+}
+
+func (s *SendChatappMessageShrinkRequest) GetResourceOwnerAccount() *string {
+	return s.ResourceOwnerAccount
+}
+
+func (s *SendChatappMessageShrinkRequest) GetResourceOwnerId() *int64 {
+	return s.ResourceOwnerId
 }
 
 func (s *SendChatappMessageShrinkRequest) GetTag() *string {
@@ -520,6 +425,11 @@ func (s *SendChatappMessageShrinkRequest) SetMessageType(v string) *SendChatappM
 	return s
 }
 
+func (s *SendChatappMessageShrinkRequest) SetOwnerId(v int64) *SendChatappMessageShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *SendChatappMessageShrinkRequest) SetPayloadShrink(v string) *SendChatappMessageShrinkRequest {
 	s.PayloadShrink = &v
 	return s
@@ -532,6 +442,16 @@ func (s *SendChatappMessageShrinkRequest) SetProductActionShrink(v string) *Send
 
 func (s *SendChatappMessageShrinkRequest) SetRecipientType(v string) *SendChatappMessageShrinkRequest {
 	s.RecipientType = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetResourceOwnerAccount(v string) *SendChatappMessageShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetResourceOwnerId(v int64) *SendChatappMessageShrinkRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 

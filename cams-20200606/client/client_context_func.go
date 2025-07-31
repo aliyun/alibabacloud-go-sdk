@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("cams"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddChatGroupResponse
-func (client *Client) AddChatGroupWithOptions(request *AddChatGroupRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupResponse, _err error) {
+func (client *Client) AddChatGroupWithContext(ctx context.Context, request *AddChatGroupRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -117,29 +69,11 @@ func (client *Client) AddChatGroupWithOptions(request *AddChatGroupRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddChatGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AddChatGroup
-//
-// @param request - AddChatGroupRequest
-//
-// @return AddChatGroupResponse
-func (client *Client) AddChatGroup(request *AddChatGroupRequest) (_result *AddChatGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddChatGroupResponse{}
-	_body, _err := client.AddChatGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -152,7 +86,7 @@ func (client *Client) AddChatGroup(request *AddChatGroupRequest) (_result *AddCh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddChatGroupInviteLinkResponse
-func (client *Client) AddChatGroupInviteLinkWithOptions(request *AddChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupInviteLinkResponse, _err error) {
+func (client *Client) AddChatGroupInviteLinkWithContext(ctx context.Context, request *AddChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *AddChatGroupInviteLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -201,29 +135,11 @@ func (client *Client) AddChatGroupInviteLinkWithOptions(request *AddChatGroupInv
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddChatGroupInviteLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # AddChatGroupInviteLink
-//
-// @param request - AddChatGroupInviteLinkRequest
-//
-// @return AddChatGroupInviteLinkResponse
-func (client *Client) AddChatGroupInviteLink(request *AddChatGroupInviteLinkRequest) (_result *AddChatGroupInviteLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddChatGroupInviteLinkResponse{}
-	_body, _err := client.AddChatGroupInviteLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -236,7 +152,7 @@ func (client *Client) AddChatGroupInviteLink(request *AddChatGroupInviteLinkRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddChatappPhoneNumberResponse
-func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *AddChatappPhoneNumberResponse, _err error) {
+func (client *Client) AddChatappPhoneNumberWithContext(ctx context.Context, request *AddChatappPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *AddChatappPhoneNumberResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -289,29 +205,11 @@ func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneN
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddChatappPhoneNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a phone number for a WhatsApp Business account (WABA).
-//
-// @param request - AddChatappPhoneNumberRequest
-//
-// @return AddChatappPhoneNumberResponse
-func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberRequest) (_result *AddChatappPhoneNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddChatappPhoneNumberResponse{}
-	_body, _err := client.AddChatappPhoneNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -328,7 +226,7 @@ func (client *Client) AddChatappPhoneNumber(request *AddChatappPhoneNumberReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappBindWabaResponse
-func (client *Client) ChatappBindWabaWithOptions(request *ChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *ChatappBindWabaResponse, _err error) {
+func (client *Client) ChatappBindWabaWithContext(ctx context.Context, request *ChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *ChatappBindWabaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -365,33 +263,11 @@ func (client *Client) ChatappBindWabaWithOptions(request *ChatappBindWabaRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappBindWabaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds the WhatsApp Business account with ChatApp.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappBindWabaRequest
-//
-// @return ChatappBindWabaResponse
-func (client *Client) ChatappBindWaba(request *ChatappBindWabaRequest) (_result *ChatappBindWabaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappBindWabaResponse{}
-	_body, _err := client.ChatappBindWabaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -408,7 +284,7 @@ func (client *Client) ChatappBindWaba(request *ChatappBindWabaRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappEmbedSignUpResponse
-func (client *Client) ChatappEmbedSignUpWithOptions(request *ChatappEmbedSignUpRequest, runtime *dara.RuntimeOptions) (_result *ChatappEmbedSignUpResponse, _err error) {
+func (client *Client) ChatappEmbedSignUpWithContext(ctx context.Context, request *ChatappEmbedSignUpRequest, runtime *dara.RuntimeOptions) (_result *ChatappEmbedSignUpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -445,33 +321,11 @@ func (client *Client) ChatappEmbedSignUpWithOptions(request *ChatappEmbedSignUpR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappEmbedSignUpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries WhatsApp Business account (WABA) information after embedded signup. You do not need to call this API operation if you use Version 2 of WhatsApp embedded signup.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappEmbedSignUpRequest
-//
-// @return ChatappEmbedSignUpResponse
-func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_result *ChatappEmbedSignUpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappEmbedSignUpResponse{}
-	_body, _err := client.ChatappEmbedSignUpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -488,7 +342,7 @@ func (client *Client) ChatappEmbedSignUp(request *ChatappEmbedSignUpRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappMigrationRegisterResponse
-func (client *Client) ChatappMigrationRegisterWithOptions(request *ChatappMigrationRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationRegisterResponse, _err error) {
+func (client *Client) ChatappMigrationRegisterWithContext(ctx context.Context, request *ChatappMigrationRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationRegisterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -529,33 +383,11 @@ func (client *Client) ChatappMigrationRegisterWithOptions(request *ChatappMigrat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappMigrationRegisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Registers a phone number for migration.
-//
-// Description:
-//
-// The space ID of the RAM user within the independent software vendor (ISV) account.
-//
-// @param request - ChatappMigrationRegisterRequest
-//
-// @return ChatappMigrationRegisterResponse
-func (client *Client) ChatappMigrationRegister(request *ChatappMigrationRegisterRequest) (_result *ChatappMigrationRegisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappMigrationRegisterResponse{}
-	_body, _err := client.ChatappMigrationRegisterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -572,7 +404,7 @@ func (client *Client) ChatappMigrationRegister(request *ChatappMigrationRegister
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappMigrationVerifiedResponse
-func (client *Client) ChatappMigrationVerifiedWithOptions(request *ChatappMigrationVerifiedRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationVerifiedResponse, _err error) {
+func (client *Client) ChatappMigrationVerifiedWithContext(ctx context.Context, request *ChatappMigrationVerifiedRequest, runtime *dara.RuntimeOptions) (_result *ChatappMigrationVerifiedResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -617,33 +449,11 @@ func (client *Client) ChatappMigrationVerifiedWithOptions(request *ChatappMigrat
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappMigrationVerifiedResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies a specified phone number for migration.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappMigrationVerifiedRequest
-//
-// @return ChatappMigrationVerifiedResponse
-func (client *Client) ChatappMigrationVerified(request *ChatappMigrationVerifiedRequest) (_result *ChatappMigrationVerifiedResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappMigrationVerifiedResponse{}
-	_body, _err := client.ChatappMigrationVerifiedWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -660,7 +470,7 @@ func (client *Client) ChatappMigrationVerified(request *ChatappMigrationVerified
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappPhoneNumberDeregisterResponse
-func (client *Client) ChatappPhoneNumberDeregisterWithOptions(request *ChatappPhoneNumberDeregisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
+func (client *Client) ChatappPhoneNumberDeregisterWithContext(ctx context.Context, request *ChatappPhoneNumberDeregisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -701,33 +511,11 @@ func (client *Client) ChatappPhoneNumberDeregisterWithOptions(request *ChatappPh
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappPhoneNumberDeregisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deregisters a phone number from a WhatsApp Business account (WABA).
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappPhoneNumberDeregisterRequest
-//
-// @return ChatappPhoneNumberDeregisterResponse
-func (client *Client) ChatappPhoneNumberDeregister(request *ChatappPhoneNumberDeregisterRequest) (_result *ChatappPhoneNumberDeregisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappPhoneNumberDeregisterResponse{}
-	_body, _err := client.ChatappPhoneNumberDeregisterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -744,7 +532,7 @@ func (client *Client) ChatappPhoneNumberDeregister(request *ChatappPhoneNumberDe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappPhoneNumberRegisterResponse
-func (client *Client) ChatappPhoneNumberRegisterWithOptions(request *ChatappPhoneNumberRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
+func (client *Client) ChatappPhoneNumberRegisterWithContext(ctx context.Context, request *ChatappPhoneNumberRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -785,33 +573,11 @@ func (client *Client) ChatappPhoneNumberRegisterWithOptions(request *ChatappPhon
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappPhoneNumberRegisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Registers a phone number.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappPhoneNumberRegisterRequest
-//
-// @return ChatappPhoneNumberRegisterResponse
-func (client *Client) ChatappPhoneNumberRegister(request *ChatappPhoneNumberRegisterRequest) (_result *ChatappPhoneNumberRegisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappPhoneNumberRegisterResponse{}
-	_body, _err := client.ChatappPhoneNumberRegisterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -828,7 +594,7 @@ func (client *Client) ChatappPhoneNumberRegister(request *ChatappPhoneNumberRegi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappSyncPhoneNumberResponse
-func (client *Client) ChatappSyncPhoneNumberWithOptions(request *ChatappSyncPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *ChatappSyncPhoneNumberResponse, _err error) {
+func (client *Client) ChatappSyncPhoneNumberWithContext(ctx context.Context, request *ChatappSyncPhoneNumberRequest, runtime *dara.RuntimeOptions) (_result *ChatappSyncPhoneNumberResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,33 +631,11 @@ func (client *Client) ChatappSyncPhoneNumberWithOptions(request *ChatappSyncPhon
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappSyncPhoneNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Synchronizes phone numbers.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappSyncPhoneNumberRequest
-//
-// @return ChatappSyncPhoneNumberResponse
-func (client *Client) ChatappSyncPhoneNumber(request *ChatappSyncPhoneNumberRequest) (_result *ChatappSyncPhoneNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappSyncPhoneNumberResponse{}
-	_body, _err := client.ChatappSyncPhoneNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -908,7 +652,7 @@ func (client *Client) ChatappSyncPhoneNumber(request *ChatappSyncPhoneNumberRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChatappVerifyAndRegisterResponse
-func (client *Client) ChatappVerifyAndRegisterWithOptions(request *ChatappVerifyAndRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappVerifyAndRegisterResponse, _err error) {
+func (client *Client) ChatappVerifyAndRegisterWithContext(ctx context.Context, request *ChatappVerifyAndRegisterRequest, runtime *dara.RuntimeOptions) (_result *ChatappVerifyAndRegisterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -953,33 +697,11 @@ func (client *Client) ChatappVerifyAndRegisterWithOptions(request *ChatappVerify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChatappVerifyAndRegisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a phone number with a WhatsApp Business account (WABA).
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ChatappVerifyAndRegisterRequest
-//
-// @return ChatappVerifyAndRegisterResponse
-func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegisterRequest) (_result *ChatappVerifyAndRegisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChatappVerifyAndRegisterResponse{}
-	_body, _err := client.ChatappVerifyAndRegisterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -992,7 +714,7 @@ func (client *Client) ChatappVerifyAndRegister(request *ChatappVerifyAndRegister
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatFlowResponse
-func (client *Client) CreateChatFlowWithOptions(tmpReq *CreateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowResponse, _err error) {
+func (client *Client) CreateChatFlowWithContext(ctx context.Context, tmpReq *CreateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1051,29 +773,11 @@ func (client *Client) CreateChatFlowWithOptions(tmpReq *CreateChatFlowRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create Chatflow
-//
-// @param request - CreateChatFlowRequest
-//
-// @return CreateChatFlowResponse
-func (client *Client) CreateChatFlow(request *CreateChatFlowRequest) (_result *CreateChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChatFlowResponse{}
-	_body, _err := client.CreateChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1086,7 +790,7 @@ func (client *Client) CreateChatFlow(request *CreateChatFlowRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatFlowByImportResponse
-func (client *Client) CreateChatFlowByImportWithOptions(tmpReq *CreateChatFlowByImportRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowByImportResponse, _err error) {
+func (client *Client) CreateChatFlowByImportWithContext(ctx context.Context, tmpReq *CreateChatFlowByImportRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowByImportResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1145,29 +849,11 @@ func (client *Client) CreateChatFlowByImportWithOptions(tmpReq *CreateChatFlowBy
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatFlowByImportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Import and create flow
-//
-// @param request - CreateChatFlowByImportRequest
-//
-// @return CreateChatFlowByImportResponse
-func (client *Client) CreateChatFlowByImport(request *CreateChatFlowByImportRequest) (_result *CreateChatFlowByImportResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChatFlowByImportResponse{}
-	_body, _err := client.CreateChatFlowByImportWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1180,7 +866,7 @@ func (client *Client) CreateChatFlowByImport(request *CreateChatFlowByImportRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatFlowLogSettingResponse
-func (client *Client) CreateChatFlowLogSettingWithOptions(request *CreateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowLogSettingResponse, _err error) {
+func (client *Client) CreateChatFlowLogSettingWithContext(ctx context.Context, request *CreateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *CreateChatFlowLogSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1217,29 +903,11 @@ func (client *Client) CreateChatFlowLogSettingWithOptions(request *CreateChatFlo
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatFlowLogSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create chatFlow log setting
-//
-// @param request - CreateChatFlowLogSettingRequest
-//
-// @return CreateChatFlowLogSettingResponse
-func (client *Client) CreateChatFlowLogSetting(request *CreateChatFlowLogSettingRequest) (_result *CreateChatFlowLogSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChatFlowLogSettingResponse{}
-	_body, _err := client.CreateChatFlowLogSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1256,7 +924,7 @@ func (client *Client) CreateChatFlowLogSetting(request *CreateChatFlowLogSetting
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatappMigrationInitiateResponse
-func (client *Client) CreateChatappMigrationInitiateWithOptions(request *CreateChatappMigrationInitiateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappMigrationInitiateResponse, _err error) {
+func (client *Client) CreateChatappMigrationInitiateWithContext(ctx context.Context, request *CreateChatappMigrationInitiateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappMigrationInitiateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1301,33 +969,11 @@ func (client *Client) CreateChatappMigrationInitiateWithOptions(request *CreateC
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatappMigrationInitiateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the number.
-//
-// Description:
-//
-// The status of the phone number.
-//
-// @param request - CreateChatappMigrationInitiateRequest
-//
-// @return CreateChatappMigrationInitiateResponse
-func (client *Client) CreateChatappMigrationInitiate(request *CreateChatappMigrationInitiateRequest) (_result *CreateChatappMigrationInitiateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChatappMigrationInitiateResponse{}
-	_body, _err := client.CreateChatappMigrationInitiateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1350,7 +996,7 @@ func (client *Client) CreateChatappMigrationInitiate(request *CreateChatappMigra
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatappTemplateResponse
-func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappTemplateResponse, _err error) {
+func (client *Client) CreateChatappTemplateWithContext(ctx context.Context, tmpReq *CreateChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateChatappTemplateResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1429,39 +1075,11 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatappTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The HTTP status code.
-//
-// \\\\\\\\	- Example: OK. This parameter indicates that the request is successful.
-//
-// \\\\\\\\	- Other values indicate that the request fails. For more information, see \\\\\\[Error codes]\\\\\\(https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateChatappTemplateRequest
-//
-// @return CreateChatappTemplateResponse
-func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateRequest) (_result *CreateChatappTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChatappTemplateResponse{}
-	_body, _err := client.CreateChatappTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1478,7 +1096,7 @@ func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowResponse
-func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
+func (client *Client) CreateFlowWithContext(ctx context.Context, tmpReq *CreateFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1529,33 +1147,11 @@ func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Flow.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateFlowRequest
-//
-// @return CreateFlowResponse
-func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowResponse{}
-	_body, _err := client.CreateFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1568,7 +1164,7 @@ func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowVersionResponse
-func (client *Client) CreateFlowVersionWithOptions(tmpReq *CreateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowVersionResponse, _err error) {
+func (client *Client) CreateFlowVersionWithContext(ctx context.Context, tmpReq *CreateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1627,29 +1223,11 @@ func (client *Client) CreateFlowVersionWithOptions(tmpReq *CreateFlowVersionRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # CreateFlowVersion
-//
-// @param request - CreateFlowVersionRequest
-//
-// @return CreateFlowVersionResponse
-func (client *Client) CreateFlowVersion(request *CreateFlowVersionRequest) (_result *CreateFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowVersionResponse{}
-	_body, _err := client.CreateFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1662,7 +1240,7 @@ func (client *Client) CreateFlowVersion(request *CreateFlowVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePhoneMessageQrdlResponse
-func (client *Client) CreatePhoneMessageQrdlWithOptions(request *CreatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *CreatePhoneMessageQrdlResponse, _err error) {
+func (client *Client) CreatePhoneMessageQrdlWithContext(ctx context.Context, request *CreatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *CreatePhoneMessageQrdlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1711,29 +1289,11 @@ func (client *Client) CreatePhoneMessageQrdlWithOptions(request *CreatePhoneMess
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePhoneMessageQrdlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a quick-response (QR) code that contains a message.
-//
-// @param request - CreatePhoneMessageQrdlRequest
-//
-// @return CreatePhoneMessageQrdlResponse
-func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequest) (_result *CreatePhoneMessageQrdlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePhoneMessageQrdlResponse{}
-	_body, _err := client.CreatePhoneMessageQrdlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1746,7 +1306,7 @@ func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChatFlowResponse
-func (client *Client) DeleteChatFlowWithOptions(tmpReq *DeleteChatFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatFlowResponse, _err error) {
+func (client *Client) DeleteChatFlowWithContext(ctx context.Context, tmpReq *DeleteChatFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1797,29 +1357,11 @@ func (client *Client) DeleteChatFlowWithOptions(tmpReq *DeleteChatFlowRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Process
-//
-// @param request - DeleteChatFlowRequest
-//
-// @return DeleteChatFlowResponse
-func (client *Client) DeleteChatFlow(request *DeleteChatFlowRequest) (_result *DeleteChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChatFlowResponse{}
-	_body, _err := client.DeleteChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1832,7 +1374,7 @@ func (client *Client) DeleteChatFlow(request *DeleteChatFlowRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChatGroupResponse
-func (client *Client) DeleteChatGroupWithOptions(request *DeleteChatGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupResponse, _err error) {
+func (client *Client) DeleteChatGroupWithContext(ctx context.Context, request *DeleteChatGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1881,29 +1423,11 @@ func (client *Client) DeleteChatGroupWithOptions(request *DeleteChatGroupRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChatGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DeleteChatGroup
-//
-// @param request - DeleteChatGroupRequest
-//
-// @return DeleteChatGroupResponse
-func (client *Client) DeleteChatGroup(request *DeleteChatGroupRequest) (_result *DeleteChatGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChatGroupResponse{}
-	_body, _err := client.DeleteChatGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1916,7 +1440,7 @@ func (client *Client) DeleteChatGroup(request *DeleteChatGroupRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChatGroupInviteLinkResponse
-func (client *Client) DeleteChatGroupInviteLinkWithOptions(request *DeleteChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
+func (client *Client) DeleteChatGroupInviteLinkWithContext(ctx context.Context, request *DeleteChatGroupInviteLinkRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1965,29 +1489,11 @@ func (client *Client) DeleteChatGroupInviteLinkWithOptions(request *DeleteChatGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChatGroupInviteLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DeleteChatGroupInviteLink
-//
-// @param request - DeleteChatGroupInviteLinkRequest
-//
-// @return DeleteChatGroupInviteLinkResponse
-func (client *Client) DeleteChatGroupInviteLink(request *DeleteChatGroupInviteLinkRequest) (_result *DeleteChatGroupInviteLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChatGroupInviteLinkResponse{}
-	_body, _err := client.DeleteChatGroupInviteLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2000,7 +1506,7 @@ func (client *Client) DeleteChatGroupInviteLink(request *DeleteChatGroupInviteLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChatGroupParticipantsResponse
-func (client *Client) DeleteChatGroupParticipantsWithOptions(tmpReq *DeleteChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupParticipantsResponse, _err error) {
+func (client *Client) DeleteChatGroupParticipantsWithContext(ctx context.Context, tmpReq *DeleteChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatGroupParticipantsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2059,29 +1565,11 @@ func (client *Client) DeleteChatGroupParticipantsWithOptions(tmpReq *DeleteChatG
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChatGroupParticipantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DeleteChatGroupParticipants
-//
-// @param request - DeleteChatGroupParticipantsRequest
-//
-// @return DeleteChatGroupParticipantsResponse
-func (client *Client) DeleteChatGroupParticipants(request *DeleteChatGroupParticipantsRequest) (_result *DeleteChatGroupParticipantsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChatGroupParticipantsResponse{}
-	_body, _err := client.DeleteChatGroupParticipantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2100,7 +1588,7 @@ func (client *Client) DeleteChatGroupParticipants(request *DeleteChatGroupPartic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChatappTemplateResponse
-func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatappTemplateResponse, _err error) {
+func (client *Client) DeleteChatappTemplateWithContext(ctx context.Context, request *DeleteChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatappTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2161,35 +1649,11 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChatappTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a message template.
-//
-// Description:
-//
-// ### QPS limit
-//
-// You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteChatappTemplateRequest
-//
-// @return DeleteChatappTemplateResponse
-func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateRequest) (_result *DeleteChatappTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChatappTemplateResponse{}
-	_body, _err := client.DeleteChatappTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2206,7 +1670,7 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowResponse
-func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
+func (client *Client) DeleteFlowWithContext(ctx context.Context, request *DeleteFlowRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2247,33 +1711,11 @@ func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Flow. Only Flows in the DRAFT state can be deleted.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteFlowRequest
-//
-// @return DeleteFlowResponse
-func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowResponse{}
-	_body, _err := client.DeleteFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2286,7 +1728,7 @@ func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowVersionResponse
-func (client *Client) DeleteFlowVersionWithOptions(tmpReq *DeleteFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
+func (client *Client) DeleteFlowVersionWithContext(ctx context.Context, tmpReq *DeleteFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2341,29 +1783,11 @@ func (client *Client) DeleteFlowVersionWithOptions(tmpReq *DeleteFlowVersionRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete Flow Version
-//
-// @param request - DeleteFlowVersionRequest
-//
-// @return DeleteFlowVersionResponse
-func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_result *DeleteFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowVersionResponse{}
-	_body, _err := client.DeleteFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2376,7 +1800,7 @@ func (client *Client) DeleteFlowVersion(request *DeleteFlowVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePhoneMessageQrdlResponse
-func (client *Client) DeletePhoneMessageQrdlWithOptions(request *DeletePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *DeletePhoneMessageQrdlResponse, _err error) {
+func (client *Client) DeletePhoneMessageQrdlWithContext(ctx context.Context, request *DeletePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *DeletePhoneMessageQrdlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2421,29 +1845,11 @@ func (client *Client) DeletePhoneMessageQrdlWithOptions(request *DeletePhoneMess
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePhoneMessageQrdlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a quick-response (QR) code that contains a message.
-//
-// @param request - DeletePhoneMessageQrdlRequest
-//
-// @return DeletePhoneMessageQrdlResponse
-func (client *Client) DeletePhoneMessageQrdl(request *DeletePhoneMessageQrdlRequest) (_result *DeletePhoneMessageQrdlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePhoneMessageQrdlResponse{}
-	_body, _err := client.DeletePhoneMessageQrdlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2456,7 +1862,7 @@ func (client *Client) DeletePhoneMessageQrdl(request *DeletePhoneMessageQrdlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeprecateFlowResponse
-func (client *Client) DeprecateFlowWithOptions(request *DeprecateFlowRequest, runtime *dara.RuntimeOptions) (_result *DeprecateFlowResponse, _err error) {
+func (client *Client) DeprecateFlowWithContext(ctx context.Context, request *DeprecateFlowRequest, runtime *dara.RuntimeOptions) (_result *DeprecateFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2497,29 +1903,11 @@ func (client *Client) DeprecateFlowWithOptions(request *DeprecateFlowRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeprecateFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deprecates a Flow.
-//
-// @param request - DeprecateFlowRequest
-//
-// @return DeprecateFlowResponse
-func (client *Client) DeprecateFlow(request *DeprecateFlowRequest) (_result *DeprecateFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeprecateFlowResponse{}
-	_body, _err := client.DeprecateFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2536,7 +1924,7 @@ func (client *Client) DeprecateFlow(request *DeprecateFlowRequest) (_result *Dep
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableWhatsappROIMetricResponse
-func (client *Client) EnableWhatsappROIMetricWithOptions(request *EnableWhatsappROIMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableWhatsappROIMetricResponse, _err error) {
+func (client *Client) EnableWhatsappROIMetricWithContext(ctx context.Context, request *EnableWhatsappROIMetricRequest, runtime *dara.RuntimeOptions) (_result *EnableWhatsappROIMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2577,33 +1965,11 @@ func (client *Client) EnableWhatsappROIMetricWithOptions(request *EnableWhatsapp
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableWhatsappROIMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the statistics on the metrics that are related to WhatsApp.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - EnableWhatsappROIMetricRequest
-//
-// @return EnableWhatsappROIMetricResponse
-func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRequest) (_result *EnableWhatsappROIMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableWhatsappROIMetricResponse{}
-	_body, _err := client.EnableWhatsappROIMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2616,7 +1982,7 @@ func (client *Client) EnableWhatsappROIMetric(request *EnableWhatsappROIMetricRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FlowBindPhoneResponse
-func (client *Client) FlowBindPhoneWithOptions(tmpReq *FlowBindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowBindPhoneResponse, _err error) {
+func (client *Client) FlowBindPhoneWithContext(ctx context.Context, tmpReq *FlowBindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowBindPhoneResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2679,29 +2045,11 @@ func (client *Client) FlowBindPhoneWithOptions(tmpReq *FlowBindPhoneRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &FlowBindPhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Bind phone numbers to flow
-//
-// @param request - FlowBindPhoneRequest
-//
-// @return FlowBindPhoneResponse
-func (client *Client) FlowBindPhone(request *FlowBindPhoneRequest) (_result *FlowBindPhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FlowBindPhoneResponse{}
-	_body, _err := client.FlowBindPhoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2714,7 +2062,7 @@ func (client *Client) FlowBindPhone(request *FlowBindPhoneRequest) (_result *Flo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FlowRebindPhoneResponse
-func (client *Client) FlowRebindPhoneWithOptions(tmpReq *FlowRebindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowRebindPhoneResponse, _err error) {
+func (client *Client) FlowRebindPhoneWithContext(ctx context.Context, tmpReq *FlowRebindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowRebindPhoneResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2777,29 +2125,11 @@ func (client *Client) FlowRebindPhoneWithOptions(tmpReq *FlowRebindPhoneRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &FlowRebindPhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Rebind phone number for flow
-//
-// @param request - FlowRebindPhoneRequest
-//
-// @return FlowRebindPhoneResponse
-func (client *Client) FlowRebindPhone(request *FlowRebindPhoneRequest) (_result *FlowRebindPhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FlowRebindPhoneResponse{}
-	_body, _err := client.FlowRebindPhoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2812,7 +2142,7 @@ func (client *Client) FlowRebindPhone(request *FlowRebindPhoneRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FlowUnbindPhoneResponse
-func (client *Client) FlowUnbindPhoneWithOptions(tmpReq *FlowUnbindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowUnbindPhoneResponse, _err error) {
+func (client *Client) FlowUnbindPhoneWithContext(ctx context.Context, tmpReq *FlowUnbindPhoneRequest, runtime *dara.RuntimeOptions) (_result *FlowUnbindPhoneResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2867,29 +2197,11 @@ func (client *Client) FlowUnbindPhoneWithOptions(tmpReq *FlowUnbindPhoneRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &FlowUnbindPhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Unbind phone number from flow
-//
-// @param request - FlowUnbindPhoneRequest
-//
-// @return FlowUnbindPhoneResponse
-func (client *Client) FlowUnbindPhone(request *FlowUnbindPhoneRequest) (_result *FlowUnbindPhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FlowUnbindPhoneResponse{}
-	_body, _err := client.FlowUnbindPhoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2902,7 +2214,7 @@ func (client *Client) FlowUnbindPhone(request *FlowUnbindPhoneRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatFlowMetricResponse
-func (client *Client) GetChatFlowMetricWithOptions(tmpReq *GetChatFlowMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowMetricResponse, _err error) {
+func (client *Client) GetChatFlowMetricWithContext(ctx context.Context, tmpReq *GetChatFlowMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowMetricResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2977,29 +2289,11 @@ func (client *Client) GetChatFlowMetricWithOptions(tmpReq *GetChatFlowMetricRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatFlowMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get ChatFlow Runtime Data
-//
-// @param request - GetChatFlowMetricRequest
-//
-// @return GetChatFlowMetricResponse
-func (client *Client) GetChatFlowMetric(request *GetChatFlowMetricRequest) (_result *GetChatFlowMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatFlowMetricResponse{}
-	_body, _err := client.GetChatFlowMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3012,7 +2306,7 @@ func (client *Client) GetChatFlowMetric(request *GetChatFlowMetricRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatFlowTemplateResponse
-func (client *Client) GetChatFlowTemplateWithOptions(request *GetChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowTemplateResponse, _err error) {
+func (client *Client) GetChatFlowTemplateWithContext(ctx context.Context, request *GetChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetChatFlowTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3053,29 +2347,11 @@ func (client *Client) GetChatFlowTemplateWithOptions(request *GetChatFlowTemplat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatFlowTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query chatFlow template
-//
-// @param request - GetChatFlowTemplateRequest
-//
-// @return GetChatFlowTemplateResponse
-func (client *Client) GetChatFlowTemplate(request *GetChatFlowTemplateRequest) (_result *GetChatFlowTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatFlowTemplateResponse{}
-	_body, _err := client.GetChatFlowTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3092,7 +2368,7 @@ func (client *Client) GetChatFlowTemplate(request *GetChatFlowTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatappPhoneNumberMetricResponse
-func (client *Client) GetChatappPhoneNumberMetricWithOptions(request *GetChatappPhoneNumberMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
+func (client *Client) GetChatappPhoneNumberMetricWithContext(ctx context.Context, request *GetChatappPhoneNumberMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3149,33 +2425,11 @@ func (client *Client) GetChatappPhoneNumberMetricWithOptions(request *GetChatapp
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatappPhoneNumberMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of messages that are sent by using a phone number by a specific metric.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetChatappPhoneNumberMetricRequest
-//
-// @return GetChatappPhoneNumberMetricResponse
-func (client *Client) GetChatappPhoneNumberMetric(request *GetChatappPhoneNumberMetricRequest) (_result *GetChatappPhoneNumberMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatappPhoneNumberMetricResponse{}
-	_body, _err := client.GetChatappPhoneNumberMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3194,7 +2448,7 @@ func (client *Client) GetChatappPhoneNumberMetric(request *GetChatappPhoneNumber
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatappTemplateDetailResponse
-func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTemplateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateDetailResponse, _err error) {
+func (client *Client) GetChatappTemplateDetailWithContext(ctx context.Context, request *GetChatappTemplateDetailRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3243,35 +2497,11 @@ func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTem
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatappTemplateDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a message template.
-//
-// Description:
-//
-// ### QPS limit
-//
-// You can call this API operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetChatappTemplateDetailRequest
-//
-// @return GetChatappTemplateDetailResponse
-func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetailRequest) (_result *GetChatappTemplateDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatappTemplateDetailResponse{}
-	_body, _err := client.GetChatappTemplateDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3288,7 +2518,7 @@ func (client *Client) GetChatappTemplateDetail(request *GetChatappTemplateDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatappTemplateMetricResponse
-func (client *Client) GetChatappTemplateMetricWithOptions(request *GetChatappTemplateMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateMetricResponse, _err error) {
+func (client *Client) GetChatappTemplateMetricWithContext(ctx context.Context, request *GetChatappTemplateMetricRequest, runtime *dara.RuntimeOptions) (_result *GetChatappTemplateMetricResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3353,33 +2583,11 @@ func (client *Client) GetChatappTemplateMetricWithOptions(request *GetChatappTem
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatappTemplateMetricResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the metrics about a marketing template.
-//
-// Description:
-//
-// You can call this operation up to 50 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetChatappTemplateMetricRequest
-//
-// @return GetChatappTemplateMetricResponse
-func (client *Client) GetChatappTemplateMetric(request *GetChatappTemplateMetricRequest) (_result *GetChatappTemplateMetricResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatappTemplateMetricResponse{}
-	_body, _err := client.GetChatappTemplateMetricWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3396,7 +2604,7 @@ func (client *Client) GetChatappTemplateMetric(request *GetChatappTemplateMetric
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatappUploadAuthorizationResponse
-func (client *Client) GetChatappUploadAuthorizationWithOptions(request *GetChatappUploadAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *GetChatappUploadAuthorizationResponse, _err error) {
+func (client *Client) GetChatappUploadAuthorizationWithContext(ctx context.Context, request *GetChatappUploadAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *GetChatappUploadAuthorizationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3433,33 +2641,11 @@ func (client *Client) GetChatappUploadAuthorizationWithOptions(request *GetChata
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatappUploadAuthorizationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the authentication information that is used to upload a file.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetChatappUploadAuthorizationRequest
-//
-// @return GetChatappUploadAuthorizationResponse
-func (client *Client) GetChatappUploadAuthorization(request *GetChatappUploadAuthorizationRequest) (_result *GetChatappUploadAuthorizationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatappUploadAuthorizationResponse{}
-	_body, _err := client.GetChatappUploadAuthorizationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3476,7 +2662,7 @@ func (client *Client) GetChatappUploadAuthorization(request *GetChatappUploadAut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatappVerifyCodeResponse
-func (client *Client) GetChatappVerifyCodeWithOptions(request *GetChatappVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetChatappVerifyCodeResponse, _err error) {
+func (client *Client) GetChatappVerifyCodeWithContext(ctx context.Context, request *GetChatappVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetChatappVerifyCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3525,33 +2711,11 @@ func (client *Client) GetChatappVerifyCodeWithOptions(request *GetChatappVerifyC
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatappVerifyCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a verification code.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetChatappVerifyCodeRequest
-//
-// @return GetChatappVerifyCodeResponse
-func (client *Client) GetChatappVerifyCode(request *GetChatappVerifyCodeRequest) (_result *GetChatappVerifyCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChatappVerifyCodeResponse{}
-	_body, _err := client.GetChatappVerifyCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3568,7 +2732,7 @@ func (client *Client) GetChatappVerifyCode(request *GetChatappVerifyCodeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCommerceSettingResponse
-func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *GetCommerceSettingResponse, _err error) {
+func (client *Client) GetCommerceSettingWithContext(ctx context.Context, request *GetCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *GetCommerceSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3609,33 +2773,11 @@ func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCommerceSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the business settings of a phone number.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetCommerceSettingRequest
-//
-// @return GetCommerceSettingResponse
-func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_result *GetCommerceSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCommerceSettingResponse{}
-	_body, _err := client.GetCommerceSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3656,7 +2798,7 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConversationalAutomationResponse
-func (client *Client) GetConversationalAutomationWithOptions(request *GetConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *GetConversationalAutomationResponse, _err error) {
+func (client *Client) GetConversationalAutomationWithContext(ctx context.Context, request *GetConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *GetConversationalAutomationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3697,37 +2839,11 @@ func (client *Client) GetConversationalAutomationWithOptions(request *GetConvers
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConversationalAutomationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures welcoming messages, opening remarks, and commands.
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetConversationalAutomationRequest
-//
-// @return GetConversationalAutomationResponse
-func (client *Client) GetConversationalAutomation(request *GetConversationalAutomationRequest) (_result *GetConversationalAutomationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConversationalAutomationResponse{}
-	_body, _err := client.GetConversationalAutomationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3744,7 +2860,7 @@ func (client *Client) GetConversationalAutomation(request *GetConversationalAuto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFlowResponse
-func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *dara.RuntimeOptions) (_result *GetFlowResponse, _err error) {
+func (client *Client) GetFlowWithContext(ctx context.Context, request *GetFlowRequest, runtime *dara.RuntimeOptions) (_result *GetFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3785,33 +2901,11 @@ func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a Flow.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetFlowRequest
-//
-// @return GetFlowResponse
-func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFlowResponse{}
-	_body, _err := client.GetFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3824,7 +2918,7 @@ func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFlowJSONAssestResponse
-func (client *Client) GetFlowJSONAssestWithOptions(request *GetFlowJSONAssestRequest, runtime *dara.RuntimeOptions) (_result *GetFlowJSONAssestResponse, _err error) {
+func (client *Client) GetFlowJSONAssestWithContext(ctx context.Context, request *GetFlowJSONAssestRequest, runtime *dara.RuntimeOptions) (_result *GetFlowJSONAssestResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3865,29 +2959,11 @@ func (client *Client) GetFlowJSONAssestWithOptions(request *GetFlowJSONAssestReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFlowJSONAssestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the JSON content of a Flow.
-//
-// @param request - GetFlowJSONAssestRequest
-//
-// @return GetFlowJSONAssestResponse
-func (client *Client) GetFlowJSONAssest(request *GetFlowJSONAssestRequest) (_result *GetFlowJSONAssestResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFlowJSONAssestResponse{}
-	_body, _err := client.GetFlowJSONAssestWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3904,7 +2980,7 @@ func (client *Client) GetFlowJSONAssest(request *GetFlowJSONAssestRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFlowPreviewUrlResponse
-func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlRequest, runtime *dara.RuntimeOptions) (_result *GetFlowPreviewUrlResponse, _err error) {
+func (client *Client) GetFlowPreviewUrlWithContext(ctx context.Context, request *GetFlowPreviewUrlRequest, runtime *dara.RuntimeOptions) (_result *GetFlowPreviewUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3945,33 +3021,11 @@ func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFlowPreviewUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the preview URL of a Flow.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetFlowPreviewUrlRequest
-//
-// @return GetFlowPreviewUrlResponse
-func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_result *GetFlowPreviewUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFlowPreviewUrlResponse{}
-	_body, _err := client.GetFlowPreviewUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3988,7 +3042,7 @@ func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMigrationVerifyCodeResponse
-func (client *Client) GetMigrationVerifyCodeWithOptions(request *GetMigrationVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetMigrationVerifyCodeResponse, _err error) {
+func (client *Client) GetMigrationVerifyCodeWithContext(ctx context.Context, request *GetMigrationVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *GetMigrationVerifyCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4037,33 +3091,11 @@ func (client *Client) GetMigrationVerifyCodeWithOptions(request *GetMigrationVer
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMigrationVerifyCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtain the verification code for the migration number.
-//
-// Description:
-//
-// The single user QPS limit for this interface is 10 times per second. Exceeding the limit may result in restricted API calls, which may affect your business. Please make reasonable calls.
-//
-// @param request - GetMigrationVerifyCodeRequest
-//
-// @return GetMigrationVerifyCodeResponse
-func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequest) (_result *GetMigrationVerifyCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMigrationVerifyCodeResponse{}
-	_body, _err := client.GetMigrationVerifyCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4076,7 +3108,7 @@ func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPermissionByCodeResponse
-func (client *Client) GetPermissionByCodeWithOptions(tmpReq *GetPermissionByCodeRequest, runtime *dara.RuntimeOptions) (_result *GetPermissionByCodeResponse, _err error) {
+func (client *Client) GetPermissionByCodeWithContext(ctx context.Context, tmpReq *GetPermissionByCodeRequest, runtime *dara.RuntimeOptions) (_result *GetPermissionByCodeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4127,29 +3159,11 @@ func (client *Client) GetPermissionByCodeWithOptions(tmpReq *GetPermissionByCode
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPermissionByCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains permissions based on the authorization code obtained from embedded signup.
-//
-// @param request - GetPermissionByCodeRequest
-//
-// @return GetPermissionByCodeResponse
-func (client *Client) GetPermissionByCode(request *GetPermissionByCodeRequest) (_result *GetPermissionByCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPermissionByCodeResponse{}
-	_body, _err := client.GetPermissionByCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4162,7 +3176,7 @@ func (client *Client) GetPermissionByCode(request *GetPermissionByCodeRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhoneEncryptionPublicKeyResponse
-func (client *Client) GetPhoneEncryptionPublicKeyWithOptions(request *GetPhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
+func (client *Client) GetPhoneEncryptionPublicKeyWithContext(ctx context.Context, request *GetPhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4203,29 +3217,11 @@ func (client *Client) GetPhoneEncryptionPublicKeyWithOptions(request *GetPhoneEn
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhoneEncryptionPublicKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the encryption public key of a phone number.
-//
-// @param request - GetPhoneEncryptionPublicKeyRequest
-//
-// @return GetPhoneEncryptionPublicKeyResponse
-func (client *Client) GetPhoneEncryptionPublicKey(request *GetPhoneEncryptionPublicKeyRequest) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhoneEncryptionPublicKeyResponse{}
-	_body, _err := client.GetPhoneEncryptionPublicKeyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4242,7 +3238,7 @@ func (client *Client) GetPhoneEncryptionPublicKey(request *GetPhoneEncryptionPub
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhoneNumberVerificationStatusResponse
-func (client *Client) GetPhoneNumberVerificationStatusWithOptions(request *GetPhoneNumberVerificationStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
+func (client *Client) GetPhoneNumberVerificationStatusWithContext(ctx context.Context, request *GetPhoneNumberVerificationStatusRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4283,33 +3279,11 @@ func (client *Client) GetPhoneNumberVerificationStatusWithOptions(request *GetPh
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhoneNumberVerificationStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the verification status of a phone number.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetPhoneNumberVerificationStatusRequest
-//
-// @return GetPhoneNumberVerificationStatusResponse
-func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVerificationStatusRequest) (_result *GetPhoneNumberVerificationStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhoneNumberVerificationStatusResponse{}
-	_body, _err := client.GetPhoneNumberVerificationStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4326,7 +3300,7 @@ func (client *Client) GetPhoneNumberVerificationStatus(request *GetPhoneNumberVe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPreValidatePhoneIdResponse
-func (client *Client) GetPreValidatePhoneIdWithOptions(request *GetPreValidatePhoneIdRequest, runtime *dara.RuntimeOptions) (_result *GetPreValidatePhoneIdResponse, _err error) {
+func (client *Client) GetPreValidatePhoneIdWithContext(ctx context.Context, request *GetPreValidatePhoneIdRequest, runtime *dara.RuntimeOptions) (_result *GetPreValidatePhoneIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4355,33 +3329,11 @@ func (client *Client) GetPreValidatePhoneIdWithOptions(request *GetPreValidatePh
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPreValidatePhoneIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the ID of a pre-registered phone number used for embedded signup without the need to re-obtain a verification code.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetPreValidatePhoneIdRequest
-//
-// @return GetPreValidatePhoneIdResponse
-func (client *Client) GetPreValidatePhoneId(request *GetPreValidatePhoneIdRequest) (_result *GetPreValidatePhoneIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPreValidatePhoneIdResponse{}
-	_body, _err := client.GetPreValidatePhoneIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4398,7 +3350,7 @@ func (client *Client) GetPreValidatePhoneId(request *GetPreValidatePhoneIdReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWhatsappConnectionCatalogResponse
-func (client *Client) GetWhatsappConnectionCatalogWithOptions(request *GetWhatsappConnectionCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappConnectionCatalogResponse, _err error) {
+func (client *Client) GetWhatsappConnectionCatalogWithContext(ctx context.Context, request *GetWhatsappConnectionCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappConnectionCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4439,33 +3391,11 @@ func (client *Client) GetWhatsappConnectionCatalogWithOptions(request *GetWhatsa
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWhatsappConnectionCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the product catalogs that are associated with a WhatsApp Business account (WABA).
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetWhatsappConnectionCatalogRequest
-//
-// @return GetWhatsappConnectionCatalogResponse
-func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectionCatalogRequest) (_result *GetWhatsappConnectionCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWhatsappConnectionCatalogResponse{}
-	_body, _err := client.GetWhatsappConnectionCatalogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4486,7 +3416,7 @@ func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWhatsappHealthStatusResponse
-func (client *Client) GetWhatsappHealthStatusWithOptions(request *GetWhatsappHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappHealthStatusResponse, _err error) {
+func (client *Client) GetWhatsappHealthStatusWithContext(ctx context.Context, request *GetWhatsappHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *GetWhatsappHealthStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4543,37 +3473,11 @@ func (client *Client) GetWhatsappHealthStatusWithOptions(request *GetWhatsappHea
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWhatsappHealthStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the messaging health status of different types of nodes.
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetWhatsappHealthStatusRequest
-//
-// @return GetWhatsappHealthStatusResponse
-func (client *Client) GetWhatsappHealthStatus(request *GetWhatsappHealthStatusRequest) (_result *GetWhatsappHealthStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetWhatsappHealthStatusResponse{}
-	_body, _err := client.GetWhatsappHealthStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4590,7 +3494,7 @@ func (client *Client) GetWhatsappHealthStatus(request *GetWhatsappHealthStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return IsvGetAppIdResponse
-func (client *Client) IsvGetAppIdWithOptions(request *IsvGetAppIdRequest, runtime *dara.RuntimeOptions) (_result *IsvGetAppIdResponse, _err error) {
+func (client *Client) IsvGetAppIdWithContext(ctx context.Context, request *IsvGetAppIdRequest, runtime *dara.RuntimeOptions) (_result *IsvGetAppIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4635,33 +3539,11 @@ func (client *Client) IsvGetAppIdWithOptions(request *IsvGetAppIdRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &IsvGetAppIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the application ID under the ISV account.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - IsvGetAppIdRequest
-//
-// @return IsvGetAppIdResponse
-func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetAppIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &IsvGetAppIdResponse{}
-	_body, _err := client.IsvGetAppIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4682,7 +3564,7 @@ func (client *Client) IsvGetAppId(request *IsvGetAppIdRequest) (_result *IsvGetA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListBindingRelationsForFlowVersionResponse
-func (client *Client) ListBindingRelationsForFlowVersionWithOptions(request *ListBindingRelationsForFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
+func (client *Client) ListBindingRelationsForFlowVersionWithContext(ctx context.Context, request *ListBindingRelationsForFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4723,37 +3605,11 @@ func (client *Client) ListBindingRelationsForFlowVersionWithOptions(request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBindingRelationsForFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query Bound List Based on flowCode
-//
-// Description:
-//
-// - You can call this interface to query the list of phone numbers or merchant account IDs bound to a process, or you can view the list in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- interface.
-//
-// - Before calling this interface, make sure that the process you created has already been bound to a phone number or merchant account ID.
-//
-// - If the process you created is not bound to a phone number or merchant account ID, you can manually bind a phone number or merchant account ID in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- interface, or bind it through the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) interface.
-//
-// @param request - ListBindingRelationsForFlowVersionRequest
-//
-// @return ListBindingRelationsForFlowVersionResponse
-func (client *Client) ListBindingRelationsForFlowVersion(request *ListBindingRelationsForFlowVersionRequest) (_result *ListBindingRelationsForFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListBindingRelationsForFlowVersionResponse{}
-	_body, _err := client.ListBindingRelationsForFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4766,7 +3622,7 @@ func (client *Client) ListBindingRelationsForFlowVersion(request *ListBindingRel
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatFlowResponse
-func (client *Client) ListChatFlowWithOptions(tmpReq *ListChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowResponse, _err error) {
+func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4837,29 +3693,11 @@ func (client *Client) ListChatFlowWithOptions(tmpReq *ListChatFlowRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # List Flows
-//
-// @param request - ListChatFlowRequest
-//
-// @return ListChatFlowResponse
-func (client *Client) ListChatFlow(request *ListChatFlowRequest) (_result *ListChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatFlowResponse{}
-	_body, _err := client.ListChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4872,7 +3710,7 @@ func (client *Client) ListChatFlow(request *ListChatFlowRequest) (_result *ListC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatFlowTemplateResponse
-func (client *Client) ListChatFlowTemplateWithOptions(request *ListChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowTemplateResponse, _err error) {
+func (client *Client) ListChatFlowTemplateWithContext(ctx context.Context, request *ListChatFlowTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatFlowTemplateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4925,29 +3763,11 @@ func (client *Client) ListChatFlowTemplateWithOptions(request *ListChatFlowTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatFlowTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ChatFlow Template List
-//
-// @param request - ListChatFlowTemplateRequest
-//
-// @return ListChatFlowTemplateResponse
-func (client *Client) ListChatFlowTemplate(request *ListChatFlowTemplateRequest) (_result *ListChatFlowTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatFlowTemplateResponse{}
-	_body, _err := client.ListChatFlowTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4960,7 +3780,7 @@ func (client *Client) ListChatFlowTemplate(request *ListChatFlowTemplateRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatGroupResponse
-func (client *Client) ListChatGroupWithOptions(tmpReq *ListChatGroupRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupResponse, _err error) {
+func (client *Client) ListChatGroupWithContext(ctx context.Context, tmpReq *ListChatGroupRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5023,29 +3843,11 @@ func (client *Client) ListChatGroupWithOptions(tmpReq *ListChatGroupRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListChatGroup
-//
-// @param request - ListChatGroupRequest
-//
-// @return ListChatGroupResponse
-func (client *Client) ListChatGroup(request *ListChatGroupRequest) (_result *ListChatGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatGroupResponse{}
-	_body, _err := client.ListChatGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5058,7 +3860,7 @@ func (client *Client) ListChatGroup(request *ListChatGroupRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatGroupParticipantsResponse
-func (client *Client) ListChatGroupParticipantsWithOptions(tmpReq *ListChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupParticipantsResponse, _err error) {
+func (client *Client) ListChatGroupParticipantsWithContext(ctx context.Context, tmpReq *ListChatGroupParticipantsRequest, runtime *dara.RuntimeOptions) (_result *ListChatGroupParticipantsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5117,29 +3919,11 @@ func (client *Client) ListChatGroupParticipantsWithOptions(tmpReq *ListChatGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatGroupParticipantsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListChatGroupParticipants
-//
-// @param request - ListChatGroupParticipantsRequest
-//
-// @return ListChatGroupParticipantsResponse
-func (client *Client) ListChatGroupParticipants(request *ListChatGroupParticipantsRequest) (_result *ListChatGroupParticipantsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatGroupParticipantsResponse{}
-	_body, _err := client.ListChatGroupParticipantsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5152,7 +3936,7 @@ func (client *Client) ListChatGroupParticipants(request *ListChatGroupParticipan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatappMessageResponse
-func (client *Client) ListChatappMessageWithOptions(tmpReq *ListChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *ListChatappMessageResponse, _err error) {
+func (client *Client) ListChatappMessageWithContext(ctx context.Context, tmpReq *ListChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *ListChatappMessageResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5239,29 +4023,11 @@ func (client *Client) ListChatappMessageWithOptions(tmpReq *ListChatappMessageRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatappMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询消息列表
-//
-// @param request - ListChatappMessageRequest
-//
-// @return ListChatappMessageResponse
-func (client *Client) ListChatappMessage(request *ListChatappMessageRequest) (_result *ListChatappMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatappMessageResponse{}
-	_body, _err := client.ListChatappMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5280,7 +4046,7 @@ func (client *Client) ListChatappMessage(request *ListChatappMessageRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChatappTemplateResponse
-func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatappTemplateResponse, _err error) {
+func (client *Client) ListChatappTemplateWithContext(ctx context.Context, tmpReq *ListChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListChatappTemplateResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5359,35 +4125,11 @@ func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplate
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChatappTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries message templates.
-//
-// Description:
-//
-// ### QPS limit
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ListChatappTemplateRequest
-//
-// @return ListChatappTemplateResponse
-func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (_result *ListChatappTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChatappTemplateResponse{}
-	_body, _err := client.ListChatappTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5404,7 +4146,7 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowResponse
-func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *dara.RuntimeOptions) (_result *ListFlowResponse, _err error) {
+func (client *Client) ListFlowWithContext(ctx context.Context, tmpReq *ListFlowRequest, runtime *dara.RuntimeOptions) (_result *ListFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5455,33 +4197,11 @@ func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *dara
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Flows.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ListFlowRequest
-//
-// @return ListFlowResponse
-func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowResponse{}
-	_body, _err := client.ListFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5494,7 +4214,7 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowNodePrototypeV2Response
-func (client *Client) ListFlowNodePrototypeV2WithOptions(request *ListFlowNodePrototypeV2Request, runtime *dara.RuntimeOptions) (_result *ListFlowNodePrototypeV2Response, _err error) {
+func (client *Client) ListFlowNodePrototypeV2WithContext(ctx context.Context, request *ListFlowNodePrototypeV2Request, runtime *dara.RuntimeOptions) (_result *ListFlowNodePrototypeV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5547,29 +4267,11 @@ func (client *Client) ListFlowNodePrototypeV2WithOptions(request *ListFlowNodePr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowNodePrototypeV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListFlowNodePrototypeV2
-//
-// @param request - ListFlowNodePrototypeV2Request
-//
-// @return ListFlowNodePrototypeV2Response
-func (client *Client) ListFlowNodePrototypeV2(request *ListFlowNodePrototypeV2Request) (_result *ListFlowNodePrototypeV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowNodePrototypeV2Response{}
-	_body, _err := client.ListFlowNodePrototypeV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5582,7 +4284,7 @@ func (client *Client) ListFlowNodePrototypeV2(request *ListFlowNodePrototypeV2Re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFlowVersionResponse
-func (client *Client) ListFlowVersionWithOptions(tmpReq *ListFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListFlowVersionResponse, _err error) {
+func (client *Client) ListFlowVersionWithContext(ctx context.Context, tmpReq *ListFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ListFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5645,29 +4347,11 @@ func (client *Client) ListFlowVersionWithOptions(tmpReq *ListFlowVersionRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # List Flow Versions
-//
-// @param request - ListFlowVersionRequest
-//
-// @return ListFlowVersionResponse
-func (client *Client) ListFlowVersion(request *ListFlowVersionRequest) (_result *ListFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFlowVersionResponse{}
-	_body, _err := client.ListFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5680,7 +4364,7 @@ func (client *Client) ListFlowVersion(request *ListFlowVersionRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPhoneMessageQrdlResponse
-func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *ListPhoneMessageQrdlResponse, _err error) {
+func (client *Client) ListPhoneMessageQrdlWithContext(ctx context.Context, request *ListPhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *ListPhoneMessageQrdlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5721,29 +4405,11 @@ func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPhoneMessageQrdlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a list of quick-response (QR) codes that contain messages.
-//
-// @param request - ListPhoneMessageQrdlRequest
-//
-// @return ListPhoneMessageQrdlResponse
-func (client *Client) ListPhoneMessageQrdl(request *ListPhoneMessageQrdlRequest) (_result *ListPhoneMessageQrdlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPhoneMessageQrdlResponse{}
-	_body, _err := client.ListPhoneMessageQrdlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5760,7 +4426,7 @@ func (client *Client) ListPhoneMessageQrdl(request *ListPhoneMessageQrdlRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductResponse
-func (client *Client) ListProductWithOptions(request *ListProductRequest, runtime *dara.RuntimeOptions) (_result *ListProductResponse, _err error) {
+func (client *Client) ListProductWithContext(ctx context.Context, request *ListProductRequest, runtime *dara.RuntimeOptions) (_result *ListProductResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5821,33 +4487,11 @@ func (client *Client) ListProductWithOptions(request *ListProductRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries products in a product catalog.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ListProductRequest
-//
-// @return ListProductResponse
-func (client *Client) ListProduct(request *ListProductRequest) (_result *ListProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductResponse{}
-	_body, _err := client.ListProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5864,7 +4508,7 @@ func (client *Client) ListProduct(request *ListProductRequest) (_result *ListPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductCatalogResponse
-func (client *Client) ListProductCatalogWithOptions(request *ListProductCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListProductCatalogResponse, _err error) {
+func (client *Client) ListProductCatalogWithContext(ctx context.Context, request *ListProductCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListProductCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5921,33 +4565,11 @@ func (client *Client) ListProductCatalogWithOptions(request *ListProductCatalogR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the product catalogs on the Business Manager platform of Meta.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ListProductCatalogRequest
-//
-// @return ListProductCatalogResponse
-func (client *Client) ListProductCatalog(request *ListProductCatalogRequest) (_result *ListProductCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductCatalogResponse{}
-	_body, _err := client.ListProductCatalogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5964,7 +4586,7 @@ func (client *Client) ListProductCatalog(request *ListProductCatalogRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyChatappTemplateResponse
-func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplateResponse, _err error) {
+func (client *Client) ModifyChatappTemplateWithContext(ctx context.Context, tmpReq *ModifyChatappTemplateRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplateResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6043,33 +4665,11 @@ func (client *Client) ModifyChatappTemplateWithOptions(tmpReq *ModifyChatappTemp
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyChatappTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The code of the message template.
-//
-// Description:
-//
-// The name of the message template.
-//
-// @param request - ModifyChatappTemplateRequest
-//
-// @return ModifyChatappTemplateResponse
-func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateRequest) (_result *ModifyChatappTemplateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyChatappTemplateResponse{}
-	_body, _err := client.ModifyChatappTemplateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6082,7 +4682,7 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyChatappTemplatePropertiesResponse
-func (client *Client) ModifyChatappTemplatePropertiesWithOptions(request *ModifyChatappTemplatePropertiesRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
+func (client *Client) ModifyChatappTemplatePropertiesWithContext(ctx context.Context, request *ModifyChatappTemplatePropertiesRequest, runtime *dara.RuntimeOptions) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6139,29 +4739,11 @@ func (client *Client) ModifyChatappTemplatePropertiesWithOptions(request *Modify
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyChatappTemplatePropertiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改模板上的一些属性
-//
-// @param request - ModifyChatappTemplatePropertiesRequest
-//
-// @return ModifyChatappTemplatePropertiesResponse
-func (client *Client) ModifyChatappTemplateProperties(request *ModifyChatappTemplatePropertiesRequest) (_result *ModifyChatappTemplatePropertiesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyChatappTemplatePropertiesResponse{}
-	_body, _err := client.ModifyChatappTemplatePropertiesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6178,7 +4760,7 @@ func (client *Client) ModifyChatappTemplateProperties(request *ModifyChatappTemp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFlowResponse
-func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowResponse, _err error) {
+func (client *Client) ModifyFlowWithContext(ctx context.Context, tmpReq *ModifyFlowRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6233,33 +4815,11 @@ func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the basic information about a Flow.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyFlowRequest
-//
-// @return ModifyFlowResponse
-func (client *Client) ModifyFlow(request *ModifyFlowRequest) (_result *ModifyFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyFlowResponse{}
-	_body, _err := client.ModifyFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6276,7 +4836,7 @@ func (client *Client) ModifyFlow(request *ModifyFlowRequest) (_result *ModifyFlo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPhoneBusinessProfileResponse
-func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
+func (client *Client) ModifyPhoneBusinessProfileWithContext(ctx context.Context, tmpReq *ModifyPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6351,33 +4911,11 @@ func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneB
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPhoneBusinessProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the request.
-//
-// Description:
-//
-// # ModifyPhoneBusinessProfile
-//
-// @param request - ModifyPhoneBusinessProfileRequest
-//
-// @return ModifyPhoneBusinessProfileResponse
-func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessProfileRequest) (_result *ModifyPhoneBusinessProfileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPhoneBusinessProfileResponse{}
-	_body, _err := client.ModifyPhoneBusinessProfileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6390,7 +4928,7 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OfflineFlowVersionResponse
-func (client *Client) OfflineFlowVersionWithOptions(tmpReq *OfflineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OfflineFlowVersionResponse, _err error) {
+func (client *Client) OfflineFlowVersionWithContext(ctx context.Context, tmpReq *OfflineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OfflineFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6449,29 +4987,11 @@ func (client *Client) OfflineFlowVersionWithOptions(tmpReq *OfflineFlowVersionRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &OfflineFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Offline Flow Version
-//
-// @param request - OfflineFlowVersionRequest
-//
-// @return OfflineFlowVersionResponse
-func (client *Client) OfflineFlowVersion(request *OfflineFlowVersionRequest) (_result *OfflineFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OfflineFlowVersionResponse{}
-	_body, _err := client.OfflineFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6484,7 +5004,7 @@ func (client *Client) OfflineFlowVersion(request *OfflineFlowVersionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OnlineFlowVersionResponse
-func (client *Client) OnlineFlowVersionWithOptions(tmpReq *OnlineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OnlineFlowVersionResponse, _err error) {
+func (client *Client) OnlineFlowVersionWithContext(ctx context.Context, tmpReq *OnlineFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *OnlineFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6543,29 +5063,11 @@ func (client *Client) OnlineFlowVersionWithOptions(tmpReq *OnlineFlowVersionRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &OnlineFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Online Flow Version
-//
-// @param request - OnlineFlowVersionRequest
-//
-// @return OnlineFlowVersionResponse
-func (client *Client) OnlineFlowVersion(request *OnlineFlowVersionRequest) (_result *OnlineFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OnlineFlowVersionResponse{}
-	_body, _err := client.OnlineFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6582,7 +5084,7 @@ func (client *Client) OnlineFlowVersion(request *OnlineFlowVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishFlowResponse
-func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtime *dara.RuntimeOptions) (_result *PublishFlowResponse, _err error) {
+func (client *Client) PublishFlowWithContext(ctx context.Context, request *PublishFlowRequest, runtime *dara.RuntimeOptions) (_result *PublishFlowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6623,33 +5125,11 @@ func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Publishes a Flow.
-//
-// Description:
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - PublishFlowRequest
-//
-// @return PublishFlowResponse
-func (client *Client) PublishFlow(request *PublishFlowRequest) (_result *PublishFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PublishFlowResponse{}
-	_body, _err := client.PublishFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6666,7 +5146,7 @@ func (client *Client) PublishFlow(request *PublishFlowRequest) (_result *Publish
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryChatappBindWabaResponse
-func (client *Client) QueryChatappBindWabaWithOptions(request *QueryChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappBindWabaResponse, _err error) {
+func (client *Client) QueryChatappBindWabaWithContext(ctx context.Context, request *QueryChatappBindWabaRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappBindWabaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6707,33 +5187,11 @@ func (client *Client) QueryChatappBindWabaWithOptions(request *QueryChatappBindW
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryChatappBindWabaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the WhatsApp Business account you associate with ChatApp.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryChatappBindWabaRequest
-//
-// @return QueryChatappBindWabaResponse
-func (client *Client) QueryChatappBindWaba(request *QueryChatappBindWabaRequest) (_result *QueryChatappBindWabaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryChatappBindWabaResponse{}
-	_body, _err := client.QueryChatappBindWabaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6750,7 +5208,7 @@ func (client *Client) QueryChatappBindWaba(request *QueryChatappBindWabaRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryChatappPhoneNumbersResponse
-func (client *Client) QueryChatappPhoneNumbersWithOptions(request *QueryChatappPhoneNumbersRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappPhoneNumbersResponse, _err error) {
+func (client *Client) QueryChatappPhoneNumbersWithContext(ctx context.Context, request *QueryChatappPhoneNumbersRequest, runtime *dara.RuntimeOptions) (_result *QueryChatappPhoneNumbersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6795,33 +5253,11 @@ func (client *Client) QueryChatappPhoneNumbersWithOptions(request *QueryChatappP
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryChatappPhoneNumbersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries phone numbers that receive messages and statuses of these numbers under a specified user.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryChatappPhoneNumbersRequest
-//
-// @return QueryChatappPhoneNumbersResponse
-func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbersRequest) (_result *QueryChatappPhoneNumbersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryChatappPhoneNumbersResponse{}
-	_body, _err := client.QueryChatappPhoneNumbersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6838,7 +5274,7 @@ func (client *Client) QueryChatappPhoneNumbers(request *QueryChatappPhoneNumbers
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPhoneBusinessProfileResponse
-func (client *Client) QueryPhoneBusinessProfileWithOptions(request *QueryPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *QueryPhoneBusinessProfileResponse, _err error) {
+func (client *Client) QueryPhoneBusinessProfileWithContext(ctx context.Context, request *QueryPhoneBusinessProfileRequest, runtime *dara.RuntimeOptions) (_result *QueryPhoneBusinessProfileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6879,33 +5315,11 @@ func (client *Client) QueryPhoneBusinessProfileWithOptions(request *QueryPhoneBu
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPhoneBusinessProfileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the business information of the account to which a specified phone number is bound.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryPhoneBusinessProfileRequest
-//
-// @return QueryPhoneBusinessProfileResponse
-func (client *Client) QueryPhoneBusinessProfile(request *QueryPhoneBusinessProfileRequest) (_result *QueryPhoneBusinessProfileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPhoneBusinessProfileResponse{}
-	_body, _err := client.QueryPhoneBusinessProfileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6922,7 +5336,7 @@ func (client *Client) QueryPhoneBusinessProfile(request *QueryPhoneBusinessProfi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryWabaBusinessInfoResponse
-func (client *Client) QueryWabaBusinessInfoWithOptions(request *QueryWabaBusinessInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryWabaBusinessInfoResponse, _err error) {
+func (client *Client) QueryWabaBusinessInfoWithContext(ctx context.Context, request *QueryWabaBusinessInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryWabaBusinessInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6963,33 +5377,11 @@ func (client *Client) QueryWabaBusinessInfoWithOptions(request *QueryWabaBusines
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryWabaBusinessInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the business information about the WhatsApp Business account (WABA).
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryWabaBusinessInfoRequest
-//
-// @return QueryWabaBusinessInfoResponse
-func (client *Client) QueryWabaBusinessInfo(request *QueryWabaBusinessInfoRequest) (_result *QueryWabaBusinessInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryWabaBusinessInfoResponse{}
-	_body, _err := client.QueryWabaBusinessInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7002,7 +5394,7 @@ func (client *Client) QueryWabaBusinessInfo(request *QueryWabaBusinessInfoReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadChatFlowResponse
-func (client *Client) ReadChatFlowWithOptions(tmpReq *ReadChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowResponse, _err error) {
+func (client *Client) ReadChatFlowWithContext(ctx context.Context, tmpReq *ReadChatFlowRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7053,29 +5445,11 @@ func (client *Client) ReadChatFlowWithOptions(tmpReq *ReadChatFlowRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Retrieve Flow
-//
-// @param request - ReadChatFlowRequest
-//
-// @return ReadChatFlowResponse
-func (client *Client) ReadChatFlow(request *ReadChatFlowRequest) (_result *ReadChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadChatFlowResponse{}
-	_body, _err := client.ReadChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7088,7 +5462,7 @@ func (client *Client) ReadChatFlow(request *ReadChatFlowRequest) (_result *ReadC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadChatFlowLogSettingResponse
-func (client *Client) ReadChatFlowLogSettingWithOptions(request *ReadChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowLogSettingResponse, _err error) {
+func (client *Client) ReadChatFlowLogSettingWithContext(ctx context.Context, request *ReadChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *ReadChatFlowLogSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7125,29 +5499,11 @@ func (client *Client) ReadChatFlowLogSettingWithOptions(request *ReadChatFlowLog
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadChatFlowLogSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # View chatFlow log settings
-//
-// @param request - ReadChatFlowLogSettingRequest
-//
-// @return ReadChatFlowLogSettingResponse
-func (client *Client) ReadChatFlowLogSetting(request *ReadChatFlowLogSettingRequest) (_result *ReadChatFlowLogSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadChatFlowLogSettingResponse{}
-	_body, _err := client.ReadChatFlowLogSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7160,7 +5516,7 @@ func (client *Client) ReadChatFlowLogSetting(request *ReadChatFlowLogSettingRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadFlowVersionResponse
-func (client *Client) ReadFlowVersionWithOptions(tmpReq *ReadFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ReadFlowVersionResponse, _err error) {
+func (client *Client) ReadFlowVersionWithContext(ctx context.Context, tmpReq *ReadFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *ReadFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7219,29 +5575,11 @@ func (client *Client) ReadFlowVersionWithOptions(tmpReq *ReadFlowVersionRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Flow Version
-//
-// @param request - ReadFlowVersionRequest
-//
-// @return ReadFlowVersionResponse
-func (client *Client) ReadFlowVersion(request *ReadFlowVersionRequest) (_result *ReadFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadFlowVersionResponse{}
-	_body, _err := client.ReadFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7260,7 +5598,7 @@ func (client *Client) ReadFlowVersion(request *ReadFlowVersionRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendChatappMassMessageResponse
-func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMassMessageResponse, _err error) {
+func (client *Client) SendChatappMassMessageWithContext(ctx context.Context, tmpReq *SendChatappMassMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMassMessageResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7367,35 +5705,11 @@ func (client *Client) SendChatappMassMessageWithOptions(tmpReq *SendChatappMassM
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendChatappMassMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a message to multiple phone numbers by using ChatAPP at a time.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// You can send messages to up to 1,000 phone numbers in a single request.
-//
-// @param request - SendChatappMassMessageRequest
-//
-// @return SendChatappMassMessageResponse
-func (client *Client) SendChatappMassMessage(request *SendChatappMassMessageRequest) (_result *SendChatappMassMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendChatappMassMessageResponse{}
-	_body, _err := client.SendChatappMassMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7412,7 +5726,7 @@ func (client *Client) SendChatappMassMessage(request *SendChatappMassMessageRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendChatappMessageResponse
-func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMessageResponse, _err error) {
+func (client *Client) SendChatappMessageWithContext(ctx context.Context, tmpReq *SendChatappMessageRequest, runtime *dara.RuntimeOptions) (_result *SendChatappMessageResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7571,33 +5885,11 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendChatappMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends messages by using ChatAPP.
-//
-// Description:
-//
-// You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - SendChatappMessageRequest
-//
-// @return SendChatappMessageResponse
-func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_result *SendChatappMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendChatappMessageResponse{}
-	_body, _err := client.SendChatappMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7616,7 +5908,7 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitIsvCustomerTermsResponse
-func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustomerTermsRequest, runtime *dara.RuntimeOptions) (_result *SubmitIsvCustomerTermsResponse, _err error) {
+func (client *Client) SubmitIsvCustomerTermsWithContext(ctx context.Context, request *SubmitIsvCustomerTermsRequest, runtime *dara.RuntimeOptions) (_result *SubmitIsvCustomerTermsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7677,35 +5969,11 @@ func (client *Client) SubmitIsvCustomerTermsWithOptions(request *SubmitIsvCustom
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitIsvCustomerTermsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits the agreement information for independent software vendor (ISV) customers.
-//
-// Description:
-//
-//	  You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-//		- After you call the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation to obtain the authentication information for uploading the file to Object Storage Service (OSS), you can use the authentication information to upload the file to the OSS server. To upload the file, you can call the SDK provided by OSS. When you upload the file, set the value of the key to the value of `Dir + "/" + file name`, such as C200293990209/isvTerms.pdf. The value of Dir is obtained from the [GetChatappUploadAuthorization](~~GetChatappUploadAuthorization~~) operation. The value of IsvTerms is obtained from the PutObject operation.
-//
-// @param request - SubmitIsvCustomerTermsRequest
-//
-// @return SubmitIsvCustomerTermsResponse
-func (client *Client) SubmitIsvCustomerTerms(request *SubmitIsvCustomerTermsRequest) (_result *SubmitIsvCustomerTermsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitIsvCustomerTermsResponse{}
-	_body, _err := client.SubmitIsvCustomerTermsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7722,7 +5990,7 @@ func (client *Client) SubmitIsvCustomerTerms(request *SubmitIsvCustomerTermsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TriggerChatFlowResponse
-func (client *Client) TriggerChatFlowWithOptions(tmpReq *TriggerChatFlowRequest, runtime *dara.RuntimeOptions) (_result *TriggerChatFlowResponse, _err error) {
+func (client *Client) TriggerChatFlowWithContext(ctx context.Context, tmpReq *TriggerChatFlowRequest, runtime *dara.RuntimeOptions) (_result *TriggerChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7785,33 +6053,11 @@ func (client *Client) TriggerChatFlowWithOptions(tmpReq *TriggerChatFlowRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &TriggerChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Trigger an Online ChatFlow
-//
-// Description:
-//
-// After triggering an online flow, if your flow contains components that incur costs for cloud products, such as message sending or function calls, please ensure you fully understand the billing methods and prices of the related products before using this interface.
-//
-// @param request - TriggerChatFlowRequest
-//
-// @return TriggerChatFlowResponse
-func (client *Client) TriggerChatFlow(request *TriggerChatFlowRequest) (_result *TriggerChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TriggerChatFlowResponse{}
-	_body, _err := client.TriggerChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7828,7 +6074,7 @@ func (client *Client) TriggerChatFlow(request *TriggerChatFlowRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAccountWebhookResponse
-func (client *Client) UpdateAccountWebhookWithOptions(request *UpdateAccountWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountWebhookResponse, _err error) {
+func (client *Client) UpdateAccountWebhookWithContext(ctx context.Context, request *UpdateAccountWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountWebhookResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7877,33 +6123,11 @@ func (client *Client) UpdateAccountWebhookWithOptions(request *UpdateAccountWebh
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAccountWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the callback URL of an account.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - UpdateAccountWebhookRequest
-//
-// @return UpdateAccountWebhookResponse
-func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest) (_result *UpdateAccountWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAccountWebhookResponse{}
-	_body, _err := client.UpdateAccountWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7916,7 +6140,7 @@ func (client *Client) UpdateAccountWebhook(request *UpdateAccountWebhookRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChatFlowResponse
-func (client *Client) UpdateChatFlowWithOptions(tmpReq *UpdateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowResponse, _err error) {
+func (client *Client) UpdateChatFlowWithContext(ctx context.Context, tmpReq *UpdateChatFlowRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7975,29 +6199,11 @@ func (client *Client) UpdateChatFlowWithOptions(tmpReq *UpdateChatFlowRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChatFlowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Process
-//
-// @param request - UpdateChatFlowRequest
-//
-// @return UpdateChatFlowResponse
-func (client *Client) UpdateChatFlow(request *UpdateChatFlowRequest) (_result *UpdateChatFlowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChatFlowResponse{}
-	_body, _err := client.UpdateChatFlowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8010,7 +6216,7 @@ func (client *Client) UpdateChatFlow(request *UpdateChatFlowRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChatFlowLogSettingResponse
-func (client *Client) UpdateChatFlowLogSettingWithOptions(request *UpdateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowLogSettingResponse, _err error) {
+func (client *Client) UpdateChatFlowLogSettingWithContext(ctx context.Context, request *UpdateChatFlowLogSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatFlowLogSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8055,29 +6261,11 @@ func (client *Client) UpdateChatFlowLogSettingWithOptions(request *UpdateChatFlo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChatFlowLogSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Modify chatFlow log settings
-//
-// @param request - UpdateChatFlowLogSettingRequest
-//
-// @return UpdateChatFlowLogSettingResponse
-func (client *Client) UpdateChatFlowLogSetting(request *UpdateChatFlowLogSettingRequest) (_result *UpdateChatFlowLogSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChatFlowLogSettingResponse{}
-	_body, _err := client.UpdateChatFlowLogSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8090,7 +6278,7 @@ func (client *Client) UpdateChatFlowLogSetting(request *UpdateChatFlowLogSetting
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChatGroupResponse
-func (client *Client) UpdateChatGroupWithOptions(request *UpdateChatGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatGroupResponse, _err error) {
+func (client *Client) UpdateChatGroupWithContext(ctx context.Context, request *UpdateChatGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8151,29 +6339,11 @@ func (client *Client) UpdateChatGroupWithOptions(request *UpdateChatGroupRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChatGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # UpdateChatGroup
-//
-// @param request - UpdateChatGroupRequest
-//
-// @return UpdateChatGroupResponse
-func (client *Client) UpdateChatGroup(request *UpdateChatGroupRequest) (_result *UpdateChatGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChatGroupResponse{}
-	_body, _err := client.UpdateChatGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8190,7 +6360,7 @@ func (client *Client) UpdateChatGroup(request *UpdateChatGroupRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCommerceSettingResponse
-func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateCommerceSettingResponse, _err error) {
+func (client *Client) UpdateCommerceSettingWithContext(ctx context.Context, request *UpdateCommerceSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateCommerceSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8239,33 +6409,11 @@ func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCommerceSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the business settings of a phone number.
-//
-// Description:
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - UpdateCommerceSettingRequest
-//
-// @return UpdateCommerceSettingResponse
-func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingRequest) (_result *UpdateCommerceSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCommerceSettingResponse{}
-	_body, _err := client.UpdateCommerceSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8286,7 +6434,7 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateConversationalAutomationResponse
-func (client *Client) UpdateConversationalAutomationWithOptions(tmpReq *UpdateConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *UpdateConversationalAutomationResponse, _err error) {
+func (client *Client) UpdateConversationalAutomationWithContext(ctx context.Context, tmpReq *UpdateConversationalAutomationRequest, runtime *dara.RuntimeOptions) (_result *UpdateConversationalAutomationResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8349,37 +6497,11 @@ func (client *Client) UpdateConversationalAutomationWithOptions(tmpReq *UpdateCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateConversationalAutomationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies welcoming messages, opening remarks, and commands for a phone number.
-//
-// Description:
-//
-// ### [](#qps-)QPS limit
-//
-// You can call this operation up to five times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// This operation will directly obtain data from Facebook, which sets an upper limit on the total number of calls for operations. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - UpdateConversationalAutomationRequest
-//
-// @return UpdateConversationalAutomationResponse
-func (client *Client) UpdateConversationalAutomation(request *UpdateConversationalAutomationRequest) (_result *UpdateConversationalAutomationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateConversationalAutomationResponse{}
-	_body, _err := client.UpdateConversationalAutomationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8392,7 +6514,7 @@ func (client *Client) UpdateConversationalAutomation(request *UpdateConversation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFlowJSONAssetResponse
-func (client *Client) UpdateFlowJSONAssetWithOptions(request *UpdateFlowJSONAssetRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowJSONAssetResponse, _err error) {
+func (client *Client) UpdateFlowJSONAssetWithContext(ctx context.Context, request *UpdateFlowJSONAssetRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowJSONAssetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8437,29 +6559,11 @@ func (client *Client) UpdateFlowJSONAssetWithOptions(request *UpdateFlowJSONAsse
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFlowJSONAssetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a Flow by using JSON content.
-//
-// @param request - UpdateFlowJSONAssetRequest
-//
-// @return UpdateFlowJSONAssetResponse
-func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (_result *UpdateFlowJSONAssetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFlowJSONAssetResponse{}
-	_body, _err := client.UpdateFlowJSONAssetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8472,7 +6576,7 @@ func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFlowVersionResponse
-func (client *Client) UpdateFlowVersionWithOptions(tmpReq *UpdateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowVersionResponse, _err error) {
+func (client *Client) UpdateFlowVersionWithContext(ctx context.Context, tmpReq *UpdateFlowVersionRequest, runtime *dara.RuntimeOptions) (_result *UpdateFlowVersionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8535,29 +6639,11 @@ func (client *Client) UpdateFlowVersionWithOptions(tmpReq *UpdateFlowVersionRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFlowVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Update flow version, used for updating the flow DSL on the canvas
-//
-// @param request - UpdateFlowVersionRequest
-//
-// @return UpdateFlowVersionResponse
-func (client *Client) UpdateFlowVersion(request *UpdateFlowVersionRequest) (_result *UpdateFlowVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFlowVersionResponse{}
-	_body, _err := client.UpdateFlowVersionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8570,7 +6656,7 @@ func (client *Client) UpdateFlowVersion(request *UpdateFlowVersionRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePhoneEncryptionPublicKeyResponse
-func (client *Client) UpdatePhoneEncryptionPublicKeyWithOptions(request *UpdatePhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
+func (client *Client) UpdatePhoneEncryptionPublicKeyWithContext(ctx context.Context, request *UpdatePhoneEncryptionPublicKeyRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8615,29 +6701,11 @@ func (client *Client) UpdatePhoneEncryptionPublicKeyWithOptions(request *UpdateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePhoneEncryptionPublicKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the encryption public key of a phone number.
-//
-// @param request - UpdatePhoneEncryptionPublicKeyRequest
-//
-// @return UpdatePhoneEncryptionPublicKeyResponse
-func (client *Client) UpdatePhoneEncryptionPublicKey(request *UpdatePhoneEncryptionPublicKeyRequest) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePhoneEncryptionPublicKeyResponse{}
-	_body, _err := client.UpdatePhoneEncryptionPublicKeyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8650,7 +6718,7 @@ func (client *Client) UpdatePhoneEncryptionPublicKey(request *UpdatePhoneEncrypt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePhoneMessageQrdlResponse
-func (client *Client) UpdatePhoneMessageQrdlWithOptions(request *UpdatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
+func (client *Client) UpdatePhoneMessageQrdlWithContext(ctx context.Context, request *UpdatePhoneMessageQrdlRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8703,29 +6771,11 @@ func (client *Client) UpdatePhoneMessageQrdlWithOptions(request *UpdatePhoneMess
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePhoneMessageQrdlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a quick-response (QR) code that contains a message.
-//
-// @param request - UpdatePhoneMessageQrdlRequest
-//
-// @return UpdatePhoneMessageQrdlResponse
-func (client *Client) UpdatePhoneMessageQrdl(request *UpdatePhoneMessageQrdlRequest) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePhoneMessageQrdlResponse{}
-	_body, _err := client.UpdatePhoneMessageQrdlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8746,7 +6796,7 @@ func (client *Client) UpdatePhoneMessageQrdl(request *UpdatePhoneMessageQrdlRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePhoneWebhookResponse
-func (client *Client) UpdatePhoneWebhookWithOptions(request *UpdatePhoneWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneWebhookResponse, _err error) {
+func (client *Client) UpdatePhoneWebhookWithContext(ctx context.Context, request *UpdatePhoneWebhookRequest, runtime *dara.RuntimeOptions) (_result *UpdatePhoneWebhookResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8803,36 +6853,10 @@ func (client *Client) UpdatePhoneWebhookWithOptions(request *UpdatePhoneWebhookR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePhoneWebhookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The HTTP status code returned.
-//
-// \\	- A value of OK indicates that the call is successful.
-//
-// \\	- Other values indicate that the call fails. For more information, see [Error codes]\\(~~196974~~).
-//
-// Description:
-//
-// The error message returned.
-//
-// @param request - UpdatePhoneWebhookRequest
-//
-// @return UpdatePhoneWebhookResponse
-func (client *Client) UpdatePhoneWebhook(request *UpdatePhoneWebhookRequest) (_result *UpdatePhoneWebhookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePhoneWebhookResponse{}
-	_body, _err := client.UpdatePhoneWebhookWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
