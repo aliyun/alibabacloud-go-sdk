@@ -77,7 +77,11 @@ func (client *Client) AcceptInquiredSystemEventWithContext(ctx context.Context, 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ActivateRouterInterface is deprecated
+// Deprecated: OpenAPI ActivateRouterInterface is deprecated, please use Vpc::2016-04-28::ActivateRouterInterface instead.
+//
+// Summary:
+//
+// # ActivateRouterInterface
 //
 // @param request - ActivateRouterInterfaceRequest
 //
@@ -133,7 +137,11 @@ func (client *Client) ActivateRouterInterfaceWithContext(ctx context.Context, re
 	return _result, _err
 }
 
-// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated
+// Deprecated: OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+//
+// Summary:
+//
+// # AddBandwidthPackageIps
 //
 // @param request - AddBandwidthPackageIpsRequest
 //
@@ -432,6 +440,10 @@ func (client *Client) AllocateDedicatedHostsWithContext(ctx context.Context, req
 }
 
 // Deprecated: OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
+//
+// Summary:
+//
+// # AllocateEipAddress
 //
 // Description:
 //
@@ -871,6 +883,10 @@ func (client *Client) AssignPrivateIpAddressesWithContext(ctx context.Context, r
 
 // Deprecated: OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
 //
+// Summary:
+//
+// # AssociateEipAddress
+//
 // @param request - AssociateEipAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -937,7 +953,11 @@ func (client *Client) AssociateEipAddressWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
-// Deprecated: OpenAPI AssociateHaVip is deprecated
+// Deprecated: OpenAPI AssociateHaVip is deprecated, please use Vpc::2016-04-28::AssociateHaVip instead.
+//
+// Summary:
+//
+// # AssociateHaVip
 //
 // @param request - AssociateHaVipRequest
 //
@@ -2115,7 +2135,11 @@ func (client *Client) CancelImagePipelineExecutionWithContext(ctx context.Contex
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CancelPhysicalConnection is deprecated
+// Deprecated: OpenAPI CancelPhysicalConnection is deprecated, please use Vpc::2016-04-28::CancelPhysicalConnection instead.
+//
+// Summary:
+//
+// # CancelPhysicalConnection
 //
 // @param request - CancelPhysicalConnectionRequest
 //
@@ -2307,7 +2331,11 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, request *Cancel
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ConnectRouterInterface is deprecated
+// Deprecated: OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
+//
+// Summary:
+//
+// # ConnectRouterInterface
 //
 // @param request - ConnectRouterInterfaceRequest
 //
@@ -3939,7 +3967,11 @@ func (client *Client) CreateElasticityAssuranceWithContext(ctx context.Context, 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateForwardEntry is deprecated
+// Deprecated: OpenAPI CreateForwardEntry is deprecated, please use Vpc::2016-04-28::CreateForwardEntry instead.
+//
+// Summary:
+//
+// # CreateForwardEntry
 //
 // @param request - CreateForwardEntryRequest
 //
@@ -4019,7 +4051,11 @@ func (client *Client) CreateForwardEntryWithContext(ctx context.Context, request
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateHaVip is deprecated
+// Deprecated: OpenAPI CreateHaVip is deprecated, please use Vpc::2016-04-28::CreateHaVip instead.
+//
+// Summary:
+//
+// # CreateHaVip
 //
 // @param request - CreateHaVipRequest
 //
@@ -5535,7 +5571,11 @@ func (client *Client) CreateLaunchTemplateVersionWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateNatGateway is deprecated
+// Deprecated: OpenAPI CreateNatGateway is deprecated, please use Vpc::2016-04-28::CreateNatGateway instead.
+//
+// Summary:
+//
+// # CreateNatGateway
 //
 // @param request - CreateNatGatewayRequest
 //
@@ -5899,7 +5939,11 @@ func (client *Client) CreateNetworkInterfacePermissionWithContext(ctx context.Co
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreatePhysicalConnection is deprecated
+// Deprecated: OpenAPI CreatePhysicalConnection is deprecated, please use Vpc::2016-04-28::CreatePhysicalConnection instead.
+//
+// Summary:
+//
+// # CreatePhysicalConnection
 //
 // @param request - CreatePhysicalConnectionRequest
 //
@@ -6209,7 +6253,11 @@ func (client *Client) CreatePrefixListWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateRouteEntry is deprecated
+// Deprecated: OpenAPI CreateRouteEntry is deprecated, please use Vpc::2016-04-28::CreateRouteEntry instead.
+//
+// Summary:
+//
+// # CreateRouteEntry
 //
 // @param request - CreateRouteEntryRequest
 //
@@ -6289,7 +6337,11 @@ func (client *Client) CreateRouteEntryWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateRouterInterface is deprecated
+// Deprecated: OpenAPI CreateRouterInterface is deprecated, please use Vpc::2016-04-28::CreateRouterInterface instead.
+//
+// Summary:
+//
+// # CreateRouterInterface
 //
 // @param request - CreateRouterInterfaceRequest
 //
@@ -7065,6 +7117,10 @@ func (client *Client) CreateStorageSetWithContext(ctx context.Context, request *
 
 // Deprecated: OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
 //
+// Summary:
+//
+// # CreateVSwitch
+//
 // @param request - CreateVSwitchRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7143,7 +7199,11 @@ func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *Cre
 	return _result, _err
 }
 
-// Deprecated: OpenAPI CreateVirtualBorderRouter is deprecated
+// Deprecated: OpenAPI CreateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::CreateVirtualBorderRouter instead.
+//
+// Summary:
+//
+// # CreateVirtualBorderRouter
 //
 // @param request - CreateVirtualBorderRouterRequest
 //
@@ -7249,6 +7309,10 @@ func (client *Client) CreateVirtualBorderRouterWithContext(ctx context.Context, 
 
 // Deprecated: OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
 //
+// Summary:
+//
+// # CreateVpc
+//
 // @param request - CreateVpcRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7323,7 +7387,11 @@ func (client *Client) CreateVpcWithContext(ctx context.Context, request *CreateV
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeactivateRouterInterface is deprecated
+// Deprecated: OpenAPI DeactivateRouterInterface is deprecated, please use Vpc::2016-04-28::DeactivateRouterInterface instead.
+//
+// Summary:
+//
+// # DeactivateRouterInterface
 //
 // @param request - DeactivateRouterInterfaceRequest
 //
@@ -7575,7 +7643,11 @@ func (client *Client) DeleteAutoSnapshotPolicyWithContext(ctx context.Context, r
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteBandwidthPackage is deprecated
+// Deprecated: OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
+//
+// Summary:
+//
+// # DeleteBandwidthPackage
 //
 // @param request - DeleteBandwidthPackageRequest
 //
@@ -7995,7 +8067,11 @@ func (client *Client) DeleteDiskWithContext(ctx context.Context, request *Delete
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteForwardEntry is deprecated
+// Deprecated: OpenAPI DeleteForwardEntry is deprecated, please use Vpc::2016-04-28::DeleteForwardEntry instead.
+//
+// Summary:
+//
+// # DeleteForwardEntry
 //
 // @param request - DeleteForwardEntryRequest
 //
@@ -8059,7 +8135,11 @@ func (client *Client) DeleteForwardEntryWithContext(ctx context.Context, request
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteHaVip is deprecated
+// Deprecated: OpenAPI DeleteHaVip is deprecated, please use Vpc::2016-04-28::DeleteHaVip instead.
+//
+// Summary:
+//
+// # DeleteHaVip
 //
 // @param request - DeleteHaVipRequest
 //
@@ -8821,7 +8901,11 @@ func (client *Client) DeleteLaunchTemplateVersionWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteNatGateway is deprecated
+// Deprecated: OpenAPI DeleteNatGateway is deprecated, please use Vpc::2016-04-28::DeleteNatGateway instead.
+//
+// Summary:
+//
+// # DeleteNatGateway
 //
 // @param request - DeleteNatGatewayRequest
 //
@@ -9045,7 +9129,11 @@ func (client *Client) DeleteNetworkInterfacePermissionWithContext(ctx context.Co
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeletePhysicalConnection is deprecated
+// Deprecated: OpenAPI DeletePhysicalConnection is deprecated, please use Vpc::2016-04-28::DeletePhysicalConnection instead.
+//
+// Summary:
+//
+// # DeletePhysicalConnection
 //
 // @param request - DeletePhysicalConnectionRequest
 //
@@ -9245,7 +9333,11 @@ func (client *Client) DeletePrefixListWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteRouteEntry is deprecated
+// Deprecated: OpenAPI DeleteRouteEntry is deprecated, please use Vpc::2016-04-28::DeleteRouteEntry instead.
+//
+// Summary:
+//
+// # DeleteRouteEntry
 //
 // @param request - DeleteRouteEntryRequest
 //
@@ -9317,7 +9409,11 @@ func (client *Client) DeleteRouteEntryWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteRouterInterface is deprecated
+// Deprecated: OpenAPI DeleteRouterInterface is deprecated, please use Vpc::2016-04-28::DeleteRouterInterface instead.
+//
+// Summary:
+//
+// # DeleteRouterInterface
 //
 // @param request - DeleteRouterInterfaceRequest
 //
@@ -9663,6 +9759,10 @@ func (client *Client) DeleteStorageSetWithContext(ctx context.Context, request *
 
 // Deprecated: OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
 //
+// Summary:
+//
+// # DeleteVSwitch
+//
 // @param request - DeleteVSwitchRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9721,7 +9821,11 @@ func (client *Client) DeleteVSwitchWithContext(ctx context.Context, request *Del
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DeleteVirtualBorderRouter is deprecated
+// Deprecated: OpenAPI DeleteVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::DeleteVirtualBorderRouter instead.
+//
+// Summary:
+//
+// # DeleteVirtualBorderRouter
 //
 // @param request - DeleteVirtualBorderRouterRequest
 //
@@ -9919,7 +10023,11 @@ func (client *Client) DeregisterManagedInstanceWithContext(ctx context.Context, 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeAccessPoints is deprecated
+// Deprecated: OpenAPI DescribeAccessPoints is deprecated, please use Vpc::2016-04-28::DescribeAccessPoints instead.
+//
+// Summary:
+//
+// # DescribeAccessPoints
 //
 // @param request - DescribeAccessPointsRequest
 //
@@ -10805,7 +10913,11 @@ func (client *Client) DescribeBandwidthLimitationWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeBandwidthPackages is deprecated
+// Deprecated: OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
+//
+// Summary:
+//
+// # DescribeBandwidthPackages
 //
 // @param request - DescribeBandwidthPackagesRequest
 //
@@ -12703,6 +12815,10 @@ func (client *Client) DescribeDisksFullStatusWithContext(ctx context.Context, re
 
 // Deprecated: OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
 //
+// Summary:
+//
+// # DescribeEipAddresses
+//
 // @param request - DescribeEipAddressesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12801,7 +12917,11 @@ func (client *Client) DescribeEipAddressesWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeEipMonitorData is deprecated
+// Deprecated: OpenAPI DescribeEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+//
+// Summary:
+//
+// # DescribeEipMonitorData
 //
 // @param request - DescribeEipMonitorDataRequest
 //
@@ -13199,7 +13319,11 @@ func (client *Client) DescribeEniMonitorDataWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeForwardTableEntries is deprecated
+// Deprecated: OpenAPI DescribeForwardTableEntries is deprecated, please use Vpc::2016-04-28::DescribeForwardTableEntries instead.
+//
+// Summary:
+//
+// # DescribeForwardTableEntries
 //
 // @param request - DescribeForwardTableEntriesRequest
 //
@@ -13271,7 +13395,11 @@ func (client *Client) DescribeForwardTableEntriesWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeHaVips is deprecated
+// Deprecated: OpenAPI DescribeHaVips is deprecated, please use Vpc::2016-04-28::DescribeHaVips instead.
+//
+// Summary:
+//
+// # DescribeHaVips
 //
 // @param request - DescribeHaVipsRequest
 //
@@ -16349,7 +16477,11 @@ func (client *Client) DescribeManagedInstancesWithContext(ctx context.Context, r
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeNatGateways is deprecated
+// Deprecated: OpenAPI DescribeNatGateways is deprecated, please use Vpc::2016-04-28::DescribeNatGateways instead.
+//
+// Summary:
+//
+// # DescribeNatGateways
 //
 // @param request - DescribeNatGatewaysRequest
 //
@@ -16727,7 +16859,11 @@ func (client *Client) DescribeNetworkInterfacesWithContext(ctx context.Context, 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeNewProjectEipMonitorData is deprecated
+// Deprecated: OpenAPI DescribeNewProjectEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+//
+// Summary:
+//
+// # DescribeNewProjectEipMonitorData
 //
 // @param request - DescribeNewProjectEipMonitorDataRequest
 //
@@ -16799,7 +16935,11 @@ func (client *Client) DescribeNewProjectEipMonitorDataWithContext(ctx context.Co
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribePhysicalConnections is deprecated
+// Deprecated: OpenAPI DescribePhysicalConnections is deprecated, please use Vpc::2016-04-28::DescribePhysicalConnections instead.
+//
+// Summary:
+//
+// # DescribePhysicalConnections
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -18313,7 +18453,11 @@ func (client *Client) DescribeRouteTablesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeRouterInterfaces is deprecated
+// Deprecated: OpenAPI DescribeRouterInterfaces is deprecated, please use Vpc::2016-04-28::DescribeRouterInterfaces instead.
+//
+// Summary:
+//
+// # DescribeRouterInterfaces
 //
 // @param request - DescribeRouterInterfacesRequest
 //
@@ -20469,7 +20613,11 @@ func (client *Client) DescribeVRoutersWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeVSwitches is deprecated
+// Deprecated: OpenAPI DescribeVSwitches is deprecated, please use Vpc::2016-04-28::DescribeVSwitches instead.
+//
+// Summary:
+//
+// # DescribeVSwitches
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -20549,7 +20697,11 @@ func (client *Client) DescribeVSwitchesWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeVirtualBorderRouters is deprecated
+// Deprecated: OpenAPI DescribeVirtualBorderRouters is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRouters instead.
+//
+// Summary:
+//
+// # DescribeVirtualBorderRouters
 //
 // @param request - DescribeVirtualBorderRoutersRequest
 //
@@ -20613,7 +20765,11 @@ func (client *Client) DescribeVirtualBorderRoutersWithContext(ctx context.Contex
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
+// Deprecated: OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRoutersForPhysicalConnection instead.
+//
+// Summary:
+//
+// # DescribeVirtualBorderRoutersForPhysicalConnection
 //
 // @param request - DescribeVirtualBorderRoutersForPhysicalConnectionRequest
 //
@@ -21419,7 +21575,11 @@ func (client *Client) EnableDiskEncryptionByDefaultWithContext(ctx context.Conte
 	return _result, _err
 }
 
-// Deprecated: OpenAPI EnablePhysicalConnection is deprecated
+// Deprecated: OpenAPI EnablePhysicalConnection is deprecated, please use Vpc::2016-04-28::EnablePhysicalConnection instead.
+//
+// Summary:
+//
+// # EnablePhysicalConnection
 //
 // @param request - EnablePhysicalConnectionRequest
 //
@@ -22490,6 +22650,10 @@ func (client *Client) InvokeCommandWithContext(ctx context.Context, tmpReq *Invo
 		query["Launcher"] = request.Launcher
 	}
 
+	if !dara.IsNil(request.OssOutputDelivery) {
+		query["OssOutputDelivery"] = request.OssOutputDelivery
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -23227,7 +23391,11 @@ func (client *Client) ModifyAutoSnapshotPolicyExWithContext(ctx context.Context,
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated
+// Deprecated: OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+//
+// Summary:
+//
+// # ModifyBandwidthPackageSpec
 //
 // @param request - ModifyBandwidthPackageSpecRequest
 //
@@ -24581,7 +24749,11 @@ func (client *Client) ModifyDiskSpecWithContext(ctx context.Context, request *Mo
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyEipAddressAttribute is deprecated
+// Deprecated: OpenAPI ModifyEipAddressAttribute is deprecated, please use Vpc::2016-04-28::ModifyEipAddressAttribute instead.
+//
+// Summary:
+//
+// # ModifyEipAddressAttribute
 //
 // @param request - ModifyEipAddressAttributeRequest
 //
@@ -24797,7 +24969,11 @@ func (client *Client) ModifyElasticityAssuranceAutoRenewAttributeWithContext(ctx
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyForwardEntry is deprecated
+// Deprecated: OpenAPI ModifyForwardEntry is deprecated, please use Vpc::2016-04-28::ModifyForwardEntry instead.
+//
+// Summary:
+//
+// # ModifyForwardEntry
 //
 // @param request - ModifyForwardEntryRequest
 //
@@ -24881,7 +25057,11 @@ func (client *Client) ModifyForwardEntryWithContext(ctx context.Context, request
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyHaVipAttribute is deprecated
+// Deprecated: OpenAPI ModifyHaVipAttribute is deprecated, please use Vpc::2016-04-28::ModifyHaVipAttribute instead.
+//
+// Summary:
+//
+// # ModifyHaVipAttribute
 //
 // @param request - ModifyHaVipAttributeRequest
 //
@@ -26927,7 +27107,11 @@ func (client *Client) ModifyNetworkInterfaceAttributeWithContext(ctx context.Con
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyPhysicalConnectionAttribute is deprecated
+// Deprecated: OpenAPI ModifyPhysicalConnectionAttribute is deprecated, please use Vpc::2016-04-28::ModifyPhysicalConnectionAttribute instead.
+//
+// Summary:
+//
+// # ModifyPhysicalConnectionAttribute
 //
 // @param request - ModifyPhysicalConnectionAttributeRequest
 //
@@ -27655,7 +27839,11 @@ func (client *Client) ModifyReservedInstancesWithContext(ctx context.Context, re
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyRouterInterfaceAttribute is deprecated
+// Deprecated: OpenAPI ModifyRouterInterfaceAttribute is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceAttribute instead.
+//
+// Summary:
+//
+// # ModifyRouterInterfaceAttribute
 //
 // @param request - ModifyRouterInterfaceAttributeRequest
 //
@@ -27743,7 +27931,11 @@ func (client *Client) ModifyRouterInterfaceAttributeWithContext(ctx context.Cont
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyRouterInterfaceSpec is deprecated
+// Deprecated: OpenAPI ModifyRouterInterfaceSpec is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceSpec instead.
+//
+// Summary:
+//
+// # ModifyRouterInterfaceSpec
 //
 // @param request - ModifyRouterInterfaceSpecRequest
 //
@@ -28691,7 +28883,11 @@ func (client *Client) ModifyUserBusinessBehaviorWithContext(ctx context.Context,
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyVRouterAttribute is deprecated
+// Deprecated: OpenAPI ModifyVRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVRouterAttribute instead.
+//
+// Summary:
+//
+// # ModifyVRouterAttribute
 //
 // @param request - ModifyVRouterAttributeRequest
 //
@@ -28759,7 +28955,11 @@ func (client *Client) ModifyVRouterAttributeWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyVSwitchAttribute is deprecated
+// Deprecated: OpenAPI ModifyVSwitchAttribute is deprecated, please use Vpc::2016-04-28::ModifyVSwitchAttribute instead.
+//
+// Summary:
+//
+// # ModifyVSwitchAttribute
 //
 // @param request - ModifyVSwitchAttributeRequest
 //
@@ -28827,7 +29027,11 @@ func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
+// Deprecated: OpenAPI ModifyVirtualBorderRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVirtualBorderRouterAttribute instead.
+//
+// Summary:
+//
+// # ModifyVirtualBorderRouterAttribute
 //
 // @param request - ModifyVirtualBorderRouterAttributeRequest
 //
@@ -28923,7 +29127,11 @@ func (client *Client) ModifyVirtualBorderRouterAttributeWithContext(ctx context.
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ModifyVpcAttribute is deprecated
+// Deprecated: OpenAPI ModifyVpcAttribute is deprecated, please use Vpc::2016-04-28::ModifyVpcAttribute instead.
+//
+// Summary:
+//
+// # ModifyVpcAttribute
 //
 // @param request - ModifyVpcAttributeRequest
 //
@@ -29659,7 +29867,11 @@ func (client *Client) RebootInstancesWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
-// Deprecated: OpenAPI RecoverVirtualBorderRouter is deprecated
+// Deprecated: OpenAPI RecoverVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::RecoverVirtualBorderRouter instead.
+//
+// Summary:
+//
+// # RecoverVirtualBorderRouter
 //
 // @param request - RecoverVirtualBorderRouterRequest
 //
@@ -30043,7 +30255,11 @@ func (client *Client) ReleaseDedicatedHostWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ReleaseEipAddress is deprecated
+// Deprecated: OpenAPI ReleaseEipAddress is deprecated, please use Vpc::2016-04-28::ReleaseEipAddress instead.
+//
+// Summary:
+//
+// # ReleaseEipAddress
 //
 // @param request - ReleaseEipAddressRequest
 //
@@ -30159,7 +30375,11 @@ func (client *Client) ReleasePublicIpAddressWithContext(ctx context.Context, req
 	return _result, _err
 }
 
-// Deprecated: OpenAPI RemoveBandwidthPackageIps is deprecated
+// Deprecated: OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
+//
+// Summary:
+//
+// # RemoveBandwidthPackageIps
 //
 // @param request - RemoveBandwidthPackageIpsRequest
 //
@@ -31780,6 +32000,10 @@ func (client *Client) RunCommandWithContext(ctx context.Context, tmpReq *RunComm
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.OssOutputDelivery) {
+		query["OssOutputDelivery"] = request.OssOutputDelivery
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -33203,7 +33427,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 	return _result, _err
 }
 
-// Deprecated: OpenAPI TerminatePhysicalConnection is deprecated
+// Deprecated: OpenAPI TerminatePhysicalConnection is deprecated, please use Vpc::2016-04-28::TerminatePhysicalConnection instead.
+//
+// Summary:
+//
+// # TerminatePhysicalConnection
 //
 // @param request - TerminatePhysicalConnectionRequest
 //
@@ -33271,7 +33499,11 @@ func (client *Client) TerminatePhysicalConnectionWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI TerminateVirtualBorderRouter is deprecated
+// Deprecated: OpenAPI TerminateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::TerminateVirtualBorderRouter instead.
+//
+// Summary:
+//
+// # TerminateVirtualBorderRouter
 //
 // @param request - TerminateVirtualBorderRouterRequest
 //
@@ -33505,7 +33737,11 @@ func (client *Client) UnassignPrivateIpAddressesWithContext(ctx context.Context,
 	return _result, _err
 }
 
-// Deprecated: OpenAPI UnassociateEipAddress is deprecated
+// Deprecated: OpenAPI UnassociateEipAddress is deprecated, please use Vpc::2016-04-28::UnassociateEipAddress instead.
+//
+// Summary:
+//
+// # UnassociateEipAddress
 //
 // @param request - UnassociateEipAddressRequest
 //
@@ -33573,7 +33809,11 @@ func (client *Client) UnassociateEipAddressWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
-// Deprecated: OpenAPI UnassociateHaVip is deprecated
+// Deprecated: OpenAPI UnassociateHaVip is deprecated, please use Vpc::2016-04-28::UnassociateHaVip instead.
+//
+// Summary:
+//
+// # UnassociateHaVip
 //
 // @param request - UnassociateHaVipRequest
 //

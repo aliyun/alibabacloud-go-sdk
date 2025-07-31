@@ -23,6 +23,8 @@ type iInvokeCommandShrinkRequest interface {
 	GetInstanceId() []*string
 	SetLauncher(v string) *InvokeCommandShrinkRequest
 	GetLauncher() *string
+	SetOssOutputDelivery(v string) *InvokeCommandShrinkRequest
+	GetOssOutputDelivery() *string
 	SetOwnerAccount(v string) *InvokeCommandShrinkRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *InvokeCommandShrinkRequest
@@ -159,9 +161,10 @@ type InvokeCommandShrinkRequest struct {
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher     *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Launcher          *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The key-value pairs of custom parameters to pass in when the custom parameter feature is enabled. You can specify up to 10 custom parameters.
 	//
 	// 	- Each key in a Map collection cannot be an empty string, and can be up to 64 characters in length.
@@ -330,6 +333,10 @@ func (s *InvokeCommandShrinkRequest) GetLauncher() *string {
 	return s.Launcher
 }
 
+func (s *InvokeCommandShrinkRequest) GetOssOutputDelivery() *string {
+	return s.OssOutputDelivery
+}
+
 func (s *InvokeCommandShrinkRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -426,6 +433,11 @@ func (s *InvokeCommandShrinkRequest) SetInstanceId(v []*string) *InvokeCommandSh
 
 func (s *InvokeCommandShrinkRequest) SetLauncher(v string) *InvokeCommandShrinkRequest {
 	s.Launcher = &v
+	return s
+}
+
+func (s *InvokeCommandShrinkRequest) SetOssOutputDelivery(v string) *InvokeCommandShrinkRequest {
+	s.OssOutputDelivery = &v
 	return s
 }
 

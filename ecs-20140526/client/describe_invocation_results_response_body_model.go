@@ -385,7 +385,10 @@ type DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationR
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	Launcher          *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	OssOutputStatus   *string `json:"OssOutputStatus,omitempty" xml:"OssOutputStatus,omitempty"`
+	OssOutputUri      *string `json:"OssOutputUri,omitempty" xml:"OssOutputUri,omitempty"`
 	// The command output.
 	//
 	// 	- If ContentEncoding is set to PlainText in the request, the original command output is returned.
@@ -498,6 +501,18 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 	return s.Launcher
 }
 
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputDelivery() *string {
+	return s.OssOutputDelivery
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputStatus() *string {
+	return s.OssOutputStatus
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOssOutputUri() *string {
+	return s.OssOutputUri
+}
+
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) GetOutput() *string {
 	return s.Output
 }
@@ -588,6 +603,21 @@ func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocat
 
 func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetLauncher(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
 	s.Launcher = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputDelivery(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.OssOutputDelivery = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputStatus(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.OssOutputStatus = &v
+	return s
+}
+
+func (s *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult) SetOssOutputUri(v string) *DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocationResult {
+	s.OssOutputUri = &v
 	return s
 }
 

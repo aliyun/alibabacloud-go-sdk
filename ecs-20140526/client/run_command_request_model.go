@@ -33,6 +33,8 @@ type iRunCommandRequest interface {
 	GetLauncher() *string
 	SetName(v string) *RunCommandRequest
 	GetName() *string
+	SetOssOutputDelivery(v string) *RunCommandRequest
+	GetOssOutputDelivery() *string
 	SetOwnerAccount(v string) *RunCommandRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *RunCommandRequest
@@ -251,9 +253,10 @@ type RunCommandRequest struct {
 	// example:
 	//
 	// testName
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssOutputDelivery *string `json:"OssOutputDelivery,omitempty" xml:"OssOutputDelivery,omitempty"`
+	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The key-value pairs of custom parameters to pass in when the command can include custom parameters. For example, the command content is `echo {{name}}`. You can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced by the paired Jack value to generate a new command. As a result, the `echo Jack` command is run.
 	//
 	// You can specify 0 to 10 custom parameters. Take note of the following items:
@@ -456,6 +459,10 @@ func (s *RunCommandRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *RunCommandRequest) GetOssOutputDelivery() *string {
+	return s.OssOutputDelivery
+}
+
 func (s *RunCommandRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -581,6 +588,11 @@ func (s *RunCommandRequest) SetLauncher(v string) *RunCommandRequest {
 
 func (s *RunCommandRequest) SetName(v string) *RunCommandRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *RunCommandRequest) SetOssOutputDelivery(v string) *RunCommandRequest {
+	s.OssOutputDelivery = &v
 	return s
 }
 
