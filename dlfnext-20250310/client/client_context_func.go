@@ -870,6 +870,72 @@ func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalog
 
 // Summary:
 //
+// 查看iceberg数据库
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIcebergNamespaceResponse
+func (client *Client) GetIcebergNamespaceWithContext(ctx context.Context, catalogId *string, namespace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIcebergNamespaceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIcebergNamespace"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/iceberg/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/namespaces/" + dara.PercentEncode(dara.StringValue(namespace))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIcebergNamespaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIcebergTableResponse
+func (client *Client) GetIcebergTableWithContext(ctx context.Context, catalogId *string, namespace *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIcebergTableResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIcebergTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/iceberg/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/tables/" + dara.PercentEncode(dara.StringValue(table))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIcebergTableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询 DLF 当前地域开通状态
 //
 // @param headers - map
@@ -1257,6 +1323,161 @@ func (client *Client) ListDatabasesWithContext(ctx context.Context, catalogId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDatabasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看iceberg数据库列表
+//
+// @param request - ListIcebergNamespaceDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIcebergNamespaceDetailsResponse
+func (client *Client) ListIcebergNamespaceDetailsWithContext(ctx context.Context, catalogId *string, request *ListIcebergNamespaceDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergNamespaceDetailsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NamespaceNamePattern) {
+		query["namespaceNamePattern"] = request.NamespaceNamePattern
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIcebergNamespaceDetails"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/iceberg/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/namespace-details"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIcebergNamespaceDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看iceberg表快照列表
+//
+// @param request - ListIcebergSnapshotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIcebergSnapshotsResponse
+func (client *Client) ListIcebergSnapshotsWithContext(ctx context.Context, catalogId *string, namespace *string, table *string, request *ListIcebergSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergSnapshotsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIcebergSnapshots"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/iceberg/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/snapshots"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIcebergSnapshotsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看iceberg表详情列表
+//
+// @param request - ListIcebergTableDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIcebergTableDetailsResponse
+func (client *Client) ListIcebergTableDetailsWithContext(ctx context.Context, catalogId *string, namespace *string, request *ListIcebergTableDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIcebergTableDetailsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	if !dara.IsNil(request.TableNamePattern) {
+		query["tableNamePattern"] = request.TableNamePattern
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIcebergTableDetails"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/iceberg/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/table-details"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIcebergTableDetailsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
