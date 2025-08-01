@@ -277,6 +277,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// local
 	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
+	ServerStatus  *string `json:"ServerStatus,omitempty" xml:"ServerStatus,omitempty"`
 	ServerType    *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	// The session status.
 	//
@@ -464,6 +465,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetRegionId() *strin
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetRenderingType() *string {
 	return s.RenderingType
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetServerStatus() *string {
+	return s.ServerStatus
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetServerType() *string {
@@ -691,6 +696,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRegionId(v string
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.RenderingType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetServerStatus(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.ServerStatus = &v
 	return s
 }
 
