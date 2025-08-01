@@ -17,6 +17,8 @@ type iCreateWmExtractTaskShrinkRequest interface {
 	GetFileUrl() *string
 	SetFilename(v string) *CreateWmExtractTaskShrinkRequest
 	GetFilename() *string
+	SetImageExtractParamsOpenApiShrink(v string) *CreateWmExtractTaskShrinkRequest
+	GetImageExtractParamsOpenApiShrink() *string
 	SetIsClientEmbed(v bool) *CreateWmExtractTaskShrinkRequest
 	GetIsClientEmbed() *bool
 	SetVideoIsLong(v bool) *CreateWmExtractTaskShrinkRequest
@@ -57,8 +59,9 @@ type CreateWmExtractTaskShrinkRequest struct {
 	// example:
 	//
 	// test-****.pdf
-	Filename      *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	IsClientEmbed *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
+	Filename                        *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	ImageExtractParamsOpenApiShrink *string `json:"ImageExtractParamsOpenApi,omitempty" xml:"ImageExtractParamsOpenApi,omitempty"`
+	IsClientEmbed                   *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
 	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// 	- **true**
@@ -143,6 +146,10 @@ func (s *CreateWmExtractTaskShrinkRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *CreateWmExtractTaskShrinkRequest) GetImageExtractParamsOpenApiShrink() *string {
+	return s.ImageExtractParamsOpenApiShrink
+}
+
 func (s *CreateWmExtractTaskShrinkRequest) GetIsClientEmbed() *bool {
 	return s.IsClientEmbed
 }
@@ -180,6 +187,11 @@ func (s *CreateWmExtractTaskShrinkRequest) SetFileUrl(v string) *CreateWmExtract
 
 func (s *CreateWmExtractTaskShrinkRequest) SetFilename(v string) *CreateWmExtractTaskShrinkRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskShrinkRequest) SetImageExtractParamsOpenApiShrink(v string) *CreateWmExtractTaskShrinkRequest {
+	s.ImageExtractParamsOpenApiShrink = &v
 	return s
 }
 

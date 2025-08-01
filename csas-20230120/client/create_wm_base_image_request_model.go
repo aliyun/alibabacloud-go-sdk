@@ -27,6 +27,8 @@ type iCreateWmBaseImageRequest interface {
 	GetWmInfoUint() *string
 	SetWmType(v string) *CreateWmBaseImageRequest
 	GetWmType() *string
+	SetComment(v string) *CreateWmBaseImageRequest
+	GetComment() *string
 }
 
 type CreateWmBaseImageRequest struct {
@@ -72,7 +74,8 @@ type CreateWmBaseImageRequest struct {
 	// example:
 	//
 	// PureWebappInvisible
-	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+	WmType  *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 }
 
 func (s CreateWmBaseImageRequest) String() string {
@@ -117,6 +120,10 @@ func (s *CreateWmBaseImageRequest) GetWmInfoUint() *string {
 
 func (s *CreateWmBaseImageRequest) GetWmType() *string {
 	return s.WmType
+}
+
+func (s *CreateWmBaseImageRequest) GetComment() *string {
+	return s.Comment
 }
 
 func (s *CreateWmBaseImageRequest) SetHeight(v int32) *CreateWmBaseImageRequest {
@@ -164,6 +171,11 @@ func (s *CreateWmBaseImageRequest) SetWmType(v string) *CreateWmBaseImageRequest
 	return s
 }
 
+func (s *CreateWmBaseImageRequest) SetComment(v string) *CreateWmBaseImageRequest {
+	s.Comment = &v
+	return s
+}
+
 func (s *CreateWmBaseImageRequest) Validate() error {
 	return dara.Validate(s)
 }
@@ -204,17 +216,19 @@ func (s *CreateWmBaseImageRequestImageControl) Validate() error {
 }
 
 type CreateWmBaseImageRequestImageControlLogoVisibleControl struct {
-	Angle      *int64   `json:"Angle,omitempty" xml:"Angle,omitempty"`
-	LogoBase64 *string  `json:"LogoBase64,omitempty" xml:"LogoBase64,omitempty"`
-	Mode       *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Opacity    *int32   `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
-	PosAx      *float32 `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
-	PosAy      *float32 `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
-	PosX       *int64   `json:"PosX,omitempty" xml:"PosX,omitempty"`
-	PosY       *int64   `json:"PosY,omitempty" xml:"PosY,omitempty"`
-	SpaceX     *int64   `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
-	SpaceY     *int64   `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
-	Visible    *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	Angle      *int64                                                        `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Enhance    *bool                                                         `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
+	LogoBase64 *string                                                       `json:"LogoBase64,omitempty" xml:"LogoBase64,omitempty"`
+	Margin     *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
+	Mode       *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity    *int32                                                        `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx      *float32                                                      `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy      *float32                                                      `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX       *int64                                                        `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY       *int64                                                        `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX     *int64                                                        `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY     *int64                                                        `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible    *bool                                                         `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
 func (s CreateWmBaseImageRequestImageControlLogoVisibleControl) String() string {
@@ -229,8 +243,16 @@ func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) GetAngle() *int
 	return s.Angle
 }
 
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) GetEnhance() *bool {
+	return s.Enhance
+}
+
 func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) GetLogoBase64() *string {
 	return s.LogoBase64
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) GetMargin() *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin {
+	return s.Margin
 }
 
 func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) GetMode() *string {
@@ -274,8 +296,18 @@ func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetAngle(v int6
 	return s
 }
 
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetEnhance(v bool) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Enhance = &v
+	return s
+}
+
 func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetLogoBase64(v string) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
 	s.LogoBase64 = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) SetMargin(v *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) *CreateWmBaseImageRequestImageControlLogoVisibleControl {
+	s.Margin = v
 	return s
 }
 
@@ -328,20 +360,76 @@ func (s *CreateWmBaseImageRequestImageControlLogoVisibleControl) Validate() erro
 	return dara.Validate(s)
 }
 
+type CreateWmBaseImageRequestImageControlLogoVisibleControlMargin struct {
+	Bottom *float32 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
+	Left   *float32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Right  *float32 `json:"Right,omitempty" xml:"Right,omitempty"`
+	Top    *float32 `json:"Top,omitempty" xml:"Top,omitempty"`
+}
+
+func (s CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) GetBottom() *float32 {
+	return s.Bottom
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) GetLeft() *float32 {
+	return s.Left
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) GetRight() *float32 {
+	return s.Right
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) GetTop() *float32 {
+	return s.Top
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) SetBottom(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin {
+	s.Bottom = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) SetLeft(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin {
+	s.Left = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) SetRight(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin {
+	s.Right = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) SetTop(v float32) *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin {
+	s.Top = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlLogoVisibleControlMargin) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateWmBaseImageRequestImageControlTextVisibleControl struct {
-	Angle       *int64   `json:"Angle,omitempty" xml:"Angle,omitempty"`
-	FontColor   *string  `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize    *int64   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	Mode        *string  `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Opacity     *int32   `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
-	PosAx       *float32 `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
-	PosAy       *float32 `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
-	PosX        *int64   `json:"PosX,omitempty" xml:"PosX,omitempty"`
-	PosY        *int64   `json:"PosY,omitempty" xml:"PosY,omitempty"`
-	SpaceX      *int64   `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
-	SpaceY      *int64   `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
-	Visible     *bool    `json:"Visible,omitempty" xml:"Visible,omitempty"`
-	VisibleText *string  `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
+	Angle       *int64                                                        `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	FontColor   *string                                                       `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize    *int64                                                        `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Margin      *CreateWmBaseImageRequestImageControlTextVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
+	Mode        *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity     *int32                                                        `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx       *float32                                                      `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy       *float32                                                      `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX        *int64                                                        `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY        *int64                                                        `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX      *int64                                                        `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY      *int64                                                        `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible     *bool                                                         `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	VisibleText *string                                                       `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
 }
 
 func (s CreateWmBaseImageRequestImageControlTextVisibleControl) String() string {
@@ -362,6 +450,10 @@ func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) GetFontColor() 
 
 func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) GetFontSize() *int64 {
 	return s.FontSize
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) GetMargin() *CreateWmBaseImageRequestImageControlTextVisibleControlMargin {
+	return s.Margin
 }
 
 func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) GetMode() *string {
@@ -419,6 +511,11 @@ func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetFontSize(v i
 	return s
 }
 
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetMargin(v *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) *CreateWmBaseImageRequestImageControlTextVisibleControl {
+	s.Margin = v
+	return s
+}
+
 func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetMode(v string) *CreateWmBaseImageRequestImageControlTextVisibleControl {
 	s.Mode = &v
 	return s
@@ -470,5 +567,60 @@ func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) SetVisibleText(
 }
 
 func (s *CreateWmBaseImageRequestImageControlTextVisibleControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmBaseImageRequestImageControlTextVisibleControlMargin struct {
+	Bottom *float32 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
+	Left   *float32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Right  *float32 `json:"Right,omitempty" xml:"Right,omitempty"`
+	Top    *float32 `json:"Top,omitempty" xml:"Top,omitempty"`
+}
+
+func (s CreateWmBaseImageRequestImageControlTextVisibleControlMargin) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequestImageControlTextVisibleControlMargin) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) GetBottom() *float32 {
+	return s.Bottom
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) GetLeft() *float32 {
+	return s.Left
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) GetRight() *float32 {
+	return s.Right
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) GetTop() *float32 {
+	return s.Top
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) SetBottom(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControlMargin {
+	s.Bottom = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) SetLeft(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControlMargin {
+	s.Left = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) SetRight(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControlMargin {
+	s.Right = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) SetTop(v float32) *CreateWmBaseImageRequestImageControlTextVisibleControlMargin {
+	s.Top = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequestImageControlTextVisibleControlMargin) Validate() error {
 	return dara.Validate(s)
 }

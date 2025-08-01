@@ -27,6 +27,8 @@ type iCreateWmBaseImageShrinkRequest interface {
 	GetWmInfoUint() *string
 	SetWmType(v string) *CreateWmBaseImageShrinkRequest
 	GetWmType() *string
+	SetComment(v string) *CreateWmBaseImageShrinkRequest
+	GetComment() *string
 }
 
 type CreateWmBaseImageShrinkRequest struct {
@@ -72,7 +74,8 @@ type CreateWmBaseImageShrinkRequest struct {
 	// example:
 	//
 	// PureWebappInvisible
-	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+	WmType  *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 }
 
 func (s CreateWmBaseImageShrinkRequest) String() string {
@@ -119,6 +122,10 @@ func (s *CreateWmBaseImageShrinkRequest) GetWmType() *string {
 	return s.WmType
 }
 
+func (s *CreateWmBaseImageShrinkRequest) GetComment() *string {
+	return s.Comment
+}
+
 func (s *CreateWmBaseImageShrinkRequest) SetHeight(v int32) *CreateWmBaseImageShrinkRequest {
 	s.Height = &v
 	return s
@@ -161,6 +168,11 @@ func (s *CreateWmBaseImageShrinkRequest) SetWmInfoUint(v string) *CreateWmBaseIm
 
 func (s *CreateWmBaseImageShrinkRequest) SetWmType(v string) *CreateWmBaseImageShrinkRequest {
 	s.WmType = &v
+	return s
+}
+
+func (s *CreateWmBaseImageShrinkRequest) SetComment(v string) *CreateWmBaseImageShrinkRequest {
+	s.Comment = &v
 	return s
 }
 

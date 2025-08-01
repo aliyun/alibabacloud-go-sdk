@@ -17,6 +17,8 @@ type iCreateWmExtractTaskRequest interface {
 	GetFileUrl() *string
 	SetFilename(v string) *CreateWmExtractTaskRequest
 	GetFilename() *string
+	SetImageExtractParamsOpenApi(v *CreateWmExtractTaskRequestImageExtractParamsOpenApi) *CreateWmExtractTaskRequest
+	GetImageExtractParamsOpenApi() *CreateWmExtractTaskRequestImageExtractParamsOpenApi
 	SetIsClientEmbed(v bool) *CreateWmExtractTaskRequest
 	GetIsClientEmbed() *bool
 	SetVideoIsLong(v bool) *CreateWmExtractTaskRequest
@@ -57,8 +59,9 @@ type CreateWmExtractTaskRequest struct {
 	// example:
 	//
 	// test-****.pdf
-	Filename      *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	IsClientEmbed *bool   `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
+	Filename                  *string                                              `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	ImageExtractParamsOpenApi *CreateWmExtractTaskRequestImageExtractParamsOpenApi `json:"ImageExtractParamsOpenApi,omitempty" xml:"ImageExtractParamsOpenApi,omitempty" type:"Struct"`
+	IsClientEmbed             *bool                                                `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
 	// The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// 	- **true**
@@ -143,6 +146,10 @@ func (s *CreateWmExtractTaskRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *CreateWmExtractTaskRequest) GetImageExtractParamsOpenApi() *CreateWmExtractTaskRequestImageExtractParamsOpenApi {
+	return s.ImageExtractParamsOpenApi
+}
+
 func (s *CreateWmExtractTaskRequest) GetIsClientEmbed() *bool {
 	return s.IsClientEmbed
 }
@@ -180,6 +187,11 @@ func (s *CreateWmExtractTaskRequest) SetFileUrl(v string) *CreateWmExtractTaskRe
 
 func (s *CreateWmExtractTaskRequest) SetFilename(v string) *CreateWmExtractTaskRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetImageExtractParamsOpenApi(v *CreateWmExtractTaskRequestImageExtractParamsOpenApi) *CreateWmExtractTaskRequest {
+	s.ImageExtractParamsOpenApi = v
 	return s
 }
 
@@ -314,5 +326,30 @@ func (s *CreateWmExtractTaskRequestCsvControl) SetTimeFormat(v string) *CreateWm
 }
 
 func (s *CreateWmExtractTaskRequestCsvControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmExtractTaskRequestImageExtractParamsOpenApi struct {
+	SrcLogoBase64 *string `json:"SrcLogoBase64,omitempty" xml:"SrcLogoBase64,omitempty"`
+}
+
+func (s CreateWmExtractTaskRequestImageExtractParamsOpenApi) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmExtractTaskRequestImageExtractParamsOpenApi) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskRequestImageExtractParamsOpenApi) GetSrcLogoBase64() *string {
+	return s.SrcLogoBase64
+}
+
+func (s *CreateWmExtractTaskRequestImageExtractParamsOpenApi) SetSrcLogoBase64(v string) *CreateWmExtractTaskRequestImageExtractParamsOpenApi {
+	s.SrcLogoBase64 = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequestImageExtractParamsOpenApi) Validate() error {
 	return dara.Validate(s)
 }
