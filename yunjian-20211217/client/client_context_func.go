@@ -29,6 +29,10 @@ func (client *Client) CreateDemandPlanWithContext(ctx context.Context, request *
 		body["accountId"] = request.AccountId
 	}
 
+	if !dara.IsNil(request.DemandType) {
+		body["demandType"] = request.DemandType
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -111,6 +115,10 @@ func (client *Client) CreateDemandPlanV2WithContext(ctx context.Context, request
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
 		body["accountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.DemandType) {
+		body["demandType"] = request.DemandType
 	}
 
 	if !dara.IsNil(request.Description) {

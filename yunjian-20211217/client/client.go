@@ -77,6 +77,10 @@ func (client *Client) CreateDemandPlanWithOptions(request *CreateDemandPlanReque
 		body["accountId"] = request.AccountId
 	}
 
+	if !dara.IsNil(request.DemandType) {
+		body["demandType"] = request.DemandType
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -174,6 +178,10 @@ func (client *Client) CreateDemandPlanV2WithOptions(request *CreateDemandPlanV2R
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
 		body["accountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.DemandType) {
+		body["demandType"] = request.DemandType
 	}
 
 	if !dara.IsNil(request.Description) {

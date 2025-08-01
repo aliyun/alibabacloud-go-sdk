@@ -11,6 +11,8 @@ type iCreateDemandPlanRequest interface {
 	GoString() string
 	SetAccountId(v string) *CreateDemandPlanRequest
 	GetAccountId() *string
+	SetDemandType(v string) *CreateDemandPlanRequest
+	GetDemandType() *string
 	SetDescription(v string) *CreateDemandPlanRequest
 	GetDescription() *string
 	SetName(v string) *CreateDemandPlanRequest
@@ -34,6 +36,7 @@ type CreateDemandPlanRequest struct {
 	//
 	// 1065737167271819
 	AccountId   *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	DemandType  *string `json:"demandType,omitempty" xml:"demandType,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// This parameter is required.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -71,6 +74,10 @@ func (s *CreateDemandPlanRequest) GetAccountId() *string {
 	return s.AccountId
 }
 
+func (s *CreateDemandPlanRequest) GetDemandType() *string {
+	return s.DemandType
+}
+
 func (s *CreateDemandPlanRequest) GetDescription() *string {
 	return s.Description
 }
@@ -101,6 +108,11 @@ func (s *CreateDemandPlanRequest) GetUserId() *string {
 
 func (s *CreateDemandPlanRequest) SetAccountId(v string) *CreateDemandPlanRequest {
 	s.AccountId = &v
+	return s
+}
+
+func (s *CreateDemandPlanRequest) SetDemandType(v string) *CreateDemandPlanRequest {
+	s.DemandType = &v
 	return s
 }
 
