@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("paillmtrace"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateOnlineEvalTaskResponse
-func (client *Client) CreateOnlineEvalTaskWithOptions(tmpReq *CreateOnlineEvalTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOnlineEvalTaskResponse, _err error) {
+func (client *Client) CreateOnlineEvalTaskWithContext(ctx context.Context, tmpReq *CreateOnlineEvalTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateOnlineEvalTaskResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -98,30 +50,11 @@ func (client *Client) CreateOnlineEvalTaskWithOptions(tmpReq *CreateOnlineEvalTa
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateOnlineEvalTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a trace evaluation task. The system will sample some data from the user\\"s trace data based on the task\\"s configuration. Then, an LLM is used to evaluate the performance of these traces, and the evaluation results are recorded.
-//
-// @param request - CreateOnlineEvalTaskRequest
-//
-// @return CreateOnlineEvalTaskResponse
-func (client *Client) CreateOnlineEvalTask(request *CreateOnlineEvalTaskRequest) (_result *CreateOnlineEvalTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateOnlineEvalTaskResponse{}
-	_body, _err := client.CreateOnlineEvalTaskWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -134,7 +67,7 @@ func (client *Client) CreateOnlineEvalTask(request *CreateOnlineEvalTaskRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceIdentityRoleResponse
-func (client *Client) CreateServiceIdentityRoleWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceIdentityRoleResponse, _err error) {
+func (client *Client) CreateServiceIdentityRoleWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceIdentityRoleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -150,28 +83,11 @@ func (client *Client) CreateServiceIdentityRoleWithOptions(headers map[string]*s
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceIdentityRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a service-linked role required for the PaiLLMTrace service.
-//
-// @return CreateServiceIdentityRoleResponse
-func (client *Client) CreateServiceIdentityRole() (_result *CreateServiceIdentityRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateServiceIdentityRoleResponse{}
-	_body, _err := client.CreateServiceIdentityRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -184,7 +100,7 @@ func (client *Client) CreateServiceIdentityRole() (_result *CreateServiceIdentit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteOnlineEvalTaskResponse
-func (client *Client) DeleteOnlineEvalTaskWithOptions(TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteOnlineEvalTaskResponse, _err error) {
+func (client *Client) DeleteOnlineEvalTaskWithContext(ctx context.Context, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteOnlineEvalTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -200,28 +116,11 @@ func (client *Client) DeleteOnlineEvalTaskWithOptions(TaskId *string, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteOnlineEvalTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Delete an online evaluation task
-//
-// @return DeleteOnlineEvalTaskResponse
-func (client *Client) DeleteOnlineEvalTask(TaskId *string) (_result *DeleteOnlineEvalTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteOnlineEvalTaskResponse{}
-	_body, _err := client.DeleteOnlineEvalTaskWithOptions(TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -236,7 +135,7 @@ func (client *Client) DeleteOnlineEvalTask(TaskId *string) (_result *DeleteOnlin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EvaluateTraceResponse
-func (client *Client) EvaluateTraceWithOptions(TraceId *string, request *EvaluateTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EvaluateTraceResponse, _err error) {
+func (client *Client) EvaluateTraceWithContext(ctx context.Context, TraceId *string, request *EvaluateTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EvaluateTraceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -282,30 +181,11 @@ func (client *Client) EvaluateTraceWithOptions(TraceId *string, request *Evaluat
 		BodyType:    dara.String("json"),
 	}
 	_result = &EvaluateTraceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Evaluates a specified piece of trace data.
-//
-// @param request - EvaluateTraceRequest
-//
-// @return EvaluateTraceResponse
-func (client *Client) EvaluateTrace(TraceId *string, request *EvaluateTraceRequest) (_result *EvaluateTraceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EvaluateTraceResponse{}
-	_body, _err := client.EvaluateTraceWithOptions(TraceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -318,7 +198,7 @@ func (client *Client) EvaluateTrace(TraceId *string, request *EvaluateTraceReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEvaluationTemplatesResponse
-func (client *Client) GetEvaluationTemplatesWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluationTemplatesResponse, _err error) {
+func (client *Client) GetEvaluationTemplatesWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEvaluationTemplatesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -334,28 +214,11 @@ func (client *Client) GetEvaluationTemplatesWithOptions(headers map[string]*stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEvaluationTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get the content of prompt templates used for evaluation
-//
-// @return GetEvaluationTemplatesResponse
-func (client *Client) GetEvaluationTemplates() (_result *GetEvaluationTemplatesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetEvaluationTemplatesResponse{}
-	_body, _err := client.GetEvaluationTemplatesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -368,7 +231,7 @@ func (client *Client) GetEvaluationTemplates() (_result *GetEvaluationTemplatesR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOnlineEvalTaskResponse
-func (client *Client) GetOnlineEvalTaskWithOptions(TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOnlineEvalTaskResponse, _err error) {
+func (client *Client) GetOnlineEvalTaskWithContext(ctx context.Context, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetOnlineEvalTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -384,28 +247,11 @@ func (client *Client) GetOnlineEvalTaskWithOptions(TaskId *string, headers map[s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOnlineEvalTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get the details of an online evaluation task
-//
-// @return GetOnlineEvalTaskResponse
-func (client *Client) GetOnlineEvalTask(TaskId *string) (_result *GetOnlineEvalTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetOnlineEvalTaskResponse{}
-	_body, _err := client.GetOnlineEvalTaskWithOptions(TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -418,7 +264,7 @@ func (client *Client) GetOnlineEvalTask(TaskId *string) (_result *GetOnlineEvalT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceIdentityRoleResponse
-func (client *Client) GetServiceIdentityRoleWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceIdentityRoleResponse, _err error) {
+func (client *Client) GetServiceIdentityRoleWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceIdentityRoleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -434,28 +280,11 @@ func (client *Client) GetServiceIdentityRoleWithOptions(headers map[string]*stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetServiceIdentityRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the information related to the service-linked role.
-//
-// @return GetServiceIdentityRoleResponse
-func (client *Client) GetServiceIdentityRole() (_result *GetServiceIdentityRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetServiceIdentityRoleResponse{}
-	_body, _err := client.GetServiceIdentityRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -468,7 +297,7 @@ func (client *Client) GetServiceIdentityRole() (_result *GetServiceIdentityRoleR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetXtraceTokenResponse
-func (client *Client) GetXtraceTokenWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetXtraceTokenResponse, _err error) {
+func (client *Client) GetXtraceTokenWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetXtraceTokenResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -484,28 +313,11 @@ func (client *Client) GetXtraceTokenWithOptions(headers map[string]*string, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetXtraceTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the token used in the Xtrace service and the endpoint required for uploading trace data.
-//
-// @return GetXtraceTokenResponse
-func (client *Client) GetXtraceToken() (_result *GetXtraceTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetXtraceTokenResponse{}
-	_body, _err := client.GetXtraceTokenWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -520,7 +332,7 @@ func (client *Client) GetXtraceToken() (_result *GetXtraceTokenResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEvalResultsResponse
-func (client *Client) ListEvalResultsWithOptions(tmpReq *ListEvalResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvalResultsResponse, _err error) {
+func (client *Client) ListEvalResultsWithContext(ctx context.Context, tmpReq *ListEvalResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEvalResultsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -568,30 +380,11 @@ func (client *Client) ListEvalResultsWithOptions(tmpReq *ListEvalResultsRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEvalResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the list of results for trace evaluation. This API is used together with EvaluateTrace. EvaluateTrace starts the evaluation. ListEvalResults obtains the results.
-//
-// @param request - ListEvalResultsRequest
-//
-// @return ListEvalResultsResponse
-func (client *Client) ListEvalResults(request *ListEvalResultsRequest) (_result *ListEvalResultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEvalResultsResponse{}
-	_body, _err := client.ListEvalResultsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -606,7 +399,7 @@ func (client *Client) ListEvalResults(request *ListEvalResultsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOnlineEvalTaskResultsResponse
-func (client *Client) ListOnlineEvalTaskResultsWithOptions(tmpReq *ListOnlineEvalTaskResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOnlineEvalTaskResultsResponse, _err error) {
+func (client *Client) ListOnlineEvalTaskResultsWithContext(ctx context.Context, tmpReq *ListOnlineEvalTaskResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOnlineEvalTaskResultsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -654,30 +447,11 @@ func (client *Client) ListOnlineEvalTaskResultsWithOptions(tmpReq *ListOnlineEva
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOnlineEvalTaskResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # List the results of online evaluation tasks that meet the criteria
-//
-// @param request - ListOnlineEvalTaskResultsRequest
-//
-// @return ListOnlineEvalTaskResultsResponse
-func (client *Client) ListOnlineEvalTaskResults(request *ListOnlineEvalTaskResultsRequest) (_result *ListOnlineEvalTaskResultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListOnlineEvalTaskResultsResponse{}
-	_body, _err := client.ListOnlineEvalTaskResultsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -692,7 +466,7 @@ func (client *Client) ListOnlineEvalTaskResults(request *ListOnlineEvalTaskResul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOnlineEvalTasksResponse
-func (client *Client) ListOnlineEvalTasksWithOptions(request *ListOnlineEvalTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOnlineEvalTasksResponse, _err error) {
+func (client *Client) ListOnlineEvalTasksWithContext(ctx context.Context, request *ListOnlineEvalTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOnlineEvalTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -742,30 +516,11 @@ func (client *Client) ListOnlineEvalTasksWithOptions(request *ListOnlineEvalTask
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOnlineEvalTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # View online evaluation tasks that meet the criteria
-//
-// @param request - ListOnlineEvalTasksRequest
-//
-// @return ListOnlineEvalTasksResponse
-func (client *Client) ListOnlineEvalTasks(request *ListOnlineEvalTasksRequest) (_result *ListOnlineEvalTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListOnlineEvalTasksResponse{}
-	_body, _err := client.ListOnlineEvalTasksWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -780,7 +535,7 @@ func (client *Client) ListOnlineEvalTasks(request *ListOnlineEvalTasksRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTracesDatasResponse
-func (client *Client) ListTracesDatasWithOptions(tmpReq *ListTracesDatasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTracesDatasResponse, _err error) {
+func (client *Client) ListTracesDatasWithContext(ctx context.Context, tmpReq *ListTracesDatasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTracesDatasResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -896,30 +651,11 @@ func (client *Client) ListTracesDatasWithOptions(tmpReq *ListTracesDatasRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTracesDatasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a list of trace data based on specified criteria.
-//
-// @param request - ListTracesDatasRequest
-//
-// @return ListTracesDatasResponse
-func (client *Client) ListTracesDatas(request *ListTracesDatasRequest) (_result *ListTracesDatasResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTracesDatasResponse{}
-	_body, _err := client.ListTracesDatasWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -932,7 +668,7 @@ func (client *Client) ListTracesDatas(request *ListTracesDatasRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopOnlineEvalTaskResponse
-func (client *Client) StopOnlineEvalTaskWithOptions(TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopOnlineEvalTaskResponse, _err error) {
+func (client *Client) StopOnlineEvalTaskWithContext(ctx context.Context, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopOnlineEvalTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -948,28 +684,11 @@ func (client *Client) StopOnlineEvalTaskWithOptions(TaskId *string, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopOnlineEvalTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Stop the execution of an online evaluation task
-//
-// @return StopOnlineEvalTaskResponse
-func (client *Client) StopOnlineEvalTask(TaskId *string) (_result *StopOnlineEvalTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &StopOnlineEvalTaskResponse{}
-	_body, _err := client.StopOnlineEvalTaskWithOptions(TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -984,7 +703,7 @@ func (client *Client) StopOnlineEvalTask(TaskId *string) (_result *StopOnlineEva
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateOnlineEvalTaskResponse
-func (client *Client) UpdateOnlineEvalTaskWithOptions(TaskId *string, request *UpdateOnlineEvalTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOnlineEvalTaskResponse, _err error) {
+func (client *Client) UpdateOnlineEvalTaskWithContext(ctx context.Context, TaskId *string, request *UpdateOnlineEvalTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateOnlineEvalTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1046,29 +765,10 @@ func (client *Client) UpdateOnlineEvalTaskWithOptions(TaskId *string, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateOnlineEvalTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the configuration of a trace evaluation task.
-//
-// @param request - UpdateOnlineEvalTaskRequest
-//
-// @return UpdateOnlineEvalTaskResponse
-func (client *Client) UpdateOnlineEvalTask(TaskId *string, request *UpdateOnlineEvalTaskRequest) (_result *UpdateOnlineEvalTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateOnlineEvalTaskResponse{}
-	_body, _err := client.UpdateOnlineEvalTaskWithOptions(TaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
