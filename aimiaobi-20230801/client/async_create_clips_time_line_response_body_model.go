@@ -13,22 +13,31 @@ type iAsyncCreateClipsTimeLineResponseBody interface {
 	GetCode() *string
 	SetData(v *AsyncCreateClipsTimeLineResponseBodyData) *AsyncCreateClipsTimeLineResponseBody
 	GetData() *AsyncCreateClipsTimeLineResponseBodyData
+	SetHttpStatusCode(v int32) *AsyncCreateClipsTimeLineResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *AsyncCreateClipsTimeLineResponseBody
+	GetMessage() *string
 	SetRequestId(v string) *AsyncCreateClipsTimeLineResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *AsyncCreateClipsTimeLineResponseBody
+	GetSuccess() *bool
 }
 
 type AsyncCreateClipsTimeLineResponseBody struct {
 	// example:
 	//
 	// successful
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *AsyncCreateClipsTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *AsyncCreateClipsTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AsyncCreateClipsTimeLineResponseBody) String() string {
@@ -47,8 +56,20 @@ func (s *AsyncCreateClipsTimeLineResponseBody) GetData() *AsyncCreateClipsTimeLi
 	return s.Data
 }
 
+func (s *AsyncCreateClipsTimeLineResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) GetMessage() *string {
+	return s.Message
+}
+
 func (s *AsyncCreateClipsTimeLineResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) GetSuccess() *bool {
+	return s.Success
 }
 
 func (s *AsyncCreateClipsTimeLineResponseBody) SetCode(v string) *AsyncCreateClipsTimeLineResponseBody {
@@ -61,8 +82,23 @@ func (s *AsyncCreateClipsTimeLineResponseBody) SetData(v *AsyncCreateClipsTimeLi
 	return s
 }
 
+func (s *AsyncCreateClipsTimeLineResponseBody) SetHttpStatusCode(v int32) *AsyncCreateClipsTimeLineResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) SetMessage(v string) *AsyncCreateClipsTimeLineResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *AsyncCreateClipsTimeLineResponseBody) SetRequestId(v string) *AsyncCreateClipsTimeLineResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AsyncCreateClipsTimeLineResponseBody) SetSuccess(v bool) *AsyncCreateClipsTimeLineResponseBody {
+	s.Success = &v
 	return s
 }
 

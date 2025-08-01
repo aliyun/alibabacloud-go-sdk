@@ -13,22 +13,31 @@ type iAsyncUploadVideoResponseBody interface {
 	GetCode() *string
 	SetData(v *AsyncUploadVideoResponseBodyData) *AsyncUploadVideoResponseBody
 	GetData() *AsyncUploadVideoResponseBodyData
+	SetHttpStatusCode(v int32) *AsyncUploadVideoResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *AsyncUploadVideoResponseBody
+	GetMessage() *string
 	SetRequestId(v string) *AsyncUploadVideoResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *AsyncUploadVideoResponseBody
+	GetSuccess() *bool
 }
 
 type AsyncUploadVideoResponseBody struct {
 	// example:
 	//
 	// successful
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *AsyncUploadVideoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 94512A33-8EC1-5452-A793-5C91F18ED2F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AsyncUploadVideoResponseBody) String() string {
@@ -47,8 +56,20 @@ func (s *AsyncUploadVideoResponseBody) GetData() *AsyncUploadVideoResponseBodyDa
 	return s.Data
 }
 
+func (s *AsyncUploadVideoResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *AsyncUploadVideoResponseBody) GetMessage() *string {
+	return s.Message
+}
+
 func (s *AsyncUploadVideoResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *AsyncUploadVideoResponseBody) GetSuccess() *bool {
+	return s.Success
 }
 
 func (s *AsyncUploadVideoResponseBody) SetCode(v string) *AsyncUploadVideoResponseBody {
@@ -61,8 +82,23 @@ func (s *AsyncUploadVideoResponseBody) SetData(v *AsyncUploadVideoResponseBodyDa
 	return s
 }
 
+func (s *AsyncUploadVideoResponseBody) SetHttpStatusCode(v int32) *AsyncUploadVideoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBody) SetMessage(v string) *AsyncUploadVideoResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *AsyncUploadVideoResponseBody) SetRequestId(v string) *AsyncUploadVideoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AsyncUploadVideoResponseBody) SetSuccess(v bool) *AsyncUploadVideoResponseBody {
+	s.Success = &v
 	return s
 }
 

@@ -13,22 +13,31 @@ type iGetAutoClipsTaskInfoResponseBody interface {
 	GetCode() *string
 	SetData(v *GetAutoClipsTaskInfoResponseBodyData) *GetAutoClipsTaskInfoResponseBody
 	GetData() *GetAutoClipsTaskInfoResponseBodyData
+	SetHttpStatusCode(v int32) *GetAutoClipsTaskInfoResponseBody
+	GetHttpStatusCode() *int32
+	SetMessage(v string) *GetAutoClipsTaskInfoResponseBody
+	GetMessage() *string
 	SetRequestId(v string) *GetAutoClipsTaskInfoResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *GetAutoClipsTaskInfoResponseBody
+	GetSuccess() *bool
 }
 
 type GetAutoClipsTaskInfoResponseBody struct {
 	// example:
 	//
 	// successful
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *GetAutoClipsTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetAutoClipsTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAutoClipsTaskInfoResponseBody) String() string {
@@ -47,8 +56,20 @@ func (s *GetAutoClipsTaskInfoResponseBody) GetData() *GetAutoClipsTaskInfoRespon
 	return s.Data
 }
 
+func (s *GetAutoClipsTaskInfoResponseBody) GetHttpStatusCode() *int32 {
+	return s.HttpStatusCode
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) GetMessage() *string {
+	return s.Message
+}
+
 func (s *GetAutoClipsTaskInfoResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) GetSuccess() *bool {
+	return s.Success
 }
 
 func (s *GetAutoClipsTaskInfoResponseBody) SetCode(v string) *GetAutoClipsTaskInfoResponseBody {
@@ -61,8 +82,23 @@ func (s *GetAutoClipsTaskInfoResponseBody) SetData(v *GetAutoClipsTaskInfoRespon
 	return s
 }
 
+func (s *GetAutoClipsTaskInfoResponseBody) SetHttpStatusCode(v int32) *GetAutoClipsTaskInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) SetMessage(v string) *GetAutoClipsTaskInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
 func (s *GetAutoClipsTaskInfoResponseBody) SetRequestId(v string) *GetAutoClipsTaskInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoClipsTaskInfoResponseBody) SetSuccess(v bool) *GetAutoClipsTaskInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
