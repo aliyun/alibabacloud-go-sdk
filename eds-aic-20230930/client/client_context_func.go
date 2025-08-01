@@ -2983,6 +2983,52 @@ func (client *Client) InstallAppWithContext(ctx context.Context, request *Instal
 
 // Summary:
 //
+// 安装监控插件
+//
+// @param request - InstallMonitorAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallMonitorAgentResponse
+func (client *Client) InstallMonitorAgentWithContext(ctx context.Context, request *InstallMonitorAgentRequest, runtime *dara.RuntimeOptions) (_result *InstallMonitorAgentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIds) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !dara.IsNil(request.SaleMode) {
+		body["SaleMode"] = request.SaleMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallMonitorAgent"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallMonitorAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries policies.
 //
 // @param request - ListPolicyGroupsRequest
@@ -3986,6 +4032,10 @@ func (client *Client) SendFileWithContext(ctx context.Context, request *SendFile
 		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
 	}
 
+	if !dara.IsNil(request.AutoInstall) {
+		query["AutoInstall"] = request.AutoInstall
+	}
+
 	if !dara.IsNil(request.SourceFilePath) {
 		query["SourceFilePath"] = request.SourceFilePath
 	}
@@ -4281,6 +4331,52 @@ func (client *Client) UninstallAppWithContext(ctx context.Context, request *Unin
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 卸载监控插件
+//
+// @param request - UninstallMonitorAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallMonitorAgentResponse
+func (client *Client) UninstallMonitorAgentWithContext(ctx context.Context, request *UninstallMonitorAgentRequest, runtime *dara.RuntimeOptions) (_result *UninstallMonitorAgentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AndroidInstanceIds) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !dara.IsNil(request.SaleMode) {
+		body["SaleMode"] = request.SaleMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallMonitorAgent"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallMonitorAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

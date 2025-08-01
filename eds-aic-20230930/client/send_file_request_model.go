@@ -11,6 +11,8 @@ type iSendFileRequest interface {
 	GoString() string
 	SetAndroidInstanceIdList(v []*string) *SendFileRequest
 	GetAndroidInstanceIdList() []*string
+	SetAutoInstall(v bool) *SendFileRequest
+	GetAutoInstall() *bool
 	SetSourceFilePath(v string) *SendFileRequest
 	GetSourceFilePath() *string
 	SetTargetFileName(v string) *SendFileRequest
@@ -28,6 +30,7 @@ type SendFileRequest struct {
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	AutoInstall           *bool     `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
 	// The path to which you want to upload the pushed file in the cloud phone instance.
 	//
 	// This parameter is required.
@@ -82,6 +85,10 @@ func (s *SendFileRequest) GetAndroidInstanceIdList() []*string {
 	return s.AndroidInstanceIdList
 }
 
+func (s *SendFileRequest) GetAutoInstall() *bool {
+	return s.AutoInstall
+}
+
 func (s *SendFileRequest) GetSourceFilePath() *string {
 	return s.SourceFilePath
 }
@@ -104,6 +111,11 @@ func (s *SendFileRequest) GetUploadUrl() *string {
 
 func (s *SendFileRequest) SetAndroidInstanceIdList(v []*string) *SendFileRequest {
 	s.AndroidInstanceIdList = v
+	return s
+}
+
+func (s *SendFileRequest) SetAutoInstall(v bool) *SendFileRequest {
+	s.AutoInstall = &v
 	return s
 }
 
