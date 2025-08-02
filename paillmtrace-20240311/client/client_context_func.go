@@ -472,6 +472,10 @@ func (client *Client) ListOnlineEvalTasksWithContext(ctx context.Context, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
 	if !dara.IsNil(request.Keyword) {
 		query["Keyword"] = request.Keyword
 	}
@@ -498,6 +502,10 @@ func (client *Client) ListOnlineEvalTasksWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.SortOrder) {
 		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapiutil.OpenApiRequest{

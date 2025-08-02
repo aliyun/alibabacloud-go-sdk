@@ -9,6 +9,8 @@ type iListOnlineEvalTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppName(v string) *ListOnlineEvalTasksRequest
+	GetAppName() *string
 	SetKeyword(v string) *ListOnlineEvalTasksRequest
 	GetKeyword() *string
 	SetMaxTime(v string) *ListOnlineEvalTasksRequest
@@ -23,9 +25,12 @@ type iListOnlineEvalTasksRequest interface {
 	GetSortBy() *string
 	SetSortOrder(v string) *ListOnlineEvalTasksRequest
 	GetSortOrder() *string
+	SetStatus(v string) *ListOnlineEvalTasksRequest
+	GetStatus() *string
 }
 
 type ListOnlineEvalTasksRequest struct {
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// Search keyword. It will match on fields such as task name, application name (appName), task description, and evaluation metric name.
 	//
 	// example:
@@ -62,6 +67,7 @@ type ListOnlineEvalTasksRequest struct {
 	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListOnlineEvalTasksRequest) String() string {
@@ -70,6 +76,10 @@ func (s ListOnlineEvalTasksRequest) String() string {
 
 func (s ListOnlineEvalTasksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOnlineEvalTasksRequest) GetAppName() *string {
+	return s.AppName
 }
 
 func (s *ListOnlineEvalTasksRequest) GetKeyword() *string {
@@ -98,6 +108,15 @@ func (s *ListOnlineEvalTasksRequest) GetSortBy() *string {
 
 func (s *ListOnlineEvalTasksRequest) GetSortOrder() *string {
 	return s.SortOrder
+}
+
+func (s *ListOnlineEvalTasksRequest) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListOnlineEvalTasksRequest) SetAppName(v string) *ListOnlineEvalTasksRequest {
+	s.AppName = &v
+	return s
 }
 
 func (s *ListOnlineEvalTasksRequest) SetKeyword(v string) *ListOnlineEvalTasksRequest {
@@ -132,6 +151,11 @@ func (s *ListOnlineEvalTasksRequest) SetSortBy(v string) *ListOnlineEvalTasksReq
 
 func (s *ListOnlineEvalTasksRequest) SetSortOrder(v string) *ListOnlineEvalTasksRequest {
 	s.SortOrder = &v
+	return s
+}
+
+func (s *ListOnlineEvalTasksRequest) SetStatus(v string) *ListOnlineEvalTasksRequest {
+	s.Status = &v
 	return s
 }
 
