@@ -416,6 +416,10 @@ func (client *Client) GetAbnormalEventsCountWithOptions(request *GetAbnormalEven
 		query["instance"] = request.Instance
 	}
 
+	if !dara.IsNil(request.Level) {
+		query["level"] = request.Level
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		query["namespace"] = request.Namespace
 	}
@@ -2208,6 +2212,10 @@ func (client *Client) ListAbnormalyEventsWithOptions(request *ListAbnormalyEvent
 
 	if !dara.IsNil(request.End) {
 		query["end"] = request.End
+	}
+
+	if !dara.IsNil(request.Event) {
+		query["event"] = request.Event
 	}
 
 	if !dara.IsNil(request.Instance) {

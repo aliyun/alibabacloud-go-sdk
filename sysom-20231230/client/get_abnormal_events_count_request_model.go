@@ -15,6 +15,8 @@ type iGetAbnormalEventsCountRequest interface {
 	GetEnd() *float32
 	SetInstance(v string) *GetAbnormalEventsCountRequest
 	GetInstance() *string
+	SetLevel(v string) *GetAbnormalEventsCountRequest
+	GetLevel() *string
 	SetNamespace(v string) *GetAbnormalEventsCountRequest
 	GetNamespace() *string
 	SetPod(v string) *GetAbnormalEventsCountRequest
@@ -34,12 +36,11 @@ type GetAbnormalEventsCountRequest struct {
 	//
 	// 1725801327754
 	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
+	Level    *string `json:"level,omitempty" xml:"level,omitempty"`
 	// example:
 	//
 	// default
@@ -75,6 +76,10 @@ func (s *GetAbnormalEventsCountRequest) GetInstance() *string {
 	return s.Instance
 }
 
+func (s *GetAbnormalEventsCountRequest) GetLevel() *string {
+	return s.Level
+}
+
 func (s *GetAbnormalEventsCountRequest) GetNamespace() *string {
 	return s.Namespace
 }
@@ -103,6 +108,11 @@ func (s *GetAbnormalEventsCountRequest) SetEnd(v float32) *GetAbnormalEventsCoun
 
 func (s *GetAbnormalEventsCountRequest) SetInstance(v string) *GetAbnormalEventsCountRequest {
 	s.Instance = &v
+	return s
+}
+
+func (s *GetAbnormalEventsCountRequest) SetLevel(v string) *GetAbnormalEventsCountRequest {
+	s.Level = &v
 	return s
 }
 

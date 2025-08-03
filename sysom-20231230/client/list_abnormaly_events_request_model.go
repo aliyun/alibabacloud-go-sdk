@@ -15,6 +15,8 @@ type iListAbnormalyEventsRequest interface {
 	GetCurrent() *int32
 	SetEnd(v float32) *ListAbnormalyEventsRequest
 	GetEnd() *float32
+	SetEvent(v string) *ListAbnormalyEventsRequest
+	GetEvent() *string
 	SetInstance(v string) *ListAbnormalyEventsRequest
 	GetInstance() *string
 	SetLevel(v string) *ListAbnormalyEventsRequest
@@ -43,7 +45,8 @@ type ListAbnormalyEventsRequest struct {
 	// example:
 	//
 	// 1725801327754
-	End *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	End   *float32 `json:"end,omitempty" xml:"end,omitempty"`
+	Event *string  `json:"event,omitempty" xml:"event,omitempty"`
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
@@ -94,6 +97,10 @@ func (s *ListAbnormalyEventsRequest) GetEnd() *float32 {
 	return s.End
 }
 
+func (s *ListAbnormalyEventsRequest) GetEvent() *string {
+	return s.Event
+}
+
 func (s *ListAbnormalyEventsRequest) GetInstance() *string {
 	return s.Instance
 }
@@ -134,6 +141,11 @@ func (s *ListAbnormalyEventsRequest) SetCurrent(v int32) *ListAbnormalyEventsReq
 
 func (s *ListAbnormalyEventsRequest) SetEnd(v float32) *ListAbnormalyEventsRequest {
 	s.End = &v
+	return s
+}
+
+func (s *ListAbnormalyEventsRequest) SetEvent(v string) *ListAbnormalyEventsRequest {
+	s.Event = &v
 	return s
 }
 

@@ -273,6 +273,10 @@ func (client *Client) GetAbnormalEventsCountWithContext(ctx context.Context, req
 		query["instance"] = request.Instance
 	}
 
+	if !dara.IsNil(request.Level) {
+		query["level"] = request.Level
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		query["namespace"] = request.Namespace
 	}
@@ -1609,6 +1613,10 @@ func (client *Client) ListAbnormalyEventsWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.End) {
 		query["end"] = request.End
+	}
+
+	if !dara.IsNil(request.Event) {
+		query["event"] = request.Event
 	}
 
 	if !dara.IsNil(request.Instance) {

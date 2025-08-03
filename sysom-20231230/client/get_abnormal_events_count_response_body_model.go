@@ -69,6 +69,7 @@ func (s *GetAbnormalEventsCountResponseBody) Validate() error {
 }
 
 type GetAbnormalEventsCountResponseBodyData struct {
+	EventList []*string `json:"eventList,omitempty" xml:"eventList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// health
@@ -87,12 +88,21 @@ func (s GetAbnormalEventsCountResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetAbnormalEventsCountResponseBodyData) GetEventList() []*string {
+	return s.EventList
+}
+
 func (s *GetAbnormalEventsCountResponseBodyData) GetType() *string {
 	return s.Type
 }
 
 func (s *GetAbnormalEventsCountResponseBodyData) GetValue() *int64 {
 	return s.Value
+}
+
+func (s *GetAbnormalEventsCountResponseBodyData) SetEventList(v []*string) *GetAbnormalEventsCountResponseBodyData {
+	s.EventList = v
+	return s
 }
 
 func (s *GetAbnormalEventsCountResponseBodyData) SetType(v string) *GetAbnormalEventsCountResponseBodyData {
