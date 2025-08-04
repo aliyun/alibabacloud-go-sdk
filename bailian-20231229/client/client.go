@@ -2113,6 +2113,90 @@ func (client *Client) ListIndexDocuments(WorkspaceId *string, request *ListIndex
 
 // Summary:
 //
+// 查询Index文件详情
+//
+// @param request - ListIndexFileDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIndexFileDetailsResponse
+func (client *Client) ListIndexFileDetailsWithOptions(WorkspaceId *string, request *ListIndexFileDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndexFileDetailsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DocumentName) {
+		query["DocumentName"] = request.DocumentName
+	}
+
+	if !dara.IsNil(request.DocumentStatus) {
+		query["DocumentStatus"] = request.DocumentStatus
+	}
+
+	if !dara.IsNil(request.EnableNameLike) {
+		query["EnableNameLike"] = request.EnableNameLike
+	}
+
+	if !dara.IsNil(request.IndexId) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIndexFileDetails"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/index/list_index_file_detail"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIndexFileDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Index文件详情
+//
+// @param request - ListIndexFileDetailsRequest
+//
+// @return ListIndexFileDetailsResponse
+func (client *Client) ListIndexFileDetails(WorkspaceId *string, request *ListIndexFileDetailsRequest) (_result *ListIndexFileDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIndexFileDetailsResponse{}
+	_body, _err := client.ListIndexFileDetailsWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists knowledge bases in a specified workspace.
 //
 // Description:
@@ -3008,6 +3092,90 @@ func (client *Client) UpdateAndPublishAgentSelective(workspaceId *string, appCod
 	headers := make(map[string]*string)
 	_result = &UpdateAndPublishAgentSelectiveResponse{}
 	_body, _err := client.UpdateAndPublishAgentSelectiveWithOptions(workspaceId, appCode, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新切片信息
+//
+// @param request - UpdateChunkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChunkResponse
+func (client *Client) UpdateChunkWithOptions(WorkspaceId *string, request *UpdateChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateChunkResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkId) {
+		query["ChunkId"] = request.ChunkId
+	}
+
+	if !dara.IsNil(request.DataId) {
+		query["DataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.IsDisplayedChunkContent) {
+		query["IsDisplayedChunkContent"] = request.IsDisplayedChunkContent
+	}
+
+	if !dara.IsNil(request.PipelineId) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	if !dara.IsNil(request.Content) {
+		query["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateChunk"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/chunk/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateChunkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新切片信息
+//
+// @param request - UpdateChunkRequest
+//
+// @return UpdateChunkResponse
+func (client *Client) UpdateChunk(WorkspaceId *string, request *UpdateChunkRequest) (_result *UpdateChunkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateChunkResponse{}
+	_body, _err := client.UpdateChunkWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
