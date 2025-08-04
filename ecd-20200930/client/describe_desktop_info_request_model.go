@@ -11,13 +11,16 @@ type iDescribeDesktopInfoRequest interface {
 	GoString() string
 	SetDesktopId(v []*string) *DescribeDesktopInfoRequest
 	GetDesktopId() []*string
+	SetNeedExtraInfo(v bool) *DescribeDesktopInfoRequest
+	GetNeedExtraInfo() *bool
 	SetRegionId(v string) *DescribeDesktopInfoRequest
 	GetRegionId() *string
 }
 
 type DescribeDesktopInfoRequest struct {
 	// The IDs of the cloud computers. You can specify 1 to 100 IDs.
-	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	DesktopId     []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	NeedExtraInfo *bool     `json:"NeedExtraInfo,omitempty" xml:"NeedExtraInfo,omitempty"`
 	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
@@ -40,12 +43,21 @@ func (s *DescribeDesktopInfoRequest) GetDesktopId() []*string {
 	return s.DesktopId
 }
 
+func (s *DescribeDesktopInfoRequest) GetNeedExtraInfo() *bool {
+	return s.NeedExtraInfo
+}
+
 func (s *DescribeDesktopInfoRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeDesktopInfoRequest) SetDesktopId(v []*string) *DescribeDesktopInfoRequest {
 	s.DesktopId = v
+	return s
+}
+
+func (s *DescribeDesktopInfoRequest) SetNeedExtraInfo(v bool) *DescribeDesktopInfoRequest {
+	s.NeedExtraInfo = &v
 	return s
 }
 

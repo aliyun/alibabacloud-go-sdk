@@ -9538,6 +9538,10 @@ func (client *Client) DescribeDesktopInfoWithOptions(request *DescribeDesktopInf
 		query["DesktopId"] = request.DesktopId
 	}
 
+	if !dara.IsNil(request.NeedExtraInfo) {
+		query["NeedExtraInfo"] = request.NeedExtraInfo
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
