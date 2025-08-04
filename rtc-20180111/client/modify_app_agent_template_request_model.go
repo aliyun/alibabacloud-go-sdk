@@ -9,6 +9,8 @@ type iModifyAppAgentTemplateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentSilenceConfig(v *ModifyAppAgentTemplateRequestAgentSilenceConfig) *ModifyAppAgentTemplateRequest
+	GetAgentSilenceConfig() *ModifyAppAgentTemplateRequestAgentSilenceConfig
 	SetAppId(v string) *ModifyAppAgentTemplateRequest
 	GetAppId() *string
 	SetAsrConfig(v *ModifyAppAgentTemplateRequestAsrConfig) *ModifyAppAgentTemplateRequest
@@ -32,6 +34,7 @@ type iModifyAppAgentTemplateRequest interface {
 }
 
 type ModifyAppAgentTemplateRequest struct {
+	AgentSilenceConfig *ModifyAppAgentTemplateRequestAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +79,10 @@ func (s ModifyAppAgentTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppAgentTemplateRequest) GetAgentSilenceConfig() *ModifyAppAgentTemplateRequestAgentSilenceConfig {
+	return s.AgentSilenceConfig
+}
+
 func (s *ModifyAppAgentTemplateRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -114,6 +121,11 @@ func (s *ModifyAppAgentTemplateRequest) GetTtsConfig() *ModifyAppAgentTemplateRe
 
 func (s *ModifyAppAgentTemplateRequest) GetType() *int32 {
 	return s.Type
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetAgentSilenceConfig(v *ModifyAppAgentTemplateRequestAgentSilenceConfig) *ModifyAppAgentTemplateRequest {
+	s.AgentSilenceConfig = v
+	return s
 }
 
 func (s *ModifyAppAgentTemplateRequest) SetAppId(v string) *ModifyAppAgentTemplateRequest {
@@ -170,6 +182,70 @@ func (s *ModifyAppAgentTemplateRequest) Validate() error {
 	return dara.Validate(s)
 }
 
+type ModifyAppAgentTemplateRequestAgentSilenceConfig struct {
+	// example:
+	//
+	// 30
+	AlertTimeout *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// 30
+	WebhookTriggerTimeout *int32 `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestAgentSilenceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestAgentSilenceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) GetAlertTimeout() *int32 {
+	return s.AlertTimeout
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) GetContent() *string {
+	return s.Content
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) GetStrategy() *int32 {
+	return s.Strategy
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) GetWebhookTriggerTimeout() *int32 {
+	return s.WebhookTriggerTimeout
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) SetAlertTimeout(v int32) *ModifyAppAgentTemplateRequestAgentSilenceConfig {
+	s.AlertTimeout = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) SetContent(v string) *ModifyAppAgentTemplateRequestAgentSilenceConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) SetStrategy(v int32) *ModifyAppAgentTemplateRequestAgentSilenceConfig {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) SetWebhookTriggerTimeout(v int32) *ModifyAppAgentTemplateRequestAgentSilenceConfig {
+	s.WebhookTriggerTimeout = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyAppAgentTemplateRequestAsrConfig struct {
 	// example:
 	//
@@ -180,7 +256,8 @@ type ModifyAppAgentTemplateRequestAsrConfig struct {
 	// example:
 	//
 	// STT
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	VadConfig *ModifyAppAgentTemplateRequestAsrConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 0bb1776b1745123332074d1b6b
@@ -204,6 +281,10 @@ func (s *ModifyAppAgentTemplateRequestAsrConfig) GetName() *string {
 	return s.Name
 }
 
+func (s *ModifyAppAgentTemplateRequestAsrConfig) GetVadConfig() *ModifyAppAgentTemplateRequestAsrConfigVadConfig {
+	return s.VadConfig
+}
+
 func (s *ModifyAppAgentTemplateRequestAsrConfig) GetVocabularyId() *string {
 	return s.VocabularyId
 }
@@ -222,6 +303,11 @@ func (s *ModifyAppAgentTemplateRequestAsrConfig) SetName(v string) *ModifyAppAge
 	return s
 }
 
+func (s *ModifyAppAgentTemplateRequestAsrConfig) SetVadConfig(v *ModifyAppAgentTemplateRequestAsrConfigVadConfig) *ModifyAppAgentTemplateRequestAsrConfig {
+	s.VadConfig = v
+	return s
+}
+
 func (s *ModifyAppAgentTemplateRequestAsrConfig) SetVocabularyId(v string) *ModifyAppAgentTemplateRequestAsrConfig {
 	s.VocabularyId = &v
 	return s
@@ -233,6 +319,34 @@ func (s *ModifyAppAgentTemplateRequestAsrConfig) SetWordWeights(v []*ModifyAppAg
 }
 
 func (s *ModifyAppAgentTemplateRequestAsrConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyAppAgentTemplateRequestAsrConfigVadConfig struct {
+	// example:
+	//
+	// 1000
+	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfigVadConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestAsrConfigVadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigVadConfig) GetInterruptSpeechDuration() *int32 {
+	return s.InterruptSpeechDuration
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigVadConfig) SetInterruptSpeechDuration(v int32) *ModifyAppAgentTemplateRequestAsrConfigVadConfig {
+	s.InterruptSpeechDuration = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAsrConfigVadConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -295,6 +409,7 @@ func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) Validate() error {
 }
 
 type ModifyAppAgentTemplateRequestLlmConfig struct {
+	AgentAppId *string `json:"AgentAppId,omitempty" xml:"AgentAppId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -342,6 +457,10 @@ func (s ModifyAppAgentTemplateRequestLlmConfig) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppAgentTemplateRequestLlmConfig) GetAgentAppId() *string {
+	return s.AgentAppId
+}
+
 func (s *ModifyAppAgentTemplateRequestLlmConfig) GetApiKey() *string {
 	return s.ApiKey
 }
@@ -376,6 +495,11 @@ func (s *ModifyAppAgentTemplateRequestLlmConfig) GetUrl() *string {
 
 func (s *ModifyAppAgentTemplateRequestLlmConfig) GetVendor() *string {
 	return s.Vendor
+}
+
+func (s *ModifyAppAgentTemplateRequestLlmConfig) SetAgentAppId(v string) *ModifyAppAgentTemplateRequestLlmConfig {
+	s.AgentAppId = &v
+	return s
 }
 
 func (s *ModifyAppAgentTemplateRequestLlmConfig) SetApiKey(v string) *ModifyAppAgentTemplateRequestLlmConfig {

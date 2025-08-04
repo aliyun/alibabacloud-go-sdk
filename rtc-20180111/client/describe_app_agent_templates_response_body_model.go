@@ -86,7 +86,8 @@ func (s *DescribeAppAgentTemplatesResponseBody) Validate() error {
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplates struct {
-	AsrConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AgentSilenceConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	AsrConfig          *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig          `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -127,6 +128,10 @@ func (s DescribeAppAgentTemplatesResponseBodyTemplates) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetAgentSilenceConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig {
+	return s.AgentSilenceConfig
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetAsrConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
 	return s.AsrConfig
 }
@@ -165,6 +170,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetTtsConfig() *Describ
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetType() *int32 {
 	return s.Type
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAgentSilenceConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.AgentSilenceConfig = v
+	return s
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAsrConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
@@ -221,12 +231,68 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) Validate() error {
 	return dara.Validate(s)
 }
 
+type DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig struct {
+	AlertTimeout          *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Strategy              *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	WebhookTriggerTimeout *int32  `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) GetAlertTimeout() *int32 {
+	return s.AlertTimeout
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) GetContent() *string {
+	return s.Content
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) GetStrategy() *int32 {
+	return s.Strategy
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) GetWebhookTriggerTimeout() *int32 {
+	return s.WebhookTriggerTimeout
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) SetAlertTimeout(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig {
+	s.AlertTimeout = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) SetContent(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) SetStrategy(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig {
+	s.Strategy = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) SetWebhookTriggerTimeout(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig {
+	s.WebhookTriggerTimeout = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig struct {
 	// example:
 	//
 	// 300
-	MaxSentenceSilence *int32  `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxSentenceSilence *int32                                                            `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	Name               *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	VadConfig          *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// ecfadace11114cf08a7f07aceee798ad
@@ -250,6 +316,10 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) GetName() *str
 	return s.Name
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) GetVadConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig {
+	return s.VadConfig
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) GetVocabularyId() *string {
 	return s.VocabularyId
 }
@@ -268,6 +338,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetName(v stri
 	return s
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetVadConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
+	s.VadConfig = v
+	return s
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetVocabularyId(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
 	s.VocabularyId = &v
 	return s
@@ -279,6 +354,31 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) SetWordWeights
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig struct {
+	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) GetInterruptSpeechDuration() *int32 {
+	return s.InterruptSpeechDuration
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) SetInterruptSpeechDuration(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig {
+	s.InterruptSpeechDuration = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -334,6 +434,7 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) Val
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig struct {
+	AgentAppId *string `json:"AgentAppId,omitempty" xml:"AgentAppId,omitempty"`
 	// example:
 	//
 	// qW8GpBOdHK/pv9gdUSVLvQ==
@@ -381,6 +482,10 @@ func (s DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GoString() stri
 	return s.String()
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GetAgentAppId() *string {
+	return s.AgentAppId
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GetApiKey() *string {
 	return s.ApiKey
 }
@@ -419,6 +524,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GetUrl() *stri
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) GetVendor() *string {
 	return s.Vendor
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetAgentAppId(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {
+	s.AgentAppId = &v
+	return s
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) SetApiKey(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig {

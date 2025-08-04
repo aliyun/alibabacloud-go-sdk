@@ -9,6 +9,8 @@ type iCreateAppAgentTemplateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentSilenceConfig(v *CreateAppAgentTemplateRequestAgentSilenceConfig) *CreateAppAgentTemplateRequest
+	GetAgentSilenceConfig() *CreateAppAgentTemplateRequestAgentSilenceConfig
 	SetAppId(v string) *CreateAppAgentTemplateRequest
 	GetAppId() *string
 	SetAsrConfig(v *CreateAppAgentTemplateRequestAsrConfig) *CreateAppAgentTemplateRequest
@@ -30,6 +32,7 @@ type iCreateAppAgentTemplateRequest interface {
 }
 
 type CreateAppAgentTemplateRequest struct {
+	AgentSilenceConfig *CreateAppAgentTemplateRequestAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -68,6 +71,10 @@ func (s CreateAppAgentTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAppAgentTemplateRequest) GetAgentSilenceConfig() *CreateAppAgentTemplateRequestAgentSilenceConfig {
+	return s.AgentSilenceConfig
+}
+
 func (s *CreateAppAgentTemplateRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -102,6 +109,11 @@ func (s *CreateAppAgentTemplateRequest) GetTtsConfig() *CreateAppAgentTemplateRe
 
 func (s *CreateAppAgentTemplateRequest) GetType() *int32 {
 	return s.Type
+}
+
+func (s *CreateAppAgentTemplateRequest) SetAgentSilenceConfig(v *CreateAppAgentTemplateRequestAgentSilenceConfig) *CreateAppAgentTemplateRequest {
+	s.AgentSilenceConfig = v
+	return s
 }
 
 func (s *CreateAppAgentTemplateRequest) SetAppId(v string) *CreateAppAgentTemplateRequest {
@@ -153,6 +165,70 @@ func (s *CreateAppAgentTemplateRequest) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateAppAgentTemplateRequestAgentSilenceConfig struct {
+	// example:
+	//
+	// 30
+	AlertTimeout *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// 30
+	WebhookTriggerTimeout *int32 `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequestAgentSilenceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestAgentSilenceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) GetAlertTimeout() *int32 {
+	return s.AlertTimeout
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) GetContent() *string {
+	return s.Content
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) GetStrategy() *int32 {
+	return s.Strategy
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) GetWebhookTriggerTimeout() *int32 {
+	return s.WebhookTriggerTimeout
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) SetAlertTimeout(v int32) *CreateAppAgentTemplateRequestAgentSilenceConfig {
+	s.AlertTimeout = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) SetContent(v string) *CreateAppAgentTemplateRequestAgentSilenceConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) SetStrategy(v int32) *CreateAppAgentTemplateRequestAgentSilenceConfig {
+	s.Strategy = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) SetWebhookTriggerTimeout(v int32) *CreateAppAgentTemplateRequestAgentSilenceConfig {
+	s.WebhookTriggerTimeout = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateAppAgentTemplateRequestAsrConfig struct {
 	// example:
 	//
@@ -164,6 +240,7 @@ type CreateAppAgentTemplateRequestAsrConfig struct {
 	//
 	// STT
 	Name        *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	VadConfig   *CreateAppAgentTemplateRequestAsrConfigVadConfig     `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
 	WordWeights []*CreateAppAgentTemplateRequestAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
 }
 
@@ -183,6 +260,10 @@ func (s *CreateAppAgentTemplateRequestAsrConfig) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateAppAgentTemplateRequestAsrConfig) GetVadConfig() *CreateAppAgentTemplateRequestAsrConfigVadConfig {
+	return s.VadConfig
+}
+
 func (s *CreateAppAgentTemplateRequestAsrConfig) GetWordWeights() []*CreateAppAgentTemplateRequestAsrConfigWordWeights {
 	return s.WordWeights
 }
@@ -197,12 +278,45 @@ func (s *CreateAppAgentTemplateRequestAsrConfig) SetName(v string) *CreateAppAge
 	return s
 }
 
+func (s *CreateAppAgentTemplateRequestAsrConfig) SetVadConfig(v *CreateAppAgentTemplateRequestAsrConfigVadConfig) *CreateAppAgentTemplateRequestAsrConfig {
+	s.VadConfig = v
+	return s
+}
+
 func (s *CreateAppAgentTemplateRequestAsrConfig) SetWordWeights(v []*CreateAppAgentTemplateRequestAsrConfigWordWeights) *CreateAppAgentTemplateRequestAsrConfig {
 	s.WordWeights = v
 	return s
 }
 
 func (s *CreateAppAgentTemplateRequestAsrConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAppAgentTemplateRequestAsrConfigVadConfig struct {
+	// example:
+	//
+	// 1000
+	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfigVadConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAppAgentTemplateRequestAsrConfigVadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigVadConfig) GetInterruptSpeechDuration() *int32 {
+	return s.InterruptSpeechDuration
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigVadConfig) SetInterruptSpeechDuration(v int32) *CreateAppAgentTemplateRequestAsrConfigVadConfig {
+	s.InterruptSpeechDuration = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateRequestAsrConfigVadConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -265,6 +379,7 @@ func (s *CreateAppAgentTemplateRequestAsrConfigWordWeights) Validate() error {
 }
 
 type CreateAppAgentTemplateRequestLlmConfig struct {
+	AgentAppId *string `json:"AgentAppId,omitempty" xml:"AgentAppId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -314,6 +429,10 @@ func (s CreateAppAgentTemplateRequestLlmConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAppAgentTemplateRequestLlmConfig) GetAgentAppId() *string {
+	return s.AgentAppId
+}
+
 func (s *CreateAppAgentTemplateRequestLlmConfig) GetApiKey() *string {
 	return s.ApiKey
 }
@@ -348,6 +467,11 @@ func (s *CreateAppAgentTemplateRequestLlmConfig) GetUrl() *string {
 
 func (s *CreateAppAgentTemplateRequestLlmConfig) GetVendor() *string {
 	return s.Vendor
+}
+
+func (s *CreateAppAgentTemplateRequestLlmConfig) SetAgentAppId(v string) *CreateAppAgentTemplateRequestLlmConfig {
+	s.AgentAppId = &v
+	return s
 }
 
 func (s *CreateAppAgentTemplateRequestLlmConfig) SetApiKey(v string) *CreateAppAgentTemplateRequestLlmConfig {

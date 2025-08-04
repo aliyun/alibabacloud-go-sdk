@@ -9,6 +9,8 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentSilenceConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
+	GetAgentSilenceConfigShrink() *string
 	SetAppId(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetAppId() *string
 	SetAsrConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
@@ -32,6 +34,7 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 }
 
 type ModifyAppAgentTemplateShrinkRequest struct {
+	AgentSilenceConfigShrink *string `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -76,6 +79,10 @@ func (s ModifyAppAgentTemplateShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAppAgentTemplateShrinkRequest) GetAgentSilenceConfigShrink() *string {
+	return s.AgentSilenceConfigShrink
+}
+
 func (s *ModifyAppAgentTemplateShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -114,6 +121,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) GetTtsConfigShrink() *string {
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetType() *int32 {
 	return s.Type
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetAgentSilenceConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.AgentSilenceConfigShrink = &v
+	return s
 }
 
 func (s *ModifyAppAgentTemplateShrinkRequest) SetAppId(v string) *ModifyAppAgentTemplateShrinkRequest {

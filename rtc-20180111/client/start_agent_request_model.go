@@ -126,7 +126,8 @@ type StartAgentRequestRtcConfig struct {
 	// example:
 	//
 	// 423341
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserInactivityTimeout *int32  `json:"UserInactivityTimeout,omitempty" xml:"UserInactivityTimeout,omitempty"`
 }
 
 func (s StartAgentRequestRtcConfig) String() string {
@@ -145,6 +146,10 @@ func (s *StartAgentRequestRtcConfig) GetUserId() *string {
 	return s.UserId
 }
 
+func (s *StartAgentRequestRtcConfig) GetUserInactivityTimeout() *int32 {
+	return s.UserInactivityTimeout
+}
+
 func (s *StartAgentRequestRtcConfig) SetTargetUserIds(v []*string) *StartAgentRequestRtcConfig {
 	s.TargetUserIds = v
 	return s
@@ -155,12 +160,18 @@ func (s *StartAgentRequestRtcConfig) SetUserId(v string) *StartAgentRequestRtcCo
 	return s
 }
 
+func (s *StartAgentRequestRtcConfig) SetUserInactivityTimeout(v int32) *StartAgentRequestRtcConfig {
+	s.UserInactivityTimeout = &v
+	return s
+}
+
 func (s *StartAgentRequestRtcConfig) Validate() error {
 	return dara.Validate(s)
 }
 
 type StartAgentRequestVoiceChatConfig struct {
-	ASRConfig *StartAgentRequestVoiceChatConfigASRConfig `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
+	ASRConfig          *StartAgentRequestVoiceChatConfigASRConfig          `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
+	AgentSilenceConfig *StartAgentRequestVoiceChatConfigAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -186,6 +197,10 @@ func (s *StartAgentRequestVoiceChatConfig) GetASRConfig() *StartAgentRequestVoic
 	return s.ASRConfig
 }
 
+func (s *StartAgentRequestVoiceChatConfig) GetAgentSilenceConfig() *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	return s.AgentSilenceConfig
+}
+
 func (s *StartAgentRequestVoiceChatConfig) GetChatMode() *int32 {
 	return s.ChatMode
 }
@@ -208,6 +223,11 @@ func (s *StartAgentRequestVoiceChatConfig) GetTTSConfig() *StartAgentRequestVoic
 
 func (s *StartAgentRequestVoiceChatConfig) SetASRConfig(v *StartAgentRequestVoiceChatConfigASRConfig) *StartAgentRequestVoiceChatConfig {
 	s.ASRConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetAgentSilenceConfig(v *StartAgentRequestVoiceChatConfigAgentSilenceConfig) *StartAgentRequestVoiceChatConfig {
+	s.AgentSilenceConfig = v
 	return s
 }
 
@@ -253,7 +273,8 @@ type StartAgentRequestVoiceChatConfigASRConfig struct {
 	// example:
 	//
 	// zh
-	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	SourceLanguage *string                                             `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	VadConfig      *StartAgentRequestVoiceChatConfigASRConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// vocab-xxx-24ee19fa8cfb4d52902170a0xxxxxxxx
@@ -284,6 +305,10 @@ func (s *StartAgentRequestVoiceChatConfigASRConfig) GetSourceLanguage() *string 
 	return s.SourceLanguage
 }
 
+func (s *StartAgentRequestVoiceChatConfigASRConfig) GetVadConfig() *StartAgentRequestVoiceChatConfigASRConfigVadConfig {
+	return s.VadConfig
+}
+
 func (s *StartAgentRequestVoiceChatConfigASRConfig) GetVocabularyId() *string {
 	return s.VocabularyId
 }
@@ -308,6 +333,11 @@ func (s *StartAgentRequestVoiceChatConfigASRConfig) SetSourceLanguage(v string) 
 	return s
 }
 
+func (s *StartAgentRequestVoiceChatConfigASRConfig) SetVadConfig(v *StartAgentRequestVoiceChatConfigASRConfigVadConfig) *StartAgentRequestVoiceChatConfigASRConfig {
+	s.VadConfig = v
+	return s
+}
+
 func (s *StartAgentRequestVoiceChatConfigASRConfig) SetVocabularyId(v string) *StartAgentRequestVoiceChatConfigASRConfig {
 	s.VocabularyId = &v
 	return s
@@ -317,11 +347,102 @@ func (s *StartAgentRequestVoiceChatConfigASRConfig) Validate() error {
 	return dara.Validate(s)
 }
 
+type StartAgentRequestVoiceChatConfigASRConfigVadConfig struct {
+	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigASRConfigVadConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigASRConfigVadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfigVadConfig) GetInterruptSpeechDuration() *int32 {
+	return s.InterruptSpeechDuration
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfigVadConfig) SetInterruptSpeechDuration(v int32) *StartAgentRequestVoiceChatConfigASRConfigVadConfig {
+	s.InterruptSpeechDuration = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigASRConfigVadConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartAgentRequestVoiceChatConfigAgentSilenceConfig struct {
+	AlertTimeout          *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Enable                *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Strategy              *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	WebhookTriggerTimeout *int32  `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigAgentSilenceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigAgentSilenceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) GetAlertTimeout() *int32 {
+	return s.AlertTimeout
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) GetContent() *string {
+	return s.Content
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) GetStrategy() *int32 {
+	return s.Strategy
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) GetWebhookTriggerTimeout() *int32 {
+	return s.WebhookTriggerTimeout
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetAlertTimeout(v int32) *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	s.AlertTimeout = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetContent(v string) *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetEnable(v bool) *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetStrategy(v int32) *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	s.Strategy = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetWebhookTriggerTimeout(v int32) *StartAgentRequestVoiceChatConfigAgentSilenceConfig {
+	s.WebhookTriggerTimeout = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type StartAgentRequestVoiceChatConfigLLMConfig struct {
 	// example:
 	//
 	// xxxxxxxxxxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// example:
 	//
 	// 3
@@ -333,7 +454,8 @@ type StartAgentRequestVoiceChatConfigLLMConfig struct {
 	// example:
 	//
 	// qwen-plus
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model  *string                `json:"Model,omitempty" xml:"Model,omitempty"`
+	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//
 	// xxxx
@@ -368,6 +490,10 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetApiKey() *string {
 	return s.ApiKey
 }
 
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetAppId() *string {
+	return s.AppId
+}
+
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetHistoryDepth() *int32 {
 	return s.HistoryDepth
 }
@@ -378,6 +504,10 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetMaxToken() *int32 {
 
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetModel() *string {
 	return s.Model
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetParams() map[string]interface{} {
+	return s.Params
 }
 
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) GetPrompt() *string {
@@ -405,6 +535,11 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetApiKey(v string) *StartAg
 	return s
 }
 
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetAppId(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.AppId = &v
+	return s
+}
+
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetHistoryDepth(v int32) *StartAgentRequestVoiceChatConfigLLMConfig {
 	s.HistoryDepth = &v
 	return s
@@ -417,6 +552,11 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetMaxToken(v int32) *StartA
 
 func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetModel(v string) *StartAgentRequestVoiceChatConfigLLMConfig {
 	s.Model = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigLLMConfig) SetParams(v map[string]interface{}) *StartAgentRequestVoiceChatConfigLLMConfig {
+	s.Params = v
 	return s
 }
 
