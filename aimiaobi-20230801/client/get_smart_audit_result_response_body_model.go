@@ -117,6 +117,7 @@ func (s *GetSmartAuditResultResponseBody) Validate() error {
 
 type GetSmartAuditResultResponseBodyData struct {
 	ErrorItemDetails []*GetSmartAuditResultResponseBodyDataErrorItemDetails `json:"ErrorItemDetails,omitempty" xml:"ErrorItemDetails,omitempty" type:"Repeated"`
+	ErrorMessage     *string                                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// example:
 	//
 	// SUCCESSED
@@ -135,12 +136,21 @@ func (s *GetSmartAuditResultResponseBodyData) GetErrorItemDetails() []*GetSmartA
 	return s.ErrorItemDetails
 }
 
+func (s *GetSmartAuditResultResponseBodyData) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
 func (s *GetSmartAuditResultResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
 func (s *GetSmartAuditResultResponseBodyData) SetErrorItemDetails(v []*GetSmartAuditResultResponseBodyDataErrorItemDetails) *GetSmartAuditResultResponseBodyData {
 	s.ErrorItemDetails = v
+	return s
+}
+
+func (s *GetSmartAuditResultResponseBodyData) SetErrorMessage(v string) *GetSmartAuditResultResponseBodyData {
+	s.ErrorMessage = &v
 	return s
 }
 

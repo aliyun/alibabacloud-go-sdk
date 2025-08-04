@@ -9,6 +9,8 @@ type iSubmitSmartAuditShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetImageUrlListShrink(v string) *SubmitSmartAuditShrinkRequest
+	GetImageUrlListShrink() *string
 	SetSubCodesShrink(v string) *SubmitSmartAuditShrinkRequest
 	GetSubCodesShrink() *string
 	SetText(v string) *SubmitSmartAuditShrinkRequest
@@ -20,8 +22,9 @@ type iSubmitSmartAuditShrinkRequest interface {
 }
 
 type SubmitSmartAuditShrinkRequest struct {
-	SubCodesShrink *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
-	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	ImageUrlListShrink *string `json:"ImageUrlList,omitempty" xml:"ImageUrlList,omitempty"`
+	SubCodesShrink     *string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty"`
+	Text               *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// example:
 	//
 	// xxxx
@@ -35,6 +38,10 @@ func (s SubmitSmartAuditShrinkRequest) String() string {
 
 func (s SubmitSmartAuditShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitSmartAuditShrinkRequest) GetImageUrlListShrink() *string {
+	return s.ImageUrlListShrink
 }
 
 func (s *SubmitSmartAuditShrinkRequest) GetSubCodesShrink() *string {
@@ -51,6 +58,11 @@ func (s *SubmitSmartAuditShrinkRequest) GetWorkspaceId() *string {
 
 func (s *SubmitSmartAuditShrinkRequest) GetImageUrlsShrink() *string {
 	return s.ImageUrlsShrink
+}
+
+func (s *SubmitSmartAuditShrinkRequest) SetImageUrlListShrink(v string) *SubmitSmartAuditShrinkRequest {
+	s.ImageUrlListShrink = &v
+	return s
 }
 
 func (s *SubmitSmartAuditShrinkRequest) SetSubCodesShrink(v string) *SubmitSmartAuditShrinkRequest {

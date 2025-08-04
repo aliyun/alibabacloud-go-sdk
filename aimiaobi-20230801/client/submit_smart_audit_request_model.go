@@ -9,6 +9,8 @@ type iSubmitSmartAuditRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetImageUrlList(v []*SubmitSmartAuditRequestImageUrlList) *SubmitSmartAuditRequest
+	GetImageUrlList() []*SubmitSmartAuditRequestImageUrlList
 	SetSubCodes(v []*string) *SubmitSmartAuditRequest
 	GetSubCodes() []*string
 	SetText(v string) *SubmitSmartAuditRequest
@@ -20,8 +22,9 @@ type iSubmitSmartAuditRequest interface {
 }
 
 type SubmitSmartAuditRequest struct {
-	SubCodes []*string `json:"SubCodes,omitempty" xml:"SubCodes,omitempty" type:"Repeated"`
-	Text     *string   `json:"Text,omitempty" xml:"Text,omitempty"`
+	ImageUrlList []*SubmitSmartAuditRequestImageUrlList `json:"ImageUrlList,omitempty" xml:"ImageUrlList,omitempty" type:"Repeated"`
+	SubCodes     []*string                              `json:"SubCodes,omitempty" xml:"SubCodes,omitempty" type:"Repeated"`
+	Text         *string                                `json:"Text,omitempty" xml:"Text,omitempty"`
 	// example:
 	//
 	// xxxx
@@ -35,6 +38,10 @@ func (s SubmitSmartAuditRequest) String() string {
 
 func (s SubmitSmartAuditRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitSmartAuditRequest) GetImageUrlList() []*SubmitSmartAuditRequestImageUrlList {
+	return s.ImageUrlList
 }
 
 func (s *SubmitSmartAuditRequest) GetSubCodes() []*string {
@@ -51,6 +58,11 @@ func (s *SubmitSmartAuditRequest) GetWorkspaceId() *string {
 
 func (s *SubmitSmartAuditRequest) GetImageUrls() []*SubmitSmartAuditRequestImageUrls {
 	return s.ImageUrls
+}
+
+func (s *SubmitSmartAuditRequest) SetImageUrlList(v []*SubmitSmartAuditRequestImageUrlList) *SubmitSmartAuditRequest {
+	s.ImageUrlList = v
+	return s
 }
 
 func (s *SubmitSmartAuditRequest) SetSubCodes(v []*string) *SubmitSmartAuditRequest {
@@ -74,6 +86,41 @@ func (s *SubmitSmartAuditRequest) SetImageUrls(v []*SubmitSmartAuditRequestImage
 }
 
 func (s *SubmitSmartAuditRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitSmartAuditRequestImageUrlList struct {
+	Id  *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SubmitSmartAuditRequestImageUrlList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitSmartAuditRequestImageUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmartAuditRequestImageUrlList) GetId() *string {
+	return s.Id
+}
+
+func (s *SubmitSmartAuditRequestImageUrlList) GetUrl() *string {
+	return s.Url
+}
+
+func (s *SubmitSmartAuditRequestImageUrlList) SetId(v string) *SubmitSmartAuditRequestImageUrlList {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitSmartAuditRequestImageUrlList) SetUrl(v string) *SubmitSmartAuditRequestImageUrlList {
+	s.Url = &v
+	return s
+}
+
+func (s *SubmitSmartAuditRequestImageUrlList) Validate() error {
 	return dara.Validate(s)
 }
 

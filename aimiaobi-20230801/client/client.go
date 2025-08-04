@@ -12391,6 +12391,10 @@ func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditReques
 	}
 	request := &SubmitSmartAuditShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ImageUrlList) {
+		request.ImageUrlListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrlList, dara.String("ImageUrlList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SubCodes) {
 		request.SubCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCodes, dara.String("SubCodes"), dara.String("json"))
 	}
@@ -12400,6 +12404,10 @@ func (client *Client) SubmitSmartAuditWithOptions(tmpReq *SubmitSmartAuditReques
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageUrlListShrink) {
+		body["ImageUrlList"] = request.ImageUrlListShrink
+	}
+
 	if !dara.IsNil(request.SubCodesShrink) {
 		body["SubCodes"] = request.SubCodesShrink
 	}
