@@ -297,7 +297,8 @@ type DedicatedIpListResponseBodyIpsIpExt struct {
 	// example:
 	//
 	// true
-	HasSendMail *bool `json:"HasSendMail,omitempty" xml:"HasSendMail,omitempty"`
+	HasSendMail               *bool   `json:"HasSendMail,omitempty" xml:"HasSendMail,omitempty"`
+	LastWarmUpTypeChangedTime *string `json:"LastWarmUpTypeChangedTime,omitempty" xml:"LastWarmUpTypeChangedTime,omitempty"`
 }
 
 func (s DedicatedIpListResponseBodyIpsIpExt) String() string {
@@ -316,6 +317,10 @@ func (s *DedicatedIpListResponseBodyIpsIpExt) GetHasSendMail() *bool {
 	return s.HasSendMail
 }
 
+func (s *DedicatedIpListResponseBodyIpsIpExt) GetLastWarmUpTypeChangedTime() *string {
+	return s.LastWarmUpTypeChangedTime
+}
+
 func (s *DedicatedIpListResponseBodyIpsIpExt) SetAutoRenewal(v bool) *DedicatedIpListResponseBodyIpsIpExt {
 	s.AutoRenewal = &v
 	return s
@@ -323,6 +328,11 @@ func (s *DedicatedIpListResponseBodyIpsIpExt) SetAutoRenewal(v bool) *DedicatedI
 
 func (s *DedicatedIpListResponseBodyIpsIpExt) SetHasSendMail(v bool) *DedicatedIpListResponseBodyIpsIpExt {
 	s.HasSendMail = &v
+	return s
+}
+
+func (s *DedicatedIpListResponseBodyIpsIpExt) SetLastWarmUpTypeChangedTime(v string) *DedicatedIpListResponseBodyIpsIpExt {
+	s.LastWarmUpTypeChangedTime = &v
 	return s
 }
 

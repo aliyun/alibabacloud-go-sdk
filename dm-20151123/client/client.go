@@ -2114,6 +2114,138 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 
 // Summary:
 //
+// 获取专属ip的预热详情信息
+//
+// @param request - GetDedicatedIpWarmUpDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDedicatedIpWarmUpDetailResponse
+func (client *Client) GetDedicatedIpWarmUpDetailWithOptions(request *GetDedicatedIpWarmUpDetailRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpDetailResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DedicatedIp) {
+		query["DedicatedIp"] = request.DedicatedIp
+	}
+
+	if !dara.IsNil(request.EndDayMark) {
+		query["EndDayMark"] = request.EndDayMark
+	}
+
+	if !dara.IsNil(request.Esp) {
+		query["Esp"] = request.Esp
+	}
+
+	if !dara.IsNil(request.StartDayMark) {
+		query["StartDayMark"] = request.StartDayMark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDedicatedIpWarmUpDetail"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDedicatedIpWarmUpDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取专属ip的预热详情信息
+//
+// @param request - GetDedicatedIpWarmUpDetailRequest
+//
+// @return GetDedicatedIpWarmUpDetailResponse
+func (client *Client) GetDedicatedIpWarmUpDetail(request *GetDedicatedIpWarmUpDetailRequest) (_result *GetDedicatedIpWarmUpDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDedicatedIpWarmUpDetailResponse{}
+	_body, _err := client.GetDedicatedIpWarmUpDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取专属ip的预热信息
+//
+// @param request - GetDedicatedIpWarmUpInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDedicatedIpWarmUpInfoResponse
+func (client *Client) GetDedicatedIpWarmUpInfoWithOptions(request *GetDedicatedIpWarmUpInfoRequest, runtime *dara.RuntimeOptions) (_result *GetDedicatedIpWarmUpInfoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DedicatedIp) {
+		query["DedicatedIp"] = request.DedicatedIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDedicatedIpWarmUpInfo"),
+		Version:     dara.String("2015-11-23"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDedicatedIpWarmUpInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取专属ip的预热信息
+//
+// @param request - GetDedicatedIpWarmUpInfoRequest
+//
+// @return GetDedicatedIpWarmUpInfoResponse
+func (client *Client) GetDedicatedIpWarmUpInfo(request *GetDedicatedIpWarmUpInfoRequest) (_result *GetDedicatedIpWarmUpInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDedicatedIpWarmUpInfoResponse{}
+	_body, _err := client.GetDedicatedIpWarmUpInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get IP Protection Information
 //
 // @param request - GetIpProtectionRequest
