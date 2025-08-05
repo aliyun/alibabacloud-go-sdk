@@ -2,92 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-2-pop":          dara.String("hbr.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("hbr.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("hbr.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("hbr.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("hbr.aliyuncs.com"),
-		"cn-fujian":                   dara.String("hbr.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("hbr.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("hbr.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("hbr.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("hbr.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("hbr.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("hbr.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("hbr.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("hbr.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("hbr.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("hbr.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("hbr.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("hbr.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("hbr.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("hbr.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("hbr.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("hbr.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("hbr.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("hbr.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("hbr.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("hbr.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("hbr"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -98,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddContainerClusterResponse
-func (client *Client) AddContainerClusterWithOptions(request *AddContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *AddContainerClusterResponse, _err error) {
+func (client *Client) AddContainerClusterWithContext(ctx context.Context, request *AddContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *AddContainerClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -139,29 +57,11 @@ func (client *Client) AddContainerClusterWithOptions(request *AddContainerCluste
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Registers a Container Service for Kubernetes (ACK) cluster.
-//
-// @param request - AddContainerClusterRequest
-//
-// @return AddContainerClusterResponse
-func (client *Client) AddContainerCluster(request *AddContainerClusterRequest) (_result *AddContainerClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddContainerClusterResponse{}
-	_body, _err := client.AddContainerClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -174,7 +74,7 @@ func (client *Client) AddContainerCluster(request *AddContainerClusterRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelBackupJobResponse
-func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest, runtime *dara.RuntimeOptions) (_result *CancelBackupJobResponse, _err error) {
+func (client *Client) CancelBackupJobWithContext(ctx context.Context, request *CancelBackupJobRequest, runtime *dara.RuntimeOptions) (_result *CancelBackupJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -203,29 +103,11 @@ func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelBackupJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a backup job.
-//
-// @param request - CancelBackupJobRequest
-//
-// @return CancelBackupJobResponse
-func (client *Client) CancelBackupJob(request *CancelBackupJobRequest) (_result *CancelBackupJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelBackupJobResponse{}
-	_body, _err := client.CancelBackupJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -238,7 +120,7 @@ func (client *Client) CancelBackupJob(request *CancelBackupJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelRestoreJobResponse
-func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobRequest, runtime *dara.RuntimeOptions) (_result *CancelRestoreJobResponse, _err error) {
+func (client *Client) CancelRestoreJobWithContext(ctx context.Context, request *CancelRestoreJobRequest, runtime *dara.RuntimeOptions) (_result *CancelRestoreJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -267,29 +149,11 @@ func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelRestoreJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a restore job.
-//
-// @param request - CancelRestoreJobRequest
-//
-// @return CancelRestoreJobResponse
-func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_result *CancelRestoreJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelRestoreJobResponse{}
-	_body, _err := client.CancelRestoreJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -310,7 +174,7 @@ func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -343,37 +207,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which an instance belongs.
-//
-// Description:
-//
-//	  In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
-//
-//		- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
-//
-//		- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -386,7 +224,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckRoleResponse
-func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *dara.RuntimeOptions) (_result *CheckRoleResponse, _err error) {
+func (client *Client) CheckRoleWithContext(ctx context.Context, request *CheckRoleRequest, runtime *dara.RuntimeOptions) (_result *CheckRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -419,29 +257,11 @@ func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether the user has permissions to access the current resource or page.
-//
-// @param request - CheckRoleRequest
-//
-// @return CheckRoleResponse
-func (client *Client) CheckRole(request *CheckRoleRequest) (_result *CheckRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckRoleResponse{}
-	_body, _err := client.CheckRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -454,7 +274,7 @@ func (client *Client) CheckRole(request *CheckRoleRequest) (_result *CheckRoleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBackupJobResponse
-func (client *Client) CreateBackupJobWithOptions(tmpReq *CreateBackupJobRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupJobResponse, _err error) {
+func (client *Client) CreateBackupJobWithContext(ctx context.Context, tmpReq *CreateBackupJobRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -553,29 +373,11 @@ func (client *Client) CreateBackupJobWithOptions(tmpReq *CreateBackupJobRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBackupJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a backup job.
-//
-// @param request - CreateBackupJobRequest
-//
-// @return CreateBackupJobResponse
-func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result *CreateBackupJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBackupJobResponse{}
-	_body, _err := client.CreateBackupJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -598,7 +400,7 @@ func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBackupPlanResponse
-func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
+func (client *Client) CreateBackupPlanWithContext(ctx context.Context, tmpReq *CreateBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -763,39 +565,11 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a backup plan.
-//
-// Description:
-//
-// - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
-//
-// - A backup plan supports only one type of data source.
-//
-// - A backup plan supports only a single fixed interval backup cycle strategy.
-//
-// - A backup plan can back up to only one backup vault.
-//
-// @param request - CreateBackupPlanRequest
-//
-// @return CreateBackupPlanResponse
-func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_result *CreateBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBackupPlanResponse{}
-	_body, _err := client.CreateBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -812,7 +586,7 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateClientsResponse
-func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, runtime *dara.RuntimeOptions) (_result *CreateClientsResponse, _err error) {
+func (client *Client) CreateClientsWithContext(ctx context.Context, request *CreateClientsRequest, runtime *dara.RuntimeOptions) (_result *CreateClientsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,33 +639,11 @@ func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs one or more Cloud Backup clients on specified instances.
-//
-// Description:
-//
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of Cloud Backup. For more information, see [Billing methods and billable items](https://help.aliyun.com/document_detail/89062.html).
-//
-// @param request - CreateClientsRequest
-//
-// @return CreateClientsResponse
-func (client *Client) CreateClients(request *CreateClientsRequest) (_result *CreateClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateClientsResponse{}
-	_body, _err := client.CreateClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -914,7 +666,7 @@ func (client *Client) CreateClients(request *CreateClientsRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHanaBackupPlanResponse
-func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaBackupPlanResponse, _err error) {
+func (client *Client) CreateHanaBackupPlanWithContext(ctx context.Context, request *CreateHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -967,39 +719,11 @@ func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupP
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a backup plan for an SAP HANA instance.
-//
-// Description:
-//
-//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-//
-//		- You can specify only one type of data source in a backup plan.
-//
-//		- You can specify only one interval as a backup cycle in a backup plan.
-//
-//		- Each backup plan allows you to back up data to only one backup vault.
-//
-// @param request - CreateHanaBackupPlanRequest
-//
-// @return CreateHanaBackupPlanResponse
-func (client *Client) CreateHanaBackupPlan(request *CreateHanaBackupPlanRequest) (_result *CreateHanaBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHanaBackupPlanResponse{}
-	_body, _err := client.CreateHanaBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1016,7 +740,7 @@ func (client *Client) CreateHanaBackupPlan(request *CreateHanaBackupPlanRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHanaInstanceResponse
-func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaInstanceResponse, _err error) {
+func (client *Client) CreateHanaInstanceWithContext(ctx context.Context, request *CreateHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1097,33 +821,11 @@ func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Registers an SAP HANA instance.
-//
-// Description:
-//
-// To register an SAP HANA instance, you must configure the SAP HANA connection information. After the SAP HANA instance is registered, Cloud Backup installs a backup client on the node of the SAP HANA instance.
-//
-// @param request - CreateHanaInstanceRequest
-//
-// @return CreateHanaInstanceResponse
-func (client *Client) CreateHanaInstance(request *CreateHanaInstanceRequest) (_result *CreateHanaInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHanaInstanceResponse{}
-	_body, _err := client.CreateHanaInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1140,7 +842,7 @@ func (client *Client) CreateHanaInstance(request *CreateHanaInstanceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateHanaRestoreResponse
-func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaRestoreResponse, _err error) {
+func (client *Client) CreateHanaRestoreWithContext(ctx context.Context, request *CreateHanaRestoreRequest, runtime *dara.RuntimeOptions) (_result *CreateHanaRestoreResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1233,33 +935,11 @@ func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateHanaRestoreResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a restore job for an SAP HANA database.
-//
-// Description:
-//
-// If you call this operation to restore a database, the database is restored to a specified state. Proceed with caution. For more information, see [Restore databases to an SAP HANA instance](https://help.aliyun.com/document_detail/101178.html).
-//
-// @param request - CreateHanaRestoreRequest
-//
-// @return CreateHanaRestoreResponse
-func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_result *CreateHanaRestoreResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateHanaRestoreResponse{}
-	_body, _err := client.CreateHanaRestoreWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +958,7 @@ func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyBindingsResponse
-func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindingsRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyBindingsResponse, _err error) {
+func (client *Client) CreatePolicyBindingsWithContext(ctx context.Context, tmpReq *CreatePolicyBindingsRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyBindingsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1315,35 +995,11 @@ func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindin
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds one or more data sources to a backup policy.
-//
-// Description:
-//
-//	  You can bind data sources to only one policy in each request.
-//
-//		- Elastic Compute Service (ECS) instances can be bound to only one policy.
-//
-// @param request - CreatePolicyBindingsRequest
-//
-// @return CreatePolicyBindingsResponse
-func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest) (_result *CreatePolicyBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePolicyBindingsResponse{}
-	_body, _err := client.CreatePolicyBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1366,7 +1022,7 @@ func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyV2Response
-func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, runtime *dara.RuntimeOptions) (_result *CreatePolicyV2Response, _err error) {
+func (client *Client) CreatePolicyV2WithContext(ctx context.Context, tmpReq *CreatePolicyV2Request, runtime *dara.RuntimeOptions) (_result *CreatePolicyV2Response, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1409,39 +1065,11 @@ func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a backup policy.
-//
-// Description:
-//
-// A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-//
-//   - A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
-//
-//   - You can specify only one interval as a backup cycle in a backup policy.
-//
-//   - Each backup policy allows you to back up data to only one backup vault.
-//
-// @param request - CreatePolicyV2Request
-//
-// @return CreatePolicyV2Response
-func (client *Client) CreatePolicyV2(request *CreatePolicyV2Request) (_result *CreatePolicyV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePolicyV2Response{}
-	_body, _err := client.CreatePolicyV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1458,7 +1086,7 @@ func (client *Client) CreatePolicyV2(request *CreatePolicyV2Request) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateReplicationVaultResponse
-func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicationVaultRequest, runtime *dara.RuntimeOptions) (_result *CreateReplicationVaultResponse, _err error) {
+func (client *Client) CreateReplicationVaultWithContext(ctx context.Context, request *CreateReplicationVaultRequest, runtime *dara.RuntimeOptions) (_result *CreateReplicationVaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1515,33 +1143,11 @@ func (client *Client) CreateReplicationVaultWithOptions(request *CreateReplicati
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateReplicationVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a mirror vault.
-//
-// Description:
-//
-// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.Call this operation in the region where the mirror vault resides, which is specified by the VaultRegionId parameter.
-//
-// @param request - CreateReplicationVaultRequest
-//
-// @return CreateReplicationVaultResponse
-func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequest) (_result *CreateReplicationVaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateReplicationVaultResponse{}
-	_body, _err := client.CreateReplicationVaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1560,7 +1166,7 @@ func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRestoreJobResponse
-func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobRequest, runtime *dara.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
+func (client *Client) CreateRestoreJobWithContext(ctx context.Context, tmpReq *CreateRestoreJobRequest, runtime *dara.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1705,35 +1311,11 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRestoreJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create a restore job.
-//
-// Description:
-//
-// - Create a restore job based on the selected snapshot and the restore destination.
-//
-// - Currently, the data source type must match the restore destination data source type.
-//
-// @param request - CreateRestoreJobRequest
-//
-// @return CreateRestoreJobResponse
-func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_result *CreateRestoreJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRestoreJobResponse{}
-	_body, _err := client.CreateRestoreJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1754,7 +1336,7 @@ func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTempFileUploadUrlResponse
-func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFileUploadUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateTempFileUploadUrlResponse, _err error) {
+func (client *Client) CreateTempFileUploadUrlWithContext(ctx context.Context, request *CreateTempFileUploadUrlRequest, runtime *dara.RuntimeOptions) (_result *CreateTempFileUploadUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1779,37 +1361,11 @@ func (client *Client) CreateTempFileUploadUrlWithOptions(request *CreateTempFile
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTempFileUploadUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Generates the parameters and signature required for a file upload URL.
-//
-// Description:
-//
-// 1.  You can directly upload a file to Object Storage Service (OSS) by using a form based on the returned value of this operation.
-//
-// 2.  For more information about how to upload a file to OSS by using a form, see OSS documentation.
-//
-// 3.  The system periodically deletes files that are uploaded to OSS.
-//
-// @param request - CreateTempFileUploadUrlRequest
-//
-// @return CreateTempFileUploadUrlResponse
-func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRequest) (_result *CreateTempFileUploadUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateTempFileUploadUrlResponse{}
-	_body, _err := client.CreateTempFileUploadUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1832,7 +1388,7 @@ func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVaultResponse
-func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtime *dara.RuntimeOptions) (_result *CreateVaultResponse, _err error) {
+func (client *Client) CreateVaultWithContext(ctx context.Context, request *CreateVaultRequest, runtime *dara.RuntimeOptions) (_result *CreateVaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1885,39 +1441,11 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a backup vault.
-//
-// Description:
-//
-//	  Each Alibaba Cloud account can create up to 100 backup vaults.
-//
-//		- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
-//
-//	    **
-//
-//	    **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
-//
-// @param request - CreateVaultRequest
-//
-// @return CreateVaultResponse
-func (client *Client) CreateVault(request *CreateVaultRequest) (_result *CreateVaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVaultResponse{}
-	_body, _err := client.CreateVaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1930,7 +1458,7 @@ func (client *Client) CreateVault(request *CreateVaultRequest) (_result *CreateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAirEcsInstanceResponse
-func (client *Client) DeleteAirEcsInstanceWithOptions(tmpReq *DeleteAirEcsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteAirEcsInstanceResponse, _err error) {
+func (client *Client) DeleteAirEcsInstanceWithContext(ctx context.Context, tmpReq *DeleteAirEcsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteAirEcsInstanceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1965,29 +1493,11 @@ func (client *Client) DeleteAirEcsInstanceWithOptions(tmpReq *DeleteAirEcsInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAirEcsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
-//
-// @param request - DeleteAirEcsInstanceRequest
-//
-// @return DeleteAirEcsInstanceResponse
-func (client *Client) DeleteAirEcsInstance(request *DeleteAirEcsInstanceRequest) (_result *DeleteAirEcsInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAirEcsInstanceResponse{}
-	_body, _err := client.DeleteAirEcsInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2012,7 +1522,7 @@ func (client *Client) DeleteAirEcsInstance(request *DeleteAirEcsInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBackupClientResponse
-func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupClientResponse, _err error) {
+func (client *Client) DeleteBackupClientWithContext(ctx context.Context, request *DeleteBackupClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupClientResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2037,41 +1547,11 @@ func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Cloud Backup client.
-//
-// Description:
-//
-//	  You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
-//
-//		- When you perform this operation, resources that are associated with the client are also deleted, including:
-//
-//	    	- Backup plans
-//
-//	    	- Backup jobs
-//
-//	    	- Snapshots
-//
-// @param request - DeleteBackupClientRequest
-//
-// @return DeleteBackupClientResponse
-func (client *Client) DeleteBackupClient(request *DeleteBackupClientRequest) (_result *DeleteBackupClientResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBackupClientResponse{}
-	_body, _err := client.DeleteBackupClientWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2088,7 +1568,7 @@ func (client *Client) DeleteBackupClient(request *DeleteBackupClientRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBackupClientResourceResponse
-func (client *Client) DeleteBackupClientResourceWithOptions(tmpReq *DeleteBackupClientResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupClientResourceResponse, _err error) {
+func (client *Client) DeleteBackupClientResourceWithContext(ctx context.Context, tmpReq *DeleteBackupClientResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupClientResourceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2119,33 +1599,11 @@ func (client *Client) DeleteBackupClientResourceWithOptions(tmpReq *DeleteBackup
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupClientResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes the resources that are related to one or more HBR clients.
-//
-// Description:
-//
-// This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
-//
-// @param request - DeleteBackupClientResourceRequest
-//
-// @return DeleteBackupClientResourceResponse
-func (client *Client) DeleteBackupClientResource(request *DeleteBackupClientResourceRequest) (_result *DeleteBackupClientResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBackupClientResourceResponse{}
-	_body, _err := client.DeleteBackupClientResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2164,7 +1622,7 @@ func (client *Client) DeleteBackupClientResource(request *DeleteBackupClientReso
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBackupPlanResponse
-func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPlanResponse, _err error) {
+func (client *Client) DeleteBackupPlanWithContext(ctx context.Context, request *DeleteBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2201,35 +1659,11 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a backup plan.
-//
-// Description:
-//
-//	  If you delete a backup plan, the backup jobs are also deleted.
-//
-//		- If you delete a backup plan, the created snapshot files are not deleted.
-//
-// @param request - DeleteBackupPlanRequest
-//
-// @return DeleteBackupPlanResponse
-func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_result *DeleteBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBackupPlanResponse{}
-	_body, _err := client.DeleteBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2238,7 +1672,7 @@ func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteClientResponse
-func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientResponse, _err error) {
+func (client *Client) DeleteClientWithContext(ctx context.Context, request *DeleteClientRequest, runtime *dara.RuntimeOptions) (_result *DeleteClientResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2271,25 +1705,11 @@ func (client *Client) DeleteClientWithOptions(request *DeleteClientRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteClientRequest
-//
-// @return DeleteClientResponse
-func (client *Client) DeleteClient(request *DeleteClientRequest) (_result *DeleteClientResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteClientResponse{}
-	_body, _err := client.DeleteClientWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2302,7 +1722,7 @@ func (client *Client) DeleteClient(request *DeleteClientRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHanaBackupPlanResponse
-func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteHanaBackupPlanResponse, _err error) {
+func (client *Client) DeleteHanaBackupPlanWithContext(ctx context.Context, request *DeleteHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteHanaBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2339,29 +1759,11 @@ func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an SAP HANA backup plan.
-//
-// @param request - DeleteHanaBackupPlanRequest
-//
-// @return DeleteHanaBackupPlanResponse
-func (client *Client) DeleteHanaBackupPlan(request *DeleteHanaBackupPlanRequest) (_result *DeleteHanaBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteHanaBackupPlanResponse{}
-	_body, _err := client.DeleteHanaBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2378,7 +1780,7 @@ func (client *Client) DeleteHanaBackupPlan(request *DeleteHanaBackupPlanRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteHanaInstanceResponse
-func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteHanaInstanceResponse, _err error) {
+func (client *Client) DeleteHanaInstanceWithContext(ctx context.Context, request *DeleteHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteHanaInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2415,33 +1817,11 @@ func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an SAP HANA instance.
-//
-// Description:
-//
-// If you delete an SAP HANA instance, the existing backup data is also deleted and the running backup and restore jobs fail to be completed. Before you delete the SAP HANA instance, make sure that you no longer need the backup data of the instance and no backup or restore jobs are running for the instance. To delete an SAP HANA instance, you must specify the security identifier (SID) of the instance. The SID is three characters in length and starts with a letter. For more information, see [How to find sid user and instance number of HANA db?](https://answers.sap.com/questions/555192/how-to-find-sid-user-and-instance-number-of-hana-d.html?)
-//
-// @param request - DeleteHanaInstanceRequest
-//
-// @return DeleteHanaInstanceResponse
-func (client *Client) DeleteHanaInstance(request *DeleteHanaInstanceRequest) (_result *DeleteHanaInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteHanaInstanceResponse{}
-	_body, _err := client.DeleteHanaInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2454,7 +1834,7 @@ func (client *Client) DeleteHanaInstance(request *DeleteHanaInstanceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyBindingResponse
-func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBindingRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyBindingResponse, _err error) {
+func (client *Client) DeletePolicyBindingWithContext(ctx context.Context, tmpReq *DeletePolicyBindingRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyBindingResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2495,29 +1875,11 @@ func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBinding
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
-//
-// @param request - DeletePolicyBindingRequest
-//
-// @return DeletePolicyBindingResponse
-func (client *Client) DeletePolicyBinding(request *DeletePolicyBindingRequest) (_result *DeletePolicyBindingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePolicyBindingResponse{}
-	_body, _err := client.DeletePolicyBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2534,7 +1896,7 @@ func (client *Client) DeletePolicyBinding(request *DeletePolicyBindingRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyV2Response
-func (client *Client) DeletePolicyV2WithOptions(request *DeletePolicyV2Request, runtime *dara.RuntimeOptions) (_result *DeletePolicyV2Response, _err error) {
+func (client *Client) DeletePolicyV2WithContext(ctx context.Context, request *DeletePolicyV2Request, runtime *dara.RuntimeOptions) (_result *DeletePolicyV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2559,33 +1921,11 @@ func (client *Client) DeletePolicyV2WithOptions(request *DeletePolicyV2Request, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a backup policy.
-//
-// Description:
-//
-// If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
-//
-// @param request - DeletePolicyV2Request
-//
-// @return DeletePolicyV2Response
-func (client *Client) DeletePolicyV2(request *DeletePolicyV2Request) (_result *DeletePolicyV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePolicyV2Response{}
-	_body, _err := client.DeletePolicyV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2598,7 +1938,7 @@ func (client *Client) DeletePolicyV2(request *DeletePolicyV2Request) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+func (client *Client) DeleteSnapshotWithContext(ctx context.Context, request *DeleteSnapshotRequest, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2647,29 +1987,11 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a backup snapshot.
-//
-// @param request - DeleteSnapshotRequest
-//
-// @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2682,7 +2004,7 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUdmDiskResponse
-func (client *Client) DeleteUdmDiskWithOptions(request *DeleteUdmDiskRequest, runtime *dara.RuntimeOptions) (_result *DeleteUdmDiskResponse, _err error) {
+func (client *Client) DeleteUdmDiskWithContext(ctx context.Context, request *DeleteUdmDiskRequest, runtime *dara.RuntimeOptions) (_result *DeleteUdmDiskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2707,29 +2029,11 @@ func (client *Client) DeleteUdmDiskWithOptions(request *DeleteUdmDiskRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteUdmDiskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a protected disk.
-//
-// @param request - DeleteUdmDiskRequest
-//
-// @return DeleteUdmDiskResponse
-func (client *Client) DeleteUdmDisk(request *DeleteUdmDiskRequest) (_result *DeleteUdmDiskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteUdmDiskResponse{}
-	_body, _err := client.DeleteUdmDiskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2742,7 +2046,7 @@ func (client *Client) DeleteUdmDisk(request *DeleteUdmDiskRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUdmEcsInstanceResponse
-func (client *Client) DeleteUdmEcsInstanceWithOptions(request *DeleteUdmEcsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteUdmEcsInstanceResponse, _err error) {
+func (client *Client) DeleteUdmEcsInstanceWithContext(ctx context.Context, request *DeleteUdmEcsInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteUdmEcsInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2767,29 +2071,11 @@ func (client *Client) DeleteUdmEcsInstanceWithOptions(request *DeleteUdmEcsInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteUdmEcsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops protection for Elastic Compute Service (ECS) instance backup.
-//
-// @param request - DeleteUdmEcsInstanceRequest
-//
-// @return DeleteUdmEcsInstanceResponse
-func (client *Client) DeleteUdmEcsInstance(request *DeleteUdmEcsInstanceRequest) (_result *DeleteUdmEcsInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteUdmEcsInstanceResponse{}
-	_body, _err := client.DeleteUdmEcsInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2808,7 +2094,7 @@ func (client *Client) DeleteUdmEcsInstance(request *DeleteUdmEcsInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVaultResponse
-func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtime *dara.RuntimeOptions) (_result *DeleteVaultResponse, _err error) {
+func (client *Client) DeleteVaultWithContext(ctx context.Context, request *DeleteVaultRequest, runtime *dara.RuntimeOptions) (_result *DeleteVaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2841,35 +2127,11 @@ func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a backup vault.
-//
-// Description:
-//
-//	  You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
-//
-//		- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
-//
-// @param request - DeleteVaultRequest
-//
-// @return DeleteVaultResponse
-func (client *Client) DeleteVault(request *DeleteVaultRequest) (_result *DeleteVaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVaultResponse{}
-	_body, _err := client.DeleteVaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2882,7 +2144,7 @@ func (client *Client) DeleteVault(request *DeleteVaultRequest) (_result *DeleteV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupClientsResponse
-func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupClientsResponse, _err error) {
+func (client *Client) DescribeBackupClientsWithContext(ctx context.Context, tmpReq *DescribeBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupClientsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2959,29 +2221,11 @@ func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupCli
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more HBR clients that meet the specified conditions.
-//
-// @param request - DescribeBackupClientsRequest
-//
-// @return DescribeBackupClientsResponse
-func (client *Client) DescribeBackupClients(request *DescribeBackupClientsRequest) (_result *DescribeBackupClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupClientsResponse{}
-	_body, _err := client.DescribeBackupClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2994,7 +2238,7 @@ func (client *Client) DescribeBackupClients(request *DescribeBackupClientsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupJobs2Response
-func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs2Request, runtime *dara.RuntimeOptions) (_result *DescribeBackupJobs2Response, _err error) {
+func (client *Client) DescribeBackupJobs2WithContext(ctx context.Context, request *DescribeBackupJobs2Request, runtime *dara.RuntimeOptions) (_result *DescribeBackupJobs2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3035,29 +2279,11 @@ func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupJobs2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more backup jobs that meet the specified conditions.
-//
-// @param request - DescribeBackupJobs2Request
-//
-// @return DescribeBackupJobs2Response
-func (client *Client) DescribeBackupJobs2(request *DescribeBackupJobs2Request) (_result *DescribeBackupJobs2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupJobs2Response{}
-	_body, _err := client.DescribeBackupJobs2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3070,7 +2296,7 @@ func (client *Client) DescribeBackupJobs2(request *DescribeBackupJobs2Request) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupPlansResponse
-func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPlansResponse, _err error) {
+func (client *Client) DescribeBackupPlansWithContext(ctx context.Context, request *DescribeBackupPlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPlansResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3107,29 +2333,11 @@ func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more backup plans that meet the specified conditions.
-//
-// @param request - DescribeBackupPlansRequest
-//
-// @return DescribeBackupPlansResponse
-func (client *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (_result *DescribeBackupPlansResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeBackupPlansResponse{}
-	_body, _err := client.DescribeBackupPlansWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3146,7 +2354,7 @@ func (client *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeClientsResponse
-func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientsResponse, _err error) {
+func (client *Client) DescribeClientsWithContext(ctx context.Context, request *DescribeClientsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClientsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3199,33 +2407,11 @@ func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more Cloud Backup clients that meet the specified conditions.
-//
-// Description:
-//
-// This operation is applicable only to SAP HANA backup. For Cloud Backup clients of other data sources, call the DescribeBackupClients operation.
-//
-// @param request - DescribeClientsRequest
-//
-// @return DescribeClientsResponse
-func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result *DescribeClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeClientsResponse{}
-	_body, _err := client.DescribeClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3242,7 +2428,7 @@ func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeContainerClusterResponse
-func (client *Client) DescribeContainerClusterWithOptions(request *DescribeContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerClusterResponse, _err error) {
+func (client *Client) DescribeContainerClusterWithContext(ctx context.Context, request *DescribeContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3279,33 +2465,11 @@ func (client *Client) DescribeContainerClusterWithOptions(request *DescribeConta
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more container clusters that meet the specified conditions.
-//
-// Description:
-//
-// You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
-//
-// @param request - DescribeContainerClusterRequest
-//
-// @return DescribeContainerClusterResponse
-func (client *Client) DescribeContainerCluster(request *DescribeContainerClusterRequest) (_result *DescribeContainerClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeContainerClusterResponse{}
-	_body, _err := client.DescribeContainerClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3318,7 +2482,7 @@ func (client *Client) DescribeContainerCluster(request *DescribeContainerCluster
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCrossAccountsResponse
-func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCrossAccountsResponse, _err error) {
+func (client *Client) DescribeCrossAccountsWithContext(ctx context.Context, request *DescribeCrossAccountsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCrossAccountsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3347,29 +2511,11 @@ func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAcc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCrossAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the accounts used in cross-account backup.
-//
-// @param request - DescribeCrossAccountsRequest
-//
-// @return DescribeCrossAccountsResponse
-func (client *Client) DescribeCrossAccounts(request *DescribeCrossAccountsRequest) (_result *DescribeCrossAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCrossAccountsResponse{}
-	_body, _err := client.DescribeCrossAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3382,7 +2528,7 @@ func (client *Client) DescribeCrossAccounts(request *DescribeCrossAccountsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaBackupPlansResponse
-func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBackupPlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupPlansResponse, _err error) {
+func (client *Client) DescribeHanaBackupPlansWithContext(ctx context.Context, request *DescribeHanaBackupPlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupPlansResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3427,29 +2573,11 @@ func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBa
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaBackupPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more SAP HANA backup plans that meet the specified conditions.
-//
-// @param request - DescribeHanaBackupPlansRequest
-//
-// @return DescribeHanaBackupPlansResponse
-func (client *Client) DescribeHanaBackupPlans(request *DescribeHanaBackupPlansRequest) (_result *DescribeHanaBackupPlansResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaBackupPlansResponse{}
-	_body, _err := client.DescribeHanaBackupPlansWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3466,7 +2594,7 @@ func (client *Client) DescribeHanaBackupPlans(request *DescribeHanaBackupPlansRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaBackupSettingResponse
-func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHanaBackupSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupSettingResponse, _err error) {
+func (client *Client) DescribeHanaBackupSettingWithContext(ctx context.Context, request *DescribeHanaBackupSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3499,33 +2627,11 @@ func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHana
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaBackupSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the backup parameters of an SAP HANA database.
-//
-// Description:
-//
-// If you want to query the backup retention period of a database, you can call the DescribeHanaRetentionSetting operation.
-//
-// @param request - DescribeHanaBackupSettingRequest
-//
-// @return DescribeHanaBackupSettingResponse
-func (client *Client) DescribeHanaBackupSetting(request *DescribeHanaBackupSettingRequest) (_result *DescribeHanaBackupSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaBackupSettingResponse{}
-	_body, _err := client.DescribeHanaBackupSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3542,7 +2648,7 @@ func (client *Client) DescribeHanaBackupSetting(request *DescribeHanaBackupSetti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaBackupsAsyncResponse
-func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaBackupsAsyncRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
+func (client *Client) DescribeHanaBackupsAsyncWithContext(ctx context.Context, request *DescribeHanaBackupsAsyncRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3631,33 +2737,11 @@ func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaB
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaBackupsAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more SAP HANA backups that meet the specified conditions.
-//
-// Description:
-//
-// After you call the DescribeHanaBackupsAsync operation to query the SAP HANA backups that meet the specified conditions, call the DescribeTask operation to query the final result.
-//
-// @param request - DescribeHanaBackupsAsyncRequest
-//
-// @return DescribeHanaBackupsAsyncResponse
-func (client *Client) DescribeHanaBackupsAsync(request *DescribeHanaBackupsAsyncRequest) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaBackupsAsyncResponse{}
-	_body, _err := client.DescribeHanaBackupsAsyncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3674,7 +2758,7 @@ func (client *Client) DescribeHanaBackupsAsync(request *DescribeHanaBackupsAsync
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaDatabasesResponse
-func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaDatabasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaDatabasesResponse, _err error) {
+func (client *Client) DescribeHanaDatabasesWithContext(ctx context.Context, request *DescribeHanaDatabasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaDatabasesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3715,33 +2799,11 @@ func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaData
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about SAP HANA databases.
-//
-// Description:
-//
-// After you register an SAP HANA instance and install a Cloud Backup client on the instance, you can call this operation to query the information about SAP HANA databases. You can call the StartHanaDatabaseAsync operation to start a database and call the StopHanaDatabaseAsync operation to stop a database.
-//
-// @param request - DescribeHanaDatabasesRequest
-//
-// @return DescribeHanaDatabasesResponse
-func (client *Client) DescribeHanaDatabases(request *DescribeHanaDatabasesRequest) (_result *DescribeHanaDatabasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaDatabasesResponse{}
-	_body, _err := client.DescribeHanaDatabasesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3754,7 +2816,7 @@ func (client *Client) DescribeHanaDatabases(request *DescribeHanaDatabasesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaInstancesResponse
-func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaInstancesResponse, _err error) {
+func (client *Client) DescribeHanaInstancesWithContext(ctx context.Context, request *DescribeHanaInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3801,29 +2863,11 @@ func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInst
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more SAP HANA instances that meet the specified conditions.
-//
-// @param request - DescribeHanaInstancesRequest
-//
-// @return DescribeHanaInstancesResponse
-func (client *Client) DescribeHanaInstances(request *DescribeHanaInstancesRequest) (_result *DescribeHanaInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaInstancesResponse{}
-	_body, _err := client.DescribeHanaInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3836,7 +2880,7 @@ func (client *Client) DescribeHanaInstances(request *DescribeHanaInstancesReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaRestoresResponse
-func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaRestoresRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaRestoresResponse, _err error) {
+func (client *Client) DescribeHanaRestoresWithContext(ctx context.Context, request *DescribeHanaRestoresRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaRestoresResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3893,29 +2937,11 @@ func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaResto
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaRestoresResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more SAP HANA restore jobs that meet the specified conditions.
-//
-// @param request - DescribeHanaRestoresRequest
-//
-// @return DescribeHanaRestoresResponse
-func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest) (_result *DescribeHanaRestoresResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaRestoresResponse{}
-	_body, _err := client.DescribeHanaRestoresWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3934,7 +2960,7 @@ func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHanaRetentionSettingResponse
-func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeHanaRetentionSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaRetentionSettingResponse, _err error) {
+func (client *Client) DescribeHanaRetentionSettingWithContext(ctx context.Context, request *DescribeHanaRetentionSettingRequest, runtime *dara.RuntimeOptions) (_result *DescribeHanaRetentionSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3967,35 +2993,11 @@ func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeH
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHanaRetentionSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the backup retention period of an SAP HANA database.
-//
-// Description:
-//
-//	  If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
-//
-//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
-//
-// @param request - DescribeHanaRetentionSettingRequest
-//
-// @return DescribeHanaRetentionSettingResponse
-func (client *Client) DescribeHanaRetentionSetting(request *DescribeHanaRetentionSettingRequest) (_result *DescribeHanaRetentionSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeHanaRetentionSettingResponse{}
-	_body, _err := client.DescribeHanaRetentionSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4008,7 +3010,7 @@ func (client *Client) DescribeHanaRetentionSetting(request *DescribeHanaRetentio
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOtsTableSnapshotsResponse
-func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsTableSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
+func (client *Client) DescribeOtsTableSnapshotsWithContext(ctx context.Context, request *DescribeOtsTableSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4070,29 +3072,11 @@ func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsT
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOtsTableSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about Tablestore instances that are backed up.
-//
-// @param request - DescribeOtsTableSnapshotsRequest
-//
-// @return DescribeOtsTableSnapshotsResponse
-func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapshotsRequest) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOtsTableSnapshotsResponse{}
-	_body, _err := client.DescribeOtsTableSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4105,7 +3089,7 @@ func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapsho
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePoliciesV2Response
-func (client *Client) DescribePoliciesV2WithOptions(request *DescribePoliciesV2Request, runtime *dara.RuntimeOptions) (_result *DescribePoliciesV2Response, _err error) {
+func (client *Client) DescribePoliciesV2WithContext(ctx context.Context, request *DescribePoliciesV2Request, runtime *dara.RuntimeOptions) (_result *DescribePoliciesV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4138,29 +3122,11 @@ func (client *Client) DescribePoliciesV2WithOptions(request *DescribePoliciesV2R
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePoliciesV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more backup policies.
-//
-// @param request - DescribePoliciesV2Request
-//
-// @return DescribePoliciesV2Response
-func (client *Client) DescribePoliciesV2(request *DescribePoliciesV2Request) (_result *DescribePoliciesV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePoliciesV2Response{}
-	_body, _err := client.DescribePoliciesV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4173,7 +3139,7 @@ func (client *Client) DescribePoliciesV2(request *DescribePoliciesV2Request) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePolicyBindingsResponse
-func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBindingsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolicyBindingsResponse, _err error) {
+func (client *Client) DescribePolicyBindingsWithContext(ctx context.Context, tmpReq *DescribePolicyBindingsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolicyBindingsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4226,29 +3192,11 @@ func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePolicyBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
-//
-// @param request - DescribePolicyBindingsRequest
-//
-// @return DescribePolicyBindingsResponse
-func (client *Client) DescribePolicyBindings(request *DescribePolicyBindingsRequest) (_result *DescribePolicyBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePolicyBindingsResponse{}
-	_body, _err := client.DescribePolicyBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4261,7 +3209,7 @@ func (client *Client) DescribePolicyBindings(request *DescribePolicyBindingsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRecoverableOtsInstancesResponse
-func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *DescribeRecoverableOtsInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
+func (client *Client) DescribeRecoverableOtsInstancesWithContext(ctx context.Context, request *DescribeRecoverableOtsInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4294,76 +3242,11 @@ func (client *Client) DescribeRecoverableOtsInstancesWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRecoverableOtsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tables of a restorable Tablestore instance.
-//
-// @param request - DescribeRecoverableOtsInstancesRequest
-//
-// @return DescribeRecoverableOtsInstancesResponse
-func (client *Client) DescribeRecoverableOtsInstances(request *DescribeRecoverableOtsInstancesRequest) (_result *DescribeRecoverableOtsInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRecoverableOtsInstancesResponse{}
-	_body, _err := client.DescribeRecoverableOtsInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available regions.
-//
-// @param request - DescribeRegionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeRegions"),
-		Version:     dara.String("2017-09-08"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available regions.
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4376,7 +3259,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRestoreJobs2Response
-func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJobs2Request, runtime *dara.RuntimeOptions) (_result *DescribeRestoreJobs2Response, _err error) {
+func (client *Client) DescribeRestoreJobs2WithContext(ctx context.Context, request *DescribeRestoreJobs2Request, runtime *dara.RuntimeOptions) (_result *DescribeRestoreJobs2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4413,29 +3296,11 @@ func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJo
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRestoreJobs2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries one or more restore jobs that meet the specified conditions.
-//
-// @param request - DescribeRestoreJobs2Request
-//
-// @return DescribeRestoreJobs2Response
-func (client *Client) DescribeRestoreJobs2(request *DescribeRestoreJobs2Request) (_result *DescribeRestoreJobs2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRestoreJobs2Response{}
-	_body, _err := client.DescribeRestoreJobs2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4448,7 +3313,7 @@ func (client *Client) DescribeRestoreJobs2(request *DescribeRestoreJobs2Request)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTaskResponse
-func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
+func (client *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4481,29 +3346,11 @@ func (client *Client) DescribeTaskWithOptions(request *DescribeTaskRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an asynchronous job.
-//
-// @param request - DescribeTaskRequest
-//
-// @return DescribeTaskResponse
-func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *DescribeTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTaskResponse{}
-	_body, _err := client.DescribeTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4516,7 +3363,7 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUdmSnapshotsResponse
-func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUdmSnapshotsResponse, _err error) {
+func (client *Client) DescribeUdmSnapshotsWithContext(ctx context.Context, tmpReq *DescribeUdmSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeUdmSnapshotsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4577,29 +3424,11 @@ func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapsho
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUdmSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
-//
-// @param request - DescribeUdmSnapshotsRequest
-//
-// @return DescribeUdmSnapshotsResponse
-func (client *Client) DescribeUdmSnapshots(request *DescribeUdmSnapshotsRequest) (_result *DescribeUdmSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUdmSnapshotsResponse{}
-	_body, _err := client.DescribeUdmSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4612,7 +3441,7 @@ func (client *Client) DescribeUdmSnapshots(request *DescribeUdmSnapshotsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVaultReplicationRegionsResponse
-func (client *Client) DescribeVaultReplicationRegionsWithOptions(request *DescribeVaultReplicationRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVaultReplicationRegionsResponse, _err error) {
+func (client *Client) DescribeVaultReplicationRegionsWithContext(ctx context.Context, request *DescribeVaultReplicationRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVaultReplicationRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4641,29 +3470,11 @@ func (client *Client) DescribeVaultReplicationRegionsWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVaultReplicationRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the regions that support cross-region replication.
-//
-// @param request - DescribeVaultReplicationRegionsRequest
-//
-// @return DescribeVaultReplicationRegionsResponse
-func (client *Client) DescribeVaultReplicationRegions(request *DescribeVaultReplicationRegionsRequest) (_result *DescribeVaultReplicationRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVaultReplicationRegionsResponse{}
-	_body, _err := client.DescribeVaultReplicationRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4676,7 +3487,7 @@ func (client *Client) DescribeVaultReplicationRegions(request *DescribeVaultRepl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVaultsResponse
-func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVaultsResponse, _err error) {
+func (client *Client) DescribeVaultsWithContext(ctx context.Context, request *DescribeVaultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVaultsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4735,29 +3546,11 @@ func (client *Client) DescribeVaultsWithOptions(request *DescribeVaultsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVaultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more backup vaults that meet the specified conditions.
-//
-// @param request - DescribeVaultsRequest
-//
-// @return DescribeVaultsResponse
-func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *DescribeVaultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVaultsResponse{}
-	_body, _err := client.DescribeVaultsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4776,7 +3569,7 @@ func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachNasFileSystemResponse
-func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSystemRequest, runtime *dara.RuntimeOptions) (_result *DetachNasFileSystemResponse, _err error) {
+func (client *Client) DetachNasFileSystemWithContext(ctx context.Context, request *DetachNasFileSystemRequest, runtime *dara.RuntimeOptions) (_result *DetachNasFileSystemResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4817,35 +3610,11 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachNasFileSystemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an internal mount target created by Cloud Backup.
-//
-// Description:
-//
-//	  If the request is successful, the mount target is deleted.
-//
-//		- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
-//
-// @param request - DetachNasFileSystemRequest
-//
-// @return DetachNasFileSystemResponse
-func (client *Client) DetachNasFileSystem(request *DetachNasFileSystemRequest) (_result *DetachNasFileSystemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachNasFileSystemResponse{}
-	_body, _err := client.DetachNasFileSystemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4862,7 +3631,7 @@ func (client *Client) DetachNasFileSystem(request *DetachNasFileSystemRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableBackupPlanResponse
-func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DisableBackupPlanResponse, _err error) {
+func (client *Client) DisableBackupPlanWithContext(ctx context.Context, request *DisableBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DisableBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4895,33 +3664,11 @@ func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a backup plan.
-//
-// Description:
-//
-// After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
-//
-// @param request - DisableBackupPlanRequest
-//
-// @return DisableBackupPlanResponse
-func (client *Client) DisableBackupPlan(request *DisableBackupPlanRequest) (_result *DisableBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableBackupPlanResponse{}
-	_body, _err := client.DisableBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4938,7 +3685,7 @@ func (client *Client) DisableBackupPlan(request *DisableBackupPlanRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableHanaBackupPlanResponse
-func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DisableHanaBackupPlanResponse, _err error) {
+func (client *Client) DisableHanaBackupPlanWithContext(ctx context.Context, request *DisableHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *DisableHanaBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4975,33 +3722,11 @@ func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBacku
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables an SAP HANA backup plan.
-//
-// Description:
-//
-// To enable the backup plan again, call the EnableHanaBackupPlan operation.
-//
-// @param request - DisableHanaBackupPlanRequest
-//
-// @return DisableHanaBackupPlanResponse
-func (client *Client) DisableHanaBackupPlan(request *DisableHanaBackupPlanRequest) (_result *DisableHanaBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableHanaBackupPlanResponse{}
-	_body, _err := client.DisableHanaBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5018,7 +3743,7 @@ func (client *Client) DisableHanaBackupPlan(request *DisableHanaBackupPlanReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableBackupPlanResponse
-func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *EnableBackupPlanResponse, _err error) {
+func (client *Client) EnableBackupPlanWithContext(ctx context.Context, request *EnableBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *EnableBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5051,33 +3776,11 @@ func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a backup plan.
-//
-// Description:
-//
-// After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
-//
-// @param request - EnableBackupPlanRequest
-//
-// @return EnableBackupPlanResponse
-func (client *Client) EnableBackupPlan(request *EnableBackupPlanRequest) (_result *EnableBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableBackupPlanResponse{}
-	_body, _err := client.EnableBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5094,7 +3797,7 @@ func (client *Client) EnableBackupPlan(request *EnableBackupPlanRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableHanaBackupPlanResponse
-func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *EnableHanaBackupPlanResponse, _err error) {
+func (client *Client) EnableHanaBackupPlanWithContext(ctx context.Context, request *EnableHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *EnableHanaBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5131,33 +3834,11 @@ func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupP
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables an SAP HANA backup plan.
-//
-// Description:
-//
-// To disable the backup plan again, call the DisableHanaBackupPlan operation.
-//
-// @param request - EnableHanaBackupPlanRequest
-//
-// @return EnableHanaBackupPlanResponse
-func (client *Client) EnableHanaBackupPlan(request *EnableHanaBackupPlanRequest) (_result *EnableHanaBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableHanaBackupPlanResponse{}
-	_body, _err := client.EnableHanaBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5170,7 +3851,7 @@ func (client *Client) EnableHanaBackupPlan(request *EnableHanaBackupPlanRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteBackupPlanResponse
-func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *ExecuteBackupPlanResponse, _err error) {
+func (client *Client) ExecuteBackupPlanWithContext(ctx context.Context, request *ExecuteBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *ExecuteBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5207,29 +3888,11 @@ func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Executes a backup plan.
-//
-// @param request - ExecuteBackupPlanRequest
-//
-// @return ExecuteBackupPlanResponse
-func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_result *ExecuteBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecuteBackupPlanResponse{}
-	_body, _err := client.ExecuteBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5242,7 +3905,7 @@ func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecutePolicyV2Response
-func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request, runtime *dara.RuntimeOptions) (_result *ExecutePolicyV2Response, _err error) {
+func (client *Client) ExecutePolicyV2WithContext(ctx context.Context, request *ExecutePolicyV2Request, runtime *dara.RuntimeOptions) (_result *ExecutePolicyV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5281,29 +3944,11 @@ func (client *Client) ExecutePolicyV2WithOptions(request *ExecutePolicyV2Request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecutePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Execute a policy for one or all bound data sources.
-//
-// @param request - ExecutePolicyV2Request
-//
-// @return ExecutePolicyV2Response
-func (client *Client) ExecutePolicyV2(request *ExecutePolicyV2Request) (_result *ExecutePolicyV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecutePolicyV2Response{}
-	_body, _err := client.ExecutePolicyV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5316,7 +3961,7 @@ func (client *Client) ExecutePolicyV2(request *ExecutePolicyV2Request) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateRamPolicyResponse
-func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateRamPolicyResponse, _err error) {
+func (client *Client) GenerateRamPolicyWithContext(ctx context.Context, request *GenerateRamPolicyRequest, runtime *dara.RuntimeOptions) (_result *GenerateRamPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5353,29 +3998,11 @@ func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateRamPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Generates a Resource Access Management (RAM) policy.
-//
-// @param request - GenerateRamPolicyRequest
-//
-// @return GenerateRamPolicyResponse
-func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_result *GenerateRamPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GenerateRamPolicyResponse{}
-	_body, _err := client.GenerateRamPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5388,7 +4015,7 @@ func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTempFileDownloadLinkResponse
-func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDownloadLinkRequest, runtime *dara.RuntimeOptions) (_result *GetTempFileDownloadLinkResponse, _err error) {
+func (client *Client) GetTempFileDownloadLinkWithContext(ctx context.Context, request *GetTempFileDownloadLinkRequest, runtime *dara.RuntimeOptions) (_result *GetTempFileDownloadLinkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5413,29 +4040,11 @@ func (client *Client) GetTempFileDownloadLinkWithOptions(request *GetTempFileDow
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTempFileDownloadLinkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains download links of files such as job reports.
-//
-// @param request - GetTempFileDownloadLinkRequest
-//
-// @return GetTempFileDownloadLinkResponse
-func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRequest) (_result *GetTempFileDownloadLinkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTempFileDownloadLinkResponse{}
-	_body, _err := client.GetTempFileDownloadLinkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5456,7 +4065,7 @@ func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallBackupClientsResponse
-func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *InstallBackupClientsResponse, _err error) {
+func (client *Client) InstallBackupClientsWithContext(ctx context.Context, tmpReq *InstallBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *InstallBackupClientsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5499,84 +4108,11 @@ func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClien
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
-//
-//		- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
-//
-//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
-//
-// @param request - InstallBackupClientsRequest
-//
-// @return InstallBackupClientsResponse
-func (client *Client) InstallBackupClients(request *InstallBackupClientsRequest) (_result *InstallBackupClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InstallBackupClientsResponse{}
-	_body, _err := client.InstallBackupClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates Cloud Backup.
-//
-// @param request - OpenHbrServiceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return OpenHbrServiceResponse
-func (client *Client) OpenHbrServiceWithOptions(runtime *dara.RuntimeOptions) (_result *OpenHbrServiceResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("OpenHbrService"),
-		Version:     dara.String("2017-09-08"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &OpenHbrServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Activates Cloud Backup.
-//
-// @return OpenHbrServiceResponse
-func (client *Client) OpenHbrService() (_result *OpenHbrServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenHbrServiceResponse{}
-	_body, _err := client.OpenHbrServiceWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5589,7 +4125,7 @@ func (client *Client) OpenHbrService() (_result *OpenHbrServiceResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchHistoricalSnapshotsResponse
-func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistoricalSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *SearchHistoricalSnapshotsResponse, _err error) {
+func (client *Client) SearchHistoricalSnapshotsWithContext(ctx context.Context, tmpReq *SearchHistoricalSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *SearchHistoricalSnapshotsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5640,29 +4176,11 @@ func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistori
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchHistoricalSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about one or more backup snapshots that meet the specified conditions.
-//
-// @param request - SearchHistoricalSnapshotsRequest
-//
-// @return SearchHistoricalSnapshotsResponse
-func (client *Client) SearchHistoricalSnapshots(request *SearchHistoricalSnapshotsRequest) (_result *SearchHistoricalSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SearchHistoricalSnapshotsResponse{}
-	_body, _err := client.SearchHistoricalSnapshotsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5679,7 +4197,7 @@ func (client *Client) SearchHistoricalSnapshots(request *SearchHistoricalSnapsho
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartHanaDatabaseAsyncResponse
-func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDatabaseAsyncRequest, runtime *dara.RuntimeOptions) (_result *StartHanaDatabaseAsyncResponse, _err error) {
+func (client *Client) StartHanaDatabaseAsyncWithContext(ctx context.Context, request *StartHanaDatabaseAsyncRequest, runtime *dara.RuntimeOptions) (_result *StartHanaDatabaseAsyncResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5712,33 +4230,11 @@ func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDataba
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartHanaDatabaseAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts an SAP HANA database.
-//
-// Description:
-//
-// To stop the database again, call the StopHanaDatabaseAsync operation.
-//
-// @param request - StartHanaDatabaseAsyncRequest
-//
-// @return StartHanaDatabaseAsyncResponse
-func (client *Client) StartHanaDatabaseAsync(request *StartHanaDatabaseAsyncRequest) (_result *StartHanaDatabaseAsyncResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartHanaDatabaseAsyncResponse{}
-	_body, _err := client.StartHanaDatabaseAsyncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5755,7 +4251,7 @@ func (client *Client) StartHanaDatabaseAsync(request *StartHanaDatabaseAsyncRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopHanaDatabaseAsyncResponse
-func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabaseAsyncRequest, runtime *dara.RuntimeOptions) (_result *StopHanaDatabaseAsyncResponse, _err error) {
+func (client *Client) StopHanaDatabaseAsyncWithContext(ctx context.Context, request *StopHanaDatabaseAsyncRequest, runtime *dara.RuntimeOptions) (_result *StopHanaDatabaseAsyncResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5788,33 +4284,11 @@ func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabase
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopHanaDatabaseAsyncResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops an SAP HANA database.
-//
-// Description:
-//
-// To start the database again, call the StartHanaDatabaseAsync operation.
-//
-// @param request - StopHanaDatabaseAsyncRequest
-//
-// @return StopHanaDatabaseAsyncResponse
-func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncRequest) (_result *StopHanaDatabaseAsyncResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopHanaDatabaseAsyncResponse{}
-	_body, _err := client.StopHanaDatabaseAsyncWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5835,7 +4309,7 @@ func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallBackupClientsResponse
-func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *UninstallBackupClientsResponse, _err error) {
+func (client *Client) UninstallBackupClientsWithContext(ctx context.Context, tmpReq *UninstallBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *UninstallBackupClientsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5886,37 +4360,11 @@ func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupC
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Uninstalls a Cloud Backup client from one or more Elastic Compute Service (ECS) instance.
-//
-// Description:
-//
-//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
-//
-//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
-//
-//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
-//
-// @param request - UninstallBackupClientsRequest
-//
-// @return UninstallBackupClientsResponse
-func (client *Client) UninstallBackupClients(request *UninstallBackupClientsRequest) (_result *UninstallBackupClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UninstallBackupClientsResponse{}
-	_body, _err := client.UninstallBackupClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5933,7 +4381,7 @@ func (client *Client) UninstallBackupClients(request *UninstallBackupClientsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallClientResponse
-func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest, runtime *dara.RuntimeOptions) (_result *UninstallClientResponse, _err error) {
+func (client *Client) UninstallClientWithContext(ctx context.Context, request *UninstallClientRequest, runtime *dara.RuntimeOptions) (_result *UninstallClientResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5966,33 +4414,11 @@ func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Uninstalls an HBR client.
-//
-// Description:
-//
-// If you call this operation, the specified HBR client is uninstalled. To reinstall the HBR client, call the CreateClients operation.
-//
-// @param request - UninstallClientRequest
-//
-// @return UninstallClientResponse
-func (client *Client) UninstallClient(request *UninstallClientRequest) (_result *UninstallClientResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UninstallClientResponse{}
-	_body, _err := client.UninstallClientWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6005,7 +4431,7 @@ func (client *Client) UninstallClient(request *UninstallClientRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateBackupPlanResponse
-func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateBackupPlanResponse, _err error) {
+func (client *Client) UpdateBackupPlanWithContext(ctx context.Context, tmpReq *UpdateBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateBackupPlanResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6110,29 +4536,11 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a backup plan.
-//
-// @param request - UpdateBackupPlanRequest
-//
-// @return UpdateBackupPlanResponse
-func (client *Client) UpdateBackupPlan(request *UpdateBackupPlanRequest) (_result *UpdateBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateBackupPlanResponse{}
-	_body, _err := client.UpdateBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6149,7 +4557,7 @@ func (client *Client) UpdateBackupPlan(request *UpdateBackupPlanRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateClientSettingsResponse
-func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSettingsRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientSettingsResponse, _err error) {
+func (client *Client) UpdateClientSettingsWithContext(ctx context.Context, request *UpdateClientSettingsRequest, runtime *dara.RuntimeOptions) (_result *UpdateClientSettingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6226,33 +4634,11 @@ func (client *Client) UpdateClientSettingsWithOptions(request *UpdateClientSetti
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateClientSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configurations of an HBR client.
-//
-// Description:
-//
-// You can call this operation to update the configurations of both the old and new HBR clients.
-//
-// @param request - UpdateClientSettingsRequest
-//
-// @return UpdateClientSettingsResponse
-func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest) (_result *UpdateClientSettingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateClientSettingsResponse{}
-	_body, _err := client.UpdateClientSettingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6265,7 +4651,7 @@ func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateContainerClusterResponse
-func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateContainerClusterResponse, _err error) {
+func (client *Client) UpdateContainerClusterWithContext(ctx context.Context, request *UpdateContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateContainerClusterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6306,29 +4692,11 @@ func (client *Client) UpdateContainerClusterWithOptions(request *UpdateContainer
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateContainerClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update container cluster information, including the container cluster name, network type, etc.
-//
-// @param request - UpdateContainerClusterRequest
-//
-// @return UpdateContainerClusterResponse
-func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequest) (_result *UpdateContainerClusterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateContainerClusterResponse{}
-	_body, _err := client.UpdateContainerClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6351,7 +4719,7 @@ func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHanaBackupPlanResponse
-func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaBackupPlanResponse, _err error) {
+func (client *Client) UpdateHanaBackupPlanWithContext(ctx context.Context, request *UpdateHanaBackupPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaBackupPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6400,39 +4768,11 @@ func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHanaBackupPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an SAP HANA backup plan.
-//
-// Description:
-//
-//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
-//
-//		- You can specify only one type of data source in a backup plan.
-//
-//		- You can specify only one interval as a backup cycle in a backup plan.
-//
-//		- Each backup plan allows you to back up data to only one backup vault.
-//
-// @param request - UpdateHanaBackupPlanRequest
-//
-// @return UpdateHanaBackupPlanResponse
-func (client *Client) UpdateHanaBackupPlan(request *UpdateHanaBackupPlanRequest) (_result *UpdateHanaBackupPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateHanaBackupPlanResponse{}
-	_body, _err := client.UpdateHanaBackupPlanWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6449,7 +4789,7 @@ func (client *Client) UpdateHanaBackupPlan(request *UpdateHanaBackupPlanRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHanaBackupSettingResponse
-func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBackupSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaBackupSettingResponse, _err error) {
+func (client *Client) UpdateHanaBackupSettingWithContext(ctx context.Context, request *UpdateHanaBackupSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaBackupSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6510,33 +4850,11 @@ func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBack
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHanaBackupSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the backup parameters of an SAP HANA database.
-//
-// Description:
-//
-// You can call the UpdateHanaRetentionSetting operation to update the backup retention period of a database.
-//
-// @param request - UpdateHanaBackupSettingRequest
-//
-// @return UpdateHanaBackupSettingResponse
-func (client *Client) UpdateHanaBackupSetting(request *UpdateHanaBackupSettingRequest) (_result *UpdateHanaBackupSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateHanaBackupSettingResponse{}
-	_body, _err := client.UpdateHanaBackupSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6549,7 +4867,7 @@ func (client *Client) UpdateHanaBackupSetting(request *UpdateHanaBackupSettingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHanaInstanceResponse
-func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaInstanceResponse, _err error) {
+func (client *Client) UpdateHanaInstanceWithContext(ctx context.Context, request *UpdateHanaInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6614,29 +4932,11 @@ func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHanaInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an SAP HANA instance.
-//
-// @param request - UpdateHanaInstanceRequest
-//
-// @return UpdateHanaInstanceResponse
-func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_result *UpdateHanaInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateHanaInstanceResponse{}
-	_body, _err := client.UpdateHanaInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6655,7 +4955,7 @@ func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateHanaRetentionSettingResponse
-func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaRetentionSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaRetentionSettingResponse, _err error) {
+func (client *Client) UpdateHanaRetentionSettingWithContext(ctx context.Context, request *UpdateHanaRetentionSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateHanaRetentionSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6700,35 +5000,11 @@ func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateHanaRetentionSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the backup retention period of an SAP HANA database.
-//
-// Description:
-//
-//	  If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
-//
-//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
-//
-// @param request - UpdateHanaRetentionSettingRequest
-//
-// @return UpdateHanaRetentionSettingResponse
-func (client *Client) UpdateHanaRetentionSetting(request *UpdateHanaRetentionSettingRequest) (_result *UpdateHanaRetentionSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateHanaRetentionSettingResponse{}
-	_body, _err := client.UpdateHanaRetentionSettingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6741,7 +5017,7 @@ func (client *Client) UpdateHanaRetentionSetting(request *UpdateHanaRetentionSet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePolicyBindingResponse
-func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBindingRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolicyBindingResponse, _err error) {
+func (client *Client) UpdatePolicyBindingWithContext(ctx context.Context, tmpReq *UpdatePolicyBindingRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolicyBindingResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6810,29 +5086,11 @@ func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBinding
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePolicyBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the association between a backup policy and a data source.
-//
-// @param request - UpdatePolicyBindingRequest
-//
-// @return UpdatePolicyBindingResponse
-func (client *Client) UpdatePolicyBinding(request *UpdatePolicyBindingRequest) (_result *UpdatePolicyBindingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePolicyBindingResponse{}
-	_body, _err := client.UpdatePolicyBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6849,7 +5107,7 @@ func (client *Client) UpdatePolicyBinding(request *UpdatePolicyBindingRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePolicyV2Response
-func (client *Client) UpdatePolicyV2WithOptions(tmpReq *UpdatePolicyV2Request, runtime *dara.RuntimeOptions) (_result *UpdatePolicyV2Response, _err error) {
+func (client *Client) UpdatePolicyV2WithContext(ctx context.Context, tmpReq *UpdatePolicyV2Request, runtime *dara.RuntimeOptions) (_result *UpdatePolicyV2Response, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6892,33 +5150,11 @@ func (client *Client) UpdatePolicyV2WithOptions(tmpReq *UpdatePolicyV2Request, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePolicyV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a backup policy.
-//
-// Description:
-//
-// If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
-//
-// @param request - UpdatePolicyV2Request
-//
-// @return UpdatePolicyV2Response
-func (client *Client) UpdatePolicyV2(request *UpdatePolicyV2Request) (_result *UpdatePolicyV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePolicyV2Response{}
-	_body, _err := client.UpdatePolicyV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6931,7 +5167,7 @@ func (client *Client) UpdatePolicyV2(request *UpdatePolicyV2Request) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateVaultResponse
-func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtime *dara.RuntimeOptions) (_result *UpdateVaultResponse, _err error) {
+func (client *Client) UpdateVaultWithContext(ctx context.Context, request *UpdateVaultRequest, runtime *dara.RuntimeOptions) (_result *UpdateVaultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6972,29 +5208,11 @@ func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVaultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configuration information about the backup vault.
-//
-// @param request - UpdateVaultRequest
-//
-// @return UpdateVaultResponse
-func (client *Client) UpdateVault(request *UpdateVaultRequest) (_result *UpdateVaultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateVaultResponse{}
-	_body, _err := client.UpdateVaultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7015,7 +5233,7 @@ func (client *Client) UpdateVault(request *UpdateVaultRequest) (_result *UpdateV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeBackupClientsResponse
-func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *UpgradeBackupClientsResponse, _err error) {
+func (client *Client) UpgradeBackupClientsWithContext(ctx context.Context, tmpReq *UpgradeBackupClientsRequest, runtime *dara.RuntimeOptions) (_result *UpgradeBackupClientsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7066,37 +5284,11 @@ func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClien
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeBackupClientsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades an HBR client on one or more Elastic Compute Service (ECS) instances.
-//
-// Description:
-//
-//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
-//
-//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
-//
-//		- The timeout period of an asynchronous job is 15 minutes.
-//
-// @param request - UpgradeBackupClientsRequest
-//
-// @return UpgradeBackupClientsResponse
-func (client *Client) UpgradeBackupClients(request *UpgradeBackupClientsRequest) (_result *UpgradeBackupClientsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeBackupClientsResponse{}
-	_body, _err := client.UpgradeBackupClientsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7113,7 +5305,7 @@ func (client *Client) UpgradeBackupClients(request *UpgradeBackupClientsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeClientResponse
-func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, runtime *dara.RuntimeOptions) (_result *UpgradeClientResponse, _err error) {
+func (client *Client) UpgradeClientWithContext(ctx context.Context, request *UpgradeClientRequest, runtime *dara.RuntimeOptions) (_result *UpgradeClientResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7146,32 +5338,10 @@ func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeClientResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades the Cloud Backup client.
-//
-// Description:
-//
-// You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
-//
-// @param request - UpgradeClientRequest
-//
-// @return UpgradeClientResponse
-func (client *Client) UpgradeClient(request *UpgradeClientRequest) (_result *UpgradeClientResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeClientResponse{}
-	_body, _err := client.UpgradeClientWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
