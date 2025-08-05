@@ -81,6 +81,8 @@ type iDescribeDtsJobDetailResponseBody interface {
 	GetGroupId() *string
 	SetHttpStatusCode(v int32) *DescribeDtsJobDetailResponseBody
 	GetHttpStatusCode() *int32
+	SetInitCheckpoint(v string) *DescribeDtsJobDetailResponseBody
+	GetInitCheckpoint() *string
 	SetJobType(v string) *DescribeDtsJobDetailResponseBody
 	GetJobType() *string
 	SetLastUpdateTime(v string) *DescribeDtsJobDetailResponseBody
@@ -357,7 +359,8 @@ type DescribeDtsJobDetailResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	InitCheckpoint *string `json:"InitCheckpoint,omitempty" xml:"InitCheckpoint,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
 	// 	- **sync**: a data synchronization task.
@@ -676,6 +679,10 @@ func (s *DescribeDtsJobDetailResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
 
+func (s *DescribeDtsJobDetailResponseBody) GetInitCheckpoint() *string {
+	return s.InitCheckpoint
+}
+
 func (s *DescribeDtsJobDetailResponseBody) GetJobType() *string {
 	return s.JobType
 }
@@ -937,6 +944,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetGroupId(v string) *DescribeDtsJobD
 
 func (s *DescribeDtsJobDetailResponseBody) SetHttpStatusCode(v int32) *DescribeDtsJobDetailResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetInitCheckpoint(v string) *DescribeDtsJobDetailResponseBody {
+	s.InitCheckpoint = &v
 	return s
 }
 
