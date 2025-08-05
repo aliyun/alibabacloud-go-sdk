@@ -37,6 +37,8 @@ type iUploadDocumentAsyncShrinkRequest interface {
 	GetRegionId() *string
 	SetSeparatorsShrink(v string) *UploadDocumentAsyncShrinkRequest
 	GetSeparatorsShrink() *string
+	SetSplitterModel(v string) *UploadDocumentAsyncShrinkRequest
+	GetSplitterModel() *string
 	SetTextSplitterName(v string) *UploadDocumentAsyncShrinkRequest
 	GetTextSplitterName() *string
 	SetVlEnhance(v bool) *UploadDocumentAsyncShrinkRequest
@@ -171,6 +173,7 @@ type UploadDocumentAsyncShrinkRequest struct {
 	//
 	// 	- In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
 	SeparatorsShrink *string `json:"Separators,omitempty" xml:"Separators,omitempty"`
+	SplitterModel    *string `json:"SplitterModel,omitempty" xml:"SplitterModel,omitempty"`
 	// The name of the splitter. Valid values:
 	//
 	// 	- **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -260,6 +263,10 @@ func (s *UploadDocumentAsyncShrinkRequest) GetSeparatorsShrink() *string {
 	return s.SeparatorsShrink
 }
 
+func (s *UploadDocumentAsyncShrinkRequest) GetSplitterModel() *string {
+	return s.SplitterModel
+}
+
 func (s *UploadDocumentAsyncShrinkRequest) GetTextSplitterName() *string {
 	return s.TextSplitterName
 }
@@ -339,6 +346,11 @@ func (s *UploadDocumentAsyncShrinkRequest) SetRegionId(v string) *UploadDocument
 
 func (s *UploadDocumentAsyncShrinkRequest) SetSeparatorsShrink(v string) *UploadDocumentAsyncShrinkRequest {
 	s.SeparatorsShrink = &v
+	return s
+}
+
+func (s *UploadDocumentAsyncShrinkRequest) SetSplitterModel(v string) *UploadDocumentAsyncShrinkRequest {
+	s.SplitterModel = &v
 	return s
 }
 

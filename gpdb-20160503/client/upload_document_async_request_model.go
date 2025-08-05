@@ -37,6 +37,8 @@ type iUploadDocumentAsyncRequest interface {
 	GetRegionId() *string
 	SetSeparators(v []*string) *UploadDocumentAsyncRequest
 	GetSeparators() []*string
+	SetSplitterModel(v string) *UploadDocumentAsyncRequest
+	GetSplitterModel() *string
 	SetTextSplitterName(v string) *UploadDocumentAsyncRequest
 	GetTextSplitterName() *string
 	SetVlEnhance(v bool) *UploadDocumentAsyncRequest
@@ -170,7 +172,8 @@ type UploadDocumentAsyncRequest struct {
 	// 	- This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
 	//
 	// 	- In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
-	Separators []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	Separators    []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	SplitterModel *string   `json:"SplitterModel,omitempty" xml:"SplitterModel,omitempty"`
 	// The name of the splitter. Valid values:
 	//
 	// 	- **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -260,6 +263,10 @@ func (s *UploadDocumentAsyncRequest) GetSeparators() []*string {
 	return s.Separators
 }
 
+func (s *UploadDocumentAsyncRequest) GetSplitterModel() *string {
+	return s.SplitterModel
+}
+
 func (s *UploadDocumentAsyncRequest) GetTextSplitterName() *string {
 	return s.TextSplitterName
 }
@@ -339,6 +346,11 @@ func (s *UploadDocumentAsyncRequest) SetRegionId(v string) *UploadDocumentAsyncR
 
 func (s *UploadDocumentAsyncRequest) SetSeparators(v []*string) *UploadDocumentAsyncRequest {
 	s.Separators = v
+	return s
+}
+
+func (s *UploadDocumentAsyncRequest) SetSplitterModel(v string) *UploadDocumentAsyncRequest {
+	s.SplitterModel = &v
 	return s
 }
 

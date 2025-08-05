@@ -38,6 +38,8 @@ type iUploadDocumentAsyncAdvanceRequest interface {
 	GetRegionId() *string
 	SetSeparators(v []*string) *UploadDocumentAsyncAdvanceRequest
 	GetSeparators() []*string
+	SetSplitterModel(v string) *UploadDocumentAsyncAdvanceRequest
+	GetSplitterModel() *string
 	SetTextSplitterName(v string) *UploadDocumentAsyncAdvanceRequest
 	GetTextSplitterName() *string
 	SetVlEnhance(v bool) *UploadDocumentAsyncAdvanceRequest
@@ -171,7 +173,8 @@ type UploadDocumentAsyncAdvanceRequest struct {
 	// 	- This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
 	//
 	// 	- In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
-	Separators []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	Separators    []*string `json:"Separators,omitempty" xml:"Separators,omitempty" type:"Repeated"`
+	SplitterModel *string   `json:"SplitterModel,omitempty" xml:"SplitterModel,omitempty"`
 	// The name of the splitter. Valid values:
 	//
 	// 	- **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -261,6 +264,10 @@ func (s *UploadDocumentAsyncAdvanceRequest) GetSeparators() []*string {
 	return s.Separators
 }
 
+func (s *UploadDocumentAsyncAdvanceRequest) GetSplitterModel() *string {
+	return s.SplitterModel
+}
+
 func (s *UploadDocumentAsyncAdvanceRequest) GetTextSplitterName() *string {
 	return s.TextSplitterName
 }
@@ -340,6 +347,11 @@ func (s *UploadDocumentAsyncAdvanceRequest) SetRegionId(v string) *UploadDocumen
 
 func (s *UploadDocumentAsyncAdvanceRequest) SetSeparators(v []*string) *UploadDocumentAsyncAdvanceRequest {
 	s.Separators = v
+	return s
+}
+
+func (s *UploadDocumentAsyncAdvanceRequest) SetSplitterModel(v string) *UploadDocumentAsyncAdvanceRequest {
+	s.SplitterModel = &v
 	return s
 }
 

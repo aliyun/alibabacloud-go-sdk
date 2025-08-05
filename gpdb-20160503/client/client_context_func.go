@@ -13403,6 +13403,10 @@ func (client *Client) UploadDocumentAsyncWithContext(ctx context.Context, tmpReq
 		body["Separators"] = request.SeparatorsShrink
 	}
 
+	if !dara.IsNil(request.SplitterModel) {
+		body["SplitterModel"] = request.SplitterModel
+	}
+
 	if !dara.IsNil(request.TextSplitterName) {
 		body["TextSplitterName"] = request.TextSplitterName
 	}
