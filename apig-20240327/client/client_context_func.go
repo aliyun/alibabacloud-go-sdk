@@ -164,6 +164,79 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// # CreateAndAttachPolicy
+//
+// @param request - CreateAndAttachPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAndAttachPolicyResponse
+func (client *Client) CreateAndAttachPolicyWithContext(ctx context.Context, request *CreateAndAttachPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAndAttachPolicyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttachResourceIds) {
+		body["attachResourceIds"] = request.AttachResourceIds
+	}
+
+	if !dara.IsNil(request.AttachResourceType) {
+		body["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !dara.IsNil(request.ClassName) {
+		body["className"] = request.ClassName
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAndAttachPolicy"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/policies"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAndAttachPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建消费者
 //
 // @param request - CreateConsumerRequest
@@ -2997,6 +3070,71 @@ func (client *Client) ListPluginsWithContext(ctx context.Context, request *ListP
 
 // Summary:
 //
+// # ListPolicies
+//
+// @param request - ListPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
+func (client *Client) ListPoliciesWithContext(ctx context.Context, request *ListPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttachResourceId) {
+		query["attachResourceId"] = request.AttachResourceId
+	}
+
+	if !dara.IsNil(request.AttachResourceType) {
+		query["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		query["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.WithAttachments) {
+		query["withAttachments"] = request.WithAttachments
+	}
+
+	if !dara.IsNil(request.WithSystemPolicy) {
+		query["withSystemPolicy"] = request.WithSystemPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolicies"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/policies"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # ListPolicyClasses
 //
 // @param request - ListPolicyClassesRequest
@@ -3376,7 +3514,7 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 
 // Summary:
 //
-// 取消部署HttpApi
+// Unpublishes an HTTP API.
 //
 // @param request - UndeployHttpApiRequest
 //
@@ -3423,6 +3561,75 @@ func (client *Client) UndeployHttpApiWithContext(ctx context.Context, httpApiId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UndeployHttpApiResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UpdateAndAttachPolicy
+//
+// @param request - UpdateAndAttachPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAndAttachPolicyResponse
+func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, policyId *string, request *UpdateAndAttachPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAndAttachPolicyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AttachResourceIds) {
+		body["attachResourceIds"] = request.AttachResourceIds
+	}
+
+	if !dara.IsNil(request.AttachResourceType) {
+		body["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAndAttachPolicy"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAndAttachPolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

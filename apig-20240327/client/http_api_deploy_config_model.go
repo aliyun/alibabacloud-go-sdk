@@ -23,6 +23,8 @@ type iHttpApiDeployConfig interface {
 	GetGatewayId() *string
 	SetGatewayInfo(v *GatewayInfo) *HttpApiDeployConfig
 	GetGatewayInfo() *GatewayInfo
+	SetGatewayType(v string) *HttpApiDeployConfig
+	GetGatewayType() *string
 	SetMock(v *HttpApiMockContract) *HttpApiDeployConfig
 	GetMock() *HttpApiMockContract
 	SetPolicyConfigs(v []*HttpApiDeployConfigPolicyConfigs) *HttpApiDeployConfig
@@ -53,8 +55,12 @@ type HttpApiDeployConfig struct {
 	// example:
 	//
 	// gw-xx
-	GatewayId      *string                              `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	GatewayInfo    *GatewayInfo                         `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	GatewayId   *string      `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// example:
+	//
+	// API
+	GatewayType    *string                              `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	Mock           *HttpApiMockContract                 `json:"mock,omitempty" xml:"mock,omitempty"`
 	PolicyConfigs  []*HttpApiDeployConfigPolicyConfigs  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 	RouteBackend   *Backend                             `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
@@ -96,6 +102,10 @@ func (s *HttpApiDeployConfig) GetGatewayId() *string {
 
 func (s *HttpApiDeployConfig) GetGatewayInfo() *GatewayInfo {
 	return s.GatewayInfo
+}
+
+func (s *HttpApiDeployConfig) GetGatewayType() *string {
+	return s.GatewayType
 }
 
 func (s *HttpApiDeployConfig) GetMock() *HttpApiMockContract {
@@ -150,6 +160,11 @@ func (s *HttpApiDeployConfig) SetGatewayId(v string) *HttpApiDeployConfig {
 
 func (s *HttpApiDeployConfig) SetGatewayInfo(v *GatewayInfo) *HttpApiDeployConfig {
 	s.GatewayInfo = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetGatewayType(v string) *HttpApiDeployConfig {
+	s.GatewayType = &v
 	return s
 }
 
