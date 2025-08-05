@@ -20308,6 +20308,11 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 		body["ChargeType"] = request.ChargeType
 	}
 
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DataDiskList) {
+		bodyFlat["DataDiskList"] = request.DataDiskList
+	}
+
 	if !dara.IsNil(request.DefaultLanguage) {
 		body["DefaultLanguage"] = request.DefaultLanguage
 	}
@@ -20336,7 +20341,6 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 		body["PostPaidAfterUsedUp"] = request.PostPaidAfterUsedUp
 	}
 
-	bodyFlat := map[string]interface{}{}
 	if !dara.IsNil(request.RegionConfigList) {
 		bodyFlat["RegionConfigList"] = request.RegionConfigList
 	}

@@ -15,6 +15,8 @@ type iModifyTemplateRequest interface {
 	GetAutoRenew() *bool
 	SetChargeType(v string) *ModifyTemplateRequest
 	GetChargeType() *string
+	SetDataDiskList(v []*ModifyTemplateRequestDataDiskList) *ModifyTemplateRequest
+	GetDataDiskList() []*ModifyTemplateRequestDataDiskList
 	SetDefaultLanguage(v string) *ModifyTemplateRequest
 	GetDefaultLanguage() *string
 	SetDescription(v string) *ModifyTemplateRequest
@@ -52,9 +54,10 @@ type iModifyTemplateRequest interface {
 }
 
 type ModifyTemplateRequest struct {
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	AutoPay      *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew    *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DataDiskList []*ModifyTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// zh-CN
@@ -121,6 +124,10 @@ func (s *ModifyTemplateRequest) GetAutoRenew() *bool {
 
 func (s *ModifyTemplateRequest) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *ModifyTemplateRequest) GetDataDiskList() []*ModifyTemplateRequestDataDiskList {
+	return s.DataDiskList
 }
 
 func (s *ModifyTemplateRequest) GetDefaultLanguage() *string {
@@ -203,6 +210,11 @@ func (s *ModifyTemplateRequest) SetAutoRenew(v bool) *ModifyTemplateRequest {
 
 func (s *ModifyTemplateRequest) SetChargeType(v string) *ModifyTemplateRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetDataDiskList(v []*ModifyTemplateRequestDataDiskList) *ModifyTemplateRequest {
+	s.DataDiskList = v
 	return s
 }
 
@@ -292,6 +304,41 @@ func (s *ModifyTemplateRequest) SetUserDuration(v int32) *ModifyTemplateRequest 
 }
 
 func (s *ModifyTemplateRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyTemplateRequestDataDiskList struct {
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ModifyTemplateRequestDataDiskList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyTemplateRequestDataDiskList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateRequestDataDiskList) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
+}
+
+func (s *ModifyTemplateRequestDataDiskList) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *ModifyTemplateRequestDataDiskList) SetPerformanceLevel(v string) *ModifyTemplateRequestDataDiskList {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestDataDiskList) SetSize(v int32) *ModifyTemplateRequestDataDiskList {
+	s.Size = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestDataDiskList) Validate() error {
 	return dara.Validate(s)
 }
 
