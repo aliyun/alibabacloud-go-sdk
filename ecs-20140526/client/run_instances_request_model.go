@@ -37,6 +37,8 @@ type iRunInstancesRequest interface {
 	GetAutoRenewPeriod() *int32
 	SetClientToken(v string) *RunInstancesRequest
 	GetClientToken() *string
+	SetClockOptions(v *RunInstancesRequestClockOptions) *RunInstancesRequest
+	GetClockOptions() *RunInstancesRequestClockOptions
 	SetCreditSpecification(v string) *RunInstancesRequest
 	GetCreditSpecification() *string
 	SetDataDisk(v []*RunInstancesRequestDataDisk) *RunInstancesRequest
@@ -267,7 +269,8 @@ type RunInstancesRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken  *string                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClockOptions *RunInstancesRequestClockOptions `json:"ClockOptions,omitempty" xml:"ClockOptions,omitempty" type:"Struct"`
 	// The performance mode of the burstable instance. Valid values:
 	//
 	// 	- Standard: the standard mode. For more information, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
@@ -922,6 +925,10 @@ func (s *RunInstancesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *RunInstancesRequest) GetClockOptions() *RunInstancesRequestClockOptions {
+	return s.ClockOptions
+}
+
 func (s *RunInstancesRequest) GetCreditSpecification() *string {
 	return s.CreditSpecification
 }
@@ -1241,6 +1248,11 @@ func (s *RunInstancesRequest) SetAutoRenewPeriod(v int32) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetClientToken(v string) *RunInstancesRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetClockOptions(v *RunInstancesRequestClockOptions) *RunInstancesRequest {
+	s.ClockOptions = v
 	return s
 }
 
@@ -2172,6 +2184,31 @@ func (s *RunInstancesRequestArn) SetRolearn(v string) *RunInstancesRequestArn {
 }
 
 func (s *RunInstancesRequestArn) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunInstancesRequestClockOptions struct {
+	PtpStatus *string `json:"PtpStatus,omitempty" xml:"PtpStatus,omitempty"`
+}
+
+func (s RunInstancesRequestClockOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunInstancesRequestClockOptions) GoString() string {
+	return s.String()
+}
+
+func (s *RunInstancesRequestClockOptions) GetPtpStatus() *string {
+	return s.PtpStatus
+}
+
+func (s *RunInstancesRequestClockOptions) SetPtpStatus(v string) *RunInstancesRequestClockOptions {
+	s.PtpStatus = &v
+	return s
+}
+
+func (s *RunInstancesRequestClockOptions) Validate() error {
 	return dara.Validate(s)
 }
 

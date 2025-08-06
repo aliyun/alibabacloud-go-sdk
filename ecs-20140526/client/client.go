@@ -41987,6 +41987,10 @@ func (client *Client) RunInstancesWithOptions(request *RunInstancesRequest, runt
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.ClockOptions) {
+		query["ClockOptions"] = request.ClockOptions
+	}
+
 	if !dara.IsNil(request.CreditSpecification) {
 		query["CreditSpecification"] = request.CreditSpecification
 	}

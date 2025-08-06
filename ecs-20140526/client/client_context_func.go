@@ -32298,6 +32298,10 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, request *RunI
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.ClockOptions) {
+		query["ClockOptions"] = request.ClockOptions
+	}
+
 	if !dara.IsNil(request.CreditSpecification) {
 		query["CreditSpecification"] = request.CreditSpecification
 	}

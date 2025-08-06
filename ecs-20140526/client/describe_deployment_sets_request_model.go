@@ -80,7 +80,7 @@ type DescribeDeploymentSetsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 50.
 	//
