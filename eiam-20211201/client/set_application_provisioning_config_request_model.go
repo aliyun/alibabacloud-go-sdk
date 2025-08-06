@@ -15,6 +15,8 @@ type iSetApplicationProvisioningConfigRequest interface {
 	GetCallbackProvisioningConfig() *SetApplicationProvisioningConfigRequestCallbackProvisioningConfig
 	SetInstanceId(v string) *SetApplicationProvisioningConfigRequest
 	GetInstanceId() *string
+	SetNetworkAccessEndpointId(v string) *SetApplicationProvisioningConfigRequest
+	GetNetworkAccessEndpointId() *string
 	SetProvisionPassword(v bool) *SetApplicationProvisioningConfigRequest
 	GetProvisionPassword() *bool
 	SetProvisionProtocolType(v string) *SetApplicationProvisioningConfigRequest
@@ -41,7 +43,8 @@ type SetApplicationProvisioningConfigRequest struct {
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values:
 	//
 	// 	- true: synchronize the password.
@@ -88,6 +91,10 @@ func (s *SetApplicationProvisioningConfigRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *SetApplicationProvisioningConfigRequest) GetNetworkAccessEndpointId() *string {
+	return s.NetworkAccessEndpointId
+}
+
 func (s *SetApplicationProvisioningConfigRequest) GetProvisionPassword() *bool {
 	return s.ProvisionPassword
 }
@@ -112,6 +119,11 @@ func (s *SetApplicationProvisioningConfigRequest) SetCallbackProvisioningConfig(
 
 func (s *SetApplicationProvisioningConfigRequest) SetInstanceId(v string) *SetApplicationProvisioningConfigRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *SetApplicationProvisioningConfigRequest) SetNetworkAccessEndpointId(v string) *SetApplicationProvisioningConfigRequest {
+	s.NetworkAccessEndpointId = &v
 	return s
 }
 

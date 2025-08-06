@@ -5402,6 +5402,10 @@ func (client *Client) SetApplicationProvisioningConfigWithContext(ctx context.Co
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
 	if !dara.IsNil(request.ProvisionPassword) {
 		query["ProvisionPassword"] = request.ProvisionPassword
 	}

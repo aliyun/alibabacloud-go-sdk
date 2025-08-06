@@ -80,7 +80,8 @@ type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig s
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// The public key endpoint for signature verification of the synchronization callback information.
 	//
 	// example:
@@ -145,6 +146,10 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 	return s.InstanceId
 }
 
+func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig) GetNetworkAccessEndpointId() *string {
+	return s.NetworkAccessEndpointId
+}
+
 func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig) GetProvisionJwksEndpoint() *string {
 	return s.ProvisionJwksEndpoint
 }
@@ -182,6 +187,11 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 
 func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig) SetInstanceId(v string) *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig) SetNetworkAccessEndpointId(v string) *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig {
+	s.NetworkAccessEndpointId = &v
 	return s
 }
 
