@@ -3726,6 +3726,78 @@ func (client *Client) UpdateEventStreaming(request *UpdateEventStreamingRequest)
 
 // Summary:
 //
+// 查询事件流
+//
+// @param request - UpdateEventStreamingBusinessOptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEventStreamingBusinessOptionResponse
+func (client *Client) UpdateEventStreamingBusinessOptionWithOptions(request *UpdateEventStreamingBusinessOptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventStreamingBusinessOptionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessMode) {
+		body["BusinessMode"] = request.BusinessMode
+	}
+
+	if !dara.IsNil(request.EventStreamingName) {
+		body["EventStreamingName"] = request.EventStreamingName
+	}
+
+	if !dara.IsNil(request.MaxCapacityUnitCount) {
+		body["MaxCapacityUnitCount"] = request.MaxCapacityUnitCount
+	}
+
+	if !dara.IsNil(request.MinCapacityUnitCount) {
+		body["MinCapacityUnitCount"] = request.MinCapacityUnitCount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEventStreamingBusinessOption"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEventStreamingBusinessOptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件流
+//
+// @param request - UpdateEventStreamingBusinessOptionRequest
+//
+// @return UpdateEventStreamingBusinessOptionResponse
+func (client *Client) UpdateEventStreamingBusinessOption(request *UpdateEventStreamingBusinessOptionRequest) (_result *UpdateEventStreamingBusinessOptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateEventStreamingBusinessOptionResponse{}
+	_body, _err := client.UpdateEventStreamingBusinessOptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the configurations of an event rule.
 //
 // Description:
