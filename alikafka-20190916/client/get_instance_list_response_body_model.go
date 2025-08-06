@@ -158,7 +158,8 @@ type GetInstanceListResponseBodyInstanceListInstanceVO struct {
 	// cn-hangzhou-a
 	BackupZoneId *string `json:"BackupZoneId,omitempty" xml:"BackupZoneId,omitempty"`
 	// The parameters that are returned for the ApsaraMQ for Confluent instance.
-	ConfluentConfig *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
+	ConfluentConfig             *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig             `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
+	ConfluentInstanceComponents *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents `json:"ConfluentInstanceComponents,omitempty" xml:"ConfluentInstanceComponents,omitempty" type:"Struct"`
 	// The time when the instance was created. Unit: milliseconds.
 	//
 	// example:
@@ -566,6 +567,10 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetConfluentConfig()
 	return s.ConfluentConfig
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetConfluentInstanceComponents() *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents {
+	return s.ConfluentInstanceComponents
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -768,6 +773,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetBackupZoneId(v st
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetConfluentConfig(v *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) *GetInstanceListResponseBodyInstanceListInstanceVO {
 	s.ConfluentConfig = v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVO) SetConfluentInstanceComponents(v *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) *GetInstanceListResponseBodyInstanceListInstanceVO {
+	s.ConfluentInstanceComponents = v
 	return s
 }
 
@@ -1282,6 +1292,86 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetZo
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents struct {
+	ConfluentInstanceComponentVO []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO `json:"ConfluentInstanceComponentVO,omitempty" xml:"ConfluentInstanceComponentVO,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) GetConfluentInstanceComponentVO() []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	return s.ConfluentInstanceComponentVO
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) SetConfluentInstanceComponentVO(v []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents {
+	s.ConfluentInstanceComponentVO = v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO struct {
+	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
+	DeployModule  *string `json:"DeployModule,omitempty" xml:"DeployModule,omitempty"`
+	PubEndpoint   *string `json:"PubEndpoint,omitempty" xml:"PubEndpoint,omitempty"`
+	VpcEndpoint   *string `json:"VpcEndpoint,omitempty" xml:"VpcEndpoint,omitempty"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GetComponentType() *string {
+	return s.ComponentType
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GetDeployModule() *string {
+	return s.DeployModule
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GetPubEndpoint() *string {
+	return s.PubEndpoint
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GetVpcEndpoint() *string {
+	return s.VpcEndpoint
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetComponentType(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	s.ComponentType = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetDeployModule(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	s.DeployModule = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetPubEndpoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	s.PubEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetVpcEndpoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	s.VpcEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) Validate() error {
 	return dara.Validate(s)
 }
 
