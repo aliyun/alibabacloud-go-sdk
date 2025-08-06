@@ -1642,6 +1642,10 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
 	if !dara.IsNil(request.QuotaId) {
 		query["QuotaId"] = request.QuotaId
 	}

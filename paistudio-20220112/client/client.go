@@ -2308,6 +2308,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PaymentType) {
+		query["PaymentType"] = request.PaymentType
+	}
+
 	if !dara.IsNil(request.QuotaId) {
 		query["QuotaId"] = request.QuotaId
 	}

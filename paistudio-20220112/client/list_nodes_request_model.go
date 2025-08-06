@@ -37,6 +37,8 @@ type iListNodesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListNodesRequest
 	GetPageSize() *int32
+	SetPaymentType(v string) *ListNodesRequest
+	GetPaymentType() *string
 	SetQuotaId(v string) *ListNodesRequest
 	GetQuotaId() *string
 	SetReasonCodes(v string) *ListNodesRequest
@@ -96,7 +98,8 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -178,6 +181,10 @@ func (s *ListNodesRequest) GetPageNumber() *int32 {
 
 func (s *ListNodesRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListNodesRequest) GetPaymentType() *string {
+	return s.PaymentType
 }
 
 func (s *ListNodesRequest) GetQuotaId() *string {
@@ -267,6 +274,11 @@ func (s *ListNodesRequest) SetPageNumber(v int32) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetPageSize(v int32) *ListNodesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetPaymentType(v string) *ListNodesRequest {
+	s.PaymentType = &v
 	return s
 }
 

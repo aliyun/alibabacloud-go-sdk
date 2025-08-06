@@ -37,6 +37,8 @@ type iQuotaConfig interface {
 	GetSupportGPUDrivers() []*string
 	SetSupportRDMA(v bool) *QuotaConfig
 	GetSupportRDMA() *bool
+	SetUseCase(v string) *QuotaConfig
+	GetUseCase() *string
 	SetUserVpc(v *UserVpc) *QuotaConfig
 	GetUserVpc() *UserVpc
 }
@@ -65,6 +67,7 @@ type QuotaConfig struct {
 	//
 	// false
 	SupportRDMA *bool    `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	UseCase     *string  `json:"UseCase,omitempty" xml:"UseCase,omitempty"`
 	UserVpc     *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 
@@ -130,6 +133,10 @@ func (s *QuotaConfig) GetSupportGPUDrivers() []*string {
 
 func (s *QuotaConfig) GetSupportRDMA() *bool {
 	return s.SupportRDMA
+}
+
+func (s *QuotaConfig) GetUseCase() *string {
+	return s.UseCase
 }
 
 func (s *QuotaConfig) GetUserVpc() *UserVpc {
@@ -203,6 +210,11 @@ func (s *QuotaConfig) SetSupportGPUDrivers(v []*string) *QuotaConfig {
 
 func (s *QuotaConfig) SetSupportRDMA(v bool) *QuotaConfig {
 	s.SupportRDMA = &v
+	return s
+}
+
+func (s *QuotaConfig) SetUseCase(v string) *QuotaConfig {
+	s.UseCase = &v
 	return s
 }
 
