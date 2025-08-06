@@ -35,6 +35,10 @@ type iCreateTodoTaskRequest interface {
 	GetParticipantIds() []*string
 	SetPriority(v int32) *CreateTodoTaskRequest
 	GetPriority() *int32
+	SetRemindNotifyConfigs(v *CreateTodoTaskRequestRemindNotifyConfigs) *CreateTodoTaskRequest
+	GetRemindNotifyConfigs() *CreateTodoTaskRequestRemindNotifyConfigs
+	SetReminderTimeStamp(v int64) *CreateTodoTaskRequest
+	GetReminderTimeStamp() *int64
 	SetSourceId(v string) *CreateTodoTaskRequest
 	GetSourceId() *string
 	SetSubject(v string) *CreateTodoTaskRequest
@@ -72,7 +76,12 @@ type CreateTodoTaskRequest struct {
 	// example:
 	//
 	// 20
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	Priority            *int32                                    `json:"priority,omitempty" xml:"priority,omitempty"`
+	RemindNotifyConfigs *CreateTodoTaskRequestRemindNotifyConfigs `json:"remindNotifyConfigs,omitempty" xml:"remindNotifyConfigs,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1754364432000
+	ReminderTimeStamp *int64 `json:"reminderTimeStamp,omitempty" xml:"reminderTimeStamp,omitempty"`
 	// example:
 	//
 	// isv_dingtalkTodo1
@@ -145,6 +154,14 @@ func (s *CreateTodoTaskRequest) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *CreateTodoTaskRequest) GetRemindNotifyConfigs() *CreateTodoTaskRequestRemindNotifyConfigs {
+	return s.RemindNotifyConfigs
+}
+
+func (s *CreateTodoTaskRequest) GetReminderTimeStamp() *int64 {
+	return s.ReminderTimeStamp
+}
+
 func (s *CreateTodoTaskRequest) GetSourceId() *string {
 	return s.SourceId
 }
@@ -215,6 +232,16 @@ func (s *CreateTodoTaskRequest) SetParticipantIds(v []*string) *CreateTodoTaskRe
 
 func (s *CreateTodoTaskRequest) SetPriority(v int32) *CreateTodoTaskRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetRemindNotifyConfigs(v *CreateTodoTaskRequestRemindNotifyConfigs) *CreateTodoTaskRequest {
+	s.RemindNotifyConfigs = v
+	return s
+}
+
+func (s *CreateTodoTaskRequest) SetReminderTimeStamp(v int64) *CreateTodoTaskRequest {
+	s.ReminderTimeStamp = &v
 	return s
 }
 
@@ -471,6 +498,14 @@ type CreateTodoTaskRequestNotifyConfigs struct {
 	//
 	// 1
 	DingNotify *string `json:"dingNotify,omitempty" xml:"dingNotify,omitempty"`
+	// example:
+	//
+	// true
+	SendAssistantChat *string `json:"sendAssistantChat,omitempty" xml:"sendAssistantChat,omitempty"`
+	// example:
+	//
+	// true
+	SendTodoApn *string `json:"sendTodoApn,omitempty" xml:"sendTodoApn,omitempty"`
 }
 
 func (s CreateTodoTaskRequestNotifyConfigs) String() string {
@@ -485,11 +520,70 @@ func (s *CreateTodoTaskRequestNotifyConfigs) GetDingNotify() *string {
 	return s.DingNotify
 }
 
+func (s *CreateTodoTaskRequestNotifyConfigs) GetSendAssistantChat() *string {
+	return s.SendAssistantChat
+}
+
+func (s *CreateTodoTaskRequestNotifyConfigs) GetSendTodoApn() *string {
+	return s.SendTodoApn
+}
+
 func (s *CreateTodoTaskRequestNotifyConfigs) SetDingNotify(v string) *CreateTodoTaskRequestNotifyConfigs {
 	s.DingNotify = &v
 	return s
 }
 
+func (s *CreateTodoTaskRequestNotifyConfigs) SetSendAssistantChat(v string) *CreateTodoTaskRequestNotifyConfigs {
+	s.SendAssistantChat = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestNotifyConfigs) SetSendTodoApn(v string) *CreateTodoTaskRequestNotifyConfigs {
+	s.SendTodoApn = &v
+	return s
+}
+
 func (s *CreateTodoTaskRequestNotifyConfigs) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateTodoTaskRequestRemindNotifyConfigs struct {
+	// example:
+	//
+	// 1
+	DingNotify *string `json:"dingNotify,omitempty" xml:"dingNotify,omitempty"`
+	// example:
+	//
+	// true
+	SendTodoApn *string `json:"sendTodoApn,omitempty" xml:"sendTodoApn,omitempty"`
+}
+
+func (s CreateTodoTaskRequestRemindNotifyConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateTodoTaskRequestRemindNotifyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTodoTaskRequestRemindNotifyConfigs) GetDingNotify() *string {
+	return s.DingNotify
+}
+
+func (s *CreateTodoTaskRequestRemindNotifyConfigs) GetSendTodoApn() *string {
+	return s.SendTodoApn
+}
+
+func (s *CreateTodoTaskRequestRemindNotifyConfigs) SetDingNotify(v string) *CreateTodoTaskRequestRemindNotifyConfigs {
+	s.DingNotify = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestRemindNotifyConfigs) SetSendTodoApn(v string) *CreateTodoTaskRequestRemindNotifyConfigs {
+	s.SendTodoApn = &v
+	return s
+}
+
+func (s *CreateTodoTaskRequestRemindNotifyConfigs) Validate() error {
 	return dara.Validate(s)
 }

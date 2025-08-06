@@ -35,6 +35,10 @@ type iCreateTodoTaskShrinkRequest interface {
 	GetParticipantIdsShrink() *string
 	SetPriority(v int32) *CreateTodoTaskShrinkRequest
 	GetPriority() *int32
+	SetRemindNotifyConfigsShrink(v string) *CreateTodoTaskShrinkRequest
+	GetRemindNotifyConfigsShrink() *string
+	SetReminderTimeStamp(v int64) *CreateTodoTaskShrinkRequest
+	GetReminderTimeStamp() *int64
 	SetSourceId(v string) *CreateTodoTaskShrinkRequest
 	GetSourceId() *string
 	SetSubject(v string) *CreateTodoTaskShrinkRequest
@@ -72,7 +76,12 @@ type CreateTodoTaskShrinkRequest struct {
 	// example:
 	//
 	// 20
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	Priority                  *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
+	RemindNotifyConfigsShrink *string `json:"remindNotifyConfigs,omitempty" xml:"remindNotifyConfigs,omitempty"`
+	// example:
+	//
+	// 1754364432000
+	ReminderTimeStamp *int64 `json:"reminderTimeStamp,omitempty" xml:"reminderTimeStamp,omitempty"`
 	// example:
 	//
 	// isv_dingtalkTodo1
@@ -145,6 +154,14 @@ func (s *CreateTodoTaskShrinkRequest) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *CreateTodoTaskShrinkRequest) GetRemindNotifyConfigsShrink() *string {
+	return s.RemindNotifyConfigsShrink
+}
+
+func (s *CreateTodoTaskShrinkRequest) GetReminderTimeStamp() *int64 {
+	return s.ReminderTimeStamp
+}
+
 func (s *CreateTodoTaskShrinkRequest) GetSourceId() *string {
 	return s.SourceId
 }
@@ -215,6 +232,16 @@ func (s *CreateTodoTaskShrinkRequest) SetParticipantIdsShrink(v string) *CreateT
 
 func (s *CreateTodoTaskShrinkRequest) SetPriority(v int32) *CreateTodoTaskShrinkRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetRemindNotifyConfigsShrink(v string) *CreateTodoTaskShrinkRequest {
+	s.RemindNotifyConfigsShrink = &v
+	return s
+}
+
+func (s *CreateTodoTaskShrinkRequest) SetReminderTimeStamp(v int64) *CreateTodoTaskShrinkRequest {
+	s.ReminderTimeStamp = &v
 	return s
 }
 
