@@ -496,6 +496,10 @@ func (client *Client) ListOnlineEvalTasksWithContext(ctx context.Context, reques
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SamplingMethod) {
+		query["SamplingMethod"] = request.SamplingMethod
+	}
+
 	if !dara.IsNil(request.SortBy) {
 		query["SortBy"] = request.SortBy
 	}

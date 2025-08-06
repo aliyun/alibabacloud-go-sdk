@@ -21,6 +21,8 @@ type iListOnlineEvalTasksRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListOnlineEvalTasksRequest
 	GetPageSize() *int32
+	SetSamplingMethod(v string) *ListOnlineEvalTasksRequest
+	GetSamplingMethod() *string
 	SetSortBy(v string) *ListOnlineEvalTasksRequest
 	GetSortBy() *string
 	SetSortOrder(v string) *ListOnlineEvalTasksRequest
@@ -64,10 +66,11 @@ type ListOnlineEvalTasksRequest struct {
 	// example:
 	//
 	// 50
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SamplingMethod *string `json:"SamplingMethod,omitempty" xml:"SamplingMethod,omitempty"`
+	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortOrder      *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListOnlineEvalTasksRequest) String() string {
@@ -100,6 +103,10 @@ func (s *ListOnlineEvalTasksRequest) GetPageNumber() *int32 {
 
 func (s *ListOnlineEvalTasksRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListOnlineEvalTasksRequest) GetSamplingMethod() *string {
+	return s.SamplingMethod
 }
 
 func (s *ListOnlineEvalTasksRequest) GetSortBy() *string {
@@ -141,6 +148,11 @@ func (s *ListOnlineEvalTasksRequest) SetPageNumber(v int32) *ListOnlineEvalTasks
 
 func (s *ListOnlineEvalTasksRequest) SetPageSize(v int32) *ListOnlineEvalTasksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListOnlineEvalTasksRequest) SetSamplingMethod(v string) *ListOnlineEvalTasksRequest {
+	s.SamplingMethod = &v
 	return s
 }
 
