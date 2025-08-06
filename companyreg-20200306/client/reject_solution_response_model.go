@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iRejectSolutionResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *RejectSolutionResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *RejectSolutionResponse
+	GetStatusCode() *int32
+	SetBody(v *RejectSolutionResponseBody) *RejectSolutionResponse
+	GetBody() *RejectSolutionResponseBody
+}
+
+type RejectSolutionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectSolutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RejectSolutionResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RejectSolutionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectSolutionResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *RejectSolutionResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *RejectSolutionResponse) GetBody() *RejectSolutionResponseBody {
+	return s.Body
+}
+
+func (s *RejectSolutionResponse) SetHeaders(v map[string]*string) *RejectSolutionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectSolutionResponse) SetStatusCode(v int32) *RejectSolutionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectSolutionResponse) SetBody(v *RejectSolutionResponseBody) *RejectSolutionResponse {
+	s.Body = v
+	return s
+}
+
+func (s *RejectSolutionResponse) Validate() error {
+	return dara.Validate(s)
+}
