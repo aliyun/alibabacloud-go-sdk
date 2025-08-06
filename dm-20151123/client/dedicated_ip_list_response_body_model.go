@@ -181,6 +181,7 @@ type DedicatedIpListResponseBodyIps struct {
 	//
 	// cusSelfManager
 	WarmupType *string `json:"WarmupType,omitempty" xml:"WarmupType,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DedicatedIpListResponseBodyIps) String() string {
@@ -231,6 +232,10 @@ func (s *DedicatedIpListResponseBodyIps) GetWarmupType() *string {
 	return s.WarmupType
 }
 
+func (s *DedicatedIpListResponseBodyIps) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *DedicatedIpListResponseBodyIps) SetExpiredTime(v string) *DedicatedIpListResponseBodyIps {
 	s.ExpiredTime = &v
 	return s
@@ -278,6 +283,11 @@ func (s *DedicatedIpListResponseBodyIps) SetWarmupStatus(v string) *DedicatedIpL
 
 func (s *DedicatedIpListResponseBodyIps) SetWarmupType(v string) *DedicatedIpListResponseBodyIps {
 	s.WarmupType = &v
+	return s
+}
+
+func (s *DedicatedIpListResponseBodyIps) SetZoneId(v string) *DedicatedIpListResponseBodyIps {
+	s.ZoneId = &v
 	return s
 }
 

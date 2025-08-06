@@ -68,7 +68,8 @@ type DedicatedIpNonePoolListResponseBodyIps struct {
 	// example:
 	//
 	// xxx
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip     *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DedicatedIpNonePoolListResponseBodyIps) String() string {
@@ -87,6 +88,10 @@ func (s *DedicatedIpNonePoolListResponseBodyIps) GetIp() *string {
 	return s.Ip
 }
 
+func (s *DedicatedIpNonePoolListResponseBodyIps) GetZoneId() *string {
+	return s.ZoneId
+}
+
 func (s *DedicatedIpNonePoolListResponseBodyIps) SetId(v string) *DedicatedIpNonePoolListResponseBodyIps {
 	s.Id = &v
 	return s
@@ -94,6 +99,11 @@ func (s *DedicatedIpNonePoolListResponseBodyIps) SetId(v string) *DedicatedIpNon
 
 func (s *DedicatedIpNonePoolListResponseBodyIps) SetIp(v string) *DedicatedIpNonePoolListResponseBodyIps {
 	s.Ip = &v
+	return s
+}
+
+func (s *DedicatedIpNonePoolListResponseBodyIps) SetZoneId(v string) *DedicatedIpNonePoolListResponseBodyIps {
+	s.ZoneId = &v
 	return s
 }
 
