@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("eipanycast"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateAnycastEipAddressResponse
-func (client *Client) AllocateAnycastEipAddressWithOptions(request *AllocateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateAnycastEipAddressResponse, _err error) {
+func (client *Client) AllocateAnycastEipAddressWithContext(ctx context.Context, request *AllocateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateAnycastEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -117,29 +69,11 @@ func (client *Client) AllocateAnycastEipAddressWithOptions(request *AllocateAnyc
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateAnycastEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Anycast elastic IP address (Anycast EIP).
-//
-// @param request - AllocateAnycastEipAddressRequest
-//
-// @return AllocateAnycastEipAddressResponse
-func (client *Client) AllocateAnycastEipAddress(request *AllocateAnycastEipAddressRequest) (_result *AllocateAnycastEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateAnycastEipAddressResponse{}
-	_body, _err := client.AllocateAnycastEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -152,7 +86,7 @@ func (client *Client) AllocateAnycastEipAddress(request *AllocateAnycastEipAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateAnycastEipAddressResponse
-func (client *Client) AssociateAnycastEipAddressWithOptions(request *AssociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateAnycastEipAddressResponse, _err error) {
+func (client *Client) AssociateAnycastEipAddressWithContext(ctx context.Context, request *AssociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *AssociateAnycastEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -209,29 +143,11 @@ func (client *Client) AssociateAnycastEipAddressWithOptions(request *AssociateAn
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateAnycastEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an Anycast elastic IP address (Anycast EIP) with an endpoint.
-//
-// @param request - AssociateAnycastEipAddressRequest
-//
-// @return AssociateAnycastEipAddressResponse
-func (client *Client) AssociateAnycastEipAddress(request *AssociateAnycastEipAddressRequest) (_result *AssociateAnycastEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateAnycastEipAddressResponse{}
-	_body, _err := client.AssociateAnycastEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -244,7 +160,7 @@ func (client *Client) AssociateAnycastEipAddress(request *AssociateAnycastEipAdd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -277,29 +193,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改AnycastEIp实例资源组
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -312,7 +210,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAnycastEipAddressResponse
-func (client *Client) DescribeAnycastEipAddressWithOptions(request *DescribeAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastEipAddressResponse, _err error) {
+func (client *Client) DescribeAnycastEipAddressWithContext(ctx context.Context, request *DescribeAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -345,29 +243,11 @@ func (client *Client) DescribeAnycastEipAddressWithOptions(request *DescribeAnyc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAnycastEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Anycast elastic IP addresses (Anycast EIPs) associated with specified instance IP addresses or instance IDs, including instance status, maximum bandwidth, and associated resources.
-//
-// @param request - DescribeAnycastEipAddressRequest
-//
-// @return DescribeAnycastEipAddressResponse
-func (client *Client) DescribeAnycastEipAddress(request *DescribeAnycastEipAddressRequest) (_result *DescribeAnycastEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAnycastEipAddressResponse{}
-	_body, _err := client.DescribeAnycastEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -380,7 +260,7 @@ func (client *Client) DescribeAnycastEipAddress(request *DescribeAnycastEipAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAnycastPopLocationsResponse
-func (client *Client) DescribeAnycastPopLocationsWithOptions(request *DescribeAnycastPopLocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastPopLocationsResponse, _err error) {
+func (client *Client) DescribeAnycastPopLocationsWithContext(ctx context.Context, request *DescribeAnycastPopLocationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastPopLocationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -405,29 +285,11 @@ func (client *Client) DescribeAnycastPopLocationsWithOptions(request *DescribeAn
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAnycastPopLocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the access points in an area.
-//
-// @param request - DescribeAnycastPopLocationsRequest
-//
-// @return DescribeAnycastPopLocationsResponse
-func (client *Client) DescribeAnycastPopLocations(request *DescribeAnycastPopLocationsRequest) (_result *DescribeAnycastPopLocationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAnycastPopLocationsResponse{}
-	_body, _err := client.DescribeAnycastPopLocationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -440,7 +302,7 @@ func (client *Client) DescribeAnycastPopLocations(request *DescribeAnycastPopLoc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAnycastServerRegionsResponse
-func (client *Client) DescribeAnycastServerRegionsWithOptions(request *DescribeAnycastServerRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastServerRegionsResponse, _err error) {
+func (client *Client) DescribeAnycastServerRegionsWithContext(ctx context.Context, request *DescribeAnycastServerRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAnycastServerRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -465,29 +327,11 @@ func (client *Client) DescribeAnycastServerRegionsWithOptions(request *DescribeA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAnycastServerRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the regions where you can associate Anycast elastic IP addresses (Anycast EIPs) with endpoints.
-//
-// @param request - DescribeAnycastServerRegionsRequest
-//
-// @return DescribeAnycastServerRegionsResponse
-func (client *Client) DescribeAnycastServerRegions(request *DescribeAnycastServerRegionsRequest) (_result *DescribeAnycastServerRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAnycastServerRegionsResponse{}
-	_body, _err := client.DescribeAnycastServerRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -500,7 +344,7 @@ func (client *Client) DescribeAnycastServerRegions(request *DescribeAnycastServe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAnycastEipAddressesResponse
-func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListAnycastEipAddressesResponse, _err error) {
+func (client *Client) ListAnycastEipAddressesWithContext(ctx context.Context, request *ListAnycastEipAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListAnycastEipAddressesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -577,29 +421,11 @@ func (client *Client) ListAnycastEipAddressesWithOptions(request *ListAnycastEip
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAnycastEipAddressesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about Anycast elastic IP addresses (Anycast EIPs) in an access area, including instance status, maximum bandwidth, and associated resources.
-//
-// @param request - ListAnycastEipAddressesRequest
-//
-// @return ListAnycastEipAddressesResponse
-func (client *Client) ListAnycastEipAddresses(request *ListAnycastEipAddressesRequest) (_result *ListAnycastEipAddressesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAnycastEipAddressesResponse{}
-	_body, _err := client.ListAnycastEipAddressesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -612,7 +438,7 @@ func (client *Client) ListAnycastEipAddresses(request *ListAnycastEipAddressesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -653,29 +479,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to resources.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -688,7 +496,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAnycastEipAddressAttributeResponse
-func (client *Client) ModifyAnycastEipAddressAttributeWithOptions(request *ModifyAnycastEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressAttributeResponse, _err error) {
+func (client *Client) ModifyAnycastEipAddressAttributeWithContext(ctx context.Context, request *ModifyAnycastEipAddressAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -721,29 +529,11 @@ func (client *Client) ModifyAnycastEipAddressAttributeWithOptions(request *Modif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAnycastEipAddressAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name and description of an Anycast elastic IP address (Anycast EIP).
-//
-// @param request - ModifyAnycastEipAddressAttributeRequest
-//
-// @return ModifyAnycastEipAddressAttributeResponse
-func (client *Client) ModifyAnycastEipAddressAttribute(request *ModifyAnycastEipAddressAttributeRequest) (_result *ModifyAnycastEipAddressAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAnycastEipAddressAttributeResponse{}
-	_body, _err := client.ModifyAnycastEipAddressAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -756,7 +546,7 @@ func (client *Client) ModifyAnycastEipAddressAttribute(request *ModifyAnycastEip
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAnycastEipAddressSpecResponse
-func (client *Client) ModifyAnycastEipAddressSpecWithOptions(request *ModifyAnycastEipAddressSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressSpecResponse, _err error) {
+func (client *Client) ModifyAnycastEipAddressSpecWithContext(ctx context.Context, request *ModifyAnycastEipAddressSpecRequest, runtime *dara.RuntimeOptions) (_result *ModifyAnycastEipAddressSpecResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -785,29 +575,11 @@ func (client *Client) ModifyAnycastEipAddressSpecWithOptions(request *ModifyAnyc
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAnycastEipAddressSpecResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the maximum bandwidth of an Anycast elastic IP address (Anycast EIP).
-//
-// @param request - ModifyAnycastEipAddressSpecRequest
-//
-// @return ModifyAnycastEipAddressSpecResponse
-func (client *Client) ModifyAnycastEipAddressSpec(request *ModifyAnycastEipAddressSpecRequest) (_result *ModifyAnycastEipAddressSpecResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAnycastEipAddressSpecResponse{}
-	_body, _err := client.ModifyAnycastEipAddressSpecWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -820,7 +592,7 @@ func (client *Client) ModifyAnycastEipAddressSpec(request *ModifyAnycastEipAddre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseAnycastEipAddressResponse
-func (client *Client) ReleaseAnycastEipAddressWithOptions(request *ReleaseAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseAnycastEipAddressResponse, _err error) {
+func (client *Client) ReleaseAnycastEipAddressWithContext(ctx context.Context, request *ReleaseAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *ReleaseAnycastEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -849,29 +621,11 @@ func (client *Client) ReleaseAnycastEipAddressWithOptions(request *ReleaseAnycas
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseAnycastEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases an Anycast elastic IP address (Anycast EIP).
-//
-// @param request - ReleaseAnycastEipAddressRequest
-//
-// @return ReleaseAnycastEipAddressResponse
-func (client *Client) ReleaseAnycastEipAddress(request *ReleaseAnycastEipAddressRequest) (_result *ReleaseAnycastEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseAnycastEipAddressResponse{}
-	_body, _err := client.ReleaseAnycastEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -884,7 +638,7 @@ func (client *Client) ReleaseAnycastEipAddress(request *ReleaseAnycastEipAddress
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -917,29 +671,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates and adds tags to resources.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -952,7 +688,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnassociateAnycastEipAddressResponse
-func (client *Client) UnassociateAnycastEipAddressWithOptions(request *UnassociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateAnycastEipAddressResponse, _err error) {
+func (client *Client) UnassociateAnycastEipAddressWithContext(ctx context.Context, request *UnassociateAnycastEipAddressRequest, runtime *dara.RuntimeOptions) (_result *UnassociateAnycastEipAddressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1001,29 +737,11 @@ func (client *Client) UnassociateAnycastEipAddressWithOptions(request *Unassocia
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnassociateAnycastEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates an Anycast elastic IP address (Anycast EIP) from an endpoint.
-//
-// @param request - UnassociateAnycastEipAddressRequest
-//
-// @return UnassociateAnycastEipAddressResponse
-func (client *Client) UnassociateAnycastEipAddress(request *UnassociateAnycastEipAddressRequest) (_result *UnassociateAnycastEipAddressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnassociateAnycastEipAddressResponse{}
-	_body, _err := client.UnassociateAnycastEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1036,7 +754,7 @@ func (client *Client) UnassociateAnycastEipAddress(request *UnassociateAnycastEi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1069,29 +787,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from Anycast EIPs.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1104,7 +804,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAnycastEipAddressAssociationsResponse
-func (client *Client) UpdateAnycastEipAddressAssociationsWithOptions(request *UpdateAnycastEipAddressAssociationsRequest, runtime *dara.RuntimeOptions) (_result *UpdateAnycastEipAddressAssociationsResponse, _err error) {
+func (client *Client) UpdateAnycastEipAddressAssociationsWithContext(ctx context.Context, request *UpdateAnycastEipAddressAssociationsRequest, runtime *dara.RuntimeOptions) (_result *UpdateAnycastEipAddressAssociationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1153,28 +853,10 @@ func (client *Client) UpdateAnycastEipAddressAssociationsWithOptions(request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAnycastEipAddressAssociationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// If an Anycast EIP is associated with endpoints in different regions, you can change the access points that are mapped to an endpoint. You can call UpdateAnycastEipAddressAssociations to add or delete endpoints to modify the mappings between endpoints and access points.
-//
-// @param request - UpdateAnycastEipAddressAssociationsRequest
-//
-// @return UpdateAnycastEipAddressAssociationsResponse
-func (client *Client) UpdateAnycastEipAddressAssociations(request *UpdateAnycastEipAddressAssociationsRequest) (_result *UpdateAnycastEipAddressAssociationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAnycastEipAddressAssociationsResponse{}
-	_body, _err := client.UpdateAnycastEipAddressAssociationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
