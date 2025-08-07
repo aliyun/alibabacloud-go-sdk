@@ -591,8 +591,14 @@ func (s *DescribeDomainDetailResponseBodyListen) Validate() error {
 }
 
 type DescribeDomainDetailResponseBodyRedirect struct {
+	BackUpBackendList []*string `json:"BackUpBackendList,omitempty" xml:"BackUpBackendList,omitempty" type:"Repeated"`
+	BackendList       []*string `json:"BackendList,omitempty" xml:"BackendList,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// An array of addresses of origin servers.
 	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// An array of HTTPS listener ports.
 	BackupBackends []*DescribeDomainDetailResponseBodyRedirectBackupBackends `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
@@ -709,6 +715,14 @@ func (s DescribeDomainDetailResponseBodyRedirect) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) GetBackUpBackendList() []*string {
+	return s.BackUpBackendList
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetBackendList() []*string {
+	return s.BackendList
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) GetBackends() []*DescribeDomainDetailResponseBodyRedirectBackends {
 	return s.Backends
 }
@@ -767,6 +781,16 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetWriteTimeout() *int32 {
 
 func (s *DescribeDomainDetailResponseBodyRedirect) GetXffProto() *bool {
 	return s.XffProto
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetBackUpBackendList(v []*string) *DescribeDomainDetailResponseBodyRedirect {
+	s.BackUpBackendList = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetBackendList(v []*string) *DescribeDomainDetailResponseBodyRedirect {
+	s.BackendList = v
+	return s
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetBackends(v []*DescribeDomainDetailResponseBodyRedirectBackends) *DescribeDomainDetailResponseBodyRedirect {

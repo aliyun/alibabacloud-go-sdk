@@ -5723,6 +5723,82 @@ func (client *Client) DescribeDefenseRules(request *DescribeDefenseRulesRequest)
 
 // Summary:
 //
+// 查询用户防护场景的配置
+//
+// @param request - DescribeDefenseSceneConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseSceneConfigResponse
+func (client *Client) DescribeDefenseSceneConfigWithOptions(request *DescribeDefenseSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefenseSceneConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.DefenseScene) {
+		query["DefenseScene"] = request.DefenseScene
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDefenseSceneConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDefenseSceneConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户防护场景的配置
+//
+// @param request - DescribeDefenseSceneConfigRequest
+//
+// @return DescribeDefenseSceneConfigResponse
+func (client *Client) DescribeDefenseSceneConfig(request *DescribeDefenseSceneConfigRequest) (_result *DescribeDefenseSceneConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDefenseSceneConfigResponse{}
+	_body, _err := client.DescribeDefenseSceneConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a protection rule template.
 //
 // @param request - DescribeDefenseTemplateRequest
@@ -12952,6 +13028,86 @@ func (client *Client) ModifyDefenseRuleStatus(request *ModifyDefenseRuleStatusRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyDefenseRuleStatusResponse{}
 	_body, _err := client.ModifyDefenseRuleStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户防护场景的配置
+//
+// @param request - ModifyDefenseSceneConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseSceneConfigResponse
+func (client *Client) ModifyDefenseSceneConfigWithOptions(request *ModifyDefenseSceneConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefenseSceneConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.ConfigValue) {
+		query["ConfigValue"] = request.ConfigValue
+	}
+
+	if !dara.IsNil(request.DefenseScene) {
+		query["DefenseScene"] = request.DefenseScene
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDefenseSceneConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDefenseSceneConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户防护场景的配置
+//
+// @param request - ModifyDefenseSceneConfigRequest
+//
+// @return ModifyDefenseSceneConfigResponse
+func (client *Client) ModifyDefenseSceneConfig(request *ModifyDefenseSceneConfigRequest) (_result *ModifyDefenseSceneConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyDefenseSceneConfigResponse{}
+	_body, _err := client.ModifyDefenseSceneConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
