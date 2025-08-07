@@ -19,10 +19,22 @@ type iQueryCallRecordListRequest interface {
 
 type QueryCallRecordListRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210928095324000002
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.bookkeeping
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	SkillType *int64 `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
