@@ -9,6 +9,8 @@ type iUnifiedSearchInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdvancedParams(v map[string]interface{}) *UnifiedSearchInput
+	GetAdvancedParams() map[string]interface{}
 	SetCategory(v string) *UnifiedSearchInput
 	GetCategory() *string
 	SetContents(v *RequestContents) *UnifiedSearchInput
@@ -24,12 +26,13 @@ type iUnifiedSearchInput interface {
 }
 
 type UnifiedSearchInput struct {
-	Category   *string          `json:"category,omitempty" xml:"category,omitempty"`
-	Contents   *RequestContents `json:"contents,omitempty" xml:"contents,omitempty"`
-	EngineType *string          `json:"engineType,omitempty" xml:"engineType,omitempty"`
-	Location   *string          `json:"location,omitempty" xml:"location,omitempty"`
-	Query      *string          `json:"query,omitempty" xml:"query,omitempty"`
-	TimeRange  *string          `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+	AdvancedParams map[string]interface{} `json:"advancedParams,omitempty" xml:"advancedParams,omitempty"`
+	Category       *string                `json:"category,omitempty" xml:"category,omitempty"`
+	Contents       *RequestContents       `json:"contents,omitempty" xml:"contents,omitempty"`
+	EngineType     *string                `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	Location       *string                `json:"location,omitempty" xml:"location,omitempty"`
+	Query          *string                `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange      *string                `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
 func (s UnifiedSearchInput) String() string {
@@ -38,6 +41,10 @@ func (s UnifiedSearchInput) String() string {
 
 func (s UnifiedSearchInput) GoString() string {
 	return s.String()
+}
+
+func (s *UnifiedSearchInput) GetAdvancedParams() map[string]interface{} {
+	return s.AdvancedParams
 }
 
 func (s *UnifiedSearchInput) GetCategory() *string {
@@ -62,6 +69,11 @@ func (s *UnifiedSearchInput) GetQuery() *string {
 
 func (s *UnifiedSearchInput) GetTimeRange() *string {
 	return s.TimeRange
+}
+
+func (s *UnifiedSearchInput) SetAdvancedParams(v map[string]interface{}) *UnifiedSearchInput {
+	s.AdvancedParams = v
+	return s
 }
 
 func (s *UnifiedSearchInput) SetCategory(v string) *UnifiedSearchInput {

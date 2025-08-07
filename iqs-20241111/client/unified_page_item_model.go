@@ -9,6 +9,8 @@ type iUnifiedPageItem interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetHostAuthorityScore(v float64) *UnifiedPageItem
+	GetHostAuthorityScore() *float64
 	SetHostLogo(v string) *UnifiedPageItem
 	GetHostLogo() *string
 	SetHostname(v string) *UnifiedPageItem
@@ -34,12 +36,13 @@ type iUnifiedPageItem interface {
 }
 
 type UnifiedPageItem struct {
-	HostLogo     *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
-	Hostname     *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	Images       []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	Link         *string   `json:"link,omitempty" xml:"link,omitempty"`
-	MainText     *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
-	MarkdownText *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
+	HostAuthorityScore *float64  `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
+	HostLogo           *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
+	Hostname           *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Images             []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Link               *string   `json:"link,omitempty" xml:"link,omitempty"`
+	MainText           *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText       *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
 	// example:
 	//
 	// 2025-04-07T10:15:30.123+08:00
@@ -56,6 +59,10 @@ func (s UnifiedPageItem) String() string {
 
 func (s UnifiedPageItem) GoString() string {
 	return s.String()
+}
+
+func (s *UnifiedPageItem) GetHostAuthorityScore() *float64 {
+	return s.HostAuthorityScore
 }
 
 func (s *UnifiedPageItem) GetHostLogo() *string {
@@ -100,6 +107,11 @@ func (s *UnifiedPageItem) GetSummary() *string {
 
 func (s *UnifiedPageItem) GetTitle() *string {
 	return s.Title
+}
+
+func (s *UnifiedPageItem) SetHostAuthorityScore(v float64) *UnifiedPageItem {
+	s.HostAuthorityScore = &v
+	return s
 }
 
 func (s *UnifiedPageItem) SetHostLogo(v string) *UnifiedPageItem {
