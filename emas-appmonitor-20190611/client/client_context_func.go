@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("emas-appmonitor"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErrorResponse
-func (client *Client) GetErrorWithOptions(request *GetErrorRequest, runtime *dara.RuntimeOptions) (_result *GetErrorResponse, _err error) {
+func (client *Client) GetErrorWithContext(ctx context.Context, request *GetErrorRequest, runtime *dara.RuntimeOptions) (_result *GetErrorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -117,29 +69,11 @@ func (client *Client) GetErrorWithOptions(request *GetErrorRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErrorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取错误事件详情
-//
-// @param request - GetErrorRequest
-//
-// @return GetErrorResponse
-func (client *Client) GetError(request *GetErrorRequest) (_result *GetErrorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErrorResponse{}
-	_body, _err := client.GetErrorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -152,7 +86,7 @@ func (client *Client) GetError(request *GetErrorRequest) (_result *GetErrorRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetErrorsResponse
-func (client *Client) GetErrorsWithOptions(tmpReq *GetErrorsRequest, runtime *dara.RuntimeOptions) (_result *GetErrorsResponse, _err error) {
+func (client *Client) GetErrorsWithContext(ctx context.Context, tmpReq *GetErrorsRequest, runtime *dara.RuntimeOptions) (_result *GetErrorsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -218,29 +152,11 @@ func (client *Client) GetErrorsWithOptions(tmpReq *GetErrorsRequest, runtime *da
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetErrorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取某一聚合错误下所有的错误事件列表
-//
-// @param request - GetErrorsRequest
-//
-// @return GetErrorsResponse
-func (client *Client) GetErrors(request *GetErrorsRequest) (_result *GetErrorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetErrorsResponse{}
-	_body, _err := client.GetErrorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -253,7 +169,7 @@ func (client *Client) GetErrors(request *GetErrorsRequest) (_result *GetErrorsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIssueResponse
-func (client *Client) GetIssueWithOptions(tmpReq *GetIssueRequest, runtime *dara.RuntimeOptions) (_result *GetIssueResponse, _err error) {
+func (client *Client) GetIssueWithContext(ctx context.Context, tmpReq *GetIssueRequest, runtime *dara.RuntimeOptions) (_result *GetIssueResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -307,29 +223,11 @@ func (client *Client) GetIssueWithOptions(tmpReq *GetIssueRequest, runtime *dara
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIssueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取聚合错误详情
-//
-// @param request - GetIssueRequest
-//
-// @return GetIssueResponse
-func (client *Client) GetIssue(request *GetIssueRequest) (_result *GetIssueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIssueResponse{}
-	_body, _err := client.GetIssueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -342,7 +240,7 @@ func (client *Client) GetIssue(request *GetIssueRequest) (_result *GetIssueRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIssuesResponse
-func (client *Client) GetIssuesWithOptions(tmpReq *GetIssuesRequest, runtime *dara.RuntimeOptions) (_result *GetIssuesResponse, _err error) {
+func (client *Client) GetIssuesWithContext(ctx context.Context, tmpReq *GetIssuesRequest, runtime *dara.RuntimeOptions) (_result *GetIssuesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -416,29 +314,11 @@ func (client *Client) GetIssuesWithOptions(tmpReq *GetIssuesRequest, runtime *da
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIssuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取聚合错误列表
-//
-// @param request - GetIssuesRequest
-//
-// @return GetIssuesResponse
-func (client *Client) GetIssues(request *GetIssuesRequest) (_result *GetIssuesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetIssuesResponse{}
-	_body, _err := client.GetIssuesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -451,7 +331,7 @@ func (client *Client) GetIssues(request *GetIssuesRequest) (_result *GetIssuesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSymbolicFilesResponse
-func (client *Client) GetSymbolicFilesWithOptions(request *GetSymbolicFilesRequest, runtime *dara.RuntimeOptions) (_result *GetSymbolicFilesResponse, _err error) {
+func (client *Client) GetSymbolicFilesWithContext(ctx context.Context, request *GetSymbolicFilesRequest, runtime *dara.RuntimeOptions) (_result *GetSymbolicFilesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -520,29 +400,11 @@ func (client *Client) GetSymbolicFilesWithOptions(request *GetSymbolicFilesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSymbolicFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取符号表文件列表
-//
-// @param request - GetSymbolicFilesRequest
-//
-// @return GetSymbolicFilesResponse
-func (client *Client) GetSymbolicFiles(request *GetSymbolicFilesRequest) (_result *GetSymbolicFilesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSymbolicFilesResponse{}
-	_body, _err := client.GetSymbolicFilesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -551,7 +413,7 @@ func (client *Client) GetSymbolicFiles(request *GetSymbolicFilesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RequestUploadTokenResponse
-func (client *Client) RequestUploadTokenWithOptions(request *RequestUploadTokenRequest, runtime *dara.RuntimeOptions) (_result *RequestUploadTokenResponse, _err error) {
+func (client *Client) RequestUploadTokenWithContext(ctx context.Context, request *RequestUploadTokenRequest, runtime *dara.RuntimeOptions) (_result *RequestUploadTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -580,25 +442,11 @@ func (client *Client) RequestUploadTokenWithOptions(request *RequestUploadTokenR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RequestUploadTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RequestUploadTokenRequest
-//
-// @return RequestUploadTokenResponse
-func (client *Client) RequestUploadToken(request *RequestUploadTokenRequest) (_result *RequestUploadTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RequestUploadTokenResponse{}
-	_body, _err := client.RequestUploadTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -607,7 +455,7 @@ func (client *Client) RequestUploadToken(request *RequestUploadTokenRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitSymbolicResponse
-func (client *Client) SubmitSymbolicWithOptions(request *SubmitSymbolicRequest, runtime *dara.RuntimeOptions) (_result *SubmitSymbolicResponse, _err error) {
+func (client *Client) SubmitSymbolicWithContext(ctx context.Context, request *SubmitSymbolicRequest, runtime *dara.RuntimeOptions) (_result *SubmitSymbolicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -660,24 +508,10 @@ func (client *Client) SubmitSymbolicWithOptions(request *SubmitSymbolicRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitSymbolicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SubmitSymbolicRequest
-//
-// @return SubmitSymbolicResponse
-func (client *Client) SubmitSymbolic(request *SubmitSymbolicRequest) (_result *SubmitSymbolicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitSymbolicResponse{}
-	_body, _err := client.SubmitSymbolicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
