@@ -216,13 +216,13 @@ func (s *GetServiceEstimateCostRequest) Validate() error {
 }
 
 type GetServiceEstimateCostRequestCommodity struct {
-	// 优惠券ID
+	// The coupon ID.
 	//
 	// example:
 	//
 	// 302070970220
 	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
-	// The subscription duration.
+	// The subscription duration of the instance.
 	//
 	// example:
 	//
@@ -240,7 +240,12 @@ type GetServiceEstimateCostRequestCommodity struct {
 	//
 	// Year
 	PayPeriodUnit *string `json:"PayPeriodUnit,omitempty" xml:"PayPeriodUnit,omitempty"`
-	QuotationId   *string `json:"QuotationId,omitempty" xml:"QuotationId,omitempty"`
+	// Marketplace private offer Id
+	//
+	// example:
+	//
+	// 17cde2e8-2f5d-xxxx-xxxx-5120dd215d66
+	QuotationId *string `json:"QuotationId,omitempty" xml:"QuotationId,omitempty"`
 }
 
 func (s GetServiceEstimateCostRequestCommodity) String() string {

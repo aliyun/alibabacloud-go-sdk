@@ -429,7 +429,12 @@ type CreateServiceInstanceShrinkRequestCommodity struct {
 	//
 	// Year
 	PayPeriodUnit *string `json:"PayPeriodUnit,omitempty" xml:"PayPeriodUnit,omitempty"`
-	QuotationId   *string `json:"QuotationId,omitempty" xml:"QuotationId,omitempty"`
+	// privet offer Id
+	//
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxx
+	QuotationId *string `json:"QuotationId,omitempty" xml:"QuotationId,omitempty"`
 }
 
 func (s CreateServiceInstanceShrinkRequestCommodity) String() string {

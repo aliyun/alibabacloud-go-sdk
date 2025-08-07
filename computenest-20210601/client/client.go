@@ -365,6 +365,158 @@ func (client *Client) ContinueDeployServiceInstance(request *ContinueDeployServi
 
 // Summary:
 //
+// # Create backup for Compute Nest instance
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - CreateBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ServiceInstanceId) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBackup"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create backup for Compute Nest instance
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - CreateBackupRequest
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *CreateBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CreateBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create restore task
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - CreateRestoreTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRestoreTaskResponse
+func (client *Client) CreateRestoreTaskWithOptions(request *CreateRestoreTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRestoreTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !dara.IsNil(request.ServiceInstanceId) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRestoreTask"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRestoreTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Create restore task
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - CreateRestoreTaskRequest
+//
+// @return CreateRestoreTaskResponse
+func (client *Client) CreateRestoreTask(request *CreateRestoreTaskRequest) (_result *CreateRestoreTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRestoreTaskResponse{}
+	_body, _err := client.CreateRestoreTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates and deploys a service instance.
 //
 // @param tmpReq - CreateServiceInstanceRequest
@@ -572,6 +724,78 @@ func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateServiceUsageResponse{}
 	_body, _err := client.CreateServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete Compute Nest instance backups.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - DeleteBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runtime *dara.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBackup"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete Compute Nest instance backups.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - DeleteBackupRequest
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *DeleteBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.DeleteBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -848,6 +1072,78 @@ func (client *Client) GenerateServicePolicy(request *GenerateServicePolicyReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &GenerateServicePolicyResponse{}
 	_body, _err := client.GenerateServicePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about backup task.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - GetBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBackupResponse
+func (client *Client) GetBackupWithOptions(request *GetBackupRequest, runtime *dara.RuntimeOptions) (_result *GetBackupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupId) {
+		query["BackupId"] = request.BackupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBackup"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about backup task.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - GetBackupRequest
+//
+// @return GetBackupResponse
+func (client *Client) GetBackup(request *GetBackupRequest) (_result *GetBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetBackupResponse{}
+	_body, _err := client.GetBackupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1445,6 +1741,86 @@ func (client *Client) GetUserInformation(request *GetUserInformationRequest) (_r
 
 // Summary:
 //
+// # Query and list Compute Nest instance backups
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - ListBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBackupsResponse
+func (client *Client) ListBackupsWithOptions(request *ListBackupsRequest, runtime *dara.RuntimeOptions) (_result *ListBackupsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBackups"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query and list Compute Nest instance backups
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - ListBackupsRequest
+//
+// @return ListBackupsResponse
+func (client *Client) ListBackups(request *ListBackupsRequest) (_result *ListBackupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListBackupsResponse{}
+	_body, _err := client.ListBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Permission Policy List
 //
 // @param request - ListPoliciesRequest
@@ -1504,6 +1880,86 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListPoliciesResponse{}
 	_body, _err := client.ListPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query and list restore tasks
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - ListRestoreTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRestoreTasksResponse
+func (client *Client) ListRestoreTasksWithOptions(request *ListRestoreTasksRequest, runtime *dara.RuntimeOptions) (_result *ListRestoreTasksResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRestoreTasks"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRestoreTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query and list restore tasks
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+//
+// @param request - ListRestoreTasksRequest
+//
+// @return ListRestoreTasksResponse
+func (client *Client) ListRestoreTasks(request *ListRestoreTasksRequest) (_result *ListRestoreTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRestoreTasksResponse{}
+	_body, _err := client.ListRestoreTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

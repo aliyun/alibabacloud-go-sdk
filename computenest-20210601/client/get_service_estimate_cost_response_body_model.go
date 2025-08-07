@@ -18,7 +18,7 @@ type iGetServiceEstimateCostResponseBody interface {
 }
 
 type GetServiceEstimateCostResponseBody struct {
-	// The estimated price.
+	// Alibaba Cloud Marketplace purchase order information.
 	//
 	// example:
 	//

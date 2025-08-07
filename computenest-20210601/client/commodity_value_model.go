@@ -14,7 +14,7 @@ type iCommodityValue interface {
 }
 
 type CommodityValue struct {
-	// Result模型。
+	// The result model.
 	Result *CommodityValueResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -40,21 +40,21 @@ func (s *CommodityValue) Validate() error {
 }
 
 type CommodityValueResult struct {
-	// 订单信息。
+	// The information about the order.
 	Order *CommodityValueResultOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// 询价类型，可选值：
+	// The RFQ type. Valid values:
 	//
-	// 1. Buy：新购询价。
+	// 1.  Buy: price inquiry for new resources.
 	//
-	// 2. ModificationBuy：变配询价。
+	// 2.  ModificationBuy: price inquiry for resource configuration changes.
 	//
 	// example:
 	//
 	// Buy
 	InquiryType *string `json:"InquiryType,omitempty" xml:"InquiryType,omitempty"`
-	// 订单子项。
+	// The order sub-items.
 	SubOrders *CommodityValueResultSubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
-	// 优惠券。
+	// The coupons.
 	Coupons []*CommodityValueResultCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Repeated"`
 }
 
@@ -107,25 +107,25 @@ func (s *CommodityValueResult) Validate() error {
 }
 
 type CommodityValueResultOrder struct {
-	// 货币代码。
+	// The code of the native currency.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// 优惠后。
+	// Amount after the discount.
 	//
 	// example:
 	//
 	// 9.99
 	TradeAmount *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
-	// 抵扣金额。
+	// The discount amount.
 	//
 	// example:
 	//
 	// 1.99
 	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// 优惠前。
+	// Amount before the discount.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *CommodityValueResultOrder) Validate() error {
 }
 
 type CommodityValueResultSubOrders struct {
-	// 订单子项。
+	// The order sub-item.
 	SubOrder []*CommodityValueResultSubOrdersSubOrder `json:"SubOrder,omitempty" xml:"SubOrder,omitempty" type:"Repeated"`
 }
 
@@ -208,7 +208,7 @@ func (s *CommodityValueResultSubOrders) Validate() error {
 }
 
 type CommodityValueResultSubOrdersSubOrder struct {
-	// 模块（实例）信息。
+	// The information about the module (instance).
 	ModuleInstance []*CommodityValueResultSubOrdersSubOrderModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
 }
 
@@ -234,68 +234,70 @@ func (s *CommodityValueResultSubOrdersSubOrder) Validate() error {
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
-	// 模块ID。
+	// The module ID.
 	//
 	// example:
 	//
 	// 1234
 	ModuleId *int64 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	// 模块名称。
+	// The module name.
 	//
 	// example:
 	//
 	// Rds
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	// 模块代码。
+	// The module code.
 	//
 	// example:
 	//
 	// rds_dbtype
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// 产品原价（元）。
+	// The original price (RMB).
 	//
 	// example:
 	//
 	// 10.00
 	TotalProductFee *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
-	// 折扣费用（元）。
+	// The discount amount (RMB).
 	//
 	// example:
 	//
 	// 1.99
 	DiscountFee *float64 `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
-	// 实付金额（元）。
+	// The amount actually paid (RMB).
 	//
 	// example:
 	//
 	// 8.01
 	PayFee *float64 `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
-	// 价格单位。
+	// The unit of the price.
 	//
 	// example:
 	//
-	// 元/GB/小时
+	// Yuan/GB/hour
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
-	// 是否计价项。
+	// Indicates whether the item is billed.
 	//
 	// example:
 	//
 	// true
 	IsPricingModule *bool `json:"IsPricingModule,omitempty" xml:"IsPricingModule,omitempty"`
-	// 在订单中是否需要支付。
+	// Indicates whether the order is paid.
 	//
 	// example:
 	//
 	// true
 	NeedOrderPay *bool `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
-	// 定价类型。
+	// The pricing type.
 	//
 	// example:
 	//
 	// hourPrice
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
-	// 模块属性。
-	ModuleAttrs []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
+	// The module attributes.
+	ModuleAttrs  []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
+	ModuleNameEn *string                                                           `json:"ModuleNameEn,omitempty" xml:"ModuleNameEn,omitempty"`
+	PriceUnitEn  *string                                                           `json:"PriceUnitEn,omitempty" xml:"PriceUnitEn,omitempty"`
 }
 
 func (s CommodityValueResultSubOrdersSubOrderModuleInstance) String() string {
@@ -348,6 +350,14 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) GetPriceType() *st
 
 func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) GetModuleAttrs() []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
 	return s.ModuleAttrs
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) GetModuleNameEn() *string {
+	return s.ModuleNameEn
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) GetPriceUnitEn() *string {
+	return s.PriceUnitEn
 }
 
 func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleId(v int64) *CommodityValueResultSubOrdersSubOrderModuleInstance {
@@ -405,44 +415,54 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleAttrs(v [
 	return s
 }
 
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleNameEn(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.ModuleNameEn = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetPriceUnitEn(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.PriceUnitEn = &v
+	return s
+}
+
 func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) Validate() error {
 	return dara.Validate(s)
 }
 
 type CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs struct {
-	// 属性类型，可选值：
+	// The type of the attribute. Valid values:
 	//
-	// 1. 1：商品属性
+	// 1.  1: product
 	//
-	// 2. 2：规格属性
+	// 2.  2\\. specifications
 	//
-	// 3. 3：模块属性
+	// 3.  3: module
 	//
-	// 4. 4：外部参数（备用）
+	// 4.  4: external parameters (backup)
 	//
 	// example:
 	//
 	// 3
 	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Name
+	// The attribute name.
 	//
 	// example:
 	//
 	// 20GB
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Module attr code
+	// The attribute code.
 	//
 	// example:
 	//
 	// rds_storage
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Value
+	// The attribute value.
 	//
 	// example:
 	//
 	// 20
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Unit
+	// The unit of the value.
 	//
 	// example:
 	//
@@ -508,31 +528,31 @@ func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) Validat
 }
 
 type CommodityValueResultCoupons struct {
-	// 可支付金额。
+	// The payable amount.
 	//
 	// example:
 	//
 	// 9.99
 	CanPromFee *float64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	// Coupon Description
+	// The description of the coupon.
 	//
 	// example:
 	//
-	// 10元优惠券（有效期至2024年9月8日）
+	// CNY 10 coupon (valid until September 8, 2024)
 	CouponDesc *string `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
-	// Coupon Name
+	// The name of the coupon.
 	//
 	// example:
 	//
-	// 10元优惠券
+	// CNY 10 coupon
 	CouponName *string `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
-	// Coupon OptionNo
+	// The coupon ID.
 	//
 	// example:
 	//
 	// 50008800000xxxx
 	CouponOptionNo *string `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
-	// 是否选中。
+	// Indicates whether the coupon is selected.
 	//
 	// example:
 	//
