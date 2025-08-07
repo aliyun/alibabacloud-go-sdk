@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("notifications"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DelMessageResponse
-func (client *Client) DelMessageWithOptions(request *DelMessageRequest, runtime *dara.RuntimeOptions) (_result *DelMessageResponse, _err error) {
+func (client *Client) DelMessageWithContext(ctx context.Context, request *DelMessageRequest, runtime *dara.RuntimeOptions) (_result *DelMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -125,29 +77,11 @@ func (client *Client) DelMessageWithOptions(request *DelMessageRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DelMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：删除消息
-//
-// @param request - DelMessageRequest
-//
-// @return DelMessageResponse
-func (client *Client) DelMessage(request *DelMessageRequest) (_result *DelMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DelMessageResponse{}
-	_body, _err := client.DelMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -160,7 +94,7 @@ func (client *Client) DelMessage(request *DelMessageRequest) (_result *DelMessag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAllMessageResponse
-func (client *Client) DeleteAllMessageWithOptions(request *DeleteAllMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteAllMessageResponse, _err error) {
+func (client *Client) DeleteAllMessageWithContext(ctx context.Context, request *DeleteAllMessageRequest, runtime *dara.RuntimeOptions) (_result *DeleteAllMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -221,29 +155,11 @@ func (client *Client) DeleteAllMessageWithOptions(request *DeleteAllMessageReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAllMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：站内信全部删除（逻辑删除）
-//
-// @param request - DeleteAllMessageRequest
-//
-// @return DeleteAllMessageResponse
-func (client *Client) DeleteAllMessage(request *DeleteAllMessageRequest) (_result *DeleteAllMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAllMessageResponse{}
-	_body, _err := client.DeleteAllMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -256,7 +172,7 @@ func (client *Client) DeleteAllMessage(request *DeleteAllMessageRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadAllMessageResponse
-func (client *Client) ReadAllMessageWithOptions(request *ReadAllMessageRequest, runtime *dara.RuntimeOptions) (_result *ReadAllMessageResponse, _err error) {
+func (client *Client) ReadAllMessageWithContext(ctx context.Context, request *ReadAllMessageRequest, runtime *dara.RuntimeOptions) (_result *ReadAllMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -317,29 +233,11 @@ func (client *Client) ReadAllMessageWithOptions(request *ReadAllMessageRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadAllMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：分类全部标记为已读，不填则全部标记
-//
-// @param request - ReadAllMessageRequest
-//
-// @return ReadAllMessageResponse
-func (client *Client) ReadAllMessage(request *ReadAllMessageRequest) (_result *ReadAllMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadAllMessageResponse{}
-	_body, _err := client.ReadAllMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -352,7 +250,7 @@ func (client *Client) ReadAllMessage(request *ReadAllMessageRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadClassNameResponse
-func (client *Client) ReadClassNameWithOptions(request *ReadClassNameRequest, runtime *dara.RuntimeOptions) (_result *ReadClassNameResponse, _err error) {
+func (client *Client) ReadClassNameWithContext(ctx context.Context, request *ReadClassNameRequest, runtime *dara.RuntimeOptions) (_result *ReadClassNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -409,29 +307,11 @@ func (client *Client) ReadClassNameWithOptions(request *ReadClassNameRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadClassNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取各分类已读消息数
-//
-// @param request - ReadClassNameRequest
-//
-// @return ReadClassNameResponse
-func (client *Client) ReadClassName(request *ReadClassNameRequest) (_result *ReadClassNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadClassNameResponse{}
-	_body, _err := client.ReadClassNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -444,7 +324,7 @@ func (client *Client) ReadClassName(request *ReadClassNameRequest) (_result *Rea
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadMessageResponse
-func (client *Client) ReadMessageWithOptions(request *ReadMessageRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageResponse, _err error) {
+func (client *Client) ReadMessageWithContext(ctx context.Context, request *ReadMessageRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -505,29 +385,11 @@ func (client *Client) ReadMessageWithOptions(request *ReadMessageRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：消息标记为已读
-//
-// @param request - ReadMessageRequest
-//
-// @return ReadMessageResponse
-func (client *Client) ReadMessage(request *ReadMessageRequest) (_result *ReadMessageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadMessageResponse{}
-	_body, _err := client.ReadMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -540,7 +402,7 @@ func (client *Client) ReadMessage(request *ReadMessageRequest) (_result *ReadMes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadMessageContentResponse
-func (client *Client) ReadMessageContentWithOptions(request *ReadMessageContentRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageContentResponse, _err error) {
+func (client *Client) ReadMessageContentWithContext(ctx context.Context, request *ReadMessageContentRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -609,29 +471,11 @@ func (client *Client) ReadMessageContentWithOptions(request *ReadMessageContentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadMessageContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取消息正文
-//
-// @param request - ReadMessageContentRequest
-//
-// @return ReadMessageContentResponse
-func (client *Client) ReadMessageContent(request *ReadMessageContentRequest) (_result *ReadMessageContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadMessageContentResponse{}
-	_body, _err := client.ReadMessageContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -644,7 +488,7 @@ func (client *Client) ReadMessageContent(request *ReadMessageContentRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadMessageListResponse
-func (client *Client) ReadMessageListWithOptions(request *ReadMessageListRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageListResponse, _err error) {
+func (client *Client) ReadMessageListWithContext(ctx context.Context, request *ReadMessageListRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -737,29 +581,11 @@ func (client *Client) ReadMessageListWithOptions(request *ReadMessageListRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadMessageListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取消息列表
-//
-// @param request - ReadMessageListRequest
-//
-// @return ReadMessageListResponse
-func (client *Client) ReadMessageList(request *ReadMessageListRequest) (_result *ReadMessageListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadMessageListResponse{}
-	_body, _err := client.ReadMessageListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -772,7 +598,7 @@ func (client *Client) ReadMessageList(request *ReadMessageListRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadMessageNewTotalResponse
-func (client *Client) ReadMessageNewTotalWithOptions(request *ReadMessageNewTotalRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageNewTotalResponse, _err error) {
+func (client *Client) ReadMessageNewTotalWithContext(ctx context.Context, request *ReadMessageNewTotalRequest, runtime *dara.RuntimeOptions) (_result *ReadMessageNewTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -829,29 +655,11 @@ func (client *Client) ReadMessageNewTotalWithOptions(request *ReadMessageNewTota
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadMessageNewTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取未读消息总数
-//
-// @param request - ReadMessageNewTotalRequest
-//
-// @return ReadMessageNewTotalResponse
-func (client *Client) ReadMessageNewTotal(request *ReadMessageNewTotalRequest) (_result *ReadMessageNewTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadMessageNewTotalResponse{}
-	_body, _err := client.ReadMessageNewTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -864,7 +672,7 @@ func (client *Client) ReadMessageNewTotal(request *ReadMessageNewTotalRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadNumGroupByClassResponse
-func (client *Client) ReadNumGroupByClassWithOptions(request *ReadNumGroupByClassRequest, runtime *dara.RuntimeOptions) (_result *ReadNumGroupByClassResponse, _err error) {
+func (client *Client) ReadNumGroupByClassWithContext(ctx context.Context, request *ReadNumGroupByClassRequest, runtime *dara.RuntimeOptions) (_result *ReadNumGroupByClassResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -921,29 +729,11 @@ func (client *Client) ReadNumGroupByClassWithOptions(request *ReadNumGroupByClas
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadNumGroupByClassResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取各分类已读消息数
-//
-// @param request - ReadNumGroupByClassRequest
-//
-// @return ReadNumGroupByClassResponse
-func (client *Client) ReadNumGroupByClass(request *ReadNumGroupByClassRequest) (_result *ReadNumGroupByClassResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadNumGroupByClassResponse{}
-	_body, _err := client.ReadNumGroupByClassWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -956,7 +746,7 @@ func (client *Client) ReadNumGroupByClass(request *ReadNumGroupByClassRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReadNumGroupTotalResponse
-func (client *Client) ReadNumGroupTotalWithOptions(request *ReadNumGroupTotalRequest, runtime *dara.RuntimeOptions) (_result *ReadNumGroupTotalResponse, _err error) {
+func (client *Client) ReadNumGroupTotalWithContext(ctx context.Context, request *ReadNumGroupTotalRequest, runtime *dara.RuntimeOptions) (_result *ReadNumGroupTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1017,28 +807,10 @@ func (client *Client) ReadNumGroupTotalWithOptions(request *ReadNumGroupTotalReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReadNumGroupTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 方法描述：获取所有分类下的信息
-//
-// @param request - ReadNumGroupTotalRequest
-//
-// @return ReadNumGroupTotalResponse
-func (client *Client) ReadNumGroupTotal(request *ReadNumGroupTotalRequest) (_result *ReadNumGroupTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReadNumGroupTotalResponse{}
-	_body, _err := client.ReadNumGroupTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
