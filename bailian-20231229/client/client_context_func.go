@@ -734,6 +734,61 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId 
 
 // Summary:
 //
+// 删除切片信息
+//
+// @param tmpReq - DeleteChunkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChunkResponse
+func (client *Client) DeleteChunkWithContext(ctx context.Context, WorkspaceId *string, tmpReq *DeleteChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteChunkResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteChunkShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChunkIds) {
+		request.ChunkIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChunkIds, dara.String("ChunkIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkIdsShrink) {
+		query["ChunkIds"] = request.ChunkIdsShrink
+	}
+
+	if !dara.IsNil(request.PipelineId) {
+		query["PipelineId"] = request.PipelineId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteChunk"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/chunk/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteChunkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除文档
 //
 // @param headers - map
