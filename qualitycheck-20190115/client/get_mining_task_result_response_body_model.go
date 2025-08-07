@@ -104,7 +104,8 @@ type GetMiningTaskResultResponseBodyData struct {
 	// example:
 	//
 	// 123.22.com/manger/static/login-back.jpg
-	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePath     *string                                            `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	FilePathList []*GetMiningTaskResultResponseBodyDataFilePathList `json:"FilePathList,omitempty" xml:"FilePathList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 123.22.com/manger/static/login-back.md
@@ -131,6 +132,10 @@ func (s *GetMiningTaskResultResponseBodyData) GetFilePath() *string {
 	return s.FilePath
 }
 
+func (s *GetMiningTaskResultResponseBodyData) GetFilePathList() []*GetMiningTaskResultResponseBodyDataFilePathList {
+	return s.FilePathList
+}
+
 func (s *GetMiningTaskResultResponseBodyData) GetFilePathMd() *string {
 	return s.FilePathMd
 }
@@ -145,6 +150,11 @@ func (s *GetMiningTaskResultResponseBodyData) GetTaskStatus() *string {
 
 func (s *GetMiningTaskResultResponseBodyData) SetFilePath(v string) *GetMiningTaskResultResponseBodyData {
 	s.FilePath = &v
+	return s
+}
+
+func (s *GetMiningTaskResultResponseBodyData) SetFilePathList(v []*GetMiningTaskResultResponseBodyDataFilePathList) *GetMiningTaskResultResponseBodyData {
+	s.FilePathList = v
 	return s
 }
 
@@ -164,5 +174,40 @@ func (s *GetMiningTaskResultResponseBodyData) SetTaskStatus(v string) *GetMining
 }
 
 func (s *GetMiningTaskResultResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetMiningTaskResultResponseBodyDataFilePathList struct {
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+}
+
+func (s GetMiningTaskResultResponseBodyDataFilePathList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMiningTaskResultResponseBodyDataFilePathList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMiningTaskResultResponseBodyDataFilePathList) GetFileType() *string {
+	return s.FileType
+}
+
+func (s *GetMiningTaskResultResponseBodyDataFilePathList) GetFileUrl() *string {
+	return s.FileUrl
+}
+
+func (s *GetMiningTaskResultResponseBodyDataFilePathList) SetFileType(v string) *GetMiningTaskResultResponseBodyDataFilePathList {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetMiningTaskResultResponseBodyDataFilePathList) SetFileUrl(v string) *GetMiningTaskResultResponseBodyDataFilePathList {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetMiningTaskResultResponseBodyDataFilePathList) Validate() error {
 	return dara.Validate(s)
 }
