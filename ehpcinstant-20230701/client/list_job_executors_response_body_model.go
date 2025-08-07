@@ -141,13 +141,15 @@ func (s *ListJobExecutorsResponseBody) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExecutorStatus struct {
-	Deleted   *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	Exception *int32 `json:"Exception,omitempty" xml:"Exception,omitempty"`
-	Failed    *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	Initing   *int32 `json:"Initing,omitempty" xml:"Initing,omitempty"`
-	Pending   *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
-	Running   *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
-	Succeeded *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	Deleted    *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Exception  *int32 `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	Failed     *int32 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	Initing    *int32 `json:"Initing,omitempty" xml:"Initing,omitempty"`
+	Pending    *int32 `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	Restarting *int32 `json:"Restarting,omitempty" xml:"Restarting,omitempty"`
+	Running    *int32 `json:"Running,omitempty" xml:"Running,omitempty"`
+	Succeeded  *int32 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+	Suspended  *int32 `json:"Suspended,omitempty" xml:"Suspended,omitempty"`
 }
 
 func (s ListJobExecutorsResponseBodyExecutorStatus) String() string {
@@ -178,12 +180,20 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) GetPending() *int32 {
 	return s.Pending
 }
 
+func (s *ListJobExecutorsResponseBodyExecutorStatus) GetRestarting() *int32 {
+	return s.Restarting
+}
+
 func (s *ListJobExecutorsResponseBodyExecutorStatus) GetRunning() *int32 {
 	return s.Running
 }
 
 func (s *ListJobExecutorsResponseBodyExecutorStatus) GetSucceeded() *int32 {
 	return s.Succeeded
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) GetSuspended() *int32 {
+	return s.Suspended
 }
 
 func (s *ListJobExecutorsResponseBodyExecutorStatus) SetDeleted(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
@@ -211,6 +221,11 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) SetPending(v int32) *ListJo
 	return s
 }
 
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetRestarting(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Restarting = &v
+	return s
+}
+
 func (s *ListJobExecutorsResponseBodyExecutorStatus) SetRunning(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
 	s.Running = &v
 	return s
@@ -218,6 +233,11 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) SetRunning(v int32) *ListJo
 
 func (s *ListJobExecutorsResponseBodyExecutorStatus) SetSucceeded(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
 	s.Succeeded = &v
+	return s
+}
+
+func (s *ListJobExecutorsResponseBodyExecutorStatus) SetSuspended(v int32) *ListJobExecutorsResponseBodyExecutorStatus {
+	s.Suspended = &v
 	return s
 }
 

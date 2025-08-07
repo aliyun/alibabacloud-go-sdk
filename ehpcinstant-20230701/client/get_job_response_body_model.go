@@ -917,8 +917,7 @@ type GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM struct {
 	// example:
 	//
 	// ZWNobyAiMTIzNCIgPiBgZGF0ZSArJXNg
-	Script   *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 }
 
 func (s GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) String() string {
@@ -941,10 +940,6 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) GetScript() *stri
 	return s.Script
 }
 
-func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) GetUserName() *string {
-	return s.UserName
-}
-
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetImage(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
 	s.Image = &v
 	return s
@@ -957,11 +952,6 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetPrologScript(v
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetScript(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
 	s.Script = &v
-	return s
-}
-
-func (s *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM) SetUserName(v string) *GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM {
-	s.UserName = &v
 	return s
 }
 

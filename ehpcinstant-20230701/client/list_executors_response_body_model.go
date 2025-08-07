@@ -371,9 +371,10 @@ func (s *ListExecutorsResponseBodyExecutors) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutorsResource struct {
-	Cores  *float32                                           `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks  []*ListExecutorsResponseBodyExecutorsResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	Memory *float32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Cores        *float32                                           `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks        []*ListExecutorsResponseBodyExecutorsResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	InstanceType *string                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Memory       *float32                                           `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s ListExecutorsResponseBodyExecutorsResource) String() string {
@@ -392,6 +393,10 @@ func (s *ListExecutorsResponseBodyExecutorsResource) GetDisks() []*ListExecutors
 	return s.Disks
 }
 
+func (s *ListExecutorsResponseBodyExecutorsResource) GetInstanceType() *string {
+	return s.InstanceType
+}
+
 func (s *ListExecutorsResponseBodyExecutorsResource) GetMemory() *float32 {
 	return s.Memory
 }
@@ -403,6 +408,11 @@ func (s *ListExecutorsResponseBodyExecutorsResource) SetCores(v float32) *ListEx
 
 func (s *ListExecutorsResponseBodyExecutorsResource) SetDisks(v []*ListExecutorsResponseBodyExecutorsResourceDisks) *ListExecutorsResponseBodyExecutorsResource {
 	s.Disks = v
+	return s
+}
+
+func (s *ListExecutorsResponseBodyExecutorsResource) SetInstanceType(v string) *ListExecutorsResponseBodyExecutorsResource {
+	s.InstanceType = &v
 	return s
 }
 

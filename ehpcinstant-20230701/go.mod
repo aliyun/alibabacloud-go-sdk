@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ehpcinstant-20230701/v2
+module github.com/alibabacloud-go/ehpcinstant-20230701/v3
 
 go 1.14
 
