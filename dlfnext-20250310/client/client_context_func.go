@@ -107,6 +107,202 @@ func (client *Client) AlterDatabaseWithContext(ctx context.Context, catalogId *s
 
 // Summary:
 //
+// 更新接收者
+//
+// @param request - AlterReceiverRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterReceiverResponse
+func (client *Client) AlterReceiverWithContext(ctx context.Context, receiver *string, request *AlterReceiverRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterReceiverResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ReceiverName) {
+		body["receiverName"] = request.ReceiverName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterReceiver"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/receivers/" + dara.PercentEncode(dara.StringValue(receiver))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterReceiverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新共享
+//
+// @param request - AlterShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterShareResponse
+func (client *Client) AlterShareWithContext(ctx context.Context, share *string, request *AlterShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ShareName) {
+		body["shareName"] = request.ShareName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterShare"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share))),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新共享中的接收者
+//
+// @param request - AlterShareReceiversRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterShareReceiversResponse
+func (client *Client) AlterShareReceiversWithContext(ctx context.Context, share *string, request *AlterShareReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareReceiversResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddedReceivers) {
+		body["addedReceivers"] = request.AddedReceivers
+	}
+
+	if !dara.IsNil(request.RemovedReceivers) {
+		body["removedReceivers"] = request.RemovedReceivers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterShareReceivers"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share)) + "/receivers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterShareReceiversResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更改共享资源
+//
+// @param request - AlterShareResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlterShareResourcesResponse
+func (client *Client) AlterShareResourcesWithContext(ctx context.Context, share *string, request *AlterShareResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AlterShareResourcesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogId) {
+		body["catalogId"] = request.CatalogId
+	}
+
+	if !dara.IsNil(request.ShareResourceList) {
+		body["shareResourceList"] = request.ShareResourceList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AlterShareResources"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share)) + "/resources"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &AlterShareResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更改Table
 //
 // @param request - AlterTableRequest
@@ -257,12 +453,20 @@ func (client *Client) CreateCatalogWithContext(ctx context.Context, request *Cre
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.IsShared) {
+		body["isShared"] = request.IsShared
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
 	}
 
 	if !dara.IsNil(request.Options) {
 		body["options"] = request.Options
+	}
+
+	if !dara.IsNil(request.ShareId) {
+		body["shareId"] = request.ShareId
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -344,6 +548,59 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, catalogId *
 
 // Summary:
 //
+// 创建接收者
+//
+// @param request - CreateReceiverRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReceiverResponse
+func (client *Client) CreateReceiverWithContext(ctx context.Context, request *CreateReceiverRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateReceiverResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ReceiverName) {
+		body["receiverName"] = request.ReceiverName
+	}
+
+	if !dara.IsNil(request.ReceiverTenantId) {
+		body["receiverTenantId"] = request.ReceiverTenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateReceiver"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/receivers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &CreateReceiverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建角色
 //
 // @param request - CreateRoleRequest
@@ -387,6 +644,55 @@ func (client *Client) CreateRoleWithContext(ctx context.Context, request *Create
 		BodyType:    dara.String("none"),
 	}
 	_result = &CreateRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建共享
+//
+// @param request - CreateShareRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateShareResponse
+func (client *Client) CreateShareWithContext(ctx context.Context, request *CreateShareRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateShareResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.ShareName) {
+		body["shareName"] = request.ShareName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateShare"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &CreateShareResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -590,6 +896,72 @@ func (client *Client) DropDatabaseWithContext(ctx context.Context, catalogId *st
 
 // Summary:
 //
+// 删除接收者
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DropReceiverResponse
+func (client *Client) DropReceiverWithContext(ctx context.Context, receiver *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropReceiverResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DropReceiver"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/receivers/" + dara.PercentEncode(dara.StringValue(receiver))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DropReceiverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除共享
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DropShareResponse
+func (client *Client) DropShareWithContext(ctx context.Context, share *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DropShareResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DropShare"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DropShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除表
 //
 // @param headers - map
@@ -691,14 +1063,26 @@ func (client *Client) GetCatalogByIdWithContext(ctx context.Context, id *string,
 //
 // 查看表
 //
+// @param request - GetCatalogSummaryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCatalogSummaryResponse
-func (client *Client) GetCatalogSummaryWithContext(ctx context.Context, catalogId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
+func (client *Client) GetCatalogSummaryWithContext(ctx context.Context, catalogId *string, request *GetCatalogSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCatalogSummaryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["date"] = request.Date
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetCatalogSummary"),
@@ -839,14 +1223,26 @@ func (client *Client) GetDatabaseWithContext(ctx context.Context, catalogId *str
 //
 // 查看表
 //
+// @param request - GetDatabaseSummaryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatabaseSummaryResponse
-func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalogId *string, database *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
+func (client *Client) GetDatabaseSummaryWithContext(ctx context.Context, catalogId *string, database *string, request *GetDatabaseSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatabaseSummaryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["date"] = request.Date
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetDatabaseSummary"),
@@ -936,6 +1332,39 @@ func (client *Client) GetIcebergTableWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
+// 获取接收者
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReceiverResponse
+func (client *Client) GetReceiverWithContext(ctx context.Context, receiver *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetReceiverResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetReceiver"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/receivers/" + dara.PercentEncode(dara.StringValue(receiver))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetReceiverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询 DLF 当前地域开通状态
 //
 // @param headers - map
@@ -1014,6 +1443,39 @@ func (client *Client) GetRoleWithContext(ctx context.Context, request *GetRoleRe
 
 // Summary:
 //
+// 获取共享
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetShareResponse
+func (client *Client) GetShareWithContext(ctx context.Context, share *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetShareResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetShare"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetShareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看表
 //
 // @param headers - map
@@ -1047,16 +1509,61 @@ func (client *Client) GetTableWithContext(ctx context.Context, catalogId *string
 
 // Summary:
 //
+// 查看表快照
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableSnapshotResponse
+func (client *Client) GetTableSnapshotWithContext(ctx context.Context, catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSnapshotResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableSnapshot"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/snapshot"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableSnapshotResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看表
+//
+// @param request - GetTableSummaryRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTableSummaryResponse
-func (client *Client) GetTableSummaryWithContext(ctx context.Context, catalogId *string, database *string, table *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
+func (client *Client) GetTableSummaryWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *GetTableSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableSummaryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["date"] = request.Date
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetTableSummary"),
@@ -1614,6 +2121,157 @@ func (client *Client) ListPermissionsWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
+// 获取提供的共享列表
+//
+// @param request - ListProvidedSharesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProvidedSharesResponse
+func (client *Client) ListProvidedSharesWithContext(ctx context.Context, request *ListProvidedSharesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProvidedSharesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProvidedShares"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/list/provided"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProvidedSharesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接收的共享列表
+//
+// @param request - ListReceivedSharesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReceivedSharesResponse
+func (client *Client) ListReceivedSharesWithContext(ctx context.Context, request *ListReceivedSharesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReceivedSharesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListReceivedShares"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/list/received"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListReceivedSharesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接收者列表
+//
+// @param request - ListReceiversRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReceiversResponse
+func (client *Client) ListReceiversWithContext(ctx context.Context, request *ListReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListReceiversResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	if !dara.IsNil(request.ReceiverName) {
+		query["receiverName"] = request.ReceiverName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListReceivers"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/receivers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListReceiversResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取角色用户列表
 //
 // @param request - ListRoleUsersRequest
@@ -1710,6 +2368,153 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取共享中的接收者列表
+//
+// @param request - ListShareReceiversRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListShareReceiversResponse
+func (client *Client) ListShareReceiversWithContext(ctx context.Context, share *string, request *ListShareReceiversRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListShareReceiversResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListShareReceivers"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share)) + "/receivers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListShareReceiversResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取共享资源列表
+//
+// @param request - ListShareResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListShareResourcesResponse
+func (client *Client) ListShareResourcesWithContext(ctx context.Context, share *string, request *ListShareResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListShareResourcesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListShareResources"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/share/shares/" + dara.PercentEncode(dara.StringValue(share)) + "/resources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListShareResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表快照列表
+//
+// @param request - ListSnapshotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshotsWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.PageToken) {
+		query["pageToken"] = request.PageToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSnapshots"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/snapshots"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSnapshotsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1975,6 +2780,51 @@ func (client *Client) RevokeRoleFromUsersWithContext(ctx context.Context, reques
 		BodyType:    dara.String("none"),
 	}
 	_result = &RevokeRoleFromUsersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚表
+//
+// @param request - RollbackTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackTableResponse
+func (client *Client) RollbackTableWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *RollbackTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RollbackTableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Instant) {
+		body["instant"] = request.Instant
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackTable"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/rollback"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &RollbackTableResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

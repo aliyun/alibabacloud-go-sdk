@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dlfnext-20250310/v2
+module github.com/alibabacloud-go/dlfnext-20250310/v3
 
 go 1.14
 

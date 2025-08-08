@@ -9,20 +9,26 @@ type iCreateCatalogRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIsShared(v bool) *CreateCatalogRequest
+	GetIsShared() *bool
 	SetName(v string) *CreateCatalogRequest
 	GetName() *string
 	SetOptions(v map[string]*string) *CreateCatalogRequest
 	GetOptions() map[string]*string
+	SetShareId(v string) *CreateCatalogRequest
+	GetShareId() *string
 	SetType(v string) *CreateCatalogRequest
 	GetType() *string
 }
 
 type CreateCatalogRequest struct {
+	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
 	// example:
 	//
 	// catalog_demo
 	Name    *string            `json:"name,omitempty" xml:"name,omitempty"`
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
+	ShareId *string            `json:"shareId,omitempty" xml:"shareId,omitempty"`
 	Type    *string            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -34,6 +40,10 @@ func (s CreateCatalogRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCatalogRequest) GetIsShared() *bool {
+	return s.IsShared
+}
+
 func (s *CreateCatalogRequest) GetName() *string {
 	return s.Name
 }
@@ -42,8 +52,17 @@ func (s *CreateCatalogRequest) GetOptions() map[string]*string {
 	return s.Options
 }
 
+func (s *CreateCatalogRequest) GetShareId() *string {
+	return s.ShareId
+}
+
 func (s *CreateCatalogRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateCatalogRequest) SetIsShared(v bool) *CreateCatalogRequest {
+	s.IsShared = &v
+	return s
 }
 
 func (s *CreateCatalogRequest) SetName(v string) *CreateCatalogRequest {
@@ -53,6 +72,11 @@ func (s *CreateCatalogRequest) SetName(v string) *CreateCatalogRequest {
 
 func (s *CreateCatalogRequest) SetOptions(v map[string]*string) *CreateCatalogRequest {
 	s.Options = v
+	return s
+}
+
+func (s *CreateCatalogRequest) SetShareId(v string) *CreateCatalogRequest {
+	s.ShareId = &v
 	return s
 }
 

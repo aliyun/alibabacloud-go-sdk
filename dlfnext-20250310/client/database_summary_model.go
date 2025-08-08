@@ -17,6 +17,14 @@ type iDatabaseSummary interface {
 	GetGeneratedDate() *string
 	SetLocation(v string) *DatabaseSummary
 	GetLocation() *string
+	SetObjTypeArchiveSize(v int64) *DatabaseSummary
+	GetObjTypeArchiveSize() *int64
+	SetObjTypeColdArchiveSize(v int64) *DatabaseSummary
+	GetObjTypeColdArchiveSize() *int64
+	SetObjTypeIaSize(v int64) *DatabaseSummary
+	GetObjTypeIaSize() *int64
+	SetObjTypeStandardSize(v int64) *DatabaseSummary
+	GetObjTypeStandardSize() *int64
 	SetPartitionCount(v int64) *DatabaseSummary
 	GetPartitionCount() *int64
 	SetTableCount(v int64) *DatabaseSummary
@@ -35,8 +43,12 @@ type DatabaseSummary struct {
 	// Last profile update date in format yyyyMMdd
 	GeneratedDate *string `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
 	// Storage location URI
-	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
-	PartitionCount *int64  `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	Location               *string `json:"location,omitempty" xml:"location,omitempty"`
+	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	PartitionCount         *int64  `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
 	// Total storage in bytes
 	TableCount     *int64 `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
 	TotalFileCount *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
@@ -66,6 +78,22 @@ func (s *DatabaseSummary) GetGeneratedDate() *string {
 
 func (s *DatabaseSummary) GetLocation() *string {
 	return s.Location
+}
+
+func (s *DatabaseSummary) GetObjTypeArchiveSize() *int64 {
+	return s.ObjTypeArchiveSize
+}
+
+func (s *DatabaseSummary) GetObjTypeColdArchiveSize() *int64 {
+	return s.ObjTypeColdArchiveSize
+}
+
+func (s *DatabaseSummary) GetObjTypeIaSize() *int64 {
+	return s.ObjTypeIaSize
+}
+
+func (s *DatabaseSummary) GetObjTypeStandardSize() *int64 {
+	return s.ObjTypeStandardSize
 }
 
 func (s *DatabaseSummary) GetPartitionCount() *int64 {
@@ -101,6 +129,26 @@ func (s *DatabaseSummary) SetGeneratedDate(v string) *DatabaseSummary {
 
 func (s *DatabaseSummary) SetLocation(v string) *DatabaseSummary {
 	s.Location = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetObjTypeArchiveSize(v int64) *DatabaseSummary {
+	s.ObjTypeArchiveSize = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetObjTypeColdArchiveSize(v int64) *DatabaseSummary {
+	s.ObjTypeColdArchiveSize = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetObjTypeIaSize(v int64) *DatabaseSummary {
+	s.ObjTypeIaSize = &v
+	return s
+}
+
+func (s *DatabaseSummary) SetObjTypeStandardSize(v int64) *DatabaseSummary {
+	s.ObjTypeStandardSize = &v
 	return s
 }
 

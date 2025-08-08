@@ -25,6 +25,12 @@ type iPartition interface {
 	GetRecordCount() *int64
 	SetSpec(v map[string]interface{}) *Partition
 	GetSpec() map[string]interface{}
+	SetStorageAction(v string) *Partition
+	GetStorageAction() *string
+	SetStorageActionTimestamp(v int64) *Partition
+	GetStorageActionTimestamp() *int64
+	SetStorageClass(v string) *Partition
+	GetStorageClass() *string
 	SetUpdatedAt(v int64) *Partition
 	GetUpdatedAt() *int64
 	SetUpdatedBy(v string) *Partition
@@ -32,16 +38,19 @@ type iPartition interface {
 }
 
 type Partition struct {
-	CreatedAt            *int64                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy            *string                `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Done                 *bool                  `json:"done,omitempty" xml:"done,omitempty"`
-	FileCount            *int64                 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	FileSizeInBytes      *int64                 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
-	LastFileCreationTime *int64                 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
-	RecordCount          *int64                 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
-	Spec                 map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
-	UpdatedAt            *int64                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy            *string                `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	CreatedAt              *int64                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy              *string                `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	Done                   *bool                  `json:"done,omitempty" xml:"done,omitempty"`
+	FileCount              *int64                 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	FileSizeInBytes        *int64                 `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
+	LastFileCreationTime   *int64                 `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	RecordCount            *int64                 `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
+	Spec                   map[string]interface{} `json:"spec,omitempty" xml:"spec,omitempty"`
+	StorageAction          *string                `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	StorageActionTimestamp *int64                 `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string                `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	UpdatedAt              *int64                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy              *string                `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Partition) String() string {
@@ -82,6 +91,18 @@ func (s *Partition) GetRecordCount() *int64 {
 
 func (s *Partition) GetSpec() map[string]interface{} {
 	return s.Spec
+}
+
+func (s *Partition) GetStorageAction() *string {
+	return s.StorageAction
+}
+
+func (s *Partition) GetStorageActionTimestamp() *int64 {
+	return s.StorageActionTimestamp
+}
+
+func (s *Partition) GetStorageClass() *string {
+	return s.StorageClass
 }
 
 func (s *Partition) GetUpdatedAt() *int64 {
@@ -129,6 +150,21 @@ func (s *Partition) SetRecordCount(v int64) *Partition {
 
 func (s *Partition) SetSpec(v map[string]interface{}) *Partition {
 	s.Spec = v
+	return s
+}
+
+func (s *Partition) SetStorageAction(v string) *Partition {
+	s.StorageAction = &v
+	return s
+}
+
+func (s *Partition) SetStorageActionTimestamp(v int64) *Partition {
+	s.StorageActionTimestamp = &v
+	return s
+}
+
+func (s *Partition) SetStorageClass(v string) *Partition {
+	s.StorageClass = &v
 	return s
 }
 

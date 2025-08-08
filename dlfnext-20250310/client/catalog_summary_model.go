@@ -17,6 +17,14 @@ type iCatalogSummary interface {
 	GetFileAccessCountMonthly() *int64
 	SetGeneratedDate(v string) *CatalogSummary
 	GetGeneratedDate() *string
+	SetObjTypeArchiveSize(v int64) *CatalogSummary
+	GetObjTypeArchiveSize() *int64
+	SetObjTypeColdArchiveSize(v int64) *CatalogSummary
+	GetObjTypeColdArchiveSize() *int64
+	SetObjTypeIaSize(v int64) *CatalogSummary
+	GetObjTypeIaSize() *int64
+	SetObjTypeStandardSize(v int64) *CatalogSummary
+	GetObjTypeStandardSize() *int64
 	SetPartitionCount(v *MoMValues) *CatalogSummary
 	GetPartitionCount() *MoMValues
 	SetTableCount(v *MoMValues) *CatalogSummary
@@ -34,12 +42,16 @@ type CatalogSummary struct {
 	DatabaseCount          *MoMValues `json:"databaseCount,omitempty" xml:"databaseCount,omitempty"`
 	FileAccessCountMonthly *int64     `json:"fileAccessCountMonthly,omitempty" xml:"fileAccessCountMonthly,omitempty"`
 	// Update date of the statistics
-	GeneratedDate        *string    `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
-	PartitionCount       *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
-	TableCount           *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
-	ThroughputMonthly    *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
-	TotalFileCount       *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
-	TotalFileSizeInBytes *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	GeneratedDate          *string    `json:"generatedDate,omitempty" xml:"generatedDate,omitempty"`
+	ObjTypeArchiveSize     *int64     `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	ObjTypeColdArchiveSize *int64     `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	ObjTypeIaSize          *int64     `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	ObjTypeStandardSize    *int64     `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	PartitionCount         *MoMValues `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	TableCount             *MoMValues `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
+	ThroughputMonthly      *int64     `json:"throughputMonthly,omitempty" xml:"throughputMonthly,omitempty"`
+	TotalFileCount         *MoMValues `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
+	TotalFileSizeInBytes   *MoMValues `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
 }
 
 func (s CatalogSummary) String() string {
@@ -64,6 +76,22 @@ func (s *CatalogSummary) GetFileAccessCountMonthly() *int64 {
 
 func (s *CatalogSummary) GetGeneratedDate() *string {
 	return s.GeneratedDate
+}
+
+func (s *CatalogSummary) GetObjTypeArchiveSize() *int64 {
+	return s.ObjTypeArchiveSize
+}
+
+func (s *CatalogSummary) GetObjTypeColdArchiveSize() *int64 {
+	return s.ObjTypeColdArchiveSize
+}
+
+func (s *CatalogSummary) GetObjTypeIaSize() *int64 {
+	return s.ObjTypeIaSize
+}
+
+func (s *CatalogSummary) GetObjTypeStandardSize() *int64 {
+	return s.ObjTypeStandardSize
 }
 
 func (s *CatalogSummary) GetPartitionCount() *MoMValues {
@@ -103,6 +131,26 @@ func (s *CatalogSummary) SetFileAccessCountMonthly(v int64) *CatalogSummary {
 
 func (s *CatalogSummary) SetGeneratedDate(v string) *CatalogSummary {
 	s.GeneratedDate = &v
+	return s
+}
+
+func (s *CatalogSummary) SetObjTypeArchiveSize(v int64) *CatalogSummary {
+	s.ObjTypeArchiveSize = &v
+	return s
+}
+
+func (s *CatalogSummary) SetObjTypeColdArchiveSize(v int64) *CatalogSummary {
+	s.ObjTypeColdArchiveSize = &v
+	return s
+}
+
+func (s *CatalogSummary) SetObjTypeIaSize(v int64) *CatalogSummary {
+	s.ObjTypeIaSize = &v
+	return s
+}
+
+func (s *CatalogSummary) SetObjTypeStandardSize(v int64) *CatalogSummary {
+	s.ObjTypeStandardSize = &v
 	return s
 }
 

@@ -27,6 +27,12 @@ type iTable interface {
 	GetSchema() *Schema
 	SetSchemaId(v int64) *Table
 	GetSchemaId() *int64
+	SetStorageAction(v string) *Table
+	GetStorageAction() *string
+	SetStorageActionTimestamp(v int64) *Table
+	GetStorageActionTimestamp() *int64
+	SetStorageClass(v string) *Table
+	GetStorageClass() *string
 	SetUpdatedAt(v int64) *Table
 	GetUpdatedAt() *int64
 	SetUpdatedBy(v string) *Table
@@ -34,17 +40,20 @@ type iTable interface {
 }
 
 type Table struct {
-	CreatedAt  *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy  *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Id         *string `json:"id,omitempty" xml:"id,omitempty"`
-	IsExternal *bool   `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	Path       *string `json:"path,omitempty" xml:"path,omitempty"`
-	Schema     *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
-	SchemaId   *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
-	UpdatedAt  *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	UpdatedBy  *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
+	CreatedAt              *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	CreatedBy              *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	Id                     *string `json:"id,omitempty" xml:"id,omitempty"`
+	IsExternal             *bool   `json:"isExternal,omitempty" xml:"isExternal,omitempty"`
+	Name                   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Owner                  *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Path                   *string `json:"path,omitempty" xml:"path,omitempty"`
+	Schema                 *Schema `json:"schema,omitempty" xml:"schema,omitempty"`
+	SchemaId               *int64  `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	StorageAction          *string `json:"storageAction,omitempty" xml:"storageAction,omitempty"`
+	StorageActionTimestamp *int64  `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
+	UpdatedAt              *int64  `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	UpdatedBy              *string `json:"updatedBy,omitempty" xml:"updatedBy,omitempty"`
 }
 
 func (s Table) String() string {
@@ -89,6 +98,18 @@ func (s *Table) GetSchema() *Schema {
 
 func (s *Table) GetSchemaId() *int64 {
 	return s.SchemaId
+}
+
+func (s *Table) GetStorageAction() *string {
+	return s.StorageAction
+}
+
+func (s *Table) GetStorageActionTimestamp() *int64 {
+	return s.StorageActionTimestamp
+}
+
+func (s *Table) GetStorageClass() *string {
+	return s.StorageClass
 }
 
 func (s *Table) GetUpdatedAt() *int64 {
@@ -141,6 +162,21 @@ func (s *Table) SetSchema(v *Schema) *Table {
 
 func (s *Table) SetSchemaId(v int64) *Table {
 	s.SchemaId = &v
+	return s
+}
+
+func (s *Table) SetStorageAction(v string) *Table {
+	s.StorageAction = &v
+	return s
+}
+
+func (s *Table) SetStorageActionTimestamp(v int64) *Table {
+	s.StorageActionTimestamp = &v
+	return s
+}
+
+func (s *Table) SetStorageClass(v string) *Table {
+	s.StorageClass = &v
 	return s
 }
 

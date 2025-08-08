@@ -17,6 +17,12 @@ type iPartitionSummary interface {
 	GetLastAccessTime() *int64
 	SetPartitionName(v string) *PartitionSummary
 	GetPartitionName() *string
+	SetStorageActionParams(v map[string]*string) *PartitionSummary
+	GetStorageActionParams() map[string]*string
+	SetStorageActionTimestamp(v int64) *PartitionSummary
+	GetStorageActionTimestamp() *int64
+	SetStorageClass(v string) *PartitionSummary
+	GetStorageClass() *string
 	SetTableName(v string) *PartitionSummary
 	GetTableName() *string
 	SetTotalFileCount(v int64) *PartitionSummary
@@ -35,7 +41,10 @@ type PartitionSummary struct {
 	// Total files in partition
 	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
 	// Partition identifier
-	PartitionName *string `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
+	PartitionName          *string            `json:"partitionName,omitempty" xml:"partitionName,omitempty"`
+	StorageActionParams    map[string]*string `json:"storageActionParams,omitempty" xml:"storageActionParams,omitempty"`
+	StorageActionTimestamp *int64             `json:"storageActionTimestamp,omitempty" xml:"storageActionTimestamp,omitempty"`
+	StorageClass           *string            `json:"storageClass,omitempty" xml:"storageClass,omitempty"`
 	// Table name
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 	// 24h access count
@@ -67,6 +76,18 @@ func (s *PartitionSummary) GetLastAccessTime() *int64 {
 
 func (s *PartitionSummary) GetPartitionName() *string {
 	return s.PartitionName
+}
+
+func (s *PartitionSummary) GetStorageActionParams() map[string]*string {
+	return s.StorageActionParams
+}
+
+func (s *PartitionSummary) GetStorageActionTimestamp() *int64 {
+	return s.StorageActionTimestamp
+}
+
+func (s *PartitionSummary) GetStorageClass() *string {
+	return s.StorageClass
 }
 
 func (s *PartitionSummary) GetTableName() *string {
@@ -102,6 +123,21 @@ func (s *PartitionSummary) SetLastAccessTime(v int64) *PartitionSummary {
 
 func (s *PartitionSummary) SetPartitionName(v string) *PartitionSummary {
 	s.PartitionName = &v
+	return s
+}
+
+func (s *PartitionSummary) SetStorageActionParams(v map[string]*string) *PartitionSummary {
+	s.StorageActionParams = v
+	return s
+}
+
+func (s *PartitionSummary) SetStorageActionTimestamp(v int64) *PartitionSummary {
+	s.StorageActionTimestamp = &v
+	return s
+}
+
+func (s *PartitionSummary) SetStorageClass(v string) *PartitionSummary {
+	s.StorageClass = &v
 	return s
 }
 

@@ -15,12 +15,16 @@ type iCatalog interface {
 	GetCreatedBy() *string
 	SetId(v string) *Catalog
 	GetId() *string
+	SetIsShared(v bool) *Catalog
+	GetIsShared() *bool
 	SetName(v string) *Catalog
 	GetName() *string
 	SetOptions(v map[string]*string) *Catalog
 	GetOptions() map[string]*string
 	SetOwner(v string) *Catalog
 	GetOwner() *string
+	SetShareId(v string) *Catalog
+	GetShareId() *string
 	SetStatus(v string) *Catalog
 	GetStatus() *string
 	SetType(v string) *Catalog
@@ -35,9 +39,11 @@ type Catalog struct {
 	CreatedAt *int64             `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	CreatedBy *string            `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
 	Id        *string            `json:"id,omitempty" xml:"id,omitempty"`
+	IsShared  *bool              `json:"isShared,omitempty" xml:"isShared,omitempty"`
 	Name      *string            `json:"name,omitempty" xml:"name,omitempty"`
 	Options   map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
 	Owner     *string            `json:"owner,omitempty" xml:"owner,omitempty"`
+	ShareId   *string            `json:"shareId,omitempty" xml:"shareId,omitempty"`
 	Status    *string            `json:"status,omitempty" xml:"status,omitempty"`
 	Type      *string            `json:"type,omitempty" xml:"type,omitempty"`
 	UpdatedAt *int64             `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
@@ -64,6 +70,10 @@ func (s *Catalog) GetId() *string {
 	return s.Id
 }
 
+func (s *Catalog) GetIsShared() *bool {
+	return s.IsShared
+}
+
 func (s *Catalog) GetName() *string {
 	return s.Name
 }
@@ -74,6 +84,10 @@ func (s *Catalog) GetOptions() map[string]*string {
 
 func (s *Catalog) GetOwner() *string {
 	return s.Owner
+}
+
+func (s *Catalog) GetShareId() *string {
+	return s.ShareId
 }
 
 func (s *Catalog) GetStatus() *string {
@@ -107,6 +121,11 @@ func (s *Catalog) SetId(v string) *Catalog {
 	return s
 }
 
+func (s *Catalog) SetIsShared(v bool) *Catalog {
+	s.IsShared = &v
+	return s
+}
+
 func (s *Catalog) SetName(v string) *Catalog {
 	s.Name = &v
 	return s
@@ -119,6 +138,11 @@ func (s *Catalog) SetOptions(v map[string]*string) *Catalog {
 
 func (s *Catalog) SetOwner(v string) *Catalog {
 	s.Owner = &v
+	return s
+}
+
+func (s *Catalog) SetShareId(v string) *Catalog {
+	s.ShareId = &v
 	return s
 }
 
