@@ -707,6 +707,82 @@ func (client *Client) GetFoTaskStatusWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// 获取模板变参可选值
+//
+// @param tmpReq - GetLinkageAttributesTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLinkageAttributesTemplateResponse
+func (client *Client) GetLinkageAttributesTemplateWithContext(ctx context.Context, tmpReq *GetLinkageAttributesTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetLinkageAttributesTemplateResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetLinkageAttributesTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Instances) {
+		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, dara.String("Instances"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Variables) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, dara.String("Variables"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AreaId) {
+		body["AreaId"] = request.AreaId
+	}
+
+	if !dara.IsNil(request.InstancesShrink) {
+		body["Instances"] = request.InstancesShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TargetVariable) {
+		body["TargetVariable"] = request.TargetVariable
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.VariablesShrink) {
+		body["Variables"] = request.VariablesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLinkageAttributesTemplate"),
+		Version:     dara.String("2021-09-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLinkageAttributesTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the zones where the specified disaster recovery service can be switched.
 //
 // Description:
