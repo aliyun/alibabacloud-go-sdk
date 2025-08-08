@@ -13,6 +13,8 @@ type iGetDatabaseRequest interface {
 	GetHost() *string
 	SetPort(v int32) *GetDatabaseRequest
 	GetPort() *int32
+	SetRealLoginUserUid(v string) *GetDatabaseRequest
+	GetRealLoginUserUid() *string
 	SetSchemaName(v string) *GetDatabaseRequest
 	GetSchemaName() *string
 	SetSid(v string) *GetDatabaseRequest
@@ -37,7 +39,8 @@ type GetDatabaseRequest struct {
 	// example:
 	//
 	// 3306
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The name of the database.
 	//
 	// This parameter is required.
@@ -78,6 +81,10 @@ func (s *GetDatabaseRequest) GetPort() *int32 {
 	return s.Port
 }
 
+func (s *GetDatabaseRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *GetDatabaseRequest) GetSchemaName() *string {
 	return s.SchemaName
 }
@@ -97,6 +104,11 @@ func (s *GetDatabaseRequest) SetHost(v string) *GetDatabaseRequest {
 
 func (s *GetDatabaseRequest) SetPort(v int32) *GetDatabaseRequest {
 	s.Port = &v
+	return s
+}
+
+func (s *GetDatabaseRequest) SetRealLoginUserUid(v string) *GetDatabaseRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

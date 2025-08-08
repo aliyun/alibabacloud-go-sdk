@@ -23,6 +23,8 @@ type iListInstancesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListInstancesRequest
 	GetPageSize() *int32
+	SetRealLoginUserUid(v string) *ListInstancesRequest
+	GetRealLoginUserUid() *string
 	SetRegion(v string) *ListInstancesRequest
 	GetRegion() *string
 	SetSearchKey(v string) *ListInstancesRequest
@@ -105,8 +107,9 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// 50
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The keyword that is used to search for database instances.
 	//
 	// example:
@@ -157,6 +160,10 @@ func (s *ListInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListInstancesRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *ListInstancesRequest) GetRegion() *string {
 	return s.Region
 }
@@ -201,6 +208,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int32) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int32) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetRealLoginUserUid(v string) *ListInstancesRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

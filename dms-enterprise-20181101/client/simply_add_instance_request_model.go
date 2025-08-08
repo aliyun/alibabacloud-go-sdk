@@ -21,6 +21,8 @@ type iSimplyAddInstanceRequest interface {
 	GetInstanceRegion() *string
 	SetPort(v int32) *SimplyAddInstanceRequest
 	GetPort() *int32
+	SetRealLoginUserUid(v string) *SimplyAddInstanceRequest
+	GetRealLoginUserUid() *string
 }
 
 type SimplyAddInstanceRequest struct {
@@ -51,7 +53,8 @@ type SimplyAddInstanceRequest struct {
 	// example:
 	//
 	// 5432
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 }
 
 func (s SimplyAddInstanceRequest) String() string {
@@ -86,6 +89,10 @@ func (s *SimplyAddInstanceRequest) GetPort() *int32 {
 	return s.Port
 }
 
+func (s *SimplyAddInstanceRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *SimplyAddInstanceRequest) SetDatabasePassword(v string) *SimplyAddInstanceRequest {
 	s.DatabasePassword = &v
 	return s
@@ -113,6 +120,11 @@ func (s *SimplyAddInstanceRequest) SetInstanceRegion(v string) *SimplyAddInstanc
 
 func (s *SimplyAddInstanceRequest) SetPort(v int32) *SimplyAddInstanceRequest {
 	s.Port = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetRealLoginUserUid(v string) *SimplyAddInstanceRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

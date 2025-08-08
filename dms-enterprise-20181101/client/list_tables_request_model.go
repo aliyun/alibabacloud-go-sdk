@@ -15,6 +15,8 @@ type iListTablesRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTablesRequest
 	GetPageSize() *int32
+	SetRealLoginUserUid(v string) *ListTablesRequest
+	GetRealLoginUserUid() *string
 	SetReturnGuid(v bool) *ListTablesRequest
 	GetReturnGuid() *bool
 	SetSearchName(v string) *ListTablesRequest
@@ -43,7 +45,8 @@ type ListTablesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// Specifies whether to return the GUID of a table. Valid values:
 	//
 	// 	- **true**: returns the GUID of a table.
@@ -88,6 +91,10 @@ func (s *ListTablesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListTablesRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *ListTablesRequest) GetReturnGuid() *bool {
 	return s.ReturnGuid
 }
@@ -112,6 +119,11 @@ func (s *ListTablesRequest) SetPageNumber(v int32) *ListTablesRequest {
 
 func (s *ListTablesRequest) SetPageSize(v int32) *ListTablesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetRealLoginUserUid(v string) *ListTablesRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

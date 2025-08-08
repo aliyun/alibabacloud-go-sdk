@@ -17,6 +17,8 @@ type iSearchDatabaseRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *SearchDatabaseRequest
 	GetPageSize() *int32
+	SetRealLoginUserUid(v string) *SearchDatabaseRequest
+	GetRealLoginUserUid() *string
 	SetSearchKey(v string) *SearchDatabaseRequest
 	GetSearchKey() *string
 	SetSearchRange(v string) *SearchDatabaseRequest
@@ -51,7 +53,8 @@ type SearchDatabaseRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The keyword that is used to search for databases.
 	//
 	// example:
@@ -116,6 +119,10 @@ func (s *SearchDatabaseRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *SearchDatabaseRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *SearchDatabaseRequest) GetSearchKey() *string {
 	return s.SearchKey
 }
@@ -149,6 +156,11 @@ func (s *SearchDatabaseRequest) SetPageNumber(v int32) *SearchDatabaseRequest {
 
 func (s *SearchDatabaseRequest) SetPageSize(v int32) *SearchDatabaseRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *SearchDatabaseRequest) SetRealLoginUserUid(v string) *SearchDatabaseRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

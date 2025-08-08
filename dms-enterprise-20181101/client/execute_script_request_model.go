@@ -13,6 +13,8 @@ type iExecuteScriptRequest interface {
   GetDbId() *int32 
   SetLogic(v bool) *ExecuteScriptRequest
   GetLogic() *bool 
+  SetRealLoginUserUid(v string) *ExecuteScriptRequest
+  GetRealLoginUserUid() *string 
   SetScript(v string) *ExecuteScriptRequest
   GetScript() *string 
   SetTid(v int64) *ExecuteScriptRequest
@@ -38,6 +40,7 @@ type ExecuteScriptRequest struct {
   // 
   // false
   Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+  RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
   // The SQL statements to be executed. Data query language (DQL) statements, data definition language (DDL) statements, and data manipulation language (DML) statements are supported. The control mode of the instance that you want to query determines whether you can execute DDL and DML statements.
   // 
   // This parameter is required.
@@ -72,6 +75,10 @@ func (s *ExecuteScriptRequest) GetLogic() *bool  {
   return s.Logic
 }
 
+func (s *ExecuteScriptRequest) GetRealLoginUserUid() *string  {
+  return s.RealLoginUserUid
+}
+
 func (s *ExecuteScriptRequest) GetScript() *string  {
   return s.Script
 }
@@ -87,6 +94,11 @@ func (s *ExecuteScriptRequest) SetDbId(v int32) *ExecuteScriptRequest {
 
 func (s *ExecuteScriptRequest) SetLogic(v bool) *ExecuteScriptRequest {
   s.Logic = &v
+  return s
+}
+
+func (s *ExecuteScriptRequest) SetRealLoginUserUid(v string) *ExecuteScriptRequest {
+  s.RealLoginUserUid = &v
   return s
 }
 

@@ -13,6 +13,8 @@ type iGetInstanceRequest interface {
 	GetHost() *string
 	SetPort(v int32) *GetInstanceRequest
 	GetPort() *int32
+	SetRealLoginUserUid(v string) *GetInstanceRequest
+	GetRealLoginUserUid() *string
 	SetSid(v string) *GetInstanceRequest
 	GetSid() *string
 	SetTid(v int64) *GetInstanceRequest
@@ -35,7 +37,8 @@ type GetInstanceRequest struct {
 	// example:
 	//
 	// 5432
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port             *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The system ID (SID) of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the SID.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s *GetInstanceRequest) GetPort() *int32 {
 	return s.Port
 }
 
+func (s *GetInstanceRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *GetInstanceRequest) GetSid() *string {
 	return s.Sid
 }
@@ -81,6 +88,11 @@ func (s *GetInstanceRequest) SetHost(v string) *GetInstanceRequest {
 
 func (s *GetInstanceRequest) SetPort(v int32) *GetInstanceRequest {
 	s.Port = &v
+	return s
+}
+
+func (s *GetInstanceRequest) SetRealLoginUserUid(v string) *GetInstanceRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

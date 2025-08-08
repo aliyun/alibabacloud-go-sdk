@@ -21,6 +21,8 @@ type iGenerateSqlFromNLRequest interface {
 	GetModel() *string
 	SetQuestion(v string) *GenerateSqlFromNLRequest
 	GetQuestion() *string
+	SetRealLoginUserUid(v string) *GenerateSqlFromNLRequest
+	GetRealLoginUserUid() *string
 	SetTableNames(v string) *GenerateSqlFromNLRequest
 	GetTableNames() *string
 }
@@ -49,7 +51,8 @@ type GenerateSqlFromNLRequest struct {
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// This parameter is required.
-	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	Question         *string `json:"Question,omitempty" xml:"Question,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// example:
 	//
 	// users,orders
@@ -88,6 +91,10 @@ func (s *GenerateSqlFromNLRequest) GetQuestion() *string {
 	return s.Question
 }
 
+func (s *GenerateSqlFromNLRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *GenerateSqlFromNLRequest) GetTableNames() *string {
 	return s.TableNames
 }
@@ -119,6 +126,11 @@ func (s *GenerateSqlFromNLRequest) SetModel(v string) *GenerateSqlFromNLRequest 
 
 func (s *GenerateSqlFromNLRequest) SetQuestion(v string) *GenerateSqlFromNLRequest {
 	s.Question = &v
+	return s
+}
+
+func (s *GenerateSqlFromNLRequest) SetRealLoginUserUid(v string) *GenerateSqlFromNLRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 

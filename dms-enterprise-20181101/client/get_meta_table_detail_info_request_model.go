@@ -9,6 +9,8 @@ type iGetMetaTableDetailInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetRealLoginUserUid(v string) *GetMetaTableDetailInfoRequest
+	GetRealLoginUserUid() *string
 	SetTableGuid(v string) *GetMetaTableDetailInfoRequest
 	GetTableGuid() *string
 	SetTid(v int64) *GetMetaTableDetailInfoRequest
@@ -16,6 +18,7 @@ type iGetMetaTableDetailInfoRequest interface {
 }
 
 type GetMetaTableDetailInfoRequest struct {
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The GUID of the table in Data Management (DMS).
 	//
 	// >
@@ -48,12 +51,21 @@ func (s GetMetaTableDetailInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetMetaTableDetailInfoRequest) GetRealLoginUserUid() *string {
+	return s.RealLoginUserUid
+}
+
 func (s *GetMetaTableDetailInfoRequest) GetTableGuid() *string {
 	return s.TableGuid
 }
 
 func (s *GetMetaTableDetailInfoRequest) GetTid() *int64 {
 	return s.Tid
+}
+
+func (s *GetMetaTableDetailInfoRequest) SetRealLoginUserUid(v string) *GetMetaTableDetailInfoRequest {
+	s.RealLoginUserUid = &v
+	return s
 }
 
 func (s *GetMetaTableDetailInfoRequest) SetTableGuid(v string) *GetMetaTableDetailInfoRequest {
