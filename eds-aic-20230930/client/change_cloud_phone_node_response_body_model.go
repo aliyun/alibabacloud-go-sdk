@@ -11,12 +11,15 @@ type iChangeCloudPhoneNodeResponseBody interface {
 	GoString() string
 	SetNodeInfos(v []*ChangeCloudPhoneNodeResponseBodyNodeInfos) *ChangeCloudPhoneNodeResponseBody
 	GetNodeInfos() []*ChangeCloudPhoneNodeResponseBodyNodeInfos
+	SetOrderId(v string) *ChangeCloudPhoneNodeResponseBody
+	GetOrderId() *string
 	SetRequestId(v string) *ChangeCloudPhoneNodeResponseBody
 	GetRequestId() *string
 }
 
 type ChangeCloudPhoneNodeResponseBody struct {
 	NodeInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	OrderId   *string                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// example:
 	//
 	// 4610632D-D661-5982-B3D7-5D3FD183F****
@@ -35,12 +38,21 @@ func (s *ChangeCloudPhoneNodeResponseBody) GetNodeInfos() []*ChangeCloudPhoneNod
 	return s.NodeInfos
 }
 
+func (s *ChangeCloudPhoneNodeResponseBody) GetOrderId() *string {
+	return s.OrderId
+}
+
 func (s *ChangeCloudPhoneNodeResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *ChangeCloudPhoneNodeResponseBody) SetNodeInfos(v []*ChangeCloudPhoneNodeResponseBodyNodeInfos) *ChangeCloudPhoneNodeResponseBody {
 	s.NodeInfos = v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponseBody) SetOrderId(v string) *ChangeCloudPhoneNodeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
@@ -58,7 +70,8 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
 	// example:
 	//
 	// cpn-e5kxgjyt8s1mb****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ShareDataVolume *int32  `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeResponseBodyNodeInfos) String() string {
@@ -77,6 +90,10 @@ func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) GetShareDataVolume() *int32 {
+	return s.ShareDataVolume
+}
+
 func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetInstanceInfos(v []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) *ChangeCloudPhoneNodeResponseBodyNodeInfos {
 	s.InstanceInfos = v
 	return s
@@ -84,6 +101,11 @@ func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetInstanceInfos(v []*Change
 
 func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetNodeId(v string) *ChangeCloudPhoneNodeResponseBodyNodeInfos {
 	s.NodeId = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetShareDataVolume(v int32) *ChangeCloudPhoneNodeResponseBodyNodeInfos {
+	s.ShareDataVolume = &v
 	return s
 }
 
@@ -95,7 +117,8 @@ type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
 	// example:
 	//
 	// cpn-jewjt8xryuitu****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) String() string {
@@ -110,8 +133,17 @@ func (s *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) GetInstanceId()
 	return s.InstanceId
 }
 
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) GetPhoneDataVolume() *int32 {
+	return s.PhoneDataVolume
+}
+
 func (s *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) SetInstanceId(v string) *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) SetPhoneDataVolume(v int32) *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos {
+	s.PhoneDataVolume = &v
 	return s
 }
 

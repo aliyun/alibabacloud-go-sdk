@@ -9,15 +9,25 @@ type iChangeCloudPhoneNodeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoPay(v bool) *ChangeCloudPhoneNodeRequest
+	GetAutoPay() *bool
+	SetDownBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest
+	GetDownBandwidthLimit() *int32
 	SetInstanceType(v string) *ChangeCloudPhoneNodeRequest
 	GetInstanceType() *string
 	SetNodeId(v string) *ChangeCloudPhoneNodeRequest
 	GetNodeId() *string
 	SetPhoneCount(v int32) *ChangeCloudPhoneNodeRequest
 	GetPhoneCount() *int32
+	SetPhoneDataVolume(v int32) *ChangeCloudPhoneNodeRequest
+	GetPhoneDataVolume() *int32
+	SetUpBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest
+	GetUpBandwidthLimit() *int32
 }
 
 type ChangeCloudPhoneNodeRequest struct {
+	AutoPay            *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
 	// example:
 	//
 	// ac.max
@@ -29,7 +39,9 @@ type ChangeCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// 20
-	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneCount       *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataVolume  *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeRequest) String() string {
@@ -38,6 +50,14 @@ func (s ChangeCloudPhoneNodeRequest) String() string {
 
 func (s ChangeCloudPhoneNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeRequest) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
+func (s *ChangeCloudPhoneNodeRequest) GetDownBandwidthLimit() *int32 {
+	return s.DownBandwidthLimit
 }
 
 func (s *ChangeCloudPhoneNodeRequest) GetInstanceType() *string {
@@ -52,6 +72,24 @@ func (s *ChangeCloudPhoneNodeRequest) GetPhoneCount() *int32 {
 	return s.PhoneCount
 }
 
+func (s *ChangeCloudPhoneNodeRequest) GetPhoneDataVolume() *int32 {
+	return s.PhoneDataVolume
+}
+
+func (s *ChangeCloudPhoneNodeRequest) GetUpBandwidthLimit() *int32 {
+	return s.UpBandwidthLimit
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetAutoPay(v bool) *ChangeCloudPhoneNodeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetDownBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest {
+	s.DownBandwidthLimit = &v
+	return s
+}
+
 func (s *ChangeCloudPhoneNodeRequest) SetInstanceType(v string) *ChangeCloudPhoneNodeRequest {
 	s.InstanceType = &v
 	return s
@@ -64,6 +102,16 @@ func (s *ChangeCloudPhoneNodeRequest) SetNodeId(v string) *ChangeCloudPhoneNodeR
 
 func (s *ChangeCloudPhoneNodeRequest) SetPhoneCount(v int32) *ChangeCloudPhoneNodeRequest {
 	s.PhoneCount = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetPhoneDataVolume(v int32) *ChangeCloudPhoneNodeRequest {
+	s.PhoneDataVolume = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetUpBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest {
+	s.UpBandwidthLimit = &v
 	return s
 }
 

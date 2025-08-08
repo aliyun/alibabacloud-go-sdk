@@ -112,9 +112,10 @@ func (s *DescribeCloudPhoneNodesResponseBody) Validate() error {
 }
 
 type DescribeCloudPhoneNodesResponseBodyNodeModel struct {
-	BandwidthPackageId   *string                                                `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthPackageType *string                                                `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
-	BizTags              []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
+	BandwidthPackageId     *string                                                `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageStatus *string                                                `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
+	BandwidthPackageType   *string                                                `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
+	BizTags                []*DescribeCloudPhoneNodesResponseBodyNodeModelBizTags `json:"BizTags,omitempty" xml:"BizTags,omitempty" type:"Repeated"`
 	// The billing method.
 	//
 	// example:
@@ -235,6 +236,10 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBandwidthPackageId() *
 	return s.BandwidthPackageId
 }
 
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBandwidthPackageStatus() *string {
+	return s.BandwidthPackageStatus
+}
+
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetBandwidthPackageType() *string {
 	return s.BandwidthPackageType
 }
@@ -329,6 +334,11 @@ func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) GetVSwitchId() *string {
 
 func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBandwidthPackageId(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
 	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *DescribeCloudPhoneNodesResponseBodyNodeModel) SetBandwidthPackageStatus(v string) *DescribeCloudPhoneNodesResponseBodyNodeModel {
+	s.BandwidthPackageStatus = &v
 	return s
 }
 
