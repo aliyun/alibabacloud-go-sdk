@@ -77,7 +77,18 @@ type ScaleWithAdjustmentRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The execution mode. Valid values:
+	//
+	// 	- None: If this is not specified, auto scaling is performed.
+	//
+	// 	- PlanOnly: Scaling is not triggered. Only elastic planning is performed. The planning result is returned in PlanResult, including the instance type, zone ID, billing type, and number of created instances.
+	//
+	// Default value: None.
+	//
+	// example:
+	//
+	// PlanOnly
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	// The context of the lifecycle hook.
 	LifecycleHookContext *ScaleWithAdjustmentRequestLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
@@ -88,10 +99,15 @@ type ScaleWithAdjustmentRequest struct {
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
 	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
-	Overrides            *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
-	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ParallelTask         *bool                                `json:"ParallelTask,omitempty" xml:"ParallelTask,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	Overrides *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
+	OwnerId   *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Whether the current scale-out task supports concurrency.
+	//
+	// example:
+	//
+	// false
+	ParallelTask         *bool   `json:"ParallelTask,omitempty" xml:"ParallelTask,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	//
 	// This parameter is required.
@@ -100,13 +116,13 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// asg-j6c1o397427hyjdc****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+	// Specifies whether to trigger the scaling task in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid Values:
 	//
-	// 	- true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+	// 	- true: triggers the scaling task in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
 	//
-	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
+	// 	- false: does not trigger the scaling task in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
 	//
-	// >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+	// >  For more information, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
 	//
 	// Default value: false.
 	//
@@ -293,7 +309,7 @@ func (s *ScaleWithAdjustmentRequestLifecycleHookContext) Validate() error {
 type ScaleWithAdjustmentRequestOverrides struct {
 	// The list of parameters that you want to use to override specific configurations for containers.
 	ContainerOverrides []*ScaleWithAdjustmentRequestOverridesContainerOverrides `json:"ContainerOverrides,omitempty" xml:"ContainerOverrides,omitempty" type:"Repeated"`
-	// The number of vCPUs that you want to allocate to the instance.
+	// The number of vCPUs that you want to allocate to the instance. Unit: vCPUs.
 	//
 	// example:
 	//
@@ -304,8 +320,11 @@ type ScaleWithAdjustmentRequestOverrides struct {
 	// example:
 	//
 	// 4
-	Memory   *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	UserData *string  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// ZWNobyBoZWxsbyBlY3Mh
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ScaleWithAdjustmentRequestOverrides) String() string {
@@ -357,11 +376,11 @@ func (s *ScaleWithAdjustmentRequestOverrides) Validate() error {
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
-	// The arguments that correspond to the startup commands of the container. You can specify up to 10 arguments.
+	// The argument that corresponds to the startup command of the container. You can specify up to 10 arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
 	// The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The number of vCPUs that you want to allocate to the container.
+	// The number of vCPUs that you want to allocate to the container. Unit: vCPUs.
 	//
 	// example:
 	//
@@ -375,7 +394,7 @@ type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The container name. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
+	// The name of container N. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
 	//
 	// example:
 	//
@@ -450,7 +469,7 @@ func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) Validate() error
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars struct {
-	// The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
+	// The name of the environment variable. The name must be 1 to 128 characters in length. Format requirement: `[0-9a-zA-Z]` and underscores (_). It cannot start with a digit.
 	//
 	// example:
 	//

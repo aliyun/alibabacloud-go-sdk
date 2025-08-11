@@ -77,7 +77,18 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The execution mode. Valid values:
+	//
+	// 	- None: If this is not specified, auto scaling is performed.
+	//
+	// 	- PlanOnly: Scaling is not triggered. Only elastic planning is performed. The planning result is returned in PlanResult, including the instance type, zone ID, billing type, and number of created instances.
+	//
+	// Default value: None.
+	//
+	// example:
+	//
+	// PlanOnly
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
 	// The context of the lifecycle hook.
 	LifecycleHookContextShrink *string `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty"`
@@ -88,8 +99,13 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
 	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
-	OverridesShrink      *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OverridesShrink *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Whether the current scale-out task supports concurrency.
+	//
+	// example:
+	//
+	// false
 	ParallelTask         *bool   `json:"ParallelTask,omitempty" xml:"ParallelTask,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
@@ -100,13 +116,13 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	//
 	// asg-j6c1o397427hyjdc****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+	// Specifies whether to trigger the scaling task in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid Values:
 	//
-	// 	- true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+	// 	- true: triggers the scaling task in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
 	//
-	// 	- false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
+	// 	- false: does not trigger the scaling task in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
 	//
-	// >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+	// >  For more information, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
 	//
 	// Default value: false.
 	//

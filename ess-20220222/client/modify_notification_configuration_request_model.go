@@ -9,6 +9,8 @@ type iModifyNotificationConfigurationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetMessageEncoding(v string) *ModifyNotificationConfigurationRequest
+	GetMessageEncoding() *string
 	SetNotificationArn(v string) *ModifyNotificationConfigurationRequest
 	GetNotificationArn() *string
 	SetNotificationTypes(v []*string) *ModifyNotificationConfigurationRequest
@@ -26,6 +28,7 @@ type iModifyNotificationConfigurationRequest interface {
 }
 
 type ModifyNotificationConfigurationRequest struct {
+	MessageEncoding *string `json:"MessageEncoding,omitempty" xml:"MessageEncoding,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
 	//
 	// 	- If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
@@ -86,6 +89,10 @@ func (s ModifyNotificationConfigurationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyNotificationConfigurationRequest) GetMessageEncoding() *string {
+	return s.MessageEncoding
+}
+
 func (s *ModifyNotificationConfigurationRequest) GetNotificationArn() *string {
 	return s.NotificationArn
 }
@@ -112,6 +119,11 @@ func (s *ModifyNotificationConfigurationRequest) GetScalingGroupId() *string {
 
 func (s *ModifyNotificationConfigurationRequest) GetTimeZone() *string {
 	return s.TimeZone
+}
+
+func (s *ModifyNotificationConfigurationRequest) SetMessageEncoding(v string) *ModifyNotificationConfigurationRequest {
+	s.MessageEncoding = &v
+	return s
 }
 
 func (s *ModifyNotificationConfigurationRequest) SetNotificationArn(v string) *ModifyNotificationConfigurationRequest {

@@ -57,6 +57,7 @@ func (s *DescribeNotificationConfigurationsResponseBody) Validate() error {
 }
 
 type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels struct {
+	MessageEncoding *string `json:"MessageEncoding,omitempty" xml:"MessageEncoding,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
 	//
 	// 	- If you specify CloudMonitor as the notification recipient, the value is in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
@@ -103,6 +104,10 @@ func (s DescribeNotificationConfigurationsResponseBodyNotificationConfigurationM
 	return s.String()
 }
 
+func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) GetMessageEncoding() *string {
+	return s.MessageEncoding
+}
+
 func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) GetNotificationArn() *string {
 	return s.NotificationArn
 }
@@ -117,6 +122,11 @@ func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfiguration
 
 func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) GetTimeZone() *string {
 	return s.TimeZone
+}
+
+func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) SetMessageEncoding(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels {
+	s.MessageEncoding = &v
+	return s
 }
 
 func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) SetNotificationArn(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels {

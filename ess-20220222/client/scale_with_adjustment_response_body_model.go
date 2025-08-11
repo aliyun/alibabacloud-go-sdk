@@ -29,8 +29,9 @@ type ScaleWithAdjustmentResponseBody struct {
 	// example:
 	//
 	// CapacityChange
-	ActivityType *string                                    `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	PlanResult   *ScaleWithAdjustmentResponseBodyPlanResult `json:"PlanResult,omitempty" xml:"PlanResult,omitempty" type:"Struct"`
+	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	// The elastic planning result returned when the ExecutionMode is set to PlanOnly.
+	PlanResult *ScaleWithAdjustmentResponseBodyPlanResult `json:"PlanResult,omitempty" xml:"PlanResult,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -94,6 +95,7 @@ func (s *ScaleWithAdjustmentResponseBody) Validate() error {
 }
 
 type ScaleWithAdjustmentResponseBodyPlanResult struct {
+	// The resource allocation information in the elastic planning result.
 	ResourceAllocations []*ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations `json:"ResourceAllocations,omitempty" xml:"ResourceAllocations,omitempty" type:"Repeated"`
 }
 
@@ -119,11 +121,46 @@ func (s *ScaleWithAdjustmentResponseBodyPlanResult) Validate() error {
 }
 
 type ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations struct {
-	Amount             *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The number of instances.
+	//
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// example:
+	//
+	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	SpotStrategy       *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ecs.u1-c1m8.large
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The spot policy of instances. Valid values:
+	//
+	// 	- NoSpot: The instances are created as pay-as-you-go instances.
+	//
+	// 	- SpotWithPriceLimit: The instances are created as spot instances for which you can specify the maximum hourly price.
+	//
+	// 	- SpotAsPriceGo: The instances are spot instances for which the market price at the time of purchase is automatically used as the bid price.
+	//
+	// example:
+	//
+	// NoSpot
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-beijing-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations) String() string {

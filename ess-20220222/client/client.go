@@ -2024,6 +2024,10 @@ func (client *Client) CreateNotificationConfigurationWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MessageEncoding) {
+		query["MessageEncoding"] = request.MessageEncoding
+	}
+
 	if !dara.IsNil(request.NotificationArn) {
 		query["NotificationArn"] = request.NotificationArn
 	}
@@ -8218,6 +8222,10 @@ func (client *Client) ModifyNotificationConfigurationWithOptions(request *Modify
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MessageEncoding) {
+		query["MessageEncoding"] = request.MessageEncoding
+	}
+
 	if !dara.IsNil(request.NotificationArn) {
 		query["NotificationArn"] = request.NotificationArn
 	}
