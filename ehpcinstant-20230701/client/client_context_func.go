@@ -1051,6 +1051,58 @@ func (client *Client) RemoveImageWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
+// 应用跨地域同步
+//
+// @param tmpReq - SynchronizeAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SynchronizeAppResponse
+func (client *Client) SynchronizeAppWithContext(ctx context.Context, tmpReq *SynchronizeAppRequest, runtime *dara.RuntimeOptions) (_result *SynchronizeAppResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SynchronizeAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetRegionIds) {
+		request.TargetRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetRegionIds, dara.String("TargetRegionIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TargetRegionIdsShrink) {
+		query["TargetRegionIds"] = request.TargetRegionIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SynchronizeApp"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SynchronizeAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 为指定的资源列表统一创建并绑定标签
 //
 // @param request - TagResourcesRequest
