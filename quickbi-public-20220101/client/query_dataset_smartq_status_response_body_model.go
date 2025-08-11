@@ -34,11 +34,11 @@ type QueryDatasetSmartqStatusResponseBody struct {
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
-	// 是否请求成功。取值范围：
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true：请求成功
+	// 	- true: The request was successful.
 	//
-	// - false：请求失败
+	// 	- false: The request failed.
 	//
 	// example:
 	//

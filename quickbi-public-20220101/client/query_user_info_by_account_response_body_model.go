@@ -128,7 +128,7 @@ type QueryUserInfoByAccountResponseBodyResult struct {
 	//
 	// 1386587****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// 用户绑定的组织角色ID列表。
+	// List of organization role IDs bound to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The UserID in the Quick BI.
 	//

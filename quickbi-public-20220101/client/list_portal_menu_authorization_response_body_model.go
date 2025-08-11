@@ -138,6 +138,9 @@ func (s *ListPortalMenuAuthorizationResponseBodyResult) Validate() error {
 }
 
 type ListPortalMenuAuthorizationResponseBodyResultReceivers struct {
+	// if can be null:
+	// true
+	AuthPointsValue *int32 `json:"AuthPointsValue,omitempty" xml:"AuthPointsValue,omitempty"`
 	// The ID of the authorization object.
 	//
 	// example:
@@ -164,12 +167,21 @@ func (s ListPortalMenuAuthorizationResponseBodyResultReceivers) GoString() strin
 	return s.String()
 }
 
+func (s *ListPortalMenuAuthorizationResponseBodyResultReceivers) GetAuthPointsValue() *int32 {
+	return s.AuthPointsValue
+}
+
 func (s *ListPortalMenuAuthorizationResponseBodyResultReceivers) GetReceiverId() *string {
 	return s.ReceiverId
 }
 
 func (s *ListPortalMenuAuthorizationResponseBodyResultReceivers) GetReceiverType() *int32 {
 	return s.ReceiverType
+}
+
+func (s *ListPortalMenuAuthorizationResponseBodyResultReceivers) SetAuthPointsValue(v int32) *ListPortalMenuAuthorizationResponseBodyResultReceivers {
+	s.AuthPointsValue = &v
+	return s
 }
 
 func (s *ListPortalMenuAuthorizationResponseBodyResultReceivers) SetReceiverId(v string) *ListPortalMenuAuthorizationResponseBodyResultReceivers {

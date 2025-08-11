@@ -18,16 +18,36 @@ type iQueryReadableResourcesListByUserIdV2Request interface {
 }
 
 type QueryReadableResourcesListByUserIdV2Request struct {
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// asdas*********sdsddf
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work type. Possible values:
+	//
+	// - DATAPRODUCT: Data Portal
+	//
+	// - PAGE: Dashboard
+	//
+	// - REPORT: Spreadsheet
+	//
+	// - dashboardOfflineQuery: Self-service Data Extraction
+	//
+	// - SCREEN: Data Wall
+	//
+	// - DATAFORM: Data Entry
+	//
+	// - ANALYSIS: Ad-hoc Analysis
+	//
 	// example:
 	//
 	// DATAFORM
 	WorkType *string `json:"WorkType,omitempty" xml:"WorkType,omitempty"`
+	// Workspace ID.
+	//
 	// example:
 	//
 	// 95296e95-ca89-4c7d-8af9-dedf0ad0****

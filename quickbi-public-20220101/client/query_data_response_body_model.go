@@ -192,6 +192,9 @@ type QueryDataResponseBodyResultHeaders struct {
 	//
 	// area
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// if can be null:
+	// true
+	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
 	// Field type, used to distinguish between dimension and measure fields.
 	//
 	// - Dimension: dimension
@@ -232,6 +235,10 @@ func (s *QueryDataResponseBodyResultHeaders) GetLabel() *string {
 	return s.Label
 }
 
+func (s *QueryDataResponseBodyResultHeaders) GetOriginalColumn() *string {
+	return s.OriginalColumn
+}
+
 func (s *QueryDataResponseBodyResultHeaders) GetType() *string {
 	return s.Type
 }
@@ -258,6 +265,11 @@ func (s *QueryDataResponseBodyResultHeaders) SetGranularity(v string) *QueryData
 
 func (s *QueryDataResponseBodyResultHeaders) SetLabel(v string) *QueryDataResponseBodyResultHeaders {
 	s.Label = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetOriginalColumn(v string) *QueryDataResponseBodyResultHeaders {
+	s.OriginalColumn = &v
 	return s
 }
 

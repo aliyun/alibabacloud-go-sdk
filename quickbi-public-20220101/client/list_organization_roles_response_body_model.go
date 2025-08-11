@@ -26,11 +26,11 @@ type ListOrganizationRolesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Returns the list of organization roles.
 	Result []*ListOrganizationRolesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// 是否请求成功。取值范围：
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true：请求成功
+	// 	- true: The request was successful.
 	//
-	// - false：请求失败
+	// 	- false: The request failed.
 	//
 	// example:
 	//

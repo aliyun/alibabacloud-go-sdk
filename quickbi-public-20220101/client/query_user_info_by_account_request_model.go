@@ -34,9 +34,7 @@ type QueryUserInfoByAccountRequest struct {
 	//
 	// 1386587****@163.com
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 当查询子账号出现重复报错时，输入主账号的账号名，
-	//
-	// 例如zhangsan@test.onaliyun.com。
+	// When a duplicate error occurs while querying the sub-account, enter the primary account\\"s username, for example, zhangsan@test.onaliyun.com.
 	//
 	// example:
 	//
