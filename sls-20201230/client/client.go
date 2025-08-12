@@ -745,6 +745,59 @@ func (s *CopilotActionQueryTemplateParameters) SetType(v string) *CopilotActionQ
 	return s
 }
 
+type DeleteLogStoreLogsTask struct {
+	ErrorCode    *int32  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	From         *int32  `json:"from,omitempty" xml:"from,omitempty"`
+	Progress     *int32  `json:"progress,omitempty" xml:"progress,omitempty"`
+	Query        *string `json:"query,omitempty" xml:"query,omitempty"`
+	TaskId       *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	To           *int32  `json:"to,omitempty" xml:"to,omitempty"`
+}
+
+func (s DeleteLogStoreLogsTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLogStoreLogsTask) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLogStoreLogsTask) SetErrorCode(v int32) *DeleteLogStoreLogsTask {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetErrorMessage(v string) *DeleteLogStoreLogsTask {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetFrom(v int32) *DeleteLogStoreLogsTask {
+	s.From = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetProgress(v int32) *DeleteLogStoreLogsTask {
+	s.Progress = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetQuery(v string) *DeleteLogStoreLogsTask {
+	s.Query = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetTaskId(v string) *DeleteLogStoreLogsTask {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DeleteLogStoreLogsTask) SetTo(v int32) *DeleteLogStoreLogsTask {
+	s.To = &v
+	return s
+}
+
 type ETL struct {
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -8030,6 +8083,29 @@ func (s *DeleteConfigResponse) SetStatusCode(v int32) *DeleteConfigResponse {
 	return s
 }
 
+type DeleteConsumeProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteConsumeProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConsumeProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConsumeProcessorResponse) SetHeaders(v map[string]*string) *DeleteConsumeProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConsumeProcessorResponse) SetStatusCode(v int32) *DeleteConsumeProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9534,6 +9610,35 @@ func (s *GetConfigResponse) SetStatusCode(v int32) *GetConfigResponse {
 }
 
 func (s *GetConfigResponse) SetBody(v *LogtailConfig) *GetConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetConsumeProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConsumeProcessor  `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConsumeProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConsumeProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConsumeProcessorResponse) SetHeaders(v map[string]*string) *GetConsumeProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConsumeProcessorResponse) SetStatusCode(v int32) *GetConsumeProcessorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConsumeProcessorResponse) SetBody(v *ConsumeProcessor) *GetConsumeProcessorResponse {
 	s.Body = v
 	return s
 }
@@ -13507,6 +13612,117 @@ func (s *ListConfigResponse) SetBody(v *ListConfigResponseBody) *ListConfigRespo
 	return s
 }
 
+type ListConsumeProcessorsRequest struct {
+	// example:
+	//
+	// filter-get-request
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *string `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// consume-processor-1
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// example:
+	//
+	// 100
+	Size *string `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListConsumeProcessorsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumeProcessorsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumeProcessorsRequest) SetDisplayName(v string) *ListConsumeProcessorsRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListConsumeProcessorsRequest) SetOffset(v string) *ListConsumeProcessorsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListConsumeProcessorsRequest) SetProcessorName(v string) *ListConsumeProcessorsRequest {
+	s.ProcessorName = &v
+	return s
+}
+
+func (s *ListConsumeProcessorsRequest) SetSize(v string) *ListConsumeProcessorsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListConsumeProcessorsResponseBody struct {
+	// example:
+	//
+	// 10
+	Count      *int32              `json:"count,omitempty" xml:"count,omitempty"`
+	Processors []*ConsumeProcessor `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListConsumeProcessorsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumeProcessorsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumeProcessorsResponseBody) SetCount(v int32) *ListConsumeProcessorsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListConsumeProcessorsResponseBody) SetProcessors(v []*ConsumeProcessor) *ListConsumeProcessorsResponseBody {
+	s.Processors = v
+	return s
+}
+
+func (s *ListConsumeProcessorsResponseBody) SetTotal(v int32) *ListConsumeProcessorsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListConsumeProcessorsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConsumeProcessorsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConsumeProcessorsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConsumeProcessorsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConsumeProcessorsResponse) SetHeaders(v map[string]*string) *ListConsumeProcessorsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConsumeProcessorsResponse) SetStatusCode(v int32) *ListConsumeProcessorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConsumeProcessorsResponse) SetBody(v *ListConsumeProcessorsResponseBody) *ListConsumeProcessorsResponse {
+	s.Body = v
+	return s
+}
+
 type ListConsumerGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -16516,6 +16732,64 @@ func (s *PutAnnotationDataResponse) SetHeaders(v map[string]*string) *PutAnnotat
 }
 
 func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type PutConsumeProcessorRequest struct {
+	// This parameter is required.
+	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                        `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// filter-get-request
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+}
+
+func (s PutConsumeProcessorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutConsumeProcessorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutConsumeProcessorRequest) SetConfiguration(v *ConsumeProcessorConfiguration) *PutConsumeProcessorRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *PutConsumeProcessorRequest) SetDescription(v string) *PutConsumeProcessorRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *PutConsumeProcessorRequest) SetDisplayName(v string) *PutConsumeProcessorRequest {
+	s.DisplayName = &v
+	return s
+}
+
+type PutConsumeProcessorResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s PutConsumeProcessorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutConsumeProcessorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutConsumeProcessorResponse) SetHeaders(v map[string]*string) *PutConsumeProcessorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutConsumeProcessorResponse) SetStatusCode(v int32) *PutConsumeProcessorResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -23082,6 +23356,59 @@ func (client *Client) DeleteConfig(project *string, configName *string) (_result
 
 // Summary:
 //
+// # DeleteConsumeProcessor
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumeProcessorResponse
+func (client *Client) DeleteConsumeProcessorWithOptions(project *string, processorName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumeProcessorResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConsumeProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/consumeprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteConsumeProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteConsumeProcessor
+//
+// @return DeleteConsumeProcessorResponse
+func (client *Client) DeleteConsumeProcessor(project *string, processorName *string) (_result *DeleteConsumeProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConsumeProcessorResponse{}
+	_body, _err := client.DeleteConsumeProcessorWithOptions(project, processorName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a consumer group.
 //
 // Description:
@@ -25399,6 +25726,59 @@ func (client *Client) GetConfig(project *string, configName *string) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetConfigResponse{}
 	_body, _err := client.GetConfigWithOptions(project, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetConsumeProcessor
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumeProcessorResponse
+func (client *Client) GetConsumeProcessorWithOptions(project *string, processorName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConsumeProcessorResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConsumeProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/consumeprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConsumeProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetConsumeProcessor
+//
+// @return GetConsumeProcessorResponse
+func (client *Client) GetConsumeProcessor(project *string, processorName *string) (_result *GetConsumeProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConsumeProcessorResponse{}
+	_body, _err := client.GetConsumeProcessorWithOptions(project, processorName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28484,6 +28864,85 @@ func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_
 
 // Summary:
 //
+// # ListConsumeProcessors
+//
+// @param request - ListConsumeProcessorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumeProcessorsResponse
+func (client *Client) ListConsumeProcessorsWithOptions(project *string, request *ListConsumeProcessorsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumeProcessorsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessorName)) {
+		query["processorName"] = request.ProcessorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConsumeProcessors"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/consumeprocessors"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConsumeProcessorsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListConsumeProcessors
+//
+// @param request - ListConsumeProcessorsRequest
+//
+// @return ListConsumeProcessorsResponse
+func (client *Client) ListConsumeProcessors(project *string, request *ListConsumeProcessorsRequest) (_result *ListConsumeProcessorsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumeProcessorsResponse{}
+	_body, _err := client.ListConsumeProcessorsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all consumer groups of a Logstore.
 //
 // Description:
@@ -30594,6 +31053,81 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 	headers := make(map[string]*string)
 	_result = &PutAnnotationDataResponse{}
 	_body, _err := client.PutAnnotationDataWithOptions(datasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # PutConsumeProcessor
+//
+// @param request - PutConsumeProcessorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutConsumeProcessorResponse
+func (client *Client) PutConsumeProcessorWithOptions(project *string, processorName *string, request *PutConsumeProcessorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutConsumeProcessorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutConsumeProcessor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/consumeprocessors/" + tea.StringValue(processorName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PutConsumeProcessorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # PutConsumeProcessor
+//
+// @param request - PutConsumeProcessorRequest
+//
+// @return PutConsumeProcessorResponse
+func (client *Client) PutConsumeProcessor(project *string, processorName *string, request *PutConsumeProcessorRequest) (_result *PutConsumeProcessorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PutConsumeProcessorResponse{}
+	_body, _err := client.PutConsumeProcessorWithOptions(project, processorName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34590,7 +35124,11 @@ func (client *Client) UpdateStoreView(project *string, name *string, request *Up
 
 // Summary:
 //
-// 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+// Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+//
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
 //
 // @param request - UpsertCollectionPolicyRequest
 //
@@ -34667,7 +35205,11 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 
 // Summary:
 //
-// 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+// Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+//
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
 //
 // @param request - UpsertCollectionPolicyRequest
 //
