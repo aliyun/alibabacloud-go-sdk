@@ -17,6 +17,8 @@ type iDescribeOrgsRequest interface {
 	GetOrgName() *string
 	SetParentOrgId(v string) *DescribeOrgsRequest
 	GetParentOrgId() *string
+	SetShowExtras(v map[string]interface{}) *DescribeOrgsRequest
+	GetShowExtras() map[string]interface{}
 }
 
 type DescribeOrgsRequest struct {
@@ -45,7 +47,8 @@ type DescribeOrgsRequest struct {
 	// example:
 	//
 	// org-****
-	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ParentOrgId *string                `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ShowExtras  map[string]interface{} `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 }
 
 func (s DescribeOrgsRequest) String() string {
@@ -72,6 +75,10 @@ func (s *DescribeOrgsRequest) GetParentOrgId() *string {
 	return s.ParentOrgId
 }
 
+func (s *DescribeOrgsRequest) GetShowExtras() map[string]interface{} {
+	return s.ShowExtras
+}
+
 func (s *DescribeOrgsRequest) SetMaxResults(v int64) *DescribeOrgsRequest {
 	s.MaxResults = &v
 	return s
@@ -89,6 +96,11 @@ func (s *DescribeOrgsRequest) SetOrgName(v string) *DescribeOrgsRequest {
 
 func (s *DescribeOrgsRequest) SetParentOrgId(v string) *DescribeOrgsRequest {
 	s.ParentOrgId = &v
+	return s
+}
+
+func (s *DescribeOrgsRequest) SetShowExtras(v map[string]interface{}) *DescribeOrgsRequest {
+	s.ShowExtras = v
 	return s
 }
 

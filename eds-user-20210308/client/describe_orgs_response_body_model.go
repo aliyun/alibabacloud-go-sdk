@@ -85,7 +85,8 @@ type DescribeOrgsResponseBodyOrgs struct {
 	// example:
 	//
 	// org****
-	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 	// The parent organization ID.
 	//
 	// example:
@@ -110,6 +111,10 @@ func (s *DescribeOrgsResponseBodyOrgs) GetOrgName() *string {
 	return s.OrgName
 }
 
+func (s *DescribeOrgsResponseBodyOrgs) GetOrgNamePath() *string {
+	return s.OrgNamePath
+}
+
 func (s *DescribeOrgsResponseBodyOrgs) GetParentOrgId() *string {
 	return s.ParentOrgId
 }
@@ -121,6 +126,11 @@ func (s *DescribeOrgsResponseBodyOrgs) SetOrgId(v string) *DescribeOrgsResponseB
 
 func (s *DescribeOrgsResponseBodyOrgs) SetOrgName(v string) *DescribeOrgsResponseBodyOrgs {
 	s.OrgName = &v
+	return s
+}
+
+func (s *DescribeOrgsResponseBodyOrgs) SetOrgNamePath(v string) *DescribeOrgsResponseBodyOrgs {
+	s.OrgNamePath = &v
 	return s
 }
 

@@ -795,16 +795,22 @@ func (client *Client) DescribeOrgByLayerWithContext(ctx context.Context, request
 //
 // An organization is in a tree structure. The root organization ID is in the following format: org-aliyun-wy-org-id.
 //
-// @param request - DescribeOrgsRequest
+// @param tmpReq - DescribeOrgsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOrgsResponse
-func (client *Client) DescribeOrgsWithContext(ctx context.Context, request *DescribeOrgsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrgsResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) DescribeOrgsWithContext(ctx context.Context, tmpReq *DescribeOrgsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOrgsResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribeOrgsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShowExtras) {
+		request.ShowExtrasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShowExtras, dara.String("ShowExtras"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
@@ -820,6 +826,10 @@ func (client *Client) DescribeOrgsWithContext(ctx context.Context, request *Desc
 
 	if !dara.IsNil(request.ParentOrgId) {
 		query["ParentOrgId"] = request.ParentOrgId
+	}
+
+	if !dara.IsNil(request.ShowExtrasShrink) {
+		query["ShowExtras"] = request.ShowExtrasShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
