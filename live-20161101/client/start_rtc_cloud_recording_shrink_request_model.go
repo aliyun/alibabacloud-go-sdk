@@ -13,10 +13,14 @@ type iStartRtcCloudRecordingShrinkRequest interface {
 	GetAppId() *string
 	SetChannelId(v string) *StartRtcCloudRecordingShrinkRequest
 	GetChannelId() *string
+	SetMaxIdleTime(v int64) *StartRtcCloudRecordingShrinkRequest
+	GetMaxIdleTime() *int64
 	SetMixLayoutParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest
 	GetMixLayoutParamsShrink() *string
 	SetMixTranscodeParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest
 	GetMixTranscodeParamsShrink() *string
+	SetNotifyAuthKey(v string) *StartRtcCloudRecordingShrinkRequest
+	GetNotifyAuthKey() *string
 	SetNotifyUrl(v string) *StartRtcCloudRecordingShrinkRequest
 	GetNotifyUrl() *string
 	SetRecordParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest
@@ -40,8 +44,10 @@ type StartRtcCloudRecordingShrinkRequest struct {
 	//
 	// room1024
 	ChannelId                *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	MaxIdleTime              *int64  `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	MixLayoutParamsShrink    *string `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty"`
 	MixTranscodeParamsShrink *string `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty"`
+	NotifyAuthKey            *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
 	// example:
 	//
 	// http://xxxx/test/mycallback
@@ -70,12 +76,20 @@ func (s *StartRtcCloudRecordingShrinkRequest) GetChannelId() *string {
 	return s.ChannelId
 }
 
+func (s *StartRtcCloudRecordingShrinkRequest) GetMaxIdleTime() *int64 {
+	return s.MaxIdleTime
+}
+
 func (s *StartRtcCloudRecordingShrinkRequest) GetMixLayoutParamsShrink() *string {
 	return s.MixLayoutParamsShrink
 }
 
 func (s *StartRtcCloudRecordingShrinkRequest) GetMixTranscodeParamsShrink() *string {
 	return s.MixTranscodeParamsShrink
+}
+
+func (s *StartRtcCloudRecordingShrinkRequest) GetNotifyAuthKey() *string {
+	return s.NotifyAuthKey
 }
 
 func (s *StartRtcCloudRecordingShrinkRequest) GetNotifyUrl() *string {
@@ -104,6 +118,11 @@ func (s *StartRtcCloudRecordingShrinkRequest) SetChannelId(v string) *StartRtcCl
 	return s
 }
 
+func (s *StartRtcCloudRecordingShrinkRequest) SetMaxIdleTime(v int64) *StartRtcCloudRecordingShrinkRequest {
+	s.MaxIdleTime = &v
+	return s
+}
+
 func (s *StartRtcCloudRecordingShrinkRequest) SetMixLayoutParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest {
 	s.MixLayoutParamsShrink = &v
 	return s
@@ -111,6 +130,11 @@ func (s *StartRtcCloudRecordingShrinkRequest) SetMixLayoutParamsShrink(v string)
 
 func (s *StartRtcCloudRecordingShrinkRequest) SetMixTranscodeParamsShrink(v string) *StartRtcCloudRecordingShrinkRequest {
 	s.MixTranscodeParamsShrink = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingShrinkRequest) SetNotifyAuthKey(v string) *StartRtcCloudRecordingShrinkRequest {
+	s.NotifyAuthKey = &v
 	return s
 }
 

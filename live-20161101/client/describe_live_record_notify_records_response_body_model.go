@@ -182,7 +182,8 @@ type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {
 	// example:
 	//
 	// July 26,  16:14{"domain":"al.xxxx.com","stream":"livestream01","pull _stream_result":true,"cdn":"al"}
-	NotifyContent *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	NotifyContent  *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	NotifyResponse *string `json:"NotifyResponse,omitempty" xml:"NotifyResponse,omitempty"`
 	// The callback result. Valid values:
 	//
 	// 	- success
@@ -257,6 +258,10 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetNotifyConte
 	return s.NotifyContent
 }
 
+func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetNotifyResponse() *string {
+	return s.NotifyResponse
+}
+
 func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) GetNotifyResult() *string {
 	return s.NotifyResult
 }
@@ -294,6 +299,11 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetDomainName(
 
 func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetNotifyContent(v string) *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList {
 	s.NotifyContent = &v
+	return s
+}
+
+func (s *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList) SetNotifyResponse(v string) *DescribeLiveRecordNotifyRecordsResponseBodyCallbackList {
+	s.NotifyResponse = &v
 	return s
 }
 

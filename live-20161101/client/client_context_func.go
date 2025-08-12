@@ -26478,12 +26478,20 @@ func (client *Client) StartRtcCloudRecordingWithContext(ctx context.Context, tmp
 		query["ChannelId"] = request.ChannelId
 	}
 
+	if !dara.IsNil(request.MaxIdleTime) {
+		query["MaxIdleTime"] = request.MaxIdleTime
+	}
+
 	if !dara.IsNil(request.MixLayoutParamsShrink) {
 		query["MixLayoutParams"] = request.MixLayoutParamsShrink
 	}
 
 	if !dara.IsNil(request.MixTranscodeParamsShrink) {
 		query["MixTranscodeParams"] = request.MixTranscodeParamsShrink
+	}
+
+	if !dara.IsNil(request.NotifyAuthKey) {
+		query["NotifyAuthKey"] = request.NotifyAuthKey
 	}
 
 	if !dara.IsNil(request.NotifyUrl) {

@@ -13,10 +13,14 @@ type iStartRtcCloudRecordingRequest interface {
 	GetAppId() *string
 	SetChannelId(v string) *StartRtcCloudRecordingRequest
 	GetChannelId() *string
+	SetMaxIdleTime(v int64) *StartRtcCloudRecordingRequest
+	GetMaxIdleTime() *int64
 	SetMixLayoutParams(v *StartRtcCloudRecordingRequestMixLayoutParams) *StartRtcCloudRecordingRequest
 	GetMixLayoutParams() *StartRtcCloudRecordingRequestMixLayoutParams
 	SetMixTranscodeParams(v *StartRtcCloudRecordingRequestMixTranscodeParams) *StartRtcCloudRecordingRequest
 	GetMixTranscodeParams() *StartRtcCloudRecordingRequestMixTranscodeParams
+	SetNotifyAuthKey(v string) *StartRtcCloudRecordingRequest
+	GetNotifyAuthKey() *string
 	SetNotifyUrl(v string) *StartRtcCloudRecordingRequest
 	GetNotifyUrl() *string
 	SetRecordParams(v *StartRtcCloudRecordingRequestRecordParams) *StartRtcCloudRecordingRequest
@@ -40,8 +44,10 @@ type StartRtcCloudRecordingRequest struct {
 	//
 	// room1024
 	ChannelId          *string                                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	MaxIdleTime        *int64                                           `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	MixLayoutParams    *StartRtcCloudRecordingRequestMixLayoutParams    `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
 	MixTranscodeParams *StartRtcCloudRecordingRequestMixTranscodeParams `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty" type:"Struct"`
+	NotifyAuthKey      *string                                          `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
 	// example:
 	//
 	// http://xxxx/test/mycallback
@@ -70,12 +76,20 @@ func (s *StartRtcCloudRecordingRequest) GetChannelId() *string {
 	return s.ChannelId
 }
 
+func (s *StartRtcCloudRecordingRequest) GetMaxIdleTime() *int64 {
+	return s.MaxIdleTime
+}
+
 func (s *StartRtcCloudRecordingRequest) GetMixLayoutParams() *StartRtcCloudRecordingRequestMixLayoutParams {
 	return s.MixLayoutParams
 }
 
 func (s *StartRtcCloudRecordingRequest) GetMixTranscodeParams() *StartRtcCloudRecordingRequestMixTranscodeParams {
 	return s.MixTranscodeParams
+}
+
+func (s *StartRtcCloudRecordingRequest) GetNotifyAuthKey() *string {
+	return s.NotifyAuthKey
 }
 
 func (s *StartRtcCloudRecordingRequest) GetNotifyUrl() *string {
@@ -104,6 +118,11 @@ func (s *StartRtcCloudRecordingRequest) SetChannelId(v string) *StartRtcCloudRec
 	return s
 }
 
+func (s *StartRtcCloudRecordingRequest) SetMaxIdleTime(v int64) *StartRtcCloudRecordingRequest {
+	s.MaxIdleTime = &v
+	return s
+}
+
 func (s *StartRtcCloudRecordingRequest) SetMixLayoutParams(v *StartRtcCloudRecordingRequestMixLayoutParams) *StartRtcCloudRecordingRequest {
 	s.MixLayoutParams = v
 	return s
@@ -111,6 +130,11 @@ func (s *StartRtcCloudRecordingRequest) SetMixLayoutParams(v *StartRtcCloudRecor
 
 func (s *StartRtcCloudRecordingRequest) SetMixTranscodeParams(v *StartRtcCloudRecordingRequestMixTranscodeParams) *StartRtcCloudRecordingRequest {
 	s.MixTranscodeParams = v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequest) SetNotifyAuthKey(v string) *StartRtcCloudRecordingRequest {
+	s.NotifyAuthKey = &v
 	return s
 }
 
@@ -586,7 +610,8 @@ type StartRtcCloudRecordingRequestStorageParams struct {
 	// example:
 	//
 	// 1
-	StorageType *int32 `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType *int32                                               `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	VodParams   *StartRtcCloudRecordingRequestStorageParamsVodParams `json:"VodParams,omitempty" xml:"VodParams,omitempty" type:"Struct"`
 }
 
 func (s StartRtcCloudRecordingRequestStorageParams) String() string {
@@ -609,6 +634,10 @@ func (s *StartRtcCloudRecordingRequestStorageParams) GetStorageType() *int32 {
 	return s.StorageType
 }
 
+func (s *StartRtcCloudRecordingRequestStorageParams) GetVodParams() *StartRtcCloudRecordingRequestStorageParamsVodParams {
+	return s.VodParams
+}
+
 func (s *StartRtcCloudRecordingRequestStorageParams) SetFileInfo(v []*StartRtcCloudRecordingRequestStorageParamsFileInfo) *StartRtcCloudRecordingRequestStorageParams {
 	s.FileInfo = v
 	return s
@@ -624,6 +653,11 @@ func (s *StartRtcCloudRecordingRequestStorageParams) SetStorageType(v int32) *St
 	return s
 }
 
+func (s *StartRtcCloudRecordingRequestStorageParams) SetVodParams(v *StartRtcCloudRecordingRequestStorageParamsVodParams) *StartRtcCloudRecordingRequestStorageParams {
+	s.VodParams = v
+	return s
+}
+
 func (s *StartRtcCloudRecordingRequestStorageParams) Validate() error {
 	return dara.Validate(s)
 }
@@ -632,7 +666,8 @@ type StartRtcCloudRecordingRequestStorageParamsFileInfo struct {
 	// example:
 	//
 	// {AppId}_{ChannelId}_{StartTime}_{UserId}
-	FileNamePattern *string `json:"FileNamePattern,omitempty" xml:"FileNamePattern,omitempty"`
+	FileNamePattern *string   `json:"FileNamePattern,omitempty" xml:"FileNamePattern,omitempty"`
+	FilePathPrefix  []*string `json:"FilePathPrefix,omitempty" xml:"FilePathPrefix,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -657,6 +692,10 @@ func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetFileNamePattern(
 	return s.FileNamePattern
 }
 
+func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetFilePathPrefix() []*string {
+	return s.FilePathPrefix
+}
+
 func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetFormat() *string {
 	return s.Format
 }
@@ -667,6 +706,11 @@ func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) GetSliceNamePattern
 
 func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) SetFileNamePattern(v string) *StartRtcCloudRecordingRequestStorageParamsFileInfo {
 	s.FileNamePattern = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) SetFilePathPrefix(v []*string) *StartRtcCloudRecordingRequestStorageParamsFileInfo {
+	s.FilePathPrefix = v
 	return s
 }
 
@@ -726,6 +770,61 @@ func (s *StartRtcCloudRecordingRequestStorageParamsOSSParams) SetOSSEndpoint(v s
 }
 
 func (s *StartRtcCloudRecordingRequestStorageParamsOSSParams) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartRtcCloudRecordingRequestStorageParamsVodParams struct {
+	AutoCompose                *int32  `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	ComposeVodTranscodeGroupId *string `json:"ComposeVodTranscodeGroupId,omitempty" xml:"ComposeVodTranscodeGroupId,omitempty"`
+	StorageLocation            *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	VodTranscodeGroupId        *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
+}
+
+func (s StartRtcCloudRecordingRequestStorageParamsVodParams) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartRtcCloudRecordingRequestStorageParamsVodParams) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) GetAutoCompose() *int32 {
+	return s.AutoCompose
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) GetComposeVodTranscodeGroupId() *string {
+	return s.ComposeVodTranscodeGroupId
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) GetStorageLocation() *string {
+	return s.StorageLocation
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) GetVodTranscodeGroupId() *string {
+	return s.VodTranscodeGroupId
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) SetAutoCompose(v int32) *StartRtcCloudRecordingRequestStorageParamsVodParams {
+	s.AutoCompose = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) SetComposeVodTranscodeGroupId(v string) *StartRtcCloudRecordingRequestStorageParamsVodParams {
+	s.ComposeVodTranscodeGroupId = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) SetStorageLocation(v string) *StartRtcCloudRecordingRequestStorageParamsVodParams {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) SetVodTranscodeGroupId(v string) *StartRtcCloudRecordingRequestStorageParamsVodParams {
+	s.VodTranscodeGroupId = &v
+	return s
+}
+
+func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) Validate() error {
 	return dara.Validate(s)
 }
 

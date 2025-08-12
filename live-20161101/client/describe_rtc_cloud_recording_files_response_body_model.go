@@ -105,9 +105,10 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo) Validate() error {
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList struct {
-	HlsFileList []*string `json:"HlsFileList,omitempty" xml:"HlsFileList,omitempty" type:"Repeated"`
-	Mp3FileList []*string `json:"Mp3FileList,omitempty" xml:"Mp3FileList,omitempty" type:"Repeated"`
-	Mp4FileList []*string `json:"Mp4FileList,omitempty" xml:"Mp4FileList,omitempty" type:"Repeated"`
+	HlsFileList  []*string                                                                       `json:"HlsFileList,omitempty" xml:"HlsFileList,omitempty" type:"Repeated"`
+	Mp3FileList  []*string                                                                       `json:"Mp3FileList,omitempty" xml:"Mp3FileList,omitempty" type:"Repeated"`
+	Mp4FileList  []*string                                                                       `json:"Mp4FileList,omitempty" xml:"Mp4FileList,omitempty" type:"Repeated"`
+	VodMediaList []*DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList `json:"VodMediaList,omitempty" xml:"VodMediaList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) String() string {
@@ -130,6 +131,10 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) GetMp
 	return s.Mp4FileList
 }
 
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) GetVodMediaList() []*DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList {
+	return s.VodMediaList
+}
+
 func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) SetHlsFileList(v []*string) *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList {
 	s.HlsFileList = v
 	return s
@@ -145,6 +150,56 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) SetMp
 	return s
 }
 
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) SetVodMediaList(v []*DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList {
+	s.VodMediaList = v
+	return s
+}
+
 func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList struct {
+	MediaIds  []*string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty" type:"Repeated"`
+	MergedIds []*string `json:"MergedIds,omitempty" xml:"MergedIds,omitempty" type:"Repeated"`
+	Stream    *string   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+}
+
+func (s DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) GetMediaIds() []*string {
+	return s.MediaIds
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) GetMergedIds() []*string {
+	return s.MergedIds
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) GetStream() *string {
+	return s.Stream
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) SetMediaIds(v []*string) *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList {
+	s.MediaIds = v
+	return s
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) SetMergedIds(v []*string) *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList {
+	s.MergedIds = v
+	return s
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) SetStream(v string) *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList {
+	s.Stream = &v
+	return s
+}
+
+func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) Validate() error {
 	return dara.Validate(s)
 }
