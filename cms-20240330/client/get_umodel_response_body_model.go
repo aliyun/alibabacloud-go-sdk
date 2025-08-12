@@ -102,8 +102,7 @@ type GetUmodelResponseBodyCommonSchemaRef struct {
 	// example:
 	//
 	// test-job-123123
-	Group *string   `json:"group,omitempty" xml:"group,omitempty"`
-	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
 	// example:
 	//
 	// 5
@@ -122,21 +121,12 @@ func (s *GetUmodelResponseBodyCommonSchemaRef) GetGroup() *string {
 	return s.Group
 }
 
-func (s *GetUmodelResponseBodyCommonSchemaRef) GetItems() []*string {
-	return s.Items
-}
-
 func (s *GetUmodelResponseBodyCommonSchemaRef) GetVersion() *string {
 	return s.Version
 }
 
 func (s *GetUmodelResponseBodyCommonSchemaRef) SetGroup(v string) *GetUmodelResponseBodyCommonSchemaRef {
 	s.Group = &v
-	return s
-}
-
-func (s *GetUmodelResponseBodyCommonSchemaRef) SetItems(v []*string) *GetUmodelResponseBodyCommonSchemaRef {
-	s.Items = v
 	return s
 }
 

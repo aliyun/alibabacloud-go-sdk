@@ -386,10 +386,6 @@ func (client *Client) CreateUmodelWithOptions(workspace *string, request *Create
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.CommonSchemaRef) {
-		body["commonSchemaRef"] = request.CommonSchemaRef
-	}
-
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -1519,10 +1515,6 @@ func (client *Client) UpdateUmodelWithOptions(workspace *string, request *Update
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !dara.IsNil(request.CommonSchemaRef) {
-		body["commonSchemaRef"] = request.CommonSchemaRef
-	}
-
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
