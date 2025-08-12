@@ -37,6 +37,8 @@ type iListTracesDatasRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListTracesDatasRequest
 	GetPageSize() *int32
+	SetSessionId(v string) *ListTracesDatasRequest
+	GetSessionId() *string
 	SetSortBy(v string) *ListTracesDatasRequest
 	GetSortBy() *string
 	SetSortOrder(v string) *ListTracesDatasRequest
@@ -122,7 +124,8 @@ type ListTracesDatasRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The field used to sort the returned results. Valid values: StartTime and Duration.
 	//
 	// example:
@@ -228,6 +231,10 @@ func (s *ListTracesDatasRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListTracesDatasRequest) GetSessionId() *string {
+	return s.SessionId
+}
+
 func (s *ListTracesDatasRequest) GetSortBy() *string {
 	return s.SortBy
 }
@@ -319,6 +326,11 @@ func (s *ListTracesDatasRequest) SetPageNumber(v int32) *ListTracesDatasRequest 
 
 func (s *ListTracesDatasRequest) SetPageSize(v int32) *ListTracesDatasRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListTracesDatasRequest) SetSessionId(v string) *ListTracesDatasRequest {
+	s.SessionId = &v
 	return s
 }
 

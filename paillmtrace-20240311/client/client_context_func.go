@@ -623,6 +623,10 @@ func (client *Client) ListTracesDatasWithContext(ctx context.Context, tmpReq *Li
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
 	if !dara.IsNil(request.SortBy) {
 		query["SortBy"] = request.SortBy
 	}
