@@ -1,0 +1,64 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+  "github.com/alibabacloud-go/tea/dara"
+)
+
+type iEnableMetricRuleBlackListResponse interface {
+  dara.Model
+  String() string
+  GoString() string
+  SetHeaders(v map[string]*string) *EnableMetricRuleBlackListResponse
+  GetHeaders() map[string]*string 
+  SetStatusCode(v int32) *EnableMetricRuleBlackListResponse
+  GetStatusCode() *int32 
+  SetBody(v *EnableMetricRuleBlackListResponseBody) *EnableMetricRuleBlackListResponse
+  GetBody() *EnableMetricRuleBlackListResponseBody 
+}
+
+type EnableMetricRuleBlackListResponse struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+  Body *EnableMetricRuleBlackListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableMetricRuleBlackListResponse) String() string {
+  return dara.Prettify(s)
+}
+
+func (s EnableMetricRuleBlackListResponse) GoString() string {
+  return s.String()
+}
+
+func (s *EnableMetricRuleBlackListResponse) GetHeaders() map[string]*string  {
+  return s.Headers
+}
+
+func (s *EnableMetricRuleBlackListResponse) GetStatusCode() *int32  {
+  return s.StatusCode
+}
+
+func (s *EnableMetricRuleBlackListResponse) GetBody() *EnableMetricRuleBlackListResponseBody  {
+  return s.Body
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetHeaders(v map[string]*string) *EnableMetricRuleBlackListResponse {
+  s.Headers = v
+  return s
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetStatusCode(v int32) *EnableMetricRuleBlackListResponse {
+  s.StatusCode = &v
+  return s
+}
+
+func (s *EnableMetricRuleBlackListResponse) SetBody(v *EnableMetricRuleBlackListResponseBody) *EnableMetricRuleBlackListResponse {
+  s.Body = v
+  return s
+}
+
+func (s *EnableMetricRuleBlackListResponse) Validate() error {
+  return dara.Validate(s)
+}
+
