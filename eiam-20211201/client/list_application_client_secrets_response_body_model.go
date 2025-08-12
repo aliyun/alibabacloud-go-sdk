@@ -91,7 +91,8 @@ type ListApplicationClientSecretsResponseBodyApplicationClientSecrets struct {
 	// example:
 	//
 	// eyJh*****************************************************************************************************OQ
-	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	ClientSecret   *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	ExpirationTime *int64  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -142,6 +143,10 @@ func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) GetCl
 	return s.ClientSecret
 }
 
+func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) GetExpirationTime() *int64 {
+	return s.ExpirationTime
+}
+
 func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -170,6 +175,11 @@ func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) SetCl
 
 func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) SetClientSecret(v string) *ListApplicationClientSecretsResponseBodyApplicationClientSecrets {
 	s.ClientSecret = &v
+	return s
+}
+
+func (s *ListApplicationClientSecretsResponseBodyApplicationClientSecrets) SetExpirationTime(v int64) *ListApplicationClientSecretsResponseBodyApplicationClientSecrets {
+	s.ExpirationTime = &v
 	return s
 }
 

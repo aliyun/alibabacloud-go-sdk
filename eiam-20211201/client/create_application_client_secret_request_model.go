@@ -11,6 +11,8 @@ type iCreateApplicationClientSecretRequest interface {
 	GoString() string
 	SetApplicationId(v string) *CreateApplicationClientSecretRequest
 	GetApplicationId() *string
+	SetExpirationTime(v int64) *CreateApplicationClientSecretRequest
+	GetExpirationTime() *int64
 	SetInstanceId(v string) *CreateApplicationClientSecretRequest
 	GetInstanceId() *string
 }
@@ -24,6 +26,10 @@ type CreateApplicationClientSecretRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 1735530123762
+	ExpirationTime *int64 `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *CreateApplicationClientSecretRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *CreateApplicationClientSecretRequest) GetExpirationTime() *int64 {
+	return s.ExpirationTime
+}
+
 func (s *CreateApplicationClientSecretRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *CreateApplicationClientSecretRequest) SetApplicationId(v string) *CreateApplicationClientSecretRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *CreateApplicationClientSecretRequest) SetExpirationTime(v int64) *CreateApplicationClientSecretRequest {
+	s.ExpirationTime = &v
 	return s
 }
 

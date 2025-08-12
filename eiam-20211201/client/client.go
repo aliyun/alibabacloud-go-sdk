@@ -506,6 +506,10 @@ func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateAp
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.ExpirationTime) {
+		query["ExpirationTime"] = request.ExpirationTime
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

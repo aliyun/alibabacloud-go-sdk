@@ -152,6 +152,7 @@ type SetApplicationSsoConfigRequestOidcSsoConfig struct {
 	//
 	// 1200
 	AccessTokenEffectiveTime *int64 `json:"AccessTokenEffectiveTime,omitempty" xml:"AccessTokenEffectiveTime,omitempty"`
+	AllowedPublicClient      *bool  `json:"AllowedPublicClient,omitempty" xml:"AllowedPublicClient,omitempty"`
 	// The validity period of the issued code. Unit: seconds. Default value: 60.
 	//
 	// example:
@@ -238,6 +239,10 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfig) GetAccessTokenEffectiveTim
 	return s.AccessTokenEffectiveTime
 }
 
+func (s *SetApplicationSsoConfigRequestOidcSsoConfig) GetAllowedPublicClient() *bool {
+	return s.AllowedPublicClient
+}
+
 func (s *SetApplicationSsoConfigRequestOidcSsoConfig) GetCodeEffectiveTime() *int64 {
 	return s.CodeEffectiveTime
 }
@@ -296,6 +301,11 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfig) GetSubjectIdExpression() *
 
 func (s *SetApplicationSsoConfigRequestOidcSsoConfig) SetAccessTokenEffectiveTime(v int64) *SetApplicationSsoConfigRequestOidcSsoConfig {
 	s.AccessTokenEffectiveTime = &v
+	return s
+}
+
+func (s *SetApplicationSsoConfigRequestOidcSsoConfig) SetAllowedPublicClient(v bool) *SetApplicationSsoConfigRequestOidcSsoConfig {
+	s.AllowedPublicClient = &v
 	return s
 }
 
