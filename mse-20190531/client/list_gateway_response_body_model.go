@@ -1045,10 +1045,15 @@ type ListGatewayResponseBodyDataResultGatewayEntry struct {
 	HttpPorts   []*int32  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
 	HttpsPorts  []*int32  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	IpList      []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	Ipv6List    []*string `json:"Ipv6List,omitempty" xml:"Ipv6List,omitempty" type:"Repeated"`
 	// example:
 	//
 	// PUB_NET
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// Ready
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListGatewayResponseBodyDataResultGatewayEntry) String() string {
@@ -1075,8 +1080,16 @@ func (s *ListGatewayResponseBodyDataResultGatewayEntry) GetIpList() []*string {
 	return s.IpList
 }
 
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) GetIpv6List() []*string {
+	return s.Ipv6List
+}
+
 func (s *ListGatewayResponseBodyDataResultGatewayEntry) GetNetType() *string {
 	return s.NetType
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetEntryDomain(v string) *ListGatewayResponseBodyDataResultGatewayEntry {
@@ -1099,8 +1112,18 @@ func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetIpList(v []*string) *
 	return s
 }
 
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetIpv6List(v []*string) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.Ipv6List = v
+	return s
+}
+
 func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetNetType(v string) *ListGatewayResponseBodyDataResultGatewayEntry {
 	s.NetType = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetStatus(v string) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.Status = &v
 	return s
 }
 
