@@ -2744,6 +2744,10 @@ func (client *Client) DeleteSecurityProxyWithOptions(request *DeleteSecurityProx
 		query["ProxyId"] = request.ProxyId
 	}
 
+	if !dara.IsNil(request.TrimSql) {
+		query["trimSql"] = request.TrimSql
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

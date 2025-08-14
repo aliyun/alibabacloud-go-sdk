@@ -2068,6 +2068,10 @@ func (client *Client) DeleteSecurityProxyWithContext(ctx context.Context, reques
 		query["ProxyId"] = request.ProxyId
 	}
 
+	if !dara.IsNil(request.TrimSql) {
+		query["trimSql"] = request.TrimSql
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
