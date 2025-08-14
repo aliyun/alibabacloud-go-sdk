@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iImportFieldResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ImportFieldResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ImportFieldResponse
+	GetStatusCode() *int32
+	SetBody(v *ImportFieldResponseBody) *ImportFieldResponse
+	GetBody() *ImportFieldResponseBody
+}
+
+type ImportFieldResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportFieldResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ImportFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportFieldResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ImportFieldResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ImportFieldResponse) GetBody() *ImportFieldResponseBody {
+	return s.Body
+}
+
+func (s *ImportFieldResponse) SetHeaders(v map[string]*string) *ImportFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportFieldResponse) SetStatusCode(v int32) *ImportFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportFieldResponse) SetBody(v *ImportFieldResponseBody) *ImportFieldResponse {
+	s.Body = v
+	return s
+}
+
+func (s *ImportFieldResponse) Validate() error {
+	return dara.Validate(s)
+}
