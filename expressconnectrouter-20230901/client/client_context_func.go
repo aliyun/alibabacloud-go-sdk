@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("expressconnectrouter"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ActivateFlowLogResponse
-func (client *Client) ActivateFlowLogWithOptions(request *ActivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActivateFlowLogResponse, _err error) {
+func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *ActivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *ActivateFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -101,29 +53,11 @@ func (client *Client) ActivateFlowLogWithOptions(request *ActivateFlowLogRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ActivateFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables log delivery for flow logs.
-//
-// @param request - ActivateFlowLogRequest
-//
-// @return ActivateFlowLogResponse
-func (client *Client) ActivateFlowLog(request *ActivateFlowLogRequest) (_result *ActivateFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ActivateFlowLogResponse{}
-	_body, _err := client.ActivateFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -140,7 +74,7 @@ func (client *Client) ActivateFlowLog(request *ActivateFlowLogRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachExpressConnectRouterChildInstanceResponse
-func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request *AttachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
+func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *AttachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -193,33 +127,11 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a virtual border router (VBR) with an Express Connect router (ECR).
-//
-// Description:
-//
-// Before you call the **AttachExpressConnectRouterChildInstance*	- operation to associate a VBR with an ECR, make sure that the ECR is in the **Active*	- state.
-//
-// @param request - AttachExpressConnectRouterChildInstanceRequest
-//
-// @return AttachExpressConnectRouterChildInstanceResponse
-func (client *Client) AttachExpressConnectRouterChildInstance(request *AttachExpressConnectRouterChildInstanceRequest) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.AttachExpressConnectRouterChildInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -232,7 +144,7 @@ func (client *Client) AttachExpressConnectRouterChildInstance(request *AttachExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckAddRegionToExpressConnectRouterResponse
-func (client *Client) CheckAddRegionToExpressConnectRouterWithOptions(request *CheckAddRegionToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
+func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx context.Context, request *CheckAddRegionToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -269,29 +181,11 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithOptions(request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckAddRegionToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
-//
-// @param request - CheckAddRegionToExpressConnectRouterRequest
-//
-// @return CheckAddRegionToExpressConnectRouterResponse
-func (client *Client) CheckAddRegionToExpressConnectRouter(request *CheckAddRegionToExpressConnectRouterRequest) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckAddRegionToExpressConnectRouterResponse{}
-	_body, _err := client.CheckAddRegionToExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -308,7 +202,7 @@ func (client *Client) CheckAddRegionToExpressConnectRouter(request *CheckAddRegi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressConnectRouterResponse
-func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterResponse, _err error) {
+func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context, request *CreateExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -357,33 +251,11 @@ func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an Express Connect Router (ECR).
-//
-// Description:
-//
-// After you create an ECR, it enters the **Active*	- state.
-//
-// @param request - CreateExpressConnectRouterRequest
-//
-// @return CreateExpressConnectRouterResponse
-func (client *Client) CreateExpressConnectRouter(request *CreateExpressConnectRouterRequest) (_result *CreateExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressConnectRouterResponse{}
-	_body, _err := client.CreateExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -396,7 +268,7 @@ func (client *Client) CreateExpressConnectRouter(request *CreateExpressConnectRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExpressConnectRouterAssociationResponse
-func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *CreateExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
+func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx context.Context, request *CreateExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -469,29 +341,11 @@ func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
-//
-// @param request - CreateExpressConnectRouterAssociationRequest
-//
-// @return CreateExpressConnectRouterAssociationResponse
-func (client *Client) CreateExpressConnectRouterAssociation(request *CreateExpressConnectRouterAssociationRequest) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CreateExpressConnectRouterAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -504,7 +358,7 @@ func (client *Client) CreateExpressConnectRouterAssociation(request *CreateExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFlowLogResponse
-func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
+func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *CreateFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -579,29 +433,11 @@ func (client *Client) CreateFlowLogWithOptions(request *CreateFlowLogRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a flow log and enables log delivery.
-//
-// @param request - CreateFlowLogRequest
-//
-// @return CreateFlowLogResponse
-func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *CreateFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFlowLogResponse{}
-	_body, _err := client.CreateFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -614,7 +450,7 @@ func (client *Client) CreateFlowLog(request *CreateFlowLogRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeactivateFlowLogResponse
-func (client *Client) DeactivateFlowLogWithOptions(request *DeactivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactivateFlowLogResponse, _err error) {
+func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request *DeactivateFlowLogRequest, runtime *dara.RuntimeOptions) (_result *DeactivateFlowLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -651,29 +487,11 @@ func (client *Client) DeactivateFlowLogWithOptions(request *DeactivateFlowLogReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeactivateFlowLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables log delivery.
-//
-// @param request - DeactivateFlowLogRequest
-//
-// @return DeactivateFlowLogResponse
-func (client *Client) DeactivateFlowLog(request *DeactivateFlowLogRequest) (_result *DeactivateFlowLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeactivateFlowLogResponse{}
-	_body, _err := client.DeactivateFlowLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -694,7 +512,7 @@ func (client *Client) DeactivateFlowLog(request *DeactivateFlowLogRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExpressConnectRouterResponse
-func (client *Client) DeleteExpressConnectRouterWithOptions(request *DeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterResponse, _err error) {
+func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context, request *DeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -727,37 +545,11 @@ func (client *Client) DeleteExpressConnectRouterWithOptions(request *DeleteExpre
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an Express Connect router (ECR).
-//
-// Description:
-//
-// Take note of the following items:
-//
-//   - Before you call this operation, make sure that all resources are disassociated from the ECR.
-//
-//   - You can delete only ECRs that are in the **Active*	- state.
-//
-// @param request - DeleteExpressConnectRouterRequest
-//
-// @return DeleteExpressConnectRouterResponse
-func (client *Client) DeleteExpressConnectRouter(request *DeleteExpressConnectRouterRequest) (_result *DeleteExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExpressConnectRouterResponse{}
-	_body, _err := client.DeleteExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -770,7 +562,7 @@ func (client *Client) DeleteExpressConnectRouter(request *DeleteExpressConnectRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExpressConnectRouterAssociationResponse
-func (client *Client) DeleteExpressConnectRouterAssociationWithOptions(request *DeleteExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
+func (client *Client) DeleteExpressConnectRouterAssociationWithContext(ctx context.Context, request *DeleteExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -811,29 +603,11 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
-//
-// @param request - DeleteExpressConnectRouterAssociationRequest
-//
-// @return DeleteExpressConnectRouterAssociationResponse
-func (client *Client) DeleteExpressConnectRouterAssociation(request *DeleteExpressConnectRouterAssociationRequest) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExpressConnectRouterAssociationResponse{}
-	_body, _err := client.DeleteExpressConnectRouterAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -846,7 +620,7 @@ func (client *Client) DeleteExpressConnectRouterAssociation(request *DeleteExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFlowlogResponse
-func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowlogResponse, _err error) {
+func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *DeleteFlowlogRequest, runtime *dara.RuntimeOptions) (_result *DeleteFlowlogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -885,29 +659,11 @@ func (client *Client) DeleteFlowlogWithOptions(request *DeleteFlowlogRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFlowlogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a flow log.
-//
-// @param request - DeleteFlowlogRequest
-//
-// @return DeleteFlowlogResponse
-func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *DeleteFlowlogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFlowlogResponse{}
-	_body, _err := client.DeleteFlowlogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -920,7 +676,7 @@ func (client *Client) DeleteFlowlog(request *DeleteFlowlogRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
-func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithOptions(request *DescribeDisabledExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
+func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DescribeDisabledExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -961,29 +717,11 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the route entries that are disabled on an Express Connect router (ECR).
-//
-// @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
-//
-// @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
-func (client *Client) DescribeDisabledExpressConnectRouterRouteEntries(request *DescribeDisabledExpressConnectRouterRouteEntriesRequest) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.DescribeDisabledExpressConnectRouterRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -996,7 +734,7 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntries(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterResponse
-func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Context, request *DescribeExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1049,29 +787,11 @@ func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeE
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of Express Connect routers (ECRs).
-//
-// @param request - DescribeExpressConnectRouterRequest
-//
-// @return DescribeExpressConnectRouterResponse
-func (client *Client) DescribeExpressConnectRouter(request *DescribeExpressConnectRouterRequest) (_result *DescribeExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterResponse{}
-	_body, _err := client.DescribeExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1084,7 +804,7 @@ func (client *Client) DescribeExpressConnectRouter(request *DescribeExpressConne
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
-func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOptions(request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContext(ctx context.Context, request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1129,29 +849,11 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the historical route prefixes of an Express Connect router (ECR).
-//
-// @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
-//
-// @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
-func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistory(request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
-	_body, _err := client.DescribeExpressConnectRouterAllowedPrefixHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1164,7 +866,7 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistory(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterAssociationResponse
-func (client *Client) DescribeExpressConnectRouterAssociationWithOptions(request *DescribeExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx context.Context, request *DescribeExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1229,29 +931,11 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
-//
-// @param request - DescribeExpressConnectRouterAssociationRequest
-//
-// @return DescribeExpressConnectRouterAssociationResponse
-func (client *Client) DescribeExpressConnectRouterAssociation(request *DescribeExpressConnectRouterAssociationRequest) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterAssociationResponse{}
-	_body, _err := client.DescribeExpressConnectRouterAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1264,7 +948,7 @@ func (client *Client) DescribeExpressConnectRouterAssociation(request *DescribeE
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterChildInstanceResponse
-func (client *Client) DescribeExpressConnectRouterChildInstanceWithOptions(request *DescribeExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *DescribeExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1321,29 +1005,11 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithOptions(reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
-//
-// @param request - DescribeExpressConnectRouterChildInstanceRequest
-//
-// @return DescribeExpressConnectRouterChildInstanceResponse
-func (client *Client) DescribeExpressConnectRouterChildInstance(request *DescribeExpressConnectRouterChildInstanceRequest) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.DescribeExpressConnectRouterChildInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1356,7 +1022,7 @@ func (client *Client) DescribeExpressConnectRouterChildInstance(request *Describ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterInterRegionTransitModeResponse
-func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithOptions(request *DescribeExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithContext(ctx context.Context, request *DescribeExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1389,29 +1055,11 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithOpti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the cross-region forwarding modes of an Express Connect router (ECR).
-//
-// @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
-//
-// @return DescribeExpressConnectRouterInterRegionTransitModeResponse
-func (client *Client) DescribeExpressConnectRouterInterRegionTransitMode(request *DescribeExpressConnectRouterInterRegionTransitModeRequest) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.DescribeExpressConnectRouterInterRegionTransitModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1424,7 +1072,7 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitMode(request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterRegionResponse
-func (client *Client) DescribeExpressConnectRouterRegionWithOptions(request *DescribeExpressConnectRouterRegionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.Context, request *DescribeExpressConnectRouterRegionRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1457,29 +1105,11 @@ func (client *Client) DescribeExpressConnectRouterRegionWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
-//
-// @param request - DescribeExpressConnectRouterRegionRequest
-//
-// @return DescribeExpressConnectRouterRegionResponse
-func (client *Client) DescribeExpressConnectRouterRegion(request *DescribeExpressConnectRouterRegionRequest) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterRegionResponse{}
-	_body, _err := client.DescribeExpressConnectRouterRegionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1492,7 +1122,7 @@ func (client *Client) DescribeExpressConnectRouterRegion(request *DescribeExpres
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExpressConnectRouterRouteEntriesResponse
-func (client *Client) DescribeExpressConnectRouterRouteEntriesWithOptions(request *DescribeExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
+func (client *Client) DescribeExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DescribeExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1553,29 +1183,11 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithOptions(reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the route entries of an Express Connect router (ECR).
-//
-// @param request - DescribeExpressConnectRouterRouteEntriesRequest
-//
-// @return DescribeExpressConnectRouterRouteEntriesResponse
-func (client *Client) DescribeExpressConnectRouterRouteEntries(request *DescribeExpressConnectRouterRouteEntriesRequest) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.DescribeExpressConnectRouterRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1588,7 +1200,7 @@ func (client *Client) DescribeExpressConnectRouterRouteEntries(request *Describe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFlowLogsResponse
-func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
+func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *DescribeFlowLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFlowLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1659,29 +1271,11 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFlowLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries flow logs.
-//
-// @param request - DescribeFlowLogsRequest
-//
-// @return DescribeFlowLogsResponse
-func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_result *DescribeFlowLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeFlowLogsResponse{}
-	_body, _err := client.DescribeFlowLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1694,7 +1288,7 @@ func (client *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceGrantedToExpressConnectRouterResponse
-func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(request *DescribeInstanceGrantedToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
+func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(ctx context.Context, request *DescribeInstanceGrantedToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1763,29 +1357,11 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the network instances whose permissions are granted to an Express Connect router (ECR).
-//
-// @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
-//
-// @return DescribeInstanceGrantedToExpressConnectRouterResponse
-func (client *Client) DescribeInstanceGrantedToExpressConnectRouter(request *DescribeInstanceGrantedToExpressConnectRouterRequest) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
-	_body, _err := client.DescribeInstanceGrantedToExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1802,7 +1378,7 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouter(request *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachExpressConnectRouterChildInstanceResponse
-func (client *Client) DetachExpressConnectRouterChildInstanceWithOptions(request *DetachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
+func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *DetachExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1843,33 +1419,11 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
-//
-// Description:
-//
-// Before you call the **DetachExpressConnectRouterChildInstance*	- operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active*	- state.
-//
-// @param request - DetachExpressConnectRouterChildInstanceRequest
-//
-// @return DetachExpressConnectRouterChildInstanceResponse
-func (client *Client) DetachExpressConnectRouterChildInstance(request *DetachExpressConnectRouterChildInstanceRequest) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.DetachExpressConnectRouterChildInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1882,7 +1436,7 @@ func (client *Client) DetachExpressConnectRouterChildInstance(request *DetachExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableExpressConnectRouterRouteEntriesResponse
-func (client *Client) DisableExpressConnectRouterRouteEntriesWithOptions(request *DisableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
+func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *DisableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1923,29 +1477,11 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables route entries of an Express Connect router (ECR).
-//
-// @param request - DisableExpressConnectRouterRouteEntriesRequest
-//
-// @return DisableExpressConnectRouterRouteEntriesResponse
-func (client *Client) DisableExpressConnectRouterRouteEntries(request *DisableExpressConnectRouterRouteEntriesRequest) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.DisableExpressConnectRouterRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1958,7 +1494,7 @@ func (client *Client) DisableExpressConnectRouterRouteEntries(request *DisableEx
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableExpressConnectRouterRouteEntriesResponse
-func (client *Client) EnableExpressConnectRouterRouteEntriesWithOptions(request *EnableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
+func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx context.Context, request *EnableExpressConnectRouterRouteEntriesRequest, runtime *dara.RuntimeOptions) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1999,29 +1535,11 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables route entries of an Express Connect router (ECR).
-//
-// @param request - EnableExpressConnectRouterRouteEntriesRequest
-//
-// @return EnableExpressConnectRouterRouteEntriesResponse
-func (client *Client) EnableExpressConnectRouterRouteEntries(request *EnableExpressConnectRouterRouteEntriesRequest) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableExpressConnectRouterRouteEntriesResponse{}
-	_body, _err := client.EnableExpressConnectRouterRouteEntriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2040,7 +1558,7 @@ func (client *Client) EnableExpressConnectRouterRouteEntries(request *EnableExpr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ForceDeleteExpressConnectRouterResponse
-func (client *Client) ForceDeleteExpressConnectRouterWithOptions(request *ForceDeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
+func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Context, request *ForceDeleteExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2073,35 +1591,11 @@ func (client *Client) ForceDeleteExpressConnectRouterWithOptions(request *ForceD
 		BodyType:    dara.String("json"),
 	}
 	_result = &ForceDeleteExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
-//
-// Description:
-//
-//	  If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
-//
-//		- You can delete only ECRs that are in the **Active*	- state.
-//
-// @param request - ForceDeleteExpressConnectRouterRequest
-//
-// @return ForceDeleteExpressConnectRouterResponse
-func (client *Client) ForceDeleteExpressConnectRouter(request *ForceDeleteExpressConnectRouterRequest) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ForceDeleteExpressConnectRouterResponse{}
-	_body, _err := client.ForceDeleteExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2118,7 +1612,7 @@ func (client *Client) ForceDeleteExpressConnectRouter(request *ForceDeleteExpres
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GrantInstanceToExpressConnectRouterResponse
-func (client *Client) GrantInstanceToExpressConnectRouterWithOptions(request *GrantInstanceToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
+func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context.Context, request *GrantInstanceToExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2167,33 +1661,11 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithOptions(request *Gr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GrantInstanceToExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
-//
-// Description:
-//
-// When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
-//
-// @param request - GrantInstanceToExpressConnectRouterRequest
-//
-// @return GrantInstanceToExpressConnectRouterResponse
-func (client *Client) GrantInstanceToExpressConnectRouter(request *GrantInstanceToExpressConnectRouterRequest) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GrantInstanceToExpressConnectRouterResponse{}
-	_body, _err := client.GrantInstanceToExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2206,7 +1678,7 @@ func (client *Client) GrantInstanceToExpressConnectRouter(request *GrantInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExpressConnectRouterSupportedRegionResponse
-func (client *Client) ListExpressConnectRouterSupportedRegionWithOptions(request *ListExpressConnectRouterSupportedRegionRequest, runtime *dara.RuntimeOptions) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
+func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx context.Context, request *ListExpressConnectRouterSupportedRegionRequest, runtime *dara.RuntimeOptions) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2235,29 +1707,11 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExpressConnectRouterSupportedRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of regions in which the Express Connect router (ECR) feature is activated.
-//
-// @param request - ListExpressConnectRouterSupportedRegionRequest
-//
-// @return ListExpressConnectRouterSupportedRegionResponse
-func (client *Client) ListExpressConnectRouterSupportedRegion(request *ListExpressConnectRouterSupportedRegionRequest) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListExpressConnectRouterSupportedRegionResponse{}
-	_body, _err := client.ListExpressConnectRouterSupportedRegionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2270,7 +1724,7 @@ func (client *Client) ListExpressConnectRouterSupportedRegion(request *ListExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2311,29 +1765,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of tags that are added to an Express Connect router (ECR).
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2350,7 +1786,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectRouterResponse
-func (client *Client) ModifyExpressConnectRouterWithOptions(request *ModifyExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterResponse, _err error) {
+func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context, request *ModifyExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2391,33 +1827,11 @@ func (client *Client) ModifyExpressConnectRouterWithOptions(request *ModifyExpre
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the properties such as the name of an Express Connect router (ECR).
-//
-// Description:
-//
-// You can modify only properties of ECRs in the **Active*	- state.
-//
-// @param request - ModifyExpressConnectRouterRequest
-//
-// @return ModifyExpressConnectRouterResponse
-func (client *Client) ModifyExpressConnectRouter(request *ModifyExpressConnectRouterRequest) (_result *ModifyExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectRouterResponse{}
-	_body, _err := client.ModifyExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2430,7 +1844,7 @@ func (client *Client) ModifyExpressConnectRouter(request *ModifyExpressConnectRo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectRouterAssociationResponse
-func (client *Client) ModifyExpressConnectRouterAssociationWithOptions(request *ModifyExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationResponse, _err error) {
+func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx context.Context, request *ModifyExpressConnectRouterAssociationRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2471,29 +1885,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectRouterAssociationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改专线网关关联的属性
-//
-// @param request - ModifyExpressConnectRouterAssociationRequest
-//
-// @return ModifyExpressConnectRouterAssociationResponse
-func (client *Client) ModifyExpressConnectRouterAssociation(request *ModifyExpressConnectRouterAssociationRequest) (_result *ModifyExpressConnectRouterAssociationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectRouterAssociationResponse{}
-	_body, _err := client.ModifyExpressConnectRouterAssociationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2506,7 +1902,7 @@ func (client *Client) ModifyExpressConnectRouterAssociation(request *ModifyExpre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
-func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOptions(request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
+func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithContext(ctx context.Context, request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2555,29 +1951,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOpti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
-//
-// @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
-//
-// @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
-func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefix(request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
-	_body, _err := client.ModifyExpressConnectRouterAssociationAllowedPrefixWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2590,7 +1968,7 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefix(request
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectRouterChildInstanceResponse
-func (client *Client) ModifyExpressConnectRouterChildInstanceWithOptions(request *ModifyExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterChildInstanceResponse, _err error) {
+func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx context.Context, request *ModifyExpressConnectRouterChildInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2635,29 +2013,11 @@ func (client *Client) ModifyExpressConnectRouterChildInstanceWithOptions(request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改专线网关子实例的属性
-//
-// @param request - ModifyExpressConnectRouterChildInstanceRequest
-//
-// @return ModifyExpressConnectRouterChildInstanceResponse
-func (client *Client) ModifyExpressConnectRouterChildInstance(request *ModifyExpressConnectRouterChildInstanceRequest) (_result *ModifyExpressConnectRouterChildInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectRouterChildInstanceResponse{}
-	_body, _err := client.ModifyExpressConnectRouterChildInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2670,7 +2030,7 @@ func (client *Client) ModifyExpressConnectRouterChildInstance(request *ModifyExp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyExpressConnectRouterInterRegionTransitModeResponse
-func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithOptions(request *ModifyExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
+func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContext(ctx context.Context, request *ModifyExpressConnectRouterInterRegionTransitModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2707,29 +2067,11 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the cross-region forwarding mode of an Express Connect router (ECR).
-//
-// @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
-//
-// @return ModifyExpressConnectRouterInterRegionTransitModeResponse
-func (client *Client) ModifyExpressConnectRouterInterRegionTransitMode(request *ModifyExpressConnectRouterInterRegionTransitModeRequest) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
-	_body, _err := client.ModifyExpressConnectRouterInterRegionTransitModeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2742,7 +2084,7 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitMode(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFlowLogAttributeResponse
-func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
+func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, request *ModifyFlowLogAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyFlowLogAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2797,29 +2139,11 @@ func (client *Client) ModifyFlowLogAttributeWithOptions(request *ModifyFlowLogAt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyFlowLogAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name, description, sampling rate, and sampling interval.
-//
-// @param request - ModifyFlowLogAttributeRequest
-//
-// @return ModifyFlowLogAttributeResponse
-func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequest) (_result *ModifyFlowLogAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyFlowLogAttributeResponse{}
-	_body, _err := client.ModifyFlowLogAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2832,7 +2156,7 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2873,29 +2197,11 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the resource group to which an Express Connect router (ECR) belongs.
-//
-// @param request - MoveResourceGroupRequest
-//
-// @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2908,7 +2214,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeInstanceFromExpressConnectRouterResponse
-func (client *Client) RevokeInstanceFromExpressConnectRouterWithOptions(request *RevokeInstanceFromExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
+func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx context.Context, request *RevokeInstanceFromExpressConnectRouterRequest, runtime *dara.RuntimeOptions) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2957,29 +2263,11 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeInstanceFromExpressConnectRouterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
-//
-// @param request - RevokeInstanceFromExpressConnectRouterRequest
-//
-// @return RevokeInstanceFromExpressConnectRouterResponse
-func (client *Client) RevokeInstanceFromExpressConnectRouter(request *RevokeInstanceFromExpressConnectRouterRequest) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeInstanceFromExpressConnectRouterResponse{}
-	_body, _err := client.RevokeInstanceFromExpressConnectRouterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2996,7 +2284,7 @@ func (client *Client) RevokeInstanceFromExpressConnectRouter(request *RevokeInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
-func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithOptions(request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
+func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithContext(ctx context.Context, request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest, runtime *dara.RuntimeOptions) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3029,33 +2317,11 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithOpt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
-//
-// Description:
-//
-// Updates are allowed only when the ECR is in the **Active*	- state.
-//
-// @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
-//
-// @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
-func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidth(request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
-	_body, _err := client.SynchronizeExpressConnectRouterInterRegionBandwidthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3068,7 +2334,7 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidth(reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3109,29 +2375,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3144,7 +2392,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3189,28 +2437,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from an Express Connect router (ECR).
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

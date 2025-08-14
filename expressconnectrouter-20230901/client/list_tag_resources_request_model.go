@@ -39,8 +39,6 @@ type ListTagResourcesRequest struct {
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ECR IDs.
-	//
-	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to EXPRESSCONNECTROUTER.
 	//
