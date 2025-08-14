@@ -124,7 +124,8 @@ type DescribeCouponResponseBodyData struct {
 	// example:
 	//
 	// 2021-03-06T15:12Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FirstBuy *bool   `json:"FirstBuy,omitempty" xml:"FirstBuy,omitempty"`
 	// example:
 	//
 	// 2021-03-02T15:12Z
@@ -208,6 +209,10 @@ func (s *DescribeCouponResponseBodyData) GetCurrency() *string {
 
 func (s *DescribeCouponResponseBodyData) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *DescribeCouponResponseBodyData) GetFirstBuy() *bool {
+	return s.FirstBuy
 }
 
 func (s *DescribeCouponResponseBodyData) GetGmtCreate() *string {
@@ -311,6 +316,11 @@ func (s *DescribeCouponResponseBodyData) SetCurrency(v string) *DescribeCouponRe
 
 func (s *DescribeCouponResponseBodyData) SetEndTime(v string) *DescribeCouponResponseBodyData {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetFirstBuy(v bool) *DescribeCouponResponseBodyData {
+	s.FirstBuy = &v
 	return s
 }
 
