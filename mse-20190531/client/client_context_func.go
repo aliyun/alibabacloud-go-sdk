@@ -2799,6 +2799,78 @@ func (client *Client) CreateNacosInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建一个MCP Server
+//
+// @param request - CreateNacosMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNacosMcpServerResponse
+func (client *Client) CreateNacosMcpServerWithContext(ctx context.Context, request *CreateNacosMcpServerRequest, runtime *dara.RuntimeOptions) (_result *CreateNacosMcpServerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.ServerName) {
+		query["ServerName"] = request.ServerName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndpointSpecification) {
+		body["EndpointSpecification"] = request.EndpointSpecification
+	}
+
+	if !dara.IsNil(request.ServerSpecification) {
+		body["ServerSpecification"] = request.ServerSpecification
+	}
+
+	if !dara.IsNil(request.ToolSpecification) {
+		body["ToolSpecification"] = request.ToolSpecification
+	}
+
+	if !dara.IsNil(request.YamlConfig) {
+		body["YamlConfig"] = request.YamlConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNacosMcpServer"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNacosMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Nacos service.
 //
 // Description:
@@ -4609,6 +4681,60 @@ func (client *Client) DeleteNacosInstanceWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNacosInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个MCP Server
+//
+// @param request - DeleteNacosMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNacosMcpServerResponse
+func (client *Client) DeleteNacosMcpServerWithContext(ctx context.Context, request *DeleteNacosMcpServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteNacosMcpServerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.McpServerId) {
+		query["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNacosMcpServer"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNacosMcpServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6755,6 +6881,64 @@ func (client *Client) GetNacosHistoryConfigWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNacosHistoryConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取MCP Server的详情
+//
+// @param request - GetNacosMcpServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNacosMcpServerResponse
+func (client *Client) GetNacosMcpServerWithContext(ctx context.Context, request *GetNacosMcpServerRequest, runtime *dara.RuntimeOptions) (_result *GetNacosMcpServerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.McpServerId) {
+		query["McpServerId"] = request.McpServerId
+	}
+
+	if !dara.IsNil(request.McpServerVersion) {
+		query["McpServerVersion"] = request.McpServerVersion
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNacosMcpServer"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNacosMcpServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9919,6 +10103,72 @@ func (client *Client) ListNacosHistoryConfigsWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNacosHistoryConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取McpServer列表
+//
+// @param request - ListNacosMcpServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNacosMcpServersResponse
+func (client *Client) ListNacosMcpServersWithContext(ctx context.Context, request *ListNacosMcpServersRequest, runtime *dara.RuntimeOptions) (_result *ListNacosMcpServersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Search) {
+		query["Search"] = request.Search
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNacosMcpServers"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNacosMcpServersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
