@@ -14,6 +14,14 @@
 - Update API SubmitDocStructureJob: add request parameters PageIndex.
 
 
+2025-08-14 Version: v1.4.6
+- Update API QueryDocParserStatus: add response parameters Body.Data.Processing.
+- Update API SubmitDocParserJob: add request parameters Option.
+- Update API SubmitDocParserJob: add request parameters OutputHtmlTable.
+- Update API SubmitDocParserJob: add request parameters PageIndex.
+- Update API SubmitDocStructureJob: add request parameters PageIndex.
+
+
 2025-03-17 Version: v1.4.5
 - Update API SubmitConvertPdfToWordJob: add param FormulaEnhancement.
 - Update API SubmitConvertPdfToWordJob: add param Option.
