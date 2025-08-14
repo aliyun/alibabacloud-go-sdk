@@ -9,8 +9,12 @@ type iModifyBackupPolicyRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdvancedDataPolicies(v []*ModifyBackupPolicyRequestAdvancedDataPolicies) *ModifyBackupPolicyRequest
+	GetAdvancedDataPolicies() []*ModifyBackupPolicyRequestAdvancedDataPolicies
 	SetBackupFrequency(v string) *ModifyBackupPolicyRequest
 	GetBackupFrequency() *string
+	SetBackupPolicyLevel(v string) *ModifyBackupPolicyRequest
+	GetBackupPolicyLevel() *string
 	SetBackupRetentionPolicyOnClusterDeletion(v string) *ModifyBackupPolicyRequest
 	GetBackupRetentionPolicyOnClusterDeletion() *string
 	SetDBClusterId(v string) *ModifyBackupPolicyRequest
@@ -46,6 +50,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
+	AdvancedDataPolicies []*ModifyBackupPolicyRequestAdvancedDataPolicies `json:"AdvancedDataPolicies,omitempty" xml:"AdvancedDataPolicies,omitempty" type:"Repeated"`
 	// The backup frequency. Default value: Normal. Valid values:
 	//
 	// 	- **Normal**: standard backup. The system backs up data once a day.
@@ -65,7 +70,8 @@ type ModifyBackupPolicyRequest struct {
 	// example:
 	//
 	// Normal
-	BackupFrequency *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
+	BackupFrequency   *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
+	BackupPolicyLevel *string `json:"BackupPolicyLevel,omitempty" xml:"BackupPolicyLevel,omitempty"`
 	// Specifies whether to retain backups when a cluster is deleted. Valid values:
 	//
 	// 	- **ALL**: permanently retains all backups.
@@ -254,8 +260,16 @@ func (s ModifyBackupPolicyRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyBackupPolicyRequest) GetAdvancedDataPolicies() []*ModifyBackupPolicyRequestAdvancedDataPolicies {
+	return s.AdvancedDataPolicies
+}
+
 func (s *ModifyBackupPolicyRequest) GetBackupFrequency() *string {
 	return s.BackupFrequency
+}
+
+func (s *ModifyBackupPolicyRequest) GetBackupPolicyLevel() *string {
+	return s.BackupPolicyLevel
 }
 
 func (s *ModifyBackupPolicyRequest) GetBackupRetentionPolicyOnClusterDeletion() *string {
@@ -322,8 +336,18 @@ func (s *ModifyBackupPolicyRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *ModifyBackupPolicyRequest) SetAdvancedDataPolicies(v []*ModifyBackupPolicyRequestAdvancedDataPolicies) *ModifyBackupPolicyRequest {
+	s.AdvancedDataPolicies = v
+	return s
+}
+
 func (s *ModifyBackupPolicyRequest) SetBackupFrequency(v string) *ModifyBackupPolicyRequest {
 	s.BackupFrequency = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequest) SetBackupPolicyLevel(v string) *ModifyBackupPolicyRequest {
+	s.BackupPolicyLevel = &v
 	return s
 }
 
@@ -408,5 +432,180 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPol
 }
 
 func (s *ModifyBackupPolicyRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyBackupPolicyRequestAdvancedDataPolicies struct {
+	ActionType              *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	AutoCreated             *bool   `json:"AutoCreated,omitempty" xml:"AutoCreated,omitempty"`
+	BakType                 *string `json:"BakType,omitempty" xml:"BakType,omitempty"`
+	DestRegion              *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	DestType                *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	DumpAction              *string `json:"DumpAction,omitempty" xml:"DumpAction,omitempty"`
+	FilterKey               *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	FilterType              *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	FilterValue             *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	OnlyPreserveOneEachDay  *bool   `json:"OnlyPreserveOneEachDay,omitempty" xml:"OnlyPreserveOneEachDay,omitempty"`
+	OnlyPreserveOneEachHour *bool   `json:"OnlyPreserveOneEachHour,omitempty" xml:"OnlyPreserveOneEachHour,omitempty"`
+	PolicyId                *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RetentionType           *string `json:"RetentionType,omitempty" xml:"RetentionType,omitempty"`
+	RetentionValue          *string `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
+	SrcRegion               *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	SrcType                 *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+}
+
+func (s ModifyBackupPolicyRequestAdvancedDataPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyBackupPolicyRequestAdvancedDataPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetActionType() *string {
+	return s.ActionType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetAutoCreated() *bool {
+	return s.AutoCreated
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetBakType() *string {
+	return s.BakType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetDestRegion() *string {
+	return s.DestRegion
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetDestType() *string {
+	return s.DestType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetDumpAction() *string {
+	return s.DumpAction
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetFilterKey() *string {
+	return s.FilterKey
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetFilterType() *string {
+	return s.FilterType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetFilterValue() *string {
+	return s.FilterValue
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetOnlyPreserveOneEachDay() *bool {
+	return s.OnlyPreserveOneEachDay
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetOnlyPreserveOneEachHour() *bool {
+	return s.OnlyPreserveOneEachHour
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetRetentionType() *string {
+	return s.RetentionType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetRetentionValue() *string {
+	return s.RetentionValue
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetSrcRegion() *string {
+	return s.SrcRegion
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) GetSrcType() *string {
+	return s.SrcType
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetActionType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetAutoCreated(v bool) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.AutoCreated = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetBakType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.BakType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetDestRegion(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetDestType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.DestType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetDumpAction(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.DumpAction = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetFilterKey(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.FilterKey = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetFilterType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.FilterType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetFilterValue(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.FilterValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetOnlyPreserveOneEachDay(v bool) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.OnlyPreserveOneEachDay = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetOnlyPreserveOneEachHour(v bool) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.OnlyPreserveOneEachHour = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetPolicyId(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetRetentionType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.RetentionType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetRetentionValue(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.RetentionValue = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetSrcRegion(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) SetSrcType(v string) *ModifyBackupPolicyRequestAdvancedDataPolicies {
+	s.SrcType = &v
+	return s
+}
+
+func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) Validate() error {
 	return dara.Validate(s)
 }

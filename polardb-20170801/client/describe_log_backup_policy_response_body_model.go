@@ -9,6 +9,8 @@ type iDescribeLogBackupPolicyResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdvancedLogPolicies(v *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) *DescribeLogBackupPolicyResponseBody
+	GetAdvancedLogPolicies() *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies
 	SetEnableBackupLog(v int32) *DescribeLogBackupPolicyResponseBody
 	GetEnableBackupLog() *int32
 	SetLogBackupAnotherRegionRegion(v string) *DescribeLogBackupPolicyResponseBody
@@ -22,6 +24,7 @@ type iDescribeLogBackupPolicyResponseBody interface {
 }
 
 type DescribeLogBackupPolicyResponseBody struct {
+	AdvancedLogPolicies *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Struct"`
 	// Indicates whether the log backup feature is enabled. Valid values:
 	//
 	// 	- 0: The log backup feature is disabled.
@@ -78,6 +81,10 @@ func (s DescribeLogBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeLogBackupPolicyResponseBody) GetAdvancedLogPolicies() *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies {
+	return s.AdvancedLogPolicies
+}
+
 func (s *DescribeLogBackupPolicyResponseBody) GetEnableBackupLog() *int32 {
 	return s.EnableBackupLog
 }
@@ -96,6 +103,11 @@ func (s *DescribeLogBackupPolicyResponseBody) GetLogBackupRetentionPeriod() *int
 
 func (s *DescribeLogBackupPolicyResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeLogBackupPolicyResponseBody) SetAdvancedLogPolicies(v *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) *DescribeLogBackupPolicyResponseBody {
+	s.AdvancedLogPolicies = v
+	return s
 }
 
 func (s *DescribeLogBackupPolicyResponseBody) SetEnableBackupLog(v int32) *DescribeLogBackupPolicyResponseBody {
@@ -124,5 +136,125 @@ func (s *DescribeLogBackupPolicyResponseBody) SetRequestId(v string) *DescribeLo
 }
 
 func (s *DescribeLogBackupPolicyResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies struct {
+	AdvancedLogPolicy []*DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy `json:"AdvancedLogPolicy,omitempty" xml:"AdvancedLogPolicy,omitempty" type:"Repeated"`
+}
+
+func (s DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) GetAdvancedLogPolicy() []*DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	return s.AdvancedLogPolicy
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) SetAdvancedLogPolicy(v []*DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies {
+	s.AdvancedLogPolicy = v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy struct {
+	DestRegion        *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	DestType          *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	EnableLogBackup   *int32  `json:"EnableLogBackup,omitempty" xml:"EnableLogBackup,omitempty"`
+	LogRetentionType  *string `json:"LogRetentionType,omitempty" xml:"LogRetentionType,omitempty"`
+	LogRetentionValue *string `json:"LogRetentionValue,omitempty" xml:"LogRetentionValue,omitempty"`
+	PolicyId          *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SrcRegion         *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	SrcType           *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+}
+
+func (s DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetDestRegion() *string {
+	return s.DestRegion
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetDestType() *string {
+	return s.DestType
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetEnableLogBackup() *int32 {
+	return s.EnableLogBackup
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetLogRetentionType() *string {
+	return s.LogRetentionType
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetLogRetentionValue() *string {
+	return s.LogRetentionValue
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetSrcRegion() *string {
+	return s.SrcRegion
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) GetSrcType() *string {
+	return s.SrcType
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetDestRegion(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.DestRegion = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetDestType(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.DestType = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetEnableLogBackup(v int32) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.EnableLogBackup = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetLogRetentionType(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.LogRetentionType = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetLogRetentionValue(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.LogRetentionValue = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetPolicyId(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetSrcRegion(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.SrcRegion = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) SetSrcType(v string) *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy {
+	s.SrcType = &v
+	return s
+}
+
+func (s *DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy) Validate() error {
 	return dara.Validate(s)
 }

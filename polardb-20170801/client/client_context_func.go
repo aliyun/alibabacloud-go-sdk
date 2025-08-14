@@ -8279,19 +8279,33 @@ func (client *Client) ModifyAutoRenewAttributeWithContext(ctx context.Context, r
 //
 // > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
 //
-// @param request - ModifyBackupPolicyRequest
+// @param tmpReq - ModifyBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyBackupPolicyResponse
-func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, tmpReq *ModifyBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyBackupPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AdvancedDataPolicies) {
+		request.AdvancedDataPoliciesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdvancedDataPolicies, dara.String("AdvancedDataPolicies"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdvancedDataPoliciesShrink) {
+		query["AdvancedDataPolicies"] = request.AdvancedDataPoliciesShrink
+	}
+
 	if !dara.IsNil(request.BackupFrequency) {
 		query["BackupFrequency"] = request.BackupFrequency
+	}
+
+	if !dara.IsNil(request.BackupPolicyLevel) {
+		query["BackupPolicyLevel"] = request.BackupPolicyLevel
 	}
 
 	if !dara.IsNil(request.BackupRetentionPolicyOnClusterDeletion) {
