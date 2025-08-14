@@ -3,3753 +3,90 @@ package client
 
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
-	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
-	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
-	fileform "github.com/alibabacloud-go/tea-fileform/service"
-	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
-	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
-	util "github.com/alibabacloud-go/tea-utils/v2/service"
-	"github.com/alibabacloud-go/tea/tea"
-	"io"
+	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
+	"github.com/alibabacloud-go/tea/dara"
 )
-
-type AyncTradeDocumentPackageExtractSmartAppRequest struct {
-	CustomExtractionRange []*string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty" type:"Repeated"`
-	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// This parameter is required.
-	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetCustomExtractionRange(v []*string) *AyncTradeDocumentPackageExtractSmartAppRequest {
-	s.CustomExtractionRange = v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetFileName(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetFileUrl(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetOption(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
-	s.Option = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetTemplateName(v string) *AyncTradeDocumentPackageExtractSmartAppRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type AyncTradeDocumentPackageExtractSmartAppShrinkRequest struct {
-	CustomExtractionRangeShrink *string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty"`
-	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// This parameter is required.
-	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetCustomExtractionRangeShrink(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
-	s.CustomExtractionRangeShrink = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetFileName(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetFileUrl(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetOption(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
-	s.Option = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppShrinkRequest) SetTemplateName(v string) *AyncTradeDocumentPackageExtractSmartAppShrinkRequest {
-	s.TemplateName = &v
-	return s
-}
-
-type AyncTradeDocumentPackageExtractSmartAppResponseBody struct {
-	Completed  *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	CreateTime *string     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Data       interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetCompleted(v bool) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetCreateTime(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetData(v interface{}) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetRequestId(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetStatus(v string) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponseBody) SetSuccess(v bool) *AyncTradeDocumentPackageExtractSmartAppResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AyncTradeDocumentPackageExtractSmartAppResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AyncTradeDocumentPackageExtractSmartAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AyncTradeDocumentPackageExtractSmartAppResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetHeaders(v map[string]*string) *AyncTradeDocumentPackageExtractSmartAppResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetStatusCode(v int32) *AyncTradeDocumentPackageExtractSmartAppResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AyncTradeDocumentPackageExtractSmartAppResponse) SetBody(v *AyncTradeDocumentPackageExtractSmartAppResponseBody) *AyncTradeDocumentPackageExtractSmartAppResponse {
-	s.Body = v
-	return s
-}
-
-type GetDocParserResultRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	LayoutNum      *int32  `json:"LayoutNum,omitempty" xml:"LayoutNum,omitempty"`
-	LayoutStepSize *int32  `json:"LayoutStepSize,omitempty" xml:"LayoutStepSize,omitempty"`
-}
-
-func (s GetDocParserResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocParserResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocParserResultRequest) SetId(v string) *GetDocParserResultRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetDocParserResultRequest) SetLayoutNum(v int32) *GetDocParserResultRequest {
-	s.LayoutNum = &v
-	return s
-}
-
-func (s *GetDocParserResultRequest) SetLayoutStepSize(v int32) *GetDocParserResultRequest {
-	s.LayoutStepSize = &v
-	return s
-}
-
-type GetDocParserResultResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDocParserResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocParserResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocParserResultResponseBody) SetCode(v string) *GetDocParserResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetDocParserResultResponseBody) SetData(v map[string]interface{}) *GetDocParserResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDocParserResultResponseBody) SetMessage(v string) *GetDocParserResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDocParserResultResponseBody) SetRequestId(v string) *GetDocParserResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDocParserResultResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDocParserResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDocParserResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocParserResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocParserResultResponse) SetHeaders(v map[string]*string) *GetDocParserResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDocParserResultResponse) SetStatusCode(v int32) *GetDocParserResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDocParserResultResponse) SetBody(v *GetDocParserResultResponseBody) *GetDocParserResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetDocStructureResultRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageStrategy      *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	RevealMarkdown     *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
-	UseUrlResponseBody *bool   `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
-}
-
-func (s GetDocStructureResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocStructureResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocStructureResultRequest) SetId(v string) *GetDocStructureResultRequest {
-	s.Id = &v
-	return s
-}
-
-func (s *GetDocStructureResultRequest) SetImageStrategy(v string) *GetDocStructureResultRequest {
-	s.ImageStrategy = &v
-	return s
-}
-
-func (s *GetDocStructureResultRequest) SetRevealMarkdown(v bool) *GetDocStructureResultRequest {
-	s.RevealMarkdown = &v
-	return s
-}
-
-func (s *GetDocStructureResultRequest) SetUseUrlResponseBody(v bool) *GetDocStructureResultRequest {
-	s.UseUrlResponseBody = &v
-	return s
-}
-
-type GetDocStructureResultResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDocStructureResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocStructureResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocStructureResultResponseBody) SetCode(v string) *GetDocStructureResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetDocStructureResultResponseBody) SetCompleted(v bool) *GetDocStructureResultResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *GetDocStructureResultResponseBody) SetData(v map[string]interface{}) *GetDocStructureResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDocStructureResultResponseBody) SetMessage(v string) *GetDocStructureResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDocStructureResultResponseBody) SetRequestId(v string) *GetDocStructureResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDocStructureResultResponseBody) SetStatus(v string) *GetDocStructureResultResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetDocStructureResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDocStructureResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDocStructureResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocStructureResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocStructureResultResponse) SetHeaders(v map[string]*string) *GetDocStructureResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDocStructureResultResponse) SetStatusCode(v int32) *GetDocStructureResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDocStructureResultResponse) SetBody(v *GetDocStructureResultResponseBody) *GetDocStructureResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetDocumentCompareResultRequest struct {
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetDocumentCompareResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentCompareResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentCompareResultRequest) SetId(v string) *GetDocumentCompareResultRequest {
-	s.Id = &v
-	return s
-}
-
-type GetDocumentCompareResultResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDocumentCompareResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentCompareResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetCode(v string) *GetDocumentCompareResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetCompleted(v bool) *GetDocumentCompareResultResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetData(v interface{}) *GetDocumentCompareResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetMessage(v string) *GetDocumentCompareResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetRequestId(v string) *GetDocumentCompareResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponseBody) SetStatus(v string) *GetDocumentCompareResultResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetDocumentCompareResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDocumentCompareResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDocumentCompareResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentCompareResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentCompareResultResponse) SetHeaders(v map[string]*string) *GetDocumentCompareResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponse) SetStatusCode(v int32) *GetDocumentCompareResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDocumentCompareResultResponse) SetBody(v *GetDocumentCompareResultResponseBody) *GetDocumentCompareResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetDocumentConvertResultRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetDocumentConvertResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentConvertResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentConvertResultRequest) SetId(v string) *GetDocumentConvertResultRequest {
-	s.Id = &v
-	return s
-}
-
-type GetDocumentConvertResultResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is required.
-	Completed *bool                                       `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      []*GetDocumentConvertResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDocumentConvertResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentConvertResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetCode(v string) *GetDocumentConvertResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetCompleted(v bool) *GetDocumentConvertResultResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetData(v []*GetDocumentConvertResultResponseBodyData) *GetDocumentConvertResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetMessage(v string) *GetDocumentConvertResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetRequestId(v string) *GetDocumentConvertResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBody) SetStatus(v string) *GetDocumentConvertResultResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetDocumentConvertResultResponseBodyData struct {
-	// example:
-	//
-	// e6d83e55df218650b9a296bfbc300076
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// example:
-	//
-	// 2355965
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// example:
-	//
-	// pdf
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/convert/docmind-20220816-15bc7965/0.pdf?Expires=1660722412&OSSAccessKeyId=LTAI5tFEK2uEApeeYzxNMEci&Signature=f%2FKluINWMuuVyA5w22Z1wkoRjEg%3D
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s GetDocumentConvertResultResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentConvertResultResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentConvertResultResponseBodyData) SetMd5(v string) *GetDocumentConvertResultResponseBodyData {
-	s.Md5 = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBodyData) SetSize(v int64) *GetDocumentConvertResultResponseBodyData {
-	s.Size = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBodyData) SetType(v string) *GetDocumentConvertResultResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponseBodyData) SetUrl(v string) *GetDocumentConvertResultResponseBodyData {
-	s.Url = &v
-	return s
-}
-
-type GetDocumentConvertResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDocumentConvertResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDocumentConvertResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentConvertResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentConvertResultResponse) SetHeaders(v map[string]*string) *GetDocumentConvertResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponse) SetStatusCode(v int32) *GetDocumentConvertResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDocumentConvertResultResponse) SetBody(v *GetDocumentConvertResultResponseBody) *GetDocumentConvertResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetDocumentExtractResultRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetDocumentExtractResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentExtractResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentExtractResultRequest) SetId(v string) *GetDocumentExtractResultRequest {
-	s.Id = &v
-	return s
-}
-
-type GetDocumentExtractResultResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetDocumentExtractResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentExtractResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetCode(v string) *GetDocumentExtractResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetCompleted(v bool) *GetDocumentExtractResultResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetData(v map[string]interface{}) *GetDocumentExtractResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetMessage(v string) *GetDocumentExtractResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetRequestId(v string) *GetDocumentExtractResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponseBody) SetStatus(v string) *GetDocumentExtractResultResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetDocumentExtractResultResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetDocumentExtractResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetDocumentExtractResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDocumentExtractResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDocumentExtractResultResponse) SetHeaders(v map[string]*string) *GetDocumentExtractResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponse) SetStatusCode(v int32) *GetDocumentExtractResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDocumentExtractResultResponse) SetBody(v *GetDocumentExtractResultResponseBody) *GetDocumentExtractResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetPageNumRequest struct {
-	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-}
-
-func (s GetPageNumRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPageNumRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPageNumRequest) SetBizId(v string) *GetPageNumRequest {
-	s.BizId = &v
-	return s
-}
-
-type GetPageNumResponseBody struct {
-	Data         *GetPageNumResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode    *string                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	HttpCode     *string                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPageNumResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPageNumResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPageNumResponseBody) SetData(v *GetPageNumResponseBodyData) *GetPageNumResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPageNumResponseBody) SetErrorCode(v string) *GetPageNumResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetPageNumResponseBody) SetErrorMessage(v string) *GetPageNumResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetPageNumResponseBody) SetHttpCode(v string) *GetPageNumResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetPageNumResponseBody) SetRequestId(v string) *GetPageNumResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPageNumResponseBody) SetSuccess(v bool) *GetPageNumResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPageNumResponseBodyData struct {
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-}
-
-func (s GetPageNumResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPageNumResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetPageNumResponseBodyData) SetPageNum(v int32) *GetPageNumResponseBodyData {
-	s.PageNum = &v
-	return s
-}
-
-type GetPageNumResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetPageNumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetPageNumResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPageNumResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPageNumResponse) SetHeaders(v map[string]*string) *GetPageNumResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPageNumResponse) SetStatusCode(v int32) *GetPageNumResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetPageNumResponse) SetBody(v *GetPageNumResponseBody) *GetPageNumResponse {
-	s.Body = v
-	return s
-}
-
-type GetTableUnderstandingResultRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s GetTableUnderstandingResultRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableUnderstandingResultRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableUnderstandingResultRequest) SetId(v string) *GetTableUnderstandingResultRequest {
-	s.Id = &v
-	return s
-}
-
-type GetTableUnderstandingResultResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Completed *bool                  `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s GetTableUnderstandingResultResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableUnderstandingResultResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetCode(v string) *GetTableUnderstandingResultResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetCompleted(v bool) *GetTableUnderstandingResultResponseBody {
-	s.Completed = &v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetData(v map[string]interface{}) *GetTableUnderstandingResultResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetMessage(v string) *GetTableUnderstandingResultResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetRequestId(v string) *GetTableUnderstandingResultResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponseBody) SetStatus(v string) *GetTableUnderstandingResultResponseBody {
-	s.Status = &v
-	return s
-}
-
-type GetTableUnderstandingResultResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetTableUnderstandingResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetTableUnderstandingResultResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetTableUnderstandingResultResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetTableUnderstandingResultResponse) SetHeaders(v map[string]*string) *GetTableUnderstandingResultResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponse) SetStatusCode(v int32) *GetTableUnderstandingResultResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetTableUnderstandingResultResponse) SetBody(v *GetTableUnderstandingResultResponseBody) *GetTableUnderstandingResultResponse {
-	s.Body = v
-	return s
-}
-
-type QueryDocParserStatusRequest struct {
-	// example:
-	//
-	// docmind-20220816-1e89d65c
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s QueryDocParserStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDocParserStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDocParserStatusRequest) SetId(v string) *QueryDocParserStatusRequest {
-	s.Id = &v
-	return s
-}
-
-type QueryDocParserStatusResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryDocParserStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryDocParserStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDocParserStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDocParserStatusResponseBody) SetCode(v string) *QueryDocParserStatusResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBody) SetData(v *QueryDocParserStatusResponseBodyData) *QueryDocParserStatusResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBody) SetMessage(v string) *QueryDocParserStatusResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBody) SetRequestId(v string) *QueryDocParserStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryDocParserStatusResponseBodyData struct {
-	ImageCount                *int32  `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	NumberOfSuccessfulParsing *int32  `json:"NumberOfSuccessfulParsing,omitempty" xml:"NumberOfSuccessfulParsing,omitempty"`
-	PageCountEstimate         *int32  `json:"PageCountEstimate,omitempty" xml:"PageCountEstimate,omitempty"`
-	ParagraphCount            *int32  `json:"ParagraphCount,omitempty" xml:"ParagraphCount,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableCount                *int32  `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	Tokens                    *int64  `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
-}
-
-func (s QueryDocParserStatusResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDocParserStatusResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetImageCount(v int32) *QueryDocParserStatusResponseBodyData {
-	s.ImageCount = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetNumberOfSuccessfulParsing(v int32) *QueryDocParserStatusResponseBodyData {
-	s.NumberOfSuccessfulParsing = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetPageCountEstimate(v int32) *QueryDocParserStatusResponseBodyData {
-	s.PageCountEstimate = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetParagraphCount(v int32) *QueryDocParserStatusResponseBodyData {
-	s.ParagraphCount = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetStatus(v string) *QueryDocParserStatusResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetTableCount(v int32) *QueryDocParserStatusResponseBodyData {
-	s.TableCount = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponseBodyData) SetTokens(v int64) *QueryDocParserStatusResponseBodyData {
-	s.Tokens = &v
-	return s
-}
-
-type QueryDocParserStatusResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *QueryDocParserStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryDocParserStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDocParserStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDocParserStatusResponse) SetHeaders(v map[string]*string) *QueryDocParserStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryDocParserStatusResponse) SetStatusCode(v int32) *QueryDocParserStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryDocParserStatusResponse) SetBody(v *QueryDocParserStatusResponseBody) *QueryDocParserStatusResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertImageToExcelJobRequest struct {
-	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
-	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToExcelJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToExcelJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobRequest {
-	s.ForceMergeExcel = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToExcelJobRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetImageNames(v []*string) *SubmitConvertImageToExcelJobRequest {
-	s.ImageNames = v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetImageUrls(v []*string) *SubmitConvertImageToExcelJobRequest {
-	s.ImageUrls = v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetOssBucket(v string) *SubmitConvertImageToExcelJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToExcelJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToExcelJobShrinkRequest struct {
-	ForceMergeExcel *bool `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToExcelJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToExcelJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetForceMergeExcel(v bool) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.ForceMergeExcel = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageNamesShrink(v string) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.ImageNamesShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.ImageUrlsShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToExcelJobShrinkRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToExcelJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertImageToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertImageToExcelJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToExcelJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToExcelJobResponseBody) SetCode(v string) *SubmitConvertImageToExcelJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobResponseBody) SetData(v *SubmitConvertImageToExcelJobResponseBodyData) *SubmitConvertImageToExcelJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobResponseBody) SetMessage(v string) *SubmitConvertImageToExcelJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobResponseBody) SetRequestId(v string) *SubmitConvertImageToExcelJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertImageToExcelJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220810-7c5f9dd4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertImageToExcelJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToExcelJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToExcelJobResponseBodyData) SetId(v string) *SubmitConvertImageToExcelJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertImageToExcelJobResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertImageToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertImageToExcelJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToExcelJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToExcelJobResponse) SetHeaders(v map[string]*string) *SubmitConvertImageToExcelJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobResponse) SetStatusCode(v int32) *SubmitConvertImageToExcelJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertImageToExcelJobResponse) SetBody(v *SubmitConvertImageToExcelJobResponseBody) *SubmitConvertImageToExcelJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertImageToMarkdownJobRequest struct {
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
-	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToMarkdownJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToMarkdownJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToMarkdownJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToMarkdownJobRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobRequest) SetImageNames(v []*string) *SubmitConvertImageToMarkdownJobRequest {
-	s.ImageNames = v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobRequest) SetImageUrls(v []*string) *SubmitConvertImageToMarkdownJobRequest {
-	s.ImageUrls = v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobRequest) SetOssBucket(v string) *SubmitConvertImageToMarkdownJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToMarkdownJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToMarkdownJobShrinkRequest struct {
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToMarkdownJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToMarkdownJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageNamesShrink(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
-	s.ImageNamesShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
-	s.ImageUrlsShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToMarkdownJobShrinkRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToMarkdownJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertImageToMarkdownJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertImageToMarkdownJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToMarkdownJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponseBody) SetCode(v string) *SubmitConvertImageToMarkdownJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponseBody) SetData(v *SubmitConvertImageToMarkdownJobResponseBodyData) *SubmitConvertImageToMarkdownJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponseBody) SetMessage(v string) *SubmitConvertImageToMarkdownJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponseBody) SetRequestId(v string) *SubmitConvertImageToMarkdownJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertImageToMarkdownJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220810-7c5f9dd4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertImageToMarkdownJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToMarkdownJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponseBodyData) SetId(v string) *SubmitConvertImageToMarkdownJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertImageToMarkdownJobResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertImageToMarkdownJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertImageToMarkdownJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToMarkdownJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponse) SetHeaders(v map[string]*string) *SubmitConvertImageToMarkdownJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponse) SetStatusCode(v int32) *SubmitConvertImageToMarkdownJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertImageToMarkdownJobResponse) SetBody(v *SubmitConvertImageToMarkdownJobResponseBody) *SubmitConvertImageToMarkdownJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertImageToPdfJobRequest struct {
-	// example:
-	//
-	// JPG
-	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
-	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToPdfJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToPdfJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToPdfJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToPdfJobRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobRequest) SetImageNames(v []*string) *SubmitConvertImageToPdfJobRequest {
-	s.ImageNames = v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobRequest) SetImageUrls(v []*string) *SubmitConvertImageToPdfJobRequest {
-	s.ImageUrls = v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobRequest) SetOssBucket(v string) *SubmitConvertImageToPdfJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToPdfJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToPdfJobShrinkRequest struct {
-	// example:
-	//
-	// JPG
-	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToPdfJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToPdfJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToPdfJobShrinkRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageNamesShrink(v string) *SubmitConvertImageToPdfJobShrinkRequest {
-	s.ImageNamesShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToPdfJobShrinkRequest {
-	s.ImageUrlsShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToPdfJobShrinkRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToPdfJobShrinkRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToPdfJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertImageToPdfJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertImageToPdfJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToPdfJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToPdfJobResponseBody) SetCode(v string) *SubmitConvertImageToPdfJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobResponseBody) SetData(v *SubmitConvertImageToPdfJobResponseBodyData) *SubmitConvertImageToPdfJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobResponseBody) SetMessage(v string) *SubmitConvertImageToPdfJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobResponseBody) SetRequestId(v string) *SubmitConvertImageToPdfJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertImageToPdfJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220810-7c5f9dd4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertImageToPdfJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToPdfJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToPdfJobResponseBodyData) SetId(v string) *SubmitConvertImageToPdfJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertImageToPdfJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertImageToPdfJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertImageToPdfJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToPdfJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToPdfJobResponse) SetHeaders(v map[string]*string) *SubmitConvertImageToPdfJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobResponse) SetStatusCode(v int32) *SubmitConvertImageToPdfJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertImageToPdfJobResponse) SetBody(v *SubmitConvertImageToPdfJobResponseBody) *SubmitConvertImageToPdfJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertImageToWordJobRequest struct {
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string   `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNames         []*string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty" type:"Repeated"`
-	ImageUrls          []*string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty" type:"Repeated"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToWordJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToWordJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToWordJobRequest) SetImageNameExtension(v string) *SubmitConvertImageToWordJobRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobRequest) SetImageNames(v []*string) *SubmitConvertImageToWordJobRequest {
-	s.ImageNames = v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobRequest) SetImageUrls(v []*string) *SubmitConvertImageToWordJobRequest {
-	s.ImageUrls = v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobRequest) SetOssBucket(v string) *SubmitConvertImageToWordJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobRequest) SetOssEndpoint(v string) *SubmitConvertImageToWordJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToWordJobShrinkRequest struct {
-	// example:
-	//
-	// jpg
-	ImageNameExtension *string `json:"ImageNameExtension,omitempty" xml:"ImageNameExtension,omitempty"`
-	ImageNamesShrink   *string `json:"ImageNames,omitempty" xml:"ImageNames,omitempty"`
-	ImageUrlsShrink    *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertImageToWordJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToWordJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageNameExtension(v string) *SubmitConvertImageToWordJobShrinkRequest {
-	s.ImageNameExtension = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageNamesShrink(v string) *SubmitConvertImageToWordJobShrinkRequest {
-	s.ImageNamesShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobShrinkRequest) SetImageUrlsShrink(v string) *SubmitConvertImageToWordJobShrinkRequest {
-	s.ImageUrlsShrink = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobShrinkRequest) SetOssBucket(v string) *SubmitConvertImageToWordJobShrinkRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobShrinkRequest) SetOssEndpoint(v string) *SubmitConvertImageToWordJobShrinkRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertImageToWordJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertImageToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertImageToWordJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToWordJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToWordJobResponseBody) SetCode(v string) *SubmitConvertImageToWordJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobResponseBody) SetData(v *SubmitConvertImageToWordJobResponseBodyData) *SubmitConvertImageToWordJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobResponseBody) SetMessage(v string) *SubmitConvertImageToWordJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobResponseBody) SetRequestId(v string) *SubmitConvertImageToWordJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertImageToWordJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220810-7c5f9dd4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertImageToWordJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToWordJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToWordJobResponseBodyData) SetId(v string) *SubmitConvertImageToWordJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertImageToWordJobResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertImageToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertImageToWordJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertImageToWordJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertImageToWordJobResponse) SetHeaders(v map[string]*string) *SubmitConvertImageToWordJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobResponse) SetStatusCode(v int32) *SubmitConvertImageToWordJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertImageToWordJobResponse) SetBody(v *SubmitConvertImageToWordJobResponseBody) *SubmitConvertImageToWordJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertPdfToExcelJobRequest struct {
-	// example:
-	//
-	// convertPdfToExcel.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
-	ForceMergeExcel       *bool   `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
-	OssBucket             *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint           *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToExcelJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToExcelJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetFileName(v string) *SubmitConvertPdfToExcelJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetFileUrl(v string) *SubmitConvertPdfToExcelJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToExcelJobRequest {
-	s.ForceExportInnerImage = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobRequest {
-	s.ForceMergeExcel = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetOssBucket(v string) *SubmitConvertPdfToExcelJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToExcelJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToExcelJobAdvanceRequest struct {
-	// example:
-	//
-	// convertPdfToExcel.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
-	ForceMergeExcel       *bool     `json:"ForceMergeExcel,omitempty" xml:"ForceMergeExcel,omitempty"`
-	OssBucket             *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint           *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToExcelJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToExcelJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.ForceExportInnerImage = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetForceMergeExcel(v bool) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.ForceMergeExcel = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToExcelJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToExcelJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertPdfToExcelJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertPdfToExcelJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToExcelJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToExcelJobResponseBody) SetCode(v string) *SubmitConvertPdfToExcelJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobResponseBody) SetData(v *SubmitConvertPdfToExcelJobResponseBodyData) *SubmitConvertPdfToExcelJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobResponseBody) SetMessage(v string) *SubmitConvertPdfToExcelJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobResponseBody) SetRequestId(v string) *SubmitConvertPdfToExcelJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertPdfToExcelJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertPdfToExcelJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToExcelJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToExcelJobResponseBodyData) SetId(v string) *SubmitConvertPdfToExcelJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertPdfToExcelJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertPdfToExcelJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertPdfToExcelJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToExcelJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToExcelJobResponse) SetHeaders(v map[string]*string) *SubmitConvertPdfToExcelJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobResponse) SetStatusCode(v int32) *SubmitConvertPdfToExcelJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToExcelJobResponse) SetBody(v *SubmitConvertPdfToExcelJobResponseBody) *SubmitConvertPdfToExcelJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertPdfToImageJobRequest struct {
-	// example:
-	//
-	// convertPdfToImage.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToImageJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToImageJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToImageJobRequest) SetFileName(v string) *SubmitConvertPdfToImageJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobRequest) SetFileUrl(v string) *SubmitConvertPdfToImageJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobRequest) SetOssBucket(v string) *SubmitConvertPdfToImageJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToImageJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToImageJobAdvanceRequest struct {
-	// example:
-	//
-	// convertPdfToImage.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToImageJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToImageJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToImageJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToImageJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToImageJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToImageJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToImageJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertPdfToImageJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertPdfToImageJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToImageJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToImageJobResponseBody) SetCode(v string) *SubmitConvertPdfToImageJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobResponseBody) SetData(v *SubmitConvertPdfToImageJobResponseBodyData) *SubmitConvertPdfToImageJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobResponseBody) SetMessage(v string) *SubmitConvertPdfToImageJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobResponseBody) SetRequestId(v string) *SubmitConvertPdfToImageJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertPdfToImageJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220810-7c5f9dd4
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertPdfToImageJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToImageJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToImageJobResponseBodyData) SetId(v string) *SubmitConvertPdfToImageJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertPdfToImageJobResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertPdfToImageJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertPdfToImageJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToImageJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToImageJobResponse) SetHeaders(v map[string]*string) *SubmitConvertPdfToImageJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobResponse) SetStatusCode(v int32) *SubmitConvertPdfToImageJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToImageJobResponse) SetBody(v *SubmitConvertPdfToImageJobResponseBody) *SubmitConvertPdfToImageJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertPdfToMarkdownJobRequest struct {
-	// example:
-	//
-	// convertPdfToExcel.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToMarkdownJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToMarkdownJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToMarkdownJobRequest) SetFileName(v string) *SubmitConvertPdfToMarkdownJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobRequest) SetFileUrl(v string) *SubmitConvertPdfToMarkdownJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobRequest) SetOssBucket(v string) *SubmitConvertPdfToMarkdownJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToMarkdownJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToMarkdownJobAdvanceRequest struct {
-	// example:
-	//
-	// convertPdfToExcel.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToMarkdownJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToMarkdownJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToMarkdownJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToMarkdownJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertPdfToMarkdownJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetCode(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetData(v *SubmitConvertPdfToMarkdownJobResponseBodyData) *SubmitConvertPdfToMarkdownJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetMessage(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponseBody) SetRequestId(v string) *SubmitConvertPdfToMarkdownJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertPdfToMarkdownJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponseBodyData) SetId(v string) *SubmitConvertPdfToMarkdownJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertPdfToMarkdownJobResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertPdfToMarkdownJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToMarkdownJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponse) SetHeaders(v map[string]*string) *SubmitConvertPdfToMarkdownJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponse) SetStatusCode(v int32) *SubmitConvertPdfToMarkdownJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToMarkdownJobResponse) SetBody(v *SubmitConvertPdfToMarkdownJobResponseBody) *SubmitConvertPdfToMarkdownJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitConvertPdfToWordJobRequest struct {
-	// example:
-	//
-	// covertPdfToWord.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl               *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceExportInnerImage *bool   `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
-	FormulaEnhancement    *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	Option                *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	OssBucket             *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint           *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToWordJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToWordJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetFileName(v string) *SubmitConvertPdfToWordJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetFileUrl(v string) *SubmitConvertPdfToWordJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobRequest {
-	s.ForceExportInnerImage = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetFormulaEnhancement(v bool) *SubmitConvertPdfToWordJobRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetOption(v string) *SubmitConvertPdfToWordJobRequest {
-	s.Option = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetOssBucket(v string) *SubmitConvertPdfToWordJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobRequest) SetOssEndpoint(v string) *SubmitConvertPdfToWordJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToWordJobAdvanceRequest struct {
-	// example:
-	//
-	// covertPdfToWord.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject         io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ForceExportInnerImage *bool     `json:"ForceExportInnerImage,omitempty" xml:"ForceExportInnerImage,omitempty"`
-	FormulaEnhancement    *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	Option                *string   `json:"Option,omitempty" xml:"Option,omitempty"`
-	OssBucket             *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint           *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitConvertPdfToWordJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToWordJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileName(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetForceExportInnerImage(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.ForceExportInnerImage = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOption(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.Option = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOssBucket(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobAdvanceRequest) SetOssEndpoint(v string) *SubmitConvertPdfToWordJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitConvertPdfToWordJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitConvertPdfToWordJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitConvertPdfToWordJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToWordJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToWordJobResponseBody) SetCode(v string) *SubmitConvertPdfToWordJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobResponseBody) SetData(v *SubmitConvertPdfToWordJobResponseBodyData) *SubmitConvertPdfToWordJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobResponseBody) SetMessage(v string) *SubmitConvertPdfToWordJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobResponseBody) SetRequestId(v string) *SubmitConvertPdfToWordJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitConvertPdfToWordJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitConvertPdfToWordJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToWordJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToWordJobResponseBodyData) SetId(v string) *SubmitConvertPdfToWordJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitConvertPdfToWordJobResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitConvertPdfToWordJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitConvertPdfToWordJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitConvertPdfToWordJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitConvertPdfToWordJobResponse) SetHeaders(v map[string]*string) *SubmitConvertPdfToWordJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobResponse) SetStatusCode(v int32) *SubmitConvertPdfToWordJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitConvertPdfToWordJobResponse) SetBody(v *SubmitConvertPdfToWordJobResponseBody) *SubmitConvertPdfToWordJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDigitalDocStructureJobRequest struct {
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy      *string `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	RevealMarkdown     *bool   `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
-	UseUrlResponseBody *bool   `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
-}
-
-func (s SubmitDigitalDocStructureJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDigitalDocStructureJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetFileName(v string) *SubmitDigitalDocStructureJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetFileNameExtension(v string) *SubmitDigitalDocStructureJobRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetFileUrl(v string) *SubmitDigitalDocStructureJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetImageStrategy(v string) *SubmitDigitalDocStructureJobRequest {
-	s.ImageStrategy = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetOssBucket(v string) *SubmitDigitalDocStructureJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetOssEndpoint(v string) *SubmitDigitalDocStructureJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobRequest {
-	s.RevealMarkdown = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobRequest) SetUseUrlResponseBody(v bool) *SubmitDigitalDocStructureJobRequest {
-	s.UseUrlResponseBody = &v
-	return s
-}
-
-type SubmitDigitalDocStructureJobAdvanceRequest struct {
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	ImageStrategy      *string   `json:"ImageStrategy,omitempty" xml:"ImageStrategy,omitempty"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	RevealMarkdown     *bool     `json:"RevealMarkdown,omitempty" xml:"RevealMarkdown,omitempty"`
-	UseUrlResponseBody *bool     `json:"UseUrlResponseBody,omitempty" xml:"UseUrlResponseBody,omitempty"`
-}
-
-func (s SubmitDigitalDocStructureJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDigitalDocStructureJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileName(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetImageStrategy(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.ImageStrategy = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetOssBucket(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetRevealMarkdown(v bool) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.RevealMarkdown = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobAdvanceRequest) SetUseUrlResponseBody(v bool) *SubmitDigitalDocStructureJobAdvanceRequest {
-	s.UseUrlResponseBody = &v
-	return s
-}
-
-type SubmitDigitalDocStructureJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Id   *string     `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s SubmitDigitalDocStructureJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDigitalDocStructureJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetCode(v string) *SubmitDigitalDocStructureJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetData(v interface{}) *SubmitDigitalDocStructureJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetId(v string) *SubmitDigitalDocStructureJobResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetMessage(v string) *SubmitDigitalDocStructureJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetRequestId(v string) *SubmitDigitalDocStructureJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponseBody) SetStatus(v string) *SubmitDigitalDocStructureJobResponseBody {
-	s.Status = &v
-	return s
-}
-
-type SubmitDigitalDocStructureJobResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitDigitalDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitDigitalDocStructureJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDigitalDocStructureJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDigitalDocStructureJobResponse) SetHeaders(v map[string]*string) *SubmitDigitalDocStructureJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponse) SetStatusCode(v int32) *SubmitDigitalDocStructureJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitDigitalDocStructureJobResponse) SetBody(v *SubmitDigitalDocStructureJobResponseBody) *SubmitDigitalDocStructureJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDocParserJobRequest struct {
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	LlmEnhancement     *bool   `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitDocParserJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocParserJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocParserJobRequest) SetFileName(v string) *SubmitDocParserJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetFileNameExtension(v string) *SubmitDocParserJobRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetFileUrl(v string) *SubmitDocParserJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetLlmEnhancement(v bool) *SubmitDocParserJobRequest {
-	s.LlmEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetOssBucket(v string) *SubmitDocParserJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocParserJobRequest) SetOssEndpoint(v string) *SubmitDocParserJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitDocParserJobAdvanceRequest struct {
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	LlmEnhancement     *bool     `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitDocParserJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocParserJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetFileName(v string) *SubmitDocParserJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDocParserJobAdvanceRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocParserJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobAdvanceRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetLlmEnhancement(v bool) *SubmitDocParserJobAdvanceRequest {
-	s.LlmEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetOssBucket(v string) *SubmitDocParserJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocParserJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocParserJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitDocParserJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitDocParserJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitDocParserJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocParserJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocParserJobResponseBody) SetCode(v string) *SubmitDocParserJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitDocParserJobResponseBody) SetData(v *SubmitDocParserJobResponseBodyData) *SubmitDocParserJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitDocParserJobResponseBody) SetMessage(v string) *SubmitDocParserJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitDocParserJobResponseBody) SetRequestId(v string) *SubmitDocParserJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitDocParserJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitDocParserJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocParserJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocParserJobResponseBodyData) SetId(v string) *SubmitDocParserJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitDocParserJobResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitDocParserJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitDocParserJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocParserJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocParserJobResponse) SetHeaders(v map[string]*string) *SubmitDocParserJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDocParserJobResponse) SetStatusCode(v int32) *SubmitDocParserJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitDocParserJobResponse) SetBody(v *SubmitDocParserJobResponseBody) *SubmitDocParserJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDocStructureJobRequest struct {
-	AllowPptFormat *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	StructureType      *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
-}
-
-func (s SubmitDocStructureJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocStructureJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocStructureJobRequest) SetAllowPptFormat(v bool) *SubmitDocStructureJobRequest {
-	s.AllowPptFormat = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetFileName(v string) *SubmitDocStructureJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetFileNameExtension(v string) *SubmitDocStructureJobRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetFileUrl(v string) *SubmitDocStructureJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetFormulaEnhancement(v bool) *SubmitDocStructureJobRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetOssBucket(v string) *SubmitDocStructureJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetOssEndpoint(v string) *SubmitDocStructureJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobRequest) SetStructureType(v string) *SubmitDocStructureJobRequest {
-	s.StructureType = &v
-	return s
-}
-
-type SubmitDocStructureJobAdvanceRequest struct {
-	AllowPptFormat *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
-	// example:
-	//
-	// docStructure.pdf
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject      io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	StructureType      *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
-}
-
-func (s SubmitDocStructureJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocStructureJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetAllowPptFormat(v bool) *SubmitDocStructureJobAdvanceRequest {
-	s.AllowPptFormat = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetFileName(v string) *SubmitDocStructureJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDocStructureJobAdvanceRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocStructureJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocStructureJobAdvanceRequest {
-	s.FormulaEnhancement = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetOssBucket(v string) *SubmitDocStructureJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocStructureJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobAdvanceRequest) SetStructureType(v string) *SubmitDocStructureJobAdvanceRequest {
-	s.StructureType = &v
-	return s
-}
-
-type SubmitDocStructureJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitDocStructureJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitDocStructureJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocStructureJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocStructureJobResponseBody) SetCode(v string) *SubmitDocStructureJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobResponseBody) SetData(v *SubmitDocStructureJobResponseBodyData) *SubmitDocStructureJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitDocStructureJobResponseBody) SetMessage(v string) *SubmitDocStructureJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobResponseBody) SetRequestId(v string) *SubmitDocStructureJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitDocStructureJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitDocStructureJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocStructureJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocStructureJobResponseBodyData) SetId(v string) *SubmitDocStructureJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitDocStructureJobResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitDocStructureJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitDocStructureJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocStructureJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocStructureJobResponse) SetHeaders(v map[string]*string) *SubmitDocStructureJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDocStructureJobResponse) SetStatusCode(v int32) *SubmitDocStructureJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitDocStructureJobResponse) SetBody(v *SubmitDocStructureJobResponseBody) *SubmitDocStructureJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDocumentExtractJobRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitDocumentExtractJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentExtractJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentExtractJobRequest) SetFileName(v string) *SubmitDocumentExtractJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobRequest) SetFileNameExtension(v string) *SubmitDocumentExtractJobRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobRequest) SetFileUrl(v string) *SubmitDocumentExtractJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobRequest) SetOssBucket(v string) *SubmitDocumentExtractJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobRequest) SetOssEndpoint(v string) *SubmitDocumentExtractJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitDocumentExtractJobAdvanceRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitDocumentExtractJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentExtractJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileName(v string) *SubmitDocumentExtractJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileNameExtension(v string) *SubmitDocumentExtractJobAdvanceRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocumentExtractJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobAdvanceRequest) SetOssBucket(v string) *SubmitDocumentExtractJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocumentExtractJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitDocumentExtractJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitDocumentExtractJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitDocumentExtractJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentExtractJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentExtractJobResponseBody) SetCode(v string) *SubmitDocumentExtractJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobResponseBody) SetData(v *SubmitDocumentExtractJobResponseBodyData) *SubmitDocumentExtractJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobResponseBody) SetMessage(v string) *SubmitDocumentExtractJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobResponseBody) SetRequestId(v string) *SubmitDocumentExtractJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitDocumentExtractJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitDocumentExtractJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentExtractJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentExtractJobResponseBodyData) SetId(v string) *SubmitDocumentExtractJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitDocumentExtractJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitDocumentExtractJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitDocumentExtractJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentExtractJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentExtractJobResponse) SetHeaders(v map[string]*string) *SubmitDocumentExtractJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobResponse) SetStatusCode(v int32) *SubmitDocumentExtractJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitDocumentExtractJobResponse) SetBody(v *SubmitDocumentExtractJobResponseBody) *SubmitDocumentExtractJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitTableUnderstandingJobRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitTableUnderstandingJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTableUnderstandingJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTableUnderstandingJobRequest) SetFileName(v string) *SubmitTableUnderstandingJobRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobRequest) SetFileNameExtension(v string) *SubmitTableUnderstandingJobRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobRequest) SetFileUrl(v string) *SubmitTableUnderstandingJobRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobRequest) SetOssBucket(v string) *SubmitTableUnderstandingJobRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobRequest) SetOssEndpoint(v string) *SubmitTableUnderstandingJobRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitTableUnderstandingJobAdvanceRequest struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// pdf
-	FileNameExtension *string `json:"FileNameExtension,omitempty" xml:"FileNameExtension,omitempty"`
-	// example:
-	//
-	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	OssBucket     *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint   *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-}
-
-func (s SubmitTableUnderstandingJobAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTableUnderstandingJobAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileName(v string) *SubmitTableUnderstandingJobAdvanceRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileNameExtension(v string) *SubmitTableUnderstandingJobAdvanceRequest {
-	s.FileNameExtension = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitTableUnderstandingJobAdvanceRequest {
-	s.FileUrlObject = v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobAdvanceRequest) SetOssBucket(v string) *SubmitTableUnderstandingJobAdvanceRequest {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobAdvanceRequest) SetOssEndpoint(v string) *SubmitTableUnderstandingJobAdvanceRequest {
-	s.OssEndpoint = &v
-	return s
-}
-
-type SubmitTableUnderstandingJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitTableUnderstandingJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitTableUnderstandingJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTableUnderstandingJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTableUnderstandingJobResponseBody) SetCode(v string) *SubmitTableUnderstandingJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobResponseBody) SetData(v *SubmitTableUnderstandingJobResponseBodyData) *SubmitTableUnderstandingJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobResponseBody) SetMessage(v string) *SubmitTableUnderstandingJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobResponseBody) SetRequestId(v string) *SubmitTableUnderstandingJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitTableUnderstandingJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitTableUnderstandingJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTableUnderstandingJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTableUnderstandingJobResponseBodyData) SetId(v string) *SubmitTableUnderstandingJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitTableUnderstandingJobResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitTableUnderstandingJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitTableUnderstandingJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitTableUnderstandingJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitTableUnderstandingJobResponse) SetHeaders(v map[string]*string) *SubmitTableUnderstandingJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobResponse) SetStatusCode(v int32) *SubmitTableUnderstandingJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitTableUnderstandingJobResponse) SetBody(v *SubmitTableUnderstandingJobResponseBody) *SubmitTableUnderstandingJobResponse {
-	s.Body = v
-	return s
-}
 
 type Client struct {
 	openapi.Client
+	DisableSDKError *bool
 }
 
-func NewClient(config *openapi.Config) (*Client, error) {
+func NewClient(config *openapiutil.Config) (*Client, error) {
 	client := new(Client)
 	err := client.Init(config)
 	return client, err
 }
 
-func (client *Client) Init(config *openapi.Config) (_err error) {
+func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	_err = client.Client.Init(config)
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("regional")
+	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":              tea.String("docmind-api.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("docmind-api.aliyuncs.com"),
-		"ap-south-1":                  tea.String("docmind-api.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("docmind-api.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("docmind-api.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("docmind-api.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("docmind-api.aliyuncs.com"),
-		"cn-beijing":                  tea.String("docmind-api.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("docmind-api.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("docmind-api.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("docmind-api.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("docmind-api.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("docmind-api.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("docmind-api.aliyuncs.com"),
-		"cn-fujian":                   tea.String("docmind-api.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("docmind-api.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("docmind-api.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("docmind-api.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("docmind-api.aliyuncs.com"),
-		"cn-huhehaote":                tea.String("docmind-api.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("docmind-api.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("docmind-api.aliyuncs.com"),
-		"cn-qingdao":                  tea.String("docmind-api.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("docmind-api.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("docmind-api.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("docmind-api.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("docmind-api.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("docmind-api.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("docmind-api.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("docmind-api.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("docmind-api.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("docmind-api.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("docmind-api.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("docmind-api.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("docmind-api.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("docmind-api.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("docmind-api.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("docmind-api.aliyuncs.com"),
-		"eu-central-1":                tea.String("docmind-api.aliyuncs.com"),
-		"eu-west-1":                   tea.String("docmind-api.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("docmind-api.aliyuncs.com"),
-		"me-east-1":                   tea.String("docmind-api.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("docmind-api.aliyuncs.com"),
-		"us-east-1":                   tea.String("docmind-api.aliyuncs.com"),
-		"us-west-1":                   tea.String("docmind-api.aliyuncs.com"),
+		"ap-northeast-1":              dara.String("docmind-api.aliyuncs.com"),
+		"ap-northeast-2-pop":          dara.String("docmind-api.aliyuncs.com"),
+		"ap-south-1":                  dara.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-1":              dara.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-3":              dara.String("docmind-api.aliyuncs.com"),
+		"ap-southeast-5":              dara.String("docmind-api.aliyuncs.com"),
+		"cn-beijing":                  dara.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("docmind-api.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("docmind-api.aliyuncs.com"),
+		"cn-chengdu":                  dara.String("docmind-api.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("docmind-api.aliyuncs.com"),
+		"cn-fujian":                   dara.String("docmind-api.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("docmind-api.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("docmind-api.aliyuncs.com"),
+		"cn-hongkong":                 dara.String("docmind-api.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("docmind-api.aliyuncs.com"),
+		"cn-huhehaote":                dara.String("docmind-api.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       dara.String("docmind-api.aliyuncs.com"),
+		"cn-north-2-gov-1":            dara.String("docmind-api.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("docmind-api.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai":                 dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("docmind-api.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen":                 dara.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       dara.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("docmind-api.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("docmind-api.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("docmind-api.aliyuncs.com"),
+		"cn-wulanchabu":               dara.String("docmind-api.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("docmind-api.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("docmind-api.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("docmind-api.aliyuncs.com"),
+		"cn-zhangjiakou":              dara.String("docmind-api.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("docmind-api.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("docmind-api.aliyuncs.com"),
+		"eu-central-1":                dara.String("docmind-api.aliyuncs.com"),
+		"eu-west-1":                   dara.String("docmind-api.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("docmind-api.aliyuncs.com"),
+		"me-east-1":                   dara.String("docmind-api.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("docmind-api.aliyuncs.com"),
+		"us-east-1":                   dara.String("docmind-api.aliyuncs.com"),
+		"us-west-1":                   dara.String("docmind-api.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
 	}
-	client.Endpoint, _err = client.GetEndpoint(tea.String("docmind-api"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
+	client.Endpoint, _err = client.GetEndpoint(dara.String("docmind-api"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
 	if _err != nil {
 		return _err
 	}
@@ -3757,18 +94,44 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
+	request_ := dara.NewRequest()
+	boundary := dara.GetBoundary()
+	request_.Protocol = dara.String("HTTPS")
+	request_.Method = dara.String("POST")
+	request_.Pathname = dara.String("/")
+	request_.Headers = map[string]*string{
+		"host":       dara.String(dara.ToString(form["host"])),
+		"date":       openapiutil.GetDateUTCString(),
+		"user-agent": openapiutil.GetUserAgent(dara.String("")),
+	}
+	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
+	request_.Body = dara.ToFileForm(form, boundary)
+	response_, _err := dara.DoRequest(request_, nil)
+	if _err != nil {
+		return nil, _err
+	}
+
+	_result, _err = _postOSSObject_opResponse(response_)
+	if _err != nil {
+		return nil, _err
+	}
+
+	return _result, nil
+}
+
 func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !tea.BoolValue(util.Empty(endpoint)) {
+	if !dara.IsNil(endpoint) {
 		_result = endpoint
 		return _result, _err
 	}
 
-	if !tea.BoolValue(util.IsUnset(endpointMap)) && !tea.BoolValue(util.Empty(endpointMap[tea.StringValue(regionId)])) {
-		_result = endpointMap[tea.StringValue(regionId)]
+	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
+		_result = endpointMap[dara.StringValue(regionId)]
 		return _result, _err
 	}
 
-	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3785,70 +148,59 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AyncTradeDocumentPackageExtractSmartAppResponse
-func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq *AyncTradeDocumentPackageExtractSmartAppRequest, runtime *util.RuntimeOptions) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq *AyncTradeDocumentPackageExtractSmartAppRequest, runtime *dara.RuntimeOptions) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &AyncTradeDocumentPackageExtractSmartAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CustomExtractionRange)) {
-		request.CustomExtractionRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomExtractionRange, tea.String("CustomExtractionRange"), tea.String("json"))
+	if !dara.IsNil(tmpReq.CustomExtractionRange) {
+		request.CustomExtractionRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomExtractionRange, dara.String("CustomExtractionRange"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CustomExtractionRangeShrink)) {
+	if !dara.IsNil(request.CustomExtractionRangeShrink) {
 		query["CustomExtractionRange"] = request.CustomExtractionRangeShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Option)) {
+	if !dara.IsNil(request.Option) {
 		query["Option"] = request.Option
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+	if !dara.IsNil(request.TemplateName) {
 		query["TemplateName"] = request.TemplateName
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("AyncTradeDocumentPackageExtractSmartApp"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("AyncTradeDocumentPackageExtractSmartApp"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3859,7 +211,7 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq 
 //
 // @return AyncTradeDocumentPackageExtractSmartAppResponse
 func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTradeDocumentPackageExtractSmartAppRequest) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
 	_body, _err := client.AyncTradeDocumentPackageExtractSmartAppWithOptions(request, runtime)
 	if _err != nil {
@@ -3878,56 +230,45 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTrade
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocParserResultResponse
-func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultRequest, runtime *util.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.LayoutNum)) {
+	if !dara.IsNil(request.LayoutNum) {
 		query["LayoutNum"] = request.LayoutNum
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.LayoutStepSize)) {
+	if !dara.IsNil(request.LayoutStepSize) {
 		query["LayoutStepSize"] = request.LayoutStepSize
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDocParserResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocParserResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocParserResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocParserResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocParserResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3938,7 +279,7 @@ func (client *Client) GetDocParserResultWithOptions(request *GetDocParserResultR
 //
 // @return GetDocParserResultResponse
 func (client *Client) GetDocParserResult(request *GetDocParserResultRequest) (_result *GetDocParserResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetDocParserResultResponse{}
 	_body, _err := client.GetDocParserResultWithOptions(request, runtime)
 	if _err != nil {
@@ -3957,60 +298,49 @@ func (client *Client) GetDocParserResult(request *GetDocParserResultRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocStructureResultResponse
-func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureResultRequest, runtime *util.RuntimeOptions) (_result *GetDocStructureResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocStructureResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageStrategy)) {
+	if !dara.IsNil(request.ImageStrategy) {
 		query["ImageStrategy"] = request.ImageStrategy
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
+	if !dara.IsNil(request.RevealMarkdown) {
 		query["RevealMarkdown"] = request.RevealMarkdown
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UseUrlResponseBody)) {
+	if !dara.IsNil(request.UseUrlResponseBody) {
 		query["UseUrlResponseBody"] = request.UseUrlResponseBody
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDocStructureResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocStructureResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocStructureResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocStructureResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocStructureResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4021,7 +351,7 @@ func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureR
 //
 // @return GetDocStructureResultResponse
 func (client *Client) GetDocStructureResult(request *GetDocStructureResultRequest) (_result *GetDocStructureResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetDocStructureResultResponse{}
 	_body, _err := client.GetDocStructureResultWithOptions(request, runtime)
 	if _err != nil {
@@ -4040,48 +370,37 @@ func (client *Client) GetDocStructureResult(request *GetDocStructureResultReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentCompareResultResponse
-func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCompareResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentCompareResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCompareResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentCompareResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDocumentCompareResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocumentCompareResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocumentCompareResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocumentCompareResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocumentCompareResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4092,7 +411,7 @@ func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCo
 //
 // @return GetDocumentCompareResultResponse
 func (client *Client) GetDocumentCompareResult(request *GetDocumentCompareResultRequest) (_result *GetDocumentCompareResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetDocumentCompareResultResponse{}
 	_body, _err := client.GetDocumentCompareResultWithOptions(request, runtime)
 	if _err != nil {
@@ -4111,48 +430,37 @@ func (client *Client) GetDocumentCompareResult(request *GetDocumentCompareResult
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentConvertResultResponse
-func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentConvertResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentConvertResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentConvertResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentConvertResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDocumentConvertResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocumentConvertResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocumentConvertResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocumentConvertResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocumentConvertResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4163,7 +471,7 @@ func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentCo
 //
 // @return GetDocumentConvertResultResponse
 func (client *Client) GetDocumentConvertResult(request *GetDocumentConvertResultRequest) (_result *GetDocumentConvertResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetDocumentConvertResultResponse{}
 	_body, _err := client.GetDocumentConvertResultWithOptions(request, runtime)
 	if _err != nil {
@@ -4182,48 +490,37 @@ func (client *Client) GetDocumentConvertResult(request *GetDocumentConvertResult
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentExtractResultResponse
-func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentExtractResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentExtractResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentExtractResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentExtractResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDocumentExtractResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocumentExtractResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocumentExtractResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocumentExtractResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocumentExtractResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4234,7 +531,7 @@ func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentEx
 //
 // @return GetDocumentExtractResultResponse
 func (client *Client) GetDocumentExtractResult(request *GetDocumentExtractResultRequest) (_result *GetDocumentExtractResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetDocumentExtractResultResponse{}
 	_body, _err := client.GetDocumentExtractResultWithOptions(request, runtime)
 	if _err != nil {
@@ -4253,48 +550,37 @@ func (client *Client) GetDocumentExtractResult(request *GetDocumentExtractResult
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPageNumResponse
-func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime *util.RuntimeOptions) (_result *GetPageNumResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime *dara.RuntimeOptions) (_result *GetPageNumResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPageNum"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPageNum"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPageNumResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPageNumResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPageNumResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4305,7 +591,7 @@ func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime 
 //
 // @return GetPageNumResponse
 func (client *Client) GetPageNum(request *GetPageNumRequest) (_result *GetPageNumResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetPageNumResponse{}
 	_body, _err := client.GetPageNumWithOptions(request, runtime)
 	if _err != nil {
@@ -4324,48 +610,37 @@ func (client *Client) GetPageNum(request *GetPageNumRequest) (_result *GetPageNu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTableUnderstandingResultResponse
-func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUnderstandingResultRequest, runtime *util.RuntimeOptions) (_result *GetTableUnderstandingResultResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUnderstandingResultRequest, runtime *dara.RuntimeOptions) (_result *GetTableUnderstandingResultResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("GetTableUnderstandingResult"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableUnderstandingResult"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTableUnderstandingResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTableUnderstandingResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTableUnderstandingResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4376,7 +651,7 @@ func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUn
 //
 // @return GetTableUnderstandingResultResponse
 func (client *Client) GetTableUnderstandingResult(request *GetTableUnderstandingResultRequest) (_result *GetTableUnderstandingResultResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &GetTableUnderstandingResultResponse{}
 	_body, _err := client.GetTableUnderstandingResultWithOptions(request, runtime)
 	if _err != nil {
@@ -4395,48 +670,37 @@ func (client *Client) GetTableUnderstandingResult(request *GetTableUnderstanding
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDocParserStatusResponse
-func (client *Client) QueryDocParserStatusWithOptions(request *QueryDocParserStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDocParserStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryDocParserStatusWithOptions(request *QueryDocParserStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryDocParserStatusResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Id)) {
+	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryDocParserStatus"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryDocParserStatus"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDocParserStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDocParserStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDocParserStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4447,7 +711,7 @@ func (client *Client) QueryDocParserStatusWithOptions(request *QueryDocParserSta
 //
 // @return QueryDocParserStatusResponse
 func (client *Client) QueryDocParserStatus(request *QueryDocParserStatusRequest) (_result *QueryDocParserStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &QueryDocParserStatusResponse{}
 	_body, _err := client.QueryDocParserStatusWithOptions(request, runtime)
 	if _err != nil {
@@ -4466,78 +730,67 @@ func (client *Client) QueryDocParserStatus(request *QueryDocParserStatusRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertImageToExcelJobResponse
-func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConvertImageToExcelJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConvertImageToExcelJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &SubmitConvertImageToExcelJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageNames)) {
-		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, tea.String("ImageNames"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageNames) {
+		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, dara.String("ImageNames"), dara.String("simple"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageUrls)) {
-		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, tea.String("ImageUrls"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageUrls) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, dara.String("ImageUrls"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ForceMergeExcel)) {
+	if !dara.IsNil(request.ForceMergeExcel) {
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
+	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
+	if !dara.IsNil(request.ImageNamesShrink) {
 		query["ImageNames"] = request.ImageNamesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageUrlsShrink)) {
+	if !dara.IsNil(request.ImageUrlsShrink) {
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertImageToExcelJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertImageToExcelJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertImageToExcelJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertImageToExcelJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertImageToExcelJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4548,7 +801,7 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 //
 // @return SubmitConvertImageToExcelJobResponse
 func (client *Client) SubmitConvertImageToExcelJob(request *SubmitConvertImageToExcelJobRequest) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertImageToExcelJobResponse{}
 	_body, _err := client.SubmitConvertImageToExcelJobWithOptions(request, runtime)
 	if _err != nil {
@@ -4567,74 +820,63 @@ func (client *Client) SubmitConvertImageToExcelJob(request *SubmitConvertImageTo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertImageToMarkdownJobResponse
-func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitConvertImageToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitConvertImageToMarkdownJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &SubmitConvertImageToMarkdownJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageNames)) {
-		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, tea.String("ImageNames"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageNames) {
+		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, dara.String("ImageNames"), dara.String("simple"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageUrls)) {
-		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, tea.String("ImageUrls"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageUrls) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, dara.String("ImageUrls"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
+	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
+	if !dara.IsNil(request.ImageNamesShrink) {
 		query["ImageNames"] = request.ImageNamesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageUrlsShrink)) {
+	if !dara.IsNil(request.ImageUrlsShrink) {
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertImageToMarkdownJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertImageToMarkdownJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertImageToMarkdownJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertImageToMarkdownJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertImageToMarkdownJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4645,7 +887,7 @@ func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitC
 //
 // @return SubmitConvertImageToMarkdownJobResponse
 func (client *Client) SubmitConvertImageToMarkdownJob(request *SubmitConvertImageToMarkdownJobRequest) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertImageToMarkdownJobResponse{}
 	_body, _err := client.SubmitConvertImageToMarkdownJobWithOptions(request, runtime)
 	if _err != nil {
@@ -4664,74 +906,63 @@ func (client *Client) SubmitConvertImageToMarkdownJob(request *SubmitConvertImag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertImageToPdfJobResponse
-func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConvertImageToPdfJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConvertImageToPdfJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &SubmitConvertImageToPdfJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageNames)) {
-		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, tea.String("ImageNames"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageNames) {
+		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, dara.String("ImageNames"), dara.String("simple"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageUrls)) {
-		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, tea.String("ImageUrls"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageUrls) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, dara.String("ImageUrls"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
+	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
+	if !dara.IsNil(request.ImageNamesShrink) {
 		query["ImageNames"] = request.ImageNamesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageUrlsShrink)) {
+	if !dara.IsNil(request.ImageUrlsShrink) {
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertImageToPdfJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertImageToPdfJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertImageToPdfJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertImageToPdfJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertImageToPdfJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4742,7 +973,7 @@ func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConver
 //
 // @return SubmitConvertImageToPdfJobResponse
 func (client *Client) SubmitConvertImageToPdfJob(request *SubmitConvertImageToPdfJobRequest) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertImageToPdfJobResponse{}
 	_body, _err := client.SubmitConvertImageToPdfJobWithOptions(request, runtime)
 	if _err != nil {
@@ -4761,74 +992,63 @@ func (client *Client) SubmitConvertImageToPdfJob(request *SubmitConvertImageToPd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertImageToWordJobResponse
-func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConvertImageToWordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToWordJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConvertImageToWordJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToWordJobResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	request := &SubmitConvertImageToWordJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageNames)) {
-		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, tea.String("ImageNames"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageNames) {
+		request.ImageNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageNames, dara.String("ImageNames"), dara.String("simple"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tmpReq.ImageUrls)) {
-		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, tea.String("ImageUrls"), tea.String("simple"))
+	if !dara.IsNil(tmpReq.ImageUrls) {
+		request.ImageUrlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageUrls, dara.String("ImageUrls"), dara.String("simple"))
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageNameExtension)) {
+	if !dara.IsNil(request.ImageNameExtension) {
 		query["ImageNameExtension"] = request.ImageNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageNamesShrink)) {
+	if !dara.IsNil(request.ImageNamesShrink) {
 		query["ImageNames"] = request.ImageNamesShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageUrlsShrink)) {
+	if !dara.IsNil(request.ImageUrlsShrink) {
 		query["ImageUrls"] = request.ImageUrlsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertImageToWordJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertImageToWordJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertImageToWordJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertImageToWordJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertImageToWordJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4839,7 +1059,7 @@ func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConve
 //
 // @return SubmitConvertImageToWordJobResponse
 func (client *Client) SubmitConvertImageToWordJob(request *SubmitConvertImageToWordJobRequest) (_result *SubmitConvertImageToWordJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertImageToWordJobResponse{}
 	_body, _err := client.SubmitConvertImageToWordJobWithOptions(request, runtime)
 	if _err != nil {
@@ -4858,68 +1078,57 @@ func (client *Client) SubmitConvertImageToWordJob(request *SubmitConvertImageToW
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertPdfToExcelJobResponse
-func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConvertPdfToExcelJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConvertPdfToExcelJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceExportInnerImage)) {
+	if !dara.IsNil(request.ForceExportInnerImage) {
 		query["ForceExportInnerImage"] = request.ForceExportInnerImage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceMergeExcel)) {
+	if !dara.IsNil(request.ForceMergeExcel) {
 		query["ForceMergeExcel"] = request.ForceMergeExcel
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertPdfToExcelJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertPdfToExcelJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertPdfToExcelJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertPdfToExcelJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertPdfToExcelJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4930,7 +1139,7 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 //
 // @return SubmitConvertPdfToExcelJobResponse
 func (client *Client) SubmitConvertPdfToExcelJob(request *SubmitConvertPdfToExcelJobRequest) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertPdfToExcelJobResponse{}
 	_body, _err := client.SubmitConvertPdfToExcelJobWithOptions(request, runtime)
 	if _err != nil {
@@ -4940,106 +1149,102 @@ func (client *Client) SubmitConvertPdfToExcelJob(request *SubmitConvertPdfToExce
 	return _result, _err
 }
 
-func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPdfToExcelJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
+func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPdfToExcelJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitConvertPdfToExcelJobReq := &SubmitConvertPdfToExcelJobRequest{}
 	openapiutil.Convert(request, submitConvertPdfToExcelJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitConvertPdfToExcelJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitConvertPdfToExcelJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitConvertPdfToExcelJobResp, _err := client.SubmitConvertPdfToExcelJobWithOptions(submitConvertPdfToExcelJobReq, runtime)
@@ -5060,60 +1265,49 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertPdfToImageJobResponse
-func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConvertPdfToImageJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConvertPdfToImageJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertPdfToImageJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertPdfToImageJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertPdfToImageJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertPdfToImageJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertPdfToImageJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5124,7 +1318,7 @@ func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConve
 //
 // @return SubmitConvertPdfToImageJobResponse
 func (client *Client) SubmitConvertPdfToImageJob(request *SubmitConvertPdfToImageJobRequest) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertPdfToImageJobResponse{}
 	_body, _err := client.SubmitConvertPdfToImageJobWithOptions(request, runtime)
 	if _err != nil {
@@ -5134,106 +1328,102 @@ func (client *Client) SubmitConvertPdfToImageJob(request *SubmitConvertPdfToImag
 	return _result, _err
 }
 
-func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPdfToImageJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
+func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPdfToImageJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitConvertPdfToImageJobReq := &SubmitConvertPdfToImageJobRequest{}
 	openapiutil.Convert(request, submitConvertPdfToImageJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitConvertPdfToImageJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitConvertPdfToImageJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitConvertPdfToImageJobResp, _err := client.SubmitConvertPdfToImageJobWithOptions(submitConvertPdfToImageJobReq, runtime)
@@ -5254,60 +1444,49 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertPdfToMarkdownJobResponse
-func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitConvertPdfToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitConvertPdfToMarkdownJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertPdfToMarkdownJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertPdfToMarkdownJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertPdfToMarkdownJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertPdfToMarkdownJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertPdfToMarkdownJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5318,7 +1497,7 @@ func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitCo
 //
 // @return SubmitConvertPdfToMarkdownJobResponse
 func (client *Client) SubmitConvertPdfToMarkdownJob(request *SubmitConvertPdfToMarkdownJobRequest) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertPdfToMarkdownJobResponse{}
 	_body, _err := client.SubmitConvertPdfToMarkdownJobWithOptions(request, runtime)
 	if _err != nil {
@@ -5328,106 +1507,102 @@ func (client *Client) SubmitConvertPdfToMarkdownJob(request *SubmitConvertPdfToM
 	return _result, _err
 }
 
-func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConvertPdfToMarkdownJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
+func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConvertPdfToMarkdownJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitConvertPdfToMarkdownJobReq := &SubmitConvertPdfToMarkdownJobRequest{}
 	openapiutil.Convert(request, submitConvertPdfToMarkdownJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitConvertPdfToMarkdownJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitConvertPdfToMarkdownJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitConvertPdfToMarkdownJobResp, _err := client.SubmitConvertPdfToMarkdownJobWithOptions(submitConvertPdfToMarkdownJobReq, runtime)
@@ -5448,72 +1623,61 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitConvertPdfToWordJobResponse
-func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConvertPdfToWordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConvertPdfToWordJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ForceExportInnerImage)) {
+	if !dara.IsNil(request.ForceExportInnerImage) {
 		query["ForceExportInnerImage"] = request.ForceExportInnerImage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+	if !dara.IsNil(request.FormulaEnhancement) {
 		query["FormulaEnhancement"] = request.FormulaEnhancement
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Option)) {
+	if !dara.IsNil(request.Option) {
 		query["Option"] = request.Option
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitConvertPdfToWordJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitConvertPdfToWordJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitConvertPdfToWordJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitConvertPdfToWordJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitConvertPdfToWordJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5524,7 +1688,7 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 //
 // @return SubmitConvertPdfToWordJobResponse
 func (client *Client) SubmitConvertPdfToWordJob(request *SubmitConvertPdfToWordJobRequest) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitConvertPdfToWordJobResponse{}
 	_body, _err := client.SubmitConvertPdfToWordJobWithOptions(request, runtime)
 	if _err != nil {
@@ -5534,106 +1698,102 @@ func (client *Client) SubmitConvertPdfToWordJob(request *SubmitConvertPdfToWordJ
 	return _result, _err
 }
 
-func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdfToWordJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
+func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdfToWordJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitConvertPdfToWordJobReq := &SubmitConvertPdfToWordJobRequest{}
 	openapiutil.Convert(request, submitConvertPdfToWordJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitConvertPdfToWordJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitConvertPdfToWordJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitConvertPdfToWordJobResp, _err := client.SubmitConvertPdfToWordJobWithOptions(submitConvertPdfToWordJobReq, runtime)
@@ -5654,76 +1814,65 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDigitalDocStructureJobResponse
-func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDigitalDocStructureJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDigitalDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+	if !dara.IsNil(request.FileNameExtension) {
 		query["FileNameExtension"] = request.FileNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ImageStrategy)) {
+	if !dara.IsNil(request.ImageStrategy) {
 		query["ImageStrategy"] = request.ImageStrategy
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RevealMarkdown)) {
+	if !dara.IsNil(request.RevealMarkdown) {
 		query["RevealMarkdown"] = request.RevealMarkdown
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UseUrlResponseBody)) {
+	if !dara.IsNil(request.UseUrlResponseBody) {
 		query["UseUrlResponseBody"] = request.UseUrlResponseBody
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitDigitalDocStructureJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDigitalDocStructureJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitDigitalDocStructureJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitDigitalDocStructureJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitDigitalDocStructureJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5734,7 +1883,7 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 //
 // @return SubmitDigitalDocStructureJobResponse
 func (client *Client) SubmitDigitalDocStructureJob(request *SubmitDigitalDocStructureJobRequest) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitDigitalDocStructureJobResponse{}
 	_body, _err := client.SubmitDigitalDocStructureJobWithOptions(request, runtime)
 	if _err != nil {
@@ -5744,106 +1893,102 @@ func (client *Client) SubmitDigitalDocStructureJob(request *SubmitDigitalDocStru
 	return _result, _err
 }
 
-func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigitalDocStructureJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
+func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigitalDocStructureJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitDigitalDocStructureJobReq := &SubmitDigitalDocStructureJobRequest{}
 	openapiutil.Convert(request, submitDigitalDocStructureJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitDigitalDocStructureJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitDigitalDocStructureJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitDigitalDocStructureJobResp, _err := client.SubmitDigitalDocStructureJobWithOptions(submitDigitalDocStructureJobReq, runtime)
@@ -5864,72 +2009,73 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDocParserJobResponse
-func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+	if !dara.IsNil(request.FileNameExtension) {
 		query["FileNameExtension"] = request.FileNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+	if !dara.IsNil(request.FormulaEnhancement) {
 		query["FormulaEnhancement"] = request.FormulaEnhancement
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.LlmEnhancement)) {
+	if !dara.IsNil(request.LlmEnhancement) {
 		query["LlmEnhancement"] = request.LlmEnhancement
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.Option) {
+		query["Option"] = request.Option
+	}
+
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitDocParserJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitDocParserJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitDocParserJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
+	if !dara.IsNil(request.OutputHtmlTable) {
+		query["OutputHtmlTable"] = request.OutputHtmlTable
 	}
 
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDocParserJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitDocParserJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5940,7 +2086,7 @@ func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobR
 //
 // @return SubmitDocParserJobResponse
 func (client *Client) SubmitDocParserJob(request *SubmitDocParserJobRequest) (_result *SubmitDocParserJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitDocParserJobResponse{}
 	_body, _err := client.SubmitDocParserJobWithOptions(request, runtime)
 	if _err != nil {
@@ -5950,106 +2096,102 @@ func (client *Client) SubmitDocParserJob(request *SubmitDocParserJobRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
+func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitDocParserJobReq := &SubmitDocParserJobRequest{}
 	openapiutil.Convert(request, submitDocParserJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitDocParserJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitDocParserJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitDocParserJobResp, _err := client.SubmitDocParserJobWithOptions(submitDocParserJobReq, runtime)
@@ -6070,76 +2212,69 @@ func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDocStructureJobResponse
-func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructureJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AllowPptFormat)) {
+	if !dara.IsNil(request.AllowPptFormat) {
 		query["AllowPptFormat"] = request.AllowPptFormat
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+	if !dara.IsNil(request.FileNameExtension) {
 		query["FileNameExtension"] = request.FileNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FormulaEnhancement)) {
+	if !dara.IsNil(request.FormulaEnhancement) {
 		query["FormulaEnhancement"] = request.FormulaEnhancement
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.StructureType)) {
+	if !dara.IsNil(request.PageIndex) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.StructureType) {
 		query["StructureType"] = request.StructureType
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitDocStructureJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDocStructureJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitDocStructureJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitDocStructureJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitDocStructureJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6150,7 +2285,7 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 //
 // @return SubmitDocStructureJobResponse
 func (client *Client) SubmitDocStructureJob(request *SubmitDocStructureJobRequest) (_result *SubmitDocStructureJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitDocStructureJobResponse{}
 	_body, _err := client.SubmitDocStructureJobWithOptions(request, runtime)
 	if _err != nil {
@@ -6160,106 +2295,102 @@ func (client *Client) SubmitDocStructureJob(request *SubmitDocStructureJobReques
 	return _result, _err
 }
 
-func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
+func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitDocStructureJobReq := &SubmitDocStructureJobRequest{}
 	openapiutil.Convert(request, submitDocStructureJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitDocStructureJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitDocStructureJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitDocStructureJobResp, _err := client.SubmitDocStructureJobWithOptions(submitDocStructureJobReq, runtime)
@@ -6280,64 +2411,53 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDocumentExtractJobResponse
-func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumentExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumentExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+	if !dara.IsNil(request.FileNameExtension) {
 		query["FileNameExtension"] = request.FileNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitDocumentExtractJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDocumentExtractJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitDocumentExtractJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitDocumentExtractJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitDocumentExtractJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6348,7 +2468,7 @@ func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumen
 //
 // @return SubmitDocumentExtractJobResponse
 func (client *Client) SubmitDocumentExtractJob(request *SubmitDocumentExtractJobRequest) (_result *SubmitDocumentExtractJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitDocumentExtractJobResponse{}
 	_body, _err := client.SubmitDocumentExtractJobWithOptions(request, runtime)
 	if _err != nil {
@@ -6358,106 +2478,102 @@ func (client *Client) SubmitDocumentExtractJob(request *SubmitDocumentExtractJob
 	return _result, _err
 }
 
-func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExtractJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
+func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExtractJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitDocumentExtractJobReq := &SubmitDocumentExtractJobRequest{}
 	openapiutil.Convert(request, submitDocumentExtractJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitDocumentExtractJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitDocumentExtractJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitDocumentExtractJobResp, _err := client.SubmitDocumentExtractJobWithOptions(submitDocumentExtractJobReq, runtime)
@@ -6478,64 +2594,53 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitTableUnderstandingJobResponse
-func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTableUnderstandingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTableUnderstandingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
+	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileNameExtension)) {
+	if !dara.IsNil(request.FileNameExtension) {
 		query["FileNameExtension"] = request.FileNameExtension
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+	if !dara.IsNil(request.FileUrl) {
 		query["FileUrl"] = request.FileUrl
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssBucket)) {
+	if !dara.IsNil(request.OssBucket) {
 		query["OssBucket"] = request.OssBucket
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
 	}
 
-	req := &openapi.OpenApiRequest{
+	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitTableUnderstandingJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitTableUnderstandingJob"),
+		Version:     dara.String("2022-07-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitTableUnderstandingJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitTableUnderstandingJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitTableUnderstandingJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6546,7 +2651,7 @@ func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTabl
 //
 // @return SubmitTableUnderstandingJobResponse
 func (client *Client) SubmitTableUnderstandingJob(request *SubmitTableUnderstandingJobRequest) (_result *SubmitTableUnderstandingJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
+	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitTableUnderstandingJobResponse{}
 	_body, _err := client.SubmitTableUnderstandingJobWithOptions(request, runtime)
 	if _err != nil {
@@ -6556,106 +2661,102 @@ func (client *Client) SubmitTableUnderstandingJob(request *SubmitTableUnderstand
 	return _result, _err
 }
 
-func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnderstandingJobAdvanceRequest, runtime *util.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
+func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnderstandingJobAdvanceRequest, runtime *dara.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
 	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
 	if _err != nil {
 		return _result, _err
 	}
 
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
 	}
 
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
 	}
 
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &openapi.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	authClient, _err := openplatform.NewClient(authConfig)
+	authClient, _err := openapi.NewClient(authConfig)
 	if _err != nil {
 		return _result, _err
 	}
 
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("docmind-api"),
-		RegionId: client.RegionId,
+	authRequest := map[string]*string{
+		"Product":  dara.String("docmind-api"),
+		"RegionId": client.RegionId,
 	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
 	}
-	ossClient, _err := oss.NewClient(ossConfig)
-	if _err != nil {
-		return _result, _err
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
 	}
-
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
 	submitTableUnderstandingJobReq := &SubmitTableUnderstandingJobRequest{}
 	openapiutil.Convert(request, submitTableUnderstandingJobReq)
-	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+	if !dara.IsNil(request.FileUrlObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
 		if _err != nil {
 			return _result, _err
 		}
 
-		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.Body.ObjectKey,
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
 			Content:     request.FileUrlObject,
-			ContentType: tea.String(""),
+			ContentType: dara.String(""),
 		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.Body.AccessKeyId,
-			Policy:              authResponse.Body.EncodedPolicy,
-			Signature:           authResponse.Body.Signature,
-			Key:                 authResponse.Body.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
 		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Body.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
 		if _err != nil {
 			return _result, _err
 		}
-		submitTableUnderstandingJobReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+		submitTableUnderstandingJobReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
 	}
 
 	submitTableUnderstandingJobResp, _err := client.SubmitTableUnderstandingJobWithOptions(submitTableUnderstandingJobReq, runtime)
@@ -6664,5 +2765,34 @@ func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnd
 	}
 
 	_result = submitTableUnderstandingJobResp
+	return _result, _err
+}
+
+func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]interface{}, _err error) {
+	var respMap map[string]interface{}
+	bodyStr, _err := dara.ReadAsString(response_.Body)
+	if _err != nil {
+		return _result, _err
+	}
+
+	if (dara.IntValue(response_.StatusCode) >= 400) && (dara.IntValue(response_.StatusCode) < 600) {
+		respMap = dara.ParseXml(bodyStr, nil)
+		err := dara.ToMap(respMap["Error"])
+		_err = &openapi.ClientError{
+			Code:    dara.String(dara.ToString(err["Code"])),
+			Message: dara.String(dara.ToString(err["Message"])),
+			Data: map[string]interface{}{
+				"httpCode":  dara.IntValue(response_.StatusCode),
+				"requestId": dara.ToString(err["RequestId"]),
+				"hostId":    dara.ToString(err["HostId"]),
+			},
+		}
+		return _result, _err
+	}
+
+	respMap = dara.ParseXml(bodyStr, nil)
+	_result = make(map[string]interface{})
+	_err = dara.Convert(dara.ToMap(respMap), &_result)
+
 	return _result, _err
 }
