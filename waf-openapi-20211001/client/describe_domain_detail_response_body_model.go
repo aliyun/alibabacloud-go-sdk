@@ -591,8 +591,9 @@ func (s *DescribeDomainDetailResponseBodyListen) Validate() error {
 }
 
 type DescribeDomainDetailResponseBodyRedirect struct {
-	BackUpBackendList []*string `json:"BackUpBackendList,omitempty" xml:"BackUpBackendList,omitempty" type:"Repeated"`
-	BackendList       []*string `json:"BackendList,omitempty" xml:"BackendList,omitempty" type:"Repeated"`
+	BackUpBackendList []*string                                               `json:"BackUpBackendList,omitempty" xml:"BackUpBackendList,omitempty" type:"Repeated"`
+	BackendList       []*string                                               `json:"BackendList,omitempty" xml:"BackendList,omitempty" type:"Repeated"`
+	BackendPorts      []*DescribeDomainDetailResponseBodyRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// An array of addresses of origin servers.
@@ -723,6 +724,10 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetBackendList() []*string {
 	return s.BackendList
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) GetBackendPorts() []*DescribeDomainDetailResponseBodyRedirectBackendPorts {
+	return s.BackendPorts
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) GetBackends() []*DescribeDomainDetailResponseBodyRedirectBackends {
 	return s.Backends
 }
@@ -790,6 +795,11 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetBackUpBackendList(v []*str
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetBackendList(v []*string) *DescribeDomainDetailResponseBodyRedirect {
 	s.BackendList = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetBackendPorts(v []*DescribeDomainDetailResponseBodyRedirectBackendPorts) *DescribeDomainDetailResponseBodyRedirect {
+	s.BackendPorts = v
 	return s
 }
 
@@ -869,6 +879,51 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetXffProto(v bool) *Describe
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDomainDetailResponseBodyRedirectBackendPorts struct {
+	BackendPort *int32  `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	ListenPort  *int32  `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackendPorts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackendPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) GetBackendPort() *int32 {
+	return s.BackendPort
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) GetListenPort() *int32 {
+	return s.ListenPort
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) SetBackendPort(v int32) *DescribeDomainDetailResponseBodyRedirectBackendPorts {
+	s.BackendPort = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) SetListenPort(v int32) *DescribeDomainDetailResponseBodyRedirectBackendPorts {
+	s.ListenPort = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) SetProtocol(v string) *DescribeDomainDetailResponseBodyRedirectBackendPorts {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) Validate() error {
 	return dara.Validate(s)
 }
 

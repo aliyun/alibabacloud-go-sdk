@@ -486,6 +486,7 @@ func (s *CreateDomainRequestListen) Validate() error {
 }
 
 type CreateDomainRequestRedirect struct {
+	BackendPorts []*CreateDomainRequestRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	// The IP addresses or domain names of the origin server.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// The secondary IP addresses or domain names of the origin server.
@@ -648,6 +649,10 @@ func (s CreateDomainRequestRedirect) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDomainRequestRedirect) GetBackendPorts() []*CreateDomainRequestRedirectBackendPorts {
+	return s.BackendPorts
+}
+
 func (s *CreateDomainRequestRedirect) GetBackends() []*string {
 	return s.Backends
 }
@@ -714,6 +719,11 @@ func (s *CreateDomainRequestRedirect) GetWriteTimeout() *int32 {
 
 func (s *CreateDomainRequestRedirect) GetXffProto() *bool {
 	return s.XffProto
+}
+
+func (s *CreateDomainRequestRedirect) SetBackendPorts(v []*CreateDomainRequestRedirectBackendPorts) *CreateDomainRequestRedirect {
+	s.BackendPorts = v
+	return s
 }
 
 func (s *CreateDomainRequestRedirect) SetBackends(v []*string) *CreateDomainRequestRedirect {
@@ -802,6 +812,51 @@ func (s *CreateDomainRequestRedirect) SetXffProto(v bool) *CreateDomainRequestRe
 }
 
 func (s *CreateDomainRequestRedirect) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDomainRequestRedirectBackendPorts struct {
+	BackendPort *int32  `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	ListenPort  *int32  `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
+	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s CreateDomainRequestRedirectBackendPorts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDomainRequestRedirectBackendPorts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) GetBackendPort() *int32 {
+	return s.BackendPort
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) GetListenPort() *int32 {
+	return s.ListenPort
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) SetBackendPort(v int32) *CreateDomainRequestRedirectBackendPorts {
+	s.BackendPort = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) SetListenPort(v int32) *CreateDomainRequestRedirectBackendPorts {
+	s.ListenPort = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) SetProtocol(v string) *CreateDomainRequestRedirectBackendPorts {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirectBackendPorts) Validate() error {
 	return dara.Validate(s)
 }
 
