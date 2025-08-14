@@ -163,6 +163,7 @@ type DescribeInvoiceForIsvResponseBodyResult struct {
 	//
 	// 102277855749****
 	AliyunPk      *string                                                `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	CheckNotice   *string                                                `json:"CheckNotice,omitempty" xml:"CheckNotice,omitempty"`
 	CreateTimeStr *string                                                `json:"CreateTimeStr,omitempty" xml:"CreateTimeStr,omitempty"`
 	EvaluateList  []*DescribeInvoiceForIsvResponseBodyResultEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Repeated"`
 	// example:
@@ -198,6 +199,7 @@ type DescribeInvoiceForIsvResponseBodyResult struct {
 	// 2
 	Type           *string                                                `json:"Type,omitempty" xml:"Type,omitempty"`
 	UserAddressDto *DescribeInvoiceForIsvResponseBodyResultUserAddressDto `json:"UserAddressDto,omitempty" xml:"UserAddressDto,omitempty" type:"Struct"`
+	UserNotice     *string                                                `json:"UserNotice,omitempty" xml:"UserNotice,omitempty"`
 }
 
 func (s DescribeInvoiceForIsvResponseBodyResult) String() string {
@@ -210,6 +212,10 @@ func (s DescribeInvoiceForIsvResponseBodyResult) GoString() string {
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) GetAliyunPk() *string {
 	return s.AliyunPk
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResult) GetCheckNotice() *string {
+	return s.CheckNotice
 }
 
 func (s *DescribeInvoiceForIsvResponseBodyResult) GetCreateTimeStr() *string {
@@ -268,8 +274,17 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) GetUserAddressDto() *DescribeI
 	return s.UserAddressDto
 }
 
+func (s *DescribeInvoiceForIsvResponseBodyResult) GetUserNotice() *string {
+	return s.UserNotice
+}
+
 func (s *DescribeInvoiceForIsvResponseBodyResult) SetAliyunPk(v string) *DescribeInvoiceForIsvResponseBodyResult {
 	s.AliyunPk = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResult) SetCheckNotice(v string) *DescribeInvoiceForIsvResponseBodyResult {
+	s.CheckNotice = &v
 	return s
 }
 
@@ -343,6 +358,11 @@ func (s *DescribeInvoiceForIsvResponseBodyResult) SetUserAddressDto(v *DescribeI
 	return s
 }
 
+func (s *DescribeInvoiceForIsvResponseBodyResult) SetUserNotice(v string) *DescribeInvoiceForIsvResponseBodyResult {
+	s.UserNotice = &v
+	return s
+}
+
 func (s *DescribeInvoiceForIsvResponseBodyResult) Validate() error {
 	return dara.Validate(s)
 }
@@ -371,7 +391,10 @@ type DescribeInvoiceForIsvResponseBodyResultEvaluateList struct {
 	// example:
 	//
 	// 2024091610072000****
-	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	OutBizId     *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
+	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RealAliyunId *string `json:"RealAliyunId,omitempty" xml:"RealAliyunId,omitempty"`
 	// example:
 	//
 	// 102277855749****
@@ -410,6 +433,18 @@ func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) GetOutBizId() *str
 	return s.OutBizId
 }
 
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) GetProductCode() *string {
+	return s.ProductCode
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) GetProductName() *string {
+	return s.ProductName
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) GetRealAliyunId() *string {
+	return s.RealAliyunId
+}
+
 func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) GetRealAliyunPk() *string {
 	return s.RealAliyunPk
 }
@@ -441,6 +476,21 @@ func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) SetOrderType(v str
 
 func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) SetOutBizId(v string) *DescribeInvoiceForIsvResponseBodyResultEvaluateList {
 	s.OutBizId = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) SetProductCode(v string) *DescribeInvoiceForIsvResponseBodyResultEvaluateList {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) SetProductName(v string) *DescribeInvoiceForIsvResponseBodyResultEvaluateList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeInvoiceForIsvResponseBodyResultEvaluateList) SetRealAliyunId(v string) *DescribeInvoiceForIsvResponseBodyResultEvaluateList {
+	s.RealAliyunId = &v
 	return s
 }
 
