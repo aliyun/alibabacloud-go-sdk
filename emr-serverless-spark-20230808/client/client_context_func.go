@@ -1824,6 +1824,59 @@ func (client *Client) ListSessionClustersWithContext(ctx context.Context, worksp
 
 // Summary:
 //
+// 获取sql statement内容
+//
+// @param request - ListSqlStatementContentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSqlStatementContentsResponse
+func (client *Client) ListSqlStatementContentsWithContext(ctx context.Context, workspaceId *string, request *ListSqlStatementContentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSqlStatementContentsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSqlStatementContents"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/action/listSqlStatementContents"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSqlStatementContentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of queues in a Spark workspace.
 //
 // @param request - ListWorkspaceQueuesRequest
