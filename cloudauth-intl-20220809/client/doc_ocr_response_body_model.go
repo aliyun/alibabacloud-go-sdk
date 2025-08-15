@@ -20,21 +20,26 @@ type iDocOcrResponseBody interface {
 }
 
 type DocOcrResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DocOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *DocOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DocOcrResponseBody) String() string {
@@ -86,15 +91,66 @@ func (s *DocOcrResponseBody) Validate() error {
 }
 
 type DocOcrResponseBodyResult struct {
+	// Card and document recognition result	Only returned when the interface response is successful
+	//
+	// example:
+	//
+	// {
+	//
+	//   "idFaceQualityScore": 98.0
+	//
+	//   "ocrIdInfo": {
+	//
+	//     "expiryDate": "",
+	//
+	//     "originOfIssue": "公安部出入境管理局",
+	//
+	//     "englishName": "LI SI",
+	//
+	//     "sex": "男",
+	//
+	//     "name": "李四",
+	//
+	//     "idNumber": "H11111112",
+	//
+	//     "issueDate": "2013-01-02",
+	//
+	//     "birthDate": "1990-02-21"
+	//
+	//   },
+	//
+	//   "spoofInfo": {
+	//
+	//     "spoofResult": "Y",
+	//
+	//     "spoofType": [
+	//
+	//       "SCREEN_REMARK"
+	//
+	//     ]
+	//
+	//   }
+	//
+	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Whether the authentication passed.
+	//
+	// - Y: Passed
+	//
+	// - N: Not passed
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Sub-result code
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// Unique identifier of the authentication request
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8

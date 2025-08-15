@@ -34,34 +34,80 @@ type iDocOcrRequest interface {
 }
 
 type DocOcrRequest struct {
+	// CardSide
+	//
+	// example:
+	//
+	// 0
 	CardSide *string `json:"CardSide,omitempty" xml:"CardSide,omitempty"`
+	// Document type
+	//
 	// example:
 	//
 	// 00000006
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Whether to perform ID face quality detection
+	//
+	// - T: Indicates that detection is required
+	//
+	// - F: Indicates that detection is not required (default F)
+	//
 	// example:
 	//
 	// F
-	IdFaceQuality      *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	// Base64 of the front side of the document image
+	//
+	// example:
+	//
+	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// URL of the front side of the document image
+	//
 	// example:
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
-	IdThreshold     *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// IdThreshold
+	//
+	// example:
+	//
+	// 0
+	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
+	//
 	// example:
 	//
 	// dso9322***dsjsd22
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// A custom user ID in the business, please keep it unique.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Whether to perform document OCR
+	//
+	// - T: Indicates that document OCR is required
+	//
+	// - F: Indicates that document OCR is not required
+	//
 	// example:
 	//
 	// T
-	Ocr         *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// Product code
+	//
+	// example:
+	//
+	// 产品方案类型ID_OCR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Whether to enable anti-counterfeiting detection
+	//
+	// - T: Indicates that anti-counterfeiting is enabled
+	//
+	// - F: Indicates that anti-counterfeiting is disabled
+	//
 	// example:
 	//
 	// F

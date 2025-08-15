@@ -30,35 +30,68 @@ type iCardOcrRequest interface {
 }
 
 type CardOcrRequest struct {
+	// Document type.
+	//
 	// example:
 	//
 	// 00000006
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Whether to perform face quality detection on the document
+	//
+	// - T: Indicates that detection is needed
+	//
+	// - F: Indicates that detection is not needed (default F)
+	//
 	// example:
 	//
 	// F
-	IdFaceQuality      *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	// Base64 on the front of the document image
+	//
+	// example:
+	//
+	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// URL of the front side of the document image
+	//
 	// example:
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
+	//
 	// example:
 	//
 	// dso9322***dsjsd22
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// Merchant user ID or other identifiers that can be used to identify specific users, such as phone numbers, email addresses, etc. It is strongly recommended to pre-desensitize the value of the userId field, for example, by hashing the value.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Whether to perform document OCR
+	//
+	// - T: Indicates that document OCR is required (default T)
+	//
+	// - F: Indicates that it is not required
+	//
 	// example:
 	//
 	// T
 	Ocr *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	// Product code
+	//
 	// example:
 	//
 	// ID_OCR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Whether to enable anti-counterfeiting detection
+	//
+	// - T: Indicates to enable anti-counterfeiting
+	//
+	// - F: Indicates to disable (default F)
+	//
 	// example:
 	//
 	// F

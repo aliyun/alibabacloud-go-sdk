@@ -20,21 +20,26 @@ type iCheckResultResponseBody interface {
 }
 
 type CheckResultResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CheckResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *CheckResultResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CheckResultResponseBody) String() string {
@@ -86,31 +91,54 @@ func (s *CheckResultResponseBody) Validate() error {
 }
 
 type CheckResultResponseBodyResult struct {
+	// Authentication result.
+	//
 	// example:
 	//
 	// **
 	EkycResult *string `json:"EkycResult,omitempty" xml:"EkycResult,omitempty"`
+	// Extended basic information.
+	//
 	// example:
 	//
 	// **
 	ExtBasicInfo *string `json:"ExtBasicInfo,omitempty" xml:"ExtBasicInfo,omitempty"`
+	// Face information.
+	//
 	// example:
 	//
 	// **
 	ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
+	// ID information.
+	//
 	// example:
 	//
 	// **
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	ExtInfo   *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// Extended information
+	//
+	// example:
+	//
+	// {}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// Risk information.
+	//
 	// example:
 	//
 	// **
 	ExtRiskInfo *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	// Whether the authentication is passed.
+	//
+	// - Y: Passed
+	//
+	// - N: Not passed
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Sub-result code.
+	//
 	// example:
 	//
 	// ***

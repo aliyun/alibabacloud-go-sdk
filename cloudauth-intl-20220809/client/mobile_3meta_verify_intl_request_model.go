@@ -22,23 +22,52 @@ type iMobile3MetaVerifyIntlRequest interface {
 }
 
 type Mobile3MetaVerifyIntlRequest struct {
+	// ID number
+	//
+	// - When paramType is set to normal, enter the plaintext
+	//
+	// - When paramType is set to md5, enter a 32-character lowercase md5 string
+	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// Mobile phone number.
+	//
+	// - When paramType is set to normal, enter the plaintext
+	//
+	// - When paramType is set to md5, enter a 32-character lowercase md5 string
+	//
 	// example:
 	//
 	// 186****1234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Parameter type:
+	//
+	// - normal: unencrypted
+	//
+	// - md5: md5 encrypted
+	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The product solution to be integrated, with a fixed value: MOBILE_3META
+	//
 	// example:
 	//
 	// MOBILE_3META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Name
+	//
+	// - When paramType is set to normal, enter the plaintext
+	//
+	// - When paramType is set to md5, enter a 32-character lowercase md5 string
+	//
+	// example:
+	//
+	// 张*
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Mobile3MetaVerifyIntlRequest) String() string {

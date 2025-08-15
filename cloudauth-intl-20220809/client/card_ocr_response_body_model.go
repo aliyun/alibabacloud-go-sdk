@@ -20,21 +20,26 @@ type iCardOcrResponseBody interface {
 }
 
 type CardOcrResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CardOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *CardOcrResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CardOcrResponseBody) String() string {
@@ -86,16 +91,74 @@ func (s *CardOcrResponseBody) Validate() error {
 }
 
 type CardOcrResponseBodyResult struct {
+	// Document recognition result
+	//
+	// example:
+	//
+	// {
+	//
+	//   "idFaceQualityScore": 98.90,
+	//
+	//   "ocrIdInfo": {
+	//
+	//     "expiryDate": "2024-04-20",
+	//
+	//     "placeOfIssue": "广东",
+	//
+	//     "englishName": "ZHENGJIAN,YANGBEN",
+	//
+	//     "originOfIssue": "公安部出入境管理局",
+	//
+	//     "sex": "女",
+	//
+	//     "name": "证件样本",
+	//
+	//     "idNumber": "C00000000",
+	//
+	//     "issueDate": "2014-04-21",
+	//
+	//     "birthDate": "1981-08-03"
+	//
+	//   },
+	//
+	//   "spoofInfo": {
+	//
+	//     "spoofResult": "N",
+	//
+	//     "spoofType": [
+	//
+	//       "SCREEN_REMARK"
+	//
+	//     ]
+	//
+	//   }
+	//
+	// }
 	ExtCardInfo *string `json:"ExtCardInfo,omitempty" xml:"ExtCardInfo,omitempty"`
-	ExtIdInfo   *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Additional result information
+	//
+	// example:
+	//
+	// **
+	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Whether the authentication passed.
+	//
+	// - Y: Passed.
+	//
+	// - N: Not passed.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Sub-result code.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// Unique identifier for the authentication request
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8

@@ -22,24 +22,67 @@ type iCredentialVerifyIntlRequest interface {
 }
 
 type CredentialVerifyIntlRequest struct {
+	// Credential name (numeric code):
+	//
+	// - Starting with 03: Enterprise Qualification
+	//
+	//   - 0301: Mainland China Business License
+	//
+	// - Starting with 04, Transaction Voucher
+	//
+	//   - 0401: Bank Statement
+	//
+	//   - 0402: Pay Slip
+	//
+	//   - 0403: Utility Bill
+	//
+	//   - 0405: Credit Card Statement
+	//
+	//   - 0499: Others
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0101
+	// 0301
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// Credential type:
+	//
+	// - 03: Enterprise Qualification
+	//
+	// - 04: Transaction Voucher
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 01
-	CredType  *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// 03
+	CredType *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	// Image input stream.
+	//
+	// > Choose either ImageUrl or ImageFile.
+	//
+	// example:
+	//
+	// 无
 	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	// The URL of the image.
+	//
+	// > Choose either ImageUrl or ImageFile.
+	//
 	// example:
 	//
 	// https://oss-bj01.avic.com/eavic-prod-commodity/pic/commodity/94677ee6-1067-4287-8ff4-6e030ef3a5a8.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// Invocation mode:
+	//
+	// - ANTI_FAKE_CHECK: Image quality and tampering detection.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 取值：ANTI_FAKE_CHECK
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 

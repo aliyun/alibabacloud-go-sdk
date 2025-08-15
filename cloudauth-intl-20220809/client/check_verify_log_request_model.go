@@ -16,10 +16,14 @@ type iCheckVerifyLogRequest interface {
 }
 
 type CheckVerifyLogRequest struct {
+	// A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. Supports a combination of letters and numbers, with a maximum length of 32 characters. Ensure uniqueness.
+	//
 	// example:
 	//
 	// e0c34a***353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The unique identifier for the entire authentication process. This value needs to be obtained by calling Initialize.
+	//
 	// example:
 	//
 	// hksb7ba1b*********015d694361bee4

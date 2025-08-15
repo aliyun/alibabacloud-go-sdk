@@ -34,38 +34,84 @@ type iAddressVerifyIntlRequest interface {
 }
 
 type AddressVerifyIntlRequest struct {
+	// Verification address type:
+	//
+	// - “0”: Text address
+	//
+	// - “1”: Latitude and longitude
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// “0”
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// Default city
+	//
+	// example:
+	//
+	// 杭州市
 	DefaultCity *string `json:"DefaultCity,omitempty" xml:"DefaultCity,omitempty"`
+	// Country name, currently only supports: China
+	//
 	// This parameter is required.
-	DefaultCountry  *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
+	//
+	// example:
+	//
+	// 中国
+	DefaultCountry *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
+	// Default district
+	//
+	// example:
+	//
+	// 余杭区
 	DefaultDistrict *string `json:"DefaultDistrict,omitempty" xml:"DefaultDistrict,omitempty"`
+	// Default province
+	//
+	// example:
+	//
+	// 浙江省
 	DefaultProvince *string `json:"DefaultProvince,omitempty" xml:"DefaultProvince,omitempty"`
+	// Latitude.
+	//
 	// example:
 	//
 	// “31.2304”
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	// Longitude.
+	//
 	// example:
 	//
 	// “121.4737”
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// Supports Chinese mobile phone numbers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1872334****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Fixed value: ADD_VERIFY_PRO
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ADD_VERIFY_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Detailed address text content
+	//
+	// example:
+	//
+	// 阿里巴巴西溪园区
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Address verification method:
+	//
+	// - HOME: Home address verification
+	//
+	// - WORK: Work address verification
+	//
 	// This parameter is required.
 	//
 	// example:

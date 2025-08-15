@@ -20,18 +20,25 @@ type iCredentialVerifyIntlResponseBody interface {
 }
 
 type CredentialVerifyIntlResponseBody struct {
+	// Return code: 200 for success, others for failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result information.
 	ResultObject *CredentialVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,12 +91,50 @@ func (s *CredentialVerifyIntlResponseBody) Validate() error {
 }
 
 type CredentialVerifyIntlResponseBodyResultObject struct {
+	// Other information in JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//  "sameBackgroundDetail": {
+	//
+	//  // 相似背景对于的原始图请求RequestId
+	//
+	//  "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
+	//
+	//  // 相似背景对于的原始图请求商户ID
+	//
+	//  "originalMerchantId": "xxxxxxxx"
+	//
+	//  }
+	//
+	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	// Risk result:
+	//
+	// - **0**: Low risk
+	//
+	// - **1**: High risk
+	//
+	// - **2**: Suspicious
+	//
 	// example:
 	//
 	// 1
-	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Risk score map
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// Risk tags, separated by commas (,). Includes:
+	//
+	// - PS: Image manipulation (Photoshop)
+	//
+	// - SCREEN_PHOTO: Screen recapture
+	//
+	// - SCREENSHOT: Screenshot
+	//
+	// - ORIGINAL_PHOTO: Not original image
+	//
 	// example:
 	//
 	// PS

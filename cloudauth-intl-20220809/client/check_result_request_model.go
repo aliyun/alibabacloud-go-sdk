@@ -22,22 +22,36 @@ type iCheckResultRequest interface {
 }
 
 type CheckResultRequest struct {
+	// Return additional information.
+	//
 	// example:
 	//
 	// ***
 	ExtraImageControlList *string `json:"ExtraImageControlList,omitempty" xml:"ExtraImageControlList,omitempty"`
+	// Whether to return images.
+	//
+	// - Y: Return
+	//
+	// - N: Do not return
+	//
 	// example:
 	//
 	// N
 	IsReturnImage *string `json:"IsReturnImage,omitempty" xml:"IsReturnImage,omitempty"`
+	// A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+	//
 	// example:
 	//
 	// djs20d***9-dsskc
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// Whether to return anti-fraud detection results.
+	//
 	// example:
 	//
 	// Y
 	ReturnFiveCategorySpoofResult *string `json:"ReturnFiveCategorySpoofResult,omitempty" xml:"ReturnFiveCategorySpoofResult,omitempty"`
+	// Authentication ID.
+	//
 	// example:
 	//
 	// 4ab0b***cbde97

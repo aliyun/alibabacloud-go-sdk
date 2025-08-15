@@ -20,18 +20,25 @@ type iAddressVerifyIntlResponseBody interface {
 }
 
 type AddressVerifyIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
-	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result information.
 	ResultObject *AddressVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,22 +91,42 @@ func (s *AddressVerifyIntlResponseBody) Validate() error {
 }
 
 type AddressVerifyIntlResponseBodyResultObject struct {
+	// Address verification details.
+	//
 	// example:
 	//
 	// 0-3000
 	AddressInfo *string `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty"`
+	// Operator name:
+	//
+	// - CMCC: China Mobile
+	//
+	// - CTCC: China Telecom
+	//
+	// - CUCC: China Unicom
+	//
 	// example:
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// Verification result, values:
+	//
+	// - Y: Yes, the verified address distance is less than or equal to 10KM.
+	//
+	// - N: No, the verified address distance is greater than 10KM.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Authentication result description.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// Unique identifier for the authentication request.
+	//
 	// example:
 	//
 	// hksb7ba1b28130d24e015d69********
