@@ -13,8 +13,6 @@ type iDeleteSecurityProxyRequest interface {
 	GetLang() *string
 	SetProxyId(v string) *DeleteSecurityProxyRequest
 	GetProxyId() *string
-	SetTrimSql(v string) *DeleteSecurityProxyRequest
-	GetTrimSql() *string
 }
 
 type DeleteSecurityProxyRequest struct {
@@ -36,7 +34,6 @@ type DeleteSecurityProxyRequest struct {
 	//
 	// proxy-nat00ab412ef93d4275a6b5
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	TrimSql *string `json:"trimSql,omitempty" xml:"trimSql,omitempty"`
 }
 
 func (s DeleteSecurityProxyRequest) String() string {
@@ -55,10 +52,6 @@ func (s *DeleteSecurityProxyRequest) GetProxyId() *string {
 	return s.ProxyId
 }
 
-func (s *DeleteSecurityProxyRequest) GetTrimSql() *string {
-	return s.TrimSql
-}
-
 func (s *DeleteSecurityProxyRequest) SetLang(v string) *DeleteSecurityProxyRequest {
 	s.Lang = &v
 	return s
@@ -66,11 +59,6 @@ func (s *DeleteSecurityProxyRequest) SetLang(v string) *DeleteSecurityProxyReque
 
 func (s *DeleteSecurityProxyRequest) SetProxyId(v string) *DeleteSecurityProxyRequest {
 	s.ProxyId = &v
-	return s
-}
-
-func (s *DeleteSecurityProxyRequest) SetTrimSql(v string) *DeleteSecurityProxyRequest {
-	s.TrimSql = &v
 	return s
 }
 

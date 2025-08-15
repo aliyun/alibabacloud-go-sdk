@@ -213,7 +213,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	// example:
 	//
 	// 100
-	HitTimes *int32 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
+	HitTimes *int64 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
 	// The time when the access control policy was modified.
 	//
 	// example:
@@ -430,7 +430,7 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) GetHitLastTime() *
 	return s.HitLastTime
 }
 
-func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) GetHitTimes() *int32 {
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) GetHitTimes() *int64 {
 	return s.HitTimes
 }
 
@@ -584,7 +584,7 @@ func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitLastTime(v i
 	return s
 }
 
-func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitTimes(v int32) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
+func (s *DescribeNatFirewallControlPolicyResponseBodyPolicys) SetHitTimes(v int64) *DescribeNatFirewallControlPolicyResponseBodyPolicys {
 	s.HitTimes = &v
 	return s
 }
