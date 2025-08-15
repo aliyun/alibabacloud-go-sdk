@@ -536,6 +536,7 @@ type CreateCloudPhoneNodeRequestNetworkInfo struct {
 	IpRatio              *int32  `json:"IpRatio,omitempty" xml:"IpRatio,omitempty"`
 	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 	LimitedBandwidth     *int32  `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
 func (s CreateCloudPhoneNodeRequestNetworkInfo) String() string {
@@ -570,6 +571,10 @@ func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetLimitedBandwidth() *int32 {
 	return s.LimitedBandwidth
 }
 
+func (s *CreateCloudPhoneNodeRequestNetworkInfo) GetPayType() *string {
+	return s.PayType
+}
+
 func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetBandwidthPackageName(v string) *CreateCloudPhoneNodeRequestNetworkInfo {
 	s.BandwidthPackageName = &v
 	return s
@@ -597,6 +602,11 @@ func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetIsp(v string) *CreateCloudPh
 
 func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetLimitedBandwidth(v int32) *CreateCloudPhoneNodeRequestNetworkInfo {
 	s.LimitedBandwidth = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequestNetworkInfo) SetPayType(v string) *CreateCloudPhoneNodeRequestNetworkInfo {
+	s.PayType = &v
 	return s
 }
 
