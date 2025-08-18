@@ -1983,6 +1983,94 @@ func (client *Client) EnableAutoTopicCreation(request *EnableAutoTopicCreationRe
 
 // Summary:
 //
+// 故障演练
+//
+// @param request - FailoverTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FailoverTestResponse
+func (client *Client) FailoverTestWithOptions(request *FailoverTestRequest, runtime *dara.RuntimeOptions) (_result *FailoverTestResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Configs) {
+		query["Configs"] = request.Configs
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.ExecuteTime) {
+		query["ExecuteTime"] = request.ExecuteTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FailoverTest"),
+		Version:     dara.String("2019-09-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FailoverTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 故障演练
+//
+// @param request - FailoverTestRequest
+//
+// @return FailoverTestResponse
+func (client *Client) FailoverTest(request *FailoverTestRequest) (_result *FailoverTestResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FailoverTestResponse{}
+	_body, _err := client.FailoverTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the IDs of all instances in the current account.
 //
 // @param request - GetAllInstanceIdListRequest
