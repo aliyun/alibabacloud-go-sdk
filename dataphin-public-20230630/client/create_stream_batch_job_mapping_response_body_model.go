@@ -117,6 +117,10 @@ type CreateStreamBatchJobMappingResponseBodyData struct {
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	// example:
 	//
+	// 123123
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
 	// /dev/streamJob/7083701105376640?env=DEV&projectId=7081229106458752&tenantId=300001420
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -133,12 +137,21 @@ func (s *CreateStreamBatchJobMappingResponseBodyData) GetFileId() *string {
 	return s.FileId
 }
 
+func (s *CreateStreamBatchJobMappingResponseBodyData) GetJobId() *int64 {
+	return s.JobId
+}
+
 func (s *CreateStreamBatchJobMappingResponseBodyData) GetUrl() *string {
 	return s.Url
 }
 
 func (s *CreateStreamBatchJobMappingResponseBodyData) SetFileId(v string) *CreateStreamBatchJobMappingResponseBodyData {
 	s.FileId = &v
+	return s
+}
+
+func (s *CreateStreamBatchJobMappingResponseBodyData) SetJobId(v int64) *CreateStreamBatchJobMappingResponseBodyData {
+	s.JobId = &v
 	return s
 }
 
