@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.SignatureAlgorithm = dara.String("v2")
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("appstream-center"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApproveOtaTaskResponse
-func (client *Client) ApproveOtaTaskWithOptions(request *ApproveOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ApproveOtaTaskResponse, _err error) {
+func (client *Client) ApproveOtaTaskWithContext(ctx context.Context, request *ApproveOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ApproveOtaTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -106,29 +57,11 @@ func (client *Client) ApproveOtaTaskWithOptions(request *ApproveOtaTaskRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApproveOtaTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the execution time of an over-the-air (OTA) update task.
-//
-// @param request - ApproveOtaTaskRequest
-//
-// @return ApproveOtaTaskResponse
-func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *ApproveOtaTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApproveOtaTaskResponse{}
-	_body, _err := client.ApproveOtaTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -141,7 +74,7 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AuthorizeInstanceGroupResponse
-func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
+func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmpReq *AuthorizeInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -207,29 +140,11 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(tmpReq *AuthorizeInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &AuthorizeInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 授权用户
-//
-// @param request - AuthorizeInstanceGroupRequest
-//
-// @return AuthorizeInstanceGroupResponse
-func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequest) (_result *AuthorizeInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AuthorizeInstanceGroupResponse{}
-	_body, _err := client.AuthorizeInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -242,7 +157,7 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppInstanceGroupResponse
-func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceGroupResponse, _err error) {
+func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmpReq *CreateAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -407,29 +322,11 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建云应用交付组
-//
-// @param request - CreateAppInstanceGroupRequest
-//
-// @return CreateAppInstanceGroupResponse
-func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequest) (_result *CreateAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAppInstanceGroupResponse{}
-	_body, _err := client.CreateAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -442,7 +339,7 @@ func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateImageFromAppInstanceGroupResponse
-func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *CreateImageFromAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
+func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Context, request *CreateImageFromAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -475,29 +372,11 @@ func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *Create
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateImageFromAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a new image by debugging the delivery group.
-//
-// @param request - CreateImageFromAppInstanceGroupRequest
-//
-// @return CreateImageFromAppInstanceGroupResponse
-func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAppInstanceGroupRequest) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateImageFromAppInstanceGroupResponse{}
-	_body, _err := client.CreateImageFromAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -510,7 +389,7 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWuyingServerResponse
-func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *CreateWuyingServerResponse, _err error) {
+func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request *CreateWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *CreateWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -606,29 +485,11 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建一台或多台研发主机
-//
-// @param request - CreateWuyingServerRequest
-//
-// @return CreateWuyingServerResponse
-func (client *Client) CreateWuyingServer(request *CreateWuyingServerRequest) (_result *CreateWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateWuyingServerResponse{}
-	_body, _err := client.CreateWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -645,7 +506,7 @@ func (client *Client) CreateWuyingServer(request *CreateWuyingServerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppInstanceGroupResponse
-func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstanceGroupResponse, _err error) {
+func (client *Client) DeleteAppInstanceGroupWithContext(ctx context.Context, request *DeleteAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -674,33 +535,11 @@ func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a delivery group that uses the By Resource - Pay-as-you-go billing method.
-//
-// Description:
-//
-// >  You cannot call this operation to delete a subscription delivery group.
-//
-// @param request - DeleteAppInstanceGroupRequest
-//
-// @return DeleteAppInstanceGroupResponse
-func (client *Client) DeleteAppInstanceGroup(request *DeleteAppInstanceGroupRequest) (_result *DeleteAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppInstanceGroupResponse{}
-	_body, _err := client.DeleteAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -717,7 +556,7 @@ func (client *Client) DeleteAppInstanceGroup(request *DeleteAppInstanceGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppInstancesResponse
-func (client *Client) DeleteAppInstancesWithOptions(request *DeleteAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstancesResponse, _err error) {
+func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request *DeleteAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -750,33 +589,11 @@ func (client *Client) DeleteAppInstancesWithOptions(request *DeleteAppInstancesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an application instance.
-//
-// Description:
-//
-// Only application instances that are in the Initializing or Idle state can be deleted. The operation can be called only by specific customers.
-//
-// @param request - DeleteAppInstancesRequest
-//
-// @return DeleteAppInstancesResponse
-func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_result *DeleteAppInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppInstancesResponse{}
-	_body, _err := client.DeleteAppInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -789,7 +606,7 @@ func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppInstanceGroupResponse
-func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceGroupResponse, _err error) {
+func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, request *GetAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -818,29 +635,11 @@ func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取交付组详情
-//
-// @param request - GetAppInstanceGroupRequest
-//
-// @return GetAppInstanceGroupResponse
-func (client *Client) GetAppInstanceGroup(request *GetAppInstanceGroupRequest) (_result *GetAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAppInstanceGroupResponse{}
-	_body, _err := client.GetAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -861,7 +660,7 @@ func (client *Client) GetAppInstanceGroup(request *GetAppInstanceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
+func (client *Client) GetConnectionTicketWithContext(ctx context.Context, request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -930,37 +729,11 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the credential that is used to connect to App Streaming.
-//
-// Description:
-//
-// You must call this operation at least twice to obtain a connection credential.
-//
-// The first time you call this operation, the system assigns an application instance to the specified convenience account and then starts the application. In this case, the ID of the started task, which is indicated by `TaskID`, is returned.
-//
-// In subsequent calls, you must configure `TaskID` to query whether the task is completed. If the value of `TaskStatus` in the response is `Finished`, the connection credential, which is indicated by `Ticket`, is returned.
-//
-// @param request - GetConnectionTicketRequest
-//
-// @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.GetConnectionTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -973,7 +746,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDebugAppInstanceResponse
-func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetDebugAppInstanceResponse, _err error) {
+func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, request *GetDebugAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetDebugAppInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1002,29 +775,11 @@ func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDebugAppInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information that is used to debug an application instance.
-//
-// @param request - GetDebugAppInstanceRequest
-//
-// @return GetDebugAppInstanceResponse
-func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (_result *GetDebugAppInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDebugAppInstanceResponse{}
-	_body, _err := client.GetDebugAppInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1037,7 +792,7 @@ func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOtaTaskByTaskIdResponse
-func (client *Client) GetOtaTaskByTaskIdWithOptions(request *GetOtaTaskByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *GetOtaTaskByTaskIdResponse, _err error) {
+func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request *GetOtaTaskByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *GetOtaTaskByTaskIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1062,29 +817,11 @@ func (client *Client) GetOtaTaskByTaskIdWithOptions(request *GetOtaTaskByTaskIdR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOtaTaskByTaskIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an over-the-air (OTA) update task, including the available versions and version description.
-//
-// @param request - GetOtaTaskByTaskIdRequest
-//
-// @return GetOtaTaskByTaskIdResponse
-func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_result *GetOtaTaskByTaskIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOtaTaskByTaskIdResponse{}
-	_body, _err := client.GetOtaTaskByTaskIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1097,7 +834,7 @@ func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourcePriceResponse
-func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePriceResponse, _err error) {
+func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *GetResourcePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1150,29 +887,11 @@ func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourcePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries resource prices.
-//
-// @param request - GetResourcePriceRequest
-//
-// @return GetResourcePriceResponse
-func (client *Client) GetResourcePrice(request *GetResourcePriceRequest) (_result *GetResourcePriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetResourcePriceResponse{}
-	_body, _err := client.GetResourcePriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1185,7 +904,7 @@ func (client *Client) GetResourcePrice(request *GetResourcePriceRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceRenewPriceResponse
-func (client *Client) GetResourceRenewPriceWithOptions(request *GetResourceRenewPriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourceRenewPriceResponse, _err error) {
+func (client *Client) GetResourceRenewPriceWithContext(ctx context.Context, request *GetResourceRenewPriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourceRenewPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1222,29 +941,11 @@ func (client *Client) GetResourceRenewPriceWithOptions(request *GetResourceRenew
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceRenewPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the renewal prices of App Streaming resources.
-//
-// @param request - GetResourceRenewPriceRequest
-//
-// @return GetResourceRenewPriceResponse
-func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceRequest) (_result *GetResourceRenewPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetResourceRenewPriceResponse{}
-	_body, _err := client.GetResourceRenewPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1257,7 +958,7 @@ func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAppInstanceGroupResponse
-func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceGroupResponse, _err error) {
+func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, request *ListAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1328,29 +1029,11 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of multiple delivery groups that meet the query conditions.
-//
-// @param request - ListAppInstanceGroupRequest
-//
-// @return ListAppInstanceGroupResponse
-func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest) (_result *ListAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAppInstanceGroupResponse{}
-	_body, _err := client.ListAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1363,7 +1046,7 @@ func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAppInstancesResponse
-func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstancesResponse, _err error) {
+func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *ListAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1418,29 +1101,11 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of application instances in a delivery group, including the IDs, status, creation time, update time, session status, and public IP addresses associated with the primary NICs of the instances.
-//
-// @param request - ListAppInstancesRequest
-//
-// @return ListAppInstancesResponse
-func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_result *ListAppInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAppInstancesResponse{}
-	_body, _err := client.ListAppInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1453,7 +1118,7 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAuthorizedUserGroupsResponse
-func (client *Client) ListAuthorizedUserGroupsWithOptions(request *ListAuthorizedUserGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUserGroupsResponse, _err error) {
+func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, request *ListAuthorizedUserGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUserGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1498,29 +1163,11 @@ func (client *Client) ListAuthorizedUserGroupsWithOptions(request *ListAuthorize
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuthorizedUserGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 通过交付组查询展示授权的用户组列表
-//
-// @param request - ListAuthorizedUserGroupsRequest
-//
-// @return ListAuthorizedUserGroupsResponse
-func (client *Client) ListAuthorizedUserGroups(request *ListAuthorizedUserGroupsRequest) (_result *ListAuthorizedUserGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAuthorizedUserGroupsResponse{}
-	_body, _err := client.ListAuthorizedUserGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1533,7 +1180,7 @@ func (client *Client) ListAuthorizedUserGroups(request *ListAuthorizedUserGroups
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListBindInfoResponse
-func (client *Client) ListBindInfoWithOptions(request *ListBindInfoRequest, runtime *dara.RuntimeOptions) (_result *ListBindInfoResponse, _err error) {
+func (client *Client) ListBindInfoWithContext(ctx context.Context, request *ListBindInfoRequest, runtime *dara.RuntimeOptions) (_result *ListBindInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1582,29 +1229,11 @@ func (client *Client) ListBindInfoWithOptions(request *ListBindInfoRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBindInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询绑定信息，支持分页
-//
-// @param request - ListBindInfoRequest
-//
-// @return ListBindInfoResponse
-func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListBindInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListBindInfoResponse{}
-	_body, _err := client.ListBindInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1617,7 +1246,7 @@ func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNodeInstanceTypeResponse
-func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *ListNodeInstanceTypeResponse, _err error) {
+func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, request *ListNodeInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *ListNodeInstanceTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1694,29 +1323,11 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNodeInstanceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource types that are available for purchase when you create a delivery group.
-//
-// @param request - ListNodeInstanceTypeRequest
-//
-// @return ListNodeInstanceTypeResponse
-func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest) (_result *ListNodeInstanceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNodeInstanceTypeResponse{}
-	_body, _err := client.ListNodeInstanceTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1729,7 +1340,7 @@ func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNodesResponse
-func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
+func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNodesRequest, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1766,29 +1377,11 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries resource nodes.
-//
-// @param request - ListNodesRequest
-//
-// @return ListNodesResponse
-func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNodesResponse{}
-	_body, _err := client.ListNodesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1801,7 +1394,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOtaTaskResponse
-func (client *Client) ListOtaTaskWithOptions(request *ListOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ListOtaTaskResponse, _err error) {
+func (client *Client) ListOtaTaskWithContext(ctx context.Context, request *ListOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ListOtaTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1838,29 +1431,11 @@ func (client *Client) ListOtaTaskWithOptions(request *ListOtaTaskRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOtaTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about over-the-air (OTA) update tasks.
-//
-// @param request - ListOtaTaskRequest
-//
-// @return ListOtaTaskResponse
-func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOtaTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListOtaTaskResponse{}
-	_body, _err := client.ListOtaTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1873,7 +1448,7 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPersistentAppInstancesResponse
-func (client *Client) ListPersistentAppInstancesWithOptions(request *ListPersistentAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPersistentAppInstancesResponse, _err error) {
+func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context, request *ListPersistentAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPersistentAppInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1914,29 +1489,11 @@ func (client *Client) ListPersistentAppInstancesWithOptions(request *ListPersist
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPersistentAppInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询交付组内持久会话列表
-//
-// @param request - ListPersistentAppInstancesRequest
-//
-// @return ListPersistentAppInstancesResponse
-func (client *Client) ListPersistentAppInstances(request *ListPersistentAppInstancesRequest) (_result *ListPersistentAppInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPersistentAppInstancesResponse{}
-	_body, _err := client.ListPersistentAppInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1953,7 +1510,7 @@ func (client *Client) ListPersistentAppInstances(request *ListPersistentAppInsta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRegionsResponse
-func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1982,33 +1539,11 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the regions that are supported by App Streaming.
-//
-// Description:
-//
-// >  All supported regions instead of available regions are returned by this operation. For more information, see [Supported regions](https://help.aliyun.com/document_detail/426036.html).
-//
-// @param request - ListRegionsRequest
-//
-// @return ListRegionsResponse
-func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.ListRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2021,7 +1556,7 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagCloudResourcesResponse
-func (client *Client) ListTagCloudResourcesWithOptions(request *ListTagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagCloudResourcesResponse, _err error) {
+func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, request *ListTagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagCloudResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2062,76 +1597,11 @@ func (client *Client) ListTagCloudResourcesWithOptions(request *ListTagCloudReso
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagCloudResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags added to one or more cloud resources.
-//
-// @param request - ListTagCloudResourcesRequest
-//
-// @return ListTagCloudResourcesResponse
-func (client *Client) ListTagCloudResources(request *ListTagCloudResourcesRequest) (_result *ListTagCloudResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagCloudResourcesResponse{}
-	_body, _err := client.ListTagCloudResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
-//
-// @param request - ListTenantConfigRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListTenantConfigResponse
-func (client *Client) ListTenantConfigWithOptions(runtime *dara.RuntimeOptions) (_result *ListTenantConfigResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListTenantConfig"),
-		Version:     dara.String("2021-09-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListTenantConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configurations of the administrator account, such as whether the resource expiration reminder feature is enabled.
-//
-// @return ListTenantConfigResponse
-func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTenantConfigResponse{}
-	_body, _err := client.ListTenantConfigWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2144,7 +1614,7 @@ func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListWuyingServerResponse
-func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *ListWuyingServerResponse, _err error) {
+func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *ListWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *ListWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2208,29 +1678,11 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询研发主机列表
-//
-// @param request - ListWuyingServerRequest
-//
-// @return ListWuyingServerResponse
-func (client *Client) ListWuyingServer(request *ListWuyingServerRequest) (_result *ListWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListWuyingServerResponse{}
-	_body, _err := client.ListWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2247,7 +1699,7 @@ func (client *Client) ListWuyingServer(request *ListWuyingServerRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LogOffAllSessionsInAppInstanceGroupResponse
-func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *LogOffAllSessionsInAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
+func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context.Context, request *LogOffAllSessionsInAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2276,33 +1728,11 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *Lo
 		BodyType:    dara.String("json"),
 	}
 	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Closes all sessions in a pay-as-you-go delivery group for which a scheduled scaling policy is used.
-//
-// Description:
-//
-// >  This operation can be called only if you use a pay-as-you-go delivery group for which a scheduled scaling policy is used and if you call the operation at a time other than the scheduled time.
-//
-// @param request - LogOffAllSessionsInAppInstanceGroupRequest
-//
-// @return LogOffAllSessionsInAppInstanceGroupResponse
-func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSessionsInAppInstanceGroupRequest) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
-	_body, _err := client.LogOffAllSessionsInAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2315,7 +1745,7 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSess
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAppInstanceGroupAttributeResponse
-func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyAppInstanceGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
+func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Context, tmpReq *ModifyAppInstanceGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2400,29 +1830,11 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAppInstanceGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the general policies of a delivery group, including the number of concurrent sessions and the retention period of disconnected sessions.
-//
-// @param request - ModifyAppInstanceGroupAttributeRequest
-//
-// @return ModifyAppInstanceGroupAttributeResponse
-func (client *Client) ModifyAppInstanceGroupAttribute(request *ModifyAppInstanceGroupAttributeRequest) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAppInstanceGroupAttributeResponse{}
-	_body, _err := client.ModifyAppInstanceGroupAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2435,7 +1847,7 @@ func (client *Client) ModifyAppInstanceGroupAttribute(request *ModifyAppInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAppPolicyResponse
-func (client *Client) ModifyAppPolicyWithOptions(tmpReq *ModifyAppPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppPolicyResponse, _err error) {
+func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *ModifyAppPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppPolicyResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2474,29 +1886,11 @@ func (client *Client) ModifyAppPolicyWithOptions(tmpReq *ModifyAppPolicyRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAppPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改策略信息
-//
-// @param request - ModifyAppPolicyRequest
-//
-// @return ModifyAppPolicyResponse
-func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result *ModifyAppPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAppPolicyResponse{}
-	_body, _err := client.ModifyAppPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2509,7 +1903,7 @@ func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNodePoolAmountResponse
-func (client *Client) ModifyNodePoolAmountWithOptions(tmpReq *ModifyNodePoolAmountRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAmountResponse, _err error) {
+func (client *Client) ModifyNodePoolAmountWithContext(ctx context.Context, tmpReq *ModifyNodePoolAmountRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAmountResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2548,29 +1942,11 @@ func (client *Client) ModifyNodePoolAmountWithOptions(tmpReq *ModifyNodePoolAmou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNodePoolAmountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the number of nodes in a subscription delivery group.
-//
-// @param request - ModifyNodePoolAmountRequest
-//
-// @return ModifyNodePoolAmountResponse
-func (client *Client) ModifyNodePoolAmount(request *ModifyNodePoolAmountRequest) (_result *ModifyNodePoolAmountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNodePoolAmountResponse{}
-	_body, _err := client.ModifyNodePoolAmountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2579,7 +1955,7 @@ func (client *Client) ModifyNodePoolAmount(request *ModifyNodePoolAmountRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyNodePoolAttributeResponse
-func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAttributeResponse, _err error) {
+func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tmpReq *ModifyNodePoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAttributeResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2626,25 +2002,11 @@ func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolA
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyNodePoolAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyNodePoolAttributeRequest
-//
-// @return ModifyNodePoolAttributeResponse
-func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRequest) (_result *ModifyNodePoolAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyNodePoolAttributeResponse{}
-	_body, _err := client.ModifyNodePoolAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2657,7 +2019,7 @@ func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyTenantConfigResponse
-func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyTenantConfigResponse, _err error) {
+func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request *ModifyTenantConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyTenantConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2682,29 +2044,11 @@ func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyTenantConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of the administrator account, such as whether to enable the resource expiration reminder feature.
-//
-// @param request - ModifyTenantConfigRequest
-//
-// @return ModifyTenantConfigResponse
-func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_result *ModifyTenantConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyTenantConfigResponse{}
-	_body, _err := client.ModifyTenantConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2717,7 +2061,7 @@ func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyWuyingServerAttributeResponse
-func (client *Client) ModifyWuyingServerAttributeWithOptions(request *ModifyWuyingServerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyWuyingServerAttributeResponse, _err error) {
+func (client *Client) ModifyWuyingServerAttributeWithContext(ctx context.Context, request *ModifyWuyingServerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyWuyingServerAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2750,29 +2094,11 @@ func (client *Client) ModifyWuyingServerAttributeWithOptions(request *ModifyWuyi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyWuyingServerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改研发主机属性
-//
-// @param request - ModifyWuyingServerAttributeRequest
-//
-// @return ModifyWuyingServerAttributeResponse
-func (client *Client) ModifyWuyingServerAttribute(request *ModifyWuyingServerAttributeRequest) (_result *ModifyWuyingServerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyWuyingServerAttributeResponse{}
-	_body, _err := client.ModifyWuyingServerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2785,7 +2111,7 @@ func (client *Client) ModifyWuyingServerAttribute(request *ModifyWuyingServerAtt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PageListAppInstanceGroupUserResponse
-func (client *Client) PageListAppInstanceGroupUserWithOptions(request *PageListAppInstanceGroupUserRequest, runtime *dara.RuntimeOptions) (_result *PageListAppInstanceGroupUserResponse, _err error) {
+func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Context, request *PageListAppInstanceGroupUserRequest, runtime *dara.RuntimeOptions) (_result *PageListAppInstanceGroupUserResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2822,29 +2148,11 @@ func (client *Client) PageListAppInstanceGroupUserWithOptions(request *PageListA
 		BodyType:    dara.String("json"),
 	}
 	_result = &PageListAppInstanceGroupUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the assigned users that are added to a delivery group by page.
-//
-// @param request - PageListAppInstanceGroupUserRequest
-//
-// @return PageListAppInstanceGroupUserResponse
-func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceGroupUserRequest) (_result *PageListAppInstanceGroupUserResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PageListAppInstanceGroupUserResponse{}
-	_body, _err := client.PageListAppInstanceGroupUserWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2861,7 +2169,7 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewAppInstanceGroupResponse
-func (client *Client) RenewAppInstanceGroupWithOptions(tmpReq *RenewAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
+func (client *Client) RenewAppInstanceGroupWithContext(ctx context.Context, tmpReq *RenewAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2924,33 +2232,11 @@ func (client *Client) RenewAppInstanceGroupWithOptions(tmpReq *RenewAppInstanceG
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewAppInstanceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a delivery group.
-//
-// Description:
-//
-// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
-//
-// @param request - RenewAppInstanceGroupRequest
-//
-// @return RenewAppInstanceGroupResponse
-func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupRequest) (_result *RenewAppInstanceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewAppInstanceGroupResponse{}
-	_body, _err := client.RenewAppInstanceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2963,7 +2249,7 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewWuyingServerResponse
-func (client *Client) RenewWuyingServerWithOptions(request *RenewWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RenewWuyingServerResponse, _err error) {
+func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request *RenewWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RenewWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3004,29 +2290,11 @@ func (client *Client) RenewWuyingServerWithOptions(request *RenewWuyingServerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 续费研发主机
-//
-// @param request - RenewWuyingServerRequest
-//
-// @return RenewWuyingServerResponse
-func (client *Client) RenewWuyingServer(request *RenewWuyingServerRequest) (_result *RenewWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewWuyingServerResponse{}
-	_body, _err := client.RenewWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3039,7 +2307,7 @@ func (client *Client) RenewWuyingServer(request *RenewWuyingServerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartWuyingServerResponse
-func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RestartWuyingServerResponse, _err error) {
+func (client *Client) RestartWuyingServerWithContext(ctx context.Context, request *RestartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RestartWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3067,29 +2335,11 @@ func (client *Client) RestartWuyingServerWithOptions(request *RestartWuyingServe
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重启研发主机
-//
-// @param request - RestartWuyingServerRequest
-//
-// @return RestartWuyingServerResponse
-func (client *Client) RestartWuyingServer(request *RestartWuyingServerRequest) (_result *RestartWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartWuyingServerResponse{}
-	_body, _err := client.RestartWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3102,7 +2352,7 @@ func (client *Client) RestartWuyingServer(request *RestartWuyingServerRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartWuyingServerResponse
-func (client *Client) StartWuyingServerWithOptions(request *StartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StartWuyingServerResponse, _err error) {
+func (client *Client) StartWuyingServerWithContext(ctx context.Context, request *StartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StartWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3130,29 +2380,11 @@ func (client *Client) StartWuyingServerWithOptions(request *StartWuyingServerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动研发主机
-//
-// @param request - StartWuyingServerRequest
-//
-// @return StartWuyingServerResponse
-func (client *Client) StartWuyingServer(request *StartWuyingServerRequest) (_result *StartWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartWuyingServerResponse{}
-	_body, _err := client.StartWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3165,7 +2397,7 @@ func (client *Client) StartWuyingServer(request *StartWuyingServerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopWuyingServerResponse
-func (client *Client) StopWuyingServerWithOptions(request *StopWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StopWuyingServerResponse, _err error) {
+func (client *Client) StopWuyingServerWithContext(ctx context.Context, request *StopWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StopWuyingServerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3197,29 +2429,11 @@ func (client *Client) StopWuyingServerWithOptions(request *StopWuyingServerReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopWuyingServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止研发主机
-//
-// @param request - StopWuyingServerRequest
-//
-// @return StopWuyingServerResponse
-func (client *Client) StopWuyingServer(request *StopWuyingServerRequest) (_result *StopWuyingServerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopWuyingServerResponse{}
-	_body, _err := client.StopWuyingServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3232,7 +2446,7 @@ func (client *Client) StopWuyingServer(request *StopWuyingServerRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagCloudResourcesResponse
-func (client *Client) TagCloudResourcesWithOptions(request *TagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagCloudResourcesResponse, _err error) {
+func (client *Client) TagCloudResourcesWithContext(ctx context.Context, request *TagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagCloudResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3265,29 +2479,11 @@ func (client *Client) TagCloudResourcesWithOptions(request *TagCloudResourcesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagCloudResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 为云资源创建并绑定标签
-//
-// @param request - TagCloudResourcesRequest
-//
-// @return TagCloudResourcesResponse
-func (client *Client) TagCloudResources(request *TagCloudResourcesRequest) (_result *TagCloudResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagCloudResourcesResponse{}
-	_body, _err := client.TagCloudResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3300,7 +2496,7 @@ func (client *Client) TagCloudResources(request *TagCloudResourcesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindResponse
-func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
+func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3341,29 +2537,11 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds a user and a session.
-//
-// @param request - UnbindRequest
-//
-// @return UnbindResponse
-func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindResponse{}
-	_body, _err := client.UnbindWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3376,7 +2554,7 @@ func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagCloudResourcesResponse
-func (client *Client) UntagCloudResourcesWithOptions(request *UntagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagCloudResourcesResponse, _err error) {
+func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, request *UntagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagCloudResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3409,29 +2587,11 @@ func (client *Client) UntagCloudResourcesWithOptions(request *UntagCloudResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagCloudResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from cloud resources.
-//
-// @param request - UntagCloudResourcesRequest
-//
-// @return UntagCloudResourcesResponse
-func (client *Client) UntagCloudResources(request *UntagCloudResourcesRequest) (_result *UntagCloudResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagCloudResourcesResponse{}
-	_body, _err := client.UntagCloudResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3452,7 +2612,7 @@ func (client *Client) UntagCloudResources(request *UntagCloudResourcesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAppInstanceGroupImageResponse
-func (client *Client) UpdateAppInstanceGroupImageWithOptions(request *UpdateAppInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
+func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context, request *UpdateAppInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3489,36 +2649,10 @@ func (client *Client) UpdateAppInstanceGroupImageWithOptions(request *UpdateAppI
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAppInstanceGroupImageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the image of a delivery group.
-//
-// Description:
-//
-// *
-//
-// **Warning*	- After the image is updated, the end user session accessing the cloud application will be disconnected. Exercise caution to avoid end user data loss.
-//
-// >  After the image of the delivery group is updated, the change takes effect on the terminal in approximately 2 minutes.
-//
-// @param request - UpdateAppInstanceGroupImageRequest
-//
-// @return UpdateAppInstanceGroupImageResponse
-func (client *Client) UpdateAppInstanceGroupImage(request *UpdateAppInstanceGroupImageRequest) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAppInstanceGroupImageResponse{}
-	_body, _err := client.UpdateAppInstanceGroupImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
