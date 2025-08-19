@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("resourcedirectorymaster"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -68,7 +20,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AcceptHandshakeResponse
-func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest, runtime *dara.RuntimeOptions) (_result *AcceptHandshakeResponse, _err error) {
+func (client *Client) AcceptHandshakeWithContext(ctx context.Context, request *AcceptHandshakeRequest, runtime *dara.RuntimeOptions) (_result *AcceptHandshakeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -93,33 +45,11 @@ func (client *Client) AcceptHandshakeWithOptions(request *AcceptHandshakeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AcceptHandshakeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Accepts an invitation.
-//
-// Description:
-//
-// After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
-//
-// @param request - AcceptHandshakeRequest
-//
-// @return AcceptHandshakeResponse
-func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result *AcceptHandshakeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AcceptHandshakeResponse{}
-	_body, _err := client.AcceptHandshakeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -132,7 +62,7 @@ func (client *Client) AcceptHandshake(request *AcceptHandshakeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMessageContactResponse
-func (client *Client) AddMessageContactWithOptions(request *AddMessageContactRequest, runtime *dara.RuntimeOptions) (_result *AddMessageContactResponse, _err error) {
+func (client *Client) AddMessageContactWithContext(ctx context.Context, request *AddMessageContactRequest, runtime *dara.RuntimeOptions) (_result *AddMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -173,29 +103,11 @@ func (client *Client) AddMessageContactWithOptions(request *AddMessageContactReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a contact.
-//
-// @param request - AddMessageContactRequest
-//
-// @return AddMessageContactResponse
-func (client *Client) AddMessageContact(request *AddMessageContactRequest) (_result *AddMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddMessageContactResponse{}
-	_body, _err := client.AddMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -208,7 +120,7 @@ func (client *Client) AddMessageContact(request *AddMessageContactRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateMembersResponse
-func (client *Client) AssociateMembersWithOptions(request *AssociateMembersRequest, runtime *dara.RuntimeOptions) (_result *AssociateMembersResponse, _err error) {
+func (client *Client) AssociateMembersWithContext(ctx context.Context, request *AssociateMembersRequest, runtime *dara.RuntimeOptions) (_result *AssociateMembersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -237,29 +149,11 @@ func (client *Client) AssociateMembersWithOptions(request *AssociateMembersReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateMembersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds a contact to a resource directory, folder, or member.
-//
-// @param request - AssociateMembersRequest
-//
-// @return AssociateMembersResponse
-func (client *Client) AssociateMembers(request *AssociateMembersRequest) (_result *AssociateMembersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AssociateMembersResponse{}
-	_body, _err := client.AssociateMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -282,7 +176,7 @@ func (client *Client) AssociateMembers(request *AssociateMembersRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachControlPolicyResponse
-func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachControlPolicyResponse, _err error) {
+func (client *Client) AttachControlPolicyWithContext(ctx context.Context, request *AttachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -311,39 +205,11 @@ func (client *Client) AttachControlPolicyWithOptions(request *AttachControlPolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Attaches an access control policy.
-//
-// Description:
-//
-// After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
-//
-// By default, the system access control policy FullAliyunAccess is attached to each folder and member.
-//
-// The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
-//
-// A maximum of 10 access control policies can be attached to a folder or member.
-//
-// @param request - AttachControlPolicyRequest
-//
-// @return AttachControlPolicyResponse
-func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (_result *AttachControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachControlPolicyResponse{}
-	_body, _err := client.AttachControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -362,7 +228,7 @@ func (client *Client) AttachControlPolicy(request *AttachControlPolicyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindSecureMobilePhoneResponse
-func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *BindSecureMobilePhoneResponse, _err error) {
+func (client *Client) BindSecureMobilePhoneWithContext(ctx context.Context, request *BindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *BindSecureMobilePhoneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -395,35 +261,11 @@ func (client *Client) BindSecureMobilePhoneWithOptions(request *BindSecureMobile
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindSecureMobilePhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
-//
-// Description:
-//
-// You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
-//
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-//
-// @param request - BindSecureMobilePhoneRequest
-//
-// @return BindSecureMobilePhoneResponse
-func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneRequest) (_result *BindSecureMobilePhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindSecureMobilePhoneResponse{}
-	_body, _err := client.BindSecureMobilePhoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -436,7 +278,7 @@ func (client *Client) BindSecureMobilePhone(request *BindSecureMobilePhoneReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelChangeAccountEmailResponse
-func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *CancelChangeAccountEmailResponse, _err error) {
+func (client *Client) CancelChangeAccountEmailWithContext(ctx context.Context, request *CancelChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *CancelChangeAccountEmailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -461,29 +303,11 @@ func (client *Client) CancelChangeAccountEmailWithOptions(request *CancelChangeA
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelChangeAccountEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels the email address change of a member.
-//
-// @param request - CancelChangeAccountEmailRequest
-//
-// @return CancelChangeAccountEmailResponse
-func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmailRequest) (_result *CancelChangeAccountEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelChangeAccountEmailResponse{}
-	_body, _err := client.CancelChangeAccountEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -496,7 +320,7 @@ func (client *Client) CancelChangeAccountEmail(request *CancelChangeAccountEmail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelHandshakeResponse
-func (client *Client) CancelHandshakeWithOptions(request *CancelHandshakeRequest, runtime *dara.RuntimeOptions) (_result *CancelHandshakeResponse, _err error) {
+func (client *Client) CancelHandshakeWithContext(ctx context.Context, request *CancelHandshakeRequest, runtime *dara.RuntimeOptions) (_result *CancelHandshakeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -521,29 +345,11 @@ func (client *Client) CancelHandshakeWithOptions(request *CancelHandshakeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelHandshakeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an invitation.
-//
-// @param request - CancelHandshakeRequest
-//
-// @return CancelHandshakeResponse
-func (client *Client) CancelHandshake(request *CancelHandshakeRequest) (_result *CancelHandshakeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelHandshakeResponse{}
-	_body, _err := client.CancelHandshakeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -556,7 +362,7 @@ func (client *Client) CancelHandshake(request *CancelHandshakeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelMessageContactUpdateResponse
-func (client *Client) CancelMessageContactUpdateWithOptions(request *CancelMessageContactUpdateRequest, runtime *dara.RuntimeOptions) (_result *CancelMessageContactUpdateResponse, _err error) {
+func (client *Client) CancelMessageContactUpdateWithContext(ctx context.Context, request *CancelMessageContactUpdateRequest, runtime *dara.RuntimeOptions) (_result *CancelMessageContactUpdateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -589,29 +395,11 @@ func (client *Client) CancelMessageContactUpdateWithOptions(request *CancelMessa
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelMessageContactUpdateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels the update of the mobile phone number or email address of a contact.
-//
-// @param request - CancelMessageContactUpdateRequest
-//
-// @return CancelMessageContactUpdateResponse
-func (client *Client) CancelMessageContactUpdate(request *CancelMessageContactUpdateRequest) (_result *CancelMessageContactUpdateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelMessageContactUpdateResponse{}
-	_body, _err := client.CancelMessageContactUpdateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -624,7 +412,7 @@ func (client *Client) CancelMessageContactUpdate(request *CancelMessageContactUp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeAccountEmailResponse
-func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *ChangeAccountEmailResponse, _err error) {
+func (client *Client) ChangeAccountEmailWithContext(ctx context.Context, request *ChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *ChangeAccountEmailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -653,29 +441,11 @@ func (client *Client) ChangeAccountEmailWithOptions(request *ChangeAccountEmailR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeAccountEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the email address that is bound to a member.
-//
-// @param request - ChangeAccountEmailRequest
-//
-// @return ChangeAccountEmailResponse
-func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_result *ChangeAccountEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeAccountEmailResponse{}
-	_body, _err := client.ChangeAccountEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -692,7 +462,7 @@ func (client *Client) ChangeAccountEmail(request *ChangeAccountEmailRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckAccountDeleteResponse
-func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteRequest, runtime *dara.RuntimeOptions) (_result *CheckAccountDeleteResponse, _err error) {
+func (client *Client) CheckAccountDeleteWithContext(ctx context.Context, request *CheckAccountDeleteRequest, runtime *dara.RuntimeOptions) (_result *CheckAccountDeleteResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -717,33 +487,11 @@ func (client *Client) CheckAccountDeleteWithOptions(request *CheckAccountDeleteR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckAccountDeleteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Performs a member deletion check.
-//
-// Description:
-//
-// Before you delete a member, you must call this API operation to check whether the member can be deleted.
-//
-// @param request - CheckAccountDeleteRequest
-//
-// @return CheckAccountDeleteResponse
-func (client *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (_result *CheckAccountDeleteResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckAccountDeleteResponse{}
-	_body, _err := client.CheckAccountDeleteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -756,7 +504,7 @@ func (client *Client) CheckAccountDelete(request *CheckAccountDeleteRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateControlPolicyResponse
-func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateControlPolicyResponse, _err error) {
+func (client *Client) CreateControlPolicyWithContext(ctx context.Context, request *CreateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -797,29 +545,11 @@ func (client *Client) CreateControlPolicyWithOptions(request *CreateControlPolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom access control policy.
-//
-// @param request - CreateControlPolicyRequest
-//
-// @return CreateControlPolicyResponse
-func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (_result *CreateControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateControlPolicyResponse{}
-	_body, _err := client.CreateControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -836,7 +566,7 @@ func (client *Client) CreateControlPolicy(request *CreateControlPolicyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFolderResponse
-func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runtime *dara.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
+func (client *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest, runtime *dara.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -869,33 +599,11 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a folder.
-//
-// Description:
-//
-// A maximum of five levels of folders can be created under the Root folder.
-//
-// @param request - CreateFolderRequest
-//
-// @return CreateFolderResponse
-func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *CreateFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateFolderResponse{}
-	_body, _err := client.CreateFolderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -914,7 +622,7 @@ func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourceAccountResponse
-func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceAccountResponse, _err error) {
+func (client *Client) CreateResourceAccountWithContext(ctx context.Context, request *CreateResourceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateResourceAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -963,35 +671,11 @@ func (client *Client) CreateResourceAccountWithOptions(request *CreateResourceAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResourceAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a member of the resource account type.
-//
-// Description:
-//
-// A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-//
-// This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
-//
-// @param request - CreateResourceAccountRequest
-//
-// @return CreateResourceAccountResponse
-func (client *Client) CreateResourceAccount(request *CreateResourceAccountRequest) (_result *CreateResourceAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateResourceAccountResponse{}
-	_body, _err := client.CreateResourceAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1004,7 +688,7 @@ func (client *Client) CreateResourceAccount(request *CreateResourceAccountReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeclineHandshakeResponse
-func (client *Client) DeclineHandshakeWithOptions(request *DeclineHandshakeRequest, runtime *dara.RuntimeOptions) (_result *DeclineHandshakeResponse, _err error) {
+func (client *Client) DeclineHandshakeWithContext(ctx context.Context, request *DeclineHandshakeRequest, runtime *dara.RuntimeOptions) (_result *DeclineHandshakeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1029,29 +713,11 @@ func (client *Client) DeclineHandshakeWithOptions(request *DeclineHandshakeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeclineHandshakeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Rejects an invitation.
-//
-// @param request - DeclineHandshakeRequest
-//
-// @return DeclineHandshakeResponse
-func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_result *DeclineHandshakeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeclineHandshakeResponse{}
-	_body, _err := client.DeclineHandshakeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1070,7 +736,7 @@ func (client *Client) DeclineHandshake(request *DeclineHandshakeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccountResponse
-func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+func (client *Client) DeleteAccountWithContext(ctx context.Context, tmpReq *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1105,35 +771,11 @@ func (client *Client) DeleteAccountWithOptions(tmpReq *DeleteAccountRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a member of the resource account type.
-//
-// Description:
-//
-// Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
-//
-// After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
-//
-// @param request - DeleteAccountRequest
-//
-// @return DeleteAccountResponse
-func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DeleteAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1150,7 +792,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteControlPolicyResponse
-func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
+func (client *Client) DeleteControlPolicyWithContext(ctx context.Context, request *DeleteControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1175,33 +817,11 @@ func (client *Client) DeleteControlPolicyWithOptions(request *DeleteControlPolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom access control policy.
-//
-// Description:
-//
-// If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
-//
-// @param request - DeleteControlPolicyRequest
-//
-// @return DeleteControlPolicyResponse
-func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (_result *DeleteControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteControlPolicyResponse{}
-	_body, _err := client.DeleteControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1218,7 +838,7 @@ func (client *Client) DeleteControlPolicy(request *DeleteControlPolicyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFolderResponse
-func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runtime *dara.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
+func (client *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFolderRequest, runtime *dara.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1243,33 +863,11 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a folder.
-//
-// Description:
-//
-// Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
-//
-// @param request - DeleteFolderRequest
-//
-// @return DeleteFolderResponse
-func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *DeleteFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteFolderResponse{}
-	_body, _err := client.DeleteFolderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1282,7 +880,7 @@ func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMessageContactResponse
-func (client *Client) DeleteMessageContactWithOptions(request *DeleteMessageContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageContactResponse, _err error) {
+func (client *Client) DeleteMessageContactWithContext(ctx context.Context, request *DeleteMessageContactRequest, runtime *dara.RuntimeOptions) (_result *DeleteMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1311,29 +909,11 @@ func (client *Client) DeleteMessageContactWithOptions(request *DeleteMessageCont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a contact.
-//
-// @param request - DeleteMessageContactRequest
-//
-// @return DeleteMessageContactResponse
-func (client *Client) DeleteMessageContact(request *DeleteMessageContactRequest) (_result *DeleteMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteMessageContactResponse{}
-	_body, _err := client.DeleteMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1350,7 +930,7 @@ func (client *Client) DeleteMessageContact(request *DeleteMessageContactRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeregisterDelegatedAdministratorResponse
-func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *DeregisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
+func (client *Client) DeregisterDelegatedAdministratorWithContext(ctx context.Context, request *DeregisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1379,96 +959,11 @@ func (client *Client) DeregisterDelegatedAdministratorWithOptions(request *Dereg
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeregisterDelegatedAdministratorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a delegated administrator account for a trusted service.
-//
-// Description:
-//
-// If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-//
-// @param request - DeregisterDelegatedAdministratorRequest
-//
-// @return DeregisterDelegatedAdministratorResponse
-func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelegatedAdministratorRequest) (_result *DeregisterDelegatedAdministratorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeregisterDelegatedAdministratorResponse{}
-	_body, _err := client.DeregisterDelegatedAdministratorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
-//
-// Description:
-//
-// Before you disable a resource directory, you must make sure that the following requirements are met:
-//
-//   - All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-//
-//   - All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
-//
-// @param request - DestroyResourceDirectoryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DestroyResourceDirectoryResponse
-func (client *Client) DestroyResourceDirectoryWithOptions(runtime *dara.RuntimeOptions) (_result *DestroyResourceDirectoryResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DestroyResourceDirectory"),
-		Version:     dara.String("2022-04-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DestroyResourceDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
-//
-// Description:
-//
-// Before you disable a resource directory, you must make sure that the following requirements are met:
-//
-//   - All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-//
-//   - All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
-//
-// @return DestroyResourceDirectoryResponse
-func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirectoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DestroyResourceDirectoryResponse{}
-	_body, _err := client.DestroyResourceDirectoryWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1487,7 +982,7 @@ func (client *Client) DestroyResourceDirectory() (_result *DestroyResourceDirect
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachControlPolicyResponse
-func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachControlPolicyResponse, _err error) {
+func (client *Client) DetachControlPolicyWithContext(ctx context.Context, request *DetachControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1516,94 +1011,11 @@ func (client *Client) DetachControlPolicyWithOptions(request *DetachControlPolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Detaches an access control policy.
-//
-// Description:
-//
-// After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
-//
-// Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
-//
-// @param request - DetachControlPolicyRequest
-//
-// @return DetachControlPolicyResponse
-func (client *Client) DetachControlPolicy(request *DetachControlPolicyRequest) (_result *DetachControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachControlPolicyResponse{}
-	_body, _err := client.DetachControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables the Control Policy feature.
-//
-// Description:
-//
-// After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
-//
-// > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
-//
-// @param request - DisableControlPolicyRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DisableControlPolicyResponse
-func (client *Client) DisableControlPolicyWithOptions(runtime *dara.RuntimeOptions) (_result *DisableControlPolicyResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DisableControlPolicy"),
-		Version:     dara.String("2022-04-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DisableControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables the Control Policy feature.
-//
-// Description:
-//
-// After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
-//
-// > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
-//
-// @return DisableControlPolicyResponse
-func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableControlPolicyResponse{}
-	_body, _err := client.DisableControlPolicyWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1616,7 +1028,7 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisassociateMembersResponse
-func (client *Client) DisassociateMembersWithOptions(request *DisassociateMembersRequest, runtime *dara.RuntimeOptions) (_result *DisassociateMembersResponse, _err error) {
+func (client *Client) DisassociateMembersWithContext(ctx context.Context, request *DisassociateMembersRequest, runtime *dara.RuntimeOptions) (_result *DisassociateMembersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1645,84 +1057,11 @@ func (client *Client) DisassociateMembersWithOptions(request *DisassociateMember
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisassociateMembersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unbinds a contact from a resource directory, folder, or member.
-//
-// @param request - DisassociateMembersRequest
-//
-// @return DisassociateMembersResponse
-func (client *Client) DisassociateMembers(request *DisassociateMembersRequest) (_result *DisassociateMembersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisassociateMembersResponse{}
-	_body, _err := client.DisassociateMembersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the Control Policy feature.
-//
-// Description:
-//
-// The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-//
-// @param request - EnableControlPolicyRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return EnableControlPolicyResponse
-func (client *Client) EnableControlPolicyWithOptions(runtime *dara.RuntimeOptions) (_result *EnableControlPolicyResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("EnableControlPolicy"),
-		Version:     dara.String("2022-04-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &EnableControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the Control Policy feature.
-//
-// Description:
-//
-// The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-//
-// @return EnableControlPolicyResponse
-func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableControlPolicyResponse{}
-	_body, _err := client.EnableControlPolicyWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1739,7 +1078,7 @@ func (client *Client) EnableControlPolicy() (_result *EnableControlPolicyRespons
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableResourceDirectoryResponse
-func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *EnableResourceDirectoryResponse, _err error) {
+func (client *Client) EnableResourceDirectoryWithContext(ctx context.Context, request *EnableResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *EnableResourceDirectoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1780,33 +1119,11 @@ func (client *Client) EnableResourceDirectoryWithOptions(request *EnableResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableResourceDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables a resource directory.
-//
-// Description:
-//
-// You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
-//
-// @param request - EnableResourceDirectoryRequest
-//
-// @return EnableResourceDirectoryResponse
-func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRequest) (_result *EnableResourceDirectoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &EnableResourceDirectoryResponse{}
-	_body, _err := client.EnableResourceDirectoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1819,7 +1136,7 @@ func (client *Client) EnableResourceDirectory(request *EnableResourceDirectoryRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountResponse
-func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccountResponse, _err error) {
+func (client *Client) GetAccountWithContext(ctx context.Context, request *GetAccountRequest, runtime *dara.RuntimeOptions) (_result *GetAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1848,29 +1165,11 @@ func (client *Client) GetAccountWithOptions(request *GetAccountRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a member.
-//
-// @param request - GetAccountRequest
-//
-// @return GetAccountResponse
-func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccountResponse{}
-	_body, _err := client.GetAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1887,7 +1186,7 @@ func (client *Client) GetAccount(request *GetAccountRequest) (_result *GetAccoun
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountDeletionCheckResultResponse
-func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccountDeletionCheckResultRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionCheckResultResponse, _err error) {
+func (client *Client) GetAccountDeletionCheckResultWithContext(ctx context.Context, request *GetAccountDeletionCheckResultRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionCheckResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1912,33 +1211,11 @@ func (client *Client) GetAccountDeletionCheckResultWithOptions(request *GetAccou
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountDeletionCheckResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the result of a member deletion check.
-//
-// Description:
-//
-// After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
-//
-// @param request - GetAccountDeletionCheckResultRequest
-//
-// @return GetAccountDeletionCheckResultResponse
-func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionCheckResultRequest) (_result *GetAccountDeletionCheckResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccountDeletionCheckResultResponse{}
-	_body, _err := client.GetAccountDeletionCheckResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1951,7 +1228,7 @@ func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountDeletionStatusResponse
-func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionStatusResponse, _err error) {
+func (client *Client) GetAccountDeletionStatusWithContext(ctx context.Context, request *GetAccountDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetAccountDeletionStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1976,29 +1253,11 @@ func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDel
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountDeletionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the deletion status of a member.
-//
-// @param request - GetAccountDeletionStatusRequest
-//
-// @return GetAccountDeletionStatusResponse
-func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatusRequest) (_result *GetAccountDeletionStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccountDeletionStatusResponse{}
-	_body, _err := client.GetAccountDeletionStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2011,7 +1270,7 @@ func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetControlPolicyResponse
-func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetControlPolicyResponse, _err error) {
+func (client *Client) GetControlPolicyWithContext(ctx context.Context, request *GetControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2040,76 +1299,11 @@ func (client *Client) GetControlPolicyWithOptions(request *GetControlPolicyReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an access control policy.
-//
-// @param request - GetControlPolicyRequest
-//
-// @return GetControlPolicyResponse
-func (client *Client) GetControlPolicy(request *GetControlPolicyRequest) (_result *GetControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetControlPolicyResponse{}
-	_body, _err := client.GetControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the Control Policy feature.
-//
-// @param request - GetControlPolicyEnablementStatusRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetControlPolicyEnablementStatusResponse
-func (client *Client) GetControlPolicyEnablementStatusWithOptions(runtime *dara.RuntimeOptions) (_result *GetControlPolicyEnablementStatusResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetControlPolicyEnablementStatus"),
-		Version:     dara.String("2022-04-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetControlPolicyEnablementStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the Control Policy feature.
-//
-// @return GetControlPolicyEnablementStatusResponse
-func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPolicyEnablementStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetControlPolicyEnablementStatusResponse{}
-	_body, _err := client.GetControlPolicyEnablementStatusWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2122,7 +1316,7 @@ func (client *Client) GetControlPolicyEnablementStatus() (_result *GetControlPol
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFolderResponse
-func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *dara.RuntimeOptions) (_result *GetFolderResponse, _err error) {
+func (client *Client) GetFolderWithContext(ctx context.Context, request *GetFolderRequest, runtime *dara.RuntimeOptions) (_result *GetFolderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2147,29 +1341,11 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a folder.
-//
-// @param request - GetFolderRequest
-//
-// @return GetFolderResponse
-func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFolderResponse{}
-	_body, _err := client.GetFolderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2182,7 +1358,7 @@ func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHandshakeResponse
-func (client *Client) GetHandshakeWithOptions(request *GetHandshakeRequest, runtime *dara.RuntimeOptions) (_result *GetHandshakeResponse, _err error) {
+func (client *Client) GetHandshakeWithContext(ctx context.Context, request *GetHandshakeRequest, runtime *dara.RuntimeOptions) (_result *GetHandshakeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2207,29 +1383,11 @@ func (client *Client) GetHandshakeWithOptions(request *GetHandshakeRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHandshakeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of an invitation.
-//
-// @param request - GetHandshakeRequest
-//
-// @return GetHandshakeResponse
-func (client *Client) GetHandshake(request *GetHandshakeRequest) (_result *GetHandshakeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHandshakeResponse{}
-	_body, _err := client.GetHandshakeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2242,7 +1400,7 @@ func (client *Client) GetHandshake(request *GetHandshakeRequest) (_result *GetHa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageContactResponse
-func (client *Client) GetMessageContactWithOptions(request *GetMessageContactRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactResponse, _err error) {
+func (client *Client) GetMessageContactWithContext(ctx context.Context, request *GetMessageContactRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2267,29 +1425,11 @@ func (client *Client) GetMessageContactWithOptions(request *GetMessageContactReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a contact.
-//
-// @param request - GetMessageContactRequest
-//
-// @return GetMessageContactResponse
-func (client *Client) GetMessageContact(request *GetMessageContactRequest) (_result *GetMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMessageContactResponse{}
-	_body, _err := client.GetMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2302,7 +1442,7 @@ func (client *Client) GetMessageContact(request *GetMessageContactRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMessageContactDeletionStatusResponse
-func (client *Client) GetMessageContactDeletionStatusWithOptions(request *GetMessageContactDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactDeletionStatusResponse, _err error) {
+func (client *Client) GetMessageContactDeletionStatusWithContext(ctx context.Context, request *GetMessageContactDeletionStatusRequest, runtime *dara.RuntimeOptions) (_result *GetMessageContactDeletionStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2327,29 +1467,11 @@ func (client *Client) GetMessageContactDeletionStatusWithOptions(request *GetMes
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMessageContactDeletionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the deletion status of a contact.
-//
-// @param request - GetMessageContactDeletionStatusRequest
-//
-// @return GetMessageContactDeletionStatusResponse
-func (client *Client) GetMessageContactDeletionStatus(request *GetMessageContactDeletionStatusRequest) (_result *GetMessageContactDeletionStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMessageContactDeletionStatusResponse{}
-	_body, _err := client.GetMessageContactDeletionStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2362,7 +1484,7 @@ func (client *Client) GetMessageContactDeletionStatus(request *GetMessageContact
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPayerForAccountResponse
-func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *GetPayerForAccountResponse, _err error) {
+func (client *Client) GetPayerForAccountWithContext(ctx context.Context, request *GetPayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *GetPayerForAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2387,76 +1509,11 @@ func (client *Client) GetPayerForAccountWithOptions(request *GetPayerForAccountR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPayerForAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a billing account.
-//
-// @param request - GetPayerForAccountRequest
-//
-// @return GetPayerForAccountResponse
-func (client *Client) GetPayerForAccount(request *GetPayerForAccountRequest) (_result *GetPayerForAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPayerForAccountResponse{}
-	_body, _err := client.GetPayerForAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-//
-// @param request - GetResourceDirectoryRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetResourceDirectoryResponse
-func (client *Client) GetResourceDirectoryWithOptions(runtime *dara.RuntimeOptions) (_result *GetResourceDirectoryResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetResourceDirectory"),
-		Version:     dara.String("2022-04-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetResourceDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-//
-// @return GetResourceDirectoryResponse
-func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetResourceDirectoryResponse{}
-	_body, _err := client.GetResourceDirectoryWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2469,7 +1526,7 @@ func (client *Client) GetResourceDirectory() (_result *GetResourceDirectoryRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InviteAccountToResourceDirectoryResponse
-func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *InviteAccountToResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *InviteAccountToResourceDirectoryResponse, _err error) {
+func (client *Client) InviteAccountToResourceDirectoryWithContext(ctx context.Context, request *InviteAccountToResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *InviteAccountToResourceDirectoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2510,29 +1567,11 @@ func (client *Client) InviteAccountToResourceDirectoryWithOptions(request *Invit
 		BodyType:    dara.String("json"),
 	}
 	_result = &InviteAccountToResourceDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Invites an account to join a resource directory.
-//
-// @param request - InviteAccountToResourceDirectoryRequest
-//
-// @return InviteAccountToResourceDirectoryResponse
-func (client *Client) InviteAccountToResourceDirectory(request *InviteAccountToResourceDirectoryRequest) (_result *InviteAccountToResourceDirectoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InviteAccountToResourceDirectoryResponse{}
-	_body, _err := client.InviteAccountToResourceDirectoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2549,7 +1588,7 @@ func (client *Client) InviteAccountToResourceDirectory(request *InviteAccountToR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccountsResponse
-func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
+func (client *Client) ListAccountsWithContext(ctx context.Context, request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2598,33 +1637,11 @@ func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of members in a resource directory.
-//
-// Description:
-//
-// You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
-//
-// @param request - ListAccountsRequest
-//
-// @return ListAccountsResponse
-func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAccountsResponse{}
-	_body, _err := client.ListAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2637,7 +1654,7 @@ func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccountsForParentResponse
-func (client *Client) ListAccountsForParentWithOptions(request *ListAccountsForParentRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsForParentResponse, _err error) {
+func (client *Client) ListAccountsForParentWithContext(ctx context.Context, request *ListAccountsForParentRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsForParentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2682,29 +1699,11 @@ func (client *Client) ListAccountsForParentWithOptions(request *ListAccountsForP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAccountsForParentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of members in a folder.
-//
-// @param request - ListAccountsForParentRequest
-//
-// @return ListAccountsForParentResponse
-func (client *Client) ListAccountsForParent(request *ListAccountsForParentRequest) (_result *ListAccountsForParentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAccountsForParentResponse{}
-	_body, _err := client.ListAccountsForParentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2717,7 +1716,7 @@ func (client *Client) ListAccountsForParent(request *ListAccountsForParentReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAncestorsResponse
-func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, runtime *dara.RuntimeOptions) (_result *ListAncestorsResponse, _err error) {
+func (client *Client) ListAncestorsWithContext(ctx context.Context, request *ListAncestorsRequest, runtime *dara.RuntimeOptions) (_result *ListAncestorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2742,29 +1741,11 @@ func (client *Client) ListAncestorsWithOptions(request *ListAncestorsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAncestorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of all the parent folders of a specified folder.
-//
-// @param request - ListAncestorsRequest
-//
-// @return ListAncestorsResponse
-func (client *Client) ListAncestors(request *ListAncestorsRequest) (_result *ListAncestorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAncestorsResponse{}
-	_body, _err := client.ListAncestorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2777,7 +1758,7 @@ func (client *Client) ListAncestors(request *ListAncestorsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListControlPoliciesResponse
-func (client *Client) ListControlPoliciesWithOptions(request *ListControlPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListControlPoliciesResponse, _err error) {
+func (client *Client) ListControlPoliciesWithContext(ctx context.Context, request *ListControlPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListControlPoliciesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2818,29 +1799,11 @@ func (client *Client) ListControlPoliciesWithOptions(request *ListControlPolicie
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListControlPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries access control policies.
-//
-// @param request - ListControlPoliciesRequest
-//
-// @return ListControlPoliciesResponse
-func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (_result *ListControlPoliciesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListControlPoliciesResponse{}
-	_body, _err := client.ListControlPoliciesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2853,7 +1816,7 @@ func (client *Client) ListControlPolicies(request *ListControlPoliciesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListControlPolicyAttachmentsForTargetResponse
-func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *ListControlPolicyAttachmentsForTargetRequest, runtime *dara.RuntimeOptions) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
+func (client *Client) ListControlPolicyAttachmentsForTargetWithContext(ctx context.Context, request *ListControlPolicyAttachmentsForTargetRequest, runtime *dara.RuntimeOptions) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2882,29 +1845,11 @@ func (client *Client) ListControlPolicyAttachmentsForTargetWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListControlPolicyAttachmentsForTargetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the access control policies that are attached to a folder or member.
-//
-// @param request - ListControlPolicyAttachmentsForTargetRequest
-//
-// @return ListControlPolicyAttachmentsForTargetResponse
-func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControlPolicyAttachmentsForTargetRequest) (_result *ListControlPolicyAttachmentsForTargetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListControlPolicyAttachmentsForTargetResponse{}
-	_body, _err := client.ListControlPolicyAttachmentsForTargetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2917,7 +1862,7 @@ func (client *Client) ListControlPolicyAttachmentsForTarget(request *ListControl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDelegatedAdministratorsResponse
-func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelegatedAdministratorsRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedAdministratorsResponse, _err error) {
+func (client *Client) ListDelegatedAdministratorsWithContext(ctx context.Context, request *ListDelegatedAdministratorsRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedAdministratorsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2950,29 +1895,11 @@ func (client *Client) ListDelegatedAdministratorsWithOptions(request *ListDelega
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDelegatedAdministratorsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries delegated administrator accounts.
-//
-// @param request - ListDelegatedAdministratorsRequest
-//
-// @return ListDelegatedAdministratorsResponse
-func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdministratorsRequest) (_result *ListDelegatedAdministratorsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDelegatedAdministratorsResponse{}
-	_body, _err := client.ListDelegatedAdministratorsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2985,7 +1912,7 @@ func (client *Client) ListDelegatedAdministrators(request *ListDelegatedAdminist
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDelegatedServicesForAccountResponse
-func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDelegatedServicesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedServicesForAccountResponse, _err error) {
+func (client *Client) ListDelegatedServicesForAccountWithContext(ctx context.Context, request *ListDelegatedServicesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListDelegatedServicesForAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3010,29 +1937,11 @@ func (client *Client) ListDelegatedServicesForAccountWithOptions(request *ListDe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDelegatedServicesForAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the trusted services for which a member is specified as a delegated administrator account.
-//
-// @param request - ListDelegatedServicesForAccountRequest
-//
-// @return ListDelegatedServicesForAccountResponse
-func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServicesForAccountRequest) (_result *ListDelegatedServicesForAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDelegatedServicesForAccountResponse{}
-	_body, _err := client.ListDelegatedServicesForAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3049,7 +1958,7 @@ func (client *Client) ListDelegatedServicesForAccount(request *ListDelegatedServ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListFoldersForParentResponse
-func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForParentRequest, runtime *dara.RuntimeOptions) (_result *ListFoldersForParentResponse, _err error) {
+func (client *Client) ListFoldersForParentWithContext(ctx context.Context, request *ListFoldersForParentRequest, runtime *dara.RuntimeOptions) (_result *ListFoldersForParentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3090,33 +1999,11 @@ func (client *Client) ListFoldersForParentWithOptions(request *ListFoldersForPar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListFoldersForParentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information of all subfolders of a folder.
-//
-// Description:
-//
-// You can call this API operation to view the information of only the first-level subfolders of a folder.
-//
-// @param request - ListFoldersForParentRequest
-//
-// @return ListFoldersForParentResponse
-func (client *Client) ListFoldersForParent(request *ListFoldersForParentRequest) (_result *ListFoldersForParentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListFoldersForParentResponse{}
-	_body, _err := client.ListFoldersForParentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3129,7 +2016,7 @@ func (client *Client) ListFoldersForParent(request *ListFoldersForParentRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHandshakesForAccountResponse
-func (client *Client) ListHandshakesForAccountWithOptions(request *ListHandshakesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForAccountResponse, _err error) {
+func (client *Client) ListHandshakesForAccountWithContext(ctx context.Context, request *ListHandshakesForAccountRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3158,29 +2045,11 @@ func (client *Client) ListHandshakesForAccountWithOptions(request *ListHandshake
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHandshakesForAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the invitations that are associated with an account.
-//
-// @param request - ListHandshakesForAccountRequest
-//
-// @return ListHandshakesForAccountResponse
-func (client *Client) ListHandshakesForAccount(request *ListHandshakesForAccountRequest) (_result *ListHandshakesForAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListHandshakesForAccountResponse{}
-	_body, _err := client.ListHandshakesForAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3193,7 +2062,7 @@ func (client *Client) ListHandshakesForAccount(request *ListHandshakesForAccount
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHandshakesForResourceDirectoryResponse
-func (client *Client) ListHandshakesForResourceDirectoryWithOptions(request *ListHandshakesForResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForResourceDirectoryResponse, _err error) {
+func (client *Client) ListHandshakesForResourceDirectoryWithContext(ctx context.Context, request *ListHandshakesForResourceDirectoryRequest, runtime *dara.RuntimeOptions) (_result *ListHandshakesForResourceDirectoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3222,29 +2091,11 @@ func (client *Client) ListHandshakesForResourceDirectoryWithOptions(request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHandshakesForResourceDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries invitations in a resource directory.
-//
-// @param request - ListHandshakesForResourceDirectoryRequest
-//
-// @return ListHandshakesForResourceDirectoryResponse
-func (client *Client) ListHandshakesForResourceDirectory(request *ListHandshakesForResourceDirectoryRequest) (_result *ListHandshakesForResourceDirectoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListHandshakesForResourceDirectoryResponse{}
-	_body, _err := client.ListHandshakesForResourceDirectoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3257,7 +2108,7 @@ func (client *Client) ListHandshakesForResourceDirectory(request *ListHandshakes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageContactVerificationsResponse
-func (client *Client) ListMessageContactVerificationsWithOptions(request *ListMessageContactVerificationsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactVerificationsResponse, _err error) {
+func (client *Client) ListMessageContactVerificationsWithContext(ctx context.Context, request *ListMessageContactVerificationsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactVerificationsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3290,29 +2141,11 @@ func (client *Client) ListMessageContactVerificationsWithOptions(request *ListMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageContactVerificationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the mobile phone number or email address to be verified for a contact.
-//
-// @param request - ListMessageContactVerificationsRequest
-//
-// @return ListMessageContactVerificationsResponse
-func (client *Client) ListMessageContactVerifications(request *ListMessageContactVerificationsRequest) (_result *ListMessageContactVerificationsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageContactVerificationsResponse{}
-	_body, _err := client.ListMessageContactVerificationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3325,7 +2158,7 @@ func (client *Client) ListMessageContactVerifications(request *ListMessageContac
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMessageContactsResponse
-func (client *Client) ListMessageContactsWithOptions(request *ListMessageContactsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactsResponse, _err error) {
+func (client *Client) ListMessageContactsWithContext(ctx context.Context, request *ListMessageContactsRequest, runtime *dara.RuntimeOptions) (_result *ListMessageContactsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3362,29 +2195,11 @@ func (client *Client) ListMessageContactsWithOptions(request *ListMessageContact
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMessageContactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries contacts.
-//
-// @param request - ListMessageContactsRequest
-//
-// @return ListMessageContactsResponse
-func (client *Client) ListMessageContacts(request *ListMessageContactsRequest) (_result *ListMessageContactsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListMessageContactsResponse{}
-	_body, _err := client.ListMessageContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3397,7 +2212,7 @@ func (client *Client) ListMessageContacts(request *ListMessageContactsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagKeysResponse
-func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
+func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3434,29 +2249,11 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries tag keys.
-//
-// @param request - ListTagKeysRequest
-//
-// @return ListTagKeysResponse
-func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.ListTagKeysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3469,7 +2266,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3510,29 +2307,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to the members in a resource directory.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3545,7 +2324,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagValuesResponse
-func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
+func (client *Client) ListTagValuesWithContext(ctx context.Context, request *ListTagValuesRequest, runtime *dara.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3586,29 +2365,11 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tag values of a tag key.
-//
-// @param request - ListTagValuesRequest
-//
-// @return ListTagValuesResponse
-func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.ListTagValuesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3621,7 +2382,7 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTargetAttachmentsForControlPolicyResponse
-func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *ListTargetAttachmentsForControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
+func (client *Client) ListTargetAttachmentsForControlPolicyWithContext(ctx context.Context, request *ListTargetAttachmentsForControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3654,29 +2415,11 @@ func (client *Client) ListTargetAttachmentsForControlPolicyWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTargetAttachmentsForControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the objects to which an access control policy is attached.
-//
-// @param request - ListTargetAttachmentsForControlPolicyRequest
-//
-// @return ListTargetAttachmentsForControlPolicyResponse
-func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetAttachmentsForControlPolicyRequest) (_result *ListTargetAttachmentsForControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTargetAttachmentsForControlPolicyResponse{}
-	_body, _err := client.ListTargetAttachmentsForControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3693,7 +2436,7 @@ func (client *Client) ListTargetAttachmentsForControlPolicy(request *ListTargetA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTrustedServiceStatusResponse
-func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *ListTrustedServiceStatusResponse, _err error) {
+func (client *Client) ListTrustedServiceStatusWithContext(ctx context.Context, request *ListTrustedServiceStatusRequest, runtime *dara.RuntimeOptions) (_result *ListTrustedServiceStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3726,33 +2469,11 @@ func (client *Client) ListTrustedServiceStatusWithOptions(request *ListTrustedSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTrustedServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the trusted services that are enabled within a management account or delegated administrator account.
-//
-// Description:
-//
-// Only a management account or delegated administrator account can be used to call this operation.
-//
-// @param request - ListTrustedServiceStatusRequest
-//
-// @return ListTrustedServiceStatusResponse
-func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatusRequest) (_result *ListTrustedServiceStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTrustedServiceStatusResponse{}
-	_body, _err := client.ListTrustedServiceStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3765,7 +2486,7 @@ func (client *Client) ListTrustedServiceStatus(request *ListTrustedServiceStatus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveAccountResponse
-func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtime *dara.RuntimeOptions) (_result *MoveAccountResponse, _err error) {
+func (client *Client) MoveAccountWithContext(ctx context.Context, request *MoveAccountRequest, runtime *dara.RuntimeOptions) (_result *MoveAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3794,29 +2515,11 @@ func (client *Client) MoveAccountWithOptions(request *MoveAccountRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Moves a member from a folder to another.
-//
-// @param request - MoveAccountRequest
-//
-// @return MoveAccountResponse
-func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveAccountResponse{}
-	_body, _err := client.MoveAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3829,7 +2532,7 @@ func (client *Client) MoveAccount(request *MoveAccountRequest) (_result *MoveAcc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PrecheckForConsolidatedBillingAccountResponse
-func (client *Client) PrecheckForConsolidatedBillingAccountWithOptions(request *PrecheckForConsolidatedBillingAccountRequest, runtime *dara.RuntimeOptions) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
+func (client *Client) PrecheckForConsolidatedBillingAccountWithContext(ctx context.Context, request *PrecheckForConsolidatedBillingAccountRequest, runtime *dara.RuntimeOptions) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3854,29 +2557,11 @@ func (client *Client) PrecheckForConsolidatedBillingAccountWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &PrecheckForConsolidatedBillingAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Checks whether a management account or member can be used as a main financial account.
-//
-// @param request - PrecheckForConsolidatedBillingAccountRequest
-//
-// @return PrecheckForConsolidatedBillingAccountResponse
-func (client *Client) PrecheckForConsolidatedBillingAccount(request *PrecheckForConsolidatedBillingAccountRequest) (_result *PrecheckForConsolidatedBillingAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PrecheckForConsolidatedBillingAccountResponse{}
-	_body, _err := client.PrecheckForConsolidatedBillingAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3899,7 +2584,7 @@ func (client *Client) PrecheckForConsolidatedBillingAccount(request *PrecheckFor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RegisterDelegatedAdministratorResponse
-func (client *Client) RegisterDelegatedAdministratorWithOptions(request *RegisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *RegisterDelegatedAdministratorResponse, _err error) {
+func (client *Client) RegisterDelegatedAdministratorWithContext(ctx context.Context, request *RegisterDelegatedAdministratorRequest, runtime *dara.RuntimeOptions) (_result *RegisterDelegatedAdministratorResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3928,39 +2613,11 @@ func (client *Client) RegisterDelegatedAdministratorWithOptions(request *Registe
 		BodyType:    dara.String("json"),
 	}
 	_result = &RegisterDelegatedAdministratorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Specifies a member in a resource directory as a delegated administrator account of a trusted service.
-//
-// Description:
-//
-// The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
-//
-//   - Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
-//
-//   - Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-//
-//   - The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-//
-// @param request - RegisterDelegatedAdministratorRequest
-//
-// @return RegisterDelegatedAdministratorResponse
-func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedAdministratorRequest) (_result *RegisterDelegatedAdministratorResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RegisterDelegatedAdministratorResponse{}
-	_body, _err := client.RegisterDelegatedAdministratorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3973,7 +2630,7 @@ func (client *Client) RegisterDelegatedAdministrator(request *RegisterDelegatedA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveCloudAccountResponse
-func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *RemoveCloudAccountResponse, _err error) {
+func (client *Client) RemoveCloudAccountWithContext(ctx context.Context, request *RemoveCloudAccountRequest, runtime *dara.RuntimeOptions) (_result *RemoveCloudAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3998,29 +2655,11 @@ func (client *Client) RemoveCloudAccountWithOptions(request *RemoveCloudAccountR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveCloudAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes a member of the cloud account type.
-//
-// @param request - RemoveCloudAccountRequest
-//
-// @return RemoveCloudAccountResponse
-func (client *Client) RemoveCloudAccount(request *RemoveCloudAccountRequest) (_result *RemoveCloudAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveCloudAccountResponse{}
-	_body, _err := client.RemoveCloudAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4033,7 +2672,7 @@ func (client *Client) RemoveCloudAccount(request *RemoveCloudAccountRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RetryChangeAccountEmailResponse
-func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *RetryChangeAccountEmailResponse, _err error) {
+func (client *Client) RetryChangeAccountEmailWithContext(ctx context.Context, request *RetryChangeAccountEmailRequest, runtime *dara.RuntimeOptions) (_result *RetryChangeAccountEmailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4058,29 +2697,11 @@ func (client *Client) RetryChangeAccountEmailWithOptions(request *RetryChangeAcc
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryChangeAccountEmailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resends a verification email for the email address change of a member.
-//
-// @param request - RetryChangeAccountEmailRequest
-//
-// @return RetryChangeAccountEmailResponse
-func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRequest) (_result *RetryChangeAccountEmailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RetryChangeAccountEmailResponse{}
-	_body, _err := client.RetryChangeAccountEmailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4093,7 +2714,7 @@ func (client *Client) RetryChangeAccountEmail(request *RetryChangeAccountEmailRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendEmailVerificationForMessageContactResponse
-func (client *Client) SendEmailVerificationForMessageContactWithOptions(request *SendEmailVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendEmailVerificationForMessageContactResponse, _err error) {
+func (client *Client) SendEmailVerificationForMessageContactWithContext(ctx context.Context, request *SendEmailVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendEmailVerificationForMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4122,29 +2743,11 @@ func (client *Client) SendEmailVerificationForMessageContactWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendEmailVerificationForMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends verification information to the email address of a contact.
-//
-// @param request - SendEmailVerificationForMessageContactRequest
-//
-// @return SendEmailVerificationForMessageContactResponse
-func (client *Client) SendEmailVerificationForMessageContact(request *SendEmailVerificationForMessageContactRequest) (_result *SendEmailVerificationForMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendEmailVerificationForMessageContactResponse{}
-	_body, _err := client.SendEmailVerificationForMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4157,7 +2760,7 @@ func (client *Client) SendEmailVerificationForMessageContact(request *SendEmailV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendPhoneVerificationForMessageContactResponse
-func (client *Client) SendPhoneVerificationForMessageContactWithOptions(request *SendPhoneVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendPhoneVerificationForMessageContactResponse, _err error) {
+func (client *Client) SendPhoneVerificationForMessageContactWithContext(ctx context.Context, request *SendPhoneVerificationForMessageContactRequest, runtime *dara.RuntimeOptions) (_result *SendPhoneVerificationForMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4186,29 +2789,11 @@ func (client *Client) SendPhoneVerificationForMessageContactWithOptions(request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendPhoneVerificationForMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends verification information to the mobile phone number of a contact.
-//
-// @param request - SendPhoneVerificationForMessageContactRequest
-//
-// @return SendPhoneVerificationForMessageContactResponse
-func (client *Client) SendPhoneVerificationForMessageContact(request *SendPhoneVerificationForMessageContactRequest) (_result *SendPhoneVerificationForMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendPhoneVerificationForMessageContactResponse{}
-	_body, _err := client.SendPhoneVerificationForMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4225,7 +2810,7 @@ func (client *Client) SendPhoneVerificationForMessageContact(request *SendPhoneV
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendVerificationCodeForBindSecureMobilePhoneResponse
-func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(request *SendVerificationCodeForBindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
+func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithContext(ctx context.Context, request *SendVerificationCodeForBindSecureMobilePhoneRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4254,33 +2839,11 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhoneWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendVerificationCodeForBindSecureMobilePhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a verification code to the mobile phone number that you want to bind to a member of the resource account type in a resource directory for security purposes.
-//
-// Description:
-//
-// To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-//
-// @param request - SendVerificationCodeForBindSecureMobilePhoneRequest
-//
-// @return SendVerificationCodeForBindSecureMobilePhoneResponse
-func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *SendVerificationCodeForBindSecureMobilePhoneRequest) (_result *SendVerificationCodeForBindSecureMobilePhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendVerificationCodeForBindSecureMobilePhoneResponse{}
-	_body, _err := client.SendVerificationCodeForBindSecureMobilePhoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4297,7 +2860,7 @@ func (client *Client) SendVerificationCodeForBindSecureMobilePhone(request *Send
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendVerificationCodeForEnableRDResponse
-func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVerificationCodeForEnableRDRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
+func (client *Client) SendVerificationCodeForEnableRDWithContext(ctx context.Context, request *SendVerificationCodeForEnableRDRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4322,33 +2885,11 @@ func (client *Client) SendVerificationCodeForEnableRDWithOptions(request *SendVe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendVerificationCodeForEnableRDResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
-//
-// Description:
-//
-// Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
-//
-// @param request - SendVerificationCodeForEnableRDRequest
-//
-// @return SendVerificationCodeForEnableRDResponse
-func (client *Client) SendVerificationCodeForEnableRD(request *SendVerificationCodeForEnableRDRequest) (_result *SendVerificationCodeForEnableRDResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendVerificationCodeForEnableRDResponse{}
-	_body, _err := client.SendVerificationCodeForEnableRDWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4365,7 +2906,7 @@ func (client *Client) SendVerificationCodeForEnableRD(request *SendVerificationC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetMemberDeletionPermissionResponse
-func (client *Client) SetMemberDeletionPermissionWithOptions(request *SetMemberDeletionPermissionRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDeletionPermissionResponse, _err error) {
+func (client *Client) SetMemberDeletionPermissionWithContext(ctx context.Context, request *SetMemberDeletionPermissionRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDeletionPermissionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4390,33 +2931,11 @@ func (client *Client) SetMemberDeletionPermissionWithOptions(request *SetMemberD
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetMemberDeletionPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables the member deletion feature.
-//
-// Description:
-//
-// Members of the resource account type can be deleted only after the member deletion feature is enabled.
-//
-// @param request - SetMemberDeletionPermissionRequest
-//
-// @return SetMemberDeletionPermissionResponse
-func (client *Client) SetMemberDeletionPermission(request *SetMemberDeletionPermissionRequest) (_result *SetMemberDeletionPermissionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetMemberDeletionPermissionResponse{}
-	_body, _err := client.SetMemberDeletionPermissionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4429,7 +2948,7 @@ func (client *Client) SetMemberDeletionPermission(request *SetMemberDeletionPerm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetMemberDisplayNameSyncStatusResponse
-func (client *Client) SetMemberDisplayNameSyncStatusWithOptions(request *SetMemberDisplayNameSyncStatusRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
+func (client *Client) SetMemberDisplayNameSyncStatusWithContext(ctx context.Context, request *SetMemberDisplayNameSyncStatusRequest, runtime *dara.RuntimeOptions) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4454,29 +2973,11 @@ func (client *Client) SetMemberDisplayNameSyncStatusWithOptions(request *SetMemb
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetMemberDisplayNameSyncStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables the Member Display Name Synchronization feature.
-//
-// @param request - SetMemberDisplayNameSyncStatusRequest
-//
-// @return SetMemberDisplayNameSyncStatusResponse
-func (client *Client) SetMemberDisplayNameSyncStatus(request *SetMemberDisplayNameSyncStatusRequest) (_result *SetMemberDisplayNameSyncStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetMemberDisplayNameSyncStatusResponse{}
-	_body, _err := client.SetMemberDisplayNameSyncStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4489,7 +2990,7 @@ func (client *Client) SetMemberDisplayNameSyncStatus(request *SetMemberDisplayNa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4522,29 +3023,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds tags to the members in a resource directory.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4557,7 +3040,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4594,29 +3077,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from the members in a resource directory.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4637,7 +3102,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAccountResponse
-func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountResponse, _err error) {
+func (client *Client) UpdateAccountWithContext(ctx context.Context, request *UpdateAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdateAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4674,37 +3139,11 @@ func (client *Client) UpdateAccountWithOptions(request *UpdateAccountRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the display name of a member, or switches the type of a member.
-//
-// Description:
-//
-//	  To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-//
-//		- Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
-//
-//		- Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
-//
-// @param request - UpdateAccountRequest
-//
-// @return UpdateAccountResponse
-func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *UpdateAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAccountResponse{}
-	_body, _err := client.UpdateAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4717,7 +3156,7 @@ func (client *Client) UpdateAccount(request *UpdateAccountRequest) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateControlPolicyResponse
-func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateControlPolicyResponse, _err error) {
+func (client *Client) UpdateControlPolicyWithContext(ctx context.Context, request *UpdateControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateControlPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4754,29 +3193,11 @@ func (client *Client) UpdateControlPolicyWithOptions(request *UpdateControlPolic
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateControlPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a custom access control policy.
-//
-// @param request - UpdateControlPolicyRequest
-//
-// @return UpdateControlPolicyResponse
-func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (_result *UpdateControlPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateControlPolicyResponse{}
-	_body, _err := client.UpdateControlPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4789,7 +3210,7 @@ func (client *Client) UpdateControlPolicy(request *UpdateControlPolicyRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateFolderResponse
-func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runtime *dara.RuntimeOptions) (_result *UpdateFolderResponse, _err error) {
+func (client *Client) UpdateFolderWithContext(ctx context.Context, request *UpdateFolderRequest, runtime *dara.RuntimeOptions) (_result *UpdateFolderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4818,29 +3239,11 @@ func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateFolderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the name of a folder.
-//
-// @param request - UpdateFolderRequest
-//
-// @return UpdateFolderResponse
-func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *UpdateFolderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateFolderResponse{}
-	_body, _err := client.UpdateFolderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4853,7 +3256,7 @@ func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *Updat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateMessageContactResponse
-func (client *Client) UpdateMessageContactWithOptions(request *UpdateMessageContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageContactResponse, _err error) {
+func (client *Client) UpdateMessageContactWithContext(ctx context.Context, request *UpdateMessageContactRequest, runtime *dara.RuntimeOptions) (_result *UpdateMessageContactResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4898,29 +3301,11 @@ func (client *Client) UpdateMessageContactWithOptions(request *UpdateMessageCont
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMessageContactResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a contact.
-//
-// @param request - UpdateMessageContactRequest
-//
-// @return UpdateMessageContactResponse
-func (client *Client) UpdateMessageContact(request *UpdateMessageContactRequest) (_result *UpdateMessageContactResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateMessageContactResponse{}
-	_body, _err := client.UpdateMessageContactWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4933,7 +3318,7 @@ func (client *Client) UpdateMessageContact(request *UpdateMessageContactRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePayerForAccountResponse
-func (client *Client) UpdatePayerForAccountWithOptions(request *UpdatePayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdatePayerForAccountResponse, _err error) {
+func (client *Client) UpdatePayerForAccountWithContext(ctx context.Context, request *UpdatePayerForAccountRequest, runtime *dara.RuntimeOptions) (_result *UpdatePayerForAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4962,28 +3347,10 @@ func (client *Client) UpdatePayerForAccountWithOptions(request *UpdatePayerForAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePayerForAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the billing account of a member.
-//
-// @param request - UpdatePayerForAccountRequest
-//
-// @return UpdatePayerForAccountResponse
-func (client *Client) UpdatePayerForAccount(request *UpdatePayerForAccountRequest) (_result *UpdatePayerForAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdatePayerForAccountResponse{}
-	_body, _err := client.UpdatePayerForAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
