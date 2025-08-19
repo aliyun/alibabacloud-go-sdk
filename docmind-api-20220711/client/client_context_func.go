@@ -1024,6 +1024,10 @@ func (client *Client) SubmitDocParserJobWithContext(ctx context.Context, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnhancementMode) {
+		query["EnhancementMode"] = request.EnhancementMode
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}

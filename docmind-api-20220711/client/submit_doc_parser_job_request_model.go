@@ -9,6 +9,8 @@ type iSubmitDocParserJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnhancementMode(v string) *SubmitDocParserJobRequest
+	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobRequest
 	GetFileName() *string
 	SetFileNameExtension(v string) *SubmitDocParserJobRequest
@@ -32,6 +34,7 @@ type iSubmitDocParserJobRequest interface {
 }
 
 type SubmitDocParserJobRequest struct {
+	EnhancementMode *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -59,6 +62,10 @@ func (s SubmitDocParserJobRequest) String() string {
 
 func (s SubmitDocParserJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocParserJobRequest) GetEnhancementMode() *string {
+	return s.EnhancementMode
 }
 
 func (s *SubmitDocParserJobRequest) GetFileName() *string {
@@ -99,6 +106,11 @@ func (s *SubmitDocParserJobRequest) GetOutputHtmlTable() *bool {
 
 func (s *SubmitDocParserJobRequest) GetPageIndex() *string {
 	return s.PageIndex
+}
+
+func (s *SubmitDocParserJobRequest) SetEnhancementMode(v string) *SubmitDocParserJobRequest {
+	s.EnhancementMode = &v
+	return s
 }
 
 func (s *SubmitDocParserJobRequest) SetFileName(v string) *SubmitDocParserJobRequest {
