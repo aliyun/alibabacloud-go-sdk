@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("es-serverless"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelSpecReviewTaskResponse
-func (client *Client) CancelSpecReviewTaskWithOptions(appName *string, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelSpecReviewTaskResponse, _err error) {
+func (client *Client) CancelSpecReviewTaskWithContext(ctx context.Context, appName *string, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelSpecReviewTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -80,28 +32,11 @@ func (client *Client) CancelSpecReviewTaskWithOptions(appName *string, taskId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelSpecReviewTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 撤销规格审批
-//
-// @return CancelSpecReviewTaskResponse
-func (client *Client) CancelSpecReviewTask(appName *string, taskId *string) (_result *CancelSpecReviewTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelSpecReviewTaskResponse{}
-	_body, _err := client.CancelSpecReviewTaskWithOptions(appName, taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -116,7 +51,7 @@ func (client *Client) CancelSpecReviewTask(appName *string, taskId *string) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppResponse
-func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -192,30 +127,11 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Serverless应用
-//
-// @param request - CreateAppRequest
-//
-// @return CreateAppResponse
-func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateAppResponse{}
-	_body, _err := client.CreateAppWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -230,7 +146,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEndpointResponse
-func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
+func (client *Client) CreateEndpointWithContext(ctx context.Context, request *CreateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -270,30 +186,11 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建端点
-//
-// @param request - CreateEndpointRequest
-//
-// @return CreateEndpointResponse
-func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *CreateEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateEndpointResponse{}
-	_body, _err := client.CreateEndpointWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -308,7 +205,7 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSnapshotResponse
-func (client *Client) CreateSnapshotWithOptions(appName *string, repository *string, request *CreateSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+func (client *Client) CreateSnapshotWithContext(ctx context.Context, appName *string, repository *string, request *CreateSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -344,30 +241,11 @@ func (client *Client) CreateSnapshotWithOptions(appName *string, repository *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建快照
-//
-// @param request - CreateSnapshotRequest
-//
-// @return CreateSnapshotResponse
-func (client *Client) CreateSnapshot(appName *string, repository *string, request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateSnapshotResponse{}
-	_body, _err := client.CreateSnapshotWithOptions(appName, repository, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -380,7 +258,7 @@ func (client *Client) CreateSnapshot(appName *string, repository *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppResponse
-func (client *Client) DeleteAppWithOptions(appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+func (client *Client) DeleteAppWithContext(ctx context.Context, appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -396,28 +274,11 @@ func (client *Client) DeleteAppWithOptions(appName *string, headers map[string]*
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除Serverless应用。
-//
-// @return DeleteAppResponse
-func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteAppResponse{}
-	_body, _err := client.DeleteAppWithOptions(appName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -432,7 +293,7 @@ func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _e
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDictResponse
-func (client *Client) DeleteDictWithOptions(appName *string, request *DeleteDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDictResponse, _err error) {
+func (client *Client) DeleteDictWithContext(ctx context.Context, appName *string, request *DeleteDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDictResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -462,30 +323,11 @@ func (client *Client) DeleteDictWithOptions(appName *string, request *DeleteDict
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDictResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除词典
-//
-// @param request - DeleteDictRequest
-//
-// @return DeleteDictResponse
-func (client *Client) DeleteDict(appName *string, request *DeleteDictRequest) (_result *DeleteDictResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteDictResponse{}
-	_body, _err := client.DeleteDictWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -498,7 +340,7 @@ func (client *Client) DeleteDict(appName *string, request *DeleteDictRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEndpointResponse
-func (client *Client) DeleteEndpointWithOptions(endpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
+func (client *Client) DeleteEndpointWithContext(ctx context.Context, endpointId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -514,28 +356,11 @@ func (client *Client) DeleteEndpointWithOptions(endpointId *string, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除端点
-//
-// @return DeleteEndpointResponse
-func (client *Client) DeleteEndpoint(endpointId *string) (_result *DeleteEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteEndpointResponse{}
-	_body, _err := client.DeleteEndpointWithOptions(endpointId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -548,7 +373,7 @@ func (client *Client) DeleteEndpoint(endpointId *string) (_result *DeleteEndpoin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshotWithOptions(appName *string, repository *string, snapshot *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+func (client *Client) DeleteSnapshotWithContext(ctx context.Context, appName *string, repository *string, snapshot *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -564,28 +389,11 @@ func (client *Client) DeleteSnapshotWithOptions(appName *string, repository *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除快照
-//
-// @return DeleteSnapshotResponse
-func (client *Client) DeleteSnapshot(appName *string, repository *string, snapshot *string) (_result *DeleteSnapshotResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteSnapshotResponse{}
-	_body, _err := client.DeleteSnapshotWithOptions(appName, repository, snapshot, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -600,7 +408,7 @@ func (client *Client) DeleteSnapshot(appName *string, repository *string, snapsh
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppResponse
-func (client *Client) GetAppWithOptions(appName *string, request *GetAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppResponse, _err error) {
+func (client *Client) GetAppWithContext(ctx context.Context, appName *string, request *GetAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -626,30 +434,11 @@ func (client *Client) GetAppWithOptions(appName *string, request *GetAppRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Serverless应用详情
-//
-// @param request - GetAppRequest
-//
-// @return GetAppResponse
-func (client *Client) GetApp(appName *string, request *GetAppRequest) (_result *GetAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAppResponse{}
-	_body, _err := client.GetAppWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -662,7 +451,7 @@ func (client *Client) GetApp(appName *string, request *GetAppRequest) (_result *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppQuotaResponse
-func (client *Client) GetAppQuotaWithOptions(appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppQuotaResponse, _err error) {
+func (client *Client) GetAppQuotaWithContext(ctx context.Context, appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppQuotaResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -678,28 +467,11 @@ func (client *Client) GetAppQuotaWithOptions(appName *string, headers map[string
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Serverless应用配额详情
-//
-// @return GetAppQuotaResponse
-func (client *Client) GetAppQuota(appName *string) (_result *GetAppQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAppQuotaResponse{}
-	_body, _err := client.GetAppQuotaWithOptions(appName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -714,7 +486,7 @@ func (client *Client) GetAppQuota(appName *string) (_result *GetAppQuotaResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMonitorDataResponse
-func (client *Client) GetMonitorDataWithOptions(request *GetMonitorDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMonitorDataResponse, _err error) {
+func (client *Client) GetMonitorDataWithContext(ctx context.Context, request *GetMonitorDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMonitorDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -735,30 +507,11 @@ func (client *Client) GetMonitorDataWithOptions(request *GetMonitorDataRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMonitorDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取监控数据
-//
-// @param request - GetMonitorDataRequest
-//
-// @return GetMonitorDataResponse
-func (client *Client) GetMonitorData(request *GetMonitorDataRequest) (_result *GetMonitorDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetMonitorDataResponse{}
-	_body, _err := client.GetMonitorDataWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -771,7 +524,7 @@ func (client *Client) GetMonitorData(request *GetMonitorDataRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSnapshotSettingResponse
-func (client *Client) GetSnapshotSettingWithOptions(appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSnapshotSettingResponse, _err error) {
+func (client *Client) GetSnapshotSettingWithContext(ctx context.Context, appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSnapshotSettingResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -787,28 +540,11 @@ func (client *Client) GetSnapshotSettingWithOptions(appName *string, headers map
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSnapshotSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取自动备份配置
-//
-// @return GetSnapshotSettingResponse
-func (client *Client) GetSnapshotSetting(appName *string) (_result *GetSnapshotSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSnapshotSettingResponse{}
-	_body, _err := client.GetSnapshotSettingWithOptions(appName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -821,7 +557,7 @@ func (client *Client) GetSnapshotSetting(appName *string) (_result *GetSnapshotS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSpecReviewTaskResponse
-func (client *Client) GetSpecReviewTaskWithOptions(appName *string, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSpecReviewTaskResponse, _err error) {
+func (client *Client) GetSpecReviewTaskWithContext(ctx context.Context, appName *string, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSpecReviewTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -837,28 +573,11 @@ func (client *Client) GetSpecReviewTaskWithOptions(appName *string, taskId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSpecReviewTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取配额审批详情
-//
-// @return GetSpecReviewTaskResponse
-func (client *Client) GetSpecReviewTask(appName *string, taskId *string) (_result *GetSpecReviewTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSpecReviewTaskResponse{}
-	_body, _err := client.GetSpecReviewTaskWithOptions(appName, taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -873,7 +592,7 @@ func (client *Client) GetSpecReviewTask(appName *string, taskId *string) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAppsResponse
-func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
+func (client *Client) ListAppsWithContext(ctx context.Context, request *ListAppsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -927,30 +646,11 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看Serverless应用列表
-//
-// @param request - ListAppsRequest
-//
-// @return ListAppsResponse
-func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListAppsResponse{}
-	_body, _err := client.ListAppsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -965,7 +665,7 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDictsResponse
-func (client *Client) ListDictsWithOptions(appName *string, request *ListDictsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDictsResponse, _err error) {
+func (client *Client) ListDictsWithContext(ctx context.Context, appName *string, request *ListDictsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDictsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -995,30 +695,11 @@ func (client *Client) ListDictsWithOptions(appName *string, request *ListDictsRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDictsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取词典列表
-//
-// @param request - ListDictsRequest
-//
-// @return ListDictsResponse
-func (client *Client) ListDicts(appName *string, request *ListDictsRequest) (_result *ListDictsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDictsResponse{}
-	_body, _err := client.ListDictsWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1033,7 +714,7 @@ func (client *Client) ListDicts(appName *string, request *ListDictsRequest) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEndpointsResponse
-func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
+func (client *Client) ListEndpointsWithContext(ctx context.Context, request *ListEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1075,30 +756,11 @@ func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEndpointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取端点信息列表
-//
-// @param request - ListEndpointsRequest
-//
-// @return ListEndpointsResponse
-func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *ListEndpointsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListEndpointsResponse{}
-	_body, _err := client.ListEndpointsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1111,7 +773,7 @@ func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIndicesResponse
-func (client *Client) ListIndicesWithOptions(appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
+func (client *Client) ListIndicesWithContext(ctx context.Context, appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1127,28 +789,11 @@ func (client *Client) ListIndicesWithOptions(appName *string, headers map[string
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIndicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查看索引列表
-//
-// @return ListIndicesResponse
-func (client *Client) ListIndices(appName *string) (_result *ListIndicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListIndicesResponse{}
-	_body, _err := client.ListIndicesWithOptions(appName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1161,7 +806,7 @@ func (client *Client) ListIndices(appName *string) (_result *ListIndicesResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSnapshotRepositoriesResponse
-func (client *Client) ListSnapshotRepositoriesWithOptions(appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotRepositoriesResponse, _err error) {
+func (client *Client) ListSnapshotRepositoriesWithContext(ctx context.Context, appName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotRepositoriesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1177,28 +822,11 @@ func (client *Client) ListSnapshotRepositoriesWithOptions(appName *string, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSnapshotRepositoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取快照仓库列表
-//
-// @return ListSnapshotRepositoriesResponse
-func (client *Client) ListSnapshotRepositories(appName *string) (_result *ListSnapshotRepositoriesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSnapshotRepositoriesResponse{}
-	_body, _err := client.ListSnapshotRepositoriesWithOptions(appName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1213,7 +841,7 @@ func (client *Client) ListSnapshotRepositories(appName *string) (_result *ListSn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSnapshotsResponse
-func (client *Client) ListSnapshotsWithOptions(appName *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+func (client *Client) ListSnapshotsWithContext(ctx context.Context, appName *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1251,30 +879,11 @@ func (client *Client) ListSnapshotsWithOptions(appName *string, request *ListSna
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取仓库的快照列表
-//
-// @param request - ListSnapshotsRequest
-//
-// @return ListSnapshotsResponse
-func (client *Client) ListSnapshots(appName *string, request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSnapshotsResponse{}
-	_body, _err := client.ListSnapshotsWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1289,7 +898,7 @@ func (client *Client) ListSnapshots(appName *string, request *ListSnapshotsReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSpecReviewTasksResponse
-func (client *Client) ListSpecReviewTasksWithOptions(appName *string, request *ListSpecReviewTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSpecReviewTasksResponse, _err error) {
+func (client *Client) ListSpecReviewTasksWithContext(ctx context.Context, appName *string, request *ListSpecReviewTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSpecReviewTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1335,30 +944,11 @@ func (client *Client) ListSpecReviewTasksWithOptions(appName *string, request *L
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSpecReviewTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取规格审批列表
-//
-// @param request - ListSpecReviewTasksRequest
-//
-// @return ListSpecReviewTasksResponse
-func (client *Client) ListSpecReviewTasks(appName *string, request *ListSpecReviewTasksRequest) (_result *ListSpecReviewTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListSpecReviewTasksResponse{}
-	_body, _err := client.ListSpecReviewTasksWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1373,7 +963,7 @@ func (client *Client) ListSpecReviewTasks(appName *string, request *ListSpecRevi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAppResponse
-func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
+func (client *Client) UpdateAppWithContext(ctx context.Context, appName *string, request *UpdateAppRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1423,30 +1013,11 @@ func (client *Client) UpdateAppWithOptions(appName *string, request *UpdateAppRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 编辑Serverless应用
-//
-// @param request - UpdateAppRequest
-//
-// @return UpdateAppResponse
-func (client *Client) UpdateApp(appName *string, request *UpdateAppRequest) (_result *UpdateAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateAppResponse{}
-	_body, _err := client.UpdateAppWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1461,7 +1032,7 @@ func (client *Client) UpdateApp(appName *string, request *UpdateAppRequest) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDictResponse
-func (client *Client) UpdateDictWithOptions(appName *string, request *UpdateDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDictResponse, _err error) {
+func (client *Client) UpdateDictWithContext(ctx context.Context, appName *string, request *UpdateDictRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDictResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1505,30 +1076,11 @@ func (client *Client) UpdateDictWithOptions(appName *string, request *UpdateDict
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDictResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建或更新词典
-//
-// @param request - UpdateDictRequest
-//
-// @return UpdateDictResponse
-func (client *Client) UpdateDict(appName *string, request *UpdateDictRequest) (_result *UpdateDictResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateDictResponse{}
-	_body, _err := client.UpdateDictWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1543,7 +1095,7 @@ func (client *Client) UpdateDict(appName *string, request *UpdateDictRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEndpointResponse
-func (client *Client) UpdateEndpointWithOptions(endpointId *string, request *UpdateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEndpointResponse, _err error) {
+func (client *Client) UpdateEndpointWithContext(ctx context.Context, endpointId *string, request *UpdateEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1573,30 +1125,11 @@ func (client *Client) UpdateEndpointWithOptions(endpointId *string, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改端点信息
-//
-// @param request - UpdateEndpointRequest
-//
-// @return UpdateEndpointResponse
-func (client *Client) UpdateEndpoint(endpointId *string, request *UpdateEndpointRequest) (_result *UpdateEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateEndpointResponse{}
-	_body, _err := client.UpdateEndpointWithOptions(endpointId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1611,7 +1144,7 @@ func (client *Client) UpdateEndpoint(endpointId *string, request *UpdateEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNetworkResponse
-func (client *Client) UpdateNetworkWithOptions(appName *string, request *UpdateNetworkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNetworkResponse, _err error) {
+func (client *Client) UpdateNetworkWithContext(ctx context.Context, appName *string, request *UpdateNetworkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNetworkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1632,30 +1165,11 @@ func (client *Client) UpdateNetworkWithOptions(appName *string, request *UpdateN
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNetworkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改应用公网配置。
-//
-// @param request - UpdateNetworkRequest
-//
-// @return UpdateNetworkResponse
-func (client *Client) UpdateNetwork(appName *string, request *UpdateNetworkRequest) (_result *UpdateNetworkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateNetworkResponse{}
-	_body, _err := client.UpdateNetworkWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1670,7 +1184,7 @@ func (client *Client) UpdateNetwork(appName *string, request *UpdateNetworkReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateSnapshotSettingResponse
-func (client *Client) UpdateSnapshotSettingWithOptions(appName *string, request *UpdateSnapshotSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSnapshotSettingResponse, _err error) {
+func (client *Client) UpdateSnapshotSettingWithContext(ctx context.Context, appName *string, request *UpdateSnapshotSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateSnapshotSettingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1700,29 +1214,10 @@ func (client *Client) UpdateSnapshotSettingWithOptions(appName *string, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSnapshotSettingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改自动备份配置
-//
-// @param request - UpdateSnapshotSettingRequest
-//
-// @return UpdateSnapshotSettingResponse
-func (client *Client) UpdateSnapshotSetting(appName *string, request *UpdateSnapshotSettingRequest) (_result *UpdateSnapshotSettingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateSnapshotSettingResponse{}
-	_body, _err := client.UpdateSnapshotSettingWithOptions(appName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
