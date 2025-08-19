@@ -7951,7 +7951,7 @@ func (client *Client) GetPublicMediaInfoWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPublicMediaInfoResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9229,7 +9229,7 @@ func (client *Client) ListAllPublicMediaTagsWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAllPublicMediaTagsResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11385,7 +11385,7 @@ func (client *Client) ListPublicMediaBasicInfosWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublicMediaBasicInfosResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13502,6 +13502,10 @@ func (client *Client) RegisterMediaStreamWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.MediaId) {
 		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.StreamTags) {
+		query["StreamTags"] = request.StreamTags
 	}
 
 	if !dara.IsNil(request.UserData) {

@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              dara.String("ice.aliyuncs.com"),
@@ -11353,7 +11352,7 @@ func (client *Client) GetPublicMediaInfoWithOptions(request *GetPublicMediaInfoR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPublicMediaInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13109,7 +13108,7 @@ func (client *Client) ListAllPublicMediaTagsWithOptions(request *ListAllPublicMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAllPublicMediaTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15965,7 +15964,7 @@ func (client *Client) ListPublicMediaBasicInfosWithOptions(request *ListPublicMe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublicMediaBasicInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18810,6 +18809,10 @@ func (client *Client) RegisterMediaStreamWithOptions(request *RegisterMediaStrea
 
 	if !dara.IsNil(request.MediaId) {
 		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.StreamTags) {
+		query["StreamTags"] = request.StreamTags
 	}
 
 	if !dara.IsNil(request.UserData) {

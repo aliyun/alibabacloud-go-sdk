@@ -13,6 +13,8 @@ type iRegisterMediaStreamRequest interface {
 	GetInputURL() *string
 	SetMediaId(v string) *RegisterMediaStreamRequest
 	GetMediaId() *string
+	SetStreamTags(v string) *RegisterMediaStreamRequest
+	GetStreamTags() *string
 	SetUserData(v string) *RegisterMediaStreamRequest
 	GetUserData() *string
 }
@@ -31,7 +33,8 @@ type RegisterMediaStreamRequest struct {
 	// example:
 	//
 	// 5e778ec0027b71ed80a8909598506***
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaId    *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	StreamTags *string `json:"StreamTags,omitempty" xml:"StreamTags,omitempty"`
 	// The user data.
 	//
 	// example:
@@ -56,6 +59,10 @@ func (s *RegisterMediaStreamRequest) GetMediaId() *string {
 	return s.MediaId
 }
 
+func (s *RegisterMediaStreamRequest) GetStreamTags() *string {
+	return s.StreamTags
+}
+
 func (s *RegisterMediaStreamRequest) GetUserData() *string {
 	return s.UserData
 }
@@ -67,6 +74,11 @@ func (s *RegisterMediaStreamRequest) SetInputURL(v string) *RegisterMediaStreamR
 
 func (s *RegisterMediaStreamRequest) SetMediaId(v string) *RegisterMediaStreamRequest {
 	s.MediaId = &v
+	return s
+}
+
+func (s *RegisterMediaStreamRequest) SetStreamTags(v string) *RegisterMediaStreamRequest {
+	s.StreamTags = &v
 	return s
 }
 
