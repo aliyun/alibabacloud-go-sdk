@@ -33,6 +33,8 @@ type iDescribeClusterDetailResponseBody interface {
 	GetDockerVersion() *string
 	SetExternalLoadbalancerId(v string) *DescribeClusterDetailResponseBody
 	GetExternalLoadbalancerId() *string
+	SetExtraSans(v []*string) *DescribeClusterDetailResponseBody
+	GetExtraSans() []*string
 	SetInitVersion(v string) *DescribeClusterDetailResponseBody
 	GetInitVersion() *string
 	SetIpStack(v string) *DescribeClusterDetailResponseBody
@@ -65,6 +67,8 @@ type iDescribeClusterDetailResponseBody interface {
 	GetRegionId() *string
 	SetResourceGroupId(v string) *DescribeClusterDetailResponseBody
 	GetResourceGroupId() *string
+	SetRrsaConfig(v *DescribeClusterDetailResponseBodyRrsaConfig) *DescribeClusterDetailResponseBody
+	GetRrsaConfig() *DescribeClusterDetailResponseBodyRrsaConfig
 	SetSecurityGroupId(v string) *DescribeClusterDetailResponseBody
 	GetSecurityGroupId() *string
 	SetServiceCidr(v string) *DescribeClusterDetailResponseBody
@@ -170,7 +174,8 @@ type DescribeClusterDetailResponseBody struct {
 	// example:
 	//
 	// lb-2zehc05z3b8dwiifh****
-	ExternalLoadbalancerId *string `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
+	ExternalLoadbalancerId *string   `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
+	ExtraSans              []*string `json:"extra_sans,omitempty" xml:"extra_sans,omitempty" type:"Repeated"`
 	// The initial Kubernetes version of the cluster.
 	//
 	// example:
@@ -278,7 +283,8 @@ type DescribeClusterDetailResponseBody struct {
 	// example:
 	//
 	// rg-acfmyvw3wjm****
-	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	ResourceGroupId *string                                      `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
+	RrsaConfig      *DescribeClusterDetailResponseBodyRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
 	// The ID of the security group to which the cluster belongs.
 	//
 	// example:
@@ -437,6 +443,10 @@ func (s *DescribeClusterDetailResponseBody) GetExternalLoadbalancerId() *string 
 	return s.ExternalLoadbalancerId
 }
 
+func (s *DescribeClusterDetailResponseBody) GetExtraSans() []*string {
+	return s.ExtraSans
+}
+
 func (s *DescribeClusterDetailResponseBody) GetInitVersion() *string {
 	return s.InitVersion
 }
@@ -499,6 +509,10 @@ func (s *DescribeClusterDetailResponseBody) GetRegionId() *string {
 
 func (s *DescribeClusterDetailResponseBody) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *DescribeClusterDetailResponseBody) GetRrsaConfig() *DescribeClusterDetailResponseBodyRrsaConfig {
+	return s.RrsaConfig
 }
 
 func (s *DescribeClusterDetailResponseBody) GetSecurityGroupId() *string {
@@ -613,6 +627,11 @@ func (s *DescribeClusterDetailResponseBody) SetExternalLoadbalancerId(v string) 
 	return s
 }
 
+func (s *DescribeClusterDetailResponseBody) SetExtraSans(v []*string) *DescribeClusterDetailResponseBody {
+	s.ExtraSans = v
+	return s
+}
+
 func (s *DescribeClusterDetailResponseBody) SetInitVersion(v string) *DescribeClusterDetailResponseBody {
 	s.InitVersion = &v
 	return s
@@ -690,6 +709,11 @@ func (s *DescribeClusterDetailResponseBody) SetRegionId(v string) *DescribeClust
 
 func (s *DescribeClusterDetailResponseBody) SetResourceGroupId(v string) *DescribeClusterDetailResponseBody {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetRrsaConfig(v *DescribeClusterDetailResponseBodyRrsaConfig) *DescribeClusterDetailResponseBody {
+	s.RrsaConfig = v
 	return s
 }
 
@@ -1229,5 +1253,100 @@ func (s *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) Set
 }
 
 func (s *DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterDetailResponseBodyRrsaConfig struct {
+	Audience                *string `json:"audience,omitempty" xml:"audience,omitempty"`
+	Enabled                 *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Issuer                  *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
+	JwksUrl                 *string `json:"jwks_url,omitempty" xml:"jwks_url,omitempty"`
+	MaxOidcTokenExpiration  *string `json:"max_oidc_token_expiration,omitempty" xml:"max_oidc_token_expiration,omitempty"`
+	OidcArn                 *string `json:"oidc_arn,omitempty" xml:"oidc_arn,omitempty"`
+	OidcName                *string `json:"oidc_name,omitempty" xml:"oidc_name,omitempty"`
+	OpenApiConfigurationUrl *string `json:"open_api_configuration_url,omitempty" xml:"open_api_configuration_url,omitempty"`
+}
+
+func (s DescribeClusterDetailResponseBodyRrsaConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterDetailResponseBodyRrsaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetAudience() *string {
+	return s.Audience
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetIssuer() *string {
+	return s.Issuer
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetJwksUrl() *string {
+	return s.JwksUrl
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetMaxOidcTokenExpiration() *string {
+	return s.MaxOidcTokenExpiration
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetOidcArn() *string {
+	return s.OidcArn
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetOidcName() *string {
+	return s.OidcName
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) GetOpenApiConfigurationUrl() *string {
+	return s.OpenApiConfigurationUrl
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetAudience(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.Audience = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetEnabled(v bool) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetIssuer(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.Issuer = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetJwksUrl(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.JwksUrl = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetMaxOidcTokenExpiration(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.MaxOidcTokenExpiration = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetOidcArn(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.OidcArn = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetOidcName(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.OidcName = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) SetOpenApiConfigurationUrl(v string) *DescribeClusterDetailResponseBodyRrsaConfig {
+	s.OpenApiConfigurationUrl = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBodyRrsaConfig) Validate() error {
 	return dara.Validate(s)
 }

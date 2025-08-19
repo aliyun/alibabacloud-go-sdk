@@ -868,6 +868,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy) V
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy struct {
+	ExcludePackages *string `json:"exclude_packages,omitempty" xml:"exclude_packages,omitempty"`
 	// Whether to allow restarting nodes.
 	//
 	// example:
@@ -890,12 +891,21 @@ func (s DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) GoS
 	return s.String()
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) GetExcludePackages() *string {
+	return s.ExcludePackages
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) GetRestartNode() *bool {
 	return s.RestartNode
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) GetVulLevel() *string {
 	return s.VulLevel
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) SetExcludePackages(v string) *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy {
+	s.ExcludePackages = &v
+	return s
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy) SetRestartNode(v bool) *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy {

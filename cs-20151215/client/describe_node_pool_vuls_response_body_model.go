@@ -150,7 +150,8 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	// example:
 	//
 	// false
-	NeedReboot *bool `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
+	NeedReboot  *bool                                                           `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
+	PackageList []*DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList `json:"package_list,omitempty" xml:"package_list,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNodePoolVulsResponseBodyVulRecordsVulList) String() string {
@@ -181,6 +182,10 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) GetNeedReboot() *boo
 	return s.NeedReboot
 }
 
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) GetPackageList() []*DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList {
+	return s.PackageList
+}
+
 func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetAliasName(v string) *DescribeNodePoolVulsResponseBodyVulRecordsVulList {
 	s.AliasName = &v
 	return s
@@ -206,6 +211,36 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetNeedReboot(v bool
 	return s
 }
 
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetPackageList(v []*DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) *DescribeNodePoolVulsResponseBodyVulRecordsVulList {
+	s.PackageList = v
+	return s
+}
+
 func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) SetName(v string) *DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList) Validate() error {
 	return dara.Validate(s)
 }

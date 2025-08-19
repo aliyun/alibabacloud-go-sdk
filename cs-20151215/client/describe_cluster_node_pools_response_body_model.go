@@ -865,6 +865,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoUpgradePolic
 }
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy struct {
+	ExcludePackages *string `json:"exclude_packages,omitempty" xml:"exclude_packages,omitempty"`
 	// Specifies whether to allow node restart. This parameter takes effect only if `auto_vul_fix` is set to true. Valid values:
 	//
 	// 	- `true`: allows node restart.
@@ -897,12 +898,21 @@ func (s DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy)
 	return s.String()
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) GetExcludePackages() *string {
+	return s.ExcludePackages
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) GetRestartNode() *bool {
 	return s.RestartNode
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) GetVulLevel() *string {
 	return s.VulLevel
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) SetExcludePackages(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy {
+	s.ExcludePackages = &v
+	return s
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy) SetRestartNode(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy {

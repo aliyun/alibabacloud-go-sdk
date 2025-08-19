@@ -340,7 +340,8 @@ type ModifyClusterNodePoolRequestKubernetesConfig struct {
 	// 	- A label is a case-sensitive key-value pair. You can add up to 20 labels.
 	//
 	// 	- The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
-	Labels []*Tag `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	Labels       []*Tag  `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
 	// Predefined custom data. Nodes automatically run predefined scripts before they are added to the cluster. For more information, see [User-Data script](https://help.aliyun.com/document_detail/49121.html).
 	//
 	// example:
@@ -407,6 +408,10 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) GetLabels() []*Tag {
 	return s.Labels
 }
 
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) GetNodeNameMode() *string {
+	return s.NodeNameMode
+}
+
 func (s *ModifyClusterNodePoolRequestKubernetesConfig) GetPreUserData() *string {
 	return s.PreUserData
 }
@@ -443,6 +448,11 @@ func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetCpuPolicy(v string) *M
 
 func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetLabels(v []*Tag) *ModifyClusterNodePoolRequestKubernetesConfig {
 	s.Labels = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestKubernetesConfig) SetNodeNameMode(v string) *ModifyClusterNodePoolRequestKubernetesConfig {
+	s.NodeNameMode = &v
 	return s
 }
 
@@ -744,6 +754,7 @@ func (s *ModifyClusterNodePoolRequestManagementAutoUpgradePolicy) Validate() err
 }
 
 type ModifyClusterNodePoolRequestManagementAutoVulFixPolicy struct {
+	ExcludePackages *string `json:"exclude_packages,omitempty" xml:"exclude_packages,omitempty"`
 	// Specifies whether ACK is allowed to automatically restart nodes after repairing the nodes. Valid values:
 	//
 	// 	- `true`: yes.
@@ -778,12 +789,21 @@ func (s ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) GoString() strin
 	return s.String()
 }
 
+func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) GetExcludePackages() *string {
+	return s.ExcludePackages
+}
+
 func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) GetRestartNode() *bool {
 	return s.RestartNode
 }
 
 func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) GetVulLevel() *string {
 	return s.VulLevel
+}
+
+func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) SetExcludePackages(v string) *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy {
+	s.ExcludePackages = &v
+	return s
 }
 
 func (s *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy) SetRestartNode(v bool) *ModifyClusterNodePoolRequestManagementAutoVulFixPolicy {

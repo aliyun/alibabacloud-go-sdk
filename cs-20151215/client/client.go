@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("cs.aliyuncs.com"),
