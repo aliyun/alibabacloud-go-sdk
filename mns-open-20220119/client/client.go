@@ -781,6 +781,70 @@ func (client *Client) GetEndpointAttribute(request *GetEndpointAttributeRequest)
 
 // Summary:
 //
+// 获取事件通知规则
+//
+// @param request - GetEventRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEventRuleResponse
+func (client *Client) GetEventRuleWithOptions(request *GetEventRuleRequest, runtime *dara.RuntimeOptions) (_result *GetEventRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductName) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEventRule"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEventRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取事件通知规则
+//
+// @param request - GetEventRuleRequest
+//
+// @return GetEventRuleResponse
+func (client *Client) GetEventRule(request *GetEventRuleRequest) (_result *GetEventRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetEventRuleResponse{}
+	_body, _err := client.GetEventRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the attributes of an existing queue.
 //
 // @param request - GetQueueAttributesRequest
@@ -964,6 +1028,104 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetTopicAttributesResponse{}
 	_body, _err := client.GetTopicAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件通知列表
+//
+// @param tmpReq - ListEventRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventRulesResponse
+func (client *Client) ListEventRulesWithOptions(tmpReq *ListEventRulesRequest, runtime *dara.RuntimeOptions) (_result *ListEventRulesResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListEventRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Subscription) {
+		request.SubscriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Subscription, dara.String("Subscription"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductName) {
+		query["ProductName"] = request.ProductName
+	}
+
+	if !dara.IsNil(request.ResourceName) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SubscriptionShrink) {
+		query["Subscription"] = request.SubscriptionShrink
+	}
+
+	if !dara.IsNil(request.TopicName) {
+		query["TopicName"] = request.TopicName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEventRules"),
+		Version:     dara.String("2022-01-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEventRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件通知列表
+//
+// @param request - ListEventRulesRequest
+//
+// @return ListEventRulesResponse
+func (client *Client) ListEventRules(request *ListEventRulesRequest) (_result *ListEventRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListEventRulesResponse{}
+	_body, _err := client.ListEventRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
