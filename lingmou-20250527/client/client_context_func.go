@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("lingmou"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseChatInstanceSessionsResponse
-func (client *Client) CloseChatInstanceSessionsWithOptions(instanceId *string, tmpReq *CloseChatInstanceSessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseChatInstanceSessionsResponse, _err error) {
+func (client *Client) CloseChatInstanceSessionsWithContext(ctx context.Context, instanceId *string, tmpReq *CloseChatInstanceSessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CloseChatInstanceSessionsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -98,30 +50,11 @@ func (client *Client) CloseChatInstanceSessionsWithOptions(instanceId *string, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseChatInstanceSessionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 关闭会话实例session
-//
-// @param request - CloseChatInstanceSessionsRequest
-//
-// @return CloseChatInstanceSessionsResponse
-func (client *Client) CloseChatInstanceSessions(instanceId *string, request *CloseChatInstanceSessionsRequest) (_result *CloseChatInstanceSessionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CloseChatInstanceSessionsResponse{}
-	_body, _err := client.CloseChatInstanceSessionsWithOptions(instanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -136,7 +69,7 @@ func (client *Client) CloseChatInstanceSessions(instanceId *string, request *Clo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChatSessionResponse
-func (client *Client) CreateChatSessionWithOptions(id *string, request *CreateChatSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateChatSessionResponse, _err error) {
+func (client *Client) CreateChatSessionWithContext(ctx context.Context, id *string, request *CreateChatSessionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateChatSessionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -170,30 +103,11 @@ func (client *Client) CreateChatSessionWithOptions(id *string, request *CreateCh
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChatSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建数字人会话
-//
-// @param request - CreateChatSessionRequest
-//
-// @return CreateChatSessionResponse
-func (client *Client) CreateChatSession(id *string, request *CreateChatSessionRequest) (_result *CreateChatSessionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateChatSessionResponse{}
-	_body, _err := client.CreateChatSessionWithOptions(id, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -208,7 +122,7 @@ func (client *Client) CreateChatSession(id *string, request *CreateChatSessionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryChatInstanceSessionsResponse
-func (client *Client) QueryChatInstanceSessionsWithOptions(instanceId *string, tmpReq *QueryChatInstanceSessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryChatInstanceSessionsResponse, _err error) {
+func (client *Client) QueryChatInstanceSessionsWithContext(ctx context.Context, instanceId *string, tmpReq *QueryChatInstanceSessionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryChatInstanceSessionsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -240,29 +154,10 @@ func (client *Client) QueryChatInstanceSessionsWithOptions(instanceId *string, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryChatInstanceSessionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询会话实例session
-//
-// @param request - QueryChatInstanceSessionsRequest
-//
-// @return QueryChatInstanceSessionsResponse
-func (client *Client) QueryChatInstanceSessions(instanceId *string, request *QueryChatInstanceSessionsRequest) (_result *QueryChatInstanceSessionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryChatInstanceSessionsResponse{}
-	_body, _err := client.QueryChatInstanceSessionsWithOptions(instanceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
