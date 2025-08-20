@@ -55,6 +55,7 @@ func (s *UpdateApprovalProcessResponseBody) Validate() error {
 
 type UpdateApprovalProcessResponseBodyProcess struct {
 	AppUninstallPolicies *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	ApprovalType         *int32                                                        `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// example:
 	//
 	// 2022-07-11 15:31:39
@@ -65,6 +66,8 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	DomainBlacklistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	DomainWhitelistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
 	EndpointHardeningPolicies  *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
+	EventLabel                 *string                                                             `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	ExternalConfig             *string                                                             `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
 	PeripheraBlockPolicies     *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies     `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
 	// example:
 	//
@@ -86,6 +89,10 @@ func (s UpdateApprovalProcessResponseBodyProcess) GoString() string {
 
 func (s *UpdateApprovalProcessResponseBodyProcess) GetAppUninstallPolicies() *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
 	return s.AppUninstallPolicies
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) GetApprovalType() *int32 {
+	return s.ApprovalType
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcess) GetCreateTime() *string {
@@ -116,6 +123,14 @@ func (s *UpdateApprovalProcessResponseBodyProcess) GetEndpointHardeningPolicies(
 	return s.EndpointHardeningPolicies
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcess) GetEventLabel() *string {
+	return s.EventLabel
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) GetExternalConfig() *string {
+	return s.ExternalConfig
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcess) GetPeripheraBlockPolicies() *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
 	return s.PeripheraBlockPolicies
 }
@@ -142,6 +157,11 @@ func (s *UpdateApprovalProcessResponseBodyProcess) GetSoftwareHardeningPolicies(
 
 func (s *UpdateApprovalProcessResponseBodyProcess) SetAppUninstallPolicies(v *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) *UpdateApprovalProcessResponseBodyProcess {
 	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetApprovalType(v int32) *UpdateApprovalProcessResponseBodyProcess {
+	s.ApprovalType = &v
 	return s
 }
 
@@ -180,6 +200,16 @@ func (s *UpdateApprovalProcessResponseBodyProcess) SetEndpointHardeningPolicies(
 	return s
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcess) SetEventLabel(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.EventLabel = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetExternalConfig(v string) *UpdateApprovalProcessResponseBodyProcess {
+	s.ExternalConfig = &v
+	return s
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcess) SetPeripheraBlockPolicies(v *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) *UpdateApprovalProcessResponseBodyProcess {
 	s.PeripheraBlockPolicies = v
 	return s
@@ -215,7 +245,9 @@ func (s *UpdateApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                               `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -230,12 +262,30 @@ func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GoString()
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies {
@@ -252,8 +302,55 @@ func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate(
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                       `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                     `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -268,12 +365,30 @@ func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GoSt
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies {
@@ -290,8 +405,55 @@ func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Val
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessDlpSendPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                            `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                          `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -306,12 +468,30 @@ func (s UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GoString() stri
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies {
@@ -328,8 +508,55 @@ func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() err
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                  `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -344,12 +571,30 @@ func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GoStrin
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies {
@@ -366,8 +611,55 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Valida
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                  `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -382,12 +674,30 @@ func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GoStrin
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies {
@@ -404,9 +714,56 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Valida
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	ExternalProcessId *string                                                                      `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                    `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId          *string                                                                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
@@ -417,12 +774,30 @@ func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GoStr
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
@@ -439,8 +814,55 @@ func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Vali
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                   `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                 `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -455,12 +877,30 @@ func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GoString
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies {
@@ -474,6 +914,51 @@ func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) SetSche
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -516,7 +1001,9 @@ func (s *UpdateApprovalProcessResponseBodyProcessProcessNodes) Validate() error 
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	ExternalProcessId *string                                                                  `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -531,12 +1018,30 @@ func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GoString(
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
@@ -553,9 +1058,56 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate
 	return dara.Validate(s)
 }
 
+type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) Validate() error {
+	return dara.Validate(s)
+}
+
 type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
-	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	ExternalProcessId *string                                                                      `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	FieldMap          []*UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	PolicyIds         []*string                                                                    `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId          *string                                                                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
@@ -566,12 +1118,30 @@ func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GoStr
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GetExternalProcessId() *string {
+	return s.ExternalProcessId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GetFieldMap() []*UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
+	return s.FieldMap
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GetPolicyIds() []*string {
 	return s.PolicyIds
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GetSchemaId() *string {
 	return s.SchemaId
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetExternalProcessId(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
+	s.ExternalProcessId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetFieldMap(v []*UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
+	s.FieldMap = v
+	return s
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
@@ -585,5 +1155,50 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetS
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GetDisplayField() *string {
+	return s.DisplayField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GetSystemField() *string {
+	return s.SystemField
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) SetDisplayField(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
+	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
+	s.DisplayFieldValue = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) SetSystemField(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
+	s.SystemField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) Validate() error {
 	return dara.Validate(s)
 }

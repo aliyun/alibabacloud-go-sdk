@@ -13,6 +13,8 @@ type iDisposalContent interface {
 	GetAlertContent() *string
 	SetAlertContentEn(v string) *DisposalContent
 	GetAlertContentEn() *string
+	SetAlertIntervalSeconds(v int64) *DisposalContent
+	GetAlertIntervalSeconds() *int64
 	SetAlertTitle(v string) *DisposalContent
 	GetAlertTitle() *string
 	SetAlertTitleEn(v string) *DisposalContent
@@ -27,13 +29,16 @@ type iDisposalContent interface {
 	GetNotifyActions() []*string
 	SetProhibitActions(v []*string) *DisposalContent
 	GetProhibitActions() []*string
+	SetProhibitSoftwareIds(v []*string) *DisposalContent
+	GetProhibitSoftwareIds() []*string
 }
 
 type DisposalContent struct {
 	// if can be null:
 	// true
-	AlertContent   *string `json:"AlertContent,omitempty" xml:"AlertContent,omitempty"`
-	AlertContentEn *string `json:"AlertContentEn,omitempty" xml:"AlertContentEn,omitempty"`
+	AlertContent         *string `json:"AlertContent,omitempty" xml:"AlertContent,omitempty"`
+	AlertContentEn       *string `json:"AlertContentEn,omitempty" xml:"AlertContentEn,omitempty"`
+	AlertIntervalSeconds *int64  `json:"AlertIntervalSeconds,omitempty" xml:"AlertIntervalSeconds,omitempty"`
 	// if can be null:
 	// true
 	AlertTitle           *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
@@ -45,8 +50,9 @@ type DisposalContent struct {
 	//
 	// if can be null:
 	// true
-	NotifyActions   []*string `json:"NotifyActions,omitempty" xml:"NotifyActions,omitempty" type:"Repeated"`
-	ProhibitActions []*string `json:"ProhibitActions,omitempty" xml:"ProhibitActions,omitempty" type:"Repeated"`
+	NotifyActions       []*string `json:"NotifyActions,omitempty" xml:"NotifyActions,omitempty" type:"Repeated"`
+	ProhibitActions     []*string `json:"ProhibitActions,omitempty" xml:"ProhibitActions,omitempty" type:"Repeated"`
+	ProhibitSoftwareIds []*string `json:"ProhibitSoftwareIds,omitempty" xml:"ProhibitSoftwareIds,omitempty" type:"Repeated"`
 }
 
 func (s DisposalContent) String() string {
@@ -63,6 +69,10 @@ func (s *DisposalContent) GetAlertContent() *string {
 
 func (s *DisposalContent) GetAlertContentEn() *string {
 	return s.AlertContentEn
+}
+
+func (s *DisposalContent) GetAlertIntervalSeconds() *int64 {
+	return s.AlertIntervalSeconds
 }
 
 func (s *DisposalContent) GetAlertTitle() *string {
@@ -93,6 +103,10 @@ func (s *DisposalContent) GetProhibitActions() []*string {
 	return s.ProhibitActions
 }
 
+func (s *DisposalContent) GetProhibitSoftwareIds() []*string {
+	return s.ProhibitSoftwareIds
+}
+
 func (s *DisposalContent) SetAlertContent(v string) *DisposalContent {
 	s.AlertContent = &v
 	return s
@@ -100,6 +114,11 @@ func (s *DisposalContent) SetAlertContent(v string) *DisposalContent {
 
 func (s *DisposalContent) SetAlertContentEn(v string) *DisposalContent {
 	s.AlertContentEn = &v
+	return s
+}
+
+func (s *DisposalContent) SetAlertIntervalSeconds(v int64) *DisposalContent {
+	s.AlertIntervalSeconds = &v
 	return s
 }
 
@@ -135,6 +154,11 @@ func (s *DisposalContent) SetNotifyActions(v []*string) *DisposalContent {
 
 func (s *DisposalContent) SetProhibitActions(v []*string) *DisposalContent {
 	s.ProhibitActions = v
+	return s
+}
+
+func (s *DisposalContent) SetProhibitSoftwareIds(v []*string) *DisposalContent {
+	s.ProhibitSoftwareIds = v
 	return s
 }
 

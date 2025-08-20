@@ -75,6 +75,7 @@ type ListApprovalsResponseBodyApprovals struct {
 	// approval-872b5e911b35****
 	ApprovalId         *string                                                 `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
 	ApprovalProgresses []*ListApprovalsResponseBodyApprovalsApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
+	ApprovalType       *int32                                                  `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// example:
 	//
 	// 2022-11-15 22:11:55
@@ -136,6 +137,10 @@ func (s *ListApprovalsResponseBodyApprovals) GetApprovalId() *string {
 
 func (s *ListApprovalsResponseBodyApprovals) GetApprovalProgresses() []*ListApprovalsResponseBodyApprovalsApprovalProgresses {
 	return s.ApprovalProgresses
+}
+
+func (s *ListApprovalsResponseBodyApprovals) GetApprovalType() *int32 {
+	return s.ApprovalType
 }
 
 func (s *ListApprovalsResponseBodyApprovals) GetCreateTime() *string {
@@ -206,6 +211,11 @@ func (s *ListApprovalsResponseBodyApprovals) SetApprovalId(v string) *ListApprov
 
 func (s *ListApprovalsResponseBodyApprovals) SetApprovalProgresses(v []*ListApprovalsResponseBodyApprovalsApprovalProgresses) *ListApprovalsResponseBodyApprovals {
 	s.ApprovalProgresses = v
+	return s
+}
+
+func (s *ListApprovalsResponseBodyApprovals) SetApprovalType(v int32) *ListApprovalsResponseBodyApprovals {
+	s.ApprovalType = &v
 	return s
 }
 

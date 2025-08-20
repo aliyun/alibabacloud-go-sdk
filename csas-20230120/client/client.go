@@ -6239,8 +6239,29 @@ func (client *Client) UpdateApprovalProcessWithOptions(tmpReq *UpdateApprovalPro
 	}
 	request := &UpdateApprovalProcessShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MatchSchemaConfigs) {
+		request.MatchSchemaConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchSchemaConfigs, dara.String("MatchSchemaConfigs"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.MatchSchemas) {
 		request.MatchSchemasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MatchSchemas, dara.String("MatchSchemas"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApprovalType) {
+		query["ApprovalType"] = request.ApprovalType
+	}
+
+	if !dara.IsNil(request.EventLabel) {
+		query["EventLabel"] = request.EventLabel
+	}
+
+	if !dara.IsNil(request.ExternalConfig) {
+		query["ExternalConfig"] = request.ExternalConfig
+	}
+
+	if !dara.IsNil(request.MatchSchemaConfigsShrink) {
+		query["MatchSchemaConfigs"] = request.MatchSchemaConfigsShrink
 	}
 
 	body := map[string]interface{}{}
@@ -6268,7 +6289,8 @@ func (client *Client) UpdateApprovalProcessWithOptions(tmpReq *UpdateApprovalPro
 	body = dara.ToMap(body,
 		openapiutil.Query(bodyFlat))
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateApprovalProcess"),

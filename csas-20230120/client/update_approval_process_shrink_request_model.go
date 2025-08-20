@@ -9,8 +9,16 @@ type iUpdateApprovalProcessShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApprovalType(v int32) *UpdateApprovalProcessShrinkRequest
+	GetApprovalType() *int32
 	SetDescription(v string) *UpdateApprovalProcessShrinkRequest
 	GetDescription() *string
+	SetEventLabel(v string) *UpdateApprovalProcessShrinkRequest
+	GetEventLabel() *string
+	SetExternalConfig(v string) *UpdateApprovalProcessShrinkRequest
+	GetExternalConfig() *string
+	SetMatchSchemaConfigsShrink(v string) *UpdateApprovalProcessShrinkRequest
+	GetMatchSchemaConfigsShrink() *string
 	SetMatchSchemasShrink(v string) *UpdateApprovalProcessShrinkRequest
 	GetMatchSchemasShrink() *string
 	SetProcessId(v string) *UpdateApprovalProcessShrinkRequest
@@ -22,8 +30,12 @@ type iUpdateApprovalProcessShrinkRequest interface {
 }
 
 type UpdateApprovalProcessShrinkRequest struct {
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
+	ApprovalType             *int32  `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EventLabel               *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	ExternalConfig           *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	MatchSchemaConfigsShrink *string `json:"MatchSchemaConfigs,omitempty" xml:"MatchSchemaConfigs,omitempty"`
+	MatchSchemasShrink       *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42,8 +54,24 @@ func (s UpdateApprovalProcessShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateApprovalProcessShrinkRequest) GetApprovalType() *int32 {
+	return s.ApprovalType
+}
+
 func (s *UpdateApprovalProcessShrinkRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) GetEventLabel() *string {
+	return s.EventLabel
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) GetExternalConfig() *string {
+	return s.ExternalConfig
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) GetMatchSchemaConfigsShrink() *string {
+	return s.MatchSchemaConfigsShrink
 }
 
 func (s *UpdateApprovalProcessShrinkRequest) GetMatchSchemasShrink() *string {
@@ -62,8 +90,28 @@ func (s *UpdateApprovalProcessShrinkRequest) GetProcessNodes() [][]*string {
 	return s.ProcessNodes
 }
 
+func (s *UpdateApprovalProcessShrinkRequest) SetApprovalType(v int32) *UpdateApprovalProcessShrinkRequest {
+	s.ApprovalType = &v
+	return s
+}
+
 func (s *UpdateApprovalProcessShrinkRequest) SetDescription(v string) *UpdateApprovalProcessShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetEventLabel(v string) *UpdateApprovalProcessShrinkRequest {
+	s.EventLabel = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetExternalConfig(v string) *UpdateApprovalProcessShrinkRequest {
+	s.ExternalConfig = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessShrinkRequest) SetMatchSchemaConfigsShrink(v string) *UpdateApprovalProcessShrinkRequest {
+	s.MatchSchemaConfigsShrink = &v
 	return s
 }
 

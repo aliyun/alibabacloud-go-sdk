@@ -70,6 +70,7 @@ func (s *ListApprovalProcessesResponseBody) Validate() error {
 
 type ListApprovalProcessesResponseBodyProcesses struct {
 	AppUninstallPolicies *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
+	ApprovalType         *int32                                                          `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// example:
 	//
 	// 2024-02-27 14:04:27
@@ -101,6 +102,10 @@ func (s ListApprovalProcessesResponseBodyProcesses) GoString() string {
 
 func (s *ListApprovalProcessesResponseBodyProcesses) GetAppUninstallPolicies() *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies {
 	return s.AppUninstallPolicies
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) GetApprovalType() *int32 {
+	return s.ApprovalType
 }
 
 func (s *ListApprovalProcessesResponseBodyProcesses) GetCreateTime() *string {
@@ -157,6 +162,11 @@ func (s *ListApprovalProcessesResponseBodyProcesses) GetSoftwareHardeningPolicie
 
 func (s *ListApprovalProcessesResponseBodyProcesses) SetAppUninstallPolicies(v *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies) *ListApprovalProcessesResponseBodyProcesses {
 	s.AppUninstallPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetApprovalType(v int32) *ListApprovalProcessesResponseBodyProcesses {
+	s.ApprovalType = &v
 	return s
 }
 
