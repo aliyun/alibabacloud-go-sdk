@@ -4478,6 +4478,23 @@ func (client *Client) CreateReport(request *CreateReportRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRunResponse
+func (client *Client) CreateRunWithSSE(request *CreateRunRequest, headers *CreateRunHeaders, runtime *dara.RuntimeOptions, _yield chan *CreateRunResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.createRunWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 创建运行
+//
+// @param request - CreateRunRequest
+//
+// @param headers - CreateRunHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRunResponse
 func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers *CreateRunHeaders, runtime *dara.RuntimeOptions) (_result *CreateRunResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -15417,6 +15434,23 @@ func (client *Client) InviteUsers(request *InviteUsersRequest) (_result *InviteU
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InvokeAssistantResponse
+func (client *Client) InvokeAssistantWithSSE(request *InvokeAssistantRequest, headers *InvokeAssistantHeaders, runtime *dara.RuntimeOptions, _yield chan *InvokeAssistantResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.invokeAssistantWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 调用助理
+//
+// @param request - InvokeAssistantRequest
+//
+// @param headers - InvokeAssistantHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeAssistantResponse
 func (client *Client) InvokeAssistantWithOptions(request *InvokeAssistantRequest, headers *InvokeAssistantHeaders, runtime *dara.RuntimeOptions) (_result *InvokeAssistantResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -15501,6 +15535,23 @@ func (client *Client) InvokeAssistant(request *InvokeAssistantRequest) (_result 
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 调用AI技能
+//
+// @param tmpReq - InvokeSkillRequest
+//
+// @param tmpHeader - InvokeSkillHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeSkillResponse
+func (client *Client) InvokeSkillWithSSE(tmpReq *InvokeSkillRequest, tmpHeader *InvokeSkillHeaders, runtime *dara.RuntimeOptions, _yield chan *InvokeSkillResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.invokeSkillWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, tmpHeader, runtime)
+	return
 }
 
 // Summary:
@@ -26408,4 +26459,234 @@ func (client *Client) WearOrgHonor(request *WearOrgHonorRequest) (_result *WearO
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) createRunWithSSE_opYieldFunc(_yield chan *CreateRunResponse, _yieldErr chan error, request *CreateRunRequest, headers *CreateRunHeaders, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowStructViewContent) {
+		body["allowStructViewContent"] = request.AllowStructViewContent
+	}
+
+	if !dara.IsNil(request.AssistantId) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.OriginalAssistantId) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountId) {
+		realHeaders["accountId"] = dara.String(dara.ToString(dara.StringValue(headers.AccountId)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRun"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/assistant/createRun"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) invokeAssistantWithSSE_opYieldFunc(_yield chan *InvokeAssistantResponse, _yieldErr chan error, request *InvokeAssistantRequest, headers *InvokeAssistantHeaders, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssistantId) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.OriginalAssistantId) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SourceIdOfOriginalAssistantId) {
+		body["sourceIdOfOriginalAssistantId"] = request.SourceIdOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.SourceTypeOfOriginalAssistantId) {
+		body["sourceTypeOfOriginalAssistantId"] = request.SourceTypeOfOriginalAssistantId
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountId) {
+		realHeaders["accountId"] = dara.String(dara.ToString(dara.StringValue(headers.AccountId)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeAssistant"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/assistant/invokeAssistant"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) invokeSkillWithSSE_opYieldFunc(_yield chan *InvokeSkillResponse, _yieldErr chan error, tmpReq *InvokeSkillRequest, tmpHeader *InvokeSkillHeaders, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &InvokeSkillShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &InvokeSkillShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		body["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["Stream"] = request.Stream
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeSkill"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/ai/v1/skill/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }

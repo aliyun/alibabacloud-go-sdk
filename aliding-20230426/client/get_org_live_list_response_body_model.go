@@ -208,8 +208,9 @@ type GetOrgLiveListResponseBodyResultNewLiveLiveList struct {
 	// example:
 	//
 	// nickName
-	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
-	AnchorUnionId  *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	AnchorNickname         *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	AnchorUnionId          *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	AnchorUnionIdInAlibaba *string `json:"AnchorUnionIdInAlibaba,omitempty" xml:"AnchorUnionIdInAlibaba,omitempty"`
 	// example:
 	//
 	// ersqqdddf
@@ -252,6 +253,10 @@ func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) GetAnchorUnionId() *st
 	return s.AnchorUnionId
 }
 
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) GetAnchorUnionIdInAlibaba() *string {
+	return s.AnchorUnionIdInAlibaba
+}
+
 func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) GetAnchorUserId() *string {
 	return s.AnchorUserId
 }
@@ -283,6 +288,11 @@ func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorNickname(v st
 
 func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorUnionId(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
 	s.AnchorUnionId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultNewLiveLiveList) SetAnchorUnionIdInAlibaba(v string) *GetOrgLiveListResponseBodyResultNewLiveLiveList {
+	s.AnchorUnionIdInAlibaba = &v
 	return s
 }
 
@@ -404,8 +414,9 @@ type GetOrgLiveListResponseBodyResultUpdateLiveLiveList struct {
 	// example:
 	//
 	// nickName
-	AnchorNickname *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
-	AnchorUnionId  *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	AnchorNickname         *string `json:"AnchorNickname,omitempty" xml:"AnchorNickname,omitempty"`
+	AnchorUnionId          *string `json:"AnchorUnionId,omitempty" xml:"AnchorUnionId,omitempty"`
+	AnchorUnionIdInAlibaba *string `json:"AnchorUnionIdInAlibaba,omitempty" xml:"AnchorUnionIdInAlibaba,omitempty"`
 	// example:
 	//
 	// 012345
@@ -444,6 +455,10 @@ func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) GetAnchorUnionId() 
 	return s.AnchorUnionId
 }
 
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) GetAnchorUnionIdInAlibaba() *string {
+	return s.AnchorUnionIdInAlibaba
+}
+
 func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) GetAnchorUserId() *string {
 	return s.AnchorUserId
 }
@@ -471,6 +486,11 @@ func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorNickname(v
 
 func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorUnionId(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
 	s.AnchorUnionId = &v
+	return s
+}
+
+func (s *GetOrgLiveListResponseBodyResultUpdateLiveLiveList) SetAnchorUnionIdInAlibaba(v string) *GetOrgLiveListResponseBodyResultUpdateLiveLiveList {
+	s.AnchorUnionIdInAlibaba = &v
 	return s
 }
 
