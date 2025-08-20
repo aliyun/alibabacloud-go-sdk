@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("cr"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelArtifactBuildTaskResponse
-func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifactBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelArtifactBuildTaskResponse, _err error) {
+func (client *Client) CancelArtifactBuildTaskWithContext(ctx context.Context, request *CancelArtifactBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelArtifactBuildTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -93,29 +45,11 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelArtifactBuildTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an artifact building task.
-//
-// @param request - CancelArtifactBuildTaskRequest
-//
-// @return CancelArtifactBuildTaskResponse
-func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRequest) (_result *CancelArtifactBuildTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelArtifactBuildTaskResponse{}
-	_body, _err := client.CancelArtifactBuildTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -128,7 +62,7 @@ func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelRepoBuildRecordResponse
-func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *CancelRepoBuildRecordResponse, _err error) {
+func (client *Client) CancelRepoBuildRecordWithContext(ctx context.Context, request *CancelRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *CancelRepoBuildRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -161,29 +95,11 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an image building task of a repository.
-//
-// @param request - CancelRepoBuildRecordRequest
-//
-// @return CancelRepoBuildRecordResponse
-func (client *Client) CancelRepoBuildRecord(request *CancelRepoBuildRecordRequest) (_result *CancelRepoBuildRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelRepoBuildRecordResponse{}
-	_body, _err := client.CancelRepoBuildRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -196,7 +112,7 @@ func (client *Client) CancelRepoBuildRecord(request *CancelRepoBuildRecordReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelRepoSyncTaskResponse
-func (client *Client) CancelRepoSyncTaskWithOptions(request *CancelRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelRepoSyncTaskResponse, _err error) {
+func (client *Client) CancelRepoSyncTaskWithContext(ctx context.Context, request *CancelRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelRepoSyncTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -225,29 +141,11 @@ func (client *Client) CancelRepoSyncTaskWithOptions(request *CancelRepoSyncTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a single replication task.
-//
-// @param request - CancelRepoSyncTaskRequest
-//
-// @return CancelRepoSyncTaskResponse
-func (client *Client) CancelRepoSyncTask(request *CancelRepoSyncTaskRequest) (_result *CancelRepoSyncTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelRepoSyncTaskResponse{}
-	_body, _err := client.CancelRepoSyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -260,7 +158,7 @@ func (client *Client) CancelRepoSyncTask(request *CancelRepoSyncTaskRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -293,29 +191,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which a resource belongs.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -334,7 +214,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateArtifactBuildRuleResponse
-func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
+func (client *Client) CreateArtifactBuildRuleWithContext(ctx context.Context, tmpReq *CreateArtifactBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -381,35 +261,11 @@ func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactB
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateArtifactBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Create image repository acceleration rules for image building.
-//
-// Description:
-//
-// You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry?spm=openapi-amp.newDocPublishment.0.0.bf82281fRj7rmV#section-n3q-ps7-x6k).
-//
-// Accelerated images are not supported in Alibaba Finance Cloud regions or Alibaba Gov Cloud regions.
-//
-// @param request - CreateArtifactBuildRuleRequest
-//
-// @return CreateArtifactBuildRuleResponse
-func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRequest) (_result *CreateArtifactBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateArtifactBuildRuleResponse{}
-	_body, _err := client.CreateArtifactBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -422,7 +278,7 @@ func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateArtifactLifecycleRuleResponse
-func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
+func (client *Client) CreateArtifactLifecycleRuleWithContext(ctx context.Context, request *CreateArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -479,29 +335,11 @@ func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArti
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a lifecycle management rule for an artifact.
-//
-// @param request - CreateArtifactLifecycleRuleRequest
-//
-// @return CreateArtifactLifecycleRuleResponse
-func (client *Client) CreateArtifactLifecycleRule(request *CreateArtifactLifecycleRuleRequest) (_result *CreateArtifactLifecycleRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateArtifactLifecycleRuleResponse{}
-	_body, _err := client.CreateArtifactLifecycleRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -514,7 +352,7 @@ func (client *Client) CreateArtifactLifecycleRule(request *CreateArtifactLifecyc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateArtifactSubscriptionRuleResponse
-func (client *Client) CreateArtifactSubscriptionRuleWithOptions(request *CreateArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactSubscriptionRuleResponse, _err error) {
+func (client *Client) CreateArtifactSubscriptionRuleWithContext(ctx context.Context, request *CreateArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactSubscriptionRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -579,29 +417,11 @@ func (client *Client) CreateArtifactSubscriptionRuleWithOptions(request *CreateA
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an artifact subscription rule.
-//
-// @param request - CreateArtifactSubscriptionRuleRequest
-//
-// @return CreateArtifactSubscriptionRuleResponse
-func (client *Client) CreateArtifactSubscriptionRule(request *CreateArtifactSubscriptionRuleRequest) (_result *CreateArtifactSubscriptionRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CreateArtifactSubscriptionRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -614,7 +434,7 @@ func (client *Client) CreateArtifactSubscriptionRule(request *CreateArtifactSubs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateArtifactSubscriptionTaskResponse
-func (client *Client) CreateArtifactSubscriptionTaskWithOptions(request *CreateArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactSubscriptionTaskResponse, _err error) {
+func (client *Client) CreateArtifactSubscriptionTaskWithContext(ctx context.Context, request *CreateArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateArtifactSubscriptionTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -643,29 +463,11 @@ func (client *Client) CreateArtifactSubscriptionTaskWithOptions(request *CreateA
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateArtifactSubscriptionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an artifact subscription task.
-//
-// @param request - CreateArtifactSubscriptionTaskRequest
-//
-// @return CreateArtifactSubscriptionTaskResponse
-func (client *Client) CreateArtifactSubscriptionTask(request *CreateArtifactSubscriptionTaskRequest) (_result *CreateArtifactSubscriptionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateArtifactSubscriptionTaskResponse{}
-	_body, _err := client.CreateArtifactSubscriptionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -678,7 +480,7 @@ func (client *Client) CreateArtifactSubscriptionTask(request *CreateArtifactSubs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBuildRecordByRecordResponse
-func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildRecordByRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateBuildRecordByRecordResponse, _err error) {
+func (client *Client) CreateBuildRecordByRecordWithContext(ctx context.Context, request *CreateBuildRecordByRecordRequest, runtime *dara.RuntimeOptions) (_result *CreateBuildRecordByRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -711,29 +513,11 @@ func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBuildRecordByRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image building record based on an existing record.
-//
-// @param request - CreateBuildRecordByRecordRequest
-//
-// @return CreateBuildRecordByRecordResponse
-func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByRecordRequest) (_result *CreateBuildRecordByRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBuildRecordByRecordResponse{}
-	_body, _err := client.CreateBuildRecordByRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -746,7 +530,7 @@ func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByReco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBuildRecordByRuleResponse
-func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRecordByRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateBuildRecordByRuleResponse, _err error) {
+func (client *Client) CreateBuildRecordByRuleWithContext(ctx context.Context, request *CreateBuildRecordByRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateBuildRecordByRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -779,29 +563,11 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBuildRecordByRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image building record based on a rule.
-//
-// @param request - CreateBuildRecordByRuleRequest
-//
-// @return CreateBuildRecordByRuleResponse
-func (client *Client) CreateBuildRecordByRule(request *CreateBuildRecordByRuleRequest) (_result *CreateBuildRecordByRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBuildRecordByRuleResponse{}
-	_body, _err := client.CreateBuildRecordByRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -814,7 +580,7 @@ func (client *Client) CreateBuildRecordByRule(request *CreateBuildRecordByRuleRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChainResponse
-func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtime *dara.RuntimeOptions) (_result *CreateChainResponse, _err error) {
+func (client *Client) CreateChainWithContext(ctx context.Context, request *CreateChainRequest, runtime *dara.RuntimeOptions) (_result *CreateChainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -863,29 +629,11 @@ func (client *Client) CreateChainWithOptions(request *CreateChainRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a delivery chain.
-//
-// @param request - CreateChainRequest
-//
-// @return CreateChainResponse
-func (client *Client) CreateChain(request *CreateChainRequest) (_result *CreateChainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChainResponse{}
-	_body, _err := client.CreateChainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -898,7 +646,7 @@ func (client *Client) CreateChain(request *CreateChainRequest) (_result *CreateC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChartNamespaceResponse
-func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateChartNamespaceResponse, _err error) {
+func (client *Client) CreateChartNamespaceWithContext(ctx context.Context, request *CreateChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateChartNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -935,29 +683,11 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a chart namespace in an instance.
-//
-// @param request - CreateChartNamespaceRequest
-//
-// @return CreateChartNamespaceResponse
-func (client *Client) CreateChartNamespace(request *CreateChartNamespaceRequest) (_result *CreateChartNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChartNamespaceResponse{}
-	_body, _err := client.CreateChartNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -970,7 +700,7 @@ func (client *Client) CreateChartNamespace(request *CreateChartNamespaceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateChartRepositoryResponse
-func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *CreateChartRepositoryResponse, _err error) {
+func (client *Client) CreateChartRepositoryWithContext(ctx context.Context, request *CreateChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *CreateChartRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1011,29 +741,11 @@ func (client *Client) CreateChartRepositoryWithOptions(request *CreateChartRepos
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a chart repository.
-//
-// @param request - CreateChartRepositoryRequest
-//
-// @return CreateChartRepositoryResponse
-func (client *Client) CreateChartRepository(request *CreateChartRepositoryRequest) (_result *CreateChartRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateChartRepositoryResponse{}
-	_body, _err := client.CreateChartRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1046,7 +758,7 @@ func (client *Client) CreateChartRepository(request *CreateChartRepositoryReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceEndpointAclPolicyResponse
-func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) CreateInstanceEndpointAclPolicyWithContext(ctx context.Context, request *CreateInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1087,29 +799,11 @@ func (client *Client) CreateInstanceEndpointAclPolicyWithOptions(request *Create
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a whitelist policy for the public endpoint of the instance.
-//
-// @param request - CreateInstanceEndpointAclPolicyRequest
-//
-// @return CreateInstanceEndpointAclPolicyResponse
-func (client *Client) CreateInstanceEndpointAclPolicy(request *CreateInstanceEndpointAclPolicyRequest) (_result *CreateInstanceEndpointAclPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.CreateInstanceEndpointAclPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1126,7 +820,7 @@ func (client *Client) CreateInstanceEndpointAclPolicy(request *CreateInstanceEnd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceVpcEndpointLinkedVpcResponse
-func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *CreateInstanceVpcEndpointLinkedVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
+func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithContext(ctx context.Context, request *CreateInstanceVpcEndpointLinkedVpcRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1167,33 +861,11 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpcWithOptions(request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a virtual private cloud (VPC) with a Container Registry instance.
-//
-// Description:
-//
-// The VPC quota must be purchased separately.
-//
-// @param request - CreateInstanceVpcEndpointLinkedVpcRequest
-//
-// @return CreateInstanceVpcEndpointLinkedVpcResponse
-func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstanceVpcEndpointLinkedVpcRequest) (_result *CreateInstanceVpcEndpointLinkedVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.CreateInstanceVpcEndpointLinkedVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1206,7 +878,7 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateNamespaceResponse
-func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *CreateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1253,29 +925,11 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a namespace of image repositories.
-//
-// @param request - CreateNamespaceRequest
-//
-// @return CreateNamespaceResponse
-func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1288,7 +942,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoBuildRuleResponse
-func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
+func (client *Client) CreateRepoBuildRuleWithContext(ctx context.Context, request *CreateRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoBuildRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1345,29 +999,11 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image building rule for a repository.
-//
-// @param request - CreateRepoBuildRuleRequest
-//
-// @return CreateRepoBuildRuleResponse
-func (client *Client) CreateRepoBuildRule(request *CreateRepoBuildRuleRequest) (_result *CreateRepoBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoBuildRuleResponse{}
-	_body, _err := client.CreateRepoBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1380,7 +1016,7 @@ func (client *Client) CreateRepoBuildRule(request *CreateRepoBuildRuleRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoSourceCodeRepoResponse
-func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
+func (client *Client) CreateRepoSourceCodeRepoWithContext(ctx context.Context, request *CreateRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1433,29 +1069,11 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Binds a source code repository to an image repository.
-//
-// @param request - CreateRepoSourceCodeRepoRequest
-//
-// @return CreateRepoSourceCodeRepoResponse
-func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepoRequest) (_result *CreateRepoSourceCodeRepoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoSourceCodeRepoResponse{}
-	_body, _err := client.CreateRepoSourceCodeRepoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1468,7 +1086,7 @@ func (client *Client) CreateRepoSourceCodeRepo(request *CreateRepoSourceCodeRepo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoSyncRuleResponse
-func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncRuleResponse, _err error) {
+func (client *Client) CreateRepoSyncRuleWithContext(ctx context.Context, request *CreateRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1541,29 +1159,11 @@ func (client *Client) CreateRepoSyncRuleWithOptions(request *CreateRepoSyncRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image synchronization rule for an image repository.
-//
-// @param request - CreateRepoSyncRuleRequest
-//
-// @return CreateRepoSyncRuleResponse
-func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_result *CreateRepoSyncRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoSyncRuleResponse{}
-	_body, _err := client.CreateRepoSyncRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1572,7 +1172,7 @@ func (client *Client) CreateRepoSyncRule(request *CreateRepoSyncRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoSyncTaskResponse
-func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncTaskResponse, _err error) {
+func (client *Client) CreateRepoSyncTaskWithContext(ctx context.Context, request *CreateRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1633,25 +1233,11 @@ func (client *Client) CreateRepoSyncTaskWithOptions(request *CreateRepoSyncTaskR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateRepoSyncTaskRequest
-//
-// @return CreateRepoSyncTaskResponse
-func (client *Client) CreateRepoSyncTask(request *CreateRepoSyncTaskRequest) (_result *CreateRepoSyncTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoSyncTaskResponse{}
-	_body, _err := client.CreateRepoSyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1664,7 +1250,7 @@ func (client *Client) CreateRepoSyncTask(request *CreateRepoSyncTaskRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoSyncTaskByRuleResponse
-func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyncTaskByRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncTaskByRuleResponse, _err error) {
+func (client *Client) CreateRepoSyncTaskByRuleWithContext(ctx context.Context, request *CreateRepoSyncTaskByRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoSyncTaskByRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1701,29 +1287,11 @@ func (client *Client) CreateRepoSyncTaskByRuleWithOptions(request *CreateRepoSyn
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoSyncTaskByRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image replication task based on a manual replication rule.
-//
-// @param request - CreateRepoSyncTaskByRuleRequest
-//
-// @return CreateRepoSyncTaskByRuleResponse
-func (client *Client) CreateRepoSyncTaskByRule(request *CreateRepoSyncTaskByRuleRequest) (_result *CreateRepoSyncTaskByRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoSyncTaskByRuleResponse{}
-	_body, _err := client.CreateRepoSyncTaskByRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1736,7 +1304,7 @@ func (client *Client) CreateRepoSyncTaskByRule(request *CreateRepoSyncTaskByRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoTagResponse
-func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTagResponse, _err error) {
+func (client *Client) CreateRepoTagWithContext(ctx context.Context, request *CreateRepoTagRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1777,29 +1345,11 @@ func (client *Client) CreateRepoTagWithOptions(request *CreateRepoTagRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image tag based on an existing image tag in an image repository.
-//
-// @param request - CreateRepoTagRequest
-//
-// @return CreateRepoTagResponse
-func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *CreateRepoTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoTagResponse{}
-	_body, _err := client.CreateRepoTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1812,7 +1362,7 @@ func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoTagScanTaskResponse
-func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTagScanTaskResponse, _err error) {
+func (client *Client) CreateRepoTagScanTaskWithContext(ctx context.Context, request *CreateRepoTagScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTagScanTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1857,29 +1407,11 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoTagScanTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image scan task.
-//
-// @param request - CreateRepoTagScanTaskRequest
-//
-// @return CreateRepoTagScanTaskResponse
-func (client *Client) CreateRepoTagScanTask(request *CreateRepoTagScanTaskRequest) (_result *CreateRepoTagScanTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoTagScanTaskResponse{}
-	_body, _err := client.CreateRepoTagScanTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1892,7 +1424,7 @@ func (client *Client) CreateRepoTagScanTask(request *CreateRepoTagScanTaskReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepoTriggerResponse
-func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTriggerResponse, _err error) {
+func (client *Client) CreateRepoTriggerWithContext(ctx context.Context, request *CreateRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *CreateRepoTriggerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1937,29 +1469,11 @@ func (client *Client) CreateRepoTriggerWithOptions(request *CreateRepoTriggerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a trigger for a repository.
-//
-// @param request - CreateRepoTriggerRequest
-//
-// @return CreateRepoTriggerResponse
-func (client *Client) CreateRepoTrigger(request *CreateRepoTriggerRequest) (_result *CreateRepoTriggerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepoTriggerResponse{}
-	_body, _err := client.CreateRepoTriggerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1972,7 +1486,7 @@ func (client *Client) CreateRepoTrigger(request *CreateRepoTriggerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRepositoryResponse
-func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryRequest, runtime *dara.RuntimeOptions) (_result *CreateRepositoryResponse, _err error) {
+func (client *Client) CreateRepositoryWithContext(ctx context.Context, request *CreateRepositoryRequest, runtime *dara.RuntimeOptions) (_result *CreateRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2021,29 +1535,11 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an image repository.
-//
-// @param request - CreateRepositoryRequest
-//
-// @return CreateRepositoryResponse
-func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_result *CreateRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRepositoryResponse{}
-	_body, _err := client.CreateRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2056,7 +1552,7 @@ func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteArtifactLifecycleRuleResponse
-func (client *Client) DeleteArtifactLifecycleRuleWithOptions(request *DeleteArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
+func (client *Client) DeleteArtifactLifecycleRuleWithContext(ctx context.Context, request *DeleteArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2085,29 +1581,11 @@ func (client *Client) DeleteArtifactLifecycleRuleWithOptions(request *DeleteArti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an artifact lifecycle management rule.
-//
-// @param request - DeleteArtifactLifecycleRuleRequest
-//
-// @return DeleteArtifactLifecycleRuleResponse
-func (client *Client) DeleteArtifactLifecycleRule(request *DeleteArtifactLifecycleRuleRequest) (_result *DeleteArtifactLifecycleRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteArtifactLifecycleRuleResponse{}
-	_body, _err := client.DeleteArtifactLifecycleRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2120,7 +1598,7 @@ func (client *Client) DeleteArtifactLifecycleRule(request *DeleteArtifactLifecyc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteArtifactSubscriptionRuleResponse
-func (client *Client) DeleteArtifactSubscriptionRuleWithOptions(request *DeleteArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteArtifactSubscriptionRuleResponse, _err error) {
+func (client *Client) DeleteArtifactSubscriptionRuleWithContext(ctx context.Context, request *DeleteArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteArtifactSubscriptionRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2149,29 +1627,11 @@ func (client *Client) DeleteArtifactSubscriptionRuleWithOptions(request *DeleteA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an artifact subscription rule.
-//
-// @param request - DeleteArtifactSubscriptionRuleRequest
-//
-// @return DeleteArtifactSubscriptionRuleResponse
-func (client *Client) DeleteArtifactSubscriptionRule(request *DeleteArtifactSubscriptionRuleRequest) (_result *DeleteArtifactSubscriptionRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteArtifactSubscriptionRuleResponse{}
-	_body, _err := client.DeleteArtifactSubscriptionRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2184,7 +1644,7 @@ func (client *Client) DeleteArtifactSubscriptionRule(request *DeleteArtifactSubs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChainResponse
-func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtime *dara.RuntimeOptions) (_result *DeleteChainResponse, _err error) {
+func (client *Client) DeleteChainWithContext(ctx context.Context, request *DeleteChainRequest, runtime *dara.RuntimeOptions) (_result *DeleteChainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2213,29 +1673,11 @@ func (client *Client) DeleteChainWithOptions(request *DeleteChainRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a delivery pipeline.
-//
-// @param request - DeleteChainRequest
-//
-// @return DeleteChainResponse
-func (client *Client) DeleteChain(request *DeleteChainRequest) (_result *DeleteChainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChainResponse{}
-	_body, _err := client.DeleteChainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2252,7 +1694,7 @@ func (client *Client) DeleteChain(request *DeleteChainRequest) (_result *DeleteC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChartNamespaceResponse
-func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartNamespaceResponse, _err error) {
+func (client *Client) DeleteChartNamespaceWithContext(ctx context.Context, request *DeleteChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2281,33 +1723,11 @@ func (client *Client) DeleteChartNamespaceWithOptions(request *DeleteChartNamesp
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a chart namespace from an instance.
-//
-// Description:
-//
-// >  If you delete a chart namespace, all repositories in the namespace and the charts in all repositories are deleted.
-//
-// @param request - DeleteChartNamespaceRequest
-//
-// @return DeleteChartNamespaceResponse
-func (client *Client) DeleteChartNamespace(request *DeleteChartNamespaceRequest) (_result *DeleteChartNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChartNamespaceResponse{}
-	_body, _err := client.DeleteChartNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2320,7 +1740,7 @@ func (client *Client) DeleteChartNamespace(request *DeleteChartNamespaceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChartReleaseResponse
-func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartReleaseResponse, _err error) {
+func (client *Client) DeleteChartReleaseWithContext(ctx context.Context, request *DeleteChartReleaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartReleaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2361,29 +1781,11 @@ func (client *Client) DeleteChartReleaseWithOptions(request *DeleteChartReleaseR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChartReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a chart version from a chart repository.
-//
-// @param request - DeleteChartReleaseRequest
-//
-// @return DeleteChartReleaseResponse
-func (client *Client) DeleteChartRelease(request *DeleteChartReleaseRequest) (_result *DeleteChartReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChartReleaseResponse{}
-	_body, _err := client.DeleteChartReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2396,7 +1798,7 @@ func (client *Client) DeleteChartRelease(request *DeleteChartReleaseRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteChartRepositoryResponse
-func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartRepositoryResponse, _err error) {
+func (client *Client) DeleteChartRepositoryWithContext(ctx context.Context, request *DeleteChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteChartRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2429,29 +1831,11 @@ func (client *Client) DeleteChartRepositoryWithOptions(request *DeleteChartRepos
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a chart repository from an instance.
-//
-// @param request - DeleteChartRepositoryRequest
-//
-// @return DeleteChartRepositoryResponse
-func (client *Client) DeleteChartRepository(request *DeleteChartRepositoryRequest) (_result *DeleteChartRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteChartRepositoryResponse{}
-	_body, _err := client.DeleteChartRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2464,7 +1848,7 @@ func (client *Client) DeleteChartRepository(request *DeleteChartRepositoryReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEventCenterRuleResponse
-func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventCenterRuleResponse, _err error) {
+func (client *Client) DeleteEventCenterRuleWithContext(ctx context.Context, request *DeleteEventCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteEventCenterRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2493,29 +1877,11 @@ func (client *Client) DeleteEventCenterRuleWithOptions(request *DeleteEventCente
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEventCenterRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an event notification rule.
-//
-// @param request - DeleteEventCenterRuleRequest
-//
-// @return DeleteEventCenterRuleResponse
-func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleRequest) (_result *DeleteEventCenterRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteEventCenterRuleResponse{}
-	_body, _err := client.DeleteEventCenterRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2528,7 +1894,7 @@ func (client *Client) DeleteEventCenterRule(request *DeleteEventCenterRuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceEndpointAclPolicyResponse
-func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
+func (client *Client) DeleteInstanceEndpointAclPolicyWithContext(ctx context.Context, request *DeleteInstanceEndpointAclPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2565,29 +1931,11 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(request *Delete
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a whitelist policy for the public endpoint of an instance.
-//
-// @param request - DeleteInstanceEndpointAclPolicyRequest
-//
-// @return DeleteInstanceEndpointAclPolicyResponse
-func (client *Client) DeleteInstanceEndpointAclPolicy(request *DeleteInstanceEndpointAclPolicyRequest) (_result *DeleteInstanceEndpointAclPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteInstanceEndpointAclPolicyResponse{}
-	_body, _err := client.DeleteInstanceEndpointAclPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2600,7 +1948,7 @@ func (client *Client) DeleteInstanceEndpointAclPolicy(request *DeleteInstanceEnd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceVpcEndpointLinkedVpcResponse
-func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *DeleteInstanceVpcEndpointLinkedVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceVpcEndpointLinkedVpcResponse, _err error) {
+func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithContext(ctx context.Context, request *DeleteInstanceVpcEndpointLinkedVpcRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceVpcEndpointLinkedVpcResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2637,29 +1985,11 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpcWithOptions(request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disassociates a virtual private cloud (VPC) from an instance.
-//
-// @param request - DeleteInstanceVpcEndpointLinkedVpcRequest
-//
-// @return DeleteInstanceVpcEndpointLinkedVpcResponse
-func (client *Client) DeleteInstanceVpcEndpointLinkedVpc(request *DeleteInstanceVpcEndpointLinkedVpcRequest) (_result *DeleteInstanceVpcEndpointLinkedVpcResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteInstanceVpcEndpointLinkedVpcResponse{}
-	_body, _err := client.DeleteInstanceVpcEndpointLinkedVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2676,7 +2006,7 @@ func (client *Client) DeleteInstanceVpcEndpointLinkedVpc(request *DeleteInstance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteNamespaceResponse
-func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+func (client *Client) DeleteNamespaceWithContext(ctx context.Context, request *DeleteNamespaceRequest, runtime *dara.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2705,33 +2035,11 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a namespace.
-//
-// Description:
-//
-// > After you delete a namespace, all repositories in the namespace and all images in these repositories are deleted as well.
-//
-// @param request - DeleteNamespaceRequest
-//
-// @return DeleteNamespaceResponse
-func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2744,7 +2052,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRepoBuildRuleResponse
-func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoBuildRuleResponse, _err error) {
+func (client *Client) DeleteRepoBuildRuleWithContext(ctx context.Context, request *DeleteRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoBuildRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2777,29 +2085,11 @@ func (client *Client) DeleteRepoBuildRuleWithOptions(request *DeleteRepoBuildRul
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image building rule of a repository.
-//
-// @param request - DeleteRepoBuildRuleRequest
-//
-// @return DeleteRepoBuildRuleResponse
-func (client *Client) DeleteRepoBuildRule(request *DeleteRepoBuildRuleRequest) (_result *DeleteRepoBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRepoBuildRuleResponse{}
-	_body, _err := client.DeleteRepoBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2812,7 +2102,7 @@ func (client *Client) DeleteRepoBuildRule(request *DeleteRepoBuildRuleRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRepoSyncRuleResponse
-func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoSyncRuleResponse, _err error) {
+func (client *Client) DeleteRepoSyncRuleWithContext(ctx context.Context, request *DeleteRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoSyncRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2841,29 +2131,11 @@ func (client *Client) DeleteRepoSyncRuleWithOptions(request *DeleteRepoSyncRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image replication rule of an image repository.
-//
-// @param request - DeleteRepoSyncRuleRequest
-//
-// @return DeleteRepoSyncRuleResponse
-func (client *Client) DeleteRepoSyncRule(request *DeleteRepoSyncRuleRequest) (_result *DeleteRepoSyncRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRepoSyncRuleResponse{}
-	_body, _err := client.DeleteRepoSyncRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2876,7 +2148,7 @@ func (client *Client) DeleteRepoSyncRule(request *DeleteRepoSyncRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRepoTagResponse
-func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoTagResponse, _err error) {
+func (client *Client) DeleteRepoTagWithContext(ctx context.Context, request *DeleteRepoTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoTagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2909,29 +2181,11 @@ func (client *Client) DeleteRepoTagWithOptions(request *DeleteRepoTagRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image tag.
-//
-// @param request - DeleteRepoTagRequest
-//
-// @return DeleteRepoTagResponse
-func (client *Client) DeleteRepoTag(request *DeleteRepoTagRequest) (_result *DeleteRepoTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRepoTagResponse{}
-	_body, _err := client.DeleteRepoTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2944,7 +2198,7 @@ func (client *Client) DeleteRepoTag(request *DeleteRepoTagRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRepoTriggerResponse
-func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoTriggerResponse, _err error) {
+func (client *Client) DeleteRepoTriggerWithContext(ctx context.Context, request *DeleteRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepoTriggerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2977,29 +2231,11 @@ func (client *Client) DeleteRepoTriggerWithOptions(request *DeleteRepoTriggerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a trigger of an image repository.
-//
-// @param request - DeleteRepoTriggerRequest
-//
-// @return DeleteRepoTriggerResponse
-func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_result *DeleteRepoTriggerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRepoTriggerResponse{}
-	_body, _err := client.DeleteRepoTriggerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3016,7 +2252,7 @@ func (client *Client) DeleteRepoTrigger(request *DeleteRepoTriggerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRepositoryResponse
-func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepositoryResponse, _err error) {
+func (client *Client) DeleteRepositoryWithContext(ctx context.Context, request *DeleteRepositoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3053,33 +2289,11 @@ func (client *Client) DeleteRepositoryWithOptions(request *DeleteRepositoryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an image repository.
-//
-// Description:
-//
-// If you delete a repository, all images in the repository are also deleted.
-//
-// @param request - DeleteRepositoryRequest
-//
-// @return DeleteRepositoryResponse
-func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_result *DeleteRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRepositoryResponse{}
-	_body, _err := client.DeleteRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3088,7 +2302,7 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactBuildRuleResponse
-func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactBuildRuleResponse, _err error) {
+func (client *Client) GetArtifactBuildRuleWithContext(ctx context.Context, request *GetArtifactBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactBuildRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3109,25 +2323,11 @@ func (client *Client) GetArtifactBuildRuleWithOptions(request *GetArtifactBuildR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetArtifactBuildRuleRequest
-//
-// @return GetArtifactBuildRuleResponse
-func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest) (_result *GetArtifactBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactBuildRuleResponse{}
-	_body, _err := client.GetArtifactBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3140,7 +2340,7 @@ func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactBuildTaskResponse
-func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactBuildTaskResponse, _err error) {
+func (client *Client) GetArtifactBuildTaskWithContext(ctx context.Context, request *GetArtifactBuildTaskRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactBuildTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3161,29 +2361,11 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactBuildTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an artifact building task.
-//
-// @param request - GetArtifactBuildTaskRequest
-//
-// @return GetArtifactBuildTaskResponse
-func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest) (_result *GetArtifactBuildTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactBuildTaskResponse{}
-	_body, _err := client.GetArtifactBuildTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3196,7 +2378,7 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactLifecycleRuleResponse
-func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactLifecycleRuleResponse, _err error) {
+func (client *Client) GetArtifactLifecycleRuleWithContext(ctx context.Context, request *GetArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactLifecycleRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3217,29 +2399,11 @@ func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the lifecycle management rules of an artifact.
-//
-// @param request - GetArtifactLifecycleRuleRequest
-//
-// @return GetArtifactLifecycleRuleResponse
-func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRuleRequest) (_result *GetArtifactLifecycleRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactLifecycleRuleResponse{}
-	_body, _err := client.GetArtifactLifecycleRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3252,7 +2416,7 @@ func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRule
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactSubscriptionRuleResponse
-func (client *Client) GetArtifactSubscriptionRuleWithOptions(request *GetArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionRuleResponse, _err error) {
+func (client *Client) GetArtifactSubscriptionRuleWithContext(ctx context.Context, request *GetArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3273,29 +2437,11 @@ func (client *Client) GetArtifactSubscriptionRuleWithOptions(request *GetArtifac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an artifact subscription rule.
-//
-// @param request - GetArtifactSubscriptionRuleRequest
-//
-// @return GetArtifactSubscriptionRuleResponse
-func (client *Client) GetArtifactSubscriptionRule(request *GetArtifactSubscriptionRuleRequest) (_result *GetArtifactSubscriptionRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactSubscriptionRuleResponse{}
-	_body, _err := client.GetArtifactSubscriptionRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3308,7 +2454,7 @@ func (client *Client) GetArtifactSubscriptionRule(request *GetArtifactSubscripti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactSubscriptionTaskResponse
-func (client *Client) GetArtifactSubscriptionTaskWithOptions(request *GetArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResponse, _err error) {
+func (client *Client) GetArtifactSubscriptionTaskWithContext(ctx context.Context, request *GetArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3329,29 +2475,11 @@ func (client *Client) GetArtifactSubscriptionTaskWithOptions(request *GetArtifac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactSubscriptionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an artifact subscription task.
-//
-// @param request - GetArtifactSubscriptionTaskRequest
-//
-// @return GetArtifactSubscriptionTaskResponse
-func (client *Client) GetArtifactSubscriptionTask(request *GetArtifactSubscriptionTaskRequest) (_result *GetArtifactSubscriptionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactSubscriptionTaskResponse{}
-	_body, _err := client.GetArtifactSubscriptionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3364,7 +2492,7 @@ func (client *Client) GetArtifactSubscriptionTask(request *GetArtifactSubscripti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetArtifactSubscriptionTaskResultResponse
-func (client *Client) GetArtifactSubscriptionTaskResultWithOptions(request *GetArtifactSubscriptionTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResultResponse, _err error) {
+func (client *Client) GetArtifactSubscriptionTaskResultWithContext(ctx context.Context, request *GetArtifactSubscriptionTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetArtifactSubscriptionTaskResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3385,29 +2513,11 @@ func (client *Client) GetArtifactSubscriptionTaskResultWithOptions(request *GetA
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetArtifactSubscriptionTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an artifact subscription task.
-//
-// @param request - GetArtifactSubscriptionTaskResultRequest
-//
-// @return GetArtifactSubscriptionTaskResultResponse
-func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubscriptionTaskResultRequest) (_result *GetArtifactSubscriptionTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetArtifactSubscriptionTaskResultResponse{}
-	_body, _err := client.GetArtifactSubscriptionTaskResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3424,7 +2534,7 @@ func (client *Client) GetArtifactSubscriptionTaskResult(request *GetArtifactSubs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAuthorizationTokenResponse
-func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorizationTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationTokenResponse, _err error) {
+func (client *Client) GetAuthorizationTokenWithContext(ctx context.Context, request *GetAuthorizationTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3449,33 +2559,11 @@ func (client *Client) GetAuthorizationTokenWithOptions(request *GetAuthorization
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAuthorizationTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a temporary username and a token that you can use to log on to a Container Registry instance.
-//
-// Description:
-//
-// The ID of the Container Registry instance.
-//
-// @param request - GetAuthorizationTokenRequest
-//
-// @return GetAuthorizationTokenResponse
-func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenRequest) (_result *GetAuthorizationTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAuthorizationTokenResponse{}
-	_body, _err := client.GetAuthorizationTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3484,7 +2572,7 @@ func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChainResponse
-func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *dara.RuntimeOptions) (_result *GetChainResponse, _err error) {
+func (client *Client) GetChainWithContext(ctx context.Context, request *GetChainRequest, runtime *dara.RuntimeOptions) (_result *GetChainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3513,25 +2601,11 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetChainRequest
-//
-// @return GetChainResponse
-func (client *Client) GetChain(request *GetChainRequest) (_result *GetChainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChainResponse{}
-	_body, _err := client.GetChainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3544,7 +2618,7 @@ func (client *Client) GetChain(request *GetChainRequest) (_result *GetChainRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChartNamespaceResponse
-func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetChartNamespaceResponse, _err error) {
+func (client *Client) GetChartNamespaceWithContext(ctx context.Context, request *GetChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetChartNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3573,29 +2647,11 @@ func (client *Client) GetChartNamespaceWithOptions(request *GetChartNamespaceReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a chart namespace in an instance.
-//
-// @param request - GetChartNamespaceRequest
-//
-// @return GetChartNamespaceResponse
-func (client *Client) GetChartNamespace(request *GetChartNamespaceRequest) (_result *GetChartNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChartNamespaceResponse{}
-	_body, _err := client.GetChartNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3608,7 +2664,7 @@ func (client *Client) GetChartNamespace(request *GetChartNamespaceRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChartRepositoryResponse
-func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *GetChartRepositoryResponse, _err error) {
+func (client *Client) GetChartRepositoryWithContext(ctx context.Context, request *GetChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *GetChartRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3641,29 +2697,11 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a chart repository.
-//
-// @param request - GetChartRepositoryRequest
-//
-// @return GetChartRepositoryResponse
-func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_result *GetChartRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetChartRepositoryResponse{}
-	_body, _err := client.GetChartRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3676,7 +2714,7 @@ func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResponse
-func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3701,76 +2739,11 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the resource group to which the instance belongs.
-//
-// @param request - GetInstanceRequest
-//
-// @return GetInstanceResponse
-func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of instances.
-//
-// @param request - GetInstanceCountRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetInstanceCountResponse
-func (client *Client) GetInstanceCountWithOptions(runtime *dara.RuntimeOptions) (_result *GetInstanceCountResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetInstanceCount"),
-		Version:     dara.String("2018-12-01"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetInstanceCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of instances.
-//
-// @return GetInstanceCountResponse
-func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceCountResponse{}
-	_body, _err := client.GetInstanceCountWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3783,7 +2756,7 @@ func (client *Client) GetInstanceCount() (_result *GetInstanceCountResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceEndpointResponse
-func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceEndpointResponse, _err error) {
+func (client *Client) GetInstanceEndpointWithContext(ctx context.Context, request *GetInstanceEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3816,29 +2789,11 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the endpoint of an instance.
-//
-// @param request - GetInstanceEndpointRequest
-//
-// @return GetInstanceEndpointResponse
-func (client *Client) GetInstanceEndpoint(request *GetInstanceEndpointRequest) (_result *GetInstanceEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceEndpointResponse{}
-	_body, _err := client.GetInstanceEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3851,7 +2806,7 @@ func (client *Client) GetInstanceEndpoint(request *GetInstanceEndpointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceUsageResponse
-func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceUsageResponse, _err error) {
+func (client *Client) GetInstanceUsageWithContext(ctx context.Context, request *GetInstanceUsageRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3876,29 +2831,11 @@ func (client *Client) GetInstanceUsageWithOptions(request *GetInstanceUsageReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the quota usage of an instance.
-//
-// @param request - GetInstanceUsageRequest
-//
-// @return GetInstanceUsageResponse
-func (client *Client) GetInstanceUsage(request *GetInstanceUsageRequest) (_result *GetInstanceUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceUsageResponse{}
-	_body, _err := client.GetInstanceUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3911,7 +2848,7 @@ func (client *Client) GetInstanceUsage(request *GetInstanceUsageRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceVpcEndpointResponse
-func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceVpcEndpointResponse, _err error) {
+func (client *Client) GetInstanceVpcEndpointWithContext(ctx context.Context, request *GetInstanceVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceVpcEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3940,29 +2877,11 @@ func (client *Client) GetInstanceVpcEndpointWithOptions(request *GetInstanceVpcE
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceVpcEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the endpoints of the virtual private clouds (VPCs) in which a Container Registry instance is deployed.
-//
-// @param request - GetInstanceVpcEndpointRequest
-//
-// @return GetInstanceVpcEndpointResponse
-func (client *Client) GetInstanceVpcEndpoint(request *GetInstanceVpcEndpointRequest) (_result *GetInstanceVpcEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceVpcEndpointResponse{}
-	_body, _err := client.GetInstanceVpcEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3975,7 +2894,7 @@ func (client *Client) GetInstanceVpcEndpoint(request *GetInstanceVpcEndpointRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetNamespaceResponse
-func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetNamespaceResponse, _err error) {
+func (client *Client) GetNamespaceWithContext(ctx context.Context, request *GetNamespaceRequest, runtime *dara.RuntimeOptions) (_result *GetNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4008,29 +2927,11 @@ func (client *Client) GetNamespaceWithOptions(request *GetNamespaceRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a namespace.
-//
-// @param request - GetNamespaceRequest
-//
-// @return GetNamespaceResponse
-func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetNamespaceResponse{}
-	_body, _err := client.GetNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4047,7 +2948,7 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoBuildRecordResponse
-func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *GetRepoBuildRecordResponse, _err error) {
+func (client *Client) GetRepoBuildRecordWithContext(ctx context.Context, request *GetRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *GetRepoBuildRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4076,33 +2977,11 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about image building records of a repository.
-//
-// Description:
-//
-// ***
-//
-// @param request - GetRepoBuildRecordRequest
-//
-// @return GetRepoBuildRecordResponse
-func (client *Client) GetRepoBuildRecord(request *GetRepoBuildRecordRequest) (_result *GetRepoBuildRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoBuildRecordResponse{}
-	_body, _err := client.GetRepoBuildRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4115,7 +2994,7 @@ func (client *Client) GetRepoBuildRecord(request *GetRepoBuildRecordRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoBuildRecordStatusResponse
-func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *GetRepoBuildRecordStatusResponse, _err error) {
+func (client *Client) GetRepoBuildRecordStatusWithContext(ctx context.Context, request *GetRepoBuildRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *GetRepoBuildRecordStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4148,29 +3027,11 @@ func (client *Client) GetRepoBuildRecordStatusWithOptions(request *GetRepoBuildR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoBuildRecordStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of an image building task.
-//
-// @param request - GetRepoBuildRecordStatusRequest
-//
-// @return GetRepoBuildRecordStatusResponse
-func (client *Client) GetRepoBuildRecordStatus(request *GetRepoBuildRecordStatusRequest) (_result *GetRepoBuildRecordStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoBuildRecordStatusResponse{}
-	_body, _err := client.GetRepoBuildRecordStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4183,7 +3044,7 @@ func (client *Client) GetRepoBuildRecordStatus(request *GetRepoBuildRecordStatus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoSourceCodeRepoResponse
-func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *GetRepoSourceCodeRepoResponse, _err error) {
+func (client *Client) GetRepoSourceCodeRepoWithContext(ctx context.Context, request *GetRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *GetRepoSourceCodeRepoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4212,29 +3073,11 @@ func (client *Client) GetRepoSourceCodeRepoWithOptions(request *GetRepoSourceCod
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the source code repository that is bound to an image repository.
-//
-// @param request - GetRepoSourceCodeRepoRequest
-//
-// @return GetRepoSourceCodeRepoResponse
-func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoRequest) (_result *GetRepoSourceCodeRepoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoSourceCodeRepoResponse{}
-	_body, _err := client.GetRepoSourceCodeRepoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4247,7 +3090,7 @@ func (client *Client) GetRepoSourceCodeRepo(request *GetRepoSourceCodeRepoReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoSyncTaskResponse
-func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *GetRepoSyncTaskResponse, _err error) {
+func (client *Client) GetRepoSyncTaskWithContext(ctx context.Context, request *GetRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *GetRepoSyncTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4276,29 +3119,11 @@ func (client *Client) GetRepoSyncTaskWithOptions(request *GetRepoSyncTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries an image synchronization task in an instance.
-//
-// @param request - GetRepoSyncTaskRequest
-//
-// @return GetRepoSyncTaskResponse
-func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result *GetRepoSyncTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoSyncTaskResponse{}
-	_body, _err := client.GetRepoSyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4311,7 +3136,7 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoTagResponse
-func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagResponse, _err error) {
+func (client *Client) GetRepoTagWithContext(ctx context.Context, request *GetRepoTagRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4332,29 +3157,11 @@ func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The version of the repository.
-//
-// @param request - GetRepoTagRequest
-//
-// @return GetRepoTagResponse
-func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoTagResponse{}
-	_body, _err := client.GetRepoTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4367,7 +3174,7 @@ func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoTagScanStatusResponse
-func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanStatusRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagScanStatusResponse, _err error) {
+func (client *Client) GetRepoTagScanStatusWithContext(ctx context.Context, request *GetRepoTagScanStatusRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagScanStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4412,29 +3219,11 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoTagScanStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the scanning status of an image tag.
-//
-// @param request - GetRepoTagScanStatusRequest
-//
-// @return GetRepoTagScanStatusResponse
-func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest) (_result *GetRepoTagScanStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoTagScanStatusResponse{}
-	_body, _err := client.GetRepoTagScanStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4443,7 +3232,7 @@ func (client *Client) GetRepoTagScanStatus(request *GetRepoTagScanStatusRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepoTagScanSummaryResponse
-func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagScanSummaryResponse, _err error) {
+func (client *Client) GetRepoTagScanSummaryWithContext(ctx context.Context, request *GetRepoTagScanSummaryRequest, runtime *dara.RuntimeOptions) (_result *GetRepoTagScanSummaryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4484,25 +3273,11 @@ func (client *Client) GetRepoTagScanSummaryWithOptions(request *GetRepoTagScanSu
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepoTagScanSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetRepoTagScanSummaryRequest
-//
-// @return GetRepoTagScanSummaryResponse
-func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryRequest) (_result *GetRepoTagScanSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepoTagScanSummaryResponse{}
-	_body, _err := client.GetRepoTagScanSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4515,7 +3290,7 @@ func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRepositoryResponse
-func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, runtime *dara.RuntimeOptions) (_result *GetRepositoryResponse, _err error) {
+func (client *Client) GetRepositoryWithContext(ctx context.Context, request *GetRepositoryRequest, runtime *dara.RuntimeOptions) (_result *GetRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4552,29 +3327,11 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries details about an image repository.
-//
-// @param request - GetRepositoryRequest
-//
-// @return GetRepositoryResponse
-func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *GetRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetRepositoryResponse{}
-	_body, _err := client.GetRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4587,7 +3344,7 @@ func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListArtifactBuildTaskLogResponse
-func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactBuildTaskLogRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactBuildTaskLogResponse, _err error) {
+func (client *Client) ListArtifactBuildTaskLogWithContext(ctx context.Context, request *ListArtifactBuildTaskLogRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactBuildTaskLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4608,29 +3365,11 @@ func (client *Client) ListArtifactBuildTaskLogWithOptions(request *ListArtifactB
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListArtifactBuildTaskLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the log entries of an artifact building task.
-//
-// @param request - ListArtifactBuildTaskLogRequest
-//
-// @return ListArtifactBuildTaskLogResponse
-func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLogRequest) (_result *ListArtifactBuildTaskLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListArtifactBuildTaskLogResponse{}
-	_body, _err := client.ListArtifactBuildTaskLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4643,7 +3382,7 @@ func (client *Client) ListArtifactBuildTaskLog(request *ListArtifactBuildTaskLog
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListArtifactLifecycleRuleResponse
-func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactLifecycleRuleResponse, _err error) {
+func (client *Client) ListArtifactLifecycleRuleWithContext(ctx context.Context, request *ListArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactLifecycleRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4664,29 +3403,11 @@ func (client *Client) ListArtifactLifecycleRuleWithOptions(request *ListArtifact
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the lifecycle management rules of an artifact.
-//
-// @param request - ListArtifactLifecycleRuleRequest
-//
-// @return ListArtifactLifecycleRuleResponse
-func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRuleRequest) (_result *ListArtifactLifecycleRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListArtifactLifecycleRuleResponse{}
-	_body, _err := client.ListArtifactLifecycleRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4699,7 +3420,7 @@ func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListArtifactSubscriptionRuleResponse
-func (client *Client) ListArtifactSubscriptionRuleWithOptions(request *ListArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactSubscriptionRuleResponse, _err error) {
+func (client *Client) ListArtifactSubscriptionRuleWithContext(ctx context.Context, request *ListArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactSubscriptionRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4720,29 +3441,11 @@ func (client *Client) ListArtifactSubscriptionRuleWithOptions(request *ListArtif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists the subscription rules of artifacts.
-//
-// @param request - ListArtifactSubscriptionRuleRequest
-//
-// @return ListArtifactSubscriptionRuleResponse
-func (client *Client) ListArtifactSubscriptionRule(request *ListArtifactSubscriptionRuleRequest) (_result *ListArtifactSubscriptionRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListArtifactSubscriptionRuleResponse{}
-	_body, _err := client.ListArtifactSubscriptionRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4755,7 +3458,7 @@ func (client *Client) ListArtifactSubscriptionRule(request *ListArtifactSubscrip
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListArtifactSubscriptionTaskResponse
-func (client *Client) ListArtifactSubscriptionTaskWithOptions(request *ListArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactSubscriptionTaskResponse, _err error) {
+func (client *Client) ListArtifactSubscriptionTaskWithContext(ctx context.Context, request *ListArtifactSubscriptionTaskRequest, runtime *dara.RuntimeOptions) (_result *ListArtifactSubscriptionTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4776,29 +3479,11 @@ func (client *Client) ListArtifactSubscriptionTaskWithOptions(request *ListArtif
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListArtifactSubscriptionTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists artifact subscription tasks.
-//
-// @param request - ListArtifactSubscriptionTaskRequest
-//
-// @return ListArtifactSubscriptionTaskResponse
-func (client *Client) ListArtifactSubscriptionTask(request *ListArtifactSubscriptionTaskRequest) (_result *ListArtifactSubscriptionTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListArtifactSubscriptionTaskResponse{}
-	_body, _err := client.ListArtifactSubscriptionTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4811,7 +3496,7 @@ func (client *Client) ListArtifactSubscriptionTask(request *ListArtifactSubscrip
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChainResponse
-func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *dara.RuntimeOptions) (_result *ListChainResponse, _err error) {
+func (client *Client) ListChainWithContext(ctx context.Context, request *ListChainRequest, runtime *dara.RuntimeOptions) (_result *ListChainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4852,29 +3537,11 @@ func (client *Client) ListChainWithOptions(request *ListChainRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries delivery chains.
-//
-// @param request - ListChainRequest
-//
-// @return ListChainResponse
-func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChainResponse{}
-	_body, _err := client.ListChainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4887,7 +3554,7 @@ func (client *Client) ListChain(request *ListChainRequest) (_result *ListChainRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChainInstanceResponse
-func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListChainInstanceResponse, _err error) {
+func (client *Client) ListChainInstanceWithContext(ctx context.Context, request *ListChainInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListChainInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4928,29 +3595,11 @@ func (client *Client) ListChainInstanceWithOptions(request *ListChainInstanceReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChainInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The response code.
-//
-// @param request - ListChainInstanceRequest
-//
-// @return ListChainInstanceResponse
-func (client *Client) ListChainInstance(request *ListChainInstanceRequest) (_result *ListChainInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChainInstanceResponse{}
-	_body, _err := client.ListChainInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4963,7 +3612,7 @@ func (client *Client) ListChainInstance(request *ListChainInstanceRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChartNamespaceResponse
-func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *ListChartNamespaceResponse, _err error) {
+func (client *Client) ListChartNamespaceWithContext(ctx context.Context, request *ListChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *ListChartNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5004,29 +3653,11 @@ func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the chart namespaces of a Container Registry instance.
-//
-// @param request - ListChartNamespaceRequest
-//
-// @return ListChartNamespaceResponse
-func (client *Client) ListChartNamespace(request *ListChartNamespaceRequest) (_result *ListChartNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChartNamespaceResponse{}
-	_body, _err := client.ListChartNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5039,7 +3670,7 @@ func (client *Client) ListChartNamespace(request *ListChartNamespaceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChartReleaseResponse
-func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseRequest, runtime *dara.RuntimeOptions) (_result *ListChartReleaseResponse, _err error) {
+func (client *Client) ListChartReleaseWithContext(ctx context.Context, request *ListChartReleaseRequest, runtime *dara.RuntimeOptions) (_result *ListChartReleaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5084,29 +3715,11 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChartReleaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the versions of a chart in a chart repository.
-//
-// @param request - ListChartReleaseRequest
-//
-// @return ListChartReleaseResponse
-func (client *Client) ListChartRelease(request *ListChartReleaseRequest) (_result *ListChartReleaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChartReleaseResponse{}
-	_body, _err := client.ListChartReleaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5119,7 +3732,7 @@ func (client *Client) ListChartRelease(request *ListChartReleaseRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListChartRepositoryResponse
-func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *ListChartRepositoryResponse, _err error) {
+func (client *Client) ListChartRepositoryWithContext(ctx context.Context, request *ListChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *ListChartRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5164,29 +3777,11 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the chart repositories of a Container Registry instance.
-//
-// @param request - ListChartRepositoryRequest
-//
-// @return ListChartRepositoryResponse
-func (client *Client) ListChartRepository(request *ListChartRepositoryRequest) (_result *ListChartRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListChartRepositoryResponse{}
-	_body, _err := client.ListChartRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5199,7 +3794,7 @@ func (client *Client) ListChartRepository(request *ListChartRepositoryRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEventCenterRecordResponse
-func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterRecordRequest, runtime *dara.RuntimeOptions) (_result *ListEventCenterRecordResponse, _err error) {
+func (client *Client) ListEventCenterRecordWithContext(ctx context.Context, request *ListEventCenterRecordRequest, runtime *dara.RuntimeOptions) (_result *ListEventCenterRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5220,29 +3815,11 @@ func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEventCenterRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the historical events of an event rule.
-//
-// @param request - ListEventCenterRecordRequest
-//
-// @return ListEventCenterRecordResponse
-func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordRequest) (_result *ListEventCenterRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEventCenterRecordResponse{}
-	_body, _err := client.ListEventCenterRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5255,7 +3832,7 @@ func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListEventCenterRuleNameResponse
-func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCenterRuleNameRequest, runtime *dara.RuntimeOptions) (_result *ListEventCenterRuleNameResponse, _err error) {
+func (client *Client) ListEventCenterRuleNameWithContext(ctx context.Context, request *ListEventCenterRuleNameRequest, runtime *dara.RuntimeOptions) (_result *ListEventCenterRuleNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5276,29 +3853,11 @@ func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCente
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEventCenterRuleNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the names of event notification rules.
-//
-// @param request - ListEventCenterRuleNameRequest
-//
-// @return ListEventCenterRuleNameResponse
-func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRequest) (_result *ListEventCenterRuleNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListEventCenterRuleNameResponse{}
-	_body, _err := client.ListEventCenterRuleNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5311,7 +3870,7 @@ func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstanceResponse
-func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
+func (client *Client) ListInstanceWithContext(ctx context.Context, request *ListInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5352,29 +3911,11 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Container Registry instances.
-//
-// @param request - ListInstanceRequest
-//
-// @return ListInstanceResponse
-func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInstanceResponse{}
-	_body, _err := client.ListInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5387,7 +3928,7 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstanceEndpointResponse
-func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpointRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceEndpointResponse, _err error) {
+func (client *Client) ListInstanceEndpointWithContext(ctx context.Context, request *ListInstanceEndpointRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5420,29 +3961,11 @@ func (client *Client) ListInstanceEndpointWithOptions(request *ListInstanceEndpo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the endpoints of a Container Registry instance.
-//
-// @param request - ListInstanceEndpointRequest
-//
-// @return ListInstanceEndpointResponse
-func (client *Client) ListInstanceEndpoint(request *ListInstanceEndpointRequest) (_result *ListInstanceEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInstanceEndpointResponse{}
-	_body, _err := client.ListInstanceEndpointWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5455,7 +3978,7 @@ func (client *Client) ListInstanceEndpoint(request *ListInstanceEndpointRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstanceRegionResponse
-func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRegionResponse, _err error) {
+func (client *Client) ListInstanceRegionWithContext(ctx context.Context, request *ListInstanceRegionRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceRegionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5480,29 +4003,11 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries regions in which you can create Container Registry instances.
-//
-// @param request - ListInstanceRegionRequest
-//
-// @return ListInstanceRegionResponse
-func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_result *ListInstanceRegionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInstanceRegionResponse{}
-	_body, _err := client.ListInstanceRegionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5515,7 +4020,7 @@ func (client *Client) ListInstanceRegion(request *ListInstanceRegionRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNamespaceResponse
-func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, runtime *dara.RuntimeOptions) (_result *ListNamespaceResponse, _err error) {
+func (client *Client) ListNamespaceWithContext(ctx context.Context, request *ListNamespaceRequest, runtime *dara.RuntimeOptions) (_result *ListNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5556,29 +4061,11 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries namespaces in a Container Registry instance.
-//
-// @param request - ListNamespaceRequest
-//
-// @return ListNamespaceResponse
-func (client *Client) ListNamespace(request *ListNamespaceRequest) (_result *ListNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListNamespaceResponse{}
-	_body, _err := client.ListNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5591,7 +4078,7 @@ func (client *Client) ListNamespace(request *ListNamespaceRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoBuildRecordResponse
-func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRecordResponse, _err error) {
+func (client *Client) ListRepoBuildRecordWithContext(ctx context.Context, request *ListRepoBuildRecordRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5628,29 +4115,11 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoBuildRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image building records of an image repository.
-//
-// @param request - ListRepoBuildRecordRequest
-//
-// @return ListRepoBuildRecordResponse
-func (client *Client) ListRepoBuildRecord(request *ListRepoBuildRecordRequest) (_result *ListRepoBuildRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoBuildRecordResponse{}
-	_body, _err := client.ListRepoBuildRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5663,7 +4132,7 @@ func (client *Client) ListRepoBuildRecord(request *ListRepoBuildRecordRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoBuildRecordLogResponse
-func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRecordLogRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRecordLogResponse, _err error) {
+func (client *Client) ListRepoBuildRecordLogWithContext(ctx context.Context, request *ListRepoBuildRecordLogRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRecordLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5700,29 +4169,11 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoBuildRecordLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the log of an image building record.
-//
-// @param request - ListRepoBuildRecordLogRequest
-//
-// @return ListRepoBuildRecordLogResponse
-func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequest) (_result *ListRepoBuildRecordLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoBuildRecordLogResponse{}
-	_body, _err := client.ListRepoBuildRecordLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5735,7 +4186,7 @@ func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoBuildRuleResponse
-func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRuleResponse, _err error) {
+func (client *Client) ListRepoBuildRuleWithContext(ctx context.Context, request *ListRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *ListRepoBuildRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5772,29 +4223,11 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image building rules of a repository.
-//
-// @param request - ListRepoBuildRuleRequest
-//
-// @return ListRepoBuildRuleResponse
-func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_result *ListRepoBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoBuildRuleResponse{}
-	_body, _err := client.ListRepoBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5807,7 +4240,7 @@ func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoSyncRuleResponse
-func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *ListRepoSyncRuleResponse, _err error) {
+func (client *Client) ListRepoSyncRuleWithContext(ctx context.Context, request *ListRepoSyncRuleRequest, runtime *dara.RuntimeOptions) (_result *ListRepoSyncRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5856,29 +4289,11 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoSyncRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image synchronization rules of a repository.
-//
-// @param request - ListRepoSyncRuleRequest
-//
-// @return ListRepoSyncRuleResponse
-func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_result *ListRepoSyncRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoSyncRuleResponse{}
-	_body, _err := client.ListRepoSyncRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5891,7 +4306,7 @@ func (client *Client) ListRepoSyncRule(request *ListRepoSyncRuleRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoSyncTaskResponse
-func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *ListRepoSyncTaskResponse, _err error) {
+func (client *Client) ListRepoSyncTaskWithContext(ctx context.Context, request *ListRepoSyncTaskRequest, runtime *dara.RuntimeOptions) (_result *ListRepoSyncTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5940,29 +4355,11 @@ func (client *Client) ListRepoSyncTaskWithOptions(request *ListRepoSyncTaskReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoSyncTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image synchronization tasks in an image repository.
-//
-// @param request - ListRepoSyncTaskRequest
-//
-// @return ListRepoSyncTaskResponse
-func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_result *ListRepoSyncTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoSyncTaskResponse{}
-	_body, _err := client.ListRepoSyncTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5975,7 +4372,7 @@ func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoTagResponse
-func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTagResponse, _err error) {
+func (client *Client) ListRepoTagWithContext(ctx context.Context, request *ListRepoTagRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6012,29 +4409,11 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image tags in a repository.
-//
-// @param request - ListRepoTagRequest
-//
-// @return ListRepoTagResponse
-func (client *Client) ListRepoTag(request *ListRepoTagRequest) (_result *ListRepoTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoTagResponse{}
-	_body, _err := client.ListRepoTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6047,7 +4426,7 @@ func (client *Client) ListRepoTag(request *ListRepoTagRequest) (_result *ListRep
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoTagScanResultResponse
-func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanResultRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTagScanResultResponse, _err error) {
+func (client *Client) ListRepoTagScanResultWithContext(ctx context.Context, request *ListRepoTagScanResultRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTagScanResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6112,29 +4491,11 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoTagScanResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the results of a security scan that is created for an image tag.
-//
-// @param request - ListRepoTagScanResultRequest
-//
-// @return ListRepoTagScanResultResponse
-func (client *Client) ListRepoTagScanResult(request *ListRepoTagScanResultRequest) (_result *ListRepoTagScanResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoTagScanResultResponse{}
-	_body, _err := client.ListRepoTagScanResultWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6147,7 +4508,7 @@ func (client *Client) ListRepoTagScanResult(request *ListRepoTagScanResultReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepoTriggerResponse
-func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTriggerResponse, _err error) {
+func (client *Client) ListRepoTriggerWithContext(ctx context.Context, request *ListRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *ListRepoTriggerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6176,29 +4537,11 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the triggers of a repository.
-//
-// @param request - ListRepoTriggerRequest
-//
-// @return ListRepoTriggerResponse
-func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result *ListRepoTriggerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepoTriggerResponse{}
-	_body, _err := client.ListRepoTriggerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6211,7 +4554,7 @@ func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRepositoryResponse
-func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, runtime *dara.RuntimeOptions) (_result *ListRepositoryResponse, _err error) {
+func (client *Client) ListRepositoryWithContext(ctx context.Context, request *ListRepositoryRequest, runtime *dara.RuntimeOptions) (_result *ListRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6256,29 +4599,11 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries image repositories.
-//
-// @param request - ListRepositoryRequest
-//
-// @return ListRepositoryResponse
-func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *ListRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRepositoryResponse{}
-	_body, _err := client.ListRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6295,7 +4620,7 @@ func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *L
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListScanBaselineByTaskResponse
-func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselineByTaskRequest, runtime *dara.RuntimeOptions) (_result *ListScanBaselineByTaskResponse, _err error) {
+func (client *Client) ListScanBaselineByTaskWithContext(ctx context.Context, request *ListScanBaselineByTaskRequest, runtime *dara.RuntimeOptions) (_result *ListScanBaselineByTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6316,33 +4641,11 @@ func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselin
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListScanBaselineByTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the baseline risks of a scan task by page.
-//
-// Description:
-//
-// Before you call this operation, use a Security Center scan engine to scan the image.
-//
-// @param request - ListScanBaselineByTaskRequest
-//
-// @return ListScanBaselineByTaskResponse
-func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequest) (_result *ListScanBaselineByTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListScanBaselineByTaskResponse{}
-	_body, _err := client.ListScanBaselineByTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6359,7 +4662,7 @@ func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListScanMaliciousFileByTaskResponse
-func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMaliciousFileByTaskRequest, runtime *dara.RuntimeOptions) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
+func (client *Client) ListScanMaliciousFileByTaskWithContext(ctx context.Context, request *ListScanMaliciousFileByTaskRequest, runtime *dara.RuntimeOptions) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6380,33 +4683,11 @@ func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListScanMaliciousFileByTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the malicious files of a scan task by page.
-//
-// Description:
-//
-// Before you call this operation, use a Security Center scan engine to scan the image.
-//
-// @param request - ListScanMaliciousFileByTaskRequest
-//
-// @return ListScanMaliciousFileByTaskResponse
-func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFileByTaskRequest) (_result *ListScanMaliciousFileByTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListScanMaliciousFileByTaskResponse{}
-	_body, _err := client.ListScanMaliciousFileByTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6419,7 +4700,7 @@ func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFile
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6460,29 +4741,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags that are added to cloud resources. Instance resources are supported.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6495,7 +4758,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetLoginPasswordResponse
-func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetLoginPasswordResponse, _err error) {
+func (client *Client) ResetLoginPasswordWithContext(ctx context.Context, request *ResetLoginPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetLoginPasswordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6524,29 +4787,11 @@ func (client *Client) ResetLoginPasswordWithOptions(request *ResetLoginPasswordR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetLoginPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resets the logon password of a Container Registry instance.
-//
-// @param request - ResetLoginPasswordRequest
-//
-// @return ResetLoginPasswordResponse
-func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_result *ResetLoginPasswordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetLoginPasswordResponse{}
-	_body, _err := client.ResetLoginPasswordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6559,7 +4804,7 @@ func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6596,29 +4841,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds tags to resources. Instance resources are supported.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6631,7 +4858,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6672,29 +4899,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from resources. Instance resources are supported.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6707,7 +4916,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateArtifactLifecycleRuleResponse
-func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
+func (client *Client) UpdateArtifactLifecycleRuleWithContext(ctx context.Context, request *UpdateArtifactLifecycleRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6768,29 +4977,11 @@ func (client *Client) UpdateArtifactLifecycleRuleWithOptions(request *UpdateArti
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateArtifactLifecycleRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a lifecycle management rule of an artifact.
-//
-// @param request - UpdateArtifactLifecycleRuleRequest
-//
-// @return UpdateArtifactLifecycleRuleResponse
-func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecycleRuleRequest) (_result *UpdateArtifactLifecycleRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateArtifactLifecycleRuleResponse{}
-	_body, _err := client.UpdateArtifactLifecycleRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6803,7 +4994,7 @@ func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecyc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateArtifactSubscriptionRuleResponse
-func (client *Client) UpdateArtifactSubscriptionRuleWithOptions(request *UpdateArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateArtifactSubscriptionRuleResponse, _err error) {
+func (client *Client) UpdateArtifactSubscriptionRuleWithContext(ctx context.Context, request *UpdateArtifactSubscriptionRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateArtifactSubscriptionRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6872,29 +5063,11 @@ func (client *Client) UpdateArtifactSubscriptionRuleWithOptions(request *UpdateA
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateArtifactSubscriptionRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an artifact subscription rule.
-//
-// @param request - UpdateArtifactSubscriptionRuleRequest
-//
-// @return UpdateArtifactSubscriptionRuleResponse
-func (client *Client) UpdateArtifactSubscriptionRule(request *UpdateArtifactSubscriptionRuleRequest) (_result *UpdateArtifactSubscriptionRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateArtifactSubscriptionRuleResponse{}
-	_body, _err := client.UpdateArtifactSubscriptionRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6907,7 +5080,7 @@ func (client *Client) UpdateArtifactSubscriptionRule(request *UpdateArtifactSubs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChainResponse
-func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtime *dara.RuntimeOptions) (_result *UpdateChainResponse, _err error) {
+func (client *Client) UpdateChainWithContext(ctx context.Context, request *UpdateChainRequest, runtime *dara.RuntimeOptions) (_result *UpdateChainResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6952,29 +5125,11 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the information about a delivery chain, such as the node execution sequence of the delivery chain.
-//
-// @param request - UpdateChainRequest
-//
-// @return UpdateChainResponse
-func (client *Client) UpdateChain(request *UpdateChainRequest) (_result *UpdateChainResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChainResponse{}
-	_body, _err := client.UpdateChainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6987,7 +5142,7 @@ func (client *Client) UpdateChain(request *UpdateChainRequest) (_result *UpdateC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChartNamespaceResponse
-func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateChartNamespaceResponse, _err error) {
+func (client *Client) UpdateChartNamespaceWithContext(ctx context.Context, request *UpdateChartNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateChartNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7024,29 +5179,11 @@ func (client *Client) UpdateChartNamespaceWithOptions(request *UpdateChartNamesp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChartNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a chart namespace.
-//
-// @param request - UpdateChartNamespaceRequest
-//
-// @return UpdateChartNamespaceResponse
-func (client *Client) UpdateChartNamespace(request *UpdateChartNamespaceRequest) (_result *UpdateChartNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChartNamespaceResponse{}
-	_body, _err := client.UpdateChartNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7059,7 +5196,7 @@ func (client *Client) UpdateChartNamespace(request *UpdateChartNamespaceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateChartRepositoryResponse
-func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateChartRepositoryResponse, _err error) {
+func (client *Client) UpdateChartRepositoryWithContext(ctx context.Context, request *UpdateChartRepositoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateChartRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7100,29 +5237,11 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateChartRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a chart repository of a Container Registry instance.
-//
-// @param request - UpdateChartRepositoryRequest
-//
-// @return UpdateChartRepositoryResponse
-func (client *Client) UpdateChartRepository(request *UpdateChartRepositoryRequest) (_result *UpdateChartRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateChartRepositoryResponse{}
-	_body, _err := client.UpdateChartRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7135,7 +5254,7 @@ func (client *Client) UpdateChartRepository(request *UpdateChartRepositoryReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateEventCenterRuleResponse
-func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventCenterRuleResponse, _err error) {
+func (client *Client) UpdateEventCenterRuleWithContext(ctx context.Context, tmpReq *UpdateEventCenterRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateEventCenterRuleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7206,29 +5325,11 @@ func (client *Client) UpdateEventCenterRuleWithOptions(tmpReq *UpdateEventCenter
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEventCenterRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an event notification rule.
-//
-// @param request - UpdateEventCenterRuleRequest
-//
-// @return UpdateEventCenterRuleResponse
-func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleRequest) (_result *UpdateEventCenterRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateEventCenterRuleResponse{}
-	_body, _err := client.UpdateEventCenterRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7241,7 +5342,7 @@ func (client *Client) UpdateEventCenterRule(request *UpdateEventCenterRuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceEndpointStatusResponse
-func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateInstanceEndpointStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceEndpointStatusResponse, _err error) {
+func (client *Client) UpdateInstanceEndpointStatusWithContext(ctx context.Context, request *UpdateInstanceEndpointStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceEndpointStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7278,29 +5379,11 @@ func (client *Client) UpdateInstanceEndpointStatusWithOptions(request *UpdateIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceEndpointStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the status of an instance endpoint.
-//
-// @param request - UpdateInstanceEndpointStatusRequest
-//
-// @return UpdateInstanceEndpointStatusResponse
-func (client *Client) UpdateInstanceEndpointStatus(request *UpdateInstanceEndpointStatusRequest) (_result *UpdateInstanceEndpointStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceEndpointStatusResponse{}
-	_body, _err := client.UpdateInstanceEndpointStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7313,7 +5396,7 @@ func (client *Client) UpdateInstanceEndpointStatus(request *UpdateInstanceEndpoi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateNamespaceResponse
-func (client *Client) UpdateNamespaceWithOptions(tmpReq *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+func (client *Client) UpdateNamespaceWithContext(ctx context.Context, tmpReq *UpdateNamespaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7360,29 +5443,11 @@ func (client *Client) UpdateNamespaceWithOptions(tmpReq *UpdateNamespaceRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a namespace.
-//
-// @param request - UpdateNamespaceRequest
-//
-// @return UpdateNamespaceResponse
-func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.UpdateNamespaceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7395,7 +5460,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRepoBuildRuleResponse
-func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoBuildRuleResponse, _err error) {
+func (client *Client) UpdateRepoBuildRuleWithContext(ctx context.Context, request *UpdateRepoBuildRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoBuildRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7456,29 +5521,11 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRepoBuildRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates an image building rule for a repository.
-//
-// @param request - UpdateRepoBuildRuleRequest
-//
-// @return UpdateRepoBuildRuleResponse
-func (client *Client) UpdateRepoBuildRule(request *UpdateRepoBuildRuleRequest) (_result *UpdateRepoBuildRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRepoBuildRuleResponse{}
-	_body, _err := client.UpdateRepoBuildRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7491,7 +5538,7 @@ func (client *Client) UpdateRepoBuildRule(request *UpdateRepoBuildRuleRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRepoSourceCodeRepoResponse
-func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
+func (client *Client) UpdateRepoSourceCodeRepoWithContext(ctx context.Context, request *UpdateRepoSourceCodeRepoRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7548,29 +5595,11 @@ func (client *Client) UpdateRepoSourceCodeRepoWithOptions(request *UpdateRepoSou
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRepoSourceCodeRepoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the URL of the source code repository that is bound to an image repository.
-//
-// @param request - UpdateRepoSourceCodeRepoRequest
-//
-// @return UpdateRepoSourceCodeRepoResponse
-func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepoRequest) (_result *UpdateRepoSourceCodeRepoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRepoSourceCodeRepoResponse{}
-	_body, _err := client.UpdateRepoSourceCodeRepoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7583,7 +5612,7 @@ func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRepoTriggerResponse
-func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoTriggerResponse, _err error) {
+func (client *Client) UpdateRepoTriggerWithContext(ctx context.Context, request *UpdateRepoTriggerRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepoTriggerResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7632,29 +5661,11 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRepoTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates a trigger of an image repository.
-//
-// @param request - UpdateRepoTriggerRequest
-//
-// @return UpdateRepoTriggerResponse
-func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_result *UpdateRepoTriggerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRepoTriggerResponse{}
-	_body, _err := client.UpdateRepoTriggerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7667,7 +5678,7 @@ func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRepositoryResponse
-func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepositoryResponse, _err error) {
+func (client *Client) UpdateRepositoryWithContext(ctx context.Context, request *UpdateRepositoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateRepositoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7720,28 +5731,10 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRepositoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The ID of the request.
-//
-// @param request - UpdateRepositoryRequest
-//
-// @return UpdateRepositoryResponse
-func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_result *UpdateRepositoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateRepositoryResponse{}
-	_body, _err := client.UpdateRepositoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
