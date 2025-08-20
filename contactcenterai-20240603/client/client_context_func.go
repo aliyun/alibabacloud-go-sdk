@@ -455,6 +455,63 @@ func (client *Client) DeleteVocabWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
+// 通用图片分析
+//
+// @param request - GeneralAnalyzeImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneralAnalyzeImageResponse
+func (client *Client) GeneralAnalyzeImageWithContext(ctx context.Context, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GeneralAnalyzeImageResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.ImageUrls) {
+		body["imageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GeneralAnalyzeImage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/generalanalyzeImage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GeneralAnalyzeImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 语音文件调用大模型获取结果
 //
 // @param tmpReq - GetTaskResultRequest

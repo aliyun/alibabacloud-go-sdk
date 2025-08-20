@@ -668,6 +668,99 @@ func (client *Client) DeleteVocab(request *DeleteVocabRequest) (_result *DeleteV
 
 // Summary:
 //
+// 通用图片分析
+//
+// @param request - GeneralAnalyzeImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneralAnalyzeImageResponse
+func (client *Client) GeneralAnalyzeImageWithSSE(workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *GeneralAnalyzeImageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.generalAnalyzeImageWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, appId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 通用图片分析
+//
+// @param request - GeneralAnalyzeImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GeneralAnalyzeImageResponse
+func (client *Client) GeneralAnalyzeImageWithOptions(workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GeneralAnalyzeImageResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.ImageUrls) {
+		body["imageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GeneralAnalyzeImage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/generalanalyzeImage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GeneralAnalyzeImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用图片分析
+//
+// @param request - GeneralAnalyzeImageRequest
+//
+// @return GeneralAnalyzeImageResponse
+func (client *Client) GeneralAnalyzeImage(workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest) (_result *GeneralAnalyzeImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GeneralAnalyzeImageResponse{}
+	_body, _err := client.GeneralAnalyzeImageWithOptions(workspaceId, appId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 语音文件调用大模型获取结果
 //
 // @param tmpReq - GetTaskResultRequest
@@ -1368,6 +1461,63 @@ func (client *Client) analyzeImageWithSSE_opYieldFunc(_yield chan *AnalyzeImageR
 		Version:     dara.String("2024-06-03"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/analyzeImage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) generalAnalyzeImageWithSSE_opYieldFunc(_yield chan *GeneralAnalyzeImageResponse, _yieldErr chan error, workspaceId *string, appId *string, request *GeneralAnalyzeImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.ImageUrls) {
+		body["imageUrls"] = request.ImageUrls
+	}
+
+	if !dara.IsNil(request.Stream) {
+		body["stream"] = request.Stream
+	}
+
+	if !dara.IsNil(request.TemplateIds) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GeneralAnalyzeImage"),
+		Version:     dara.String("2024-06-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/ccai/app/" + dara.PercentEncode(dara.StringValue(appId)) + "/generalanalyzeImage"),
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
