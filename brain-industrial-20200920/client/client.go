@@ -148,6 +148,10 @@ func (client *Client) AicsOpenApiInvokeWithOptions(tmpReq *AicsOpenApiInvokeRequ
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
 	if !dara.IsNil(request.NodeId) {
 		query["NodeId"] = request.NodeId
 	}

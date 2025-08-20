@@ -9,6 +9,8 @@ type iAicsOpenApiInvokeShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetJobId(v string) *AicsOpenApiInvokeShrinkRequest
+	GetJobId() *string
 	SetNodeId(v string) *AicsOpenApiInvokeShrinkRequest
 	GetNodeId() *string
 	SetParamShrink(v string) *AicsOpenApiInvokeShrinkRequest
@@ -20,6 +22,7 @@ type iAicsOpenApiInvokeShrinkRequest interface {
 }
 
 type AicsOpenApiInvokeShrinkRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// example:
 	//
 	// 119397
@@ -48,6 +51,10 @@ func (s AicsOpenApiInvokeShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AicsOpenApiInvokeShrinkRequest) GetJobId() *string {
+	return s.JobId
+}
+
 func (s *AicsOpenApiInvokeShrinkRequest) GetNodeId() *string {
 	return s.NodeId
 }
@@ -62,6 +69,11 @@ func (s *AicsOpenApiInvokeShrinkRequest) GetServiceId() *string {
 
 func (s *AicsOpenApiInvokeShrinkRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *AicsOpenApiInvokeShrinkRequest) SetJobId(v string) *AicsOpenApiInvokeShrinkRequest {
+	s.JobId = &v
+	return s
 }
 
 func (s *AicsOpenApiInvokeShrinkRequest) SetNodeId(v string) *AicsOpenApiInvokeShrinkRequest {

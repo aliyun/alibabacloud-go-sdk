@@ -82,6 +82,10 @@ func (client *Client) AicsOpenApiInvokeWithContext(ctx context.Context, tmpReq *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
 	if !dara.IsNil(request.NodeId) {
 		query["NodeId"] = request.NodeId
 	}

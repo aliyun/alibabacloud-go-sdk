@@ -9,6 +9,8 @@ type iAicsOpenApiInvokeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetJobId(v string) *AicsOpenApiInvokeRequest
+	GetJobId() *string
 	SetNodeId(v string) *AicsOpenApiInvokeRequest
 	GetNodeId() *string
 	SetParam(v map[string]interface{}) *AicsOpenApiInvokeRequest
@@ -20,6 +22,7 @@ type iAicsOpenApiInvokeRequest interface {
 }
 
 type AicsOpenApiInvokeRequest struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// example:
 	//
 	// 119397
@@ -48,6 +51,10 @@ func (s AicsOpenApiInvokeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AicsOpenApiInvokeRequest) GetJobId() *string {
+	return s.JobId
+}
+
 func (s *AicsOpenApiInvokeRequest) GetNodeId() *string {
 	return s.NodeId
 }
@@ -62,6 +69,11 @@ func (s *AicsOpenApiInvokeRequest) GetServiceId() *string {
 
 func (s *AicsOpenApiInvokeRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *AicsOpenApiInvokeRequest) SetJobId(v string) *AicsOpenApiInvokeRequest {
+	s.JobId = &v
+	return s
 }
 
 func (s *AicsOpenApiInvokeRequest) SetNodeId(v string) *AicsOpenApiInvokeRequest {
