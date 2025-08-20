@@ -261,7 +261,8 @@ type DescribePriceResponseBodyCoupons struct {
 	// example:
 	//
 	// CanPromFee
-	CanPromFee *int64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	CanPromFee *int64  `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	CouponDesc *string `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
 	// example:
 	//
 	// CouponName
@@ -296,6 +297,10 @@ func (s *DescribePriceResponseBodyCoupons) GetCanPromFee() *int64 {
 	return s.CanPromFee
 }
 
+func (s *DescribePriceResponseBodyCoupons) GetCouponDesc() *string {
+	return s.CouponDesc
+}
+
 func (s *DescribePriceResponseBodyCoupons) GetCouponName() *string {
 	return s.CouponName
 }
@@ -318,6 +323,11 @@ func (s *DescribePriceResponseBodyCoupons) GetPromotionDesc() *string {
 
 func (s *DescribePriceResponseBodyCoupons) SetCanPromFee(v int64) *DescribePriceResponseBodyCoupons {
 	s.CanPromFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodyCoupons) SetCouponDesc(v string) *DescribePriceResponseBodyCoupons {
+	s.CouponDesc = &v
 	return s
 }
 
