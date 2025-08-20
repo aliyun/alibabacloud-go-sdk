@@ -9,6 +9,8 @@ type iListJobRunsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationConfigs(v string) *ListJobRunsRequest
+	GetApplicationConfigs() *string
 	SetCreator(v string) *ListJobRunsRequest
 	GetCreator() *string
 	SetEndTime(v *ListJobRunsRequestEndTime) *ListJobRunsRequest
@@ -31,6 +33,8 @@ type iListJobRunsRequest interface {
 	GetRegionId() *string
 	SetResourceQueueId(v string) *ListJobRunsRequest
 	GetResourceQueueId() *string
+	SetRuntimeConfigs(v string) *ListJobRunsRequest
+	GetRuntimeConfigs() *string
 	SetStartTime(v *ListJobRunsRequestStartTime) *ListJobRunsRequest
 	GetStartTime() *ListJobRunsRequestStartTime
 	SetStates(v []*string) *ListJobRunsRequest
@@ -40,6 +44,7 @@ type iListJobRunsRequest interface {
 }
 
 type ListJobRunsRequest struct {
+	ApplicationConfigs *string `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty"`
 	// The ID of the user who created the job.
 	//
 	// example:
@@ -97,6 +102,7 @@ type ListJobRunsRequest struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	RuntimeConfigs  *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
 	// The range of start time.
 	StartTime *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
 	// The job states.
@@ -115,6 +121,10 @@ func (s ListJobRunsRequest) String() string {
 
 func (s ListJobRunsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobRunsRequest) GetApplicationConfigs() *string {
+	return s.ApplicationConfigs
 }
 
 func (s *ListJobRunsRequest) GetCreator() *string {
@@ -161,6 +171,10 @@ func (s *ListJobRunsRequest) GetResourceQueueId() *string {
 	return s.ResourceQueueId
 }
 
+func (s *ListJobRunsRequest) GetRuntimeConfigs() *string {
+	return s.RuntimeConfigs
+}
+
 func (s *ListJobRunsRequest) GetStartTime() *ListJobRunsRequestStartTime {
 	return s.StartTime
 }
@@ -171,6 +185,11 @@ func (s *ListJobRunsRequest) GetStates() []*string {
 
 func (s *ListJobRunsRequest) GetTags() []*ListJobRunsRequestTags {
 	return s.Tags
+}
+
+func (s *ListJobRunsRequest) SetApplicationConfigs(v string) *ListJobRunsRequest {
+	s.ApplicationConfigs = &v
+	return s
 }
 
 func (s *ListJobRunsRequest) SetCreator(v string) *ListJobRunsRequest {
@@ -225,6 +244,11 @@ func (s *ListJobRunsRequest) SetRegionId(v string) *ListJobRunsRequest {
 
 func (s *ListJobRunsRequest) SetResourceQueueId(v string) *ListJobRunsRequest {
 	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListJobRunsRequest) SetRuntimeConfigs(v string) *ListJobRunsRequest {
+	s.RuntimeConfigs = &v
 	return s
 }
 

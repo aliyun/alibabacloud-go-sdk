@@ -438,6 +438,10 @@ func (client *Client) CreateSessionClusterWithContext(ctx context.Context, works
 		body["autoStopConfiguration"] = request.AutoStopConfiguration
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DisplayReleaseVersion) {
 		body["displayReleaseVersion"] = request.DisplayReleaseVersion
 	}
@@ -1296,6 +1300,10 @@ func (client *Client) ListJobRunsWithContext(ctx context.Context, workspaceId *s
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationConfigs) {
+		query["applicationConfigs"] = request.ApplicationConfigs
+	}
+
 	if !dara.IsNil(request.Creator) {
 		query["creator"] = request.Creator
 	}
@@ -1338,6 +1346,10 @@ func (client *Client) ListJobRunsWithContext(ctx context.Context, workspaceId *s
 
 	if !dara.IsNil(request.ResourceQueueId) {
 		query["resourceQueueId"] = request.ResourceQueueId
+	}
+
+	if !dara.IsNil(request.RuntimeConfigs) {
+		query["runtimeConfigs"] = request.RuntimeConfigs
 	}
 
 	if !dara.IsNil(request.StartTimeShrink) {
@@ -1684,6 +1696,59 @@ func (client *Client) ListLogContentsWithContext(ctx context.Context, workspaceI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLogContentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户列表
+//
+// @param request - ListMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMembersResponse
+func (client *Client) ListMembersWithContext(ctx context.Context, workspaceId *string, request *ListMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMembersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMembers"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/auth/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/members"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMembersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

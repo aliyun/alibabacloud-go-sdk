@@ -1,3 +1,14 @@
+2025-08-20 Version: v1.14.0
+- Support API ListMembers.
+- Update API CreateSessionCluster: add request parameters body.clientToken.
+- Update API ListJobRuns: add request parameters applicationConfigs.
+- Update API ListJobRuns: add request parameters runtimeConfigs.
+- Update API ListKyuubiServices: add response parameters Body.data.kyuubiServices.$.kyuubiReleaseVersion.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.exitReason.
+- Update API ListKyuubiToken: add response parameters Body.data.tokens.$.accountNames.
+- Update API ListKyuubiToken: add response parameters Body.data.tokens.$.memberArns.
+
+
 2025-08-15 Version: v1.13.0
 - Support API ListSqlStatementContents.
 

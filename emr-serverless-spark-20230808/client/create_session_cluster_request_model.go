@@ -15,6 +15,8 @@ type iCreateSessionClusterRequest interface {
 	GetAutoStartConfiguration() *CreateSessionClusterRequestAutoStartConfiguration
 	SetAutoStopConfiguration(v *CreateSessionClusterRequestAutoStopConfiguration) *CreateSessionClusterRequest
 	GetAutoStopConfiguration() *CreateSessionClusterRequestAutoStopConfiguration
+	SetClientToken(v string) *CreateSessionClusterRequest
+	GetClientToken() *string
 	SetDisplayReleaseVersion(v string) *CreateSessionClusterRequest
 	GetDisplayReleaseVersion() *string
 	SetEnvId(v string) *CreateSessionClusterRequest
@@ -46,6 +48,7 @@ type CreateSessionClusterRequest struct {
 	AutoStartConfiguration *CreateSessionClusterRequestAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
 	// The automatic termination configuration.
 	AutoStopConfiguration *CreateSessionClusterRequestAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	ClientToken           *string                                           `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	// The version of the Spark engine.
 	//
 	// example:
@@ -121,6 +124,10 @@ func (s *CreateSessionClusterRequest) GetAutoStopConfiguration() *CreateSessionC
 	return s.AutoStopConfiguration
 }
 
+func (s *CreateSessionClusterRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *CreateSessionClusterRequest) GetDisplayReleaseVersion() *string {
 	return s.DisplayReleaseVersion
 }
@@ -169,6 +176,11 @@ func (s *CreateSessionClusterRequest) SetAutoStartConfiguration(v *CreateSession
 
 func (s *CreateSessionClusterRequest) SetAutoStopConfiguration(v *CreateSessionClusterRequestAutoStopConfiguration) *CreateSessionClusterRequest {
 	s.AutoStopConfiguration = v
+	return s
+}
+
+func (s *CreateSessionClusterRequest) SetClientToken(v string) *CreateSessionClusterRequest {
+	s.ClientToken = &v
 	return s
 }
 

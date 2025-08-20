@@ -132,6 +132,7 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// 2025-02-12 20:02:02
 	EndTime                  *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ExitReason               *string `json:"exitReason,omitempty" xml:"exitReason,omitempty"`
 	LatestSqlStatementStatus *string `json:"latestSqlStatementStatus,omitempty" xml:"latestSqlStatementStatus,omitempty"`
 	// The total amount of memory allocated to the job multiplied by the running duration (seconds).
 	//
@@ -197,6 +198,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetEndTime() *stri
 	return s.EndTime
 }
 
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetExitReason() *string {
+	return s.ExitReason
+}
+
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetLatestSqlStatementStatus() *string {
 	return s.LatestSqlStatementStatus
 }
@@ -242,6 +247,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetCuHours(v float
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetEndTime(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetExitReason(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.ExitReason = &v
 	return s
 }
 

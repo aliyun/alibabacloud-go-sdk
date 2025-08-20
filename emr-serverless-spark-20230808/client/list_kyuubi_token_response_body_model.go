@@ -79,6 +79,7 @@ func (s *ListKyuubiTokenResponseBodyData) Validate() error {
 }
 
 type ListKyuubiTokenResponseBodyDataTokens struct {
+	AccountNames []*string `json:"accountNames,omitempty" xml:"accountNames,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2025-02-11T02:23:02Z
@@ -94,7 +95,8 @@ type ListKyuubiTokenResponseBodyDataTokens struct {
 	// example:
 	//
 	// 1740366232121
-	LastUsedTime *int64 `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	LastUsedTime *int64    `json:"lastUsedTime,omitempty" xml:"lastUsedTime,omitempty"`
+	MemberArns   []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
 	// example:
 	//
 	// dev_serveless_spark
@@ -119,6 +121,10 @@ func (s ListKyuubiTokenResponseBodyDataTokens) GoString() string {
 	return s.String()
 }
 
+func (s *ListKyuubiTokenResponseBodyDataTokens) GetAccountNames() []*string {
+	return s.AccountNames
+}
+
 func (s *ListKyuubiTokenResponseBodyDataTokens) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -135,6 +141,10 @@ func (s *ListKyuubiTokenResponseBodyDataTokens) GetLastUsedTime() *int64 {
 	return s.LastUsedTime
 }
 
+func (s *ListKyuubiTokenResponseBodyDataTokens) GetMemberArns() []*string {
+	return s.MemberArns
+}
+
 func (s *ListKyuubiTokenResponseBodyDataTokens) GetName() *string {
 	return s.Name
 }
@@ -145,6 +155,11 @@ func (s *ListKyuubiTokenResponseBodyDataTokens) GetToken() *string {
 
 func (s *ListKyuubiTokenResponseBodyDataTokens) GetTokenId() *string {
 	return s.TokenId
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetAccountNames(v []*string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.AccountNames = v
+	return s
 }
 
 func (s *ListKyuubiTokenResponseBodyDataTokens) SetCreateTime(v int64) *ListKyuubiTokenResponseBodyDataTokens {
@@ -164,6 +179,11 @@ func (s *ListKyuubiTokenResponseBodyDataTokens) SetExpireTime(v int64) *ListKyuu
 
 func (s *ListKyuubiTokenResponseBodyDataTokens) SetLastUsedTime(v int64) *ListKyuubiTokenResponseBodyDataTokens {
 	s.LastUsedTime = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetMemberArns(v []*string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.MemberArns = v
 	return s
 }
 

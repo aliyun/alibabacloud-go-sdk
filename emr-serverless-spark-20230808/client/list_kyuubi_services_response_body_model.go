@@ -100,7 +100,8 @@ type ListKyuubiServicesResponseBodyDataKyuubiServices struct {
 	// kyuubi.conf.key=value1
 	//
 	// kyuubi.conf.key1=value2
-	KyuubiConfigs *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
+	KyuubiConfigs        *string `json:"kyuubiConfigs,omitempty" xml:"kyuubiConfigs,omitempty"`
+	KyuubiReleaseVersion *string `json:"kyuubiReleaseVersion,omitempty" xml:"kyuubiReleaseVersion,omitempty"`
 	// KyuubiServer ID。
 	//
 	// example:
@@ -171,6 +172,10 @@ func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetKyuubiConfigs() *s
 	return s.KyuubiConfigs
 }
 
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetKyuubiReleaseVersion() *string {
+	return s.KyuubiReleaseVersion
+}
+
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) GetKyuubiServiceId() *string {
 	return s.KyuubiServiceId
 }
@@ -229,6 +234,11 @@ func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetInnerEndpoint(v st
 
 func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetKyuubiConfigs(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
 	s.KyuubiConfigs = &v
+	return s
+}
+
+func (s *ListKyuubiServicesResponseBodyDataKyuubiServices) SetKyuubiReleaseVersion(v string) *ListKyuubiServicesResponseBodyDataKyuubiServices {
+	s.KyuubiReleaseVersion = &v
 	return s
 }
 

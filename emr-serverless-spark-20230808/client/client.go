@@ -581,6 +581,10 @@ func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, reque
 		body["autoStopConfiguration"] = request.AutoStopConfiguration
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DisplayReleaseVersion) {
 		body["displayReleaseVersion"] = request.DisplayReleaseVersion
 	}
@@ -1724,6 +1728,10 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationConfigs) {
+		query["applicationConfigs"] = request.ApplicationConfigs
+	}
+
 	if !dara.IsNil(request.Creator) {
 		query["creator"] = request.Creator
 	}
@@ -1766,6 +1774,10 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 
 	if !dara.IsNil(request.ResourceQueueId) {
 		query["resourceQueueId"] = request.ResourceQueueId
+	}
+
+	if !dara.IsNil(request.RuntimeConfigs) {
+		query["runtimeConfigs"] = request.RuntimeConfigs
 	}
 
 	if !dara.IsNil(request.StartTimeShrink) {
@@ -2244,6 +2256,78 @@ func (client *Client) ListLogContents(workspaceId *string, request *ListLogConte
 	headers := make(map[string]*string)
 	_result = &ListLogContentsResponse{}
 	_body, _err := client.ListLogContentsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户列表
+//
+// @param request - ListMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMembersResponse
+func (client *Client) ListMembersWithOptions(workspaceId *string, request *ListMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMembersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMembers"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/auth/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/members"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户列表
+//
+// @param request - ListMembersRequest
+//
+// @return ListMembersResponse
+func (client *Client) ListMembers(workspaceId *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMembersResponse{}
+	_body, _err := client.ListMembersWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

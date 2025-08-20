@@ -9,6 +9,8 @@ type iListJobRunsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationConfigs(v string) *ListJobRunsShrinkRequest
+	GetApplicationConfigs() *string
 	SetCreator(v string) *ListJobRunsShrinkRequest
 	GetCreator() *string
 	SetEndTimeShrink(v string) *ListJobRunsShrinkRequest
@@ -31,6 +33,8 @@ type iListJobRunsShrinkRequest interface {
 	GetRegionId() *string
 	SetResourceQueueId(v string) *ListJobRunsShrinkRequest
 	GetResourceQueueId() *string
+	SetRuntimeConfigs(v string) *ListJobRunsShrinkRequest
+	GetRuntimeConfigs() *string
 	SetStartTimeShrink(v string) *ListJobRunsShrinkRequest
 	GetStartTimeShrink() *string
 	SetStatesShrink(v string) *ListJobRunsShrinkRequest
@@ -40,6 +44,7 @@ type iListJobRunsShrinkRequest interface {
 }
 
 type ListJobRunsShrinkRequest struct {
+	ApplicationConfigs *string `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty"`
 	// The ID of the user who created the job.
 	//
 	// example:
@@ -97,6 +102,7 @@ type ListJobRunsShrinkRequest struct {
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	RuntimeConfigs  *string `json:"runtimeConfigs,omitempty" xml:"runtimeConfigs,omitempty"`
 	// The range of start time.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The job states.
@@ -115,6 +121,10 @@ func (s ListJobRunsShrinkRequest) String() string {
 
 func (s ListJobRunsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobRunsShrinkRequest) GetApplicationConfigs() *string {
+	return s.ApplicationConfigs
 }
 
 func (s *ListJobRunsShrinkRequest) GetCreator() *string {
@@ -161,6 +171,10 @@ func (s *ListJobRunsShrinkRequest) GetResourceQueueId() *string {
 	return s.ResourceQueueId
 }
 
+func (s *ListJobRunsShrinkRequest) GetRuntimeConfigs() *string {
+	return s.RuntimeConfigs
+}
+
 func (s *ListJobRunsShrinkRequest) GetStartTimeShrink() *string {
 	return s.StartTimeShrink
 }
@@ -171,6 +185,11 @@ func (s *ListJobRunsShrinkRequest) GetStatesShrink() *string {
 
 func (s *ListJobRunsShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
+}
+
+func (s *ListJobRunsShrinkRequest) SetApplicationConfigs(v string) *ListJobRunsShrinkRequest {
+	s.ApplicationConfigs = &v
+	return s
 }
 
 func (s *ListJobRunsShrinkRequest) SetCreator(v string) *ListJobRunsShrinkRequest {
@@ -225,6 +244,11 @@ func (s *ListJobRunsShrinkRequest) SetRegionId(v string) *ListJobRunsShrinkReque
 
 func (s *ListJobRunsShrinkRequest) SetResourceQueueId(v string) *ListJobRunsShrinkRequest {
 	s.ResourceQueueId = &v
+	return s
+}
+
+func (s *ListJobRunsShrinkRequest) SetRuntimeConfigs(v string) *ListJobRunsShrinkRequest {
+	s.RuntimeConfigs = &v
 	return s
 }
 
