@@ -1,3 +1,8 @@
+2025-08-20 Version: v1.0.0
+- Support API ThirdImmediateMsgPush.
+- Update API CallBackThirdRightSendPlan: update request parameters ExtendInfo' parseType has changed.
+
+
 2024-04-17 Version: v0.1.1
 - Generated golang iap_1.0 for AliGenie.
 
