@@ -81,6 +81,94 @@ func (client *Client) AddImageWithContext(ctx context.Context, tmpReq *AddImageR
 
 // Summary:
 //
+// 创建执行计划创建执行计划
+//
+// @param tmpReq - CreateActionPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateActionPlanResponse
+func (client *Client) CreateActionPlanWithContext(ctx context.Context, tmpReq *CreateActionPlanRequest, runtime *dara.RuntimeOptions) (_result *CreateActionPlanResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateActionPlanShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Regions) {
+		request.RegionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Regions, dara.String("Regions"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Resources) {
+		request.ResourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resources, dara.String("Resources"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanName) {
+		query["ActionPlanName"] = request.ActionPlanName
+	}
+
+	if !dara.IsNil(request.AllocationSpec) {
+		query["AllocationSpec"] = request.AllocationSpec
+	}
+
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.DesiredCapacity) {
+		query["DesiredCapacity"] = request.DesiredCapacity
+	}
+
+	if !dara.IsNil(request.Level) {
+		query["Level"] = request.Level
+	}
+
+	if !dara.IsNil(request.PrologScript) {
+		query["PrologScript"] = request.PrologScript
+	}
+
+	if !dara.IsNil(request.RegionsShrink) {
+		query["Regions"] = request.RegionsShrink
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.ResourcesShrink) {
+		query["Resources"] = request.ResourcesShrink
+	}
+
+	if !dara.IsNil(request.Script) {
+		query["Script"] = request.Script
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateActionPlan"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateActionPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交任务
 //
 // @param tmpReq - CreateJobRequest
@@ -211,6 +299,48 @@ func (client *Client) CreatePoolWithContext(ctx context.Context, tmpReq *CreateP
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePoolResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除执行计划
+//
+// @param request - DeleteActionPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteActionPlanResponse
+func (client *Client) DeleteActionPlanWithContext(ctx context.Context, request *DeleteActionPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteActionPlanResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanId) {
+		query["ActionPlanId"] = request.ActionPlanId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteActionPlan"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteActionPlanResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -439,6 +569,48 @@ func (client *Client) DescribeJobMetricLastWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// 查询执行计划详情
+//
+// @param request - GetActionPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetActionPlanResponse
+func (client *Client) GetActionPlanWithContext(ctx context.Context, request *GetActionPlanRequest, runtime *dara.RuntimeOptions) (_result *GetActionPlanResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanId) {
+		query["ActionPlanId"] = request.ActionPlanId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetActionPlan"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetActionPlanResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看应用版本列表
 //
 // @param request - GetAppVersionsRequest
@@ -631,6 +803,112 @@ func (client *Client) GetPoolWithContext(ctx context.Context, request *GetPoolRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPoolResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询执行计划的执行情况。
+//
+// @param request - ListActionPlanActivitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActionPlanActivitiesResponse
+func (client *Client) ListActionPlanActivitiesWithContext(ctx context.Context, request *ListActionPlanActivitiesRequest, runtime *dara.RuntimeOptions) (_result *ListActionPlanActivitiesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanId) {
+		query["ActionPlanId"] = request.ActionPlanId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListActionPlanActivities"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListActionPlanActivitiesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询执行计划列表
+//
+// @param tmpReq - ListActionPlansRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActionPlansResponse
+func (client *Client) ListActionPlansWithContext(ctx context.Context, tmpReq *ListActionPlansRequest, runtime *dara.RuntimeOptions) (_result *ListActionPlansResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListActionPlansShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ActionPlanIds) {
+		request.ActionPlanIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionPlanIds, dara.String("ActionPlanIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanIdsShrink) {
+		query["ActionPlanIds"] = request.ActionPlanIdsShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListActionPlans"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListActionPlansResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1197,6 +1475,56 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnTagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新执行计划
+//
+// @param request - UpdateActionPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateActionPlanResponse
+func (client *Client) UpdateActionPlanWithContext(ctx context.Context, request *UpdateActionPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateActionPlanResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionPlanId) {
+		query["ActionPlanId"] = request.ActionPlanId
+	}
+
+	if !dara.IsNil(request.DesiredCapacity) {
+		query["DesiredCapacity"] = request.DesiredCapacity
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateActionPlan"),
+		Version:     dara.String("2023-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateActionPlanResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
