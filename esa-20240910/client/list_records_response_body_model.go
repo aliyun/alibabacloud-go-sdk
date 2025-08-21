@@ -548,7 +548,8 @@ type ListRecordsResponseBodyRecordsData struct {
 	// example:
 	//
 	// issue
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag  *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
 	//
 	// example:
@@ -639,6 +640,10 @@ func (s *ListRecordsResponseBodyRecordsData) GetTag() *string {
 	return s.Tag
 }
 
+func (s *ListRecordsResponseBodyRecordsData) GetTags() map[string]interface{} {
+	return s.Tags
+}
+
 func (s *ListRecordsResponseBodyRecordsData) GetType() *int32 {
 	return s.Type
 }
@@ -702,6 +707,11 @@ func (s *ListRecordsResponseBodyRecordsData) SetSelector(v int32) *ListRecordsRe
 
 func (s *ListRecordsResponseBodyRecordsData) SetTag(v string) *ListRecordsResponseBodyRecordsData {
 	s.Tag = &v
+	return s
+}
+
+func (s *ListRecordsResponseBodyRecordsData) SetTags(v map[string]interface{}) *ListRecordsResponseBodyRecordsData {
+	s.Tags = v
 	return s
 }
 

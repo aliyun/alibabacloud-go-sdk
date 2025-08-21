@@ -497,7 +497,8 @@ type GetRecordResponseBodyRecordModelData struct {
 	// example:
 	//
 	// issue
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag  *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
 	//
 	// example:
@@ -588,6 +589,10 @@ func (s *GetRecordResponseBodyRecordModelData) GetTag() *string {
 	return s.Tag
 }
 
+func (s *GetRecordResponseBodyRecordModelData) GetTags() map[string]interface{} {
+	return s.Tags
+}
+
 func (s *GetRecordResponseBodyRecordModelData) GetType() *int32 {
 	return s.Type
 }
@@ -651,6 +656,11 @@ func (s *GetRecordResponseBodyRecordModelData) SetSelector(v int32) *GetRecordRe
 
 func (s *GetRecordResponseBodyRecordModelData) SetTag(v string) *GetRecordResponseBodyRecordModelData {
 	s.Tag = &v
+	return s
+}
+
+func (s *GetRecordResponseBodyRecordModelData) SetTags(v map[string]interface{}) *GetRecordResponseBodyRecordModelData {
+	s.Tags = v
 	return s
 }
 

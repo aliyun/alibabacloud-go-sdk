@@ -1,3 +1,8 @@
+2025-08-21 Version: v2.36.2
+- Update API GetRecord: add response parameters Body.RecordModel.Data.Tags.
+- Update API ListRecords: add response parameters Body.Records.$.Data.Tags.
+
+
 2025-08-18 Version: v2.36.1
 - Generated golang 2024-09-10 for ESA.
 

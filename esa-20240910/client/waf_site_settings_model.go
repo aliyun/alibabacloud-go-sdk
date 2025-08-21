@@ -13,20 +13,26 @@ type iWafSiteSettings interface {
 	GetAddBotProtectionHeaders() *WafSiteSettingsAddBotProtectionHeaders
 	SetAddSecurityHeaders(v *WafSiteSettingsAddSecurityHeaders) *WafSiteSettings
 	GetAddSecurityHeaders() *WafSiteSettingsAddSecurityHeaders
+	SetBandwidthAbuseProtection(v *WafSiteSettingsBandwidthAbuseProtection) *WafSiteSettings
+	GetBandwidthAbuseProtection() *WafSiteSettingsBandwidthAbuseProtection
 	SetBotManagement(v *WafSiteSettingsBotManagement) *WafSiteSettings
 	GetBotManagement() *WafSiteSettingsBotManagement
 	SetClientIpIdentifier(v *WafSiteSettingsClientIpIdentifier) *WafSiteSettings
 	GetClientIpIdentifier() *WafSiteSettingsClientIpIdentifier
+	SetDisableSecurityModule(v *WafSiteSettingsDisableSecurityModule) *WafSiteSettings
+	GetDisableSecurityModule() *WafSiteSettingsDisableSecurityModule
 	SetSecurityLevel(v *WafSiteSettingsSecurityLevel) *WafSiteSettings
 	GetSecurityLevel() *WafSiteSettingsSecurityLevel
 }
 
 type WafSiteSettings struct {
-	AddBotProtectionHeaders *WafSiteSettingsAddBotProtectionHeaders `json:"AddBotProtectionHeaders,omitempty" xml:"AddBotProtectionHeaders,omitempty" type:"Struct"`
-	AddSecurityHeaders      *WafSiteSettingsAddSecurityHeaders      `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
-	BotManagement           *WafSiteSettingsBotManagement           `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
-	ClientIpIdentifier      *WafSiteSettingsClientIpIdentifier      `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
-	SecurityLevel           *WafSiteSettingsSecurityLevel           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
+	AddBotProtectionHeaders  *WafSiteSettingsAddBotProtectionHeaders  `json:"AddBotProtectionHeaders,omitempty" xml:"AddBotProtectionHeaders,omitempty" type:"Struct"`
+	AddSecurityHeaders       *WafSiteSettingsAddSecurityHeaders       `json:"AddSecurityHeaders,omitempty" xml:"AddSecurityHeaders,omitempty" type:"Struct"`
+	BandwidthAbuseProtection *WafSiteSettingsBandwidthAbuseProtection `json:"BandwidthAbuseProtection,omitempty" xml:"BandwidthAbuseProtection,omitempty" type:"Struct"`
+	BotManagement            *WafSiteSettingsBotManagement            `json:"BotManagement,omitempty" xml:"BotManagement,omitempty" type:"Struct"`
+	ClientIpIdentifier       *WafSiteSettingsClientIpIdentifier       `json:"ClientIpIdentifier,omitempty" xml:"ClientIpIdentifier,omitempty" type:"Struct"`
+	DisableSecurityModule    *WafSiteSettingsDisableSecurityModule    `json:"DisableSecurityModule,omitempty" xml:"DisableSecurityModule,omitempty" type:"Struct"`
+	SecurityLevel            *WafSiteSettingsSecurityLevel            `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
 }
 
 func (s WafSiteSettings) String() string {
@@ -45,12 +51,20 @@ func (s *WafSiteSettings) GetAddSecurityHeaders() *WafSiteSettingsAddSecurityHea
 	return s.AddSecurityHeaders
 }
 
+func (s *WafSiteSettings) GetBandwidthAbuseProtection() *WafSiteSettingsBandwidthAbuseProtection {
+	return s.BandwidthAbuseProtection
+}
+
 func (s *WafSiteSettings) GetBotManagement() *WafSiteSettingsBotManagement {
 	return s.BotManagement
 }
 
 func (s *WafSiteSettings) GetClientIpIdentifier() *WafSiteSettingsClientIpIdentifier {
 	return s.ClientIpIdentifier
+}
+
+func (s *WafSiteSettings) GetDisableSecurityModule() *WafSiteSettingsDisableSecurityModule {
+	return s.DisableSecurityModule
 }
 
 func (s *WafSiteSettings) GetSecurityLevel() *WafSiteSettingsSecurityLevel {
@@ -67,6 +81,11 @@ func (s *WafSiteSettings) SetAddSecurityHeaders(v *WafSiteSettingsAddSecurityHea
 	return s
 }
 
+func (s *WafSiteSettings) SetBandwidthAbuseProtection(v *WafSiteSettingsBandwidthAbuseProtection) *WafSiteSettings {
+	s.BandwidthAbuseProtection = v
+	return s
+}
+
 func (s *WafSiteSettings) SetBotManagement(v *WafSiteSettingsBotManagement) *WafSiteSettings {
 	s.BotManagement = v
 	return s
@@ -74,6 +93,11 @@ func (s *WafSiteSettings) SetBotManagement(v *WafSiteSettingsBotManagement) *Waf
 
 func (s *WafSiteSettings) SetClientIpIdentifier(v *WafSiteSettingsClientIpIdentifier) *WafSiteSettings {
 	s.ClientIpIdentifier = v
+	return s
+}
+
+func (s *WafSiteSettings) SetDisableSecurityModule(v *WafSiteSettingsDisableSecurityModule) *WafSiteSettings {
+	s.DisableSecurityModule = v
 	return s
 }
 
@@ -133,6 +157,51 @@ func (s *WafSiteSettingsAddSecurityHeaders) SetEnable(v bool) *WafSiteSettingsAd
 }
 
 func (s *WafSiteSettingsAddSecurityHeaders) Validate() error {
+	return dara.Validate(s)
+}
+
+type WafSiteSettingsBandwidthAbuseProtection struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s WafSiteSettingsBandwidthAbuseProtection) String() string {
+	return dara.Prettify(s)
+}
+
+func (s WafSiteSettingsBandwidthAbuseProtection) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) GetAction() *string {
+	return s.Action
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) GetId() *int64 {
+	return s.Id
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) GetStatus() *string {
+	return s.Status
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) SetAction(v string) *WafSiteSettingsBandwidthAbuseProtection {
+	s.Action = &v
+	return s
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) SetId(v int64) *WafSiteSettingsBandwidthAbuseProtection {
+	s.Id = &v
+	return s
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) SetStatus(v string) *WafSiteSettingsBandwidthAbuseProtection {
+	s.Status = &v
+	return s
+}
+
+func (s *WafSiteSettingsBandwidthAbuseProtection) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -388,6 +457,31 @@ func (s *WafSiteSettingsClientIpIdentifier) SetMode(v string) *WafSiteSettingsCl
 }
 
 func (s *WafSiteSettingsClientIpIdentifier) Validate() error {
+	return dara.Validate(s)
+}
+
+type WafSiteSettingsDisableSecurityModule struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s WafSiteSettingsDisableSecurityModule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s WafSiteSettingsDisableSecurityModule) GoString() string {
+	return s.String()
+}
+
+func (s *WafSiteSettingsDisableSecurityModule) GetStatus() *string {
+	return s.Status
+}
+
+func (s *WafSiteSettingsDisableSecurityModule) SetStatus(v string) *WafSiteSettingsDisableSecurityModule {
+	s.Status = &v
+	return s
+}
+
+func (s *WafSiteSettingsDisableSecurityModule) Validate() error {
 	return dara.Validate(s)
 }
 
