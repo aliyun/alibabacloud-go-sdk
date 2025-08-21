@@ -119,7 +119,9 @@ type DescribeHotBigKeysResponseBodyData struct {
 	// current version doesn\\"t support
 	BigKeyMsg *string `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
 	// The list of large keys.
-	BigKeys *DescribeHotBigKeysResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	BigKeys           *DescribeHotBigKeysResponseBodyDataBigKeys         `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	HighTrafficKeyMsg *string                                            `json:"HighTrafficKeyMsg,omitempty" xml:"HighTrafficKeyMsg,omitempty"`
+	HighTrafficKeys   *DescribeHotBigKeysResponseBodyDataHighTrafficKeys `json:"HighTrafficKeys,omitempty" xml:"HighTrafficKeys,omitempty" type:"Struct"`
 	// The reason why the hot key failed to be queried.
 	//
 	// example:
@@ -146,6 +148,14 @@ func (s *DescribeHotBigKeysResponseBodyData) GetBigKeys() *DescribeHotBigKeysRes
 	return s.BigKeys
 }
 
+func (s *DescribeHotBigKeysResponseBodyData) GetHighTrafficKeyMsg() *string {
+	return s.HighTrafficKeyMsg
+}
+
+func (s *DescribeHotBigKeysResponseBodyData) GetHighTrafficKeys() *DescribeHotBigKeysResponseBodyDataHighTrafficKeys {
+	return s.HighTrafficKeys
+}
+
 func (s *DescribeHotBigKeysResponseBodyData) GetHotKeyMsg() *string {
 	return s.HotKeyMsg
 }
@@ -161,6 +171,16 @@ func (s *DescribeHotBigKeysResponseBodyData) SetBigKeyMsg(v string) *DescribeHot
 
 func (s *DescribeHotBigKeysResponseBodyData) SetBigKeys(v *DescribeHotBigKeysResponseBodyDataBigKeys) *DescribeHotBigKeysResponseBodyData {
 	s.BigKeys = v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyData) SetHighTrafficKeyMsg(v string) *DescribeHotBigKeysResponseBodyData {
+	s.HighTrafficKeyMsg = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyData) SetHighTrafficKeys(v *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) *DescribeHotBigKeysResponseBodyData {
+	s.HighTrafficKeys = v
 	return s
 }
 
@@ -293,6 +313,126 @@ func (s *DescribeHotBigKeysResponseBodyDataBigKeysBigKey) Validate() error {
 	return dara.Validate(s)
 }
 
+type DescribeHotBigKeysResponseBodyDataHighTrafficKeys struct {
+	HighTrafficKey []*DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey `json:"HighTrafficKey,omitempty" xml:"HighTrafficKey,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHotBigKeysResponseBodyDataHighTrafficKeys) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeHotBigKeysResponseBodyDataHighTrafficKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) GetHighTrafficKey() []*DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	return s.HighTrafficKey
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) SetHighTrafficKey(v []*DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) *DescribeHotBigKeysResponseBodyDataHighTrafficKeys {
+	s.HighTrafficKey = v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeys) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey struct {
+	Db       *int32  `json:"Db,omitempty" xml:"Db,omitempty"`
+	Hot      *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyType  *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	InBytes  *int64  `json:"inBytes,omitempty" xml:"inBytes,omitempty"`
+	OutBytes *int64  `json:"outBytes,omitempty" xml:"outBytes,omitempty"`
+}
+
+func (s DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetDb() *int32 {
+	return s.Db
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetHot() *string {
+	return s.Hot
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetKeyType() *string {
+	return s.KeyType
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetNodeId() *string {
+	return s.NodeId
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetSize() *int64 {
+	return s.Size
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetInBytes() *int64 {
+	return s.InBytes
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) GetOutBytes() *int64 {
+	return s.OutBytes
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetDb(v int32) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.Db = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetHot(v string) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.Hot = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetKey(v string) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetKeyType(v string) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.KeyType = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetNodeId(v string) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetSize(v int64) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetInBytes(v int64) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) SetOutBytes(v int64) *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHighTrafficKeysHighTrafficKey) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeHotBigKeysResponseBodyDataHotKeys struct {
 	HotKey []*DescribeHotBigKeysResponseBodyDataHotKeysHotKey `json:"HotKey,omitempty" xml:"HotKey,omitempty" type:"Repeated"`
 }
@@ -355,6 +495,7 @@ type DescribeHotBigKeysResponseBodyDataHotKeysHotKey struct {
 	//
 	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Size   *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeHotBigKeysResponseBodyDataHotKeysHotKey) String() string {
@@ -389,6 +530,10 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) GetSize() *int64 {
+	return s.Size
+}
+
 func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetDb(v int32) *DescribeHotBigKeysResponseBodyDataHotKeysHotKey {
 	s.Db = &v
 	return s
@@ -416,6 +561,11 @@ func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetLfu(v int32) *Descr
 
 func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetNodeId(v string) *DescribeHotBigKeysResponseBodyDataHotKeysHotKey {
 	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeHotBigKeysResponseBodyDataHotKeysHotKey) SetSize(v int64) *DescribeHotBigKeysResponseBodyDataHotKeysHotKey {
+	s.Size = &v
 	return s
 }
 

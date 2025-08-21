@@ -137,6 +137,7 @@ func (s *DescribeTopHotKeysResponseBodyData) Validate() error {
 }
 
 type DescribeTopHotKeysResponseBodyDataHotKey struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The database in which the key is stored.
 	//
 	// example:
@@ -148,7 +149,8 @@ type DescribeTopHotKeysResponseBodyDataHotKey struct {
 	// example:
 	//
 	// 5500~6000
-	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	Hot     *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	InBytes *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The key.
 	//
 	// example:
@@ -172,7 +174,8 @@ type DescribeTopHotKeysResponseBodyDataHotKey struct {
 	// example:
 	//
 	// r-x****-db-0
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OutBytes *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 }
 
 func (s DescribeTopHotKeysResponseBodyDataHotKey) String() string {
@@ -183,12 +186,20 @@ func (s DescribeTopHotKeysResponseBodyDataHotKey) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetCategory() *string {
+	return s.Category
+}
+
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetDb() *int32 {
 	return s.Db
 }
 
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetHot() *string {
 	return s.Hot
+}
+
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetInBytes() *int64 {
+	return s.InBytes
 }
 
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetKey() *string {
@@ -207,6 +218,15 @@ func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) GetOutBytes() *int64 {
+	return s.OutBytes
+}
+
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetCategory(v string) *DescribeTopHotKeysResponseBodyDataHotKey {
+	s.Category = &v
+	return s
+}
+
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetDb(v int32) *DescribeTopHotKeysResponseBodyDataHotKey {
 	s.Db = &v
 	return s
@@ -214,6 +234,11 @@ func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetDb(v int32) *DescribeTopHo
 
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetHot(v string) *DescribeTopHotKeysResponseBodyDataHotKey {
 	s.Hot = &v
+	return s
+}
+
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetInBytes(v int64) *DescribeTopHotKeysResponseBodyDataHotKey {
+	s.InBytes = &v
 	return s
 }
 
@@ -234,6 +259,11 @@ func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetLfu(v int32) *DescribeTopH
 
 func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetNodeId(v string) *DescribeTopHotKeysResponseBodyDataHotKey {
 	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeTopHotKeysResponseBodyDataHotKey) SetOutBytes(v int64) *DescribeTopHotKeysResponseBodyDataHotKey {
+	s.OutBytes = &v
 	return s
 }
 

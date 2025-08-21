@@ -139,6 +139,7 @@ func (s *DescribeHotKeysResponseBodyData) Validate() error {
 }
 
 type DescribeHotKeysResponseBodyDataHotKey struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The database in which the key is stored.
 	//
 	// example:
@@ -150,7 +151,8 @@ type DescribeHotKeysResponseBodyDataHotKey struct {
 	// example:
 	//
 	// 5500~6000
-	Hot *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	Hot     *string `json:"Hot,omitempty" xml:"Hot,omitempty"`
+	InBytes *int64  `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The name of the key.
 	//
 	// example:
@@ -162,7 +164,9 @@ type DescribeHotKeysResponseBodyDataHotKey struct {
 	// example:
 	//
 	// zset
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	KeyType  *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	NodeId   *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OutBytes *int64  `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The number of elements in the key.
 	//
 	// example:
@@ -179,12 +183,20 @@ func (s DescribeHotKeysResponseBodyDataHotKey) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeHotKeysResponseBodyDataHotKey) GetCategory() *string {
+	return s.Category
+}
+
 func (s *DescribeHotKeysResponseBodyDataHotKey) GetDb() *int32 {
 	return s.Db
 }
 
 func (s *DescribeHotKeysResponseBodyDataHotKey) GetHot() *string {
 	return s.Hot
+}
+
+func (s *DescribeHotKeysResponseBodyDataHotKey) GetInBytes() *int64 {
+	return s.InBytes
 }
 
 func (s *DescribeHotKeysResponseBodyDataHotKey) GetKey() *string {
@@ -195,8 +207,21 @@ func (s *DescribeHotKeysResponseBodyDataHotKey) GetKeyType() *string {
 	return s.KeyType
 }
 
+func (s *DescribeHotKeysResponseBodyDataHotKey) GetNodeId() *string {
+	return s.NodeId
+}
+
+func (s *DescribeHotKeysResponseBodyDataHotKey) GetOutBytes() *int64 {
+	return s.OutBytes
+}
+
 func (s *DescribeHotKeysResponseBodyDataHotKey) GetSize() *int64 {
 	return s.Size
+}
+
+func (s *DescribeHotKeysResponseBodyDataHotKey) SetCategory(v string) *DescribeHotKeysResponseBodyDataHotKey {
+	s.Category = &v
+	return s
 }
 
 func (s *DescribeHotKeysResponseBodyDataHotKey) SetDb(v int32) *DescribeHotKeysResponseBodyDataHotKey {
@@ -209,6 +234,11 @@ func (s *DescribeHotKeysResponseBodyDataHotKey) SetHot(v string) *DescribeHotKey
 	return s
 }
 
+func (s *DescribeHotKeysResponseBodyDataHotKey) SetInBytes(v int64) *DescribeHotKeysResponseBodyDataHotKey {
+	s.InBytes = &v
+	return s
+}
+
 func (s *DescribeHotKeysResponseBodyDataHotKey) SetKey(v string) *DescribeHotKeysResponseBodyDataHotKey {
 	s.Key = &v
 	return s
@@ -216,6 +246,16 @@ func (s *DescribeHotKeysResponseBodyDataHotKey) SetKey(v string) *DescribeHotKey
 
 func (s *DescribeHotKeysResponseBodyDataHotKey) SetKeyType(v string) *DescribeHotKeysResponseBodyDataHotKey {
 	s.KeyType = &v
+	return s
+}
+
+func (s *DescribeHotKeysResponseBodyDataHotKey) SetNodeId(v string) *DescribeHotKeysResponseBodyDataHotKey {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeHotKeysResponseBodyDataHotKey) SetOutBytes(v int64) *DescribeHotKeysResponseBodyDataHotKey {
+	s.OutBytes = &v
 	return s
 }
 
