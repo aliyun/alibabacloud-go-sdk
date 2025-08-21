@@ -1308,6 +1308,10 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 		request.DocumentControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentControl, dara.String("DocumentControl"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ImageControl) {
+		request.ImageControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageControl, dara.String("ImageControl"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CsvControlShrink) {
 		query["CsvControl"] = request.CsvControlShrink
@@ -1324,6 +1328,10 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 
 	if !dara.IsNil(request.Filename) {
 		body["Filename"] = request.Filename
+	}
+
+	if !dara.IsNil(request.ImageControlShrink) {
+		body["ImageControl"] = request.ImageControlShrink
 	}
 
 	if !dara.IsNil(request.ImageEmbedJpegQuality) {

@@ -17,6 +17,8 @@ type iCreateWmEmbedTaskRequest interface {
 	GetFileUrl() *string
 	SetFilename(v string) *CreateWmEmbedTaskRequest
 	GetFilename() *string
+	SetImageControl(v *CreateWmEmbedTaskRequestImageControl) *CreateWmEmbedTaskRequest
+	GetImageControl() *CreateWmEmbedTaskRequestImageControl
 	SetImageEmbedJpegQuality(v int64) *CreateWmEmbedTaskRequest
 	GetImageEmbedJpegQuality() *int64
 	SetImageEmbedLevel(v int64) *CreateWmEmbedTaskRequest
@@ -49,7 +51,8 @@ type CreateWmEmbedTaskRequest struct {
 	// example:
 	//
 	// abc****.pdf
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename     *string                               `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	ImageControl *CreateWmEmbedTaskRequestImageControl `json:"ImageControl,omitempty" xml:"ImageControl,omitempty" type:"Struct"`
 	// example:
 	//
 	// 95
@@ -110,6 +113,10 @@ func (s *CreateWmEmbedTaskRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *CreateWmEmbedTaskRequest) GetImageControl() *CreateWmEmbedTaskRequestImageControl {
+	return s.ImageControl
+}
+
 func (s *CreateWmEmbedTaskRequest) GetImageEmbedJpegQuality() *int64 {
 	return s.ImageEmbedJpegQuality
 }
@@ -159,6 +166,11 @@ func (s *CreateWmEmbedTaskRequest) SetFileUrl(v string) *CreateWmEmbedTaskReques
 
 func (s *CreateWmEmbedTaskRequest) SetFilename(v string) *CreateWmEmbedTaskRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetImageControl(v *CreateWmEmbedTaskRequestImageControl) *CreateWmEmbedTaskRequest {
+	s.ImageControl = v
 	return s
 }
 
@@ -573,5 +585,485 @@ func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleContro
 }
 
 func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControl struct {
+	LogoVisibleControl *CreateWmEmbedTaskRequestImageControlLogoVisibleControl `json:"LogoVisibleControl,omitempty" xml:"LogoVisibleControl,omitempty" type:"Struct"`
+	MetadataControl    *CreateWmEmbedTaskRequestImageControlMetadataControl    `json:"MetadataControl,omitempty" xml:"MetadataControl,omitempty" type:"Struct"`
+	TextVisibleControl *CreateWmEmbedTaskRequestImageControlTextVisibleControl `json:"TextVisibleControl,omitempty" xml:"TextVisibleControl,omitempty" type:"Struct"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) GetLogoVisibleControl() *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	return s.LogoVisibleControl
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) GetMetadataControl() *CreateWmEmbedTaskRequestImageControlMetadataControl {
+	return s.MetadataControl
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) GetTextVisibleControl() *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	return s.TextVisibleControl
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) SetLogoVisibleControl(v *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) *CreateWmEmbedTaskRequestImageControl {
+	s.LogoVisibleControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) SetMetadataControl(v *CreateWmEmbedTaskRequestImageControlMetadataControl) *CreateWmEmbedTaskRequestImageControl {
+	s.MetadataControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) SetTextVisibleControl(v *CreateWmEmbedTaskRequestImageControlTextVisibleControl) *CreateWmEmbedTaskRequestImageControl {
+	s.TextVisibleControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControlLogoVisibleControl struct {
+	Angle      *int64                                                        `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	LogoBase64 *string                                                       `json:"LogoBase64,omitempty" xml:"LogoBase64,omitempty"`
+	Margin     *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
+	Mode       *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity    *int32                                                        `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx      *float32                                                      `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy      *float32                                                      `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX       *int64                                                        `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY       *int64                                                        `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX     *int64                                                        `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY     *int64                                                        `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible    *bool                                                         `json:"Visible,omitempty" xml:"Visible,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControlLogoVisibleControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetAngle() *int64 {
+	return s.Angle
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetLogoBase64() *string {
+	return s.LogoBase64
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetMargin() *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin {
+	return s.Margin
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetOpacity() *int32 {
+	return s.Opacity
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetPosAx() *float32 {
+	return s.PosAx
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetPosAy() *float32 {
+	return s.PosAy
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetPosX() *int64 {
+	return s.PosX
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetPosY() *int64 {
+	return s.PosY
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetSpaceX() *int64 {
+	return s.SpaceX
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetSpaceY() *int64 {
+	return s.SpaceY
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetVisible() *bool {
+	return s.Visible
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetAngle(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetLogoBase64(v string) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.LogoBase64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetMargin(v *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Margin = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetMode(v string) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetOpacity(v int32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetPosAx(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.PosAx = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetPosAy(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.PosAy = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetPosX(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetPosY(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetSpaceX(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.SpaceX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetSpaceY(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.SpaceY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetVisible(v bool) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin struct {
+	Bottom *float32 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
+	Left   *float32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Right  *float32 `json:"Right,omitempty" xml:"Right,omitempty"`
+	Top    *float32 `json:"Top,omitempty" xml:"Top,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) GetBottom() *float32 {
+	return s.Bottom
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) GetLeft() *float32 {
+	return s.Left
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) GetRight() *float32 {
+	return s.Right
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) GetTop() *float32 {
+	return s.Top
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) SetBottom(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin {
+	s.Bottom = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) SetLeft(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin {
+	s.Left = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) SetRight(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin {
+	s.Right = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) SetTop(v float32) *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin {
+	s.Top = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControlMetadataControl struct {
+	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	XmpKvBase64 *string `json:"XmpKvBase64,omitempty" xml:"XmpKvBase64,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControlMetadataControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControlMetadataControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlMetadataControl) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlMetadataControl) GetXmpKvBase64() *string {
+	return s.XmpKvBase64
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlMetadataControl) SetEnable(v bool) *CreateWmEmbedTaskRequestImageControlMetadataControl {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlMetadataControl) SetXmpKvBase64(v string) *CreateWmEmbedTaskRequestImageControlMetadataControl {
+	s.XmpKvBase64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlMetadataControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControlTextVisibleControl struct {
+	Angle       *int64                                                        `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	FontColor   *string                                                       `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize    *int64                                                        `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Margin      *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
+	Mode        *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity     *int32                                                        `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosAx       *float32                                                      `json:"PosAx,omitempty" xml:"PosAx,omitempty"`
+	PosAy       *float32                                                      `json:"PosAy,omitempty" xml:"PosAy,omitempty"`
+	PosX        *int64                                                        `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY        *int64                                                        `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	SpaceX      *int64                                                        `json:"SpaceX,omitempty" xml:"SpaceX,omitempty"`
+	SpaceY      *int64                                                        `json:"SpaceY,omitempty" xml:"SpaceY,omitempty"`
+	Visible     *bool                                                         `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	VisibleText *string                                                       `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControlTextVisibleControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControlTextVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetAngle() *int64 {
+	return s.Angle
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetFontColor() *string {
+	return s.FontColor
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetFontSize() *int64 {
+	return s.FontSize
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetMargin() *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin {
+	return s.Margin
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetOpacity() *int32 {
+	return s.Opacity
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetPosAx() *float32 {
+	return s.PosAx
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetPosAy() *float32 {
+	return s.PosAy
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetPosX() *int64 {
+	return s.PosX
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetPosY() *int64 {
+	return s.PosY
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetSpaceX() *int64 {
+	return s.SpaceX
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetSpaceY() *int64 {
+	return s.SpaceY
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetVisible() *bool {
+	return s.Visible
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) GetVisibleText() *string {
+	return s.VisibleText
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetAngle(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetFontColor(v string) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.FontColor = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetFontSize(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.FontSize = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetMargin(v *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.Margin = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetMode(v string) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetOpacity(v int32) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetPosAx(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.PosAx = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetPosAy(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.PosAy = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetPosX(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetPosY(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetSpaceX(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.SpaceX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetSpaceY(v int64) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.SpaceY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetVisible(v bool) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) SetVisibleText(v string) *CreateWmEmbedTaskRequestImageControlTextVisibleControl {
+	s.VisibleText = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin struct {
+	Bottom *float32 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
+	Left   *float32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Right  *float32 `json:"Right,omitempty" xml:"Right,omitempty"`
+	Top    *float32 `json:"Top,omitempty" xml:"Top,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) GetBottom() *float32 {
+	return s.Bottom
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) GetLeft() *float32 {
+	return s.Left
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) GetRight() *float32 {
+	return s.Right
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) GetTop() *float32 {
+	return s.Top
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) SetBottom(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin {
+	s.Bottom = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) SetLeft(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin {
+	s.Left = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) SetRight(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin {
+	s.Right = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) SetTop(v float32) *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin {
+	s.Top = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) Validate() error {
 	return dara.Validate(s)
 }

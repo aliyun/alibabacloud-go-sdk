@@ -17,6 +17,8 @@ type iCreateWmEmbedTaskShrinkRequest interface {
 	GetFileUrl() *string
 	SetFilename(v string) *CreateWmEmbedTaskShrinkRequest
 	GetFilename() *string
+	SetImageControlShrink(v string) *CreateWmEmbedTaskShrinkRequest
+	GetImageControlShrink() *string
 	SetImageEmbedJpegQuality(v int64) *CreateWmEmbedTaskShrinkRequest
 	GetImageEmbedJpegQuality() *int64
 	SetImageEmbedLevel(v int64) *CreateWmEmbedTaskShrinkRequest
@@ -49,7 +51,8 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	// example:
 	//
 	// abc****.pdf
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	Filename           *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	ImageControlShrink *string `json:"ImageControl,omitempty" xml:"ImageControl,omitempty"`
 	// example:
 	//
 	// 95
@@ -110,6 +113,10 @@ func (s *CreateWmEmbedTaskShrinkRequest) GetFilename() *string {
 	return s.Filename
 }
 
+func (s *CreateWmEmbedTaskShrinkRequest) GetImageControlShrink() *string {
+	return s.ImageControlShrink
+}
+
 func (s *CreateWmEmbedTaskShrinkRequest) GetImageEmbedJpegQuality() *int64 {
 	return s.ImageEmbedJpegQuality
 }
@@ -159,6 +166,11 @@ func (s *CreateWmEmbedTaskShrinkRequest) SetFileUrl(v string) *CreateWmEmbedTask
 
 func (s *CreateWmEmbedTaskShrinkRequest) SetFilename(v string) *CreateWmEmbedTaskShrinkRequest {
 	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetImageControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.ImageControlShrink = &v
 	return s
 }
 
