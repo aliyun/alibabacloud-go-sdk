@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("iacservice"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSharedAccountsResponse
-func (client *Client) AddSharedAccountsWithOptions(request *AddSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddSharedAccountsResponse, _err error) {
+func (client *Client) AddSharedAccountsWithContext(ctx context.Context, request *AddSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddSharedAccountsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -100,30 +52,11 @@ func (client *Client) AddSharedAccountsWithOptions(request *AddSharedAccountsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新增共享账号信息
-//
-// @param request - AddSharedAccountsRequest
-//
-// @return AddSharedAccountsResponse
-func (client *Client) AddSharedAccounts(request *AddSharedAccountsRequest) (_result *AddSharedAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AddSharedAccountsResponse{}
-	_body, _err := client.AddSharedAccountsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -138,7 +71,7 @@ func (client *Client) AddSharedAccounts(request *AddSharedAccountsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AssociateGroupResponse
-func (client *Client) AssociateGroupWithOptions(groupId *string, request *AssociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AssociateGroupResponse, _err error) {
+func (client *Client) AssociateGroupWithContext(ctx context.Context, groupId *string, request *AssociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AssociateGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -176,30 +109,11 @@ func (client *Client) AssociateGroupWithOptions(groupId *string, request *Associ
 		BodyType:    dara.String("json"),
 	}
 	_result = &AssociateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分组关联
-//
-// @param request - AssociateGroupRequest
-//
-// @return AssociateGroupResponse
-func (client *Client) AssociateGroup(groupId *string, request *AssociateGroupRequest) (_result *AssociateGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &AssociateGroupResponse{}
-	_body, _err := client.AssociateGroupWithOptions(groupId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -214,7 +128,7 @@ func (client *Client) AssociateGroup(groupId *string, request *AssociateGroupReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelResourceExportTaskResponse
-func (client *Client) CancelResourceExportTaskWithOptions(exportTaskId *string, request *CancelResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelResourceExportTaskResponse, _err error) {
+func (client *Client) CancelResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, request *CancelResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelResourceExportTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -240,30 +154,11 @@ func (client *Client) CancelResourceExportTaskWithOptions(exportTaskId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelResourceExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 取消资源导出任务
-//
-// @param request - CancelResourceExportTaskRequest
-//
-// @return CancelResourceExportTaskResponse
-func (client *Client) CancelResourceExportTask(exportTaskId *string, request *CancelResourceExportTaskRequest) (_result *CancelResourceExportTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelResourceExportTaskResponse{}
-	_body, _err := client.CancelResourceExportTaskWithOptions(exportTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -278,7 +173,7 @@ func (client *Client) CancelResourceExportTask(exportTaskId *string, request *Ca
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateGroupResponse
-func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
+func (client *Client) CreateGroupWithContext(ctx context.Context, request *CreateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -360,30 +255,11 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建分组
-//
-// @param request - CreateGroupRequest
-//
-// @return CreateGroupResponse
-func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateGroupResponse{}
-	_body, _err := client.CreateGroupWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -398,7 +274,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateJobResponse
-func (client *Client) CreateJobWithOptions(taskId *string, request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+func (client *Client) CreateJobWithContext(ctx context.Context, taskId *string, request *CreateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -436,30 +312,11 @@ func (client *Client) CreateJobWithOptions(taskId *string, request *CreateJobReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建作业
-//
-// @param request - CreateJobRequest
-//
-// @return CreateJobResponse
-func (client *Client) CreateJob(taskId *string, request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateJobResponse{}
-	_body, _err := client.CreateJobWithOptions(taskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -474,7 +331,7 @@ func (client *Client) CreateJob(taskId *string, request *CreateJobRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateModuleResponse
-func (client *Client) CreateModuleWithOptions(request *CreateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleResponse, _err error) {
+func (client *Client) CreateModuleWithContext(ctx context.Context, request *CreateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -532,30 +389,11 @@ func (client *Client) CreateModuleWithOptions(request *CreateModuleRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建模板
-//
-// @param request - CreateModuleRequest
-//
-// @return CreateModuleResponse
-func (client *Client) CreateModule(request *CreateModuleRequest) (_result *CreateModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateModuleResponse{}
-	_body, _err := client.CreateModuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -570,7 +408,7 @@ func (client *Client) CreateModule(request *CreateModuleRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateModuleVersionResponse
-func (client *Client) CreateModuleVersionWithOptions(moduleId *string, request *CreateModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleVersionResponse, _err error) {
+func (client *Client) CreateModuleVersionWithContext(ctx context.Context, moduleId *string, request *CreateModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateModuleVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -604,30 +442,11 @@ func (client *Client) CreateModuleVersionWithOptions(moduleId *string, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建模板版本
-//
-// @param request - CreateModuleVersionRequest
-//
-// @return CreateModuleVersionResponse
-func (client *Client) CreateModuleVersion(moduleId *string, request *CreateModuleVersionRequest) (_result *CreateModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateModuleVersionResponse{}
-	_body, _err := client.CreateModuleVersionWithOptions(moduleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -642,7 +461,7 @@ func (client *Client) CreateModuleVersion(moduleId *string, request *CreateModul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProjectResponse
-func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+func (client *Client) CreateProjectWithContext(ctx context.Context, request *CreateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -676,30 +495,11 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建项目
-//
-// @param request - CreateProjectRequest
-//
-// @return CreateProjectResponse
-func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -714,7 +514,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRegistryModuleResponse
-func (client *Client) CreateRegistryModuleWithOptions(request *CreateRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryModuleResponse, _err error) {
+func (client *Client) CreateRegistryModuleWithContext(ctx context.Context, request *CreateRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryModuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -764,30 +564,11 @@ func (client *Client) CreateRegistryModuleWithOptions(request *CreateRegistryMod
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRegistryModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建RegistryModule
-//
-// @param request - CreateRegistryModuleRequest
-//
-// @return CreateRegistryModuleResponse
-func (client *Client) CreateRegistryModule(request *CreateRegistryModuleRequest) (_result *CreateRegistryModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRegistryModuleResponse{}
-	_body, _err := client.CreateRegistryModuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -802,7 +583,7 @@ func (client *Client) CreateRegistryModule(request *CreateRegistryModuleRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRegistryNamespaceResponse
-func (client *Client) CreateRegistryNamespaceWithOptions(request *CreateRegistryNamespaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryNamespaceResponse, _err error) {
+func (client *Client) CreateRegistryNamespaceWithContext(ctx context.Context, request *CreateRegistryNamespaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRegistryNamespaceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -844,30 +625,11 @@ func (client *Client) CreateRegistryNamespaceWithOptions(request *CreateRegistry
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRegistryNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建工作空间
-//
-// @param request - CreateRegistryNamespaceRequest
-//
-// @return CreateRegistryNamespaceResponse
-func (client *Client) CreateRegistryNamespace(request *CreateRegistryNamespaceRequest) (_result *CreateRegistryNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRegistryNamespaceResponse{}
-	_body, _err := client.CreateRegistryNamespaceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -882,7 +644,7 @@ func (client *Client) CreateRegistryNamespace(request *CreateRegistryNamespaceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourceExportTaskResponse
-func (client *Client) CreateResourceExportTaskWithOptions(request *CreateResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceExportTaskResponse, _err error) {
+func (client *Client) CreateResourceExportTaskWithContext(ctx context.Context, request *CreateResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceExportTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -944,30 +706,11 @@ func (client *Client) CreateResourceExportTaskWithOptions(request *CreateResourc
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResourceExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建导出任务
-//
-// @param request - CreateResourceExportTaskRequest
-//
-// @return CreateResourceExportTaskResponse
-func (client *Client) CreateResourceExportTask(request *CreateResourceExportTaskRequest) (_result *CreateResourceExportTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateResourceExportTaskResponse{}
-	_body, _err := client.CreateResourceExportTaskWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -982,7 +725,7 @@ func (client *Client) CreateResourceExportTask(request *CreateResourceExportTask
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTaskResponse
-func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+func (client *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1068,30 +811,11 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建任务
-//
-// @param request - CreateTaskRequest
-//
-// @return CreateTaskResponse
-func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1104,7 +828,7 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGroupResponse
-func (client *Client) DeleteGroupWithOptions(groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+func (client *Client) DeleteGroupWithContext(ctx context.Context, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1120,28 +844,11 @@ func (client *Client) DeleteGroupWithOptions(groupId *string, headers map[string
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除分组
-//
-// @return DeleteGroupResponse
-func (client *Client) DeleteGroup(groupId *string) (_result *DeleteGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteGroupResponse{}
-	_body, _err := client.DeleteGroupWithOptions(groupId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1154,7 +861,7 @@ func (client *Client) DeleteGroup(groupId *string) (_result *DeleteGroupResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteModuleResponse
-func (client *Client) DeleteModuleWithOptions(moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModuleResponse, _err error) {
+func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1170,28 +877,11 @@ func (client *Client) DeleteModuleWithOptions(moduleId *string, headers map[stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除模板
-//
-// @return DeleteModuleResponse
-func (client *Client) DeleteModule(moduleId *string) (_result *DeleteModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteModuleResponse{}
-	_body, _err := client.DeleteModuleWithOptions(moduleId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1204,7 +894,7 @@ func (client *Client) DeleteModule(moduleId *string) (_result *DeleteModuleRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProjectResponse
-func (client *Client) DeleteProjectWithOptions(projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteProjectWithContext(ctx context.Context, projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1220,28 +910,11 @@ func (client *Client) DeleteProjectWithOptions(projectId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除项目
-//
-// @return DeleteProjectResponse
-func (client *Client) DeleteProject(projectId *string) (_result *DeleteProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(projectId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1254,7 +927,7 @@ func (client *Client) DeleteProject(projectId *string) (_result *DeleteProjectRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryModuleResponse
-func (client *Client) DeleteRegistryModuleWithOptions(namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleResponse, _err error) {
+func (client *Client) DeleteRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1270,28 +943,11 @@ func (client *Client) DeleteRegistryModuleWithOptions(namespaceName *string, mod
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRegistryModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除RegistryModule
-//
-// @return DeleteRegistryModuleResponse
-func (client *Client) DeleteRegistryModule(namespaceName *string, moduleName *string) (_result *DeleteRegistryModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteRegistryModuleResponse{}
-	_body, _err := client.DeleteRegistryModuleWithOptions(namespaceName, moduleName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1304,7 +960,7 @@ func (client *Client) DeleteRegistryModule(namespaceName *string, moduleName *st
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryModuleVersionResponse
-func (client *Client) DeleteRegistryModuleVersionWithOptions(namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleVersionResponse, _err error) {
+func (client *Client) DeleteRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1320,28 +976,11 @@ func (client *Client) DeleteRegistryModuleVersionWithOptions(namespaceName *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRegistryModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除RegistryModule版本
-//
-// @return DeleteRegistryModuleVersionResponse
-func (client *Client) DeleteRegistryModuleVersion(namespaceName *string, moduleName *string, version *string) (_result *DeleteRegistryModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteRegistryModuleVersionResponse{}
-	_body, _err := client.DeleteRegistryModuleVersionWithOptions(namespaceName, moduleName, version, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1354,7 +993,7 @@ func (client *Client) DeleteRegistryModuleVersion(namespaceName *string, moduleN
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryNamespaceResponse
-func (client *Client) DeleteRegistryNamespaceWithOptions(namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryNamespaceResponse, _err error) {
+func (client *Client) DeleteRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryNamespaceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1370,28 +1009,11 @@ func (client *Client) DeleteRegistryNamespaceWithOptions(namespaceName *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRegistryNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除工作空间
-//
-// @return DeleteRegistryNamespaceResponse
-func (client *Client) DeleteRegistryNamespace(namespaceName *string) (_result *DeleteRegistryNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteRegistryNamespaceResponse{}
-	_body, _err := client.DeleteRegistryNamespaceWithOptions(namespaceName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1404,7 +1026,7 @@ func (client *Client) DeleteRegistryNamespace(namespaceName *string) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceExportTaskResponse
-func (client *Client) DeleteResourceExportTaskWithOptions(exportTaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceExportTaskResponse, _err error) {
+func (client *Client) DeleteResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceExportTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1420,28 +1042,11 @@ func (client *Client) DeleteResourceExportTaskWithOptions(exportTaskId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResourceExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除资源导出任务
-//
-// @return DeleteResourceExportTaskResponse
-func (client *Client) DeleteResourceExportTask(exportTaskId *string) (_result *DeleteResourceExportTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteResourceExportTaskResponse{}
-	_body, _err := client.DeleteResourceExportTaskWithOptions(exportTaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1454,7 +1059,7 @@ func (client *Client) DeleteResourceExportTask(exportTaskId *string) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTaskResponse
-func (client *Client) DeleteTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+func (client *Client) DeleteTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1470,28 +1075,11 @@ func (client *Client) DeleteTaskWithOptions(taskId *string, headers map[string]*
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除任务
-//
-// @return DeleteTaskResponse
-func (client *Client) DeleteTask(taskId *string) (_result *DeleteTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteTaskResponse{}
-	_body, _err := client.DeleteTaskWithOptions(taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1506,7 +1094,7 @@ func (client *Client) DeleteTask(taskId *string) (_result *DeleteTaskResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DissociateGroupResponse
-func (client *Client) DissociateGroupWithOptions(projectId *string, groupId *string, request *DissociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DissociateGroupResponse, _err error) {
+func (client *Client) DissociateGroupWithContext(ctx context.Context, projectId *string, groupId *string, request *DissociateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DissociateGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1540,30 +1128,11 @@ func (client *Client) DissociateGroupWithOptions(projectId *string, groupId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &DissociateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 取消关联分组
-//
-// @param request - DissociateGroupRequest
-//
-// @return DissociateGroupResponse
-func (client *Client) DissociateGroup(projectId *string, groupId *string, request *DissociateGroupRequest) (_result *DissociateGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DissociateGroupResponse{}
-	_body, _err := client.DissociateGroupWithOptions(projectId, groupId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1578,7 +1147,7 @@ func (client *Client) DissociateGroup(projectId *string, groupId *string, reques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteRegistryModuleResponse
-func (client *Client) ExecuteRegistryModuleWithOptions(namespaceName *string, moduleName *string, request *ExecuteRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteRegistryModuleResponse, _err error) {
+func (client *Client) ExecuteRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, request *ExecuteRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteRegistryModuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1608,30 +1177,11 @@ func (client *Client) ExecuteRegistryModuleWithOptions(namespaceName *string, mo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteRegistryModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行RegistryModule
-//
-// @param request - ExecuteRegistryModuleRequest
-//
-// @return ExecuteRegistryModuleResponse
-func (client *Client) ExecuteRegistryModule(namespaceName *string, moduleName *string, request *ExecuteRegistryModuleRequest) (_result *ExecuteRegistryModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteRegistryModuleResponse{}
-	_body, _err := client.ExecuteRegistryModuleWithOptions(namespaceName, moduleName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1646,7 +1196,7 @@ func (client *Client) ExecuteRegistryModule(namespaceName *string, moduleName *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteResourceExportTaskResponse
-func (client *Client) ExecuteResourceExportTaskWithOptions(exportTaskId *string, request *ExecuteResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteResourceExportTaskResponse, _err error) {
+func (client *Client) ExecuteResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, request *ExecuteResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteResourceExportTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1672,30 +1222,11 @@ func (client *Client) ExecuteResourceExportTaskWithOptions(exportTaskId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteResourceExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行资源导出任务
-//
-// @param request - ExecuteResourceExportTaskRequest
-//
-// @return ExecuteResourceExportTaskResponse
-func (client *Client) ExecuteResourceExportTask(exportTaskId *string, request *ExecuteResourceExportTaskRequest) (_result *ExecuteResourceExportTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteResourceExportTaskResponse{}
-	_body, _err := client.ExecuteResourceExportTaskWithOptions(exportTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1710,7 +1241,7 @@ func (client *Client) ExecuteResourceExportTask(exportTaskId *string, request *E
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteTerraformApplyResponse
-func (client *Client) ExecuteTerraformApplyWithOptions(request *ExecuteTerraformApplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformApplyResponse, _err error) {
+func (client *Client) ExecuteTerraformApplyWithContext(ctx context.Context, request *ExecuteTerraformApplyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformApplyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1744,30 +1275,11 @@ func (client *Client) ExecuteTerraformApplyWithOptions(request *ExecuteTerraform
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteTerraformApplyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行TerraformApply
-//
-// @param request - ExecuteTerraformApplyRequest
-//
-// @return ExecuteTerraformApplyResponse
-func (client *Client) ExecuteTerraformApply(request *ExecuteTerraformApplyRequest) (_result *ExecuteTerraformApplyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteTerraformApplyResponse{}
-	_body, _err := client.ExecuteTerraformApplyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1782,7 +1294,7 @@ func (client *Client) ExecuteTerraformApply(request *ExecuteTerraformApplyReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteTerraformDestroyResponse
-func (client *Client) ExecuteTerraformDestroyWithOptions(request *ExecuteTerraformDestroyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformDestroyResponse, _err error) {
+func (client *Client) ExecuteTerraformDestroyWithContext(ctx context.Context, request *ExecuteTerraformDestroyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformDestroyResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1812,30 +1324,11 @@ func (client *Client) ExecuteTerraformDestroyWithOptions(request *ExecuteTerrafo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteTerraformDestroyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行TerraformDestroy
-//
-// @param request - ExecuteTerraformDestroyRequest
-//
-// @return ExecuteTerraformDestroyResponse
-func (client *Client) ExecuteTerraformDestroy(request *ExecuteTerraformDestroyRequest) (_result *ExecuteTerraformDestroyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteTerraformDestroyResponse{}
-	_body, _err := client.ExecuteTerraformDestroyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1850,7 +1343,7 @@ func (client *Client) ExecuteTerraformDestroy(request *ExecuteTerraformDestroyRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteTerraformPlanResponse
-func (client *Client) ExecuteTerraformPlanWithOptions(request *ExecuteTerraformPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformPlanResponse, _err error) {
+func (client *Client) ExecuteTerraformPlanWithContext(ctx context.Context, request *ExecuteTerraformPlanRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteTerraformPlanResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1884,30 +1377,11 @@ func (client *Client) ExecuteTerraformPlanWithOptions(request *ExecuteTerraformP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteTerraformPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行TerraformPlan
-//
-// @param request - ExecuteTerraformPlanRequest
-//
-// @return ExecuteTerraformPlanResponse
-func (client *Client) ExecuteTerraformPlan(request *ExecuteTerraformPlanRequest) (_result *ExecuteTerraformPlanResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteTerraformPlanResponse{}
-	_body, _err := client.ExecuteTerraformPlanWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1920,7 +1394,7 @@ func (client *Client) ExecuteTerraformPlan(request *ExecuteTerraformPlanRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExecuteStateResponse
-func (client *Client) GetExecuteStateWithOptions(stateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExecuteStateResponse, _err error) {
+func (client *Client) GetExecuteStateWithContext(ctx context.Context, stateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExecuteStateResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1936,28 +1410,11 @@ func (client *Client) GetExecuteStateWithOptions(stateId *string, headers map[st
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetExecuteStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Terraform运行结果
-//
-// @return GetExecuteStateResponse
-func (client *Client) GetExecuteState(stateId *string) (_result *GetExecuteStateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetExecuteStateResponse{}
-	_body, _err := client.GetExecuteStateWithOptions(stateId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1970,7 +1427,7 @@ func (client *Client) GetExecuteState(stateId *string) (_result *GetExecuteState
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGroupResponse
-func (client *Client) GetGroupWithOptions(groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+func (client *Client) GetGroupWithContext(ctx context.Context, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1986,28 +1443,11 @@ func (client *Client) GetGroupWithOptions(groupId *string, headers map[string]*s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询分组
-//
-// @return GetGroupResponse
-func (client *Client) GetGroup(groupId *string) (_result *GetGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetGroupResponse{}
-	_body, _err := client.GetGroupWithOptions(groupId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2022,7 +1462,7 @@ func (client *Client) GetGroup(groupId *string) (_result *GetGroupResponse, _err
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetJobResponse
-func (client *Client) GetJobWithOptions(taskId *string, jobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
+func (client *Client) GetJobWithContext(ctx context.Context, taskId *string, jobId *string, request *GetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2048,30 +1488,11 @@ func (client *Client) GetJobWithOptions(taskId *string, jobId *string, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 作业详情
-//
-// @param request - GetJobRequest
-//
-// @return GetJobResponse
-func (client *Client) GetJob(taskId *string, jobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetJobResponse{}
-	_body, _err := client.GetJobWithOptions(taskId, jobId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2084,7 +1505,7 @@ func (client *Client) GetJob(taskId *string, jobId *string, request *GetJobReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModuleResponse
-func (client *Client) GetModuleWithOptions(moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleResponse, _err error) {
+func (client *Client) GetModuleWithContext(ctx context.Context, moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2100,28 +1521,11 @@ func (client *Client) GetModuleWithOptions(moduleId *string, headers map[string]
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取模板详情
-//
-// @return GetModuleResponse
-func (client *Client) GetModule(moduleId *string) (_result *GetModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetModuleResponse{}
-	_body, _err := client.GetModuleWithOptions(moduleId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2134,7 +1538,7 @@ func (client *Client) GetModule(moduleId *string) (_result *GetModuleResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModuleVersionResponse
-func (client *Client) GetModuleVersionWithOptions(moduleId *string, moduleVersion *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleVersionResponse, _err error) {
+func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId *string, moduleVersion *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2150,28 +1554,11 @@ func (client *Client) GetModuleVersionWithOptions(moduleId *string, moduleVersio
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 模板版本详情
-//
-// @return GetModuleVersionResponse
-func (client *Client) GetModuleVersion(moduleId *string, moduleVersion *string) (_result *GetModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetModuleVersionResponse{}
-	_body, _err := client.GetModuleVersionWithOptions(moduleId, moduleVersion, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2184,7 +1571,7 @@ func (client *Client) GetModuleVersion(moduleId *string, moduleVersion *string) 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProjectResponse
-func (client *Client) GetProjectWithOptions(projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProjectWithContext(ctx context.Context, projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2200,28 +1587,11 @@ func (client *Client) GetProjectWithOptions(projectId *string, headers map[strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询项目
-//
-// @return GetProjectResponse
-func (client *Client) GetProject(projectId *string) (_result *GetProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetProjectResponse{}
-	_body, _err := client.GetProjectWithOptions(projectId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2234,7 +1604,7 @@ func (client *Client) GetProject(projectId *string) (_result *GetProjectResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryModuleResponse
-func (client *Client) GetRegistryModuleWithOptions(namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleResponse, _err error) {
+func (client *Client) GetRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2250,28 +1620,11 @@ func (client *Client) GetRegistryModuleWithOptions(namespaceName *string, module
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegistryModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取RegistryModule信息
-//
-// @return GetRegistryModuleResponse
-func (client *Client) GetRegistryModule(namespaceName *string, moduleName *string) (_result *GetRegistryModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRegistryModuleResponse{}
-	_body, _err := client.GetRegistryModuleWithOptions(namespaceName, moduleName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2284,7 +1637,7 @@ func (client *Client) GetRegistryModule(namespaceName *string, moduleName *strin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryModuleVersionResponse
-func (client *Client) GetRegistryModuleVersionWithOptions(namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleVersionResponse, _err error) {
+func (client *Client) GetRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2300,28 +1653,11 @@ func (client *Client) GetRegistryModuleVersionWithOptions(namespaceName *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegistryModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取RegistryModule版本信息
-//
-// @return GetRegistryModuleVersionResponse
-func (client *Client) GetRegistryModuleVersion(namespaceName *string, moduleName *string, version *string) (_result *GetRegistryModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRegistryModuleVersionResponse{}
-	_body, _err := client.GetRegistryModuleVersionWithOptions(namespaceName, moduleName, version, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2334,7 +1670,7 @@ func (client *Client) GetRegistryModuleVersion(namespaceName *string, moduleName
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryNamespaceResponse
-func (client *Client) GetRegistryNamespaceWithOptions(namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryNamespaceResponse, _err error) {
+func (client *Client) GetRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryNamespaceResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2350,28 +1686,11 @@ func (client *Client) GetRegistryNamespaceWithOptions(namespaceName *string, hea
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRegistryNamespaceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作空间信息
-//
-// @return GetRegistryNamespaceResponse
-func (client *Client) GetRegistryNamespace(namespaceName *string) (_result *GetRegistryNamespaceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetRegistryNamespaceResponse{}
-	_body, _err := client.GetRegistryNamespaceWithOptions(namespaceName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2386,7 +1705,7 @@ func (client *Client) GetRegistryNamespace(namespaceName *string) (_result *GetR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceExportTaskResponse
-func (client *Client) GetResourceExportTaskWithOptions(exportTaskId *string, request *GetResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceExportTaskResponse, _err error) {
+func (client *Client) GetResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, request *GetResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceExportTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2412,30 +1731,11 @@ func (client *Client) GetResourceExportTaskWithOptions(exportTaskId *string, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceExportTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询导出任务详情
-//
-// @param request - GetResourceExportTaskRequest
-//
-// @return GetResourceExportTaskResponse
-func (client *Client) GetResourceExportTask(exportTaskId *string, request *GetResourceExportTaskRequest) (_result *GetResourceExportTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourceExportTaskResponse{}
-	_body, _err := client.GetResourceExportTaskWithOptions(exportTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2450,7 +1750,7 @@ func (client *Client) GetResourceExportTask(exportTaskId *string, request *GetRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceTypeResponse
-func (client *Client) GetResourceTypeWithOptions(resourceType *string, request *GetResourceTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
+func (client *Client) GetResourceTypeWithContext(ctx context.Context, resourceType *string, request *GetResourceTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2484,30 +1784,11 @@ func (client *Client) GetResourceTypeWithOptions(resourceType *string, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceTypeResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取资源类型信息
-//
-// @param request - GetResourceTypeRequest
-//
-// @return GetResourceTypeResponse
-func (client *Client) GetResourceType(resourceType *string, request *GetResourceTypeRequest) (_result *GetResourceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourceTypeResponse{}
-	_body, _err := client.GetResourceTypeWithOptions(resourceType, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2520,7 +1801,7 @@ func (client *Client) GetResourceType(resourceType *string, request *GetResource
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResponse
-func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2536,28 +1817,11 @@ func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询任务详情
-//
-// @return GetTaskResponse
-func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2572,7 +1836,7 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExplorerRegistryModuleExamplesResponse
-func (client *Client) ListExplorerRegistryModuleExamplesWithOptions(request *ListExplorerRegistryModuleExamplesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleExamplesResponse, _err error) {
+func (client *Client) ListExplorerRegistryModuleExamplesWithContext(ctx context.Context, request *ListExplorerRegistryModuleExamplesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleExamplesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2622,30 +1886,11 @@ func (client *Client) ListExplorerRegistryModuleExamplesWithOptions(request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExplorerRegistryModuleExamplesResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Explorer的egistryModule版本示例列表
-//
-// @param request - ListExplorerRegistryModuleExamplesRequest
-//
-// @return ListExplorerRegistryModuleExamplesResponse
-func (client *Client) ListExplorerRegistryModuleExamples(request *ListExplorerRegistryModuleExamplesRequest) (_result *ListExplorerRegistryModuleExamplesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListExplorerRegistryModuleExamplesResponse{}
-	_body, _err := client.ListExplorerRegistryModuleExamplesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2660,7 +1905,7 @@ func (client *Client) ListExplorerRegistryModuleExamples(request *ListExplorerRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExplorerRegistryModuleVersionsResponse
-func (client *Client) ListExplorerRegistryModuleVersionsWithOptions(request *ListExplorerRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleVersionsResponse, _err error) {
+func (client *Client) ListExplorerRegistryModuleVersionsWithContext(ctx context.Context, request *ListExplorerRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModuleVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2706,30 +1951,11 @@ func (client *Client) ListExplorerRegistryModuleVersionsWithOptions(request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExplorerRegistryModuleVersionsResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Explorer的egistryModule版本列表
-//
-// @param request - ListExplorerRegistryModuleVersionsRequest
-//
-// @return ListExplorerRegistryModuleVersionsResponse
-func (client *Client) ListExplorerRegistryModuleVersions(request *ListExplorerRegistryModuleVersionsRequest) (_result *ListExplorerRegistryModuleVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListExplorerRegistryModuleVersionsResponse{}
-	_body, _err := client.ListExplorerRegistryModuleVersionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2744,7 +1970,7 @@ func (client *Client) ListExplorerRegistryModuleVersions(request *ListExplorerRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExplorerRegistryModulesResponse
-func (client *Client) ListExplorerRegistryModulesWithOptions(request *ListExplorerRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModulesResponse, _err error) {
+func (client *Client) ListExplorerRegistryModulesWithContext(ctx context.Context, request *ListExplorerRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExplorerRegistryModulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2786,30 +2012,11 @@ func (client *Client) ListExplorerRegistryModulesWithOptions(request *ListExplor
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExplorerRegistryModulesResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Explorer的Registry Module列表
-//
-// @param request - ListExplorerRegistryModulesRequest
-//
-// @return ListExplorerRegistryModulesResponse
-func (client *Client) ListExplorerRegistryModules(request *ListExplorerRegistryModulesRequest) (_result *ListExplorerRegistryModulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListExplorerRegistryModulesResponse{}
-	_body, _err := client.ListExplorerRegistryModulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2824,7 +2031,7 @@ func (client *Client) ListExplorerRegistryModules(request *ListExplorerRegistryM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGroupResponse
-func (client *Client) ListGroupWithOptions(tmpReq *ListGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupResponse, _err error) {
+func (client *Client) ListGroupWithContext(ctx context.Context, tmpReq *ListGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGroupResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2872,30 +2079,11 @@ func (client *Client) ListGroupWithOptions(tmpReq *ListGroupRequest, headers map
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询分组列表
-//
-// @param request - ListGroupRequest
-//
-// @return ListGroupResponse
-func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListGroupResponse{}
-	_body, _err := client.ListGroupWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2910,7 +2098,7 @@ func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListJobsResponse
-func (client *Client) ListJobsWithOptions(taskId *string, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
+func (client *Client) ListJobsWithContext(ctx context.Context, taskId *string, request *ListJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2948,30 +2136,11 @@ func (client *Client) ListJobsWithOptions(taskId *string, request *ListJobsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 作业列表
-//
-// @param request - ListJobsRequest
-//
-// @return ListJobsResponse
-func (client *Client) ListJobs(taskId *string, request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListJobsResponse{}
-	_body, _err := client.ListJobsWithOptions(taskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2986,7 +2155,7 @@ func (client *Client) ListJobs(taskId *string, request *ListJobsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListModuleVersionResponse
-func (client *Client) ListModuleVersionWithOptions(moduleId *string, request *ListModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModuleVersionResponse, _err error) {
+func (client *Client) ListModuleVersionWithContext(ctx context.Context, moduleId *string, request *ListModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModuleVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3020,30 +2189,11 @@ func (client *Client) ListModuleVersionWithOptions(moduleId *string, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 模板版本列表
-//
-// @param request - ListModuleVersionRequest
-//
-// @return ListModuleVersionResponse
-func (client *Client) ListModuleVersion(moduleId *string, request *ListModuleVersionRequest) (_result *ListModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListModuleVersionResponse{}
-	_body, _err := client.ListModuleVersionWithOptions(moduleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3058,7 +2208,7 @@ func (client *Client) ListModuleVersion(moduleId *string, request *ListModuleVer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListModulesResponse
-func (client *Client) ListModulesWithOptions(tmpReq *ListModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModulesResponse, _err error) {
+func (client *Client) ListModulesWithContext(ctx context.Context, tmpReq *ListModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListModulesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3110,30 +2260,11 @@ func (client *Client) ListModulesWithOptions(tmpReq *ListModulesRequest, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListModulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举模板
-//
-// @param request - ListModulesRequest
-//
-// @return ListModulesResponse
-func (client *Client) ListModules(request *ListModulesRequest) (_result *ListModulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListModulesResponse{}
-	_body, _err := client.ListModulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3148,7 +2279,7 @@ func (client *Client) ListModules(request *ListModulesRequest) (_result *ListMod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsResponse
-func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListProductsWithContext(ctx context.Context, request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3198,30 +2329,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 所有产品列表
-//
-// @param request - ListProductsRequest
-//
-// @return ListProductsResponse
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3236,7 +2348,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProjectResponse
-func (client *Client) ListProjectWithOptions(tmpReq *ListProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectResponse, _err error) {
+func (client *Client) ListProjectWithContext(ctx context.Context, tmpReq *ListProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProjectResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3280,30 +2392,11 @@ func (client *Client) ListProjectWithOptions(tmpReq *ListProjectRequest, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询项目列表
-//
-// @param request - ListProjectRequest
-//
-// @return ListProjectResponse
-func (client *Client) ListProject(request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListProjectResponse{}
-	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3318,7 +2411,7 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRegistryModuleVersionsResponse
-func (client *Client) ListRegistryModuleVersionsWithOptions(request *ListRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModuleVersionsResponse, _err error) {
+func (client *Client) ListRegistryModuleVersionsWithContext(ctx context.Context, request *ListRegistryModuleVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModuleVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3356,30 +2449,11 @@ func (client *Client) ListRegistryModuleVersionsWithOptions(request *ListRegistr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRegistryModuleVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取RegistryModule版本列表
-//
-// @param request - ListRegistryModuleVersionsRequest
-//
-// @return ListRegistryModuleVersionsResponse
-func (client *Client) ListRegistryModuleVersions(request *ListRegistryModuleVersionsRequest) (_result *ListRegistryModuleVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRegistryModuleVersionsResponse{}
-	_body, _err := client.ListRegistryModuleVersionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3394,7 +2468,7 @@ func (client *Client) ListRegistryModuleVersions(request *ListRegistryModuleVers
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRegistryModulesResponse
-func (client *Client) ListRegistryModulesWithOptions(request *ListRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModulesResponse, _err error) {
+func (client *Client) ListRegistryModulesWithContext(ctx context.Context, request *ListRegistryModulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryModulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3436,30 +2510,11 @@ func (client *Client) ListRegistryModulesWithOptions(request *ListRegistryModule
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRegistryModulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取RegistryModule列表
-//
-// @param request - ListRegistryModulesRequest
-//
-// @return ListRegistryModulesResponse
-func (client *Client) ListRegistryModules(request *ListRegistryModulesRequest) (_result *ListRegistryModulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRegistryModulesResponse{}
-	_body, _err := client.ListRegistryModulesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3474,7 +2529,7 @@ func (client *Client) ListRegistryModules(request *ListRegistryModulesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRegistryNamespacesResponse
-func (client *Client) ListRegistryNamespacesWithOptions(request *ListRegistryNamespacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryNamespacesResponse, _err error) {
+func (client *Client) ListRegistryNamespacesWithContext(ctx context.Context, request *ListRegistryNamespacesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRegistryNamespacesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3512,30 +2567,11 @@ func (client *Client) ListRegistryNamespacesWithOptions(request *ListRegistryNam
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRegistryNamespacesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取工作空间列表
-//
-// @param request - ListRegistryNamespacesRequest
-//
-// @return ListRegistryNamespacesResponse
-func (client *Client) ListRegistryNamespaces(request *ListRegistryNamespacesRequest) (_result *ListRegistryNamespacesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRegistryNamespacesResponse{}
-	_body, _err := client.ListRegistryNamespacesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3550,7 +2586,7 @@ func (client *Client) ListRegistryNamespaces(request *ListRegistryNamespacesRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceExportTaskVersionsResponse
-func (client *Client) ListResourceExportTaskVersionsWithOptions(exportTaskId *string, request *ListResourceExportTaskVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTaskVersionsResponse, _err error) {
+func (client *Client) ListResourceExportTaskVersionsWithContext(ctx context.Context, exportTaskId *string, request *ListResourceExportTaskVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTaskVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3592,30 +2628,11 @@ func (client *Client) ListResourceExportTaskVersionsWithOptions(exportTaskId *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceExportTaskVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务版本列表
-//
-// @param request - ListResourceExportTaskVersionsRequest
-//
-// @return ListResourceExportTaskVersionsResponse
-func (client *Client) ListResourceExportTaskVersions(exportTaskId *string, request *ListResourceExportTaskVersionsRequest) (_result *ListResourceExportTaskVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListResourceExportTaskVersionsResponse{}
-	_body, _err := client.ListResourceExportTaskVersionsWithOptions(exportTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3630,7 +2647,7 @@ func (client *Client) ListResourceExportTaskVersions(exportTaskId *string, reque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceExportTasksResponse
-func (client *Client) ListResourceExportTasksWithOptions(request *ListResourceExportTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTasksResponse, _err error) {
+func (client *Client) ListResourceExportTasksWithContext(ctx context.Context, request *ListResourceExportTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceExportTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3668,30 +2685,11 @@ func (client *Client) ListResourceExportTasksWithOptions(request *ListResourceEx
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceExportTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询导出任务列表
-//
-// @param request - ListResourceExportTasksRequest
-//
-// @return ListResourceExportTasksResponse
-func (client *Client) ListResourceExportTasks(request *ListResourceExportTasksRequest) (_result *ListResourceExportTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListResourceExportTasksResponse{}
-	_body, _err := client.ListResourceExportTasksWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3706,7 +2704,7 @@ func (client *Client) ListResourceExportTasks(request *ListResourceExportTasksRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceTypesResponse
-func (client *Client) ListResourceTypesWithOptions(tmpReq *ListResourceTypesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
+func (client *Client) ListResourceTypesWithContext(ctx context.Context, tmpReq *ListResourceTypesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3778,30 +2776,11 @@ func (client *Client) ListResourceTypesWithOptions(tmpReq *ListResourceTypesRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceTypesResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 资源类型列表
-//
-// @param request - ListResourceTypesRequest
-//
-// @return ListResourceTypesResponse
-func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_result *ListResourceTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListResourceTypesResponse{}
-	_body, _err := client.ListResourceTypesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3816,7 +2795,7 @@ func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTasksResponse
-func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
+func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3880,30 +2859,11 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 任务列表
-//
-// @param request - ListTasksRequest
-//
-// @return ListTasksResponse
-func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTasksResponse{}
-	_body, _err := client.ListTasksWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3918,7 +2878,7 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTerraformProviderVersionsResponse
-func (client *Client) ListTerraformProviderVersionsWithOptions(request *ListTerraformProviderVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTerraformProviderVersionsResponse, _err error) {
+func (client *Client) ListTerraformProviderVersionsWithContext(ctx context.Context, request *ListTerraformProviderVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTerraformProviderVersionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3956,30 +2916,11 @@ func (client *Client) ListTerraformProviderVersionsWithOptions(request *ListTerr
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTerraformProviderVersionsResponse{}
-	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// terraformProvider版本
-//
-// @param request - ListTerraformProviderVersionsRequest
-//
-// @return ListTerraformProviderVersionsResponse
-func (client *Client) ListTerraformProviderVersions(request *ListTerraformProviderVersionsRequest) (_result *ListTerraformProviderVersionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTerraformProviderVersionsResponse{}
-	_body, _err := client.ListTerraformProviderVersionsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3994,7 +2935,7 @@ func (client *Client) ListTerraformProviderVersions(request *ListTerraformProvid
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OperateJobResponse
-func (client *Client) OperateJobWithOptions(taskId *string, jobId *string, operationType *string, request *OperateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateJobResponse, _err error) {
+func (client *Client) OperateJobWithContext(ctx context.Context, taskId *string, jobId *string, operationType *string, request *OperateJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OperateJobResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4024,30 +2965,11 @@ func (client *Client) OperateJobWithOptions(taskId *string, jobId *string, opera
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 控制作业
-//
-// @param request - OperateJobRequest
-//
-// @return OperateJobResponse
-func (client *Client) OperateJob(taskId *string, jobId *string, operationType *string, request *OperateJobRequest) (_result *OperateJobResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &OperateJobResponse{}
-	_body, _err := client.OperateJobWithOptions(taskId, jobId, operationType, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4062,7 +2984,7 @@ func (client *Client) OperateJob(taskId *string, jobId *string, operationType *s
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishRegistryModuleVersionResponse
-func (client *Client) PublishRegistryModuleVersionWithOptions(request *PublishRegistryModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishRegistryModuleVersionResponse, _err error) {
+func (client *Client) PublishRegistryModuleVersionWithContext(ctx context.Context, request *PublishRegistryModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishRegistryModuleVersionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4100,30 +3022,11 @@ func (client *Client) PublishRegistryModuleVersionWithOptions(request *PublishRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &PublishRegistryModuleVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发布RegistryModule版本
-//
-// @param request - PublishRegistryModuleVersionRequest
-//
-// @return PublishRegistryModuleVersionResponse
-func (client *Client) PublishRegistryModuleVersion(request *PublishRegistryModuleVersionRequest) (_result *PublishRegistryModuleVersionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PublishRegistryModuleVersionResponse{}
-	_body, _err := client.PublishRegistryModuleVersionWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4138,7 +3041,7 @@ func (client *Client) PublishRegistryModuleVersion(request *PublishRegistryModul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveSharedAccountsResponse
-func (client *Client) RemoveSharedAccountsWithOptions(tmpReq *RemoveSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveSharedAccountsResponse, _err error) {
+func (client *Client) RemoveSharedAccountsWithContext(ctx context.Context, tmpReq *RemoveSharedAccountsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveSharedAccountsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4178,30 +3081,11 @@ func (client *Client) RemoveSharedAccountsWithOptions(tmpReq *RemoveSharedAccoun
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveSharedAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除共享账号信息
-//
-// @param request - RemoveSharedAccountsRequest
-//
-// @return RemoveSharedAccountsResponse
-func (client *Client) RemoveSharedAccounts(request *RemoveSharedAccountsRequest) (_result *RemoveSharedAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RemoveSharedAccountsResponse{}
-	_body, _err := client.RemoveSharedAccountsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4216,7 +3100,7 @@ func (client *Client) RemoveSharedAccounts(request *RemoveSharedAccountsRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateExplorerModuleAttributeResponse
-func (client *Client) UpdateExplorerModuleAttributeWithOptions(explorerModuleId *string, request *UpdateExplorerModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExplorerModuleAttributeResponse, _err error) {
+func (client *Client) UpdateExplorerModuleAttributeWithContext(ctx context.Context, explorerModuleId *string, request *UpdateExplorerModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateExplorerModuleAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4250,30 +3134,11 @@ func (client *Client) UpdateExplorerModuleAttributeWithOptions(explorerModuleId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateExplorerModuleAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改ExplorerModule
-//
-// @param request - UpdateExplorerModuleAttributeRequest
-//
-// @return UpdateExplorerModuleAttributeResponse
-func (client *Client) UpdateExplorerModuleAttribute(explorerModuleId *string, request *UpdateExplorerModuleAttributeRequest) (_result *UpdateExplorerModuleAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateExplorerModuleAttributeResponse{}
-	_body, _err := client.UpdateExplorerModuleAttributeWithOptions(explorerModuleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4288,7 +3153,7 @@ func (client *Client) UpdateExplorerModuleAttribute(explorerModuleId *string, re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateGroupResponse
-func (client *Client) UpdateGroupWithOptions(groupId *string, request *UpdateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
+func (client *Client) UpdateGroupWithContext(ctx context.Context, groupId *string, request *UpdateGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4366,30 +3231,11 @@ func (client *Client) UpdateGroupWithOptions(groupId *string, request *UpdateGro
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改分组
-//
-// @param request - UpdateGroupRequest
-//
-// @return UpdateGroupResponse
-func (client *Client) UpdateGroup(groupId *string, request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateGroupResponse{}
-	_body, _err := client.UpdateGroupWithOptions(groupId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4404,7 +3250,7 @@ func (client *Client) UpdateGroup(groupId *string, request *UpdateGroupRequest) 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateModuleAttributeResponse
-func (client *Client) UpdateModuleAttributeWithOptions(moduleId *string, request *UpdateModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModuleAttributeResponse, _err error) {
+func (client *Client) UpdateModuleAttributeWithContext(ctx context.Context, moduleId *string, request *UpdateModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModuleAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4458,30 +3304,11 @@ func (client *Client) UpdateModuleAttributeWithOptions(moduleId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateModuleAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新模板
-//
-// @param request - UpdateModuleAttributeRequest
-//
-// @return UpdateModuleAttributeResponse
-func (client *Client) UpdateModuleAttribute(moduleId *string, request *UpdateModuleAttributeRequest) (_result *UpdateModuleAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateModuleAttributeResponse{}
-	_body, _err := client.UpdateModuleAttributeWithOptions(moduleId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4496,7 +3323,7 @@ func (client *Client) UpdateModuleAttribute(moduleId *string, request *UpdateMod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateProjectResponse
-func (client *Client) UpdateProjectWithOptions(projectId *string, request *UpdateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
+func (client *Client) UpdateProjectWithContext(ctx context.Context, projectId *string, request *UpdateProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4530,30 +3357,11 @@ func (client *Client) UpdateProjectWithOptions(projectId *string, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改项目
-//
-// @param request - UpdateProjectRequest
-//
-// @return UpdateProjectResponse
-func (client *Client) UpdateProject(projectId *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateProjectResponse{}
-	_body, _err := client.UpdateProjectWithOptions(projectId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4568,7 +3376,7 @@ func (client *Client) UpdateProject(projectId *string, request *UpdateProjectReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRegistryModuleAttributeResponse
-func (client *Client) UpdateRegistryModuleAttributeWithOptions(namespaceName *string, moduleName *string, request *UpdateRegistryModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryModuleAttributeResponse, _err error) {
+func (client *Client) UpdateRegistryModuleAttributeWithContext(ctx context.Context, namespaceName *string, moduleName *string, request *UpdateRegistryModuleAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryModuleAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4602,30 +3410,11 @@ func (client *Client) UpdateRegistryModuleAttributeWithOptions(namespaceName *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRegistryModuleAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改RegistryModule
-//
-// @param request - UpdateRegistryModuleAttributeRequest
-//
-// @return UpdateRegistryModuleAttributeResponse
-func (client *Client) UpdateRegistryModuleAttribute(namespaceName *string, moduleName *string, request *UpdateRegistryModuleAttributeRequest) (_result *UpdateRegistryModuleAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateRegistryModuleAttributeResponse{}
-	_body, _err := client.UpdateRegistryModuleAttributeWithOptions(namespaceName, moduleName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4640,7 +3429,7 @@ func (client *Client) UpdateRegistryModuleAttribute(namespaceName *string, modul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateRegistryNamespaceAttributeResponse
-func (client *Client) UpdateRegistryNamespaceAttributeWithOptions(namespaceName *string, request *UpdateRegistryNamespaceAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryNamespaceAttributeResponse, _err error) {
+func (client *Client) UpdateRegistryNamespaceAttributeWithContext(ctx context.Context, namespaceName *string, request *UpdateRegistryNamespaceAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRegistryNamespaceAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4674,30 +3463,11 @@ func (client *Client) UpdateRegistryNamespaceAttributeWithOptions(namespaceName 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRegistryNamespaceAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改工作空间
-//
-// @param request - UpdateRegistryNamespaceAttributeRequest
-//
-// @return UpdateRegistryNamespaceAttributeResponse
-func (client *Client) UpdateRegistryNamespaceAttribute(namespaceName *string, request *UpdateRegistryNamespaceAttributeRequest) (_result *UpdateRegistryNamespaceAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateRegistryNamespaceAttributeResponse{}
-	_body, _err := client.UpdateRegistryNamespaceAttributeWithOptions(namespaceName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4712,7 +3482,7 @@ func (client *Client) UpdateRegistryNamespaceAttribute(namespaceName *string, re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResourceExportTaskAttributeResponse
-func (client *Client) UpdateResourceExportTaskAttributeWithOptions(exportTaskId *string, request *UpdateResourceExportTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceExportTaskAttributeResponse, _err error) {
+func (client *Client) UpdateResourceExportTaskAttributeWithContext(ctx context.Context, exportTaskId *string, request *UpdateResourceExportTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceExportTaskAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4774,30 +3544,11 @@ func (client *Client) UpdateResourceExportTaskAttributeWithOptions(exportTaskId 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResourceExportTaskAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新导出任务
-//
-// @param request - UpdateResourceExportTaskAttributeRequest
-//
-// @return UpdateResourceExportTaskAttributeResponse
-func (client *Client) UpdateResourceExportTaskAttribute(exportTaskId *string, request *UpdateResourceExportTaskAttributeRequest) (_result *UpdateResourceExportTaskAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateResourceExportTaskAttributeResponse{}
-	_body, _err := client.UpdateResourceExportTaskAttributeWithOptions(exportTaskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4812,7 +3563,7 @@ func (client *Client) UpdateResourceExportTaskAttribute(exportTaskId *string, re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTaskAttributeResponse
-func (client *Client) UpdateTaskAttributeWithOptions(taskId *string, request *UpdateTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskAttributeResponse, _err error) {
+func (client *Client) UpdateTaskAttributeWithContext(ctx context.Context, taskId *string, request *UpdateTaskAttributeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTaskAttributeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4890,7 +3641,7 @@ func (client *Client) UpdateTaskAttributeWithOptions(taskId *string, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTaskAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4900,25 +3651,6 @@ func (client *Client) UpdateTaskAttributeWithOptions(taskId *string, request *Up
 
 // Summary:
 //
-// 修改任务
-//
-// @param request - UpdateTaskAttributeRequest
-//
-// @return UpdateTaskAttributeResponse
-func (client *Client) UpdateTaskAttribute(taskId *string, request *UpdateTaskAttributeRequest) (_result *UpdateTaskAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTaskAttributeResponse{}
-	_body, _err := client.UpdateTaskAttributeWithOptions(taskId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 模版预检
 //
 // @param request - ValidateModuleRequest
@@ -4928,24 +3660,7 @@ func (client *Client) UpdateTaskAttribute(taskId *string, request *UpdateTaskAtt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ValidateModuleResponse
-func (client *Client) ValidateModuleWithSSE(request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *ValidateModuleResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.validateModuleWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
-	return
-}
-
-// Summary:
-//
-// 模版预检
-//
-// @param request - ValidateModuleRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ValidateModuleResponse
-func (client *Client) ValidateModuleWithOptions(request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateModuleResponse, _err error) {
+func (client *Client) ValidateModuleWithContext(ctx context.Context, request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateModuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4987,90 +3702,10 @@ func (client *Client) ValidateModuleWithOptions(request *ValidateModuleRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ValidateModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
-}
-
-// Summary:
-//
-// 模版预检
-//
-// @param request - ValidateModuleRequest
-//
-// @return ValidateModuleResponse
-func (client *Client) ValidateModule(request *ValidateModuleRequest) (_result *ValidateModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ValidateModuleResponse{}
-	_body, _err := client.ValidateModuleWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) validateModuleWithSSE_opYieldFunc(_yield chan *ValidateModuleResponse, _yieldErr chan error, request *ValidateModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.ClientToken) {
-		body["clientToken"] = request.ClientToken
-	}
-
-	if !dara.IsNil(request.Code) {
-		body["code"] = request.Code
-	}
-
-	if !dara.IsNil(request.CodeMap) {
-		body["codeMap"] = request.CodeMap
-	}
-
-	if !dara.IsNil(request.Source) {
-		body["source"] = request.Source
-	}
-
-	if !dara.IsNil(request.SourcePath) {
-		body["sourcePath"] = request.SourcePath
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ValidateModule"),
-		Version:     dara.String("2021-08-06"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/module/validation"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
 }
