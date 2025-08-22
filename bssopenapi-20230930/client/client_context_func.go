@@ -520,8 +520,16 @@ func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, req
 		query["BeginBillingCycle"] = request.BeginBillingCycle
 	}
 
+	if !dara.IsNil(request.IncludeMembers) {
+		query["IncludeMembers"] = request.IncludeMembers
+	}
+
 	if !dara.IsNil(request.Nbid) {
 		query["Nbid"] = request.Nbid
+	}
+
+	if !dara.IsNil(request.NotSendOnNoData) {
+		query["NotSendOnNoData"] = request.NotSendOnNoData
 	}
 
 	if !dara.IsNil(request.OssBucketName) {
@@ -538,6 +546,14 @@ func (client *Client) CreateReportDefinitionWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.ReportType) {
 		query["ReportType"] = request.ReportType
+	}
+
+	if !dara.IsNil(request.SendWithAttach) {
+		query["SendWithAttach"] = request.SendWithAttach
+	}
+
+	if !dara.IsNil(request.SplitFileOnUserId) {
+		query["SplitFileOnUserId"] = request.SplitFileOnUserId
 	}
 
 	body := map[string]interface{}{}

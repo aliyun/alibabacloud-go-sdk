@@ -11,12 +11,16 @@ type iCreateReportDefinitionRequest interface {
 	GoString() string
 	SetBeginBillingCycle(v string) *CreateReportDefinitionRequest
 	GetBeginBillingCycle() *string
+	SetIncludeMembers(v string) *CreateReportDefinitionRequest
+	GetIncludeMembers() *string
 	SetMcProject(v string) *CreateReportDefinitionRequest
 	GetMcProject() *string
 	SetMcTableName(v string) *CreateReportDefinitionRequest
 	GetMcTableName() *string
 	SetNbid(v string) *CreateReportDefinitionRequest
 	GetNbid() *string
+	SetNotSendOnNoData(v string) *CreateReportDefinitionRequest
+	GetNotSendOnNoData() *string
 	SetOssBucketName(v string) *CreateReportDefinitionRequest
 	GetOssBucketName() *string
 	SetOssBucketOwnerAccountId(v int64) *CreateReportDefinitionRequest
@@ -27,6 +31,10 @@ type iCreateReportDefinitionRequest interface {
 	GetReportSourceType() *string
 	SetReportType(v string) *CreateReportDefinitionRequest
 	GetReportType() *string
+	SetSendWithAttach(v string) *CreateReportDefinitionRequest
+	GetSendWithAttach() *string
+	SetSplitFileOnUserId(v string) *CreateReportDefinitionRequest
+	GetSplitFileOnUserId() *string
 }
 
 type CreateReportDefinitionRequest struct {
@@ -34,6 +42,7 @@ type CreateReportDefinitionRequest struct {
 	//
 	// 2025-05
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
+	IncludeMembers    *string `json:"IncludeMembers,omitempty" xml:"IncludeMembers,omitempty"`
 	// example:
 	//
 	// project
@@ -45,7 +54,8 @@ type CreateReportDefinitionRequest struct {
 	// example:
 	//
 	// 2684201000001
-	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Nbid            *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	NotSendOnNoData *string `json:"NotSendOnNoData,omitempty" xml:"NotSendOnNoData,omitempty"`
 	// example:
 	//
 	// sh-bill
@@ -67,7 +77,9 @@ type CreateReportDefinitionRequest struct {
 	// example:
 	//
 	// BillingItemDetailForBillingPeriod
-	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	ReportType        *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	SendWithAttach    *string `json:"SendWithAttach,omitempty" xml:"SendWithAttach,omitempty"`
+	SplitFileOnUserId *string `json:"SplitFileOnUserId,omitempty" xml:"SplitFileOnUserId,omitempty"`
 }
 
 func (s CreateReportDefinitionRequest) String() string {
@@ -82,6 +94,10 @@ func (s *CreateReportDefinitionRequest) GetBeginBillingCycle() *string {
 	return s.BeginBillingCycle
 }
 
+func (s *CreateReportDefinitionRequest) GetIncludeMembers() *string {
+	return s.IncludeMembers
+}
+
 func (s *CreateReportDefinitionRequest) GetMcProject() *string {
 	return s.McProject
 }
@@ -92,6 +108,10 @@ func (s *CreateReportDefinitionRequest) GetMcTableName() *string {
 
 func (s *CreateReportDefinitionRequest) GetNbid() *string {
 	return s.Nbid
+}
+
+func (s *CreateReportDefinitionRequest) GetNotSendOnNoData() *string {
+	return s.NotSendOnNoData
 }
 
 func (s *CreateReportDefinitionRequest) GetOssBucketName() *string {
@@ -114,8 +134,21 @@ func (s *CreateReportDefinitionRequest) GetReportType() *string {
 	return s.ReportType
 }
 
+func (s *CreateReportDefinitionRequest) GetSendWithAttach() *string {
+	return s.SendWithAttach
+}
+
+func (s *CreateReportDefinitionRequest) GetSplitFileOnUserId() *string {
+	return s.SplitFileOnUserId
+}
+
 func (s *CreateReportDefinitionRequest) SetBeginBillingCycle(v string) *CreateReportDefinitionRequest {
 	s.BeginBillingCycle = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetIncludeMembers(v string) *CreateReportDefinitionRequest {
+	s.IncludeMembers = &v
 	return s
 }
 
@@ -131,6 +164,11 @@ func (s *CreateReportDefinitionRequest) SetMcTableName(v string) *CreateReportDe
 
 func (s *CreateReportDefinitionRequest) SetNbid(v string) *CreateReportDefinitionRequest {
 	s.Nbid = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetNotSendOnNoData(v string) *CreateReportDefinitionRequest {
+	s.NotSendOnNoData = &v
 	return s
 }
 
@@ -156,6 +194,16 @@ func (s *CreateReportDefinitionRequest) SetReportSourceType(v string) *CreateRep
 
 func (s *CreateReportDefinitionRequest) SetReportType(v string) *CreateReportDefinitionRequest {
 	s.ReportType = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetSendWithAttach(v string) *CreateReportDefinitionRequest {
+	s.SendWithAttach = &v
+	return s
+}
+
+func (s *CreateReportDefinitionRequest) SetSplitFileOnUserId(v string) *CreateReportDefinitionRequest {
+	s.SplitFileOnUserId = &v
 	return s
 }
 
