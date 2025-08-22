@@ -16962,6 +16962,10 @@ func (client *Client) ResetDesktopsWithContext(ctx context.Context, request *Res
 		query["ImageId"] = request.ImageId
 	}
 
+	if !dara.IsNil(request.LastRetryTime) {
+		query["LastRetryTime"] = request.LastRetryTime
+	}
+
 	if !dara.IsNil(request.PayType) {
 		query["PayType"] = request.PayType
 	}

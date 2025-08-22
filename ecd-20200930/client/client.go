@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -21667,6 +21666,10 @@ func (client *Client) ResetDesktopsWithOptions(request *ResetDesktopsRequest, ru
 
 	if !dara.IsNil(request.ImageId) {
 		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.LastRetryTime) {
+		query["LastRetryTime"] = request.LastRetryTime
 	}
 
 	if !dara.IsNil(request.PayType) {

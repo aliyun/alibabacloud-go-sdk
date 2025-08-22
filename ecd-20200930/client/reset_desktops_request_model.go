@@ -17,6 +17,8 @@ type iResetDesktopsRequest interface {
 	GetDesktopId() []*string
 	SetImageId(v string) *ResetDesktopsRequest
 	GetImageId() *string
+	SetLastRetryTime(v int64) *ResetDesktopsRequest
+	GetLastRetryTime() *int64
 	SetPayType(v string) *ResetDesktopsRequest
 	GetPayType() *string
 	SetRegionId(v string) *ResetDesktopsRequest
@@ -47,7 +49,8 @@ type ResetDesktopsRequest struct {
 	// example:
 	//
 	// m-4zfb6zj728hhr****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	LastRetryTime *int64  `json:"LastRetryTime,omitempty" xml:"LastRetryTime,omitempty"`
 	// The billing method of the cloud computer share.
 	//
 	// >  This parameter takes effect when you reset a cloud computer share. If you leave this parameter empty, all cloud computers in that share are reset.
@@ -126,6 +129,10 @@ func (s *ResetDesktopsRequest) GetImageId() *string {
 	return s.ImageId
 }
 
+func (s *ResetDesktopsRequest) GetLastRetryTime() *int64 {
+	return s.LastRetryTime
+}
+
 func (s *ResetDesktopsRequest) GetPayType() *string {
 	return s.PayType
 }
@@ -159,6 +166,11 @@ func (s *ResetDesktopsRequest) SetDesktopId(v []*string) *ResetDesktopsRequest {
 
 func (s *ResetDesktopsRequest) SetImageId(v string) *ResetDesktopsRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *ResetDesktopsRequest) SetLastRetryTime(v int64) *ResetDesktopsRequest {
+	s.LastRetryTime = &v
 	return s
 }
 
