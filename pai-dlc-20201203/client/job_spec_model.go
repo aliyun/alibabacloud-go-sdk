@@ -37,6 +37,8 @@ type iJobSpec interface {
 	GetServiceSpec() *ServiceSpec
 	SetSpotSpec(v *SpotSpec) *JobSpec
 	GetSpotSpec() *SpotSpec
+	SetSystemDisk(v *SystemDisk) *JobSpec
+	GetSystemDisk() *SystemDisk
 	SetType(v string) *JobSpec
 	GetType() *string
 	SetUseSpotInstance(v bool) *JobSpec
@@ -68,6 +70,7 @@ type JobSpec struct {
 	RestartPolicy  *string         `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
 	ServiceSpec    *ServiceSpec    `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 	SpotSpec       *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
+	SystemDisk     *SystemDisk     `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
 	// example:
 	//
 	// Worker
@@ -142,6 +145,10 @@ func (s *JobSpec) GetServiceSpec() *ServiceSpec {
 
 func (s *JobSpec) GetSpotSpec() *SpotSpec {
 	return s.SpotSpec
+}
+
+func (s *JobSpec) GetSystemDisk() *SystemDisk {
+	return s.SystemDisk
 }
 
 func (s *JobSpec) GetType() *string {
@@ -219,6 +226,11 @@ func (s *JobSpec) SetServiceSpec(v *ServiceSpec) *JobSpec {
 
 func (s *JobSpec) SetSpotSpec(v *SpotSpec) *JobSpec {
 	s.SpotSpec = v
+	return s
+}
+
+func (s *JobSpec) SetSystemDisk(v *SystemDisk) *JobSpec {
+	s.SystemDisk = v
 	return s
 }
 

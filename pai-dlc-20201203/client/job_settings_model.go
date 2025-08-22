@@ -17,12 +17,16 @@ type iJobSettings interface {
 	GetBusinessUserId() *string
 	SetCaller(v string) *JobSettings
 	GetCaller() *string
+	SetDataJuicerConfig(v *DataJuicerConfig) *JobSettings
+	GetDataJuicerConfig() *DataJuicerConfig
 	SetDisableEcsStockCheck(v bool) *JobSettings
 	GetDisableEcsStockCheck() *bool
 	SetDriver(v string) *JobSettings
 	GetDriver() *string
 	SetEnableCPUAffinity(v bool) *JobSettings
 	GetEnableCPUAffinity() *bool
+	SetEnableDSWDev(v bool) *JobSettings
+	GetEnableDSWDev() *bool
 	SetEnableErrorMonitoringInAIMaster(v bool) *JobSettings
 	GetEnableErrorMonitoringInAIMaster() *bool
 	SetEnableOssAppend(v bool) *JobSettings
@@ -59,7 +63,8 @@ type JobSettings struct {
 	// example:
 	//
 	// SilkFlow
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller           *string           `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	DataJuicerConfig *DataJuicerConfig `json:"DataJuicerConfig,omitempty" xml:"DataJuicerConfig,omitempty"`
 	// example:
 	//
 	// false
@@ -72,6 +77,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableCPUAffinity *bool `json:"EnableCPUAffinity,omitempty" xml:"EnableCPUAffinity,omitempty"`
+	EnableDSWDev      *bool `json:"EnableDSWDev,omitempty" xml:"EnableDSWDev,omitempty"`
 	// example:
 	//
 	// false
@@ -143,6 +149,10 @@ func (s *JobSettings) GetCaller() *string {
 	return s.Caller
 }
 
+func (s *JobSettings) GetDataJuicerConfig() *DataJuicerConfig {
+	return s.DataJuicerConfig
+}
+
 func (s *JobSettings) GetDisableEcsStockCheck() *bool {
 	return s.DisableEcsStockCheck
 }
@@ -153,6 +163,10 @@ func (s *JobSettings) GetDriver() *string {
 
 func (s *JobSettings) GetEnableCPUAffinity() *bool {
 	return s.EnableCPUAffinity
+}
+
+func (s *JobSettings) GetEnableDSWDev() *bool {
+	return s.EnableDSWDev
 }
 
 func (s *JobSettings) GetEnableErrorMonitoringInAIMaster() *bool {
@@ -223,6 +237,11 @@ func (s *JobSettings) SetCaller(v string) *JobSettings {
 	return s
 }
 
+func (s *JobSettings) SetDataJuicerConfig(v *DataJuicerConfig) *JobSettings {
+	s.DataJuicerConfig = v
+	return s
+}
+
 func (s *JobSettings) SetDisableEcsStockCheck(v bool) *JobSettings {
 	s.DisableEcsStockCheck = &v
 	return s
@@ -235,6 +254,11 @@ func (s *JobSettings) SetDriver(v string) *JobSettings {
 
 func (s *JobSettings) SetEnableCPUAffinity(v bool) *JobSettings {
 	s.EnableCPUAffinity = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableDSWDev(v bool) *JobSettings {
+	s.EnableDSWDev = &v
 	return s
 }
 
