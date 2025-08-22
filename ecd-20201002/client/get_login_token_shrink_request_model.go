@@ -15,6 +15,8 @@ type iGetLoginTokenShrinkRequest interface {
 	GetAvailableFeaturesShrink() *string
 	SetClientId(v string) *GetLoginTokenShrinkRequest
 	GetClientId() *string
+	SetClientName(v string) *GetLoginTokenShrinkRequest
+	GetClientName() *string
 	SetClientOS(v string) *GetLoginTokenShrinkRequest
 	GetClientOS() *string
 	SetClientType(v string) *GetLoginTokenShrinkRequest
@@ -64,7 +66,8 @@ type GetLoginTokenShrinkRequest struct {
 	// example:
 	//
 	// f4a0dc8e-1702-4728-9a60-95b27a35****
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
 	// The operating system (OS) of the device that runs an Alibaba Cloud Workspace client.
 	//
 	// example:
@@ -221,6 +224,10 @@ func (s *GetLoginTokenShrinkRequest) GetClientId() *string {
 	return s.ClientId
 }
 
+func (s *GetLoginTokenShrinkRequest) GetClientName() *string {
+	return s.ClientName
+}
+
 func (s *GetLoginTokenShrinkRequest) GetClientOS() *string {
 	return s.ClientOS
 }
@@ -297,6 +304,11 @@ func (s *GetLoginTokenShrinkRequest) SetAvailableFeaturesShrink(v string) *GetLo
 
 func (s *GetLoginTokenShrinkRequest) SetClientId(v string) *GetLoginTokenShrinkRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientName(v string) *GetLoginTokenShrinkRequest {
+	s.ClientName = &v
 	return s
 }
 

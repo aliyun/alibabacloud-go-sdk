@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -118,7 +117,7 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApproveFotaUpdateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -206,7 +205,7 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangePasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -282,7 +281,7 @@ func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFinger
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -346,7 +345,7 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDirectoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -418,7 +417,7 @@ func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeF
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeFingerPrintTemplatesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -550,7 +549,7 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeGlobalDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -610,7 +609,7 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOfficeSitesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -666,7 +665,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -750,7 +749,7 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSnapshotsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -910,7 +909,7 @@ func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserReso
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -994,7 +993,7 @@ func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &EncryptPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1070,7 +1069,7 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCloudDriveServiceMountTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1096,6 +1095,10 @@ func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获得连接凭证
+//
 // @param request - GetConnectionTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1182,7 +1185,7 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1190,6 +1193,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 	return _result, _err
 }
 
+// Summary:
+//
+// 获得连接凭证
+//
 // @param request - GetConnectionTicketRequest
 //
 // @return GetConnectionTicketResponse
@@ -1235,6 +1242,10 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 
 	if !dara.IsNil(request.ClientId) {
 		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientName) {
+		query["ClientName"] = request.ClientName
 	}
 
 	if !dara.IsNil(request.ClientOS) {
@@ -1316,7 +1327,7 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1384,7 +1395,7 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &IsKeepAliveResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1452,7 +1463,7 @@ func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgen
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryEdsAgentReportConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1552,7 +1563,7 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebootDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1632,7 +1643,7 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1700,7 +1711,7 @@ func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportEdsAgentInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1776,7 +1787,7 @@ func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportSessionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1856,7 +1867,7 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1940,7 +1951,7 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2028,7 +2039,7 @@ func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendTokenCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2120,7 +2131,7 @@ func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintT
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetFingerPrintTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2196,7 +2207,7 @@ func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetF
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetFingerPrintTemplateDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2288,7 +2299,7 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2376,7 +2387,7 @@ func (client *Client) StartRecordContentWithOptions(request *StartRecordContentR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2476,7 +2487,7 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopDesktopsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2560,7 +2571,7 @@ func (client *Client) StopRecordContentWithOptions(request *StopRecordContentReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopRecordContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2640,7 +2651,7 @@ func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindUserDesktopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2724,7 +2735,7 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyCredentialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}

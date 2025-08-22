@@ -15,6 +15,8 @@ type iGetLoginTokenRequest interface {
 	GetAvailableFeatures() map[string]*string
 	SetClientId(v string) *GetLoginTokenRequest
 	GetClientId() *string
+	SetClientName(v string) *GetLoginTokenRequest
+	GetClientName() *string
 	SetClientOS(v string) *GetLoginTokenRequest
 	GetClientOS() *string
 	SetClientType(v string) *GetLoginTokenRequest
@@ -64,7 +66,8 @@ type GetLoginTokenRequest struct {
 	// example:
 	//
 	// f4a0dc8e-1702-4728-9a60-95b27a35****
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
 	// The operating system (OS) of the device that runs an Alibaba Cloud Workspace client.
 	//
 	// example:
@@ -221,6 +224,10 @@ func (s *GetLoginTokenRequest) GetClientId() *string {
 	return s.ClientId
 }
 
+func (s *GetLoginTokenRequest) GetClientName() *string {
+	return s.ClientName
+}
+
 func (s *GetLoginTokenRequest) GetClientOS() *string {
 	return s.ClientOS
 }
@@ -297,6 +304,11 @@ func (s *GetLoginTokenRequest) SetAvailableFeatures(v map[string]*string) *GetLo
 
 func (s *GetLoginTokenRequest) SetClientId(v string) *GetLoginTokenRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *GetLoginTokenRequest) SetClientName(v string) *GetLoginTokenRequest {
+	s.ClientName = &v
 	return s
 }
 
