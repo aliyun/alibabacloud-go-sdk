@@ -11,6 +11,10 @@ type iNode interface {
 	GoString() string
 	SetAcceleratorType(v string) *Node
 	GetAcceleratorType() *string
+	SetAllocatableCPU(v string) *Node
+	GetAllocatableCPU() *string
+	SetAllocatableMemory(v string) *Node
+	GetAllocatableMemory() *string
 	SetAvailabilityZone(v string) *Node
 	GetAvailabilityZone() *string
 	SetBoundQuotas(v []*QuotaIdName) *Node
@@ -69,6 +73,10 @@ type iNode interface {
 	GetResourceGroupId() *string
 	SetResourceGroupName(v string) *Node
 	GetResourceGroupName() *string
+	SetSystemReservedCPU(v string) *Node
+	GetSystemReservedCPU() *string
+	SetSystemReservedMemory(v string) *Node
+	GetSystemReservedMemory() *string
 	SetUsers(v []*UserInfo) *Node
 	GetUsers() []*UserInfo
 	SetWorkloadNum(v int64) *Node
@@ -76,38 +84,42 @@ type iNode interface {
 }
 
 type Node struct {
-	AcceleratorType   *string        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	AvailabilityZone  *string        `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	BoundQuotas       []*QuotaIdName `json:"BoundQuotas,omitempty" xml:"BoundQuotas,omitempty" type:"Repeated"`
-	CPU               *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	CreatorId         *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	GPU               *string        `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUMemory         *string        `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
-	GPUType           *string        `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	GmtCreateTime     *string        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtExpiredTime    *string        `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	GmtModifiedTime   *string        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HyperZone         *string        `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
-	IsBound           *bool          `json:"IsBound,omitempty" xml:"IsBound,omitempty"`
-	LimitCPU          *string        `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
-	LimitGPU          *string        `json:"LimitGPU,omitempty" xml:"LimitGPU,omitempty"`
-	LimitMemory       *string        `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
-	MachineGroupId    *string        `json:"MachineGroupId,omitempty" xml:"MachineGroupId,omitempty"`
-	Memory            *string        `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NodeName          *string        `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeStatus        *string        `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	NodeType          *string        `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	OrderStatus       *string        `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	PodNum            *int64         `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
-	ReasonCode        *string        `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage     *string        `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestCPU        *string        `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	RequestGPU        *string        `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	RequestMemory     *string        `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	ResourceGroupId   *string        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceGroupName *string        `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	Users             []*UserInfo    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
-	WorkloadNum       *int64         `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
+	AcceleratorType      *string        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AllocatableCPU       *string        `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
+	AllocatableMemory    *string        `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
+	AvailabilityZone     *string        `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	BoundQuotas          []*QuotaIdName `json:"BoundQuotas,omitempty" xml:"BoundQuotas,omitempty" type:"Repeated"`
+	CPU                  *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CreatorId            *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	GPU                  *string        `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUMemory            *string        `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
+	GPUType              *string        `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GmtCreateTime        *string        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtExpiredTime       *string        `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime      *string        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HyperZone            *string        `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
+	IsBound              *bool          `json:"IsBound,omitempty" xml:"IsBound,omitempty"`
+	LimitCPU             *string        `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
+	LimitGPU             *string        `json:"LimitGPU,omitempty" xml:"LimitGPU,omitempty"`
+	LimitMemory          *string        `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	MachineGroupId       *string        `json:"MachineGroupId,omitempty" xml:"MachineGroupId,omitempty"`
+	Memory               *string        `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NodeName             *string        `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeStatus           *string        `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeType             *string        `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OrderStatus          *string        `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	PodNum               *int64         `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
+	ReasonCode           *string        `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage        *string        `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestCPU           *string        `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU           *string        `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory        *string        `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	ResourceGroupId      *string        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupName    *string        `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	SystemReservedCPU    *string        `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
+	SystemReservedMemory *string        `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
+	Users                []*UserInfo    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	WorkloadNum          *int64         `json:"WorkloadNum,omitempty" xml:"WorkloadNum,omitempty"`
 }
 
 func (s Node) String() string {
@@ -120,6 +132,14 @@ func (s Node) GoString() string {
 
 func (s *Node) GetAcceleratorType() *string {
 	return s.AcceleratorType
+}
+
+func (s *Node) GetAllocatableCPU() *string {
+	return s.AllocatableCPU
+}
+
+func (s *Node) GetAllocatableMemory() *string {
+	return s.AllocatableMemory
 }
 
 func (s *Node) GetAvailabilityZone() *string {
@@ -238,6 +258,14 @@ func (s *Node) GetResourceGroupName() *string {
 	return s.ResourceGroupName
 }
 
+func (s *Node) GetSystemReservedCPU() *string {
+	return s.SystemReservedCPU
+}
+
+func (s *Node) GetSystemReservedMemory() *string {
+	return s.SystemReservedMemory
+}
+
 func (s *Node) GetUsers() []*UserInfo {
 	return s.Users
 }
@@ -248,6 +276,16 @@ func (s *Node) GetWorkloadNum() *int64 {
 
 func (s *Node) SetAcceleratorType(v string) *Node {
 	s.AcceleratorType = &v
+	return s
+}
+
+func (s *Node) SetAllocatableCPU(v string) *Node {
+	s.AllocatableCPU = &v
+	return s
+}
+
+func (s *Node) SetAllocatableMemory(v string) *Node {
+	s.AllocatableMemory = &v
 	return s
 }
 
@@ -393,6 +431,16 @@ func (s *Node) SetResourceGroupId(v string) *Node {
 
 func (s *Node) SetResourceGroupName(v string) *Node {
 	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *Node) SetSystemReservedCPU(v string) *Node {
+	s.SystemReservedCPU = &v
+	return s
+}
+
+func (s *Node) SetSystemReservedMemory(v string) *Node {
+	s.SystemReservedMemory = &v
 	return s
 }
 

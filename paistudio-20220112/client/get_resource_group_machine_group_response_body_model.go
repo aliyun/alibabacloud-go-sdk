@@ -9,6 +9,10 @@ type iGetResourceGroupMachineGroupResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllocatableCpu(v string) *GetResourceGroupMachineGroupResponseBody
+	GetAllocatableCpu() *string
+	SetAllocatableMemory(v string) *GetResourceGroupMachineGroupResponseBody
+	GetAllocatableMemory() *string
 	SetCpu(v string) *GetResourceGroupMachineGroupResponseBody
 	GetCpu() *string
 	SetDefaultDriver(v string) *GetResourceGroupMachineGroupResponseBody
@@ -49,11 +53,17 @@ type iGetResourceGroupMachineGroupResponseBody interface {
 	GetStatus() *string
 	SetSupportedDrivers(v []*string) *GetResourceGroupMachineGroupResponseBody
 	GetSupportedDrivers() []*string
+	SetSystemReservedCpu(v string) *GetResourceGroupMachineGroupResponseBody
+	GetSystemReservedCpu() *string
+	SetSystemReservedMemory(v string) *GetResourceGroupMachineGroupResponseBody
+	GetSystemReservedMemory() *string
 	SetTags(v []*GetResourceGroupMachineGroupResponseBodyTags) *GetResourceGroupMachineGroupResponseBody
 	GetTags() []*GetResourceGroupMachineGroupResponseBodyTags
 }
 
 type GetResourceGroupMachineGroupResponseBody struct {
+	AllocatableCpu    *string `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
+	AllocatableMemory *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
 	// example:
 	//
 	// 2
@@ -129,9 +139,11 @@ type GetResourceGroupMachineGroupResponseBody struct {
 	// example:
 	//
 	// Ready
-	Status           *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportedDrivers []*string                                       `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
-	Tags             []*GetResourceGroupMachineGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status               *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers     []*string                                       `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	SystemReservedCpu    *string                                         `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`
+	SystemReservedMemory *string                                         `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
+	Tags                 []*GetResourceGroupMachineGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetResourceGroupMachineGroupResponseBody) String() string {
@@ -140,6 +152,14 @@ func (s GetResourceGroupMachineGroupResponseBody) String() string {
 
 func (s GetResourceGroupMachineGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) GetAllocatableCpu() *string {
+	return s.AllocatableCpu
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) GetAllocatableMemory() *string {
+	return s.AllocatableMemory
 }
 
 func (s *GetResourceGroupMachineGroupResponseBody) GetCpu() *string {
@@ -222,8 +242,26 @@ func (s *GetResourceGroupMachineGroupResponseBody) GetSupportedDrivers() []*stri
 	return s.SupportedDrivers
 }
 
+func (s *GetResourceGroupMachineGroupResponseBody) GetSystemReservedCpu() *string {
+	return s.SystemReservedCpu
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) GetSystemReservedMemory() *string {
+	return s.SystemReservedMemory
+}
+
 func (s *GetResourceGroupMachineGroupResponseBody) GetTags() []*GetResourceGroupMachineGroupResponseBodyTags {
 	return s.Tags
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetAllocatableCpu(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.AllocatableCpu = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetAllocatableMemory(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.AllocatableMemory = &v
+	return s
 }
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetCpu(v string) *GetResourceGroupMachineGroupResponseBody {
@@ -323,6 +361,16 @@ func (s *GetResourceGroupMachineGroupResponseBody) SetStatus(v string) *GetResou
 
 func (s *GetResourceGroupMachineGroupResponseBody) SetSupportedDrivers(v []*string) *GetResourceGroupMachineGroupResponseBody {
 	s.SupportedDrivers = v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetSystemReservedCpu(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.SystemReservedCpu = &v
+	return s
+}
+
+func (s *GetResourceGroupMachineGroupResponseBody) SetSystemReservedMemory(v string) *GetResourceGroupMachineGroupResponseBody {
+	s.SystemReservedMemory = &v
 	return s
 }
 

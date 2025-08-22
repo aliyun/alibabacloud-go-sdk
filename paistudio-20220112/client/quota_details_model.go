@@ -11,6 +11,8 @@ type iQuotaDetails interface {
 	GoString() string
 	SetActualMinQuota(v *ResourceAmount) *QuotaDetails
 	GetActualMinQuota() *ResourceAmount
+	SetAllocatableQuota(v *ResourceAmount) *QuotaDetails
+	GetAllocatableQuota() *ResourceAmount
 	SetAllocatedQuota(v *ResourceAmount) *QuotaDetails
 	GetAllocatedQuota() *ResourceAmount
 	SetAncestorsAllocatedQuota(v *ResourceAmount) *QuotaDetails
@@ -25,12 +27,15 @@ type iQuotaDetails interface {
 	GetSelfAllocatedQuota() *ResourceAmount
 	SetSelfSubmittedQuota(v *ResourceAmount) *QuotaDetails
 	GetSelfSubmittedQuota() *ResourceAmount
+	SetSystemReservedQuota(v *ResourceAmount) *QuotaDetails
+	GetSystemReservedQuota() *ResourceAmount
 	SetUsedQuota(v *ResourceAmount) *QuotaDetails
 	GetUsedQuota() *ResourceAmount
 }
 
 type QuotaDetails struct {
 	ActualMinQuota            *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
+	AllocatableQuota          *ResourceAmount `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
 	AllocatedQuota            *ResourceAmount `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
 	AncestorsAllocatedQuota   *ResourceAmount `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
 	DescendantsAllocatedQuota *ResourceAmount `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
@@ -38,6 +43,7 @@ type QuotaDetails struct {
 	RequestedQuota            *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
 	SelfAllocatedQuota        *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
 	SelfSubmittedQuota        *ResourceAmount `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
+	SystemReservedQuota       *ResourceAmount `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
 	UsedQuota                 *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 
@@ -51,6 +57,10 @@ func (s QuotaDetails) GoString() string {
 
 func (s *QuotaDetails) GetActualMinQuota() *ResourceAmount {
 	return s.ActualMinQuota
+}
+
+func (s *QuotaDetails) GetAllocatableQuota() *ResourceAmount {
+	return s.AllocatableQuota
 }
 
 func (s *QuotaDetails) GetAllocatedQuota() *ResourceAmount {
@@ -81,12 +91,21 @@ func (s *QuotaDetails) GetSelfSubmittedQuota() *ResourceAmount {
 	return s.SelfSubmittedQuota
 }
 
+func (s *QuotaDetails) GetSystemReservedQuota() *ResourceAmount {
+	return s.SystemReservedQuota
+}
+
 func (s *QuotaDetails) GetUsedQuota() *ResourceAmount {
 	return s.UsedQuota
 }
 
 func (s *QuotaDetails) SetActualMinQuota(v *ResourceAmount) *QuotaDetails {
 	s.ActualMinQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetAllocatableQuota(v *ResourceAmount) *QuotaDetails {
+	s.AllocatableQuota = v
 	return s
 }
 
@@ -122,6 +141,11 @@ func (s *QuotaDetails) SetSelfAllocatedQuota(v *ResourceAmount) *QuotaDetails {
 
 func (s *QuotaDetails) SetSelfSubmittedQuota(v *ResourceAmount) *QuotaDetails {
 	s.SelfSubmittedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetSystemReservedQuota(v *ResourceAmount) *QuotaDetails {
+	s.SystemReservedQuota = v
 	return s
 }
 

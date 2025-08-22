@@ -11,6 +11,10 @@ type iNodeType interface {
 	GoString() string
 	SetAcceleratorType(v string) *NodeType
 	GetAcceleratorType() *string
+	SetAllocatableCPU(v string) *NodeType
+	GetAllocatableCPU() *string
+	SetAllocatableMemory(v string) *NodeType
+	GetAllocatableMemory() *string
 	SetCPU(v string) *NodeType
 	GetCPU() *string
 	SetGPU(v string) *NodeType
@@ -23,13 +27,19 @@ type iNodeType interface {
 	GetMemory() *string
 	SetNodeType(v string) *NodeType
 	GetNodeType() *string
+	SetSystemReservedCPU(v string) *NodeType
+	GetSystemReservedCPU() *string
+	SetSystemReservedMemory(v string) *NodeType
+	GetSystemReservedMemory() *string
 }
 
 type NodeType struct {
 	// example:
 	//
 	// CPU
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AcceleratorType   *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	AllocatableCPU    *string `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
+	AllocatableMemory *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
 	// example:
 	//
 	// 16
@@ -50,7 +60,9 @@ type NodeType struct {
 	// example:
 	//
 	// ecs.g6.4xlarge
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NodeType             *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	SystemReservedCPU    *string `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
+	SystemReservedMemory *string `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
 }
 
 func (s NodeType) String() string {
@@ -63,6 +75,14 @@ func (s NodeType) GoString() string {
 
 func (s *NodeType) GetAcceleratorType() *string {
 	return s.AcceleratorType
+}
+
+func (s *NodeType) GetAllocatableCPU() *string {
+	return s.AllocatableCPU
+}
+
+func (s *NodeType) GetAllocatableMemory() *string {
+	return s.AllocatableMemory
 }
 
 func (s *NodeType) GetCPU() *string {
@@ -89,8 +109,26 @@ func (s *NodeType) GetNodeType() *string {
 	return s.NodeType
 }
 
+func (s *NodeType) GetSystemReservedCPU() *string {
+	return s.SystemReservedCPU
+}
+
+func (s *NodeType) GetSystemReservedMemory() *string {
+	return s.SystemReservedMemory
+}
+
 func (s *NodeType) SetAcceleratorType(v string) *NodeType {
 	s.AcceleratorType = &v
+	return s
+}
+
+func (s *NodeType) SetAllocatableCPU(v string) *NodeType {
+	s.AllocatableCPU = &v
+	return s
+}
+
+func (s *NodeType) SetAllocatableMemory(v string) *NodeType {
+	s.AllocatableMemory = &v
 	return s
 }
 
@@ -121,6 +159,16 @@ func (s *NodeType) SetMemory(v string) *NodeType {
 
 func (s *NodeType) SetNodeType(v string) *NodeType {
 	s.NodeType = &v
+	return s
+}
+
+func (s *NodeType) SetSystemReservedCPU(v string) *NodeType {
+	s.SystemReservedCPU = &v
+	return s
+}
+
+func (s *NodeType) SetSystemReservedMemory(v string) *NodeType {
+	s.SystemReservedMemory = &v
 	return s
 }
 

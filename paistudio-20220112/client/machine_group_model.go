@@ -9,6 +9,10 @@ type iMachineGroup interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllocatableCpu(v int64) *MachineGroup
+	GetAllocatableCpu() *int64
+	SetAllocatableMemory(v int64) *MachineGroup
+	GetAllocatableMemory() *int64
 	SetCpu(v int64) *MachineGroup
 	GetCpu() *int64
 	SetCreatorID(v string) *MachineGroup
@@ -61,11 +65,17 @@ type iMachineGroup interface {
 	GetStatus() *string
 	SetSupportedDrivers(v []*string) *MachineGroup
 	GetSupportedDrivers() []*string
+	SetSystemReservedCpu(v int64) *MachineGroup
+	GetSystemReservedCpu() *int64
+	SetSystemReservedMemory(v int64) *MachineGroup
+	GetSystemReservedMemory() *int64
 }
 
 type MachineGroup struct {
-	Cpu       *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
+	AllocatableCpu    *int64  `json:"AllocatableCpu,omitempty" xml:"AllocatableCpu,omitempty"`
+	AllocatableMemory *int64  `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
+	Cpu               *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreatorID         *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	// example:
 	//
 	// 470.199.02
@@ -84,18 +94,20 @@ type MachineGroup struct {
 	// example:
 	//
 	// mg1
-	MachineGroupID      *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
-	Memory              *int64    `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	OrderInstanceId     *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	PaymentDuration     *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PaymentType         *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ReasonCode          *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage       *string   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceGroupID     *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
-	ResourceType        *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status              *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupportedDrivers    []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	MachineGroupID       *string   `json:"MachineGroupID,omitempty" xml:"MachineGroupID,omitempty"`
+	Memory               *int64    `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	OrderInstanceId      *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	PaymentDuration      *string   `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	PaymentDurationUnit  *string   `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	PaymentType          *string   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ReasonCode           *string   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage        *string   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceGroupID      *string   `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportedDrivers     []*string `json:"SupportedDrivers,omitempty" xml:"SupportedDrivers,omitempty" type:"Repeated"`
+	SystemReservedCpu    *int64    `json:"SystemReservedCpu,omitempty" xml:"SystemReservedCpu,omitempty"`
+	SystemReservedMemory *int64    `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
 }
 
 func (s MachineGroup) String() string {
@@ -104,6 +116,14 @@ func (s MachineGroup) String() string {
 
 func (s MachineGroup) GoString() string {
 	return s.String()
+}
+
+func (s *MachineGroup) GetAllocatableCpu() *int64 {
+	return s.AllocatableCpu
+}
+
+func (s *MachineGroup) GetAllocatableMemory() *int64 {
+	return s.AllocatableMemory
 }
 
 func (s *MachineGroup) GetCpu() *int64 {
@@ -208,6 +228,24 @@ func (s *MachineGroup) GetStatus() *string {
 
 func (s *MachineGroup) GetSupportedDrivers() []*string {
 	return s.SupportedDrivers
+}
+
+func (s *MachineGroup) GetSystemReservedCpu() *int64 {
+	return s.SystemReservedCpu
+}
+
+func (s *MachineGroup) GetSystemReservedMemory() *int64 {
+	return s.SystemReservedMemory
+}
+
+func (s *MachineGroup) SetAllocatableCpu(v int64) *MachineGroup {
+	s.AllocatableCpu = &v
+	return s
+}
+
+func (s *MachineGroup) SetAllocatableMemory(v int64) *MachineGroup {
+	s.AllocatableMemory = &v
+	return s
 }
 
 func (s *MachineGroup) SetCpu(v int64) *MachineGroup {
@@ -337,6 +375,16 @@ func (s *MachineGroup) SetStatus(v string) *MachineGroup {
 
 func (s *MachineGroup) SetSupportedDrivers(v []*string) *MachineGroup {
 	s.SupportedDrivers = v
+	return s
+}
+
+func (s *MachineGroup) SetSystemReservedCpu(v int64) *MachineGroup {
+	s.SystemReservedCpu = &v
+	return s
+}
+
+func (s *MachineGroup) SetSystemReservedMemory(v int64) *MachineGroup {
+	s.SystemReservedMemory = &v
 	return s
 }
 
