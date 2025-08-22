@@ -1086,6 +1086,10 @@ func (client *Client) CreateInstantSiteMonitorWithOptions(request *CreateInstant
 		query["Address"] = request.Address
 	}
 
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
 	if !dara.IsNil(request.IspCities) {
 		query["IspCities"] = request.IspCities
 	}

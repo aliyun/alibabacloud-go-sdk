@@ -11,6 +11,8 @@ type iCreateInstantSiteMonitorRequest interface {
 	GoString() string
 	SetAddress(v string) *CreateInstantSiteMonitorRequest
 	GetAddress() *string
+	SetAgentGroup(v string) *CreateInstantSiteMonitorRequest
+	GetAgentGroup() *string
 	SetIspCities(v string) *CreateInstantSiteMonitorRequest
 	GetIspCities() *string
 	SetOptionsJson(v string) *CreateInstantSiteMonitorRequest
@@ -33,7 +35,8 @@ type CreateInstantSiteMonitorRequest struct {
 	// example:
 	//
 	// http://www.aliyun.com
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
 	// The detection points. If you leave this parameter empty, the system randomly selects three detection points.
 	//
 	// The value is a `JSON array`. Example: {"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
@@ -95,6 +98,10 @@ func (s *CreateInstantSiteMonitorRequest) GetAddress() *string {
 	return s.Address
 }
 
+func (s *CreateInstantSiteMonitorRequest) GetAgentGroup() *string {
+	return s.AgentGroup
+}
+
 func (s *CreateInstantSiteMonitorRequest) GetIspCities() *string {
 	return s.IspCities
 }
@@ -121,6 +128,11 @@ func (s *CreateInstantSiteMonitorRequest) GetTaskType() *string {
 
 func (s *CreateInstantSiteMonitorRequest) SetAddress(v string) *CreateInstantSiteMonitorRequest {
 	s.Address = &v
+	return s
+}
+
+func (s *CreateInstantSiteMonitorRequest) SetAgentGroup(v string) *CreateInstantSiteMonitorRequest {
+	s.AgentGroup = &v
 	return s
 }
 

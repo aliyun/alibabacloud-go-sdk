@@ -772,6 +772,10 @@ func (client *Client) CreateInstantSiteMonitorWithContext(ctx context.Context, r
 		query["Address"] = request.Address
 	}
 
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
 	if !dara.IsNil(request.IspCities) {
 		query["IspCities"] = request.IspCities
 	}
