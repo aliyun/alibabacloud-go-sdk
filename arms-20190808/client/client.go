@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("arms.aliyuncs.com"),
@@ -10067,6 +10066,18 @@ func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesReq
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppType) {
 		query["AppType"] = request.AppType
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.Pid) {

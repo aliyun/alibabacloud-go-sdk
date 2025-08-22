@@ -7494,6 +7494,18 @@ func (client *Client) GetRumUploadFilesWithContext(ctx context.Context, request 
 		query["AppType"] = request.AppType
 	}
 
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.Pid) {
 		query["Pid"] = request.Pid
 	}

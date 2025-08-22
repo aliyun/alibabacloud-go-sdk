@@ -11,6 +11,12 @@ type iGetRumUploadFilesRequest interface {
 	GoString() string
 	SetAppType(v string) *GetRumUploadFilesRequest
 	GetAppType() *string
+	SetFileName(v string) *GetRumUploadFilesRequest
+	GetFileName() *string
+	SetNextToken(v string) *GetRumUploadFilesRequest
+	GetNextToken() *string
+	SetPageSize(v int32) *GetRumUploadFilesRequest
+	GetPageSize() *int32
 	SetPid(v string) *GetRumUploadFilesRequest
 	GetPid() *string
 	SetRegionId(v string) *GetRumUploadFilesRequest
@@ -25,10 +31,11 @@ type GetRumUploadFilesRequest struct {
 	// example:
 	//
 	// source-map
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType   *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The process ID (PID) of the application.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -62,6 +69,18 @@ func (s *GetRumUploadFilesRequest) GetAppType() *string {
 	return s.AppType
 }
 
+func (s *GetRumUploadFilesRequest) GetFileName() *string {
+	return s.FileName
+}
+
+func (s *GetRumUploadFilesRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *GetRumUploadFilesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *GetRumUploadFilesRequest) GetPid() *string {
 	return s.Pid
 }
@@ -76,6 +95,21 @@ func (s *GetRumUploadFilesRequest) GetVersionId() *string {
 
 func (s *GetRumUploadFilesRequest) SetAppType(v string) *GetRumUploadFilesRequest {
 	s.AppType = &v
+	return s
+}
+
+func (s *GetRumUploadFilesRequest) SetFileName(v string) *GetRumUploadFilesRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetRumUploadFilesRequest) SetNextToken(v string) *GetRumUploadFilesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetRumUploadFilesRequest) SetPageSize(v int32) *GetRumUploadFilesRequest {
+	s.PageSize = &v
 	return s
 }
 
