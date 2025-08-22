@@ -21,8 +21,12 @@ type iGetRumExceptionStackRequest interface {
 	GetPid() *string
 	SetRegionId(v string) *GetRumExceptionStackRequest
 	GetRegionId() *string
+	SetServiceId(v string) *GetRumExceptionStackRequest
+	GetServiceId() *string
 	SetSourcemapType(v string) *GetRumExceptionStackRequest
 	GetSourcemapType() *string
+	SetWorkspace(v string) *GetRumExceptionStackRequest
+	GetWorkspace() *string
 }
 
 type GetRumExceptionStackRequest struct {
@@ -64,8 +68,6 @@ type GetRumExceptionStackRequest struct {
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// The application ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// atxxxxzkcf@d8deedfa9bf****
@@ -75,7 +77,8 @@ type GetRumExceptionStackRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The parsing type. Valid values:
 	//
 	// 	- js: Parses JavaScript errors.
@@ -92,6 +95,7 @@ type GetRumExceptionStackRequest struct {
 	//
 	// source-map
 	SourcemapType *string `json:"SourcemapType,omitempty" xml:"SourcemapType,omitempty"`
+	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetRumExceptionStackRequest) String() string {
@@ -126,8 +130,16 @@ func (s *GetRumExceptionStackRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetRumExceptionStackRequest) GetServiceId() *string {
+	return s.ServiceId
+}
+
 func (s *GetRumExceptionStackRequest) GetSourcemapType() *string {
 	return s.SourcemapType
+}
+
+func (s *GetRumExceptionStackRequest) GetWorkspace() *string {
+	return s.Workspace
 }
 
 func (s *GetRumExceptionStackRequest) SetExceptionBinaryImages(v string) *GetRumExceptionStackRequest {
@@ -160,8 +172,18 @@ func (s *GetRumExceptionStackRequest) SetRegionId(v string) *GetRumExceptionStac
 	return s
 }
 
+func (s *GetRumExceptionStackRequest) SetServiceId(v string) *GetRumExceptionStackRequest {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *GetRumExceptionStackRequest) SetSourcemapType(v string) *GetRumExceptionStackRequest {
 	s.SourcemapType = &v
+	return s
+}
+
+func (s *GetRumExceptionStackRequest) SetWorkspace(v string) *GetRumExceptionStackRequest {
+	s.Workspace = &v
 	return s
 }
 

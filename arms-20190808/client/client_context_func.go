@@ -2838,6 +2838,10 @@ func (client *Client) CreateRumUploadFileUrlWithContext(ctx context.Context, req
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	if !dara.IsNil(request.SourcemapType) {
 		query["SourcemapType"] = request.SourcemapType
 	}
@@ -2848,6 +2852,10 @@ func (client *Client) CreateRumUploadFileUrlWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.VersionId) {
 		query["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4628,12 +4636,20 @@ func (client *Client) DeleteRumUploadFileWithContext(ctx context.Context, reques
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	if !dara.IsNil(request.Uuid) {
 		query["Uuid"] = request.Uuid
 	}
 
 	if !dara.IsNil(request.VersionId) {
 		query["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7392,8 +7408,16 @@ func (client *Client) GetRumExceptionStackWithContext(ctx context.Context, reque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	if !dara.IsNil(request.SourcemapType) {
 		query["SourcemapType"] = request.SourcemapType
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7514,8 +7538,16 @@ func (client *Client) GetRumUploadFilesWithContext(ctx context.Context, request 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
 	if !dara.IsNil(request.VersionId) {
 		query["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
 	}
 
 	req := &openapiutil.OpenApiRequest{

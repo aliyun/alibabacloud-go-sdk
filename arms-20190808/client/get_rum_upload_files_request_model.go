@@ -21,8 +21,12 @@ type iGetRumUploadFilesRequest interface {
 	GetPid() *string
 	SetRegionId(v string) *GetRumUploadFilesRequest
 	GetRegionId() *string
+	SetServiceId(v string) *GetRumUploadFilesRequest
+	GetServiceId() *string
 	SetVersionId(v string) *GetRumUploadFilesRequest
 	GetVersionId() *string
+	SetWorkspace(v string) *GetRumUploadFilesRequest
+	GetWorkspace() *string
 }
 
 type GetRumUploadFilesRequest struct {
@@ -48,13 +52,15 @@ type GetRumUploadFilesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The version number of the files. If you do not specify this parameter, all versions of the files are returned by default.
 	//
 	// example:
 	//
 	// 1.0.0
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s GetRumUploadFilesRequest) String() string {
@@ -89,8 +95,16 @@ func (s *GetRumUploadFilesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *GetRumUploadFilesRequest) GetServiceId() *string {
+	return s.ServiceId
+}
+
 func (s *GetRumUploadFilesRequest) GetVersionId() *string {
 	return s.VersionId
+}
+
+func (s *GetRumUploadFilesRequest) GetWorkspace() *string {
+	return s.Workspace
 }
 
 func (s *GetRumUploadFilesRequest) SetAppType(v string) *GetRumUploadFilesRequest {
@@ -123,8 +137,18 @@ func (s *GetRumUploadFilesRequest) SetRegionId(v string) *GetRumUploadFilesReque
 	return s
 }
 
+func (s *GetRumUploadFilesRequest) SetServiceId(v string) *GetRumUploadFilesRequest {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *GetRumUploadFilesRequest) SetVersionId(v string) *GetRumUploadFilesRequest {
 	s.VersionId = &v
+	return s
+}
+
+func (s *GetRumUploadFilesRequest) SetWorkspace(v string) *GetRumUploadFilesRequest {
+	s.Workspace = &v
 	return s
 }
 

@@ -19,12 +19,16 @@ type iCreateRumUploadFileUrlRequest interface {
 	GetPid() *string
 	SetRegionId(v string) *CreateRumUploadFileUrlRequest
 	GetRegionId() *string
+	SetServiceId(v string) *CreateRumUploadFileUrlRequest
+	GetServiceId() *string
 	SetSourcemapType(v string) *CreateRumUploadFileUrlRequest
 	GetSourcemapType() *string
 	SetUuid(v string) *CreateRumUploadFileUrlRequest
 	GetUuid() *string
 	SetVersionId(v string) *CreateRumUploadFileUrlRequest
 	GetVersionId() *string
+	SetWorkspace(v string) *CreateRumUploadFileUrlRequest
+	GetWorkspace() *string
 }
 
 type CreateRumUploadFileUrlRequest struct {
@@ -50,8 +54,6 @@ type CreateRumUploadFileUrlRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The process ID (PID) of the application.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// iioe7jcnuk@582846f37******
@@ -63,7 +65,8 @@ type CreateRumUploadFileUrlRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
 	//
 	// example:
@@ -82,6 +85,7 @@ type CreateRumUploadFileUrlRequest struct {
 	//
 	// 1.0.0
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s CreateRumUploadFileUrlRequest) String() string {
@@ -112,6 +116,10 @@ func (s *CreateRumUploadFileUrlRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateRumUploadFileUrlRequest) GetServiceId() *string {
+	return s.ServiceId
+}
+
 func (s *CreateRumUploadFileUrlRequest) GetSourcemapType() *string {
 	return s.SourcemapType
 }
@@ -122,6 +130,10 @@ func (s *CreateRumUploadFileUrlRequest) GetUuid() *string {
 
 func (s *CreateRumUploadFileUrlRequest) GetVersionId() *string {
 	return s.VersionId
+}
+
+func (s *CreateRumUploadFileUrlRequest) GetWorkspace() *string {
+	return s.Workspace
 }
 
 func (s *CreateRumUploadFileUrlRequest) SetAppName(v string) *CreateRumUploadFileUrlRequest {
@@ -149,6 +161,11 @@ func (s *CreateRumUploadFileUrlRequest) SetRegionId(v string) *CreateRumUploadFi
 	return s
 }
 
+func (s *CreateRumUploadFileUrlRequest) SetServiceId(v string) *CreateRumUploadFileUrlRequest {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *CreateRumUploadFileUrlRequest) SetSourcemapType(v string) *CreateRumUploadFileUrlRequest {
 	s.SourcemapType = &v
 	return s
@@ -161,6 +178,11 @@ func (s *CreateRumUploadFileUrlRequest) SetUuid(v string) *CreateRumUploadFileUr
 
 func (s *CreateRumUploadFileUrlRequest) SetVersionId(v string) *CreateRumUploadFileUrlRequest {
 	s.VersionId = &v
+	return s
+}
+
+func (s *CreateRumUploadFileUrlRequest) SetWorkspace(v string) *CreateRumUploadFileUrlRequest {
+	s.Workspace = &v
 	return s
 }
 

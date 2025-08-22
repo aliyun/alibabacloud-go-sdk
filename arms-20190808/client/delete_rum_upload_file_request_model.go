@@ -17,10 +17,14 @@ type iDeleteRumUploadFileRequest interface {
 	GetPid() *string
 	SetRegionId(v string) *DeleteRumUploadFileRequest
 	GetRegionId() *string
+	SetServiceId(v string) *DeleteRumUploadFileRequest
+	GetServiceId() *string
 	SetUuid(v string) *DeleteRumUploadFileRequest
 	GetUuid() *string
 	SetVersionId(v string) *DeleteRumUploadFileRequest
 	GetVersionId() *string
+	SetWorkspace(v string) *DeleteRumUploadFileRequest
+	GetWorkspace() *string
 }
 
 type DeleteRumUploadFileRequest struct {
@@ -54,8 +58,6 @@ type DeleteRumUploadFileRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The application ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// atc889zkcf@d8deedfa9bf****
@@ -67,7 +69,8 @@ type DeleteRumUploadFileRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The file ID.
 	//
 	// example:
@@ -80,6 +83,7 @@ type DeleteRumUploadFileRequest struct {
 	//
 	// 1.0.0
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Workspace *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }
 
 func (s DeleteRumUploadFileRequest) String() string {
@@ -106,12 +110,20 @@ func (s *DeleteRumUploadFileRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DeleteRumUploadFileRequest) GetServiceId() *string {
+	return s.ServiceId
+}
+
 func (s *DeleteRumUploadFileRequest) GetUuid() *string {
 	return s.Uuid
 }
 
 func (s *DeleteRumUploadFileRequest) GetVersionId() *string {
 	return s.VersionId
+}
+
+func (s *DeleteRumUploadFileRequest) GetWorkspace() *string {
+	return s.Workspace
 }
 
 func (s *DeleteRumUploadFileRequest) SetBatchItems(v string) *DeleteRumUploadFileRequest {
@@ -134,6 +146,11 @@ func (s *DeleteRumUploadFileRequest) SetRegionId(v string) *DeleteRumUploadFileR
 	return s
 }
 
+func (s *DeleteRumUploadFileRequest) SetServiceId(v string) *DeleteRumUploadFileRequest {
+	s.ServiceId = &v
+	return s
+}
+
 func (s *DeleteRumUploadFileRequest) SetUuid(v string) *DeleteRumUploadFileRequest {
 	s.Uuid = &v
 	return s
@@ -141,6 +158,11 @@ func (s *DeleteRumUploadFileRequest) SetUuid(v string) *DeleteRumUploadFileReque
 
 func (s *DeleteRumUploadFileRequest) SetVersionId(v string) *DeleteRumUploadFileRequest {
 	s.VersionId = &v
+	return s
+}
+
+func (s *DeleteRumUploadFileRequest) SetWorkspace(v string) *DeleteRumUploadFileRequest {
+	s.Workspace = &v
 	return s
 }
 
