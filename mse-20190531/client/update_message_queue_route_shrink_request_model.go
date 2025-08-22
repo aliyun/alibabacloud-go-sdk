@@ -19,6 +19,8 @@ type iUpdateMessageQueueRouteShrinkRequest interface {
 	GetEnable() *bool
 	SetFilterSide(v string) *UpdateMessageQueueRouteShrinkRequest
 	GetFilterSide() *string
+	SetGrayBaseTagsShrink(v string) *UpdateMessageQueueRouteShrinkRequest
+	GetGrayBaseTagsShrink() *string
 	SetNamespace(v string) *UpdateMessageQueueRouteShrinkRequest
 	GetNamespace() *string
 	SetRegion(v string) *UpdateMessageQueueRouteShrinkRequest
@@ -65,7 +67,8 @@ type UpdateMessageQueueRouteShrinkRequest struct {
 	// example:
 	//
 	// Server
-	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	FilterSide         *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	GrayBaseTagsShrink *string `json:"GrayBaseTags,omitempty" xml:"GrayBaseTags,omitempty"`
 	// example:
 	//
 	// default
@@ -110,6 +113,10 @@ func (s *UpdateMessageQueueRouteShrinkRequest) GetFilterSide() *string {
 	return s.FilterSide
 }
 
+func (s *UpdateMessageQueueRouteShrinkRequest) GetGrayBaseTagsShrink() *string {
+	return s.GrayBaseTagsShrink
+}
+
 func (s *UpdateMessageQueueRouteShrinkRequest) GetNamespace() *string {
 	return s.Namespace
 }
@@ -144,6 +151,11 @@ func (s *UpdateMessageQueueRouteShrinkRequest) SetEnable(v bool) *UpdateMessageQ
 
 func (s *UpdateMessageQueueRouteShrinkRequest) SetFilterSide(v string) *UpdateMessageQueueRouteShrinkRequest {
 	s.FilterSide = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetGrayBaseTagsShrink(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.GrayBaseTagsShrink = &v
 	return s
 }
 

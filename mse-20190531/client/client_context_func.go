@@ -15129,6 +15129,10 @@ func (client *Client) UpdateMessageQueueRouteWithContext(ctx context.Context, tm
 	}
 	request := &UpdateMessageQueueRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GrayBaseTags) {
+		request.GrayBaseTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GrayBaseTags, dara.String("GrayBaseTags"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tags) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
@@ -15152,6 +15156,10 @@ func (client *Client) UpdateMessageQueueRouteWithContext(ctx context.Context, tm
 
 	if !dara.IsNil(request.FilterSide) {
 		query["FilterSide"] = request.FilterSide
+	}
+
+	if !dara.IsNil(request.GrayBaseTagsShrink) {
+		query["GrayBaseTags"] = request.GrayBaseTagsShrink
 	}
 
 	if !dara.IsNil(request.Namespace) {

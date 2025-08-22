@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -19493,6 +19492,10 @@ func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQu
 	}
 	request := &UpdateMessageQueueRouteShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GrayBaseTags) {
+		request.GrayBaseTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GrayBaseTags, dara.String("GrayBaseTags"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tags) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
@@ -19516,6 +19519,10 @@ func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQu
 
 	if !dara.IsNil(request.FilterSide) {
 		query["FilterSide"] = request.FilterSide
+	}
+
+	if !dara.IsNil(request.GrayBaseTagsShrink) {
+		query["GrayBaseTags"] = request.GrayBaseTagsShrink
 	}
 
 	if !dara.IsNil(request.Namespace) {

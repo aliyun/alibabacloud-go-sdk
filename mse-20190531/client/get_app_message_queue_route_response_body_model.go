@@ -150,7 +150,8 @@ type GetAppMessageQueueRouteResponseBodyData struct {
 	// example:
 	//
 	// Server
-	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	FilterSide   *string   `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	GrayBaseTags []*string `json:"GrayBaseTags,omitempty" xml:"GrayBaseTags,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// example:
@@ -181,6 +182,10 @@ func (s *GetAppMessageQueueRouteResponseBodyData) GetFilterSide() *string {
 	return s.FilterSide
 }
 
+func (s *GetAppMessageQueueRouteResponseBodyData) GetGrayBaseTags() []*string {
+	return s.GrayBaseTags
+}
+
 func (s *GetAppMessageQueueRouteResponseBodyData) GetRegion() *string {
 	return s.Region
 }
@@ -201,6 +206,11 @@ func (s *GetAppMessageQueueRouteResponseBodyData) SetEnable(v bool) *GetAppMessa
 
 func (s *GetAppMessageQueueRouteResponseBodyData) SetFilterSide(v string) *GetAppMessageQueueRouteResponseBodyData {
 	s.FilterSide = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBodyData) SetGrayBaseTags(v []*string) *GetAppMessageQueueRouteResponseBodyData {
+	s.GrayBaseTags = v
 	return s
 }
 

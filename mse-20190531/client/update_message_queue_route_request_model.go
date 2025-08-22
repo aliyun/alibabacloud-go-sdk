@@ -19,6 +19,8 @@ type iUpdateMessageQueueRouteRequest interface {
 	GetEnable() *bool
 	SetFilterSide(v string) *UpdateMessageQueueRouteRequest
 	GetFilterSide() *string
+	SetGrayBaseTags(v []*string) *UpdateMessageQueueRouteRequest
+	GetGrayBaseTags() []*string
 	SetNamespace(v string) *UpdateMessageQueueRouteRequest
 	GetNamespace() *string
 	SetRegion(v string) *UpdateMessageQueueRouteRequest
@@ -65,7 +67,8 @@ type UpdateMessageQueueRouteRequest struct {
 	// example:
 	//
 	// Server
-	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	FilterSide   *string   `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	GrayBaseTags []*string `json:"GrayBaseTags,omitempty" xml:"GrayBaseTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// default
@@ -110,6 +113,10 @@ func (s *UpdateMessageQueueRouteRequest) GetFilterSide() *string {
 	return s.FilterSide
 }
 
+func (s *UpdateMessageQueueRouteRequest) GetGrayBaseTags() []*string {
+	return s.GrayBaseTags
+}
+
 func (s *UpdateMessageQueueRouteRequest) GetNamespace() *string {
 	return s.Namespace
 }
@@ -144,6 +151,11 @@ func (s *UpdateMessageQueueRouteRequest) SetEnable(v bool) *UpdateMessageQueueRo
 
 func (s *UpdateMessageQueueRouteRequest) SetFilterSide(v string) *UpdateMessageQueueRouteRequest {
 	s.FilterSide = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetGrayBaseTags(v []*string) *UpdateMessageQueueRouteRequest {
+	s.GrayBaseTags = v
 	return s
 }
 
