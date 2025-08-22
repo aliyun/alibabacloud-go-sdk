@@ -15,6 +15,10 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetAutoPay() *bool
 	SetAutoRenew(v bool) *CreateAndroidInstanceGroupRequest
 	GetAutoRenew() *bool
+	SetBandwidthPackageId(v string) *CreateAndroidInstanceGroupRequest
+	GetBandwidthPackageId() *string
+	SetBandwidthPackageType(v string) *CreateAndroidInstanceGroupRequest
+	GetBandwidthPackageType() *string
 	SetBizRegionId(v string) *CreateAndroidInstanceGroupRequest
 	GetBizRegionId() *string
 	SetChargeType(v string) *CreateAndroidInstanceGroupRequest
@@ -35,6 +39,10 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetIpv6Bandwidth() *int32
 	SetKeyPairId(v string) *CreateAndroidInstanceGroupRequest
 	GetKeyPairId() *string
+	SetNetworkInfo(v *CreateAndroidInstanceGroupRequestNetworkInfo) *CreateAndroidInstanceGroupRequest
+	GetNetworkInfo() *CreateAndroidInstanceGroupRequestNetworkInfo
+	SetNetworkType(v string) *CreateAndroidInstanceGroupRequest
+	GetNetworkType() *string
 	SetNumberOfInstances(v int32) *CreateAndroidInstanceGroupRequest
 	GetNumberOfInstances() *int32
 	SetOfficeSiteId(v string) *CreateAndroidInstanceGroupRequest
@@ -81,7 +89,9 @@ type CreateAndroidInstanceGroupRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BandwidthPackageId   *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageType *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
 	// The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
 	//
 	// Valid values:
@@ -185,7 +195,9 @@ type CreateAndroidInstanceGroupRequest struct {
 	// example:
 	//
 	// kp-7o9xywwfutc1l****
-	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	KeyPairId   *string                                       `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	NetworkInfo *CreateAndroidInstanceGroupRequestNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Struct"`
+	NetworkType *string                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The number of cloud phones in the instance group. Maximum value: 100.
 	//
 	// example:
@@ -262,6 +274,14 @@ func (s *CreateAndroidInstanceGroupRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *CreateAndroidInstanceGroupRequest) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
+}
+
+func (s *CreateAndroidInstanceGroupRequest) GetBandwidthPackageType() *string {
+	return s.BandwidthPackageType
+}
+
 func (s *CreateAndroidInstanceGroupRequest) GetBizRegionId() *string {
 	return s.BizRegionId
 }
@@ -300,6 +320,14 @@ func (s *CreateAndroidInstanceGroupRequest) GetIpv6Bandwidth() *int32 {
 
 func (s *CreateAndroidInstanceGroupRequest) GetKeyPairId() *string {
 	return s.KeyPairId
+}
+
+func (s *CreateAndroidInstanceGroupRequest) GetNetworkInfo() *CreateAndroidInstanceGroupRequestNetworkInfo {
+	return s.NetworkInfo
+}
+
+func (s *CreateAndroidInstanceGroupRequest) GetNetworkType() *string {
+	return s.NetworkType
 }
 
 func (s *CreateAndroidInstanceGroupRequest) GetNumberOfInstances() *int32 {
@@ -342,6 +370,16 @@ func (s *CreateAndroidInstanceGroupRequest) SetAutoPay(v bool) *CreateAndroidIns
 
 func (s *CreateAndroidInstanceGroupRequest) SetAutoRenew(v bool) *CreateAndroidInstanceGroupRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetBandwidthPackageId(v string) *CreateAndroidInstanceGroupRequest {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetBandwidthPackageType(v string) *CreateAndroidInstanceGroupRequest {
+	s.BandwidthPackageType = &v
 	return s
 }
 
@@ -395,6 +433,16 @@ func (s *CreateAndroidInstanceGroupRequest) SetKeyPairId(v string) *CreateAndroi
 	return s
 }
 
+func (s *CreateAndroidInstanceGroupRequest) SetNetworkInfo(v *CreateAndroidInstanceGroupRequestNetworkInfo) *CreateAndroidInstanceGroupRequest {
+	s.NetworkInfo = v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetNetworkType(v string) *CreateAndroidInstanceGroupRequest {
+	s.NetworkType = &v
+	return s
+}
+
 func (s *CreateAndroidInstanceGroupRequest) SetNumberOfInstances(v int32) *CreateAndroidInstanceGroupRequest {
 	s.NumberOfInstances = &v
 	return s
@@ -431,6 +479,141 @@ func (s *CreateAndroidInstanceGroupRequest) SetVSwitchId(v string) *CreateAndroi
 }
 
 func (s *CreateAndroidInstanceGroupRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAndroidInstanceGroupRequestNetworkInfo struct {
+	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BandwidthPackageName *string `json:"BandwidthPackageName,omitempty" xml:"BandwidthPackageName,omitempty"`
+	CidrBlock            *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	InternetChargeType   *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpRatio              *int32  `json:"IpRatio,omitempty" xml:"IpRatio,omitempty"`
+	Isp                  *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	LimitedBandwidth     *int32  `json:"LimitedBandwidth,omitempty" xml:"LimitedBandwidth,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	VisibleType          *string `json:"VisibleType,omitempty" xml:"VisibleType,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupRequestNetworkInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupRequestNetworkInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetAutoRenew() *bool {
+	return s.AutoRenew
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetBandwidthPackageName() *string {
+	return s.BandwidthPackageName
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetCidrBlock() *string {
+	return s.CidrBlock
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetInternetChargeType() *string {
+	return s.InternetChargeType
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetIpRatio() *int32 {
+	return s.IpRatio
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetIsp() *string {
+	return s.Isp
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetLimitedBandwidth() *int32 {
+	return s.LimitedBandwidth
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPayType() *string {
+	return s.PayType
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPeriod() *int32 {
+	return s.Period
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetPeriodUnit() *string {
+	return s.PeriodUnit
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) GetVisibleType() *string {
+	return s.VisibleType
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetAutoPay(v bool) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetAutoRenew(v bool) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetBandwidthPackageName(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.BandwidthPackageName = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetCidrBlock(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetInternetChargeType(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetIpRatio(v int32) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.IpRatio = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetIsp(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.Isp = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetLimitedBandwidth(v int32) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.LimitedBandwidth = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPayType(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPeriod(v int32) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetPeriodUnit(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) SetVisibleType(v string) *CreateAndroidInstanceGroupRequestNetworkInfo {
+	s.VisibleType = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequestNetworkInfo) Validate() error {
 	return dara.Validate(s)
 }
 

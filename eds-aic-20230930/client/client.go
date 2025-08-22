@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -556,16 +555,22 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 //
 //   - You can also set AutoPay to true based on your business requirements.
 //
-// @param request - CreateAndroidInstanceGroupRequest
+// @param tmpReq - CreateAndroidInstanceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAndroidInstanceGroupResponse
-func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroidInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateAndroidInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NetworkInfo) {
+		request.NetworkInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkInfo, dara.String("NetworkInfo"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
@@ -577,6 +582,14 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BandwidthPackageId) {
+		query["BandwidthPackageId"] = request.BandwidthPackageId
+	}
+
+	if !dara.IsNil(request.BandwidthPackageType) {
+		query["BandwidthPackageType"] = request.BandwidthPackageType
 	}
 
 	if !dara.IsNil(request.BizRegionId) {
@@ -617,6 +630,14 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !dara.IsNil(request.KeyPairId) {
 		query["KeyPairId"] = request.KeyPairId
+	}
+
+	if !dara.IsNil(request.NetworkInfoShrink) {
+		query["NetworkInfo"] = request.NetworkInfoShrink
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
 	}
 
 	if !dara.IsNil(request.NumberOfInstances) {
@@ -2013,6 +2034,10 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6285,6 +6310,10 @@ func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImag
 
 	if !dara.IsNil(request.InstanceIdList) {
 		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !dara.IsNil(request.Reset) {
+		query["Reset"] = request.Reset
 	}
 
 	req := &openapiutil.OpenApiRequest{

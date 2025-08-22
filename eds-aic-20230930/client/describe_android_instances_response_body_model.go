@@ -292,6 +292,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// connect
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
+	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
 	// The tags.
 	Tags             []*DescribeAndroidInstancesResponseBodyInstanceModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	UpBandwidthLimit *int32                                                   `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
@@ -481,6 +482,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetSessionStatus() *
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetStreamMode() *int32 {
 	return s.StreamMode
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetSystemVersion() *string {
+	return s.SystemVersion
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetTags() []*DescribeAndroidInstancesResponseBodyInstanceModelTags {
@@ -716,6 +721,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetStreamMode(v int32) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.StreamMode = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSystemVersion(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.SystemVersion = &v
 	return s
 }
 

@@ -29,6 +29,8 @@ type iDescribeAndroidInstanceGroupsRequest interface {
 	GetSaleMode() *string
 	SetStatus(v string) *DescribeAndroidInstanceGroupsRequest
 	GetStatus() *string
+	SetTags(v []*DescribeAndroidInstanceGroupsRequestTags) *DescribeAndroidInstanceGroupsRequest
+	GetTags() []*DescribeAndroidInstanceGroupsRequestTags
 }
 
 type DescribeAndroidInstanceGroupsRequest struct {
@@ -117,7 +119,8 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	// example:
 	//
 	// CREATING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeAndroidInstanceGroupsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAndroidInstanceGroupsRequest) String() string {
@@ -166,6 +169,10 @@ func (s *DescribeAndroidInstanceGroupsRequest) GetSaleMode() *string {
 
 func (s *DescribeAndroidInstanceGroupsRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeAndroidInstanceGroupsRequest) GetTags() []*DescribeAndroidInstanceGroupsRequestTags {
+	return s.Tags
 }
 
 func (s *DescribeAndroidInstanceGroupsRequest) SetBizRegionId(v string) *DescribeAndroidInstanceGroupsRequest {
@@ -218,6 +225,46 @@ func (s *DescribeAndroidInstanceGroupsRequest) SetStatus(v string) *DescribeAndr
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsRequest) SetTags(v []*DescribeAndroidInstanceGroupsRequestTags) *DescribeAndroidInstanceGroupsRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAndroidInstanceGroupsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAndroidInstanceGroupsRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAndroidInstanceGroupsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstanceGroupsRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAndroidInstanceGroupsRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAndroidInstanceGroupsRequestTags) SetKey(v string) *DescribeAndroidInstanceGroupsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsRequestTags) SetValue(v string) *DescribeAndroidInstanceGroupsRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsRequestTags) Validate() error {
 	return dara.Validate(s)
 }

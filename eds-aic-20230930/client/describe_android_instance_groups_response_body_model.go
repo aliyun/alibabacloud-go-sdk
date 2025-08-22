@@ -110,7 +110,10 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// 5
-	AvailableInstanceAmount *int32 `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	AvailableInstanceAmount *int32  `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	BandwidthPackageId      *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageStatus  *string `json:"BandwidthPackageStatus,omitempty" xml:"BandwidthPackageStatus,omitempty"`
+	BandwidthPackageType    *string `json:"BandwidthPackageType,omitempty" xml:"BandwidthPackageType,omitempty"`
 	// The billing method.
 	//
 	// example:
@@ -204,7 +207,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// 8
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory      *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The number of instances in the instance group.
 	//
 	// example:
@@ -266,7 +270,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// Android 12
-	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	SystemVersion *string                                                            `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
+	Tags          []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -293,6 +298,18 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetArchite
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetAvailableInstanceAmount() *int32 {
 	return s.AvailableInstanceAmount
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBandwidthPackageStatus() *string {
+	return s.BandwidthPackageStatus
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetBandwidthPackageType() *string {
+	return s.BandwidthPackageType
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetChargeType() *string {
@@ -363,6 +380,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetMemory(
 	return s.Memory
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetNetworkType() *string {
+	return s.NetworkType
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetNumberOfInstances() *string {
 	return s.NumberOfInstances
 }
@@ -399,6 +420,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetSystemV
 	return s.SystemVersion
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetTags() []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags {
+	return s.Tags
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetVSwitchId() *string {
 	return s.VSwitchId
 }
@@ -415,6 +440,21 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetArchite
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetAvailableInstanceAmount(v int32) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.AvailableInstanceAmount = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBandwidthPackageId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBandwidthPackageStatus(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.BandwidthPackageStatus = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetBandwidthPackageType(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.BandwidthPackageType = &v
 	return s
 }
 
@@ -503,6 +543,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetMemory(
 	return s
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetNetworkType(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.NetworkType = &v
+	return s
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetNumberOfInstances(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.NumberOfInstances = &v
 	return s
@@ -545,6 +590,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetSaleMod
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetSystemVersion(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.SystemVersion = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetTags(v []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.Tags = v
 	return s
 }
 
@@ -599,5 +649,40 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks) SetDi
 }
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) SetKey(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) SetValue(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags) Validate() error {
 	return dara.Validate(s)
 }

@@ -13,6 +13,8 @@ type iCreateAndroidInstanceGroupResponseBody interface {
 	GetInstanceGroupIds() []*string
 	SetInstanceGroupInfos(v []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) *CreateAndroidInstanceGroupResponseBody
 	GetInstanceGroupInfos() []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos
+	SetNetworkPackageOrderModel(v *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) *CreateAndroidInstanceGroupResponseBody
+	GetNetworkPackageOrderModel() *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel
 	SetOrderId(v string) *CreateAndroidInstanceGroupResponseBody
 	GetOrderId() *string
 	SetRequestId(v string) *CreateAndroidInstanceGroupResponseBody
@@ -23,7 +25,8 @@ type CreateAndroidInstanceGroupResponseBody struct {
 	// The IDs of the instance groups.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
 	// The instance groups.
-	InstanceGroupInfos []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
+	InstanceGroupInfos       []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos     `json:"InstanceGroupInfos,omitempty" xml:"InstanceGroupInfos,omitempty" type:"Repeated"`
+	NetworkPackageOrderModel *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel `json:"NetworkPackageOrderModel,omitempty" xml:"NetworkPackageOrderModel,omitempty" type:"Struct"`
 	// The ID of the order.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *CreateAndroidInstanceGroupResponseBody) GetInstanceGroupInfos() []*Crea
 	return s.InstanceGroupInfos
 }
 
+func (s *CreateAndroidInstanceGroupResponseBody) GetNetworkPackageOrderModel() *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel {
+	return s.NetworkPackageOrderModel
+}
+
 func (s *CreateAndroidInstanceGroupResponseBody) GetOrderId() *string {
 	return s.OrderId
 }
@@ -69,6 +76,11 @@ func (s *CreateAndroidInstanceGroupResponseBody) SetInstanceGroupIds(v []*string
 
 func (s *CreateAndroidInstanceGroupResponseBody) SetInstanceGroupInfos(v []*CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) *CreateAndroidInstanceGroupResponseBody {
 	s.InstanceGroupInfos = v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBody) SetNetworkPackageOrderModel(v *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) *CreateAndroidInstanceGroupResponseBody {
+	s.NetworkPackageOrderModel = v
 	return s
 }
 
@@ -124,5 +136,40 @@ func (s *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) SetInstanceId
 }
 
 func (s *CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel struct {
+	BandwidthPackageId      *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BandwidthPackageOrderId *string `json:"BandwidthPackageOrderId,omitempty" xml:"BandwidthPackageOrderId,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) GetBandwidthPackageOrderId() *string {
+	return s.BandwidthPackageOrderId
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) SetBandwidthPackageId(v string) *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel {
+	s.BandwidthPackageId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) SetBandwidthPackageOrderId(v string) *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel {
+	s.BandwidthPackageOrderId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel) Validate() error {
 	return dara.Validate(s)
 }

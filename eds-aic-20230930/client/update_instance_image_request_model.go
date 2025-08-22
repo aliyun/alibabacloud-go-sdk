@@ -13,6 +13,8 @@ type iUpdateInstanceImageRequest interface {
 	GetImageId() *string
 	SetInstanceIdList(v []*string) *UpdateInstanceImageRequest
 	GetInstanceIdList() []*string
+	SetReset(v bool) *UpdateInstanceImageRequest
+	GetReset() *bool
 }
 
 type UpdateInstanceImageRequest struct {
@@ -21,6 +23,7 @@ type UpdateInstanceImageRequest struct {
 	// imgc-075cllfeuazh0****
 	ImageId        *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	Reset          *bool     `json:"Reset,omitempty" xml:"Reset,omitempty"`
 }
 
 func (s UpdateInstanceImageRequest) String() string {
@@ -39,6 +42,10 @@ func (s *UpdateInstanceImageRequest) GetInstanceIdList() []*string {
 	return s.InstanceIdList
 }
 
+func (s *UpdateInstanceImageRequest) GetReset() *bool {
+	return s.Reset
+}
+
 func (s *UpdateInstanceImageRequest) SetImageId(v string) *UpdateInstanceImageRequest {
 	s.ImageId = &v
 	return s
@@ -46,6 +53,11 @@ func (s *UpdateInstanceImageRequest) SetImageId(v string) *UpdateInstanceImageRe
 
 func (s *UpdateInstanceImageRequest) SetInstanceIdList(v []*string) *UpdateInstanceImageRequest {
 	s.InstanceIdList = v
+	return s
+}
+
+func (s *UpdateInstanceImageRequest) SetReset(v bool) *UpdateInstanceImageRequest {
+	s.Reset = &v
 	return s
 }
 
