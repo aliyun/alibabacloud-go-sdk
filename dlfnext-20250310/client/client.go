@@ -280,6 +280,10 @@ func (client *Client) AlterShareWithOptions(share *string, request *AlterShareRe
 		body["comment"] = request.Comment
 	}
 
+	if !dara.IsNil(request.EnableWrite) {
+		body["enableWrite"] = request.EnableWrite
+	}
+
 	if !dara.IsNil(request.ShareName) {
 		body["shareName"] = request.ShareName
 	}
@@ -966,6 +970,10 @@ func (client *Client) CreateShareWithOptions(request *CreateShareRequest, header
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
 		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnableWrite) {
+		body["enableWrite"] = request.EnableWrite
 	}
 
 	if !dara.IsNil(request.ShareName) {

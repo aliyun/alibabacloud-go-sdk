@@ -175,6 +175,10 @@ func (client *Client) AlterShareWithContext(ctx context.Context, share *string, 
 		body["comment"] = request.Comment
 	}
 
+	if !dara.IsNil(request.EnableWrite) {
+		body["enableWrite"] = request.EnableWrite
+	}
+
 	if !dara.IsNil(request.ShareName) {
 		body["shareName"] = request.ShareName
 	}
@@ -671,6 +675,10 @@ func (client *Client) CreateShareWithContext(ctx context.Context, request *Creat
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
 		body["comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnableWrite) {
+		body["enableWrite"] = request.EnableWrite
 	}
 
 	if !dara.IsNil(request.ShareName) {

@@ -17,6 +17,8 @@ type iReceivedShare interface {
 	GetCreatedAt() *int64
 	SetCreatedBy(v string) *ReceivedShare
 	GetCreatedBy() *string
+	SetEnableWrite(v bool) *ReceivedShare
+	GetEnableWrite() *bool
 	SetOwner(v string) *ReceivedShare
 	GetOwner() *string
 	SetProviderTenantId(v int64) *ReceivedShare
@@ -36,6 +38,7 @@ type ReceivedShare struct {
 	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	EnableWrite      *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
 	Owner            *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	ProviderTenantId *int64  `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
 	ShareId          *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
@@ -66,6 +69,10 @@ func (s *ReceivedShare) GetCreatedAt() *int64 {
 
 func (s *ReceivedShare) GetCreatedBy() *string {
 	return s.CreatedBy
+}
+
+func (s *ReceivedShare) GetEnableWrite() *bool {
+	return s.EnableWrite
 }
 
 func (s *ReceivedShare) GetOwner() *string {
@@ -109,6 +116,11 @@ func (s *ReceivedShare) SetCreatedAt(v int64) *ReceivedShare {
 
 func (s *ReceivedShare) SetCreatedBy(v string) *ReceivedShare {
 	s.CreatedBy = &v
+	return s
+}
+
+func (s *ReceivedShare) SetEnableWrite(v bool) *ReceivedShare {
+	s.EnableWrite = &v
 	return s
 }
 

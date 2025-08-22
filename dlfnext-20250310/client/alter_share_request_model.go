@@ -11,6 +11,8 @@ type iAlterShareRequest interface {
 	GoString() string
 	SetComment(v string) *AlterShareRequest
 	GetComment() *string
+	SetEnableWrite(v bool) *AlterShareRequest
+	GetEnableWrite() *bool
 	SetShareName(v string) *AlterShareRequest
 	GetShareName() *string
 }
@@ -19,7 +21,8 @@ type AlterShareRequest struct {
 	// example:
 	//
 	// description
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	Comment     *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
 	// example:
 	//
 	// share_name
@@ -38,12 +41,21 @@ func (s *AlterShareRequest) GetComment() *string {
 	return s.Comment
 }
 
+func (s *AlterShareRequest) GetEnableWrite() *bool {
+	return s.EnableWrite
+}
+
 func (s *AlterShareRequest) GetShareName() *string {
 	return s.ShareName
 }
 
 func (s *AlterShareRequest) SetComment(v string) *AlterShareRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *AlterShareRequest) SetEnableWrite(v bool) *AlterShareRequest {
+	s.EnableWrite = &v
 	return s
 }
 

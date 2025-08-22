@@ -11,6 +11,8 @@ type iCreateShareRequest interface {
 	GoString() string
 	SetComment(v string) *CreateShareRequest
 	GetComment() *string
+	SetEnableWrite(v bool) *CreateShareRequest
+	GetEnableWrite() *bool
 	SetShareName(v string) *CreateShareRequest
 	GetShareName() *string
 }
@@ -19,7 +21,8 @@ type CreateShareRequest struct {
 	// example:
 	//
 	// demo
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	Comment     *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	EnableWrite *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -40,12 +43,21 @@ func (s *CreateShareRequest) GetComment() *string {
 	return s.Comment
 }
 
+func (s *CreateShareRequest) GetEnableWrite() *bool {
+	return s.EnableWrite
+}
+
 func (s *CreateShareRequest) GetShareName() *string {
 	return s.ShareName
 }
 
 func (s *CreateShareRequest) SetComment(v string) *CreateShareRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *CreateShareRequest) SetEnableWrite(v bool) *CreateShareRequest {
+	s.EnableWrite = &v
 	return s
 }
 

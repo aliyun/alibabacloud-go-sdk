@@ -15,6 +15,8 @@ type iShare interface {
 	GetCreatedAt() *int64
 	SetCreatedBy(v string) *Share
 	GetCreatedBy() *string
+	SetEnableWrite(v bool) *Share
+	GetEnableWrite() *bool
 	SetOwner(v string) *Share
 	GetOwner() *string
 	SetProviderTenantId(v int64) *Share
@@ -33,6 +35,7 @@ type Share struct {
 	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	CreatedAt        *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	CreatedBy        *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	EnableWrite      *bool   `json:"enableWrite,omitempty" xml:"enableWrite,omitempty"`
 	Owner            *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	ProviderTenantId *int64  `json:"providerTenantId,omitempty" xml:"providerTenantId,omitempty"`
 	ShareId          *string `json:"shareId,omitempty" xml:"shareId,omitempty"`
@@ -59,6 +62,10 @@ func (s *Share) GetCreatedAt() *int64 {
 
 func (s *Share) GetCreatedBy() *string {
 	return s.CreatedBy
+}
+
+func (s *Share) GetEnableWrite() *bool {
+	return s.EnableWrite
 }
 
 func (s *Share) GetOwner() *string {
@@ -97,6 +104,11 @@ func (s *Share) SetCreatedAt(v int64) *Share {
 
 func (s *Share) SetCreatedBy(v string) *Share {
 	s.CreatedBy = &v
+	return s
+}
+
+func (s *Share) SetEnableWrite(v bool) *Share {
+	s.EnableWrite = &v
 	return s
 }
 
