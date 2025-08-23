@@ -1900,6 +1900,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["DocumentNumber"] = request.DocumentNumber
 	}
 
+	if !dara.IsNil(request.EditOcrResult) {
+		query["EditOcrResult"] = request.EditOcrResult
+	}
+
 	if !dara.IsNil(request.ExperienceCode) {
 		query["ExperienceCode"] = request.ExperienceCode
 	}

@@ -39,6 +39,8 @@ type iInitializeShrinkRequest interface {
 	GetDocVideo() *string
 	SetDocumentNumber(v string) *InitializeShrinkRequest
 	GetDocumentNumber() *string
+	SetEditOcrResult(v string) *InitializeShrinkRequest
+	GetEditOcrResult() *string
 	SetExperienceCode(v string) *InitializeShrinkRequest
 	GetExperienceCode() *string
 	SetFacePictureBase64(v string) *InitializeShrinkRequest
@@ -113,6 +115,7 @@ type InitializeShrinkRequest struct {
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
 	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	EditOcrResult     *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
 	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
@@ -241,6 +244,10 @@ func (s *InitializeShrinkRequest) GetDocVideo() *string {
 
 func (s *InitializeShrinkRequest) GetDocumentNumber() *string {
 	return s.DocumentNumber
+}
+
+func (s *InitializeShrinkRequest) GetEditOcrResult() *string {
+	return s.EditOcrResult
 }
 
 func (s *InitializeShrinkRequest) GetExperienceCode() *string {
@@ -415,6 +422,11 @@ func (s *InitializeShrinkRequest) SetDocVideo(v string) *InitializeShrinkRequest
 
 func (s *InitializeShrinkRequest) SetDocumentNumber(v string) *InitializeShrinkRequest {
 	s.DocumentNumber = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetEditOcrResult(v string) *InitializeShrinkRequest {
+	s.EditOcrResult = &v
 	return s
 }
 

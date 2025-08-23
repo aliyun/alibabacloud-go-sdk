@@ -1362,6 +1362,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["DocumentNumber"] = request.DocumentNumber
 	}
 
+	if !dara.IsNil(request.EditOcrResult) {
+		query["EditOcrResult"] = request.EditOcrResult
+	}
+
 	if !dara.IsNil(request.ExperienceCode) {
 		query["ExperienceCode"] = request.ExperienceCode
 	}

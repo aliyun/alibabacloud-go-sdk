@@ -30,8 +30,6 @@ type AddressVerifyV2IntlRequest struct {
 	//
 	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1872334****
@@ -44,10 +42,7 @@ type AddressVerifyV2IntlRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// This parameter is required.
 	RegCountry *string `json:"RegCountry,omitempty" xml:"RegCountry,omitempty"`
-	// This parameter is required.
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// This parameter is required.
-	//
+	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// example:
 	//
 	// HOME

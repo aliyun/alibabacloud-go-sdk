@@ -39,6 +39,8 @@ type iInitializeRequest interface {
 	GetDocVideo() *string
 	SetDocumentNumber(v string) *InitializeRequest
 	GetDocumentNumber() *string
+	SetEditOcrResult(v string) *InitializeRequest
+	GetEditOcrResult() *string
 	SetExperienceCode(v string) *InitializeRequest
 	GetExperienceCode() *string
 	SetFacePictureBase64(v string) *InitializeRequest
@@ -113,6 +115,7 @@ type InitializeRequest struct {
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
 	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	EditOcrResult     *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
 	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
@@ -241,6 +244,10 @@ func (s *InitializeRequest) GetDocVideo() *string {
 
 func (s *InitializeRequest) GetDocumentNumber() *string {
 	return s.DocumentNumber
+}
+
+func (s *InitializeRequest) GetEditOcrResult() *string {
+	return s.EditOcrResult
 }
 
 func (s *InitializeRequest) GetExperienceCode() *string {
@@ -415,6 +422,11 @@ func (s *InitializeRequest) SetDocVideo(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetDocumentNumber(v string) *InitializeRequest {
 	s.DocumentNumber = &v
+	return s
+}
+
+func (s *InitializeRequest) SetEditOcrResult(v string) *InitializeRequest {
+	s.EditOcrResult = &v
 	return s
 }
 
