@@ -6119,6 +6119,60 @@ func (client *Client) UpdateApplicationAuthorizationTypeWithContext(ctx context.
 
 // Summary:
 //
+// 更新应用的指定ClientSecret的到期时间
+//
+// @param request - UpdateApplicationClientSecretExpirationTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationClientSecretExpirationTimeResponse
+func (client *Client) UpdateApplicationClientSecretExpirationTimeWithContext(ctx context.Context, request *UpdateApplicationClientSecretExpirationTimeRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationClientSecretExpirationTimeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ExpirationTime) {
+		query["ExpirationTime"] = request.ExpirationTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SecretId) {
+		query["SecretId"] = request.SecretId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationClientSecretExpirationTime"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationClientSecretExpirationTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the description of an Employee Identity and Access Management (EIAM) application.
 //
 // @param request - UpdateApplicationDescriptionRequest
