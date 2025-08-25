@@ -74,6 +74,7 @@ func (s *DescribeVirtualMFADevicesResponseBody) Validate() error {
 }
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
+	AdUser *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser `json:"AdUser,omitempty" xml:"AdUser,omitempty" type:"Struct"`
 	// The number of consecutive failures to bind the virtual MFA device, or the number of failures on the verification of the virtual MFA device.
 	//
 	// example:
@@ -158,6 +159,10 @@ func (s DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) GoString() strin
 	return s.String()
 }
 
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) GetAdUser() *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser {
+	return s.AdUser
+}
+
 func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) GetConsecutiveFails() *int32 {
 	return s.ConsecutiveFails
 }
@@ -188,6 +193,11 @@ func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) GetSerialNumber
 
 func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) SetAdUser(v *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices {
+	s.AdUser = v
+	return s
 }
 
 func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) SetConsecutiveFails(v int32) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices {
@@ -231,5 +241,60 @@ func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) SetStatus(v str
 }
 
 func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser struct {
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameNew    *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
+	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) GetDisplayNameNew() *string {
+	return s.DisplayNameNew
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) GetEndUser() *string {
+	return s.EndUser
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) GetUserPrincipalName() *string {
+	return s.UserPrincipalName
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) SetDisplayName(v string) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) SetDisplayNameNew(v string) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser {
+	s.DisplayNameNew = &v
+	return s
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) SetEndUser(v string) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser {
+	s.EndUser = &v
+	return s
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) SetUserPrincipalName(v string) *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser {
+	s.UserPrincipalName = &v
+	return s
+}
+
+func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser) Validate() error {
 	return dara.Validate(s)
 }

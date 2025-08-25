@@ -11039,6 +11039,10 @@ func (client *Client) DescribeVirtualMFADevicesWithContext(ctx context.Context, 
 		query["EndUserId"] = request.EndUserId
 	}
 
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

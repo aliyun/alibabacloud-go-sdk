@@ -11,6 +11,8 @@ type iDescribeVirtualMFADevicesRequest interface {
 	GoString() string
 	SetEndUserId(v []*string) *DescribeVirtualMFADevicesRequest
 	GetEndUserId() []*string
+	SetFilter(v string) *DescribeVirtualMFADevicesRequest
+	GetFilter() *string
 	SetMaxResults(v int32) *DescribeVirtualMFADevicesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeVirtualMFADevicesRequest
@@ -28,6 +30,7 @@ type DescribeVirtualMFADevicesRequest struct {
 	//
 	// testuser
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	Filter    *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The number of entries per page. Valid values: 1 to 500. Default value: 100.
 	//
 	// example:
@@ -68,6 +71,10 @@ func (s *DescribeVirtualMFADevicesRequest) GetEndUserId() []*string {
 	return s.EndUserId
 }
 
+func (s *DescribeVirtualMFADevicesRequest) GetFilter() *string {
+	return s.Filter
+}
+
 func (s *DescribeVirtualMFADevicesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -86,6 +93,11 @@ func (s *DescribeVirtualMFADevicesRequest) GetRegionId() *string {
 
 func (s *DescribeVirtualMFADevicesRequest) SetEndUserId(v []*string) *DescribeVirtualMFADevicesRequest {
 	s.EndUserId = v
+	return s
+}
+
+func (s *DescribeVirtualMFADevicesRequest) SetFilter(v string) *DescribeVirtualMFADevicesRequest {
+	s.Filter = &v
 	return s
 }
 

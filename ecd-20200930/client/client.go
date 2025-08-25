@@ -14077,6 +14077,10 @@ func (client *Client) DescribeVirtualMFADevicesWithOptions(request *DescribeVirt
 		query["EndUserId"] = request.EndUserId
 	}
 
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
