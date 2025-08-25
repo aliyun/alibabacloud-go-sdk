@@ -2004,16 +2004,22 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 //
 // 文档智能解析流式输出
 //
-// @param request - SubmitDocParserJobRequest
+// @param tmpReq - SubmitDocParserJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDocParserJobResponse
-func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SubmitDocParserJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MultimediaParameters) {
+		request.MultimediaParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultimediaParameters, dara.String("MultimediaParameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EnhancementMode) {
 		query["EnhancementMode"] = request.EnhancementMode
@@ -2037,6 +2043,10 @@ func (client *Client) SubmitDocParserJobWithOptions(request *SubmitDocParserJobR
 
 	if !dara.IsNil(request.LlmEnhancement) {
 		query["LlmEnhancement"] = request.LlmEnhancement
+	}
+
+	if !dara.IsNil(request.MultimediaParametersShrink) {
+		query["MultimediaParameters"] = request.MultimediaParametersShrink
 	}
 
 	if !dara.IsNil(request.Option) {

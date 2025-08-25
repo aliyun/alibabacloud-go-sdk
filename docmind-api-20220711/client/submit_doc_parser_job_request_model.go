@@ -21,6 +21,8 @@ type iSubmitDocParserJobRequest interface {
 	GetFormulaEnhancement() *bool
 	SetLlmEnhancement(v bool) *SubmitDocParserJobRequest
 	GetLlmEnhancement() *bool
+	SetMultimediaParameters(v *SubmitDocParserJobRequestMultimediaParameters) *SubmitDocParserJobRequest
+	GetMultimediaParameters() *SubmitDocParserJobRequestMultimediaParameters
 	SetOption(v string) *SubmitDocParserJobRequest
 	GetOption() *string
 	SetOssBucket(v string) *SubmitDocParserJobRequest
@@ -46,14 +48,15 @@ type SubmitDocParserJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	LlmEnhancement     *bool   `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
-	Option             *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	OutputHtmlTable    *bool   `json:"OutputHtmlTable,omitempty" xml:"OutputHtmlTable,omitempty"`
-	PageIndex          *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	FileUrl              *string                                        `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement   *bool                                          `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	LlmEnhancement       *bool                                          `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
+	MultimediaParameters *SubmitDocParserJobRequestMultimediaParameters `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty" type:"Struct"`
+	Option               *string                                        `json:"Option,omitempty" xml:"Option,omitempty"`
+	OssBucket            *string                                        `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint          *string                                        `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputHtmlTable      *bool                                          `json:"OutputHtmlTable,omitempty" xml:"OutputHtmlTable,omitempty"`
+	PageIndex            *string                                        `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 }
 
 func (s SubmitDocParserJobRequest) String() string {
@@ -86,6 +89,10 @@ func (s *SubmitDocParserJobRequest) GetFormulaEnhancement() *bool {
 
 func (s *SubmitDocParserJobRequest) GetLlmEnhancement() *bool {
 	return s.LlmEnhancement
+}
+
+func (s *SubmitDocParserJobRequest) GetMultimediaParameters() *SubmitDocParserJobRequestMultimediaParameters {
+	return s.MultimediaParameters
 }
 
 func (s *SubmitDocParserJobRequest) GetOption() *string {
@@ -138,6 +145,11 @@ func (s *SubmitDocParserJobRequest) SetLlmEnhancement(v bool) *SubmitDocParserJo
 	return s
 }
 
+func (s *SubmitDocParserJobRequest) SetMultimediaParameters(v *SubmitDocParserJobRequestMultimediaParameters) *SubmitDocParserJobRequest {
+	s.MultimediaParameters = v
+	return s
+}
+
 func (s *SubmitDocParserJobRequest) SetOption(v string) *SubmitDocParserJobRequest {
 	s.Option = &v
 	return s
@@ -164,5 +176,40 @@ func (s *SubmitDocParserJobRequest) SetPageIndex(v string) *SubmitDocParserJobRe
 }
 
 func (s *SubmitDocParserJobRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitDocParserJobRequestMultimediaParameters struct {
+	EnableSynopsisParse *bool   `json:"EnableSynopsisParse,omitempty" xml:"EnableSynopsisParse,omitempty"`
+	VlParsePrompt       *string `json:"VlParsePrompt,omitempty" xml:"VlParsePrompt,omitempty"`
+}
+
+func (s SubmitDocParserJobRequestMultimediaParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobRequestMultimediaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobRequestMultimediaParameters) GetEnableSynopsisParse() *bool {
+	return s.EnableSynopsisParse
+}
+
+func (s *SubmitDocParserJobRequestMultimediaParameters) GetVlParsePrompt() *string {
+	return s.VlParsePrompt
+}
+
+func (s *SubmitDocParserJobRequestMultimediaParameters) SetEnableSynopsisParse(v bool) *SubmitDocParserJobRequestMultimediaParameters {
+	s.EnableSynopsisParse = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestMultimediaParameters) SetVlParsePrompt(v string) *SubmitDocParserJobRequestMultimediaParameters {
+	s.VlParsePrompt = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestMultimediaParameters) Validate() error {
 	return dara.Validate(s)
 }
