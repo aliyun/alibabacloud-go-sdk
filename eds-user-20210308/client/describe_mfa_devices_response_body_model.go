@@ -74,6 +74,7 @@ func (s *DescribeMfaDevicesResponseBody) Validate() error {
 }
 
 type DescribeMfaDevicesResponseBodyMfaDevices struct {
+	AdUser *DescribeMfaDevicesResponseBodyMfaDevicesAdUser `json:"AdUser,omitempty" xml:"AdUser,omitempty" type:"Struct"`
 	// The number of consecutive failures to bind the virtual MFA device, or the number of authentication failures based on the virtual MFA device.
 	//
 	// example:
@@ -164,6 +165,10 @@ func (s DescribeMfaDevicesResponseBodyMfaDevices) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMfaDevicesResponseBodyMfaDevices) GetAdUser() *DescribeMfaDevicesResponseBodyMfaDevicesAdUser {
+	return s.AdUser
+}
+
 func (s *DescribeMfaDevicesResponseBodyMfaDevices) GetConsecutiveFails() *int32 {
 	return s.ConsecutiveFails
 }
@@ -198,6 +203,11 @@ func (s *DescribeMfaDevicesResponseBodyMfaDevices) GetSerialNumber() *string {
 
 func (s *DescribeMfaDevicesResponseBodyMfaDevices) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevices) SetAdUser(v *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) *DescribeMfaDevicesResponseBodyMfaDevices {
+	s.AdUser = v
+	return s
 }
 
 func (s *DescribeMfaDevicesResponseBodyMfaDevices) SetConsecutiveFails(v int32) *DescribeMfaDevicesResponseBodyMfaDevices {
@@ -246,5 +256,60 @@ func (s *DescribeMfaDevicesResponseBodyMfaDevices) SetStatus(v string) *Describe
 }
 
 func (s *DescribeMfaDevicesResponseBodyMfaDevices) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeMfaDevicesResponseBodyMfaDevicesAdUser struct {
+	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameNew    *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
+	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s DescribeMfaDevicesResponseBodyMfaDevicesAdUser) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMfaDevicesResponseBodyMfaDevicesAdUser) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) GetDisplayName() *string {
+	return s.DisplayName
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) GetDisplayNameNew() *string {
+	return s.DisplayNameNew
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) GetEndUser() *string {
+	return s.EndUser
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) GetUserPrincipalName() *string {
+	return s.UserPrincipalName
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) SetDisplayName(v string) *DescribeMfaDevicesResponseBodyMfaDevicesAdUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) SetDisplayNameNew(v string) *DescribeMfaDevicesResponseBodyMfaDevicesAdUser {
+	s.DisplayNameNew = &v
+	return s
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) SetEndUser(v string) *DescribeMfaDevicesResponseBodyMfaDevicesAdUser {
+	s.EndUser = &v
+	return s
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) SetUserPrincipalName(v string) *DescribeMfaDevicesResponseBodyMfaDevicesAdUser {
+	s.UserPrincipalName = &v
+	return s
+}
+
+func (s *DescribeMfaDevicesResponseBodyMfaDevicesAdUser) Validate() error {
 	return dara.Validate(s)
 }

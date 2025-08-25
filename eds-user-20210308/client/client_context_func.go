@@ -706,6 +706,10 @@ func (client *Client) DescribeMfaDevicesWithContext(ctx context.Context, request
 		query["EndUserIds"] = request.EndUserIds
 	}
 
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

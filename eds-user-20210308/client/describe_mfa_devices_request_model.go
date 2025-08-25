@@ -13,6 +13,8 @@ type iDescribeMfaDevicesRequest interface {
 	GetAdDomain() *string
 	SetEndUserIds(v []*string) *DescribeMfaDevicesRequest
 	GetEndUserIds() []*string
+	SetFilter(v string) *DescribeMfaDevicesRequest
+	GetFilter() *string
 	SetMaxResults(v int64) *DescribeMfaDevicesRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeMfaDevicesRequest
@@ -34,6 +36,7 @@ type DescribeMfaDevicesRequest struct {
 	//
 	// test
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	Filter     *string   `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The maximum number of entries to return. Valid values: 1 to 500.\\
 	//
 	// Default value: 100.
@@ -72,6 +75,10 @@ func (s *DescribeMfaDevicesRequest) GetEndUserIds() []*string {
 	return s.EndUserIds
 }
 
+func (s *DescribeMfaDevicesRequest) GetFilter() *string {
+	return s.Filter
+}
+
 func (s *DescribeMfaDevicesRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -91,6 +98,11 @@ func (s *DescribeMfaDevicesRequest) SetAdDomain(v string) *DescribeMfaDevicesReq
 
 func (s *DescribeMfaDevicesRequest) SetEndUserIds(v []*string) *DescribeMfaDevicesRequest {
 	s.EndUserIds = v
+	return s
+}
+
+func (s *DescribeMfaDevicesRequest) SetFilter(v string) *DescribeMfaDevicesRequest {
+	s.Filter = &v
 	return s
 }
 

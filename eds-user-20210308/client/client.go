@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -999,6 +998,10 @@ func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesR
 
 	if !dara.IsNil(request.EndUserIds) {
 		query["EndUserIds"] = request.EndUserIds
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
 	}
 
 	if !dara.IsNil(request.MaxResults) {
