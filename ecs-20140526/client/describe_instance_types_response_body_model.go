@@ -358,7 +358,8 @@ type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	// example:
 	//
 	// true
-	NetworkEncryptionSupport *bool `json:"NetworkEncryptionSupport,omitempty" xml:"NetworkEncryptionSupport,omitempty"`
+	NetworkEncryptionSupport *bool                                                                  `json:"NetworkEncryptionSupport,omitempty" xml:"NetworkEncryptionSupport,omitempty"`
+	NetworkInfo              *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Struct"`
 	// Indicates whether cloud disks can be attached by using the NVMe protocol. Valid values:
 	//
 	// 	- required: Cloud disks can be attached by using the NVMe protocol.
@@ -561,6 +562,10 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetNetworkC
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetNetworkEncryptionSupport() *bool {
 	return s.NetworkEncryptionSupport
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetNetworkInfo() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo {
+	return s.NetworkInfo
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) GetNvmeSupport() *string {
@@ -773,6 +778,11 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetNetworkC
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetNetworkEncryptionSupport(v bool) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.NetworkEncryptionSupport = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) SetNetworkInfo(v *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.NetworkInfo = v
 	return s
 }
 
@@ -1144,6 +1154,146 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCardsN
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkCardsNetworkCardInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo struct {
+	BandwidthWeighting *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty" type:"Struct"`
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) GetBandwidthWeighting() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting {
+	return s.BandwidthWeighting
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) SetBandwidthWeighting(v *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo {
+	s.BandwidthWeighting = v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting struct {
+	WeightingInfos *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos `json:"WeightingInfos,omitempty" xml:"WeightingInfos,omitempty" type:"Struct"`
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) GetWeightingInfos() *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos {
+	return s.WeightingInfos
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) SetWeightingInfos(v *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting {
+	s.WeightingInfos = v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeighting) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos struct {
+	WeightingInfo []*DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo `json:"WeightingInfo,omitempty" xml:"WeightingInfo,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) GetWeightingInfo() []*DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	return s.WeightingInfo
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) SetWeightingInfo(v []*DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos {
+	s.WeightingInfo = v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo struct {
+	EbsBandwidth      *int64  `json:"EbsBandwidth,omitempty" xml:"EbsBandwidth,omitempty"`
+	EbsBurstBandwidth *int64  `json:"EbsBurstBandwidth,omitempty" xml:"EbsBurstBandwidth,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	VpcBandwidth      *int64  `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
+	VpcBurstBandwidth *int64  `json:"VpcBurstBandwidth,omitempty" xml:"VpcBurstBandwidth,omitempty"`
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GetEbsBandwidth() *int64 {
+	return s.EbsBandwidth
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GetEbsBurstBandwidth() *int64 {
+	return s.EbsBurstBandwidth
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GetVpcBandwidth() *int64 {
+	return s.VpcBandwidth
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) GetVpcBurstBandwidth() *int64 {
+	return s.VpcBurstBandwidth
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) SetEbsBandwidth(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	s.EbsBandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) SetEbsBurstBandwidth(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	s.EbsBurstBandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) SetName(v string) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) SetVpcBandwidth(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	s.VpcBandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) SetVpcBurstBandwidth(v int64) *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo {
+	s.VpcBurstBandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceTypesResponseBodyInstanceTypesInstanceTypeNetworkInfoBandwidthWeightingWeightingInfosWeightingInfo) Validate() error {
 	return dara.Validate(s)
 }
 

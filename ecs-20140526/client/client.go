@@ -19565,6 +19565,10 @@ func (client *Client) DescribeInstanceTypesWithOptions(request *DescribeInstance
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalAttributes) {
+		query["AdditionalAttributes"] = request.AdditionalAttributes
+	}
+
 	if !dara.IsNil(request.CpuArchitecture) {
 		query["CpuArchitecture"] = request.CpuArchitecture
 	}
@@ -24012,6 +24016,10 @@ func (client *Client) DescribeSecurityGroupAttributeWithOptions(request *Describ
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Attribute) {
+		query["Attribute"] = request.Attribute
+	}
+
 	if !dara.IsNil(request.Direction) {
 		query["Direction"] = request.Direction
 	}
@@ -33641,6 +33649,114 @@ func (client *Client) ModifyInstanceChargeType(request *ModifyInstanceChargeType
 
 // Summary:
 //
+// Modifies the instance clock options.
+//
+// Description:
+//
+// When you call this operation, note that:
+//
+//   - This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+//
+//   - To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
+//
+// @param request - ModifyInstanceClockOptionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceClockOptionsResponse
+func (client *Client) ModifyInstanceClockOptionsWithOptions(request *ModifyInstanceClockOptionsRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceClockOptionsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PtpStatus) {
+		query["PtpStatus"] = request.PtpStatus
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyInstanceClockOptions"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyInstanceClockOptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the instance clock options.
+//
+// Description:
+//
+// When you call this operation, note that:
+//
+//   - This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+//
+//   - To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
+//
+// @param request - ModifyInstanceClockOptionsRequest
+//
+// @return ModifyInstanceClockOptionsResponse
+func (client *Client) ModifyInstanceClockOptions(request *ModifyInstanceClockOptionsRequest) (_result *ModifyInstanceClockOptionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyInstanceClockOptionsResponse{}
+	_body, _err := client.ModifyInstanceClockOptionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Changes the deployment set of an Elastic Compute Service (ECS) instance or migrates an ECS instance to a dedicated host. You can change the instance type of an ECS instance when you migrate the instance.
 //
 // Description:
@@ -33993,7 +34109,17 @@ func (client *Client) ModifyInstanceMetadataOptions(request *ModifyInstanceMetad
 
 // Summary:
 //
-// 修改实例网络选项
+// Modifies instance network configurations.
+//
+// Description:
+//
+// When you call this operation, take note of the following item:
+//
+//   - This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+//
+//   - You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+//
+//   - To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
 //
 // @param request - ModifyInstanceNetworkOptionsRequest
 //
@@ -34051,7 +34177,17 @@ func (client *Client) ModifyInstanceNetworkOptionsWithOptions(request *ModifyIns
 
 // Summary:
 //
-// 修改实例网络选项
+// Modifies instance network configurations.
+//
+// Description:
+//
+// When you call this operation, take note of the following item:
+//
+//   - This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+//
+//   - You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+//
+//   - To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
 //
 // @param request - ModifyInstanceNetworkOptionsRequest
 //
@@ -37010,15 +37146,11 @@ func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRe
 //
 // Description:
 //
-//	  Archive snapshots cannot be restored to standard snapshots.
+//	  Archived snapshots cannot be restored to standard snapshots.
 //
 //		- You can archive only standard snapshots that have been retained for at least 14 days.
 //
-//		- You cannot archive encrypted snapshots.
-//
 //		- You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-//
-//		- The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
 //
 // @param request - ModifySnapshotCategoryRequest
 //
@@ -37088,15 +37220,11 @@ func (client *Client) ModifySnapshotCategoryWithOptions(request *ModifySnapshotC
 //
 // Description:
 //
-//	  Archive snapshots cannot be restored to standard snapshots.
+//	  Archived snapshots cannot be restored to standard snapshots.
 //
 //		- You can archive only standard snapshots that have been retained for at least 14 days.
 //
-//		- You cannot archive encrypted snapshots.
-//
 //		- You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-//
-//		- The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
 //
 // @param request - ModifySnapshotCategoryRequest
 //

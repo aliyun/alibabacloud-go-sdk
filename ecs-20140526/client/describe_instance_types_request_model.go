@@ -9,6 +9,8 @@ type iDescribeInstanceTypesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdditionalAttributes(v []*string) *DescribeInstanceTypesRequest
+	GetAdditionalAttributes() []*string
 	SetCpuArchitecture(v string) *DescribeInstanceTypesRequest
 	GetCpuArchitecture() *string
 	SetCpuArchitectures(v []*string) *DescribeInstanceTypesRequest
@@ -106,6 +108,7 @@ type iDescribeInstanceTypesRequest interface {
 }
 
 type DescribeInstanceTypesRequest struct {
+	AdditionalAttributes []*string `json:"AdditionalAttributes,omitempty" xml:"AdditionalAttributes,omitempty" type:"Repeated"`
 	// The CPU architecture. Valid values:
 	//
 	// 	- X86
@@ -474,6 +477,10 @@ func (s DescribeInstanceTypesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceTypesRequest) GetAdditionalAttributes() []*string {
+	return s.AdditionalAttributes
+}
+
 func (s *DescribeInstanceTypesRequest) GetCpuArchitecture() *string {
 	return s.CpuArchitecture
 }
@@ -660,6 +667,11 @@ func (s *DescribeInstanceTypesRequest) GetResourceOwnerAccount() *string {
 
 func (s *DescribeInstanceTypesRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *DescribeInstanceTypesRequest) SetAdditionalAttributes(v []*string) *DescribeInstanceTypesRequest {
+	s.AdditionalAttributes = v
+	return s
 }
 
 func (s *DescribeInstanceTypesRequest) SetCpuArchitecture(v string) *DescribeInstanceTypesRequest {

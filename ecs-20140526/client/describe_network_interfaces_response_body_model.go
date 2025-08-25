@@ -160,7 +160,7 @@ type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSe
 	AssociatedPublicIp *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetAssociatedPublicIp `json:"AssociatedPublicIp,omitempty" xml:"AssociatedPublicIp,omitempty" type:"Struct"`
 	// >  This parameter is in invitational preview and is not publicly available.
 	Attachment *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetAttachment `json:"Attachment,omitempty" xml:"Attachment,omitempty" type:"Struct"`
-	// The time when the ENI was created.
+	// The time when the security group was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

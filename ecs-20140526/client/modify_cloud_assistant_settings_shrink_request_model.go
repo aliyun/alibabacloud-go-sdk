@@ -45,9 +45,10 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Cloud Assistant Session Manager configuration.
 	SessionManagerConfigShrink *string `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty"`
 	// The Cloud Assistant feature. Valid values:
 	//

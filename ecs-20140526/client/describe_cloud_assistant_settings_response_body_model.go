@@ -31,7 +31,8 @@ type DescribeCloudAssistantSettingsResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
-	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Cloud Assistant Session Manager configuration.
 	SessionManagerConfig *DescribeCloudAssistantSettingsResponseBodySessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
 	// The configurations for delivering items to Simple Log Service.
 	SlsDeliveryConfigs *DescribeCloudAssistantSettingsResponseBodySlsDeliveryConfigs `json:"SlsDeliveryConfigs,omitempty" xml:"SlsDeliveryConfigs,omitempty" type:"Struct"`
@@ -335,6 +336,19 @@ func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDelivery
 }
 
 type DescribeCloudAssistantSettingsResponseBodySessionManagerConfig struct {
+	// Specify whether to enable Cloud Assistant Session Manager. Valid values:
+	//
+	// 	- true: Enables the feature.
+	//
+	// 	- false: Disables the feature.
+	//
+	// Note:
+	//
+	// 	- The feature applies to all regions.
+	//
+	// example:
+	//
+	// true
 	SessionManagerEnabled *bool `json:"SessionManagerEnabled,omitempty" xml:"SessionManagerEnabled,omitempty"`
 }
 

@@ -22,6 +22,10 @@ type ModifyInstanceNetworkOptionsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the redeployment task.
+	//
+	// You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the redeployment result.
+	//
 	// example:
 	//
 	// t-bp198jigq7l0h5ac****

@@ -25,6 +25,8 @@ type iDescribeSecurityGroupAttributeResponseBody interface {
 	GetSecurityGroupId() *string
 	SetSecurityGroupName(v string) *DescribeSecurityGroupAttributeResponseBody
 	GetSecurityGroupName() *string
+	SetSnapshotPolicyIds(v *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) *DescribeSecurityGroupAttributeResponseBody
+	GetSnapshotPolicyIds() *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds
 	SetVpcId(v string) *DescribeSecurityGroupAttributeResponseBody
 	GetVpcId() *string
 }
@@ -77,7 +79,8 @@ type DescribeSecurityGroupAttributeResponseBody struct {
 	// example:
 	//
 	// SecurityGroupName Sample
-	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+	SecurityGroupName *string                                                      `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+	SnapshotPolicyIds *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds `json:"SnapshotPolicyIds,omitempty" xml:"SnapshotPolicyIds,omitempty" type:"Struct"`
 	// The ID of the VPC. If a VPC ID is returned, the network type of the security group is VPC. If no VPC ID is returned, the network type of the security group is classic network.
 	//
 	// example:
@@ -126,6 +129,10 @@ func (s *DescribeSecurityGroupAttributeResponseBody) GetSecurityGroupName() *str
 	return s.SecurityGroupName
 }
 
+func (s *DescribeSecurityGroupAttributeResponseBody) GetSnapshotPolicyIds() *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds {
+	return s.SnapshotPolicyIds
+}
+
 func (s *DescribeSecurityGroupAttributeResponseBody) GetVpcId() *string {
 	return s.VpcId
 }
@@ -167,6 +174,11 @@ func (s *DescribeSecurityGroupAttributeResponseBody) SetSecurityGroupId(v string
 
 func (s *DescribeSecurityGroupAttributeResponseBody) SetSecurityGroupName(v string) *DescribeSecurityGroupAttributeResponseBody {
 	s.SecurityGroupName = &v
+	return s
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBody) SetSnapshotPolicyIds(v *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) *DescribeSecurityGroupAttributeResponseBody {
+	s.SnapshotPolicyIds = v
 	return s
 }
 
@@ -606,5 +618,30 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetSou
 }
 
 func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds struct {
+	SnapshotPolicyId []*string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) GetSnapshotPolicyId() []*string {
+	return s.SnapshotPolicyId
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) SetSnapshotPolicyId(v []*string) *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds {
+	s.SnapshotPolicyId = v
+	return s
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodySnapshotPolicyIds) Validate() error {
 	return dara.Validate(s)
 }

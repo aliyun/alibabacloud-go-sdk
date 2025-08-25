@@ -45,9 +45,10 @@ type ModifyCloudAssistantSettingsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Cloud Assistant Session Manager configuration.
 	SessionManagerConfig *ModifyCloudAssistantSettingsRequestSessionManagerConfig `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty" type:"Struct"`
 	// The Cloud Assistant feature. Valid values:
 	//
@@ -359,6 +360,19 @@ func (s *ModifyCloudAssistantSettingsRequestOssDeliveryConfig) Validate() error 
 }
 
 type ModifyCloudAssistantSettingsRequestSessionManagerConfig struct {
+	// Specify whether to enable Cloud Assistant Session Manager. Valid values:
+	//
+	// 	- true: Enables the feature.
+	//
+	// 	- false: Disables the feature.
+	//
+	// Notes:
+	//
+	// 	- The feature applies to all regions.
+	//
+	// example:
+	//
+	// true
 	SessionManagerEnabled *bool `json:"SessionManagerEnabled,omitempty" xml:"SessionManagerEnabled,omitempty"`
 }
 

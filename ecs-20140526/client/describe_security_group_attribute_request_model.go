@@ -9,6 +9,8 @@ type iDescribeSecurityGroupAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttribute(v string) *DescribeSecurityGroupAttributeRequest
+	GetAttribute() *string
 	SetDirection(v string) *DescribeSecurityGroupAttributeRequest
 	GetDirection() *string
 	SetMaxResults(v int32) *DescribeSecurityGroupAttributeRequest
@@ -32,6 +34,12 @@ type iDescribeSecurityGroupAttributeRequest interface {
 }
 
 type DescribeSecurityGroupAttributeRequest struct {
+	// The attributes of the security group. Valid value: snapshotPolicyIds: queries information about snapshot policies associated with a security group.
+	//
+	// example:
+	//
+	// snapshotPolicyIds
+	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The direction in which the security group rule is applied. Valid values:
 	//
 	// 	- egress: outbound
@@ -116,6 +124,10 @@ func (s DescribeSecurityGroupAttributeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSecurityGroupAttributeRequest) GetAttribute() *string {
+	return s.Attribute
+}
+
 func (s *DescribeSecurityGroupAttributeRequest) GetDirection() *string {
 	return s.Direction
 }
@@ -154,6 +166,11 @@ func (s *DescribeSecurityGroupAttributeRequest) GetResourceOwnerId() *int64 {
 
 func (s *DescribeSecurityGroupAttributeRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *DescribeSecurityGroupAttributeRequest) SetAttribute(v string) *DescribeSecurityGroupAttributeRequest {
+	s.Attribute = &v
+	return s
 }
 
 func (s *DescribeSecurityGroupAttributeRequest) SetDirection(v string) *DescribeSecurityGroupAttributeRequest {
