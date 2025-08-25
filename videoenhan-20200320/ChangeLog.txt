@@ -1,3 +1,6 @@
+2025-08-25 Version: v3.0.20
+- Generated golang 2020-03-20 for videoenhan.
+
 2024-05-30 Version: v3.0.19
 - Update API AddFaceVideoTemplate: update response param.
 
