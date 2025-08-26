@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("aipodcast"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PodcastTaskResultQueryResponse
-func (client *Client) PodcastTaskResultQueryWithOptions(request *PodcastTaskResultQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PodcastTaskResultQueryResponse, _err error) {
+func (client *Client) PodcastTaskResultQueryWithContext(ctx context.Context, request *PodcastTaskResultQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PodcastTaskResultQueryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -96,30 +48,11 @@ func (client *Client) PodcastTaskResultQueryWithOptions(request *PodcastTaskResu
 		BodyType:    dara.String("json"),
 	}
 	_result = &PodcastTaskResultQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// ai播客生成任务结果查询
-//
-// @param request - PodcastTaskResultQueryRequest
-//
-// @return PodcastTaskResultQueryResponse
-func (client *Client) PodcastTaskResultQuery(request *PodcastTaskResultQueryRequest) (_result *PodcastTaskResultQueryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PodcastTaskResultQueryResponse{}
-	_body, _err := client.PodcastTaskResultQueryWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -134,7 +67,7 @@ func (client *Client) PodcastTaskResultQuery(request *PodcastTaskResultQueryRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PodcastTaskSubmitResponse
-func (client *Client) PodcastTaskSubmitWithOptions(tmpReq *PodcastTaskSubmitRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PodcastTaskSubmitResponse, _err error) {
+func (client *Client) PodcastTaskSubmitWithContext(ctx context.Context, tmpReq *PodcastTaskSubmitRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PodcastTaskSubmitResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -194,29 +127,10 @@ func (client *Client) PodcastTaskSubmitWithOptions(tmpReq *PodcastTaskSubmitRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &PodcastTaskSubmitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// ai播客生成任务提交
-//
-// @param request - PodcastTaskSubmitRequest
-//
-// @return PodcastTaskSubmitResponse
-func (client *Client) PodcastTaskSubmit(request *PodcastTaskSubmitRequest) (_result *PodcastTaskSubmitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PodcastTaskSubmitResponse{}
-	_body, _err := client.PodcastTaskSubmitWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
