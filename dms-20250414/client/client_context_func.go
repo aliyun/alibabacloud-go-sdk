@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dms"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchCreateDataLakePartitionsResponse
-func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
+func (client *Client) BatchCreateDataLakePartitionsWithContext(ctx context.Context, tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -125,29 +77,11 @@ func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCrea
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchCreateDataLakePartitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量新建湖仓表分区
-//
-// @param request - BatchCreateDataLakePartitionsRequest
-//
-// @return BatchCreateDataLakePartitionsResponse
-func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLakePartitionsRequest) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchCreateDataLakePartitionsResponse{}
-	_body, _err := client.BatchCreateDataLakePartitionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -160,7 +94,7 @@ func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLake
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchDeleteDataLakePartitionsResponse
-func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDeleteDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteDataLakePartitionsResponse, _err error) {
+func (client *Client) BatchDeleteDataLakePartitionsWithContext(ctx context.Context, request *BatchDeleteDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteDataLakePartitionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -209,29 +143,11 @@ func (client *Client) BatchDeleteDataLakePartitionsWithOptions(request *BatchDel
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchDeleteDataLakePartitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量删除湖仓表分区
-//
-// @param request - BatchDeleteDataLakePartitionsRequest
-//
-// @return BatchDeleteDataLakePartitionsResponse
-func (client *Client) BatchDeleteDataLakePartitions(request *BatchDeleteDataLakePartitionsRequest) (_result *BatchDeleteDataLakePartitionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchDeleteDataLakePartitionsResponse{}
-	_body, _err := client.BatchDeleteDataLakePartitionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -244,7 +160,7 @@ func (client *Client) BatchDeleteDataLakePartitions(request *BatchDeleteDataLake
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchUpdateDataLakePartitionsResponse
-func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpdateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateDataLakePartitionsResponse, _err error) {
+func (client *Client) BatchUpdateDataLakePartitionsWithContext(ctx context.Context, tmpReq *BatchUpdateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchUpdateDataLakePartitionsResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -297,29 +213,11 @@ func (client *Client) BatchUpdateDataLakePartitionsWithOptions(tmpReq *BatchUpda
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchUpdateDataLakePartitionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 批量更新湖仓表分区
-//
-// @param request - BatchUpdateDataLakePartitionsRequest
-//
-// @return BatchUpdateDataLakePartitionsResponse
-func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLakePartitionsRequest) (_result *BatchUpdateDataLakePartitionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchUpdateDataLakePartitionsResponse{}
-	_body, _err := client.BatchUpdateDataLakePartitionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -332,7 +230,7 @@ func (client *Client) BatchUpdateDataLakePartitions(request *BatchUpdateDataLake
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAirflowResponse
-func (client *Client) CreateAirflowWithOptions(request *CreateAirflowRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowResponse, _err error) {
+func (client *Client) CreateAirflowWithContext(ctx context.Context, request *CreateAirflowRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -417,29 +315,11 @@ func (client *Client) CreateAirflowWithOptions(request *CreateAirflowRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAirflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Airflow
-//
-// @param request - CreateAirflowRequest
-//
-// @return CreateAirflowResponse
-func (client *Client) CreateAirflow(request *CreateAirflowRequest) (_result *CreateAirflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAirflowResponse{}
-	_body, _err := client.CreateAirflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -452,7 +332,7 @@ func (client *Client) CreateAirflow(request *CreateAirflowRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAirflowLoginTokenResponse
-func (client *Client) CreateAirflowLoginTokenWithOptions(request *CreateAirflowLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowLoginTokenResponse, _err error) {
+func (client *Client) CreateAirflowLoginTokenWithContext(ctx context.Context, request *CreateAirflowLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateAirflowLoginTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -477,29 +357,11 @@ func (client *Client) CreateAirflowLoginTokenWithOptions(request *CreateAirflowL
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAirflowLoginTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Airflow logon credential. You can use this credential to log on to the DMS-managed Airflow instance.
-//
-// @param request - CreateAirflowLoginTokenRequest
-//
-// @return CreateAirflowLoginTokenResponse
-func (client *Client) CreateAirflowLoginToken(request *CreateAirflowLoginTokenRequest) (_result *CreateAirflowLoginTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAirflowLoginTokenResponse{}
-	_body, _err := client.CreateAirflowLoginTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -512,7 +374,7 @@ func (client *Client) CreateAirflowLoginToken(request *CreateAirflowLoginTokenRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDataLakeDatabaseResponse
-func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeDatabaseResponse, _err error) {
+func (client *Client) CreateDataLakeDatabaseWithContext(ctx context.Context, tmpReq *CreateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeDatabaseResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -567,29 +429,11 @@ func (client *Client) CreateDataLakeDatabaseWithOptions(tmpReq *CreateDataLakeDa
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataLakeDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新建湖仓数据库
-//
-// @param request - CreateDataLakeDatabaseRequest
-//
-// @return CreateDataLakeDatabaseResponse
-func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequest) (_result *CreateDataLakeDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDataLakeDatabaseResponse{}
-	_body, _err := client.CreateDataLakeDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -602,7 +446,7 @@ func (client *Client) CreateDataLakeDatabase(request *CreateDataLakeDatabaseRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDataLakeFunctionResponse
-func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeFunctionResponse, _err error) {
+func (client *Client) CreateDataLakeFunctionWithContext(ctx context.Context, tmpReq *CreateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeFunctionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -651,29 +495,11 @@ func (client *Client) CreateDataLakeFunctionWithOptions(tmpReq *CreateDataLakeFu
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataLakeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新建湖仓自定义函数
-//
-// @param request - CreateDataLakeFunctionRequest
-//
-// @return CreateDataLakeFunctionResponse
-func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequest) (_result *CreateDataLakeFunctionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDataLakeFunctionResponse{}
-	_body, _err := client.CreateDataLakeFunctionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -686,7 +512,7 @@ func (client *Client) CreateDataLakeFunction(request *CreateDataLakeFunctionRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDataLakePartitionResponse
-func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakePartitionResponse, _err error) {
+func (client *Client) CreateDataLakePartitionWithContext(ctx context.Context, tmpReq *CreateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakePartitionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -747,29 +573,11 @@ func (client *Client) CreateDataLakePartitionWithOptions(tmpReq *CreateDataLakeP
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataLakePartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新建湖仓表分区
-//
-// @param request - CreateDataLakePartitionRequest
-//
-// @return CreateDataLakePartitionResponse
-func (client *Client) CreateDataLakePartition(request *CreateDataLakePartitionRequest) (_result *CreateDataLakePartitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDataLakePartitionResponse{}
-	_body, _err := client.CreateDataLakePartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -782,7 +590,7 @@ func (client *Client) CreateDataLakePartition(request *CreateDataLakePartitionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDataLakeTableResponse
-func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeTableResponse, _err error) {
+func (client *Client) CreateDataLakeTableWithContext(ctx context.Context, tmpReq *CreateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLakeTableResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -831,29 +639,11 @@ func (client *Client) CreateDataLakeTableWithOptions(tmpReq *CreateDataLakeTable
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataLakeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新建湖仓表
-//
-// @param request - CreateDataLakeTableRequest
-//
-// @return CreateDataLakeTableResponse
-func (client *Client) CreateDataLakeTable(request *CreateDataLakeTableRequest) (_result *CreateDataLakeTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDataLakeTableResponse{}
-	_body, _err := client.CreateDataLakeTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -866,7 +656,7 @@ func (client *Client) CreateDataLakeTable(request *CreateDataLakeTableRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAirflowResponse
-func (client *Client) DeleteAirflowWithOptions(request *DeleteAirflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteAirflowResponse, _err error) {
+func (client *Client) DeleteAirflowWithContext(ctx context.Context, request *DeleteAirflowRequest, runtime *dara.RuntimeOptions) (_result *DeleteAirflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -899,29 +689,11 @@ func (client *Client) DeleteAirflowWithOptions(request *DeleteAirflowRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAirflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除Airflow
-//
-// @param request - DeleteAirflowRequest
-//
-// @return DeleteAirflowResponse
-func (client *Client) DeleteAirflow(request *DeleteAirflowRequest) (_result *DeleteAirflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAirflowResponse{}
-	_body, _err := client.DeleteAirflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -934,7 +706,7 @@ func (client *Client) DeleteAirflow(request *DeleteAirflowRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataLakeDatabaseResponse
-func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeDatabaseResponse, _err error) {
+func (client *Client) DeleteDataLakeDatabaseWithContext(ctx context.Context, request *DeleteDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeDatabaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -971,29 +743,11 @@ func (client *Client) DeleteDataLakeDatabaseWithOptions(request *DeleteDataLakeD
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataLakeDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除湖仓数据库
-//
-// @param request - DeleteDataLakeDatabaseRequest
-//
-// @return DeleteDataLakeDatabaseResponse
-func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequest) (_result *DeleteDataLakeDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDataLakeDatabaseResponse{}
-	_body, _err := client.DeleteDataLakeDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1006,7 +760,7 @@ func (client *Client) DeleteDataLakeDatabase(request *DeleteDataLakeDatabaseRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataLakeFunctionResponse
-func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeFunctionResponse, _err error) {
+func (client *Client) DeleteDataLakeFunctionWithContext(ctx context.Context, request *DeleteDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeFunctionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1047,29 +801,11 @@ func (client *Client) DeleteDataLakeFunctionWithOptions(request *DeleteDataLakeF
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataLakeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除湖仓自定义函数
-//
-// @param request - DeleteDataLakeFunctionRequest
-//
-// @return DeleteDataLakeFunctionResponse
-func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequest) (_result *DeleteDataLakeFunctionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDataLakeFunctionResponse{}
-	_body, _err := client.DeleteDataLakeFunctionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1082,7 +818,7 @@ func (client *Client) DeleteDataLakeFunction(request *DeleteDataLakeFunctionRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataLakePartitionResponse
-func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakePartitionResponse, _err error) {
+func (client *Client) DeleteDataLakePartitionWithContext(ctx context.Context, tmpReq *DeleteDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakePartitionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1137,29 +873,11 @@ func (client *Client) DeleteDataLakePartitionWithOptions(tmpReq *DeleteDataLakeP
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataLakePartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除湖仓表分区
-//
-// @param request - DeleteDataLakePartitionRequest
-//
-// @return DeleteDataLakePartitionResponse
-func (client *Client) DeleteDataLakePartition(request *DeleteDataLakePartitionRequest) (_result *DeleteDataLakePartitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDataLakePartitionResponse{}
-	_body, _err := client.DeleteDataLakePartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1172,7 +890,7 @@ func (client *Client) DeleteDataLakePartition(request *DeleteDataLakePartitionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataLakeTableResponse
-func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeTableResponse, _err error) {
+func (client *Client) DeleteDataLakeTableWithContext(ctx context.Context, request *DeleteDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLakeTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1213,29 +931,11 @@ func (client *Client) DeleteDataLakeTableWithOptions(request *DeleteDataLakeTabl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataLakeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除湖仓表
-//
-// @param request - DeleteDataLakeTableRequest
-//
-// @return DeleteDataLakeTableResponse
-func (client *Client) DeleteDataLakeTable(request *DeleteDataLakeTableRequest) (_result *DeleteDataLakeTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDataLakeTableResponse{}
-	_body, _err := client.DeleteDataLakeTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1248,7 +948,7 @@ func (client *Client) DeleteDataLakeTable(request *DeleteDataLakeTableRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAirflowResponse
-func (client *Client) GetAirflowWithOptions(request *GetAirflowRequest, runtime *dara.RuntimeOptions) (_result *GetAirflowResponse, _err error) {
+func (client *Client) GetAirflowWithContext(ctx context.Context, request *GetAirflowRequest, runtime *dara.RuntimeOptions) (_result *GetAirflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1277,29 +977,11 @@ func (client *Client) GetAirflowWithOptions(request *GetAirflowRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAirflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询 Airflow
-//
-// @param request - GetAirflowRequest
-//
-// @return GetAirflowResponse
-func (client *Client) GetAirflow(request *GetAirflowRequest) (_result *GetAirflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAirflowResponse{}
-	_body, _err := client.GetAirflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1312,7 +994,7 @@ func (client *Client) GetAirflow(request *GetAirflowRequest) (_result *GetAirflo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataLakeCatalogResponse
-func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeCatalogResponse, _err error) {
+func (client *Client) GetDataLakeCatalogWithContext(ctx context.Context, request *GetDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1345,29 +1027,11 @@ func (client *Client) GetDataLakeCatalogWithOptions(request *GetDataLakeCatalogR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataLakeCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取uc的数据库目录
-//
-// @param request - GetDataLakeCatalogRequest
-//
-// @return GetDataLakeCatalogResponse
-func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_result *GetDataLakeCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDataLakeCatalogResponse{}
-	_body, _err := client.GetDataLakeCatalogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1380,7 +1044,7 @@ func (client *Client) GetDataLakeCatalog(request *GetDataLakeCatalogRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataLakeDatabaseResponse
-func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeDatabaseResponse, _err error) {
+func (client *Client) GetDataLakeDatabaseWithContext(ctx context.Context, request *GetDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeDatabaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1417,29 +1081,11 @@ func (client *Client) GetDataLakeDatabaseWithOptions(request *GetDataLakeDatabas
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataLakeDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取UC的数据库
-//
-// @param request - GetDataLakeDatabaseRequest
-//
-// @return GetDataLakeDatabaseResponse
-func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (_result *GetDataLakeDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDataLakeDatabaseResponse{}
-	_body, _err := client.GetDataLakeDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1452,7 +1098,7 @@ func (client *Client) GetDataLakeDatabase(request *GetDataLakeDatabaseRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataLakeFunctionResponse
-func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeFunctionResponse, _err error) {
+func (client *Client) GetDataLakeFunctionWithContext(ctx context.Context, request *GetDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeFunctionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1493,29 +1139,11 @@ func (client *Client) GetDataLakeFunctionWithOptions(request *GetDataLakeFunctio
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataLakeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取湖仓自定义函数详细信息
-//
-// @param request - GetDataLakeFunctionRequest
-//
-// @return GetDataLakeFunctionResponse
-func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (_result *GetDataLakeFunctionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDataLakeFunctionResponse{}
-	_body, _err := client.GetDataLakeFunctionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1528,7 +1156,7 @@ func (client *Client) GetDataLakeFunction(request *GetDataLakeFunctionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataLakePartitionResponse
-func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakePartitionResponse, _err error) {
+func (client *Client) GetDataLakePartitionWithContext(ctx context.Context, tmpReq *GetDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakePartitionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1579,29 +1207,11 @@ func (client *Client) GetDataLakePartitionWithOptions(tmpReq *GetDataLakePartiti
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataLakePartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取湖仓表分区详情
-//
-// @param request - GetDataLakePartitionRequest
-//
-// @return GetDataLakePartitionResponse
-func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest) (_result *GetDataLakePartitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDataLakePartitionResponse{}
-	_body, _err := client.GetDataLakePartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1614,7 +1224,7 @@ func (client *Client) GetDataLakePartition(request *GetDataLakePartitionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataLakeTableResponse
-func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeTableResponse, _err error) {
+func (client *Client) GetDataLakeTableWithContext(ctx context.Context, request *GetDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *GetDataLakeTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1655,29 +1265,11 @@ func (client *Client) GetDataLakeTableWithOptions(request *GetDataLakeTableReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDataLakeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取表信息
-//
-// @param request - GetDataLakeTableRequest
-//
-// @return GetDataLakeTableResponse
-func (client *Client) GetDataLakeTable(request *GetDataLakeTableRequest) (_result *GetDataLakeTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetDataLakeTableResponse{}
-	_body, _err := client.GetDataLakeTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1690,7 +1282,7 @@ func (client *Client) GetDataLakeTable(request *GetDataLakeTableRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAirflowsResponse
-func (client *Client) ListAirflowsWithOptions(request *ListAirflowsRequest, runtime *dara.RuntimeOptions) (_result *ListAirflowsResponse, _err error) {
+func (client *Client) ListAirflowsWithContext(ctx context.Context, request *ListAirflowsRequest, runtime *dara.RuntimeOptions) (_result *ListAirflowsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1731,29 +1323,11 @@ func (client *Client) ListAirflowsWithOptions(request *ListAirflowsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAirflowsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列出资源Airflow
-//
-// @param request - ListAirflowsRequest
-//
-// @return ListAirflowsResponse
-func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListAirflowsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAirflowsResponse{}
-	_body, _err := client.ListAirflowsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1766,7 +1340,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeCatalogResponse
-func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeCatalogResponse, _err error) {
+func (client *Client) ListDataLakeCatalogWithContext(ctx context.Context, request *ListDataLakeCatalogRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeCatalogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1799,29 +1373,11 @@ func (client *Client) ListDataLakeCatalogWithOptions(request *ListDataLakeCatalo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeCatalogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取uc的数据库目录列表
-//
-// @param request - ListDataLakeCatalogRequest
-//
-// @return ListDataLakeCatalogResponse
-func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (_result *ListDataLakeCatalogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeCatalogResponse{}
-	_body, _err := client.ListDataLakeCatalogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1834,7 +1390,7 @@ func (client *Client) ListDataLakeCatalog(request *ListDataLakeCatalogRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeDatabaseResponse
-func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeDatabaseResponse, _err error) {
+func (client *Client) ListDataLakeDatabaseWithContext(ctx context.Context, request *ListDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeDatabaseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1879,29 +1435,11 @@ func (client *Client) ListDataLakeDatabaseWithOptions(request *ListDataLakeDatab
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据库列表
-//
-// @param request - ListDataLakeDatabaseRequest
-//
-// @return ListDataLakeDatabaseResponse
-func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest) (_result *ListDataLakeDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeDatabaseResponse{}
-	_body, _err := client.ListDataLakeDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1914,7 +1452,7 @@ func (client *Client) ListDataLakeDatabase(request *ListDataLakeDatabaseRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeFunctionResponse
-func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionResponse, _err error) {
+func (client *Client) ListDataLakeFunctionWithContext(ctx context.Context, request *ListDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1963,29 +1501,11 @@ func (client *Client) ListDataLakeFunctionWithOptions(request *ListDataLakeFunct
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖函数列表
-//
-// @param request - ListDataLakeFunctionRequest
-//
-// @return ListDataLakeFunctionResponse
-func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest) (_result *ListDataLakeFunctionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeFunctionResponse{}
-	_body, _err := client.ListDataLakeFunctionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1998,7 +1518,7 @@ func (client *Client) ListDataLakeFunction(request *ListDataLakeFunctionRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeFunctionNameResponse
-func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeFunctionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionNameResponse, _err error) {
+func (client *Client) ListDataLakeFunctionNameWithContext(ctx context.Context, request *ListDataLakeFunctionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeFunctionNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2047,29 +1567,11 @@ func (client *Client) ListDataLakeFunctionNameWithOptions(request *ListDataLakeF
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeFunctionNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖函数名列表
-//
-// @param request - ListDataLakeFunctionNameRequest
-//
-// @return ListDataLakeFunctionNameResponse
-func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionNameRequest) (_result *ListDataLakeFunctionNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeFunctionNameResponse{}
-	_body, _err := client.ListDataLakeFunctionNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2082,7 +1584,7 @@ func (client *Client) ListDataLakeFunctionName(request *ListDataLakeFunctionName
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakePartitionResponse
-func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionResponse, _err error) {
+func (client *Client) ListDataLakePartitionWithContext(ctx context.Context, tmpReq *ListDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2143,29 +1645,11 @@ func (client *Client) ListDataLakePartitionWithOptions(tmpReq *ListDataLakeParti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakePartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖表分区列表
-//
-// @param request - ListDataLakePartitionRequest
-//
-// @return ListDataLakePartitionResponse
-func (client *Client) ListDataLakePartition(request *ListDataLakePartitionRequest) (_result *ListDataLakePartitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakePartitionResponse{}
-	_body, _err := client.ListDataLakePartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2178,7 +1662,7 @@ func (client *Client) ListDataLakePartition(request *ListDataLakePartitionReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakePartitionByFilterResponse
-func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListDataLakePartitionByFilterRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionByFilterResponse, _err error) {
+func (client *Client) ListDataLakePartitionByFilterWithContext(ctx context.Context, request *ListDataLakePartitionByFilterRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionByFilterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2233,29 +1717,11 @@ func (client *Client) ListDataLakePartitionByFilterWithOptions(request *ListData
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakePartitionByFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据筛选条件获取数据湖表分区列表
-//
-// @param request - ListDataLakePartitionByFilterRequest
-//
-// @return ListDataLakePartitionByFilterResponse
-func (client *Client) ListDataLakePartitionByFilter(request *ListDataLakePartitionByFilterRequest) (_result *ListDataLakePartitionByFilterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakePartitionByFilterResponse{}
-	_body, _err := client.ListDataLakePartitionByFilterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2268,7 +1734,7 @@ func (client *Client) ListDataLakePartitionByFilter(request *ListDataLakePartiti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakePartitionNameResponse
-func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLakePartitionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionNameResponse, _err error) {
+func (client *Client) ListDataLakePartitionNameWithContext(ctx context.Context, request *ListDataLakePartitionNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakePartitionNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2317,29 +1783,11 @@ func (client *Client) ListDataLakePartitionNameWithOptions(request *ListDataLake
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakePartitionNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖表分区名列表
-//
-// @param request - ListDataLakePartitionNameRequest
-//
-// @return ListDataLakePartitionNameResponse
-func (client *Client) ListDataLakePartitionName(request *ListDataLakePartitionNameRequest) (_result *ListDataLakePartitionNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakePartitionNameResponse{}
-	_body, _err := client.ListDataLakePartitionNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2352,7 +1800,7 @@ func (client *Client) ListDataLakePartitionName(request *ListDataLakePartitionNa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeTableResponse
-func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableResponse, _err error) {
+func (client *Client) ListDataLakeTableWithContext(ctx context.Context, request *ListDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2405,29 +1853,11 @@ func (client *Client) ListDataLakeTableWithOptions(request *ListDataLakeTableReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖表列表
-//
-// @param request - ListDataLakeTableRequest
-//
-// @return ListDataLakeTableResponse
-func (client *Client) ListDataLakeTable(request *ListDataLakeTableRequest) (_result *ListDataLakeTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeTableResponse{}
-	_body, _err := client.ListDataLakeTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2440,7 +1870,7 @@ func (client *Client) ListDataLakeTable(request *ListDataLakeTableRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeTableNameResponse
-func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTableNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableNameResponse, _err error) {
+func (client *Client) ListDataLakeTableNameWithContext(ctx context.Context, request *ListDataLakeTableNameRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTableNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2493,29 +1923,11 @@ func (client *Client) ListDataLakeTableNameWithOptions(request *ListDataLakeTabl
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeTableNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取数据湖表名列表
-//
-// @param request - ListDataLakeTableNameRequest
-//
-// @return ListDataLakeTableNameResponse
-func (client *Client) ListDataLakeTableName(request *ListDataLakeTableNameRequest) (_result *ListDataLakeTableNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeTableNameResponse{}
-	_body, _err := client.ListDataLakeTableNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2528,7 +1940,7 @@ func (client *Client) ListDataLakeTableName(request *ListDataLakeTableNameReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataLakeTablebaseInfoResponse
-func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLakeTablebaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
+func (client *Client) ListDataLakeTablebaseInfoWithContext(ctx context.Context, request *ListDataLakeTablebaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2577,29 +1989,11 @@ func (client *Client) ListDataLakeTablebaseInfoWithOptions(request *ListDataLake
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataLakeTablebaseInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取表信息
-//
-// @param request - ListDataLakeTablebaseInfoRequest
-//
-// @return ListDataLakeTablebaseInfoResponse
-func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseInfoRequest) (_result *ListDataLakeTablebaseInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDataLakeTablebaseInfoResponse{}
-	_body, _err := client.ListDataLakeTablebaseInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2612,7 +2006,7 @@ func (client *Client) ListDataLakeTablebaseInfo(request *ListDataLakeTablebaseIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAirflowResponse
-func (client *Client) UpdateAirflowWithOptions(request *UpdateAirflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateAirflowResponse, _err error) {
+func (client *Client) UpdateAirflowWithContext(ctx context.Context, request *UpdateAirflowRequest, runtime *dara.RuntimeOptions) (_result *UpdateAirflowResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2677,29 +2071,11 @@ func (client *Client) UpdateAirflowWithOptions(request *UpdateAirflowRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAirflowResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新UpdateAirflow
-//
-// @param request - UpdateAirflowRequest
-//
-// @return UpdateAirflowResponse
-func (client *Client) UpdateAirflow(request *UpdateAirflowRequest) (_result *UpdateAirflowResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateAirflowResponse{}
-	_body, _err := client.UpdateAirflowWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2712,7 +2088,7 @@ func (client *Client) UpdateAirflow(request *UpdateAirflowRequest) (_result *Upd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDataLakeDatabaseResponse
-func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeDatabaseResponse, _err error) {
+func (client *Client) UpdateDataLakeDatabaseWithContext(ctx context.Context, tmpReq *UpdateDataLakeDatabaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeDatabaseResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2767,29 +2143,11 @@ func (client *Client) UpdateDataLakeDatabaseWithOptions(tmpReq *UpdateDataLakeDa
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDataLakeDatabaseResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新湖仓数据库
-//
-// @param request - UpdateDataLakeDatabaseRequest
-//
-// @return UpdateDataLakeDatabaseResponse
-func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequest) (_result *UpdateDataLakeDatabaseResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDataLakeDatabaseResponse{}
-	_body, _err := client.UpdateDataLakeDatabaseWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2802,7 +2160,7 @@ func (client *Client) UpdateDataLakeDatabase(request *UpdateDataLakeDatabaseRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDataLakeFunctionResponse
-func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeFunctionResponse, _err error) {
+func (client *Client) UpdateDataLakeFunctionWithContext(ctx context.Context, tmpReq *UpdateDataLakeFunctionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeFunctionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2855,29 +2213,11 @@ func (client *Client) UpdateDataLakeFunctionWithOptions(tmpReq *UpdateDataLakeFu
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDataLakeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新湖仓自定义函数
-//
-// @param request - UpdateDataLakeFunctionRequest
-//
-// @return UpdateDataLakeFunctionResponse
-func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequest) (_result *UpdateDataLakeFunctionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDataLakeFunctionResponse{}
-	_body, _err := client.UpdateDataLakeFunctionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2890,7 +2230,7 @@ func (client *Client) UpdateDataLakeFunction(request *UpdateDataLakeFunctionRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDataLakePartitionResponse
-func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakePartitionResponse, _err error) {
+func (client *Client) UpdateDataLakePartitionWithContext(ctx context.Context, tmpReq *UpdateDataLakePartitionRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakePartitionResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2943,29 +2283,11 @@ func (client *Client) UpdateDataLakePartitionWithOptions(tmpReq *UpdateDataLakeP
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDataLakePartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新湖仓表分区
-//
-// @param request - UpdateDataLakePartitionRequest
-//
-// @return UpdateDataLakePartitionResponse
-func (client *Client) UpdateDataLakePartition(request *UpdateDataLakePartitionRequest) (_result *UpdateDataLakePartitionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDataLakePartitionResponse{}
-	_body, _err := client.UpdateDataLakePartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2978,7 +2300,7 @@ func (client *Client) UpdateDataLakePartition(request *UpdateDataLakePartitionRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDataLakeTableResponse
-func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeTableResponse, _err error) {
+func (client *Client) UpdateDataLakeTableWithContext(ctx context.Context, tmpReq *UpdateDataLakeTableRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataLakeTableResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3031,28 +2353,10 @@ func (client *Client) UpdateDataLakeTableWithOptions(tmpReq *UpdateDataLakeTable
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDataLakeTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新湖仓表信息
-//
-// @param request - UpdateDataLakeTableRequest
-//
-// @return UpdateDataLakeTableResponse
-func (client *Client) UpdateDataLakeTable(request *UpdateDataLakeTableRequest) (_result *UpdateDataLakeTableResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateDataLakeTableResponse{}
-	_body, _err := client.UpdateDataLakeTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
