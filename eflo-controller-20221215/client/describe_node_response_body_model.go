@@ -39,6 +39,8 @@ type iDescribeNodeResponseBody interface {
 	GetNodeGroupName() *string
 	SetNodeId(v string) *DescribeNodeResponseBody
 	GetNodeId() *string
+	SetNodeType(v string) *DescribeNodeResponseBody
+	GetNodeType() *string
 	SetOperatingState(v string) *DescribeNodeResponseBody
 	GetOperatingState() *string
 	SetRequestId(v string) *DescribeNodeResponseBody
@@ -136,6 +138,10 @@ type DescribeNodeResponseBody struct {
 	//
 	// e01-cn-zvp2tgykr08
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// standard
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The node status.
 	//
 	// Valid values:
@@ -274,6 +280,10 @@ func (s *DescribeNodeResponseBody) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *DescribeNodeResponseBody) GetNodeType() *string {
+	return s.NodeType
+}
+
 func (s *DescribeNodeResponseBody) GetOperatingState() *string {
 	return s.OperatingState
 }
@@ -370,6 +380,11 @@ func (s *DescribeNodeResponseBody) SetNodeGroupName(v string) *DescribeNodeRespo
 
 func (s *DescribeNodeResponseBody) SetNodeId(v string) *DescribeNodeResponseBody {
 	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetNodeType(v string) *DescribeNodeResponseBody {
+	s.NodeType = &v
 	return s
 }
 
