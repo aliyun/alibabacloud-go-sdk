@@ -43,6 +43,14 @@ type iModifyNodeSpecRequest interface {
 	GetResourceOwnerId() *int64
 	SetSwitchTime(v string) *ModifyNodeSpecRequest
 	GetSwitchTime() *string
+	SetTargetHiddenZoneId(v string) *ModifyNodeSpecRequest
+	GetTargetHiddenZoneId() *string
+	SetTargetSecondaryZoneId(v string) *ModifyNodeSpecRequest
+	GetTargetSecondaryZoneId() *string
+	SetTargetVswitchId(v string) *ModifyNodeSpecRequest
+	GetTargetVswitchId() *string
+	SetTargetZoneId(v string) *ModifyNodeSpecRequest
+	GetTargetZoneId() *string
 }
 
 type ModifyNodeSpecRequest struct {
@@ -157,7 +165,11 @@ type ModifyNodeSpecRequest struct {
 	// example:
 	//
 	// 2022-01-05T03:18:53Z
-	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	SwitchTime            *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
+	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
+	TargetZoneId          *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
 }
 
 func (s ModifyNodeSpecRequest) String() string {
@@ -234,6 +246,22 @@ func (s *ModifyNodeSpecRequest) GetResourceOwnerId() *int64 {
 
 func (s *ModifyNodeSpecRequest) GetSwitchTime() *string {
 	return s.SwitchTime
+}
+
+func (s *ModifyNodeSpecRequest) GetTargetHiddenZoneId() *string {
+	return s.TargetHiddenZoneId
+}
+
+func (s *ModifyNodeSpecRequest) GetTargetSecondaryZoneId() *string {
+	return s.TargetSecondaryZoneId
+}
+
+func (s *ModifyNodeSpecRequest) GetTargetVswitchId() *string {
+	return s.TargetVswitchId
+}
+
+func (s *ModifyNodeSpecRequest) GetTargetZoneId() *string {
+	return s.TargetZoneId
 }
 
 func (s *ModifyNodeSpecRequest) SetAutoPay(v bool) *ModifyNodeSpecRequest {
@@ -318,6 +346,26 @@ func (s *ModifyNodeSpecRequest) SetResourceOwnerId(v int64) *ModifyNodeSpecReque
 
 func (s *ModifyNodeSpecRequest) SetSwitchTime(v string) *ModifyNodeSpecRequest {
 	s.SwitchTime = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetTargetHiddenZoneId(v string) *ModifyNodeSpecRequest {
+	s.TargetHiddenZoneId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetTargetSecondaryZoneId(v string) *ModifyNodeSpecRequest {
+	s.TargetSecondaryZoneId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetTargetVswitchId(v string) *ModifyNodeSpecRequest {
+	s.TargetVswitchId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecRequest) SetTargetZoneId(v string) *ModifyNodeSpecRequest {
+	s.TargetZoneId = &v
 	return s
 }
 

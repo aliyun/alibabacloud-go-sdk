@@ -11,6 +11,8 @@ type iDescribeInstanceRecoverTimeRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *DescribeInstanceRecoverTimeRequest
 	GetDBInstanceId() *string
+	SetDestRegion(v string) *DescribeInstanceRecoverTimeRequest
+	GetDestRegion() *string
 	SetOwnerAccount(v string) *DescribeInstanceRecoverTimeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeInstanceRecoverTimeRequest
@@ -21,6 +23,8 @@ type iDescribeInstanceRecoverTimeRequest interface {
 	GetResourceOwnerId() *int64
 	SetSecurityToken(v string) *DescribeInstanceRecoverTimeRequest
 	GetSecurityToken() *string
+	SetSrcRegion(v string) *DescribeInstanceRecoverTimeRequest
+	GetSrcRegion() *string
 }
 
 type DescribeInstanceRecoverTimeRequest struct {
@@ -32,11 +36,13 @@ type DescribeInstanceRecoverTimeRequest struct {
 	//
 	// dds-bpxxxxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestRegion           *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	SrcRegion            *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 }
 
 func (s DescribeInstanceRecoverTimeRequest) String() string {
@@ -49,6 +55,10 @@ func (s DescribeInstanceRecoverTimeRequest) GoString() string {
 
 func (s *DescribeInstanceRecoverTimeRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) GetDestRegion() *string {
+	return s.DestRegion
 }
 
 func (s *DescribeInstanceRecoverTimeRequest) GetOwnerAccount() *string {
@@ -71,8 +81,17 @@ func (s *DescribeInstanceRecoverTimeRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
 
+func (s *DescribeInstanceRecoverTimeRequest) GetSrcRegion() *string {
+	return s.SrcRegion
+}
+
 func (s *DescribeInstanceRecoverTimeRequest) SetDBInstanceId(v string) *DescribeInstanceRecoverTimeRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetDestRegion(v string) *DescribeInstanceRecoverTimeRequest {
+	s.DestRegion = &v
 	return s
 }
 
@@ -98,6 +117,11 @@ func (s *DescribeInstanceRecoverTimeRequest) SetResourceOwnerId(v int64) *Descri
 
 func (s *DescribeInstanceRecoverTimeRequest) SetSecurityToken(v string) *DescribeInstanceRecoverTimeRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstanceRecoverTimeRequest) SetSrcRegion(v string) *DescribeInstanceRecoverTimeRequest {
+	s.SrcRegion = &v
 	return s
 }
 

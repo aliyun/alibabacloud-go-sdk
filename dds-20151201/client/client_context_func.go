@@ -7,6 +7,68 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// @param request - AllocateDBInstanceSrvNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateDBInstanceSrvNetworkAddressResponse
+func (client *Client) AllocateDBInstanceSrvNetworkAddressWithContext(ctx context.Context, request *AllocateDBInstanceSrvNetworkAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateDBInstanceSrvNetworkAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SrvConnectionType) {
+		query["SrvConnectionType"] = request.SrvConnectionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateDBInstanceSrvNetworkAddress"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateDBInstanceSrvNetworkAddressResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Applies for an internal endpoint for a shard or Configserver node in an ApsaraDB for MongoDB sharded cluster instance.
@@ -5508,6 +5570,10 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.RoleARN) {
+		query["RoleARN"] = request.RoleARN
+	}
+
 	if !dara.IsNil(request.TargetRegionId) {
 		query["TargetRegionId"] = request.TargetRegionId
 	}
@@ -7206,6 +7272,22 @@ func (client *Client) ModifyDBInstanceSpecWithContext(ctx context.Context, reque
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7770,6 +7852,22 @@ func (client *Client) ModifyNodeSpecWithContext(ctx context.Context, request *Mo
 		query["SwitchTime"] = request.SwitchTime
 	}
 
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7866,6 +7964,22 @@ func (client *Client) ModifyNodeSpecBatchWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8177,6 +8291,72 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifySecurityIpsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改MongoDB实例的SRV连接地址
+//
+// @param request - ModifySrvNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySrvNetworkAddressResponse
+func (client *Client) ModifySrvNetworkAddressWithContext(ctx context.Context, request *ModifySrvNetworkAddressRequest, runtime *dara.RuntimeOptions) (_result *ModifySrvNetworkAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionType) {
+		query["ConnectionType"] = request.ConnectionType
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NewConnectionString) {
+		query["NewConnectionString"] = request.NewConnectionString
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySrvNetworkAddress"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySrvNetworkAddressResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

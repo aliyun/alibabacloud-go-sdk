@@ -35,6 +35,14 @@ type iModifyNodeSpecBatchRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyNodeSpecBatchRequest
 	GetResourceOwnerId() *int64
+	SetTargetHiddenZoneId(v string) *ModifyNodeSpecBatchRequest
+	GetTargetHiddenZoneId() *string
+	SetTargetSecondaryZoneId(v string) *ModifyNodeSpecBatchRequest
+	GetTargetSecondaryZoneId() *string
+	SetTargetVswitchId(v string) *ModifyNodeSpecBatchRequest
+	GetTargetVswitchId() *string
+	SetTargetZoneId(v string) *ModifyNodeSpecBatchRequest
+	GetTargetZoneId() *string
 }
 
 type ModifyNodeSpecBatchRequest struct {
@@ -121,9 +129,13 @@ type ModifyNodeSpecBatchRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
+	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
+	TargetZoneId          *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
 }
 
 func (s ModifyNodeSpecBatchRequest) String() string {
@@ -184,6 +196,22 @@ func (s *ModifyNodeSpecBatchRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyNodeSpecBatchRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyNodeSpecBatchRequest) GetTargetHiddenZoneId() *string {
+	return s.TargetHiddenZoneId
+}
+
+func (s *ModifyNodeSpecBatchRequest) GetTargetSecondaryZoneId() *string {
+	return s.TargetSecondaryZoneId
+}
+
+func (s *ModifyNodeSpecBatchRequest) GetTargetVswitchId() *string {
+	return s.TargetVswitchId
+}
+
+func (s *ModifyNodeSpecBatchRequest) GetTargetZoneId() *string {
+	return s.TargetZoneId
 }
 
 func (s *ModifyNodeSpecBatchRequest) SetAutoPay(v bool) *ModifyNodeSpecBatchRequest {
@@ -248,6 +276,26 @@ func (s *ModifyNodeSpecBatchRequest) SetResourceOwnerAccount(v string) *ModifyNo
 
 func (s *ModifyNodeSpecBatchRequest) SetResourceOwnerId(v int64) *ModifyNodeSpecBatchRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecBatchRequest) SetTargetHiddenZoneId(v string) *ModifyNodeSpecBatchRequest {
+	s.TargetHiddenZoneId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecBatchRequest) SetTargetSecondaryZoneId(v string) *ModifyNodeSpecBatchRequest {
+	s.TargetSecondaryZoneId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecBatchRequest) SetTargetVswitchId(v string) *ModifyNodeSpecBatchRequest {
+	s.TargetVswitchId = &v
+	return s
+}
+
+func (s *ModifyNodeSpecBatchRequest) SetTargetZoneId(v string) *ModifyNodeSpecBatchRequest {
+	s.TargetZoneId = &v
 	return s
 }
 

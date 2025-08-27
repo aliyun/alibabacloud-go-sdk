@@ -11,6 +11,8 @@ type iDescribeClusterRecoverTimeRequest interface {
 	GoString() string
 	SetDBInstanceId(v string) *DescribeClusterRecoverTimeRequest
 	GetDBInstanceId() *string
+	SetDestRegion(v string) *DescribeClusterRecoverTimeRequest
+	GetDestRegion() *string
 	SetOwnerAccount(v string) *DescribeClusterRecoverTimeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeClusterRecoverTimeRequest
@@ -19,6 +21,8 @@ type iDescribeClusterRecoverTimeRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeClusterRecoverTimeRequest
 	GetResourceOwnerId() *int64
+	SetSrcRegion(v string) *DescribeClusterRecoverTimeRequest
+	GetSrcRegion() *string
 }
 
 type DescribeClusterRecoverTimeRequest struct {
@@ -30,10 +34,12 @@ type DescribeClusterRecoverTimeRequest struct {
 	//
 	// dds-bp18f7d6b6a7****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DestRegion           *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SrcRegion            *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 }
 
 func (s DescribeClusterRecoverTimeRequest) String() string {
@@ -46,6 +52,10 @@ func (s DescribeClusterRecoverTimeRequest) GoString() string {
 
 func (s *DescribeClusterRecoverTimeRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *DescribeClusterRecoverTimeRequest) GetDestRegion() *string {
+	return s.DestRegion
 }
 
 func (s *DescribeClusterRecoverTimeRequest) GetOwnerAccount() *string {
@@ -64,8 +74,17 @@ func (s *DescribeClusterRecoverTimeRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *DescribeClusterRecoverTimeRequest) GetSrcRegion() *string {
+	return s.SrcRegion
+}
+
 func (s *DescribeClusterRecoverTimeRequest) SetDBInstanceId(v string) *DescribeClusterRecoverTimeRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetDestRegion(v string) *DescribeClusterRecoverTimeRequest {
+	s.DestRegion = &v
 	return s
 }
 
@@ -86,6 +105,11 @@ func (s *DescribeClusterRecoverTimeRequest) SetResourceOwnerAccount(v string) *D
 
 func (s *DescribeClusterRecoverTimeRequest) SetResourceOwnerId(v int64) *DescribeClusterRecoverTimeRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeClusterRecoverTimeRequest) SetSrcRegion(v string) *DescribeClusterRecoverTimeRequest {
+	s.SrcRegion = &v
 	return s
 }
 

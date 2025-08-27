@@ -1622,7 +1622,8 @@ type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance stru
 	// example:
 	//
 	// 0.0
-	TotalProductFee *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+	TotalProductFee   *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+	UnitPriceUnit4Buy *string  `json:"UnitPriceUnit4Buy,omitempty" xml:"UnitPriceUnit4Buy,omitempty"`
 	// The price type.
 	//
 	// example:
@@ -1705,6 +1706,10 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance)
 	return s.TotalProductFee
 }
 
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) GetUnitPriceUnit4Buy() *string {
+	return s.UnitPriceUnit4Buy
+}
+
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) GetPriceType() *string {
 	return s.PriceType
 }
@@ -1785,6 +1790,11 @@ func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance)
 
 func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetTotalProductFee(v float64) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
 	s.TotalProductFee = &v
+	return s
+}
+
+func (s *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) SetUnitPriceUnit4Buy(v string) *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance {
+	s.UnitPriceUnit4Buy = &v
 	return s
 }
 

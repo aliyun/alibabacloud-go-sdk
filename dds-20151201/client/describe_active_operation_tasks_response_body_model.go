@@ -246,6 +246,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 2022-11-24T11:20:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
 	// The task type.
 	//
 	// example:
@@ -364,6 +365,10 @@ func (s *DescribeActiveOperationTasksResponseBodyItems) GetSubInsNames() []*stri
 
 func (s *DescribeActiveOperationTasksResponseBodyItems) GetSwitchTime() *string {
 	return s.SwitchTime
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) GetTaskParams() *string {
+	return s.TaskParams
 }
 
 func (s *DescribeActiveOperationTasksResponseBodyItems) GetTaskType() *string {
@@ -490,6 +495,11 @@ func (s *DescribeActiveOperationTasksResponseBodyItems) SetSubInsNames(v []*stri
 
 func (s *DescribeActiveOperationTasksResponseBodyItems) SetSwitchTime(v string) *DescribeActiveOperationTasksResponseBodyItems {
 	s.SwitchTime = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskParams(v string) *DescribeActiveOperationTasksResponseBodyItems {
+	s.TaskParams = &v
 	return s
 }
 

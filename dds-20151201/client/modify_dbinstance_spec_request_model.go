@@ -39,6 +39,14 @@ type iModifyDBInstanceSpecRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBInstanceSpecRequest
 	GetResourceOwnerId() *int64
+	SetTargetHiddenZoneId(v string) *ModifyDBInstanceSpecRequest
+	GetTargetHiddenZoneId() *string
+	SetTargetSecondaryZoneId(v string) *ModifyDBInstanceSpecRequest
+	GetTargetSecondaryZoneId() *string
+	SetTargetVswitchId(v string) *ModifyDBInstanceSpecRequest
+	GetTargetVswitchId() *string
+	SetTargetZoneId(v string) *ModifyDBInstanceSpecRequest
+	GetTargetZoneId() *string
 }
 
 type ModifyDBInstanceSpecRequest struct {
@@ -161,9 +169,13 @@ type ModifyDBInstanceSpecRequest struct {
 	// example:
 	//
 	// 3
-	ReplicationFactor    *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ReplicationFactor     *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TargetHiddenZoneId    *string `json:"TargetHiddenZoneId,omitempty" xml:"TargetHiddenZoneId,omitempty"`
+	TargetSecondaryZoneId *string `json:"TargetSecondaryZoneId,omitempty" xml:"TargetSecondaryZoneId,omitempty"`
+	TargetVswitchId       *string `json:"TargetVswitchId,omitempty" xml:"TargetVswitchId,omitempty"`
+	TargetZoneId          *string `json:"TargetZoneId,omitempty" xml:"TargetZoneId,omitempty"`
 }
 
 func (s ModifyDBInstanceSpecRequest) String() string {
@@ -232,6 +244,22 @@ func (s *ModifyDBInstanceSpecRequest) GetResourceOwnerAccount() *string {
 
 func (s *ModifyDBInstanceSpecRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetTargetHiddenZoneId() *string {
+	return s.TargetHiddenZoneId
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetTargetSecondaryZoneId() *string {
+	return s.TargetSecondaryZoneId
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetTargetVswitchId() *string {
+	return s.TargetVswitchId
+}
+
+func (s *ModifyDBInstanceSpecRequest) GetTargetZoneId() *string {
+	return s.TargetZoneId
 }
 
 func (s *ModifyDBInstanceSpecRequest) SetAutoPay(v bool) *ModifyDBInstanceSpecRequest {
@@ -306,6 +334,26 @@ func (s *ModifyDBInstanceSpecRequest) SetResourceOwnerAccount(v string) *ModifyD
 
 func (s *ModifyDBInstanceSpecRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceSpecRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetTargetHiddenZoneId(v string) *ModifyDBInstanceSpecRequest {
+	s.TargetHiddenZoneId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetTargetSecondaryZoneId(v string) *ModifyDBInstanceSpecRequest {
+	s.TargetSecondaryZoneId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetTargetVswitchId(v string) *ModifyDBInstanceSpecRequest {
+	s.TargetVswitchId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetTargetZoneId(v string) *ModifyDBInstanceSpecRequest {
+	s.TargetZoneId = &v
 	return s
 }
 

@@ -49,7 +49,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-south-1":                  dara.String("mongodb.ap-south-1.aliyuncs.com"),
 		"me-east-1":                   dara.String("mongodb.me-east-1.aliyuncs.com"),
 		"cn-hangzhou-finance":         dara.String("mongodb.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("mongodb.aliyuncs.com"),
+		"cn-shanghai-finance-1":       dara.String("mongodb.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       dara.String("mongodb.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-north-2-gov-1":            dara.String("mongodb.cn-north-2-gov-1.aliyuncs.com"),
 		"ap-northeast-2-pop":          dara.String("mongodb.aliyuncs.com"),
@@ -84,7 +84,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("mongodb.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("mongodb.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("mongodb.aliyuncs.com"),
-		"na-south-1":                  dara.String("mongodb.na-south-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -110,6 +109,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - AllocateDBInstanceSrvNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateDBInstanceSrvNetworkAddressResponse
+func (client *Client) AllocateDBInstanceSrvNetworkAddressWithOptions(request *AllocateDBInstanceSrvNetworkAddressRequest, runtime *dara.RuntimeOptions) (_result *AllocateDBInstanceSrvNetworkAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SrvConnectionType) {
+		query["SrvConnectionType"] = request.SrvConnectionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AllocateDBInstanceSrvNetworkAddress"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AllocateDBInstanceSrvNetworkAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AllocateDBInstanceSrvNetworkAddressRequest
+//
+// @return AllocateDBInstanceSrvNetworkAddressResponse
+func (client *Client) AllocateDBInstanceSrvNetworkAddress(request *AllocateDBInstanceSrvNetworkAddressRequest) (_result *AllocateDBInstanceSrvNetworkAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AllocateDBInstanceSrvNetworkAddressResponse{}
+	_body, _err := client.AllocateDBInstanceSrvNetworkAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7112,6 +7187,10 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.RoleARN) {
+		query["RoleARN"] = request.RoleARN
+	}
+
 	if !dara.IsNil(request.TargetRegionId) {
 		query["TargetRegionId"] = request.TargetRegionId
 	}
@@ -9290,6 +9369,22 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(request *ModifyDBInstanceS
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10022,6 +10117,22 @@ func (client *Client) ModifyNodeSpecWithOptions(request *ModifyNodeSpecRequest, 
 		query["SwitchTime"] = request.SwitchTime
 	}
 
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10142,6 +10253,22 @@ func (client *Client) ModifyNodeSpecBatchWithOptions(request *ModifyNodeSpecBatc
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TargetHiddenZoneId) {
+		query["TargetHiddenZoneId"] = request.TargetHiddenZoneId
+	}
+
+	if !dara.IsNil(request.TargetSecondaryZoneId) {
+		query["TargetSecondaryZoneId"] = request.TargetSecondaryZoneId
+	}
+
+	if !dara.IsNil(request.TargetVswitchId) {
+		query["TargetVswitchId"] = request.TargetVswitchId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10566,6 +10693,90 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
 	_body, _err := client.ModifySecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改MongoDB实例的SRV连接地址
+//
+// @param request - ModifySrvNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySrvNetworkAddressResponse
+func (client *Client) ModifySrvNetworkAddressWithOptions(request *ModifySrvNetworkAddressRequest, runtime *dara.RuntimeOptions) (_result *ModifySrvNetworkAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionType) {
+		query["ConnectionType"] = request.ConnectionType
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NewConnectionString) {
+		query["NewConnectionString"] = request.NewConnectionString
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySrvNetworkAddress"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySrvNetworkAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改MongoDB实例的SRV连接地址
+//
+// @param request - ModifySrvNetworkAddressRequest
+//
+// @return ModifySrvNetworkAddressResponse
+func (client *Client) ModifySrvNetworkAddress(request *ModifySrvNetworkAddressRequest) (_result *ModifySrvNetworkAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySrvNetworkAddressResponse{}
+	_body, _err := client.ModifySrvNetworkAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

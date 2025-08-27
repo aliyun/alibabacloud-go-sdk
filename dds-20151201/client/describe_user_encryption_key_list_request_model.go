@@ -19,6 +19,8 @@ type iDescribeUserEncryptionKeyListRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribeUserEncryptionKeyListRequest
 	GetResourceOwnerId() *int64
+	SetRoleARN(v string) *DescribeUserEncryptionKeyListRequest
+	GetRoleARN() *string
 	SetTargetRegionId(v string) *DescribeUserEncryptionKeyListRequest
 	GetTargetRegionId() *string
 }
@@ -36,6 +38,7 @@ type DescribeUserEncryptionKeyListRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RoleARN              *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent zone list.
 	//
 	// example:
@@ -72,6 +75,10 @@ func (s *DescribeUserEncryptionKeyListRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
 
+func (s *DescribeUserEncryptionKeyListRequest) GetRoleARN() *string {
+	return s.RoleARN
+}
+
 func (s *DescribeUserEncryptionKeyListRequest) GetTargetRegionId() *string {
 	return s.TargetRegionId
 }
@@ -98,6 +105,11 @@ func (s *DescribeUserEncryptionKeyListRequest) SetResourceOwnerAccount(v string)
 
 func (s *DescribeUserEncryptionKeyListRequest) SetResourceOwnerId(v int64) *DescribeUserEncryptionKeyListRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeUserEncryptionKeyListRequest) SetRoleARN(v string) *DescribeUserEncryptionKeyListRequest {
+	s.RoleARN = &v
 	return s
 }
 
