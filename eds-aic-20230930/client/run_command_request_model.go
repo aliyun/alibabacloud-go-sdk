@@ -9,6 +9,8 @@ type iRunCommandRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentType(v string) *RunCommandRequest
+	GetAgentType() *string
 	SetCommandContent(v string) *RunCommandRequest
 	GetCommandContent() *string
 	SetContentEncoding(v string) *RunCommandRequest
@@ -20,6 +22,7 @@ type iRunCommandRequest interface {
 }
 
 type RunCommandRequest struct {
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The content of the command.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s RunCommandRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunCommandRequest) GetAgentType() *string {
+	return s.AgentType
+}
+
 func (s *RunCommandRequest) GetCommandContent() *string {
 	return s.CommandContent
 }
@@ -72,6 +79,11 @@ func (s *RunCommandRequest) GetInstanceIds() []*string {
 
 func (s *RunCommandRequest) GetTimeout() *int64 {
 	return s.Timeout
+}
+
+func (s *RunCommandRequest) SetAgentType(v string) *RunCommandRequest {
+	s.AgentType = &v
+	return s
 }
 
 func (s *RunCommandRequest) SetCommandContent(v string) *RunCommandRequest {

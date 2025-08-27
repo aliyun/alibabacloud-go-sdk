@@ -5434,6 +5434,10 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
 	if !dara.IsNil(request.CommandContent) {
 		query["CommandContent"] = request.CommandContent
 	}
