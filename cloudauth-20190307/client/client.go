@@ -2942,6 +2942,10 @@ func (client *Client) InitCardVerify(request *InitCardVerifyRequest) (_result *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 实人服务端初始化接口
+//
 // @param request - InitFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3126,6 +3130,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 实人服务端初始化接口
+//
 // @param request - InitFaceVerifyRequest
 //
 // @return InitFaceVerifyResponse

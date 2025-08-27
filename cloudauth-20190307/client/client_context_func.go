@@ -1821,6 +1821,10 @@ func (client *Client) InitCardVerifyWithContext(ctx context.Context, request *In
 	return _result, _err
 }
 
+// Summary:
+//
+// 实人服务端初始化接口
+//
 // @param request - InitFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
