@@ -365,6 +365,70 @@ func (client *Client) DescribeAppInstances(request *DescribeAppInstancesRequest)
 
 // Summary:
 //
+// 查看实例认证信息
+//
+// @param request - DescribeInstanceAuthInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAuthInfoResponse
+func (client *Client) DescribeInstanceAuthInfoWithOptions(request *DescribeInstanceAuthInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAuthInfoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceAuthInfo"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceAuthInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看实例认证信息
+//
+// @param request - DescribeInstanceAuthInfoRequest
+//
+// @return DescribeInstanceAuthInfoResponse
+func (client *Client) DescribeInstanceAuthInfo(request *DescribeInstanceAuthInfoRequest) (_result *DescribeInstanceAuthInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstanceAuthInfoResponse{}
+	_body, _err := client.DescribeInstanceAuthInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看服务连接信息
 //
 // @param request - DescribeInstanceEndpointsRequest
