@@ -27,8 +27,12 @@ type iCreateNatGatewayRequest interface {
 	GetInstanceChargeType() *string
 	SetInternetChargeType(v string) *CreateNatGatewayRequest
 	GetInternetChargeType() *string
+	SetIpv4Prefix(v string) *CreateNatGatewayRequest
+	GetIpv4Prefix() *string
 	SetName(v string) *CreateNatGatewayRequest
 	GetName() *string
+	SetNatIp(v string) *CreateNatGatewayRequest
+	GetNatIp() *string
 	SetNatType(v string) *CreateNatGatewayRequest
 	GetNatType() *string
 	SetNetworkType(v string) *CreateNatGatewayRequest
@@ -130,6 +134,7 @@ type CreateNatGatewayRequest struct {
 	//
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Ipv4Prefix         *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The name of the NAT gateway.
 	//
 	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -139,7 +144,8 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// fortest
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
 	// The type of NAT gateway. Set the value to **Enhanced**, which specifies enhanced NAT gateway.
 	//
 	// example:
@@ -268,8 +274,16 @@ func (s *CreateNatGatewayRequest) GetInternetChargeType() *string {
 	return s.InternetChargeType
 }
 
+func (s *CreateNatGatewayRequest) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
 func (s *CreateNatGatewayRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateNatGatewayRequest) GetNatIp() *string {
+	return s.NatIp
 }
 
 func (s *CreateNatGatewayRequest) GetNatType() *string {
@@ -373,8 +387,18 @@ func (s *CreateNatGatewayRequest) SetInternetChargeType(v string) *CreateNatGate
 	return s
 }
 
+func (s *CreateNatGatewayRequest) SetIpv4Prefix(v string) *CreateNatGatewayRequest {
+	s.Ipv4Prefix = &v
+	return s
+}
+
 func (s *CreateNatGatewayRequest) SetName(v string) *CreateNatGatewayRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetNatIp(v string) *CreateNatGatewayRequest {
+	s.NatIp = &v
 	return s
 }
 

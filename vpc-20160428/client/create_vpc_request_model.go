@@ -131,8 +131,18 @@ type CreateVpcRequest struct {
 	// example:
 	//
 	// 2408:XXXX:0:6a::/56
-	Ipv6CidrBlock  *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	Ipv6CidrMask   *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	// Add an IPv6 CIDR block from the IPAM pool to the VPC by entering a mask.
+	//
+	// example:
+	//
+	// 56
+	Ipv6CidrMask *int32 `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	// The ID of the IP Address Manager (IPAM) pool of the IPv6 type.
+	//
+	// example:
+	//
+	// ipam-pool-bp1aq51kkfh477z03****
 	Ipv6IpamPoolId *string `json:"Ipv6IpamPoolId,omitempty" xml:"Ipv6IpamPoolId,omitempty"`
 	// The type of the IPv6 CIDR block of the VPC. Valid values:
 	//

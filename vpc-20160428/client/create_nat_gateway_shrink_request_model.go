@@ -27,8 +27,12 @@ type iCreateNatGatewayShrinkRequest interface {
 	GetInstanceChargeType() *string
 	SetInternetChargeType(v string) *CreateNatGatewayShrinkRequest
 	GetInternetChargeType() *string
+	SetIpv4Prefix(v string) *CreateNatGatewayShrinkRequest
+	GetIpv4Prefix() *string
 	SetName(v string) *CreateNatGatewayShrinkRequest
 	GetName() *string
+	SetNatIp(v string) *CreateNatGatewayShrinkRequest
+	GetNatIp() *string
 	SetNatType(v string) *CreateNatGatewayShrinkRequest
 	GetNatType() *string
 	SetNetworkType(v string) *CreateNatGatewayShrinkRequest
@@ -130,6 +134,7 @@ type CreateNatGatewayShrinkRequest struct {
 	//
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	Ipv4Prefix         *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The name of the NAT gateway.
 	//
 	// The name must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
@@ -139,7 +144,8 @@ type CreateNatGatewayShrinkRequest struct {
 	// example:
 	//
 	// fortest
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatIp *string `json:"NatIp,omitempty" xml:"NatIp,omitempty"`
 	// The type of NAT gateway. Set the value to **Enhanced**, which specifies enhanced NAT gateway.
 	//
 	// example:
@@ -268,8 +274,16 @@ func (s *CreateNatGatewayShrinkRequest) GetInternetChargeType() *string {
 	return s.InternetChargeType
 }
 
+func (s *CreateNatGatewayShrinkRequest) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
 func (s *CreateNatGatewayShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateNatGatewayShrinkRequest) GetNatIp() *string {
+	return s.NatIp
 }
 
 func (s *CreateNatGatewayShrinkRequest) GetNatType() *string {
@@ -373,8 +387,18 @@ func (s *CreateNatGatewayShrinkRequest) SetInternetChargeType(v string) *CreateN
 	return s
 }
 
+func (s *CreateNatGatewayShrinkRequest) SetIpv4Prefix(v string) *CreateNatGatewayShrinkRequest {
+	s.Ipv4Prefix = &v
+	return s
+}
+
 func (s *CreateNatGatewayShrinkRequest) SetName(v string) *CreateNatGatewayShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateNatGatewayShrinkRequest) SetNatIp(v string) *CreateNatGatewayShrinkRequest {
+	s.NatIp = &v
 	return s
 }
 

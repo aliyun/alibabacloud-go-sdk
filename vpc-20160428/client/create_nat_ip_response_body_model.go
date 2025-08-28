@@ -9,6 +9,8 @@ type iCreateNatIpResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetIpv4Prefix(v string) *CreateNatIpResponseBody
+	GetIpv4Prefix() *string
 	SetNatIp(v string) *CreateNatIpResponseBody
 	GetNatIp() *string
 	SetNatIpId(v string) *CreateNatIpResponseBody
@@ -18,6 +20,7 @@ type iCreateNatIpResponseBody interface {
 }
 
 type CreateNatIpResponseBody struct {
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// The NAT IP address.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s CreateNatIpResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateNatIpResponseBody) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
 func (s *CreateNatIpResponseBody) GetNatIp() *string {
 	return s.NatIp
 }
@@ -56,6 +63,11 @@ func (s *CreateNatIpResponseBody) GetNatIpId() *string {
 
 func (s *CreateNatIpResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *CreateNatIpResponseBody) SetIpv4Prefix(v string) *CreateNatIpResponseBody {
+	s.Ipv4Prefix = &v
+	return s
 }
 
 func (s *CreateNatIpResponseBody) SetNatIp(v string) *CreateNatIpResponseBody {

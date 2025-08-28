@@ -38,9 +38,9 @@ type iAssociateVpcCidrBlockRequest interface {
 }
 
 type AssociateVpcCidrBlockRequest struct {
-	// The IPv6 CIDR block to be added.
+	// The IPv6 CIDR block that you want to add to the VPC.
 	//
-	// >  You must and can specify only one of **SecondaryCidrBlock*	- and **Ipv6CidrBlock**.
+	// >  You can specify only one of **SecondaryCidrBlock*	- and **Ipv6CidrBlock**.
 	//
 	// example:
 	//
@@ -56,13 +56,20 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// IPV4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+	// The ID of the IPAM pool.
 	//
 	// example:
 	//
 	// ipam-pool-sycmt3p2a9v63i****
-	IpamPoolId   *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	Ipv6CidrMask *int32  `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
+	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// Add an IPv6 CIDR block from the IPAM pool to the VPC by entering a mask.
+	//
+	// >  To add an IPv6 CIDR block to a VPC, specify at least one of the IPv6CidrBlock and Ipv6CidrMask parameters.
+	//
+	// example:
+	//
+	// 56
+	Ipv6CidrMask *int32 `json:"Ipv6CidrMask,omitempty" xml:"Ipv6CidrMask,omitempty"`
 	// The type of the IPv6 CIDR block. Valid values:
 	//
 	// 	- **BGP*	- (default)
@@ -109,11 +116,9 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// 192.168.0.0/16
 	SecondaryCidrBlock *string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty"`
-	// Add secondary CIDR blocks to the VPC from the IPAM pool by entering a mask.
+	// Add an IPv4 CIDR block from the IPAM pool to the VPC by specifying a mask.
 	//
-	// >
-	//
-	// > To add a secondary CIDR block to the VPC using the specified IPAM pool, you must specify at least one of the parameters, SecondaryCidrBlock or SecondaryCidrMask.
+	// >  If you use an IPAM pool, you must specify at least one of SecondaryCidrBlock and SecondaryCidrMask.
 	//
 	// example:
 	//

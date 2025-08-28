@@ -13,6 +13,10 @@ type iCreateNatIpRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *CreateNatIpRequest
 	GetDryRun() *bool
+	SetIpv4Prefix(v string) *CreateNatIpRequest
+	GetIpv4Prefix() *string
+	SetIpv4PrefixCount(v int64) *CreateNatIpRequest
+	GetIpv4PrefixCount() *int64
 	SetNatGatewayId(v string) *CreateNatIpRequest
 	GetNatGatewayId() *string
 	SetNatIp(v string) *CreateNatIpRequest
@@ -56,6 +60,11 @@ type CreateNatIpRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// null
+	Ipv4Prefix      *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	Ipv4PrefixCount *int64  `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
 	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	//
 	// This parameter is required.
@@ -128,6 +137,14 @@ func (s *CreateNatIpRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *CreateNatIpRequest) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
+func (s *CreateNatIpRequest) GetIpv4PrefixCount() *int64 {
+	return s.Ipv4PrefixCount
+}
+
 func (s *CreateNatIpRequest) GetNatGatewayId() *string {
 	return s.NatGatewayId
 }
@@ -175,6 +192,16 @@ func (s *CreateNatIpRequest) SetClientToken(v string) *CreateNatIpRequest {
 
 func (s *CreateNatIpRequest) SetDryRun(v bool) *CreateNatIpRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateNatIpRequest) SetIpv4Prefix(v string) *CreateNatIpRequest {
+	s.Ipv4Prefix = &v
+	return s
+}
+
+func (s *CreateNatIpRequest) SetIpv4PrefixCount(v int64) *CreateNatIpRequest {
+	s.Ipv4PrefixCount = &v
 	return s
 }
 

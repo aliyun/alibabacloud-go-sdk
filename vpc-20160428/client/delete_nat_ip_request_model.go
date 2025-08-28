@@ -13,6 +13,10 @@ type iDeleteNatIpRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *DeleteNatIpRequest
 	GetDryRun() *bool
+	SetIpv4Prefix(v string) *DeleteNatIpRequest
+	GetIpv4Prefix() *string
+	SetNatGatewayId(v string) *DeleteNatIpRequest
+	GetNatGatewayId() *string
 	SetNatIpId(v string) *DeleteNatIpRequest
 	GetNatIpId() *string
 	SetOwnerAccount(v string) *DeleteNatIpRequest
@@ -47,10 +51,10 @@ type DeleteNatIpRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Ipv4Prefix   *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	// The ID of the NAT IP address that you want to delete.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -88,6 +92,14 @@ func (s *DeleteNatIpRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *DeleteNatIpRequest) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
+func (s *DeleteNatIpRequest) GetNatGatewayId() *string {
+	return s.NatGatewayId
+}
+
 func (s *DeleteNatIpRequest) GetNatIpId() *string {
 	return s.NatIpId
 }
@@ -119,6 +131,16 @@ func (s *DeleteNatIpRequest) SetClientToken(v string) *DeleteNatIpRequest {
 
 func (s *DeleteNatIpRequest) SetDryRun(v bool) *DeleteNatIpRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteNatIpRequest) SetIpv4Prefix(v string) *DeleteNatIpRequest {
+	s.Ipv4Prefix = &v
+	return s
+}
+
+func (s *DeleteNatIpRequest) SetNatGatewayId(v string) *DeleteNatIpRequest {
+	s.NatGatewayId = &v
 	return s
 }
 

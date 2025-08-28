@@ -7511,8 +7511,16 @@ func (client *Client) CreateNatGatewayWithOptions(tmpReq *CreateNatGatewayReques
 		query["InternetChargeType"] = request.InternetChargeType
 	}
 
+	if !dara.IsNil(request.Ipv4Prefix) {
+		query["Ipv4Prefix"] = request.Ipv4Prefix
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NatIp) {
+		query["NatIp"] = request.NatIp
 	}
 
 	if !dara.IsNil(request.NatType) {
@@ -7663,6 +7671,14 @@ func (client *Client) CreateNatIpWithOptions(request *CreateNatIpRequest, runtim
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Ipv4Prefix) {
+		query["Ipv4Prefix"] = request.Ipv4Prefix
+	}
+
+	if !dara.IsNil(request.Ipv4PrefixCount) {
+		query["Ipv4PrefixCount"] = request.Ipv4PrefixCount
 	}
 
 	if !dara.IsNil(request.NatGatewayId) {
@@ -14745,6 +14761,14 @@ func (client *Client) DeleteNatIpWithOptions(request *DeleteNatIpRequest, runtim
 		query["DryRun"] = request.DryRun
 	}
 
+	if !dara.IsNil(request.Ipv4Prefix) {
+		query["Ipv4Prefix"] = request.Ipv4Prefix
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
 	if !dara.IsNil(request.NatIpId) {
 		query["NatIpId"] = request.NatIpId
 	}
@@ -19712,7 +19736,7 @@ func (client *Client) DescribeFailoverTestJobs(request *DescribeFailoverTestJobs
 
 // Summary:
 //
-// Queries the information about flow logs.
+// Query flow logs.
 //
 // @param request - DescribeFlowLogsRequest
 //
@@ -19826,7 +19850,7 @@ func (client *Client) DescribeFlowLogsWithOptions(request *DescribeFlowLogsReque
 
 // Summary:
 //
-// Queries the information about flow logs.
+// Query flow logs.
 //
 // @param request - DescribeFlowLogsRequest
 //
@@ -23396,7 +23420,7 @@ func (client *Client) DescribeTagKeysForExpressConnect(request *DescribeTagKeysF
 
 // Summary:
 //
-// 查询满足筛选条件的标签列表。
+// Queries tags that meet the specified filter conditions.
 //
 // Description:
 //
@@ -23484,7 +23508,7 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 
 // Summary:
 //
-// 查询满足筛选条件的标签列表。
+// Queries tags that meet the specified filter conditions.
 //
 // Description:
 //
@@ -23512,7 +23536,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// 查询路由器列表
+// Queries vRouters in a region.
 //
 // @param request - DescribeVRoutersRequest
 //
@@ -23582,7 +23606,7 @@ func (client *Client) DescribeVRoutersWithOptions(request *DescribeVRoutersReque
 
 // Summary:
 //
-// 查询路由器列表
+// Queries vRouters in a region.
 //
 // @param request - DescribeVRoutersRequest
 //
@@ -24259,6 +24283,114 @@ func (client *Client) DescribeVpcAttribute(request *DescribeVpcAttributeRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeVpcAttributeResponse{}
 	_body, _err := client.DescribeVpcAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC跨账号授权给ECR
+//
+// @param request - DescribeVpcGrantRulesToEcrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcGrantRulesToEcrResponse
+func (client *Client) DescribeVpcGrantRulesToEcrWithOptions(request *DescribeVpcGrantRulesToEcrRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcGrantRulesToEcrResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EcrInstanceId) {
+		query["EcrInstanceId"] = request.EcrInstanceId
+	}
+
+	if !dara.IsNil(request.EcrOwnerId) {
+		query["EcrOwnerId"] = request.EcrOwnerId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcGrantRulesToEcr"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcGrantRulesToEcrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC跨账号授权给ECR
+//
+// @param request - DescribeVpcGrantRulesToEcrRequest
+//
+// @return DescribeVpcGrantRulesToEcrResponse
+func (client *Client) DescribeVpcGrantRulesToEcr(request *DescribeVpcGrantRulesToEcrRequest) (_result *DescribeVpcGrantRulesToEcrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcGrantRulesToEcrResponse{}
+	_body, _err := client.DescribeVpcGrantRulesToEcrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

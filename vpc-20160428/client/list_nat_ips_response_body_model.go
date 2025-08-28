@@ -95,6 +95,7 @@ func (s *ListNatIpsResponseBody) Validate() error {
 }
 
 type ListNatIpsResponseBodyNatIps struct {
+	Ipv4Prefix *string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty"`
 	// Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
 	//
 	// 	- **true**: yes
@@ -169,6 +170,10 @@ func (s ListNatIpsResponseBodyNatIps) GoString() string {
 	return s.String()
 }
 
+func (s *ListNatIpsResponseBodyNatIps) GetIpv4Prefix() *string {
+	return s.Ipv4Prefix
+}
+
 func (s *ListNatIpsResponseBodyNatIps) GetIsDefault() *bool {
 	return s.IsDefault
 }
@@ -199,6 +204,11 @@ func (s *ListNatIpsResponseBodyNatIps) GetNatIpName() *string {
 
 func (s *ListNatIpsResponseBodyNatIps) GetNatIpStatus() *string {
 	return s.NatIpStatus
+}
+
+func (s *ListNatIpsResponseBodyNatIps) SetIpv4Prefix(v string) *ListNatIpsResponseBodyNatIps {
+	s.Ipv4Prefix = &v
+	return s
 }
 
 func (s *ListNatIpsResponseBodyNatIps) SetIsDefault(v bool) *ListNatIpsResponseBodyNatIps {

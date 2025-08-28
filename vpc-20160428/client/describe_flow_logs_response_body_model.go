@@ -24,15 +24,15 @@ type iDescribeFlowLogsResponseBody interface {
 }
 
 type DescribeFlowLogsResponseBody struct {
-	// The information about the flow logs.
+	// List of flow logs.
 	FlowLogs *DescribeFlowLogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page in a paginated query.
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the call was successful. Values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The number of flow logs that are queried.
+	// The number of entries in the queried flow log list.
 	//
 	// example:
 	//
@@ -160,17 +160,17 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// 10
 	AggregationInterval *int32 `json:"AggregationInterval,omitempty" xml:"AggregationInterval,omitempty"`
-	// The business status of the flow log. Valid values:
+	// The business status. Values:
 	//
-	// 	- **Normal**
+	// - **Normal**: Normal status.
 	//
-	// 	- **FinancialLocked**
+	// - **FinancialLocked**: Locked due to unpaid bills.
 	//
 	// example:
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The time when the flow log was created.
+	// The creation time of the flow log.
 	//
 	// example:
 	//
@@ -182,23 +182,23 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// If the flow log failed to be delivered, you can troubleshoot based on the following error messages that may be returned:
+	// When log delivery fails, you can troubleshoot based on the error messages. Possible error messages include:
 	//
-	// 	- **UnavaliableTarget**: The Logstore of SLS is unavailable and cannot receive logs. Check whether the Logstore is available.
+	// - **UnavaliableTarget**: The Logstore of the Log Service SLS is unavailable and cannot receive logs. It is recommended to check if the corresponding Logstore actually exists and is accessible.
 	//
-	// 	- **ProjectNotExist**: The project of SLS does not exist. We recommend that you delete the project and create a new one.
+	// - **ProjectNotExist**: The Project of the Log Service SLS does not exist. It is suggested to delete the original flow log and create a new one pointing to an existing Project.
 	//
-	// 	- **UnknownError**: An internal error occurred. Try again later.
+	// - **UnknownError**: An internal error has occurred. Please try again later.
 	//
 	// example:
 	//
 	// UnavaliableTarget
 	FlowLogDeliverErrorMessage *string `json:"FlowLogDeliverErrorMessage,omitempty" xml:"FlowLogDeliverErrorMessage,omitempty"`
-	// Indicates whether the flow log is delivered. Valid values:
+	// The delivery status of the flow log, with values:
 	//
-	// - **SUCCESS*	-
+	// - **SUCCESS**: Delivery succeeded.
 	//
-	// - **FAILED**
+	// - **FAILED**: Delivery failed.
 	//
 	// example:
 	//
@@ -216,20 +216,25 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	IpVersion   *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The Logstore that stores the captured traffic data.
+	// The type of IP address for collecting flow log traffic.
+	//
+	// example:
+	//
+	// IPv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The Logstore where the captured traffic is stored.
 	//
 	// example:
 	//
 	// FlowLogStore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The project that manages the captured traffic data.
+	// The Project that manages the captured traffic.
 	//
 	// example:
 	//
 	// FlowLogProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID of the flow log.
+	// The region ID to which the flow log belongs.
 	//
 	// example:
 	//
@@ -241,19 +246,19 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	//
 	// rg-bp67acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource from which traffic is captured.
+	// The resource ID of the traffic captured by the flow log.
 	//
 	// example:
 	//
 	// eni-askldfas****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource from which traffic is captured. Valid values:
+	// The resource type of the traffic captured by the flow log:
 	//
-	// 	- **NetworkInterface**: ENI
+	// - **NetworkInterface**: Elastic network interface.
 	//
-	// 	- **VSwitch**: all ENIs in a vSwitch
+	// - **VSwitch**: All elastic network interfaces within a VSwitch.
 	//
-	// 	- **VPC**: all ENIs in a VPC
+	// - **VPC**: All elastic network interfaces within a VPC.
 	//
 	// example:
 	//
@@ -261,45 +266,43 @@ type DescribeFlowLogsResponseBodyFlowLogsFlowLog struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The hosting type of the cloud service.
 	//
-	// 	- This parameter can be empty, which indicates that the flow log is created by the user.
+	// - It can be empty, indicating that the flow log was created by the user.
 	//
-	// 	- If this parameter is not empty, the value is set to **sls**. The value sls indicates that the flow log is created in the Simple Log Service (SLS) console.
+	// - When not empty, the only supported value is: **sls**, indicating that the flow log was created through the Log Service console.
 	//
-	// > A flow log that is created in the SLS console can be displayed in the VPC list. However, you cannot modify, start, stop, or delete the flow log in the VPC console. If you want to manage the flow log, you can log on to the [SLS console](https://sls.console.aliyun.com) and perform required operations.
+	// > Flow log instances created through the Log Service console can be displayed in the VPC list, but they cannot be modified, started, stopped, or deleted within the VPC. If you need to perform these operations on the flow log, you can log in to the [Log Service console](https://sls.console.aliyun.com) to modify, start, stop, or delete it.
 	//
 	// example:
 	//
 	// sls
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the flow log. Valid values:
+	// The status of the flow log. Values:
 	//
-	// 	- **Active**
+	// - **Active**: The flow log is in an active state.
 	//
-	// 	- **Activating**
+	// - **Activating**: The flow log is being created.
 	//
-	// 	- **Inactive**
+	// - **Inactive**: The flow log is in an inactive state.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags.
+	// List of tags
 	Tags *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The sampling scope of the traffic that is collected. Valid values:
+	// The path of the captured traffic. Values:
 	//
-	// 	- **all*	- (default value): all traffic
+	// - **all**: Indicates full collection.
 	//
-	// 	- **internetGateway**: Internet traffic
-	//
-	// > By default, the traffic path feature is unavailable. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex).
+	// - **internetGateway**: Indicates public network traffic collection.
 	TrafficPath *DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath `json:"TrafficPath,omitempty" xml:"TrafficPath,omitempty" type:"Struct"`
-	// The type of traffic that is captured by the flow log. Valid values:
+	// The type of traffic captured by the flow log. Values:
 	//
-	// 	- **All**: all traffic
+	// - **All**: All traffic.
 	//
-	// 	- **Allow**: traffic that is allowed by access control
+	// - **Allow**: Traffic allowed by access control.
 	//
-	// 	- **Drop**: traffic that is denied by access control
+	// - **Drop**: Traffic denied by access control.
 	//
 	// example:
 	//
@@ -525,13 +528,13 @@ func (s *DescribeFlowLogsResponseBodyFlowLogsFlowLogTags) Validate() error {
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag struct {
-	// The key of tag N.
+	// Tag key.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// Tag value.
 	//
 	// example:
 	//

@@ -61,7 +61,10 @@ type ModifyFlowLogAttributeRequest struct {
 	// example:
 	//
 	// myFlowlog
-	FlowLogName  *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	// example:
+	//
+	// IPv4
 	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

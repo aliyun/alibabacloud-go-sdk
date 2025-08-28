@@ -179,11 +179,13 @@ type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
 	//
 	// CloudBox
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The service state of the EIP. Valid values:
+	// The service status of the EIP. Valid values:
 	//
 	// 	- **Normal**
 	//
-	// 	- **FinancialLocked**
+	// 	- **OperationLock**
+	//
+	// 	- **Unactivated**
 	//
 	// example:
 	//
@@ -905,7 +907,9 @@ type DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLockRea
 	//
 	// 	- **financial**: The EIP is locked due to overdue payments.
 	//
-	// 	- **security**: The EIP is locked for security reasons.
+	// 	- **security**: The instance is locked for security purposes.
+	//
+	// 	- **sharedPool**: The shared IP address pool is locked due to overdue payments.
 	//
 	// example:
 	//

@@ -236,7 +236,8 @@ type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	// PayByLcu
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
-	IpLists *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	IpLists      *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists      `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Struct"`
+	IpPrefixList *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList `json:"IpPrefixList,omitempty" xml:"IpPrefixList,omitempty" type:"Struct"`
 	// The name of the NAT gateway.
 	//
 	// example:
@@ -419,6 +420,10 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetIpLists() *Des
 	return s.IpLists
 }
 
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetIpPrefixList() *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList {
+	return s.IpPrefixList
+}
+
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetName() *string {
 	return s.Name
 }
@@ -556,6 +561,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetInternetCharge
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetIpLists(v *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpLists) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
 	s.IpLists = v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetIpPrefixList(v *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
+	s.IpPrefixList = v
 	return s
 }
 
@@ -847,6 +857,56 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList) SetU
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList struct {
+	IpPrefixList []*DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList `json:"IpPrefixList,omitempty" xml:"IpPrefixList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) GetIpPrefixList() []*DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList {
+	return s.IpPrefixList
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) SetIpPrefixList(v []*DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList {
+	s.IpPrefixList = v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixList) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList struct {
+	IpPrefix *string `json:"IpPrefix,omitempty" xml:"IpPrefix,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) GetIpPrefix() *string {
+	return s.IpPrefix
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) SetIpPrefix(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList {
+	s.IpPrefix = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixList) Validate() error {
 	return dara.Validate(s)
 }
 

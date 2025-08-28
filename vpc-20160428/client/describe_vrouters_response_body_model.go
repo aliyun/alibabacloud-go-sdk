@@ -151,7 +151,7 @@ type DescribeVRoutersResponseBodyVRoutersVRouter struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the route table in the vRouter.
+	// The IDs of the route tables.
 	RouteTableIds *DescribeVRoutersResponseBodyVRoutersVRouterRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	// The ID of the vRouter.
 	//
