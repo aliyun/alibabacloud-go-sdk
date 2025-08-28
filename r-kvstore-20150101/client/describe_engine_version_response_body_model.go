@@ -52,7 +52,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"releaseInfo\\":{\\"createTime\\":\\"2021-07-27\\",\\"level\\":1,\\"releaseVersion\\":\\"0.5.4\\",\\"releaseNote\\":\\"功能更新：增强稳定性。\\"}],\\"versionChangesLevel\\":2}
+	// {\\"releaseInfo\\":{\\"createTime\\":\\"2021-07-27\\",\\"level\\":1,\\"releaseVersion\\":\\"0.5.4\\",\\"releaseNote\\":\\"Feature optimization: The stability is improved.\\"}],\\"versionChangesLevel\\":2}
 	DBVersionRelease *string `json:"DBVersionRelease,omitempty" xml:"DBVersionRelease,omitempty"`
 	// Indicates whether the instance major version can be upgraded. Valid values:
 	//
@@ -168,7 +168,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"releaseInfo\\":[{\\"createTime\\":\\"2021-06-08\\",\\"level\\":0,\\"releaseVersion\\":\\"6.6.2\\",\\"releaseNote\\":\\"新特性：增加对部分内部命令的支持。\\"}],\\"versionChangesLevel\\":2}
+	// {\\"releaseInfo\\":[{\\"createTime\\":\\"2021-06-08\\",\\"level\\":0,\\"releaseVersion\\":\\"6.6.2\\",\\"releaseNote\\":\\"New feature: Some internal commands are supported.\\"}],\\"versionChangesLevel\\":2}
 	ProxyVersionRelease *string `json:"ProxyVersionRelease,omitempty" xml:"ProxyVersionRelease,omitempty"`
 	// The request ID.
 	//

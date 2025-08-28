@@ -33,7 +33,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen":                 dara.String("r-kvstore.aliyuncs.com"),
 		"cn-heyuan":                   dara.String("r-kvstore.aliyuncs.com"),
 		"cn-hangzhou-finance":         dara.String("r-kvstore.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("r-kvstore.aliyuncs.com"),
 		"ap-northeast-2-pop":          dara.String("r-kvstore.aliyuncs.com"),
 		"cn-beijing-finance-1":        dara.String("r-kvstore.aliyuncs.com"),
 		"cn-beijing-finance-pop":      dara.String("r-kvstore.aliyuncs.com"),
@@ -2046,6 +2045,158 @@ func (client *Client) CreateTairInstance(request *CreateTairInstanceRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateTairInstanceResponse{}
 	_body, _err := client.CreateTairInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Tair VNode实例
+//
+// @param request - CreateTairKVCacheVNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTairKVCacheVNodeResponse
+func (client *Client) CreateTairKVCacheVNodeWithOptions(request *CreateTairKVCacheVNodeRequest, runtime *dara.RuntimeOptions) (_result *CreateTairKVCacheVNodeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoRenewPeriod) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !dara.IsNil(request.BusinessInfo) {
+		query["BusinessInfo"] = request.BusinessInfo
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ComputeUnitNum) {
+		query["ComputeUnitNum"] = request.ComputeUnitNum
+	}
+
+	if !dara.IsNil(request.CouponNo) {
+		query["CouponNo"] = request.CouponNo
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.InstanceClass) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VkName) {
+		query["VkName"] = request.VkName
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTairKVCacheVNode"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTairKVCacheVNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Tair VNode实例
+//
+// @param request - CreateTairKVCacheVNodeRequest
+//
+// @return CreateTairKVCacheVNodeResponse
+func (client *Client) CreateTairKVCacheVNode(request *CreateTairKVCacheVNodeRequest) (_result *CreateTairKVCacheVNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTairKVCacheVNodeResponse{}
+	_body, _err := client.CreateTairKVCacheVNodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5500,6 +5651,10 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		query["NetworkType"] = request.NetworkType
 	}
 
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -6722,6 +6877,10 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecondaryZoneId) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -13814,6 +13973,118 @@ func (client *Client) TransformInstanceChargeType(request *TransformInstanceChar
 	runtime := &dara.RuntimeOptions{}
 	_result = &TransformInstanceChargeTypeResponse{}
 	_body, _err := client.TransformInstanceChargeTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 转换本地盘到云原生
+//
+// @param request - TransformToEcsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransformToEcsResponse
+func (client *Client) TransformToEcsWithOptions(request *TransformToEcsRequest, runtime *dara.RuntimeOptions) (_result *TransformToEcsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoRenewPeriod) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		query["EffectiveTime"] = request.EffectiveTime
+	}
+
+	if !dara.IsNil(request.EngineVersion) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !dara.IsNil(request.InstanceClass) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ShardCount) {
+		query["ShardCount"] = request.ShardCount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransformToEcs"),
+		Version:     dara.String("2015-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransformToEcsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 转换本地盘到云原生
+//
+// @param request - TransformToEcsRequest
+//
+// @return TransformToEcsResponse
+func (client *Client) TransformToEcs(request *TransformToEcsRequest) (_result *TransformToEcsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TransformToEcsResponse{}
+	_body, _err := client.TransformToEcsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

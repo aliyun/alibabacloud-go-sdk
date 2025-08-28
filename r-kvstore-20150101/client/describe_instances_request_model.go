@@ -31,6 +31,8 @@ type iDescribeInstancesRequest interface {
 	GetInstanceType() *string
 	SetNetworkType(v string) *DescribeInstancesRequest
 	GetNetworkType() *string
+	SetNodeType(v string) *DescribeInstancesRequest
+	GetNodeType() *string
 	SetOwnerAccount(v string) *DescribeInstancesRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeInstancesRequest
@@ -210,6 +212,7 @@ type DescribeInstancesRequest struct {
 	//
 	// CLASSIC
 	NetworkType  *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Pages start from page **1**. Default value: **1**.
@@ -329,6 +332,10 @@ func (s *DescribeInstancesRequest) GetNetworkType() *string {
 	return s.NetworkType
 }
 
+func (s *DescribeInstancesRequest) GetNodeType() *string {
+	return s.NodeType
+}
+
 func (s *DescribeInstancesRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -441,6 +448,11 @@ func (s *DescribeInstancesRequest) SetInstanceType(v string) *DescribeInstancesR
 
 func (s *DescribeInstancesRequest) SetNetworkType(v string) *DescribeInstancesRequest {
 	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetNodeType(v string) *DescribeInstancesRequest {
+	s.NodeType = &v
 	return s
 }
 

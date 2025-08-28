@@ -112,6 +112,7 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstances) Validate() erro
 }
 
 type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO struct {
+	AckId           *string                                                                         `json:"AckId,omitempty" xml:"AckId,omitempty"`
 	Capacity        *int64                                                                          `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	ChargeType      *string                                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ComputeUnitNum  *int32                                                                          `json:"ComputeUnitNum,omitempty" xml:"ComputeUnitNum,omitempty"`
@@ -130,6 +131,7 @@ type DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO 
 	RegionId        *string                                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VNodeCount      *int32                                                                          `json:"VNodeCount,omitempty" xml:"VNodeCount,omitempty"`
 	VNodeName       *string                                                                         `json:"VNodeName,omitempty" xml:"VNodeName,omitempty"`
 	VSwitchId       *string                                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId           *string                                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -142,6 +144,10 @@ func (s DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceD
 
 func (s DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetAckId() *string {
+	return s.AckId
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetCapacity() *int64 {
@@ -216,6 +222,10 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 	return s.Tags
 }
 
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetVNodeCount() *int32 {
+	return s.VNodeCount
+}
+
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetVNodeName() *string {
 	return s.VNodeName
 }
@@ -230,6 +240,11 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetAckId(v string) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.AckId = &v
+	return s
 }
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetCapacity(v int64) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
@@ -319,6 +334,11 @@ func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstance
 
 func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetTags(v *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTOTags) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO) SetVNodeCount(v int32) *DescribeTairKVCacheInferInstancesResponseBodyInstancesTairInferInstanceDTO {
+	s.VNodeCount = &v
 	return s
 }
 

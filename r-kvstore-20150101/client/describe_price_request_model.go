@@ -47,6 +47,8 @@ type iDescribePriceRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *DescribePriceRequest
 	GetResourceOwnerId() *int64
+	SetSecondaryZoneId(v string) *DescribePriceRequest
+	GetSecondaryZoneId() *string
 	SetSecurityToken(v string) *DescribePriceRequest
 	GetSecurityToken() *string
 	SetShardCount(v int32) *DescribePriceRequest
@@ -196,6 +198,7 @@ type DescribePriceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecondaryZoneId      *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of data shards in the cloud-native cluster instance.
 	//
@@ -293,6 +296,10 @@ func (s *DescribePriceRequest) GetResourceOwnerAccount() *string {
 
 func (s *DescribePriceRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *DescribePriceRequest) GetSecondaryZoneId() *string {
+	return s.SecondaryZoneId
 }
 
 func (s *DescribePriceRequest) GetSecurityToken() *string {
@@ -399,6 +406,11 @@ func (s *DescribePriceRequest) SetResourceOwnerAccount(v string) *DescribePriceR
 
 func (s *DescribePriceRequest) SetResourceOwnerId(v int64) *DescribePriceRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetSecondaryZoneId(v string) *DescribePriceRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
