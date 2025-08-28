@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dyvmsapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -70,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddVirtualNumberRelationResponse
-func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNumberRelationRequest, runtime *dara.RuntimeOptions) (_result *AddVirtualNumberRelationResponse, _err error) {
+func (client *Client) AddVirtualNumberRelationWithContext(ctx context.Context, request *AddVirtualNumberRelationRequest, runtime *dara.RuntimeOptions) (_result *AddVirtualNumberRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -123,35 +75,11 @@ func (client *Client) AddVirtualNumberRelationWithOptions(request *AddVirtualNum
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddVirtualNumberRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds the association relationship between a virtual number and real numbers in batches.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 200 times per second per account.
-//
-// @param request - AddVirtualNumberRelationRequest
-//
-// @return AddVirtualNumberRelationResponse
-func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelationRequest) (_result *AddVirtualNumberRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddVirtualNumberRelationResponse{}
-	_body, _err := client.AddVirtualNumberRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -180,7 +108,7 @@ func (client *Client) AddVirtualNumberRelation(request *AddVirtualNumberRelation
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchRobotSmartCallResponse
-func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCallRequest, runtime *dara.RuntimeOptions) (_result *BatchRobotSmartCallResponse, _err error) {
+func (client *Client) BatchRobotSmartCallWithContext(ctx context.Context, request *BatchRobotSmartCallRequest, runtime *dara.RuntimeOptions) (_result *BatchRobotSmartCallResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -257,45 +185,11 @@ func (client *Client) BatchRobotSmartCallWithOptions(request *BatchRobotSmartCal
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchRobotSmartCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates an outbound robocall task.
-//
-// Description:
-//
-//	  In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-//
-//		- The BatchRobotSmartCall operation is used to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console.
-//
-// ## Prerequisites
-//
-//   - You have passed the real-name verification for an enterprise user and passed the enterprise qualification review.
-//
-//   - You have purchased numbers in the [Voice Messaging Service console](https://dyvms.console.aliyun.com/dyvms.htm#/number/normal).
-//
-//   - You have added communication scripts on the [Communication script management](https://dyvms.console.aliyun.com/dyvms.htm#/smart-call/saas/robot/list) page, and the communication scripts have been approved.
-//
-// > Before you call this operation, make sure that you are familiar with the [billing](https://www.aliyun.com/price/product#/vms/detail) of Voice Messaging Service (VMS).
-//
-// @param request - BatchRobotSmartCallRequest
-//
-// @return BatchRobotSmartCallResponse
-func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (_result *BatchRobotSmartCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BatchRobotSmartCallResponse{}
-	_body, _err := client.BatchRobotSmartCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -314,7 +208,7 @@ func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelOrderRobotTaskResponse
-func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderRobotTaskResponse, _err error) {
+func (client *Client) CancelOrderRobotTaskWithContext(ctx context.Context, request *CancelOrderRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -351,35 +245,11 @@ func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotT
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelOrderRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels a robocall task that has not been started.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - CancelOrderRobotTaskRequest
-//
-// @return CancelOrderRobotTaskResponse
-func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest) (_result *CancelOrderRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelOrderRobotTaskResponse{}
-	_body, _err := client.CancelOrderRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -400,7 +270,7 @@ func (client *Client) CancelOrderRobotTask(request *CancelOrderRobotTaskRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelRobotTaskResponse
-func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelRobotTaskResponse, _err error) {
+func (client *Client) CancelRobotTaskWithContext(ctx context.Context, request *CancelRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -437,37 +307,11 @@ func (client *Client) CancelRobotTaskWithOptions(request *CancelRobotTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a robocall task.
-//
-// Description:
-//
-// Only a task in progress can be terminated by calling the CancelRobotTask operation, and the task cannot be resumed after it is terminated.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - CancelRobotTaskRequest
-//
-// @return CancelRobotTaskResponse
-func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result *CancelRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelRobotTaskResponse{}
-	_body, _err := client.CancelRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -480,7 +324,7 @@ func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeMediaTypeResponse
-func (client *Client) ChangeMediaTypeWithOptions(request *ChangeMediaTypeRequest, runtime *dara.RuntimeOptions) (_result *ChangeMediaTypeResponse, _err error) {
+func (client *Client) ChangeMediaTypeWithContext(ctx context.Context, request *ChangeMediaTypeRequest, runtime *dara.RuntimeOptions) (_result *ChangeMediaTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -529,29 +373,11 @@ func (client *Client) ChangeMediaTypeWithOptions(request *ChangeMediaTypeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeMediaTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ChangeMediaType
-//
-// @param request - ChangeMediaTypeRequest
-//
-// @return ChangeMediaTypeResponse
-func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result *ChangeMediaTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeMediaTypeResponse{}
-	_body, _err := client.ChangeMediaTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -572,7 +398,7 @@ func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCallTaskResponse
-func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCallTaskResponse, _err error) {
+func (client *Client) CreateCallTaskWithContext(ctx context.Context, request *CreateCallTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateCallTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -649,37 +475,11 @@ func (client *Client) CreateCallTaskWithOptions(request *CreateCallTaskRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCallTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a task for sending voice notifications or voice verification codes.
-//
-// Description:
-//
-// You can create up to 1,000 voice notifications for each task.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - CreateCallTaskRequest
-//
-// @return CreateCallTaskResponse
-func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *CreateCallTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCallTaskResponse{}
-	_body, _err := client.CreateCallTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -700,7 +500,7 @@ func (client *Client) CreateCallTask(request *CreateCallTaskRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRobotTaskResponse
-func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRobotTaskResponse, _err error) {
+func (client *Client) CreateRobotTaskWithContext(ctx context.Context, request *CreateRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -773,37 +573,11 @@ func (client *Client) CreateRobotTaskWithOptions(request *CreateRobotTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates an outbound robocall task.
-//
-// Description:
-//
-// You can call this operation to initiate an outbound robocall task by using the robot communication scripts preset in the Voice Messaging Service console. In an intelligent speech interaction task, you can use the robot communication scripts preset in the Voice Messaging Service console, or invoke the callback function to return the response mode configured by the business party in each call.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - CreateRobotTaskRequest
-//
-// @return CreateRobotTaskResponse
-func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result *CreateRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRobotTaskResponse{}
-	_body, _err := client.CreateRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -816,7 +590,7 @@ func (client *Client) CreateRobotTask(request *CreateRobotTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DegradeVideoFileResponse
-func (client *Client) DegradeVideoFileWithOptions(request *DegradeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *DegradeVideoFileResponse, _err error) {
+func (client *Client) DegradeVideoFileWithContext(ctx context.Context, request *DegradeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *DegradeVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,29 +639,11 @@ func (client *Client) DegradeVideoFileWithOptions(request *DegradeVideoFileReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DegradeVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DegradeVideoFile
-//
-// @param request - DegradeVideoFileRequest
-//
-// @return DegradeVideoFileResponse
-func (client *Client) DegradeVideoFile(request *DegradeVideoFileRequest) (_result *DegradeVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DegradeVideoFileResponse{}
-	_body, _err := client.DegradeVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -908,7 +664,7 @@ func (client *Client) DegradeVideoFile(request *DegradeVideoFileRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRobotTaskResponse
-func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteRobotTaskResponse, _err error) {
+func (client *Client) DeleteRobotTaskWithContext(ctx context.Context, request *DeleteRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -945,37 +701,11 @@ func (client *Client) DeleteRobotTaskWithOptions(request *DeleteRobotTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a robocall task.
-//
-// Description:
-//
-// You can call this operation to delete only tasks that are not started, that are completed, and that are terminated.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - DeleteRobotTaskRequest
-//
-// @return DeleteRobotTaskResponse
-func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result *DeleteRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRobotTaskResponse{}
-	_body, _err := client.DeleteRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -994,7 +724,7 @@ func (client *Client) DeleteRobotTask(request *DeleteRobotTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteCallTaskResponse
-func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest, runtime *dara.RuntimeOptions) (_result *ExecuteCallTaskResponse, _err error) {
+func (client *Client) ExecuteCallTaskWithContext(ctx context.Context, request *ExecuteCallTaskRequest, runtime *dara.RuntimeOptions) (_result *ExecuteCallTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1039,35 +769,11 @@ func (client *Client) ExecuteCallTaskWithOptions(request *ExecuteCallTaskRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteCallTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Executes a call task.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - ExecuteCallTaskRequest
-//
-// @return ExecuteCallTaskResponse
-func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result *ExecuteCallTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecuteCallTaskResponse{}
-	_body, _err := client.ExecuteCallTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1080,7 +786,7 @@ func (client *Client) ExecuteCallTask(request *ExecuteCallTaskRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCallMediaTypeResponse
-func (client *Client) GetCallMediaTypeWithOptions(request *GetCallMediaTypeRequest, runtime *dara.RuntimeOptions) (_result *GetCallMediaTypeResponse, _err error) {
+func (client *Client) GetCallMediaTypeWithContext(ctx context.Context, request *GetCallMediaTypeRequest, runtime *dara.RuntimeOptions) (_result *GetCallMediaTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1121,29 +827,11 @@ func (client *Client) GetCallMediaTypeWithOptions(request *GetCallMediaTypeReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCallMediaTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetCallMediaType
-//
-// @param request - GetCallMediaTypeRequest
-//
-// @return GetCallMediaTypeResponse
-func (client *Client) GetCallMediaType(request *GetCallMediaTypeRequest) (_result *GetCallMediaTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCallMediaTypeResponse{}
-	_body, _err := client.GetCallMediaTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1156,7 +844,7 @@ func (client *Client) GetCallMediaType(request *GetCallMediaTypeRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCallProgressResponse
-func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest, runtime *dara.RuntimeOptions) (_result *GetCallProgressResponse, _err error) {
+func (client *Client) GetCallProgressWithContext(ctx context.Context, request *GetCallProgressRequest, runtime *dara.RuntimeOptions) (_result *GetCallProgressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1197,29 +885,11 @@ func (client *Client) GetCallProgressWithOptions(request *GetCallProgressRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCallProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetCallProgress
-//
-// @param request - GetCallProgressRequest
-//
-// @return GetCallProgressResponse
-func (client *Client) GetCallProgress(request *GetCallProgressRequest) (_result *GetCallProgressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCallProgressResponse{}
-	_body, _err := client.GetCallProgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1238,7 +908,7 @@ func (client *Client) GetCallProgress(request *GetCallProgressRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHotlineQualificationByOrderResponse
-func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotlineQualificationByOrderRequest, runtime *dara.RuntimeOptions) (_result *GetHotlineQualificationByOrderResponse, _err error) {
+func (client *Client) GetHotlineQualificationByOrderWithContext(ctx context.Context, request *GetHotlineQualificationByOrderRequest, runtime *dara.RuntimeOptions) (_result *GetHotlineQualificationByOrderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1275,35 +945,11 @@ func (client *Client) GetHotlineQualificationByOrderWithOptions(request *GetHotl
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHotlineQualificationByOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the qualification ID based on the ID of a qualification application ticket.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - GetHotlineQualificationByOrderRequest
-//
-// @return GetHotlineQualificationByOrderResponse
-func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualificationByOrderRequest) (_result *GetHotlineQualificationByOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHotlineQualificationByOrderResponse{}
-	_body, _err := client.GetHotlineQualificationByOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1316,7 +962,7 @@ func (client *Client) GetHotlineQualificationByOrder(request *GetHotlineQualific
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTemporaryFileUrlResponse
-func (client *Client) GetTemporaryFileUrlWithOptions(request *GetTemporaryFileUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTemporaryFileUrlResponse, _err error) {
+func (client *Client) GetTemporaryFileUrlWithContext(ctx context.Context, request *GetTemporaryFileUrlRequest, runtime *dara.RuntimeOptions) (_result *GetTemporaryFileUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1353,29 +999,11 @@ func (client *Client) GetTemporaryFileUrlWithOptions(request *GetTemporaryFileUr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTemporaryFileUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetTemporaryFileUrl
-//
-// @param request - GetTemporaryFileUrlRequest
-//
-// @return GetTemporaryFileUrlResponse
-func (client *Client) GetTemporaryFileUrl(request *GetTemporaryFileUrlRequest) (_result *GetTemporaryFileUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTemporaryFileUrlResponse{}
-	_body, _err := client.GetTemporaryFileUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1394,7 +1022,7 @@ func (client *Client) GetTemporaryFileUrl(request *GetTemporaryFileUrlRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTokenResponse
-func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
+func (client *Client) GetTokenWithContext(ctx context.Context, request *GetTokenRequest, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1431,35 +1059,11 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the token for authentication.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to five times per second per account.
-//
-// @param request - GetTokenRequest
-//
-// @return GetTokenResponse
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1472,7 +1076,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetVideoFieldUrlResponse
-func (client *Client) GetVideoFieldUrlWithOptions(request *GetVideoFieldUrlRequest, runtime *dara.RuntimeOptions) (_result *GetVideoFieldUrlResponse, _err error) {
+func (client *Client) GetVideoFieldUrlWithContext(ctx context.Context, request *GetVideoFieldUrlRequest, runtime *dara.RuntimeOptions) (_result *GetVideoFieldUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1509,29 +1113,11 @@ func (client *Client) GetVideoFieldUrlWithOptions(request *GetVideoFieldUrlReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetVideoFieldUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetVideoFieldUrl
-//
-// @param request - GetVideoFieldUrlRequest
-//
-// @return GetVideoFieldUrlResponse
-func (client *Client) GetVideoFieldUrl(request *GetVideoFieldUrlRequest) (_result *GetVideoFieldUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetVideoFieldUrlResponse{}
-	_body, _err := client.GetVideoFieldUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1556,7 +1142,7 @@ func (client *Client) GetVideoFieldUrl(request *GetVideoFieldUrlRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return IvrCallResponse
-func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *dara.RuntimeOptions) (_result *IvrCallResponse, _err error) {
+func (client *Client) IvrCallWithContext(ctx context.Context, request *IvrCallRequest, runtime *dara.RuntimeOptions) (_result *IvrCallResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1629,41 +1215,11 @@ func (client *Client) IvrCallWithOptions(request *IvrCallRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &IvrCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates an interactive voice response (IVR) call to a specified number.
-//
-// Description:
-//
-//	  Your enterprise qualification is approved. For more information, see [Submit enterprise qualifications](https://help.aliyun.com/document_detail/149795.html).
-//
-//		- Voice numbers are purchased. For more information, see [Purchase numbers](https://help.aliyun.com/document_detail/149794.html).
-//
-//		- When the subscriber answers the call, the subscriber hears a voice that instructs the subscriber to press a key as needed. If the [message receipt](https://help.aliyun.com/document_detail/112503.html) feature is enabled, the Voice Messaging Service (VMS) platform returns the information about the key pressed by the subscriber to the business system. The key information includes the order confirmation, questionnaire survey, and satisfaction survey completed by the subscriber.
-//
-// ## QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - IvrCallRequest
-//
-// @return IvrCallResponse
-func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &IvrCallResponse{}
-	_body, _err := client.IvrCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1682,7 +1238,7 @@ func (client *Client) IvrCall(request *IvrCallRequest) (_result *IvrCallResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCallTaskResponse
-func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runtime *dara.RuntimeOptions) (_result *ListCallTaskResponse, _err error) {
+func (client *Client) ListCallTaskWithContext(ctx context.Context, request *ListCallTaskRequest, runtime *dara.RuntimeOptions) (_result *ListCallTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1743,35 +1299,11 @@ func (client *Client) ListCallTaskWithOptions(request *ListCallTaskRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCallTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries task information.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - ListCallTaskRequest
-//
-// @return ListCallTaskResponse
-func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListCallTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCallTaskResponse{}
-	_body, _err := client.ListCallTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1790,7 +1322,7 @@ func (client *Client) ListCallTask(request *ListCallTaskRequest) (_result *ListC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCallTaskDetailResponse
-func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *ListCallTaskDetailResponse, _err error) {
+func (client *Client) ListCallTaskDetailWithContext(ctx context.Context, request *ListCallTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *ListCallTaskDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1843,35 +1375,11 @@ func (client *Client) ListCallTaskDetailWithOptions(request *ListCallTaskDetailR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCallTaskDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a task based on the task ID.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - ListCallTaskDetailRequest
-//
-// @return ListCallTaskDetailResponse
-func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_result *ListCallTaskDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListCallTaskDetailResponse{}
-	_body, _err := client.ListCallTaskDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1890,7 +1398,7 @@ func (client *Client) ListCallTaskDetail(request *ListCallTaskDetailRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListHotlineTransferRegisterFileResponse
-func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHotlineTransferRegisterFileRequest, runtime *dara.RuntimeOptions) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
+func (client *Client) ListHotlineTransferRegisterFileWithContext(ctx context.Context, request *ListHotlineTransferRegisterFileRequest, runtime *dara.RuntimeOptions) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1939,35 +1447,11 @@ func (client *Client) ListHotlineTransferRegisterFileWithOptions(request *ListHo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHotlineTransferRegisterFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the registration information about a China 400 number.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - ListHotlineTransferRegisterFileRequest
-//
-// @return ListHotlineTransferRegisterFileResponse
-func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransferRegisterFileRequest) (_result *ListHotlineTransferRegisterFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListHotlineTransferRegisterFileResponse{}
-	_body, _err := client.ListHotlineTransferRegisterFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1980,7 +1464,7 @@ func (client *Client) ListHotlineTransferRegisterFile(request *ListHotlineTransf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PauseVideoFileResponse
-func (client *Client) PauseVideoFileWithOptions(request *PauseVideoFileRequest, runtime *dara.RuntimeOptions) (_result *PauseVideoFileResponse, _err error) {
+func (client *Client) PauseVideoFileWithContext(ctx context.Context, request *PauseVideoFileRequest, runtime *dara.RuntimeOptions) (_result *PauseVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2021,29 +1505,11 @@ func (client *Client) PauseVideoFileWithOptions(request *PauseVideoFileRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &PauseVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # PauseVideoFile
-//
-// @param request - PauseVideoFileRequest
-//
-// @return PauseVideoFileResponse
-func (client *Client) PauseVideoFile(request *PauseVideoFileRequest) (_result *PauseVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PauseVideoFileResponse{}
-	_body, _err := client.PauseVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2056,7 +1522,7 @@ func (client *Client) PauseVideoFile(request *PauseVideoFileRequest) (_result *P
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PlayVideoFileResponse
-func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, runtime *dara.RuntimeOptions) (_result *PlayVideoFileResponse, _err error) {
+func (client *Client) PlayVideoFileWithContext(ctx context.Context, request *PlayVideoFileRequest, runtime *dara.RuntimeOptions) (_result *PlayVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2109,29 +1575,11 @@ func (client *Client) PlayVideoFileWithOptions(request *PlayVideoFileRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &PlayVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # PlayVideoFile
-//
-// @param request - PlayVideoFileRequest
-//
-// @return PlayVideoFileResponse
-func (client *Client) PlayVideoFile(request *PlayVideoFileRequest) (_result *PlayVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PlayVideoFileResponse{}
-	_body, _err := client.PlayVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2152,7 +1600,7 @@ func (client *Client) PlayVideoFile(request *PlayVideoFileRequest) (_result *Pla
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCallDetailByCallIdResponse
-func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetailByCallIdRequest, runtime *dara.RuntimeOptions) (_result *QueryCallDetailByCallIdResponse, _err error) {
+func (client *Client) QueryCallDetailByCallIdWithContext(ctx context.Context, request *QueryCallDetailByCallIdRequest, runtime *dara.RuntimeOptions) (_result *QueryCallDetailByCallIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2197,37 +1645,11 @@ func (client *Client) QueryCallDetailByCallIdWithOptions(request *QueryCallDetai
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCallDetailByCallIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a call.
-//
-// Description:
-//
-// QueryCallDetailByCallId is a common query operation. You can call this operation to query the details of a voice notification, voice verification code, interactive voice response (IVR), intelligent inbound voice call, intelligent outbound voice call, or intelligent robocall.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryCallDetailByCallIdRequest
-//
-// @return QueryCallDetailByCallIdResponse
-func (client *Client) QueryCallDetailByCallId(request *QueryCallDetailByCallIdRequest) (_result *QueryCallDetailByCallIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCallDetailByCallIdResponse{}
-	_body, _err := client.QueryCallDetailByCallIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2240,7 +1662,7 @@ func (client *Client) QueryCallDetailByCallId(request *QueryCallDetailByCallIdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCallDetailByTaskIdResponse
-func (client *Client) QueryCallDetailByTaskIdWithOptions(request *QueryCallDetailByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *QueryCallDetailByTaskIdResponse, _err error) {
+func (client *Client) QueryCallDetailByTaskIdWithContext(ctx context.Context, request *QueryCallDetailByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *QueryCallDetailByTaskIdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2285,29 +1707,11 @@ func (client *Client) QueryCallDetailByTaskIdWithOptions(request *QueryCallDetai
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCallDetailByTaskIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the call details of an outbound robocall task.
-//
-// @param request - QueryCallDetailByTaskIdRequest
-//
-// @return QueryCallDetailByTaskIdResponse
-func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRequest) (_result *QueryCallDetailByTaskIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCallDetailByTaskIdResponse{}
-	_body, _err := client.QueryCallDetailByTaskIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2326,7 +1730,7 @@ func (client *Client) QueryCallDetailByTaskId(request *QueryCallDetailByTaskIdRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCallInPoolTransferConfigResponse
-func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCallInPoolTransferConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
+func (client *Client) QueryCallInPoolTransferConfigWithContext(ctx context.Context, request *QueryCallInPoolTransferConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2363,35 +1767,11 @@ func (client *Client) QueryCallInPoolTransferConfigWithOptions(request *QueryCal
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCallInPoolTransferConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the configuration of the phone number used to transfer a call.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryCallInPoolTransferConfigRequest
-//
-// @return QueryCallInPoolTransferConfigResponse
-func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTransferConfigRequest) (_result *QueryCallInPoolTransferConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCallInPoolTransferConfigResponse{}
-	_body, _err := client.QueryCallInPoolTransferConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2410,7 +1790,7 @@ func (client *Client) QueryCallInPoolTransferConfig(request *QueryCallInPoolTran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCallInTransferRecordResponse
-func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInTransferRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryCallInTransferRecordResponse, _err error) {
+func (client *Client) QueryCallInTransferRecordWithContext(ctx context.Context, request *QueryCallInTransferRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryCallInTransferRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2463,35 +1843,11 @@ func (client *Client) QueryCallInTransferRecordWithOptions(request *QueryCallInT
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCallInTransferRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries call transfer records.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryCallInTransferRecordRequest
-//
-// @return QueryCallInTransferRecordResponse
-func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferRecordRequest) (_result *QueryCallInTransferRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCallInTransferRecordResponse{}
-	_body, _err := client.QueryCallInTransferRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2504,7 +1860,7 @@ func (client *Client) QueryCallInTransferRecord(request *QueryCallInTransferReco
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotInfoListResponse
-func (client *Client) QueryRobotInfoListWithOptions(request *QueryRobotInfoListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotInfoListResponse, _err error) {
+func (client *Client) QueryRobotInfoListWithContext(ctx context.Context, request *QueryRobotInfoListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotInfoListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2541,29 +1897,11 @@ func (client *Client) QueryRobotInfoListWithOptions(request *QueryRobotInfoListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotInfoListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of robots.
-//
-// @param request - QueryRobotInfoListRequest
-//
-// @return QueryRobotInfoListResponse
-func (client *Client) QueryRobotInfoList(request *QueryRobotInfoListRequest) (_result *QueryRobotInfoListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotInfoListResponse{}
-	_body, _err := client.QueryRobotInfoListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2582,7 +1920,7 @@ func (client *Client) QueryRobotInfoList(request *QueryRobotInfoListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotTaskCallDetailResponse
-func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTaskCallDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskCallDetailResponse, _err error) {
+func (client *Client) QueryRobotTaskCallDetailWithContext(ctx context.Context, request *QueryRobotTaskCallDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskCallDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2627,35 +1965,11 @@ func (client *Client) QueryRobotTaskCallDetailWithOptions(request *QueryRobotTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotTaskCallDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the call details of a called number in a robocall task.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryRobotTaskCallDetailRequest
-//
-// @return QueryRobotTaskCallDetailResponse
-func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetailRequest) (_result *QueryRobotTaskCallDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotTaskCallDetailResponse{}
-	_body, _err := client.QueryRobotTaskCallDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2674,7 +1988,7 @@ func (client *Client) QueryRobotTaskCallDetail(request *QueryRobotTaskCallDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotTaskCallListResponse
-func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskCallListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskCallListResponse, _err error) {
+func (client *Client) QueryRobotTaskCallListWithContext(ctx context.Context, request *QueryRobotTaskCallListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskCallListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2747,35 +2061,11 @@ func (client *Client) QueryRobotTaskCallListWithOptions(request *QueryRobotTaskC
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotTaskCallListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a robocall task.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryRobotTaskCallListRequest
-//
-// @return QueryRobotTaskCallListResponse
-func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequest) (_result *QueryRobotTaskCallListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotTaskCallListResponse{}
-	_body, _err := client.QueryRobotTaskCallListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2794,7 +2084,7 @@ func (client *Client) QueryRobotTaskCallList(request *QueryRobotTaskCallListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotTaskDetailResponse
-func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskDetailResponse, _err error) {
+func (client *Client) QueryRobotTaskDetailWithContext(ctx context.Context, request *QueryRobotTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2831,35 +2121,11 @@ func (client *Client) QueryRobotTaskDetailWithOptions(request *QueryRobotTaskDet
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotTaskDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a robocall task.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryRobotTaskDetailRequest
-//
-// @return QueryRobotTaskDetailResponse
-func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest) (_result *QueryRobotTaskDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotTaskDetailResponse{}
-	_body, _err := client.QueryRobotTaskDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2878,7 +2144,7 @@ func (client *Client) QueryRobotTaskDetail(request *QueryRobotTaskDetailRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotTaskListResponse
-func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskListResponse, _err error) {
+func (client *Client) QueryRobotTaskListWithContext(ctx context.Context, request *QueryRobotTaskListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotTaskListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2931,35 +2197,11 @@ func (client *Client) QueryRobotTaskListWithOptions(request *QueryRobotTaskListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotTaskListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about all robocall tasks.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryRobotTaskListRequest
-//
-// @return QueryRobotTaskListResponse
-func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_result *QueryRobotTaskListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotTaskListResponse{}
-	_body, _err := client.QueryRobotTaskListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2978,7 +2220,7 @@ func (client *Client) QueryRobotTaskList(request *QueryRobotTaskListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRobotv2AllListResponse
-func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotv2AllListResponse, _err error) {
+func (client *Client) QueryRobotv2AllListWithContext(ctx context.Context, request *QueryRobotv2AllListRequest, runtime *dara.RuntimeOptions) (_result *QueryRobotv2AllListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3011,35 +2253,11 @@ func (client *Client) QueryRobotv2AllListWithOptions(request *QueryRobotv2AllLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRobotv2AllListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of robot communication scripts.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryRobotv2AllListRequest
-//
-// @return QueryRobotv2AllListResponse
-func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (_result *QueryRobotv2AllListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRobotv2AllListResponse{}
-	_body, _err := client.QueryRobotv2AllListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3052,7 +2270,7 @@ func (client *Client) QueryRobotv2AllList(request *QueryRobotv2AllListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryVideoPlayProgressResponse
-func (client *Client) QueryVideoPlayProgressWithOptions(request *QueryVideoPlayProgressRequest, runtime *dara.RuntimeOptions) (_result *QueryVideoPlayProgressResponse, _err error) {
+func (client *Client) QueryVideoPlayProgressWithContext(ctx context.Context, request *QueryVideoPlayProgressRequest, runtime *dara.RuntimeOptions) (_result *QueryVideoPlayProgressResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3093,29 +2311,11 @@ func (client *Client) QueryVideoPlayProgressWithOptions(request *QueryVideoPlayP
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryVideoPlayProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # QueryVideoPlayProgress
-//
-// @param request - QueryVideoPlayProgressRequest
-//
-// @return QueryVideoPlayProgressResponse
-func (client *Client) QueryVideoPlayProgress(request *QueryVideoPlayProgressRequest) (_result *QueryVideoPlayProgressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryVideoPlayProgressResponse{}
-	_body, _err := client.QueryVideoPlayProgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3134,7 +2334,7 @@ func (client *Client) QueryVideoPlayProgress(request *QueryVideoPlayProgressRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryVirtualNumberResponse
-func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberRequest, runtime *dara.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
+func (client *Client) QueryVirtualNumberWithContext(ctx context.Context, request *QueryVirtualNumberRequest, runtime *dara.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3183,35 +2383,11 @@ func (client *Client) QueryVirtualNumberWithOptions(request *QueryVirtualNumberR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryVirtualNumberResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of virtual numbers.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryVirtualNumberRequest
-//
-// @return QueryVirtualNumberResponse
-func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_result *QueryVirtualNumberResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryVirtualNumberResponse{}
-	_body, _err := client.QueryVirtualNumberWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3230,7 +2406,7 @@ func (client *Client) QueryVirtualNumber(request *QueryVirtualNumberRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryVirtualNumberRelationResponse
-func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtualNumberRelationRequest, runtime *dara.RuntimeOptions) (_result *QueryVirtualNumberRelationResponse, _err error) {
+func (client *Client) QueryVirtualNumberRelationWithContext(ctx context.Context, request *QueryVirtualNumberRelationRequest, runtime *dara.RuntimeOptions) (_result *QueryVirtualNumberRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3299,35 +2475,11 @@ func (client *Client) QueryVirtualNumberRelationWithOptions(request *QueryVirtua
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryVirtualNumberRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of associations between virtual numbers and real numbers.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 200 times per second per account.
-//
-// @param request - QueryVirtualNumberRelationRequest
-//
-// @return QueryVirtualNumberRelationResponse
-func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRelationRequest) (_result *QueryVirtualNumberRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryVirtualNumberRelationResponse{}
-	_body, _err := client.QueryVirtualNumberRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3340,7 +2492,7 @@ func (client *Client) QueryVirtualNumberRelation(request *QueryVirtualNumberRela
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryVoiceFileAuditInfoResponse
-func (client *Client) QueryVoiceFileAuditInfoWithOptions(request *QueryVoiceFileAuditInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryVoiceFileAuditInfoResponse, _err error) {
+func (client *Client) QueryVoiceFileAuditInfoWithContext(ctx context.Context, request *QueryVoiceFileAuditInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryVoiceFileAuditInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3381,29 +2533,11 @@ func (client *Client) QueryVoiceFileAuditInfoWithOptions(request *QueryVoiceFile
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryVoiceFileAuditInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the review state of a voice file.
-//
-// @param request - QueryVoiceFileAuditInfoRequest
-//
-// @return QueryVoiceFileAuditInfoResponse
-func (client *Client) QueryVoiceFileAuditInfo(request *QueryVoiceFileAuditInfoRequest) (_result *QueryVoiceFileAuditInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryVoiceFileAuditInfoResponse{}
-	_body, _err := client.QueryVoiceFileAuditInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3416,7 +2550,7 @@ func (client *Client) QueryVoiceFileAuditInfo(request *QueryVoiceFileAuditInfoRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecoverCallInConfigResponse
-func (client *Client) RecoverCallInConfigWithOptions(request *RecoverCallInConfigRequest, runtime *dara.RuntimeOptions) (_result *RecoverCallInConfigResponse, _err error) {
+func (client *Client) RecoverCallInConfigWithContext(ctx context.Context, request *RecoverCallInConfigRequest, runtime *dara.RuntimeOptions) (_result *RecoverCallInConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3453,29 +2587,11 @@ func (client *Client) RecoverCallInConfigWithOptions(request *RecoverCallInConfi
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecoverCallInConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Resumes the inbound call that is transferred by using a China 400 number.
-//
-// @param request - RecoverCallInConfigRequest
-//
-// @return RecoverCallInConfigResponse
-func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (_result *RecoverCallInConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RecoverCallInConfigResponse{}
-	_body, _err := client.RecoverCallInConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3488,7 +2604,7 @@ func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResumeVideoFileResponse
-func (client *Client) ResumeVideoFileWithOptions(request *ResumeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *ResumeVideoFileResponse, _err error) {
+func (client *Client) ResumeVideoFileWithContext(ctx context.Context, request *ResumeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *ResumeVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3529,29 +2645,11 @@ func (client *Client) ResumeVideoFileWithOptions(request *ResumeVideoFileRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ResumeVideoFile
-//
-// @param request - ResumeVideoFileRequest
-//
-// @return ResumeVideoFileResponse
-func (client *Client) ResumeVideoFile(request *ResumeVideoFileRequest) (_result *ResumeVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResumeVideoFileResponse{}
-	_body, _err := client.ResumeVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3564,7 +2662,7 @@ func (client *Client) ResumeVideoFile(request *ResumeVideoFileRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SeekVideoFileResponse
-func (client *Client) SeekVideoFileWithOptions(request *SeekVideoFileRequest, runtime *dara.RuntimeOptions) (_result *SeekVideoFileResponse, _err error) {
+func (client *Client) SeekVideoFileWithContext(ctx context.Context, request *SeekVideoFileRequest, runtime *dara.RuntimeOptions) (_result *SeekVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3609,29 +2707,11 @@ func (client *Client) SeekVideoFileWithOptions(request *SeekVideoFileRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &SeekVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # SeekVideoFile
-//
-// @param request - SeekVideoFileRequest
-//
-// @return SeekVideoFileResponse
-func (client *Client) SeekVideoFile(request *SeekVideoFileRequest) (_result *SeekVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SeekVideoFileResponse{}
-	_body, _err := client.SeekVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3650,7 +2730,7 @@ func (client *Client) SeekVideoFile(request *SeekVideoFileRequest) (_result *See
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendVerificationResponse
-func (client *Client) SendVerificationWithOptions(request *SendVerificationRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationResponse, _err error) {
+func (client *Client) SendVerificationWithContext(ctx context.Context, request *SendVerificationRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3695,35 +2775,11 @@ func (client *Client) SendVerificationWithOptions(request *SendVerificationReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendVerificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends an SMS verification code.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - SendVerificationRequest
-//
-// @return SendVerificationResponse
-func (client *Client) SendVerification(request *SendVerificationRequest) (_result *SendVerificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendVerificationResponse{}
-	_body, _err := client.SendVerificationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3742,7 +2798,7 @@ func (client *Client) SendVerification(request *SendVerificationRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetTransferCalleePoolConfigResponse
-func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransferCalleePoolConfigRequest, runtime *dara.RuntimeOptions) (_result *SetTransferCalleePoolConfigResponse, _err error) {
+func (client *Client) SetTransferCalleePoolConfigWithContext(ctx context.Context, request *SetTransferCalleePoolConfigRequest, runtime *dara.RuntimeOptions) (_result *SetTransferCalleePoolConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3791,35 +2847,11 @@ func (client *Client) SetTransferCalleePoolConfigWithOptions(request *SetTransfe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetTransferCalleePoolConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets the phone numbers for transferring a call.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - SetTransferCalleePoolConfigRequest
-//
-// @return SetTransferCalleePoolConfigResponse
-func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePoolConfigRequest) (_result *SetTransferCalleePoolConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetTransferCalleePoolConfigResponse{}
-	_body, _err := client.SetTransferCalleePoolConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3842,7 +2874,7 @@ func (client *Client) SetTransferCalleePoolConfig(request *SetTransferCalleePool
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SingleCallByTtsResponse
-func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByTtsResponse, _err error) {
+func (client *Client) SingleCallByTtsWithContext(ctx context.Context, request *SingleCallByTtsRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByTtsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3907,39 +2939,11 @@ func (client *Client) SingleCallByTtsWithOptions(request *SingleCallByTtsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &SingleCallByTtsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a voice verification code or a voice notification with variables to a specified phone number.
-//
-// Description:
-//
-//	  Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-//
-//		- For more information about voice plans or voice service billing, see [Pricing of VMS on China site (aliyun.com)](https://help.aliyun.com/document_detail/150083.html).
-//
-// ### QPS limits
-//
-// You can call this operation up to 1,000 times per second per account.
-//
-// @param request - SingleCallByTtsRequest
-//
-// @return SingleCallByTtsResponse
-func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result *SingleCallByTtsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SingleCallByTtsResponse{}
-	_body, _err := client.SingleCallByTtsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3952,7 +2956,7 @@ func (client *Client) SingleCallByTts(request *SingleCallByTtsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SingleCallByVideoResponse
-func (client *Client) SingleCallByVideoWithOptions(request *SingleCallByVideoRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByVideoResponse, _err error) {
+func (client *Client) SingleCallByVideoWithContext(ctx context.Context, request *SingleCallByVideoRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByVideoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4017,29 +3021,11 @@ func (client *Client) SingleCallByVideoWithOptions(request *SingleCallByVideoReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SingleCallByVideoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 语音视频单呼接口
-//
-// @param request - SingleCallByVideoRequest
-//
-// @return SingleCallByVideoResponse
-func (client *Client) SingleCallByVideo(request *SingleCallByVideoRequest) (_result *SingleCallByVideoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SingleCallByVideoResponse{}
-	_body, _err := client.SingleCallByVideoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4062,7 +3048,7 @@ func (client *Client) SingleCallByVideo(request *SingleCallByVideoRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SingleCallByVoiceResponse
-func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByVoiceResponse, _err error) {
+func (client *Client) SingleCallByVoiceWithContext(ctx context.Context, request *SingleCallByVoiceRequest, runtime *dara.RuntimeOptions) (_result *SingleCallByVoiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4123,39 +3109,11 @@ func (client *Client) SingleCallByVoiceWithOptions(request *SingleCallByVoiceReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SingleCallByVoiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends a voice notification to a phone number by using a voice notification file.
-//
-// Description:
-//
-// > Due to business adjustments, the updates of the voice notification and voice verification code services have been stopped in regions outside the Chinese mainland and the services have been discontinued since March 2022. Only qualified customers can continue using the voice notification and voice verification code services.
-//
-// You can call the [SingleCallByTts](https://help.aliyun.com/document_detail/393519.html) operation to send voice notifications with variables.
-//
-// ### QPS limits
-//
-// You can call this operation up to 1,200 times per second per account.
-//
-// @param request - SingleCallByVoiceRequest
-//
-// @return SingleCallByVoiceResponse
-func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_result *SingleCallByVoiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SingleCallByVoiceResponse{}
-	_body, _err := client.SingleCallByVoiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4168,7 +3126,7 @@ func (client *Client) SingleCallByVoice(request *SingleCallByVoiceRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SkipVideoFileResponse
-func (client *Client) SkipVideoFileWithOptions(request *SkipVideoFileRequest, runtime *dara.RuntimeOptions) (_result *SkipVideoFileResponse, _err error) {
+func (client *Client) SkipVideoFileWithContext(ctx context.Context, request *SkipVideoFileRequest, runtime *dara.RuntimeOptions) (_result *SkipVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4217,29 +3175,11 @@ func (client *Client) SkipVideoFileWithOptions(request *SkipVideoFileRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &SkipVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # SkipVideoFile
-//
-// @param request - SkipVideoFileRequest
-//
-// @return SkipVideoFileResponse
-func (client *Client) SkipVideoFile(request *SkipVideoFileRequest) (_result *SkipVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SkipVideoFileResponse{}
-	_body, _err := client.SkipVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4262,7 +3202,7 @@ func (client *Client) SkipVideoFile(request *SkipVideoFileRequest) (_result *Ski
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SmartCallResponse
-func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *dara.RuntimeOptions) (_result *SmartCallResponse, _err error) {
+func (client *Client) SmartCallWithContext(ctx context.Context, request *SmartCallRequest, runtime *dara.RuntimeOptions) (_result *SmartCallResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4403,39 +3343,11 @@ func (client *Client) SmartCallWithOptions(request *SmartCallRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &SmartCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates an intelligent voice call.
-//
-// Description:
-//
-//	  The SmartCall operation must be used together with the [intelligent outbound HTTP operation](https://help.aliyun.com/document_detail/112703.html). After the call initiated by the Voice Messaging Service (VMS) platform is connected, the VMS platform sends the text converted from speech back to the business side, and the business side then returns the follow-up action to the VMS platform.
-//
-//		- The SmartCall operation does not support the following characters: `@ = : "" $ { } ^ 	- ￥`.
-//
-// ### QPS limits
-//
-// You can call this operation up to 1,000 times per second per account.
-//
-// @param request - SmartCallRequest
-//
-// @return SmartCallResponse
-func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SmartCallResponse{}
-	_body, _err := client.SmartCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4458,7 +3370,7 @@ func (client *Client) SmartCall(request *SmartCallRequest) (_result *SmartCallRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SmartCallOperateResponse
-func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateRequest, runtime *dara.RuntimeOptions) (_result *SmartCallOperateResponse, _err error) {
+func (client *Client) SmartCallOperateWithContext(ctx context.Context, request *SmartCallOperateRequest, runtime *dara.RuntimeOptions) (_result *SmartCallOperateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4503,39 +3415,11 @@ func (client *Client) SmartCallOperateWithOptions(request *SmartCallOperateReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &SmartCallOperateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Initiates an action in an outbound robocall. This operation is applicable only when the robocall is transferred to an agent or an agent is listening in on the conversation between the robot and the user.
-//
-// Description:
-//
-// You can call this operation to initiate a specified action on the called number of an outbound robocall when the call is transferred to an agent of the call center.
-//
-// > You can only initiate the action of bridging a called number and an agent of the call center.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - SmartCallOperateRequest
-//
-// @return SmartCallOperateResponse
-func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_result *SmartCallOperateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SmartCallOperateResponse{}
-	_body, _err := client.SmartCallOperateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4554,7 +3438,7 @@ func (client *Client) SmartCallOperate(request *SmartCallOperateRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartRobotTaskResponse
-func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *StartRobotTaskResponse, _err error) {
+func (client *Client) StartRobotTaskWithContext(ctx context.Context, request *StartRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *StartRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4595,35 +3479,11 @@ func (client *Client) StartRobotTaskWithOptions(request *StartRobotTaskRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Starts a robocall task immediately or at a scheduled time.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - StartRobotTaskRequest
-//
-// @return StartRobotTaskResponse
-func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *StartRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartRobotTaskResponse{}
-	_body, _err := client.StartRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4636,7 +3496,7 @@ func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopCallInConfigResponse
-func (client *Client) StopCallInConfigWithOptions(request *StopCallInConfigRequest, runtime *dara.RuntimeOptions) (_result *StopCallInConfigResponse, _err error) {
+func (client *Client) StopCallInConfigWithContext(ctx context.Context, request *StopCallInConfigRequest, runtime *dara.RuntimeOptions) (_result *StopCallInConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4673,29 +3533,11 @@ func (client *Client) StopCallInConfigWithOptions(request *StopCallInConfigReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopCallInConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops the inbound call that is transferred from a China 400 number.
-//
-// @param request - StopCallInConfigRequest
-//
-// @return StopCallInConfigResponse
-func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_result *StopCallInConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopCallInConfigResponse{}
-	_body, _err := client.StopCallInConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4716,7 +3558,7 @@ func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopRobotTaskResponse
-func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *StopRobotTaskResponse, _err error) {
+func (client *Client) StopRobotTaskWithContext(ctx context.Context, request *StopRobotTaskRequest, runtime *dara.RuntimeOptions) (_result *StopRobotTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4753,37 +3595,11 @@ func (client *Client) StopRobotTaskWithOptions(request *StopRobotTaskRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopRobotTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a robocall task that is in progress.
-//
-// Description:
-//
-// After you stop a robocall task, you can call the [StartRobotTask](~~StartRobotTask~~) operation to start it again.
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - StopRobotTaskRequest
-//
-// @return StopRobotTaskResponse
-func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *StopRobotTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopRobotTaskResponse{}
-	_body, _err := client.StopRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4802,7 +3618,7 @@ func (client *Client) StopRobotTask(request *StopRobotTaskRequest) (_result *Sto
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitHotlineTransferRegisterResponse
-func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHotlineTransferRegisterRequest, runtime *dara.RuntimeOptions) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
+func (client *Client) SubmitHotlineTransferRegisterWithContext(ctx context.Context, request *SubmitHotlineTransferRegisterRequest, runtime *dara.RuntimeOptions) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4875,35 +3691,11 @@ func (client *Client) SubmitHotlineTransferRegisterWithOptions(request *SubmitHo
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitHotlineTransferRegisterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits a China 400 number for registration.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - SubmitHotlineTransferRegisterRequest
-//
-// @return SubmitHotlineTransferRegisterResponse
-func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransferRegisterRequest) (_result *SubmitHotlineTransferRegisterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubmitHotlineTransferRegisterResponse{}
-	_body, _err := client.SubmitHotlineTransferRegisterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4916,7 +3708,7 @@ func (client *Client) SubmitHotlineTransferRegister(request *SubmitHotlineTransf
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeVideoFileResponse
-func (client *Client) UpgradeVideoFileWithOptions(request *UpgradeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *UpgradeVideoFileResponse, _err error) {
+func (client *Client) UpgradeVideoFileWithContext(ctx context.Context, request *UpgradeVideoFileRequest, runtime *dara.RuntimeOptions) (_result *UpgradeVideoFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4965,29 +3757,11 @@ func (client *Client) UpgradeVideoFileWithOptions(request *UpgradeVideoFileReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeVideoFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # UpgradeVideoFile
-//
-// @param request - UpgradeVideoFileRequest
-//
-// @return UpgradeVideoFileResponse
-func (client *Client) UpgradeVideoFile(request *UpgradeVideoFileRequest) (_result *UpgradeVideoFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeVideoFileResponse{}
-	_body, _err := client.UpgradeVideoFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5006,7 +3780,7 @@ func (client *Client) UpgradeVideoFile(request *UpgradeVideoFileRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadRobotTaskCalledFileResponse
-func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotTaskCalledFileRequest, runtime *dara.RuntimeOptions) (_result *UploadRobotTaskCalledFileResponse, _err error) {
+func (client *Client) UploadRobotTaskCalledFileWithContext(ctx context.Context, request *UploadRobotTaskCalledFileRequest, runtime *dara.RuntimeOptions) (_result *UploadRobotTaskCalledFileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5055,34 +3829,10 @@ func (client *Client) UploadRobotTaskCalledFileWithOptions(request *UploadRobotT
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadRobotTaskCalledFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Uploads the called numbers of a robocall task.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - UploadRobotTaskCalledFileRequest
-//
-// @return UploadRobotTaskCalledFileResponse
-func (client *Client) UploadRobotTaskCalledFile(request *UploadRobotTaskCalledFileRequest) (_result *UploadRobotTaskCalledFileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UploadRobotTaskCalledFileResponse{}
-	_body, _err := client.UploadRobotTaskCalledFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
