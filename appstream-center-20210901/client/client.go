@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -583,6 +582,10 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 
 	if !dara.IsNil(request.VSwitchIds) {
 		body["VSwitchIds"] = request.VSwitchIds
+	}
+
+	if !dara.IsNil(request.VirtualNodePoolId) {
+		body["VirtualNodePoolId"] = request.VirtualNodePoolId
 	}
 
 	if !dara.IsNil(request.WuyingServerName) {
@@ -2150,6 +2153,11 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AddVirtualNodePoolStatusList) {
+		bodyFlat["AddVirtualNodePoolStatusList"] = request.AddVirtualNodePoolStatusList
+	}
+
 	if !dara.IsNil(request.BizRegionId) {
 		body["BizRegionId"] = request.BizRegionId
 	}
@@ -2182,7 +2190,10 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 		body["Status"] = request.Status
 	}
 
-	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.VirtualNodePoolId) {
+		body["VirtualNodePoolId"] = request.VirtualNodePoolId
+	}
+
 	if !dara.IsNil(request.WuyingServerIdList) {
 		bodyFlat["WuyingServerIdList"] = request.WuyingServerIdList
 	}
@@ -2574,6 +2585,22 @@ func (client *Client) ModifyNodePoolAmount(request *ModifyNodePoolAmountRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+//
+// Description:
+//
+// You can select one of the following scaling policies for cloud app resources:
+//
+//   - No scaling: Resources are not scaled.
+//
+//   - Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+//
+//   - Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+//
+// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+//
 // @param tmpReq - ModifyNodePoolAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2634,6 +2661,22 @@ func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolA
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+//
+// Description:
+//
+// You can select one of the following scaling policies for cloud app resources:
+//
+//   - No scaling: Resources are not scaled.
+//
+//   - Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+//
+//   - Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+//
+// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+//
 // @param request - ModifyNodePoolAttributeRequest
 //
 // @return ModifyNodePoolAttributeResponse

@@ -9,6 +9,8 @@ type iListWuyingServerRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAddVirtualNodePoolStatusList(v []*string) *ListWuyingServerRequest
+	GetAddVirtualNodePoolStatusList() []*string
 	SetBizRegionId(v string) *ListWuyingServerRequest
 	GetBizRegionId() *string
 	SetChargeType(v string) *ListWuyingServerRequest
@@ -25,6 +27,8 @@ type iListWuyingServerRequest interface {
 	GetServerInstanceType() *string
 	SetStatus(v string) *ListWuyingServerRequest
 	GetStatus() *string
+	SetVirtualNodePoolId(v string) *ListWuyingServerRequest
+	GetVirtualNodePoolId() *string
 	SetWuyingServerIdList(v []*string) *ListWuyingServerRequest
 	GetWuyingServerIdList() []*string
 	SetWuyingServerNameOrId(v string) *ListWuyingServerRequest
@@ -32,6 +36,7 @@ type iListWuyingServerRequest interface {
 }
 
 type ListWuyingServerRequest struct {
+	AddVirtualNodePoolStatusList []*string `json:"AddVirtualNodePoolStatusList,omitempty" xml:"AddVirtualNodePoolStatusList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cn-hangzhou
@@ -64,6 +69,7 @@ type ListWuyingServerRequest struct {
 	//
 	// RUNNING
 	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	VirtualNodePoolId  *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	WuyingServerIdList []*string `json:"WuyingServerIdList,omitempty" xml:"WuyingServerIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -77,6 +83,10 @@ func (s ListWuyingServerRequest) String() string {
 
 func (s ListWuyingServerRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListWuyingServerRequest) GetAddVirtualNodePoolStatusList() []*string {
+	return s.AddVirtualNodePoolStatusList
 }
 
 func (s *ListWuyingServerRequest) GetBizRegionId() *string {
@@ -111,12 +121,21 @@ func (s *ListWuyingServerRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListWuyingServerRequest) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
+}
+
 func (s *ListWuyingServerRequest) GetWuyingServerIdList() []*string {
 	return s.WuyingServerIdList
 }
 
 func (s *ListWuyingServerRequest) GetWuyingServerNameOrId() *string {
 	return s.WuyingServerNameOrId
+}
+
+func (s *ListWuyingServerRequest) SetAddVirtualNodePoolStatusList(v []*string) *ListWuyingServerRequest {
+	s.AddVirtualNodePoolStatusList = v
+	return s
 }
 
 func (s *ListWuyingServerRequest) SetBizRegionId(v string) *ListWuyingServerRequest {
@@ -156,6 +175,11 @@ func (s *ListWuyingServerRequest) SetServerInstanceType(v string) *ListWuyingSer
 
 func (s *ListWuyingServerRequest) SetStatus(v string) *ListWuyingServerRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListWuyingServerRequest) SetVirtualNodePoolId(v string) *ListWuyingServerRequest {
+	s.VirtualNodePoolId = &v
 	return s
 }
 

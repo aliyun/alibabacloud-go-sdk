@@ -464,6 +464,10 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 		body["VSwitchIds"] = request.VSwitchIds
 	}
 
+	if !dara.IsNil(request.VirtualNodePoolId) {
+		body["VirtualNodePoolId"] = request.VirtualNodePoolId
+	}
+
 	if !dara.IsNil(request.WuyingServerName) {
 		body["WuyingServerName"] = request.WuyingServerName
 	}
@@ -1620,6 +1624,11 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AddVirtualNodePoolStatusList) {
+		bodyFlat["AddVirtualNodePoolStatusList"] = request.AddVirtualNodePoolStatusList
+	}
+
 	if !dara.IsNil(request.BizRegionId) {
 		body["BizRegionId"] = request.BizRegionId
 	}
@@ -1652,7 +1661,10 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 		body["Status"] = request.Status
 	}
 
-	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.VirtualNodePoolId) {
+		body["VirtualNodePoolId"] = request.VirtualNodePoolId
+	}
+
 	if !dara.IsNil(request.WuyingServerIdList) {
 		bodyFlat["WuyingServerIdList"] = request.WuyingServerIdList
 	}
@@ -1950,6 +1962,22 @@ func (client *Client) ModifyNodePoolAmountWithContext(ctx context.Context, tmpRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+//
+// Description:
+//
+// You can select one of the following scaling policies for cloud app resources:
+//
+//   - No scaling: Resources are not scaled.
+//
+//   - Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+//
+//   - Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+//
+// Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+//
 // @param tmpReq - ModifyNodePoolAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

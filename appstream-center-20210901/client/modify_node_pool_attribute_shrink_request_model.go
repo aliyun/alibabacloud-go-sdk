@@ -22,6 +22,14 @@ type iModifyNodePoolAttributeShrinkRequest interface {
 }
 
 type ModifyNodePoolAttributeShrinkRequest struct {
+	// The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	//
+	// Valid values:
+	//
+	// 	- cn-shanghai: China (Shanghai)
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -29,13 +37,18 @@ type ModifyNodePoolAttributeShrinkRequest struct {
 	// example:
 	//
 	// 2
-	NodeCapacity           *int32  `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// The auto scaling policy used by the delivery group.
 	NodePoolStrategyShrink *string `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty"`
 	// example:
 	//
 	// rg-ew7va2g1wl3vm****
 	PoolId *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
-	// 产品类型。
+	// The product type.
+	//
+	// Valid value:
+	//
+	// 	- CloudApp: App Streaming
 	//
 	// example:
 	//

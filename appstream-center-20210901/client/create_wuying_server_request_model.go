@@ -43,6 +43,8 @@ type iCreateWuyingServerRequest interface {
 	GetSystemDiskSize() *int32
 	SetVSwitchIds(v []*string) *CreateWuyingServerRequest
 	GetVSwitchIds() []*string
+	SetVirtualNodePoolId(v string) *CreateWuyingServerRequest
+	GetVirtualNodePoolId() *string
 	SetWuyingServerName(v string) *CreateWuyingServerRequest
 	GetWuyingServerName() *string
 }
@@ -108,8 +110,9 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// 100
-	SystemDiskSize *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	VSwitchIds     []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	SystemDiskSize    *int32    `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	VSwitchIds        []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VirtualNodePoolId *string   `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// example:
 	//
 	// exampleServerName
@@ -190,6 +193,10 @@ func (s *CreateWuyingServerRequest) GetSystemDiskSize() *int32 {
 
 func (s *CreateWuyingServerRequest) GetVSwitchIds() []*string {
 	return s.VSwitchIds
+}
+
+func (s *CreateWuyingServerRequest) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
 }
 
 func (s *CreateWuyingServerRequest) GetWuyingServerName() *string {
@@ -278,6 +285,11 @@ func (s *CreateWuyingServerRequest) SetSystemDiskSize(v int32) *CreateWuyingServ
 
 func (s *CreateWuyingServerRequest) SetVSwitchIds(v []*string) *CreateWuyingServerRequest {
 	s.VSwitchIds = v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetVirtualNodePoolId(v string) *CreateWuyingServerRequest {
+	s.VirtualNodePoolId = &v
 	return s
 }
 

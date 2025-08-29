@@ -99,6 +99,7 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
+	AddVirtualNodePoolStatus *string `json:"AddVirtualNodePoolStatus,omitempty" xml:"AddVirtualNodePoolStatus,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -142,6 +143,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// Linux
 	OsType                 *string                                                             `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	SecurityGroupIds       []*string                                                           `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	ServerInstanceTypeInfo *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo `json:"ServerInstanceTypeInfo,omitempty" xml:"ServerInstanceTypeInfo,omitempty" type:"Struct"`
 	// example:
 	//
@@ -158,7 +160,8 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	// example:
 	//
 	// 100
-	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskSize    *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
 	// example:
 	//
 	// ws-0byd****8wn2lwi
@@ -175,6 +178,10 @@ func (s ListWuyingServerResponseBodyWuyingServerList) String() string {
 
 func (s ListWuyingServerResponseBodyWuyingServerList) GoString() string {
 	return s.String()
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetAddVirtualNodePoolStatus() *string {
+	return s.AddVirtualNodePoolStatus
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetBizRegionId() *string {
@@ -229,6 +236,10 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetOsType() *string {
 	return s.OsType
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetSecurityGroupIds() []*string {
+	return s.SecurityGroupIds
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetServerInstanceTypeInfo() *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo {
 	return s.ServerInstanceTypeInfo
 }
@@ -249,12 +260,21 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) GetSystemDiskSize() *int3
 	return s.SystemDiskSize
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) GetVirtualNodePoolId() *string {
+	return s.VirtualNodePoolId
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetWuyingServerId() *string {
 	return s.WuyingServerId
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) GetWuyingServerName() *string {
 	return s.WuyingServerName
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetAddVirtualNodePoolStatus(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.AddVirtualNodePoolStatus = &v
+	return s
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetBizRegionId(v string) *ListWuyingServerResponseBodyWuyingServerList {
@@ -322,6 +342,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetOsType(v string) *List
 	return s
 }
 
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetSecurityGroupIds(v []*string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.SecurityGroupIds = v
+	return s
+}
+
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetServerInstanceTypeInfo(v *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) *ListWuyingServerResponseBodyWuyingServerList {
 	s.ServerInstanceTypeInfo = v
 	return s
@@ -344,6 +369,11 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskPerformanceL
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) SetSystemDiskSize(v int32) *ListWuyingServerResponseBodyWuyingServerList {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ListWuyingServerResponseBodyWuyingServerList) SetVirtualNodePoolId(v string) *ListWuyingServerResponseBodyWuyingServerList {
+	s.VirtualNodePoolId = &v
 	return s
 }
 
