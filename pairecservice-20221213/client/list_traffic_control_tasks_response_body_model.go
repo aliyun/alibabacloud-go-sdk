@@ -69,6 +69,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	ControlType                    *string                                                                        `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
 	Description                    *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
 	EffectiveSceneIds              []*int32                                                                       `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
+	EffectiveSceneNameList         []*string                                                                      `json:"EffectiveSceneNameList,omitempty" xml:"EffectiveSceneNameList,omitempty" type:"Repeated"`
 	EffectiveSceneNames            []*int32                                                                       `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
 	EndTime                        *string                                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EverPublished                  *bool                                                                          `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
@@ -89,6 +90,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	SceneId                        *string                                                                        `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SceneName                      *string                                                                        `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	ServiceId                      *string                                                                        `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceIdList                  []*int32                                                                       `json:"ServiceIdList,omitempty" xml:"ServiceIdList,omitempty" type:"Repeated"`
 	ServiceIds                     []*string                                                                      `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
 	StartTime                      *string                                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatisBahaviorConditionExpress *string                                                                        `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
@@ -132,6 +134,10 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetDescription(
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetEffectiveSceneIds() []*int32 {
 	return s.EffectiveSceneIds
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetEffectiveSceneNameList() []*string {
+	return s.EffectiveSceneNameList
 }
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetEffectiveSceneNames() []*int32 {
@@ -214,6 +220,10 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetServiceId() 
 	return s.ServiceId
 }
 
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetServiceIdList() []*int32 {
+	return s.ServiceIdList
+}
+
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetServiceIds() []*string {
 	return s.ServiceIds
 }
@@ -285,6 +295,11 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetDescription(
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetEffectiveSceneIds(v []*int32) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.EffectiveSceneIds = v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetEffectiveSceneNameList(v []*string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.EffectiveSceneNameList = v
 	return s
 }
 
@@ -385,6 +400,11 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetSceneName(v 
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetServiceId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetServiceIdList(v []*int32) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ServiceIdList = v
 	return s
 }
 
