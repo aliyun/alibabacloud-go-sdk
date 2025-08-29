@@ -5291,6 +5291,52 @@ func (client *Client) GetTableLineageByTaskIdWithContext(ctx context.Context, tm
 
 // Summary:
 //
+// 根据转交任务ID查询转交任务的进度
+//
+// @param request - GetTransferInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTransferInfoResponse
+func (client *Client) GetTransferInfoWithContext(ctx context.Context, request *GetTransferInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTransferInfoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.ProposalId) {
+		query["ProposalId"] = request.ProposalId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTransferInfo"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTransferInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取自定义函数详情。
 //
 // @param request - GetUdfRequest
@@ -8177,6 +8223,60 @@ func (client *Client) ResumePhysicalNodeWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// 重新转交运行失败的转交任务
+//
+// @param tmpReq - RetryTransferOwnershipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryTransferOwnershipResponse
+func (client *Client) RetryTransferOwnershipWithContext(ctx context.Context, tmpReq *RetryTransferOwnershipRequest, runtime *dara.RuntimeOptions) (_result *RetryTransferOwnershipResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RetryTransferOwnershipShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PrivilegeTransferRecord) {
+		request.PrivilegeTransferRecordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PrivilegeTransferRecord, dara.String("PrivilegeTransferRecord"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PrivilegeTransferRecordShrink) {
+		body["PrivilegeTransferRecord"] = request.PrivilegeTransferRecordShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryTransferOwnership"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryTransferOwnershipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 回收API授权。
 //
 // @param tmpReq - RevokeDataServiceApiRequest
@@ -8383,6 +8483,60 @@ func (client *Client) SubmitBatchTaskWithContext(ctx context.Context, tmpReq *Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitBatchTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 一键转交负责人
+//
+// @param tmpReq - TransferOwnershipForAllObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferOwnershipForAllObjectResponse
+func (client *Client) TransferOwnershipForAllObjectWithContext(ctx context.Context, tmpReq *TransferOwnershipForAllObjectRequest, runtime *dara.RuntimeOptions) (_result *TransferOwnershipForAllObjectResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TransferOwnershipForAllObjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PrivilegeTransferRecord) {
+		request.PrivilegeTransferRecordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PrivilegeTransferRecord, dara.String("PrivilegeTransferRecord"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PrivilegeTransferRecordShrink) {
+		body["PrivilegeTransferRecord"] = request.PrivilegeTransferRecordShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TransferOwnershipForAllObject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TransferOwnershipForAllObjectResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
