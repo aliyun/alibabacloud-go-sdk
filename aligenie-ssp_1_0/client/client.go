@@ -6667,6 +6667,10 @@ func (client *Client) ThirdImmediateMsgPushWithOptions(request *ThirdImmediateMs
 		query["PsgIds"] = request.PsgIds
 	}
 
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
 	if !dara.IsNil(request.TrafficChangeType) {
 		query["TrafficChangeType"] = request.TrafficChangeType
 	}

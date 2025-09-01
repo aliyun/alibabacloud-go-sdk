@@ -17,6 +17,8 @@ type iThirdImmediateMsgPushRequest interface {
 	GetOrderId() *string
 	SetPsgIds(v string) *ThirdImmediateMsgPushRequest
 	GetPsgIds() *string
+	SetSource(v string) *ThirdImmediateMsgPushRequest
+	GetSource() *string
 	SetTrafficChangeType(v string) *ThirdImmediateMsgPushRequest
 	GetTrafficChangeType() *string
 	SetTrafficChangeTypeDesc(v string) *ThirdImmediateMsgPushRequest
@@ -46,6 +48,10 @@ type ThirdImmediateMsgPushRequest struct {
 	//
 	// psgIds
 	PsgIds *string `json:"PsgIds,omitempty" xml:"PsgIds,omitempty"`
+	// example:
+	//
+	// source
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// example:
 	//
 	// trafficChangeType
@@ -92,6 +98,10 @@ func (s *ThirdImmediateMsgPushRequest) GetPsgIds() *string {
 	return s.PsgIds
 }
 
+func (s *ThirdImmediateMsgPushRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *ThirdImmediateMsgPushRequest) GetTrafficChangeType() *string {
 	return s.TrafficChangeType
 }
@@ -129,6 +139,11 @@ func (s *ThirdImmediateMsgPushRequest) SetOrderId(v string) *ThirdImmediateMsgPu
 
 func (s *ThirdImmediateMsgPushRequest) SetPsgIds(v string) *ThirdImmediateMsgPushRequest {
 	s.PsgIds = &v
+	return s
+}
+
+func (s *ThirdImmediateMsgPushRequest) SetSource(v string) *ThirdImmediateMsgPushRequest {
+	s.Source = &v
 	return s
 }
 

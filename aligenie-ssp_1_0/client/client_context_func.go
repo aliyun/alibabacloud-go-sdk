@@ -5251,6 +5251,10 @@ func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, requ
 		query["PsgIds"] = request.PsgIds
 	}
 
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
 	if !dara.IsNil(request.TrafficChangeType) {
 		query["TrafficChangeType"] = request.TrafficChangeType
 	}
