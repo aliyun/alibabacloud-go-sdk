@@ -270,6 +270,23 @@ func (client *Client) GenerateCopilotResponse(request *GenerateCopilotResponseRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateCopilotStreamResponseResponse
+func (client *Client) GenerateCopilotStreamResponseWithSSE(request *GenerateCopilotStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *GenerateCopilotStreamResponseResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.generateCopilotStreamResponseWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 流式copilot服务接口
+//
+// @param request - GenerateCopilotStreamResponseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateCopilotStreamResponseResponse
 func (client *Client) GenerateCopilotStreamResponseWithOptions(request *GenerateCopilotStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateCopilotStreamResponseResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -1478,6 +1495,10 @@ func (client *Client) GetListRecordWithOptions(request *GetListRecordRequest, he
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["region"] = request.Region
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3993,4 +4014,49 @@ func (client *Client) UpgradeAgentForCluster(request *UpgradeAgentForClusterRequ
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) generateCopilotStreamResponseWithSSE_opYieldFunc(_yield chan *GenerateCopilotStreamResponseResponse, _yieldErr chan error, request *GenerateCopilotStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.LlmParamString) {
+		body["llmParamString"] = request.LlmParamString
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateCopilotStreamResponse"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/copilot/generate_copilot_stream_response"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }

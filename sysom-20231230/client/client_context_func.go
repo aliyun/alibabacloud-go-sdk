@@ -1071,6 +1071,10 @@ func (client *Client) GetListRecordWithContext(ctx context.Context, request *Get
 		query["pageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.Region) {
+		query["region"] = request.Region
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
