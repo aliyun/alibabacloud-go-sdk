@@ -6316,6 +6316,14 @@ func (client *Client) CreatePhysicalConnectionOccupancyOrderWithContext(ctx cont
 		query["AutoPay"] = request.AutoPay
 	}
 
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoRenewDuration) {
+		query["AutoRenewDuration"] = request.AutoRenewDuration
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -27812,6 +27820,10 @@ func (client *Client) ModifyVirtualBorderRouterAttributeWithContext(ctx context.
 
 	if !dara.IsNil(request.MinTxInterval) {
 		query["MinTxInterval"] = request.MinTxInterval
+	}
+
+	if !dara.IsNil(request.Mtu) {
+		query["Mtu"] = request.Mtu
 	}
 
 	if !dara.IsNil(request.Name) {

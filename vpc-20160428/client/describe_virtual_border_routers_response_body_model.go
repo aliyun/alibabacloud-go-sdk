@@ -257,6 +257,7 @@ type DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorder
 	//
 	// 300
 	MinTxInterval *int64 `json:"MinTxInterval,omitempty" xml:"MinTxInterval,omitempty"`
+	Mtu           *int32 `json:"Mtu,omitempty" xml:"Mtu,omitempty"`
 	// The VBR name.
 	//
 	// example:
@@ -519,6 +520,10 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 	return s.MinTxInterval
 }
 
+func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) GetMtu() *int32 {
+	return s.Mtu
+}
+
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) GetName() *string {
 	return s.Name
 }
@@ -699,6 +704,11 @@ func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBo
 
 func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) SetMinTxInterval(v int64) *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType {
 	s.MinTxInterval = &v
+	return s
+}
+
+func (s *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType) SetMtu(v int32) *DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterType {
+	s.Mtu = &v
 	return s
 }
 

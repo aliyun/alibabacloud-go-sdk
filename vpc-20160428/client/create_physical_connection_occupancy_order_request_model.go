@@ -11,6 +11,10 @@ type iCreatePhysicalConnectionOccupancyOrderRequest interface {
 	GoString() string
 	SetAutoPay(v bool) *CreatePhysicalConnectionOccupancyOrderRequest
 	GetAutoPay() *bool
+	SetAutoRenew(v bool) *CreatePhysicalConnectionOccupancyOrderRequest
+	GetAutoRenew() *bool
+	SetAutoRenewDuration(v int32) *CreatePhysicalConnectionOccupancyOrderRequest
+	GetAutoRenewDuration() *int32
 	SetClientToken(v string) *CreatePhysicalConnectionOccupancyOrderRequest
 	GetClientToken() *string
 	SetInstanceChargeType(v string) *CreatePhysicalConnectionOccupancyOrderRequest
@@ -43,7 +47,9 @@ type CreatePhysicalConnectionOccupancyOrderRequest struct {
 	// example:
 	//
 	// false
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay           *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew         *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32 `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
@@ -116,6 +122,14 @@ func (s *CreatePhysicalConnectionOccupancyOrderRequest) GetAutoPay() *bool {
 	return s.AutoPay
 }
 
+func (s *CreatePhysicalConnectionOccupancyOrderRequest) GetAutoRenew() *bool {
+	return s.AutoRenew
+}
+
+func (s *CreatePhysicalConnectionOccupancyOrderRequest) GetAutoRenewDuration() *int32 {
+	return s.AutoRenewDuration
+}
+
 func (s *CreatePhysicalConnectionOccupancyOrderRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -158,6 +172,16 @@ func (s *CreatePhysicalConnectionOccupancyOrderRequest) GetResourceOwnerId() *in
 
 func (s *CreatePhysicalConnectionOccupancyOrderRequest) SetAutoPay(v bool) *CreatePhysicalConnectionOccupancyOrderRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *CreatePhysicalConnectionOccupancyOrderRequest) SetAutoRenew(v bool) *CreatePhysicalConnectionOccupancyOrderRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreatePhysicalConnectionOccupancyOrderRequest) SetAutoRenewDuration(v int32) *CreatePhysicalConnectionOccupancyOrderRequest {
+	s.AutoRenewDuration = &v
 	return s
 }
 

@@ -31,6 +31,8 @@ type iModifyVirtualBorderRouterAttributeRequest interface {
 	GetMinRxInterval() *int64
 	SetMinTxInterval(v int64) *ModifyVirtualBorderRouterAttributeRequest
 	GetMinTxInterval() *int64
+	SetMtu(v int32) *ModifyVirtualBorderRouterAttributeRequest
+	GetMtu() *int32
 	SetName(v string) *ModifyVirtualBorderRouterAttributeRequest
 	GetName() *string
 	SetOwnerAccount(v string) *ModifyVirtualBorderRouterAttributeRequest
@@ -152,6 +154,7 @@ type ModifyVirtualBorderRouterAttributeRequest struct {
 	//
 	// 300
 	MinTxInterval *int64 `json:"MinTxInterval,omitempty" xml:"MinTxInterval,omitempty"`
+	Mtu           *int32 `json:"Mtu,omitempty" xml:"Mtu,omitempty"`
 	// The name of the VBR.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. It cannot start with `http://` or `https://`.
@@ -288,6 +291,10 @@ func (s *ModifyVirtualBorderRouterAttributeRequest) GetMinTxInterval() *int64 {
 	return s.MinTxInterval
 }
 
+func (s *ModifyVirtualBorderRouterAttributeRequest) GetMtu() *int32 {
+	return s.Mtu
+}
+
 func (s *ModifyVirtualBorderRouterAttributeRequest) GetName() *string {
 	return s.Name
 }
@@ -392,6 +399,11 @@ func (s *ModifyVirtualBorderRouterAttributeRequest) SetMinRxInterval(v int64) *M
 
 func (s *ModifyVirtualBorderRouterAttributeRequest) SetMinTxInterval(v int64) *ModifyVirtualBorderRouterAttributeRequest {
 	s.MinTxInterval = &v
+	return s
+}
+
+func (s *ModifyVirtualBorderRouterAttributeRequest) SetMtu(v int32) *ModifyVirtualBorderRouterAttributeRequest {
+	s.Mtu = &v
 	return s
 }
 
