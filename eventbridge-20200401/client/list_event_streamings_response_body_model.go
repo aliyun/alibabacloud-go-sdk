@@ -583,6 +583,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrate
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
+	SinkApacheKafkaParameters              *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters              `json:"SinkApacheKafkaParameters,omitempty" xml:"SinkApacheKafkaParameters,omitempty" type:"Struct"`
 	SinkApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	SinkBaiLianParameters                  *SinkBaiLianParameters                                                                        `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
@@ -614,6 +615,10 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) String() string 
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkApacheKafkaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	return s.SinkApacheKafkaParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkApacheRocketMQCheckpointParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters {
@@ -678,6 +683,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkRocketMQ
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkSLSParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters {
 	return s.SinkSLSParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkApacheKafkaParameters = v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
@@ -761,6 +771,421 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkSLSParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters struct {
+	Acks             *string                                                                                         `json:"Acks,omitempty" xml:"Acks,omitempty"`
+	Bootstraps       *string                                                                                         `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	Key              *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
+	NetworkType      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
+	SaslMechanism    *string                                                                                         `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string                                                                                         `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string                                                                                         `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
+	SecurityProtocol *string                                                                                         `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string                                                                                         `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	Value            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	VpcId            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetAcks() *string {
+	return s.Acks
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetBootstraps() *string {
+	return s.Bootstraps
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetKey() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
+	return s.Key
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetNetworkType() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
+	return s.NetworkType
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslMechanism() *string {
+	return s.SaslMechanism
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslPassword() *string {
+	return s.SaslPassword
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSaslUser() *string {
+	return s.SaslUser
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSecurityGroupId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
+	return s.SecurityGroupId
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetSecurityProtocol() *string {
+	return s.SecurityProtocol
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetTopic() *string {
+	return s.Topic
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetVSwitchIds() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
+	return s.VSwitchIds
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetValue() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) GetVpcId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
+	return s.VpcId
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetAcks(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.Acks = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetBootstraps(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetKey(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.Key = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetNetworkType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.NetworkType = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslMechanism(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslPassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSaslUser(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSecurityGroupId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.SecurityGroupId = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetSecurityProtocol(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetVSwitchIds(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetValue(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.Value = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) SetVpcId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters {
+	s.VpcId = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersKey) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersNetworkType) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersSecurityGroupId) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVSwitchIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersValue) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheKafkaParametersVpcId) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -6849,6 +7274,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
+	SourceApacheKafkaParameters              *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
 	SourceApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters `json:"SourceApacheRocketMQCheckpointParameters,omitempty" xml:"SourceApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
 	SourceCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SourceCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
@@ -6880,6 +7306,10 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) String() strin
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceApacheKafkaParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	return s.SourceApacheKafkaParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceApacheRocketMQCheckpointParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters {
@@ -6944,6 +7374,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceRock
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) GetSourceSLSParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters {
 	return s.SourceSLSParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceApacheKafkaParameters = v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
@@ -7027,6 +7462,151 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceSLSP
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters struct {
+	Bootstraps       *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup    *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset      *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism    *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword     *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser         *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds       *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType    *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetBootstraps() *string {
+	return s.Bootstraps
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetConsumerGroup() *string {
+	return s.ConsumerGroup
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetNetworkType() *string {
+	return s.NetworkType
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetOffsetReset() *string {
+	return s.OffsetReset
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslMechanism() *string {
+	return s.SaslMechanism
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslPassword() *string {
+	return s.SaslPassword
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSaslUser() *string {
+	return s.SaslUser
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetSecurityProtocol() *string {
+	return s.SecurityProtocol
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetTopic() *string {
+	return s.Topic
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetVSwitchIds() *string {
+	return s.VSwitchIds
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetValueDataType() *string {
+	return s.ValueDataType
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) GetVpcId() *string {
+	return s.VpcId
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetBootstraps(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.Bootstraps = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetConsumerGroup(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetNetworkType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetOffsetReset(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.OffsetReset = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslMechanism(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslMechanism = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslPassword(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslPassword = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSaslUser(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SaslUser = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetSecurityProtocol(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.SecurityProtocol = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.Topic = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetValueDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
+	s.VpcId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) Validate() error {
 	return dara.Validate(s)
 }
 
