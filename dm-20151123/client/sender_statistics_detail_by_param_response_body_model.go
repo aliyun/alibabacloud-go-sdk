@@ -105,6 +105,12 @@ type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
 	//
 	// s***@example.net
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// if can be null:
+	// true
+	ConfigSetId *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	// if can be null:
+	// true
+	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
 	// Detailed classification of error reasons: - SendOk - SmtpNxBox
 	//
 	// etc.
@@ -113,6 +119,12 @@ type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
 	//
 	// SendOk
 	ErrorClassification *string `json:"ErrorClassification,omitempty" xml:"ErrorClassification,omitempty"`
+	// if can be null:
+	// true
+	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	// if can be null:
+	// true
+	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
 	// Update time
 	//
 	// example:
@@ -163,8 +175,24 @@ func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetAccountName
 	return s.AccountName
 }
 
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetConfigSetName() *string {
+	return s.ConfigSetName
+}
+
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetErrorClassification() *string {
 	return s.ErrorClassification
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetIpPoolId() *string {
+	return s.IpPoolId
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetIpPoolName() *string {
+	return s.IpPoolName
 }
 
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) GetLastUpdateTime() *string {
@@ -196,8 +224,28 @@ func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetAccountName
 	return s
 }
 
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetConfigSetId(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.ConfigSetId = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetConfigSetName(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.ConfigSetName = &v
+	return s
+}
+
 func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetErrorClassification(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
 	s.ErrorClassification = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetIpPoolId(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.IpPoolId = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamResponseBodyDataMailDetail) SetIpPoolName(v string) *SenderStatisticsDetailByParamResponseBodyDataMailDetail {
+	s.IpPoolName = &v
 	return s
 }
 

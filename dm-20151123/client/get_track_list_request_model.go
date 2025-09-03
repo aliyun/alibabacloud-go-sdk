@@ -11,6 +11,8 @@ type iGetTrackListRequest interface {
 	GoString() string
 	SetAccountName(v string) *GetTrackListRequest
 	GetAccountName() *string
+	SetConfigSetId(v string) *GetTrackListRequest
+	GetConfigSetId() *string
 	SetDedicatedIp(v string) *GetTrackListRequest
 	GetDedicatedIp() *string
 	SetDedicatedIpPoolId(v string) *GetTrackListRequest
@@ -52,6 +54,7 @@ type GetTrackListRequest struct {
 	//
 	// test@example.com
 	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ConfigSetId       *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
 	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
@@ -130,6 +133,10 @@ func (s *GetTrackListRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
+func (s *GetTrackListRequest) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
 func (s *GetTrackListRequest) GetDedicatedIp() *string {
 	return s.DedicatedIp
 }
@@ -192,6 +199,11 @@ func (s *GetTrackListRequest) GetTotal() *string {
 
 func (s *GetTrackListRequest) SetAccountName(v string) *GetTrackListRequest {
 	s.AccountName = &v
+	return s
+}
+
+func (s *GetTrackListRequest) SetConfigSetId(v string) *GetTrackListRequest {
+	s.ConfigSetId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetTrackListByMailFromAndTagNameRequest interface {
 	GoString() string
 	SetAccountName(v string) *GetTrackListByMailFromAndTagNameRequest
 	GetAccountName() *string
+	SetConfigSetId(v string) *GetTrackListByMailFromAndTagNameRequest
+	GetConfigSetId() *string
 	SetDedicatedIp(v string) *GetTrackListByMailFromAndTagNameRequest
 	GetDedicatedIp() *string
 	SetDedicatedIpPoolId(v string) *GetTrackListByMailFromAndTagNameRequest
@@ -52,6 +54,7 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	//
 	// e-service@amegroups.cn
 	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ConfigSetId       *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
 	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
@@ -130,6 +133,10 @@ func (s *GetTrackListByMailFromAndTagNameRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
+func (s *GetTrackListByMailFromAndTagNameRequest) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
 func (s *GetTrackListByMailFromAndTagNameRequest) GetDedicatedIp() *string {
 	return s.DedicatedIp
 }
@@ -192,6 +199,11 @@ func (s *GetTrackListByMailFromAndTagNameRequest) GetTotal() *string {
 
 func (s *GetTrackListByMailFromAndTagNameRequest) SetAccountName(v string) *GetTrackListByMailFromAndTagNameRequest {
 	s.AccountName = &v
+	return s
+}
+
+func (s *GetTrackListByMailFromAndTagNameRequest) SetConfigSetId(v string) *GetTrackListByMailFromAndTagNameRequest {
+	s.ConfigSetId = &v
 	return s
 }
 

@@ -926,6 +926,10 @@ func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
 	if !dara.IsNil(request.Keyword) {
 		query["Keyword"] = request.Keyword
 	}
@@ -1770,6 +1774,10 @@ func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetT
 		query["AccountName"] = request.AccountName
 	}
 
+	if !dara.IsNil(request.ConfigSetId) {
+		query["ConfigSetId"] = request.ConfigSetId
+	}
+
 	if !dara.IsNil(request.DedicatedIp) {
 		query["DedicatedIp"] = request.DedicatedIp
 	}
@@ -1870,6 +1878,10 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Co
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.ConfigSetId) {
+		query["ConfigSetId"] = request.ConfigSetId
 	}
 
 	if !dara.IsNil(request.DedicatedIp) {
@@ -3038,8 +3050,16 @@ func (client *Client) SenderStatisticsDetailByParamWithContext(ctx context.Conte
 		query["AccountName"] = request.AccountName
 	}
 
+	if !dara.IsNil(request.ConfigSetId) {
+		query["ConfigSetId"] = request.ConfigSetId
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IpPoolId) {
+		query["IpPoolId"] = request.IpPoolId
 	}
 
 	if !dara.IsNil(request.Length) {

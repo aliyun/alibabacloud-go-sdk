@@ -138,7 +138,9 @@ type QueryTaskByParamResponseBodyDataTask struct {
 	// example:
 	//
 	// 0
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType   *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ConfigSetId   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
 	// Creation time
 	//
 	// example:
@@ -213,6 +215,14 @@ func (s *QueryTaskByParamResponseBodyDataTask) GetAddressType() *string {
 	return s.AddressType
 }
 
+func (s *QueryTaskByParamResponseBodyDataTask) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
+func (s *QueryTaskByParamResponseBodyDataTask) GetConfigSetName() *string {
+	return s.ConfigSetName
+}
+
 func (s *QueryTaskByParamResponseBodyDataTask) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -255,6 +265,16 @@ func (s *QueryTaskByParamResponseBodyDataTask) GetUtcCreateTime() *int64 {
 
 func (s *QueryTaskByParamResponseBodyDataTask) SetAddressType(v string) *QueryTaskByParamResponseBodyDataTask {
 	s.AddressType = &v
+	return s
+}
+
+func (s *QueryTaskByParamResponseBodyDataTask) SetConfigSetId(v string) *QueryTaskByParamResponseBodyDataTask {
+	s.ConfigSetId = &v
+	return s
+}
+
+func (s *QueryTaskByParamResponseBodyDataTask) SetConfigSetName(v string) *QueryTaskByParamResponseBodyDataTask {
+	s.ConfigSetName = &v
 	return s
 }
 

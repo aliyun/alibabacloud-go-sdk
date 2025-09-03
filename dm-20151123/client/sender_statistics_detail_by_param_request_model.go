@@ -11,8 +11,12 @@ type iSenderStatisticsDetailByParamRequest interface {
 	GoString() string
 	SetAccountName(v string) *SenderStatisticsDetailByParamRequest
 	GetAccountName() *string
+	SetConfigSetId(v string) *SenderStatisticsDetailByParamRequest
+	GetConfigSetId() *string
 	SetEndTime(v string) *SenderStatisticsDetailByParamRequest
 	GetEndTime() *string
+	SetIpPoolId(v string) *SenderStatisticsDetailByParamRequest
+	GetIpPoolId() *string
 	SetLength(v int32) *SenderStatisticsDetailByParamRequest
 	GetLength() *int32
 	SetNextStart(v string) *SenderStatisticsDetailByParamRequest
@@ -42,12 +46,18 @@ type SenderStatisticsDetailByParamRequest struct {
 	//
 	// s***@example.net
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// if can be null:
+	// true
+	ConfigSetId *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	// End time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm.
 	//
 	// example:
 	//
 	// 2021-04-29 00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// if can be null:
+	// true
+	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	// Specifies the number of results to return in this request. Range is 1~100.
 	//
 	// example:
@@ -109,8 +119,16 @@ func (s *SenderStatisticsDetailByParamRequest) GetAccountName() *string {
 	return s.AccountName
 }
 
+func (s *SenderStatisticsDetailByParamRequest) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
 func (s *SenderStatisticsDetailByParamRequest) GetEndTime() *string {
 	return s.EndTime
+}
+
+func (s *SenderStatisticsDetailByParamRequest) GetIpPoolId() *string {
+	return s.IpPoolId
 }
 
 func (s *SenderStatisticsDetailByParamRequest) GetLength() *int32 {
@@ -154,8 +172,18 @@ func (s *SenderStatisticsDetailByParamRequest) SetAccountName(v string) *SenderS
 	return s
 }
 
+func (s *SenderStatisticsDetailByParamRequest) SetConfigSetId(v string) *SenderStatisticsDetailByParamRequest {
+	s.ConfigSetId = &v
+	return s
+}
+
 func (s *SenderStatisticsDetailByParamRequest) SetEndTime(v string) *SenderStatisticsDetailByParamRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *SenderStatisticsDetailByParamRequest) SetIpPoolId(v string) *SenderStatisticsDetailByParamRequest {
+	s.IpPoolId = &v
 	return s
 }
 

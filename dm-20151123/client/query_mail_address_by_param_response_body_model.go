@@ -145,6 +145,8 @@ type QueryMailAddressByParamResponseBodyDataMailAddress struct {
 	//
 	// 0
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	ConfigSetId   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
 	// Creation time
 	//
 	// example:
@@ -227,6 +229,14 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetAccountStatus() 
 	return s.AccountStatus
 }
 
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetConfigSetId() *string {
+	return s.ConfigSetId
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetConfigSetName() *string {
+	return s.ConfigSetName
+}
+
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -274,6 +284,16 @@ func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetAccountName(v st
 
 func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetAccountStatus(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
 	s.AccountStatus = &v
+	return s
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetConfigSetId(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
+	s.ConfigSetId = &v
+	return s
+}
+
+func (s *QueryMailAddressByParamResponseBodyDataMailAddress) SetConfigSetName(v string) *QueryMailAddressByParamResponseBodyDataMailAddress {
+	s.ConfigSetName = &v
 	return s
 }
 

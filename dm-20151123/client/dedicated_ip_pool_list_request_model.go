@@ -9,6 +9,8 @@ type iDedicatedIpPoolListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAll(v bool) *DedicatedIpPoolListRequest
+	GetAll() *bool
 	SetKeyword(v string) *DedicatedIpPoolListRequest
 	GetKeyword() *string
 	SetPageIndex(v int32) *DedicatedIpPoolListRequest
@@ -18,6 +20,7 @@ type iDedicatedIpPoolListRequest interface {
 }
 
 type DedicatedIpPoolListRequest struct {
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// Search keyword for the name
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s DedicatedIpPoolListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DedicatedIpPoolListRequest) GetAll() *bool {
+	return s.All
+}
+
 func (s *DedicatedIpPoolListRequest) GetKeyword() *string {
 	return s.Keyword
 }
@@ -56,6 +63,11 @@ func (s *DedicatedIpPoolListRequest) GetPageIndex() *int32 {
 
 func (s *DedicatedIpPoolListRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DedicatedIpPoolListRequest) SetAll(v bool) *DedicatedIpPoolListRequest {
+	s.All = &v
+	return s
 }
 
 func (s *DedicatedIpPoolListRequest) SetKeyword(v string) *DedicatedIpPoolListRequest {
