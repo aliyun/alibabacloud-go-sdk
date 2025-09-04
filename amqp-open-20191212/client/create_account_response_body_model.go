@@ -138,6 +138,10 @@ type CreateAccountResponseBodyData struct {
 	//
 	// NEMxQTYzNjdDRTVDNDI1NUU5NjE3**************1MzNGODoxNjcxMTc1MzEzNTIy
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// ***环境
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The created static username.
 	//
 	// example:
@@ -174,6 +178,10 @@ func (s *CreateAccountResponseBodyData) GetPassword() *string {
 	return s.Password
 }
 
+func (s *CreateAccountResponseBodyData) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *CreateAccountResponseBodyData) GetUserName() *string {
 	return s.UserName
 }
@@ -200,6 +208,11 @@ func (s *CreateAccountResponseBodyData) SetMasterUId(v int64) *CreateAccountResp
 
 func (s *CreateAccountResponseBodyData) SetPassword(v string) *CreateAccountResponseBodyData {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetRemark(v string) *CreateAccountResponseBodyData {
+	s.Remark = &v
 	return s
 }
 

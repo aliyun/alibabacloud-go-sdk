@@ -23,6 +23,8 @@ type iDataValue interface {
 	GetDeleted() *int64
 	SetCreateTimestamp(v int64) *DataValue
 	GetCreateTimestamp() *int64
+	SetRemark(v string) *DataValue
+	GetRemark() *string
 }
 
 type DataValue struct {
@@ -68,6 +70,10 @@ type DataValue struct {
 	//
 	// 1671175303522
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// example:
+	//
+	// ***环境
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DataValue) String() string {
@@ -106,6 +112,10 @@ func (s *DataValue) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
 }
 
+func (s *DataValue) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *DataValue) SetMasterUid(v int64) *DataValue {
 	s.MasterUid = &v
 	return s
@@ -138,6 +148,11 @@ func (s *DataValue) SetDeleted(v int64) *DataValue {
 
 func (s *DataValue) SetCreateTimestamp(v int64) *DataValue {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DataValue) SetRemark(v string) *DataValue {
+	s.Remark = &v
 	return s
 }
 

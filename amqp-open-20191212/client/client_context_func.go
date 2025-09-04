@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("amqp-open"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccountResponse
-func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
+func (client *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -113,29 +65,11 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a pair of static username and password. If you access an ApsaraMQ for RabbitMQ broker from an open source RabbitMQ client, you must use a pair of username and password for authentication. You can access the ApsaraMQ for RabbitMQ broker only after the authentication is passed. ApsaraMQ for RabbitMQ allows you to generate usernames and passwords by using AccessKey pairs provided by Alibaba Cloud Resource Access Management (RAM).
-//
-// @param request - CreateAccountRequest
-//
-// @return CreateAccountResponse
-func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAccountResponse{}
-	_body, _err := client.CreateAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -148,7 +82,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateBindingResponse
-func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *dara.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
+func (client *Client) CreateBindingWithContext(ctx context.Context, request *CreateBindingRequest, runtime *dara.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -197,29 +131,11 @@ func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a binding. In ApsaraMQ for RabbitMQ, after a producer sends a message to an exchange, the exchange routes the message to a queue or another exchange based on the binding relationship and the routing rule.
-//
-// @param request - CreateBindingRequest
-//
-// @return CreateBindingResponse
-func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *CreateBindingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateBindingResponse{}
-	_body, _err := client.CreateBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -232,7 +148,7 @@ func (client *Client) CreateBinding(request *CreateBindingRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateExchangeResponse
-func (client *Client) CreateExchangeWithOptions(request *CreateExchangeRequest, runtime *dara.RuntimeOptions) (_result *CreateExchangeResponse, _err error) {
+func (client *Client) CreateExchangeWithContext(ctx context.Context, request *CreateExchangeRequest, runtime *dara.RuntimeOptions) (_result *CreateExchangeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -285,29 +201,11 @@ func (client *Client) CreateExchangeWithOptions(request *CreateExchangeRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateExchangeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an exchange. In ApsaraMQ for RabbitMQ, an exchange is used to route a message that is received from a producer to one or more queues or to discard the message. An exchange routes a message to queues by using the routing key and binding keys.
-//
-// @param request - CreateExchangeRequest
-//
-// @return CreateExchangeResponse
-func (client *Client) CreateExchange(request *CreateExchangeRequest) (_result *CreateExchangeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateExchangeResponse{}
-	_body, _err := client.CreateExchangeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -324,7 +222,7 @@ func (client *Client) CreateExchange(request *CreateExchangeRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceResponse
-func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -441,33 +339,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an ApsaraMQ for RabbitMQ instance.
-//
-// Description:
-//
-// *Before you call this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/606747.html) of ApsaraMQ for RabbitMQ.
-//
-// @param request - CreateInstanceRequest
-//
-// @return CreateInstanceResponse
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -480,7 +356,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateQueueResponse
-func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
+func (client *Client) CreateQueueWithContext(ctx context.Context, request *CreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -545,29 +421,11 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a queue. In ApsaraMQ for RabbitMQ, a queue is a message queue. All messages in ApsaraMQ for RabbitMQ are sent to a specific exchange and then routed to a bound queue by the exchange.
-//
-// @param request - CreateQueueRequest
-//
-// @return CreateQueueResponse
-func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateQueueResponse{}
-	_body, _err := client.CreateQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -580,7 +438,7 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVirtualHostResponse
-func (client *Client) CreateVirtualHostWithOptions(request *CreateVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualHostResponse, _err error) {
+func (client *Client) CreateVirtualHostWithContext(ctx context.Context, request *CreateVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *CreateVirtualHostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -609,29 +467,11 @@ func (client *Client) CreateVirtualHostWithOptions(request *CreateVirtualHostReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVirtualHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a vhost. A vhost is used to logically isolate resources. Each vhost manages its own exchanges, queues, and bindings. Applications can run on independent vhosts in a secure manner. This way, the business of an application is not affected by other applications. Before you connect producers and consumers to an ApsaraMQ for RabbitMQ instance, you must specify vhosts for the producers and consumers.
-//
-// @param request - CreateVirtualHostRequest
-//
-// @return CreateVirtualHostResponse
-func (client *Client) CreateVirtualHost(request *CreateVirtualHostRequest) (_result *CreateVirtualHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVirtualHostResponse{}
-	_body, _err := client.CreateVirtualHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -644,7 +484,7 @@ func (client *Client) CreateVirtualHost(request *CreateVirtualHostRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccountResponse
-func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+func (client *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -673,29 +513,11 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a pair of username and password.
-//
-// @param request - DeleteAccountRequest
-//
-// @return DeleteAccountResponse
-func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.DeleteAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -708,7 +530,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBindingResponse
-func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, runtime *dara.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
+func (client *Client) DeleteBindingWithContext(ctx context.Context, request *DeleteBindingRequest, runtime *dara.RuntimeOptions) (_result *DeleteBindingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -753,29 +575,11 @@ func (client *Client) DeleteBindingWithOptions(request *DeleteBindingRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a binding to unbind a queue or an exchange from a source exchange.
-//
-// @param request - DeleteBindingRequest
-//
-// @return DeleteBindingResponse
-func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *DeleteBindingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBindingResponse{}
-	_body, _err := client.DeleteBindingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -796,7 +600,7 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExchangeResponse
-func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, runtime *dara.RuntimeOptions) (_result *DeleteExchangeResponse, _err error) {
+func (client *Client) DeleteExchangeWithContext(ctx context.Context, request *DeleteExchangeRequest, runtime *dara.RuntimeOptions) (_result *DeleteExchangeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -829,37 +633,11 @@ func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteExchangeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes an exchange.
-//
-// Description:
-//
-// ## [](#)Usage notes
-//
-//   - You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
-//
-//   - You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
-//
-// @param request - DeleteExchangeRequest
-//
-// @return DeleteExchangeResponse
-func (client *Client) DeleteExchange(request *DeleteExchangeRequest) (_result *DeleteExchangeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteExchangeResponse{}
-	_body, _err := client.DeleteExchangeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -872,7 +650,7 @@ func (client *Client) DeleteExchange(request *DeleteExchangeRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteQueueResponse
-func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
+func (client *Client) DeleteQueueWithContext(ctx context.Context, request *DeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *DeleteQueueResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -905,29 +683,11 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteQueueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a queue.
-//
-// @param request - DeleteQueueRequest
-//
-// @return DeleteQueueResponse
-func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQueueResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteQueueResponse{}
-	_body, _err := client.DeleteQueueWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -944,7 +704,7 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVirtualHostResponse
-func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualHostResponse, _err error) {
+func (client *Client) DeleteVirtualHostWithContext(ctx context.Context, request *DeleteVirtualHostRequest, runtime *dara.RuntimeOptions) (_result *DeleteVirtualHostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -973,33 +733,11 @@ func (client *Client) DeleteVirtualHostWithOptions(request *DeleteVirtualHostReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVirtualHostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a virtual host (vhost).
-//
-// Description:
-//
-// Before you delete a vhost, make sure that all exchanges and queues in the vhost are deleted.
-//
-// @param request - DeleteVirtualHostRequest
-//
-// @return DeleteVirtualHostResponse
-func (client *Client) DeleteVirtualHost(request *DeleteVirtualHostRequest) (_result *DeleteVirtualHostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVirtualHostResponse{}
-	_body, _err := client.DeleteVirtualHostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1012,7 +750,7 @@ func (client *Client) DeleteVirtualHost(request *DeleteVirtualHostRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResponse
-func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1033,29 +771,11 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取实例详情
-//
-// @param request - GetInstanceRequest
-//
-// @return GetInstanceResponse
-func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1068,7 +788,7 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMetadataAmountResponse
-func (client *Client) GetMetadataAmountWithOptions(request *GetMetadataAmountRequest, runtime *dara.RuntimeOptions) (_result *GetMetadataAmountResponse, _err error) {
+func (client *Client) GetMetadataAmountWithContext(ctx context.Context, request *GetMetadataAmountRequest, runtime *dara.RuntimeOptions) (_result *GetMetadataAmountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1089,29 +809,11 @@ func (client *Client) GetMetadataAmountWithOptions(request *GetMetadataAmountReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMetadataAmountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the maximum number of vhosts, exchanges, and queues that you can create and the number of created vhosts, exchanges, and queues on an ApsaraMQ for RabbitMQ instance.
-//
-// @param request - GetMetadataAmountRequest
-//
-// @return GetMetadataAmountResponse
-func (client *Client) GetMetadataAmount(request *GetMetadataAmountRequest) (_result *GetMetadataAmountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMetadataAmountResponse{}
-	_body, _err := client.GetMetadataAmountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1124,7 +826,7 @@ func (client *Client) GetMetadataAmount(request *GetMetadataAmountRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccountsResponse
-func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
+func (client *Client) ListAccountsWithContext(ctx context.Context, request *ListAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1149,29 +851,11 @@ func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the static username and password of an ApsaraMQ for RabbitMQ.
-//
-// @param request - ListAccountsRequest
-//
-// @return ListAccountsResponse
-func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListAccountsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAccountsResponse{}
-	_body, _err := client.ListAccountsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1184,7 +868,7 @@ func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListBindingsResponse
-func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
+func (client *Client) ListBindingsWithContext(ctx context.Context, request *ListBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListBindingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1205,29 +889,11 @@ func (client *Client) ListBindingsWithOptions(request *ListBindingsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all bindings of a virtual host (vhost) on an ApsaraMQ for RabbitMQ instance.
-//
-// @param request - ListBindingsRequest
-//
-// @return ListBindingsResponse
-func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListBindingsResponse{}
-	_body, _err := client.ListBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1240,7 +906,7 @@ func (client *Client) ListBindings(request *ListBindingsRequest) (_result *ListB
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDownStreamBindingsResponse
-func (client *Client) ListDownStreamBindingsWithOptions(request *ListDownStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListDownStreamBindingsResponse, _err error) {
+func (client *Client) ListDownStreamBindingsWithContext(ctx context.Context, request *ListDownStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListDownStreamBindingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1261,29 +927,11 @@ func (client *Client) ListDownStreamBindingsWithOptions(request *ListDownStreamB
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDownStreamBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all exchanges or queues to which an exchange is bound.
-//
-// @param request - ListDownStreamBindingsRequest
-//
-// @return ListDownStreamBindingsResponse
-func (client *Client) ListDownStreamBindings(request *ListDownStreamBindingsRequest) (_result *ListDownStreamBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListDownStreamBindingsResponse{}
-	_body, _err := client.ListDownStreamBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1296,7 +944,7 @@ func (client *Client) ListDownStreamBindings(request *ListDownStreamBindingsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExchangeUpStreamBindingsResponse
-func (client *Client) ListExchangeUpStreamBindingsWithOptions(request *ListExchangeUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListExchangeUpStreamBindingsResponse, _err error) {
+func (client *Client) ListExchangeUpStreamBindingsWithContext(ctx context.Context, request *ListExchangeUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListExchangeUpStreamBindingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1317,29 +965,11 @@ func (client *Client) ListExchangeUpStreamBindingsWithOptions(request *ListExcha
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExchangeUpStreamBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all queues or exchanges that are bound to an exchange.
-//
-// @param request - ListExchangeUpStreamBindingsRequest
-//
-// @return ListExchangeUpStreamBindingsResponse
-func (client *Client) ListExchangeUpStreamBindings(request *ListExchangeUpStreamBindingsRequest) (_result *ListExchangeUpStreamBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListExchangeUpStreamBindingsResponse{}
-	_body, _err := client.ListExchangeUpStreamBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1352,7 +982,7 @@ func (client *Client) ListExchangeUpStreamBindings(request *ListExchangeUpStream
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListExchangesResponse
-func (client *Client) ListExchangesWithOptions(request *ListExchangesRequest, runtime *dara.RuntimeOptions) (_result *ListExchangesResponse, _err error) {
+func (client *Client) ListExchangesWithContext(ctx context.Context, request *ListExchangesRequest, runtime *dara.RuntimeOptions) (_result *ListExchangesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1373,29 +1003,11 @@ func (client *Client) ListExchangesWithOptions(request *ListExchangesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExchangesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all exchanges that are created in a virtual host (vhost).
-//
-// @param request - ListExchangesRequest
-//
-// @return ListExchangesResponse
-func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *ListExchangesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListExchangesResponse{}
-	_body, _err := client.ListExchangesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1408,7 +1020,7 @@ func (client *Client) ListExchanges(request *ListExchangesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListInstancesWithContext(ctx context.Context, request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1429,29 +1041,11 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all AparaMQ for RabbitMQ instances in a region. The returned data includes the basic information, endpoint, and specification limits of each instance.
-//
-// @param request - ListInstancesRequest
-//
-// @return ListInstancesResponse
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1468,7 +1062,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListQueueConsumersResponse
-func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersRequest, runtime *dara.RuntimeOptions) (_result *ListQueueConsumersResponse, _err error) {
+func (client *Client) ListQueueConsumersWithContext(ctx context.Context, request *ListQueueConsumersRequest, runtime *dara.RuntimeOptions) (_result *ListQueueConsumersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1489,33 +1083,11 @@ func (client *Client) ListQueueConsumersWithOptions(request *ListQueueConsumersR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQueueConsumersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the online consumers of a queue.
-//
-// Description:
-//
-// ApsaraMQ for RabbitMQ allows you to query only online consumers.
-//
-// @param request - ListQueueConsumersRequest
-//
-// @return ListQueueConsumersResponse
-func (client *Client) ListQueueConsumers(request *ListQueueConsumersRequest) (_result *ListQueueConsumersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListQueueConsumersResponse{}
-	_body, _err := client.ListQueueConsumersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1528,7 +1100,7 @@ func (client *Client) ListQueueConsumers(request *ListQueueConsumersRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListQueueUpStreamBindingsResponse
-func (client *Client) ListQueueUpStreamBindingsWithOptions(request *ListQueueUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListQueueUpStreamBindingsResponse, _err error) {
+func (client *Client) ListQueueUpStreamBindingsWithContext(ctx context.Context, request *ListQueueUpStreamBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListQueueUpStreamBindingsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1549,29 +1121,11 @@ func (client *Client) ListQueueUpStreamBindingsWithOptions(request *ListQueueUpS
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQueueUpStreamBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the exchanges that are bound to a queue.
-//
-// @param request - ListQueueUpStreamBindingsRequest
-//
-// @return ListQueueUpStreamBindingsResponse
-func (client *Client) ListQueueUpStreamBindings(request *ListQueueUpStreamBindingsRequest) (_result *ListQueueUpStreamBindingsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListQueueUpStreamBindingsResponse{}
-	_body, _err := client.ListQueueUpStreamBindingsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1584,7 +1138,7 @@ func (client *Client) ListQueueUpStreamBindings(request *ListQueueUpStreamBindin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListQueuesResponse
-func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime *dara.RuntimeOptions) (_result *ListQueuesResponse, _err error) {
+func (client *Client) ListQueuesWithContext(ctx context.Context, request *ListQueuesRequest, runtime *dara.RuntimeOptions) (_result *ListQueuesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1605,29 +1159,11 @@ func (client *Client) ListQueuesWithOptions(request *ListQueuesRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQueuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all queues in a vhost of an ApsaraMQ for RabbitMQ instance.
-//
-// @param request - ListQueuesRequest
-//
-// @return ListQueuesResponse
-func (client *Client) ListQueues(request *ListQueuesRequest) (_result *ListQueuesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListQueuesResponse{}
-	_body, _err := client.ListQueuesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1640,7 +1176,7 @@ func (client *Client) ListQueues(request *ListQueuesRequest) (_result *ListQueue
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVirtualHostsResponse
-func (client *Client) ListVirtualHostsWithOptions(request *ListVirtualHostsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualHostsResponse, _err error) {
+func (client *Client) ListVirtualHostsWithContext(ctx context.Context, request *ListVirtualHostsRequest, runtime *dara.RuntimeOptions) (_result *ListVirtualHostsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1661,29 +1197,11 @@ func (client *Client) ListVirtualHostsWithOptions(request *ListVirtualHostsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVirtualHostsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all virtual hosts (vhosts) on an ApsaraMQ for RabbitMQ instance.
-//
-// @param request - ListVirtualHostsRequest
-//
-// @return ListVirtualHostsResponse
-func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_result *ListVirtualHostsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListVirtualHostsResponse{}
-	_body, _err := client.ListVirtualHostsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1696,7 +1214,7 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceResponse
-func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
+func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1785,29 +1303,11 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
-//
-// @param request - UpdateInstanceRequest
-//
-// @return UpdateInstanceResponse
-func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceResponse{}
-	_body, _err := client.UpdateInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1820,7 +1320,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
+func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request *UpdateInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1849,28 +1349,10 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the name of an ApsaraMQ for RabbitMQ instance. After an ApsaraMQ for RabbitMQ instance is created, the ID of the instance is used as its name by default. You can specify a custom name for an instance to facilitate instance identification.
-//
-// @param request - UpdateInstanceNameRequest
-//
-// @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_result *UpdateInstanceNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.UpdateInstanceNameWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }

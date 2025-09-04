@@ -9,6 +9,8 @@ type iCreateAccountRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetRemark(v string) *CreateAccountRequest
+	GetRemark() *string
 	SetAccountAccessKey(v string) *CreateAccountRequest
 	GetAccountAccessKey() *string
 	SetCreateTimestamp(v int64) *CreateAccountRequest
@@ -24,6 +26,10 @@ type iCreateAccountRequest interface {
 }
 
 type CreateAccountRequest struct {
+	// example:
+	//
+	// ***环境
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
 	//
 	// >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](https://help.aliyun.com/document_detail/146559.html).
@@ -92,6 +98,10 @@ func (s CreateAccountRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAccountRequest) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *CreateAccountRequest) GetAccountAccessKey() *string {
 	return s.AccountAccessKey
 }
@@ -114,6 +124,11 @@ func (s *CreateAccountRequest) GetSignature() *string {
 
 func (s *CreateAccountRequest) GetUserName() *string {
 	return s.UserName
+}
+
+func (s *CreateAccountRequest) SetRemark(v string) *CreateAccountRequest {
+	s.Remark = &v
+	return s
 }
 
 func (s *CreateAccountRequest) SetAccountAccessKey(v string) *CreateAccountRequest {
