@@ -286,6 +286,10 @@ func (client *Client) ChangeCloudPhoneNodeWithContext(ctx context.Context, reque
 		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.UpBandwidthLimit) {
 		query["UpBandwidthLimit"] = request.UpBandwidthLimit
 	}
@@ -486,6 +490,10 @@ func (client *Client) CreateAndroidInstanceGroupWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -722,6 +730,10 @@ func (client *Client) CreateCloudPhoneNodeWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.PhoneDataVolume) {
 		query["PhoneDataVolume"] = request.PhoneDataVolume
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.ResolutionHeight) {
@@ -2742,6 +2754,10 @@ func (client *Client) ExpandDataVolumeWithContext(ctx context.Context, request *
 		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.ShareDataVolume) {
 		query["ShareDataVolume"] = request.ShareDataVolume
 	}
@@ -3496,6 +3512,10 @@ func (client *Client) ModifyInstanceChargeTypeWithContext(ctx context.Context, r
 		query["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3926,6 +3946,10 @@ func (client *Client) RenewAndroidInstanceGroupsWithContext(ctx context.Context,
 		query["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -3966,6 +3990,10 @@ func (client *Client) RenewCloudPhoneNodesWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	body := map[string]interface{}{}
@@ -4776,6 +4804,10 @@ func (client *Client) UpgradeAndroidInstanceGroupWithContext(ctx context.Context
 
 	if !dara.IsNil(request.InstanceGroupId) {
 		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	req := &openapiutil.OpenApiRequest{

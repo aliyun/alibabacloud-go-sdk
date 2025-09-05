@@ -15,6 +15,8 @@ type iUpgradeAndroidInstanceGroupRequest interface {
 	GetIncreaseNumberOfInstance() *int32
 	SetInstanceGroupId(v string) *UpgradeAndroidInstanceGroupRequest
 	GetInstanceGroupId() *string
+	SetPromotionId(v string) *UpgradeAndroidInstanceGroupRequest
+	GetPromotionId() *string
 }
 
 type UpgradeAndroidInstanceGroupRequest struct {
@@ -42,6 +44,7 @@ type UpgradeAndroidInstanceGroupRequest struct {
 	//
 	// ag-asguicdjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s UpgradeAndroidInstanceGroupRequest) String() string {
@@ -64,6 +67,10 @@ func (s *UpgradeAndroidInstanceGroupRequest) GetInstanceGroupId() *string {
 	return s.InstanceGroupId
 }
 
+func (s *UpgradeAndroidInstanceGroupRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *UpgradeAndroidInstanceGroupRequest) SetAutoPay(v bool) *UpgradeAndroidInstanceGroupRequest {
 	s.AutoPay = &v
 	return s
@@ -76,6 +83,11 @@ func (s *UpgradeAndroidInstanceGroupRequest) SetIncreaseNumberOfInstance(v int32
 
 func (s *UpgradeAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *UpgradeAndroidInstanceGroupRequest {
 	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *UpgradeAndroidInstanceGroupRequest) SetPromotionId(v string) *UpgradeAndroidInstanceGroupRequest {
+	s.PromotionId = &v
 	return s
 }
 

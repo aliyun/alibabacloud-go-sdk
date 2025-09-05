@@ -21,6 +21,8 @@ type iModifyInstanceChargeTypeRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *ModifyInstanceChargeTypeRequest
 	GetPeriodUnit() *string
+	SetPromotionId(v string) *ModifyInstanceChargeTypeRequest
+	GetPromotionId() *string
 }
 
 type ModifyInstanceChargeTypeRequest struct {
@@ -65,7 +67,8 @@ type ModifyInstanceChargeTypeRequest struct {
 	// example:
 	//
 	// Month
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s ModifyInstanceChargeTypeRequest) String() string {
@@ -100,6 +103,10 @@ func (s *ModifyInstanceChargeTypeRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *ModifyInstanceChargeTypeRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *ModifyInstanceChargeTypeRequest) SetAutoPay(v bool) *ModifyInstanceChargeTypeRequest {
 	s.AutoPay = &v
 	return s
@@ -127,6 +134,11 @@ func (s *ModifyInstanceChargeTypeRequest) SetPeriod(v int32) *ModifyInstanceChar
 
 func (s *ModifyInstanceChargeTypeRequest) SetPeriodUnit(v string) *ModifyInstanceChargeTypeRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeRequest) SetPromotionId(v string) *ModifyInstanceChargeTypeRequest {
+	s.PromotionId = &v
 	return s
 }
 

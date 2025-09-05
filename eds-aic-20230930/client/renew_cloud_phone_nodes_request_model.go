@@ -19,6 +19,8 @@ type iRenewCloudPhoneNodesRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RenewCloudPhoneNodesRequest
 	GetPeriodUnit() *string
+	SetPromotionId(v string) *RenewCloudPhoneNodesRequest
+	GetPromotionId() *string
 }
 
 type RenewCloudPhoneNodesRequest struct {
@@ -58,7 +60,8 @@ type RenewCloudPhoneNodesRequest struct {
 	// example:
 	//
 	// Month
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s RenewCloudPhoneNodesRequest) String() string {
@@ -89,6 +92,10 @@ func (s *RenewCloudPhoneNodesRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *RenewCloudPhoneNodesRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *RenewCloudPhoneNodesRequest) SetAutoPay(v bool) *RenewCloudPhoneNodesRequest {
 	s.AutoPay = &v
 	return s
@@ -111,6 +118,11 @@ func (s *RenewCloudPhoneNodesRequest) SetPeriod(v int32) *RenewCloudPhoneNodesRe
 
 func (s *RenewCloudPhoneNodesRequest) SetPeriodUnit(v string) *RenewCloudPhoneNodesRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetPromotionId(v string) *RenewCloudPhoneNodesRequest {
+	s.PromotionId = &v
 	return s
 }
 

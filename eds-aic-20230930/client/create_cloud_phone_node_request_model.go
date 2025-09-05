@@ -47,6 +47,8 @@ type iCreateCloudPhoneNodeRequest interface {
 	GetPhoneCount() *int32
 	SetPhoneDataVolume(v int32) *CreateCloudPhoneNodeRequest
 	GetPhoneDataVolume() *int32
+	SetPromotionId(v string) *CreateCloudPhoneNodeRequest
+	GetPromotionId() *string
 	SetResolutionHeight(v int32) *CreateCloudPhoneNodeRequest
 	GetResolutionHeight() *int32
 	SetResolutionWidth(v int32) *CreateCloudPhoneNodeRequest
@@ -175,8 +177,9 @@ type CreateCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// 25
-	PhoneCount      *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	PhoneCount      *int32  `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataVolume *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The resolution height. Unit: pixel.
 	//
 	// example:
@@ -302,6 +305,10 @@ func (s *CreateCloudPhoneNodeRequest) GetPhoneCount() *int32 {
 
 func (s *CreateCloudPhoneNodeRequest) GetPhoneDataVolume() *int32 {
 	return s.PhoneDataVolume
+}
+
+func (s *CreateCloudPhoneNodeRequest) GetPromotionId() *string {
+	return s.PromotionId
 }
 
 func (s *CreateCloudPhoneNodeRequest) GetResolutionHeight() *int32 {
@@ -432,6 +439,11 @@ func (s *CreateCloudPhoneNodeRequest) SetPhoneCount(v int32) *CreateCloudPhoneNo
 
 func (s *CreateCloudPhoneNodeRequest) SetPhoneDataVolume(v int32) *CreateCloudPhoneNodeRequest {
 	s.PhoneDataVolume = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeRequest) SetPromotionId(v string) *CreateCloudPhoneNodeRequest {
+	s.PromotionId = &v
 	return s
 }
 

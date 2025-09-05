@@ -53,6 +53,8 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetPeriodUnit() *string
 	SetPolicyGroupId(v string) *CreateAndroidInstanceGroupRequest
 	GetPolicyGroupId() *string
+	SetPromotionId(v string) *CreateAndroidInstanceGroupRequest
+	GetPromotionId() *string
 	SetTag(v []*CreateAndroidInstanceGroupRequestTag) *CreateAndroidInstanceGroupRequest
 	GetTag() []*CreateAndroidInstanceGroupRequestTag
 	SetVSwitchId(v string) *CreateAndroidInstanceGroupRequest
@@ -240,6 +242,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// pg-b7bxrrwxkijjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The tags
 	Tag []*CreateAndroidInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
@@ -348,6 +351,10 @@ func (s *CreateAndroidInstanceGroupRequest) GetPeriodUnit() *string {
 
 func (s *CreateAndroidInstanceGroupRequest) GetPolicyGroupId() *string {
 	return s.PolicyGroupId
+}
+
+func (s *CreateAndroidInstanceGroupRequest) GetPromotionId() *string {
+	return s.PromotionId
 }
 
 func (s *CreateAndroidInstanceGroupRequest) GetTag() []*CreateAndroidInstanceGroupRequestTag {
@@ -465,6 +472,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetPeriodUnit(v string) *CreateAndro
 
 func (s *CreateAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *CreateAndroidInstanceGroupRequest {
 	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetPromotionId(v string) *CreateAndroidInstanceGroupRequest {
+	s.PromotionId = &v
 	return s
 }
 

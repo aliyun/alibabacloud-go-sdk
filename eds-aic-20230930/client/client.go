@@ -422,6 +422,10 @@ func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneN
 		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.UpBandwidthLimit) {
 		query["UpBandwidthLimit"] = request.UpBandwidthLimit
 	}
@@ -658,6 +662,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroi
 
 	if !dara.IsNil(request.PolicyGroupId) {
 		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -962,6 +970,10 @@ func (client *Client) CreateCloudPhoneNodeWithOptions(tmpReq *CreateCloudPhoneNo
 
 	if !dara.IsNil(request.PhoneDataVolume) {
 		query["PhoneDataVolume"] = request.PhoneDataVolume
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	if !dara.IsNil(request.ResolutionHeight) {
@@ -3634,6 +3646,10 @@ func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeReque
 		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	if !dara.IsNil(request.ShareDataVolume) {
 		query["ShareDataVolume"] = request.ShareDataVolume
 	}
@@ -4656,6 +4672,10 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(request *ModifyInstanc
 		query["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5224,6 +5244,10 @@ func (client *Client) RenewAndroidInstanceGroupsWithOptions(request *RenewAndroi
 		query["PeriodUnit"] = request.PeriodUnit
 	}
 
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5282,6 +5306,10 @@ func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNo
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	body := map[string]interface{}{}
@@ -6390,6 +6418,10 @@ func (client *Client) UpgradeAndroidInstanceGroupWithOptions(request *UpgradeAnd
 
 	if !dara.IsNil(request.InstanceGroupId) {
 		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
 	}
 
 	req := &openapiutil.OpenApiRequest{

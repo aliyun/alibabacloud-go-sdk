@@ -21,6 +21,8 @@ type iChangeCloudPhoneNodeRequest interface {
 	GetPhoneCount() *int32
 	SetPhoneDataVolume(v int32) *ChangeCloudPhoneNodeRequest
 	GetPhoneDataVolume() *int32
+	SetPromotionId(v string) *ChangeCloudPhoneNodeRequest
+	GetPromotionId() *string
 	SetUpBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest
 	GetUpBandwidthLimit() *int32
 }
@@ -39,9 +41,10 @@ type ChangeCloudPhoneNodeRequest struct {
 	// example:
 	//
 	// 20
-	PhoneCount       *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
-	PhoneDataVolume  *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
-	UpBandwidthLimit *int32 `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
+	PhoneCount       *int32  `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+	PhoneDataVolume  *int32  `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+	PromotionId      *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	UpBandwidthLimit *int32  `json:"UpBandwidthLimit,omitempty" xml:"UpBandwidthLimit,omitempty"`
 }
 
 func (s ChangeCloudPhoneNodeRequest) String() string {
@@ -76,6 +79,10 @@ func (s *ChangeCloudPhoneNodeRequest) GetPhoneDataVolume() *int32 {
 	return s.PhoneDataVolume
 }
 
+func (s *ChangeCloudPhoneNodeRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *ChangeCloudPhoneNodeRequest) GetUpBandwidthLimit() *int32 {
 	return s.UpBandwidthLimit
 }
@@ -107,6 +114,11 @@ func (s *ChangeCloudPhoneNodeRequest) SetPhoneCount(v int32) *ChangeCloudPhoneNo
 
 func (s *ChangeCloudPhoneNodeRequest) SetPhoneDataVolume(v int32) *ChangeCloudPhoneNodeRequest {
 	s.PhoneDataVolume = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetPromotionId(v string) *ChangeCloudPhoneNodeRequest {
+	s.PromotionId = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iExpandDataVolumeRequest interface {
   GetNodeIds() []*string 
   SetPhoneDataVolume(v int32) *ExpandDataVolumeRequest
   GetPhoneDataVolume() *int32 
+  SetPromotionId(v string) *ExpandDataVolumeRequest
+  GetPromotionId() *string 
   SetShareDataVolume(v int32) *ExpandDataVolumeRequest
   GetShareDataVolume() *int32 
 }
@@ -32,6 +34,7 @@ type ExpandDataVolumeRequest struct {
   BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
   NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
   PhoneDataVolume *int32 `json:"PhoneDataVolume,omitempty" xml:"PhoneDataVolume,omitempty"`
+  PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
   // example:
   // 
   // 100
@@ -62,6 +65,10 @@ func (s *ExpandDataVolumeRequest) GetPhoneDataVolume() *int32  {
   return s.PhoneDataVolume
 }
 
+func (s *ExpandDataVolumeRequest) GetPromotionId() *string  {
+  return s.PromotionId
+}
+
 func (s *ExpandDataVolumeRequest) GetShareDataVolume() *int32  {
   return s.ShareDataVolume
 }
@@ -83,6 +90,11 @@ func (s *ExpandDataVolumeRequest) SetNodeIds(v []*string) *ExpandDataVolumeReque
 
 func (s *ExpandDataVolumeRequest) SetPhoneDataVolume(v int32) *ExpandDataVolumeRequest {
   s.PhoneDataVolume = &v
+  return s
+}
+
+func (s *ExpandDataVolumeRequest) SetPromotionId(v string) *ExpandDataVolumeRequest {
+  s.PromotionId = &v
   return s
 }
 

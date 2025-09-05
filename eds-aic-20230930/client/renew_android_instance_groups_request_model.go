@@ -17,6 +17,8 @@ type iRenewAndroidInstanceGroupsRequest interface {
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RenewAndroidInstanceGroupsRequest
 	GetPeriodUnit() *string
+	SetPromotionId(v string) *RenewAndroidInstanceGroupsRequest
+	GetPromotionId() *string
 }
 
 type RenewAndroidInstanceGroupsRequest struct {
@@ -51,7 +53,8 @@ type RenewAndroidInstanceGroupsRequest struct {
 	// example:
 	//
 	// Month
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s RenewAndroidInstanceGroupsRequest) String() string {
@@ -78,6 +81,10 @@ func (s *RenewAndroidInstanceGroupsRequest) GetPeriodUnit() *string {
 	return s.PeriodUnit
 }
 
+func (s *RenewAndroidInstanceGroupsRequest) GetPromotionId() *string {
+	return s.PromotionId
+}
+
 func (s *RenewAndroidInstanceGroupsRequest) SetAutoPay(v bool) *RenewAndroidInstanceGroupsRequest {
 	s.AutoPay = &v
 	return s
@@ -95,6 +102,11 @@ func (s *RenewAndroidInstanceGroupsRequest) SetPeriod(v int32) *RenewAndroidInst
 
 func (s *RenewAndroidInstanceGroupsRequest) SetPeriodUnit(v string) *RenewAndroidInstanceGroupsRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *RenewAndroidInstanceGroupsRequest) SetPromotionId(v string) *RenewAndroidInstanceGroupsRequest {
+	s.PromotionId = &v
 	return s
 }
 
