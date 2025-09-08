@@ -13,6 +13,8 @@ type iScorePageItem interface {
 	GetCardType() *string
 	SetDisplayLink(v string) *ScorePageItem
 	GetDisplayLink() *string
+	SetHostAuthorityScore(v float64) *ScorePageItem
+	GetHostAuthorityScore() *float64
 	SetHostLogo(v string) *ScorePageItem
 	GetHostLogo() *string
 	SetHostname(v string) *ScorePageItem
@@ -59,7 +61,8 @@ type ScorePageItem struct {
 	// example:
 	//
 	// baijiahao.baidu.com
-	DisplayLink *string `json:"displayLink,omitempty" xml:"displayLink,omitempty"`
+	DisplayLink        *string  `json:"displayLink,omitempty" xml:"displayLink,omitempty"`
+	HostAuthorityScore *float64 `json:"hostAuthorityScore,omitempty" xml:"hostAuthorityScore,omitempty"`
 	// example:
 	//
 	// https://s2.zimgs.cn/ims?kt=url&at=smstruct&key=aHR0cHM6Ly9ndy5hbGljZG4uY29tL0wxLzcyMy8xNTY1MjU2NjAwLzJhL2YwL2I0LzJhZjBiNDQxMGI5YmVlMDVjOGVlNGJmODk3MTNkNTFjLnBuZw==&sign=yx:CUlNNQVJQjFrk3Kxt2F3KWhTOFU=&tv=400_400
@@ -148,6 +151,10 @@ func (s *ScorePageItem) GetDisplayLink() *string {
 	return s.DisplayLink
 }
 
+func (s *ScorePageItem) GetHostAuthorityScore() *float64 {
+	return s.HostAuthorityScore
+}
+
 func (s *ScorePageItem) GetHostLogo() *string {
 	return s.HostLogo
 }
@@ -219,6 +226,11 @@ func (s *ScorePageItem) SetCardType(v string) *ScorePageItem {
 
 func (s *ScorePageItem) SetDisplayLink(v string) *ScorePageItem {
 	s.DisplayLink = &v
+	return s
+}
+
+func (s *ScorePageItem) SetHostAuthorityScore(v float64) *ScorePageItem {
+	s.HostAuthorityScore = &v
 	return s
 }
 
