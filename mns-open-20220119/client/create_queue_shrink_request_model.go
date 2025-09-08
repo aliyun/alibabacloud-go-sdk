@@ -23,6 +23,8 @@ type iCreateQueueShrinkRequest interface {
 	GetPollingWaitSeconds() *int64
 	SetQueueName(v string) *CreateQueueShrinkRequest
 	GetQueueName() *string
+	SetQueueType(v string) *CreateQueueShrinkRequest
+	GetQueueType() *string
 	SetTag(v []*CreateQueueShrinkRequestTag) *CreateQueueShrinkRequest
 	GetTag() []*CreateQueueShrinkRequestTag
 	SetTenantRateLimitPolicyShrink(v string) *CreateQueueShrinkRequest
@@ -78,6 +80,7 @@ type CreateQueueShrinkRequest struct {
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The tags.
 	Tag                         []*CreateQueueShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TenantRateLimitPolicyShrink *string                        `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty"`
@@ -125,6 +128,10 @@ func (s *CreateQueueShrinkRequest) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *CreateQueueShrinkRequest) GetQueueType() *string {
+	return s.QueueType
+}
+
 func (s *CreateQueueShrinkRequest) GetTag() []*CreateQueueShrinkRequestTag {
 	return s.Tag
 }
@@ -169,6 +176,11 @@ func (s *CreateQueueShrinkRequest) SetPollingWaitSeconds(v int64) *CreateQueueSh
 
 func (s *CreateQueueShrinkRequest) SetQueueName(v string) *CreateQueueShrinkRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *CreateQueueShrinkRequest) SetQueueType(v string) *CreateQueueShrinkRequest {
+	s.QueueType = &v
 	return s
 }
 

@@ -250,6 +250,7 @@ type ListTopicResponseBodyDataPageData struct {
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 	// The URL of the message topic.
 	//
 	// example:
@@ -302,6 +303,10 @@ func (s *ListTopicResponseBodyDataPageData) GetTopicName() *string {
 	return s.TopicName
 }
 
+func (s *ListTopicResponseBodyDataPageData) GetTopicType() *string {
+	return s.TopicType
+}
+
 func (s *ListTopicResponseBodyDataPageData) GetTopicUrl() *string {
 	return s.TopicUrl
 }
@@ -348,6 +353,11 @@ func (s *ListTopicResponseBodyDataPageData) SetTopicInnerUrl(v string) *ListTopi
 
 func (s *ListTopicResponseBodyDataPageData) SetTopicName(v string) *ListTopicResponseBodyDataPageData {
 	s.TopicName = &v
+	return s
+}
+
+func (s *ListTopicResponseBodyDataPageData) SetTopicType(v string) *ListTopicResponseBodyDataPageData {
+	s.TopicType = &v
 	return s
 }
 

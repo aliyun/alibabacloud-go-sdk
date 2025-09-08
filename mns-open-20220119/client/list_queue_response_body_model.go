@@ -298,6 +298,7 @@ type ListQueueResponseBodyDataPageData struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The tags added to the resources.
 	Tags []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
@@ -362,6 +363,10 @@ func (s *ListQueueResponseBodyDataPageData) GetPollingWaitSeconds() *int64 {
 
 func (s *ListQueueResponseBodyDataPageData) GetQueueName() *string {
 	return s.QueueName
+}
+
+func (s *ListQueueResponseBodyDataPageData) GetQueueType() *string {
+	return s.QueueType
 }
 
 func (s *ListQueueResponseBodyDataPageData) GetTags() []*ListQueueResponseBodyDataPageDataTags {
@@ -429,6 +434,11 @@ func (s *ListQueueResponseBodyDataPageData) SetPollingWaitSeconds(v int64) *List
 
 func (s *ListQueueResponseBodyDataPageData) SetQueueName(v string) *ListQueueResponseBodyDataPageData {
 	s.QueueName = &v
+	return s
+}
+
+func (s *ListQueueResponseBodyDataPageData) SetQueueType(v string) *ListQueueResponseBodyDataPageData {
+	s.QueueType = &v
 	return s
 }
 

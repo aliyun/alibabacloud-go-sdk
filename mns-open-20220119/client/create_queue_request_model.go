@@ -23,6 +23,8 @@ type iCreateQueueRequest interface {
 	GetPollingWaitSeconds() *int64
 	SetQueueName(v string) *CreateQueueRequest
 	GetQueueName() *string
+	SetQueueType(v string) *CreateQueueRequest
+	GetQueueType() *string
 	SetTag(v []*CreateQueueRequestTag) *CreateQueueRequest
 	GetTag() []*CreateQueueRequestTag
 	SetTenantRateLimitPolicy(v *CreateQueueRequestTenantRateLimitPolicy) *CreateQueueRequest
@@ -78,6 +80,7 @@ type CreateQueueRequest struct {
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The tags.
 	Tag                   []*CreateQueueRequestTag                 `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	TenantRateLimitPolicy *CreateQueueRequestTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
@@ -125,6 +128,10 @@ func (s *CreateQueueRequest) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *CreateQueueRequest) GetQueueType() *string {
+	return s.QueueType
+}
+
 func (s *CreateQueueRequest) GetTag() []*CreateQueueRequestTag {
 	return s.Tag
 }
@@ -169,6 +176,11 @@ func (s *CreateQueueRequest) SetPollingWaitSeconds(v int64) *CreateQueueRequest 
 
 func (s *CreateQueueRequest) SetQueueName(v string) *CreateQueueRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *CreateQueueRequest) SetQueueType(v string) *CreateQueueRequest {
+	s.QueueType = &v
 	return s
 }
 

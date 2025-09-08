@@ -173,6 +173,7 @@ type GetTopicAttributesResponseBodyData struct {
 	//
 	// demo-topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
 func (s GetTopicAttributesResponseBodyData) String() string {
@@ -215,6 +216,10 @@ func (s *GetTopicAttributesResponseBodyData) GetTopicName() *string {
 	return s.TopicName
 }
 
+func (s *GetTopicAttributesResponseBodyData) GetTopicType() *string {
+	return s.TopicType
+}
+
 func (s *GetTopicAttributesResponseBodyData) SetCreateTime(v int64) *GetTopicAttributesResponseBodyData {
 	s.CreateTime = &v
 	return s
@@ -252,6 +257,11 @@ func (s *GetTopicAttributesResponseBodyData) SetTags(v []*GetTopicAttributesResp
 
 func (s *GetTopicAttributesResponseBodyData) SetTopicName(v string) *GetTopicAttributesResponseBodyData {
 	s.TopicName = &v
+	return s
+}
+
+func (s *GetTopicAttributesResponseBodyData) SetTopicType(v string) *GetTopicAttributesResponseBodyData {
+	s.TopicType = &v
 	return s
 }
 

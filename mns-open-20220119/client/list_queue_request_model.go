@@ -15,6 +15,8 @@ type iListQueueRequest interface {
 	GetPageSize() *int64
 	SetQueueName(v string) *ListQueueRequest
 	GetQueueName() *string
+	SetQueueType(v string) *ListQueueRequest
+	GetQueueType() *string
 	SetTag(v []*ListQueueRequestTag) *ListQueueRequest
 	GetTag() []*ListQueueRequestTag
 }
@@ -38,6 +40,7 @@ type ListQueueRequest struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The tags.
 	Tag []*ListQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -62,6 +65,10 @@ func (s *ListQueueRequest) GetQueueName() *string {
 	return s.QueueName
 }
 
+func (s *ListQueueRequest) GetQueueType() *string {
+	return s.QueueType
+}
+
 func (s *ListQueueRequest) GetTag() []*ListQueueRequestTag {
 	return s.Tag
 }
@@ -78,6 +85,11 @@ func (s *ListQueueRequest) SetPageSize(v int64) *ListQueueRequest {
 
 func (s *ListQueueRequest) SetQueueName(v string) *ListQueueRequest {
 	s.QueueName = &v
+	return s
+}
+
+func (s *ListQueueRequest) SetQueueType(v string) *ListQueueRequest {
+	s.QueueType = &v
 	return s
 }
 

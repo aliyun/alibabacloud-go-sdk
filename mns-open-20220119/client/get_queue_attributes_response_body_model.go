@@ -197,6 +197,7 @@ type GetQueueAttributesResponseBodyData struct {
 	//
 	// demo-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	QueueType *string `json:"QueueType,omitempty" xml:"QueueType,omitempty"`
 	// The tag.
 	Tags                  []*GetQueueAttributesResponseBodyDataTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TenantRateLimitPolicy *GetQueueAttributesResponseBodyDataTenantRateLimitPolicy `json:"TenantRateLimitPolicy,omitempty" xml:"TenantRateLimitPolicy,omitempty" type:"Struct"`
@@ -262,6 +263,10 @@ func (s *GetQueueAttributesResponseBodyData) GetPollingWaitSeconds() *int64 {
 
 func (s *GetQueueAttributesResponseBodyData) GetQueueName() *string {
 	return s.QueueName
+}
+
+func (s *GetQueueAttributesResponseBodyData) GetQueueType() *string {
+	return s.QueueType
 }
 
 func (s *GetQueueAttributesResponseBodyData) GetTags() []*GetQueueAttributesResponseBodyDataTags {
@@ -333,6 +338,11 @@ func (s *GetQueueAttributesResponseBodyData) SetPollingWaitSeconds(v int64) *Get
 
 func (s *GetQueueAttributesResponseBodyData) SetQueueName(v string) *GetQueueAttributesResponseBodyData {
 	s.QueueName = &v
+	return s
+}
+
+func (s *GetQueueAttributesResponseBodyData) SetQueueType(v string) *GetQueueAttributesResponseBodyData {
+	s.QueueType = &v
 	return s
 }
 

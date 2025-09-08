@@ -17,6 +17,8 @@ type iListTopicRequest interface {
 	GetTag() []*ListTopicRequestTag
 	SetTopicName(v string) *ListTopicRequest
 	GetTopicName() *string
+	SetTopicType(v string) *ListTopicRequest
+	GetTopicType() *string
 }
 
 type ListTopicRequest struct {
@@ -40,6 +42,7 @@ type ListTopicRequest struct {
 	//
 	// test
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
 func (s ListTopicRequest) String() string {
@@ -66,6 +69,10 @@ func (s *ListTopicRequest) GetTopicName() *string {
 	return s.TopicName
 }
 
+func (s *ListTopicRequest) GetTopicType() *string {
+	return s.TopicType
+}
+
 func (s *ListTopicRequest) SetPageNum(v int64) *ListTopicRequest {
 	s.PageNum = &v
 	return s
@@ -83,6 +90,11 @@ func (s *ListTopicRequest) SetTag(v []*ListTopicRequestTag) *ListTopicRequest {
 
 func (s *ListTopicRequest) SetTopicName(v string) *ListTopicRequest {
 	s.TopicName = &v
+	return s
+}
+
+func (s *ListTopicRequest) SetTopicType(v string) *ListTopicRequest {
+	s.TopicType = &v
 	return s
 }
 

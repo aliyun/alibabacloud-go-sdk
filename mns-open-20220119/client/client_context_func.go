@@ -204,6 +204,10 @@ func (client *Client) CreateQueueWithContext(ctx context.Context, tmpReq *Create
 		query["QueueName"] = request.QueueName
 	}
 
+	if !dara.IsNil(request.QueueType) {
+		query["QueueType"] = request.QueueType
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -256,6 +260,10 @@ func (client *Client) CreateTopicWithContext(ctx context.Context, request *Creat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.TopicType) {
+		query["TopicType"] = request.TopicType
 	}
 
 	body := map[string]interface{}{}
@@ -842,6 +850,10 @@ func (client *Client) ListQueueWithContext(ctx context.Context, request *ListQue
 		query["QueueName"] = request.QueueName
 	}
 
+	if !dara.IsNil(request.QueueType) {
+		query["QueueType"] = request.QueueType
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -960,6 +972,10 @@ func (client *Client) ListTopicWithContext(ctx context.Context, request *ListTop
 
 	if !dara.IsNil(request.TopicName) {
 		query["TopicName"] = request.TopicName
+	}
+
+	if !dara.IsNil(request.TopicType) {
+		query["TopicType"] = request.TopicType
 	}
 
 	req := &openapiutil.OpenApiRequest{

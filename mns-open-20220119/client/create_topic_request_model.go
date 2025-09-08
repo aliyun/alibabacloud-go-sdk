@@ -17,6 +17,8 @@ type iCreateTopicRequest interface {
 	GetTag() []*CreateTopicRequestTag
 	SetTopicName(v string) *CreateTopicRequest
 	GetTopicName() *string
+	SetTopicType(v string) *CreateTopicRequest
+	GetTopicType() *string
 }
 
 type CreateTopicRequest struct {
@@ -46,6 +48,7 @@ type CreateTopicRequest struct {
 	//
 	// test
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	TopicType *string `json:"TopicType,omitempty" xml:"TopicType,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -72,6 +75,10 @@ func (s *CreateTopicRequest) GetTopicName() *string {
 	return s.TopicName
 }
 
+func (s *CreateTopicRequest) GetTopicType() *string {
+	return s.TopicType
+}
+
 func (s *CreateTopicRequest) SetEnableLogging(v bool) *CreateTopicRequest {
 	s.EnableLogging = &v
 	return s
@@ -89,6 +96,11 @@ func (s *CreateTopicRequest) SetTag(v []*CreateTopicRequestTag) *CreateTopicRequ
 
 func (s *CreateTopicRequest) SetTopicName(v string) *CreateTopicRequest {
 	s.TopicName = &v
+	return s
+}
+
+func (s *CreateTopicRequest) SetTopicType(v string) *CreateTopicRequest {
+	s.TopicType = &v
 	return s
 }
 
