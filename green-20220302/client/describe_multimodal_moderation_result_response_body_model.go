@@ -76,6 +76,7 @@ func (s *DescribeMultimodalModerationResultResponseBody) Validate() error {
 
 type DescribeMultimodalModerationResultResponseBodyData struct {
 	CommentDatas []*DescribeMultimodalModerationResultResponseBodyDataCommentDatas `json:"CommentDatas,omitempty" xml:"CommentDatas,omitempty" type:"Repeated"`
+	DataId       *string                                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	MainData     *DescribeMultimodalModerationResultResponseBodyDataMainData       `json:"MainData,omitempty" xml:"MainData,omitempty" type:"Struct"`
 	ReqId        *string                                                           `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	RiskLevel    *string                                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
@@ -93,6 +94,10 @@ func (s *DescribeMultimodalModerationResultResponseBodyData) GetCommentDatas() [
 	return s.CommentDatas
 }
 
+func (s *DescribeMultimodalModerationResultResponseBodyData) GetDataId() *string {
+	return s.DataId
+}
+
 func (s *DescribeMultimodalModerationResultResponseBodyData) GetMainData() *DescribeMultimodalModerationResultResponseBodyDataMainData {
 	return s.MainData
 }
@@ -107,6 +112,11 @@ func (s *DescribeMultimodalModerationResultResponseBodyData) GetRiskLevel() *str
 
 func (s *DescribeMultimodalModerationResultResponseBodyData) SetCommentDatas(v []*DescribeMultimodalModerationResultResponseBodyDataCommentDatas) *DescribeMultimodalModerationResultResponseBodyData {
 	s.CommentDatas = v
+	return s
+}
+
+func (s *DescribeMultimodalModerationResultResponseBodyData) SetDataId(v string) *DescribeMultimodalModerationResultResponseBodyData {
+	s.DataId = &v
 	return s
 }
 
