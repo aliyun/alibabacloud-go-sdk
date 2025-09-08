@@ -1140,6 +1140,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 		query["BackoffLimit"] = request.BackoffLimit
 	}
 
+	if !dara.IsNil(request.BestEffortType) {
+		query["BestEffortType"] = request.BestEffortType
+	}
+
 	if !dara.IsNil(request.Command) {
 		query["Command"] = request.Command
 	}
@@ -1202,6 +1206,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, request *CreateJ
 
 	if !dara.IsNil(request.NamespaceId) {
 		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !dara.IsNil(request.NasConfigs) {
+		query["NasConfigs"] = request.NasConfigs
 	}
 
 	if !dara.IsNil(request.NasId) {
@@ -3060,6 +3068,51 @@ func (client *Client) DescribeApplicationInstancesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// @param request - DescribeApplicationMseServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationMseServiceResponse
+func (client *Client) DescribeApplicationMseServiceWithContext(ctx context.Context, request *DescribeApplicationMseServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeApplicationMseServiceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EnableAhas) {
+		query["EnableAhas"] = request.EnableAhas
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationMseService"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/applicationMseService"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationMseServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the Network Load Balancer (NLB) instances bound to an application and their listeners.
@@ -3445,6 +3498,10 @@ func (client *Client) DescribeConfigurationPriceWithContext(ctx context.Context,
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BestEffortType) {
+		query["BestEffortType"] = request.BestEffortType
+	}
+
 	if !dara.IsNil(request.Cpu) {
 		query["Cpu"] = request.Cpu
 	}
@@ -8184,6 +8241,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJ
 		query["BackoffLimit"] = request.BackoffLimit
 	}
 
+	if !dara.IsNil(request.BestEffortType) {
+		query["BestEffortType"] = request.BestEffortType
+	}
+
 	if !dara.IsNil(request.Command) {
 		query["Command"] = request.Command
 	}
@@ -8234,6 +8295,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, request *UpdateJ
 
 	if !dara.IsNil(request.MountHost) {
 		query["MountHost"] = request.MountHost
+	}
+
+	if !dara.IsNil(request.NasConfigs) {
+		query["NasConfigs"] = request.NasConfigs
 	}
 
 	if !dara.IsNil(request.NasId) {

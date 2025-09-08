@@ -21,6 +21,8 @@ type iCreateJobRequest interface {
 	GetAutoConfig() *bool
 	SetBackoffLimit(v int64) *CreateJobRequest
 	GetBackoffLimit() *int64
+	SetBestEffortType(v string) *CreateJobRequest
+	GetBestEffortType() *string
 	SetCommand(v string) *CreateJobRequest
 	GetCommand() *string
 	SetCommandArgs(v string) *CreateJobRequest
@@ -57,6 +59,8 @@ type iCreateJobRequest interface {
 	GetMountHost() *string
 	SetNamespaceId(v string) *CreateJobRequest
 	GetNamespaceId() *string
+	SetNasConfigs(v string) *CreateJobRequest
+	GetNasConfigs() *string
 	SetNasId(v string) *CreateJobRequest
 	GetNasId() *string
 	SetOssAkId(v string) *CreateJobRequest
@@ -161,7 +165,8 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// 3
-	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BackoffLimit   *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BestEffortType *string `json:"BestEffortType,omitempty" xml:"BestEffortType,omitempty"`
 	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
 	//
 	//     command:
@@ -366,6 +371,7 @@ type CreateJobRequest struct {
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NasConfigs  *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
 	// The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId*	- parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId*	- values in the subsequent requests to an empty string ("").
 	//
 	// example:
@@ -637,6 +643,10 @@ func (s *CreateJobRequest) GetBackoffLimit() *int64 {
 	return s.BackoffLimit
 }
 
+func (s *CreateJobRequest) GetBestEffortType() *string {
+	return s.BestEffortType
+}
+
 func (s *CreateJobRequest) GetCommand() *string {
 	return s.Command
 }
@@ -707,6 +717,10 @@ func (s *CreateJobRequest) GetMountHost() *string {
 
 func (s *CreateJobRequest) GetNamespaceId() *string {
 	return s.NamespaceId
+}
+
+func (s *CreateJobRequest) GetNasConfigs() *string {
+	return s.NasConfigs
 }
 
 func (s *CreateJobRequest) GetNasId() *string {
@@ -859,6 +873,11 @@ func (s *CreateJobRequest) SetBackoffLimit(v int64) *CreateJobRequest {
 	return s
 }
 
+func (s *CreateJobRequest) SetBestEffortType(v string) *CreateJobRequest {
+	s.BestEffortType = &v
+	return s
+}
+
 func (s *CreateJobRequest) SetCommand(v string) *CreateJobRequest {
 	s.Command = &v
 	return s
@@ -946,6 +965,11 @@ func (s *CreateJobRequest) SetMountHost(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetNamespaceId(v string) *CreateJobRequest {
 	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetNasConfigs(v string) *CreateJobRequest {
+	s.NasConfigs = &v
 	return s
 }
 

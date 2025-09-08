@@ -17,6 +17,8 @@ type iUpdateJobRequest interface {
 	GetAppId() *string
 	SetBackoffLimit(v int64) *UpdateJobRequest
 	GetBackoffLimit() *int64
+	SetBestEffortType(v string) *UpdateJobRequest
+	GetBestEffortType() *string
 	SetCommand(v string) *UpdateJobRequest
 	GetCommand() *string
 	SetCommandArgs(v string) *UpdateJobRequest
@@ -47,6 +49,8 @@ type iUpdateJobRequest interface {
 	GetMountDesc() *string
 	SetMountHost(v string) *UpdateJobRequest
 	GetMountHost() *string
+	SetNasConfigs(v string) *UpdateJobRequest
+	GetNasConfigs() *string
 	SetNasId(v string) *UpdateJobRequest
 	GetNasId() *string
 	SetOssAkId(v string) *UpdateJobRequest
@@ -127,7 +131,8 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// 3
-	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BackoffLimit   *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BestEffortType *string `json:"BestEffortType,omitempty" xml:"BestEffortType,omitempty"`
 	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
 	//
 	//     command:
@@ -276,7 +281,8 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// 10d3b4bc9****.com
-	MountHost *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MountHost  *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	NasConfigs *string `json:"NasConfigs,omitempty" xml:"NasConfigs,omitempty"`
 	// The ID of the Apsara File Storage NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **NasId*	- only in the first request. If you no longer need to use NAS, leave **NasId*	- empty in the request.
 	//
 	// example:
@@ -502,6 +508,10 @@ func (s *UpdateJobRequest) GetBackoffLimit() *int64 {
 	return s.BackoffLimit
 }
 
+func (s *UpdateJobRequest) GetBestEffortType() *string {
+	return s.BestEffortType
+}
+
 func (s *UpdateJobRequest) GetCommand() *string {
 	return s.Command
 }
@@ -560,6 +570,10 @@ func (s *UpdateJobRequest) GetMountDesc() *string {
 
 func (s *UpdateJobRequest) GetMountHost() *string {
 	return s.MountHost
+}
+
+func (s *UpdateJobRequest) GetNasConfigs() *string {
+	return s.NasConfigs
 }
 
 func (s *UpdateJobRequest) GetNasId() *string {
@@ -686,6 +700,11 @@ func (s *UpdateJobRequest) SetBackoffLimit(v int64) *UpdateJobRequest {
 	return s
 }
 
+func (s *UpdateJobRequest) SetBestEffortType(v string) *UpdateJobRequest {
+	s.BestEffortType = &v
+	return s
+}
+
 func (s *UpdateJobRequest) SetCommand(v string) *UpdateJobRequest {
 	s.Command = &v
 	return s
@@ -758,6 +777,11 @@ func (s *UpdateJobRequest) SetMountDesc(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetMountHost(v string) *UpdateJobRequest {
 	s.MountHost = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetNasConfigs(v string) *UpdateJobRequest {
+	s.NasConfigs = &v
 	return s
 }
 

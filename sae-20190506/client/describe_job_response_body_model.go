@@ -193,7 +193,8 @@ type DescribeJobResponseBodyData struct {
 	// example:
 	//
 	// 3
-	BackoffLimit *int64 `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BackoffLimit   *int64  `json:"BackoffLimit,omitempty" xml:"BackoffLimit,omitempty"`
+	BestEffortType *string `json:"BestEffortType,omitempty" xml:"BestEffortType,omitempty"`
 	// The command that is used to start the image. The command must be an existing executable object in the container. Example:
 	//
 	//     command:
@@ -677,6 +678,10 @@ func (s *DescribeJobResponseBodyData) GetBackoffLimit() *int64 {
 	return s.BackoffLimit
 }
 
+func (s *DescribeJobResponseBodyData) GetBestEffortType() *string {
+	return s.BestEffortType
+}
+
 func (s *DescribeJobResponseBodyData) GetCommand() *string {
 	return s.Command
 }
@@ -916,6 +921,11 @@ func (s *DescribeJobResponseBodyData) SetAppName(v string) *DescribeJobResponseB
 
 func (s *DescribeJobResponseBodyData) SetBackoffLimit(v int64) *DescribeJobResponseBodyData {
 	s.BackoffLimit = &v
+	return s
+}
+
+func (s *DescribeJobResponseBodyData) SetBestEffortType(v string) *DescribeJobResponseBodyData {
+	s.BestEffortType = &v
 	return s
 }
 

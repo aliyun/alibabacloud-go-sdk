@@ -9,6 +9,8 @@ type iDescribeConfigurationPriceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBestEffortType(v string) *DescribeConfigurationPriceRequest
+	GetBestEffortType() *string
 	SetCpu(v int32) *DescribeConfigurationPriceRequest
 	GetCpu() *int32
 	SetMemory(v int32) *DescribeConfigurationPriceRequest
@@ -22,6 +24,7 @@ type iDescribeConfigurationPriceRequest interface {
 }
 
 type DescribeConfigurationPriceRequest struct {
+	BestEffortType *string `json:"BestEffortType,omitempty" xml:"BestEffortType,omitempty"`
 	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
 	//
 	// 	- **500**
@@ -96,6 +99,10 @@ func (s DescribeConfigurationPriceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeConfigurationPriceRequest) GetBestEffortType() *string {
+	return s.BestEffortType
+}
+
 func (s *DescribeConfigurationPriceRequest) GetCpu() *int32 {
 	return s.Cpu
 }
@@ -114,6 +121,11 @@ func (s *DescribeConfigurationPriceRequest) GetResourceType() *string {
 
 func (s *DescribeConfigurationPriceRequest) GetWorkload() *string {
 	return s.Workload
+}
+
+func (s *DescribeConfigurationPriceRequest) SetBestEffortType(v string) *DescribeConfigurationPriceRequest {
+	s.BestEffortType = &v
+	return s
 }
 
 func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurationPriceRequest {
