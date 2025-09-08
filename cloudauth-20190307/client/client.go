@@ -3029,6 +3029,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 		query["Mode"] = request.Mode
 	}
 
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
+	}
+
 	if !dara.IsNil(request.OssBucketName) {
 		query["OssBucketName"] = request.OssBucketName
 	}

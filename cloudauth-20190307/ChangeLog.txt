@@ -1,3 +1,7 @@
+2025-09-08 Version: v4.9.5
+- Update API InitFaceVerify: add request parameters NeedMultiFaceCheck.
+
+
 2025-08-27 Version: v4.9.4
 - Generated golang 2019-03-07 for Cloudauth.
 

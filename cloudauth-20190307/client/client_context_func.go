@@ -1908,6 +1908,10 @@ func (client *Client) InitFaceVerifyWithContext(ctx context.Context, request *In
 		query["Mode"] = request.Mode
 	}
 
+	if !dara.IsNil(request.NeedMultiFaceCheck) {
+		query["NeedMultiFaceCheck"] = request.NeedMultiFaceCheck
+	}
+
 	if !dara.IsNil(request.OssBucketName) {
 		query["OssBucketName"] = request.OssBucketName
 	}

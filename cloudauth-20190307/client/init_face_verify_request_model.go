@@ -53,6 +53,8 @@ type iInitFaceVerifyRequest interface {
 	GetMode() *string
 	SetModel(v string) *InitFaceVerifyRequest
 	GetModel() *string
+	SetNeedMultiFaceCheck(v string) *InitFaceVerifyRequest
+	GetNeedMultiFaceCheck() *string
 	SetOssBucketName(v string) *InitFaceVerifyRequest
 	GetOssBucketName() *string
 	SetOssObjectName(v string) *InitFaceVerifyRequest
@@ -129,9 +131,10 @@ type InitFaceVerifyRequest struct {
 	// example:
 	//
 	// 130xxxxxxxx
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Mode   *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Model  *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Mobile             *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mode               *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Model              *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	NeedMultiFaceCheck *string `json:"NeedMultiFaceCheck,omitempty" xml:"NeedMultiFaceCheck,omitempty"`
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-xxxxx
@@ -264,6 +267,10 @@ func (s *InitFaceVerifyRequest) GetMode() *string {
 
 func (s *InitFaceVerifyRequest) GetModel() *string {
 	return s.Model
+}
+
+func (s *InitFaceVerifyRequest) GetNeedMultiFaceCheck() *string {
+	return s.NeedMultiFaceCheck
 }
 
 func (s *InitFaceVerifyRequest) GetOssBucketName() *string {
@@ -433,6 +440,11 @@ func (s *InitFaceVerifyRequest) SetMode(v string) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetModel(v string) *InitFaceVerifyRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetNeedMultiFaceCheck(v string) *InitFaceVerifyRequest {
+	s.NeedMultiFaceCheck = &v
 	return s
 }
 
