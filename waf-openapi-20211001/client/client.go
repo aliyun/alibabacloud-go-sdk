@@ -4279,6 +4279,114 @@ func (client *Client) DescribeApisecUserOperations(request *DescribeApisecUserOp
 
 // Summary:
 //
+// 查询基础防护系统规则集
+//
+// @param request - DescribeBaseSystemRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBaseSystemRulesResponse
+func (client *Client) DescribeBaseSystemRulesWithOptions(request *DescribeBaseSystemRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBaseSystemRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DetectType) {
+		query["DetectType"] = request.DetectType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.RuleAction) {
+		query["RuleAction"] = request.RuleAction
+	}
+
+	if !dara.IsNil(request.RuleId) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.RuleStatus) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBaseSystemRules"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBaseSystemRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询基础防护系统规则集
+//
+// @param request - DescribeBaseSystemRulesRequest
+//
+// @return DescribeBaseSystemRulesResponse
+func (client *Client) DescribeBaseSystemRules(request *DescribeBaseSystemRulesRequest) (_result *DescribeBaseSystemRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBaseSystemRulesResponse{}
+	_body, _err := client.DescribeBaseSystemRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
 //
 // @param request - DescribeCertDetailRequest
@@ -4770,6 +4878,74 @@ func (client *Client) DescribeCnameCount(request *DescribeCnameCountRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeCnameCountResponse{}
 	_body, _err := client.DescribeCnameCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义正则规则编译结果
+//
+// @param request - DescribeCustomBaseRuleCompileResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomBaseRuleCompileResultResponse
+func (client *Client) DescribeCustomBaseRuleCompileResultWithOptions(request *DescribeCustomBaseRuleCompileResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomBaseRuleCompileResultResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCustomBaseRuleCompileResult"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCustomBaseRuleCompileResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义正则规则编译结果
+//
+// @param request - DescribeCustomBaseRuleCompileResultRequest
+//
+// @return DescribeCustomBaseRuleCompileResultResponse
+func (client *Client) DescribeCustomBaseRuleCompileResult(request *DescribeCustomBaseRuleCompileResultRequest) (_result *DescribeCustomBaseRuleCompileResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCustomBaseRuleCompileResultResponse{}
+	_body, _err := client.DescribeCustomBaseRuleCompileResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5626,6 +5802,94 @@ func (client *Client) DescribeDefenseRule(request *DescribeDefenseRuleRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDefenseRuleResponse{}
 	_body, _err := client.DescribeDefenseRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询防护规则的统计信息
+//
+// @param request - DescribeDefenseRuleStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseRuleStatisticsResponse
+func (client *Client) DescribeDefenseRuleStatisticsWithOptions(request *DescribeDefenseRuleStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefenseRuleStatisticsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FourthKey) {
+		query["FourthKey"] = request.FourthKey
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PrimaryKey) {
+		query["PrimaryKey"] = request.PrimaryKey
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.SecondaryKey) {
+		query["SecondaryKey"] = request.SecondaryKey
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.ThirdKey) {
+		query["ThirdKey"] = request.ThirdKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDefenseRuleStatistics"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDefenseRuleStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询防护规则的统计信息
+//
+// @param request - DescribeDefenseRuleStatisticsRequest
+//
+// @return DescribeDefenseRuleStatisticsResponse
+func (client *Client) DescribeDefenseRuleStatistics(request *DescribeDefenseRuleStatisticsRequest) (_result *DescribeDefenseRuleStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDefenseRuleStatisticsResponse{}
+	_body, _err := client.DescribeDefenseRuleStatisticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
