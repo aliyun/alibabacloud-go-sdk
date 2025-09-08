@@ -1,3 +1,7 @@
+2025-09-08 Version: v3.11.0
+- Support API CredentialRecognitionIntl.
+
+
 2025-08-23 Version: v3.10.1
 - Update API Initialize: add request parameters EditOcrResult.
 

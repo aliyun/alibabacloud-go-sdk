@@ -471,6 +471,70 @@ func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
+// 凭证识别
+//
+// @param request - CredentialRecognitionIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialRecognitionIntlResponse
+func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, request *CredentialRecognitionIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialRecognitionIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialRecognitionIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialRecognitionIntlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Credential Verification
 //
 // Description:
