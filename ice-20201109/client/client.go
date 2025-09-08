@@ -4413,7 +4413,7 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 
 // Summary:
 //
-// Deletes a channel in MediaWeaver.
+// Deletes a channel.
 //
 // @param request - DeleteChannelRequest
 //
@@ -4455,7 +4455,7 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 
 // Summary:
 //
-// Deletes a channel in MediaWeaver.
+// Deletes a channel.
 //
 // @param request - DeleteChannelRequest
 //
@@ -11576,7 +11576,7 @@ func (client *Client) GetSnapshotUrls(request *GetSnapshotUrlsRequest) (_result 
 
 // Summary:
 //
-// Queries a source in MediaWeaver.
+// Queries a source.
 //
 // @param request - GetSourceRequest
 //
@@ -11626,7 +11626,7 @@ func (client *Client) GetSourceWithOptions(request *GetSourceRequest, runtime *d
 
 // Summary:
 //
-// Queries a source in MediaWeaver.
+// Queries a source.
 //
 // @param request - GetSourceRequest
 //
@@ -19837,6 +19837,10 @@ func (client *Client) SendAIAgentSpeechWithOptions(request *SendAIAgentSpeechReq
 
 	if !dara.IsNil(request.Text) {
 		query["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{

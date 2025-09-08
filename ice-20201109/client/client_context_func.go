@@ -3203,7 +3203,7 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a channel in MediaWeaver.
+// Deletes a channel.
 //
 // @param request - DeleteChannelRequest
 //
@@ -8103,7 +8103,7 @@ func (client *Client) GetSnapshotUrlsWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries a source in MediaWeaver.
+// Queries a source.
 //
 // @param request - GetSourceRequest
 //
@@ -14290,6 +14290,10 @@ func (client *Client) SendAIAgentSpeechWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.Text) {
 		query["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{

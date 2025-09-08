@@ -9,6 +9,8 @@ type iAIAgentOutboundCallConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAmbientSoundConfig(v *AIAgentOutboundCallConfigAmbientSoundConfig) *AIAgentOutboundCallConfig
+	GetAmbientSoundConfig() *AIAgentOutboundCallConfigAmbientSoundConfig
 	SetAsrConfig(v *AIAgentOutboundCallConfigAsrConfig) *AIAgentOutboundCallConfig
 	GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig
 	SetEnableIntelligentSegment(v bool) *AIAgentOutboundCallConfig
@@ -28,6 +30,7 @@ type iAIAgentOutboundCallConfig interface {
 }
 
 type AIAgentOutboundCallConfig struct {
+	AmbientSoundConfig       *AIAgentOutboundCallConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig                *AIAgentOutboundCallConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
 	EnableIntelligentSegment *bool                                         `json:"EnableIntelligentSegment,omitempty" xml:"EnableIntelligentSegment,omitempty"`
 	Greeting                 *string                                       `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
@@ -44,6 +47,10 @@ func (s AIAgentOutboundCallConfig) String() string {
 
 func (s AIAgentOutboundCallConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfig) GetAmbientSoundConfig() *AIAgentOutboundCallConfigAmbientSoundConfig {
+	return s.AmbientSoundConfig
 }
 
 func (s *AIAgentOutboundCallConfig) GetAsrConfig() *AIAgentOutboundCallConfigAsrConfig {
@@ -76,6 +83,11 @@ func (s *AIAgentOutboundCallConfig) GetTtsConfig() *AIAgentOutboundCallConfigTts
 
 func (s *AIAgentOutboundCallConfig) GetTurnDetectionConfig() *AIAgentOutboundCallConfigTurnDetectionConfig {
 	return s.TurnDetectionConfig
+}
+
+func (s *AIAgentOutboundCallConfig) SetAmbientSoundConfig(v *AIAgentOutboundCallConfigAmbientSoundConfig) *AIAgentOutboundCallConfig {
+	s.AmbientSoundConfig = v
+	return s
 }
 
 func (s *AIAgentOutboundCallConfig) SetAsrConfig(v *AIAgentOutboundCallConfigAsrConfig) *AIAgentOutboundCallConfig {
@@ -119,6 +131,41 @@ func (s *AIAgentOutboundCallConfig) SetTurnDetectionConfig(v *AIAgentOutboundCal
 }
 
 func (s *AIAgentOutboundCallConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentOutboundCallConfigAmbientSoundConfig struct {
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s AIAgentOutboundCallConfigAmbientSoundConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentOutboundCallConfigAmbientSoundConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentOutboundCallConfigAmbientSoundConfig) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *AIAgentOutboundCallConfigAmbientSoundConfig) GetVolume() *int32 {
+	return s.Volume
+}
+
+func (s *AIAgentOutboundCallConfigAmbientSoundConfig) SetResourceId(v string) *AIAgentOutboundCallConfigAmbientSoundConfig {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAmbientSoundConfig) SetVolume(v int32) *AIAgentOutboundCallConfigAmbientSoundConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigAmbientSoundConfig) Validate() error {
 	return dara.Validate(s)
 }
 

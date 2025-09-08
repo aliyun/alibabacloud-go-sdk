@@ -15,6 +15,8 @@ type iSendAIAgentSpeechRequest interface {
 	GetInstanceId() *string
 	SetText(v string) *SendAIAgentSpeechRequest
 	GetText() *string
+	SetType(v string) *SendAIAgentSpeechRequest
+	GetType() *string
 }
 
 type SendAIAgentSpeechRequest struct {
@@ -32,6 +34,7 @@ type SendAIAgentSpeechRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SendAIAgentSpeechRequest) String() string {
@@ -54,6 +57,10 @@ func (s *SendAIAgentSpeechRequest) GetText() *string {
 	return s.Text
 }
 
+func (s *SendAIAgentSpeechRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *SendAIAgentSpeechRequest) SetEnableInterrupt(v bool) *SendAIAgentSpeechRequest {
 	s.EnableInterrupt = &v
 	return s
@@ -66,6 +73,11 @@ func (s *SendAIAgentSpeechRequest) SetInstanceId(v string) *SendAIAgentSpeechReq
 
 func (s *SendAIAgentSpeechRequest) SetText(v string) *SendAIAgentSpeechRequest {
 	s.Text = &v
+	return s
+}
+
+func (s *SendAIAgentSpeechRequest) SetType(v string) *SendAIAgentSpeechRequest {
+	s.Type = &v
 	return s
 }
 

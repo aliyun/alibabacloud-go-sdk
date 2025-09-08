@@ -9,6 +9,8 @@ type iAIAgentConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAmbientSoundConfig(v *AIAgentConfigAmbientSoundConfig) *AIAgentConfig
+	GetAmbientSoundConfig() *AIAgentConfigAmbientSoundConfig
 	SetAsrConfig(v *AIAgentConfigAsrConfig) *AIAgentConfig
 	GetAsrConfig() *AIAgentConfigAsrConfig
 	SetAvatarConfig(v *AIAgentConfigAvatarConfig) *AIAgentConfig
@@ -54,6 +56,7 @@ type iAIAgentConfig interface {
 }
 
 type AIAgentConfig struct {
+	AmbientSoundConfig       *AIAgentConfigAmbientSoundConfig  `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig                *AIAgentConfigAsrConfig           `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
 	AvatarConfig             *AIAgentConfigAvatarConfig        `json:"AvatarConfig,omitempty" xml:"AvatarConfig,omitempty" type:"Struct"`
 	AvatarUrl                *string                           `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
@@ -83,6 +86,10 @@ func (s AIAgentConfig) String() string {
 
 func (s AIAgentConfig) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentConfig) GetAmbientSoundConfig() *AIAgentConfigAmbientSoundConfig {
+	return s.AmbientSoundConfig
 }
 
 func (s *AIAgentConfig) GetAsrConfig() *AIAgentConfigAsrConfig {
@@ -167,6 +174,11 @@ func (s *AIAgentConfig) GetWakeUpQuery() *string {
 
 func (s *AIAgentConfig) GetWorkflowOverrideParams() *string {
 	return s.WorkflowOverrideParams
+}
+
+func (s *AIAgentConfig) SetAmbientSoundConfig(v *AIAgentConfigAmbientSoundConfig) *AIAgentConfig {
+	s.AmbientSoundConfig = v
+	return s
 }
 
 func (s *AIAgentConfig) SetAsrConfig(v *AIAgentConfigAsrConfig) *AIAgentConfig {
@@ -275,6 +287,41 @@ func (s *AIAgentConfig) SetWorkflowOverrideParams(v string) *AIAgentConfig {
 }
 
 func (s *AIAgentConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentConfigAmbientSoundConfig struct {
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Volume     *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s AIAgentConfigAmbientSoundConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigAmbientSoundConfig) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigAmbientSoundConfig) GetResourceId() *string {
+	return s.ResourceId
+}
+
+func (s *AIAgentConfigAmbientSoundConfig) GetVolume() *int32 {
+	return s.Volume
+}
+
+func (s *AIAgentConfigAmbientSoundConfig) SetResourceId(v string) *AIAgentConfigAmbientSoundConfig {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *AIAgentConfigAmbientSoundConfig) SetVolume(v int32) *AIAgentConfigAmbientSoundConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *AIAgentConfigAmbientSoundConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -767,6 +814,7 @@ type AIAgentConfigVcrConfig struct {
 	Equipment          *AIAgentConfigVcrConfigEquipment          `json:"Equipment,omitempty" xml:"Equipment,omitempty" type:"Struct"`
 	HeadMotion         *AIAgentConfigVcrConfigHeadMotion         `json:"HeadMotion,omitempty" xml:"HeadMotion,omitempty" type:"Struct"`
 	InvalidFrameMotion *AIAgentConfigVcrConfigInvalidFrameMotion `json:"InvalidFrameMotion,omitempty" xml:"InvalidFrameMotion,omitempty" type:"Struct"`
+	LookAway           *AIAgentConfigVcrConfigLookAway           `json:"LookAway,omitempty" xml:"LookAway,omitempty" type:"Struct"`
 	PeopleCount        *AIAgentConfigVcrConfigPeopleCount        `json:"PeopleCount,omitempty" xml:"PeopleCount,omitempty" type:"Struct"`
 	StillFrameMotion   *AIAgentConfigVcrConfigStillFrameMotion   `json:"StillFrameMotion,omitempty" xml:"StillFrameMotion,omitempty" type:"Struct"`
 }
@@ -791,6 +839,10 @@ func (s *AIAgentConfigVcrConfig) GetInvalidFrameMotion() *AIAgentConfigVcrConfig
 	return s.InvalidFrameMotion
 }
 
+func (s *AIAgentConfigVcrConfig) GetLookAway() *AIAgentConfigVcrConfigLookAway {
+	return s.LookAway
+}
+
 func (s *AIAgentConfigVcrConfig) GetPeopleCount() *AIAgentConfigVcrConfigPeopleCount {
 	return s.PeopleCount
 }
@@ -811,6 +863,11 @@ func (s *AIAgentConfigVcrConfig) SetHeadMotion(v *AIAgentConfigVcrConfigHeadMoti
 
 func (s *AIAgentConfigVcrConfig) SetInvalidFrameMotion(v *AIAgentConfigVcrConfigInvalidFrameMotion) *AIAgentConfigVcrConfig {
 	s.InvalidFrameMotion = v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfig) SetLookAway(v *AIAgentConfigVcrConfigLookAway) *AIAgentConfigVcrConfig {
+	s.LookAway = v
 	return s
 }
 
@@ -910,6 +967,31 @@ func (s *AIAgentConfigVcrConfigInvalidFrameMotion) SetEnabled(v bool) *AIAgentCo
 }
 
 func (s *AIAgentConfigVcrConfigInvalidFrameMotion) Validate() error {
+	return dara.Validate(s)
+}
+
+type AIAgentConfigVcrConfigLookAway struct {
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+}
+
+func (s AIAgentConfigVcrConfigLookAway) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AIAgentConfigVcrConfigLookAway) GoString() string {
+	return s.String()
+}
+
+func (s *AIAgentConfigVcrConfigLookAway) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *AIAgentConfigVcrConfigLookAway) SetEnabled(v bool) *AIAgentConfigVcrConfigLookAway {
+	s.Enabled = &v
+	return s
+}
+
+func (s *AIAgentConfigVcrConfigLookAway) Validate() error {
 	return dara.Validate(s)
 }
 

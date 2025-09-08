@@ -105,15 +105,15 @@ type SubmitMediaConvertJobResponseBodyJob struct {
 	//
 	// 	- Running
 	//
-	// 	- Success
+	// 	- Complete
 	//
-	// 	- Failed
+	// 	- Error
 	//
 	// 	- Cancelled
 	//
 	// example:
 	//
-	// Created
+	// Inited
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The user data.
 	//
@@ -236,8 +236,13 @@ func (s *SubmitMediaConvertJobResponseBodyJob) Validate() error {
 
 type SubmitMediaConvertJobResponseBodyJobConfig struct {
 	// The inputs of the transcoding task.
-	Inputs  []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
-	JobName *string              `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Inputs []*MediaConvertInput `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Repeated"`
+	// The name of the job.
+	//
+	// example:
+	//
+	// insx6-1310
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The output group configurations.
 	OutputGroups []*MediaConvertOutputGroup `json:"OutputGroups,omitempty" xml:"OutputGroups,omitempty" type:"Repeated"`
 	// The output configurations.
