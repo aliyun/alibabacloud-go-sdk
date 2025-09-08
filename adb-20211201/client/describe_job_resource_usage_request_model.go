@@ -13,6 +13,10 @@ type iDescribeJobResourceUsageRequest interface {
 	GetDBClusterId() *string
 	SetEndTime(v string) *DescribeJobResourceUsageRequest
 	GetEndTime() *string
+	SetPageNumber(v int32) *DescribeJobResourceUsageRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeJobResourceUsageRequest
+	GetPageSize() *int32
 	SetStartTime(v string) *DescribeJobResourceUsageRequest
 	GetStartTime() *string
 }
@@ -33,7 +37,9 @@ type DescribeJobResourceUsageRequest struct {
 	// example:
 	//
 	// 2023-03-17T16:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
 	//
 	// This parameter is required.
@@ -60,6 +66,14 @@ func (s *DescribeJobResourceUsageRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeJobResourceUsageRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeJobResourceUsageRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeJobResourceUsageRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -71,6 +85,16 @@ func (s *DescribeJobResourceUsageRequest) SetDBClusterId(v string) *DescribeJobR
 
 func (s *DescribeJobResourceUsageRequest) SetEndTime(v string) *DescribeJobResourceUsageRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageRequest) SetPageNumber(v int32) *DescribeJobResourceUsageRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageRequest) SetPageSize(v int32) *DescribeJobResourceUsageRequest {
+	s.PageSize = &v
 	return s
 }
 

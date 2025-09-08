@@ -88,12 +88,15 @@ type DescribeJobResourceUsageResponseBodyData struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The AnalyticDB compute unit (ACU) usage of the job resource group.
 	JobAcuUsage []*DescribeJobResourceUsageResponseBodyDataJobAcuUsage `json:"JobAcuUsage,omitempty" xml:"JobAcuUsage,omitempty" type:"Repeated"`
+	PageNumber  *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The start time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-05-22T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeJobResourceUsageResponseBodyData) String() string {
@@ -116,8 +119,20 @@ func (s *DescribeJobResourceUsageResponseBodyData) GetJobAcuUsage() []*DescribeJ
 	return s.JobAcuUsage
 }
 
+func (s *DescribeJobResourceUsageResponseBodyData) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeJobResourceUsageResponseBodyData) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeJobResourceUsageResponseBodyData) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *DescribeJobResourceUsageResponseBodyData) GetTotalCount() *int32 {
+	return s.TotalCount
 }
 
 func (s *DescribeJobResourceUsageResponseBodyData) SetDBClusterId(v string) *DescribeJobResourceUsageResponseBodyData {
@@ -135,8 +150,23 @@ func (s *DescribeJobResourceUsageResponseBodyData) SetJobAcuUsage(v []*DescribeJ
 	return s
 }
 
+func (s *DescribeJobResourceUsageResponseBodyData) SetPageNumber(v int32) *DescribeJobResourceUsageResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageResponseBodyData) SetPageSize(v int32) *DescribeJobResourceUsageResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeJobResourceUsageResponseBodyData) SetStartTime(v string) *DescribeJobResourceUsageResponseBodyData {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageResponseBodyData) SetTotalCount(v int32) *DescribeJobResourceUsageResponseBodyData {
+	s.TotalCount = &v
 	return s
 }
 

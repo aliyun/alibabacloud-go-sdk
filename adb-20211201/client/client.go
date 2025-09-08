@@ -8528,6 +8528,14 @@ func (client *Client) DescribeJobResourceUsageWithOptions(request *DescribeJobRe
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}

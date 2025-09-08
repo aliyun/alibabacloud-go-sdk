@@ -133,6 +133,8 @@ func (s *DescribeDBClustersResponseBodyItems) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
+	AINodeNumber *int32  `json:"AINodeNumber,omitempty" xml:"AINodeNumber,omitempty"`
+	AINodeSpec   *string `json:"AINodeSpec,omitempty" xml:"AINodeSpec,omitempty"`
 	// The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
 	//
 	// 	- **BASIC**: reserved mode for Basic Edition.
@@ -477,6 +479,14 @@ func (s DescribeDBClustersResponseBodyItemsDBCluster) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetAINodeNumber() *int32 {
+	return s.AINodeNumber
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetAINodeSpec() *string {
+	return s.AINodeSpec
+}
+
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetCategory() *string {
 	return s.Category
 }
@@ -647,6 +657,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetVSwitchId() *string {
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetAINodeNumber(v int32) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.AINodeNumber = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetAINodeSpec(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.AINodeSpec = &v
+	return s
 }
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetCategory(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
