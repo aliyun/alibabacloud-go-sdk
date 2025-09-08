@@ -66,6 +66,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AiSearchResponse
+func (client *Client) AiSearchWithSSE(request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *AiSearchResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.aiSearchWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// # AI搜索流式接口
+//
+// @param request - AiSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AiSearchResponse
 func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AiSearchResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -508,4 +525,65 @@ func (client *Client) UnifiedSearch(request *UnifiedSearchRequest) (_result *Uni
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) aiSearchWithSSE_opYieldFunc(_yield chan *AiSearchResponse, _yieldErr chan error, request *AiSearchRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Industry) {
+		query["industry"] = request.Industry
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["sessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TimeRange) {
+		query["timeRange"] = request.TimeRange
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AiSearch"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
