@@ -11,17 +11,27 @@ import (
 //
 // 添加审核自定义词库记录
 //
-// @param request - AddAuditTermsRequest
+// @param tmpReq - AddAuditTermsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAuditTermsResponse
-func (client *Client) AddAuditTermsWithContext(ctx context.Context, request *AddAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *AddAuditTermsResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) AddAuditTermsWithContext(ctx context.Context, tmpReq *AddAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *AddAuditTermsResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &AddAuditTermsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExceptionWord) {
+		request.ExceptionWordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExceptionWord, dara.String("ExceptionWord"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExceptionWordShrink) {
+		body["ExceptionWord"] = request.ExceptionWordShrink
+	}
+
 	if !dara.IsNil(request.Keyword) {
 		body["Keyword"] = request.Keyword
 	}
@@ -485,6 +495,52 @@ func (client *Client) CancelAuditTaskWithContext(ctx context.Context, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelAuditTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消深度写作任务
+//
+// @param request - CancelDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelDeepWriteTaskResponse
+func (client *Client) CancelDeepWriteTaskWithContext(ctx context.Context, request *CancelDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelDeepWriteTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelDeepWriteTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1185,6 +1241,52 @@ func (client *Client) DeleteDocsWithContext(ctx context.Context, tmpReq *DeleteD
 
 // Summary:
 //
+// 删除指定的用于事实性审核的 URL。
+//
+// @param request - DeleteFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFactAuditUrlResponse
+func (client *Client) DeleteFactAuditUrlWithContext(ctx context.Context, request *DeleteFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *DeleteFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFactAuditUrlResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-删除。
 //
 // @param request - DeleteGeneratedContentRequest
@@ -1483,17 +1585,27 @@ func (client *Client) DownloadAuditNoteWithContext(ctx context.Context, request 
 //
 // 编辑审核自定义词库记录
 //
-// @param request - EditAuditTermsRequest
+// @param tmpReq - EditAuditTermsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditAuditTermsResponse
-func (client *Client) EditAuditTermsWithContext(ctx context.Context, request *EditAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *EditAuditTermsResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) EditAuditTermsWithContext(ctx context.Context, tmpReq *EditAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *EditAuditTermsResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &EditAuditTermsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExceptionWord) {
+		request.ExceptionWordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExceptionWord, dara.String("ExceptionWord"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExceptionWordShrink) {
+		body["ExceptionWord"] = request.ExceptionWordShrink
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
 	}
@@ -2981,6 +3093,98 @@ func (client *Client) GetDatasetDocumentWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 查询深度写作任务
+//
+// @param request - GetDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeepWriteTaskResponse
+func (client *Client) GetDeepWriteTaskWithContext(ctx context.Context, request *GetDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *GetDeepWriteTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeepWriteTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度写作任务的结果
+//
+// @param request - GetDeepWriteTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeepWriteTaskResultResponse
+func (client *Client) GetDeepWriteTaskResultWithContext(ctx context.Context, request *GetDeepWriteTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetDeepWriteTaskResultResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeepWriteTaskResult"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeepWriteTaskResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档聚合任务结果
 //
 // @param request - GetDocClusterTaskRequest
@@ -3115,6 +3319,48 @@ func (client *Client) GetEnterpriseVocAnalysisTaskWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前正用于事实性审核的信源 URL。
+//
+// @param request - GetFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFactAuditUrlResponse
+func (client *Client) GetFactAuditUrlWithContext(ctx context.Context, request *GetFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *GetFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFactAuditUrlResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6833,6 +7079,56 @@ func (client *Client) RunCustomHotTopicViewPointAnalysisWithContext(ctx context.
 
 // Summary:
 //
+// 流式输出深度写作事件
+//
+// @param request - RunDeepWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDeepWritingResponse
+func (client *Client) RunDeepWritingWithContext(ctx context.Context, request *RunDeepWritingRequest, runtime *dara.RuntimeOptions) (_result *RunDeepWritingResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		body["Cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDeepWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunDeepWritingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 妙读脑图生成接口
 //
 // @param request - RunDocBrainmapRequest
@@ -8135,6 +8431,68 @@ func (client *Client) RunTranslateGenerationWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// # AI生成视频剪辑脚本
+//
+// @param request - RunVideoScriptGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunVideoScriptGenerateResponse
+func (client *Client) RunVideoScriptGenerateWithContext(ctx context.Context, request *RunVideoScriptGenerateRequest, runtime *dara.RuntimeOptions) (_result *RunVideoScriptGenerateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ScriptLength) {
+		body["ScriptLength"] = request.ScriptLength
+	}
+
+	if !dara.IsNil(request.ScriptNumber) {
+		body["ScriptNumber"] = request.ScriptNumber
+	}
+
+	if !dara.IsNil(request.UseSearch) {
+		body["UseSearch"] = request.UseSearch
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunVideoScriptGenerate"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunVideoScriptGenerateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # AI妙笔-创作-文风改写
 //
 // @param tmpReq - RunWriteToneGenerationRequest
@@ -9217,6 +9575,76 @@ func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTaskWithConte
 
 // Summary:
 //
+// 提交深度写作任务
+//
+// @param tmpReq - SubmitDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDeepWriteTaskResponse
+func (client *Client) SubmitDeepWriteTaskWithContext(ctx context.Context, tmpReq *SubmitDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitDeepWriteTaskResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitDeepWriteTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentOrchestration) {
+		request.AgentOrchestrationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentOrchestration, dara.String("AgentOrchestration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentOrchestrationShrink) {
+		query["AgentOrchestration"] = request.AgentOrchestrationShrink
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilesShrink) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Instructions) {
+		body["Instructions"] = request.Instructions
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitDeepWriteTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交文档聚合任务
 //
 // @param tmpReq - SubmitDocClusterTaskRequest
@@ -9411,6 +9839,52 @@ func (client *Client) SubmitExportTermsTaskWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitExportTermsTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+//
+// @param request - SubmitFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitFactAuditUrlResponse
+func (client *Client) SubmitFactAuditUrlWithContext(ctx context.Context, request *SubmitFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *SubmitFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitFactAuditUrlResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

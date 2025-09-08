@@ -13,6 +13,8 @@ type iAddAuditTermsResponseBody interface {
 	GetCode() *string
 	SetData(v bool) *AddAuditTermsResponseBody
 	GetData() *bool
+	SetDataV1(v *AddAuditTermsResponseBodyDataV1) *AddAuditTermsResponseBody
+	GetDataV1() *AddAuditTermsResponseBodyDataV1
 	SetHttpStatusCode(v int32) *AddAuditTermsResponseBody
 	GetHttpStatusCode() *int32
 	SetMessage(v string) *AddAuditTermsResponseBody
@@ -32,6 +34,10 @@ type AddAuditTermsResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 返回添加的实体信息
+	DataV1 *AddAuditTermsResponseBodyDataV1 `json:"DataV1,omitempty" xml:"DataV1,omitempty" type:"Struct"`
 	// example:
 	//
 	// 200
@@ -68,6 +74,10 @@ func (s *AddAuditTermsResponseBody) GetData() *bool {
 	return s.Data
 }
 
+func (s *AddAuditTermsResponseBody) GetDataV1() *AddAuditTermsResponseBodyDataV1 {
+	return s.DataV1
+}
+
 func (s *AddAuditTermsResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
@@ -94,6 +104,11 @@ func (s *AddAuditTermsResponseBody) SetData(v bool) *AddAuditTermsResponseBody {
 	return s
 }
 
+func (s *AddAuditTermsResponseBody) SetDataV1(v *AddAuditTermsResponseBodyDataV1) *AddAuditTermsResponseBody {
+	s.DataV1 = v
+	return s
+}
+
 func (s *AddAuditTermsResponseBody) SetHttpStatusCode(v int32) *AddAuditTermsResponseBody {
 	s.HttpStatusCode = &v
 	return s
@@ -115,5 +130,33 @@ func (s *AddAuditTermsResponseBody) SetSuccess(v bool) *AddAuditTermsResponseBod
 }
 
 func (s *AddAuditTermsResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type AddAuditTermsResponseBodyDataV1 struct {
+	// example:
+	//
+	// 562fe4163a59d7bcb44bfdde4e3d5046
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s AddAuditTermsResponseBodyDataV1) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAuditTermsResponseBodyDataV1) GoString() string {
+	return s.String()
+}
+
+func (s *AddAuditTermsResponseBodyDataV1) GetId() *int64 {
+	return s.Id
+}
+
+func (s *AddAuditTermsResponseBodyDataV1) SetId(v int64) *AddAuditTermsResponseBodyDataV1 {
+	s.Id = &v
+	return s
+}
+
+func (s *AddAuditTermsResponseBodyDataV1) Validate() error {
 	return dara.Validate(s)
 }

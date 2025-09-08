@@ -161,6 +161,7 @@ func (s *ListAuditTermsResponseBody) Validate() error {
 }
 
 type ListAuditTermsResponseBodyData struct {
+	ExceptionWord []*string `json:"ExceptionWord,omitempty" xml:"ExceptionWord,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -187,6 +188,10 @@ func (s ListAuditTermsResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListAuditTermsResponseBodyData) GetExceptionWord() []*string {
+	return s.ExceptionWord
+}
+
 func (s *ListAuditTermsResponseBodyData) GetId() *string {
 	return s.Id
 }
@@ -201,6 +206,11 @@ func (s *ListAuditTermsResponseBodyData) GetSuggestWord() *string {
 
 func (s *ListAuditTermsResponseBodyData) GetTermsDesc() *string {
 	return s.TermsDesc
+}
+
+func (s *ListAuditTermsResponseBodyData) SetExceptionWord(v []*string) *ListAuditTermsResponseBodyData {
+	s.ExceptionWord = v
+	return s
 }
 
 func (s *ListAuditTermsResponseBodyData) SetId(v string) *ListAuditTermsResponseBodyData {

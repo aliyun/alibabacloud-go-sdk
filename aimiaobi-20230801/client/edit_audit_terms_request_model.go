@@ -9,6 +9,8 @@ type iEditAuditTermsRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetExceptionWord(v []*string) *EditAuditTermsRequest
+  GetExceptionWord() []*string 
   SetId(v string) *EditAuditTermsRequest
   GetId() *string 
   SetKeyword(v string) *EditAuditTermsRequest
@@ -22,6 +24,7 @@ type iEditAuditTermsRequest interface {
 }
 
 type EditAuditTermsRequest struct {
+  ExceptionWord []*string `json:"ExceptionWord,omitempty" xml:"ExceptionWord,omitempty" type:"Repeated"`
   // example:
   // 
   // 20103
@@ -54,6 +57,10 @@ func (s EditAuditTermsRequest) GoString() string {
   return s.String()
 }
 
+func (s *EditAuditTermsRequest) GetExceptionWord() []*string  {
+  return s.ExceptionWord
+}
+
 func (s *EditAuditTermsRequest) GetId() *string  {
   return s.Id
 }
@@ -72,6 +79,11 @@ func (s *EditAuditTermsRequest) GetTermsDesc() *string  {
 
 func (s *EditAuditTermsRequest) GetWorkspaceId() *string  {
   return s.WorkspaceId
+}
+
+func (s *EditAuditTermsRequest) SetExceptionWord(v []*string) *EditAuditTermsRequest {
+  s.ExceptionWord = v
+  return s
 }
 
 func (s *EditAuditTermsRequest) SetId(v string) *EditAuditTermsRequest {

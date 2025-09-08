@@ -59,17 +59,27 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // 添加审核自定义词库记录
 //
-// @param request - AddAuditTermsRequest
+// @param tmpReq - AddAuditTermsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAuditTermsResponse
-func (client *Client) AddAuditTermsWithOptions(request *AddAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *AddAuditTermsResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) AddAuditTermsWithOptions(tmpReq *AddAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *AddAuditTermsResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &AddAuditTermsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExceptionWord) {
+		request.ExceptionWordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExceptionWord, dara.String("ExceptionWord"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExceptionWordShrink) {
+		body["ExceptionWord"] = request.ExceptionWordShrink
+	}
+
 	if !dara.IsNil(request.Keyword) {
 		body["Keyword"] = request.Keyword
 	}
@@ -678,6 +688,70 @@ func (client *Client) CancelAuditTask(request *CancelAuditTaskRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &CancelAuditTaskResponse{}
 	_body, _err := client.CancelAuditTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消深度写作任务
+//
+// @param request - CancelDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelDeepWriteTaskResponse
+func (client *Client) CancelDeepWriteTaskWithOptions(request *CancelDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelDeepWriteTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelDeepWriteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消深度写作任务
+//
+// @param request - CancelDeepWriteTaskRequest
+//
+// @return CancelDeepWriteTaskResponse
+func (client *Client) CancelDeepWriteTask(request *CancelDeepWriteTaskRequest) (_result *CancelDeepWriteTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelDeepWriteTaskResponse{}
+	_body, _err := client.CancelDeepWriteTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1611,6 +1685,70 @@ func (client *Client) DeleteDocs(request *DeleteDocsRequest) (_result *DeleteDoc
 
 // Summary:
 //
+// 删除指定的用于事实性审核的 URL。
+//
+// @param request - DeleteFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFactAuditUrlResponse
+func (client *Client) DeleteFactAuditUrlWithOptions(request *DeleteFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *DeleteFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFactAuditUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的用于事实性审核的 URL。
+//
+// @param request - DeleteFactAuditUrlRequest
+//
+// @return DeleteFactAuditUrlResponse
+func (client *Client) DeleteFactAuditUrl(request *DeleteFactAuditUrlRequest) (_result *DeleteFactAuditUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteFactAuditUrlResponse{}
+	_body, _err := client.DeleteFactAuditUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-删除。
 //
 // @param request - DeleteGeneratedContentRequest
@@ -2017,17 +2155,27 @@ func (client *Client) DownloadAuditNote(request *DownloadAuditNoteRequest) (_res
 //
 // 编辑审核自定义词库记录
 //
-// @param request - EditAuditTermsRequest
+// @param tmpReq - EditAuditTermsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EditAuditTermsResponse
-func (client *Client) EditAuditTermsWithOptions(request *EditAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *EditAuditTermsResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) EditAuditTermsWithOptions(tmpReq *EditAuditTermsRequest, runtime *dara.RuntimeOptions) (_result *EditAuditTermsResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &EditAuditTermsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExceptionWord) {
+		request.ExceptionWordShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExceptionWord, dara.String("ExceptionWord"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExceptionWordShrink) {
+		body["ExceptionWord"] = request.ExceptionWordShrink
+	}
+
 	if !dara.IsNil(request.Id) {
 		body["Id"] = request.Id
 	}
@@ -4037,6 +4185,134 @@ func (client *Client) GetDatasetDocument(request *GetDatasetDocumentRequest) (_r
 
 // Summary:
 //
+// 查询深度写作任务
+//
+// @param request - GetDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeepWriteTaskResponse
+func (client *Client) GetDeepWriteTaskWithOptions(request *GetDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *GetDeepWriteTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeepWriteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度写作任务
+//
+// @param request - GetDeepWriteTaskRequest
+//
+// @return GetDeepWriteTaskResponse
+func (client *Client) GetDeepWriteTask(request *GetDeepWriteTaskRequest) (_result *GetDeepWriteTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDeepWriteTaskResponse{}
+	_body, _err := client.GetDeepWriteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度写作任务的结果
+//
+// @param request - GetDeepWriteTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeepWriteTaskResultResponse
+func (client *Client) GetDeepWriteTaskResultWithOptions(request *GetDeepWriteTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetDeepWriteTaskResultResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeepWriteTaskResult"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeepWriteTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询深度写作任务的结果
+//
+// @param request - GetDeepWriteTaskResultRequest
+//
+// @return GetDeepWriteTaskResultResponse
+func (client *Client) GetDeepWriteTaskResult(request *GetDeepWriteTaskResultRequest) (_result *GetDeepWriteTaskResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDeepWriteTaskResultResponse{}
+	_body, _err := client.GetDeepWriteTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档聚合任务结果
 //
 // @param request - GetDocClusterTaskRequest
@@ -4226,6 +4502,66 @@ func (client *Client) GetEnterpriseVocAnalysisTask(request *GetEnterpriseVocAnal
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetEnterpriseVocAnalysisTaskResponse{}
 	_body, _err := client.GetEnterpriseVocAnalysisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前正用于事实性审核的信源 URL。
+//
+// @param request - GetFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFactAuditUrlResponse
+func (client *Client) GetFactAuditUrlWithOptions(request *GetFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *GetFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFactAuditUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前正用于事实性审核的信源 URL。
+//
+// @param request - GetFactAuditUrlRequest
+//
+// @return GetFactAuditUrlResponse
+func (client *Client) GetFactAuditUrl(request *GetFactAuditUrlRequest) (_result *GetFactAuditUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFactAuditUrlResponse{}
+	_body, _err := client.GetFactAuditUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8390,6 +8726,21 @@ func (client *Client) QueryAuditTask(request *QueryAuditTaskRequest) (_result *Q
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunAbbreviationContentResponse
+func (client *Client) RunAbbreviationContentWithSSE(request *RunAbbreviationContentRequest, runtime *dara.RuntimeOptions, _yield chan *RunAbbreviationContentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runAbbreviationContentWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 内容缩写
+//
+// @param request - RunAbbreviationContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunAbbreviationContentResponse
 func (client *Client) RunAbbreviationContentWithOptions(request *RunAbbreviationContentRequest, runtime *dara.RuntimeOptions) (_result *RunAbbreviationContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -8447,6 +8798,21 @@ func (client *Client) RunAbbreviationContent(request *RunAbbreviationContentRequ
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙读生成书籍脑图
+//
+// @param request - RunBookBrainmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookBrainmapResponse
+func (client *Client) RunBookBrainmapWithSSE(request *RunBookBrainmapRequest, runtime *dara.RuntimeOptions, _yield chan *RunBookBrainmapResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runBookBrainmapWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -8542,6 +8908,21 @@ func (client *Client) RunBookBrainmap(request *RunBookBrainmapRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunBookIntroductionResponse
+func (client *Client) RunBookIntroductionWithSSE(request *RunBookIntroductionRequest, runtime *dara.RuntimeOptions, _yield chan *RunBookIntroductionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runBookIntroductionWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 书籍导读接口
+//
+// @param request - RunBookIntroductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookIntroductionResponse
 func (client *Client) RunBookIntroductionWithOptions(request *RunBookIntroductionRequest, runtime *dara.RuntimeOptions) (_result *RunBookIntroductionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -8618,6 +8999,21 @@ func (client *Client) RunBookIntroduction(request *RunBookIntroductionRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunBookSmartCardResponse
+func (client *Client) RunBookSmartCardWithSSE(request *RunBookSmartCardRequest, runtime *dara.RuntimeOptions, _yield chan *RunBookSmartCardResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runBookSmartCardWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 书籍智能卡片接口
+//
+// @param request - RunBookSmartCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookSmartCardResponse
 func (client *Client) RunBookSmartCardWithOptions(request *RunBookSmartCardRequest, runtime *dara.RuntimeOptions) (_result *RunBookSmartCardResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -8675,6 +9071,21 @@ func (client *Client) RunBookSmartCard(request *RunBookSmartCardRequest) (_resul
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 客户之声预测
+//
+// @param tmpReq - RunCommentGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCommentGenerationResponse
+func (client *Client) RunCommentGenerationWithSSE(tmpReq *RunCommentGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunCommentGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runCommentGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -8804,6 +9215,21 @@ func (client *Client) RunCommentGeneration(request *RunCommentGenerationRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunContinueContentResponse
+func (client *Client) RunContinueContentWithSSE(request *RunContinueContentRequest, runtime *dara.RuntimeOptions, _yield chan *RunContinueContentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runContinueContentWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 内容续写
+//
+// @param request - RunContinueContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunContinueContentResponse
 func (client *Client) RunContinueContentWithOptions(request *RunContinueContentRequest, runtime *dara.RuntimeOptions) (_result *RunContinueContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -8857,6 +9283,21 @@ func (client *Client) RunContinueContent(request *RunContinueContentRequest) (_r
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 自定义热点话题分析
+//
+// @param request - RunCustomHotTopicAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCustomHotTopicAnalysisResponse
+func (client *Client) RunCustomHotTopicAnalysisWithSSE(request *RunCustomHotTopicAnalysisRequest, runtime *dara.RuntimeOptions, _yield chan *RunCustomHotTopicAnalysisResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runCustomHotTopicAnalysisWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -8941,6 +9382,21 @@ func (client *Client) RunCustomHotTopicAnalysis(request *RunCustomHotTopicAnalys
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 自定义选题视角分析
+//
+// @param request - RunCustomHotTopicViewPointAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunCustomHotTopicViewPointAnalysisResponse
+func (client *Client) RunCustomHotTopicViewPointAnalysisWithSSE(request *RunCustomHotTopicViewPointAnalysisRequest, runtime *dara.RuntimeOptions, _yield chan *RunCustomHotTopicViewPointAnalysisResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runCustomHotTopicViewPointAnalysisWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9037,6 +9493,104 @@ func (client *Client) RunCustomHotTopicViewPointAnalysis(request *RunCustomHotTo
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 流式输出深度写作事件
+//
+// @param request - RunDeepWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDeepWritingResponse
+func (client *Client) RunDeepWritingWithSSE(request *RunDeepWritingRequest, runtime *dara.RuntimeOptions, _yield chan *RunDeepWritingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDeepWritingWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 流式输出深度写作事件
+//
+// @param request - RunDeepWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDeepWritingResponse
+func (client *Client) RunDeepWritingWithOptions(request *RunDeepWritingRequest, runtime *dara.RuntimeOptions) (_result *RunDeepWritingResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		body["Cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDeepWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunDeepWritingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 流式输出深度写作事件
+//
+// @param request - RunDeepWritingRequest
+//
+// @return RunDeepWritingResponse
+func (client *Client) RunDeepWriting(request *RunDeepWritingRequest) (_result *RunDeepWritingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RunDeepWritingResponse{}
+	_body, _err := client.RunDeepWritingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读脑图生成接口
+//
+// @param request - RunDocBrainmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocBrainmapResponse
+func (client *Client) RunDocBrainmapWithSSE(request *RunDocBrainmapRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocBrainmapResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocBrainmapWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9140,6 +9694,21 @@ func (client *Client) RunDocBrainmap(request *RunDocBrainmapRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunDocIntroductionResponse
+func (client *Client) RunDocIntroductionWithSSE(request *RunDocIntroductionRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocIntroductionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocIntroductionWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 妙读文档导读接口
+//
+// @param request - RunDocIntroductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocIntroductionResponse
 func (client *Client) RunDocIntroductionWithOptions(request *RunDocIntroductionRequest, runtime *dara.RuntimeOptions) (_result *RunDocIntroductionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -9221,6 +9790,21 @@ func (client *Client) RunDocIntroduction(request *RunDocIntroductionRequest) (_r
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙读问答接口
+//
+// @param tmpReq - RunDocQaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocQaResponse
+func (client *Client) RunDocQaWithSSE(tmpReq *RunDocQaRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocQaResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocQaWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -9338,6 +9922,21 @@ func (client *Client) RunDocQa(request *RunDocQaRequest) (_result *RunDocQaRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunDocSmartCardResponse
+func (client *Client) RunDocSmartCardWithSSE(request *RunDocSmartCardRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocSmartCardResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocSmartCardWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 文档智能卡片接口
+//
+// @param request - RunDocSmartCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocSmartCardResponse
 func (client *Client) RunDocSmartCardWithOptions(request *RunDocSmartCardRequest, runtime *dara.RuntimeOptions) (_result *RunDocSmartCardResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -9403,6 +10002,21 @@ func (client *Client) RunDocSmartCard(request *RunDocSmartCardRequest) (_result 
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档总结摘要接口
+//
+// @param request - RunDocSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocSummaryResponse
+func (client *Client) RunDocSummaryWithSSE(request *RunDocSummaryRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocSummaryResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocSummaryWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9498,6 +10112,21 @@ func (client *Client) RunDocSummary(request *RunDocSummaryRequest) (_result *Run
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunDocTranslationResponse
+func (client *Client) RunDocTranslationWithSSE(request *RunDocTranslationRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocTranslationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocTranslationWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 妙读文档翻译接口
+//
+// @param request - RunDocTranslationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocTranslationResponse
 func (client *Client) RunDocTranslationWithOptions(request *RunDocTranslationRequest, runtime *dara.RuntimeOptions) (_result *RunDocTranslationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -9571,6 +10200,21 @@ func (client *Client) RunDocTranslation(request *RunDocTranslationRequest) (_res
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 文档改写
+//
+// @param request - RunDocWashingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDocWashingResponse
+func (client *Client) RunDocWashingWithSSE(request *RunDocWashingRequest, runtime *dara.RuntimeOptions, _yield chan *RunDocWashingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDocWashingWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9674,6 +10318,21 @@ func (client *Client) RunDocWashing(request *RunDocWashingRequest) (_result *Run
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunExpandContentResponse
+func (client *Client) RunExpandContentWithSSE(request *RunExpandContentRequest, runtime *dara.RuntimeOptions, _yield chan *RunExpandContentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runExpandContentWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 内容扩写
+//
+// @param request - RunExpandContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunExpandContentResponse
 func (client *Client) RunExpandContentWithOptions(request *RunExpandContentRequest, runtime *dara.RuntimeOptions) (_result *RunExpandContentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -9731,6 +10390,21 @@ func (client *Client) RunExpandContent(request *RunExpandContentRequest) (_resul
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙读猜你想问接口
+//
+// @param request - RunGenerateQuestionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunGenerateQuestionsResponse
+func (client *Client) RunGenerateQuestionsWithSSE(request *RunGenerateQuestionsRequest, runtime *dara.RuntimeOptions, _yield chan *RunGenerateQuestionsResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runGenerateQuestionsWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9807,6 +10481,21 @@ func (client *Client) RunGenerateQuestions(request *RunGenerateQuestionsRequest)
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙读文档关键词抽取接口
+//
+// @param request - RunHotwordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunHotwordResponse
+func (client *Client) RunHotwordWithSSE(request *RunHotwordRequest, runtime *dara.RuntimeOptions, _yield chan *RunHotwordResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runHotwordWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -9898,6 +10587,21 @@ func (client *Client) RunHotword(request *RunHotwordRequest) (_result *RunHotwor
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunKeywordsExtractionGenerationResponse
+func (client *Client) RunKeywordsExtractionGenerationWithSSE(tmpReq *RunKeywordsExtractionGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunKeywordsExtractionGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runKeywordsExtractionGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// # AI妙笔-创作-抽取关键词
+//
+// @param tmpReq - RunKeywordsExtractionGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunKeywordsExtractionGenerationResponse
 func (client *Client) RunKeywordsExtractionGenerationWithOptions(tmpReq *RunKeywordsExtractionGenerationRequest, runtime *dara.RuntimeOptions) (_result *RunKeywordsExtractionGenerationResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
@@ -9965,6 +10669,21 @@ func (client *Client) RunKeywordsExtractionGeneration(request *RunKeywordsExtrac
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 文档批量导读
+//
+// @param tmpReq - RunMultiDocIntroductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunMultiDocIntroductionResponse
+func (client *Client) RunMultiDocIntroductionWithSSE(tmpReq *RunMultiDocIntroductionRequest, runtime *dara.RuntimeOptions, _yield chan *RunMultiDocIntroductionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runMultiDocIntroductionWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10051,6 +10770,21 @@ func (client *Client) RunMultiDocIntroduction(request *RunMultiDocIntroductionRe
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// # AI妙搜-智能搜索生成
+//
+// @param tmpReq - RunSearchGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSearchGenerationResponse
+func (client *Client) RunSearchGenerationWithSSE(tmpReq *RunSearchGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunSearchGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runSearchGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10156,6 +10890,21 @@ func (client *Client) RunSearchGeneration(request *RunSearchGenerationRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunSearchSimilarArticlesResponse
+func (client *Client) RunSearchSimilarArticlesWithSSE(tmpReq *RunSearchSimilarArticlesRequest, runtime *dara.RuntimeOptions, _yield chan *RunSearchSimilarArticlesResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runSearchSimilarArticlesWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 妙搜-文搜文
+//
+// @param tmpReq - RunSearchSimilarArticlesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSearchSimilarArticlesResponse
 func (client *Client) RunSearchSimilarArticlesWithOptions(tmpReq *RunSearchSimilarArticlesRequest, runtime *dara.RuntimeOptions) (_result *RunSearchSimilarArticlesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
@@ -10227,6 +10976,21 @@ func (client *Client) RunSearchSimilarArticles(request *RunSearchSimilarArticles
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 创作-分步骤写作
+//
+// @param tmpReq - RunStepByStepWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunStepByStepWritingResponse
+func (client *Client) RunStepByStepWritingWithSSE(tmpReq *RunStepByStepWritingRequest, runtime *dara.RuntimeOptions, _yield chan *RunStepByStepWritingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runStepByStepWritingWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10332,6 +11096,21 @@ func (client *Client) RunStepByStepWriting(request *RunStepByStepWritingRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunStyleFeatureAnalysisResponse
+func (client *Client) RunStyleFeatureAnalysisWithSSE(tmpReq *RunStyleFeatureAnalysisRequest, runtime *dara.RuntimeOptions, _yield chan *RunStyleFeatureAnalysisResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runStyleFeatureAnalysisWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 内容特点分析
+//
+// @param tmpReq - RunStyleFeatureAnalysisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunStyleFeatureAnalysisResponse
 func (client *Client) RunStyleFeatureAnalysisWithOptions(tmpReq *RunStyleFeatureAnalysisRequest, runtime *dara.RuntimeOptions) (_result *RunStyleFeatureAnalysisResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
@@ -10399,6 +11178,21 @@ func (client *Client) RunStyleFeatureAnalysis(request *RunStyleFeatureAnalysisRe
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 内容摘要生成
+//
+// @param request - RunSummaryGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSummaryGenerateResponse
+func (client *Client) RunSummaryGenerateWithSSE(request *RunSummaryGenerateRequest, runtime *dara.RuntimeOptions, _yield chan *RunSummaryGenerateResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runSummaryGenerateWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
 }
 
 // Summary:
@@ -10478,6 +11272,21 @@ func (client *Client) RunSummaryGenerate(request *RunSummaryGenerateRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunTextPolishingResponse
+func (client *Client) RunTextPolishingWithSSE(request *RunTextPolishingRequest, runtime *dara.RuntimeOptions, _yield chan *RunTextPolishingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runTextPolishingWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 创作-文本润色
+//
+// @param request - RunTextPolishingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTextPolishingResponse
 func (client *Client) RunTextPolishingWithOptions(request *RunTextPolishingRequest, runtime *dara.RuntimeOptions) (_result *RunTextPolishingResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
@@ -10535,6 +11344,21 @@ func (client *Client) RunTextPolishing(request *RunTextPolishingRequest) (_resul
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔：标题生成
+//
+// @param tmpReq - RunTitleGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTitleGenerationResponse
+func (client *Client) RunTitleGenerationWithSSE(tmpReq *RunTitleGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunTitleGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runTitleGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10632,6 +11456,21 @@ func (client *Client) RunTitleGeneration(request *RunTitleGenerationRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunTranslateGenerationResponse
+func (client *Client) RunTranslateGenerationWithSSE(tmpReq *RunTranslateGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunTranslateGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runTranslateGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// # AI妙笔-创作-中英文翻译
+//
+// @param tmpReq - RunTranslateGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunTranslateGenerationResponse
 func (client *Client) RunTranslateGenerationWithOptions(tmpReq *RunTranslateGenerationRequest, runtime *dara.RuntimeOptions) (_result *RunTranslateGenerationResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
@@ -10699,6 +11538,116 @@ func (client *Client) RunTranslateGeneration(request *RunTranslateGenerationRequ
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// # AI生成视频剪辑脚本
+//
+// @param request - RunVideoScriptGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunVideoScriptGenerateResponse
+func (client *Client) RunVideoScriptGenerateWithSSE(request *RunVideoScriptGenerateRequest, runtime *dara.RuntimeOptions, _yield chan *RunVideoScriptGenerateResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runVideoScriptGenerateWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// # AI生成视频剪辑脚本
+//
+// @param request - RunVideoScriptGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunVideoScriptGenerateResponse
+func (client *Client) RunVideoScriptGenerateWithOptions(request *RunVideoScriptGenerateRequest, runtime *dara.RuntimeOptions) (_result *RunVideoScriptGenerateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ScriptLength) {
+		body["ScriptLength"] = request.ScriptLength
+	}
+
+	if !dara.IsNil(request.ScriptNumber) {
+		body["ScriptNumber"] = request.ScriptNumber
+	}
+
+	if !dara.IsNil(request.UseSearch) {
+		body["UseSearch"] = request.UseSearch
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunVideoScriptGenerate"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunVideoScriptGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AI生成视频剪辑脚本
+//
+// @param request - RunVideoScriptGenerateRequest
+//
+// @return RunVideoScriptGenerateResponse
+func (client *Client) RunVideoScriptGenerate(request *RunVideoScriptGenerateRequest) (_result *RunVideoScriptGenerateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RunVideoScriptGenerateResponse{}
+	_body, _err := client.RunVideoScriptGenerateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # AI妙笔-创作-文风改写
+//
+// @param tmpReq - RunWriteToneGenerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWriteToneGenerationResponse
+func (client *Client) RunWriteToneGenerationWithSSE(tmpReq *RunWriteToneGenerationRequest, runtime *dara.RuntimeOptions, _yield chan *RunWriteToneGenerationResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runWriteToneGenerationWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10777,6 +11726,21 @@ func (client *Client) RunWriteToneGeneration(request *RunWriteToneGenerationRequ
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param tmpReq - RunWritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWritingResponse
+func (client *Client) RunWritingWithSSE(tmpReq *RunWritingRequest, runtime *dara.RuntimeOptions, _yield chan *RunWritingResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runWritingWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -10871,6 +11835,21 @@ func (client *Client) RunWriting(request *RunWritingRequest) (_result *RunWritin
 	}
 	_result = _body
 	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param tmpReq - RunWritingV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWritingV2Response
+func (client *Client) RunWritingV2WithSSE(tmpReq *RunWritingV2Request, runtime *dara.RuntimeOptions, _yield chan *RunWritingV2Response, _yieldErr chan error) {
+	defer close(_yield)
+	client.runWritingV2WithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
 }
 
 // Summary:
@@ -12055,6 +13034,94 @@ func (client *Client) SubmitCustomTopicSelectionPerspectiveAnalysisTask(request 
 
 // Summary:
 //
+// 提交深度写作任务
+//
+// @param tmpReq - SubmitDeepWriteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDeepWriteTaskResponse
+func (client *Client) SubmitDeepWriteTaskWithOptions(tmpReq *SubmitDeepWriteTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitDeepWriteTaskResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitDeepWriteTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentOrchestration) {
+		request.AgentOrchestrationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentOrchestration, dara.String("AgentOrchestration"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentOrchestrationShrink) {
+		query["AgentOrchestration"] = request.AgentOrchestrationShrink
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilesShrink) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Instructions) {
+		body["Instructions"] = request.Instructions
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDeepWriteTask"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitDeepWriteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交深度写作任务
+//
+// @param request - SubmitDeepWriteTaskRequest
+//
+// @return SubmitDeepWriteTaskResponse
+func (client *Client) SubmitDeepWriteTask(request *SubmitDeepWriteTaskRequest) (_result *SubmitDeepWriteTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitDeepWriteTaskResponse{}
+	_body, _err := client.SubmitDeepWriteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交文档聚合任务
 //
 // @param tmpReq - SubmitDocClusterTaskRequest
@@ -12304,6 +13371,70 @@ func (client *Client) SubmitExportTermsTask(request *SubmitExportTermsTaskReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitExportTermsTaskResponse{}
 	_body, _err := client.SubmitExportTermsTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+//
+// @param request - SubmitFactAuditUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitFactAuditUrlResponse
+func (client *Client) SubmitFactAuditUrlWithOptions(request *SubmitFactAuditUrlRequest, runtime *dara.RuntimeOptions) (_result *SubmitFactAuditUrlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitFactAuditUrl"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitFactAuditUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+//
+// @param request - SubmitFactAuditUrlRequest
+//
+// @return SubmitFactAuditUrlResponse
+func (client *Client) SubmitFactAuditUrl(request *SubmitFactAuditUrlRequest) (_result *SubmitFactAuditUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitFactAuditUrlResponse{}
+	_body, _err := client.SubmitFactAuditUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13311,4 +14442,2282 @@ func (client *Client) ValidateUploadTemplate(request *ValidateUploadTemplateRequ
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) runAbbreviationContentWithSSE_opYieldFunc(_yield chan *RunAbbreviationContentResponse, _yieldErr chan error, request *RunAbbreviationContentRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunAbbreviationContent"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runBookBrainmapWithSSE_opYieldFunc(_yield chan *RunBookBrainmapResponse, _yieldErr chan error, request *RunBookBrainmapRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.NodeNumber) {
+		body["NodeNumber"] = request.NodeNumber
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WordNumber) {
+		body["WordNumber"] = request.WordNumber
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunBookBrainmap"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runBookIntroductionWithSSE_opYieldFunc(_yield chan *RunBookIntroductionResponse, _yieldErr chan error, request *RunBookIntroductionRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.KeyPointPrompt) {
+		body["KeyPointPrompt"] = request.KeyPointPrompt
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SummaryPrompt) {
+		body["SummaryPrompt"] = request.SummaryPrompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunBookIntroduction"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runBookSmartCardWithSSE_opYieldFunc(_yield chan *RunBookSmartCardResponse, _yieldErr chan error, request *RunBookSmartCardRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunBookSmartCard"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runCommentGenerationWithSSE_opYieldFunc(_yield chan *RunCommentGenerationResponse, _yieldErr chan error, tmpReq *RunCommentGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunCommentGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LengthRange) {
+		request.LengthRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LengthRange, dara.String("LengthRange"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Sentiment) {
+		request.SentimentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sentiment, dara.String("Sentiment"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Type) {
+		request.TypeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Type, dara.String("Type"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowEmoji) {
+		body["AllowEmoji"] = request.AllowEmoji
+	}
+
+	if !dara.IsNil(request.ExtraInfo) {
+		body["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Length) {
+		body["Length"] = request.Length
+	}
+
+	if !dara.IsNil(request.LengthRangeShrink) {
+		body["LengthRange"] = request.LengthRangeShrink
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.NumComments) {
+		body["NumComments"] = request.NumComments
+	}
+
+	if !dara.IsNil(request.SentimentShrink) {
+		body["Sentiment"] = request.SentimentShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SourceMaterial) {
+		body["SourceMaterial"] = request.SourceMaterial
+	}
+
+	if !dara.IsNil(request.Style) {
+		body["Style"] = request.Style
+	}
+
+	if !dara.IsNil(request.TypeShrink) {
+		body["Type"] = request.TypeShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCommentGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runContinueContentWithSSE_opYieldFunc(_yield chan *RunContinueContentResponse, _yieldErr chan error, request *RunContinueContentRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunContinueContent"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runCustomHotTopicAnalysisWithSSE_opYieldFunc(_yield chan *RunCustomHotTopicAnalysisResponse, _yieldErr chan error, request *RunCustomHotTopicAnalysisRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AskUser) {
+		body["AskUser"] = request.AskUser
+	}
+
+	if !dara.IsNil(request.ForceAnalysisExistsTopic) {
+		body["ForceAnalysisExistsTopic"] = request.ForceAnalysisExistsTopic
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.UserBack) {
+		body["UserBack"] = request.UserBack
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCustomHotTopicAnalysis"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runCustomHotTopicViewPointAnalysisWithSSE_opYieldFunc(_yield chan *RunCustomHotTopicViewPointAnalysisResponse, _yieldErr chan error, request *RunCustomHotTopicViewPointAnalysisRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AskUser) {
+		body["AskUser"] = request.AskUser
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SearchQuery) {
+		body["SearchQuery"] = request.SearchQuery
+	}
+
+	if !dara.IsNil(request.SkipAskUser) {
+		body["SkipAskUser"] = request.SkipAskUser
+	}
+
+	if !dara.IsNil(request.Topic) {
+		body["Topic"] = request.Topic
+	}
+
+	if !dara.IsNil(request.TopicId) {
+		body["TopicId"] = request.TopicId
+	}
+
+	if !dara.IsNil(request.TopicSource) {
+		body["TopicSource"] = request.TopicSource
+	}
+
+	if !dara.IsNil(request.TopicVersion) {
+		body["TopicVersion"] = request.TopicVersion
+	}
+
+	if !dara.IsNil(request.UserBack) {
+		body["UserBack"] = request.UserBack
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunCustomHotTopicViewPointAnalysis"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDeepWritingWithSSE_opYieldFunc(_yield chan *RunDeepWritingResponse, _yieldErr chan error, request *RunDeepWritingRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cursor) {
+		body["Cursor"] = request.Cursor
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDeepWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocBrainmapWithSSE_opYieldFunc(_yield chan *RunDocBrainmapResponse, _yieldErr chan error, request *RunDocBrainmapRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.NodeNumber) {
+		body["NodeNumber"] = request.NodeNumber
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WordNumber) {
+		body["WordNumber"] = request.WordNumber
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["referenceContent"] = request.ReferenceContent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocBrainmap"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocIntroductionWithSSE_opYieldFunc(_yield chan *RunDocIntroductionResponse, _yieldErr chan error, request *RunDocIntroductionRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.IntroductionPrompt) {
+		body["IntroductionPrompt"] = request.IntroductionPrompt
+	}
+
+	if !dara.IsNil(request.KeyPointPrompt) {
+		body["KeyPointPrompt"] = request.KeyPointPrompt
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SummaryPrompt) {
+		body["SummaryPrompt"] = request.SummaryPrompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["referenceContent"] = request.ReferenceContent
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocIntroduction"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocQaWithSSE_opYieldFunc(_yield chan *RunDocQaResponse, _yieldErr chan error, tmpReq *RunDocQaRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunDocQaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CategoryIds) {
+		request.CategoryIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryIds, dara.String("CategoryIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ConversationContexts) {
+		request.ConversationContextsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConversationContexts, dara.String("ConversationContexts"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DocIds) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, dara.String("DocIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryIdsShrink) {
+		body["CategoryIds"] = request.CategoryIdsShrink
+	}
+
+	if !dara.IsNil(request.ConversationContextsShrink) {
+		body["ConversationContexts"] = request.ConversationContextsShrink
+	}
+
+	if !dara.IsNil(request.DocIdsShrink) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["ReferenceContent"] = request.ReferenceContent
+	}
+
+	if !dara.IsNil(request.SearchSource) {
+		body["SearchSource"] = request.SearchSource
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocQa"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocSmartCardWithSSE_opYieldFunc(_yield chan *RunDocSmartCardResponse, _yieldErr chan error, request *RunDocSmartCardRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocSmartCard"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocSummaryWithSSE_opYieldFunc(_yield chan *RunDocSummaryResponse, _yieldErr chan error, request *RunDocSummaryRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RecommendContent) {
+		body["RecommendContent"] = request.RecommendContent
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocSummary"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocTranslationWithSSE_opYieldFunc(_yield chan *RunDocTranslationResponse, _yieldErr chan error, request *RunDocTranslationRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.RecommendContent) {
+		body["RecommendContent"] = request.RecommendContent
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TransType) {
+		body["TransType"] = request.TransType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocTranslation"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runDocWashingWithSSE_opYieldFunc(_yield chan *RunDocWashingResponse, _yieldErr chan error, request *RunDocWashingRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelId) {
+		body["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["ReferenceContent"] = request.ReferenceContent
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Topic) {
+		body["Topic"] = request.Topic
+	}
+
+	if !dara.IsNil(request.WordNumber) {
+		body["WordNumber"] = request.WordNumber
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingTypeName) {
+		body["WritingTypeName"] = request.WritingTypeName
+	}
+
+	if !dara.IsNil(request.WritingTypeRefDoc) {
+		body["WritingTypeRefDoc"] = request.WritingTypeRefDoc
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDocWashing"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runExpandContentWithSSE_opYieldFunc(_yield chan *RunExpandContentResponse, _yieldErr chan error, request *RunExpandContentRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunExpandContent"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runGenerateQuestionsWithSSE_opYieldFunc(_yield chan *RunGenerateQuestionsResponse, _yieldErr chan error, request *RunGenerateQuestionsRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["ReferenceContent"] = request.ReferenceContent
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunGenerateQuestions"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runHotwordWithSSE_opYieldFunc(_yield chan *RunHotwordResponse, _yieldErr chan error, request *RunHotwordRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocId) {
+		body["DocId"] = request.DocId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceContent) {
+		body["ReferenceContent"] = request.ReferenceContent
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunHotword"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runKeywordsExtractionGenerationWithSSE_opYieldFunc(_yield chan *RunKeywordsExtractionGenerationResponse, _yieldErr chan error, tmpReq *RunKeywordsExtractionGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunKeywordsExtractionGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunKeywordsExtractionGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runMultiDocIntroductionWithSSE_opYieldFunc(_yield chan *RunMultiDocIntroductionResponse, _yieldErr chan error, tmpReq *RunMultiDocIntroductionRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunMultiDocIntroductionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DocIds) {
+		request.DocIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocIds, dara.String("DocIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DocIdsShrink) {
+		body["DocIds"] = request.DocIdsShrink
+	}
+
+	if !dara.IsNil(request.KeyPointPrompt) {
+		body["KeyPointPrompt"] = request.KeyPointPrompt
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		body["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SummaryPrompt) {
+		body["SummaryPrompt"] = request.SummaryPrompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunMultiDocIntroduction"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runSearchGenerationWithSSE_opYieldFunc(_yield chan *RunSearchGenerationResponse, _yieldErr chan error, tmpReq *RunSearchGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunSearchGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentContext) {
+		request.AgentContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentContext, dara.String("AgentContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ChatConfig) {
+		request.ChatConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatConfig, dara.String("ChatConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentContextShrink) {
+		body["AgentContext"] = request.AgentContextShrink
+	}
+
+	if !dara.IsNil(request.ChatConfigShrink) {
+		body["ChatConfig"] = request.ChatConfigShrink
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.OriginalSessionId) {
+		body["OriginalSessionId"] = request.OriginalSessionId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunSearchGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runSearchSimilarArticlesWithSSE_opYieldFunc(_yield chan *RunSearchSimilarArticlesResponse, _yieldErr chan error, tmpReq *RunSearchSimilarArticlesRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunSearchSimilarArticlesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChatConfig) {
+		request.ChatConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChatConfig, dara.String("ChatConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatConfigShrink) {
+		body["ChatConfig"] = request.ChatConfigShrink
+	}
+
+	if !dara.IsNil(request.DocType) {
+		body["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.Url) {
+		body["Url"] = request.Url
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunSearchSimilarArticles"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runStepByStepWritingWithSSE_opYieldFunc(_yield chan *RunStepByStepWritingResponse, _yieldErr chan error, tmpReq *RunStepByStepWritingRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunStepByStepWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WritingConfig) {
+		request.WritingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingConfig, dara.String("WritingConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OriginSessionId) {
+		body["OriginSessionId"] = request.OriginSessionId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingConfigShrink) {
+		body["WritingConfig"] = request.WritingConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunStepByStepWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runStyleFeatureAnalysisWithSSE_opYieldFunc(_yield chan *RunStyleFeatureAnalysisResponse, _yieldErr chan error, tmpReq *RunStyleFeatureAnalysisRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunStyleFeatureAnalysisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Contents) {
+		request.ContentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contents, dara.String("Contents"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MaterialIds) {
+		request.MaterialIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MaterialIds, dara.String("MaterialIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContentsShrink) {
+		body["Contents"] = request.ContentsShrink
+	}
+
+	if !dara.IsNil(request.MaterialIdsShrink) {
+		body["MaterialIds"] = request.MaterialIdsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunStyleFeatureAnalysis"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runSummaryGenerateWithSSE_opYieldFunc(_yield chan *RunSummaryGenerateResponse, _yieldErr chan error, request *RunSummaryGenerateRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunSummaryGenerate"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runTextPolishingWithSSE_opYieldFunc(_yield chan *RunTextPolishingResponse, _yieldErr chan error, request *RunTextPolishingRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunTextPolishing"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runTitleGenerationWithSSE_opYieldFunc(_yield chan *RunTitleGenerationResponse, _yieldErr chan error, tmpReq *RunTitleGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunTitleGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DeduplicatedTitles) {
+		request.DeduplicatedTitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeduplicatedTitles, dara.String("DeduplicatedTitles"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeduplicatedTitlesShrink) {
+		body["DeduplicatedTitles"] = request.DeduplicatedTitlesShrink
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TitleCount) {
+		body["TitleCount"] = request.TitleCount
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunTitleGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runTranslateGenerationWithSSE_opYieldFunc(_yield chan *RunTranslateGenerationResponse, _yieldErr chan error, tmpReq *RunTranslateGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunTranslateGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunTranslateGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runVideoScriptGenerateWithSSE_opYieldFunc(_yield chan *RunVideoScriptGenerateResponse, _yieldErr chan error, request *RunVideoScriptGenerateRequest, runtime *dara.RuntimeOptions) {
+	_err := request.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ScriptLength) {
+		body["ScriptLength"] = request.ScriptLength
+	}
+
+	if !dara.IsNil(request.ScriptNumber) {
+		body["ScriptNumber"] = request.ScriptNumber
+	}
+
+	if !dara.IsNil(request.UseSearch) {
+		body["UseSearch"] = request.UseSearch
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunVideoScriptGenerate"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runWriteToneGenerationWithSSE_opYieldFunc(_yield chan *RunWriteToneGenerationResponse, _yieldErr chan error, tmpReq *RunWriteToneGenerationRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunWriteToneGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunWriteToneGeneration"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runWritingWithSSE_opYieldFunc(_yield chan *RunWritingResponse, _yieldErr chan error, tmpReq *RunWritingRequest, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunWritingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReferenceData) {
+		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, dara.String("ReferenceData"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WritingConfig) {
+		request.WritingConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingConfig, dara.String("WritingConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OriginSessionId) {
+		body["OriginSessionId"] = request.OriginSessionId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ReferenceDataShrink) {
+		body["ReferenceData"] = request.ReferenceDataShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingConfigShrink) {
+		body["WritingConfig"] = request.WritingConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunWriting"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
+func (client *Client) runWritingV2WithSSE_opYieldFunc(_yield chan *RunWritingV2Response, _yieldErr chan error, tmpReq *RunWritingV2Request, runtime *dara.RuntimeOptions) {
+	_err := tmpReq.Validate()
+	if _err != nil {
+		_yieldErr <- _err
+		return
+	}
+	request := &RunWritingV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Articles) {
+		request.ArticlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Articles, dara.String("Articles"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Keywords) {
+		request.KeywordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keywords, dara.String("Keywords"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MiniDocs) {
+		request.MiniDocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MiniDocs, dara.String("MiniDocs"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Outlines) {
+		request.OutlinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outlines, dara.String("Outlines"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SearchSources) {
+		request.SearchSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchSources, dara.String("SearchSources"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Summarization) {
+		request.SummarizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Summarization, dara.String("Summarization"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WritingParams) {
+		request.WritingParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingParams, dara.String("WritingParams"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArticlesShrink) {
+		body["Articles"] = request.ArticlesShrink
+	}
+
+	if !dara.IsNil(request.DistributeWriting) {
+		body["DistributeWriting"] = request.DistributeWriting
+	}
+
+	if !dara.IsNil(request.GcNumberSize) {
+		body["GcNumberSize"] = request.GcNumberSize
+	}
+
+	if !dara.IsNil(request.GcNumberSizeTag) {
+		body["GcNumberSizeTag"] = request.GcNumberSizeTag
+	}
+
+	if !dara.IsNil(request.KeywordsShrink) {
+		body["Keywords"] = request.KeywordsShrink
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MiniDocsShrink) {
+		body["MiniDocs"] = request.MiniDocsShrink
+	}
+
+	if !dara.IsNil(request.OutlinesShrink) {
+		body["Outlines"] = request.OutlinesShrink
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.PromptMode) {
+		body["PromptMode"] = request.PromptMode
+	}
+
+	if !dara.IsNil(request.SearchSourcesShrink) {
+		body["SearchSources"] = request.SearchSourcesShrink
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Step) {
+		body["Step"] = request.Step
+	}
+
+	if !dara.IsNil(request.SummarizationShrink) {
+		body["Summarization"] = request.SummarizationShrink
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.UseSearch) {
+		body["UseSearch"] = request.UseSearch
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WritingParamsShrink) {
+		body["WritingParams"] = request.WritingParamsShrink
+	}
+
+	if !dara.IsNil(request.WritingScene) {
+		body["WritingScene"] = request.WritingScene
+	}
+
+	if !dara.IsNil(request.WritingStyle) {
+		body["WritingStyle"] = request.WritingStyle
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunWritingV2"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
 }
