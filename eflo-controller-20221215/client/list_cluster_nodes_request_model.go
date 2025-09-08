@@ -17,6 +17,8 @@ type iListClusterNodesRequest interface {
 	GetNextToken() *string
 	SetNodeGroupId(v string) *ListClusterNodesRequest
 	GetNodeGroupId() *string
+	SetOperatingStates(v []*string) *ListClusterNodesRequest
+	GetOperatingStates() []*string
 	SetResourceGroupId(v string) *ListClusterNodesRequest
 	GetResourceGroupId() *string
 	SetTags(v []*ListClusterNodesRequestTags) *ListClusterNodesRequest
@@ -49,7 +51,8 @@ type ListClusterNodesRequest struct {
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId     *string   `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
 	// example:
@@ -84,6 +87,10 @@ func (s *ListClusterNodesRequest) GetNodeGroupId() *string {
 	return s.NodeGroupId
 }
 
+func (s *ListClusterNodesRequest) GetOperatingStates() []*string {
+	return s.OperatingStates
+}
+
 func (s *ListClusterNodesRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -109,6 +116,11 @@ func (s *ListClusterNodesRequest) SetNextToken(v string) *ListClusterNodesReques
 
 func (s *ListClusterNodesRequest) SetNodeGroupId(v string) *ListClusterNodesRequest {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ListClusterNodesRequest) SetOperatingStates(v []*string) *ListClusterNodesRequest {
+	s.OperatingStates = v
 	return s
 }
 

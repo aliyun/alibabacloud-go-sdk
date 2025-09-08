@@ -869,6 +869,66 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
+// 删除一个未使用节点
+//
+// @param request - DeleteNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNodeResponse
+func (client *Client) DeleteNodeWithOptions(request *DeleteNodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteNodeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NodeId) {
+		body["NodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNode"),
+		Version:     dara.String("2022-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个未使用节点
+//
+// @param request - DeleteNodeRequest
+//
+// @return DeleteNodeResponse
+func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNodeResponse{}
+	_body, _err := client.DeleteNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除节点分组
 //
 // @param request - DeleteNodeGroupRequest
@@ -1809,6 +1869,10 @@ func (client *Client) ListClusterNodesWithOptions(request *ListClusterNodesReque
 
 	if !dara.IsNil(request.NodeGroupId) {
 		body["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.OperatingStates) {
+		body["OperatingStates"] = request.OperatingStates
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
