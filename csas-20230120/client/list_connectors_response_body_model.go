@@ -70,6 +70,8 @@ func (s *ListConnectorsResponseBody) Validate() error {
 
 type ListConnectorsResponseBodyConnectors struct {
 	Applications     []*ListConnectorsResponseBodyConnectorsApplications     `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	ClusterIP        *string                                                 `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
+	ClusterPort      *string                                                 `json:"ClusterPort,omitempty" xml:"ClusterPort,omitempty"`
 	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
 	// ConnectorID。
 	//
@@ -112,6 +114,14 @@ func (s *ListConnectorsResponseBodyConnectors) GetApplications() []*ListConnecto
 	return s.Applications
 }
 
+func (s *ListConnectorsResponseBodyConnectors) GetClusterIP() *string {
+	return s.ClusterIP
+}
+
+func (s *ListConnectorsResponseBodyConnectors) GetClusterPort() *string {
+	return s.ClusterPort
+}
+
 func (s *ListConnectorsResponseBodyConnectors) GetConnectorClients() []*ListConnectorsResponseBodyConnectorsConnectorClients {
 	return s.ConnectorClients
 }
@@ -146,6 +156,16 @@ func (s *ListConnectorsResponseBodyConnectors) GetUpgradeTime() *ListConnectorsR
 
 func (s *ListConnectorsResponseBodyConnectors) SetApplications(v []*ListConnectorsResponseBodyConnectorsApplications) *ListConnectorsResponseBodyConnectors {
 	s.Applications = v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectors) SetClusterIP(v string) *ListConnectorsResponseBodyConnectors {
+	s.ClusterIP = &v
+	return s
+}
+
+func (s *ListConnectorsResponseBodyConnectors) SetClusterPort(v string) *ListConnectorsResponseBodyConnectors {
+	s.ClusterPort = &v
 	return s
 }
 
