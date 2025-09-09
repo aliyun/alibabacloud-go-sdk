@@ -9219,8 +9219,16 @@ func (client *Client) DescribeModificationPriceWithContext(ctx context.Context, 
 		query["ResourceType"] = request.ResourceType
 	}
 
+	if !dara.IsNil(request.RootDiskPerformanceLevel) {
+		query["RootDiskPerformanceLevel"] = request.RootDiskPerformanceLevel
+	}
+
 	if !dara.IsNil(request.RootDiskSizeGib) {
 		query["RootDiskSizeGib"] = request.RootDiskSizeGib
+	}
+
+	if !dara.IsNil(request.UserDiskPerformanceLevel) {
+		query["UserDiskPerformanceLevel"] = request.UserDiskPerformanceLevel
 	}
 
 	if !dara.IsNil(request.UserDiskSizeGib) {
@@ -9657,12 +9665,20 @@ func (client *Client) DescribePriceWithContext(ctx context.Context, request *Des
 		query["RootDiskCategory"] = request.RootDiskCategory
 	}
 
+	if !dara.IsNil(request.RootDiskPerformanceLevel) {
+		query["RootDiskPerformanceLevel"] = request.RootDiskPerformanceLevel
+	}
+
 	if !dara.IsNil(request.RootDiskSizeGib) {
 		query["RootDiskSizeGib"] = request.RootDiskSizeGib
 	}
 
 	if !dara.IsNil(request.UserDiskCategory) {
 		query["UserDiskCategory"] = request.UserDiskCategory
+	}
+
+	if !dara.IsNil(request.UserDiskPerformanceLevel) {
+		query["UserDiskPerformanceLevel"] = request.UserDiskPerformanceLevel
 	}
 
 	if !dara.IsNil(request.UserDiskSizeGib) {
@@ -17090,6 +17106,10 @@ func (client *Client) ResetSnapshotWithContext(ctx context.Context, request *Res
 
 	if !dara.IsNil(request.SnapshotId) {
 		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !dara.IsNil(request.StopDesktop) {
+		query["StopDesktop"] = request.StopDesktop
 	}
 
 	req := &openapiutil.OpenApiRequest{

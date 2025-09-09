@@ -13,6 +13,8 @@ type iResetSnapshotRequest interface {
 	GetRegionId() *string
 	SetSnapshotId(v string) *ResetSnapshotRequest
 	GetSnapshotId() *string
+	SetStopDesktop(v bool) *ResetSnapshotRequest
+	GetStopDesktop() *bool
 }
 
 type ResetSnapshotRequest struct {
@@ -31,7 +33,8 @@ type ResetSnapshotRequest struct {
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	StopDesktop *bool   `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
 }
 
 func (s ResetSnapshotRequest) String() string {
@@ -50,6 +53,10 @@ func (s *ResetSnapshotRequest) GetSnapshotId() *string {
 	return s.SnapshotId
 }
 
+func (s *ResetSnapshotRequest) GetStopDesktop() *bool {
+	return s.StopDesktop
+}
+
 func (s *ResetSnapshotRequest) SetRegionId(v string) *ResetSnapshotRequest {
 	s.RegionId = &v
 	return s
@@ -57,6 +64,11 @@ func (s *ResetSnapshotRequest) SetRegionId(v string) *ResetSnapshotRequest {
 
 func (s *ResetSnapshotRequest) SetSnapshotId(v string) *ResetSnapshotRequest {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *ResetSnapshotRequest) SetStopDesktop(v bool) *ResetSnapshotRequest {
+	s.StopDesktop = &v
 	return s
 }
 

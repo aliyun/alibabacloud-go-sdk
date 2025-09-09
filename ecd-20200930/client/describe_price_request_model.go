@@ -37,10 +37,14 @@ type iDescribePriceRequest interface {
 	GetResourceType() *string
 	SetRootDiskCategory(v string) *DescribePriceRequest
 	GetRootDiskCategory() *string
+	SetRootDiskPerformanceLevel(v string) *DescribePriceRequest
+	GetRootDiskPerformanceLevel() *string
 	SetRootDiskSizeGib(v int32) *DescribePriceRequest
 	GetRootDiskSizeGib() *int32
 	SetUserDiskCategory(v string) *DescribePriceRequest
 	GetUserDiskCategory() *string
+	SetUserDiskPerformanceLevel(v string) *DescribePriceRequest
+	GetUserDiskPerformanceLevel() *string
 	SetUserDiskSizeGib(v int32) *DescribePriceRequest
 	GetUserDiskSizeGib() *int32
 }
@@ -190,7 +194,8 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// 40
-	RootDiskCategory *string `json:"RootDiskCategory,omitempty" xml:"RootDiskCategory,omitempty"`
+	RootDiskCategory         *string `json:"RootDiskCategory,omitempty" xml:"RootDiskCategory,omitempty"`
+	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
 	//
 	// example:
@@ -210,7 +215,8 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// 80
-	UserDiskCategory *string `json:"UserDiskCategory,omitempty" xml:"UserDiskCategory,omitempty"`
+	UserDiskCategory         *string `json:"UserDiskCategory,omitempty" xml:"UserDiskCategory,omitempty"`
+	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
 	// The size of the data disk. Unit: GiB.
 	//
 	// example:
@@ -283,12 +289,20 @@ func (s *DescribePriceRequest) GetRootDiskCategory() *string {
 	return s.RootDiskCategory
 }
 
+func (s *DescribePriceRequest) GetRootDiskPerformanceLevel() *string {
+	return s.RootDiskPerformanceLevel
+}
+
 func (s *DescribePriceRequest) GetRootDiskSizeGib() *int32 {
 	return s.RootDiskSizeGib
 }
 
 func (s *DescribePriceRequest) GetUserDiskCategory() *string {
 	return s.UserDiskCategory
+}
+
+func (s *DescribePriceRequest) GetUserDiskPerformanceLevel() *string {
+	return s.UserDiskPerformanceLevel
 }
 
 func (s *DescribePriceRequest) GetUserDiskSizeGib() *int32 {
@@ -365,6 +379,11 @@ func (s *DescribePriceRequest) SetRootDiskCategory(v string) *DescribePriceReque
 	return s
 }
 
+func (s *DescribePriceRequest) SetRootDiskPerformanceLevel(v string) *DescribePriceRequest {
+	s.RootDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *DescribePriceRequest) SetRootDiskSizeGib(v int32) *DescribePriceRequest {
 	s.RootDiskSizeGib = &v
 	return s
@@ -372,6 +391,11 @@ func (s *DescribePriceRequest) SetRootDiskSizeGib(v int32) *DescribePriceRequest
 
 func (s *DescribePriceRequest) SetUserDiskCategory(v string) *DescribePriceRequest {
 	s.UserDiskCategory = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetUserDiskPerformanceLevel(v string) *DescribePriceRequest {
+	s.UserDiskPerformanceLevel = &v
 	return s
 }
 

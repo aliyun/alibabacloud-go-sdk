@@ -25,8 +25,12 @@ type iDescribeModificationPriceRequest interface {
 	GetResourceSpecs() []*DescribeModificationPriceRequestResourceSpecs
 	SetResourceType(v string) *DescribeModificationPriceRequest
 	GetResourceType() *string
+	SetRootDiskPerformanceLevel(v string) *DescribeModificationPriceRequest
+	GetRootDiskPerformanceLevel() *string
 	SetRootDiskSizeGib(v int32) *DescribeModificationPriceRequest
 	GetRootDiskSizeGib() *int32
+	SetUserDiskPerformanceLevel(v string) *DescribeModificationPriceRequest
+	GetUserDiskPerformanceLevel() *string
 	SetUserDiskSizeGib(v int32) *DescribeModificationPriceRequest
 	GetUserDiskSizeGib() *int32
 }
@@ -118,13 +122,15 @@ type DescribeModificationPriceRequest struct {
 	// example:
 	//
 	// Desktop
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType             *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 80
-	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	RootDiskSizeGib          *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
 	// The size of the data disk. Unit: GiB.
 	//
 	// example:
@@ -173,8 +179,16 @@ func (s *DescribeModificationPriceRequest) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *DescribeModificationPriceRequest) GetRootDiskPerformanceLevel() *string {
+	return s.RootDiskPerformanceLevel
+}
+
 func (s *DescribeModificationPriceRequest) GetRootDiskSizeGib() *int32 {
 	return s.RootDiskSizeGib
+}
+
+func (s *DescribeModificationPriceRequest) GetUserDiskPerformanceLevel() *string {
+	return s.UserDiskPerformanceLevel
 }
 
 func (s *DescribeModificationPriceRequest) GetUserDiskSizeGib() *int32 {
@@ -221,8 +235,18 @@ func (s *DescribeModificationPriceRequest) SetResourceType(v string) *DescribeMo
 	return s
 }
 
+func (s *DescribeModificationPriceRequest) SetRootDiskPerformanceLevel(v string) *DescribeModificationPriceRequest {
+	s.RootDiskPerformanceLevel = &v
+	return s
+}
+
 func (s *DescribeModificationPriceRequest) SetRootDiskSizeGib(v int32) *DescribeModificationPriceRequest {
 	s.RootDiskSizeGib = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetUserDiskPerformanceLevel(v string) *DescribeModificationPriceRequest {
+	s.UserDiskPerformanceLevel = &v
 	return s
 }
 
