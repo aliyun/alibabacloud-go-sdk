@@ -2,61 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hongkong": dara.String("sddp-api.cn-hongkong.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("sddp"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -75,7 +24,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateConfigResponse
-func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
+func (client *Client) CreateConfigWithContext(ctx context.Context, request *CreateConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -120,37 +69,11 @@ func (client *Client) CreateConfigWithOptions(request *CreateConfigRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of a common configuration item for alerts.
-//
-// Description:
-//
-// You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateConfigRequest
-//
-// @return CreateConfigResponse
-func (client *Client) CreateConfig(request *CreateConfigRequest) (_result *CreateConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateConfigResponse{}
-	_body, _err := client.CreateConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -167,7 +90,7 @@ func (client *Client) CreateConfig(request *CreateConfigRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDataLimitResponse
-func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLimitResponse, _err error) {
+func (client *Client) CreateDataLimitWithContext(ctx context.Context, request *CreateDataLimitRequest, runtime *dara.RuntimeOptions) (_result *CreateDataLimitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -264,33 +187,11 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
-//
-// Description:
-//
-// You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
-//
-// @param request - CreateDataLimitRequest
-//
-// @return CreateDataLimitResponse
-func (client *Client) CreateDataLimit(request *CreateDataLimitRequest) (_result *CreateDataLimitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateDataLimitResponse{}
-	_body, _err := client.CreateDataLimitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -303,7 +204,7 @@ func (client *Client) CreateDataLimit(request *CreateDataLimitRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateRuleResponse
-func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
+func (client *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -400,29 +301,11 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom sensitive data detection rule.
-//
-// @param request - CreateRuleRequest
-//
-// @return CreateRuleResponse
-func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateRuleResponse{}
-	_body, _err := client.CreateRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -443,7 +326,7 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateScanTaskResponse
-func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateScanTaskResponse, _err error) {
+func (client *Client) CreateScanTaskWithContext(ctx context.Context, request *CreateScanTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateScanTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -516,37 +399,11 @@ func (client *Client) CreateScanTaskWithOptions(request *CreateScanTaskRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateScanTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a custom scan task. The custom scan task is used to scan data assets on which Data Security Center (DSC) is granted the scan permissions for sensitive data.
-//
-// Description:
-//
-// You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateScanTaskRequest
-//
-// @return CreateScanTaskResponse
-func (client *Client) CreateScanTask(request *CreateScanTaskRequest) (_result *CreateScanTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateScanTaskResponse{}
-	_body, _err := client.CreateScanTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -567,7 +424,7 @@ func (client *Client) CreateScanTask(request *CreateScanTaskRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSlrRoleResponse
-func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateSlrRoleResponse, _err error) {
+func (client *Client) CreateSlrRoleWithContext(ctx context.Context, request *CreateSlrRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateSlrRoleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -600,37 +457,11 @@ func (client *Client) CreateSlrRoleWithOptions(request *CreateSlrRoleRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSlrRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a service-linked role for Data Security Center (DSC) to grant DSC the permissions to access data assets in other services.
-//
-// Description:
-//
-// You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateSlrRoleRequest
-//
-// @return CreateSlrRoleResponse
-func (client *Client) CreateSlrRole(request *CreateSlrRoleRequest) (_result *CreateSlrRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSlrRoleResponse{}
-	_body, _err := client.CreateSlrRoleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -651,7 +482,7 @@ func (client *Client) CreateSlrRole(request *CreateSlrRoleRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDataLimitResponse
-func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLimitResponse, _err error) {
+func (client *Client) DeleteDataLimitWithContext(ctx context.Context, request *DeleteDataLimitRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataLimitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -688,37 +519,11 @@ func (client *Client) DeleteDataLimitWithOptions(request *DeleteDataLimitRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Revokes the scan permissions on a data asset. The data asset can be a database, an instance, or a bucket.
-//
-// Description:
-//
-// You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteDataLimitRequest
-//
-// @return DeleteDataLimitResponse
-func (client *Client) DeleteDataLimit(request *DeleteDataLimitRequest) (_result *DeleteDataLimitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteDataLimitResponse{}
-	_body, _err := client.DeleteDataLimitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -731,7 +536,7 @@ func (client *Client) DeleteDataLimit(request *DeleteDataLimitRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRuleResponse
-func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
+func (client *Client) DeleteRuleWithContext(ctx context.Context, request *DeleteRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -768,29 +573,11 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a custom sensitive data detection rule from Data Security Center (DSC).
-//
-// @param request - DeleteRuleRequest
-//
-// @return DeleteRuleResponse
-func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRuleResponse{}
-	_body, _err := client.DeleteRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -803,7 +590,7 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAuditLogsResponse
-func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuditLogsResponse, _err error) {
+func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request *DescribeAuditLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAuditLogsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -924,29 +711,11 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAuditLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询审计告警日志列表
-//
-// @param request - DescribeAuditLogsRequest
-//
-// @return DescribeAuditLogsResponse
-func (client *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (_result *DescribeAuditLogsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAuditLogsResponse{}
-	_body, _err := client.DescribeAuditLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -959,7 +728,7 @@ func (client *Client) DescribeAuditLogs(request *DescribeAuditLogsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCategoryTemplateListResponse
-func (client *Client) DescribeCategoryTemplateListWithOptions(request *DescribeCategoryTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCategoryTemplateListResponse, _err error) {
+func (client *Client) DescribeCategoryTemplateListWithContext(ctx context.Context, request *DescribeCategoryTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCategoryTemplateListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1000,29 +769,11 @@ func (client *Client) DescribeCategoryTemplateListWithOptions(request *DescribeC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCategoryTemplateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call this interface to query the list of industry templates.
-//
-// @param request - DescribeCategoryTemplateListRequest
-//
-// @return DescribeCategoryTemplateListResponse
-func (client *Client) DescribeCategoryTemplateList(request *DescribeCategoryTemplateListRequest) (_result *DescribeCategoryTemplateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCategoryTemplateListResponse{}
-	_body, _err := client.DescribeCategoryTemplateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1043,7 +794,7 @@ func (client *Client) DescribeCategoryTemplateList(request *DescribeCategoryTemp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCategoryTemplateRuleListResponse
-func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *DescribeCategoryTemplateRuleListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
+func (client *Client) DescribeCategoryTemplateRuleListWithContext(ctx context.Context, request *DescribeCategoryTemplateRuleListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1088,37 +839,11 @@ func (client *Client) DescribeCategoryTemplateRuleListWithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCategoryTemplateRuleListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries rules in a classification template by page.
-//
-// Description:
-//
-// You can call this operation to query rules in a classification template.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeCategoryTemplateRuleListRequest
-//
-// @return DescribeCategoryTemplateRuleListResponse
-func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategoryTemplateRuleListRequest) (_result *DescribeCategoryTemplateRuleListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCategoryTemplateRuleListResponse{}
-	_body, _err := client.DescribeCategoryTemplateRuleListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1143,7 +868,7 @@ func (client *Client) DescribeCategoryTemplateRuleList(request *DescribeCategory
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeColumnsResponse
-func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest, runtime *dara.RuntimeOptions) (_result *DescribeColumnsResponse, _err error) {
+func (client *Client) DescribeColumnsWithContext(ctx context.Context, request *DescribeColumnsRequest, runtime *dara.RuntimeOptions) (_result *DescribeColumnsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1236,41 +961,11 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeColumnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries data in the columns of the tables that Data Security Center (DSC) is authorized to access. The tables include the tables of MaxCompute and ApsaraDB RDS.
-//
-// Description:
-//
-// You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
-//
-// ## [](#)Precautions
-//
-// The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
-//
-// ## [](#qps)Limits
-//
-// Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeColumnsRequest
-//
-// @return DescribeColumnsResponse
-func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result *DescribeColumnsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeColumnsResponse{}
-	_body, _err := client.DescribeColumnsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1283,7 +978,7 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeColumnsV2Response
-func (client *Client) DescribeColumnsV2WithOptions(request *DescribeColumnsV2Request, runtime *dara.RuntimeOptions) (_result *DescribeColumnsV2Response, _err error) {
+func (client *Client) DescribeColumnsV2WithContext(ctx context.Context, request *DescribeColumnsV2Request, runtime *dara.RuntimeOptions) (_result *DescribeColumnsV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1360,29 +1055,11 @@ func (client *Client) DescribeColumnsV2WithOptions(request *DescribeColumnsV2Req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeColumnsV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query data in columns of data assets such as MaxCompute, RDS, etc., that are authorized by the Data Security Center.
-//
-// @param request - DescribeColumnsV2Request
-//
-// @return DescribeColumnsV2Response
-func (client *Client) DescribeColumnsV2(request *DescribeColumnsV2Request) (_result *DescribeColumnsV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeColumnsV2Response{}
-	_body, _err := client.DescribeColumnsV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1395,7 +1072,7 @@ func (client *Client) DescribeColumnsV2(request *DescribeColumnsV2Request) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeConfigsResponse
-func (client *Client) DescribeConfigsWithOptions(request *DescribeConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeConfigsResponse, _err error) {
+func (client *Client) DescribeConfigsWithContext(ctx context.Context, request *DescribeConfigsRequest, runtime *dara.RuntimeOptions) (_result *DescribeConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1420,29 +1097,11 @@ func (client *Client) DescribeConfigsWithOptions(request *DescribeConfigsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries common configuration items for alerts.
-//
-// @param request - DescribeConfigsRequest
-//
-// @return DescribeConfigsResponse
-func (client *Client) DescribeConfigs(request *DescribeConfigsRequest) (_result *DescribeConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeConfigsResponse{}
-	_body, _err := client.DescribeConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1455,7 +1114,7 @@ func (client *Client) DescribeConfigs(request *DescribeConfigsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataAssetsResponse
-func (client *Client) DescribeDataAssetsWithOptions(request *DescribeDataAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataAssetsResponse, _err error) {
+func (client *Client) DescribeDataAssetsWithContext(ctx context.Context, request *DescribeDataAssetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataAssetsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1504,29 +1163,11 @@ func (client *Client) DescribeDataAssetsWithOptions(request *DescribeDataAssetsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataAssetsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the sensitive data detection results of data assets that Data Security Center (DSC) is authorized to access.
-//
-// @param request - DescribeDataAssetsRequest
-//
-// @return DescribeDataAssetsResponse
-func (client *Client) DescribeDataAssets(request *DescribeDataAssetsRequest) (_result *DescribeDataAssetsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataAssetsResponse{}
-	_body, _err := client.DescribeDataAssetsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1539,7 +1180,7 @@ func (client *Client) DescribeDataAssets(request *DescribeDataAssetsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataLimitDetailResponse
-func (client *Client) DescribeDataLimitDetailWithOptions(request *DescribeDataLimitDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitDetailResponse, _err error) {
+func (client *Client) DescribeDataLimitDetailWithContext(ctx context.Context, request *DescribeDataLimitDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1576,29 +1217,11 @@ func (client *Client) DescribeDataLimitDetailWithOptions(request *DescribeDataLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataLimitDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a data asset, such as a MaxCompute project, an ApsaraDB RDS database, or an Object Storage Service (OSS) bucket, that you authorize Data Security Center (DSC) to access.
-//
-// @param request - DescribeDataLimitDetailRequest
-//
-// @return DescribeDataLimitDetailResponse
-func (client *Client) DescribeDataLimitDetail(request *DescribeDataLimitDetailRequest) (_result *DescribeDataLimitDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataLimitDetailResponse{}
-	_body, _err := client.DescribeDataLimitDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1619,7 +1242,7 @@ func (client *Client) DescribeDataLimitDetail(request *DescribeDataLimitDetailRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataLimitSetResponse
-func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimitSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitSetResponse, _err error) {
+func (client *Client) DescribeDataLimitSetWithContext(ctx context.Context, request *DescribeDataLimitSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitSetResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1660,37 +1283,11 @@ func (client *Client) DescribeDataLimitSetWithOptions(request *DescribeDataLimit
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataLimitSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
-//
-// Description:
-//
-// You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeDataLimitSetRequest
-//
-// @return DescribeDataLimitSetResponse
-func (client *Client) DescribeDataLimitSet(request *DescribeDataLimitSetRequest) (_result *DescribeDataLimitSetResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataLimitSetResponse{}
-	_body, _err := client.DescribeDataLimitSetWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1703,7 +1300,7 @@ func (client *Client) DescribeDataLimitSet(request *DescribeDataLimitSetRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataLimitsResponse
-func (client *Client) DescribeDataLimitsWithOptions(request *DescribeDataLimitsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitsResponse, _err error) {
+func (client *Client) DescribeDataLimitsWithContext(ctx context.Context, request *DescribeDataLimitsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataLimitsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1784,29 +1381,11 @@ func (client *Client) DescribeDataLimitsWithOptions(request *DescribeDataLimitsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataLimitsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the data assets such as instances, databases, or buckets that Data Security Center (DSC) is authorized to access.
-//
-// @param request - DescribeDataLimitsRequest
-//
-// @return DescribeDataLimitsResponse
-func (client *Client) DescribeDataLimits(request *DescribeDataLimitsRequest) (_result *DescribeDataLimitsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataLimitsResponse{}
-	_body, _err := client.DescribeDataLimitsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1827,7 +1406,7 @@ func (client *Client) DescribeDataLimits(request *DescribeDataLimitsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataMaskingRunHistoryResponse
-func (client *Client) DescribeDataMaskingRunHistoryWithOptions(request *DescribeDataMaskingRunHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataMaskingRunHistoryResponse, _err error) {
+func (client *Client) DescribeDataMaskingRunHistoryWithContext(ctx context.Context, request *DescribeDataMaskingRunHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataMaskingRunHistoryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1892,37 +1471,11 @@ func (client *Client) DescribeDataMaskingRunHistoryWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataMaskingRunHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the execution information about a de-identification task.
-//
-// Description:
-//
-// You can call this operation to query the execution information of a static de-identification task, including the status and progress.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeDataMaskingRunHistoryRequest
-//
-// @return DescribeDataMaskingRunHistoryResponse
-func (client *Client) DescribeDataMaskingRunHistory(request *DescribeDataMaskingRunHistoryRequest) (_result *DescribeDataMaskingRunHistoryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataMaskingRunHistoryResponse{}
-	_body, _err := client.DescribeDataMaskingRunHistoryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1943,7 +1496,7 @@ func (client *Client) DescribeDataMaskingRunHistory(request *DescribeDataMasking
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataMaskingTasksResponse
-func (client *Client) DescribeDataMaskingTasksWithOptions(request *DescribeDataMaskingTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataMaskingTasksResponse, _err error) {
+func (client *Client) DescribeDataMaskingTasksWithContext(ctx context.Context, request *DescribeDataMaskingTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataMaskingTasksResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1992,37 +1545,11 @@ func (client *Client) DescribeDataMaskingTasksWithOptions(request *DescribeDataM
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataMaskingTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries de-identification tasks.
-//
-// Description:
-//
-// You can call this operation to query static de-identification tasks. This facilitates task queries and management.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeDataMaskingTasksRequest
-//
-// @return DescribeDataMaskingTasksResponse
-func (client *Client) DescribeDataMaskingTasks(request *DescribeDataMaskingTasksRequest) (_result *DescribeDataMaskingTasksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataMaskingTasksResponse{}
-	_body, _err := client.DescribeDataMaskingTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2041,7 +1568,7 @@ func (client *Client) DescribeDataMaskingTasks(request *DescribeDataMaskingTasks
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataObjectColumnDetailResponse
-func (client *Client) DescribeDataObjectColumnDetailWithOptions(request *DescribeDataObjectColumnDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectColumnDetailResponse, _err error) {
+func (client *Client) DescribeDataObjectColumnDetailWithContext(ctx context.Context, request *DescribeDataObjectColumnDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectColumnDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2090,35 +1617,11 @@ func (client *Client) DescribeDataObjectColumnDetailWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataObjectColumnDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # View data object column details
-//
-// Description:
-//
-// ## Notes
-//
-// The DescribeDataObjectColumnDetail interface has been revised to DescribeDataObjectColumnDetailV2. It is recommended that you use the newer version, DescribeDataObjectColumnDetailV2, when developing your application.
-//
-// @param request - DescribeDataObjectColumnDetailRequest
-//
-// @return DescribeDataObjectColumnDetailResponse
-func (client *Client) DescribeDataObjectColumnDetail(request *DescribeDataObjectColumnDetailRequest) (_result *DescribeDataObjectColumnDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataObjectColumnDetailResponse{}
-	_body, _err := client.DescribeDataObjectColumnDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2131,7 +1634,7 @@ func (client *Client) DescribeDataObjectColumnDetail(request *DescribeDataObject
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataObjectColumnDetailV2Response
-func (client *Client) DescribeDataObjectColumnDetailV2WithOptions(request *DescribeDataObjectColumnDetailV2Request, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectColumnDetailV2Response, _err error) {
+func (client *Client) DescribeDataObjectColumnDetailV2WithContext(ctx context.Context, request *DescribeDataObjectColumnDetailV2Request, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectColumnDetailV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2180,29 +1683,11 @@ func (client *Client) DescribeDataObjectColumnDetailV2WithOptions(request *Descr
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataObjectColumnDetailV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # View Data Object Column Details V2
-//
-// @param request - DescribeDataObjectColumnDetailV2Request
-//
-// @return DescribeDataObjectColumnDetailV2Response
-func (client *Client) DescribeDataObjectColumnDetailV2(request *DescribeDataObjectColumnDetailV2Request) (_result *DescribeDataObjectColumnDetailV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataObjectColumnDetailV2Response{}
-	_body, _err := client.DescribeDataObjectColumnDetailV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2215,7 +1700,7 @@ func (client *Client) DescribeDataObjectColumnDetailV2(request *DescribeDataObje
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDataObjectsResponse
-func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectsResponse, _err error) {
+func (client *Client) DescribeDataObjectsWithContext(ctx context.Context, request *DescribeDataObjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataObjectsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2304,29 +1789,11 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Paginated Query of Data Catalog Objects
-//
-// @param request - DescribeDataObjectsRequest
-//
-// @return DescribeDataObjectsResponse
-func (client *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (_result *DescribeDataObjectsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDataObjectsResponse{}
-	_body, _err := client.DescribeDataObjectsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2339,7 +1806,7 @@ func (client *Client) DescribeDataObjects(request *DescribeDataObjectsRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDocTypesResponse
-func (client *Client) DescribeDocTypesWithOptions(request *DescribeDocTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocTypesResponse, _err error) {
+func (client *Client) DescribeDocTypesWithContext(ctx context.Context, request *DescribeDocTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocTypesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2364,29 +1831,11 @@ func (client *Client) DescribeDocTypesWithOptions(request *DescribeDocTypesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDocTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of OSS object types that can be identified.
-//
-// @param request - DescribeDocTypesRequest
-//
-// @return DescribeDocTypesResponse
-func (client *Client) DescribeDocTypes(request *DescribeDocTypesRequest) (_result *DescribeDocTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDocTypesResponse{}
-	_body, _err := client.DescribeDocTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2399,7 +1848,7 @@ func (client *Client) DescribeDocTypes(request *DescribeDocTypesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEventDetailResponse
-func (client *Client) DescribeEventDetailWithOptions(request *DescribeEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventDetailResponse, _err error) {
+func (client *Client) DescribeEventDetailWithContext(ctx context.Context, request *DescribeEventDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2428,29 +1877,11 @@ func (client *Client) DescribeEventDetailWithOptions(request *DescribeEventDetai
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEventDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an anomalous event. The details include the time when the anomalous event occurred, and the description and handling status of the anomalous event.
-//
-// @param request - DescribeEventDetailRequest
-//
-// @return DescribeEventDetailResponse
-func (client *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (_result *DescribeEventDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEventDetailResponse{}
-	_body, _err := client.DescribeEventDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2463,7 +1894,7 @@ func (client *Client) DescribeEventDetail(request *DescribeEventDetailRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEventTypesResponse
-func (client *Client) DescribeEventTypesWithOptions(request *DescribeEventTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventTypesResponse, _err error) {
+func (client *Client) DescribeEventTypesWithContext(ctx context.Context, request *DescribeEventTypesRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventTypesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2504,29 +1935,11 @@ func (client *Client) DescribeEventTypesWithOptions(request *DescribeEventTypesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEventTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the types of anomalous events.
-//
-// @param request - DescribeEventTypesRequest
-//
-// @return DescribeEventTypesResponse
-func (client *Client) DescribeEventTypes(request *DescribeEventTypesRequest) (_result *DescribeEventTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEventTypesResponse{}
-	_body, _err := client.DescribeEventTypesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2547,7 +1960,7 @@ func (client *Client) DescribeEventTypes(request *DescribeEventTypesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEventsResponse
-func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
+func (client *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2632,37 +2045,11 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeEventsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries anomalous events.
-//
-// Description:
-//
-// You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeEventsRequest
-//
-// @return DescribeEventsResponse
-func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeEventsResponse{}
-	_body, _err := client.DescribeEventsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2681,7 +2068,7 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIdentifyTaskStatusResponse
-func (client *Client) DescribeIdentifyTaskStatusWithOptions(request *DescribeIdentifyTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeIdentifyTaskStatusResponse, _err error) {
+func (client *Client) DescribeIdentifyTaskStatusWithContext(ctx context.Context, request *DescribeIdentifyTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeIdentifyTaskStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2702,35 +2089,11 @@ func (client *Client) DescribeIdentifyTaskStatusWithOptions(request *DescribeIde
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeIdentifyTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Query the status of an identification task
-//
-// Description:
-//
-// ## QPS Limit
-//
-// The QPS limit for this interface per user is 10 times/second. Exceeding the limit will result in API calls being rate-limited, which may affect your business. Please call it reasonably.
-//
-// @param request - DescribeIdentifyTaskStatusRequest
-//
-// @return DescribeIdentifyTaskStatusResponse
-func (client *Client) DescribeIdentifyTaskStatus(request *DescribeIdentifyTaskStatusRequest) (_result *DescribeIdentifyTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeIdentifyTaskStatusResponse{}
-	_body, _err := client.DescribeIdentifyTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2749,7 +2112,7 @@ func (client *Client) DescribeIdentifyTaskStatus(request *DescribeIdentifyTaskSt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceSourcesResponse
-func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstanceSourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSourcesResponse, _err error) {
+func (client *Client) DescribeInstanceSourcesWithContext(ctx context.Context, request *DescribeInstanceSourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2822,35 +2185,11 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of data assets.
-//
-// Description:
-//
-// You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
-//
-// This operation is no longer used for the KMS console of the new version.
-//
-// @param request - DescribeInstanceSourcesRequest
-//
-// @return DescribeInstanceSourcesResponse
-func (client *Client) DescribeInstanceSources(request *DescribeInstanceSourcesRequest) (_result *DescribeInstanceSourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceSourcesResponse{}
-	_body, _err := client.DescribeInstanceSourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2871,7 +2210,7 @@ func (client *Client) DescribeInstanceSources(request *DescribeInstanceSourcesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesResponse
-func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+func (client *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2932,37 +2271,11 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries data assets such as MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS) that you authorize Data Security Center (DSC) to access.
-//
-// Description:
-//
-// When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeInstancesRequest
-//
-// @return DescribeInstancesResponse
-func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2987,7 +2300,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOssObjectDetailResponse
-func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObjectDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectDetailResponse, _err error) {
+func (client *Client) DescribeOssObjectDetailWithContext(ctx context.Context, request *DescribeOssObjectDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3016,41 +2329,11 @@ func (client *Client) DescribeOssObjectDetailWithOptions(request *DescribeOssObj
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOssObjectDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an Object Storage Service (OSS) object that Data Security Center (DSC) is authorized to access.
-//
-// Description:
-//
-// You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
-//
-// ## [](#)Precautions
-//
-// The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
-//
-// ## [](#qps)Limits
-//
-// Each Alibaba Cloud account can call this operation up to 10 times per second. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeOssObjectDetailRequest
-//
-// @return DescribeOssObjectDetailResponse
-func (client *Client) DescribeOssObjectDetail(request *DescribeOssObjectDetailRequest) (_result *DescribeOssObjectDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOssObjectDetailResponse{}
-	_body, _err := client.DescribeOssObjectDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3067,7 +2350,7 @@ func (client *Client) DescribeOssObjectDetail(request *DescribeOssObjectDetailRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOssObjectDetailV2Response
-func (client *Client) DescribeOssObjectDetailV2WithOptions(request *DescribeOssObjectDetailV2Request, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectDetailV2Response, _err error) {
+func (client *Client) DescribeOssObjectDetailV2WithContext(ctx context.Context, request *DescribeOssObjectDetailV2Request, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectDetailV2Response, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3112,33 +2395,11 @@ func (client *Client) DescribeOssObjectDetailV2WithOptions(request *DescribeOssO
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOssObjectDetailV2Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call this interface to query the details of a single storage object in OSS that is authorized by the Data Security Center.
-//
-// Description:
-//
-// This interface is generally used to query the detailed information of OSS storage objects, which facilitates the accurate positioning of sensitive OSS assets.
-//
-// @param request - DescribeOssObjectDetailV2Request
-//
-// @return DescribeOssObjectDetailV2Response
-func (client *Client) DescribeOssObjectDetailV2(request *DescribeOssObjectDetailV2Request) (_result *DescribeOssObjectDetailV2Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOssObjectDetailV2Response{}
-	_body, _err := client.DescribeOssObjectDetailV2WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3151,7 +2412,7 @@ func (client *Client) DescribeOssObjectDetailV2(request *DescribeOssObjectDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOssObjectsResponse
-func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectsResponse, _err error) {
+func (client *Client) DescribeOssObjectsWithContext(ctx context.Context, request *DescribeOssObjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssObjectsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3224,29 +2485,11 @@ func (client *Client) DescribeOssObjectsWithOptions(request *DescribeOssObjectsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOssObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Object Storage Service (OSS) objects that you authorize Data Security Center (DSC) to access.
-//
-// @param request - DescribeOssObjectsRequest
-//
-// @return DescribeOssObjectsResponse
-func (client *Client) DescribeOssObjects(request *DescribeOssObjectsRequest) (_result *DescribeOssObjectsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOssObjectsResponse{}
-	_body, _err := client.DescribeOssObjectsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3267,7 +2510,7 @@ func (client *Client) DescribeOssObjects(request *DescribeOssObjectsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePackagesResponse
-func (client *Client) DescribePackagesWithOptions(request *DescribePackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribePackagesResponse, _err error) {
+func (client *Client) DescribePackagesWithContext(ctx context.Context, request *DescribePackagesRequest, runtime *dara.RuntimeOptions) (_result *DescribePackagesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3320,37 +2563,11 @@ func (client *Client) DescribePackagesWithOptions(request *DescribePackagesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePackagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries information about the MaxCompute packages that Data Security Center (DSC) is authorized to access. The information includes the names of MaxCompute packages, the accounts of MaxCompute package owners, and the sensitivity levels of MaxCompute packages.
-//
-// Description:
-//
-// You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribePackagesRequest
-//
-// @return DescribePackagesResponse
-func (client *Client) DescribePackages(request *DescribePackagesRequest) (_result *DescribePackagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePackagesResponse{}
-	_body, _err := client.DescribePackagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3363,7 +2580,7 @@ func (client *Client) DescribePackages(request *DescribePackagesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeParentInstanceResponse
-func (client *Client) DescribeParentInstanceWithOptions(request *DescribeParentInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeParentInstanceResponse, _err error) {
+func (client *Client) DescribeParentInstanceWithContext(ctx context.Context, request *DescribeParentInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeParentInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3432,29 +2649,11 @@ func (client *Client) DescribeParentInstanceWithOptions(request *DescribeParentI
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeParentInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Gets the list of first-level authorizations.
-//
-// @param request - DescribeParentInstanceRequest
-//
-// @return DescribeParentInstanceResponse
-func (client *Client) DescribeParentInstance(request *DescribeParentInstanceRequest) (_result *DescribeParentInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeParentInstanceResponse{}
-	_body, _err := client.DescribeParentInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3475,7 +2674,7 @@ func (client *Client) DescribeParentInstance(request *DescribeParentInstanceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRiskLevelsResponse
-func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskLevelsResponse, _err error) {
+func (client *Client) DescribeRiskLevelsWithContext(ctx context.Context, request *DescribeRiskLevelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskLevelsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3508,37 +2707,11 @@ func (client *Client) DescribeRiskLevelsWithOptions(request *DescribeRiskLevelsR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRiskLevelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the sensitivity levels that are defined in a rule template provided by Data Security Center (DSC).
-//
-// Description:
-//
-// You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeRiskLevelsRequest
-//
-// @return DescribeRiskLevelsResponse
-func (client *Client) DescribeRiskLevels(request *DescribeRiskLevelsRequest) (_result *DescribeRiskLevelsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRiskLevelsResponse{}
-	_body, _err := client.DescribeRiskLevelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3551,7 +2724,7 @@ func (client *Client) DescribeRiskLevels(request *DescribeRiskLevelsRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRulesResponse
-func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRulesResponse, _err error) {
+func (client *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3652,29 +2825,11 @@ func (client *Client) DescribeRulesWithOptions(request *DescribeRulesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries sensitive data detection rules.
-//
-// @param request - DescribeRulesRequest
-//
-// @return DescribeRulesResponse
-func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *DescribeRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRulesResponse{}
-	_body, _err := client.DescribeRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3695,7 +2850,7 @@ func (client *Client) DescribeRules(request *DescribeRulesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTablesResponse
-func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTablesResponse, _err error) {
+func (client *Client) DescribeTablesWithContext(ctx context.Context, request *DescribeTablesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTablesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3764,37 +2919,11 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
-//
-// Description:
-//
-// When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
-//
-// # Limits
-//
-// You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
-//
-// @param request - DescribeTablesRequest
-//
-// @return DescribeTablesResponse
-func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *DescribeTablesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTablesResponse{}
-	_body, _err := client.DescribeTablesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3807,7 +2936,7 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTemplateAllRulesResponse
-func (client *Client) DescribeTemplateAllRulesWithOptions(request *DescribeTemplateAllRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTemplateAllRulesResponse, _err error) {
+func (client *Client) DescribeTemplateAllRulesWithContext(ctx context.Context, request *DescribeTemplateAllRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTemplateAllRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3840,29 +2969,11 @@ func (client *Client) DescribeTemplateAllRulesWithOptions(request *DescribeTempl
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTemplateAllRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Call this interface to query all models list of industry templates.
-//
-// @param request - DescribeTemplateAllRulesRequest
-//
-// @return DescribeTemplateAllRulesResponse
-func (client *Client) DescribeTemplateAllRules(request *DescribeTemplateAllRulesRequest) (_result *DescribeTemplateAllRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTemplateAllRulesResponse{}
-	_body, _err := client.DescribeTemplateAllRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3883,7 +2994,7 @@ func (client *Client) DescribeTemplateAllRules(request *DescribeTemplateAllRules
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserStatusResponse
-func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
+func (client *Client) DescribeUserStatusWithContext(ctx context.Context, request *DescribeUserStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3912,37 +3023,11 @@ func (client *Client) DescribeUserStatusWithOptions(request *DescribeUserStatusR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about an account.
-//
-// Description:
-//
-// You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeUserStatusRequest
-//
-// @return DescribeUserStatusResponse
-func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (_result *DescribeUserStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeUserStatusResponse{}
-	_body, _err := client.DescribeUserStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3963,7 +3048,7 @@ func (client *Client) DescribeUserStatus(request *DescribeUserStatusRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableUserConfigResponse
-func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigRequest, runtime *dara.RuntimeOptions) (_result *DisableUserConfigResponse, _err error) {
+func (client *Client) DisableUserConfigWithContext(ctx context.Context, request *DisableUserConfigRequest, runtime *dara.RuntimeOptions) (_result *DisableUserConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3996,37 +3081,11 @@ func (client *Client) DisableUserConfigWithOptions(request *DisableUserConfigReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableUserConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Disables a configuration item. After you disable a configuration item, you can call the CreateConfig operation to enable the configuration item by specifying the code of the configuration item for the Code parameter in the request.
-//
-// Description:
-//
-// You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DisableUserConfigRequest
-//
-// @return DisableUserConfigResponse
-func (client *Client) DisableUserConfig(request *DisableUserConfigRequest) (_result *DisableUserConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DisableUserConfigResponse{}
-	_body, _err := client.DisableUserConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4039,7 +3098,7 @@ func (client *Client) DisableUserConfig(request *DisableUserConfigRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecDatamaskResponse
-func (client *Client) ExecDatamaskWithOptions(request *ExecDatamaskRequest, runtime *dara.RuntimeOptions) (_result *ExecDatamaskResponse, _err error) {
+func (client *Client) ExecDatamaskWithContext(ctx context.Context, request *ExecDatamaskRequest, runtime *dara.RuntimeOptions) (_result *ExecDatamaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4076,29 +3135,11 @@ func (client *Client) ExecDatamaskWithOptions(request *ExecDatamaskRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecDatamaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Dynamically de-identifies sensitive data.
-//
-// @param request - ExecDatamaskRequest
-//
-// @return ExecDatamaskResponse
-func (client *Client) ExecDatamask(request *ExecDatamaskRequest) (_result *ExecDatamaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ExecDatamaskResponse{}
-	_body, _err := client.ExecDatamaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4111,7 +3152,7 @@ func (client *Client) ExecDatamask(request *ExecDatamaskRequest) (_result *ExecD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ManualTriggerMaskingProcessResponse
-func (client *Client) ManualTriggerMaskingProcessWithOptions(request *ManualTriggerMaskingProcessRequest, runtime *dara.RuntimeOptions) (_result *ManualTriggerMaskingProcessResponse, _err error) {
+func (client *Client) ManualTriggerMaskingProcessWithContext(ctx context.Context, request *ManualTriggerMaskingProcessRequest, runtime *dara.RuntimeOptions) (_result *ManualTriggerMaskingProcessResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4140,29 +3181,11 @@ func (client *Client) ManualTriggerMaskingProcessWithOptions(request *ManualTrig
 		BodyType:    dara.String("json"),
 	}
 	_result = &ManualTriggerMaskingProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Triggers a de-identification task.
-//
-// @param request - ManualTriggerMaskingProcessRequest
-//
-// @return ManualTriggerMaskingProcessResponse
-func (client *Client) ManualTriggerMaskingProcess(request *ManualTriggerMaskingProcessRequest) (_result *ManualTriggerMaskingProcessResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ManualTriggerMaskingProcessResponse{}
-	_body, _err := client.ManualTriggerMaskingProcessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4175,7 +3198,7 @@ func (client *Client) ManualTriggerMaskingProcess(request *ManualTriggerMaskingP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDataLimitResponse
-func (client *Client) ModifyDataLimitWithOptions(request *ModifyDataLimitRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataLimitResponse, _err error) {
+func (client *Client) ModifyDataLimitWithContext(ctx context.Context, request *ModifyDataLimitRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataLimitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4264,29 +3287,11 @@ func (client *Client) ModifyDataLimitWithOptions(request *ModifyDataLimitRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDataLimitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies configuration items for a data asset that you authorize Data Security Center (DSC) to access.
-//
-// @param request - ModifyDataLimitRequest
-//
-// @return ModifyDataLimitResponse
-func (client *Client) ModifyDataLimit(request *ModifyDataLimitRequest) (_result *ModifyDataLimitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDataLimitResponse{}
-	_body, _err := client.ModifyDataLimitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4307,7 +3312,7 @@ func (client *Client) ModifyDataLimit(request *ModifyDataLimitRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDefaultLevelResponse
-func (client *Client) ModifyDefaultLevelWithOptions(request *ModifyDefaultLevelRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefaultLevelResponse, _err error) {
+func (client *Client) ModifyDefaultLevelWithContext(ctx context.Context, request *ModifyDefaultLevelRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefaultLevelResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4340,37 +3345,11 @@ func (client *Client) ModifyDefaultLevelWithOptions(request *ModifyDefaultLevelR
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDefaultLevelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the sensitivity levels of sensitive data. You can change the default sensitivity levels of data that cannot be classified as sensitive or insensitive, and the sensitivity levels of data that can be classified as sensitive.
-//
-// Description:
-//
-// You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyDefaultLevelRequest
-//
-// @return ModifyDefaultLevelResponse
-func (client *Client) ModifyDefaultLevel(request *ModifyDefaultLevelRequest) (_result *ModifyDefaultLevelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyDefaultLevelResponse{}
-	_body, _err := client.ModifyDefaultLevelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4391,7 +3370,7 @@ func (client *Client) ModifyDefaultLevel(request *ModifyDefaultLevelRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyEventStatusResponse
-func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyEventStatusResponse, _err error) {
+func (client *Client) ModifyEventStatusWithContext(ctx context.Context, request *ModifyEventStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyEventStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4432,37 +3411,11 @@ func (client *Client) ModifyEventStatusWithOptions(request *ModifyEventStatusReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyEventStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Handles an anomalous event.
-//
-// Description:
-//
-// You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyEventStatusRequest
-//
-// @return ModifyEventStatusResponse
-func (client *Client) ModifyEventStatus(request *ModifyEventStatusRequest) (_result *ModifyEventStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyEventStatusResponse{}
-	_body, _err := client.ModifyEventStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4475,7 +3428,7 @@ func (client *Client) ModifyEventStatus(request *ModifyEventStatusRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyEventTypeStatusResponse
-func (client *Client) ModifyEventTypeStatusWithOptions(request *ModifyEventTypeStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyEventTypeStatusResponse, _err error) {
+func (client *Client) ModifyEventTypeStatusWithContext(ctx context.Context, request *ModifyEventTypeStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyEventTypeStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4508,29 +3461,11 @@ func (client *Client) ModifyEventTypeStatusWithOptions(request *ModifyEventTypeS
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyEventTypeStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables the detection of anomalous events of subtypes.
-//
-// @param request - ModifyEventTypeStatusRequest
-//
-// @return ModifyEventTypeStatusResponse
-func (client *Client) ModifyEventTypeStatus(request *ModifyEventTypeStatusRequest) (_result *ModifyEventTypeStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyEventTypeStatusResponse{}
-	_body, _err := client.ModifyEventTypeStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4551,7 +3486,7 @@ func (client *Client) ModifyEventTypeStatus(request *ModifyEventTypeStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyReportTaskStatusResponse
-func (client *Client) ModifyReportTaskStatusWithOptions(request *ModifyReportTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyReportTaskStatusResponse, _err error) {
+func (client *Client) ModifyReportTaskStatusWithContext(ctx context.Context, request *ModifyReportTaskStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyReportTaskStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4584,37 +3519,11 @@ func (client *Client) ModifyReportTaskStatusWithOptions(request *ModifyReportTas
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyReportTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables the report task.
-//
-// Description:
-//
-// You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyReportTaskStatusRequest
-//
-// @return ModifyReportTaskStatusResponse
-func (client *Client) ModifyReportTaskStatus(request *ModifyReportTaskStatusRequest) (_result *ModifyReportTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyReportTaskStatusResponse{}
-	_body, _err := client.ModifyReportTaskStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4635,7 +3544,7 @@ func (client *Client) ModifyReportTaskStatus(request *ModifyReportTaskStatusRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRuleResponse
-func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyRuleResponse, _err error) {
+func (client *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4712,37 +3621,11 @@ func (client *Client) ModifyRuleWithOptions(request *ModifyRuleRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a custom sensitive data detection rule in Data Security Center (DSC).
-//
-// Description:
-//
-// When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyRuleRequest
-//
-// @return ModifyRuleResponse
-func (client *Client) ModifyRule(request *ModifyRuleRequest) (_result *ModifyRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRuleResponse{}
-	_body, _err := client.ModifyRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4755,7 +3638,7 @@ func (client *Client) ModifyRule(request *ModifyRuleRequest) (_result *ModifyRul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRuleStatusResponse
-func (client *Client) ModifyRuleStatusWithOptions(request *ModifyRuleStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyRuleStatusResponse, _err error) {
+func (client *Client) ModifyRuleStatusWithContext(ctx context.Context, request *ModifyRuleStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyRuleStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4792,29 +3675,11 @@ func (client *Client) ModifyRuleStatusWithOptions(request *ModifyRuleStatusReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRuleStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables a sensitive data detection rule.
-//
-// @param request - ModifyRuleStatusRequest
-//
-// @return ModifyRuleStatusResponse
-func (client *Client) ModifyRuleStatus(request *ModifyRuleStatusRequest) (_result *ModifyRuleStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRuleStatusResponse{}
-	_body, _err := client.ModifyRuleStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4843,7 +3708,7 @@ func (client *Client) ModifyRuleStatus(request *ModifyRuleStatusRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ScanOssObjectV1Response
-func (client *Client) ScanOssObjectV1WithOptions(tmpReq *ScanOssObjectV1Request, runtime *dara.RuntimeOptions) (_result *ScanOssObjectV1Response, _err error) {
+func (client *Client) ScanOssObjectV1WithContext(ctx context.Context, tmpReq *ScanOssObjectV1Request, runtime *dara.RuntimeOptions) (_result *ScanOssObjectV1Response, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4890,45 +3755,11 @@ func (client *Client) ScanOssObjectV1WithOptions(tmpReq *ScanOssObjectV1Request,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ScanOssObjectV1Response{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an identification task to scan sensitive data in Object Storage Service (OSS) objects.
-//
-// Description:
-//
-// ### [](#)Prerequisites
-//
-// To call this operation, make sure that asset authorization for your OSS bucket is complete and the bucket is connected. If the authorization is not complete, the bucket_not_authorized error code is returned when you call the operation.
-//
-// ### [](#qps-)Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// ### [](#)Additional information
-//
-// After you call this operation, you can obtain the task ID. You can specify the task ID in the DescribeIdentifyTaskDetail operation to query the state of the task.
-//
-// After the task is complete, you can call the DescribeOssObjectDetailV2 operation to query the identification results of sensitive data in the related OSS objects. When you call the DescribeOssObjectDetailV2 operation, you must specify BucketName, ServiceRegionId, and ObjectKey.
-//
-// @param request - ScanOssObjectV1Request
-//
-// @return ScanOssObjectV1Response
-func (client *Client) ScanOssObjectV1(request *ScanOssObjectV1Request) (_result *ScanOssObjectV1Response, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ScanOssObjectV1Response{}
-	_body, _err := client.ScanOssObjectV1WithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4949,7 +3780,7 @@ func (client *Client) ScanOssObjectV1(request *ScanOssObjectV1Request) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopMaskingProcessResponse
-func (client *Client) StopMaskingProcessWithOptions(request *StopMaskingProcessRequest, runtime *dara.RuntimeOptions) (_result *StopMaskingProcessResponse, _err error) {
+func (client *Client) StopMaskingProcessWithContext(ctx context.Context, request *StopMaskingProcessRequest, runtime *dara.RuntimeOptions) (_result *StopMaskingProcessResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4978,36 +3809,10 @@ func (client *Client) StopMaskingProcessWithOptions(request *StopMaskingProcessR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopMaskingProcessResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Stops a de-identification task. After you stop a de-identification task, you can resume the task by calling the ManualTriggerMaskingProcess operation.
-//
-// Description:
-//
-// You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
-//
-// # Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - StopMaskingProcessRequest
-//
-// @return StopMaskingProcessResponse
-func (client *Client) StopMaskingProcess(request *StopMaskingProcessRequest) (_result *StopMaskingProcessResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopMaskingProcessResponse{}
-	_body, _err := client.StopMaskingProcessWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
