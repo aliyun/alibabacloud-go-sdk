@@ -230,17 +230,17 @@ type GetServiceEstimateCostRequestCommodity struct {
 	PayPeriod *int32 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
 	// The unit of the subscription duration. Valid values:
 	//
-	// 	- Year
+	// 	- Year.
 	//
-	// 	- Month
+	// 	- Month.
 	//
-	// 	- Day
+	// 	- Day.
 	//
 	// example:
 	//
 	// Year
 	PayPeriodUnit *string `json:"PayPeriodUnit,omitempty" xml:"PayPeriodUnit,omitempty"`
-	// Marketplace private offer Id
+	// The PrivateOffer ID of the Alibaba Cloud Marketplace.
 	//
 	// example:
 	//

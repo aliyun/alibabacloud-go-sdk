@@ -19,6 +19,8 @@ type iCheckServiceDeployableRequest interface {
 	GetServiceId() *string
 	SetServiceVersion(v string) *CheckServiceDeployableRequest
 	GetServiceVersion() *string
+	SetTemplateName(v string) *CheckServiceDeployableRequest
+	GetTemplateName() *string
 	SetTrialType(v string) *CheckServiceDeployableRequest
 	GetTrialType() *string
 }
@@ -56,6 +58,7 @@ type CheckServiceDeployableRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The trial type of the service instance. Valid values:
 	//
 	// 	- **Trial**: Trials are supported.
@@ -96,6 +99,10 @@ func (s *CheckServiceDeployableRequest) GetServiceVersion() *string {
 	return s.ServiceVersion
 }
 
+func (s *CheckServiceDeployableRequest) GetTemplateName() *string {
+	return s.TemplateName
+}
+
 func (s *CheckServiceDeployableRequest) GetTrialType() *string {
 	return s.TrialType
 }
@@ -122,6 +129,11 @@ func (s *CheckServiceDeployableRequest) SetServiceId(v string) *CheckServiceDepl
 
 func (s *CheckServiceDeployableRequest) SetServiceVersion(v string) *CheckServiceDeployableRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *CheckServiceDeployableRequest) SetTemplateName(v string) *CheckServiceDeployableRequest {
+	s.TemplateName = &v
 	return s
 }
 

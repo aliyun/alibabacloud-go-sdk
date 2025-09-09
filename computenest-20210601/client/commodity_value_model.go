@@ -295,9 +295,19 @@ type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
 	// hourPrice
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 	// The module attributes.
-	ModuleAttrs  []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
-	ModuleNameEn *string                                                           `json:"ModuleNameEn,omitempty" xml:"ModuleNameEn,omitempty"`
-	PriceUnitEn  *string                                                           `json:"PriceUnitEn,omitempty" xml:"PriceUnitEn,omitempty"`
+	ModuleAttrs []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
+	// Module English name.
+	//
+	// example:
+	//
+	// data unit
+	ModuleNameEn *string `json:"ModuleNameEn,omitempty" xml:"ModuleNameEn,omitempty"`
+	// Price Unit English Name
+	//
+	// example:
+	//
+	// Yuan/Month
+	PriceUnitEn *string `json:"PriceUnitEn,omitempty" xml:"PriceUnitEn,omitempty"`
 }
 
 func (s CommodityValueResultSubOrdersSubOrderModuleInstance) String() string {

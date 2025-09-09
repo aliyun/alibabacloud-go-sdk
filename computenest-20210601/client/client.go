@@ -230,6 +230,10 @@ func (client *Client) CheckServiceDeployableWithOptions(request *CheckServiceDep
 		query["ServiceVersion"] = request.ServiceVersion
 	}
 
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
 	if !dara.IsNil(request.TrialType) {
 		query["TrialType"] = request.TrialType
 	}
@@ -1144,6 +1148,94 @@ func (client *Client) GetBackup(request *GetBackupRequest) (_result *GetBackupRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetBackupResponse{}
 	_body, _err := client.GetBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据指定地域获取可用区列表
+//
+// @param request - GetNetworkAvailableZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkAvailableZonesResponse
+func (client *Client) GetNetworkAvailableZonesWithOptions(request *GetNetworkAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkAvailableZonesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IsPoc) {
+		body["IsPoc"] = request.IsPoc
+	}
+
+	if !dara.IsNil(request.NetworkRegionId) {
+		body["NetworkRegionId"] = request.NetworkRegionId
+	}
+
+	if !dara.IsNil(request.PrivateVpcConnectionMode) {
+		body["PrivateVpcConnectionMode"] = request.PrivateVpcConnectionMode
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.ServiceInstanceEndpointServiceType) {
+		body["ServiceInstanceEndpointServiceType"] = request.ServiceInstanceEndpointServiceType
+	}
+
+	if !dara.IsNil(request.ServiceRegionId) {
+		body["ServiceRegionId"] = request.ServiceRegionId
+	}
+
+	if !dara.IsNil(request.ServiceVersion) {
+		body["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		body["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNetworkAvailableZones"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNetworkAvailableZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据指定地域获取可用区列表
+//
+// @param request - GetNetworkAvailableZonesRequest
+//
+// @return GetNetworkAvailableZonesResponse
+func (client *Client) GetNetworkAvailableZones(request *GetNetworkAvailableZonesRequest) (_result *GetNetworkAvailableZonesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNetworkAvailableZonesResponse{}
+	_body, _err := client.GetNetworkAvailableZonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3685,6 +3777,86 @@ func (client *Client) UpgradeServiceInstance(request *UpgradeServiceInstanceRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeServiceInstanceResponse{}
 	_body, _err := client.UpgradeServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验服务实例名称
+//
+// @param request - ValidateServiceInstanceNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateServiceInstanceNameResponse
+func (client *Client) ValidateServiceInstanceNameWithOptions(request *ValidateServiceInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *ValidateServiceInstanceNameResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.IsTrial) {
+		query["IsTrial"] = request.IsTrial
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.ServiceInstanceName) {
+		query["ServiceInstanceName"] = request.ServiceInstanceName
+	}
+
+	if !dara.IsNil(request.ServiceVersion) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateServiceInstanceName"),
+		Version:     dara.String("2021-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateServiceInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验服务实例名称
+//
+// @param request - ValidateServiceInstanceNameRequest
+//
+// @return ValidateServiceInstanceNameResponse
+func (client *Client) ValidateServiceInstanceName(request *ValidateServiceInstanceNameRequest) (_result *ValidateServiceInstanceNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ValidateServiceInstanceNameResponse{}
+	_body, _err := client.ValidateServiceInstanceNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
