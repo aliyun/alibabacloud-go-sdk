@@ -1209,6 +1209,170 @@ func (client *Client) AddGtmRecoveryPlan(request *AddGtmRecoveryPlanRequest) (_r
 
 // Summary:
 //
+// 新增递归解析内置权威解析记录
+//
+// @param request - AddRecursionRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRecursionRecordResponse
+func (client *Client) AddRecursionRecordWithOptions(request *AddRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *AddRecursionRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RequestSource) {
+		query["RequestSource"] = request.RequestSource
+	}
+
+	if !dara.IsNil(request.Rr) {
+		query["Rr"] = request.Rr
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UserClientIp) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	if !dara.IsNil(request.Value) {
+		query["Value"] = request.Value
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddRecursionRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddRecursionRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增递归解析内置权威解析记录
+//
+// @param request - AddRecursionRecordRequest
+//
+// @return AddRecursionRecordResponse
+func (client *Client) AddRecursionRecord(request *AddRecursionRecordRequest) (_result *AddRecursionRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddRecursionRecordResponse{}
+	_body, _err := client.AddRecursionRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增递归解析内置权威域名zone
+//
+// @param request - AddRecursionZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRecursionZoneResponse
+func (client *Client) AddRecursionZoneWithOptions(request *AddRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *AddRecursionZoneResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ProxyPattern) {
+		query["ProxyPattern"] = request.ProxyPattern
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddRecursionZone"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddRecursionZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增递归解析内置权威域名zone
+//
+// @param request - AddRecursionZoneRequest
+//
+// @return AddRecursionZoneResponse
+func (client *Client) AddRecursionZone(request *AddRecursionZoneRequest) (_result *AddRecursionZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddRecursionZoneResponse{}
+	_body, _err := client.AddRecursionZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds one or more domain names to a paid Alibaba Cloud DNS instance.
 //
 // Description:
@@ -2928,6 +3092,134 @@ func (client *Client) DeleteGtmRecoveryPlan(request *DeleteGtmRecoveryPlanReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteGtmRecoveryPlanResponse{}
 	_body, _err := client.DeleteGtmRecoveryPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除递归解析内置权威解析记录
+//
+// @param request - DeleteRecursionRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecursionRecordResponse
+func (client *Client) DeleteRecursionRecordWithOptions(request *DeleteRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecursionRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecursionRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecursionRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除递归解析内置权威解析记录
+//
+// @param request - DeleteRecursionRecordRequest
+//
+// @return DeleteRecursionRecordResponse
+func (client *Client) DeleteRecursionRecord(request *DeleteRecursionRecordRequest) (_result *DeleteRecursionRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRecursionRecordResponse{}
+	_body, _err := client.DeleteRecursionRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除递归解析内置权威域名zone
+//
+// @param request - DeleteRecursionZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRecursionZoneResponse
+func (client *Client) DeleteRecursionZoneWithOptions(request *DeleteRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecursionZoneResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRecursionZone"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRecursionZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除递归解析内置权威域名zone
+//
+// @param request - DeleteRecursionZoneRequest
+//
+// @return DeleteRecursionZoneResponse
+func (client *Client) DeleteRecursionZone(request *DeleteRecursionZoneRequest) (_result *DeleteRecursionZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRecursionZoneResponse{}
+	_body, _err := client.DeleteRecursionZoneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9376,6 +9668,126 @@ func (client *Client) DescribeRecordStatisticsSummary(request *DescribeRecordSta
 
 // Summary:
 //
+// 查询递归解析内置权威解析记录详情
+//
+// @param request - DescribeRecursionRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecursionRecordResponse
+func (client *Client) DescribeRecursionRecordWithOptions(request *DescribeRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecursionRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRecursionRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRecursionRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威解析记录详情
+//
+// @param request - DescribeRecursionRecordRequest
+//
+// @return DescribeRecursionRecordResponse
+func (client *Client) DescribeRecursionRecord(request *DescribeRecursionRecordRequest) (_result *DescribeRecursionRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRecursionRecordResponse{}
+	_body, _err := client.DescribeRecursionRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威域名zone详情
+//
+// @param request - DescribeRecursionZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecursionZoneResponse
+func (client *Client) DescribeRecursionZoneWithOptions(request *DescribeRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecursionZoneResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRecursionZone"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRecursionZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威域名zone详情
+//
+// @param request - DescribeRecursionZoneRequest
+//
+// @return DescribeRecursionZoneResponse
+func (client *Client) DescribeRecursionZone(request *DescribeRecursionZoneRequest) (_result *DescribeRecursionZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRecursionZoneResponse{}
+	_body, _err := client.DescribeRecursionZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
 //
 // @param request - DescribeSubDomainRecordsRequest
@@ -10519,6 +10931,190 @@ func (client *Client) ListCloudGtmMonitorTemplates(request *ListCloudGtmMonitorT
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCloudGtmMonitorTemplatesResponse{}
 	_body, _err := client.ListCloudGtmMonitorTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威解析记录
+//
+// @param request - ListRecursionRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecursionRecordsResponse
+func (client *Client) ListRecursionRecordsWithOptions(request *ListRecursionRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListRecursionRecordsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RequestSource) {
+		query["RequestSource"] = request.RequestSource
+	}
+
+	if !dara.IsNil(request.Rr) {
+		query["Rr"] = request.Rr
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecursionRecords"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecursionRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威解析记录
+//
+// @param request - ListRecursionRecordsRequest
+//
+// @return ListRecursionRecordsResponse
+func (client *Client) ListRecursionRecords(request *ListRecursionRecordsRequest) (_result *ListRecursionRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRecursionRecordsResponse{}
+	_body, _err := client.ListRecursionRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威域名zone
+//
+// @param request - ListRecursionZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecursionZonesResponse
+func (client *Client) ListRecursionZonesWithOptions(request *ListRecursionZonesRequest, runtime *dara.RuntimeOptions) (_result *ListRecursionZonesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRecursionZones"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRecursionZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询递归解析内置权威域名zone
+//
+// @param request - ListRecursionZonesRequest
+//
+// @return ListRecursionZonesResponse
+func (client *Client) ListRecursionZones(request *ListRecursionZonesRequest) (_result *ListRecursionZonesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRecursionZonesResponse{}
+	_body, _err := client.ListRecursionZonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11991,6 +12587,220 @@ func (client *Client) SearchCloudGtmMonitorTemplates(request *SearchCloudGtmMoni
 	runtime := &dara.RuntimeOptions{}
 	_result = &SearchCloudGtmMonitorTemplatesResponse{}
 	_body, _err := client.SearchCloudGtmMonitorTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索递归解析内置权威解析记录
+//
+// @param request - SearchRecursionRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchRecursionRecordsResponse
+func (client *Client) SearchRecursionRecordsWithOptions(request *SearchRecursionRecordsRequest, runtime *dara.RuntimeOptions) (_result *SearchRecursionRecordsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EnableStatus) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RequestSource) {
+		query["RequestSource"] = request.RequestSource
+	}
+
+	if !dara.IsNil(request.Rr) {
+		query["Rr"] = request.Rr
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Value) {
+		query["Value"] = request.Value
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchRecursionRecords"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchRecursionRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索递归解析内置权威解析记录
+//
+// @param request - SearchRecursionRecordsRequest
+//
+// @return SearchRecursionRecordsResponse
+func (client *Client) SearchRecursionRecords(request *SearchRecursionRecordsRequest) (_result *SearchRecursionRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchRecursionRecordsResponse{}
+	_body, _err := client.SearchRecursionRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索递归解析内置权威域名zone
+//
+// @param tmpReq - SearchRecursionZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchRecursionZonesResponse
+func (client *Client) SearchRecursionZonesWithOptions(tmpReq *SearchRecursionZonesRequest, runtime *dara.RuntimeOptions) (_result *SearchRecursionZonesResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchRecursionZonesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EffectiveScopes) {
+		request.EffectiveScopesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EffectiveScopes, dara.String("EffectiveScopes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EffectiveScopesShrink) {
+		query["EffectiveScopes"] = request.EffectiveScopesShrink
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchRecursionZones"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchRecursionZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索递归解析内置权威域名zone
+//
+// @param request - SearchRecursionZonesRequest
+//
+// @return SearchRecursionZonesResponse
+func (client *Client) SearchRecursionZones(request *SearchRecursionZonesRequest) (_result *SearchRecursionZonesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchRecursionZonesResponse{}
+	_body, _err := client.SearchRecursionZonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15827,6 +16637,592 @@ func (client *Client) UpdateIspFlushCacheInstanceConfig(request *UpdateIspFlushC
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateIspFlushCacheInstanceConfigResponse{}
 	_body, _err := client.UpdateIspFlushCacheInstanceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录
+//
+// @param request - UpdateRecursionRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionRecordResponse
+func (client *Client) UpdateRecursionRecordWithOptions(request *UpdateRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.RequestSource) {
+		query["RequestSource"] = request.RequestSource
+	}
+
+	if !dara.IsNil(request.Rr) {
+		query["Rr"] = request.Rr
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Value) {
+		query["Value"] = request.Value
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionRecord"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录
+//
+// @param request - UpdateRecursionRecordRequest
+//
+// @return UpdateRecursionRecordResponse
+func (client *Client) UpdateRecursionRecord(request *UpdateRecursionRecordRequest) (_result *UpdateRecursionRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionRecordResponse{}
+	_body, _err := client.UpdateRecursionRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改内置权威解析记录启用状态
+//
+// @param request - UpdateRecursionRecordEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionRecordEnableStatusResponse
+func (client *Client) UpdateRecursionRecordEnableStatusWithOptions(request *UpdateRecursionRecordEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordEnableStatusResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EnableStatus) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionRecordEnableStatus"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionRecordEnableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改内置权威解析记录启用状态
+//
+// @param request - UpdateRecursionRecordEnableStatusRequest
+//
+// @return UpdateRecursionRecordEnableStatusResponse
+func (client *Client) UpdateRecursionRecordEnableStatus(request *UpdateRecursionRecordEnableStatusRequest) (_result *UpdateRecursionRecordEnableStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionRecordEnableStatusResponse{}
+	_body, _err := client.UpdateRecursionRecordEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录备注
+//
+// @param request - UpdateRecursionRecordRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionRecordRemarkResponse
+func (client *Client) UpdateRecursionRecordRemarkWithOptions(request *UpdateRecursionRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordRemarkResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionRecordRemark"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionRecordRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录备注
+//
+// @param request - UpdateRecursionRecordRemarkRequest
+//
+// @return UpdateRecursionRecordRemarkResponse
+func (client *Client) UpdateRecursionRecordRemark(request *UpdateRecursionRecordRemarkRequest) (_result *UpdateRecursionRecordRemarkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionRecordRemarkResponse{}
+	_body, _err := client.UpdateRecursionRecordRemarkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录权重
+//
+// @param request - UpdateRecursionRecordWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionRecordWeightResponse
+func (client *Client) UpdateRecursionRecordWeightWithOptions(request *UpdateRecursionRecordWeightRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordWeightResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	if !dara.IsNil(request.Weight) {
+		query["Weight"] = request.Weight
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionRecordWeight"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionRecordWeightResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录权重
+//
+// @param request - UpdateRecursionRecordWeightRequest
+//
+// @return UpdateRecursionRecordWeightResponse
+func (client *Client) UpdateRecursionRecordWeight(request *UpdateRecursionRecordWeightRequest) (_result *UpdateRecursionRecordWeightResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionRecordWeightResponse{}
+	_body, _err := client.UpdateRecursionRecordWeightWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录权重算法启用状态
+//
+// @param request - UpdateRecursionRecordWeightEnableStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionRecordWeightEnableStatusResponse
+func (client *Client) UpdateRecursionRecordWeightEnableStatusWithOptions(request *UpdateRecursionRecordWeightEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordWeightEnableStatusResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EnableStatus) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !dara.IsNil(request.RequestSource) {
+		query["RequestSource"] = request.RequestSource
+	}
+
+	if !dara.IsNil(request.Rr) {
+		query["Rr"] = request.Rr
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionRecordWeightEnableStatus"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionRecordWeightEnableStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威解析记录权重算法启用状态
+//
+// @param request - UpdateRecursionRecordWeightEnableStatusRequest
+//
+// @return UpdateRecursionRecordWeightEnableStatusResponse
+func (client *Client) UpdateRecursionRecordWeightEnableStatus(request *UpdateRecursionRecordWeightEnableStatusRequest) (_result *UpdateRecursionRecordWeightEnableStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionRecordWeightEnableStatusResponse{}
+	_body, _err := client.UpdateRecursionRecordWeightEnableStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone生效范围
+//
+// @param tmpReq - UpdateRecursionZoneEffectiveScopeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionZoneEffectiveScopeResponse
+func (client *Client) UpdateRecursionZoneEffectiveScopeWithOptions(tmpReq *UpdateRecursionZoneEffectiveScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneEffectiveScopeResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateRecursionZoneEffectiveScopeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EffectiveScopes) {
+		request.EffectiveScopesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EffectiveScopes, dara.String("EffectiveScopes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EffectiveScopesShrink) {
+		query["EffectiveScopes"] = request.EffectiveScopesShrink
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionZoneEffectiveScope"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionZoneEffectiveScopeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone生效范围
+//
+// @param request - UpdateRecursionZoneEffectiveScopeRequest
+//
+// @return UpdateRecursionZoneEffectiveScopeResponse
+func (client *Client) UpdateRecursionZoneEffectiveScope(request *UpdateRecursionZoneEffectiveScopeRequest) (_result *UpdateRecursionZoneEffectiveScopeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionZoneEffectiveScopeResponse{}
+	_body, _err := client.UpdateRecursionZoneEffectiveScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone递归代理模式
+//
+// @param request - UpdateRecursionZoneProxyPatternRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionZoneProxyPatternResponse
+func (client *Client) UpdateRecursionZoneProxyPatternWithOptions(request *UpdateRecursionZoneProxyPatternRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneProxyPatternResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ProxyPattern) {
+		query["ProxyPattern"] = request.ProxyPattern
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionZoneProxyPattern"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionZoneProxyPatternResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone递归代理模式
+//
+// @param request - UpdateRecursionZoneProxyPatternRequest
+//
+// @return UpdateRecursionZoneProxyPatternResponse
+func (client *Client) UpdateRecursionZoneProxyPattern(request *UpdateRecursionZoneProxyPatternRequest) (_result *UpdateRecursionZoneProxyPatternResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionZoneProxyPatternResponse{}
+	_body, _err := client.UpdateRecursionZoneProxyPatternWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone备注
+//
+// @param request - UpdateRecursionZoneRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecursionZoneRemarkResponse
+func (client *Client) UpdateRecursionZoneRemarkWithOptions(request *UpdateRecursionZoneRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneRemarkResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRecursionZoneRemark"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRecursionZoneRemarkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改递归解析内置权威域名zone备注
+//
+// @param request - UpdateRecursionZoneRemarkRequest
+//
+// @return UpdateRecursionZoneRemarkResponse
+func (client *Client) UpdateRecursionZoneRemark(request *UpdateRecursionZoneRemarkRequest) (_result *UpdateRecursionZoneRemarkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRecursionZoneRemarkResponse{}
+	_body, _err := client.UpdateRecursionZoneRemarkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -58,7 +58,7 @@ type CreateCloudGtmAddressShrinkRequest struct {
 	//
 	// example:
 	//
-	// 当前版本不支持传入此参数，请不要传入参数。
+	// This parameter is not supported in the version. Do not enter this parameter
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
 	// The failover mode that is used when address exceptions are identified. Valid values:
 	//
