@@ -19,6 +19,8 @@ type iCreateSqlStatementRequest interface {
 	GetLimit() *int32
 	SetSqlComputeId(v string) *CreateSqlStatementRequest
 	GetSqlComputeId() *string
+	SetTaskBizId(v string) *CreateSqlStatementRequest
+	GetTaskBizId() *string
 	SetRegionId(v string) *CreateSqlStatementRequest
 	GetRegionId() *string
 }
@@ -54,6 +56,7 @@ type CreateSqlStatementRequest struct {
 	//
 	// sc-dfahdfjafhajd****
 	SqlComputeId *string `json:"sqlComputeId,omitempty" xml:"sqlComputeId,omitempty"`
+	TaskBizId    *string `json:"taskBizId,omitempty" xml:"taskBizId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -90,6 +93,10 @@ func (s *CreateSqlStatementRequest) GetSqlComputeId() *string {
 	return s.SqlComputeId
 }
 
+func (s *CreateSqlStatementRequest) GetTaskBizId() *string {
+	return s.TaskBizId
+}
+
 func (s *CreateSqlStatementRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -116,6 +123,11 @@ func (s *CreateSqlStatementRequest) SetLimit(v int32) *CreateSqlStatementRequest
 
 func (s *CreateSqlStatementRequest) SetSqlComputeId(v string) *CreateSqlStatementRequest {
 	s.SqlComputeId = &v
+	return s
+}
+
+func (s *CreateSqlStatementRequest) SetTaskBizId(v string) *CreateSqlStatementRequest {
+	s.TaskBizId = &v
 	return s
 }
 

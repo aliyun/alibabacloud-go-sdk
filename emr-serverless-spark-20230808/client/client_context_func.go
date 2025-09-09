@@ -109,6 +109,69 @@ func (client *Client) CancelJobRunWithContext(ctx context.Context, workspaceId *
 
 // Summary:
 //
+// 创建kyuubi的token
+//
+// @param request - CreateKyuubiTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKyuubiTokenResponse
+func (client *Client) CreateKyuubiTokenWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, request *CreateKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKyuubiTokenResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoExpireConfiguration) {
+		body["autoExpireConfiguration"] = request.AutoExpireConfiguration
+	}
+
+	if !dara.IsNil(request.MemberArns) {
+		body["memberArns"] = request.MemberArns
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Token) {
+		body["token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKyuubiToken"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/kyuubiService/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/token"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKyuubiTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建Livy compute
 //
 // @param request - CreateLivyComputeRequest
@@ -541,6 +604,10 @@ func (client *Client) CreateSqlStatementWithContext(ctx context.Context, workspa
 		body["sqlComputeId"] = request.SqlComputeId
 	}
 
+	if !dara.IsNil(request.TaskBizId) {
+		body["taskBizId"] = request.TaskBizId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -669,6 +736,51 @@ func (client *Client) CreateWorkspaceWithContext(ctx context.Context, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除compute的token
+//
+// @param request - DeleteKyuubiTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKyuubiTokenResponse
+func (client *Client) DeleteKyuubiTokenWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, tokenId *string, request *DeleteKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteKyuubiTokenResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKyuubiToken"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/kyuubiService/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/token/" + dara.PercentEncode(dara.StringValue(tokenId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKyuubiTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -969,6 +1081,51 @@ func (client *Client) GetJobRunWithContext(ctx context.Context, workspaceId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetJobRunResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取compute的token
+//
+// @param request - GetKyuubiTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKyuubiTokenResponse
+func (client *Client) GetKyuubiTokenWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, tokenId *string, request *GetKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetKyuubiTokenResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKyuubiToken"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/kyuubiService/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/token/" + dara.PercentEncode(dara.StringValue(tokenId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKyuubiTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2536,6 +2693,69 @@ func (client *Client) TerminateSqlStatementWithContext(ctx context.Context, work
 		BodyType:    dara.String("json"),
 	}
 	_result = &TerminateSqlStatementResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新kyuubi的token
+//
+// @param request - UpdateKyuubiTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKyuubiTokenResponse
+func (client *Client) UpdateKyuubiTokenWithContext(ctx context.Context, workspaceId *string, kyuubiServiceId *string, tokenId *string, request *UpdateKyuubiTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateKyuubiTokenResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoExpireConfiguration) {
+		body["autoExpireConfiguration"] = request.AutoExpireConfiguration
+	}
+
+	if !dara.IsNil(request.MemberArns) {
+		body["memberArns"] = request.MemberArns
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Token) {
+		body["token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKyuubiToken"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/kyuubiService/" + dara.PercentEncode(dara.StringValue(kyuubiServiceId)) + "/token/" + dara.PercentEncode(dara.StringValue(tokenId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKyuubiTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
