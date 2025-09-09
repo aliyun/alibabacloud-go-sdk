@@ -19,6 +19,8 @@ type iDescribeDBClusterPerformanceRequest interface {
 	GetKey() *string
 	SetStartTime(v string) *DescribeDBClusterPerformanceRequest
 	GetStartTime() *string
+	SetSubGroupName(v string) *DescribeDBClusterPerformanceRequest
+	GetSubGroupName() *string
 	SetType(v string) *DescribeDBClusterPerformanceRequest
 	GetType() *string
 }
@@ -63,7 +65,8 @@ type DescribeDBClusterPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:01Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubGroupName *string `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
 	// The query type.
 	//
 	// example:
@@ -100,6 +103,10 @@ func (s *DescribeDBClusterPerformanceRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *DescribeDBClusterPerformanceRequest) GetSubGroupName() *string {
+	return s.SubGroupName
+}
+
 func (s *DescribeDBClusterPerformanceRequest) GetType() *string {
 	return s.Type
 }
@@ -126,6 +133,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetKey(v string) *DescribeDBCluste
 
 func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDBClusterPerformanceRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceRequest) SetSubGroupName(v string) *DescribeDBClusterPerformanceRequest {
+	s.SubGroupName = &v
 	return s
 }
 

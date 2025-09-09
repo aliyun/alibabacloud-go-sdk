@@ -4514,6 +4514,10 @@ func (client *Client) DescribeDBClusterPerformanceWithContext(ctx context.Contex
 		query["StartTime"] = request.StartTime
 	}
 
+	if !dara.IsNil(request.SubGroupName) {
+		query["SubGroupName"] = request.SubGroupName
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
@@ -10133,6 +10137,72 @@ func (client *Client) ModifyDBNodeClassWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyDBNodeClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改物理节点描述
+//
+// @param request - ModifyDBNodeDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodeDescriptionResponse
+func (client *Client) ModifyDBNodeDescriptionWithContext(ctx context.Context, request *ModifyDBNodeDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBNodeDescriptionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodeDescription) {
+		query["DBNodeDescription"] = request.DBNodeDescription
+	}
+
+	if !dara.IsNil(request.DBNodeId) {
+		query["DBNodeId"] = request.DBNodeId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBNodeDescription"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBNodeDescriptionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
