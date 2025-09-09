@@ -1,3 +1,7 @@
+2025-09-09 Version: v2.0.4
+- Update API DescribeDrdsDbRdsNameList: add request parameters RegionId.
+
+
 2025-03-11 Version: v2.0.3
 - Update API DescribeDrdsInstance: update response param.
 - Update API DescribeDrdsInstances: update param RegionId.

@@ -1,0 +1,61 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iUntagResourcesResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetRequestId(v string) *UntagResourcesResponseBody
+	GetRequestId() *string
+	SetSuccess(v bool) *UntagResourcesResponseBody
+	GetSuccess() *bool
+}
+
+type UntagResourcesResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// DSSDF-SEWE-*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the database creation failure records were removed from the DRDS instance.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *UntagResourcesResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) Validate() error {
+	return dara.Validate(s)
+}
