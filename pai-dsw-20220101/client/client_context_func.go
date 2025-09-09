@@ -1427,20 +1427,24 @@ func (client *Client) ListSystemLogsWithContext(ctx context.Context, request *Li
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.LifecycleId) {
+		query["LifecycleId"] = request.LifecycleId
+	}
+
 	if !dara.IsNil(request.LogLevel) {
 		query["LogLevel"] = request.LogLevel
 	}
 
+	if !dara.IsNil(request.LogRepository) {
+		query["LogRepository"] = request.LogRepository
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
 	if !dara.IsNil(request.Order) {
 		query["Order"] = request.Order
-	}
-
-	if !dara.IsNil(request.PageNumber) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.ProblemCategory) {
@@ -1453,10 +1457,6 @@ func (client *Client) ListSystemLogsWithContext(ctx context.Context, request *Li
 
 	if !dara.IsNil(request.SourceRequestId) {
 		query["SourceRequestId"] = request.SourceRequestId
-	}
-
-	if !dara.IsNil(request.SourceType) {
-		query["SourceType"] = request.SourceType
 	}
 
 	req := &openapiutil.OpenApiRequest{

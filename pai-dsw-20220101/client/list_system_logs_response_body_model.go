@@ -9,18 +9,15 @@ type iListSystemLogsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetOffset(v string) *ListSystemLogsResponseBody
+	GetOffset() *string
 	SetSystemLogs(v []*ListSystemLogsResponseBodySystemLogs) *ListSystemLogsResponseBody
 	GetSystemLogs() []*ListSystemLogsResponseBodySystemLogs
-	SetTotalCount(v int64) *ListSystemLogsResponseBody
-	GetTotalCount() *int64
 }
 
 type ListSystemLogsResponseBody struct {
+	Offset     *string                                 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	SystemLogs []*ListSystemLogsResponseBodySystemLogs `json:"SystemLogs,omitempty" xml:"SystemLogs,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 10
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSystemLogsResponseBody) String() string {
@@ -31,21 +28,21 @@ func (s ListSystemLogsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListSystemLogsResponseBody) GetOffset() *string {
+	return s.Offset
+}
+
 func (s *ListSystemLogsResponseBody) GetSystemLogs() []*ListSystemLogsResponseBodySystemLogs {
 	return s.SystemLogs
 }
 
-func (s *ListSystemLogsResponseBody) GetTotalCount() *int64 {
-	return s.TotalCount
+func (s *ListSystemLogsResponseBody) SetOffset(v string) *ListSystemLogsResponseBody {
+	s.Offset = &v
+	return s
 }
 
 func (s *ListSystemLogsResponseBody) SetSystemLogs(v []*ListSystemLogsResponseBodySystemLogs) *ListSystemLogsResponseBody {
 	s.SystemLogs = v
-	return s
-}
-
-func (s *ListSystemLogsResponseBody) SetTotalCount(v int64) *ListSystemLogsResponseBody {
-	s.TotalCount = &v
 	return s
 }
 

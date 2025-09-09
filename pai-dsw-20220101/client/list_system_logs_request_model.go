@@ -15,22 +15,22 @@ type iListSystemLogsRequest interface {
 	GetGmtStartTime() *string
 	SetInstanceId(v string) *ListSystemLogsRequest
 	GetInstanceId() *string
+	SetLifecycleId(v string) *ListSystemLogsRequest
+	GetLifecycleId() *string
 	SetLogLevel(v string) *ListSystemLogsRequest
 	GetLogLevel() *string
+	SetLogRepository(v string) *ListSystemLogsRequest
+	GetLogRepository() *string
+	SetOffset(v string) *ListSystemLogsRequest
+	GetOffset() *string
 	SetOrder(v string) *ListSystemLogsRequest
 	GetOrder() *string
-	SetPageNumber(v int64) *ListSystemLogsRequest
-	GetPageNumber() *int64
-	SetPageSize(v int64) *ListSystemLogsRequest
-	GetPageSize() *int64
 	SetProblemCategory(v string) *ListSystemLogsRequest
 	GetProblemCategory() *string
 	SetSortBy(v string) *ListSystemLogsRequest
 	GetSortBy() *string
 	SetSourceRequestId(v string) *ListSystemLogsRequest
 	GetSourceRequestId() *string
-	SetSourceType(v string) *ListSystemLogsRequest
-	GetSourceType() *string
 }
 
 type ListSystemLogsRequest struct {
@@ -49,23 +49,18 @@ type ListSystemLogsRequest struct {
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LifecycleId *string `json:"LifecycleId,omitempty" xml:"LifecycleId,omitempty"`
 	// example:
 	//
 	// Error
-	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	LogLevel      *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	LogRepository *string `json:"LogRepository,omitempty" xml:"LogRepository,omitempty"`
+	Offset        *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 100
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
 	// InstanceStartFailed
@@ -78,10 +73,6 @@ type ListSystemLogsRequest struct {
 	//
 	// 473469C7-******5-B3DB-A3DC0DE3C83E
 	SourceRequestId *string `json:"SourceRequestId,omitempty" xml:"SourceRequestId,omitempty"`
-	// example:
-	//
-	// NotebookMainContainerLogs
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ListSystemLogsRequest) String() string {
@@ -104,20 +95,24 @@ func (s *ListSystemLogsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListSystemLogsRequest) GetLifecycleId() *string {
+	return s.LifecycleId
+}
+
 func (s *ListSystemLogsRequest) GetLogLevel() *string {
 	return s.LogLevel
 }
 
+func (s *ListSystemLogsRequest) GetLogRepository() *string {
+	return s.LogRepository
+}
+
+func (s *ListSystemLogsRequest) GetOffset() *string {
+	return s.Offset
+}
+
 func (s *ListSystemLogsRequest) GetOrder() *string {
 	return s.Order
-}
-
-func (s *ListSystemLogsRequest) GetPageNumber() *int64 {
-	return s.PageNumber
-}
-
-func (s *ListSystemLogsRequest) GetPageSize() *int64 {
-	return s.PageSize
 }
 
 func (s *ListSystemLogsRequest) GetProblemCategory() *string {
@@ -130,10 +125,6 @@ func (s *ListSystemLogsRequest) GetSortBy() *string {
 
 func (s *ListSystemLogsRequest) GetSourceRequestId() *string {
 	return s.SourceRequestId
-}
-
-func (s *ListSystemLogsRequest) GetSourceType() *string {
-	return s.SourceType
 }
 
 func (s *ListSystemLogsRequest) SetGmtEndTime(v string) *ListSystemLogsRequest {
@@ -151,23 +142,28 @@ func (s *ListSystemLogsRequest) SetInstanceId(v string) *ListSystemLogsRequest {
 	return s
 }
 
+func (s *ListSystemLogsRequest) SetLifecycleId(v string) *ListSystemLogsRequest {
+	s.LifecycleId = &v
+	return s
+}
+
 func (s *ListSystemLogsRequest) SetLogLevel(v string) *ListSystemLogsRequest {
 	s.LogLevel = &v
 	return s
 }
 
+func (s *ListSystemLogsRequest) SetLogRepository(v string) *ListSystemLogsRequest {
+	s.LogRepository = &v
+	return s
+}
+
+func (s *ListSystemLogsRequest) SetOffset(v string) *ListSystemLogsRequest {
+	s.Offset = &v
+	return s
+}
+
 func (s *ListSystemLogsRequest) SetOrder(v string) *ListSystemLogsRequest {
 	s.Order = &v
-	return s
-}
-
-func (s *ListSystemLogsRequest) SetPageNumber(v int64) *ListSystemLogsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSystemLogsRequest) SetPageSize(v int64) *ListSystemLogsRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -183,11 +179,6 @@ func (s *ListSystemLogsRequest) SetSortBy(v string) *ListSystemLogsRequest {
 
 func (s *ListSystemLogsRequest) SetSourceRequestId(v string) *ListSystemLogsRequest {
 	s.SourceRequestId = &v
-	return s
-}
-
-func (s *ListSystemLogsRequest) SetSourceType(v string) *ListSystemLogsRequest {
-	s.SourceType = &v
 	return s
 }
 
