@@ -181,6 +181,62 @@ func (client *Client) CancelFundAccountLowAvailableAmountAlarmWithContext(ctx co
 
 // Summary:
 //
+// 提货券账户检查是否存在
+//
+// @param request - CheckAccountExistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAccountExistResponse
+func (client *Client) CheckAccountExistWithContext(ctx context.Context, request *CheckAccountExistRequest, runtime *dara.RuntimeOptions) (_result *CheckAccountExistResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EcIdAccountIds) {
+		query["EcIdAccountIds"] = request.EcIdAccountIds
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ToUserType) {
+		body["ToUserType"] = request.ToUserType
+	}
+
+	if !dara.IsNil(request.TransferAccount) {
+		body["TransferAccount"] = request.TransferAccount
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckAccountExist"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckAccountExistResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建财务单元
 //
 // @param tmpReq - CreateCostCenterRequest
@@ -2045,6 +2101,72 @@ func (client *Client) ModifyCostCenterRuleWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCostCenterRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 对客订单支付接口
+//
+// @param request - PayOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PayOrderResponse
+func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrderRequest, runtime *dara.RuntimeOptions) (_result *PayOrderResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BuyerId) {
+		query["BuyerId"] = request.BuyerId
+	}
+
+	if !dara.IsNil(request.EcIdAccountIds) {
+		query["EcIdAccountIds"] = request.EcIdAccountIds
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.PaySubmitUid) {
+		query["PaySubmitUid"] = request.PaySubmitUid
+	}
+
+	if !dara.IsNil(request.PayerId) {
+		query["PayerId"] = request.PayerId
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PayOrder"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PayOrderResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
