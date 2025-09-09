@@ -5,233 +5,233 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iPushRequest interface {
+type iPushShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAndroidActivity(v string) *PushRequest
+	SetAndroidActivity(v string) *PushShrinkRequest
 	GetAndroidActivity() *string
-	SetAndroidBadgeAddNum(v int32) *PushRequest
+	SetAndroidBadgeAddNum(v int32) *PushShrinkRequest
 	GetAndroidBadgeAddNum() *int32
-	SetAndroidBadgeClass(v string) *PushRequest
+	SetAndroidBadgeClass(v string) *PushShrinkRequest
 	GetAndroidBadgeClass() *string
-	SetAndroidBadgeSetNum(v int32) *PushRequest
+	SetAndroidBadgeSetNum(v int32) *PushShrinkRequest
 	GetAndroidBadgeSetNum() *int32
-	SetAndroidBigBody(v string) *PushRequest
+	SetAndroidBigBody(v string) *PushShrinkRequest
 	GetAndroidBigBody() *string
-	SetAndroidBigPictureUrl(v string) *PushRequest
+	SetAndroidBigPictureUrl(v string) *PushShrinkRequest
 	GetAndroidBigPictureUrl() *string
-	SetAndroidBigTitle(v string) *PushRequest
+	SetAndroidBigTitle(v string) *PushShrinkRequest
 	GetAndroidBigTitle() *string
-	SetAndroidExtParameters(v string) *PushRequest
+	SetAndroidExtParameters(v string) *PushShrinkRequest
 	GetAndroidExtParameters() *string
-	SetAndroidHonorTargetUserType(v int32) *PushRequest
+	SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest
 	GetAndroidHonorTargetUserType() *int32
-	SetAndroidHuaweiReceiptId(v string) *PushRequest
+	SetAndroidHuaweiReceiptId(v string) *PushShrinkRequest
 	GetAndroidHuaweiReceiptId() *string
-	SetAndroidHuaweiTargetUserType(v int32) *PushRequest
+	SetAndroidHuaweiTargetUserType(v int32) *PushShrinkRequest
 	GetAndroidHuaweiTargetUserType() *int32
-	SetAndroidImageUrl(v string) *PushRequest
+	SetAndroidImageUrl(v string) *PushShrinkRequest
 	GetAndroidImageUrl() *string
-	SetAndroidInboxBody(v string) *PushRequest
+	SetAndroidInboxBody(v string) *PushShrinkRequest
 	GetAndroidInboxBody() *string
-	SetAndroidMeizuNoticeMsgType(v int32) *PushRequest
+	SetAndroidMeizuNoticeMsgType(v int32) *PushShrinkRequest
 	GetAndroidMeizuNoticeMsgType() *int32
-	SetAndroidMessageHuaweiCategory(v string) *PushRequest
+	SetAndroidMessageHuaweiCategory(v string) *PushShrinkRequest
 	GetAndroidMessageHuaweiCategory() *string
-	SetAndroidMessageHuaweiUrgency(v string) *PushRequest
+	SetAndroidMessageHuaweiUrgency(v string) *PushShrinkRequest
 	GetAndroidMessageHuaweiUrgency() *string
-	SetAndroidMessageOppoCategory(v string) *PushRequest
+	SetAndroidMessageOppoCategory(v string) *PushShrinkRequest
 	GetAndroidMessageOppoCategory() *string
-	SetAndroidMessageOppoNotifyLevel(v int32) *PushRequest
+	SetAndroidMessageOppoNotifyLevel(v int32) *PushShrinkRequest
 	GetAndroidMessageOppoNotifyLevel() *int32
-	SetAndroidMessageVivoCategory(v string) *PushRequest
+	SetAndroidMessageVivoCategory(v string) *PushShrinkRequest
 	GetAndroidMessageVivoCategory() *string
-	SetAndroidMusic(v string) *PushRequest
+	SetAndroidMusic(v string) *PushShrinkRequest
 	GetAndroidMusic() *string
-	SetAndroidNotificationBarPriority(v int32) *PushRequest
+	SetAndroidNotificationBarPriority(v int32) *PushShrinkRequest
 	GetAndroidNotificationBarPriority() *int32
-	SetAndroidNotificationBarType(v int32) *PushRequest
+	SetAndroidNotificationBarType(v int32) *PushShrinkRequest
 	GetAndroidNotificationBarType() *int32
-	SetAndroidNotificationChannel(v string) *PushRequest
+	SetAndroidNotificationChannel(v string) *PushShrinkRequest
 	GetAndroidNotificationChannel() *string
-	SetAndroidNotificationGroup(v string) *PushRequest
+	SetAndroidNotificationGroup(v string) *PushShrinkRequest
 	GetAndroidNotificationGroup() *string
-	SetAndroidNotificationHonorChannel(v string) *PushRequest
+	SetAndroidNotificationHonorChannel(v string) *PushShrinkRequest
 	GetAndroidNotificationHonorChannel() *string
-	SetAndroidNotificationHuaweiChannel(v string) *PushRequest
+	SetAndroidNotificationHuaweiChannel(v string) *PushShrinkRequest
 	GetAndroidNotificationHuaweiChannel() *string
-	SetAndroidNotificationNotifyId(v int32) *PushRequest
+	SetAndroidNotificationNotifyId(v int32) *PushShrinkRequest
 	GetAndroidNotificationNotifyId() *int32
-	SetAndroidNotificationThreadId(v string) *PushRequest
+	SetAndroidNotificationThreadId(v string) *PushShrinkRequest
 	GetAndroidNotificationThreadId() *string
-	SetAndroidNotificationVivoChannel(v string) *PushRequest
+	SetAndroidNotificationVivoChannel(v string) *PushShrinkRequest
 	GetAndroidNotificationVivoChannel() *string
-	SetAndroidNotificationXiaomiChannel(v string) *PushRequest
+	SetAndroidNotificationXiaomiChannel(v string) *PushShrinkRequest
 	GetAndroidNotificationXiaomiChannel() *string
-	SetAndroidNotifyType(v string) *PushRequest
+	SetAndroidNotifyType(v string) *PushShrinkRequest
 	GetAndroidNotifyType() *string
-	SetAndroidOpenType(v string) *PushRequest
+	SetAndroidOpenType(v string) *PushShrinkRequest
 	GetAndroidOpenType() *string
-	SetAndroidOpenUrl(v string) *PushRequest
+	SetAndroidOpenUrl(v string) *PushShrinkRequest
 	GetAndroidOpenUrl() *string
-	SetAndroidPopupActivity(v string) *PushRequest
+	SetAndroidPopupActivity(v string) *PushShrinkRequest
 	GetAndroidPopupActivity() *string
-	SetAndroidPopupBody(v string) *PushRequest
+	SetAndroidPopupBody(v string) *PushShrinkRequest
 	GetAndroidPopupBody() *string
-	SetAndroidPopupTitle(v string) *PushRequest
+	SetAndroidPopupTitle(v string) *PushShrinkRequest
 	GetAndroidPopupTitle() *string
-	SetAndroidRemind(v bool) *PushRequest
+	SetAndroidRemind(v bool) *PushShrinkRequest
 	GetAndroidRemind() *bool
-	SetAndroidRenderStyle(v int32) *PushRequest
+	SetAndroidRenderStyle(v int32) *PushShrinkRequest
 	GetAndroidRenderStyle() *int32
-	SetAndroidTargetUserType(v int32) *PushRequest
+	SetAndroidTargetUserType(v int32) *PushShrinkRequest
 	GetAndroidTargetUserType() *int32
-	SetAndroidVivoPushMode(v int32) *PushRequest
+	SetAndroidVivoPushMode(v int32) *PushShrinkRequest
 	GetAndroidVivoPushMode() *int32
-	SetAndroidVivoReceiptId(v string) *PushRequest
+	SetAndroidVivoReceiptId(v string) *PushShrinkRequest
 	GetAndroidVivoReceiptId() *string
-	SetAndroidXiaoMiActivity(v string) *PushRequest
+	SetAndroidXiaoMiActivity(v string) *PushShrinkRequest
 	GetAndroidXiaoMiActivity() *string
-	SetAndroidXiaoMiNotifyBody(v string) *PushRequest
+	SetAndroidXiaoMiNotifyBody(v string) *PushShrinkRequest
 	GetAndroidXiaoMiNotifyBody() *string
-	SetAndroidXiaoMiNotifyTitle(v string) *PushRequest
+	SetAndroidXiaoMiNotifyTitle(v string) *PushShrinkRequest
 	GetAndroidXiaoMiNotifyTitle() *string
-	SetAndroidXiaomiBigPictureUrl(v string) *PushRequest
+	SetAndroidXiaomiBigPictureUrl(v string) *PushShrinkRequest
 	GetAndroidXiaomiBigPictureUrl() *string
-	SetAndroidXiaomiImageUrl(v string) *PushRequest
+	SetAndroidXiaomiImageUrl(v string) *PushShrinkRequest
 	GetAndroidXiaomiImageUrl() *string
-	SetAppKey(v int64) *PushRequest
+	SetAppKey(v int64) *PushShrinkRequest
 	GetAppKey() *int64
-	SetBody(v string) *PushRequest
+	SetBody(v string) *PushShrinkRequest
 	GetBody() *string
-	SetDeviceType(v string) *PushRequest
+	SetDeviceType(v string) *PushShrinkRequest
 	GetDeviceType() *string
-	SetExpireTime(v string) *PushRequest
+	SetExpireTime(v string) *PushShrinkRequest
 	GetExpireTime() *string
-	SetHarmonyAction(v string) *PushRequest
+	SetHarmonyAction(v string) *PushShrinkRequest
 	GetHarmonyAction() *string
-	SetHarmonyActionType(v string) *PushRequest
+	SetHarmonyActionType(v string) *PushShrinkRequest
 	GetHarmonyActionType() *string
-	SetHarmonyBadgeAddNum(v int32) *PushRequest
+	SetHarmonyBadgeAddNum(v int32) *PushShrinkRequest
 	GetHarmonyBadgeAddNum() *int32
-	SetHarmonyBadgeSetNum(v int32) *PushRequest
+	SetHarmonyBadgeSetNum(v int32) *PushShrinkRequest
 	GetHarmonyBadgeSetNum() *int32
-	SetHarmonyCategory(v string) *PushRequest
+	SetHarmonyCategory(v string) *PushShrinkRequest
 	GetHarmonyCategory() *string
-	SetHarmonyExtParameters(v string) *PushRequest
+	SetHarmonyExtParameters(v string) *PushShrinkRequest
 	GetHarmonyExtParameters() *string
-	SetHarmonyExtensionExtraData(v string) *PushRequest
+	SetHarmonyExtensionExtraData(v string) *PushShrinkRequest
 	GetHarmonyExtensionExtraData() *string
-	SetHarmonyExtensionPush(v bool) *PushRequest
+	SetHarmonyExtensionPush(v bool) *PushShrinkRequest
 	GetHarmonyExtensionPush() *bool
-	SetHarmonyImageUrl(v string) *PushRequest
+	SetHarmonyImageUrl(v string) *PushShrinkRequest
 	GetHarmonyImageUrl() *string
-	SetHarmonyInboxContent(v string) *PushRequest
+	SetHarmonyInboxContent(v string) *PushShrinkRequest
 	GetHarmonyInboxContent() *string
-	SetHarmonyNotificationSlotType(v string) *PushRequest
+	SetHarmonyNotificationSlotType(v string) *PushShrinkRequest
 	GetHarmonyNotificationSlotType() *string
-	SetHarmonyNotifyId(v int32) *PushRequest
+	SetHarmonyNotifyId(v int32) *PushShrinkRequest
 	GetHarmonyNotifyId() *int32
-	SetHarmonyReceiptId(v string) *PushRequest
+	SetHarmonyReceiptId(v string) *PushShrinkRequest
 	GetHarmonyReceiptId() *string
-	SetHarmonyRemind(v bool) *PushRequest
+	SetHarmonyRemind(v bool) *PushShrinkRequest
 	GetHarmonyRemind() *bool
-	SetHarmonyRemindBody(v string) *PushRequest
+	SetHarmonyRemindBody(v string) *PushShrinkRequest
 	GetHarmonyRemindBody() *string
-	SetHarmonyRemindTitle(v string) *PushRequest
+	SetHarmonyRemindTitle(v string) *PushShrinkRequest
 	GetHarmonyRemindTitle() *string
-	SetHarmonyRenderStyle(v string) *PushRequest
+	SetHarmonyRenderStyle(v string) *PushShrinkRequest
 	GetHarmonyRenderStyle() *string
-	SetHarmonyTestMessage(v bool) *PushRequest
+	SetHarmonyTestMessage(v bool) *PushShrinkRequest
 	GetHarmonyTestMessage() *bool
-	SetHarmonyUri(v string) *PushRequest
+	SetHarmonyUri(v string) *PushShrinkRequest
 	GetHarmonyUri() *string
-	SetIdempotentToken(v string) *PushRequest
+	SetIdempotentToken(v string) *PushShrinkRequest
 	GetIdempotentToken() *string
-	SetJobKey(v string) *PushRequest
+	SetJobKey(v string) *PushShrinkRequest
 	GetJobKey() *string
-	SetPushTime(v string) *PushRequest
+	SetPushTime(v string) *PushShrinkRequest
 	GetPushTime() *string
-	SetPushType(v string) *PushRequest
+	SetPushType(v string) *PushShrinkRequest
 	GetPushType() *string
-	SetSendChannels(v string) *PushRequest
+	SetSendChannels(v string) *PushShrinkRequest
 	GetSendChannels() *string
-	SetSendSpeed(v int32) *PushRequest
+	SetSendSpeed(v int32) *PushShrinkRequest
 	GetSendSpeed() *int32
-	SetSmsDelaySecs(v int32) *PushRequest
+	SetSmsDelaySecs(v int32) *PushShrinkRequest
 	GetSmsDelaySecs() *int32
-	SetSmsParams(v string) *PushRequest
+	SetSmsParams(v string) *PushShrinkRequest
 	GetSmsParams() *string
-	SetSmsSendPolicy(v int32) *PushRequest
+	SetSmsSendPolicy(v int32) *PushShrinkRequest
 	GetSmsSendPolicy() *int32
-	SetSmsSignName(v string) *PushRequest
+	SetSmsSignName(v string) *PushShrinkRequest
 	GetSmsSignName() *string
-	SetSmsTemplateName(v string) *PushRequest
+	SetSmsTemplateName(v string) *PushShrinkRequest
 	GetSmsTemplateName() *string
-	SetStoreOffline(v bool) *PushRequest
+	SetStoreOffline(v bool) *PushShrinkRequest
 	GetStoreOffline() *bool
-	SetTarget(v string) *PushRequest
+	SetTarget(v string) *PushShrinkRequest
 	GetTarget() *string
-	SetTargetValue(v string) *PushRequest
+	SetTargetValue(v string) *PushShrinkRequest
 	GetTargetValue() *string
-	SetTitle(v string) *PushRequest
+	SetTitle(v string) *PushShrinkRequest
 	GetTitle() *string
-	SetTrim(v bool) *PushRequest
+	SetTrim(v bool) *PushShrinkRequest
 	GetTrim() *bool
-	SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest
-	GetAndroidOppoPrivateContentParameters() map[string]*string
-	SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest
+	SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest
+	GetAndroidOppoPrivateContentParametersShrink() *string
+	SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest
 	GetAndroidOppoPrivateMsgTemplateId() *string
-	SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest
-	GetAndroidOppoPrivateTitleParameters() map[string]*string
-	SetIOSApnsEnv(v string) *PushRequest
+	SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest
+	GetAndroidOppoPrivateTitleParametersShrink() *string
+	SetIOSApnsEnv(v string) *PushShrinkRequest
 	GetIOSApnsEnv() *string
-	SetIOSBadge(v int32) *PushRequest
+	SetIOSBadge(v int32) *PushShrinkRequest
 	GetIOSBadge() *int32
-	SetIOSBadgeAutoIncrement(v bool) *PushRequest
+	SetIOSBadgeAutoIncrement(v bool) *PushShrinkRequest
 	GetIOSBadgeAutoIncrement() *bool
-	SetIOSExtParameters(v string) *PushRequest
+	SetIOSExtParameters(v string) *PushShrinkRequest
 	GetIOSExtParameters() *string
-	SetIOSInterruptionLevel(v string) *PushRequest
+	SetIOSInterruptionLevel(v string) *PushShrinkRequest
 	GetIOSInterruptionLevel() *string
-	SetIOSLiveActivityAttributes(v string) *PushRequest
+	SetIOSLiveActivityAttributes(v string) *PushShrinkRequest
 	GetIOSLiveActivityAttributes() *string
-	SetIOSLiveActivityAttributesType(v string) *PushRequest
+	SetIOSLiveActivityAttributesType(v string) *PushShrinkRequest
 	GetIOSLiveActivityAttributesType() *string
-	SetIOSLiveActivityContentState(v string) *PushRequest
+	SetIOSLiveActivityContentState(v string) *PushShrinkRequest
 	GetIOSLiveActivityContentState() *string
-	SetIOSLiveActivityDismissalDate(v int64) *PushRequest
+	SetIOSLiveActivityDismissalDate(v int64) *PushShrinkRequest
 	GetIOSLiveActivityDismissalDate() *int64
-	SetIOSLiveActivityEvent(v string) *PushRequest
+	SetIOSLiveActivityEvent(v string) *PushShrinkRequest
 	GetIOSLiveActivityEvent() *string
-	SetIOSLiveActivityId(v string) *PushRequest
+	SetIOSLiveActivityId(v string) *PushShrinkRequest
 	GetIOSLiveActivityId() *string
-	SetIOSLiveActivityStaleDate(v int64) *PushRequest
+	SetIOSLiveActivityStaleDate(v int64) *PushShrinkRequest
 	GetIOSLiveActivityStaleDate() *int64
-	SetIOSMusic(v string) *PushRequest
+	SetIOSMusic(v string) *PushShrinkRequest
 	GetIOSMusic() *string
-	SetIOSMutableContent(v bool) *PushRequest
+	SetIOSMutableContent(v bool) *PushShrinkRequest
 	GetIOSMutableContent() *bool
-	SetIOSNotificationCategory(v string) *PushRequest
+	SetIOSNotificationCategory(v string) *PushShrinkRequest
 	GetIOSNotificationCategory() *string
-	SetIOSNotificationCollapseId(v string) *PushRequest
+	SetIOSNotificationCollapseId(v string) *PushShrinkRequest
 	GetIOSNotificationCollapseId() *string
-	SetIOSNotificationThreadId(v string) *PushRequest
+	SetIOSNotificationThreadId(v string) *PushShrinkRequest
 	GetIOSNotificationThreadId() *string
-	SetIOSRelevanceScore(v float64) *PushRequest
+	SetIOSRelevanceScore(v float64) *PushShrinkRequest
 	GetIOSRelevanceScore() *float64
-	SetIOSRemind(v bool) *PushRequest
+	SetIOSRemind(v bool) *PushShrinkRequest
 	GetIOSRemind() *bool
-	SetIOSRemindBody(v string) *PushRequest
+	SetIOSRemindBody(v string) *PushShrinkRequest
 	GetIOSRemindBody() *string
-	SetIOSSilentNotification(v bool) *PushRequest
+	SetIOSSilentNotification(v bool) *PushShrinkRequest
 	GetIOSSilentNotification() *bool
-	SetIOSSubtitle(v string) *PushRequest
+	SetIOSSubtitle(v string) *PushShrinkRequest
 	GetIOSSubtitle() *string
 }
 
-type PushRequest struct {
+type PushShrinkRequest struct {
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
@@ -479,10 +479,10 @@ type PushRequest struct {
 	// example:
 	//
 	// false
-	Trim                                *bool              `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	AndroidOppoPrivateContentParameters map[string]*string `json:"androidOppoPrivateContentParameters,omitempty" xml:"androidOppoPrivateContentParameters,omitempty"`
-	AndroidOppoPrivateMsgTemplateId     *string            `json:"androidOppoPrivateMsgTemplateId,omitempty" xml:"androidOppoPrivateMsgTemplateId,omitempty"`
-	AndroidOppoPrivateTitleParameters   map[string]*string `json:"androidOppoPrivateTitleParameters,omitempty" xml:"androidOppoPrivateTitleParameters,omitempty"`
+	Trim                                      *bool   `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	AndroidOppoPrivateContentParametersShrink *string `json:"androidOppoPrivateContentParameters,omitempty" xml:"androidOppoPrivateContentParameters,omitempty"`
+	AndroidOppoPrivateMsgTemplateId           *string `json:"androidOppoPrivateMsgTemplateId,omitempty" xml:"androidOppoPrivateMsgTemplateId,omitempty"`
+	AndroidOppoPrivateTitleParametersShrink   *string `json:"androidOppoPrivateTitleParameters,omitempty" xml:"androidOppoPrivateTitleParameters,omitempty"`
 	// example:
 	//
 	// DEV
@@ -549,1004 +549,1004 @@ type PushRequest struct {
 	IOSSubtitle *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
-func (s PushRequest) String() string {
+func (s PushShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s PushRequest) GoString() string {
+func (s PushShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PushRequest) GetAndroidActivity() *string {
+func (s *PushShrinkRequest) GetAndroidActivity() *string {
 	return s.AndroidActivity
 }
 
-func (s *PushRequest) GetAndroidBadgeAddNum() *int32 {
+func (s *PushShrinkRequest) GetAndroidBadgeAddNum() *int32 {
 	return s.AndroidBadgeAddNum
 }
 
-func (s *PushRequest) GetAndroidBadgeClass() *string {
+func (s *PushShrinkRequest) GetAndroidBadgeClass() *string {
 	return s.AndroidBadgeClass
 }
 
-func (s *PushRequest) GetAndroidBadgeSetNum() *int32 {
+func (s *PushShrinkRequest) GetAndroidBadgeSetNum() *int32 {
 	return s.AndroidBadgeSetNum
 }
 
-func (s *PushRequest) GetAndroidBigBody() *string {
+func (s *PushShrinkRequest) GetAndroidBigBody() *string {
 	return s.AndroidBigBody
 }
 
-func (s *PushRequest) GetAndroidBigPictureUrl() *string {
+func (s *PushShrinkRequest) GetAndroidBigPictureUrl() *string {
 	return s.AndroidBigPictureUrl
 }
 
-func (s *PushRequest) GetAndroidBigTitle() *string {
+func (s *PushShrinkRequest) GetAndroidBigTitle() *string {
 	return s.AndroidBigTitle
 }
 
-func (s *PushRequest) GetAndroidExtParameters() *string {
+func (s *PushShrinkRequest) GetAndroidExtParameters() *string {
 	return s.AndroidExtParameters
 }
 
-func (s *PushRequest) GetAndroidHonorTargetUserType() *int32 {
+func (s *PushShrinkRequest) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
 }
 
-func (s *PushRequest) GetAndroidHuaweiReceiptId() *string {
+func (s *PushShrinkRequest) GetAndroidHuaweiReceiptId() *string {
 	return s.AndroidHuaweiReceiptId
 }
 
-func (s *PushRequest) GetAndroidHuaweiTargetUserType() *int32 {
+func (s *PushShrinkRequest) GetAndroidHuaweiTargetUserType() *int32 {
 	return s.AndroidHuaweiTargetUserType
 }
 
-func (s *PushRequest) GetAndroidImageUrl() *string {
+func (s *PushShrinkRequest) GetAndroidImageUrl() *string {
 	return s.AndroidImageUrl
 }
 
-func (s *PushRequest) GetAndroidInboxBody() *string {
+func (s *PushShrinkRequest) GetAndroidInboxBody() *string {
 	return s.AndroidInboxBody
 }
 
-func (s *PushRequest) GetAndroidMeizuNoticeMsgType() *int32 {
+func (s *PushShrinkRequest) GetAndroidMeizuNoticeMsgType() *int32 {
 	return s.AndroidMeizuNoticeMsgType
 }
 
-func (s *PushRequest) GetAndroidMessageHuaweiCategory() *string {
+func (s *PushShrinkRequest) GetAndroidMessageHuaweiCategory() *string {
 	return s.AndroidMessageHuaweiCategory
 }
 
-func (s *PushRequest) GetAndroidMessageHuaweiUrgency() *string {
+func (s *PushShrinkRequest) GetAndroidMessageHuaweiUrgency() *string {
 	return s.AndroidMessageHuaweiUrgency
 }
 
-func (s *PushRequest) GetAndroidMessageOppoCategory() *string {
+func (s *PushShrinkRequest) GetAndroidMessageOppoCategory() *string {
 	return s.AndroidMessageOppoCategory
 }
 
-func (s *PushRequest) GetAndroidMessageOppoNotifyLevel() *int32 {
+func (s *PushShrinkRequest) GetAndroidMessageOppoNotifyLevel() *int32 {
 	return s.AndroidMessageOppoNotifyLevel
 }
 
-func (s *PushRequest) GetAndroidMessageVivoCategory() *string {
+func (s *PushShrinkRequest) GetAndroidMessageVivoCategory() *string {
 	return s.AndroidMessageVivoCategory
 }
 
-func (s *PushRequest) GetAndroidMusic() *string {
+func (s *PushShrinkRequest) GetAndroidMusic() *string {
 	return s.AndroidMusic
 }
 
-func (s *PushRequest) GetAndroidNotificationBarPriority() *int32 {
+func (s *PushShrinkRequest) GetAndroidNotificationBarPriority() *int32 {
 	return s.AndroidNotificationBarPriority
 }
 
-func (s *PushRequest) GetAndroidNotificationBarType() *int32 {
+func (s *PushShrinkRequest) GetAndroidNotificationBarType() *int32 {
 	return s.AndroidNotificationBarType
 }
 
-func (s *PushRequest) GetAndroidNotificationChannel() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationChannel() *string {
 	return s.AndroidNotificationChannel
 }
 
-func (s *PushRequest) GetAndroidNotificationGroup() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationGroup() *string {
 	return s.AndroidNotificationGroup
 }
 
-func (s *PushRequest) GetAndroidNotificationHonorChannel() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationHonorChannel() *string {
 	return s.AndroidNotificationHonorChannel
 }
 
-func (s *PushRequest) GetAndroidNotificationHuaweiChannel() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationHuaweiChannel() *string {
 	return s.AndroidNotificationHuaweiChannel
 }
 
-func (s *PushRequest) GetAndroidNotificationNotifyId() *int32 {
+func (s *PushShrinkRequest) GetAndroidNotificationNotifyId() *int32 {
 	return s.AndroidNotificationNotifyId
 }
 
-func (s *PushRequest) GetAndroidNotificationThreadId() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationThreadId() *string {
 	return s.AndroidNotificationThreadId
 }
 
-func (s *PushRequest) GetAndroidNotificationVivoChannel() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationVivoChannel() *string {
 	return s.AndroidNotificationVivoChannel
 }
 
-func (s *PushRequest) GetAndroidNotificationXiaomiChannel() *string {
+func (s *PushShrinkRequest) GetAndroidNotificationXiaomiChannel() *string {
 	return s.AndroidNotificationXiaomiChannel
 }
 
-func (s *PushRequest) GetAndroidNotifyType() *string {
+func (s *PushShrinkRequest) GetAndroidNotifyType() *string {
 	return s.AndroidNotifyType
 }
 
-func (s *PushRequest) GetAndroidOpenType() *string {
+func (s *PushShrinkRequest) GetAndroidOpenType() *string {
 	return s.AndroidOpenType
 }
 
-func (s *PushRequest) GetAndroidOpenUrl() *string {
+func (s *PushShrinkRequest) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
 }
 
-func (s *PushRequest) GetAndroidPopupActivity() *string {
+func (s *PushShrinkRequest) GetAndroidPopupActivity() *string {
 	return s.AndroidPopupActivity
 }
 
-func (s *PushRequest) GetAndroidPopupBody() *string {
+func (s *PushShrinkRequest) GetAndroidPopupBody() *string {
 	return s.AndroidPopupBody
 }
 
-func (s *PushRequest) GetAndroidPopupTitle() *string {
+func (s *PushShrinkRequest) GetAndroidPopupTitle() *string {
 	return s.AndroidPopupTitle
 }
 
-func (s *PushRequest) GetAndroidRemind() *bool {
+func (s *PushShrinkRequest) GetAndroidRemind() *bool {
 	return s.AndroidRemind
 }
 
-func (s *PushRequest) GetAndroidRenderStyle() *int32 {
+func (s *PushShrinkRequest) GetAndroidRenderStyle() *int32 {
 	return s.AndroidRenderStyle
 }
 
-func (s *PushRequest) GetAndroidTargetUserType() *int32 {
+func (s *PushShrinkRequest) GetAndroidTargetUserType() *int32 {
 	return s.AndroidTargetUserType
 }
 
-func (s *PushRequest) GetAndroidVivoPushMode() *int32 {
+func (s *PushShrinkRequest) GetAndroidVivoPushMode() *int32 {
 	return s.AndroidVivoPushMode
 }
 
-func (s *PushRequest) GetAndroidVivoReceiptId() *string {
+func (s *PushShrinkRequest) GetAndroidVivoReceiptId() *string {
 	return s.AndroidVivoReceiptId
 }
 
-func (s *PushRequest) GetAndroidXiaoMiActivity() *string {
+func (s *PushShrinkRequest) GetAndroidXiaoMiActivity() *string {
 	return s.AndroidXiaoMiActivity
 }
 
-func (s *PushRequest) GetAndroidXiaoMiNotifyBody() *string {
+func (s *PushShrinkRequest) GetAndroidXiaoMiNotifyBody() *string {
 	return s.AndroidXiaoMiNotifyBody
 }
 
-func (s *PushRequest) GetAndroidXiaoMiNotifyTitle() *string {
+func (s *PushShrinkRequest) GetAndroidXiaoMiNotifyTitle() *string {
 	return s.AndroidXiaoMiNotifyTitle
 }
 
-func (s *PushRequest) GetAndroidXiaomiBigPictureUrl() *string {
+func (s *PushShrinkRequest) GetAndroidXiaomiBigPictureUrl() *string {
 	return s.AndroidXiaomiBigPictureUrl
 }
 
-func (s *PushRequest) GetAndroidXiaomiImageUrl() *string {
+func (s *PushShrinkRequest) GetAndroidXiaomiImageUrl() *string {
 	return s.AndroidXiaomiImageUrl
 }
 
-func (s *PushRequest) GetAppKey() *int64 {
+func (s *PushShrinkRequest) GetAppKey() *int64 {
 	return s.AppKey
 }
 
-func (s *PushRequest) GetBody() *string {
+func (s *PushShrinkRequest) GetBody() *string {
 	return s.Body
 }
 
-func (s *PushRequest) GetDeviceType() *string {
+func (s *PushShrinkRequest) GetDeviceType() *string {
 	return s.DeviceType
 }
 
-func (s *PushRequest) GetExpireTime() *string {
+func (s *PushShrinkRequest) GetExpireTime() *string {
 	return s.ExpireTime
 }
 
-func (s *PushRequest) GetHarmonyAction() *string {
+func (s *PushShrinkRequest) GetHarmonyAction() *string {
 	return s.HarmonyAction
 }
 
-func (s *PushRequest) GetHarmonyActionType() *string {
+func (s *PushShrinkRequest) GetHarmonyActionType() *string {
 	return s.HarmonyActionType
 }
 
-func (s *PushRequest) GetHarmonyBadgeAddNum() *int32 {
+func (s *PushShrinkRequest) GetHarmonyBadgeAddNum() *int32 {
 	return s.HarmonyBadgeAddNum
 }
 
-func (s *PushRequest) GetHarmonyBadgeSetNum() *int32 {
+func (s *PushShrinkRequest) GetHarmonyBadgeSetNum() *int32 {
 	return s.HarmonyBadgeSetNum
 }
 
-func (s *PushRequest) GetHarmonyCategory() *string {
+func (s *PushShrinkRequest) GetHarmonyCategory() *string {
 	return s.HarmonyCategory
 }
 
-func (s *PushRequest) GetHarmonyExtParameters() *string {
+func (s *PushShrinkRequest) GetHarmonyExtParameters() *string {
 	return s.HarmonyExtParameters
 }
 
-func (s *PushRequest) GetHarmonyExtensionExtraData() *string {
+func (s *PushShrinkRequest) GetHarmonyExtensionExtraData() *string {
 	return s.HarmonyExtensionExtraData
 }
 
-func (s *PushRequest) GetHarmonyExtensionPush() *bool {
+func (s *PushShrinkRequest) GetHarmonyExtensionPush() *bool {
 	return s.HarmonyExtensionPush
 }
 
-func (s *PushRequest) GetHarmonyImageUrl() *string {
+func (s *PushShrinkRequest) GetHarmonyImageUrl() *string {
 	return s.HarmonyImageUrl
 }
 
-func (s *PushRequest) GetHarmonyInboxContent() *string {
+func (s *PushShrinkRequest) GetHarmonyInboxContent() *string {
 	return s.HarmonyInboxContent
 }
 
-func (s *PushRequest) GetHarmonyNotificationSlotType() *string {
+func (s *PushShrinkRequest) GetHarmonyNotificationSlotType() *string {
 	return s.HarmonyNotificationSlotType
 }
 
-func (s *PushRequest) GetHarmonyNotifyId() *int32 {
+func (s *PushShrinkRequest) GetHarmonyNotifyId() *int32 {
 	return s.HarmonyNotifyId
 }
 
-func (s *PushRequest) GetHarmonyReceiptId() *string {
+func (s *PushShrinkRequest) GetHarmonyReceiptId() *string {
 	return s.HarmonyReceiptId
 }
 
-func (s *PushRequest) GetHarmonyRemind() *bool {
+func (s *PushShrinkRequest) GetHarmonyRemind() *bool {
 	return s.HarmonyRemind
 }
 
-func (s *PushRequest) GetHarmonyRemindBody() *string {
+func (s *PushShrinkRequest) GetHarmonyRemindBody() *string {
 	return s.HarmonyRemindBody
 }
 
-func (s *PushRequest) GetHarmonyRemindTitle() *string {
+func (s *PushShrinkRequest) GetHarmonyRemindTitle() *string {
 	return s.HarmonyRemindTitle
 }
 
-func (s *PushRequest) GetHarmonyRenderStyle() *string {
+func (s *PushShrinkRequest) GetHarmonyRenderStyle() *string {
 	return s.HarmonyRenderStyle
 }
 
-func (s *PushRequest) GetHarmonyTestMessage() *bool {
+func (s *PushShrinkRequest) GetHarmonyTestMessage() *bool {
 	return s.HarmonyTestMessage
 }
 
-func (s *PushRequest) GetHarmonyUri() *string {
+func (s *PushShrinkRequest) GetHarmonyUri() *string {
 	return s.HarmonyUri
 }
 
-func (s *PushRequest) GetIdempotentToken() *string {
+func (s *PushShrinkRequest) GetIdempotentToken() *string {
 	return s.IdempotentToken
 }
 
-func (s *PushRequest) GetJobKey() *string {
+func (s *PushShrinkRequest) GetJobKey() *string {
 	return s.JobKey
 }
 
-func (s *PushRequest) GetPushTime() *string {
+func (s *PushShrinkRequest) GetPushTime() *string {
 	return s.PushTime
 }
 
-func (s *PushRequest) GetPushType() *string {
+func (s *PushShrinkRequest) GetPushType() *string {
 	return s.PushType
 }
 
-func (s *PushRequest) GetSendChannels() *string {
+func (s *PushShrinkRequest) GetSendChannels() *string {
 	return s.SendChannels
 }
 
-func (s *PushRequest) GetSendSpeed() *int32 {
+func (s *PushShrinkRequest) GetSendSpeed() *int32 {
 	return s.SendSpeed
 }
 
-func (s *PushRequest) GetSmsDelaySecs() *int32 {
+func (s *PushShrinkRequest) GetSmsDelaySecs() *int32 {
 	return s.SmsDelaySecs
 }
 
-func (s *PushRequest) GetSmsParams() *string {
+func (s *PushShrinkRequest) GetSmsParams() *string {
 	return s.SmsParams
 }
 
-func (s *PushRequest) GetSmsSendPolicy() *int32 {
+func (s *PushShrinkRequest) GetSmsSendPolicy() *int32 {
 	return s.SmsSendPolicy
 }
 
-func (s *PushRequest) GetSmsSignName() *string {
+func (s *PushShrinkRequest) GetSmsSignName() *string {
 	return s.SmsSignName
 }
 
-func (s *PushRequest) GetSmsTemplateName() *string {
+func (s *PushShrinkRequest) GetSmsTemplateName() *string {
 	return s.SmsTemplateName
 }
 
-func (s *PushRequest) GetStoreOffline() *bool {
+func (s *PushShrinkRequest) GetStoreOffline() *bool {
 	return s.StoreOffline
 }
 
-func (s *PushRequest) GetTarget() *string {
+func (s *PushShrinkRequest) GetTarget() *string {
 	return s.Target
 }
 
-func (s *PushRequest) GetTargetValue() *string {
+func (s *PushShrinkRequest) GetTargetValue() *string {
 	return s.TargetValue
 }
 
-func (s *PushRequest) GetTitle() *string {
+func (s *PushShrinkRequest) GetTitle() *string {
 	return s.Title
 }
 
-func (s *PushRequest) GetTrim() *bool {
+func (s *PushShrinkRequest) GetTrim() *bool {
 	return s.Trim
 }
 
-func (s *PushRequest) GetAndroidOppoPrivateContentParameters() map[string]*string {
-	return s.AndroidOppoPrivateContentParameters
+func (s *PushShrinkRequest) GetAndroidOppoPrivateContentParametersShrink() *string {
+	return s.AndroidOppoPrivateContentParametersShrink
 }
 
-func (s *PushRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
+func (s *PushShrinkRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
 	return s.AndroidOppoPrivateMsgTemplateId
 }
 
-func (s *PushRequest) GetAndroidOppoPrivateTitleParameters() map[string]*string {
-	return s.AndroidOppoPrivateTitleParameters
+func (s *PushShrinkRequest) GetAndroidOppoPrivateTitleParametersShrink() *string {
+	return s.AndroidOppoPrivateTitleParametersShrink
 }
 
-func (s *PushRequest) GetIOSApnsEnv() *string {
+func (s *PushShrinkRequest) GetIOSApnsEnv() *string {
 	return s.IOSApnsEnv
 }
 
-func (s *PushRequest) GetIOSBadge() *int32 {
+func (s *PushShrinkRequest) GetIOSBadge() *int32 {
 	return s.IOSBadge
 }
 
-func (s *PushRequest) GetIOSBadgeAutoIncrement() *bool {
+func (s *PushShrinkRequest) GetIOSBadgeAutoIncrement() *bool {
 	return s.IOSBadgeAutoIncrement
 }
 
-func (s *PushRequest) GetIOSExtParameters() *string {
+func (s *PushShrinkRequest) GetIOSExtParameters() *string {
 	return s.IOSExtParameters
 }
 
-func (s *PushRequest) GetIOSInterruptionLevel() *string {
+func (s *PushShrinkRequest) GetIOSInterruptionLevel() *string {
 	return s.IOSInterruptionLevel
 }
 
-func (s *PushRequest) GetIOSLiveActivityAttributes() *string {
+func (s *PushShrinkRequest) GetIOSLiveActivityAttributes() *string {
 	return s.IOSLiveActivityAttributes
 }
 
-func (s *PushRequest) GetIOSLiveActivityAttributesType() *string {
+func (s *PushShrinkRequest) GetIOSLiveActivityAttributesType() *string {
 	return s.IOSLiveActivityAttributesType
 }
 
-func (s *PushRequest) GetIOSLiveActivityContentState() *string {
+func (s *PushShrinkRequest) GetIOSLiveActivityContentState() *string {
 	return s.IOSLiveActivityContentState
 }
 
-func (s *PushRequest) GetIOSLiveActivityDismissalDate() *int64 {
+func (s *PushShrinkRequest) GetIOSLiveActivityDismissalDate() *int64 {
 	return s.IOSLiveActivityDismissalDate
 }
 
-func (s *PushRequest) GetIOSLiveActivityEvent() *string {
+func (s *PushShrinkRequest) GetIOSLiveActivityEvent() *string {
 	return s.IOSLiveActivityEvent
 }
 
-func (s *PushRequest) GetIOSLiveActivityId() *string {
+func (s *PushShrinkRequest) GetIOSLiveActivityId() *string {
 	return s.IOSLiveActivityId
 }
 
-func (s *PushRequest) GetIOSLiveActivityStaleDate() *int64 {
+func (s *PushShrinkRequest) GetIOSLiveActivityStaleDate() *int64 {
 	return s.IOSLiveActivityStaleDate
 }
 
-func (s *PushRequest) GetIOSMusic() *string {
+func (s *PushShrinkRequest) GetIOSMusic() *string {
 	return s.IOSMusic
 }
 
-func (s *PushRequest) GetIOSMutableContent() *bool {
+func (s *PushShrinkRequest) GetIOSMutableContent() *bool {
 	return s.IOSMutableContent
 }
 
-func (s *PushRequest) GetIOSNotificationCategory() *string {
+func (s *PushShrinkRequest) GetIOSNotificationCategory() *string {
 	return s.IOSNotificationCategory
 }
 
-func (s *PushRequest) GetIOSNotificationCollapseId() *string {
+func (s *PushShrinkRequest) GetIOSNotificationCollapseId() *string {
 	return s.IOSNotificationCollapseId
 }
 
-func (s *PushRequest) GetIOSNotificationThreadId() *string {
+func (s *PushShrinkRequest) GetIOSNotificationThreadId() *string {
 	return s.IOSNotificationThreadId
 }
 
-func (s *PushRequest) GetIOSRelevanceScore() *float64 {
+func (s *PushShrinkRequest) GetIOSRelevanceScore() *float64 {
 	return s.IOSRelevanceScore
 }
 
-func (s *PushRequest) GetIOSRemind() *bool {
+func (s *PushShrinkRequest) GetIOSRemind() *bool {
 	return s.IOSRemind
 }
 
-func (s *PushRequest) GetIOSRemindBody() *string {
+func (s *PushShrinkRequest) GetIOSRemindBody() *string {
 	return s.IOSRemindBody
 }
 
-func (s *PushRequest) GetIOSSilentNotification() *bool {
+func (s *PushShrinkRequest) GetIOSSilentNotification() *bool {
 	return s.IOSSilentNotification
 }
 
-func (s *PushRequest) GetIOSSubtitle() *string {
+func (s *PushShrinkRequest) GetIOSSubtitle() *string {
 	return s.IOSSubtitle
 }
 
-func (s *PushRequest) SetAndroidActivity(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidActivity(v string) *PushShrinkRequest {
 	s.AndroidActivity = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBadgeAddNum(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBadgeAddNum(v int32) *PushShrinkRequest {
 	s.AndroidBadgeAddNum = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBadgeClass(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBadgeClass(v string) *PushShrinkRequest {
 	s.AndroidBadgeClass = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBadgeSetNum(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBadgeSetNum(v int32) *PushShrinkRequest {
 	s.AndroidBadgeSetNum = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBigBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBigBody(v string) *PushShrinkRequest {
 	s.AndroidBigBody = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBigPictureUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBigPictureUrl(v string) *PushShrinkRequest {
 	s.AndroidBigPictureUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidBigTitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidBigTitle(v string) *PushShrinkRequest {
 	s.AndroidBigTitle = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidExtParameters(v string) *PushShrinkRequest {
 	s.AndroidExtParameters = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidHonorTargetUserType(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest {
 	s.AndroidHonorTargetUserType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidHuaweiReceiptId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidHuaweiReceiptId(v string) *PushShrinkRequest {
 	s.AndroidHuaweiReceiptId = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidHuaweiTargetUserType(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidHuaweiTargetUserType(v int32) *PushShrinkRequest {
 	s.AndroidHuaweiTargetUserType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidImageUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidImageUrl(v string) *PushShrinkRequest {
 	s.AndroidImageUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidInboxBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidInboxBody(v string) *PushShrinkRequest {
 	s.AndroidInboxBody = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMeizuNoticeMsgType(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMeizuNoticeMsgType(v int32) *PushShrinkRequest {
 	s.AndroidMeizuNoticeMsgType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMessageHuaweiCategory(v string) *PushShrinkRequest {
 	s.AndroidMessageHuaweiCategory = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMessageHuaweiUrgency(v string) *PushShrinkRequest {
 	s.AndroidMessageHuaweiUrgency = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMessageOppoCategory(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMessageOppoCategory(v string) *PushShrinkRequest {
 	s.AndroidMessageOppoCategory = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMessageOppoNotifyLevel(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMessageOppoNotifyLevel(v int32) *PushShrinkRequest {
 	s.AndroidMessageOppoNotifyLevel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMessageVivoCategory(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMessageVivoCategory(v string) *PushShrinkRequest {
 	s.AndroidMessageVivoCategory = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidMusic(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidMusic(v string) *PushShrinkRequest {
 	s.AndroidMusic = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationBarPriority(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationBarPriority(v int32) *PushShrinkRequest {
 	s.AndroidNotificationBarPriority = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationBarType(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationBarType(v int32) *PushShrinkRequest {
 	s.AndroidNotificationBarType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationChannel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationChannel(v string) *PushShrinkRequest {
 	s.AndroidNotificationChannel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationGroup(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationGroup(v string) *PushShrinkRequest {
 	s.AndroidNotificationGroup = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationHonorChannel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationHonorChannel(v string) *PushShrinkRequest {
 	s.AndroidNotificationHonorChannel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationHuaweiChannel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationHuaweiChannel(v string) *PushShrinkRequest {
 	s.AndroidNotificationHuaweiChannel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationNotifyId(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationNotifyId(v int32) *PushShrinkRequest {
 	s.AndroidNotificationNotifyId = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationThreadId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationThreadId(v string) *PushShrinkRequest {
 	s.AndroidNotificationThreadId = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationVivoChannel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationVivoChannel(v string) *PushShrinkRequest {
 	s.AndroidNotificationVivoChannel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotificationXiaomiChannel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotificationXiaomiChannel(v string) *PushShrinkRequest {
 	s.AndroidNotificationXiaomiChannel = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidNotifyType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidNotifyType(v string) *PushShrinkRequest {
 	s.AndroidNotifyType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidOpenType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidOpenType(v string) *PushShrinkRequest {
 	s.AndroidOpenType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidOpenUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidOpenUrl(v string) *PushShrinkRequest {
 	s.AndroidOpenUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidPopupActivity(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidPopupActivity(v string) *PushShrinkRequest {
 	s.AndroidPopupActivity = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidPopupBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidPopupBody(v string) *PushShrinkRequest {
 	s.AndroidPopupBody = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidPopupTitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidPopupTitle(v string) *PushShrinkRequest {
 	s.AndroidPopupTitle = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidRemind(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidRemind(v bool) *PushShrinkRequest {
 	s.AndroidRemind = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidRenderStyle(v int32) *PushShrinkRequest {
 	s.AndroidRenderStyle = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidTargetUserType(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidTargetUserType(v int32) *PushShrinkRequest {
 	s.AndroidTargetUserType = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidVivoPushMode(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidVivoPushMode(v int32) *PushShrinkRequest {
 	s.AndroidVivoPushMode = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidVivoReceiptId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidVivoReceiptId(v string) *PushShrinkRequest {
 	s.AndroidVivoReceiptId = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaoMiActivity(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidXiaoMiActivity(v string) *PushShrinkRequest {
 	s.AndroidXiaoMiActivity = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaoMiNotifyBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidXiaoMiNotifyBody(v string) *PushShrinkRequest {
 	s.AndroidXiaoMiNotifyBody = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushShrinkRequest {
 	s.AndroidXiaoMiNotifyTitle = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushShrinkRequest {
 	s.AndroidXiaomiBigPictureUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaomiImageUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidXiaomiImageUrl(v string) *PushShrinkRequest {
 	s.AndroidXiaomiImageUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetAppKey(v int64) *PushRequest {
+func (s *PushShrinkRequest) SetAppKey(v int64) *PushShrinkRequest {
 	s.AppKey = &v
 	return s
 }
 
-func (s *PushRequest) SetBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetBody(v string) *PushShrinkRequest {
 	s.Body = &v
 	return s
 }
 
-func (s *PushRequest) SetDeviceType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetDeviceType(v string) *PushShrinkRequest {
 	s.DeviceType = &v
 	return s
 }
 
-func (s *PushRequest) SetExpireTime(v string) *PushRequest {
+func (s *PushShrinkRequest) SetExpireTime(v string) *PushShrinkRequest {
 	s.ExpireTime = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyAction(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyAction(v string) *PushShrinkRequest {
 	s.HarmonyAction = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyActionType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyActionType(v string) *PushShrinkRequest {
 	s.HarmonyActionType = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyBadgeAddNum(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyBadgeAddNum(v int32) *PushShrinkRequest {
 	s.HarmonyBadgeAddNum = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyBadgeSetNum(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyBadgeSetNum(v int32) *PushShrinkRequest {
 	s.HarmonyBadgeSetNum = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyCategory(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyCategory(v string) *PushShrinkRequest {
 	s.HarmonyCategory = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyExtParameters(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyExtParameters(v string) *PushShrinkRequest {
 	s.HarmonyExtParameters = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyExtensionExtraData(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyExtensionExtraData(v string) *PushShrinkRequest {
 	s.HarmonyExtensionExtraData = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyExtensionPush(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyExtensionPush(v bool) *PushShrinkRequest {
 	s.HarmonyExtensionPush = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyImageUrl(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyImageUrl(v string) *PushShrinkRequest {
 	s.HarmonyImageUrl = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyInboxContent(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyInboxContent(v string) *PushShrinkRequest {
 	s.HarmonyInboxContent = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyNotificationSlotType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyNotificationSlotType(v string) *PushShrinkRequest {
 	s.HarmonyNotificationSlotType = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyNotifyId(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyNotifyId(v int32) *PushShrinkRequest {
 	s.HarmonyNotifyId = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyReceiptId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyReceiptId(v string) *PushShrinkRequest {
 	s.HarmonyReceiptId = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyRemind(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyRemind(v bool) *PushShrinkRequest {
 	s.HarmonyRemind = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyRemindBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyRemindBody(v string) *PushShrinkRequest {
 	s.HarmonyRemindBody = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyRemindTitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyRemindTitle(v string) *PushShrinkRequest {
 	s.HarmonyRemindTitle = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyRenderStyle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyRenderStyle(v string) *PushShrinkRequest {
 	s.HarmonyRenderStyle = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyTestMessage(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyTestMessage(v bool) *PushShrinkRequest {
 	s.HarmonyTestMessage = &v
 	return s
 }
 
-func (s *PushRequest) SetHarmonyUri(v string) *PushRequest {
+func (s *PushShrinkRequest) SetHarmonyUri(v string) *PushShrinkRequest {
 	s.HarmonyUri = &v
 	return s
 }
 
-func (s *PushRequest) SetIdempotentToken(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIdempotentToken(v string) *PushShrinkRequest {
 	s.IdempotentToken = &v
 	return s
 }
 
-func (s *PushRequest) SetJobKey(v string) *PushRequest {
+func (s *PushShrinkRequest) SetJobKey(v string) *PushShrinkRequest {
 	s.JobKey = &v
 	return s
 }
 
-func (s *PushRequest) SetPushTime(v string) *PushRequest {
+func (s *PushShrinkRequest) SetPushTime(v string) *PushShrinkRequest {
 	s.PushTime = &v
 	return s
 }
 
-func (s *PushRequest) SetPushType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetPushType(v string) *PushShrinkRequest {
 	s.PushType = &v
 	return s
 }
 
-func (s *PushRequest) SetSendChannels(v string) *PushRequest {
+func (s *PushShrinkRequest) SetSendChannels(v string) *PushShrinkRequest {
 	s.SendChannels = &v
 	return s
 }
 
-func (s *PushRequest) SetSendSpeed(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetSendSpeed(v int32) *PushShrinkRequest {
 	s.SendSpeed = &v
 	return s
 }
 
-func (s *PushRequest) SetSmsDelaySecs(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetSmsDelaySecs(v int32) *PushShrinkRequest {
 	s.SmsDelaySecs = &v
 	return s
 }
 
-func (s *PushRequest) SetSmsParams(v string) *PushRequest {
+func (s *PushShrinkRequest) SetSmsParams(v string) *PushShrinkRequest {
 	s.SmsParams = &v
 	return s
 }
 
-func (s *PushRequest) SetSmsSendPolicy(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetSmsSendPolicy(v int32) *PushShrinkRequest {
 	s.SmsSendPolicy = &v
 	return s
 }
 
-func (s *PushRequest) SetSmsSignName(v string) *PushRequest {
+func (s *PushShrinkRequest) SetSmsSignName(v string) *PushShrinkRequest {
 	s.SmsSignName = &v
 	return s
 }
 
-func (s *PushRequest) SetSmsTemplateName(v string) *PushRequest {
+func (s *PushShrinkRequest) SetSmsTemplateName(v string) *PushShrinkRequest {
 	s.SmsTemplateName = &v
 	return s
 }
 
-func (s *PushRequest) SetStoreOffline(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetStoreOffline(v bool) *PushShrinkRequest {
 	s.StoreOffline = &v
 	return s
 }
 
-func (s *PushRequest) SetTarget(v string) *PushRequest {
+func (s *PushShrinkRequest) SetTarget(v string) *PushShrinkRequest {
 	s.Target = &v
 	return s
 }
 
-func (s *PushRequest) SetTargetValue(v string) *PushRequest {
+func (s *PushShrinkRequest) SetTargetValue(v string) *PushShrinkRequest {
 	s.TargetValue = &v
 	return s
 }
 
-func (s *PushRequest) SetTitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetTitle(v string) *PushShrinkRequest {
 	s.Title = &v
 	return s
 }
 
-func (s *PushRequest) SetTrim(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetTrim(v bool) *PushShrinkRequest {
 	s.Trim = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest {
-	s.AndroidOppoPrivateContentParameters = v
+func (s *PushShrinkRequest) SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest {
+	s.AndroidOppoPrivateContentParametersShrink = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest {
 	s.AndroidOppoPrivateMsgTemplateId = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest {
-	s.AndroidOppoPrivateTitleParameters = v
+func (s *PushShrinkRequest) SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest {
+	s.AndroidOppoPrivateTitleParametersShrink = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSApnsEnv(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSApnsEnv(v string) *PushShrinkRequest {
 	s.IOSApnsEnv = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSBadge(v int32) *PushRequest {
+func (s *PushShrinkRequest) SetIOSBadge(v int32) *PushShrinkRequest {
 	s.IOSBadge = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSBadgeAutoIncrement(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetIOSBadgeAutoIncrement(v bool) *PushShrinkRequest {
 	s.IOSBadgeAutoIncrement = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSExtParameters(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSExtParameters(v string) *PushShrinkRequest {
 	s.IOSExtParameters = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSInterruptionLevel(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSInterruptionLevel(v string) *PushShrinkRequest {
 	s.IOSInterruptionLevel = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityAttributes(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityAttributes(v string) *PushShrinkRequest {
 	s.IOSLiveActivityAttributes = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityAttributesType(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityAttributesType(v string) *PushShrinkRequest {
 	s.IOSLiveActivityAttributesType = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityContentState(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityContentState(v string) *PushShrinkRequest {
 	s.IOSLiveActivityContentState = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityDismissalDate(v int64) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityDismissalDate(v int64) *PushShrinkRequest {
 	s.IOSLiveActivityDismissalDate = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityEvent(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityEvent(v string) *PushShrinkRequest {
 	s.IOSLiveActivityEvent = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityId(v string) *PushShrinkRequest {
 	s.IOSLiveActivityId = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSLiveActivityStaleDate(v int64) *PushRequest {
+func (s *PushShrinkRequest) SetIOSLiveActivityStaleDate(v int64) *PushShrinkRequest {
 	s.IOSLiveActivityStaleDate = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSMusic(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSMusic(v string) *PushShrinkRequest {
 	s.IOSMusic = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSMutableContent(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetIOSMutableContent(v bool) *PushShrinkRequest {
 	s.IOSMutableContent = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSNotificationCategory(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSNotificationCategory(v string) *PushShrinkRequest {
 	s.IOSNotificationCategory = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSNotificationCollapseId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSNotificationCollapseId(v string) *PushShrinkRequest {
 	s.IOSNotificationCollapseId = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSNotificationThreadId(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSNotificationThreadId(v string) *PushShrinkRequest {
 	s.IOSNotificationThreadId = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSRelevanceScore(v float64) *PushRequest {
+func (s *PushShrinkRequest) SetIOSRelevanceScore(v float64) *PushShrinkRequest {
 	s.IOSRelevanceScore = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSRemind(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetIOSRemind(v bool) *PushShrinkRequest {
 	s.IOSRemind = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSRemindBody(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSRemindBody(v string) *PushShrinkRequest {
 	s.IOSRemindBody = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSSilentNotification(v bool) *PushRequest {
+func (s *PushShrinkRequest) SetIOSSilentNotification(v bool) *PushShrinkRequest {
 	s.IOSSilentNotification = &v
 	return s
 }
 
-func (s *PushRequest) SetIOSSubtitle(v string) *PushRequest {
+func (s *PushShrinkRequest) SetIOSSubtitle(v string) *PushShrinkRequest {
 	s.IOSSubtitle = &v
 	return s
 }
 
-func (s *PushRequest) Validate() error {
+func (s *PushShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }
