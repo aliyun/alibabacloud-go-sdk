@@ -128,6 +128,7 @@ type DescribeEventCountByThreatLevelResponseBodyData struct {
 	//
 	// 20
 	HighLevelEventNum *int64 `json:"HighLevelEventNum,omitempty" xml:"HighLevelEventNum,omitempty"`
+	InfoLevelEventNum *int64 `json:"InfoLevelEventNum,omitempty" xml:"InfoLevelEventNum,omitempty"`
 	// The number of low-risk events.
 	//
 	// example:
@@ -139,7 +140,8 @@ type DescribeEventCountByThreatLevelResponseBodyData struct {
 	// example:
 	//
 	// 3
-	MediumLevelEventNum *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
+	MediumLevelEventNum  *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
+	SeriousLevelEventNum *int64 `json:"SeriousLevelEventNum,omitempty" xml:"SeriousLevelEventNum,omitempty"`
 	// The number of unhandled events.
 	//
 	// example:
@@ -164,12 +166,20 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) GetHighLevelEventNum()
 	return s.HighLevelEventNum
 }
 
+func (s *DescribeEventCountByThreatLevelResponseBodyData) GetInfoLevelEventNum() *int64 {
+	return s.InfoLevelEventNum
+}
+
 func (s *DescribeEventCountByThreatLevelResponseBodyData) GetLowLevelEventNum() *int64 {
 	return s.LowLevelEventNum
 }
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) GetMediumLevelEventNum() *int64 {
 	return s.MediumLevelEventNum
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyData) GetSeriousLevelEventNum() *int64 {
+	return s.SeriousLevelEventNum
 }
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) GetUndealEventNum() *int64 {
@@ -186,6 +196,11 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) SetHighLevelEventNum(v
 	return s
 }
 
+func (s *DescribeEventCountByThreatLevelResponseBodyData) SetInfoLevelEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyData {
+	s.InfoLevelEventNum = &v
+	return s
+}
+
 func (s *DescribeEventCountByThreatLevelResponseBodyData) SetLowLevelEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyData {
 	s.LowLevelEventNum = &v
 	return s
@@ -193,6 +208,11 @@ func (s *DescribeEventCountByThreatLevelResponseBodyData) SetLowLevelEventNum(v 
 
 func (s *DescribeEventCountByThreatLevelResponseBodyData) SetMediumLevelEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyData {
 	s.MediumLevelEventNum = &v
+	return s
+}
+
+func (s *DescribeEventCountByThreatLevelResponseBodyData) SetSeriousLevelEventNum(v int64) *DescribeEventCountByThreatLevelResponseBodyData {
+	s.SeriousLevelEventNum = &v
 	return s
 }
 

@@ -366,7 +366,8 @@ type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	// example:
 	//
 	// aliyun
-	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	CloudCode       *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
 	// The time when the alert was closed.
 	//
 	// example:
@@ -432,6 +433,7 @@ type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	//
 	// 2021-01-06 16:37:29
 	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	// The time at which the alert was first generated.
 	//
 	// example:
@@ -448,6 +450,7 @@ type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
 	//
 	// 176555323***
 	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+	VendorId    *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBodyDataResponseData) String() string {
@@ -538,6 +541,10 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetCloudCode() *s
 	return s.CloudCode
 }
 
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetDetectionRuleId() *string {
+	return s.DetectionRuleId
+}
+
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetEndTime() *string {
 	return s.EndTime
 }
@@ -582,6 +589,10 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetOccurTime() *s
 	return s.OccurTime
 }
 
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetProductId() *string {
+	return s.ProductId
+}
+
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetStartTime() *string {
 	return s.StartTime
 }
@@ -592,6 +603,10 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetSubUserId() *i
 
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetSubUserName() *string {
 	return s.SubUserName
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) GetVendorId() *string {
+	return s.VendorId
 }
 
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertDesc(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
@@ -694,6 +709,11 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetCloudCode(v st
 	return s
 }
 
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetDetectionRuleId(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.DetectionRuleId = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetEndTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
 	s.EndTime = &v
 	return s
@@ -749,6 +769,11 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetOccurTime(v st
 	return s
 }
 
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetProductId(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.ProductId = &v
+	return s
+}
+
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetStartTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
 	s.StartTime = &v
 	return s
@@ -761,6 +786,11 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserId(v in
 
 func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserName(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
 	s.SubUserName = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetVendorId(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.VendorId = &v
 	return s
 }
 
