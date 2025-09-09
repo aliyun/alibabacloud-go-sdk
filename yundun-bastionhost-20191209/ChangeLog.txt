@@ -1,3 +1,9 @@
+2025-09-09 Version: v2.4.0
+- Support API AddInstanceRdMember.
+- Support API ListInstanceRdMembers.
+- Support API RemoveInstanceRdMember.
+
+
 2025-06-25 Version: v2.3.1
 - Update API CreateHostAccount: add request parameters PrivilegeType.
 - Update API CreateHostAccount: add request parameters RotationMode.
