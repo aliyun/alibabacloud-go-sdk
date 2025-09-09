@@ -406,7 +406,8 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	// example:
 	//
 	// 0
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The thread ID.
 	//
 	// example:
@@ -567,6 +568,10 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetState() *str
 	return s.State
 }
 
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetTableName() *string {
+	return s.TableName
+}
+
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) GetThreadId() *int64 {
 	return s.ThreadId
 }
@@ -722,6 +727,11 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetSqlType(v st
 
 func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetState(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord) SetTableName(v string) *DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord {
+	s.TableName = &v
 	return s
 }
 

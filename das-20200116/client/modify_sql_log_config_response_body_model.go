@@ -221,7 +221,8 @@ type ModifySqlLogConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogEnable *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogSource *string `json:"SqlLogSource,omitempty" xml:"SqlLogSource,omitempty"`
 	// The state of data migration. Valid values:
 	//
 	// 	- **FINISH**: The historical data is migrated.
@@ -338,6 +339,10 @@ func (s *ModifySqlLogConfigResponseBodyData) GetSqlLogEnable() *bool {
 	return s.SqlLogEnable
 }
 
+func (s *ModifySqlLogConfigResponseBodyData) GetSqlLogSource() *string {
+	return s.SqlLogSource
+}
+
 func (s *ModifySqlLogConfigResponseBodyData) GetSqlLogState() *string {
 	return s.SqlLogState
 }
@@ -416,6 +421,11 @@ func (s *ModifySqlLogConfigResponseBodyData) SetRetention(v int32) *ModifySqlLog
 
 func (s *ModifySqlLogConfigResponseBodyData) SetSqlLogEnable(v bool) *ModifySqlLogConfigResponseBodyData {
 	s.SqlLogEnable = &v
+	return s
+}
+
+func (s *ModifySqlLogConfigResponseBodyData) SetSqlLogSource(v string) *ModifySqlLogConfigResponseBodyData {
+	s.SqlLogSource = &v
 	return s
 }
 
