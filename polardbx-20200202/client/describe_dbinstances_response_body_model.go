@@ -683,6 +683,9 @@ type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
 	// polarx.x4.large.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// if can be null:
+	// true
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// cn-hangzhou-g-aliyun
@@ -709,6 +712,10 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) GetId() *string {
 	return s.Id
 }
 
+func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) GetName() *string {
+	return s.Name
+}
+
 func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) GetRegionId() *string {
 	return s.RegionId
 }
@@ -724,6 +731,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) SetClassCode(v string)
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) SetId(v string) *DescribeDBInstancesResponseBodyDBInstancesNodes {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) SetName(v string) *DescribeDBInstancesResponseBodyDBInstancesNodes {
+	s.Name = &v
 	return s
 }
 
