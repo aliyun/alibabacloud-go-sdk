@@ -1,3 +1,6 @@
+2025-09-10 Version: v2.1.2
+- Generated golang 2018-08-28 for Tag.
+
 2025-08-13 Version: v2.1.1
 - Update API CreateAssociatedResourceRules: add request parameters CreateRulesList.$.ExistingStatus.
 - Update API ListAssociatedResourceRules: add response parameters Body.Rules.$.ExistingStatus.
