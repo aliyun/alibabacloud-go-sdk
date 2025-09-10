@@ -55,6 +55,8 @@ type iListServicesRequest interface {
 	GetServiceUid() *string
 	SetSort(v string) *ListServicesRequest
 	GetSort() *string
+	SetTrafficState(v string) *ListServicesRequest
+	GetTrafficState() *string
 	SetWorkspaceId(v string) *ListServicesRequest
 	GetWorkspaceId() *string
 }
@@ -372,7 +374,8 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// CreateTime
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -479,6 +482,10 @@ func (s *ListServicesRequest) GetServiceUid() *string {
 
 func (s *ListServicesRequest) GetSort() *string {
 	return s.Sort
+}
+
+func (s *ListServicesRequest) GetTrafficState() *string {
+	return s.TrafficState
 }
 
 func (s *ListServicesRequest) GetWorkspaceId() *string {
@@ -597,6 +604,11 @@ func (s *ListServicesRequest) SetServiceUid(v string) *ListServicesRequest {
 
 func (s *ListServicesRequest) SetSort(v string) *ListServicesRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetTrafficState(v string) *ListServicesRequest {
+	s.TrafficState = &v
 	return s
 }
 

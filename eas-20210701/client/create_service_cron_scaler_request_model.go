@@ -76,7 +76,8 @@ type CreateServiceCronScalerRequestScaleJobs struct {
 	// example:
 	//
 	// 1
-	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	TimeZone   *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s CreateServiceCronScalerRequestScaleJobs) String() string {
@@ -99,6 +100,10 @@ func (s *CreateServiceCronScalerRequestScaleJobs) GetTargetSize() *int32 {
 	return s.TargetSize
 }
 
+func (s *CreateServiceCronScalerRequestScaleJobs) GetTimeZone() *string {
+	return s.TimeZone
+}
+
 func (s *CreateServiceCronScalerRequestScaleJobs) SetName(v string) *CreateServiceCronScalerRequestScaleJobs {
 	s.Name = &v
 	return s
@@ -111,6 +116,11 @@ func (s *CreateServiceCronScalerRequestScaleJobs) SetSchedule(v string) *CreateS
 
 func (s *CreateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *CreateServiceCronScalerRequestScaleJobs {
 	s.TargetSize = &v
+	return s
+}
+
+func (s *CreateServiceCronScalerRequestScaleJobs) SetTimeZone(v string) *CreateServiceCronScalerRequestScaleJobs {
+	s.TimeZone = &v
 	return s
 }
 

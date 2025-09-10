@@ -55,6 +55,8 @@ type iListServicesShrinkRequest interface {
 	GetServiceUid() *string
 	SetSort(v string) *ListServicesShrinkRequest
 	GetSort() *string
+	SetTrafficState(v string) *ListServicesShrinkRequest
+	GetTrafficState() *string
 	SetWorkspaceId(v string) *ListServicesShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -372,7 +374,8 @@ type ListServicesShrinkRequest struct {
 	// example:
 	//
 	// CreateTime
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
 	// The workspace ID.
 	//
 	// example:
@@ -479,6 +482,10 @@ func (s *ListServicesShrinkRequest) GetServiceUid() *string {
 
 func (s *ListServicesShrinkRequest) GetSort() *string {
 	return s.Sort
+}
+
+func (s *ListServicesShrinkRequest) GetTrafficState() *string {
+	return s.TrafficState
 }
 
 func (s *ListServicesShrinkRequest) GetWorkspaceId() *string {
@@ -597,6 +604,11 @@ func (s *ListServicesShrinkRequest) SetServiceUid(v string) *ListServicesShrinkR
 
 func (s *ListServicesShrinkRequest) SetSort(v string) *ListServicesShrinkRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetTrafficState(v string) *ListServicesShrinkRequest {
+	s.TrafficState = &v
 	return s
 }
 

@@ -9,10 +9,14 @@ type iListVirtualResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetOrder(v string) *ListVirtualResourceRequest
+	GetOrder() *string
 	SetPageNumber(v int32) *ListVirtualResourceRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListVirtualResourceRequest
 	GetPageSize() *int32
+	SetSort(v string) *ListVirtualResourceRequest
+	GetSort() *string
 	SetVirtualResourceId(v string) *ListVirtualResourceRequest
 	GetVirtualResourceId() *string
 	SetVirtualResourceName(v string) *ListVirtualResourceRequest
@@ -20,6 +24,7 @@ type iListVirtualResourceRequest interface {
 }
 
 type ListVirtualResourceRequest struct {
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -31,7 +36,8 @@ type ListVirtualResourceRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// The ID of the virtual resource group.
 	//
 	// example:
@@ -54,12 +60,20 @@ func (s ListVirtualResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListVirtualResourceRequest) GetOrder() *string {
+	return s.Order
+}
+
 func (s *ListVirtualResourceRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
 
 func (s *ListVirtualResourceRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListVirtualResourceRequest) GetSort() *string {
+	return s.Sort
 }
 
 func (s *ListVirtualResourceRequest) GetVirtualResourceId() *string {
@@ -70,6 +84,11 @@ func (s *ListVirtualResourceRequest) GetVirtualResourceName() *string {
 	return s.VirtualResourceName
 }
 
+func (s *ListVirtualResourceRequest) SetOrder(v string) *ListVirtualResourceRequest {
+	s.Order = &v
+	return s
+}
+
 func (s *ListVirtualResourceRequest) SetPageNumber(v int32) *ListVirtualResourceRequest {
 	s.PageNumber = &v
 	return s
@@ -77,6 +96,11 @@ func (s *ListVirtualResourceRequest) SetPageNumber(v int32) *ListVirtualResource
 
 func (s *ListVirtualResourceRequest) SetPageSize(v int32) *ListVirtualResourceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListVirtualResourceRequest) SetSort(v string) *ListVirtualResourceRequest {
+	s.Sort = &v
 	return s
 }
 
