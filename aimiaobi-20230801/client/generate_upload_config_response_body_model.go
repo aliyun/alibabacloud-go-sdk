@@ -117,8 +117,8 @@ type GenerateUploadConfigResponseBodyData struct {
 	// example:
 	//
 	// oss://default/oss-bucket-name/aimiaobi/2021/07/01/1625126400000/1.docx
-	FileKey   *string                `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
-	FormDatas map[string]interface{} `json:"FormDatas,omitempty" xml:"FormDatas,omitempty"`
+	FileKey   *string            `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	FormDatas map[string]*string `json:"FormDatas,omitempty" xml:"FormDatas,omitempty"`
 	// example:
 	//
 	// https://bucket-name.oss-cn-hangzhou.aliyuncs.com
@@ -137,7 +137,7 @@ func (s *GenerateUploadConfigResponseBodyData) GetFileKey() *string {
 	return s.FileKey
 }
 
-func (s *GenerateUploadConfigResponseBodyData) GetFormDatas() map[string]interface{} {
+func (s *GenerateUploadConfigResponseBodyData) GetFormDatas() map[string]*string {
 	return s.FormDatas
 }
 
@@ -150,7 +150,7 @@ func (s *GenerateUploadConfigResponseBodyData) SetFileKey(v string) *GenerateUpl
 	return s
 }
 
-func (s *GenerateUploadConfigResponseBodyData) SetFormDatas(v map[string]interface{}) *GenerateUploadConfigResponseBodyData {
+func (s *GenerateUploadConfigResponseBodyData) SetFormDatas(v map[string]*string) *GenerateUploadConfigResponseBodyData {
 	s.FormDatas = v
 	return s
 }
