@@ -19,6 +19,8 @@ type iAddFilesFromAuthorizedOssShrinkRequest interface {
 	GetOssBucketName() *string
 	SetOssRegionId(v string) *AddFilesFromAuthorizedOssShrinkRequest
 	GetOssRegionId() *string
+	SetOverWriteFileByOssKey(v bool) *AddFilesFromAuthorizedOssShrinkRequest
+	GetOverWriteFileByOssKey() *bool
 	SetTagsShrink(v string) *AddFilesFromAuthorizedOssShrinkRequest
 	GetTagsShrink() *string
 }
@@ -49,8 +51,9 @@ type AddFilesFromAuthorizedOssShrinkRequest struct {
 	// example:
 	//
 	// cn-beijing
-	OssRegionId *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
-	TagsShrink  *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	OssRegionId           *string `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
+	OverWriteFileByOssKey *bool   `json:"OverWriteFileByOssKey,omitempty" xml:"OverWriteFileByOssKey,omitempty"`
+	TagsShrink            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s AddFilesFromAuthorizedOssShrinkRequest) String() string {
@@ -81,6 +84,10 @@ func (s *AddFilesFromAuthorizedOssShrinkRequest) GetOssRegionId() *string {
 	return s.OssRegionId
 }
 
+func (s *AddFilesFromAuthorizedOssShrinkRequest) GetOverWriteFileByOssKey() *bool {
+	return s.OverWriteFileByOssKey
+}
+
 func (s *AddFilesFromAuthorizedOssShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
 }
@@ -107,6 +114,11 @@ func (s *AddFilesFromAuthorizedOssShrinkRequest) SetOssBucketName(v string) *Add
 
 func (s *AddFilesFromAuthorizedOssShrinkRequest) SetOssRegionId(v string) *AddFilesFromAuthorizedOssShrinkRequest {
 	s.OssRegionId = &v
+	return s
+}
+
+func (s *AddFilesFromAuthorizedOssShrinkRequest) SetOverWriteFileByOssKey(v bool) *AddFilesFromAuthorizedOssShrinkRequest {
+	s.OverWriteFileByOssKey = &v
 	return s
 }
 

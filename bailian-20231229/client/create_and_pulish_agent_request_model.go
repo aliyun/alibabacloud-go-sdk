@@ -262,9 +262,10 @@ func (s *CreateAndPulishAgentRequestApplicationConfigLongTermMemory) Validate() 
 }
 
 type CreateAndPulishAgentRequestApplicationConfigParameters struct {
-	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
-	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
-	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+	DialogRound    *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	EnableThinking *bool    `json:"enable_thinking,omitempty" xml:"enable_thinking,omitempty"`
+	MaxTokens      *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature    *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
 }
 
 func (s CreateAndPulishAgentRequestApplicationConfigParameters) String() string {
@@ -279,6 +280,10 @@ func (s *CreateAndPulishAgentRequestApplicationConfigParameters) GetDialogRound(
 	return s.DialogRound
 }
 
+func (s *CreateAndPulishAgentRequestApplicationConfigParameters) GetEnableThinking() *bool {
+	return s.EnableThinking
+}
+
 func (s *CreateAndPulishAgentRequestApplicationConfigParameters) GetMaxTokens() *int32 {
 	return s.MaxTokens
 }
@@ -289,6 +294,11 @@ func (s *CreateAndPulishAgentRequestApplicationConfigParameters) GetTemperature(
 
 func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetDialogRound(v int32) *CreateAndPulishAgentRequestApplicationConfigParameters {
 	s.DialogRound = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetEnableThinking(v bool) *CreateAndPulishAgentRequestApplicationConfigParameters {
+	s.EnableThinking = &v
 	return s
 }
 

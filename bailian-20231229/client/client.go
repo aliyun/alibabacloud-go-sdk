@@ -288,6 +288,10 @@ func (client *Client) AddFilesFromAuthorizedOssWithOptions(WorkspaceId *string, 
 		body["OssRegionId"] = request.OssRegionId
 	}
 
+	if !dara.IsNil(request.OverWriteFileByOssKey) {
+		body["OverWriteFileByOssKey"] = request.OverWriteFileByOssKey
+	}
+
 	if !dara.IsNil(request.TagsShrink) {
 		body["Tags"] = request.TagsShrink
 	}

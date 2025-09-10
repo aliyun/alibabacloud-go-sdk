@@ -190,6 +190,10 @@ func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, 
 		body["OssRegionId"] = request.OssRegionId
 	}
 
+	if !dara.IsNil(request.OverWriteFileByOssKey) {
+		body["OverWriteFileByOssKey"] = request.OverWriteFileByOssKey
+	}
+
 	if !dara.IsNil(request.TagsShrink) {
 		body["Tags"] = request.TagsShrink
 	}

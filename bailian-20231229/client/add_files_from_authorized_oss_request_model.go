@@ -19,6 +19,8 @@ type iAddFilesFromAuthorizedOssRequest interface {
 	GetOssBucketName() *string
 	SetOssRegionId(v string) *AddFilesFromAuthorizedOssRequest
 	GetOssRegionId() *string
+	SetOverWriteFileByOssKey(v bool) *AddFilesFromAuthorizedOssRequest
+	GetOverWriteFileByOssKey() *bool
 	SetTags(v []*string) *AddFilesFromAuthorizedOssRequest
 	GetTags() []*string
 }
@@ -49,8 +51,9 @@ type AddFilesFromAuthorizedOssRequest struct {
 	// example:
 	//
 	// cn-beijing
-	OssRegionId *string   `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
-	Tags        []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	OssRegionId           *string   `json:"OssRegionId,omitempty" xml:"OssRegionId,omitempty"`
+	OverWriteFileByOssKey *bool     `json:"OverWriteFileByOssKey,omitempty" xml:"OverWriteFileByOssKey,omitempty"`
+	Tags                  []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s AddFilesFromAuthorizedOssRequest) String() string {
@@ -81,6 +84,10 @@ func (s *AddFilesFromAuthorizedOssRequest) GetOssRegionId() *string {
 	return s.OssRegionId
 }
 
+func (s *AddFilesFromAuthorizedOssRequest) GetOverWriteFileByOssKey() *bool {
+	return s.OverWriteFileByOssKey
+}
+
 func (s *AddFilesFromAuthorizedOssRequest) GetTags() []*string {
 	return s.Tags
 }
@@ -107,6 +114,11 @@ func (s *AddFilesFromAuthorizedOssRequest) SetOssBucketName(v string) *AddFilesF
 
 func (s *AddFilesFromAuthorizedOssRequest) SetOssRegionId(v string) *AddFilesFromAuthorizedOssRequest {
 	s.OssRegionId = &v
+	return s
+}
+
+func (s *AddFilesFromAuthorizedOssRequest) SetOverWriteFileByOssKey(v bool) *AddFilesFromAuthorizedOssRequest {
+	s.OverWriteFileByOssKey = &v
 	return s
 }
 
