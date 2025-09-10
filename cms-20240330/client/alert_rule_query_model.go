@@ -33,6 +33,8 @@ type iAlertRuleQuery interface {
 	GetRelationType() *string
 	SetSecondJoin(v *AlertRuleSlsQueryJoin) *AlertRuleQuery
 	GetSecondJoin() *AlertRuleSlsQueryJoin
+	SetServiceIds(v []*string) *AlertRuleQuery
+	GetServiceIds() []*string
 	SetType(v string) *AlertRuleQuery
 	GetType() *string
 }
@@ -50,6 +52,7 @@ type AlertRuleQuery struct {
 	Queries                []*AlertRuleQueryQueries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
 	RelationType           *string                  `json:"relationType,omitempty" xml:"relationType,omitempty"`
 	SecondJoin             *AlertRuleSlsQueryJoin   `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
+	ServiceIds             []*string                `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 	// 查询类型
 	//
 	// This parameter is required.
@@ -110,6 +113,10 @@ func (s *AlertRuleQuery) GetRelationType() *string {
 
 func (s *AlertRuleQuery) GetSecondJoin() *AlertRuleSlsQueryJoin {
 	return s.SecondJoin
+}
+
+func (s *AlertRuleQuery) GetServiceIds() []*string {
+	return s.ServiceIds
 }
 
 func (s *AlertRuleQuery) GetType() *string {
@@ -173,6 +180,11 @@ func (s *AlertRuleQuery) SetRelationType(v string) *AlertRuleQuery {
 
 func (s *AlertRuleQuery) SetSecondJoin(v *AlertRuleSlsQueryJoin) *AlertRuleQuery {
 	s.SecondJoin = v
+	return s
+}
+
+func (s *AlertRuleQuery) SetServiceIds(v []*string) *AlertRuleQuery {
+	s.ServiceIds = v
 	return s
 }
 

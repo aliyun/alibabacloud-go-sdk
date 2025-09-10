@@ -57,6 +57,236 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 安装接入组件，代表进行一次接入
+//
+// @param request - CreateAddonReleaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAddonReleaseResponse
+func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *CreateAddonReleaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAddonReleaseResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		body["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.AliyunLang) {
+		body["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EntityRules) {
+		body["entityRules"] = request.EntityRules
+	}
+
+	if !dara.IsNil(request.EnvType) {
+		body["envType"] = request.EnvType
+	}
+
+	if !dara.IsNil(request.ParentAddonReleaseId) {
+		body["parentAddonReleaseId"] = request.ParentAddonReleaseId
+	}
+
+	if !dara.IsNil(request.ReleaseName) {
+		body["releaseName"] = request.ReleaseName
+	}
+
+	if !dara.IsNil(request.Values) {
+		body["values"] = request.Values
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAddonRelease"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addon-releases"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装接入组件，代表进行一次接入
+//
+// @param request - CreateAddonReleaseRequest
+//
+// @return CreateAddonReleaseResponse
+func (client *Client) CreateAddonRelease(policyId *string, request *CreateAddonReleaseRequest) (_result *CreateAddonReleaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAddonReleaseResponse{}
+	_body, _err := client.CreateAddonReleaseWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建聚合任务组
+//
+// @param request - CreateAggTaskGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAggTaskGroupResponse
+func (client *Client) CreateAggTaskGroupWithOptions(instanceId *string, request *CreateAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAggTaskGroupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OverrideIfExists) {
+		query["overrideIfExists"] = request.OverrideIfExists
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggTaskGroupConfig) {
+		body["aggTaskGroupConfig"] = request.AggTaskGroupConfig
+	}
+
+	if !dara.IsNil(request.AggTaskGroupConfigType) {
+		body["aggTaskGroupConfigType"] = request.AggTaskGroupConfigType
+	}
+
+	if !dara.IsNil(request.AggTaskGroupName) {
+		body["aggTaskGroupName"] = request.AggTaskGroupName
+	}
+
+	if !dara.IsNil(request.CronExpr) {
+		body["cronExpr"] = request.CronExpr
+	}
+
+	if !dara.IsNil(request.Delay) {
+		body["delay"] = request.Delay
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.MaxRetries) {
+		body["maxRetries"] = request.MaxRetries
+	}
+
+	if !dara.IsNil(request.MaxRunTimeInSeconds) {
+		body["maxRunTimeInSeconds"] = request.MaxRunTimeInSeconds
+	}
+
+	if !dara.IsNil(request.PrecheckString) {
+		body["precheckString"] = request.PrecheckString
+	}
+
+	if !dara.IsNil(request.ScheduleMode) {
+		body["scheduleMode"] = request.ScheduleMode
+	}
+
+	if !dara.IsNil(request.ScheduleTimeExpr) {
+		body["scheduleTimeExpr"] = request.ScheduleTimeExpr
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TargetPrometheusId) {
+		body["targetPrometheusId"] = request.TargetPrometheusId
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAggTaskGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAggTaskGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建聚合任务组
+//
+// @param request - CreateAggTaskGroupRequest
+//
+// @return CreateAggTaskGroupResponse
+func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggTaskGroupRequest) (_result *CreateAggTaskGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAggTaskGroupResponse{}
+	_body, _err := client.CreateAggTaskGroupWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建EntityStore相关存储
 //
 // @param headers - map
@@ -98,6 +328,90 @@ func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateE
 	headers := make(map[string]*string)
 	_result = &CreateEntityStoreResponse{}
 	_body, _err := client.CreateEntityStoreWithOptions(workspaceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建接入中心策略
+//
+// @param request - CreateIntegrationPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIntegrationPolicyResponse
+func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrationPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIntegrationPolicyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntityGroup) {
+		body["entityGroup"] = request.EntityGroup
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["policyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		body["policyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateIntegrationPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateIntegrationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建接入中心策略
+//
+// @param request - CreateIntegrationPolicyRequest
+//
+// @return CreateIntegrationPolicyResponse
+func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRequest) (_result *CreateIntegrationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateIntegrationPolicyResponse{}
+	_body, _err := client.CreateIntegrationPolicyWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -206,6 +520,170 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 	headers := make(map[string]*string)
 	_result = &CreatePrometheusInstanceResponse{}
 	_body, _err := client.CreatePrometheusInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建prometheus视图
+//
+// @param request - CreatePrometheusViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrometheusViewResponse
+func (client *Client) CreatePrometheusViewWithOptions(request *CreatePrometheusViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePrometheusViewResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthFreeReadPolicy) {
+		body["authFreeReadPolicy"] = request.AuthFreeReadPolicy
+	}
+
+	if !dara.IsNil(request.EnableAuthFreeRead) {
+		body["enableAuthFreeRead"] = request.EnableAuthFreeRead
+	}
+
+	if !dara.IsNil(request.EnableAuthToken) {
+		body["enableAuthToken"] = request.EnableAuthToken
+	}
+
+	if !dara.IsNil(request.PrometheusInstances) {
+		body["prometheusInstances"] = request.PrometheusInstances
+	}
+
+	if !dara.IsNil(request.PrometheusViewName) {
+		body["prometheusViewName"] = request.PrometheusViewName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePrometheusView"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-views"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePrometheusViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建prometheus视图
+//
+// @param request - CreatePrometheusViewRequest
+//
+// @return CreatePrometheusViewResponse
+func (client *Client) CreatePrometheusView(request *CreatePrometheusViewRequest) (_result *CreatePrometheusViewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePrometheusViewResponse{}
+	_body, _err := client.CreatePrometheusViewWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Prometheus监控实例
+//
+// @param request - CreatePrometheusVirtualInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePrometheusVirtualInstanceResponse
+func (client *Client) CreatePrometheusVirtualInstanceWithOptions(request *CreatePrometheusVirtualInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePrometheusVirtualInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Namespace) {
+		body["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePrometheusVirtualInstance"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/virtual-instances"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePrometheusVirtualInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Prometheus监控实例
+//
+// @param request - CreatePrometheusVirtualInstanceRequest
+//
+// @return CreatePrometheusVirtualInstanceResponse
+func (client *Client) CreatePrometheusVirtualInstance(request *CreatePrometheusVirtualInstanceRequest) (_result *CreatePrometheusVirtualInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePrometheusVirtualInstanceResponse{}
+	_body, _err := client.CreatePrometheusVirtualInstanceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -435,6 +913,128 @@ func (client *Client) CreateUmodel(workspace *string, request *CreateUmodelReque
 
 // Summary:
 //
+// 删除addon release信息
+//
+// @param request - DeleteAddonReleaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAddonReleaseResponse
+func (client *Client) DeleteAddonReleaseWithOptions(policyId *string, request *DeleteAddonReleaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.Force) {
+		query["force"] = request.Force
+	}
+
+	if !dara.IsNil(request.ReleaseName) {
+		query["releaseName"] = request.ReleaseName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAddonRelease"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addon-releases"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除addon release信息
+//
+// @param request - DeleteAddonReleaseRequest
+//
+// @return DeleteAddonReleaseResponse
+func (client *Client) DeleteAddonRelease(policyId *string, request *DeleteAddonReleaseRequest) (_result *DeleteAddonReleaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAddonReleaseResponse{}
+	_body, _err := client.DeleteAddonReleaseWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除聚合任务组
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAggTaskGroupResponse
+func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAggTaskGroupResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAggTaskGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAggTaskGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除聚合任务组
+//
+// @return DeleteAggTaskGroupResponse
+func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_result *DeleteAggTaskGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAggTaskGroupResponse{}
+	_body, _err := client.DeleteAggTaskGroupWithOptions(instanceId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除EntityStore相关存储
 //
 // @param headers - map
@@ -476,6 +1076,170 @@ func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteE
 	headers := make(map[string]*string)
 	_result = &DeleteEntityStoreResponse{}
 	_body, _err := client.DeleteEntityStoreWithOptions(workspaceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除接入中心策略
+//
+// @param request - DeleteIntegrationPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIntegrationPolicyResponse
+func (client *Client) DeleteIntegrationPolicyWithOptions(policyId *string, request *DeleteIntegrationPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteIntegrationPolicyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Force) {
+		query["force"] = request.Force
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteIntegrationPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteIntegrationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除接入中心策略
+//
+// @param request - DeleteIntegrationPolicyRequest
+//
+// @return DeleteIntegrationPolicyResponse
+func (client *Client) DeleteIntegrationPolicy(policyId *string, request *DeleteIntegrationPolicyRequest) (_result *DeleteIntegrationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIntegrationPolicyResponse{}
+	_body, _err := client.DeleteIntegrationPolicyWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除prom实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusInstanceResponse
+func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusInstanceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrometheusInstance"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(prometheusInstanceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePrometheusInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除prom实例
+//
+// @return DeletePrometheusInstanceResponse
+func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_result *DeletePrometheusInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePrometheusInstanceResponse{}
+	_body, _err := client.DeletePrometheusInstanceWithOptions(prometheusInstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除prometheus视图实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusViewResponse
+func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusViewResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrometheusView"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-views/" + dara.PercentEncode(dara.StringValue(prometheusViewId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePrometheusViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除prometheus视图实例
+//
+// @return DeletePrometheusViewResponse
+func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *DeletePrometheusViewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePrometheusViewResponse{}
+	_body, _err := client.DeletePrometheusViewWithOptions(prometheusViewId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -707,6 +1471,106 @@ func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWor
 
 // Summary:
 //
+// 查看addon release(查看接入状态)
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAddonReleaseResponse
+func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonReleaseResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAddonRelease"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addon-releases/" + dara.PercentEncode(dara.StringValue(releaseName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看addon release(查看接入状态)
+//
+// @return GetAddonReleaseResponse
+func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_result *GetAddonReleaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAddonReleaseResponse{}
+	_body, _err := client.GetAddonReleaseWithOptions(releaseName, policyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述聚合任务组
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAggTaskGroupResponse
+func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAggTaskGroupResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAggTaskGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAggTaskGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述聚合任务组
+//
+// @return GetAggTaskGroupResponse
+func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_result *GetAggTaskGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAggTaskGroupResponse{}
+	_body, _err := client.GetAggTaskGroupWithOptions(instanceId, groupId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取EntityStore相关存储信息
 //
 // @param headers - map
@@ -829,6 +1693,192 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 	headers := &GetEntityStoreDataHeaders{}
 	_result = &GetEntityStoreDataResponse{}
 	_body, _err := client.GetEntityStoreDataWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入中心策略列表信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntegrationPolicyResponse
+func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationPolicyResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetIntegrationPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetIntegrationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入中心策略列表信息
+//
+// @return GetIntegrationPolicyResponse
+func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegrationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetIntegrationPolicyResponse{}
+	_body, _err := client.GetIntegrationPolicyWithOptions(policyId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定环境实例
+//
+// @param request - GetPrometheusInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusInstanceResponse
+func (client *Client) GetPrometheusInstanceWithOptions(prometheusInstanceId *string, request *GetPrometheusInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPrometheusInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrometheusInstance"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(prometheusInstanceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPrometheusInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定环境实例
+//
+// @param request - GetPrometheusInstanceRequest
+//
+// @return GetPrometheusInstanceResponse
+func (client *Client) GetPrometheusInstance(prometheusInstanceId *string, request *GetPrometheusInstanceRequest) (_result *GetPrometheusInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPrometheusInstanceResponse{}
+	_body, _err := client.GetPrometheusInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定Prometheus视图实例
+//
+// @param request - GetPrometheusViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPrometheusViewResponse
+func (client *Client) GetPrometheusViewWithOptions(prometheusViewId *string, request *GetPrometheusViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPrometheusViewResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPrometheusView"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-views/" + dara.PercentEncode(dara.StringValue(prometheusViewId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPrometheusViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定Prometheus视图实例
+//
+// @param request - GetPrometheusViewRequest
+//
+// @return GetPrometheusViewResponse
+func (client *Client) GetPrometheusView(prometheusViewId *string, request *GetPrometheusViewRequest) (_result *GetPrometheusViewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPrometheusViewResponse{}
+	_body, _err := client.GetPrometheusViewWithOptions(prometheusViewId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1108,6 +2158,172 @@ func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspace
 
 // Summary:
 //
+// addon的release列表
+//
+// @param request - ListAddonReleasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddonReleasesResponse
+func (client *Client) ListAddonReleasesWithOptions(policyId *string, request *ListAddonReleasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.ParentAddonReleaseId) {
+		query["parentAddonReleaseId"] = request.ParentAddonReleaseId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAddonReleases"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addon-releases"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAddonReleasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// addon的release列表
+//
+// @param request - ListAddonReleasesRequest
+//
+// @return ListAddonReleasesResponse
+func (client *Client) ListAddonReleases(policyId *string, request *ListAddonReleasesRequest) (_result *ListAddonReleasesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAddonReleasesResponse{}
+	_body, _err := client.ListAddonReleasesWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举聚合任务组
+//
+// @param tmpReq - ListAggTaskGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAggTaskGroupsResponse
+func (client *Client) ListAggTaskGroupsWithOptions(instanceId *string, tmpReq *ListAggTaskGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAggTaskGroupsResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListAggTaskGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("tags"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterAggTaskGroupIds) {
+		query["filterAggTaskGroupIds"] = request.FilterAggTaskGroupIds
+	}
+
+	if !dara.IsNil(request.FilterAggTaskGroupNames) {
+		query["filterAggTaskGroupNames"] = request.FilterAggTaskGroupNames
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TagsShrink) {
+		query["tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.TargetPrometheusId) {
+		query["targetPrometheusId"] = request.TargetPrometheusId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAggTaskGroups"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAggTaskGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举聚合任务组
+//
+// @param request - ListAggTaskGroupsRequest
+//
+// @return ListAggTaskGroupsResponse
+func (client *Client) ListAggTaskGroups(instanceId *string, request *ListAggTaskGroupsRequest) (_result *ListAggTaskGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAggTaskGroupsResponse{}
+	_body, _err := client.ListAggTaskGroupsWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询告警动作
 //
 // @param tmpReq - ListAlertActionsRequest
@@ -1185,6 +2401,562 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListAlertActionsResponse{}
 	_body, _err := client.ListAlertActionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyCustomScrapeJobRulesResponse
+func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(policyId *string, request *ListIntegrationPolicyCustomScrapeJobRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyCustomScrapeJobRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.EncryptYaml) {
+		query["encryptYaml"] = request.EncryptYaml
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyCustomScrapeJobRules"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/custom-scrape-job-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyCustomScrapeJobRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
+//
+// @return ListIntegrationPolicyCustomScrapeJobRulesResponse
+func (client *Client) ListIntegrationPolicyCustomScrapeJobRules(policyId *string, request *ListIntegrationPolicyCustomScrapeJobRulesRequest) (_result *ListIntegrationPolicyCustomScrapeJobRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIntegrationPolicyCustomScrapeJobRulesResponse{}
+	_body, _err := client.ListIntegrationPolicyCustomScrapeJobRulesWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的PodMonitor资源
+//
+// @param request - ListIntegrationPolicyPodMonitorsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyPodMonitorsResponse
+func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *string, request *ListIntegrationPolicyPodMonitorsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyPodMonitorsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.EncryptYaml) {
+		query["encryptYaml"] = request.EncryptYaml
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyPodMonitors"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/pod-monitors"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyPodMonitorsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的PodMonitor资源
+//
+// @param request - ListIntegrationPolicyPodMonitorsRequest
+//
+// @return ListIntegrationPolicyPodMonitorsResponse
+func (client *Client) ListIntegrationPolicyPodMonitors(policyId *string, request *ListIntegrationPolicyPodMonitorsRequest) (_result *ListIntegrationPolicyPodMonitorsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIntegrationPolicyPodMonitorsResponse{}
+	_body, _err := client.ListIntegrationPolicyPodMonitorsWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyStorageRequirementsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyStorageRequirementsResponse
+func (client *Client) ListIntegrationPolicyStorageRequirementsWithOptions(policyId *string, request *ListIntegrationPolicyStorageRequirementsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyStorageRequirementsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.AddonReleaseName) {
+		query["addonReleaseName"] = request.AddonReleaseName
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["storageType"] = request.StorageType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyStorageRequirements"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/storage-requirements"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyStorageRequirementsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取接入中心策略的存储要求信息
+//
+// @param request - ListIntegrationPolicyStorageRequirementsRequest
+//
+// @return ListIntegrationPolicyStorageRequirementsResponse
+func (client *Client) ListIntegrationPolicyStorageRequirements(policyId *string, request *ListIntegrationPolicyStorageRequirementsRequest) (_result *ListIntegrationPolicyStorageRequirementsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIntegrationPolicyStorageRequirementsResponse{}
+	_body, _err := client.ListIntegrationPolicyStorageRequirementsWithOptions(policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus实例大盘列表
+//
+// @param request - ListPrometheusDashboardsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusDashboardsResponse
+func (client *Client) ListPrometheusDashboardsWithOptions(prometheusInstanceId *string, request *ListPrometheusDashboardsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrometheusDashboardsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["aliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrometheusDashboards"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(prometheusInstanceId)) + "/dashboards"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrometheusDashboardsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus实例大盘列表
+//
+// @param request - ListPrometheusDashboardsRequest
+//
+// @return ListPrometheusDashboardsResponse
+func (client *Client) ListPrometheusDashboards(prometheusInstanceId *string, request *ListPrometheusDashboardsRequest) (_result *ListPrometheusDashboardsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrometheusDashboardsResponse{}
+	_body, _err := client.ListPrometheusDashboardsWithOptions(prometheusInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus实例信息列表
+//
+// @param tmpReq - ListPrometheusInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusInstancesResponse
+func (client *Client) ListPrometheusInstancesWithOptions(tmpReq *ListPrometheusInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrometheusInstancesResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPrometheusInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterRegionIds) {
+		query["filterRegionIds"] = request.FilterRegionIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PrometheusInstanceIds) {
+		query["prometheusInstanceIds"] = request.PrometheusInstanceIds
+	}
+
+	if !dara.IsNil(request.PrometheusInstanceName) {
+		query["prometheusInstanceName"] = request.PrometheusInstanceName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrometheusInstances"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrometheusInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus实例信息列表
+//
+// @param request - ListPrometheusInstancesRequest
+//
+// @return ListPrometheusInstancesResponse
+func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRequest) (_result *ListPrometheusInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrometheusInstancesResponse{}
+	_body, _err := client.ListPrometheusInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus视图实例信息列表
+//
+// @param tmpReq - ListPrometheusViewsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusViewsResponse
+func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViewsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrometheusViewsResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPrometheusViewsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterRegionIds) {
+		query["filterRegionIds"] = request.FilterRegionIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PrometheusViewIds) {
+		query["prometheusViewIds"] = request.PrometheusViewIds
+	}
+
+	if !dara.IsNil(request.PrometheusViewName) {
+		query["prometheusViewName"] = request.PrometheusViewName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrometheusViews"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-views"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrometheusViewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus视图实例信息列表
+//
+// @param request - ListPrometheusViewsRequest
+//
+// @return ListPrometheusViewsResponse
+func (client *Client) ListPrometheusViews(request *ListPrometheusViewsRequest) (_result *ListPrometheusViewsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrometheusViewsResponse{}
+	_body, _err := client.ListPrometheusViewsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus虚拟实例
+//
+// @param request - ListPrometheusVirtualInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrometheusVirtualInstancesResponse
+func (client *Client) ListPrometheusVirtualInstancesWithOptions(request *ListPrometheusVirtualInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrometheusVirtualInstancesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrometheusVirtualInstances"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/virtual-instances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrometheusVirtualInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Prometheus虚拟实例
+//
+// @param request - ListPrometheusVirtualInstancesRequest
+//
+// @return ListPrometheusVirtualInstancesResponse
+func (client *Client) ListPrometheusVirtualInstances(request *ListPrometheusVirtualInstancesRequest) (_result *ListPrometheusVirtualInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrometheusVirtualInstancesResponse{}
+	_body, _err := client.ListPrometheusVirtualInstancesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1415,6 +3187,538 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 	headers := make(map[string]*string)
 	_result = &PutWorkspaceResponse{}
 	_body, _err := client.PutWorkspaceWithOptions(workspaceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级接入组件
+//
+// @param request - UpdateAddonReleaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAddonReleaseResponse
+func (client *Client) UpdateAddonReleaseWithOptions(releaseName *string, policyId *string, request *UpdateAddonReleaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAddonReleaseResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddonVersion) {
+		body["addonVersion"] = request.AddonVersion
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["dryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EntityRules) {
+		body["entityRules"] = request.EntityRules
+	}
+
+	if !dara.IsNil(request.Values) {
+		body["values"] = request.Values
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAddonRelease"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/addon-releases/" + dara.PercentEncode(dara.StringValue(releaseName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级接入组件
+//
+// @param request - UpdateAddonReleaseRequest
+//
+// @return UpdateAddonReleaseResponse
+func (client *Client) UpdateAddonRelease(releaseName *string, policyId *string, request *UpdateAddonReleaseRequest) (_result *UpdateAddonReleaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAddonReleaseResponse{}
+	_body, _err := client.UpdateAddonReleaseWithOptions(releaseName, policyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用聚合任务组
+//
+// @param request - UpdateAggTaskGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAggTaskGroupResponse
+func (client *Client) UpdateAggTaskGroupWithOptions(instanceId *string, groupId *string, request *UpdateAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAggTaskGroupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggTaskGroupConfig) {
+		body["aggTaskGroupConfig"] = request.AggTaskGroupConfig
+	}
+
+	if !dara.IsNil(request.AggTaskGroupConfigType) {
+		body["aggTaskGroupConfigType"] = request.AggTaskGroupConfigType
+	}
+
+	if !dara.IsNil(request.AggTaskGroupName) {
+		body["aggTaskGroupName"] = request.AggTaskGroupName
+	}
+
+	if !dara.IsNil(request.CronExpr) {
+		body["cronExpr"] = request.CronExpr
+	}
+
+	if !dara.IsNil(request.Delay) {
+		body["delay"] = request.Delay
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FromTime) {
+		body["fromTime"] = request.FromTime
+	}
+
+	if !dara.IsNil(request.MaxRetries) {
+		body["maxRetries"] = request.MaxRetries
+	}
+
+	if !dara.IsNil(request.MaxRunTimeInSeconds) {
+		body["maxRunTimeInSeconds"] = request.MaxRunTimeInSeconds
+	}
+
+	if !dara.IsNil(request.PrecheckString) {
+		body["precheckString"] = request.PrecheckString
+	}
+
+	if !dara.IsNil(request.ScheduleMode) {
+		body["scheduleMode"] = request.ScheduleMode
+	}
+
+	if !dara.IsNil(request.ScheduleTimeExpr) {
+		body["scheduleTimeExpr"] = request.ScheduleTimeExpr
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TargetPrometheusId) {
+		body["targetPrometheusId"] = request.TargetPrometheusId
+	}
+
+	if !dara.IsNil(request.ToTime) {
+		body["toTime"] = request.ToTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAggTaskGroup"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups/" + dara.PercentEncode(dara.StringValue(groupId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAggTaskGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用聚合任务组
+//
+// @param request - UpdateAggTaskGroupRequest
+//
+// @return UpdateAggTaskGroupResponse
+func (client *Client) UpdateAggTaskGroup(instanceId *string, groupId *string, request *UpdateAggTaskGroupRequest) (_result *UpdateAggTaskGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAggTaskGroupResponse{}
+	_body, _err := client.UpdateAggTaskGroupWithOptions(instanceId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新聚合任务组状态
+//
+// @param request - UpdateAggTaskGroupStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAggTaskGroupStatusResponse
+func (client *Client) UpdateAggTaskGroupStatusWithOptions(instanceId *string, groupId *string, request *UpdateAggTaskGroupStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAggTaskGroupStatusResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAggTaskGroupStatus"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/agg-task-groups/" + dara.PercentEncode(dara.StringValue(groupId)) + "/status"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAggTaskGroupStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新聚合任务组状态
+//
+// @param request - UpdateAggTaskGroupStatusRequest
+//
+// @return UpdateAggTaskGroupStatusResponse
+func (client *Client) UpdateAggTaskGroupStatus(instanceId *string, groupId *string, request *UpdateAggTaskGroupStatusRequest) (_result *UpdateAggTaskGroupStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAggTaskGroupStatusResponse{}
+	_body, _err := client.UpdateAggTaskGroupStatusWithOptions(instanceId, groupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定策略
+//
+// @param request - UpdateIntegrationPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIntegrationPolicyResponse
+func (client *Client) UpdateIntegrationPolicyWithOptions(integrationPolicyId *string, request *UpdateIntegrationPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateIntegrationPolicyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FeePackage) {
+		body["feePackage"] = request.FeePackage
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		body["policyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateIntegrationPolicy"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(integrationPolicyId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateIntegrationPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定策略
+//
+// @param request - UpdateIntegrationPolicyRequest
+//
+// @return UpdateIntegrationPolicyResponse
+func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, request *UpdateIntegrationPolicyRequest) (_result *UpdateIntegrationPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateIntegrationPolicyResponse{}
+	_body, _err := client.UpdateIntegrationPolicyWithOptions(integrationPolicyId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom实例信息
+//
+// @param request - UpdatePrometheusInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusInstanceResponse
+func (client *Client) UpdatePrometheusInstanceWithOptions(prometheusInstanceId *string, request *UpdatePrometheusInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArchiveDuration) {
+		body["archiveDuration"] = request.ArchiveDuration
+	}
+
+	if !dara.IsNil(request.AuthFreeReadPolicy) {
+		body["authFreeReadPolicy"] = request.AuthFreeReadPolicy
+	}
+
+	if !dara.IsNil(request.AuthFreeWritePolicy) {
+		body["authFreeWritePolicy"] = request.AuthFreeWritePolicy
+	}
+
+	if !dara.IsNil(request.EnableAuthFreeRead) {
+		body["enableAuthFreeRead"] = request.EnableAuthFreeRead
+	}
+
+	if !dara.IsNil(request.EnableAuthFreeWrite) {
+		body["enableAuthFreeWrite"] = request.EnableAuthFreeWrite
+	}
+
+	if !dara.IsNil(request.EnableAuthToken) {
+		body["enableAuthToken"] = request.EnableAuthToken
+	}
+
+	if !dara.IsNil(request.PaymentType) {
+		body["paymentType"] = request.PaymentType
+	}
+
+	if !dara.IsNil(request.PrometheusInstanceName) {
+		body["prometheusInstanceName"] = request.PrometheusInstanceName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StorageDuration) {
+		body["storageDuration"] = request.StorageDuration
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrometheusInstance"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-instances/" + dara.PercentEncode(dara.StringValue(prometheusInstanceId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrometheusInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom实例信息
+//
+// @param request - UpdatePrometheusInstanceRequest
+//
+// @return UpdatePrometheusInstanceResponse
+func (client *Client) UpdatePrometheusInstance(prometheusInstanceId *string, request *UpdatePrometheusInstanceRequest) (_result *UpdatePrometheusInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePrometheusInstanceResponse{}
+	_body, _err := client.UpdatePrometheusInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom视图实例信息
+//
+// @param request - UpdatePrometheusViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePrometheusViewResponse
+func (client *Client) UpdatePrometheusViewWithOptions(prometheusViewId *string, request *UpdatePrometheusViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePrometheusViewResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthFreeReadPolicy) {
+		body["authFreeReadPolicy"] = request.AuthFreeReadPolicy
+	}
+
+	if !dara.IsNil(request.EnableAuthFreeRead) {
+		body["enableAuthFreeRead"] = request.EnableAuthFreeRead
+	}
+
+	if !dara.IsNil(request.EnableAuthToken) {
+		body["enableAuthToken"] = request.EnableAuthToken
+	}
+
+	if !dara.IsNil(request.PrometheusInstances) {
+		body["prometheusInstances"] = request.PrometheusInstances
+	}
+
+	if !dara.IsNil(request.PrometheusViewName) {
+		body["prometheusViewName"] = request.PrometheusViewName
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePrometheusView"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/prometheus-views/" + dara.PercentEncode(dara.StringValue(prometheusViewId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePrometheusViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Prom视图实例信息
+//
+// @param request - UpdatePrometheusViewRequest
+//
+// @return UpdatePrometheusViewResponse
+func (client *Client) UpdatePrometheusView(prometheusViewId *string, request *UpdatePrometheusViewRequest) (_result *UpdatePrometheusViewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePrometheusViewResponse{}
+	_body, _err := client.UpdatePrometheusViewWithOptions(prometheusViewId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -27,12 +27,16 @@ type iAlertRuleCondition interface {
 	GetNoDataAppendValue() *string
 	SetNoDataPolicy(v string) *AlertRuleCondition
 	GetNoDataPolicy() *string
+	SetOper(v string) *AlertRuleCondition
+	GetOper() *string
 	SetRelation(v string) *AlertRuleCondition
 	GetRelation() *string
 	SetSimpleEscalation(v *AlertRuleConditionSimpleEscalation) *AlertRuleCondition
 	GetSimpleEscalation() *AlertRuleConditionSimpleEscalation
 	SetType(v string) *AlertRuleCondition
 	GetType() *string
+	SetValue(v float64) *AlertRuleCondition
+	GetValue() *float64
 }
 
 type AlertRuleCondition struct {
@@ -48,12 +52,14 @@ type AlertRuleCondition struct {
 	NoDataAlertLevel  *string                             `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
 	NoDataAppendValue *string                             `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
 	NoDataPolicy      *string                             `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
+	Oper              *string                             `json:"oper,omitempty" xml:"oper,omitempty"`
 	Relation          *string                             `json:"relation,omitempty" xml:"relation,omitempty"`
 	SimpleEscalation  *AlertRuleConditionSimpleEscalation `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty" type:"Struct"`
 	// 规则条件类型，可选值：SLS_CONDITION
 	//
 	// This parameter is required.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type  *string  `json:"type,omitempty" xml:"type,omitempty"`
+	Value *float64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s AlertRuleCondition) String() string {
@@ -100,6 +106,10 @@ func (s *AlertRuleCondition) GetNoDataPolicy() *string {
 	return s.NoDataPolicy
 }
 
+func (s *AlertRuleCondition) GetOper() *string {
+	return s.Oper
+}
+
 func (s *AlertRuleCondition) GetRelation() *string {
 	return s.Relation
 }
@@ -110,6 +120,10 @@ func (s *AlertRuleCondition) GetSimpleEscalation() *AlertRuleConditionSimpleEsca
 
 func (s *AlertRuleCondition) GetType() *string {
 	return s.Type
+}
+
+func (s *AlertRuleCondition) GetValue() *float64 {
+	return s.Value
 }
 
 func (s *AlertRuleCondition) SetAlertCount(v int32) *AlertRuleCondition {
@@ -157,6 +171,11 @@ func (s *AlertRuleCondition) SetNoDataPolicy(v string) *AlertRuleCondition {
 	return s
 }
 
+func (s *AlertRuleCondition) SetOper(v string) *AlertRuleCondition {
+	s.Oper = &v
+	return s
+}
+
 func (s *AlertRuleCondition) SetRelation(v string) *AlertRuleCondition {
 	s.Relation = &v
 	return s
@@ -169,6 +188,11 @@ func (s *AlertRuleCondition) SetSimpleEscalation(v *AlertRuleConditionSimpleEsca
 
 func (s *AlertRuleCondition) SetType(v string) *AlertRuleCondition {
 	s.Type = &v
+	return s
+}
+
+func (s *AlertRuleCondition) SetValue(v float64) *AlertRuleCondition {
+	s.Value = &v
 	return s
 }
 
