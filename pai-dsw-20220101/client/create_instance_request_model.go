@@ -13,6 +13,8 @@ type iCreateInstanceRequest interface {
 	GetAccessibility() *string
 	SetAffinity(v *CreateInstanceRequestAffinity) *CreateInstanceRequest
 	GetAffinity() *CreateInstanceRequestAffinity
+	SetAssignNodeSpec(v *CreateInstanceRequestAssignNodeSpec) *CreateInstanceRequest
+	GetAssignNodeSpec() *CreateInstanceRequestAssignNodeSpec
 	SetCloudDisks(v []*CreateInstanceRequestCloudDisks) *CreateInstanceRequest
 	GetCloudDisks() []*CreateInstanceRequestCloudDisks
 	SetCredentialConfig(v *CredentialConfig) *CreateInstanceRequest
@@ -45,6 +47,8 @@ type iCreateInstanceRequest interface {
 	GetRequestedResource() *CreateInstanceRequestRequestedResource
 	SetResourceId(v string) *CreateInstanceRequest
 	GetResourceId() *string
+	SetSpotSpec(v *CreateInstanceRequestSpotSpec) *CreateInstanceRequest
+	GetSpotSpec() *CreateInstanceRequestSpotSpec
 	SetTag(v []*CreateInstanceRequestTag) *CreateInstanceRequest
 	GetTag() []*CreateInstanceRequestTag
 	SetUserCommand(v *CreateInstanceRequestUserCommand) *CreateInstanceRequest
@@ -73,7 +77,8 @@ type CreateInstanceRequest struct {
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// The affinity configuration.
-	Affinity *CreateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	Affinity       *CreateInstanceRequestAffinity       `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	AssignNodeSpec *CreateInstanceRequestAssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty" type:"Struct"`
 	// The cloud disks.
 	//
 	// example:
@@ -160,7 +165,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// dsw-123456789
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string                        `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	SpotSpec   *CreateInstanceRequestSpotSpec `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty" type:"Struct"`
 	// The tags.
 	Tag         []*CreateInstanceRequestTag       `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UserCommand *CreateInstanceRequestUserCommand `json:"UserCommand,omitempty" xml:"UserCommand,omitempty" type:"Struct"`
@@ -216,6 +222,10 @@ func (s *CreateInstanceRequest) GetAccessibility() *string {
 
 func (s *CreateInstanceRequest) GetAffinity() *CreateInstanceRequestAffinity {
 	return s.Affinity
+}
+
+func (s *CreateInstanceRequest) GetAssignNodeSpec() *CreateInstanceRequestAssignNodeSpec {
+	return s.AssignNodeSpec
 }
 
 func (s *CreateInstanceRequest) GetCloudDisks() []*CreateInstanceRequestCloudDisks {
@@ -282,6 +292,10 @@ func (s *CreateInstanceRequest) GetResourceId() *string {
 	return s.ResourceId
 }
 
+func (s *CreateInstanceRequest) GetSpotSpec() *CreateInstanceRequestSpotSpec {
+	return s.SpotSpec
+}
+
 func (s *CreateInstanceRequest) GetTag() []*CreateInstanceRequestTag {
 	return s.Tag
 }
@@ -313,6 +327,11 @@ func (s *CreateInstanceRequest) SetAccessibility(v string) *CreateInstanceReques
 
 func (s *CreateInstanceRequest) SetAffinity(v *CreateInstanceRequestAffinity) *CreateInstanceRequest {
 	s.Affinity = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAssignNodeSpec(v *CreateInstanceRequestAssignNodeSpec) *CreateInstanceRequest {
+	s.AssignNodeSpec = v
 	return s
 }
 
@@ -393,6 +412,11 @@ func (s *CreateInstanceRequest) SetRequestedResource(v *CreateInstanceRequestReq
 
 func (s *CreateInstanceRequest) SetResourceId(v string) *CreateInstanceRequest {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSpotSpec(v *CreateInstanceRequestSpotSpec) *CreateInstanceRequest {
+	s.SpotSpec = v
 	return s
 }
 
@@ -487,6 +511,47 @@ func (s *CreateInstanceRequestAffinityCPU) SetEnable(v bool) *CreateInstanceRequ
 }
 
 func (s *CreateInstanceRequestAffinityCPU) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateInstanceRequestAssignNodeSpec struct {
+	// example:
+	//
+	// node-b
+	AntiAffinityNodeNames *string `json:"AntiAffinityNodeNames,omitempty" xml:"AntiAffinityNodeNames,omitempty"`
+	// example:
+	//
+	// node-a
+	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+}
+
+func (s CreateInstanceRequestAssignNodeSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestAssignNodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestAssignNodeSpec) GetAntiAffinityNodeNames() *string {
+	return s.AntiAffinityNodeNames
+}
+
+func (s *CreateInstanceRequestAssignNodeSpec) GetNodeNames() *string {
+	return s.NodeNames
+}
+
+func (s *CreateInstanceRequestAssignNodeSpec) SetAntiAffinityNodeNames(v string) *CreateInstanceRequestAssignNodeSpec {
+	s.AntiAffinityNodeNames = &v
+	return s
+}
+
+func (s *CreateInstanceRequestAssignNodeSpec) SetNodeNames(v string) *CreateInstanceRequestAssignNodeSpec {
+	s.NodeNames = &v
+	return s
+}
+
+func (s *CreateInstanceRequestAssignNodeSpec) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -961,6 +1026,73 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 func (s *CreateInstanceRequestRequestedResource) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateInstanceRequestSpotSpec struct {
+	// example:
+	//
+	// 0.1
+	SpotDiscountLimit *string `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
+	// example:
+	//
+	// 0
+	SpotDuration *string `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// example:
+	//
+	// 0.12
+	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// example:
+	//
+	// SpotWithPriceLimit
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+}
+
+func (s CreateInstanceRequestSpotSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestSpotSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestSpotSpec) GetSpotDiscountLimit() *string {
+	return s.SpotDiscountLimit
+}
+
+func (s *CreateInstanceRequestSpotSpec) GetSpotDuration() *string {
+	return s.SpotDuration
+}
+
+func (s *CreateInstanceRequestSpotSpec) GetSpotPriceLimit() *string {
+	return s.SpotPriceLimit
+}
+
+func (s *CreateInstanceRequestSpotSpec) GetSpotStrategy() *string {
+	return s.SpotStrategy
+}
+
+func (s *CreateInstanceRequestSpotSpec) SetSpotDiscountLimit(v string) *CreateInstanceRequestSpotSpec {
+	s.SpotDiscountLimit = &v
+	return s
+}
+
+func (s *CreateInstanceRequestSpotSpec) SetSpotDuration(v string) *CreateInstanceRequestSpotSpec {
+	s.SpotDuration = &v
+	return s
+}
+
+func (s *CreateInstanceRequestSpotSpec) SetSpotPriceLimit(v string) *CreateInstanceRequestSpotSpec {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *CreateInstanceRequestSpotSpec) SetSpotStrategy(v string) *CreateInstanceRequestSpotSpec {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *CreateInstanceRequestSpotSpec) Validate() error {
 	return dara.Validate(s)
 }
 

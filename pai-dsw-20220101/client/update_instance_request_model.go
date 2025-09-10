@@ -13,12 +13,16 @@ type iUpdateInstanceRequest interface {
 	GetAccessibility() *string
 	SetAffinity(v *UpdateInstanceRequestAffinity) *UpdateInstanceRequest
 	GetAffinity() *UpdateInstanceRequestAffinity
+	SetAssignNodeSpec(v *UpdateInstanceRequestAssignNodeSpec) *UpdateInstanceRequest
+	GetAssignNodeSpec() *UpdateInstanceRequestAssignNodeSpec
 	SetCloudDisks(v []*UpdateInstanceRequestCloudDisks) *UpdateInstanceRequest
 	GetCloudDisks() []*UpdateInstanceRequestCloudDisks
 	SetCredentialConfig(v *CredentialConfig) *UpdateInstanceRequest
 	GetCredentialConfig() *CredentialConfig
 	SetDatasets(v []*UpdateInstanceRequestDatasets) *UpdateInstanceRequest
 	GetDatasets() []*UpdateInstanceRequestDatasets
+	SetDisassociateAssignNode(v bool) *UpdateInstanceRequest
+	GetDisassociateAssignNode() *bool
 	SetDisassociateCredential(v bool) *UpdateInstanceRequest
 	GetDisassociateCredential() *bool
 	SetDisassociateDatasets(v bool) *UpdateInstanceRequest
@@ -29,6 +33,8 @@ type iUpdateInstanceRequest interface {
 	GetDisassociateEnvironmentVariables() *bool
 	SetDisassociateForwardInfos(v bool) *UpdateInstanceRequest
 	GetDisassociateForwardInfos() *bool
+	SetDisassociateSpot(v bool) *UpdateInstanceRequest
+	GetDisassociateSpot() *bool
 	SetDisassociateUserCommand(v bool) *UpdateInstanceRequest
 	GetDisassociateUserCommand() *bool
 	SetDisassociateVpc(v bool) *UpdateInstanceRequest
@@ -55,6 +61,8 @@ type iUpdateInstanceRequest interface {
 	GetPriority() *int64
 	SetRequestedResource(v *UpdateInstanceRequestRequestedResource) *UpdateInstanceRequest
 	GetRequestedResource() *UpdateInstanceRequestRequestedResource
+	SetSpotSpec(v *UpdateInstanceRequestSpotSpec) *UpdateInstanceRequest
+	GetSpotSpec() *UpdateInstanceRequestSpotSpec
 	SetUserCommand(v *UpdateInstanceRequestUserCommand) *UpdateInstanceRequest
 	GetUserCommand() *UpdateInstanceRequestUserCommand
 	SetUserId(v string) *UpdateInstanceRequest
@@ -79,7 +87,8 @@ type UpdateInstanceRequest struct {
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// The affinity configuration.
-	Affinity *UpdateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	Affinity       *UpdateInstanceRequestAffinity       `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	AssignNodeSpec *UpdateInstanceRequestAssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty" type:"Struct"`
 	// The cloud disks.
 	//
 	// example:
@@ -89,7 +98,8 @@ type UpdateInstanceRequest struct {
 	// The credential configuration.
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	// The datasets.
-	Datasets []*UpdateInstanceRequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Datasets               []*UpdateInstanceRequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DisassociateAssignNode *bool                            `json:"DisassociateAssignNode,omitempty" xml:"DisassociateAssignNode,omitempty"`
 	// Specifies whether to delete the credential injection information.
 	//
 	// example:
@@ -119,6 +129,7 @@ type UpdateInstanceRequest struct {
 	//
 	// false
 	DisassociateForwardInfos *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	DisassociateSpot         *bool `json:"DisassociateSpot,omitempty" xml:"DisassociateSpot,omitempty"`
 	DisassociateUserCommand  *bool `json:"DisassociateUserCommand,omitempty" xml:"DisassociateUserCommand,omitempty"`
 	// Specifies whether to delete the associated user VPC.
 	//
@@ -186,6 +197,7 @@ type UpdateInstanceRequest struct {
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	SpotSpec          *UpdateInstanceRequestSpotSpec          `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty" type:"Struct"`
 	UserCommand       *UpdateInstanceRequestUserCommand       `json:"UserCommand,omitempty" xml:"UserCommand,omitempty" type:"Struct"`
 	// the User ID of the instance.
 	//
@@ -235,6 +247,10 @@ func (s *UpdateInstanceRequest) GetAffinity() *UpdateInstanceRequestAffinity {
 	return s.Affinity
 }
 
+func (s *UpdateInstanceRequest) GetAssignNodeSpec() *UpdateInstanceRequestAssignNodeSpec {
+	return s.AssignNodeSpec
+}
+
 func (s *UpdateInstanceRequest) GetCloudDisks() []*UpdateInstanceRequestCloudDisks {
 	return s.CloudDisks
 }
@@ -245,6 +261,10 @@ func (s *UpdateInstanceRequest) GetCredentialConfig() *CredentialConfig {
 
 func (s *UpdateInstanceRequest) GetDatasets() []*UpdateInstanceRequestDatasets {
 	return s.Datasets
+}
+
+func (s *UpdateInstanceRequest) GetDisassociateAssignNode() *bool {
+	return s.DisassociateAssignNode
 }
 
 func (s *UpdateInstanceRequest) GetDisassociateCredential() *bool {
@@ -265,6 +285,10 @@ func (s *UpdateInstanceRequest) GetDisassociateEnvironmentVariables() *bool {
 
 func (s *UpdateInstanceRequest) GetDisassociateForwardInfos() *bool {
 	return s.DisassociateForwardInfos
+}
+
+func (s *UpdateInstanceRequest) GetDisassociateSpot() *bool {
+	return s.DisassociateSpot
 }
 
 func (s *UpdateInstanceRequest) GetDisassociateUserCommand() *bool {
@@ -319,6 +343,10 @@ func (s *UpdateInstanceRequest) GetRequestedResource() *UpdateInstanceRequestReq
 	return s.RequestedResource
 }
 
+func (s *UpdateInstanceRequest) GetSpotSpec() *UpdateInstanceRequestSpotSpec {
+	return s.SpotSpec
+}
+
 func (s *UpdateInstanceRequest) GetUserCommand() *UpdateInstanceRequestUserCommand {
 	return s.UserCommand
 }
@@ -345,6 +373,11 @@ func (s *UpdateInstanceRequest) SetAffinity(v *UpdateInstanceRequestAffinity) *U
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetAssignNodeSpec(v *UpdateInstanceRequestAssignNodeSpec) *UpdateInstanceRequest {
+	s.AssignNodeSpec = v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetCloudDisks(v []*UpdateInstanceRequestCloudDisks) *UpdateInstanceRequest {
 	s.CloudDisks = v
 	return s
@@ -357,6 +390,11 @@ func (s *UpdateInstanceRequest) SetCredentialConfig(v *CredentialConfig) *Update
 
 func (s *UpdateInstanceRequest) SetDatasets(v []*UpdateInstanceRequestDatasets) *UpdateInstanceRequest {
 	s.Datasets = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateAssignNode(v bool) *UpdateInstanceRequest {
+	s.DisassociateAssignNode = &v
 	return s
 }
 
@@ -382,6 +420,11 @@ func (s *UpdateInstanceRequest) SetDisassociateEnvironmentVariables(v bool) *Upd
 
 func (s *UpdateInstanceRequest) SetDisassociateForwardInfos(v bool) *UpdateInstanceRequest {
 	s.DisassociateForwardInfos = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateSpot(v bool) *UpdateInstanceRequest {
+	s.DisassociateSpot = &v
 	return s
 }
 
@@ -447,6 +490,11 @@ func (s *UpdateInstanceRequest) SetPriority(v int64) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetRequestedResource(v *UpdateInstanceRequestRequestedResource) *UpdateInstanceRequest {
 	s.RequestedResource = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetSpotSpec(v *UpdateInstanceRequestSpotSpec) *UpdateInstanceRequest {
+	s.SpotSpec = v
 	return s
 }
 
@@ -531,6 +579,47 @@ func (s *UpdateInstanceRequestAffinityCPU) SetEnable(v bool) *UpdateInstanceRequ
 }
 
 func (s *UpdateInstanceRequestAffinityCPU) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateInstanceRequestAssignNodeSpec struct {
+	// example:
+	//
+	// node-b
+	AntiAffinityNodeNames *string `json:"AntiAffinityNodeNames,omitempty" xml:"AntiAffinityNodeNames,omitempty"`
+	// example:
+	//
+	// node-a
+	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
+}
+
+func (s UpdateInstanceRequestAssignNodeSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateInstanceRequestAssignNodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestAssignNodeSpec) GetAntiAffinityNodeNames() *string {
+	return s.AntiAffinityNodeNames
+}
+
+func (s *UpdateInstanceRequestAssignNodeSpec) GetNodeNames() *string {
+	return s.NodeNames
+}
+
+func (s *UpdateInstanceRequestAssignNodeSpec) SetAntiAffinityNodeNames(v string) *UpdateInstanceRequestAssignNodeSpec {
+	s.AntiAffinityNodeNames = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestAssignNodeSpec) SetNodeNames(v string) *UpdateInstanceRequestAssignNodeSpec {
+	s.NodeNames = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestAssignNodeSpec) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -849,6 +938,73 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 func (s *UpdateInstanceRequestRequestedResource) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateInstanceRequestSpotSpec struct {
+	// example:
+	//
+	// 0.1
+	SpotDiscountLimit *string `json:"SpotDiscountLimit,omitempty" xml:"SpotDiscountLimit,omitempty"`
+	// example:
+	//
+	// 0
+	SpotDuration *string `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// example:
+	//
+	// 0.12
+	SpotPriceLimit *string `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	// example:
+	//
+	// SpotWithPriceLimit
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+}
+
+func (s UpdateInstanceRequestSpotSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateInstanceRequestSpotSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestSpotSpec) GetSpotDiscountLimit() *string {
+	return s.SpotDiscountLimit
+}
+
+func (s *UpdateInstanceRequestSpotSpec) GetSpotDuration() *string {
+	return s.SpotDuration
+}
+
+func (s *UpdateInstanceRequestSpotSpec) GetSpotPriceLimit() *string {
+	return s.SpotPriceLimit
+}
+
+func (s *UpdateInstanceRequestSpotSpec) GetSpotStrategy() *string {
+	return s.SpotStrategy
+}
+
+func (s *UpdateInstanceRequestSpotSpec) SetSpotDiscountLimit(v string) *UpdateInstanceRequestSpotSpec {
+	s.SpotDiscountLimit = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestSpotSpec) SetSpotDuration(v string) *UpdateInstanceRequestSpotSpec {
+	s.SpotDuration = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestSpotSpec) SetSpotPriceLimit(v string) *UpdateInstanceRequestSpotSpec {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestSpotSpec) SetSpotStrategy(v string) *UpdateInstanceRequestSpotSpec {
+	s.SpotStrategy = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestSpotSpec) Validate() error {
 	return dara.Validate(s)
 }
 

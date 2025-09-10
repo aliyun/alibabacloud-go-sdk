@@ -11,6 +11,8 @@ type iGetInstanceEventsRequest interface {
 	GoString() string
 	SetEndTime(v string) *GetInstanceEventsRequest
 	GetEndTime() *string
+	SetEventLevel(v string) *GetInstanceEventsRequest
+	GetEventLevel() *string
 	SetMaxEventsNum(v int32) *GetInstanceEventsRequest
 	GetMaxEventsNum() *int32
 	SetStartTime(v string) *GetInstanceEventsRequest
@@ -25,7 +27,8 @@ type GetInstanceEventsRequest struct {
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The maximum number of events. Default value: 2000.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *GetInstanceEventsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetInstanceEventsRequest) GetEventLevel() *string {
+	return s.EventLevel
+}
+
 func (s *GetInstanceEventsRequest) GetMaxEventsNum() *int32 {
 	return s.MaxEventsNum
 }
@@ -68,6 +75,11 @@ func (s *GetInstanceEventsRequest) GetToken() *string {
 
 func (s *GetInstanceEventsRequest) SetEndTime(v string) *GetInstanceEventsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceEventsRequest) SetEventLevel(v string) *GetInstanceEventsRequest {
+	s.EventLevel = &v
 	return s
 }
 

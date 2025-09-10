@@ -152,6 +152,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["Affinity"] = request.Affinity
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CloudDisks) {
 		body["CloudDisks"] = request.CloudDisks
 	}
@@ -214,6 +218,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !dara.IsNil(request.ResourceId) {
 		body["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.SpotSpec) {
+		body["SpotSpec"] = request.SpotSpec
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -766,6 +774,10 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Fields) {
+		query["Fields"] = request.Fields
+	}
+
 	if !dara.IsNil(request.Token) {
 		query["Token"] = request.Token
 	}
@@ -832,6 +844,10 @@ func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventLevel) {
+		query["EventLevel"] = request.EventLevel
 	}
 
 	if !dara.IsNil(request.MaxEventsNum) {
@@ -2148,6 +2164,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["Affinity"] = request.Affinity
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CloudDisks) {
 		body["CloudDisks"] = request.CloudDisks
 	}
@@ -2158,6 +2178,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !dara.IsNil(request.Datasets) {
 		body["Datasets"] = request.Datasets
+	}
+
+	if !dara.IsNil(request.DisassociateAssignNode) {
+		body["DisassociateAssignNode"] = request.DisassociateAssignNode
 	}
 
 	if !dara.IsNil(request.DisassociateCredential) {
@@ -2178,6 +2202,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !dara.IsNil(request.DisassociateForwardInfos) {
 		body["DisassociateForwardInfos"] = request.DisassociateForwardInfos
+	}
+
+	if !dara.IsNil(request.DisassociateSpot) {
+		body["DisassociateSpot"] = request.DisassociateSpot
 	}
 
 	if !dara.IsNil(request.DisassociateUserCommand) {
@@ -2230,6 +2258,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !dara.IsNil(request.RequestedResource) {
 		body["RequestedResource"] = request.RequestedResource
+	}
+
+	if !dara.IsNil(request.SpotSpec) {
+		body["SpotSpec"] = request.SpotSpec
 	}
 
 	if !dara.IsNil(request.UserCommand) {

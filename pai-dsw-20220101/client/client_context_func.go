@@ -85,6 +85,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 		body["Affinity"] = request.Affinity
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CloudDisks) {
 		body["CloudDisks"] = request.CloudDisks
 	}
@@ -147,6 +151,10 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 	if !dara.IsNil(request.ResourceId) {
 		body["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.SpotSpec) {
+		body["SpotSpec"] = request.SpotSpec
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -538,6 +546,10 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *st
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Fields) {
+		query["Fields"] = request.Fields
+	}
+
 	if !dara.IsNil(request.Token) {
 		query["Token"] = request.Token
 	}
@@ -585,6 +597,10 @@ func (client *Client) GetInstanceEventsWithContext(ctx context.Context, Instance
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventLevel) {
+		query["EventLevel"] = request.EventLevel
 	}
 
 	if !dara.IsNil(request.MaxEventsNum) {
@@ -1586,6 +1602,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 		body["Affinity"] = request.Affinity
 	}
 
+	if !dara.IsNil(request.AssignNodeSpec) {
+		body["AssignNodeSpec"] = request.AssignNodeSpec
+	}
+
 	if !dara.IsNil(request.CloudDisks) {
 		body["CloudDisks"] = request.CloudDisks
 	}
@@ -1596,6 +1616,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 
 	if !dara.IsNil(request.Datasets) {
 		body["Datasets"] = request.Datasets
+	}
+
+	if !dara.IsNil(request.DisassociateAssignNode) {
+		body["DisassociateAssignNode"] = request.DisassociateAssignNode
 	}
 
 	if !dara.IsNil(request.DisassociateCredential) {
@@ -1616,6 +1640,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 
 	if !dara.IsNil(request.DisassociateForwardInfos) {
 		body["DisassociateForwardInfos"] = request.DisassociateForwardInfos
+	}
+
+	if !dara.IsNil(request.DisassociateSpot) {
+		body["DisassociateSpot"] = request.DisassociateSpot
 	}
 
 	if !dara.IsNil(request.DisassociateUserCommand) {
@@ -1668,6 +1696,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 
 	if !dara.IsNil(request.RequestedResource) {
 		body["RequestedResource"] = request.RequestedResource
+	}
+
+	if !dara.IsNil(request.SpotSpec) {
+		body["SpotSpec"] = request.SpotSpec
 	}
 
 	if !dara.IsNil(request.UserCommand) {
