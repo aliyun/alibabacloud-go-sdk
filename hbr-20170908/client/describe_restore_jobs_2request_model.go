@@ -9,6 +9,8 @@ type iDescribeRestoreJobs2Request interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *DescribeRestoreJobs2Request
+	GetEdition() *string
 	SetFilters(v []*DescribeRestoreJobs2RequestFilters) *DescribeRestoreJobs2Request
 	GetFilters() []*DescribeRestoreJobs2RequestFilters
 	SetPageNumber(v int32) *DescribeRestoreJobs2Request
@@ -20,6 +22,10 @@ type iDescribeRestoreJobs2Request interface {
 }
 
 type DescribeRestoreJobs2Request struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The keys in the filter.
 	Filters []*DescribeRestoreJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: 1.
@@ -60,6 +66,10 @@ func (s DescribeRestoreJobs2Request) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRestoreJobs2Request) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *DescribeRestoreJobs2Request) GetFilters() []*DescribeRestoreJobs2RequestFilters {
 	return s.Filters
 }
@@ -74,6 +84,11 @@ func (s *DescribeRestoreJobs2Request) GetPageSize() *int32 {
 
 func (s *DescribeRestoreJobs2Request) GetRestoreType() *string {
 	return s.RestoreType
+}
+
+func (s *DescribeRestoreJobs2Request) SetEdition(v string) *DescribeRestoreJobs2Request {
+	s.Edition = &v
+	return s
 }
 
 func (s *DescribeRestoreJobs2Request) SetFilters(v []*DescribeRestoreJobs2RequestFilters) *DescribeRestoreJobs2Request {

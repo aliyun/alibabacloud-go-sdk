@@ -367,7 +367,8 @@ type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
 	// example:
 	//
 	// s-0002******ga88
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotId       *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The type of the data source. Valid values:
 	//
 	// 	- **ECS_FILE**: ECS files
@@ -628,6 +629,10 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSnapshotId() 
 	return s.SnapshotId
 }
 
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSourceInstanceId() *string {
+	return s.SourceInstanceId
+}
+
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSourceType() *string {
 	return s.SourceType
 }
@@ -846,6 +851,11 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSnapshotHash(
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSnapshotId(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSourceInstanceId(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.SourceInstanceId = &v
 	return s
 }
 

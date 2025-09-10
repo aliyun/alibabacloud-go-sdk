@@ -9,6 +9,8 @@ type iDescribeBackupJobs2Request interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *DescribeBackupJobs2Request
+	GetEdition() *string
 	SetFilters(v []*DescribeBackupJobs2RequestFilters) *DescribeBackupJobs2Request
 	GetFilters() []*DescribeBackupJobs2RequestFilters
 	SetPageNumber(v int32) *DescribeBackupJobs2Request
@@ -22,6 +24,10 @@ type iDescribeBackupJobs2Request interface {
 }
 
 type DescribeBackupJobs2Request struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The keys that you want to match in the filter.
 	Filters []*DescribeBackupJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
@@ -74,6 +80,10 @@ func (s DescribeBackupJobs2Request) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupJobs2Request) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *DescribeBackupJobs2Request) GetFilters() []*DescribeBackupJobs2RequestFilters {
 	return s.Filters
 }
@@ -92,6 +102,11 @@ func (s *DescribeBackupJobs2Request) GetSortDirection() *string {
 
 func (s *DescribeBackupJobs2Request) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *DescribeBackupJobs2Request) SetEdition(v string) *DescribeBackupJobs2Request {
+	s.Edition = &v
+	return s
 }
 
 func (s *DescribeBackupJobs2Request) SetFilters(v []*DescribeBackupJobs2RequestFilters) *DescribeBackupJobs2Request {

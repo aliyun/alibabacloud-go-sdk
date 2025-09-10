@@ -15,6 +15,8 @@ type iCreateRestoreJobShrinkRequest interface {
 	GetCrossAccountType() *string
 	SetCrossAccountUserId(v int64) *CreateRestoreJobShrinkRequest
 	GetCrossAccountUserId() *int64
+	SetEdition(v string) *CreateRestoreJobShrinkRequest
+	GetEdition() *string
 	SetExclude(v string) *CreateRestoreJobShrinkRequest
 	GetExclude() *string
 	SetFailbackDetailShrink(v string) *CreateRestoreJobShrinkRequest
@@ -87,7 +89,8 @@ type CreateRestoreJobShrinkRequest struct {
 	// example:
 	//
 	// 158975xxxxx4625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
 	//
 	// example:
@@ -316,6 +319,10 @@ func (s *CreateRestoreJobShrinkRequest) GetCrossAccountUserId() *int64 {
 	return s.CrossAccountUserId
 }
 
+func (s *CreateRestoreJobShrinkRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *CreateRestoreJobShrinkRequest) GetExclude() *string {
 	return s.Exclude
 }
@@ -424,6 +431,11 @@ func (s *CreateRestoreJobShrinkRequest) SetCrossAccountType(v string) *CreateRes
 
 func (s *CreateRestoreJobShrinkRequest) SetCrossAccountUserId(v int64) *CreateRestoreJobShrinkRequest {
 	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetEdition(v string) *CreateRestoreJobShrinkRequest {
+	s.Edition = &v
 	return s
 }
 

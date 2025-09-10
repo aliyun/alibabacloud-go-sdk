@@ -80,6 +80,10 @@ func (client *Client) CancelBackupJobWithContext(ctx context.Context, request *C
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
@@ -126,6 +130,10 @@ func (client *Client) CancelRestoreJobWithContext(ctx context.Context, request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.RestoreId) {
 		query["RestoreId"] = request.RestoreId
 	}
@@ -1198,6 +1206,10 @@ func (client *Client) CreateRestoreJobWithContext(ctx context.Context, tmpReq *C
 		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.FailbackDetailShrink) {
 		query["FailbackDetail"] = request.FailbackDetailShrink
 	}
@@ -1628,6 +1640,10 @@ func (client *Client) DeleteBackupPlanWithContext(ctx context.Context, request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -2244,6 +2260,10 @@ func (client *Client) DescribeBackupJobs2WithContext(ctx context.Context, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -2302,6 +2322,10 @@ func (client *Client) DescribeBackupPlansWithContext(ctx context.Context, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -3265,6 +3289,10 @@ func (client *Client) DescribeRestoreJobs2WithContext(ctx context.Context, reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -3637,6 +3665,10 @@ func (client *Client) DisableBackupPlanWithContext(ctx context.Context, request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -3749,6 +3781,10 @@ func (client *Client) EnableBackupPlanWithContext(ctx context.Context, request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -3857,6 +3893,10 @@ func (client *Client) ExecuteBackupPlanWithContext(ctx context.Context, request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -4137,6 +4177,10 @@ func (client *Client) SearchHistoricalSnapshotsWithContext(ctx context.Context, 
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
 	}
@@ -4453,6 +4497,10 @@ func (client *Client) UpdateBackupPlanWithContext(ctx context.Context, tmpReq *U
 
 	if !dara.IsNil(request.DetailShrink) {
 		query["Detail"] = request.DetailShrink
+	}
+
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
 	}
 
 	if !dara.IsNil(request.KeepLatestSnapshots) {

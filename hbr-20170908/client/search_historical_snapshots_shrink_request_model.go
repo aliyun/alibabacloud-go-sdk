@@ -9,6 +9,8 @@ type iSearchHistoricalSnapshotsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *SearchHistoricalSnapshotsShrinkRequest
+	GetEdition() *string
 	SetLimit(v int32) *SearchHistoricalSnapshotsShrinkRequest
 	GetLimit() *int32
 	SetNextToken(v string) *SearchHistoricalSnapshotsShrinkRequest
@@ -24,6 +26,10 @@ type iSearchHistoricalSnapshotsShrinkRequest interface {
 }
 
 type SearchHistoricalSnapshotsShrinkRequest struct {
+	// example:
+	//
+	// BASIC
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
 	//
 	// example:
@@ -158,6 +164,10 @@ func (s SearchHistoricalSnapshotsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SearchHistoricalSnapshotsShrinkRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *SearchHistoricalSnapshotsShrinkRequest) GetLimit() *int32 {
 	return s.Limit
 }
@@ -180,6 +190,11 @@ func (s *SearchHistoricalSnapshotsShrinkRequest) GetSortBy() *string {
 
 func (s *SearchHistoricalSnapshotsShrinkRequest) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *SearchHistoricalSnapshotsShrinkRequest) SetEdition(v string) *SearchHistoricalSnapshotsShrinkRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *SearchHistoricalSnapshotsShrinkRequest) SetLimit(v int32) *SearchHistoricalSnapshotsShrinkRequest {

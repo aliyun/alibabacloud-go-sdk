@@ -359,6 +359,10 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	//
 	// job-12345678
 	LatestExecuteJobId *string `json:"LatestExecuteJobId,omitempty" xml:"LatestExecuteJobId,omitempty"`
+	// example:
+	//
+	// job-00**************9khz
+	LatestFinishJobId *string `json:"LatestFinishJobId,omitempty" xml:"LatestFinishJobId,omitempty"`
 	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
 	//
 	// example:
@@ -573,6 +577,10 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) GetLatestExecuteJ
 	return s.LatestExecuteJobId
 }
 
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) GetLatestFinishJobId() *string {
+	return s.LatestFinishJobId
+}
+
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) GetOptions() *string {
 	return s.Options
 }
@@ -770,6 +778,11 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetKeepLatestSnap
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetLatestExecuteJobId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.LatestExecuteJobId = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetLatestFinishJobId(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.LatestFinishJobId = &v
 	return s
 }
 

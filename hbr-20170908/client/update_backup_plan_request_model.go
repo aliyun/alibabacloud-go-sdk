@@ -13,6 +13,8 @@ type iUpdateBackupPlanRequest interface {
 	GetChangeListPath() *string
 	SetDetail(v map[string]interface{}) *UpdateBackupPlanRequest
 	GetDetail() map[string]interface{}
+	SetEdition(v string) *UpdateBackupPlanRequest
+	GetEdition() *string
 	SetExclude(v string) *UpdateBackupPlanRequest
 	GetExclude() *string
 	SetInclude(v string) *UpdateBackupPlanRequest
@@ -68,6 +70,10 @@ type UpdateBackupPlanRequest struct {
 	//
 	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
 	//
 	// example:
@@ -206,6 +212,10 @@ func (s *UpdateBackupPlanRequest) GetDetail() map[string]interface{} {
 	return s.Detail
 }
 
+func (s *UpdateBackupPlanRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *UpdateBackupPlanRequest) GetExclude() *string {
 	return s.Exclude
 }
@@ -277,6 +287,11 @@ func (s *UpdateBackupPlanRequest) SetChangeListPath(v string) *UpdateBackupPlanR
 
 func (s *UpdateBackupPlanRequest) SetDetail(v map[string]interface{}) *UpdateBackupPlanRequest {
 	s.Detail = v
+	return s
+}
+
+func (s *UpdateBackupPlanRequest) SetEdition(v string) *UpdateBackupPlanRequest {
+	s.Edition = &v
 	return s
 }
 

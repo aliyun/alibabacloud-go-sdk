@@ -9,6 +9,8 @@ type iDescribeBackupPlansRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *DescribeBackupPlansRequest
+	GetEdition() *string
 	SetFilters(v []*DescribeBackupPlansRequestFilters) *DescribeBackupPlansRequest
 	GetFilters() []*DescribeBackupPlansRequestFilters
 	SetPageNumber(v int32) *DescribeBackupPlansRequest
@@ -20,6 +22,10 @@ type iDescribeBackupPlansRequest interface {
 }
 
 type DescribeBackupPlansRequest struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The filters.
 	Filters []*DescribeBackupPlansRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The page number. Pages start from page 1. Default value: 1.
@@ -62,6 +68,10 @@ func (s DescribeBackupPlansRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupPlansRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *DescribeBackupPlansRequest) GetFilters() []*DescribeBackupPlansRequestFilters {
 	return s.Filters
 }
@@ -76,6 +86,11 @@ func (s *DescribeBackupPlansRequest) GetPageSize() *int32 {
 
 func (s *DescribeBackupPlansRequest) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *DescribeBackupPlansRequest) SetEdition(v string) *DescribeBackupPlansRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *DescribeBackupPlansRequest) SetFilters(v []*DescribeBackupPlansRequestFilters) *DescribeBackupPlansRequest {

@@ -9,6 +9,8 @@ type iDeleteBackupPlanRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *DeleteBackupPlanRequest
+	GetEdition() *string
 	SetPlanId(v string) *DeleteBackupPlanRequest
 	GetPlanId() *string
 	SetRequireNoRunningJobs(v bool) *DeleteBackupPlanRequest
@@ -20,6 +22,10 @@ type iDeleteBackupPlanRequest interface {
 }
 
 type DeleteBackupPlanRequest struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The ID of the backup plan.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s DeleteBackupPlanRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteBackupPlanRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *DeleteBackupPlanRequest) GetPlanId() *string {
 	return s.PlanId
 }
@@ -80,6 +90,11 @@ func (s *DeleteBackupPlanRequest) GetSourceType() *string {
 
 func (s *DeleteBackupPlanRequest) GetVaultId() *string {
 	return s.VaultId
+}
+
+func (s *DeleteBackupPlanRequest) SetEdition(v string) *DeleteBackupPlanRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *DeleteBackupPlanRequest) SetPlanId(v string) *DeleteBackupPlanRequest {

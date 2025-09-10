@@ -13,6 +13,8 @@ type iUpdateBackupPlanShrinkRequest interface {
 	GetChangeListPath() *string
 	SetDetailShrink(v string) *UpdateBackupPlanShrinkRequest
 	GetDetailShrink() *string
+	SetEdition(v string) *UpdateBackupPlanShrinkRequest
+	GetEdition() *string
 	SetExclude(v string) *UpdateBackupPlanShrinkRequest
 	GetExclude() *string
 	SetInclude(v string) *UpdateBackupPlanShrinkRequest
@@ -68,6 +70,10 @@ type UpdateBackupPlanShrinkRequest struct {
 	//
 	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	DetailShrink *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// This parameter is required only if the **SourceType*	- parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
 	//
 	// example:
@@ -206,6 +212,10 @@ func (s *UpdateBackupPlanShrinkRequest) GetDetailShrink() *string {
 	return s.DetailShrink
 }
 
+func (s *UpdateBackupPlanShrinkRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *UpdateBackupPlanShrinkRequest) GetExclude() *string {
 	return s.Exclude
 }
@@ -277,6 +287,11 @@ func (s *UpdateBackupPlanShrinkRequest) SetChangeListPath(v string) *UpdateBacku
 
 func (s *UpdateBackupPlanShrinkRequest) SetDetailShrink(v string) *UpdateBackupPlanShrinkRequest {
 	s.DetailShrink = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequest) SetEdition(v string) *UpdateBackupPlanShrinkRequest {
+	s.Edition = &v
 	return s
 }
 

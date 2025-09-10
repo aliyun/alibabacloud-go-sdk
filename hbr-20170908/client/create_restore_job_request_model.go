@@ -15,6 +15,8 @@ type iCreateRestoreJobRequest interface {
 	GetCrossAccountType() *string
 	SetCrossAccountUserId(v int64) *CreateRestoreJobRequest
 	GetCrossAccountUserId() *int64
+	SetEdition(v string) *CreateRestoreJobRequest
+	GetEdition() *string
 	SetExclude(v string) *CreateRestoreJobRequest
 	GetExclude() *string
 	SetFailbackDetail(v map[string]interface{}) *CreateRestoreJobRequest
@@ -87,7 +89,8 @@ type CreateRestoreJobRequest struct {
 	// example:
 	//
 	// 158975xxxxx4625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
 	//
 	// example:
@@ -316,6 +319,10 @@ func (s *CreateRestoreJobRequest) GetCrossAccountUserId() *int64 {
 	return s.CrossAccountUserId
 }
 
+func (s *CreateRestoreJobRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *CreateRestoreJobRequest) GetExclude() *string {
 	return s.Exclude
 }
@@ -424,6 +431,11 @@ func (s *CreateRestoreJobRequest) SetCrossAccountType(v string) *CreateRestoreJo
 
 func (s *CreateRestoreJobRequest) SetCrossAccountUserId(v int64) *CreateRestoreJobRequest {
 	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetEdition(v string) *CreateRestoreJobRequest {
+	s.Edition = &v
 	return s
 }
 

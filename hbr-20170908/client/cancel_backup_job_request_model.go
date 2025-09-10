@@ -9,6 +9,8 @@ type iCancelBackupJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *CancelBackupJobRequest
+	GetEdition() *string
 	SetJobId(v string) *CancelBackupJobRequest
 	GetJobId() *string
 	SetVaultId(v string) *CancelBackupJobRequest
@@ -16,6 +18,10 @@ type iCancelBackupJobRequest interface {
 }
 
 type CancelBackupJobRequest struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The ID of the backup job.
 	//
 	// This parameter is required.
@@ -40,12 +46,21 @@ func (s CancelBackupJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CancelBackupJobRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *CancelBackupJobRequest) GetJobId() *string {
 	return s.JobId
 }
 
 func (s *CancelBackupJobRequest) GetVaultId() *string {
 	return s.VaultId
+}
+
+func (s *CancelBackupJobRequest) SetEdition(v string) *CancelBackupJobRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *CancelBackupJobRequest) SetJobId(v string) *CancelBackupJobRequest {

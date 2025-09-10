@@ -9,6 +9,8 @@ type iDisableBackupPlanRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *DisableBackupPlanRequest
+	GetEdition() *string
 	SetPlanId(v string) *DisableBackupPlanRequest
 	GetPlanId() *string
 	SetSourceType(v string) *DisableBackupPlanRequest
@@ -18,6 +20,10 @@ type iDisableBackupPlanRequest interface {
 }
 
 type DisableBackupPlanRequest struct {
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The ID of the backup plan.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s DisableBackupPlanRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DisableBackupPlanRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *DisableBackupPlanRequest) GetPlanId() *string {
 	return s.PlanId
 }
@@ -64,6 +74,11 @@ func (s *DisableBackupPlanRequest) GetSourceType() *string {
 
 func (s *DisableBackupPlanRequest) GetVaultId() *string {
 	return s.VaultId
+}
+
+func (s *DisableBackupPlanRequest) SetEdition(v string) *DisableBackupPlanRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *DisableBackupPlanRequest) SetPlanId(v string) *DisableBackupPlanRequest {

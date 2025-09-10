@@ -9,6 +9,8 @@ type iSearchHistoricalSnapshotsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEdition(v string) *SearchHistoricalSnapshotsRequest
+	GetEdition() *string
 	SetLimit(v int32) *SearchHistoricalSnapshotsRequest
 	GetLimit() *int32
 	SetNextToken(v string) *SearchHistoricalSnapshotsRequest
@@ -24,6 +26,10 @@ type iSearchHistoricalSnapshotsRequest interface {
 }
 
 type SearchHistoricalSnapshotsRequest struct {
+	// example:
+	//
+	// BASIC
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
 	//
 	// example:
@@ -158,6 +164,10 @@ func (s SearchHistoricalSnapshotsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SearchHistoricalSnapshotsRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *SearchHistoricalSnapshotsRequest) GetLimit() *int32 {
 	return s.Limit
 }
@@ -180,6 +190,11 @@ func (s *SearchHistoricalSnapshotsRequest) GetSortBy() *string {
 
 func (s *SearchHistoricalSnapshotsRequest) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *SearchHistoricalSnapshotsRequest) SetEdition(v string) *SearchHistoricalSnapshotsRequest {
+	s.Edition = &v
+	return s
 }
 
 func (s *SearchHistoricalSnapshotsRequest) SetLimit(v int32) *SearchHistoricalSnapshotsRequest {

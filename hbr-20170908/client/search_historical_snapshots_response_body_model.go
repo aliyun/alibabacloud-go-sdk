@@ -344,6 +344,10 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// example/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// example:
+	//
+	// 42949672960
+	ProtectedDataSize *int64 `json:"ProtectedDataSize,omitempty" xml:"ProtectedDataSize,omitempty"`
 	// The time when the backup job ended. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
@@ -562,6 +566,10 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) GetPrefix() *st
 	return s.Prefix
 }
 
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) GetProtectedDataSize() *int64 {
+	return s.ProtectedDataSize
+}
+
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) GetRangeEnd() *int64 {
 	return s.RangeEnd
 }
@@ -744,6 +752,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetPaths(v *Sea
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetPrefix(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.Prefix = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetProtectedDataSize(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.ProtectedDataSize = &v
 	return s
 }
 

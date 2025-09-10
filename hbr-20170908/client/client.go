@@ -23,7 +23,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.SignatureAlgorithm = dara.String("v2")
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("hbr.aliyuncs.com"),
@@ -180,6 +179,10 @@ func (client *Client) CancelBackupJobWithOptions(request *CancelBackupJobRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.JobId) {
 		query["JobId"] = request.JobId
 	}
@@ -244,6 +247,10 @@ func (client *Client) CancelRestoreJobWithOptions(request *CancelRestoreJobReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.RestoreId) {
 		query["RestoreId"] = request.RestoreId
 	}
@@ -1592,6 +1599,10 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 		query["CrossAccountUserId"] = request.CrossAccountUserId
 	}
 
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.FailbackDetailShrink) {
 		query["FailbackDetail"] = request.FailbackDetailShrink
 	}
@@ -2170,6 +2181,10 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -3000,6 +3015,10 @@ func (client *Client) DescribeBackupJobs2WithOptions(request *DescribeBackupJobs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -3076,6 +3095,10 @@ func (client *Client) DescribeBackupPlansWithOptions(request *DescribeBackupPlan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -4382,6 +4405,10 @@ func (client *Client) DescribeRestoreJobs2WithOptions(request *DescribeRestoreJo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Filters) {
 		query["Filters"] = request.Filters
 	}
@@ -4868,6 +4895,10 @@ func (client *Client) DisableBackupPlanWithOptions(request *DisableBackupPlanReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -5024,6 +5055,10 @@ func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -5176,6 +5211,10 @@ func (client *Client) ExecuteBackupPlanWithOptions(request *ExecuteBackupPlanReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.PlanId) {
 		query["PlanId"] = request.PlanId
 	}
@@ -5601,6 +5640,10 @@ func (client *Client) SearchHistoricalSnapshotsWithOptions(tmpReq *SearchHistori
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
 	}
@@ -6027,6 +6070,10 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 
 	if !dara.IsNil(request.DetailShrink) {
 		query["Detail"] = request.DetailShrink
+	}
+
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
 	}
 
 	if !dara.IsNil(request.KeepLatestSnapshots) {
