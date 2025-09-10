@@ -15,6 +15,8 @@ type iCreateAppInstanceRequest interface {
 	GetAppType() *string
 	SetClientToken(v string) *CreateAppInstanceRequest
 	GetClientToken() *string
+	SetDBInstanceConfig(v *CreateAppInstanceRequestDBInstanceConfig) *CreateAppInstanceRequest
+	GetDBInstanceConfig() *CreateAppInstanceRequestDBInstanceConfig
 	SetDBInstanceName(v string) *CreateAppInstanceRequest
 	GetDBInstanceName() *string
 	SetDashboardPassword(v string) *CreateAppInstanceRequest
@@ -27,6 +29,8 @@ type iCreateAppInstanceRequest interface {
 	GetInstanceClass() *string
 	SetPublicNetworkAccessEnabled(v bool) *CreateAppInstanceRequest
 	GetPublicNetworkAccessEnabled() *bool
+	SetRAGEnabled(v bool) *CreateAppInstanceRequest
+	GetRAGEnabled() *bool
 	SetRegionId(v string) *CreateAppInstanceRequest
 	GetRegionId() *string
 	SetVSwitchId(v string) *CreateAppInstanceRequest
@@ -45,7 +49,8 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken      *string                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DBInstanceConfig *CreateAppInstanceRequestDBInstanceConfig `json:"DBInstanceConfig,omitempty" xml:"DBInstanceConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// pgm-2ze49qv594vi****
@@ -70,6 +75,7 @@ type CreateAppInstanceRequest struct {
 	//
 	// false
 	PublicNetworkAccessEnabled *bool `json:"PublicNetworkAccessEnabled,omitempty" xml:"PublicNetworkAccessEnabled,omitempty"`
+	RAGEnabled                 *bool `json:"RAGEnabled,omitempty" xml:"RAGEnabled,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -100,6 +106,10 @@ func (s *CreateAppInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAppInstanceRequest) GetDBInstanceConfig() *CreateAppInstanceRequestDBInstanceConfig {
+	return s.DBInstanceConfig
+}
+
 func (s *CreateAppInstanceRequest) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
@@ -124,6 +134,10 @@ func (s *CreateAppInstanceRequest) GetPublicNetworkAccessEnabled() *bool {
 	return s.PublicNetworkAccessEnabled
 }
 
+func (s *CreateAppInstanceRequest) GetRAGEnabled() *bool {
+	return s.RAGEnabled
+}
+
 func (s *CreateAppInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -144,6 +158,11 @@ func (s *CreateAppInstanceRequest) SetAppType(v string) *CreateAppInstanceReques
 
 func (s *CreateAppInstanceRequest) SetClientToken(v string) *CreateAppInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetDBInstanceConfig(v *CreateAppInstanceRequestDBInstanceConfig) *CreateAppInstanceRequest {
+	s.DBInstanceConfig = v
 	return s
 }
 
@@ -177,6 +196,11 @@ func (s *CreateAppInstanceRequest) SetPublicNetworkAccessEnabled(v bool) *Create
 	return s
 }
 
+func (s *CreateAppInstanceRequest) SetRAGEnabled(v bool) *CreateAppInstanceRequest {
+	s.RAGEnabled = &v
+	return s
+}
+
 func (s *CreateAppInstanceRequest) SetRegionId(v string) *CreateAppInstanceRequest {
 	s.RegionId = &v
 	return s
@@ -188,5 +212,59 @@ func (s *CreateAppInstanceRequest) SetVSwitchId(v string) *CreateAppInstanceRequ
 }
 
 func (s *CreateAppInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAppInstanceRequestDBInstanceConfig struct {
+	// example:
+	//
+	// pg.n2.2c.1m
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// example:
+	//
+	// 100
+	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+}
+
+func (s CreateAppInstanceRequestDBInstanceConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAppInstanceRequestDBInstanceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) GetDBInstanceClass() *string {
+	return s.DBInstanceClass
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) GetDBInstanceStorage() *int32 {
+	return s.DBInstanceStorage
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) GetPayType() *string {
+	return s.PayType
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) SetDBInstanceClass(v string) *CreateAppInstanceRequestDBInstanceConfig {
+	s.DBInstanceClass = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) SetDBInstanceStorage(v int32) *CreateAppInstanceRequestDBInstanceConfig {
+	s.DBInstanceStorage = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) SetPayType(v string) *CreateAppInstanceRequestDBInstanceConfig {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestDBInstanceConfig) Validate() error {
 	return dara.Validate(s)
 }

@@ -59,16 +59,22 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // 创建应用服务实例
 //
-// @param request - CreateAppInstanceRequest
+// @param tmpReq - CreateAppInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppInstanceResponse
-func (client *Client) CreateAppInstanceWithOptions(request *CreateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateAppInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DBInstanceConfig) {
+		request.DBInstanceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBInstanceConfig, dara.String("DBInstanceConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
 		query["AppName"] = request.AppName
@@ -80,6 +86,10 @@ func (client *Client) CreateAppInstanceWithOptions(request *CreateAppInstanceReq
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DBInstanceConfigShrink) {
+		query["DBInstanceConfig"] = request.DBInstanceConfigShrink
 	}
 
 	if !dara.IsNil(request.DBInstanceName) {
@@ -104,6 +114,10 @@ func (client *Client) CreateAppInstanceWithOptions(request *CreateAppInstanceReq
 
 	if !dara.IsNil(request.PublicNetworkAccessEnabled) {
 		query["PublicNetworkAccessEnabled"] = request.PublicNetworkAccessEnabled
+	}
+
+	if !dara.IsNil(request.RAGEnabled) {
+		query["RAGEnabled"] = request.RAGEnabled
 	}
 
 	if !dara.IsNil(request.RegionId) {
