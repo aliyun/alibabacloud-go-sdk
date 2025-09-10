@@ -282,7 +282,8 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// 2999-09-08T16:00:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GraphEngineStatus *string `json:"GraphEngineStatus,omitempty" xml:"GraphEngineStatus,omitempty"`
 	// Compute group machine type, with the following values:
 	//
 	// - **0**: SSD
@@ -714,6 +715,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetExp
 	return s.ExpireTime
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetGraphEngineStatus() *string {
+	return s.GraphEngineStatus
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) GetHostType() *string {
 	return s.HostType
 }
@@ -1014,6 +1019,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetEng
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetExpireTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetGraphEngineStatus(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.GraphEngineStatus = &v
 	return s
 }
 

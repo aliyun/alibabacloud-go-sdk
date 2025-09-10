@@ -11,6 +11,8 @@ type iUpsertChunksResponseBody interface {
 	GoString() string
 	SetEmbeddingTokens(v string) *UpsertChunksResponseBody
 	GetEmbeddingTokens() *string
+	SetJobId(v string) *UpsertChunksResponseBody
+	GetJobId() *string
 	SetMessage(v string) *UpsertChunksResponseBody
 	GetMessage() *string
 	SetRequestId(v string) *UpsertChunksResponseBody
@@ -28,6 +30,7 @@ type UpsertChunksResponseBody struct {
 	//
 	// 100
 	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	JobId           *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// Return message.
 	//
 	// example:
@@ -64,6 +67,10 @@ func (s *UpsertChunksResponseBody) GetEmbeddingTokens() *string {
 	return s.EmbeddingTokens
 }
 
+func (s *UpsertChunksResponseBody) GetJobId() *string {
+	return s.JobId
+}
+
 func (s *UpsertChunksResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -78,6 +85,11 @@ func (s *UpsertChunksResponseBody) GetStatus() *string {
 
 func (s *UpsertChunksResponseBody) SetEmbeddingTokens(v string) *UpsertChunksResponseBody {
 	s.EmbeddingTokens = &v
+	return s
+}
+
+func (s *UpsertChunksResponseBody) SetJobId(v string) *UpsertChunksResponseBody {
+	s.JobId = &v
 	return s
 }
 

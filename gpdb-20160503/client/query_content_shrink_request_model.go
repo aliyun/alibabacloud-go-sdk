@@ -21,6 +21,10 @@ type iQueryContentShrinkRequest interface {
 	GetFileUrl() *string
 	SetFilter(v string) *QueryContentShrinkRequest
 	GetFilter() *string
+	SetGraphEnhance(v bool) *QueryContentShrinkRequest
+	GetGraphEnhance() *bool
+	SetGraphSearchArgsShrink(v string) *QueryContentShrinkRequest
+	GetGraphSearchArgsShrink() *string
 	SetHybridSearch(v string) *QueryContentShrinkRequest
 	GetHybridSearch() *string
 	SetHybridSearchArgsShrink(v string) *QueryContentShrinkRequest
@@ -100,7 +104,9 @@ type QueryContentShrinkRequest struct {
 	// example:
 	//
 	// title = \\"test\\" AND name like \\"test%\\"
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter                *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	GraphEnhance          *bool   `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
+	GraphSearchArgsShrink *string `json:"GraphSearchArgs,omitempty" xml:"GraphSearchArgs,omitempty"`
 	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
 	// Available values:
@@ -271,6 +277,14 @@ func (s *QueryContentShrinkRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *QueryContentShrinkRequest) GetGraphEnhance() *bool {
+	return s.GraphEnhance
+}
+
+func (s *QueryContentShrinkRequest) GetGraphSearchArgsShrink() *string {
+	return s.GraphSearchArgsShrink
+}
+
 func (s *QueryContentShrinkRequest) GetHybridSearch() *string {
 	return s.HybridSearch
 }
@@ -358,6 +372,16 @@ func (s *QueryContentShrinkRequest) SetFileUrl(v string) *QueryContentShrinkRequ
 
 func (s *QueryContentShrinkRequest) SetFilter(v string) *QueryContentShrinkRequest {
 	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetGraphEnhance(v bool) *QueryContentShrinkRequest {
+	s.GraphEnhance = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetGraphSearchArgsShrink(v string) *QueryContentShrinkRequest {
+	s.GraphSearchArgsShrink = &v
 	return s
 }
 

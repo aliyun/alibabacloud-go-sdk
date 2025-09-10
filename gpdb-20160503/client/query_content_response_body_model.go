@@ -11,10 +11,14 @@ type iQueryContentResponseBody interface {
 	GoString() string
 	SetEmbeddingTokens(v string) *QueryContentResponseBody
 	GetEmbeddingTokens() *string
+	SetEntities(v *QueryContentResponseBodyEntities) *QueryContentResponseBody
+	GetEntities() *QueryContentResponseBodyEntities
 	SetMatches(v *QueryContentResponseBodyMatches) *QueryContentResponseBody
 	GetMatches() *QueryContentResponseBodyMatches
 	SetMessage(v string) *QueryContentResponseBody
 	GetMessage() *string
+	SetRelations(v *QueryContentResponseBodyRelations) *QueryContentResponseBody
+	GetRelations() *QueryContentResponseBodyRelations
 	SetRequestId(v string) *QueryContentResponseBody
 	GetRequestId() *string
 	SetStatus(v string) *QueryContentResponseBody
@@ -33,7 +37,8 @@ type QueryContentResponseBody struct {
 	// example:
 	//
 	// 100
-	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	EmbeddingTokens *string                           `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Entities        *QueryContentResponseBodyEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Struct"`
 	// The retrieved data.
 	Matches *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
 	// Return message.
@@ -41,7 +46,8 @@ type QueryContentResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Relations *QueryContentResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -76,12 +82,20 @@ func (s *QueryContentResponseBody) GetEmbeddingTokens() *string {
 	return s.EmbeddingTokens
 }
 
+func (s *QueryContentResponseBody) GetEntities() *QueryContentResponseBodyEntities {
+	return s.Entities
+}
+
 func (s *QueryContentResponseBody) GetMatches() *QueryContentResponseBodyMatches {
 	return s.Matches
 }
 
 func (s *QueryContentResponseBody) GetMessage() *string {
 	return s.Message
+}
+
+func (s *QueryContentResponseBody) GetRelations() *QueryContentResponseBodyRelations {
+	return s.Relations
 }
 
 func (s *QueryContentResponseBody) GetRequestId() *string {
@@ -105,6 +119,11 @@ func (s *QueryContentResponseBody) SetEmbeddingTokens(v string) *QueryContentRes
 	return s
 }
 
+func (s *QueryContentResponseBody) SetEntities(v *QueryContentResponseBodyEntities) *QueryContentResponseBody {
+	s.Entities = v
+	return s
+}
+
 func (s *QueryContentResponseBody) SetMatches(v *QueryContentResponseBodyMatches) *QueryContentResponseBody {
 	s.Matches = v
 	return s
@@ -112,6 +131,11 @@ func (s *QueryContentResponseBody) SetMatches(v *QueryContentResponseBodyMatches
 
 func (s *QueryContentResponseBody) SetMessage(v string) *QueryContentResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *QueryContentResponseBody) SetRelations(v *QueryContentResponseBodyRelations) *QueryContentResponseBody {
+	s.Relations = v
 	return s
 }
 
@@ -136,6 +160,96 @@ func (s *QueryContentResponseBody) SetWindowMatches(v *QueryContentResponseBodyW
 }
 
 func (s *QueryContentResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentResponseBodyEntities struct {
+	Entities []*QueryContentResponseBodyEntitiesEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+}
+
+func (s QueryContentResponseBodyEntities) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentResponseBodyEntities) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyEntities) GetEntities() []*QueryContentResponseBodyEntitiesEntities {
+	return s.Entities
+}
+
+func (s *QueryContentResponseBodyEntities) SetEntities(v []*QueryContentResponseBodyEntitiesEntities) *QueryContentResponseBodyEntities {
+	s.Entities = v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntities) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentResponseBodyEntitiesEntities struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Entity      *string `json:"Entity,omitempty" xml:"Entity,omitempty"`
+	FileName    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryContentResponseBodyEntitiesEntities) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentResponseBodyEntitiesEntities) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) GetDescription() *string {
+	return s.Description
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) GetEntity() *string {
+	return s.Entity
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) GetFileName() *string {
+	return s.FileName
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) GetId() *string {
+	return s.Id
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) GetType() *string {
+	return s.Type
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) SetDescription(v string) *QueryContentResponseBodyEntitiesEntities {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) SetEntity(v string) *QueryContentResponseBodyEntitiesEntities {
+	s.Entity = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) SetFileName(v string) *QueryContentResponseBodyEntitiesEntities {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) SetId(v string) *QueryContentResponseBodyEntitiesEntities {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) SetType(v string) *QueryContentResponseBodyEntitiesEntities {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyEntitiesEntities) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -355,6 +469,96 @@ func (s *QueryContentResponseBodyMatchesMatchListVector) SetVectorList(v []*floa
 }
 
 func (s *QueryContentResponseBodyMatchesMatchListVector) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentResponseBodyRelations struct {
+	Relations []*QueryContentResponseBodyRelationsRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
+}
+
+func (s QueryContentResponseBodyRelations) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentResponseBodyRelations) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyRelations) GetRelations() []*QueryContentResponseBodyRelationsRelations {
+	return s.Relations
+}
+
+func (s *QueryContentResponseBodyRelations) SetRelations(v []*QueryContentResponseBodyRelationsRelations) *QueryContentResponseBodyRelations {
+	s.Relations = v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelations) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentResponseBodyRelationsRelations struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SourceEntity *string `json:"SourceEntity,omitempty" xml:"SourceEntity,omitempty"`
+	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
+}
+
+func (s QueryContentResponseBodyRelationsRelations) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentResponseBodyRelationsRelations) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) GetDescription() *string {
+	return s.Description
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) GetFileName() *string {
+	return s.FileName
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) GetId() *string {
+	return s.Id
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) GetSourceEntity() *string {
+	return s.SourceEntity
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) GetTargetEntity() *string {
+	return s.TargetEntity
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) SetDescription(v string) *QueryContentResponseBodyRelationsRelations {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) SetFileName(v string) *QueryContentResponseBodyRelationsRelations {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) SetId(v string) *QueryContentResponseBodyRelationsRelations {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) SetSourceEntity(v string) *QueryContentResponseBodyRelationsRelations {
+	s.SourceEntity = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) SetTargetEntity(v string) *QueryContentResponseBodyRelationsRelations {
+	s.TargetEntity = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyRelationsRelations) Validate() error {
 	return dara.Validate(s)
 }
 

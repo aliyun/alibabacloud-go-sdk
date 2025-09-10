@@ -22,6 +22,10 @@ type iQueryContentAdvanceRequest interface {
 	GetFileUrlObject() io.Reader
 	SetFilter(v string) *QueryContentAdvanceRequest
 	GetFilter() *string
+	SetGraphEnhance(v bool) *QueryContentAdvanceRequest
+	GetGraphEnhance() *bool
+	SetGraphSearchArgs(v *QueryContentAdvanceRequestGraphSearchArgs) *QueryContentAdvanceRequest
+	GetGraphSearchArgs() *QueryContentAdvanceRequestGraphSearchArgs
 	SetHybridSearch(v string) *QueryContentAdvanceRequest
 	GetHybridSearch() *string
 	SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentAdvanceRequest
@@ -101,7 +105,9 @@ type QueryContentAdvanceRequest struct {
 	// example:
 	//
 	// title = \\"test\\" AND name like \\"test%\\"
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter          *string                                    `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	GraphEnhance    *bool                                      `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
+	GraphSearchArgs *QueryContentAdvanceRequestGraphSearchArgs `json:"GraphSearchArgs,omitempty" xml:"GraphSearchArgs,omitempty" type:"Struct"`
 	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
 	// Available values:
@@ -272,6 +278,14 @@ func (s *QueryContentAdvanceRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *QueryContentAdvanceRequest) GetGraphEnhance() *bool {
+	return s.GraphEnhance
+}
+
+func (s *QueryContentAdvanceRequest) GetGraphSearchArgs() *QueryContentAdvanceRequestGraphSearchArgs {
+	return s.GraphSearchArgs
+}
+
 func (s *QueryContentAdvanceRequest) GetHybridSearch() *string {
 	return s.HybridSearch
 }
@@ -362,6 +376,16 @@ func (s *QueryContentAdvanceRequest) SetFilter(v string) *QueryContentAdvanceReq
 	return s
 }
 
+func (s *QueryContentAdvanceRequest) SetGraphEnhance(v bool) *QueryContentAdvanceRequest {
+	s.GraphEnhance = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequest) SetGraphSearchArgs(v *QueryContentAdvanceRequestGraphSearchArgs) *QueryContentAdvanceRequest {
+	s.GraphSearchArgs = v
+	return s
+}
+
 func (s *QueryContentAdvanceRequest) SetHybridSearch(v string) *QueryContentAdvanceRequest {
 	s.HybridSearch = &v
 	return s
@@ -438,5 +462,30 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 }
 
 func (s *QueryContentAdvanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentAdvanceRequestGraphSearchArgs struct {
+	GraphTopK *int32 `json:"GraphTopK,omitempty" xml:"GraphTopK,omitempty"`
+}
+
+func (s QueryContentAdvanceRequestGraphSearchArgs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentAdvanceRequestGraphSearchArgs) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentAdvanceRequestGraphSearchArgs) GetGraphTopK() *int32 {
+	return s.GraphTopK
+}
+
+func (s *QueryContentAdvanceRequestGraphSearchArgs) SetGraphTopK(v int32) *QueryContentAdvanceRequestGraphSearchArgs {
+	s.GraphTopK = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequestGraphSearchArgs) Validate() error {
 	return dara.Validate(s)
 }

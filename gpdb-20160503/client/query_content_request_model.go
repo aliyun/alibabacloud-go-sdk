@@ -21,6 +21,10 @@ type iQueryContentRequest interface {
 	GetFileUrl() *string
 	SetFilter(v string) *QueryContentRequest
 	GetFilter() *string
+	SetGraphEnhance(v bool) *QueryContentRequest
+	GetGraphEnhance() *bool
+	SetGraphSearchArgs(v *QueryContentRequestGraphSearchArgs) *QueryContentRequest
+	GetGraphSearchArgs() *QueryContentRequestGraphSearchArgs
 	SetHybridSearch(v string) *QueryContentRequest
 	GetHybridSearch() *string
 	SetHybridSearchArgs(v map[string]map[string]interface{}) *QueryContentRequest
@@ -100,7 +104,9 @@ type QueryContentRequest struct {
 	// example:
 	//
 	// title = \\"test\\" AND name like \\"test%\\"
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Filter          *string                             `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	GraphEnhance    *bool                               `json:"GraphEnhance,omitempty" xml:"GraphEnhance,omitempty"`
+	GraphSearchArgs *QueryContentRequestGraphSearchArgs `json:"GraphSearchArgs,omitempty" xml:"GraphSearchArgs,omitempty" type:"Struct"`
 	// Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
 	//
 	// Available values:
@@ -271,6 +277,14 @@ func (s *QueryContentRequest) GetFilter() *string {
 	return s.Filter
 }
 
+func (s *QueryContentRequest) GetGraphEnhance() *bool {
+	return s.GraphEnhance
+}
+
+func (s *QueryContentRequest) GetGraphSearchArgs() *QueryContentRequestGraphSearchArgs {
+	return s.GraphSearchArgs
+}
+
 func (s *QueryContentRequest) GetHybridSearch() *string {
 	return s.HybridSearch
 }
@@ -361,6 +375,16 @@ func (s *QueryContentRequest) SetFilter(v string) *QueryContentRequest {
 	return s
 }
 
+func (s *QueryContentRequest) SetGraphEnhance(v bool) *QueryContentRequest {
+	s.GraphEnhance = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetGraphSearchArgs(v *QueryContentRequestGraphSearchArgs) *QueryContentRequest {
+	s.GraphSearchArgs = v
+	return s
+}
+
 func (s *QueryContentRequest) SetHybridSearch(v string) *QueryContentRequest {
 	s.HybridSearch = &v
 	return s
@@ -437,5 +461,30 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 }
 
 func (s *QueryContentRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentRequestGraphSearchArgs struct {
+	GraphTopK *int32 `json:"GraphTopK,omitempty" xml:"GraphTopK,omitempty"`
+}
+
+func (s QueryContentRequestGraphSearchArgs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentRequestGraphSearchArgs) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentRequestGraphSearchArgs) GetGraphTopK() *int32 {
+	return s.GraphTopK
+}
+
+func (s *QueryContentRequestGraphSearchArgs) SetGraphTopK(v int32) *QueryContentRequestGraphSearchArgs {
+	s.GraphTopK = &v
+	return s
+}
+
+func (s *QueryContentRequestGraphSearchArgs) Validate() error {
 	return dara.Validate(s)
 }

@@ -1644,16 +1644,26 @@ func (client *Client) CreateDBResourceGroup(request *CreateDBResourceGroupReques
 //
 // Creates a document collection.
 //
-// @param request - CreateDocumentCollectionRequest
+// @param tmpReq - CreateDocumentCollectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDocumentCollectionResponse
-func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumentCollectionRequest, runtime *dara.RuntimeOptions) (_result *CreateDocumentCollectionResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) CreateDocumentCollectionWithOptions(tmpReq *CreateDocumentCollectionRequest, runtime *dara.RuntimeOptions) (_result *CreateDocumentCollectionResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDocumentCollectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EntityTypes) {
+		request.EntityTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EntityTypes, dara.String("EntityTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RelationshipTypes) {
+		request.RelationshipTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationshipTypes, dara.String("RelationshipTypes"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
@@ -1671,6 +1681,14 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 		query["EmbeddingModel"] = request.EmbeddingModel
 	}
 
+	if !dara.IsNil(request.EnableGraph) {
+		query["EnableGraph"] = request.EnableGraph
+	}
+
+	if !dara.IsNil(request.EntityTypesShrink) {
+		query["EntityTypes"] = request.EntityTypesShrink
+	}
+
 	if !dara.IsNil(request.ExternalStorage) {
 		query["ExternalStorage"] = request.ExternalStorage
 	}
@@ -1685,6 +1703,14 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 	if !dara.IsNil(request.HnswM) {
 		query["HnswM"] = request.HnswM
+	}
+
+	if !dara.IsNil(request.LLMModel) {
+		query["LLMModel"] = request.LLMModel
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.ManagerAccount) {
@@ -1725,6 +1751,10 @@ func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumen
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelationshipTypesShrink) {
+		query["RelationshipTypes"] = request.RelationshipTypesShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -15592,6 +15622,10 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 	}
 	request := &QueryContentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GraphSearchArgs) {
+		request.GraphSearchArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GraphSearchArgs, dara.String("GraphSearchArgs"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.HybridSearchArgs) {
 		request.HybridSearchArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HybridSearchArgs, dara.String("HybridSearchArgs"), dara.String("json"))
 	}
@@ -15619,6 +15653,14 @@ func (client *Client) QueryContentWithOptions(tmpReq *QueryContentRequest, runti
 
 	if !dara.IsNil(request.Filter) {
 		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.GraphEnhance) {
+		query["GraphEnhance"] = request.GraphEnhance
+	}
+
+	if !dara.IsNil(request.GraphSearchArgsShrink) {
+		query["GraphSearchArgs"] = request.GraphSearchArgsShrink
 	}
 
 	if !dara.IsNil(request.HybridSearch) {

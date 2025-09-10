@@ -5,59 +5,59 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iCreateDocumentCollectionRequest interface {
+type iCreateDocumentCollectionShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCollection(v string) *CreateDocumentCollectionRequest
+	SetCollection(v string) *CreateDocumentCollectionShrinkRequest
 	GetCollection() *string
-	SetDBInstanceId(v string) *CreateDocumentCollectionRequest
+	SetDBInstanceId(v string) *CreateDocumentCollectionShrinkRequest
 	GetDBInstanceId() *string
-	SetDimension(v int32) *CreateDocumentCollectionRequest
+	SetDimension(v int32) *CreateDocumentCollectionShrinkRequest
 	GetDimension() *int32
-	SetEmbeddingModel(v string) *CreateDocumentCollectionRequest
+	SetEmbeddingModel(v string) *CreateDocumentCollectionShrinkRequest
 	GetEmbeddingModel() *string
-	SetEnableGraph(v bool) *CreateDocumentCollectionRequest
+	SetEnableGraph(v bool) *CreateDocumentCollectionShrinkRequest
 	GetEnableGraph() *bool
-	SetEntityTypes(v []*string) *CreateDocumentCollectionRequest
-	GetEntityTypes() []*string
-	SetExternalStorage(v int32) *CreateDocumentCollectionRequest
+	SetEntityTypesShrink(v string) *CreateDocumentCollectionShrinkRequest
+	GetEntityTypesShrink() *string
+	SetExternalStorage(v int32) *CreateDocumentCollectionShrinkRequest
 	GetExternalStorage() *int32
-	SetFullTextRetrievalFields(v string) *CreateDocumentCollectionRequest
+	SetFullTextRetrievalFields(v string) *CreateDocumentCollectionShrinkRequest
 	GetFullTextRetrievalFields() *string
-	SetHnswEfConstruction(v string) *CreateDocumentCollectionRequest
+	SetHnswEfConstruction(v string) *CreateDocumentCollectionShrinkRequest
 	GetHnswEfConstruction() *string
-	SetHnswM(v int32) *CreateDocumentCollectionRequest
+	SetHnswM(v int32) *CreateDocumentCollectionShrinkRequest
 	GetHnswM() *int32
-	SetLLMModel(v string) *CreateDocumentCollectionRequest
+	SetLLMModel(v string) *CreateDocumentCollectionShrinkRequest
 	GetLLMModel() *string
-	SetLanguage(v string) *CreateDocumentCollectionRequest
+	SetLanguage(v string) *CreateDocumentCollectionShrinkRequest
 	GetLanguage() *string
-	SetManagerAccount(v string) *CreateDocumentCollectionRequest
+	SetManagerAccount(v string) *CreateDocumentCollectionShrinkRequest
 	GetManagerAccount() *string
-	SetManagerAccountPassword(v string) *CreateDocumentCollectionRequest
+	SetManagerAccountPassword(v string) *CreateDocumentCollectionShrinkRequest
 	GetManagerAccountPassword() *string
-	SetMetadata(v string) *CreateDocumentCollectionRequest
+	SetMetadata(v string) *CreateDocumentCollectionShrinkRequest
 	GetMetadata() *string
-	SetMetadataIndices(v string) *CreateDocumentCollectionRequest
+	SetMetadataIndices(v string) *CreateDocumentCollectionShrinkRequest
 	GetMetadataIndices() *string
-	SetMetrics(v string) *CreateDocumentCollectionRequest
+	SetMetrics(v string) *CreateDocumentCollectionShrinkRequest
 	GetMetrics() *string
-	SetNamespace(v string) *CreateDocumentCollectionRequest
+	SetNamespace(v string) *CreateDocumentCollectionShrinkRequest
 	GetNamespace() *string
-	SetOwnerId(v int64) *CreateDocumentCollectionRequest
+	SetOwnerId(v int64) *CreateDocumentCollectionShrinkRequest
 	GetOwnerId() *int64
-	SetParser(v string) *CreateDocumentCollectionRequest
+	SetParser(v string) *CreateDocumentCollectionShrinkRequest
 	GetParser() *string
-	SetPqEnable(v int32) *CreateDocumentCollectionRequest
+	SetPqEnable(v int32) *CreateDocumentCollectionShrinkRequest
 	GetPqEnable() *int32
-	SetRegionId(v string) *CreateDocumentCollectionRequest
+	SetRegionId(v string) *CreateDocumentCollectionShrinkRequest
 	GetRegionId() *string
-	SetRelationshipTypes(v []*string) *CreateDocumentCollectionRequest
-	GetRelationshipTypes() []*string
+	SetRelationshipTypesShrink(v string) *CreateDocumentCollectionShrinkRequest
+	GetRelationshipTypesShrink() *string
 }
 
-type CreateDocumentCollectionRequest struct {
+type CreateDocumentCollectionShrinkRequest struct {
 	// The name of the document collection that you want to create.
 	//
 	// > The name must comply with PostgreSQL object naming restrictions.
@@ -114,9 +114,9 @@ type CreateDocumentCollectionRequest struct {
 	// example:
 	//
 	// text-embedding-v1
-	EmbeddingModel *string   `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	EnableGraph    *bool     `json:"EnableGraph,omitempty" xml:"EnableGraph,omitempty"`
-	EntityTypes    []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
+	EmbeddingModel    *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	EnableGraph       *bool   `json:"EnableGraph,omitempty" xml:"EnableGraph,omitempty"`
+	EntityTypesShrink *string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty"`
 	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
 	//
 	// >
@@ -236,225 +236,225 @@ type CreateDocumentCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RelationshipTypes []*string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty" type:"Repeated"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelationshipTypesShrink *string `json:"RelationshipTypes,omitempty" xml:"RelationshipTypes,omitempty"`
 }
 
-func (s CreateDocumentCollectionRequest) String() string {
+func (s CreateDocumentCollectionShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s CreateDocumentCollectionRequest) GoString() string {
+func (s CreateDocumentCollectionShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDocumentCollectionRequest) GetCollection() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetCollection() *string {
 	return s.Collection
 }
 
-func (s *CreateDocumentCollectionRequest) GetDBInstanceId() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
-func (s *CreateDocumentCollectionRequest) GetDimension() *int32 {
+func (s *CreateDocumentCollectionShrinkRequest) GetDimension() *int32 {
 	return s.Dimension
 }
 
-func (s *CreateDocumentCollectionRequest) GetEmbeddingModel() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetEmbeddingModel() *string {
 	return s.EmbeddingModel
 }
 
-func (s *CreateDocumentCollectionRequest) GetEnableGraph() *bool {
+func (s *CreateDocumentCollectionShrinkRequest) GetEnableGraph() *bool {
 	return s.EnableGraph
 }
 
-func (s *CreateDocumentCollectionRequest) GetEntityTypes() []*string {
-	return s.EntityTypes
+func (s *CreateDocumentCollectionShrinkRequest) GetEntityTypesShrink() *string {
+	return s.EntityTypesShrink
 }
 
-func (s *CreateDocumentCollectionRequest) GetExternalStorage() *int32 {
+func (s *CreateDocumentCollectionShrinkRequest) GetExternalStorage() *int32 {
 	return s.ExternalStorage
 }
 
-func (s *CreateDocumentCollectionRequest) GetFullTextRetrievalFields() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetFullTextRetrievalFields() *string {
 	return s.FullTextRetrievalFields
 }
 
-func (s *CreateDocumentCollectionRequest) GetHnswEfConstruction() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetHnswEfConstruction() *string {
 	return s.HnswEfConstruction
 }
 
-func (s *CreateDocumentCollectionRequest) GetHnswM() *int32 {
+func (s *CreateDocumentCollectionShrinkRequest) GetHnswM() *int32 {
 	return s.HnswM
 }
 
-func (s *CreateDocumentCollectionRequest) GetLLMModel() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetLLMModel() *string {
 	return s.LLMModel
 }
 
-func (s *CreateDocumentCollectionRequest) GetLanguage() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetLanguage() *string {
 	return s.Language
 }
 
-func (s *CreateDocumentCollectionRequest) GetManagerAccount() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetManagerAccount() *string {
 	return s.ManagerAccount
 }
 
-func (s *CreateDocumentCollectionRequest) GetManagerAccountPassword() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetManagerAccountPassword() *string {
 	return s.ManagerAccountPassword
 }
 
-func (s *CreateDocumentCollectionRequest) GetMetadata() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetMetadata() *string {
 	return s.Metadata
 }
 
-func (s *CreateDocumentCollectionRequest) GetMetadataIndices() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetMetadataIndices() *string {
 	return s.MetadataIndices
 }
 
-func (s *CreateDocumentCollectionRequest) GetMetrics() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetMetrics() *string {
 	return s.Metrics
 }
 
-func (s *CreateDocumentCollectionRequest) GetNamespace() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetNamespace() *string {
 	return s.Namespace
 }
 
-func (s *CreateDocumentCollectionRequest) GetOwnerId() *int64 {
+func (s *CreateDocumentCollectionShrinkRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
-func (s *CreateDocumentCollectionRequest) GetParser() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetParser() *string {
 	return s.Parser
 }
 
-func (s *CreateDocumentCollectionRequest) GetPqEnable() *int32 {
+func (s *CreateDocumentCollectionShrinkRequest) GetPqEnable() *int32 {
 	return s.PqEnable
 }
 
-func (s *CreateDocumentCollectionRequest) GetRegionId() *string {
+func (s *CreateDocumentCollectionShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *CreateDocumentCollectionRequest) GetRelationshipTypes() []*string {
-	return s.RelationshipTypes
+func (s *CreateDocumentCollectionShrinkRequest) GetRelationshipTypesShrink() *string {
+	return s.RelationshipTypesShrink
 }
 
-func (s *CreateDocumentCollectionRequest) SetCollection(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetCollection(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Collection = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetDBInstanceId(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetDBInstanceId(v string) *CreateDocumentCollectionShrinkRequest {
 	s.DBInstanceId = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetDimension(v int32) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetDimension(v int32) *CreateDocumentCollectionShrinkRequest {
 	s.Dimension = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetEmbeddingModel(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetEmbeddingModel(v string) *CreateDocumentCollectionShrinkRequest {
 	s.EmbeddingModel = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetEnableGraph(v bool) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetEnableGraph(v bool) *CreateDocumentCollectionShrinkRequest {
 	s.EnableGraph = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetEntityTypes(v []*string) *CreateDocumentCollectionRequest {
-	s.EntityTypes = v
+func (s *CreateDocumentCollectionShrinkRequest) SetEntityTypesShrink(v string) *CreateDocumentCollectionShrinkRequest {
+	s.EntityTypesShrink = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetExternalStorage(v int32) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetExternalStorage(v int32) *CreateDocumentCollectionShrinkRequest {
 	s.ExternalStorage = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetFullTextRetrievalFields(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetFullTextRetrievalFields(v string) *CreateDocumentCollectionShrinkRequest {
 	s.FullTextRetrievalFields = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetHnswEfConstruction(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetHnswEfConstruction(v string) *CreateDocumentCollectionShrinkRequest {
 	s.HnswEfConstruction = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetHnswM(v int32) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetHnswM(v int32) *CreateDocumentCollectionShrinkRequest {
 	s.HnswM = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetLLMModel(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetLLMModel(v string) *CreateDocumentCollectionShrinkRequest {
 	s.LLMModel = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetLanguage(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetLanguage(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Language = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetManagerAccount(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetManagerAccount(v string) *CreateDocumentCollectionShrinkRequest {
 	s.ManagerAccount = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetManagerAccountPassword(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetManagerAccountPassword(v string) *CreateDocumentCollectionShrinkRequest {
 	s.ManagerAccountPassword = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetMetadata(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetMetadata(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Metadata = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetMetadataIndices(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetMetadataIndices(v string) *CreateDocumentCollectionShrinkRequest {
 	s.MetadataIndices = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetMetrics(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetMetrics(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Metrics = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetNamespace(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetNamespace(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Namespace = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetOwnerId(v int64) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetOwnerId(v int64) *CreateDocumentCollectionShrinkRequest {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetParser(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetParser(v string) *CreateDocumentCollectionShrinkRequest {
 	s.Parser = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetPqEnable(v int32) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetPqEnable(v int32) *CreateDocumentCollectionShrinkRequest {
 	s.PqEnable = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetRegionId(v string) *CreateDocumentCollectionRequest {
+func (s *CreateDocumentCollectionShrinkRequest) SetRegionId(v string) *CreateDocumentCollectionShrinkRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) SetRelationshipTypes(v []*string) *CreateDocumentCollectionRequest {
-	s.RelationshipTypes = v
+func (s *CreateDocumentCollectionShrinkRequest) SetRelationshipTypesShrink(v string) *CreateDocumentCollectionShrinkRequest {
+	s.RelationshipTypesShrink = &v
 	return s
 }
 
-func (s *CreateDocumentCollectionRequest) Validate() error {
+func (s *CreateDocumentCollectionShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }
