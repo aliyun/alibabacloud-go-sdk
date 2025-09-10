@@ -1790,6 +1790,10 @@ type LogtailPipelineConfig struct {
 	// 127.0.0.1 - - [10/Jun/2022:12:36:49 +0800] "GET /index.html HTTP/1.1" 200
 	LogSample  *string                  `json:"logSample,omitempty" xml:"logSample,omitempty"`
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"Type": "task_example"}
+	Task map[string]interface{} `json:"task,omitempty" xml:"task,omitempty"`
 }
 
 func (s LogtailPipelineConfig) String() string {
@@ -1842,6 +1846,11 @@ func (s *LogtailPipelineConfig) SetLogSample(v string) *LogtailPipelineConfig {
 
 func (s *LogtailPipelineConfig) SetProcessors(v []map[string]interface{}) *LogtailPipelineConfig {
 	s.Processors = v
+	return s
+}
+
+func (s *LogtailPipelineConfig) SetTask(v map[string]interface{}) *LogtailPipelineConfig {
+	s.Task = v
 	return s
 }
 
@@ -6712,6 +6721,7 @@ type CreateLogtailPipelineConfigRequest struct {
 	//
 	//     	- After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	Task       map[string]interface{}   `json:"task,omitempty" xml:"task,omitempty"`
 }
 
 func (s CreateLogtailPipelineConfigRequest) String() string {
@@ -6754,6 +6764,11 @@ func (s *CreateLogtailPipelineConfigRequest) SetLogSample(v string) *CreateLogta
 
 func (s *CreateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interface{}) *CreateLogtailPipelineConfigRequest {
 	s.Processors = v
+	return s
+}
+
+func (s *CreateLogtailPipelineConfigRequest) SetTask(v map[string]interface{}) *CreateLogtailPipelineConfigRequest {
+	s.Task = v
 	return s
 }
 
@@ -11291,7 +11306,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	//
 	// 10000
 	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
-	// The number of rows that are processed in the request.
+	// The number of rows that are processed in the query.
 	//
 	// example:
 	//
@@ -13613,18 +13628,26 @@ func (s *ListConfigResponse) SetBody(v *ListConfigResponseBody) *ListConfigRespo
 }
 
 type ListConsumeProcessorsRequest struct {
+	// The display name of the consumption processor.
+	//
 	// example:
 	//
 	// filter-get-request
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The offset. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Offset *string `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The identifier of the consumption processor.
+	//
 	// example:
 	//
 	// consume-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// The number of entries. Default value: 200.
+	//
 	// example:
 	//
 	// 100
@@ -13660,11 +13683,16 @@ func (s *ListConsumeProcessorsRequest) SetSize(v string) *ListConsumeProcessorsR
 }
 
 type ListConsumeProcessorsResponseBody struct {
+	// The number of consumption processors for offset.
+	//
 	// example:
 	//
 	// 10
-	Count      *int32              `json:"count,omitempty" xml:"count,omitempty"`
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of consumption processor information.
 	Processors []*ConsumeProcessor `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	// The total number of consumption processors that meet the query conditions.
+	//
 	// example:
 	//
 	// 20
@@ -14888,6 +14916,7 @@ type ListLogtailPipelineConfigRequest struct {
 	//
 	// logtail-config-sample
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	// The name of the Logstore.
 	//
 	// example:
@@ -14918,6 +14947,11 @@ func (s ListLogtailPipelineConfigRequest) GoString() string {
 
 func (s *ListLogtailPipelineConfigRequest) SetConfigName(v string) *ListLogtailPipelineConfigRequest {
 	s.ConfigName = &v
+	return s
+}
+
+func (s *ListLogtailPipelineConfigRequest) SetConfigType(v string) *ListLogtailPipelineConfigRequest {
+	s.ConfigType = &v
 	return s
 }
 
@@ -16737,9 +16771,14 @@ func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataRes
 }
 
 type PutConsumeProcessorRequest struct {
+	// Consumption processor configuration.
+	//
 	// This parameter is required.
 	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	Description   *string                        `json:"description,omitempty" xml:"description,omitempty"`
+	// The description.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16970,7 +17009,13 @@ func (s *PutProjectPolicyResponse) SetStatusCode(v int32) *PutProjectPolicyRespo
 }
 
 type PutProjectTransferAccelerationRequest struct {
+	// Whether to enable transfer acceleration.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -18787,6 +18832,7 @@ type UpdateLogtailPipelineConfigRequest struct {
 	//
 	//     	- After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
+	Task       map[string]interface{}   `json:"task,omitempty" xml:"task,omitempty"`
 }
 
 func (s UpdateLogtailPipelineConfigRequest) String() string {
@@ -18829,6 +18875,11 @@ func (s *UpdateLogtailPipelineConfigRequest) SetLogSample(v string) *UpdateLogta
 
 func (s *UpdateLogtailPipelineConfigRequest) SetProcessors(v []map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
 	s.Processors = v
+	return s
+}
+
+func (s *UpdateLogtailPipelineConfigRequest) SetTask(v map[string]interface{}) *UpdateLogtailPipelineConfigRequest {
+	s.Task = v
 	return s
 }
 
@@ -20662,7 +20713,7 @@ func (client *Client) CreateAgentInstanceConfig(request *CreateAgentInstanceConf
 
 // Summary:
 //
-// # CreateAlert
+// Creates an alert rule in a project.
 //
 // @param request - CreateAlertRequest
 //
@@ -20726,7 +20777,7 @@ func (client *Client) CreateAlertWithOptions(project *string, request *CreateAle
 
 // Summary:
 //
-// # CreateAlert
+// Creates an alert rule in a project.
 //
 // @param request - CreateAlertRequest
 //
@@ -21772,6 +21823,10 @@ func (client *Client) CreateLogtailPipelineConfigWithOptions(project *string, re
 
 	if !tea.BoolValue(util.IsUnset(request.Processors)) {
 		body["processors"] = request.Processors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["task"] = request.Task
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -25735,7 +25790,7 @@ func (client *Client) GetConfig(project *string, configName *string) (_result *G
 
 // Summary:
 //
-// # GetConsumeProcessor
+// # Query the details of a consumer processor
 //
 // @param headers - map
 //
@@ -25771,7 +25826,7 @@ func (client *Client) GetConsumeProcessorWithOptions(project *string, processorN
 
 // Summary:
 //
-// # GetConsumeProcessor
+// # Query the details of a consumer processor
 //
 // @return GetConsumeProcessorResponse
 func (client *Client) GetConsumeProcessor(project *string, processorName *string) (_result *GetConsumeProcessorResponse, _err error) {
@@ -26867,11 +26922,21 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 //
 // Description:
 //
-//	  You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
+// You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
 //
-//		- You can call this operation by using Simple Log Service SDK for Go or Java.
+//   - When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
 //
-//		- For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+//   - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - GetLogsV2Request
 //
@@ -26972,11 +27037,21 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 //
 // Description:
 //
-//	  You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
+// You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
 //
-//		- You can call this operation by using Simple Log Service SDK for Go or Java.
+//   - When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
 //
-//		- For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+//   - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
 //
 // @param request - GetLogsV2Request
 //
@@ -28864,7 +28939,7 @@ func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_
 
 // Summary:
 //
-// # ListConsumeProcessors
+// Queries a list of consumption processors that meet specific conditions.
 //
 // @param request - ListConsumeProcessorsRequest
 //
@@ -28924,7 +28999,7 @@ func (client *Client) ListConsumeProcessorsWithOptions(project *string, request 
 
 // Summary:
 //
-// # ListConsumeProcessors
+// Queries a list of consumption processors that meet specific conditions.
 //
 // @param request - ListConsumeProcessorsRequest
 //
@@ -29619,6 +29694,10 @@ func (client *Client) ListLogtailPipelineConfigWithOptions(project *string, requ
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConfigName)) {
 		query["configName"] = request.ConfigName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		query["configType"] = request.ConfigType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LogstoreName)) {
@@ -31062,7 +31141,7 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 
 // Summary:
 //
-// # PutConsumeProcessor
+// Creates or updates a consumption processor.
 //
 // @param request - PutConsumeProcessorRequest
 //
@@ -31118,7 +31197,7 @@ func (client *Client) PutConsumeProcessorWithOptions(project *string, processorN
 
 // Summary:
 //
-// # PutConsumeProcessor
+// Creates or updates a consumption processor.
 //
 // @param request - PutConsumeProcessorRequest
 //
@@ -31413,7 +31492,7 @@ func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolic
 
 // Summary:
 //
-// 设置project传输加速状态
+// Enables or disables transfer acceleration.
 //
 // @param request - PutProjectTransferAccelerationRequest
 //
@@ -31461,7 +31540,7 @@ func (client *Client) PutProjectTransferAccelerationWithOptions(project *string,
 
 // Summary:
 //
-// 设置project传输加速状态
+// Enables or disables transfer acceleration.
 //
 // @param request - PutProjectTransferAccelerationRequest
 //
@@ -33861,6 +33940,10 @@ func (client *Client) UpdateLogtailPipelineConfigWithOptions(project *string, co
 
 	if !tea.BoolValue(util.IsUnset(request.Processors)) {
 		body["processors"] = request.Processors
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["task"] = request.Task
 	}
 
 	req := &openapi.OpenApiRequest{
