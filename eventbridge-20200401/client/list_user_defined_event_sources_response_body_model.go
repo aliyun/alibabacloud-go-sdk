@@ -203,7 +203,8 @@ type ListUserDefinedEventSourcesResponseBodyDataEventSourceList struct {
 	// The parameters that are returned if Message Queue for Apache Kafka is specified as the event source.
 	SourceKafkaParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Simple Message Queue (formerly MNS) (SMQ) is specified as the event source.
-	SourceMNSParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	SourceMNSParameters      *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters      `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	SourceOSSEventParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for RabbitMQ is specified as the event source.
 	SourceRabbitMQParameters *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for Apache RocketMQ is specified as the event source.
@@ -264,6 +265,10 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) GetSourceKa
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) GetSourceMNSParameters() *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters {
 	return s.SourceMNSParameters
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) GetSourceOSSEventParameters() *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters {
+	return s.SourceOSSEventParameters
 }
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) GetSourceRabbitMQParameters() *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters {
@@ -327,6 +332,11 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) SetSourceKa
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) SetSourceMNSParameters(v *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters) *ListUserDefinedEventSourcesResponseBodyDataEventSourceList {
 	s.SourceMNSParameters = v
+	return s
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceList) SetSourceOSSEventParameters(v *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) *ListUserDefinedEventSourcesResponseBodyDataEventSourceList {
+	s.SourceOSSEventParameters = v
 	return s
 }
 
@@ -716,6 +726,51 @@ func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSPara
 }
 
 func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters struct {
+	EventTypes []*string   `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	MatchRules interface{} `json:"MatchRules,omitempty" xml:"MatchRules,omitempty"`
+	StsRoleArn *string     `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
+}
+
+func (s ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) GetEventTypes() []*string {
+	return s.EventTypes
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) GetMatchRules() interface{} {
+	return s.MatchRules
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) GetStsRoleArn() *string {
+	return s.StsRoleArn
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) SetEventTypes(v []*string) *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters {
+	s.EventTypes = v
+	return s
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) SetMatchRules(v interface{}) *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters {
+	s.MatchRules = v
+	return s
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) SetStsRoleArn(v string) *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters {
+	s.StsRoleArn = &v
+	return s
+}
+
+func (s *ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -27,6 +27,8 @@ type iUpdateEventSourceShrinkRequest interface {
 	GetSourceKafkaParametersShrink() *string
 	SetSourceMNSParametersShrink(v string) *UpdateEventSourceShrinkRequest
 	GetSourceMNSParametersShrink() *string
+	SetSourceOSSEventParametersShrink(v string) *UpdateEventSourceShrinkRequest
+	GetSourceOSSEventParametersShrink() *string
 	SetSourceRabbitMQParametersShrink(v string) *UpdateEventSourceShrinkRequest
 	GetSourceRabbitMQParametersShrink() *string
 	SetSourceRocketMQParametersShrink(v string) *UpdateEventSourceShrinkRequest
@@ -79,7 +81,8 @@ type UpdateEventSourceShrinkRequest struct {
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
 	SourceKafkaParametersShrink *string `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Service (MNS).
-	SourceMNSParametersShrink *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
+	SourceMNSParametersShrink      *string `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty"`
+	SourceOSSEventParametersShrink *string `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParametersShrink *string `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -132,6 +135,10 @@ func (s *UpdateEventSourceShrinkRequest) GetSourceKafkaParametersShrink() *strin
 
 func (s *UpdateEventSourceShrinkRequest) GetSourceMNSParametersShrink() *string {
 	return s.SourceMNSParametersShrink
+}
+
+func (s *UpdateEventSourceShrinkRequest) GetSourceOSSEventParametersShrink() *string {
+	return s.SourceOSSEventParametersShrink
 }
 
 func (s *UpdateEventSourceShrinkRequest) GetSourceRabbitMQParametersShrink() *string {
@@ -192,6 +199,11 @@ func (s *UpdateEventSourceShrinkRequest) SetSourceKafkaParametersShrink(v string
 
 func (s *UpdateEventSourceShrinkRequest) SetSourceMNSParametersShrink(v string) *UpdateEventSourceShrinkRequest {
 	s.SourceMNSParametersShrink = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetSourceOSSEventParametersShrink(v string) *UpdateEventSourceShrinkRequest {
+	s.SourceOSSEventParametersShrink = &v
 	return s
 }
 

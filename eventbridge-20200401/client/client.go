@@ -399,6 +399,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 		request.SourceMNSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMNSParameters, dara.String("SourceMNSParameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.SourceOSSEventParameters) {
+		request.SourceOSSEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceOSSEventParameters, dara.String("SourceOSSEventParameters"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SourceRabbitMQParameters) {
 		request.SourceRabbitMQParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceRabbitMQParameters, dara.String("SourceRabbitMQParameters"), dara.String("json"))
 	}
@@ -450,6 +454,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 	if !dara.IsNil(request.SourceMNSParametersShrink) {
 		body["SourceMNSParameters"] = request.SourceMNSParametersShrink
+	}
+
+	if !dara.IsNil(request.SourceOSSEventParametersShrink) {
+		body["SourceOSSEventParameters"] = request.SourceOSSEventParametersShrink
 	}
 
 	if !dara.IsNil(request.SourceRabbitMQParametersShrink) {
@@ -3500,6 +3508,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 		request.SourceMNSParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceMNSParameters, dara.String("SourceMNSParameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.SourceOSSEventParameters) {
+		request.SourceOSSEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceOSSEventParameters, dara.String("SourceOSSEventParameters"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SourceRabbitMQParameters) {
 		request.SourceRabbitMQParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceRabbitMQParameters, dara.String("SourceRabbitMQParameters"), dara.String("json"))
 	}
@@ -3551,6 +3563,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 
 	if !dara.IsNil(request.SourceMNSParametersShrink) {
 		body["SourceMNSParameters"] = request.SourceMNSParametersShrink
+	}
+
+	if !dara.IsNil(request.SourceOSSEventParametersShrink) {
+		body["SourceOSSEventParameters"] = request.SourceOSSEventParametersShrink
 	}
 
 	if !dara.IsNil(request.SourceRabbitMQParametersShrink) {

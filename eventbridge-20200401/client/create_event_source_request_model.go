@@ -27,6 +27,8 @@ type iCreateEventSourceRequest interface {
 	GetSourceKafkaParameters() *CreateEventSourceRequestSourceKafkaParameters
 	SetSourceMNSParameters(v *CreateEventSourceRequestSourceMNSParameters) *CreateEventSourceRequest
 	GetSourceMNSParameters() *CreateEventSourceRequestSourceMNSParameters
+	SetSourceOSSEventParameters(v *CreateEventSourceRequestSourceOSSEventParameters) *CreateEventSourceRequest
+	GetSourceOSSEventParameters() *CreateEventSourceRequestSourceOSSEventParameters
 	SetSourceRabbitMQParameters(v *CreateEventSourceRequestSourceRabbitMQParameters) *CreateEventSourceRequest
 	GetSourceRabbitMQParameters() *CreateEventSourceRequestSourceRabbitMQParameters
 	SetSourceRocketMQParameters(v *CreateEventSourceRequestSourceRocketMQParameters) *CreateEventSourceRequest
@@ -75,7 +77,8 @@ type CreateEventSourceRequest struct {
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
 	SourceKafkaParameters *CreateEventSourceRequestSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Simple Message Queue (formerly MNS) (SMQ) as the event source. If you specify SMQ as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
-	SourceMNSParameters *CreateEventSourceRequestSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	SourceMNSParameters      *CreateEventSourceRequestSourceMNSParameters      `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
+	SourceOSSEventParameters *CreateEventSourceRequestSourceOSSEventParameters `json:"SourceOSSEventParameters,omitempty" xml:"SourceOSSEventParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *CreateEventSourceRequestSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -128,6 +131,10 @@ func (s *CreateEventSourceRequest) GetSourceKafkaParameters() *CreateEventSource
 
 func (s *CreateEventSourceRequest) GetSourceMNSParameters() *CreateEventSourceRequestSourceMNSParameters {
 	return s.SourceMNSParameters
+}
+
+func (s *CreateEventSourceRequest) GetSourceOSSEventParameters() *CreateEventSourceRequestSourceOSSEventParameters {
+	return s.SourceOSSEventParameters
 }
 
 func (s *CreateEventSourceRequest) GetSourceRabbitMQParameters() *CreateEventSourceRequestSourceRabbitMQParameters {
@@ -188,6 +195,11 @@ func (s *CreateEventSourceRequest) SetSourceKafkaParameters(v *CreateEventSource
 
 func (s *CreateEventSourceRequest) SetSourceMNSParameters(v *CreateEventSourceRequestSourceMNSParameters) *CreateEventSourceRequest {
 	s.SourceMNSParameters = v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetSourceOSSEventParameters(v *CreateEventSourceRequestSourceOSSEventParameters) *CreateEventSourceRequest {
+	s.SourceOSSEventParameters = v
 	return s
 }
 
@@ -545,6 +557,106 @@ func (s *CreateEventSourceRequestSourceMNSParameters) SetRegionId(v string) *Cre
 }
 
 func (s *CreateEventSourceRequestSourceMNSParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEventSourceRequestSourceOSSEventParameters struct {
+	EventTypes []*string                                                       `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	MatchRules [][]*CreateEventSourceRequestSourceOSSEventParametersMatchRules `json:"MatchRules,omitempty" xml:"MatchRules,omitempty" type:"Repeated"`
+	StsRoleArn *string                                                         `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
+}
+
+func (s CreateEventSourceRequestSourceOSSEventParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventSourceRequestSourceOSSEventParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) GetEventTypes() []*string {
+	return s.EventTypes
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) GetMatchRules() [][]*CreateEventSourceRequestSourceOSSEventParametersMatchRules {
+	return s.MatchRules
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) GetStsRoleArn() *string {
+	return s.StsRoleArn
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) SetEventTypes(v []*string) *CreateEventSourceRequestSourceOSSEventParameters {
+	s.EventTypes = v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) SetMatchRules(v [][]*CreateEventSourceRequestSourceOSSEventParametersMatchRules) *CreateEventSourceRequestSourceOSSEventParameters {
+	s.MatchRules = v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) SetStsRoleArn(v string) *CreateEventSourceRequestSourceOSSEventParameters {
+	s.StsRoleArn = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParameters) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEventSourceRequestSourceOSSEventParametersMatchRules struct {
+	Prefix     *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Suffix     *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MatchState *bool   `json:"MatchState,omitempty" xml:"MatchState,omitempty"`
+}
+
+func (s CreateEventSourceRequestSourceOSSEventParametersMatchRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventSourceRequestSourceOSSEventParametersMatchRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) GetPrefix() *string {
+	return s.Prefix
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) GetSuffix() *string {
+	return s.Suffix
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) GetMatchState() *bool {
+	return s.MatchState
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) SetPrefix(v string) *CreateEventSourceRequestSourceOSSEventParametersMatchRules {
+	s.Prefix = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) SetSuffix(v string) *CreateEventSourceRequestSourceOSSEventParametersMatchRules {
+	s.Suffix = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) SetName(v string) *CreateEventSourceRequestSourceOSSEventParametersMatchRules {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) SetMatchState(v bool) *CreateEventSourceRequestSourceOSSEventParametersMatchRules {
+	s.MatchState = &v
+	return s
+}
+
+func (s *CreateEventSourceRequestSourceOSSEventParametersMatchRules) Validate() error {
 	return dara.Validate(s)
 }
 
