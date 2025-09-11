@@ -209,6 +209,66 @@ func (client *Client) AddDataLevelPermissionWhiteList(request *AddDataLevelPermi
 
 // Summary:
 //
+// 创建数据源
+//
+// @param request - AddDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataSourceResponse
+func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, runtime *dara.RuntimeOptions) (_result *AddDataSourceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddModel) {
+		query["AddModel"] = request.AddModel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDataSource"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据源
+//
+// @param request - AddDataSourceRequest
+//
+// @return AddDataSourceResponse
+func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *AddDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddDataSourceResponse{}
+	_body, _err := client.AddDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Add a sharing configuration for data works.
 //
 // @param request - AddShareReportRequest
@@ -1188,6 +1248,126 @@ func (client *Client) ChangeVisibilityModel(request *ChangeVisibilityModelReques
 
 // Summary:
 //
+// 检查给定的cubeId是否存在
+//
+// @param request - CheckDatasetExistedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDatasetExistedResponse
+func (client *Client) CheckDatasetExistedWithOptions(request *CheckDatasetExistedRequest, runtime *dara.RuntimeOptions) (_result *CheckDatasetExistedResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CubeId) {
+		query["CubeId"] = request.CubeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckDatasetExisted"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckDatasetExistedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查给定的cubeId是否存在
+//
+// @param request - CheckDatasetExistedRequest
+//
+// @return CheckDatasetExistedResponse
+func (client *Client) CheckDatasetExisted(request *CheckDatasetExistedRequest) (_result *CheckDatasetExistedResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckDatasetExistedResponse{}
+	_body, _err := client.CheckDatasetExistedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 判断用户是否属于组织
+//
+// @param request - CheckOrganizationMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckOrganizationMemberResponse
+func (client *Client) CheckOrganizationMemberWithOptions(request *CheckOrganizationMemberRequest, runtime *dara.RuntimeOptions) (_result *CheckOrganizationMemberResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckOrganizationMember"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckOrganizationMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 判断用户是否属于组织
+//
+// @param request - CheckOrganizationMemberRequest
+//
+// @return CheckOrganizationMemberResponse
+func (client *Client) CheckOrganizationMember(request *CheckOrganizationMemberRequest) (_result *CheckOrganizationMemberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckOrganizationMemberResponse{}
+	_body, _err := client.CheckOrganizationMemberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a user has permissions to view data works, such as dashboards and workbooks.
 //
 // @param request - CheckReadableRequest
@@ -1243,6 +1423,162 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckReadableResponse{}
 	_body, _err := client.CheckReadableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据自定义sql创建数据集
+//
+// @param request - CreateCubeBySqlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCubeBySqlResponse
+func (client *Client) CreateCubeBySqlWithOptions(request *CreateCubeBySqlRequest, runtime *dara.RuntimeOptions) (_result *CreateCubeBySqlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Caption) {
+		query["Caption"] = request.Caption
+	}
+
+	if !dara.IsNil(request.CustomSql) {
+		query["CustomSql"] = request.CustomSql
+	}
+
+	if !dara.IsNil(request.DsId) {
+		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCubeBySql"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCubeBySqlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据自定义sql创建数据集
+//
+// @param request - CreateCubeBySqlRequest
+//
+// @return CreateCubeBySqlResponse
+func (client *Client) CreateCubeBySql(request *CreateCubeBySqlRequest) (_result *CreateCubeBySqlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCubeBySqlResponse{}
+	_body, _err := client.CreateCubeBySqlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据物理表名称创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DsId) {
+		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TargetDirectoryId) {
+		query["TargetDirectoryId"] = request.TargetDirectoryId
+	}
+
+	if !dara.IsNil(request.UserDefineCubeName) {
+		query["UserDefineCubeName"] = request.UserDefineCubeName
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataset"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据物理表名称创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3670,6 +4006,66 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListWorkspaceRolesResponse{}
 	_body, _err := client.ListWorkspaceRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户所有空间角色列表
+//
+// @param request - ListWorkspaceUserRolesByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceUserRolesByUserIdResponse
+func (client *Client) ListWorkspaceUserRolesByUserIdWithOptions(request *ListWorkspaceUserRolesByUserIdRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspaceUserRolesByUserIdResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaceUserRolesByUserId"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspaceUserRolesByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户所有空间角色列表
+//
+// @param request - ListWorkspaceUserRolesByUserIdRequest
+//
+// @return ListWorkspaceUserRolesByUserIdResponse
+func (client *Client) ListWorkspaceUserRolesByUserId(request *ListWorkspaceUserRolesByUserIdRequest) (_result *ListWorkspaceUserRolesByUserIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkspaceUserRolesByUserIdResponse{}
+	_body, _err := client.ListWorkspaceUserRolesByUserIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7327,6 +7723,82 @@ func (client *Client) SmartqQueryAbility(request *SmartqQueryAbilityRequest) (_r
 
 // Summary:
 //
+// 更新自定义sql数据集
+//
+// @param request - UpdateCubeBySqlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCubeBySqlResponse
+func (client *Client) UpdateCubeBySqlWithOptions(request *UpdateCubeBySqlRequest, runtime *dara.RuntimeOptions) (_result *UpdateCubeBySqlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CubeId) {
+		query["CubeId"] = request.CubeId
+	}
+
+	if !dara.IsNil(request.CustomSql) {
+		query["CustomSql"] = request.CustomSql
+	}
+
+	if !dara.IsNil(request.DsId) {
+		query["DsId"] = request.DsId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCubeBySql"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCubeBySqlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义sql数据集
+//
+// @param request - UpdateCubeBySqlRequest
+//
+// @return UpdateCubeBySqlResponse
+func (client *Client) UpdateCubeBySql(request *UpdateCubeBySqlRequest) (_result *UpdateCubeBySqlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCubeBySqlResponse{}
+	_body, _err := client.UpdateCubeBySqlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Indicates whether the request is successful. Valid values:
 //
 //   - true: The request was successful.
@@ -7410,6 +7882,66 @@ func (client *Client) UpdateDataLevelPermissionStatus(request *UpdateDataLevelPe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataLevelPermissionStatusResponse{}
 	_body, _err := client.UpdateDataLevelPermissionStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改数据源配置
+//
+// @param request - UpdateDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataSourceResponse
+func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateModel) {
+		query["UpdateModel"] = request.UpdateModel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataSource"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改数据源配置
+//
+// @param request - UpdateDataSourceRequest
+//
+// @return UpdateDataSourceResponse
+func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_result *UpdateDataSourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataSourceResponse{}
+	_body, _err := client.UpdateDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
