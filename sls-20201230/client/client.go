@@ -798,6 +798,224 @@ func (s *DeleteLogStoreLogsTask) SetTo(v int32) *DeleteLogStoreLogsTask {
 	return s
 }
 
+type ESIngestion struct {
+	// This parameter is required.
+	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1714360481
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// es ingestion
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// es ingestion
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1714360481
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-es-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// example:
+	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ESIngestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ESIngestion) GoString() string {
+	return s.String()
+}
+
+func (s *ESIngestion) SetConfiguration(v *ESIngestionConfiguration) *ESIngestion {
+	s.Configuration = v
+	return s
+}
+
+func (s *ESIngestion) SetCreateTime(v int64) *ESIngestion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ESIngestion) SetDescription(v string) *ESIngestion {
+	s.Description = &v
+	return s
+}
+
+func (s *ESIngestion) SetDisplayName(v string) *ESIngestion {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ESIngestion) SetLastModifiedTime(v int64) *ESIngestion {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *ESIngestion) SetName(v string) *ESIngestion {
+	s.Name = &v
+	return s
+}
+
+func (s *ESIngestion) SetSchedule(v *Schedule) *ESIngestion {
+	s.Schedule = v
+	return s
+}
+
+func (s *ESIngestion) SetScheduleId(v string) *ESIngestion {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *ESIngestion) SetStatus(v string) *ESIngestion {
+	s.Status = &v
+	return s
+}
+
+type ESIngestionConfiguration struct {
+	// This parameter is required.
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// This parameter is required.
+	Source *ESIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s ESIngestionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ESIngestionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ESIngestionConfiguration) SetLogstore(v string) *ESIngestionConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ESIngestionConfiguration) SetSource(v *ESIngestionConfigurationSource) *ESIngestionConfiguration {
+	s.Source = v
+	return s
+}
+
+type ESIngestionConfigurationSource struct {
+	// This parameter is required.
+	BootstrapServers *string `json:"BootstrapServers,omitempty" xml:"BootstrapServers,omitempty"`
+	// This parameter is required.
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	MinFragRangeSec *int64 `json:"MinFragRangeSec,omitempty" xml:"MinFragRangeSec,omitempty"`
+	// This parameter is required.
+	ConnectorMode *string `json:"connectorMode,omitempty" xml:"connectorMode,omitempty"`
+	EndTime       *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	MaxDataDelaySec *int64  `json:"maxDataDelaySec,omitempty" xml:"maxDataDelaySec,omitempty"`
+	Password        *string `json:"password,omitempty" xml:"password,omitempty"`
+	// This parameter is required.
+	Query         *string `json:"query,omitempty" xml:"query,omitempty"`
+	StartTime     *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	TimeFieldName *string `json:"timeFieldName,omitempty" xml:"timeFieldName,omitempty"`
+	TimeFormat    *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	TimeZone      *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	Username      *string `json:"username,omitempty" xml:"username,omitempty"`
+	VpcId         *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ESIngestionConfigurationSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ESIngestionConfigurationSource) GoString() string {
+	return s.String()
+}
+
+func (s *ESIngestionConfigurationSource) SetBootstrapServers(v string) *ESIngestionConfigurationSource {
+	s.BootstrapServers = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetIndex(v string) *ESIngestionConfigurationSource {
+	s.Index = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetMinFragRangeSec(v int64) *ESIngestionConfigurationSource {
+	s.MinFragRangeSec = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetConnectorMode(v string) *ESIngestionConfigurationSource {
+	s.ConnectorMode = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetEndTime(v int64) *ESIngestionConfigurationSource {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetMaxDataDelaySec(v int64) *ESIngestionConfigurationSource {
+	s.MaxDataDelaySec = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetPassword(v string) *ESIngestionConfigurationSource {
+	s.Password = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetQuery(v string) *ESIngestionConfigurationSource {
+	s.Query = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetStartTime(v int64) *ESIngestionConfigurationSource {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetTimeFieldName(v string) *ESIngestionConfigurationSource {
+	s.TimeFieldName = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetTimeFormat(v string) *ESIngestionConfigurationSource {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetTimeZone(v string) *ESIngestionConfigurationSource {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetUsername(v string) *ESIngestionConfigurationSource {
+	s.Username = &v
+	return s
+}
+
+func (s *ESIngestionConfigurationSource) SetVpcId(v string) *ESIngestionConfigurationSource {
+	s.VpcId = &v
+	return s
+}
+
 type ETL struct {
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -1470,6 +1688,291 @@ func (s *JoinConfiguration) SetCondition(v string) *JoinConfiguration {
 
 func (s *JoinConfiguration) SetType(v string) *JoinConfiguration {
 	s.Type = &v
+	return s
+}
+
+type KafkaIngestion struct {
+	// This parameter is required.
+	Configuration *KafkaIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1714360481
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// kafka ingestion
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// kafka ingestion
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 1714360481
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-kafka-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// example:
+	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s KafkaIngestion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KafkaIngestion) GoString() string {
+	return s.String()
+}
+
+func (s *KafkaIngestion) SetConfiguration(v *KafkaIngestionConfiguration) *KafkaIngestion {
+	s.Configuration = v
+	return s
+}
+
+func (s *KafkaIngestion) SetCreateTime(v int64) *KafkaIngestion {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetDescription(v string) *KafkaIngestion {
+	s.Description = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetDisplayName(v string) *KafkaIngestion {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetLastModifiedTime(v int64) *KafkaIngestion {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetName(v string) *KafkaIngestion {
+	s.Name = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetSchedule(v *Schedule) *KafkaIngestion {
+	s.Schedule = v
+	return s
+}
+
+func (s *KafkaIngestion) SetScheduleId(v string) *KafkaIngestion {
+	s.ScheduleId = &v
+	return s
+}
+
+func (s *KafkaIngestion) SetStatus(v string) *KafkaIngestion {
+	s.Status = &v
+	return s
+}
+
+type KafkaIngestionConfiguration struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// This parameter is required.
+	Source *KafkaIngestionConfigurationSource `json:"source,omitempty" xml:"source,omitempty"`
+}
+
+func (s KafkaIngestionConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KafkaIngestionConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *KafkaIngestionConfiguration) SetLogstore(v string) *KafkaIngestionConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *KafkaIngestionConfiguration) SetSource(v *KafkaIngestionConfigurationSource) *KafkaIngestionConfiguration {
+	s.Source = v
+	return s
+}
+
+type KafkaIngestionConfigurationSource struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.1.28:9092
+	BootstrapServers *string `json:"bootstrapServers,omitempty" xml:"bootstrapServers,omitempty"`
+	// example:
+	//
+	// {     "protocol":"SASL_PLAINTEXT",      "sasl":{         "mechanism":"PLAIN",         "username":"用户名",         "password":"密码"     } }
+	Communication *string `json:"communication,omitempty" xml:"communication,omitempty"`
+	// example:
+	//
+	// consumer
+	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
+	// example:
+	//
+	// system,kafka
+	DefaultTimeSource *string `json:"defaultTimeSource,omitempty" xml:"defaultTimeSource,omitempty"`
+	// example:
+	//
+	// true
+	EnableSlsContext *bool `json:"enableSlsContext,omitempty" xml:"enableSlsContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UTF-8
+	Encoding *string `json:"encoding,omitempty" xml:"encoding,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// earliest,latest
+	FromPosition *string `json:"fromPosition,omitempty" xml:"fromPosition,omitempty"`
+	// example:
+	//
+	// {"hostname": "192.168.1.28"}
+	NameResolutions *string `json:"nameResolutions,omitempty" xml:"nameResolutions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ParseArray *bool `json:"parseArray,omitempty" xml:"parseArray,omitempty"`
+	// example:
+	//
+	// __time__
+	TimeField *string `json:"timeField,omitempty" xml:"timeField,omitempty"`
+	// example:
+	//
+	// epoch
+	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// example:
+	//
+	// \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}
+	TimePattern *string `json:"timePattern,omitempty" xml:"timePattern,omitempty"`
+	// example:
+	//
+	// +0800
+	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// topic1,topic2
+	Topics *string `json:"topics,omitempty" xml:"topics,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text,json
+	ValueType *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
+	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s KafkaIngestionConfigurationSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KafkaIngestionConfigurationSource) GoString() string {
+	return s.String()
+}
+
+func (s *KafkaIngestionConfigurationSource) SetBootstrapServers(v string) *KafkaIngestionConfigurationSource {
+	s.BootstrapServers = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetCommunication(v string) *KafkaIngestionConfigurationSource {
+	s.Communication = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetConsumerGroup(v string) *KafkaIngestionConfigurationSource {
+	s.ConsumerGroup = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetDefaultTimeSource(v string) *KafkaIngestionConfigurationSource {
+	s.DefaultTimeSource = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetEnableSlsContext(v bool) *KafkaIngestionConfigurationSource {
+	s.EnableSlsContext = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetEncoding(v string) *KafkaIngestionConfigurationSource {
+	s.Encoding = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetFromPosition(v string) *KafkaIngestionConfigurationSource {
+	s.FromPosition = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetNameResolutions(v string) *KafkaIngestionConfigurationSource {
+	s.NameResolutions = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetParseArray(v bool) *KafkaIngestionConfigurationSource {
+	s.ParseArray = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetTimeField(v string) *KafkaIngestionConfigurationSource {
+	s.TimeField = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetTimeFormat(v string) *KafkaIngestionConfigurationSource {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetTimePattern(v string) *KafkaIngestionConfigurationSource {
+	s.TimePattern = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetTimeZone(v string) *KafkaIngestionConfigurationSource {
+	s.TimeZone = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetTopics(v string) *KafkaIngestionConfigurationSource {
+	s.Topics = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetValueType(v string) *KafkaIngestionConfigurationSource {
+	s.ValueType = &v
+	return s
+}
+
+func (s *KafkaIngestionConfigurationSource) SetVpcId(v string) *KafkaIngestionConfigurationSource {
+	s.VpcId = &v
 	return s
 }
 
@@ -7478,6 +7981,72 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 	return s
 }
 
+type CreateS3IngestionRequest struct {
+	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	Description   *string                   `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// This parameter is required.
+	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+}
+
+func (s CreateS3IngestionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateS3IngestionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateS3IngestionRequest) SetConfiguration(v *S3IngestionConfiguration) *CreateS3IngestionRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateS3IngestionRequest) SetDescription(v string) *CreateS3IngestionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateS3IngestionRequest) SetDisplayName(v string) *CreateS3IngestionRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateS3IngestionRequest) SetName(v string) *CreateS3IngestionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateS3IngestionRequest) SetSchedule(v *Schedule) *CreateS3IngestionRequest {
+	s.Schedule = v
+	return s
+}
+
+type CreateS3IngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateS3IngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateS3IngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateS3IngestionResponse) SetHeaders(v map[string]*string) *CreateS3IngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateS3IngestionResponse) SetStatusCode(v int32) *CreateS3IngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateSavedSearchRequest struct {
 	// The display name.
 	//
@@ -8552,6 +9121,29 @@ func (s *DeleteProjectPolicyResponse) SetStatusCode(v int32) *DeleteProjectPolic
 	return s
 }
 
+type DeleteS3IngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteS3IngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteS3IngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteS3IngestionResponse) SetHeaders(v map[string]*string) *DeleteS3IngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteS3IngestionResponse) SetStatusCode(v int32) *DeleteS3IngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteSavedSearchResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8669,6 +9261,7 @@ func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBod
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	DataRedundancyType []*string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty" type:"Repeated"`
 	// The public endpoint of Simple Log Service.
 	InternetEndpoint *string `json:"internetEndpoint,omitempty" xml:"internetEndpoint,omitempty"`
 	// The internal endpoint of Simple Log Service.
@@ -8685,6 +9278,11 @@ func (s DescribeRegionsResponseBodyRegions) String() string {
 
 func (s DescribeRegionsResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetDataRedundancyType(v []*string) *DescribeRegionsResponseBodyRegions {
+	s.DataRedundancyType = v
+	return s
 }
 
 func (s *DescribeRegionsResponseBodyRegions) SetInternetEndpoint(v string) *DescribeRegionsResponseBodyRegions {
@@ -12116,6 +12714,35 @@ func (s *GetProjectPolicyResponse) SetStatusCode(v int32) *GetProjectPolicyRespo
 
 func (s *GetProjectPolicyResponse) SetBody(v string) *GetProjectPolicyResponse {
 	s.Body = &v
+	return s
+}
+
+type GetS3IngestionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *S3Ingestion       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetS3IngestionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetS3IngestionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetS3IngestionResponse) SetHeaders(v map[string]*string) *GetS3IngestionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetS3IngestionResponse) SetStatusCode(v int32) *GetS3IngestionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetS3IngestionResponse) SetBody(v *S3Ingestion) *GetS3IngestionResponse {
+	s.Body = v
 	return s
 }
 
@@ -15913,6 +16540,93 @@ func (s *ListProjectResponse) SetStatusCode(v int32) *ListProjectResponse {
 }
 
 func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ListS3IngestionsRequest struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Offset   *string `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size     *string `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListS3IngestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListS3IngestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListS3IngestionsRequest) SetLogstore(v string) *ListS3IngestionsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListS3IngestionsRequest) SetOffset(v string) *ListS3IngestionsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListS3IngestionsRequest) SetSize(v string) *ListS3IngestionsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListS3IngestionsResponseBody struct {
+	Count   *int32         `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*S3Ingestion `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	Total   *int32         `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListS3IngestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListS3IngestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListS3IngestionsResponseBody) SetCount(v int32) *ListS3IngestionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListS3IngestionsResponseBody) SetResults(v []*S3Ingestion) *ListS3IngestionsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListS3IngestionsResponseBody) SetTotal(v int32) *ListS3IngestionsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListS3IngestionsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListS3IngestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListS3IngestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListS3IngestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListS3IngestionsResponse) SetHeaders(v map[string]*string) *ListS3IngestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListS3IngestionsResponse) SetStatusCode(v int32) *ListS3IngestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListS3IngestionsResponse) SetBody(v *ListS3IngestionsResponseBody) *ListS3IngestionsResponse {
 	s.Body = v
 	return s
 }
@@ -22525,6 +23239,89 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
+// 创建S3文件导入任务
+//
+// @param request - CreateS3IngestionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateS3IngestionResponse
+func (client *Client) CreateS3IngestionWithOptions(project *string, request *CreateS3IngestionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateS3IngestionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		body["schedule"] = request.Schedule
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateS3Ingestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/s3ingestions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateS3IngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建S3文件导入任务
+//
+// @param request - CreateS3IngestionRequest
+//
+// @return CreateS3IngestionResponse
+func (client *Client) CreateS3Ingestion(project *string, request *CreateS3IngestionRequest) (_result *CreateS3IngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateS3IngestionResponse{}
+	_body, _err := client.CreateS3IngestionWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a saved search.
 //
 // Description:
@@ -24671,6 +25468,59 @@ func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProje
 	headers := make(map[string]*string)
 	_result = &DeleteProjectPolicyResponse{}
 	_body, _err := client.DeleteProjectPolicyWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除s3导入任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteS3IngestionResponse
+func (client *Client) DeleteS3IngestionWithOptions(project *string, s3IngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteS3IngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteS3Ingestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/s3ingestions/" + tea.StringValue(s3IngestionName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteS3IngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除s3导入任务
+//
+// @return DeleteS3IngestionResponse
+func (client *Client) DeleteS3Ingestion(project *string, s3IngestionName *string) (_result *DeleteS3IngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteS3IngestionResponse{}
+	_body, _err := client.DeleteS3IngestionWithOptions(project, s3IngestionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27976,6 +28826,59 @@ func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPoli
 
 // Summary:
 //
+// 获取s3导入任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetS3IngestionResponse
+func (client *Client) GetS3IngestionWithOptions(project *string, s3IngestionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetS3IngestionResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetS3Ingestion"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/s3ingestions/" + tea.StringValue(s3IngestionName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetS3IngestionResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取s3导入任务信息
+//
+// @return GetS3IngestionResponse
+func (client *Client) GetS3Ingestion(project *string, s3IngestionName *string) (_result *GetS3IngestionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetS3IngestionResponse{}
+	_body, _err := client.GetS3IngestionWithOptions(project, s3IngestionName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a saved search.
 //
 // Description:
@@ -30426,6 +31329,81 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 	headers := make(map[string]*string)
 	_result = &ListProjectResponse{}
 	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出s3导入任务
+//
+// @param request - ListS3IngestionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListS3IngestionsResponse
+func (client *Client) ListS3IngestionsWithOptions(project *string, request *ListS3IngestionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListS3IngestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListS3Ingestions"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/s3ingestions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListS3IngestionsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出s3导入任务
+//
+// @param request - ListS3IngestionsRequest
+//
+// @return ListS3IngestionsResponse
+func (client *Client) ListS3Ingestions(project *string, request *ListS3IngestionsRequest) (_result *ListS3IngestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListS3IngestionsResponse{}
+	_body, _err := client.ListS3IngestionsWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
