@@ -1356,6 +1356,10 @@ func (client *Client) CreateSiteMonitorWithContext(ctx context.Context, request 
 		query["Address"] = request.Address
 	}
 
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
 	if !dara.IsNil(request.AlertIds) {
 		query["AlertIds"] = request.AlertIds
 	}
@@ -5699,6 +5703,10 @@ func (client *Client) DescribeMonitoringAgentHostsWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定资源的进程数列表
+//
 // Description:
 //
 // >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
@@ -7401,6 +7409,10 @@ func (client *Client) InstallMonitoringAgentWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组内的进程监控
+//
 // @param request - ModifyGroupMonitoringAgentProcessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7529,6 +7541,10 @@ func (client *Client) ModifyHostAvailabilityWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改非阿里云的主机显示信息
+//
 // Description:
 //
 // ***
@@ -7893,6 +7909,10 @@ func (client *Client) ModifyMetricRuleTemplateWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组
+//
 // @param request - ModifyMonitorGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7941,7 +7961,7 @@ func (client *Client) ModifyMonitorGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # ModifyMonitorGroupInstances
+// 修改应用分组中的资源
 //
 // @param request - ModifyMonitorGroupInstancesRequest
 //

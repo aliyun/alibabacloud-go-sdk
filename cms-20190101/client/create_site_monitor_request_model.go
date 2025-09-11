@@ -11,6 +11,8 @@ type iCreateSiteMonitorRequest interface {
 	GoString() string
 	SetAddress(v string) *CreateSiteMonitorRequest
 	GetAddress() *string
+	SetAgentGroup(v string) *CreateSiteMonitorRequest
+	GetAgentGroup() *string
 	SetAlertIds(v string) *CreateSiteMonitorRequest
 	GetAlertIds() *string
 	SetCustomSchedule(v string) *CreateSiteMonitorRequest
@@ -39,7 +41,8 @@ type CreateSiteMonitorRequest struct {
 	// example:
 	//
 	// https://www.aliyun.com
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Address    *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
 	// The ID of the alert rule.
 	//
 	// For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
@@ -119,6 +122,10 @@ func (s *CreateSiteMonitorRequest) GetAddress() *string {
 	return s.Address
 }
 
+func (s *CreateSiteMonitorRequest) GetAgentGroup() *string {
+	return s.AgentGroup
+}
+
 func (s *CreateSiteMonitorRequest) GetAlertIds() *string {
 	return s.AlertIds
 }
@@ -157,6 +164,11 @@ func (s *CreateSiteMonitorRequest) GetVpcConfig() *string {
 
 func (s *CreateSiteMonitorRequest) SetAddress(v string) *CreateSiteMonitorRequest {
 	s.Address = &v
+	return s
+}
+
+func (s *CreateSiteMonitorRequest) SetAgentGroup(v string) *CreateSiteMonitorRequest {
+	s.AgentGroup = &v
 	return s
 }
 

@@ -1884,6 +1884,10 @@ func (client *Client) CreateSiteMonitorWithOptions(request *CreateSiteMonitorReq
 		query["Address"] = request.Address
 	}
 
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
 	if !dara.IsNil(request.AlertIds) {
 		query["AlertIds"] = request.AlertIds
 	}
@@ -7778,6 +7782,10 @@ func (client *Client) DescribeMonitoringAgentHosts(request *DescribeMonitoringAg
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定资源的进程数列表
+//
 // Description:
 //
 // >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
@@ -7822,6 +7830,10 @@ func (client *Client) DescribeMonitoringAgentProcessesWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询指定资源的进程数列表
+//
 // Description:
 //
 // >  Before you call this operation, call the CreateMonitoringAgentProcess operation to create processes. For more information, see [CreateMonitoringAgentProcess](https://help.aliyun.com/document_detail/114951.html~).
@@ -10122,6 +10134,10 @@ func (client *Client) InstallMonitoringAgent(request *InstallMonitoringAgentRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组内的进程监控
+//
 // @param request - ModifyGroupMonitoringAgentProcessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10172,6 +10188,10 @@ func (client *Client) ModifyGroupMonitoringAgentProcessWithOptions(request *Modi
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组内的进程监控
+//
 // @param request - ModifyGroupMonitoringAgentProcessRequest
 //
 // @return ModifyGroupMonitoringAgentProcessResponse
@@ -10286,6 +10306,10 @@ func (client *Client) ModifyHostAvailability(request *ModifyHostAvailabilityRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改非阿里云的主机显示信息
+//
 // Description:
 //
 // ***
@@ -10332,6 +10356,10 @@ func (client *Client) ModifyHostInfoWithOptions(request *ModifyHostInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改非阿里云的主机显示信息
+//
 // Description:
 //
 // ***
@@ -10774,6 +10802,10 @@ func (client *Client) ModifyMetricRuleTemplate(request *ModifyMetricRuleTemplate
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组
+//
 // @param request - ModifyMonitorGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10820,6 +10852,10 @@ func (client *Client) ModifyMonitorGroupWithOptions(request *ModifyMonitorGroupR
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改应用分组
+//
 // @param request - ModifyMonitorGroupRequest
 //
 // @return ModifyMonitorGroupResponse
@@ -10836,7 +10872,7 @@ func (client *Client) ModifyMonitorGroup(request *ModifyMonitorGroupRequest) (_r
 
 // Summary:
 //
-// # ModifyMonitorGroupInstances
+// 修改应用分组中的资源
 //
 // @param request - ModifyMonitorGroupInstancesRequest
 //
@@ -10882,7 +10918,7 @@ func (client *Client) ModifyMonitorGroupInstancesWithOptions(request *ModifyMoni
 
 // Summary:
 //
-// # ModifyMonitorGroupInstances
+// 修改应用分组中的资源
 //
 // @param request - ModifyMonitorGroupInstancesRequest
 //
