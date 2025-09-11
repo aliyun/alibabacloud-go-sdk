@@ -66,9 +66,10 @@ func (s *DescribeGroupsResponseBody) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroups struct {
-	AuthedResources map[string]*string `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
-	CreateTime      *string            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	AttachedLoginPolicy *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy `json:"AttachedLoginPolicy,omitempty" xml:"AttachedLoginPolicy,omitempty" type:"Struct"`
+	AuthedResources     map[string]*string                                   `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
+	CreateTime          *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description         *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// ug-2412ojkwtybd****
@@ -84,6 +85,10 @@ func (s DescribeGroupsResponseBodyGroups) String() string {
 
 func (s DescribeGroupsResponseBodyGroups) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGroupsResponseBodyGroups) GetAttachedLoginPolicy() *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy {
+	return s.AttachedLoginPolicy
 }
 
 func (s *DescribeGroupsResponseBodyGroups) GetAuthedResources() map[string]*string {
@@ -112,6 +117,11 @@ func (s *DescribeGroupsResponseBodyGroups) GetTransferFileNeedApproval() *bool {
 
 func (s *DescribeGroupsResponseBodyGroups) GetUserCount() *int32 {
 	return s.UserCount
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetAttachedLoginPolicy(v *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) *DescribeGroupsResponseBodyGroups {
+	s.AttachedLoginPolicy = v
+	return s
 }
 
 func (s *DescribeGroupsResponseBodyGroups) SetAuthedResources(v map[string]*string) *DescribeGroupsResponseBodyGroups {
@@ -150,5 +160,40 @@ func (s *DescribeGroupsResponseBodyGroups) SetUserCount(v int32) *DescribeGroups
 }
 
 func (s *DescribeGroupsResponseBodyGroups) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeGroupsResponseBodyGroupsAttachedLoginPolicy struct {
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) SetName(v string) *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) SetPolicyId(v string) *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy) Validate() error {
 	return dara.Validate(s)
 }

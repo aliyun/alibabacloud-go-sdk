@@ -636,12 +636,20 @@ func (client *Client) DescribeGroupsWithContext(ctx context.Context, request *De
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.ExcludeAttachedLoginPolicyGroups) {
+		query["ExcludeAttachedLoginPolicyGroups"] = request.ExcludeAttachedLoginPolicyGroups
+	}
+
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
 	}
 
 	if !dara.IsNil(request.GroupName) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.LoginPolicyId) {
+		query["LoginPolicyId"] = request.LoginPolicyId
 	}
 
 	if !dara.IsNil(request.PageNumber) {

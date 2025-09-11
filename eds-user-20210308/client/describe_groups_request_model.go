@@ -11,10 +11,14 @@ type iDescribeGroupsRequest interface {
 	GoString() string
 	SetBizType(v string) *DescribeGroupsRequest
 	GetBizType() *string
+	SetExcludeAttachedLoginPolicyGroups(v bool) *DescribeGroupsRequest
+	GetExcludeAttachedLoginPolicyGroups() *bool
 	SetGroupId(v string) *DescribeGroupsRequest
 	GetGroupId() *string
 	SetGroupName(v string) *DescribeGroupsRequest
 	GetGroupName() *string
+	SetLoginPolicyId(v string) *DescribeGroupsRequest
+	GetLoginPolicyId() *string
 	SetPageNumber(v int32) *DescribeGroupsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeGroupsRequest
@@ -29,14 +33,16 @@ type DescribeGroupsRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType                          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ExcludeAttachedLoginPolicyGroups *bool   `json:"ExcludeAttachedLoginPolicyGroups,omitempty" xml:"ExcludeAttachedLoginPolicyGroups,omitempty"`
 	// example:
 	//
 	// ug-12341234****
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LoginPolicyId *string `json:"LoginPolicyId,omitempty" xml:"LoginPolicyId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
 	// co-0esnf80jab***
@@ -56,12 +62,20 @@ func (s *DescribeGroupsRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeGroupsRequest) GetExcludeAttachedLoginPolicyGroups() *bool {
+	return s.ExcludeAttachedLoginPolicyGroups
+}
+
 func (s *DescribeGroupsRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
 func (s *DescribeGroupsRequest) GetGroupName() *string {
 	return s.GroupName
+}
+
+func (s *DescribeGroupsRequest) GetLoginPolicyId() *string {
+	return s.LoginPolicyId
 }
 
 func (s *DescribeGroupsRequest) GetPageNumber() *int32 {
@@ -85,6 +99,11 @@ func (s *DescribeGroupsRequest) SetBizType(v string) *DescribeGroupsRequest {
 	return s
 }
 
+func (s *DescribeGroupsRequest) SetExcludeAttachedLoginPolicyGroups(v bool) *DescribeGroupsRequest {
+	s.ExcludeAttachedLoginPolicyGroups = &v
+	return s
+}
+
 func (s *DescribeGroupsRequest) SetGroupId(v string) *DescribeGroupsRequest {
 	s.GroupId = &v
 	return s
@@ -92,6 +111,11 @@ func (s *DescribeGroupsRequest) SetGroupId(v string) *DescribeGroupsRequest {
 
 func (s *DescribeGroupsRequest) SetGroupName(v string) *DescribeGroupsRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeGroupsRequest) SetLoginPolicyId(v string) *DescribeGroupsRequest {
+	s.LoginPolicyId = &v
 	return s
 }
 
