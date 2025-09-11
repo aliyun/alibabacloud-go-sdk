@@ -189,6 +189,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	// 2022-06-01T16:00Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus    *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The backup type. Valid values:
 	//
 	// 	- **FullBackup**
@@ -244,6 +245,10 @@ func (s *DescribeBackupsResponseBodyItemsBackup) GetBackupStartTime() *string {
 	return s.BackupStartTime
 }
 
+func (s *DescribeBackupsResponseBodyItemsBackup) GetBackupStatus() *string {
+	return s.BackupStatus
+}
+
 func (s *DescribeBackupsResponseBodyItemsBackup) GetBackupType() *string {
 	return s.BackupType
 }
@@ -288,6 +293,11 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupSize(v int32) *Describ
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupStartTime(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupStatus(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.BackupStatus = &v
 	return s
 }
 
