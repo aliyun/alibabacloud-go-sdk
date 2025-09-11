@@ -35,6 +35,8 @@ type iDescribeARMServerInstancesShrinkRequest interface {
 	GetServerSpecsShrink() *string
 	SetStatesShrink(v string) *DescribeARMServerInstancesShrinkRequest
 	GetStatesShrink() *string
+	SetTagsShrink(v string) *DescribeARMServerInstancesShrinkRequest
+	GetTagsShrink() *string
 }
 
 type DescribeARMServerInstancesShrinkRequest struct {
@@ -106,6 +108,7 @@ type DescribeARMServerInstancesShrinkRequest struct {
 	ServerSpecsShrink *string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty"`
 	// The operation statuses.
 	StatesShrink *string `json:"States,omitempty" xml:"States,omitempty"`
+	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeARMServerInstancesShrinkRequest) String() string {
@@ -166,6 +169,10 @@ func (s *DescribeARMServerInstancesShrinkRequest) GetServerSpecsShrink() *string
 
 func (s *DescribeARMServerInstancesShrinkRequest) GetStatesShrink() *string {
 	return s.StatesShrink
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) GetTagsShrink() *string {
+	return s.TagsShrink
 }
 
 func (s *DescribeARMServerInstancesShrinkRequest) SetAICSpecsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
@@ -230,6 +237,11 @@ func (s *DescribeARMServerInstancesShrinkRequest) SetServerSpecsShrink(v string)
 
 func (s *DescribeARMServerInstancesShrinkRequest) SetStatesShrink(v string) *DescribeARMServerInstancesShrinkRequest {
 	s.StatesShrink = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesShrinkRequest) SetTagsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
+	s.TagsShrink = &v
 	return s
 }
 

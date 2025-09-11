@@ -93,6 +93,10 @@ type DescribeSDGsResponseBodySDGs struct {
 	//
 	// sdg-xxxxx
 	ParentSDGId *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	// example:
+	//
+	// 100
+	PerformanceLevel *int64 `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The ID of the SDG.
 	//
 	// example:
@@ -171,6 +175,10 @@ func (s *DescribeSDGsResponseBodySDGs) GetParentSDGId() *string {
 	return s.ParentSDGId
 }
 
+func (s *DescribeSDGsResponseBodySDGs) GetPerformanceLevel() *int64 {
+	return s.PerformanceLevel
+}
+
 func (s *DescribeSDGsResponseBodySDGs) GetSDGId() *string {
 	return s.SDGId
 }
@@ -229,6 +237,11 @@ func (s *DescribeSDGsResponseBodySDGs) SetDescription(v string) *DescribeSDGsRes
 
 func (s *DescribeSDGsResponseBodySDGs) SetParentSDGId(v string) *DescribeSDGsResponseBodySDGs {
 	s.ParentSDGId = &v
+	return s
+}
+
+func (s *DescribeSDGsResponseBodySDGs) SetPerformanceLevel(v int64) *DescribeSDGsResponseBodySDGs {
+	s.PerformanceLevel = &v
 	return s
 }
 

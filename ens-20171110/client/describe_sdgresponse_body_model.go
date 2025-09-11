@@ -141,7 +141,8 @@ type DescribeSDGResponseBodySDGs struct {
 	// example:
 	//
 	// sdg-xxxxx
-	ParentSDGId *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	ParentSDGId      *string `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The preload information.
 	PreloadInfos []*DescribeSDGResponseBodySDGsPreloadInfos `json:"PreloadInfos,omitempty" xml:"PreloadInfos,omitempty" type:"Repeated"`
 	// The ID of the SDG.
@@ -218,6 +219,10 @@ func (s *DescribeSDGResponseBodySDGs) GetParentSDGId() *string {
 	return s.ParentSDGId
 }
 
+func (s *DescribeSDGResponseBodySDGs) GetPerformanceLevel() *string {
+	return s.PerformanceLevel
+}
+
 func (s *DescribeSDGResponseBodySDGs) GetPreloadInfos() []*DescribeSDGResponseBodySDGsPreloadInfos {
 	return s.PreloadInfos
 }
@@ -275,6 +280,11 @@ func (s *DescribeSDGResponseBodySDGs) SetDescription(v string) *DescribeSDGRespo
 
 func (s *DescribeSDGResponseBodySDGs) SetParentSDGId(v string) *DescribeSDGResponseBodySDGs {
 	s.ParentSDGId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetPerformanceLevel(v string) *DescribeSDGResponseBodySDGs {
+	s.PerformanceLevel = &v
 	return s
 }
 

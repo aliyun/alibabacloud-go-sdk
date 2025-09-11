@@ -5007,6 +5007,10 @@ func (client *Client) DescribeARMServerInstancesWithContext(ctx context.Context,
 		request.StatesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.States, dara.String("States"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Tags) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
+	}
+
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),

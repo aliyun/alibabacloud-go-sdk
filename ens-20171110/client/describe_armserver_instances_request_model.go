@@ -35,6 +35,8 @@ type iDescribeARMServerInstancesRequest interface {
 	GetServerSpecs() []*string
 	SetStates(v []*string) *DescribeARMServerInstancesRequest
 	GetStates() []*string
+	SetTags(v []*DescribeARMServerInstancesRequestTags) *DescribeARMServerInstancesRequest
+	GetTags() []*DescribeARMServerInstancesRequestTags
 }
 
 type DescribeARMServerInstancesRequest struct {
@@ -105,7 +107,8 @@ type DescribeARMServerInstancesRequest struct {
 	// The server specifications.
 	ServerSpecs []*string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty" type:"Repeated"`
 	// The operation statuses.
-	States []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
+	States []*string                                `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
+	Tags   []*DescribeARMServerInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesRequest) String() string {
@@ -166,6 +169,10 @@ func (s *DescribeARMServerInstancesRequest) GetServerSpecs() []*string {
 
 func (s *DescribeARMServerInstancesRequest) GetStates() []*string {
 	return s.States
+}
+
+func (s *DescribeARMServerInstancesRequest) GetTags() []*DescribeARMServerInstancesRequestTags {
+	return s.Tags
 }
 
 func (s *DescribeARMServerInstancesRequest) SetAICSpecs(v []*string) *DescribeARMServerInstancesRequest {
@@ -233,6 +240,52 @@ func (s *DescribeARMServerInstancesRequest) SetStates(v []*string) *DescribeARMS
 	return s
 }
 
+func (s *DescribeARMServerInstancesRequest) SetTags(v []*DescribeARMServerInstancesRequestTags) *DescribeARMServerInstancesRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeARMServerInstancesRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeARMServerInstancesRequestTags struct {
+	// example:
+	//
+	// key-1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value-1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeARMServerInstancesRequestTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesRequestTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeARMServerInstancesRequestTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeARMServerInstancesRequestTags) SetKey(v string) *DescribeARMServerInstancesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequestTags) SetValue(v string) *DescribeARMServerInstancesRequestTags {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesRequestTags) Validate() error {
 	return dara.Validate(s)
 }

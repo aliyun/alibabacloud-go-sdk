@@ -19,6 +19,8 @@ type iCreateSDGRequest interface {
 	GetFromSDGId() *string
 	SetInstanceId(v string) *CreateSDGRequest
 	GetInstanceId() *string
+	SetPerformanceLevel(v int64) *CreateSDGRequest
+	GetPerformanceLevel() *int64
 	SetSize(v string) *CreateSDGRequest
 	GetSize() *string
 }
@@ -56,6 +58,10 @@ type CreateSDGRequest struct {
 	//
 	// aic-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 100
+	PerformanceLevel *int64 `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The maximum capacity of the SDG. Unit: GB.
 	//
 	// >
@@ -100,6 +106,10 @@ func (s *CreateSDGRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateSDGRequest) GetPerformanceLevel() *int64 {
+	return s.PerformanceLevel
+}
+
 func (s *CreateSDGRequest) GetSize() *string {
 	return s.Size
 }
@@ -126,6 +136,11 @@ func (s *CreateSDGRequest) SetFromSDGId(v string) *CreateSDGRequest {
 
 func (s *CreateSDGRequest) SetInstanceId(v string) *CreateSDGRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSDGRequest) SetPerformanceLevel(v int64) *CreateSDGRequest {
+	s.PerformanceLevel = &v
 	return s
 }
 
