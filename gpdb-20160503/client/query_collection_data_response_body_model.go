@@ -144,7 +144,8 @@ type QueryCollectionDataResponseBodyMatchesMatch struct {
 	// doca-1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Metadata.
-	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata   map[string]*string     `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	MetadataV2 map[string]interface{} `json:"MetadataV2,omitempty" xml:"MetadataV2,omitempty"`
 	// The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
 	//
 	// example:
@@ -171,6 +172,10 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) GetMetadata() map[string]*
 	return s.Metadata
 }
 
+func (s *QueryCollectionDataResponseBodyMatchesMatch) GetMetadataV2() map[string]interface{} {
+	return s.MetadataV2
+}
+
 func (s *QueryCollectionDataResponseBodyMatchesMatch) GetScore() *float64 {
 	return s.Score
 }
@@ -186,6 +191,11 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) SetId(v string) *QueryColl
 
 func (s *QueryCollectionDataResponseBodyMatchesMatch) SetMetadata(v map[string]*string) *QueryCollectionDataResponseBodyMatchesMatch {
 	s.Metadata = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetMetadataV2(v map[string]interface{}) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.MetadataV2 = v
 	return s
 }
 
