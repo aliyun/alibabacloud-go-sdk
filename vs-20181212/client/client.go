@@ -2369,11 +2369,19 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 	}
 	request := &CreateRenderingInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Attributes) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, dara.String("Attributes"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ClientInfo) {
 		request.ClientInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClientInfo, dara.String("ClientInfo"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttributesShrink) {
+		query["Attributes"] = request.AttributesShrink
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -7845,6 +7853,90 @@ func (client *Client) ListCloudAppInstallations(request *ListCloudAppInstallatio
 
 // Summary:
 //
+// 查询一个云应用的Patch列表。
+//
+// @param request - ListCloudAppPatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAppPatchesResponse
+func (client *Client) ListCloudAppPatchesWithOptions(request *ListCloudAppPatchesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAppPatchesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PatchId) {
+		query["PatchId"] = request.PatchId
+	}
+
+	if !dara.IsNil(request.PatchName) {
+		query["PatchName"] = request.PatchName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAppPatches"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAppPatchesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个云应用的Patch列表。
+//
+// @param request - ListCloudAppPatchesRequest
+//
+// @return ListCloudAppPatchesResponse
+func (client *Client) ListCloudAppPatches(request *ListCloudAppPatchesRequest) (_result *ListCloudAppPatchesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCloudAppPatchesResponse{}
+	_body, _err := client.ListCloudAppPatchesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询云应用列表
 //
 // @param request - ListCloudAppsRequest
@@ -9324,6 +9416,70 @@ func (client *Client) ModifyRenderingInstance(request *ModifyRenderingInstanceRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyRenderingInstanceResponse{}
 	_body, _err := client.ModifyRenderingInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改云应用服务实例密码
+//
+// @param request - ModifyRenderingInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRenderingInstanceAttributeResponse
+func (client *Client) ModifyRenderingInstanceAttributeWithOptions(request *ModifyRenderingInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRenderingInstanceAttributeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.RenderingInstanceId) {
+		query["RenderingInstanceId"] = request.RenderingInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyRenderingInstanceAttribute"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyRenderingInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改云应用服务实例密码
+//
+// @param request - ModifyRenderingInstanceAttributeRequest
+//
+// @return ModifyRenderingInstanceAttributeResponse
+func (client *Client) ModifyRenderingInstanceAttribute(request *ModifyRenderingInstanceAttributeRequest) (_result *ModifyRenderingInstanceAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyRenderingInstanceAttributeResponse{}
+	_body, _err := client.ModifyRenderingInstanceAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

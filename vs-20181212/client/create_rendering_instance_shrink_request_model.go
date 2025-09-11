@@ -9,6 +9,8 @@ type iCreateRenderingInstanceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributesShrink(v string) *CreateRenderingInstanceShrinkRequest
+	GetAttributesShrink() *string
 	SetAutoRenew(v bool) *CreateRenderingInstanceShrinkRequest
 	GetAutoRenew() *bool
 	SetClientInfoShrink(v string) *CreateRenderingInstanceShrinkRequest
@@ -30,6 +32,7 @@ type iCreateRenderingInstanceShrinkRequest interface {
 }
 
 type CreateRenderingInstanceShrinkRequest struct {
+	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// example:
 	//
 	// true
@@ -69,6 +72,10 @@ func (s CreateRenderingInstanceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRenderingInstanceShrinkRequest) GetAttributesShrink() *string {
+	return s.AttributesShrink
+}
+
 func (s *CreateRenderingInstanceShrinkRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
@@ -103,6 +110,11 @@ func (s *CreateRenderingInstanceShrinkRequest) GetRenderingSpec() *string {
 
 func (s *CreateRenderingInstanceShrinkRequest) GetStorageSize() *string {
 	return s.StorageSize
+}
+
+func (s *CreateRenderingInstanceShrinkRequest) SetAttributesShrink(v string) *CreateRenderingInstanceShrinkRequest {
+	s.AttributesShrink = &v
+	return s
 }
 
 func (s *CreateRenderingInstanceShrinkRequest) SetAutoRenew(v bool) *CreateRenderingInstanceShrinkRequest {

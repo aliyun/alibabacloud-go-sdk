@@ -9,6 +9,8 @@ type iCreateRenderingInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAttributes(v *CreateRenderingInstanceRequestAttributes) *CreateRenderingInstanceRequest
+	GetAttributes() *CreateRenderingInstanceRequestAttributes
 	SetAutoRenew(v bool) *CreateRenderingInstanceRequest
 	GetAutoRenew() *bool
 	SetClientInfo(v *CreateRenderingInstanceRequestClientInfo) *CreateRenderingInstanceRequest
@@ -30,6 +32,7 @@ type iCreateRenderingInstanceRequest interface {
 }
 
 type CreateRenderingInstanceRequest struct {
+	Attributes *CreateRenderingInstanceRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
@@ -69,6 +72,10 @@ func (s CreateRenderingInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRenderingInstanceRequest) GetAttributes() *CreateRenderingInstanceRequestAttributes {
+	return s.Attributes
+}
+
 func (s *CreateRenderingInstanceRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
@@ -103,6 +110,11 @@ func (s *CreateRenderingInstanceRequest) GetRenderingSpec() *string {
 
 func (s *CreateRenderingInstanceRequest) GetStorageSize() *string {
 	return s.StorageSize
+}
+
+func (s *CreateRenderingInstanceRequest) SetAttributes(v *CreateRenderingInstanceRequestAttributes) *CreateRenderingInstanceRequest {
+	s.Attributes = v
+	return s
 }
 
 func (s *CreateRenderingInstanceRequest) SetAutoRenew(v bool) *CreateRenderingInstanceRequest {
@@ -151,6 +163,61 @@ func (s *CreateRenderingInstanceRequest) SetStorageSize(v string) *CreateRenderi
 }
 
 func (s *CreateRenderingInstanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateRenderingInstanceRequestAttributes struct {
+	EdgeMediaService *string `json:"EdgeMediaService,omitempty" xml:"EdgeMediaService,omitempty"`
+	InAccess         *string `json:"InAccess,omitempty" xml:"InAccess,omitempty"`
+	OutAccess        *string `json:"OutAccess,omitempty" xml:"OutAccess,omitempty"`
+	Zone             *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s CreateRenderingInstanceRequestAttributes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRenderingInstanceRequestAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) GetEdgeMediaService() *string {
+	return s.EdgeMediaService
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) GetInAccess() *string {
+	return s.InAccess
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) GetOutAccess() *string {
+	return s.OutAccess
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) GetZone() *string {
+	return s.Zone
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) SetEdgeMediaService(v string) *CreateRenderingInstanceRequestAttributes {
+	s.EdgeMediaService = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) SetInAccess(v string) *CreateRenderingInstanceRequestAttributes {
+	s.InAccess = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) SetOutAccess(v string) *CreateRenderingInstanceRequestAttributes {
+	s.OutAccess = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) SetZone(v string) *CreateRenderingInstanceRequestAttributes {
+	s.Zone = &v
+	return s
+}
+
+func (s *CreateRenderingInstanceRequestAttributes) Validate() error {
 	return dara.Validate(s)
 }
 
