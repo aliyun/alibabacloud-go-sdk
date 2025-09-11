@@ -93,6 +93,8 @@ type iCreateDBClusterRequest interface {
 	GetServerlessType() *string
 	SetSourceResourceId(v string) *CreateDBClusterRequest
 	GetSourceResourceId() *string
+	SetSourceUid(v int64) *CreateDBClusterRequest
+	GetSourceUid() *int64
 	SetStandbyAZ(v string) *CreateDBClusterRequest
 	GetStandbyAZ() *string
 	SetStorageAutoScale(v string) *CreateDBClusterRequest
@@ -616,6 +618,10 @@ type CreateDBClusterRequest struct {
 	//
 	// rm-*************
 	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	// example:
+	//
+	// 1022xxxxxxxx
+	SourceUid *int64 `json:"SourceUid,omitempty" xml:"SourceUid,omitempty"`
 	// The availability zone where the hot standby cluster is stored. Applicable to the standard edition 3AZ scenario.
 	//
 	// > This parameter takes effect only when multi-zone data strong consistency is enabled.
@@ -943,6 +949,10 @@ func (s *CreateDBClusterRequest) GetSourceResourceId() *string {
 	return s.SourceResourceId
 }
 
+func (s *CreateDBClusterRequest) GetSourceUid() *int64 {
+	return s.SourceUid
+}
+
 func (s *CreateDBClusterRequest) GetStandbyAZ() *string {
 	return s.StandbyAZ
 }
@@ -1214,6 +1224,11 @@ func (s *CreateDBClusterRequest) SetServerlessType(v string) *CreateDBClusterReq
 
 func (s *CreateDBClusterRequest) SetSourceResourceId(v string) *CreateDBClusterRequest {
 	s.SourceResourceId = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetSourceUid(v int64) *CreateDBClusterRequest {
+	s.SourceUid = &v
 	return s
 }
 

@@ -1336,6 +1336,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["SourceResourceId"] = request.SourceResourceId
 	}
 
+	if !dara.IsNil(request.SourceUid) {
+		query["SourceUid"] = request.SourceUid
+	}
+
 	if !dara.IsNil(request.StandbyAZ) {
 		query["StandbyAZ"] = request.StandbyAZ
 	}
@@ -4626,6 +4630,82 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
 	_body, _err := client.DescribeBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询备份集所在地域信息
+//
+// @param request - DescribeBackupRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupRegionsResponse
+func (client *Client) DescribeBackupRegionsWithOptions(request *DescribeBackupRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupRegionsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBackupRegions"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBackupRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询备份集所在地域信息
+//
+// @param request - DescribeBackupRegionsRequest
+//
+// @return DescribeBackupRegionsResponse
+func (client *Client) DescribeBackupRegions(request *DescribeBackupRegionsRequest) (_result *DescribeBackupRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBackupRegionsResponse{}
+	_body, _err := client.DescribeBackupRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
