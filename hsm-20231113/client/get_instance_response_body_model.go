@@ -125,6 +125,10 @@ type GetInstanceResponseBodyInstance struct {
 	//
 	// 23576634952****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1
+	PqcEnabled *int32 `json:"PqcEnabled,omitempty" xml:"PqcEnabled,omitempty"`
 	// The ID of the region.
 	//
 	// example:
@@ -249,6 +253,10 @@ func (s *GetInstanceResponseBodyInstance) GetOrderId() *string {
 	return s.OrderId
 }
 
+func (s *GetInstanceResponseBodyInstance) GetPqcEnabled() *int32 {
+	return s.PqcEnabled
+}
+
 func (s *GetInstanceResponseBodyInstance) GetRegionId() *string {
 	return s.RegionId
 }
@@ -332,6 +340,11 @@ func (s *GetInstanceResponseBodyInstance) SetMaster(v bool) *GetInstanceResponse
 
 func (s *GetInstanceResponseBodyInstance) SetOrderId(v string) *GetInstanceResponseBodyInstance {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyInstance) SetPqcEnabled(v int32) *GetInstanceResponseBodyInstance {
+	s.PqcEnabled = &v
 	return s
 }
 

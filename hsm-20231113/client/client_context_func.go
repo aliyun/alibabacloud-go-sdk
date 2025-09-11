@@ -789,6 +789,56 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
+// 下载集群托管证书
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API允许用户获取特定集群的管理证书。
+//
+// - 返回的数据是经过base64编码的证书内容。
+//
+// @param request - DownloadClusterManagedCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadClusterManagedCertResponse
+func (client *Client) DownloadClusterManagedCertWithContext(ctx context.Context, request *DownloadClusterManagedCertRequest, runtime *dara.RuntimeOptions) (_result *DownloadClusterManagedCertResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadClusterManagedCert"),
+		Version:     dara.String("2023-11-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadClusterManagedCertResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds a backup to a specified hardware security module (HSM).
 //
 // Description:
@@ -1617,6 +1667,86 @@ func (client *Client) PauseInstanceWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
+// 快速部署集群
+//
+// @param tmpReq - QuickDeployClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuickDeployClusterResponse
+func (client *Client) QuickDeployClusterWithContext(ctx context.Context, tmpReq *QuickDeployClusterRequest, runtime *dara.RuntimeOptions) (_result *QuickDeployClusterResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QuickDeployClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceList) {
+		request.InstanceListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceList, dara.String("InstanceList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VSwitchIdList) {
+		request.VSwitchIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VSwitchIdList, dara.String("VSwitchIdList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.WhiteList) {
+		request.WhiteListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WhiteList, dara.String("WhiteList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertManaged) {
+		query["CertManaged"] = request.CertManaged
+	}
+
+	if !dara.IsNil(request.ClusterName) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.InstanceListShrink) {
+		query["InstanceList"] = request.InstanceListShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchIdListShrink) {
+		query["VSwitchIdList"] = request.VSwitchIdListShrink
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.WhiteListShrink) {
+		query["WhiteList"] = request.WhiteListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuickDeployCluster"),
+		Version:     dara.String("2023-11-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuickDeployClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Initializes a hardware security module (HSM).
 //
 // Description:
@@ -1837,6 +1967,60 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResumeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 轮转集群托管证书
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API用于触发指定集群的管理证书轮转过程。通过提供`ClusterId`参数，可以指定需要进行证书轮转的集群。此操作有助于提高集群的安全性，建议定期执行。
+//
+// ### 注意事项
+//
+// - 确保提供的`ClusterId`是有效的，并且用户具有对该集群的操作权限。
+//
+// - 证书轮转可能会影响依赖于旧证书的服务，请在适当的时间窗口内执行此操作。
+//
+// @param request - RotateClusterManagedCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RotateClusterManagedCertResponse
+func (client *Client) RotateClusterManagedCertWithContext(ctx context.Context, request *RotateClusterManagedCertRequest, runtime *dara.RuntimeOptions) (_result *RotateClusterManagedCertResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RotateClusterManagedCert"),
+		Version:     dara.String("2023-11-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RotateClusterManagedCertResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
