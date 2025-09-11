@@ -144,6 +144,10 @@ type DescribeAuditLogsResponseBodyItems struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// example:
 	//
+	// MySQL
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
 	// example:
@@ -272,6 +276,10 @@ func (s *DescribeAuditLogsResponseBodyItems) GetDataSet() *string {
 
 func (s *DescribeAuditLogsResponseBodyItems) GetDatabaseName() *string {
 	return s.DatabaseName
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) GetDbType() *string {
+	return s.DbType
 }
 
 func (s *DescribeAuditLogsResponseBodyItems) GetEffectRow() *int64 {
@@ -406,6 +414,11 @@ func (s *DescribeAuditLogsResponseBodyItems) SetDataSet(v string) *DescribeAudit
 
 func (s *DescribeAuditLogsResponseBodyItems) SetDatabaseName(v string) *DescribeAuditLogsResponseBodyItems {
 	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) SetDbType(v string) *DescribeAuditLogsResponseBodyItems {
+	s.DbType = &v
 	return s
 }
 
