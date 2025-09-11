@@ -163,12 +163,16 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// true
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// Deprecated
+	//
 	// The Docker version that is used by the cluster.
 	//
 	// example:
 	//
 	// 19.03.5
 	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
+	// Deprecated
+	//
 	// The ID of the Server Load Balancer (SLB) instance that is created for the Ingress of the cluster.
 	//
 	// example:
@@ -212,6 +216,8 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// cluster-demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Deprecated
+	//
 	// The network type of the cluster. Example: Virtual Private Cloud (VPC).
 	//
 	// example:
@@ -234,8 +240,12 @@ type DescribeClusterDetailResponseBody struct {
 	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
 	// The automatic O\\&M policy of the cluster.
 	OperationPolicy *DescribeClusterDetailResponseBodyOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// The Resource Orchestration Service (ROS) parameters of the cluster.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether Alibaba Cloud DNS PrivateZone (PrivateZone) is enabled for the cluster. Valid values:
 	//
 	// 	- `true`: PrivateZone is enabled.
@@ -379,6 +389,8 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// KubernetesWorkerRole-ec87d15b-edca-4302-933f-c8a16bf0****
 	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
+	// Deprecated
+	//
 	// The ID of the zone within the region where the cluster is located.
 	//
 	// example:

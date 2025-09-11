@@ -216,6 +216,8 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
+	// Deprecated
+	//
 	// The network access control list (ACL) rule of the SLB instance associated with the API server if the cluster is a registered cluster.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	// The components that you want to install in the cluster. When you create a cluster, you can configure the `addons` parameter to specify the components that you want to install.
@@ -359,8 +361,6 @@ type CreateClusterRequest struct {
 	// 	- `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless clusters (Basic Edition and Pro Edition), ACK Edge clusters (Basic Edition and Pro Edition), and ACK Lingjun clusters (Pro Edition).
 	//
 	// 	- `ExternalKubernetes`: registered cluster.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -633,6 +633,8 @@ type CreateClusterRequest struct {
 	//
 	// slb.s2.small
 	LoadBalancerSpec *string `json:"load_balancer_spec,omitempty" xml:"load_balancer_spec,omitempty"`
+	// Deprecated
+	//
 	// Enables Simple Log Service for the cluster. This parameter takes effect only for ACK Serverless clusters. Set the value to `SLS`.
 	//
 	// example:
@@ -809,6 +811,8 @@ type CreateClusterRequest struct {
 	//
 	// cluster-demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Deprecated
+	//
 	// [Deprecated] Use the `snat_entry` parameter instead.
 	//
 	// example:
@@ -841,6 +845,8 @@ type CreateClusterRequest struct {
 	//
 	// aliyun.com00055test
 	NodeNameMode *string `json:"node_name_mode,omitempty" xml:"node_name_mode,omitempty"`
+	// Deprecated
+	//
 	// The node port range. Valid values: 30000 to 65535.
 	//
 	// Default value: `30000-32767`.
@@ -933,6 +939,8 @@ type CreateClusterRequest struct {
 	//
 	// CentOS
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
+	// Deprecated
+	//
 	// If you select Terway as the network plug-in, you must allocate vSwitches to pods. For each vSwitch that allocates IP addresses to worker nodes, you must select a vSwitch in the same zone to allocate IP addresses to pods.
 	//
 	// >  We recommend that you select pod vSwitches whose subnet masks do not exceed 19 bits in length. The maximum subnet mask length of a pod vSwitch is 25 bits. If you select a pod vSwitch whose subnet mask exceeds 25 bits in length, the IP addresses that can be allocated to pods may be insufficient.
@@ -984,6 +992,8 @@ type CreateClusterRequest struct {
 	// rg-acfm3mkrure****
 	ResourceGroupId *string                         `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	RrsaConfig      *CreateClusterRequestRrsaConfig `json:"rrsa_config,omitempty" xml:"rrsa_config,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
 	//
 	// For more information about how to select a proper container runtime, see [Comparison among Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
@@ -1022,12 +1032,12 @@ type CreateClusterRequest struct {
 	//
 	// By default, the Service CIDR block is set to 172.19.0.0/20.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 172.21.0.0/20
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
+	// Deprecated
+	//
 	// The methods for implementing service discovery in `ACK Serverless` clusters.
 	//
 	// 	- `CoreDNS`: a standard service discovery plug-in that is provided by open source Kubernetes. To use DNS resolution, you must provision pods. By default, two elastic container instances are used. The specification of each instance is 0.25 vCores and 512 MiB of memory.
@@ -1116,6 +1126,8 @@ type CreateClusterRequest struct {
 	//
 	// -----BEGIN CERTIFICATE-----****
 	UserCa *string `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
+	// Deprecated
+	//
 	// The user data of nodes.
 	//
 	// example:

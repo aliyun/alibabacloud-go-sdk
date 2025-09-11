@@ -46,6 +46,8 @@ type UpgradeClusterRequest struct {
 	//
 	// 1.16.9-aliyun.1
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
+	// Deprecated
+	//
 	// The rolling update configuration.
 	RollingPolicy *UpgradeClusterRequestRollingPolicy `json:"rolling_policy,omitempty" xml:"rolling_policy,omitempty" type:"Struct"`
 	// Deprecated
@@ -116,6 +118,8 @@ func (s *UpgradeClusterRequest) Validate() error {
 }
 
 type UpgradeClusterRequestRollingPolicy struct {
+	// Deprecated
+	//
 	// The maximum number of nodes concurrently upgraded per batch.
 	//
 	// example:

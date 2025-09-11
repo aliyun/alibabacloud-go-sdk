@@ -65,6 +65,8 @@ type iKubeletConfig interface {
 	GetReservedMemory() []*KubeletConfigReservedMemory
 	SetSerializeImagePulls(v bool) *KubeletConfig
 	GetSerializeImagePulls() *bool
+	SetServerTLSBootstrap(v bool) *KubeletConfig
+	GetServerTLSBootstrap() *bool
 	SetSystemReserved(v map[string]interface{}) *KubeletConfig
 	GetSystemReserved() map[string]interface{}
 	SetTopologyManagerPolicy(v string) *KubeletConfig
@@ -162,6 +164,7 @@ type KubeletConfig struct {
 	//
 	// true
 	SerializeImagePulls *bool                  `json:"serializeImagePulls,omitempty" xml:"serializeImagePulls,omitempty"`
+	ServerTLSBootstrap  *bool                  `json:"serverTLSBootstrap,omitempty" xml:"serverTLSBootstrap,omitempty"`
 	SystemReserved      map[string]interface{} `json:"systemReserved,omitempty" xml:"systemReserved,omitempty"`
 	// example:
 	//
@@ -288,6 +291,10 @@ func (s *KubeletConfig) GetReservedMemory() []*KubeletConfigReservedMemory {
 
 func (s *KubeletConfig) GetSerializeImagePulls() *bool {
 	return s.SerializeImagePulls
+}
+
+func (s *KubeletConfig) GetServerTLSBootstrap() *bool {
+	return s.ServerTLSBootstrap
 }
 
 func (s *KubeletConfig) GetSystemReserved() map[string]interface{} {
@@ -439,6 +446,11 @@ func (s *KubeletConfig) SetReservedMemory(v []*KubeletConfigReservedMemory) *Kub
 
 func (s *KubeletConfig) SetSerializeImagePulls(v bool) *KubeletConfig {
 	s.SerializeImagePulls = &v
+	return s
+}
+
+func (s *KubeletConfig) SetServerTLSBootstrap(v bool) *KubeletConfig {
+	s.ServerTLSBootstrap = &v
 	return s
 }
 

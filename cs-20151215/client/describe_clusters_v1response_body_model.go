@@ -105,12 +105,16 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// true
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
+	// Deprecated
+	//
 	// The Docker version that is used by the cluster.
 	//
 	// example:
 	//
 	// 19.03.5
 	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
+	// Deprecated
+	//
 	// The ID of the Server Load Balancer (SLB) instance that is used by the Ingresses of the cluster.
 	//
 	// The default SLB specification is slb.s1.small, which belongs to the high-performance instance type.
@@ -155,6 +159,8 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// cluster-demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Deprecated
+	//
 	// The network mode of the cluster. Valid values:
 	//
 	// 	- `classic`: classic network.
@@ -177,6 +183,8 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// The automatic O\\&M policy of the cluster.
 	OperationPolicy *DescribeClustersV1ResponseBodyClustersOperationPolicy `json:"operation_policy,omitempty" xml:"operation_policy,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// Indicates whether Alibaba Cloud DNS PrivateZone is enabled. Valid values:
 	//
 	// 	- `true`: Alibaba Cloud DNS PrivateZone is enabled.
@@ -303,12 +311,16 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
 	// The vSwitches of the control planes.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
 	//
 	// example:
 	//
 	// KubernetesWorkerRole-ec87d15b-edca-4302-933f-c8a16bf0****
 	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
+	// Deprecated
+	//
 	// The ID of the zone where the cluster is deployed.
 	//
 	// example:

@@ -48,6 +48,8 @@ type iModifyClusterRequest interface {
 }
 
 type ModifyClusterRequest struct {
+	// Deprecated
+	//
 	// The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	// The custom subject alternative names (SANs) for the API server certificate to accept requests from specified IP addresses or domain names. This parameter is available only for ACK managed clusters.
@@ -100,6 +102,8 @@ type ModifyClusterRequest struct {
 	//
 	// true
 	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to remap the test domain name of the cluster. Valid values:
 	//
 	// 	- `true`: remaps the test domain name of the cluster.
@@ -112,12 +116,16 @@ type ModifyClusterRequest struct {
 	//
 	// true
 	IngressDomainRebinding *bool `json:"ingress_domain_rebinding,omitempty" xml:"ingress_domain_rebinding,omitempty"`
+	// Deprecated
+	//
 	// The ID of the Server Load Balancer (SLB) instance of the cluster to be modified.
 	//
 	// example:
 	//
 	// lb-wz97kes8tnndkpodw****
 	IngressLoadbalancerId *string `json:"ingress_loadbalancer_id,omitempty" xml:"ingress_loadbalancer_id,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable instance deletion protection. If you enable this option, the instance cannot be deleted in the console or by calling API operations. Valid values:
 	//
 	// 	- `true`: enables instance deletion protection.
