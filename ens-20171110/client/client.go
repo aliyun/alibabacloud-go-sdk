@@ -11405,6 +11405,53 @@ func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest)
 
 // Summary:
 //
+// 输出指定用户ID下可用资源对应的nas信息
+//
+// @param request - DescribeNASAvailableResourceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNASAvailableResourceInfoResponse
+func (client *Client) DescribeNASAvailableResourceInfoWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeNASAvailableResourceInfoResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNASAvailableResourceInfo"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNASAvailableResourceInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 输出指定用户ID下可用资源对应的nas信息
+//
+// @return DescribeNASAvailableResourceInfoResponse
+func (client *Client) DescribeNASAvailableResourceInfo() (_result *DescribeNASAvailableResourceInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNASAvailableResourceInfoResponse{}
+	_body, _err := client.DescribeNASAvailableResourceInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据筛选条件获取指定NC属性和资源量信息
 //
 // @param request - DescribeNCInformationRequest
