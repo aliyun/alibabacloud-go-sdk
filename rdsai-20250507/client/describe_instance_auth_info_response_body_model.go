@@ -11,6 +11,10 @@ type iDescribeInstanceAuthInfoResponseBody interface {
 	GoString() string
 	SetApiKeys(v *DescribeInstanceAuthInfoResponseBodyApiKeys) *DescribeInstanceAuthInfoResponseBody
 	GetApiKeys() *DescribeInstanceAuthInfoResponseBodyApiKeys
+	SetConfigList(v []*DescribeInstanceAuthInfoResponseBodyConfigList) *DescribeInstanceAuthInfoResponseBody
+	GetConfigList() []*DescribeInstanceAuthInfoResponseBodyConfigList
+	SetInstanceName(v string) *DescribeInstanceAuthInfoResponseBody
+	GetInstanceName() *string
 	SetJwtSecret(v string) *DescribeInstanceAuthInfoResponseBody
 	GetJwtSecret() *string
 	SetRequestId(v string) *DescribeInstanceAuthInfoResponseBody
@@ -19,7 +23,9 @@ type iDescribeInstanceAuthInfoResponseBody interface {
 
 type DescribeInstanceAuthInfoResponseBody struct {
 	// API Keys
-	ApiKeys *DescribeInstanceAuthInfoResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Struct"`
+	ApiKeys      *DescribeInstanceAuthInfoResponseBodyApiKeys      `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Struct"`
+	ConfigList   []*DescribeInstanceAuthInfoResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	InstanceName *string                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// example:
 	//
 	// i5o1XAp4sR*****oyOb3O
@@ -42,6 +48,14 @@ func (s *DescribeInstanceAuthInfoResponseBody) GetApiKeys() *DescribeInstanceAut
 	return s.ApiKeys
 }
 
+func (s *DescribeInstanceAuthInfoResponseBody) GetConfigList() []*DescribeInstanceAuthInfoResponseBodyConfigList {
+	return s.ConfigList
+}
+
+func (s *DescribeInstanceAuthInfoResponseBody) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *DescribeInstanceAuthInfoResponseBody) GetJwtSecret() *string {
 	return s.JwtSecret
 }
@@ -52,6 +66,16 @@ func (s *DescribeInstanceAuthInfoResponseBody) GetRequestId() *string {
 
 func (s *DescribeInstanceAuthInfoResponseBody) SetApiKeys(v *DescribeInstanceAuthInfoResponseBodyApiKeys) *DescribeInstanceAuthInfoResponseBody {
 	s.ApiKeys = v
+	return s
+}
+
+func (s *DescribeInstanceAuthInfoResponseBody) SetConfigList(v []*DescribeInstanceAuthInfoResponseBodyConfigList) *DescribeInstanceAuthInfoResponseBody {
+	s.ConfigList = v
+	return s
+}
+
+func (s *DescribeInstanceAuthInfoResponseBody) SetInstanceName(v string) *DescribeInstanceAuthInfoResponseBody {
+	s.InstanceName = &v
 	return s
 }
 
@@ -111,5 +135,40 @@ func (s *DescribeInstanceAuthInfoResponseBodyApiKeys) SetServiceKey(v string) *D
 }
 
 func (s *DescribeInstanceAuthInfoResponseBodyApiKeys) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceAuthInfoResponseBodyConfigList struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstanceAuthInfoResponseBodyConfigList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceAuthInfoResponseBodyConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceAuthInfoResponseBodyConfigList) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeInstanceAuthInfoResponseBodyConfigList) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeInstanceAuthInfoResponseBodyConfigList) SetName(v string) *DescribeInstanceAuthInfoResponseBodyConfigList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInstanceAuthInfoResponseBodyConfigList) SetValue(v string) *DescribeInstanceAuthInfoResponseBodyConfigList {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeInstanceAuthInfoResponseBodyConfigList) Validate() error {
 	return dara.Validate(s)
 }
