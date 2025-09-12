@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("tingwu"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTaskResponse
-func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+func (client *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -110,30 +62,11 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建听悟任务
-//
-// @param request - CreateTaskRequest
-//
-// @return CreateTaskResponse
-func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTaskResponse{}
-	_body, _err := client.CreateTaskWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -148,7 +81,7 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateTranscriptionPhrasesResponse
-func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTranscriptionPhrasesResponse, _err error) {
+func (client *Client) CreateTranscriptionPhrasesWithContext(ctx context.Context, request *CreateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTranscriptionPhrasesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -182,30 +115,11 @@ func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTrans
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建热词词表
-//
-// @param request - CreateTranscriptionPhrasesRequest
-//
-// @return CreateTranscriptionPhrasesResponse
-func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhrasesRequest) (_result *CreateTranscriptionPhrasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTranscriptionPhrasesResponse{}
-	_body, _err := client.CreateTranscriptionPhrasesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -218,7 +132,7 @@ func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTranscriptionPhrasesResponse
-func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
+func (client *Client) DeleteTranscriptionPhrasesWithContext(ctx context.Context, PhraseId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -234,28 +148,11 @@ func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除词表
-//
-// @return DeleteTranscriptionPhrasesResponse
-func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteTranscriptionPhrasesResponse{}
-	_body, _err := client.DeleteTranscriptionPhrasesWithOptions(PhraseId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -268,7 +165,7 @@ func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskInfoResponse
-func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskInfoResponse, _err error) {
+func (client *Client) GetTaskInfoWithContext(ctx context.Context, TaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskInfoResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -284,28 +181,11 @@ func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询听悟任务信息
-//
-// @return GetTaskInfoResponse
-func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskInfoResponse{}
-	_body, _err := client.GetTaskInfoWithOptions(TaskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -318,7 +198,7 @@ func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse,
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTranscriptionPhrasesResponse
-func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTranscriptionPhrasesResponse, _err error) {
+func (client *Client) GetTranscriptionPhrasesWithContext(ctx context.Context, PhraseId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTranscriptionPhrasesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -334,28 +214,11 @@ func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, heade
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询热词词表信息
-//
-// @return GetTranscriptionPhrasesResponse
-func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTranscriptionPhrasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTranscriptionPhrasesResponse{}
-	_body, _err := client.GetTranscriptionPhrasesWithOptions(PhraseId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -368,7 +231,7 @@ func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTra
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTranscriptionPhrasesResponse
-func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTranscriptionPhrasesResponse, _err error) {
+func (client *Client) ListTranscriptionPhrasesWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTranscriptionPhrasesResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -384,28 +247,11 @@ func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*st
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 列举用户所有热词词表信息
-//
-// @return ListTranscriptionPhrasesResponse
-func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhrasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListTranscriptionPhrasesResponse{}
-	_body, _err := client.ListTranscriptionPhrasesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -420,7 +266,7 @@ func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhra
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTranscriptionPhrasesResponse
-func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, request *UpdateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
+func (client *Client) UpdateTranscriptionPhrasesWithContext(ctx context.Context, PhraseId *string, request *UpdateTranscriptionPhrasesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -454,29 +300,10 @@ func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTranscriptionPhrasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新热词词表
-//
-// @param request - UpdateTranscriptionPhrasesRequest
-//
-// @return UpdateTranscriptionPhrasesResponse
-func (client *Client) UpdateTranscriptionPhrases(PhraseId *string, request *UpdateTranscriptionPhrasesRequest) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateTranscriptionPhrasesResponse{}
-	_body, _err := client.UpdateTranscriptionPhrasesWithOptions(PhraseId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
