@@ -1621,39 +1621,6 @@ func (client *Client) DescribeAckOperatorWithContext(ctx context.Context, Cluste
 
 // Summary:
 //
-// # Describe APM
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeApmResponse
-func (client *Client) DescribeApmWithContext(ctx context.Context, instanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeApmResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm/" + dara.PercentEncode(dara.StringValue(instanceId))),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeApmResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the details of a shipper.
 //
 // @param headers - map
@@ -3659,67 +3626,6 @@ func (client *Client) ListAlternativeSnapshotReposWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAlternativeSnapshotReposResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # ListApm
-//
-// @param request - ListApmRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListApmResponse
-func (client *Client) ListApmWithContext(ctx context.Context, request *ListApmRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.Description) {
-		query["description"] = request.Description
-	}
-
-	if !dara.IsNil(request.InstanceId) {
-		query["instanceId"] = request.InstanceId
-	}
-
-	if !dara.IsNil(request.Output) {
-		query["output"] = request.Output
-	}
-
-	if !dara.IsNil(request.Page) {
-		query["page"] = request.Page
-	}
-
-	if !dara.IsNil(request.Size) {
-		query["size"] = request.Size
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ListApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ListApmResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6231,39 +6137,6 @@ func (client *Client) ReinstallCollectorWithContext(ctx context.Context, ResId *
 
 // Summary:
 //
-// # RemoveApm
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RemoveApmResponse
-func (client *Client) RemoveApmWithContext(ctx context.Context, instanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveApmResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("RemoveApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm/" + dara.PercentEncode(dara.StringValue(instanceId))),
-		Method:      dara.String("DELETE"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &RemoveApmResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Call RenewInstance to renew a subscription instance.
 //
 // @param request - RenewInstanceRequest
@@ -6761,39 +6634,6 @@ func (client *Client) ShrinkNodeWithContext(ctx context.Context, InstanceId *str
 
 // Summary:
 //
-// # StartApm
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return StartApmResponse
-func (client *Client) StartApmWithContext(ctx context.Context, instanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartApmResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("StartApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/actions/start"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &StartApmResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // Starts a collector to collect data.
 //
 // @param request - StartCollectorRequest
@@ -6829,39 +6669,6 @@ func (client *Client) StartCollectorWithContext(ctx context.Context, ResId *stri
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartCollectorResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # StopApm
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return StopApmResponse
-func (client *Client) StopApmWithContext(ctx context.Context, instanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopApmResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("StopApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/actions/stop"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &StopApmResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7485,67 +7292,6 @@ func (client *Client) UpdateAliwsDictWithContext(ctx context.Context, InstanceId
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAliwsDictResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 修改APM实规格配置
-//
-// @param request - UpdateApmRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdateApmResponse
-func (client *Client) UpdateApmWithContext(ctx context.Context, instanceId *string, request *UpdateApmRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Description) {
-		body["description"] = request.Description
-	}
-
-	if !dara.IsNil(request.OutputES) {
-		body["outputES"] = request.OutputES
-	}
-
-	if !dara.IsNil(request.OutputESPassword) {
-		body["outputESPassword"] = request.OutputESPassword
-	}
-
-	if !dara.IsNil(request.OutputESUserName) {
-		body["outputESUserName"] = request.OutputESUserName
-	}
-
-	if !dara.IsNil(request.Token) {
-		body["token"] = request.Token
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("UpdateApm"),
-		Version:     dara.String("2017-06-13"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/openapi/apm/" + dara.PercentEncode(dara.StringValue(instanceId))),
-		Method:      dara.String("PUT"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &UpdateApmResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
