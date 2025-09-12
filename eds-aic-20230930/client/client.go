@@ -402,6 +402,10 @@ func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneN
 		query["AutoPay"] = request.AutoPay
 	}
 
+	if !dara.IsNil(request.DisplayConfig) {
+		query["DisplayConfig"] = request.DisplayConfig
+	}
+
 	if !dara.IsNil(request.DownBandwidthLimit) {
 		query["DownBandwidthLimit"] = request.DownBandwidthLimit
 	}

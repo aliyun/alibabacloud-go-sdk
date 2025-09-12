@@ -201,7 +201,8 @@ type DescribeBackupFilesResponseBodyData struct {
 	// example:
 	//
 	// AVAILABLE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemVersion *string `json:"SystemVersion,omitempty" xml:"SystemVersion,omitempty"`
 	// The task ID.
 	//
 	// example:
@@ -298,6 +299,10 @@ func (s *DescribeBackupFilesResponseBodyData) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DescribeBackupFilesResponseBodyData) GetSystemVersion() *string {
+	return s.SystemVersion
+}
+
 func (s *DescribeBackupFilesResponseBodyData) GetTaskId() *string {
 	return s.TaskId
 }
@@ -387,6 +392,11 @@ func (s *DescribeBackupFilesResponseBodyData) SetSourceFilePathList(v []*string)
 
 func (s *DescribeBackupFilesResponseBodyData) SetStatus(v string) *DescribeBackupFilesResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupFilesResponseBodyData) SetSystemVersion(v string) *DescribeBackupFilesResponseBodyData {
+	s.SystemVersion = &v
 	return s
 }
 

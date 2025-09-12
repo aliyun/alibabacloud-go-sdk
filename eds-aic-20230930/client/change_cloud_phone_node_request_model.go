@@ -11,6 +11,8 @@ type iChangeCloudPhoneNodeRequest interface {
 	GoString() string
 	SetAutoPay(v bool) *ChangeCloudPhoneNodeRequest
 	GetAutoPay() *bool
+	SetDisplayConfig(v string) *ChangeCloudPhoneNodeRequest
+	GetDisplayConfig() *string
 	SetDownBandwidthLimit(v int32) *ChangeCloudPhoneNodeRequest
 	GetDownBandwidthLimit() *int32
 	SetInstanceType(v string) *ChangeCloudPhoneNodeRequest
@@ -28,8 +30,9 @@ type iChangeCloudPhoneNodeRequest interface {
 }
 
 type ChangeCloudPhoneNodeRequest struct {
-	AutoPay            *bool  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	DownBandwidthLimit *int32 `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
+	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DisplayConfig      *string `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
+	DownBandwidthLimit *int32  `json:"DownBandwidthLimit,omitempty" xml:"DownBandwidthLimit,omitempty"`
 	// example:
 	//
 	// ac.max
@@ -57,6 +60,10 @@ func (s ChangeCloudPhoneNodeRequest) GoString() string {
 
 func (s *ChangeCloudPhoneNodeRequest) GetAutoPay() *bool {
 	return s.AutoPay
+}
+
+func (s *ChangeCloudPhoneNodeRequest) GetDisplayConfig() *string {
+	return s.DisplayConfig
 }
 
 func (s *ChangeCloudPhoneNodeRequest) GetDownBandwidthLimit() *int32 {
@@ -89,6 +96,11 @@ func (s *ChangeCloudPhoneNodeRequest) GetUpBandwidthLimit() *int32 {
 
 func (s *ChangeCloudPhoneNodeRequest) SetAutoPay(v bool) *ChangeCloudPhoneNodeRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetDisplayConfig(v string) *ChangeCloudPhoneNodeRequest {
+	s.DisplayConfig = &v
 	return s
 }
 

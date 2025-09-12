@@ -201,7 +201,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// acp.basic.small
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
 	// The ID of the key pair.
 	//
 	// example:
@@ -406,6 +407,10 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetImageVersion() *s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetInstanceType() *string {
 	return s.InstanceType
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetInternetStatus() *string {
+	return s.InternetStatus
 }
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) GetKeyPairId() *string {
@@ -626,6 +631,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetImageVersion(v st
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetInstanceType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetInternetStatus(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.InternetStatus = &v
 	return s
 }
 
