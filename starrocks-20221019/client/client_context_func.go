@@ -85,6 +85,14 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 		body["AdminPassword"] = request.AdminPassword
 	}
 
+	if !dara.IsNil(request.AgentNodeGroup) {
+		body["AgentNodeGroup"] = request.AgentNodeGroup
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		body["AutoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		body["AutoRenew"] = request.AutoRenew
 	}
@@ -107,6 +115,10 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.FrontendNodeGroups) {
 		body["FrontendNodeGroups"] = request.FrontendNodeGroups
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
 	}
 
 	if !dara.IsNil(request.InstanceName) {
@@ -630,6 +642,10 @@ func (client *Client) ModifyDiskSizeWithContext(ctx context.Context, request *Mo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FastMode) {
+		query["FastMode"] = request.FastMode
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

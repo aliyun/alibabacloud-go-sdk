@@ -9,6 +9,8 @@ type iModifyDiskSizeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFastMode(v bool) *ModifyDiskSizeRequest
+	GetFastMode() *bool
 	SetInstanceId(v string) *ModifyDiskSizeRequest
 	GetInstanceId() *string
 	SetNodeGroupId(v string) *ModifyDiskSizeRequest
@@ -20,6 +22,7 @@ type iModifyDiskSizeRequest interface {
 }
 
 type ModifyDiskSizeRequest struct {
+	FastMode *bool `json:"FastMode,omitempty" xml:"FastMode,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -55,6 +58,10 @@ func (s ModifyDiskSizeRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDiskSizeRequest) GetFastMode() *bool {
+	return s.FastMode
+}
+
 func (s *ModifyDiskSizeRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -69,6 +76,11 @@ func (s *ModifyDiskSizeRequest) GetPromotionOptionNo() *string {
 
 func (s *ModifyDiskSizeRequest) GetTarget() *int32 {
 	return s.Target
+}
+
+func (s *ModifyDiskSizeRequest) SetFastMode(v bool) *ModifyDiskSizeRequest {
+	s.FastMode = &v
+	return s
 }
 
 func (s *ModifyDiskSizeRequest) SetInstanceId(v string) *ModifyDiskSizeRequest {

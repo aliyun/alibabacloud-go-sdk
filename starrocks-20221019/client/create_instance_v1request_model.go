@@ -11,6 +11,10 @@ type iCreateInstanceV1Request interface {
 	GoString() string
 	SetAdminPassword(v string) *CreateInstanceV1Request
 	GetAdminPassword() *string
+	SetAgentNodeGroup(v *CreateInstanceV1RequestAgentNodeGroup) *CreateInstanceV1Request
+	GetAgentNodeGroup() *CreateInstanceV1RequestAgentNodeGroup
+	SetAutoPay(v bool) *CreateInstanceV1Request
+	GetAutoPay() *bool
 	SetAutoRenew(v bool) *CreateInstanceV1Request
 	GetAutoRenew() *bool
 	SetBackendNodeGroups(v []*CreateInstanceV1RequestBackendNodeGroups) *CreateInstanceV1Request
@@ -23,6 +27,8 @@ type iCreateInstanceV1Request interface {
 	GetEncrypted() *bool
 	SetFrontendNodeGroups(v []*CreateInstanceV1RequestFrontendNodeGroups) *CreateInstanceV1Request
 	GetFrontendNodeGroups() []*CreateInstanceV1RequestFrontendNodeGroups
+	SetGatewayType(v string) *CreateInstanceV1Request
+	GetGatewayType() *string
 	SetInstanceName(v string) *CreateInstanceV1Request
 	GetInstanceName() *string
 	SetKmsKeyId(v string) *CreateInstanceV1Request
@@ -63,7 +69,9 @@ type CreateInstanceV1Request struct {
 	// example:
 	//
 	// password_example
-	AdminPassword *string `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
+	AdminPassword  *string                                `json:"AdminPassword,omitempty" xml:"AdminPassword,omitempty"`
+	AgentNodeGroup *CreateInstanceV1RequestAgentNodeGroup `json:"AgentNodeGroup,omitempty" xml:"AgentNodeGroup,omitempty" type:"Struct"`
+	AutoPay        *bool                                  `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// example:
 	//
 	// true
@@ -82,6 +90,7 @@ type CreateInstanceV1Request struct {
 	// true
 	Encrypted          *bool                                        `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
 	FrontendNodeGroups []*CreateInstanceV1RequestFrontendNodeGroups `json:"FrontendNodeGroups,omitempty" xml:"FrontendNodeGroups,omitempty" type:"Repeated"`
+	GatewayType        *string                                      `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -169,6 +178,14 @@ func (s *CreateInstanceV1Request) GetAdminPassword() *string {
 	return s.AdminPassword
 }
 
+func (s *CreateInstanceV1Request) GetAgentNodeGroup() *CreateInstanceV1RequestAgentNodeGroup {
+	return s.AgentNodeGroup
+}
+
+func (s *CreateInstanceV1Request) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
 func (s *CreateInstanceV1Request) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
@@ -191,6 +208,10 @@ func (s *CreateInstanceV1Request) GetEncrypted() *bool {
 
 func (s *CreateInstanceV1Request) GetFrontendNodeGroups() []*CreateInstanceV1RequestFrontendNodeGroups {
 	return s.FrontendNodeGroups
+}
+
+func (s *CreateInstanceV1Request) GetGatewayType() *string {
+	return s.GatewayType
 }
 
 func (s *CreateInstanceV1Request) GetInstanceName() *string {
@@ -262,6 +283,16 @@ func (s *CreateInstanceV1Request) SetAdminPassword(v string) *CreateInstanceV1Re
 	return s
 }
 
+func (s *CreateInstanceV1Request) SetAgentNodeGroup(v *CreateInstanceV1RequestAgentNodeGroup) *CreateInstanceV1Request {
+	s.AgentNodeGroup = v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetAutoPay(v bool) *CreateInstanceV1Request {
+	s.AutoPay = &v
+	return s
+}
+
 func (s *CreateInstanceV1Request) SetAutoRenew(v bool) *CreateInstanceV1Request {
 	s.AutoRenew = &v
 	return s
@@ -289,6 +320,11 @@ func (s *CreateInstanceV1Request) SetEncrypted(v bool) *CreateInstanceV1Request 
 
 func (s *CreateInstanceV1Request) SetFrontendNodeGroups(v []*CreateInstanceV1RequestFrontendNodeGroups) *CreateInstanceV1Request {
 	s.FrontendNodeGroups = v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetGatewayType(v string) *CreateInstanceV1Request {
+	s.GatewayType = &v
 	return s
 }
 
@@ -373,6 +409,31 @@ func (s *CreateInstanceV1Request) SetZoneId(v string) *CreateInstanceV1Request {
 }
 
 func (s *CreateInstanceV1Request) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateInstanceV1RequestAgentNodeGroup struct {
+	Cu *int32 `json:"cu,omitempty" xml:"cu,omitempty"`
+}
+
+func (s CreateInstanceV1RequestAgentNodeGroup) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceV1RequestAgentNodeGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV1RequestAgentNodeGroup) GetCu() *int32 {
+	return s.Cu
+}
+
+func (s *CreateInstanceV1RequestAgentNodeGroup) SetCu(v int32) *CreateInstanceV1RequestAgentNodeGroup {
+	s.Cu = &v
+	return s
+}
+
+func (s *CreateInstanceV1RequestAgentNodeGroup) Validate() error {
 	return dara.Validate(s)
 }
 
