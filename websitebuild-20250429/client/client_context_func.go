@@ -105,6 +105,56 @@ func (client *Client) GetCreateLogoTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 提供给服务商的域名查询接口
+//
+// @param request - GetDomainInfoForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainInfoForPartnerResponse
+func (client *Client) GetDomainInfoForPartnerWithContext(ctx context.Context, request *GetDomainInfoForPartnerRequest, runtime *dara.RuntimeOptions) (_result *GetDomainInfoForPartnerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDomainInfoForPartner"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDomainInfoForPartnerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询域名备案信息
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
