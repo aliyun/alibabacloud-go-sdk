@@ -249,7 +249,10 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 103189557
-	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId       *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId    *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName  *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
 	// example:
 	//
 	// CAN
@@ -358,7 +361,8 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// MU9684
-	FlightNo *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	FlightNo      *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	ForeignersTag *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	// example:
 	//
 	// 4564547
@@ -374,6 +378,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	InsuranceNumber      *string `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
 	InsuranceProductName *string `json:"insurance_product_name,omitempty" xml:"insurance_product_name,omitempty"`
 	InvoiceTitle         *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	Location             *string `json:"location,omitempty" xml:"location,omitempty"`
 	MappingCompanyCode   *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
 	// example:
 	//
@@ -460,6 +465,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 4
 	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
 	// example:
 	//
 	// 1
@@ -489,6 +495,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// CAN-KUL-BKK
 	Trade           *string `json:"trade,omitempty" xml:"trade,omitempty"`
 	TradeActionDesc *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail   *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	// example:
 	//
 	// 54463464
@@ -500,6 +507,7 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	TravelerMemberType     *string `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
 	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
 	TravelerName           *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	TripType               *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
 	// example:
 	//
 	// 11
@@ -558,6 +566,18 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetApplyExtendFi
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetArrAirportCode() *string {
@@ -744,6 +764,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetFlightNo() *s
 	return s.FlightNo
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetIndex() *string {
 	return s.Index
 }
@@ -766,6 +790,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetInsuranceProd
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetInvoiceTitle() *string {
 	return s.InvoiceTitle
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetLocation() *string {
+	return s.Location
 }
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetMappingCompanyCode() *string {
@@ -896,6 +924,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetSettlementTyp
 	return s.SettlementType
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetSio() *string {
+	return s.Sio
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetStatus() *int32 {
 	return s.Status
 }
@@ -932,6 +964,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTradeActionDe
 	return s.TradeActionDesc
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTravelerEmail() *string {
+	return s.TravelerEmail
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTravelerId() *string {
 	return s.TravelerId
 }
@@ -950,6 +986,10 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTravelerMembe
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTravelerName() *string {
 	return s.TravelerName
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetTripType() *int32 {
+	return s.TripType
 }
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) GetVoucherType() *int32 {
@@ -1016,6 +1056,21 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendFi
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApproverEmail(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApproverId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetApproverName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1249,6 +1304,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetFlightNo(v st
 	return s
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetForeignersTag(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.Index = &v
 	return s
@@ -1276,6 +1336,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetInsuranceProd
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetLocation(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Location = &v
 	return s
 }
 
@@ -1439,6 +1504,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSettlementTyp
 	return s
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetSio(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.Sio = &v
+	return s
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
 	return s
@@ -1484,6 +1554,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTradeActionDe
 	return s
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerEmail(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerEmail = &v
+	return s
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerId = &v
 	return s
@@ -1506,6 +1581,11 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerMembe
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTravelerName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerName = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetTripType(v int32) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.TripType = &v
 	return s
 }
 

@@ -222,9 +222,12 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 103189557
-	ApplyId     *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrCityCode *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ApplyId       *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId    *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName  *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
+	ArrCityCode   *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName   *string `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
 	// example:
 	//
 	// 2021-10-13
@@ -298,14 +301,16 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 6001
-	FeeType     *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	FeeTypeDesc *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	FeeType       *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	FeeTypeDesc   *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	ForeignersTag *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	// example:
 	//
 	// 4740293
 	Index              *string `json:"index,omitempty" xml:"index,omitempty"`
 	InvoiceTitle       *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
 	IsTransferOrder    *string `json:"is_transfer_order,omitempty" xml:"is_transfer_order,omitempty"`
+	Location           *string `json:"location,omitempty" xml:"location,omitempty"`
 	LongTicketNo       *string `json:"long_ticket_no,omitempty" xml:"long_ticket_no,omitempty"`
 	MappingCompanyCode *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
 	MaxCabin           *string `json:"max_cabin,omitempty" xml:"max_cabin,omitempty"`
@@ -376,6 +381,7 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// 2
 	SettlementType  *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
 	ShortTicketNo   *string  `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
+	Sio             *string  `json:"sio,omitempty" xml:"sio,omitempty"`
 	SpeedPackageFee *float64 `json:"speed_package_fee,omitempty" xml:"speed_package_fee,omitempty"`
 	// example:
 	//
@@ -405,11 +411,14 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// G906
 	TrainNo                *string `json:"train_no,omitempty" xml:"train_no,omitempty"`
 	TrainType              *string `json:"train_type,omitempty" xml:"train_type,omitempty"`
+	TravelerEmail          *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	TravelerId             *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
 	TravelerJobNo          *string `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
 	TravelerMemberType     *string `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
 	TravelerMemberTypeName *string `json:"traveler_member_type_name,omitempty" xml:"traveler_member_type_name,omitempty"`
 	TravelerName           *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VerifyFailedReason     *string `json:"verify_failed_reason,omitempty" xml:"verify_failed_reason,omitempty"`
+	VerifyStatus           *int32  `json:"verify_status,omitempty" xml:"verify_status,omitempty"`
 	// example:
 	//
 	// 11
@@ -455,6 +464,18 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetApplyExtendField
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetArrCityCode() *string {
@@ -621,6 +642,10 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetFeeTypeDesc() *s
 	return s.FeeTypeDesc
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetIndex() *string {
 	return s.Index
 }
@@ -631,6 +656,10 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetInvoiceTitle() *
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetIsTransferOrder() *string {
 	return s.IsTransferOrder
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetLocation() *string {
+	return s.Location
 }
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetLongTicketNo() *string {
@@ -769,6 +798,10 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetShortTicketNo() 
 	return s.ShortTicketNo
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetSio() *string {
+	return s.Sio
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetSpeedPackageFee() *float64 {
 	return s.SpeedPackageFee
 }
@@ -817,6 +850,10 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetTrainType() *str
 	return s.TrainType
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetTravelerEmail() *string {
+	return s.TravelerEmail
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetTravelerId() *string {
 	return s.TravelerId
 }
@@ -835,6 +872,14 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetTravelerMemberTy
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetTravelerName() *string {
 	return s.TravelerName
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetVerifyFailedReason() *string {
+	return s.VerifyFailedReason
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetVerifyStatus() *int32 {
+	return s.VerifyStatus
 }
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) GetVoucherType() *int32 {
@@ -882,6 +927,21 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApproverEmail(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApproverId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetApproverName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1090,6 +1150,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetFeeTypeDesc(v st
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetForeignersTag(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.Index = &v
 	return s
@@ -1102,6 +1167,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v s
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetIsTransferOrder(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.IsTransferOrder = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetLocation(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.Location = &v
 	return s
 }
 
@@ -1275,6 +1345,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetShortTicketNo(v 
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetSio(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.Sio = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetSpeedPackageFee(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.SpeedPackageFee = &v
 	return s
@@ -1335,6 +1410,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTrainType(v stri
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerEmail(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerEmail = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerId = &v
 	return s
@@ -1357,6 +1437,16 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberTy
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetTravelerName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.TravelerName = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetVerifyFailedReason(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.VerifyFailedReason = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetVerifyStatus(v int32) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.VerifyStatus = &v
 	return s
 }
 

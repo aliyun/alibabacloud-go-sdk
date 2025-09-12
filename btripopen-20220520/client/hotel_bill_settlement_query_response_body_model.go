@@ -224,6 +224,9 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 103208648
 	ApplyId       *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId    *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName  *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
 	AverageNights *string `json:"average_nights,omitempty" xml:"average_nights,omitempty"`
 	BaseLocation  *string `json:"base_location,omitempty" xml:"base_location,omitempty"`
 	// example:
@@ -294,8 +297,9 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 0
-	Fees  *float64 `json:"fees,omitempty" xml:"fees,omitempty"`
-	Fines *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	Fees          *float64 `json:"fees,omitempty" xml:"fees,omitempty"`
+	Fines         *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	ForeignersTag *string  `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	// example:
 	//
 	// 12
@@ -313,6 +317,7 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	IsEarlyDeparture     *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
 	IsNegotiation        *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
 	IsShareStr           *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	Location             *string  `json:"location,omitempty" xml:"location,omitempty"`
 	MappingCompanyCode   *string  `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
 	// example:
 	//
@@ -395,6 +400,7 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 4
 	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
 	Star           *string `json:"star,omitempty" xml:"star,omitempty"`
 	// example:
 	//
@@ -413,6 +419,7 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	// 2
 	TotalNights     *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
 	TradeActionDesc *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail   *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	TravelerId      *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
 	// example:
 	//
@@ -471,6 +478,18 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetApplyExtendField
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetAverageNights() *string {
@@ -629,6 +648,10 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetFines() *float64
 	return s.Fines
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetFuPointFee() *float64 {
 	return s.FuPointFee
 }
@@ -671,6 +694,10 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetIsNegotiation() 
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetIsShareStr() *string {
 	return s.IsShareStr
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetLocation() *string {
+	return s.Location
 }
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetMappingCompanyCode() *string {
@@ -809,6 +836,10 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetSettlementType()
 	return s.SettlementType
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetSio() *string {
+	return s.Sio
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetStar() *string {
 	return s.Star
 }
@@ -835,6 +866,10 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetTotalNights() *i
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetTradeActionDesc() *string {
 	return s.TradeActionDesc
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetTravelerEmail() *string {
+	return s.TravelerEmail
 }
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) GetTravelerId() *string {
@@ -911,6 +946,21 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApproverEmail(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApproverId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetApproverName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1109,6 +1159,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetFines(v float64)
 	return s
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetForeignersTag(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetFuPointFee(v float64) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.FuPointFee = &v
 	return s
@@ -1161,6 +1216,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetIsNegotiation(v 
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetIsShareStr(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.IsShareStr = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetLocation(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Location = &v
 	return s
 }
 
@@ -1334,6 +1394,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v
 	return s
 }
 
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetSio(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Sio = &v
+	return s
+}
+
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetStar(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.Star = &v
 	return s
@@ -1366,6 +1431,11 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTotalNights(v in
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTradeActionDesc(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.TradeActionDesc = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerEmail(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerEmail = &v
 	return s
 }
 

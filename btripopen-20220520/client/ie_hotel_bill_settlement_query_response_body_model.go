@@ -248,7 +248,10 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 103189557
-	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId       *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId    *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName  *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
 	// example:
 	//
 	// 1.0
@@ -339,6 +342,7 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 345
 	ForeignBusinessExpense *int64  `json:"foreign_business_expense,omitempty" xml:"foreign_business_expense,omitempty"`
+	ForeignersTag          *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	HotelName              *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
 	// example:
 	//
@@ -352,6 +356,7 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	IsEarlyDeparture *string `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
 	IsNegotiation    *string `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
 	IsShareStr       *string `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	Location         *string `json:"location,omitempty" xml:"location,omitempty"`
 	// example:
 	//
 	// 132143534543
@@ -445,6 +450,7 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 4
 	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
 	// example:
 	//
 	// 1
@@ -479,6 +485,7 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	// 2
 	TotalNights     *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
 	TradeActionDesc *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail   *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	// example:
 	//
 	// al_xinuan.zsy
@@ -538,6 +545,18 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetApplyExtendFie
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetAverageNights() *float64 {
@@ -684,6 +703,10 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetForeignBusines
 	return s.ForeignBusinessExpense
 }
 
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetHotelName() *string {
 	return s.HotelName
 }
@@ -710,6 +733,10 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetIsNegotiation(
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetIsShareStr() *string {
 	return s.IsShareStr
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetLocation() *string {
+	return s.Location
 }
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetMainApplyId() *string {
@@ -844,6 +871,10 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetSettlementType
 	return s.SettlementType
 }
 
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetSio() *string {
+	return s.Sio
+}
+
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetStatus() *int32 {
 	return s.Status
 }
@@ -882,6 +913,10 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetTotalNights() 
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetTradeActionDesc() *string {
 	return s.TradeActionDesc
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetTravelerEmail() *string {
+	return s.TravelerEmail
 }
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) GetTravelerId() *string {
@@ -950,6 +985,21 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendFie
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApproverEmail(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApproverId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApproverName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1133,6 +1183,11 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetForeignBusines
 	return s
 }
 
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetForeignersTag(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetHotelName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.HotelName = &v
 	return s
@@ -1165,6 +1220,11 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIsNegotiation(
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIsShareStr(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.IsShareStr = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetLocation(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Location = &v
 	return s
 }
 
@@ -1333,6 +1393,11 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementType
 	return s
 }
 
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSio(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Sio = &v
+	return s
+}
+
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.Status = &v
 	return s
@@ -1380,6 +1445,11 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTotalNights(v 
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTradeActionDesc(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.TradeActionDesc = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerEmail(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerEmail = &v
 	return s
 }
 

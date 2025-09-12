@@ -255,6 +255,7 @@ type FlightCreateOrderV2RequestTravelers struct {
 	Phone        *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	TaxNumber    *string `json:"tax_number,omitempty" xml:"tax_number,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -342,6 +343,10 @@ func (s *FlightCreateOrderV2RequestTravelers) GetProjectCode() *string {
 
 func (s *FlightCreateOrderV2RequestTravelers) GetProjectTitle() *string {
 	return s.ProjectTitle
+}
+
+func (s *FlightCreateOrderV2RequestTravelers) GetTaxNumber() *string {
+	return s.TaxNumber
 }
 
 func (s *FlightCreateOrderV2RequestTravelers) GetUserId() *string {
@@ -439,6 +444,11 @@ func (s *FlightCreateOrderV2RequestTravelers) SetProjectCode(v string) *FlightCr
 
 func (s *FlightCreateOrderV2RequestTravelers) SetProjectTitle(v string) *FlightCreateOrderV2RequestTravelers {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *FlightCreateOrderV2RequestTravelers) SetTaxNumber(v string) *FlightCreateOrderV2RequestTravelers {
+	s.TaxNumber = &v
 	return s
 }
 

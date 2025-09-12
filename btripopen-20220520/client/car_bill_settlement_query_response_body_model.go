@@ -220,6 +220,9 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	// 审批扩展自定义字段
 	ApplyExtendField *string `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
 	ApplyId          *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail    *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId       *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName     *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
 	ArrCity          *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	ArrCityCode      *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
 	// example:
@@ -298,14 +301,16 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 40107
-	FeeType     *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	FeeTypeDesc *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	FeeType       *string `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	FeeTypeDesc   *string `json:"fee_type_desc,omitempty" xml:"fee_type_desc,omitempty"`
+	ForeignersTag *string `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	// example:
 	//
 	// 4988580
 	Index              *string `json:"index,omitempty" xml:"index,omitempty"`
 	InvoiceTitle       *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
 	LevelName          *string `json:"level_name,omitempty" xml:"level_name,omitempty"`
+	Location           *string `json:"location,omitempty" xml:"location,omitempty"`
 	MappingCompanyCode *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
 	Memo               *string `json:"memo,omitempty" xml:"memo,omitempty"`
 	// example:
@@ -370,6 +375,7 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	//
 	// 4
 	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
 	SpecialOrder   *string `json:"special_order,omitempty" xml:"special_order,omitempty"`
 	SpecialReason  *string `json:"special_reason,omitempty" xml:"special_reason,omitempty"`
 	// example:
@@ -391,6 +397,7 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	ThirdItineraryId *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
 	TimeType         *string `json:"time_type,omitempty" xml:"time_type,omitempty"`
 	TradeActionDesc  *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail    *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	TravelerId       *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
 	// example:
 	//
@@ -447,6 +454,18 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetApplyExtendField()
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetArrCity() *string {
@@ -601,6 +620,10 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetFeeTypeDesc() *str
 	return s.FeeTypeDesc
 }
 
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetIndex() *string {
 	return s.Index
 }
@@ -611,6 +634,10 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetInvoiceTitle() *st
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetLevelName() *string {
 	return s.LevelName
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetLocation() *string {
+	return s.Location
 }
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetMappingCompanyCode() *string {
@@ -725,6 +752,10 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetSettlementType() *
 	return s.SettlementType
 }
 
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetSio() *string {
+	return s.Sio
+}
+
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetSpecialOrder() *string {
 	return s.SpecialOrder
 }
@@ -763,6 +794,10 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetTimeType() *string
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetTradeActionDesc() *string {
 	return s.TradeActionDesc
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetTravelerEmail() *string {
+	return s.TravelerEmail
 }
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) GetTravelerId() *string {
@@ -842,6 +877,21 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApproverEmail(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApproverId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetApproverName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1035,6 +1085,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetFeeTypeDesc(v stri
 	return s
 }
 
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetForeignersTag(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.Index = &v
 	return s
@@ -1047,6 +1102,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v str
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetLevelName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.LevelName = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetLocation(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.Location = &v
 	return s
 }
 
@@ -1190,6 +1250,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v s
 	return s
 }
 
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetSio(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.Sio = &v
+	return s
+}
+
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetSpecialOrder(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.SpecialOrder = &v
 	return s
@@ -1237,6 +1302,11 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTimeType(v string)
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTradeActionDesc(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.TradeActionDesc = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetTravelerEmail(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerEmail = &v
 	return s
 }
 

@@ -234,7 +234,10 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// sdasdas123324
-	ApplyId *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId       *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApproverEmail *string `json:"approver_email,omitempty" xml:"approver_email,omitempty"`
+	ApproverId    *string `json:"approver_id,omitempty" xml:"approver_id,omitempty"`
+	ApproverName  *string `json:"approver_name,omitempty" xml:"approver_name,omitempty"`
 	// example:
 	//
 	// 1.0
@@ -323,7 +326,8 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	// example:
 	//
 	// 1.0
-	Fines *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	Fines         *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	ForeignersTag *string  `json:"foreigners_tag,omitempty" xml:"foreigners_tag,omitempty"`
 	// example:
 	//
 	// 10.0
@@ -337,6 +341,7 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	IsEarlyDeparture   *string `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
 	IsNegotiation      *string `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
 	IsShareStr         *string `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	Location           *string `json:"location,omitempty" xml:"location,omitempty"`
 	MappingCompanyCode *string `json:"mapping_company_code,omitempty" xml:"mapping_company_code,omitempty"`
 	// example:
 	//
@@ -418,6 +423,7 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	// 2023-01-01 00:00:00
 	SettlementTime *string `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
 	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Sio            *string `json:"sio,omitempty" xml:"sio,omitempty"`
 	Star           *string `json:"star,omitempty" xml:"star,omitempty"`
 	// example:
 	//
@@ -445,6 +451,7 @@ type CooperatorHotelBillSettlementQueryResponseBodyModuleItems struct {
 	// 2
 	TotalNights     *int32  `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
 	TradeActionDesc *string `json:"trade_action_desc,omitempty" xml:"trade_action_desc,omitempty"`
+	TravelerEmail   *string `json:"traveler_email,omitempty" xml:"traveler_email,omitempty"`
 	// example:
 	//
 	// 123
@@ -501,6 +508,18 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetApplyExte
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetApplyId() *string {
 	return s.ApplyId
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetApproverEmail() *string {
+	return s.ApproverEmail
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetApproverId() *string {
+	return s.ApproverId
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetApproverName() *string {
+	return s.ApproverName
 }
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetAverageNights() *float64 {
@@ -655,6 +674,10 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetFines() *
 	return s.Fines
 }
 
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetForeignersTag() *string {
+	return s.ForeignersTag
+}
+
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetFuPointFee() *float64 {
 	return s.FuPointFee
 }
@@ -681,6 +704,10 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetIsNegotia
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetIsShareStr() *string {
 	return s.IsShareStr
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetLocation() *string {
+	return s.Location
 }
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetMappingCompanyCode() *string {
@@ -803,6 +830,10 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetSettlemen
 	return s.SettlementType
 }
 
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetSio() *string {
+	return s.Sio
+}
+
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetStar() *string {
 	return s.Star
 }
@@ -837,6 +868,10 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetTotalNigh
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetTradeActionDesc() *string {
 	return s.TradeActionDesc
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetTravelerEmail() *string {
+	return s.TravelerEmail
 }
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) GetTravelerId() *string {
@@ -904,6 +939,21 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetApplyExte
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetApplyId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetApproverEmail(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.ApproverEmail = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetApproverId(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetApproverName(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.ApproverName = &v
 	return s
 }
 
@@ -1097,6 +1147,11 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetFines(v f
 	return s
 }
 
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetForeignersTag(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.ForeignersTag = &v
+	return s
+}
+
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetFuPointFee(v float64) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.FuPointFee = &v
 	return s
@@ -1129,6 +1184,11 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetIsNegotia
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetIsShareStr(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.IsShareStr = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetLocation(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.Location = &v
 	return s
 }
 
@@ -1282,6 +1342,11 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetSettlemen
 	return s
 }
 
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetSio(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.Sio = &v
+	return s
+}
+
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetStar(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.Star = &v
 	return s
@@ -1324,6 +1389,11 @@ func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetTotalNigh
 
 func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetTradeActionDesc(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
 	s.TradeActionDesc = &v
+	return s
+}
+
+func (s *CooperatorHotelBillSettlementQueryResponseBodyModuleItems) SetTravelerEmail(v string) *CooperatorHotelBillSettlementQueryResponseBodyModuleItems {
+	s.TravelerEmail = &v
 	return s
 }
 
