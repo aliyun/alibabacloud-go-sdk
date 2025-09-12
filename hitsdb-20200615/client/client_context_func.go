@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("hitsdb"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -97,29 +49,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes a resource group to another.
-//
-// @param request - ChangeResourceGroupRequest
-//
-// @return ChangeResourceGroupResponse
-func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResourceGroupResponse{}
-	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -128,7 +62,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckLdpsColumnarIndexStatusResponse
-func (client *Client) CheckLdpsColumnarIndexStatusWithOptions(request *CheckLdpsColumnarIndexStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckLdpsColumnarIndexStatusResponse, _err error) {
+func (client *Client) CheckLdpsColumnarIndexStatusWithContext(ctx context.Context, request *CheckLdpsColumnarIndexStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckLdpsColumnarIndexStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -173,25 +107,11 @@ func (client *Client) CheckLdpsColumnarIndexStatusWithOptions(request *CheckLdps
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckLdpsColumnarIndexStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckLdpsColumnarIndexStatusRequest
-//
-// @return CheckLdpsColumnarIndexStatusResponse
-func (client *Client) CheckLdpsColumnarIndexStatus(request *CheckLdpsColumnarIndexStatusRequest) (_result *CheckLdpsColumnarIndexStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckLdpsColumnarIndexStatusResponse{}
-	_body, _err := client.CheckLdpsColumnarIndexStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -200,7 +120,7 @@ func (client *Client) CheckLdpsColumnarIndexStatus(request *CheckLdpsColumnarInd
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAutoScalingConfigResponse
-func (client *Client) CreateAutoScalingConfigWithOptions(tmpReq *CreateAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoScalingConfigResponse, _err error) {
+func (client *Client) CreateAutoScalingConfigWithContext(ctx context.Context, tmpReq *CreateAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoScalingConfigResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -291,25 +211,11 @@ func (client *Client) CreateAutoScalingConfigWithOptions(tmpReq *CreateAutoScali
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAutoScalingConfigRequest
-//
-// @return CreateAutoScalingConfigResponse
-func (client *Client) CreateAutoScalingConfig(request *CreateAutoScalingConfigRequest) (_result *CreateAutoScalingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAutoScalingConfigResponse{}
-	_body, _err := client.CreateAutoScalingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -318,7 +224,7 @@ func (client *Client) CreateAutoScalingConfig(request *CreateAutoScalingConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAutoScalingRuleResponse
-func (client *Client) CreateAutoScalingRuleWithOptions(request *CreateAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoScalingRuleResponse, _err error) {
+func (client *Client) CreateAutoScalingRuleWithContext(ctx context.Context, request *CreateAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoScalingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -427,25 +333,11 @@ func (client *Client) CreateAutoScalingRuleWithOptions(request *CreateAutoScalin
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAutoScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAutoScalingRuleRequest
-//
-// @return CreateAutoScalingRuleResponse
-func (client *Client) CreateAutoScalingRule(request *CreateAutoScalingRuleRequest) (_result *CreateAutoScalingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAutoScalingRuleResponse{}
-	_body, _err := client.CreateAutoScalingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -454,7 +346,7 @@ func (client *Client) CreateAutoScalingRule(request *CreateAutoScalingRuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLdpsComputeGroupResponse
-func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLdpsComputeGroupResponse, _err error) {
+func (client *Client) CreateLdpsComputeGroupWithContext(ctx context.Context, request *CreateLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLdpsComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -511,25 +403,11 @@ func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsCompu
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLdpsComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateLdpsComputeGroupRequest
-//
-// @return CreateLdpsComputeGroupResponse
-func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequest) (_result *CreateLdpsComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLdpsComputeGroupResponse{}
-	_body, _err := client.CreateLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -546,7 +424,7 @@ func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLindormInstanceResponse
-func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateLindormInstanceResponse, _err error) {
+func (client *Client) CreateLindormInstanceWithContext(ctx context.Context, request *CreateLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateLindormInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -751,33 +629,11 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLindormInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Lindorm instance.
-//
-// Description:
-//
-// You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
-//
-// @param request - CreateLindormInstanceRequest
-//
-// @return CreateLindormInstanceResponse
-func (client *Client) CreateLindormInstance(request *CreateLindormInstanceRequest) (_result *CreateLindormInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLindormInstanceResponse{}
-	_body, _err := client.CreateLindormInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -790,7 +646,7 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLindormV2InstanceResponse
-func (client *Client) CreateLindormV2InstanceWithOptions(request *CreateLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateLindormV2InstanceResponse, _err error) {
+func (client *Client) CreateLindormV2InstanceWithContext(ctx context.Context, request *CreateLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateLindormV2InstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -931,29 +787,11 @@ func (client *Client) CreateLindormV2InstanceWithOptions(request *CreateLindormV
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLindormV2InstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建Lindorm实例
-//
-// @param request - CreateLindormV2InstanceRequest
-//
-// @return CreateLindormV2InstanceResponse
-func (client *Client) CreateLindormV2Instance(request *CreateLindormV2InstanceRequest) (_result *CreateLindormV2InstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLindormV2InstanceResponse{}
-	_body, _err := client.CreateLindormV2InstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -962,7 +800,7 @@ func (client *Client) CreateLindormV2Instance(request *CreateLindormV2InstanceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAutoScalingConfigResponse
-func (client *Client) DeleteAutoScalingConfigWithOptions(request *DeleteAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoScalingConfigResponse, _err error) {
+func (client *Client) DeleteAutoScalingConfigWithContext(ctx context.Context, request *DeleteAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoScalingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1011,25 +849,11 @@ func (client *Client) DeleteAutoScalingConfigWithOptions(request *DeleteAutoScal
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAutoScalingConfigRequest
-//
-// @return DeleteAutoScalingConfigResponse
-func (client *Client) DeleteAutoScalingConfig(request *DeleteAutoScalingConfigRequest) (_result *DeleteAutoScalingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAutoScalingConfigResponse{}
-	_body, _err := client.DeleteAutoScalingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1038,7 +862,7 @@ func (client *Client) DeleteAutoScalingConfig(request *DeleteAutoScalingConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAutoScalingRuleResponse
-func (client *Client) DeleteAutoScalingRuleWithOptions(request *DeleteAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoScalingRuleResponse, _err error) {
+func (client *Client) DeleteAutoScalingRuleWithContext(ctx context.Context, request *DeleteAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteAutoScalingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1091,25 +915,11 @@ func (client *Client) DeleteAutoScalingRuleWithOptions(request *DeleteAutoScalin
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAutoScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAutoScalingRuleRequest
-//
-// @return DeleteAutoScalingRuleResponse
-func (client *Client) DeleteAutoScalingRule(request *DeleteAutoScalingRuleRequest) (_result *DeleteAutoScalingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAutoScalingRuleResponse{}
-	_body, _err := client.DeleteAutoScalingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1118,7 +928,7 @@ func (client *Client) DeleteAutoScalingRule(request *DeleteAutoScalingRuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomResourceResponse
-func (client *Client) DeleteCustomResourceWithOptions(request *DeleteCustomResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomResourceResponse, _err error) {
+func (client *Client) DeleteCustomResourceWithContext(ctx context.Context, request *DeleteCustomResourceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1171,25 +981,11 @@ func (client *Client) DeleteCustomResourceWithOptions(request *DeleteCustomResou
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteCustomResourceRequest
-//
-// @return DeleteCustomResourceResponse
-func (client *Client) DeleteCustomResource(request *DeleteCustomResourceRequest) (_result *DeleteCustomResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCustomResourceResponse{}
-	_body, _err := client.DeleteCustomResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1198,7 +994,7 @@ func (client *Client) DeleteCustomResource(request *DeleteCustomResourceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLdpsComputeGroupResponse
-func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLdpsComputeGroupResponse, _err error) {
+func (client *Client) DeleteLdpsComputeGroupWithContext(ctx context.Context, request *DeleteLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLdpsComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1251,25 +1047,11 @@ func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsCompu
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLdpsComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteLdpsComputeGroupRequest
-//
-// @return DeleteLdpsComputeGroupResponse
-func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequest) (_result *DeleteLdpsComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLdpsComputeGroupResponse{}
-	_body, _err := client.DeleteLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1278,7 +1060,7 @@ func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeployLdpsSemiManagedComponentResponse
-func (client *Client) DeployLdpsSemiManagedComponentWithOptions(request *DeployLdpsSemiManagedComponentRequest, runtime *dara.RuntimeOptions) (_result *DeployLdpsSemiManagedComponentResponse, _err error) {
+func (client *Client) DeployLdpsSemiManagedComponentWithContext(ctx context.Context, request *DeployLdpsSemiManagedComponentRequest, runtime *dara.RuntimeOptions) (_result *DeployLdpsSemiManagedComponentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1331,25 +1113,11 @@ func (client *Client) DeployLdpsSemiManagedComponentWithOptions(request *DeployL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeployLdpsSemiManagedComponentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeployLdpsSemiManagedComponentRequest
-//
-// @return DeployLdpsSemiManagedComponentResponse
-func (client *Client) DeployLdpsSemiManagedComponent(request *DeployLdpsSemiManagedComponentRequest) (_result *DeployLdpsSemiManagedComponentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeployLdpsSemiManagedComponentResponse{}
-	_body, _err := client.DeployLdpsSemiManagedComponentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1362,7 +1130,7 @@ func (client *Client) DeployLdpsSemiManagedComponent(request *DeployLdpsSemiMana
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1407,29 +1175,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the regions supported by Lindorm.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1438,7 +1188,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAutoScalingConfigResponse
-func (client *Client) GetAutoScalingConfigWithOptions(request *GetAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAutoScalingConfigResponse, _err error) {
+func (client *Client) GetAutoScalingConfigWithContext(ctx context.Context, request *GetAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAutoScalingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1487,25 +1237,11 @@ func (client *Client) GetAutoScalingConfigWithOptions(request *GetAutoScalingCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAutoScalingConfigRequest
-//
-// @return GetAutoScalingConfigResponse
-func (client *Client) GetAutoScalingConfig(request *GetAutoScalingConfigRequest) (_result *GetAutoScalingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAutoScalingConfigResponse{}
-	_body, _err := client.GetAutoScalingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1514,7 +1250,7 @@ func (client *Client) GetAutoScalingConfig(request *GetAutoScalingConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAutoScalingRuleResponse
-func (client *Client) GetAutoScalingRuleWithOptions(request *GetAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAutoScalingRuleResponse, _err error) {
+func (client *Client) GetAutoScalingRuleWithContext(ctx context.Context, request *GetAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *GetAutoScalingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1567,25 +1303,11 @@ func (client *Client) GetAutoScalingRuleWithOptions(request *GetAutoScalingRuleR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAutoScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetAutoScalingRuleRequest
-//
-// @return GetAutoScalingRuleResponse
-func (client *Client) GetAutoScalingRule(request *GetAutoScalingRuleRequest) (_result *GetAutoScalingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAutoScalingRuleResponse{}
-	_body, _err := client.GetAutoScalingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1594,7 +1316,7 @@ func (client *Client) GetAutoScalingRule(request *GetAutoScalingRuleRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetClientSourceIpResponse
-func (client *Client) GetClientSourceIpWithOptions(request *GetClientSourceIpRequest, runtime *dara.RuntimeOptions) (_result *GetClientSourceIpResponse, _err error) {
+func (client *Client) GetClientSourceIpWithContext(ctx context.Context, request *GetClientSourceIpRequest, runtime *dara.RuntimeOptions) (_result *GetClientSourceIpResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1643,25 +1365,11 @@ func (client *Client) GetClientSourceIpWithOptions(request *GetClientSourceIpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetClientSourceIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetClientSourceIpRequest
-//
-// @return GetClientSourceIpResponse
-func (client *Client) GetClientSourceIp(request *GetClientSourceIpRequest) (_result *GetClientSourceIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetClientSourceIpResponse{}
-	_body, _err := client.GetClientSourceIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1670,7 +1378,7 @@ func (client *Client) GetClientSourceIp(request *GetClientSourceIpRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEngineDefaultAuthResponse
-func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultAuthRequest, runtime *dara.RuntimeOptions) (_result *GetEngineDefaultAuthResponse, _err error) {
+func (client *Client) GetEngineDefaultAuthWithContext(ctx context.Context, request *GetEngineDefaultAuthRequest, runtime *dara.RuntimeOptions) (_result *GetEngineDefaultAuthResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1719,25 +1427,11 @@ func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultA
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetEngineDefaultAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetEngineDefaultAuthRequest
-//
-// @return GetEngineDefaultAuthResponse
-func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest) (_result *GetEngineDefaultAuthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetEngineDefaultAuthResponse{}
-	_body, _err := client.GetEngineDefaultAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1750,7 +1444,7 @@ func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceIpWhiteListResponse
-func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWhiteListRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceIpWhiteListResponse, _err error) {
+func (client *Client) GetInstanceIpWhiteListWithContext(ctx context.Context, request *GetInstanceIpWhiteListRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceIpWhiteListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1795,29 +1489,11 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceIpWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the whitelists configured for a Lindorm instance.
-//
-// @param request - GetInstanceIpWhiteListRequest
-//
-// @return GetInstanceIpWhiteListResponse
-func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequest) (_result *GetInstanceIpWhiteListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceIpWhiteListResponse{}
-	_body, _err := client.GetInstanceIpWhiteListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1826,7 +1502,7 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceSecurityGroupsResponse
-func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceSecurityGroupsResponse, _err error) {
+func (client *Client) GetInstanceSecurityGroupsWithContext(ctx context.Context, request *GetInstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceSecurityGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1871,25 +1547,11 @@ func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceS
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetInstanceSecurityGroupsRequest
-//
-// @return GetInstanceSecurityGroupsResponse
-func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGroupsRequest) (_result *GetInstanceSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInstanceSecurityGroupsResponse{}
-	_body, _err := client.GetInstanceSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1898,7 +1560,7 @@ func (client *Client) GetInstanceSecurityGroups(request *GetInstanceSecurityGrou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLdpsComputeGroupResponse
-func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsComputeGroupResponse, _err error) {
+func (client *Client) GetLdpsComputeGroupWithContext(ctx context.Context, request *GetLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1951,25 +1613,11 @@ func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGrou
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLdpsComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetLdpsComputeGroupRequest
-//
-// @return GetLdpsComputeGroupResponse
-func (client *Client) GetLdpsComputeGroup(request *GetLdpsComputeGroupRequest) (_result *GetLdpsComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLdpsComputeGroupResponse{}
-	_body, _err := client.GetLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1978,7 +1626,7 @@ func (client *Client) GetLdpsComputeGroup(request *GetLdpsComputeGroupRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLdpsNamespacedQuotaResponse
-func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespacedQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
+func (client *Client) GetLdpsNamespacedQuotaWithContext(ctx context.Context, request *GetLdpsNamespacedQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2031,25 +1679,11 @@ func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLdpsNamespacedQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetLdpsNamespacedQuotaRequest
-//
-// @return GetLdpsNamespacedQuotaResponse
-func (client *Client) GetLdpsNamespacedQuota(request *GetLdpsNamespacedQuotaRequest) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLdpsNamespacedQuotaResponse{}
-	_body, _err := client.GetLdpsNamespacedQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2058,7 +1692,7 @@ func (client *Client) GetLdpsNamespacedQuota(request *GetLdpsNamespacedQuotaRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLdpsResourceCostResponse
-func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCostRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsResourceCostResponse, _err error) {
+func (client *Client) GetLdpsResourceCostWithContext(ctx context.Context, request *GetLdpsResourceCostRequest, runtime *dara.RuntimeOptions) (_result *GetLdpsResourceCostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2119,25 +1753,11 @@ func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCos
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLdpsResourceCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetLdpsResourceCostRequest
-//
-// @return GetLdpsResourceCostResponse
-func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (_result *GetLdpsResourceCostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLdpsResourceCostResponse{}
-	_body, _err := client.GetLdpsResourceCostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2150,7 +1770,7 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormEngineConfigResponse
-func (client *Client) GetLindormEngineConfigWithOptions(request *GetLindormEngineConfigRequest, runtime *dara.RuntimeOptions) (_result *GetLindormEngineConfigResponse, _err error) {
+func (client *Client) GetLindormEngineConfigWithContext(ctx context.Context, request *GetLindormEngineConfigRequest, runtime *dara.RuntimeOptions) (_result *GetLindormEngineConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2203,29 +1823,11 @@ func (client *Client) GetLindormEngineConfigWithOptions(request *GetLindormEngin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormEngineConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取Lindorm引擎配置
-//
-// @param request - GetLindormEngineConfigRequest
-//
-// @return GetLindormEngineConfigResponse
-func (client *Client) GetLindormEngineConfig(request *GetLindormEngineConfigRequest) (_result *GetLindormEngineConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormEngineConfigResponse{}
-	_body, _err := client.GetLindormEngineConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2242,7 +1844,7 @@ func (client *Client) GetLindormEngineConfig(request *GetLindormEngineConfigRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormFsUsedDetailResponse
-func (client *Client) GetLindormFsUsedDetailWithOptions(request *GetLindormFsUsedDetailRequest, runtime *dara.RuntimeOptions) (_result *GetLindormFsUsedDetailResponse, _err error) {
+func (client *Client) GetLindormFsUsedDetailWithContext(ctx context.Context, request *GetLindormFsUsedDetailRequest, runtime *dara.RuntimeOptions) (_result *GetLindormFsUsedDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2291,33 +1893,11 @@ func (client *Client) GetLindormFsUsedDetailWithOptions(request *GetLindormFsUse
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormFsUsedDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of each storage type in a Lindorm instance.
-//
-// Description:
-//
-// If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
-//
-// @param request - GetLindormFsUsedDetailRequest
-//
-// @return GetLindormFsUsedDetailResponse
-func (client *Client) GetLindormFsUsedDetail(request *GetLindormFsUsedDetailRequest) (_result *GetLindormFsUsedDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormFsUsedDetailResponse{}
-	_body, _err := client.GetLindormFsUsedDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2330,7 +1910,7 @@ func (client *Client) GetLindormFsUsedDetail(request *GetLindormFsUsedDetailRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormInstanceResponse
-func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceResponse, _err error) {
+func (client *Client) GetLindormInstanceWithContext(ctx context.Context, request *GetLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2375,29 +1955,11 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
-//
-// @param request - GetLindormInstanceRequest
-//
-// @return GetLindormInstanceResponse
-func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_result *GetLindormInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormInstanceResponse{}
-	_body, _err := client.GetLindormInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2410,7 +1972,7 @@ func (client *Client) GetLindormInstance(request *GetLindormInstanceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormInstanceEngineListResponse
-func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindormInstanceEngineListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceEngineListResponse, _err error) {
+func (client *Client) GetLindormInstanceEngineListWithContext(ctx context.Context, request *GetLindormInstanceEngineListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceEngineListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2459,29 +2021,11 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormInstanceEngineListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the engine types supported by the specified Lindorm instance.
-//
-// @param request - GetLindormInstanceEngineListRequest
-//
-// @return GetLindormInstanceEngineListResponse
-func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEngineListRequest) (_result *GetLindormInstanceEngineListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormInstanceEngineListResponse{}
-	_body, _err := client.GetLindormInstanceEngineListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2494,7 +2038,7 @@ func (client *Client) GetLindormInstanceEngineList(request *GetLindormInstanceEn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormInstanceListResponse
-func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInstanceListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceListResponse, _err error) {
+func (client *Client) GetLindormInstanceListWithContext(ctx context.Context, request *GetLindormInstanceListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormInstanceListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2567,29 +2111,11 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormInstanceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instances that meet the specified conditions.
-//
-// @param request - GetLindormInstanceListRequest
-//
-// @return GetLindormInstanceListResponse
-func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequest) (_result *GetLindormInstanceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormInstanceListResponse{}
-	_body, _err := client.GetLindormInstanceListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2602,7 +2128,7 @@ func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2InstanceResponse
-func (client *Client) GetLindormV2InstanceWithOptions(request *GetLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceResponse, _err error) {
+func (client *Client) GetLindormV2InstanceWithContext(ctx context.Context, request *GetLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2647,29 +2173,11 @@ func (client *Client) GetLindormV2InstanceWithOptions(request *GetLindormV2Insta
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2InstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实例详情
-//
-// @param request - GetLindormV2InstanceRequest
-//
-// @return GetLindormV2InstanceResponse
-func (client *Client) GetLindormV2Instance(request *GetLindormV2InstanceRequest) (_result *GetLindormV2InstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2InstanceResponse{}
-	_body, _err := client.GetLindormV2InstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2678,7 +2186,7 @@ func (client *Client) GetLindormV2Instance(request *GetLindormV2InstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2InstanceEngineListResponse
-func (client *Client) GetLindormV2InstanceEngineListWithOptions(request *GetLindormV2InstanceEngineListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceEngineListResponse, _err error) {
+func (client *Client) GetLindormV2InstanceEngineListWithContext(ctx context.Context, request *GetLindormV2InstanceEngineListRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceEngineListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2727,25 +2235,11 @@ func (client *Client) GetLindormV2InstanceEngineListWithOptions(request *GetLind
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2InstanceEngineListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetLindormV2InstanceEngineListRequest
-//
-// @return GetLindormV2InstanceEngineListResponse
-func (client *Client) GetLindormV2InstanceEngineList(request *GetLindormV2InstanceEngineListRequest) (_result *GetLindormV2InstanceEngineListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2InstanceEngineListResponse{}
-	_body, _err := client.GetLindormV2InstanceEngineListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2758,7 +2252,7 @@ func (client *Client) GetLindormV2InstanceEngineList(request *GetLindormV2Instan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2InstanceForTerraformResponse
-func (client *Client) GetLindormV2InstanceForTerraformWithOptions(request *GetLindormV2InstanceForTerraformRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceForTerraformResponse, _err error) {
+func (client *Client) GetLindormV2InstanceForTerraformWithContext(ctx context.Context, request *GetLindormV2InstanceForTerraformRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceForTerraformResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2803,29 +2297,11 @@ func (client *Client) GetLindormV2InstanceForTerraformWithOptions(request *GetLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2InstanceForTerraformResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询实例详情
-//
-// @param request - GetLindormV2InstanceForTerraformRequest
-//
-// @return GetLindormV2InstanceForTerraformResponse
-func (client *Client) GetLindormV2InstanceForTerraform(request *GetLindormV2InstanceForTerraformRequest) (_result *GetLindormV2InstanceForTerraformResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2InstanceForTerraformResponse{}
-	_body, _err := client.GetLindormV2InstanceForTerraformWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2838,7 +2314,7 @@ func (client *Client) GetLindormV2InstanceForTerraform(request *GetLindormV2Inst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2InstanceSecurityGroupsResponse
-func (client *Client) GetLindormV2InstanceSecurityGroupsWithOptions(request *GetLindormV2InstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceSecurityGroupsResponse, _err error) {
+func (client *Client) GetLindormV2InstanceSecurityGroupsWithContext(ctx context.Context, request *GetLindormV2InstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2InstanceSecurityGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2883,29 +2359,11 @@ func (client *Client) GetLindormV2InstanceSecurityGroupsWithOptions(request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2InstanceSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询新架构实例安全组信息
-//
-// @param request - GetLindormV2InstanceSecurityGroupsRequest
-//
-// @return GetLindormV2InstanceSecurityGroupsResponse
-func (client *Client) GetLindormV2InstanceSecurityGroups(request *GetLindormV2InstanceSecurityGroupsRequest) (_result *GetLindormV2InstanceSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2InstanceSecurityGroupsResponse{}
-	_body, _err := client.GetLindormV2InstanceSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2914,7 +2372,7 @@ func (client *Client) GetLindormV2InstanceSecurityGroups(request *GetLindormV2In
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2StorageUsageResponse
-func (client *Client) GetLindormV2StorageUsageWithOptions(request *GetLindormV2StorageUsageRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2StorageUsageResponse, _err error) {
+func (client *Client) GetLindormV2StorageUsageWithContext(ctx context.Context, request *GetLindormV2StorageUsageRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2StorageUsageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2959,25 +2417,11 @@ func (client *Client) GetLindormV2StorageUsageWithOptions(request *GetLindormV2S
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2StorageUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - GetLindormV2StorageUsageRequest
-//
-// @return GetLindormV2StorageUsageResponse
-func (client *Client) GetLindormV2StorageUsage(request *GetLindormV2StorageUsageRequest) (_result *GetLindormV2StorageUsageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2StorageUsageResponse{}
-	_body, _err := client.GetLindormV2StorageUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2990,7 +2434,7 @@ func (client *Client) GetLindormV2StorageUsage(request *GetLindormV2StorageUsage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLindormV2StreamEngineInfoResponse
-func (client *Client) GetLindormV2StreamEngineInfoWithOptions(request *GetLindormV2StreamEngineInfoRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2StreamEngineInfoResponse, _err error) {
+func (client *Client) GetLindormV2StreamEngineInfoWithContext(ctx context.Context, request *GetLindormV2StreamEngineInfoRequest, runtime *dara.RuntimeOptions) (_result *GetLindormV2StreamEngineInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3035,29 +2479,11 @@ func (client *Client) GetLindormV2StreamEngineInfoWithOptions(request *GetLindor
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLindormV2StreamEngineInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取流引擎信息
-//
-// @param request - GetLindormV2StreamEngineInfoRequest
-//
-// @return GetLindormV2StreamEngineInfoResponse
-func (client *Client) GetLindormV2StreamEngineInfo(request *GetLindormV2StreamEngineInfoRequest) (_result *GetLindormV2StreamEngineInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLindormV2StreamEngineInfoResponse{}
-	_body, _err := client.GetLindormV2StreamEngineInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3066,7 +2492,7 @@ func (client *Client) GetLindormV2StreamEngineInfo(request *GetLindormV2StreamEn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAutoScalingConfigsResponse
-func (client *Client) ListAutoScalingConfigsWithOptions(request *ListAutoScalingConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingConfigsResponse, _err error) {
+func (client *Client) ListAutoScalingConfigsWithContext(ctx context.Context, request *ListAutoScalingConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3111,25 +2537,11 @@ func (client *Client) ListAutoScalingConfigsWithOptions(request *ListAutoScaling
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAutoScalingConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAutoScalingConfigsRequest
-//
-// @return ListAutoScalingConfigsResponse
-func (client *Client) ListAutoScalingConfigs(request *ListAutoScalingConfigsRequest) (_result *ListAutoScalingConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAutoScalingConfigsResponse{}
-	_body, _err := client.ListAutoScalingConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3138,7 +2550,7 @@ func (client *Client) ListAutoScalingConfigs(request *ListAutoScalingConfigsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAutoScalingRecordsResponse
-func (client *Client) ListAutoScalingRecordsWithOptions(request *ListAutoScalingRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRecordsResponse, _err error) {
+func (client *Client) ListAutoScalingRecordsWithContext(ctx context.Context, request *ListAutoScalingRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRecordsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3191,25 +2603,11 @@ func (client *Client) ListAutoScalingRecordsWithOptions(request *ListAutoScaling
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAutoScalingRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAutoScalingRecordsRequest
-//
-// @return ListAutoScalingRecordsResponse
-func (client *Client) ListAutoScalingRecords(request *ListAutoScalingRecordsRequest) (_result *ListAutoScalingRecordsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAutoScalingRecordsResponse{}
-	_body, _err := client.ListAutoScalingRecordsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3218,7 +2616,7 @@ func (client *Client) ListAutoScalingRecords(request *ListAutoScalingRecordsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAutoScalingRulesResponse
-func (client *Client) ListAutoScalingRulesWithOptions(request *ListAutoScalingRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRulesResponse, _err error) {
+func (client *Client) ListAutoScalingRulesWithContext(ctx context.Context, request *ListAutoScalingRulesRequest, runtime *dara.RuntimeOptions) (_result *ListAutoScalingRulesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3267,25 +2665,11 @@ func (client *Client) ListAutoScalingRulesWithOptions(request *ListAutoScalingRu
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAutoScalingRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListAutoScalingRulesRequest
-//
-// @return ListAutoScalingRulesResponse
-func (client *Client) ListAutoScalingRules(request *ListAutoScalingRulesRequest) (_result *ListAutoScalingRulesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAutoScalingRulesResponse{}
-	_body, _err := client.ListAutoScalingRulesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3294,7 +2678,7 @@ func (client *Client) ListAutoScalingRules(request *ListAutoScalingRulesRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLdpsComputeGroupsResponse
-func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLdpsComputeGroupsResponse, _err error) {
+func (client *Client) ListLdpsComputeGroupsWithContext(ctx context.Context, request *ListLdpsComputeGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListLdpsComputeGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3343,25 +2727,11 @@ func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeG
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLdpsComputeGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ListLdpsComputeGroupsRequest
-//
-// @return ListLdpsComputeGroupsResponse
-func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsRequest) (_result *ListLdpsComputeGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLdpsComputeGroupsResponse{}
-	_body, _err := client.ListLdpsComputeGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3374,7 +2744,7 @@ func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3435,29 +2805,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags associated with the specified Lindorm instance.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3470,7 +2822,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MigrateSingleZoneToMultiZoneResponse
-func (client *Client) MigrateSingleZoneToMultiZoneWithOptions(request *MigrateSingleZoneToMultiZoneRequest, runtime *dara.RuntimeOptions) (_result *MigrateSingleZoneToMultiZoneResponse, _err error) {
+func (client *Client) MigrateSingleZoneToMultiZoneWithContext(ctx context.Context, request *MigrateSingleZoneToMultiZoneRequest, runtime *dara.RuntimeOptions) (_result *MigrateSingleZoneToMultiZoneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3535,29 +2887,11 @@ func (client *Client) MigrateSingleZoneToMultiZoneWithOptions(request *MigrateSi
 		BodyType:    dara.String("json"),
 	}
 	_result = &MigrateSingleZoneToMultiZoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 单可用区迁移多可用区基础版
-//
-// @param request - MigrateSingleZoneToMultiZoneRequest
-//
-// @return MigrateSingleZoneToMultiZoneResponse
-func (client *Client) MigrateSingleZoneToMultiZone(request *MigrateSingleZoneToMultiZoneRequest) (_result *MigrateSingleZoneToMultiZoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MigrateSingleZoneToMultiZoneResponse{}
-	_body, _err := client.MigrateSingleZoneToMultiZoneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3566,7 +2900,7 @@ func (client *Client) MigrateSingleZoneToMultiZone(request *MigrateSingleZoneToM
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAutoScalingConfigResponse
-func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
+func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, request *ModifyAutoScalingConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3651,25 +2985,11 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAutoScalingConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyAutoScalingConfigRequest
-//
-// @return ModifyAutoScalingConfigResponse
-func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRequest) (_result *ModifyAutoScalingConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAutoScalingConfigResponse{}
-	_body, _err := client.ModifyAutoScalingConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3678,7 +2998,7 @@ func (client *Client) ModifyAutoScalingConfig(request *ModifyAutoScalingConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAutoScalingRuleResponse
-func (client *Client) ModifyAutoScalingRuleWithOptions(request *ModifyAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingRuleResponse, _err error) {
+func (client *Client) ModifyAutoScalingRuleWithContext(ctx context.Context, request *ModifyAutoScalingRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyAutoScalingRuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3791,25 +3111,11 @@ func (client *Client) ModifyAutoScalingRuleWithOptions(request *ModifyAutoScalin
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAutoScalingRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyAutoScalingRuleRequest
-//
-// @return ModifyAutoScalingRuleResponse
-func (client *Client) ModifyAutoScalingRule(request *ModifyAutoScalingRuleRequest) (_result *ModifyAutoScalingRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAutoScalingRuleResponse{}
-	_body, _err := client.ModifyAutoScalingRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3828,7 +3134,7 @@ func (client *Client) ModifyAutoScalingRule(request *ModifyAutoScalingRuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstancePayTypeResponse
-func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePayTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstancePayTypeResponse, _err error) {
+func (client *Client) ModifyInstancePayTypeWithContext(ctx context.Context, request *ModifyInstancePayTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstancePayTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3885,35 +3191,11 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstancePayTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the billing method of the specified Lindorm instance.
-//
-// Description:
-//
-// You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
-//
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/en/pricing-calculator?spm=a2c63.p38356.0.0.2b024c2adcHeXL&_p_lc=1#/commodity/hitsdb_lindormpre_public_intl) of Lindorm. Published on only international site (alibabacloud.com).
-//
-// @param request - ModifyInstancePayTypeRequest
-//
-// @return ModifyInstancePayTypeResponse
-func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeRequest) (_result *ModifyInstancePayTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstancePayTypeResponse{}
-	_body, _err := client.ModifyInstancePayTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3926,7 +3208,7 @@ func (client *Client) ModifyInstancePayType(request *ModifyInstancePayTypeReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLindormV2InstanceResponse
-func (client *Client) ModifyLindormV2InstanceWithOptions(request *ModifyLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2InstanceResponse, _err error) {
+func (client *Client) ModifyLindormV2InstanceWithContext(ctx context.Context, request *ModifyLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2InstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3995,29 +3277,11 @@ func (client *Client) ModifyLindormV2InstanceWithOptions(request *ModifyLindormV
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLindormV2InstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 变配实例
-//
-// @param request - ModifyLindormV2InstanceRequest
-//
-// @return ModifyLindormV2InstanceResponse
-func (client *Client) ModifyLindormV2Instance(request *ModifyLindormV2InstanceRequest) (_result *ModifyLindormV2InstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLindormV2InstanceResponse{}
-	_body, _err := client.ModifyLindormV2InstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4030,7 +3294,7 @@ func (client *Client) ModifyLindormV2Instance(request *ModifyLindormV2InstanceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLindormV2InstanceSecurityGroupsResponse
-func (client *Client) ModifyLindormV2InstanceSecurityGroupsWithOptions(request *ModifyLindormV2InstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2InstanceSecurityGroupsResponse, _err error) {
+func (client *Client) ModifyLindormV2InstanceSecurityGroupsWithContext(ctx context.Context, request *ModifyLindormV2InstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2InstanceSecurityGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4079,29 +3343,11 @@ func (client *Client) ModifyLindormV2InstanceSecurityGroupsWithOptions(request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLindormV2InstanceSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 新架构修改安全组接口
-//
-// @param request - ModifyLindormV2InstanceSecurityGroupsRequest
-//
-// @return ModifyLindormV2InstanceSecurityGroupsResponse
-func (client *Client) ModifyLindormV2InstanceSecurityGroups(request *ModifyLindormV2InstanceSecurityGroupsRequest) (_result *ModifyLindormV2InstanceSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLindormV2InstanceSecurityGroupsResponse{}
-	_body, _err := client.ModifyLindormV2InstanceSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4110,7 +3356,7 @@ func (client *Client) ModifyLindormV2InstanceSecurityGroups(request *ModifyLindo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyLindormV2WhiteIpListResponse
-func (client *Client) ModifyLindormV2WhiteIpListWithOptions(request *ModifyLindormV2WhiteIpListRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2WhiteIpListResponse, _err error) {
+func (client *Client) ModifyLindormV2WhiteIpListWithContext(ctx context.Context, request *ModifyLindormV2WhiteIpListRequest, runtime *dara.RuntimeOptions) (_result *ModifyLindormV2WhiteIpListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4171,25 +3417,11 @@ func (client *Client) ModifyLindormV2WhiteIpListWithOptions(request *ModifyLindo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyLindormV2WhiteIpListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyLindormV2WhiteIpListRequest
-//
-// @return ModifyLindormV2WhiteIpListResponse
-func (client *Client) ModifyLindormV2WhiteIpList(request *ModifyLindormV2WhiteIpListRequest) (_result *ModifyLindormV2WhiteIpListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyLindormV2WhiteIpListResponse{}
-	_body, _err := client.ModifyLindormV2WhiteIpListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4202,7 +3434,7 @@ func (client *Client) ModifyLindormV2WhiteIpList(request *ModifyLindormV2WhiteIp
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenComputeEngineResponse
-func (client *Client) OpenComputeEngineWithOptions(request *OpenComputeEngineRequest, runtime *dara.RuntimeOptions) (_result *OpenComputeEngineResponse, _err error) {
+func (client *Client) OpenComputeEngineWithContext(ctx context.Context, request *OpenComputeEngineRequest, runtime *dara.RuntimeOptions) (_result *OpenComputeEngineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4255,29 +3487,11 @@ func (client *Client) OpenComputeEngineWithOptions(request *OpenComputeEngineReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenComputeEngineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 开通计算引擎
-//
-// @param request - OpenComputeEngineRequest
-//
-// @return OpenComputeEngineResponse
-func (client *Client) OpenComputeEngine(request *OpenComputeEngineRequest) (_result *OpenComputeEngineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenComputeEngineResponse{}
-	_body, _err := client.OpenComputeEngineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4290,7 +3504,7 @@ func (client *Client) OpenComputeEngine(request *OpenComputeEngineRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenComputePreCheckResponse
-func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreCheckRequest, runtime *dara.RuntimeOptions) (_result *OpenComputePreCheckResponse, _err error) {
+func (client *Client) OpenComputePreCheckWithContext(ctx context.Context, request *OpenComputePreCheckRequest, runtime *dara.RuntimeOptions) (_result *OpenComputePreCheckResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4343,29 +3557,11 @@ func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreChec
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenComputePreCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 开通计算引擎前置校验
-//
-// @param request - OpenComputePreCheckRequest
-//
-// @return OpenComputePreCheckResponse
-func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (_result *OpenComputePreCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenComputePreCheckResponse{}
-	_body, _err := client.OpenComputePreCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4378,7 +3574,7 @@ func (client *Client) OpenComputePreCheck(request *OpenComputePreCheckRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseLindormInstanceResponse
-func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseLindormInstanceResponse, _err error) {
+func (client *Client) ReleaseLindormInstanceWithContext(ctx context.Context, request *ReleaseLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseLindormInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4427,29 +3623,11 @@ func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseLindormInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a Lindorm instance.
-//
-// @param request - ReleaseLindormInstanceRequest
-//
-// @return ReleaseLindormInstanceResponse
-func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequest) (_result *ReleaseLindormInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseLindormInstanceResponse{}
-	_body, _err := client.ReleaseLindormInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4462,7 +3640,7 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseLindormV2InstanceResponse
-func (client *Client) ReleaseLindormV2InstanceWithOptions(request *ReleaseLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseLindormV2InstanceResponse, _err error) {
+func (client *Client) ReleaseLindormV2InstanceWithContext(ctx context.Context, request *ReleaseLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseLindormV2InstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4511,29 +3689,11 @@ func (client *Client) ReleaseLindormV2InstanceWithOptions(request *ReleaseLindor
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseLindormV2InstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 释放实例
-//
-// @param request - ReleaseLindormV2InstanceRequest
-//
-// @return ReleaseLindormV2InstanceResponse
-func (client *Client) ReleaseLindormV2Instance(request *ReleaseLindormV2InstanceRequest) (_result *ReleaseLindormV2InstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseLindormV2InstanceResponse{}
-	_body, _err := client.ReleaseLindormV2InstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4552,7 +3712,7 @@ func (client *Client) ReleaseLindormV2Instance(request *ReleaseLindormV2Instance
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewLindormInstanceResponse
-func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewLindormInstanceResponse, _err error) {
+func (client *Client) RenewLindormInstanceWithContext(ctx context.Context, request *RenewLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewLindormInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4609,35 +3769,11 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewLindormInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a subscription Lindorm instance.
-//
-// Description:
-//
-// You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
-//
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
-//
-// @param request - RenewLindormInstanceRequest
-//
-// @return RenewLindormInstanceResponse
-func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest) (_result *RenewLindormInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewLindormInstanceResponse{}
-	_body, _err := client.RenewLindormInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4646,7 +3782,7 @@ func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartLdpsComputeGroupResponse
-func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *RestartLdpsComputeGroupResponse, _err error) {
+func (client *Client) RestartLdpsComputeGroupWithContext(ctx context.Context, request *RestartLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *RestartLdpsComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4699,25 +3835,11 @@ func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsCom
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartLdpsComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RestartLdpsComputeGroupRequest
-//
-// @return RestartLdpsComputeGroupResponse
-func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRequest) (_result *RestartLdpsComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartLdpsComputeGroupResponse{}
-	_body, _err := client.RestartLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4726,7 +3848,7 @@ func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetDefaultOlapComputeGroupResponse
-func (client *Client) SetDefaultOlapComputeGroupWithOptions(request *SetDefaultOlapComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *SetDefaultOlapComputeGroupResponse, _err error) {
+func (client *Client) SetDefaultOlapComputeGroupWithContext(ctx context.Context, request *SetDefaultOlapComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *SetDefaultOlapComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4783,25 +3905,11 @@ func (client *Client) SetDefaultOlapComputeGroupWithOptions(request *SetDefaultO
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetDefaultOlapComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetDefaultOlapComputeGroupRequest
-//
-// @return SetDefaultOlapComputeGroupResponse
-func (client *Client) SetDefaultOlapComputeGroup(request *SetDefaultOlapComputeGroupRequest) (_result *SetDefaultOlapComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetDefaultOlapComputeGroupResponse{}
-	_body, _err := client.SetDefaultOlapComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4824,7 +3932,7 @@ func (client *Client) SetDefaultOlapComputeGroup(request *SetDefaultOlapComputeG
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SwitchLSQLV3MySQLServiceResponse
-func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3MySQLServiceRequest, runtime *dara.RuntimeOptions) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
+func (client *Client) SwitchLSQLV3MySQLServiceWithContext(ctx context.Context, request *SwitchLSQLV3MySQLServiceRequest, runtime *dara.RuntimeOptions) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4873,39 +3981,11 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 		BodyType:    dara.String("json"),
 	}
 	_result = &SwitchLSQLV3MySQLServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables or disables the MySQL compatibility feature for a Lindorm instance.
-//
-// Description:
-//
-// Prerequisites
-//
-//   - The LindormTable version of your instance is 2.6.0 or later.
-//
-//   - The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
-//
-// You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
-//
-// @param request - SwitchLSQLV3MySQLServiceRequest
-//
-// @return SwitchLSQLV3MySQLServiceResponse
-func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLServiceRequest) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SwitchLSQLV3MySQLServiceResponse{}
-	_body, _err := client.SwitchLSQLV3MySQLServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4918,7 +3998,7 @@ func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLService
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4975,29 +4055,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates tags with a single or multiple Lindorm instances.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5014,7 +4076,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5071,33 +4133,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from a Lindorm instance.
-//
-// Description:
-//
-// If a tag is not added to any Lindorm instance, it is deleted.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5110,7 +4150,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceIpWhiteListResponse
-func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstanceIpWhiteListRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
+func (client *Client) UpdateInstanceIpWhiteListWithContext(ctx context.Context, request *UpdateInstanceIpWhiteListRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5167,29 +4207,11 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceIpWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Configures an IP address whitelist for a Lindorm instance.
-//
-// @param request - UpdateInstanceIpWhiteListRequest
-//
-// @return UpdateInstanceIpWhiteListResponse
-func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteListRequest) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceIpWhiteListResponse{}
-	_body, _err := client.UpdateInstanceIpWhiteListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5198,7 +4220,7 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceSecurityGroupsResponse
-func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateInstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
+func (client *Client) UpdateInstanceSecurityGroupsWithContext(ctx context.Context, request *UpdateInstanceSecurityGroupsRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5247,25 +4269,11 @@ func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateIns
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceSecurityGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateInstanceSecurityGroupsRequest
-//
-// @return UpdateInstanceSecurityGroupsResponse
-func (client *Client) UpdateInstanceSecurityGroups(request *UpdateInstanceSecurityGroupsRequest) (_result *UpdateInstanceSecurityGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateInstanceSecurityGroupsResponse{}
-	_body, _err := client.UpdateInstanceSecurityGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5274,7 +4282,7 @@ func (client *Client) UpdateInstanceSecurityGroups(request *UpdateInstanceSecuri
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLdpsComputeGroupResponse
-func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateLdpsComputeGroupResponse, _err error) {
+func (client *Client) UpdateLdpsComputeGroupWithContext(ctx context.Context, request *UpdateLdpsComputeGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateLdpsComputeGroupResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5331,25 +4339,11 @@ func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsCompu
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLdpsComputeGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateLdpsComputeGroupRequest
-//
-// @return UpdateLdpsComputeGroupResponse
-func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequest) (_result *UpdateLdpsComputeGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLdpsComputeGroupResponse{}
-	_body, _err := client.UpdateLdpsComputeGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5362,7 +4356,7 @@ func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLindormV2InstanceResponse
-func (client *Client) UpdateLindormV2InstanceWithOptions(request *UpdateLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateLindormV2InstanceResponse, _err error) {
+func (client *Client) UpdateLindormV2InstanceWithContext(ctx context.Context, request *UpdateLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateLindormV2InstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5431,29 +4425,11 @@ func (client *Client) UpdateLindormV2InstanceWithOptions(request *UpdateLindormV
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLindormV2InstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新LindormV2Instance
-//
-// @param request - UpdateLindormV2InstanceRequest
-//
-// @return UpdateLindormV2InstanceResponse
-func (client *Client) UpdateLindormV2Instance(request *UpdateLindormV2InstanceRequest) (_result *UpdateLindormV2InstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLindormV2InstanceResponse{}
-	_body, _err := client.UpdateLindormV2InstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5462,7 +4438,7 @@ func (client *Client) UpdateLindormV2Instance(request *UpdateLindormV2InstanceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLindormV2InstanceParameterResponse
-func (client *Client) UpdateLindormV2InstanceParameterWithOptions(request *UpdateLindormV2InstanceParameterRequest, runtime *dara.RuntimeOptions) (_result *UpdateLindormV2InstanceParameterResponse, _err error) {
+func (client *Client) UpdateLindormV2InstanceParameterWithContext(ctx context.Context, request *UpdateLindormV2InstanceParameterRequest, runtime *dara.RuntimeOptions) (_result *UpdateLindormV2InstanceParameterResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5519,25 +4495,11 @@ func (client *Client) UpdateLindormV2InstanceParameterWithOptions(request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLindormV2InstanceParameterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateLindormV2InstanceParameterRequest
-//
-// @return UpdateLindormV2InstanceParameterResponse
-func (client *Client) UpdateLindormV2InstanceParameter(request *UpdateLindormV2InstanceParameterRequest) (_result *UpdateLindormV2InstanceParameterResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLindormV2InstanceParameterResponse{}
-	_body, _err := client.UpdateLindormV2InstanceParameterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5554,7 +4516,7 @@ func (client *Client) UpdateLindormV2InstanceParameter(request *UpdateLindormV2I
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeLindormInstanceResponse
-func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpgradeLindormInstanceResponse, _err error) {
+func (client *Client) UpgradeLindormInstanceWithContext(ctx context.Context, request *UpgradeLindormInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpgradeLindormInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5683,33 +4645,11 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeLindormInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades, scales up, or enable cold storage for a Lindorm instance.
-//
-// Description:
-//
-// For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
-//
-// @param request - UpgradeLindormInstanceRequest
-//
-// @return UpgradeLindormInstanceResponse
-func (client *Client) UpgradeLindormInstance(request *UpgradeLindormInstanceRequest) (_result *UpgradeLindormInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeLindormInstanceResponse{}
-	_body, _err := client.UpgradeLindormInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5718,7 +4658,7 @@ func (client *Client) UpgradeLindormInstance(request *UpgradeLindormInstanceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeLindormV2StreamEngineResponse
-func (client *Client) UpgradeLindormV2StreamEngineWithOptions(request *UpgradeLindormV2StreamEngineRequest, runtime *dara.RuntimeOptions) (_result *UpgradeLindormV2StreamEngineResponse, _err error) {
+func (client *Client) UpgradeLindormV2StreamEngineWithContext(ctx context.Context, request *UpgradeLindormV2StreamEngineRequest, runtime *dara.RuntimeOptions) (_result *UpgradeLindormV2StreamEngineResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5787,24 +4727,10 @@ func (client *Client) UpgradeLindormV2StreamEngineWithOptions(request *UpgradeLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeLindormV2StreamEngineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpgradeLindormV2StreamEngineRequest
-//
-// @return UpgradeLindormV2StreamEngineResponse
-func (client *Client) UpgradeLindormV2StreamEngine(request *UpgradeLindormV2StreamEngineRequest) (_result *UpgradeLindormV2StreamEngineResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeLindormV2StreamEngineResponse{}
-	_body, _err := client.UpgradeLindormV2StreamEngineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
