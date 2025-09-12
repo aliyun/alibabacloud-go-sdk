@@ -4741,6 +4741,10 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 		query["IsSpot"] = request.IsSpot
 	}
 
+	if !dara.IsNil(request.MemberType) {
+		query["MemberType"] = request.MemberType
+	}
+
 	if !dara.IsNil(request.Order) {
 		query["Order"] = request.Order
 	}
@@ -6150,6 +6154,10 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberToUpdate) {
+		query["MemberToUpdate"] = request.MemberToUpdate
+	}
+
 	if !dara.IsNil(request.UpdateType) {
 		query["UpdateType"] = request.UpdateType
 	}

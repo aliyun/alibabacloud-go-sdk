@@ -23,6 +23,8 @@ type iListServiceInstancesRequest interface {
 	GetInstanceType() *string
 	SetIsSpot(v bool) *ListServiceInstancesRequest
 	GetIsSpot() *bool
+	SetMemberType(v string) *ListServiceInstancesRequest
+	GetMemberType() *string
 	SetOrder(v string) *ListServiceInstancesRequest
 	GetOrder() *string
 	SetPageNumber(v int32) *ListServiceInstancesRequest
@@ -79,7 +81,8 @@ type ListServiceInstancesRequest struct {
 	// example:
 	//
 	// false
-	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	IsSpot     *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
@@ -268,6 +271,10 @@ func (s *ListServiceInstancesRequest) GetIsSpot() *bool {
 	return s.IsSpot
 }
 
+func (s *ListServiceInstancesRequest) GetMemberType() *string {
+	return s.MemberType
+}
+
 func (s *ListServiceInstancesRequest) GetOrder() *string {
 	return s.Order
 }
@@ -324,6 +331,11 @@ func (s *ListServiceInstancesRequest) SetInstanceType(v string) *ListServiceInst
 
 func (s *ListServiceInstancesRequest) SetIsSpot(v bool) *ListServiceInstancesRequest {
 	s.IsSpot = &v
+	return s
+}
+
+func (s *ListServiceInstancesRequest) SetMemberType(v string) *ListServiceInstancesRequest {
+	s.MemberType = &v
 	return s
 }
 

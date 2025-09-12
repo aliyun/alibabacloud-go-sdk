@@ -9,6 +9,8 @@ type iUpdateServiceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetMemberToUpdate(v string) *UpdateServiceRequest
+	GetMemberToUpdate() *string
 	SetUpdateType(v string) *UpdateServiceRequest
 	GetUpdateType() *string
 	SetBody(v string) *UpdateServiceRequest
@@ -16,6 +18,7 @@ type iUpdateServiceRequest interface {
 }
 
 type UpdateServiceRequest struct {
+	MemberToUpdate *string `json:"MemberToUpdate,omitempty" xml:"MemberToUpdate,omitempty"`
 	// The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
 	//
 	// 	- merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
@@ -42,12 +45,21 @@ func (s UpdateServiceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateServiceRequest) GetMemberToUpdate() *string {
+	return s.MemberToUpdate
+}
+
 func (s *UpdateServiceRequest) GetUpdateType() *string {
 	return s.UpdateType
 }
 
 func (s *UpdateServiceRequest) GetBody() *string {
 	return s.Body
+}
+
+func (s *UpdateServiceRequest) SetMemberToUpdate(v string) *UpdateServiceRequest {
+	s.MemberToUpdate = &v
+	return s
 }
 
 func (s *UpdateServiceRequest) SetUpdateType(v string) *UpdateServiceRequest {
