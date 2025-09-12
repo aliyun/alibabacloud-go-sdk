@@ -13,6 +13,8 @@ type iListUserDevicesRequest interface {
 	GetAppStatuses() []*string
 	SetAppVersions(v []*string) *ListUserDevicesRequest
 	GetAppVersions() []*string
+	SetAutoLoginStatuses(v []*string) *ListUserDevicesRequest
+	GetAutoLoginStatuses() []*string
 	SetCurrentPage(v int64) *ListUserDevicesRequest
 	GetCurrentPage() *int64
 	SetDepartment(v string) *ListUserDevicesRequest
@@ -58,8 +60,9 @@ type iListUserDevicesRequest interface {
 }
 
 type ListUserDevicesRequest struct {
-	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
-	AppVersions []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	AppStatuses       []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
+	AppVersions       []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
+	AutoLoginStatuses []*string `json:"AutoLoginStatuses,omitempty" xml:"AutoLoginStatuses,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -122,6 +125,10 @@ func (s *ListUserDevicesRequest) GetAppStatuses() []*string {
 
 func (s *ListUserDevicesRequest) GetAppVersions() []*string {
 	return s.AppVersions
+}
+
+func (s *ListUserDevicesRequest) GetAutoLoginStatuses() []*string {
+	return s.AutoLoginStatuses
 }
 
 func (s *ListUserDevicesRequest) GetCurrentPage() *int64 {
@@ -215,6 +222,11 @@ func (s *ListUserDevicesRequest) SetAppStatuses(v []*string) *ListUserDevicesReq
 
 func (s *ListUserDevicesRequest) SetAppVersions(v []*string) *ListUserDevicesRequest {
 	s.AppVersions = v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetAutoLoginStatuses(v []*string) *ListUserDevicesRequest {
+	s.AutoLoginStatuses = v
 	return s
 }
 

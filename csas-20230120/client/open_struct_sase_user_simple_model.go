@@ -99,8 +99,11 @@ func (s *OpenStructSaseUserSimple) Validate() error {
 }
 
 type OpenStructSaseUserSimpleDepartments struct {
-	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	DepartmentId         *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	FullDepartmentIdPath *string `json:"FullDepartmentIdPath,omitempty" xml:"FullDepartmentIdPath,omitempty"`
+	FullDn               *string `json:"FullDn,omitempty" xml:"FullDn,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentDepartmentId   *string `json:"ParentDepartmentId,omitempty" xml:"ParentDepartmentId,omitempty"`
 }
 
 func (s OpenStructSaseUserSimpleDepartments) String() string {
@@ -115,8 +118,20 @@ func (s *OpenStructSaseUserSimpleDepartments) GetDepartmentId() *string {
 	return s.DepartmentId
 }
 
+func (s *OpenStructSaseUserSimpleDepartments) GetFullDepartmentIdPath() *string {
+	return s.FullDepartmentIdPath
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) GetFullDn() *string {
+	return s.FullDn
+}
+
 func (s *OpenStructSaseUserSimpleDepartments) GetName() *string {
 	return s.Name
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) GetParentDepartmentId() *string {
+	return s.ParentDepartmentId
 }
 
 func (s *OpenStructSaseUserSimpleDepartments) SetDepartmentId(v string) *OpenStructSaseUserSimpleDepartments {
@@ -124,8 +139,23 @@ func (s *OpenStructSaseUserSimpleDepartments) SetDepartmentId(v string) *OpenStr
 	return s
 }
 
+func (s *OpenStructSaseUserSimpleDepartments) SetFullDepartmentIdPath(v string) *OpenStructSaseUserSimpleDepartments {
+	s.FullDepartmentIdPath = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) SetFullDn(v string) *OpenStructSaseUserSimpleDepartments {
+	s.FullDn = &v
+	return s
+}
+
 func (s *OpenStructSaseUserSimpleDepartments) SetName(v string) *OpenStructSaseUserSimpleDepartments {
 	s.Name = &v
+	return s
+}
+
+func (s *OpenStructSaseUserSimpleDepartments) SetParentDepartmentId(v string) *OpenStructSaseUserSimpleDepartments {
+	s.ParentDepartmentId = &v
 	return s
 }
 

@@ -76,7 +76,8 @@ type ListUserDevicesResponseBodyDevices struct {
 	// example:
 	//
 	// 2.2.0
-	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AutoLoginStatus *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
 	// example:
 	//
 	// Apple M1
@@ -188,6 +189,10 @@ func (s *ListUserDevicesResponseBodyDevices) GetAppStatus() *string {
 
 func (s *ListUserDevicesResponseBodyDevices) GetAppVersion() *string {
 	return s.AppVersion
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetAutoLoginStatus() *string {
+	return s.AutoLoginStatus
 }
 
 func (s *ListUserDevicesResponseBodyDevices) GetCPU() *string {
@@ -325,6 +330,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetAppStatus(v string) *ListUserDev
 
 func (s *ListUserDevicesResponseBodyDevices) SetAppVersion(v string) *ListUserDevicesResponseBodyDevices {
 	s.AppVersion = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetAutoLoginStatus(v string) *ListUserDevicesResponseBodyDevices {
+	s.AutoLoginStatus = &v
 	return s
 }
 
