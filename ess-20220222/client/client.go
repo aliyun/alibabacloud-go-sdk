@@ -10194,6 +10194,14 @@ func (client *Client) StartInstanceRefreshWithOptions(request *StartInstanceRefr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckpointPauseTime) {
+		query["CheckpointPauseTime"] = request.CheckpointPauseTime
+	}
+
+	if !dara.IsNil(request.Checkpoints) {
+		query["Checkpoints"] = request.Checkpoints
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}

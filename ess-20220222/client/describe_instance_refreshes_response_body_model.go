@@ -108,6 +108,8 @@ func (s *DescribeInstanceRefreshesResponseBody) Validate() error {
 }
 
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks struct {
+	CheckpointPauseTime *int32                                                                  `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
+	Checkpoints         []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
 	// The desired configurations of the instance refresh task.
 	DesiredConfiguration *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration `json:"DesiredConfiguration,omitempty" xml:"DesiredConfiguration,omitempty" type:"Struct"`
 	// The reason why the instance refresh task failed to be executed.
@@ -220,6 +222,14 @@ func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GoString() st
 	return s.String()
 }
 
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetCheckpointPauseTime() *int32 {
+	return s.CheckpointPauseTime
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetCheckpoints() []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints {
+	return s.Checkpoints
+}
+
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetDesiredConfiguration() *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
 	return s.DesiredConfiguration
 }
@@ -270,6 +280,16 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetStatus() 
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) GetTotalNeedUpdateCapacity() *int32 {
 	return s.TotalNeedUpdateCapacity
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetCheckpointPauseTime(v int32) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
+	s.CheckpointPauseTime = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetCheckpoints(v []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
+	s.Checkpoints = v
+	return s
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) SetDesiredConfiguration(v *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks {
@@ -341,13 +361,42 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks) Validate() e
 	return dara.Validate(s)
 }
 
+type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints struct {
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) GetPercentage() *int32 {
+	return s.Percentage
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) SetPercentage(v int32) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints {
+	s.Percentage = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration struct {
+	Containers []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 	// The ID of the image file that provides the image resource for Auto Scaling to create instances.
 	//
 	// example:
 	//
 	// m-uf6g5noisr****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId                 *string                                                                                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	LaunchTemplateId        *string                                                                                                 `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateOverrides []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	LaunchTemplateVersion   *string                                                                                                 `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	// The ID of the scaling configuration.
 	//
 	// example:
@@ -364,16 +413,52 @@ func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigur
 	return s.String()
 }
 
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetContainers() []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	return s.Containers
+}
+
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetLaunchTemplateId() *string {
+	return s.LaunchTemplateId
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetLaunchTemplateOverrides() []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides {
+	return s.LaunchTemplateOverrides
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetLaunchTemplateVersion() *string {
+	return s.LaunchTemplateVersion
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) GetScalingConfigurationId() *string {
 	return s.ScalingConfigurationId
 }
 
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) SetContainers(v []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
+	s.Containers = v
+	return s
+}
+
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) SetImageId(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) SetLaunchTemplateId(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) SetLaunchTemplateOverrides(v []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
+	s.LaunchTemplateOverrides = v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) SetLaunchTemplateVersion(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration {
+	s.LaunchTemplateVersion = &v
 	return s
 }
 
@@ -383,5 +468,140 @@ func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigu
 }
 
 func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers struct {
+	Args            []*string                                                                                                 `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Commands        []*string                                                                                                 `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	EnvironmentVars []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	Image           *string                                                                                                   `json:"Image,omitempty" xml:"Image,omitempty"`
+	Name            *string                                                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GetArgs() []*string {
+	return s.Args
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GetCommands() []*string {
+	return s.Commands
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GetEnvironmentVars() []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars {
+	return s.EnvironmentVars
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GetImage() *string {
+	return s.Image
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) SetArgs(v []*string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	s.Args = v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) SetCommands(v []*string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	s.Commands = v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) SetEnvironmentVars(v []*DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) SetImage(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) SetName(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars struct {
+	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) GetFieldRefFieldPath() *string {
+	return s.FieldRefFieldPath
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) SetFieldRefFieldPath(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars {
+	s.FieldRefFieldPath = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) SetKey(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) SetValue(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) GetInstanceType() *string {
+	return s.InstanceType
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) SetInstanceType(v string) *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides) Validate() error {
 	return dara.Validate(s)
 }

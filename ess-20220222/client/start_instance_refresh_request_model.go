@@ -9,6 +9,10 @@ type iStartInstanceRefreshRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCheckpointPauseTime(v int32) *StartInstanceRefreshRequest
+	GetCheckpointPauseTime() *int32
+	SetCheckpoints(v []*StartInstanceRefreshRequestCheckpoints) *StartInstanceRefreshRequest
+	GetCheckpoints() []*StartInstanceRefreshRequestCheckpoints
 	SetClientToken(v string) *StartInstanceRefreshRequest
 	GetClientToken() *string
 	SetDesiredConfiguration(v *StartInstanceRefreshRequestDesiredConfiguration) *StartInstanceRefreshRequest
@@ -30,6 +34,8 @@ type iStartInstanceRefreshRequest interface {
 }
 
 type StartInstanceRefreshRequest struct {
+	CheckpointPauseTime *int32                                    `json:"CheckpointPauseTime,omitempty" xml:"CheckpointPauseTime,omitempty"`
+	Checkpoints         []*StartInstanceRefreshRequestCheckpoints `json:"Checkpoints,omitempty" xml:"Checkpoints,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
@@ -102,6 +108,14 @@ func (s StartInstanceRefreshRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartInstanceRefreshRequest) GetCheckpointPauseTime() *int32 {
+	return s.CheckpointPauseTime
+}
+
+func (s *StartInstanceRefreshRequest) GetCheckpoints() []*StartInstanceRefreshRequestCheckpoints {
+	return s.Checkpoints
+}
+
 func (s *StartInstanceRefreshRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -136,6 +150,16 @@ func (s *StartInstanceRefreshRequest) GetScalingGroupId() *string {
 
 func (s *StartInstanceRefreshRequest) GetSkipMatching() *bool {
 	return s.SkipMatching
+}
+
+func (s *StartInstanceRefreshRequest) SetCheckpointPauseTime(v int32) *StartInstanceRefreshRequest {
+	s.CheckpointPauseTime = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequest) SetCheckpoints(v []*StartInstanceRefreshRequestCheckpoints) *StartInstanceRefreshRequest {
+	s.Checkpoints = v
+	return s
 }
 
 func (s *StartInstanceRefreshRequest) SetClientToken(v string) *StartInstanceRefreshRequest {
@@ -187,7 +211,33 @@ func (s *StartInstanceRefreshRequest) Validate() error {
 	return dara.Validate(s)
 }
 
+type StartInstanceRefreshRequestCheckpoints struct {
+	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s StartInstanceRefreshRequestCheckpoints) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartInstanceRefreshRequestCheckpoints) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceRefreshRequestCheckpoints) GetPercentage() *int32 {
+	return s.Percentage
+}
+
+func (s *StartInstanceRefreshRequestCheckpoints) SetPercentage(v int32) *StartInstanceRefreshRequestCheckpoints {
+	s.Percentage = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestCheckpoints) Validate() error {
+	return dara.Validate(s)
+}
+
 type StartInstanceRefreshRequestDesiredConfiguration struct {
+	Containers []*StartInstanceRefreshRequestDesiredConfigurationContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 	// The image ID.
 	//
 	// >
@@ -199,7 +249,10 @@ type StartInstanceRefreshRequestDesiredConfiguration struct {
 	// example:
 	//
 	// m-2ze8cqacj7opnf***
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId                 *string                                                                   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	LaunchTemplateId        *string                                                                   `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateOverrides []*StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides `json:"LaunchTemplateOverrides,omitempty" xml:"LaunchTemplateOverrides,omitempty" type:"Repeated"`
+	LaunchTemplateVersion   *string                                                                   `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	// The ID of the scaling configuration.
 	//
 	// >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
@@ -218,16 +271,52 @@ func (s StartInstanceRefreshRequestDesiredConfiguration) GoString() string {
 	return s.String()
 }
 
+func (s *StartInstanceRefreshRequestDesiredConfiguration) GetContainers() []*StartInstanceRefreshRequestDesiredConfigurationContainers {
+	return s.Containers
+}
+
 func (s *StartInstanceRefreshRequestDesiredConfiguration) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) GetLaunchTemplateId() *string {
+	return s.LaunchTemplateId
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) GetLaunchTemplateOverrides() []*StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides {
+	return s.LaunchTemplateOverrides
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) GetLaunchTemplateVersion() *string {
+	return s.LaunchTemplateVersion
 }
 
 func (s *StartInstanceRefreshRequestDesiredConfiguration) GetScalingConfigurationId() *string {
 	return s.ScalingConfigurationId
 }
 
+func (s *StartInstanceRefreshRequestDesiredConfiguration) SetContainers(v []*StartInstanceRefreshRequestDesiredConfigurationContainers) *StartInstanceRefreshRequestDesiredConfiguration {
+	s.Containers = v
+	return s
+}
+
 func (s *StartInstanceRefreshRequestDesiredConfiguration) SetImageId(v string) *StartInstanceRefreshRequestDesiredConfiguration {
 	s.ImageId = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) SetLaunchTemplateId(v string) *StartInstanceRefreshRequestDesiredConfiguration {
+	s.LaunchTemplateId = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) SetLaunchTemplateOverrides(v []*StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) *StartInstanceRefreshRequestDesiredConfiguration {
+	s.LaunchTemplateOverrides = v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfiguration) SetLaunchTemplateVersion(v string) *StartInstanceRefreshRequestDesiredConfiguration {
+	s.LaunchTemplateVersion = &v
 	return s
 }
 
@@ -237,5 +326,140 @@ func (s *StartInstanceRefreshRequestDesiredConfiguration) SetScalingConfiguratio
 }
 
 func (s *StartInstanceRefreshRequestDesiredConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartInstanceRefreshRequestDesiredConfigurationContainers struct {
+	Args            []*string                                                                   `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Commands        []*string                                                                   `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	EnvironmentVars []*StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	Image           *string                                                                     `json:"Image,omitempty" xml:"Image,omitempty"`
+	Name            *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationContainers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationContainers) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) GetArgs() []*string {
+	return s.Args
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) GetCommands() []*string {
+	return s.Commands
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) GetEnvironmentVars() []*StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars {
+	return s.EnvironmentVars
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) GetImage() *string {
+	return s.Image
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) GetName() *string {
+	return s.Name
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetArgs(v []*string) *StartInstanceRefreshRequestDesiredConfigurationContainers {
+	s.Args = v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetCommands(v []*string) *StartInstanceRefreshRequestDesiredConfigurationContainers {
+	s.Commands = v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetEnvironmentVars(v []*StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) *StartInstanceRefreshRequestDesiredConfigurationContainers {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetImage(v string) *StartInstanceRefreshRequestDesiredConfigurationContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) SetName(v string) *StartInstanceRefreshRequestDesiredConfigurationContainers {
+	s.Name = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainers) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars struct {
+	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
+	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) GetFieldRefFieldPath() *string {
+	return s.FieldRefFieldPath
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) GetKey() *string {
+	return s.Key
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) GetValue() *string {
+	return s.Value
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) SetFieldRefFieldPath(v string) *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars {
+	s.FieldRefFieldPath = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) SetKey(v string) *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) SetValue(v string) *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) GetInstanceType() *string {
+	return s.InstanceType
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) SetInstanceType(v string) *StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides) Validate() error {
 	return dara.Validate(s)
 }
