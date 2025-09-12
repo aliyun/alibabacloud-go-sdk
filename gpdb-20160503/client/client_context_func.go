@@ -7983,6 +7983,102 @@ func (client *Client) DownloadSQLLogsRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 知识库开启构建知识图谱
+//
+// @param tmpReq - EnableCollectionGraphRAGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCollectionGraphRAGResponse
+func (client *Client) EnableCollectionGraphRAGWithContext(ctx context.Context, tmpReq *EnableCollectionGraphRAGRequest, runtime *dara.RuntimeOptions) (_result *EnableCollectionGraphRAGResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &EnableCollectionGraphRAGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EntityTypes) {
+		request.EntityTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EntityTypes, dara.String("EntityTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RelationshipTypes) {
+		request.RelationshipTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelationshipTypes, dara.String("RelationshipTypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Collection) {
+		query["Collection"] = request.Collection
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EntityTypesShrink) {
+		query["EntityTypes"] = request.EntityTypesShrink
+	}
+
+	if !dara.IsNil(request.LLMModel) {
+		query["LLMModel"] = request.LLMModel
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.ManagerAccount) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !dara.IsNil(request.ManagerAccountPassword) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NamespacePassword) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelationshipTypesShrink) {
+		query["RelationshipTypes"] = request.RelationshipTypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCollectionGraphRAG"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCollectionGraphRAGResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables resource group management for an AnalyticDB for PostgreSQL V6.0 instance in elastic storage mode. After resource group management is enabled, the resource management mode of the instance is changed from resource queue to resource group.
 //
 // Description:
@@ -8175,6 +8271,72 @@ func (client *Client) GetAccountWithContext(ctx context.Context, request *GetAcc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取构建知识图谱任务
+//
+// @param request - GetGraphRAGJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGraphRAGJobResponse
+func (client *Client) GetGraphRAGJobWithContext(ctx context.Context, request *GetGraphRAGJobRequest, runtime *dara.RuntimeOptions) (_result *GetGraphRAGJobResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Collection) {
+		query["Collection"] = request.Collection
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NamespacePassword) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGraphRAGJob"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGraphRAGJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
