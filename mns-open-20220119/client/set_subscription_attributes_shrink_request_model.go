@@ -13,6 +13,8 @@ type iSetSubscriptionAttributesShrinkRequest interface {
 	GetDlqPolicyShrink() *string
 	SetNotifyStrategy(v string) *SetSubscriptionAttributesShrinkRequest
 	GetNotifyStrategy() *string
+	SetStsRoleArn(v string) *SetSubscriptionAttributesShrinkRequest
+	GetStsRoleArn() *string
 	SetSubscriptionName(v string) *SetSubscriptionAttributesShrinkRequest
 	GetSubscriptionName() *string
 	SetTenantRateLimitPolicyShrink(v string) *SetSubscriptionAttributesShrinkRequest
@@ -34,6 +36,10 @@ type SetSubscriptionAttributesShrinkRequest struct {
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// example:
+	//
+	// acs:ram::1234567890:role/roleName
+	StsRoleArn *string `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
 	// The name of the subscription.
 	//
 	// This parameter is required.
@@ -69,6 +75,10 @@ func (s *SetSubscriptionAttributesShrinkRequest) GetNotifyStrategy() *string {
 	return s.NotifyStrategy
 }
 
+func (s *SetSubscriptionAttributesShrinkRequest) GetStsRoleArn() *string {
+	return s.StsRoleArn
+}
+
 func (s *SetSubscriptionAttributesShrinkRequest) GetSubscriptionName() *string {
 	return s.SubscriptionName
 }
@@ -88,6 +98,11 @@ func (s *SetSubscriptionAttributesShrinkRequest) SetDlqPolicyShrink(v string) *S
 
 func (s *SetSubscriptionAttributesShrinkRequest) SetNotifyStrategy(v string) *SetSubscriptionAttributesShrinkRequest {
 	s.NotifyStrategy = &v
+	return s
+}
+
+func (s *SetSubscriptionAttributesShrinkRequest) SetStsRoleArn(v string) *SetSubscriptionAttributesShrinkRequest {
+	s.StsRoleArn = &v
 	return s
 }
 

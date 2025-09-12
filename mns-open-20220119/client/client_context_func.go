@@ -1174,6 +1174,10 @@ func (client *Client) SetSubscriptionAttributesWithContext(ctx context.Context, 
 		query["NotifyStrategy"] = request.NotifyStrategy
 	}
 
+	if !dara.IsNil(request.StsRoleArn) {
+		query["StsRoleArn"] = request.StsRoleArn
+	}
+
 	if !dara.IsNil(request.SubscriptionName) {
 		query["SubscriptionName"] = request.SubscriptionName
 	}

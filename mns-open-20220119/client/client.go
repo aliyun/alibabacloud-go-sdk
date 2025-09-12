@@ -1582,6 +1582,10 @@ func (client *Client) SetSubscriptionAttributesWithOptions(tmpReq *SetSubscripti
 		query["NotifyStrategy"] = request.NotifyStrategy
 	}
 
+	if !dara.IsNil(request.StsRoleArn) {
+		query["StsRoleArn"] = request.StsRoleArn
+	}
+
 	if !dara.IsNil(request.SubscriptionName) {
 		query["SubscriptionName"] = request.SubscriptionName
 	}
