@@ -590,6 +590,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataWorksTriggerParameters         *SinkDataWorksTriggerParameters                                                               `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
 	SinkDorisParameters                    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters                    `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Function Compute is specified as the event target.
 	SinkFcParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
@@ -643,6 +644,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDashVect
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDataHubParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
 	return s.SinkDataHubParameters
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDataWorksTriggerParameters() *SinkDataWorksTriggerParameters {
+	return s.SinkDataWorksTriggerParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) GetSinkDorisParameters() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters {
@@ -717,6 +722,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDashVect
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDataHubParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkDataHubParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDataWorksTriggerParameters(v *SinkDataWorksTriggerParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkDataWorksTriggerParameters = v
 	return s
 }
 

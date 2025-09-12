@@ -478,8 +478,9 @@ type CreateEventStreamingRequestSink struct {
 	SinkCustomizedKafkaParameters          *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *CreateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify DataHub as the event target.
-	SinkDataHubParameters *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
-	SinkDorisParameters   *CreateEventStreamingRequestSinkSinkDorisParameters   `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters          *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataWorksTriggerParameters *SinkDataWorksTriggerParameters                       `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
+	SinkDorisParameters            *CreateEventStreamingRequestSinkSinkDorisParameters   `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
 	SinkFcParameters *CreateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify CloudFlow as the event target.
@@ -534,6 +535,10 @@ func (s *CreateEventStreamingRequestSink) GetSinkDashVectorParameters() *CreateE
 
 func (s *CreateEventStreamingRequestSink) GetSinkDataHubParameters() *CreateEventStreamingRequestSinkSinkDataHubParameters {
 	return s.SinkDataHubParameters
+}
+
+func (s *CreateEventStreamingRequestSink) GetSinkDataWorksTriggerParameters() *SinkDataWorksTriggerParameters {
+	return s.SinkDataWorksTriggerParameters
 }
 
 func (s *CreateEventStreamingRequestSink) GetSinkDorisParameters() *CreateEventStreamingRequestSinkSinkDorisParameters {
@@ -612,6 +617,11 @@ func (s *CreateEventStreamingRequestSink) SetSinkDashVectorParameters(v *CreateE
 
 func (s *CreateEventStreamingRequestSink) SetSinkDataHubParameters(v *CreateEventStreamingRequestSinkSinkDataHubParameters) *CreateEventStreamingRequestSink {
 	s.SinkDataHubParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkDataWorksTriggerParameters(v *SinkDataWorksTriggerParameters) *CreateEventStreamingRequestSink {
+	s.SinkDataWorksTriggerParameters = v
 	return s
 }
 

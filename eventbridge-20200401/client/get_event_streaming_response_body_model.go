@@ -644,6 +644,7 @@ type GetEventStreamingResponseBodyDataSink struct {
 	SinkCustomizedKafkaParameters          *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataWorksTriggerParameters         *SinkDataWorksTriggerParameters                                              `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
 	SinkDorisParameters                    *GetEventStreamingResponseBodyDataSinkSinkDorisParameters                    `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Function Compute.
 	SinkFcParameters *GetEventStreamingResponseBodyDataSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
@@ -699,6 +700,10 @@ func (s *GetEventStreamingResponseBodyDataSink) GetSinkDashVectorParameters() *G
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkDataHubParameters() *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
 	return s.SinkDataHubParameters
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) GetSinkDataWorksTriggerParameters() *SinkDataWorksTriggerParameters {
+	return s.SinkDataWorksTriggerParameters
 }
 
 func (s *GetEventStreamingResponseBodyDataSink) GetSinkDorisParameters() *GetEventStreamingResponseBodyDataSinkSinkDorisParameters {
@@ -773,6 +778,11 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkDashVectorParameters(v *G
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkDataHubParameters(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkDataHubParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkDataWorksTriggerParameters(v *SinkDataWorksTriggerParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkDataWorksTriggerParameters = v
 	return s
 }
 

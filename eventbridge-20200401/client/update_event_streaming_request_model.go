@@ -523,7 +523,8 @@ type UpdateEventStreamingRequestSink struct {
 	// The parameters that are configured if you specify DashVector as the event target.
 	SinkDashVectorParameters *UpdateEventStreamingRequestSinkSinkDashVectorParameters `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify DataHub as the event target.
-	SinkDataHubParameters *UpdateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters          *UpdateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
+	SinkDataWorksTriggerParameters *SinkDataWorksTriggerParameters                       `json:"SinkDataWorksTriggerParameters,omitempty" xml:"SinkDataWorksTriggerParameters,omitempty"`
 	// The type of the event source.
 	SinkDorisParameters *UpdateEventStreamingRequestSinkSinkDorisParameters `json:"SinkDorisParameters,omitempty" xml:"SinkDorisParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
@@ -582,6 +583,10 @@ func (s *UpdateEventStreamingRequestSink) GetSinkDashVectorParameters() *UpdateE
 
 func (s *UpdateEventStreamingRequestSink) GetSinkDataHubParameters() *UpdateEventStreamingRequestSinkSinkDataHubParameters {
 	return s.SinkDataHubParameters
+}
+
+func (s *UpdateEventStreamingRequestSink) GetSinkDataWorksTriggerParameters() *SinkDataWorksTriggerParameters {
+	return s.SinkDataWorksTriggerParameters
 }
 
 func (s *UpdateEventStreamingRequestSink) GetSinkDorisParameters() *UpdateEventStreamingRequestSinkSinkDorisParameters {
@@ -660,6 +665,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkDashVectorParameters(v *UpdateE
 
 func (s *UpdateEventStreamingRequestSink) SetSinkDataHubParameters(v *UpdateEventStreamingRequestSinkSinkDataHubParameters) *UpdateEventStreamingRequestSink {
 	s.SinkDataHubParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkDataWorksTriggerParameters(v *SinkDataWorksTriggerParameters) *UpdateEventStreamingRequestSink {
+	s.SinkDataWorksTriggerParameters = v
 	return s
 }
 
