@@ -10,6 +10,8 @@ type iSubmitDocParserJobAdvanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomOssConfig(v *SubmitDocParserJobAdvanceRequestCustomOssConfig) *SubmitDocParserJobAdvanceRequest
+	GetCustomOssConfig() *SubmitDocParserJobAdvanceRequestCustomOssConfig
 	SetEnhancementMode(v string) *SubmitDocParserJobAdvanceRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobAdvanceRequest
@@ -20,6 +22,8 @@ type iSubmitDocParserJobAdvanceRequest interface {
 	GetFileUrlObject() io.Reader
 	SetFormulaEnhancement(v bool) *SubmitDocParserJobAdvanceRequest
 	GetFormulaEnhancement() *bool
+	SetLLMParam(v *SubmitDocParserJobAdvanceRequestLLMParam) *SubmitDocParserJobAdvanceRequest
+	GetLLMParam() *SubmitDocParserJobAdvanceRequestLLMParam
 	SetLlmEnhancement(v bool) *SubmitDocParserJobAdvanceRequest
 	GetLlmEnhancement() *bool
 	SetMultimediaParameters(v *SubmitDocParserJobAdvanceRequestMultimediaParameters) *SubmitDocParserJobAdvanceRequest
@@ -37,7 +41,8 @@ type iSubmitDocParserJobAdvanceRequest interface {
 }
 
 type SubmitDocParserJobAdvanceRequest struct {
-	EnhancementMode *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
+	CustomOssConfig *SubmitDocParserJobAdvanceRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
+	EnhancementMode *string                                          `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -51,6 +56,7 @@ type SubmitDocParserJobAdvanceRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrlObject        io.Reader                                             `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement   *bool                                                 `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	LLMParam             *SubmitDocParserJobAdvanceRequestLLMParam             `json:"LLMParam,omitempty" xml:"LLMParam,omitempty" type:"Struct"`
 	LlmEnhancement       *bool                                                 `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
 	MultimediaParameters *SubmitDocParserJobAdvanceRequestMultimediaParameters `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty" type:"Struct"`
 	Option               *string                                               `json:"Option,omitempty" xml:"Option,omitempty"`
@@ -66,6 +72,10 @@ func (s SubmitDocParserJobAdvanceRequest) String() string {
 
 func (s SubmitDocParserJobAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) GetCustomOssConfig() *SubmitDocParserJobAdvanceRequestCustomOssConfig {
+	return s.CustomOssConfig
 }
 
 func (s *SubmitDocParserJobAdvanceRequest) GetEnhancementMode() *string {
@@ -86,6 +96,10 @@ func (s *SubmitDocParserJobAdvanceRequest) GetFileUrlObject() io.Reader {
 
 func (s *SubmitDocParserJobAdvanceRequest) GetFormulaEnhancement() *bool {
 	return s.FormulaEnhancement
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) GetLLMParam() *SubmitDocParserJobAdvanceRequestLLMParam {
+	return s.LLMParam
 }
 
 func (s *SubmitDocParserJobAdvanceRequest) GetLlmEnhancement() *bool {
@@ -116,6 +130,11 @@ func (s *SubmitDocParserJobAdvanceRequest) GetPageIndex() *string {
 	return s.PageIndex
 }
 
+func (s *SubmitDocParserJobAdvanceRequest) SetCustomOssConfig(v *SubmitDocParserJobAdvanceRequestCustomOssConfig) *SubmitDocParserJobAdvanceRequest {
+	s.CustomOssConfig = v
+	return s
+}
+
 func (s *SubmitDocParserJobAdvanceRequest) SetEnhancementMode(v string) *SubmitDocParserJobAdvanceRequest {
 	s.EnhancementMode = &v
 	return s
@@ -138,6 +157,11 @@ func (s *SubmitDocParserJobAdvanceRequest) SetFileUrlObject(v io.Reader) *Submit
 
 func (s *SubmitDocParserJobAdvanceRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobAdvanceRequest {
 	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetLLMParam(v *SubmitDocParserJobAdvanceRequestLLMParam) *SubmitDocParserJobAdvanceRequest {
+	s.LLMParam = v
 	return s
 }
 
@@ -177,6 +201,101 @@ func (s *SubmitDocParserJobAdvanceRequest) SetPageIndex(v string) *SubmitDocPars
 }
 
 func (s *SubmitDocParserJobAdvanceRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitDocParserJobAdvanceRequestCustomOssConfig struct {
+	// example:
+	//
+	// AccessId
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// example:
+	//
+	// AccessKeySecret
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// example:
+	//
+	// StsToken
+	StsToken *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
+}
+
+func (s SubmitDocParserJobAdvanceRequestCustomOssConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobAdvanceRequestCustomOssConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) GetAccessId() *string {
+	return s.AccessId
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) GetAccessKeySecret() *string {
+	return s.AccessKeySecret
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) GetStsToken() *string {
+	return s.StsToken
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) SetAccessId(v string) *SubmitDocParserJobAdvanceRequestCustomOssConfig {
+	s.AccessId = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) SetAccessKeySecret(v string) *SubmitDocParserJobAdvanceRequestCustomOssConfig {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) SetStsToken(v string) *SubmitDocParserJobAdvanceRequestCustomOssConfig {
+	s.StsToken = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestCustomOssConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitDocParserJobAdvanceRequestLLMParam struct {
+	// example:
+	//
+	// qwen-vl-ocr-latest
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// Read all the text from the image.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+}
+
+func (s SubmitDocParserJobAdvanceRequestLLMParam) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobAdvanceRequestLLMParam) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobAdvanceRequestLLMParam) GetModel() *string {
+	return s.Model
+}
+
+func (s *SubmitDocParserJobAdvanceRequestLLMParam) GetPrompt() *string {
+	return s.Prompt
+}
+
+func (s *SubmitDocParserJobAdvanceRequestLLMParam) SetModel(v string) *SubmitDocParserJobAdvanceRequestLLMParam {
+	s.Model = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestLLMParam) SetPrompt(v string) *SubmitDocParserJobAdvanceRequestLLMParam {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequestLLMParam) Validate() error {
 	return dara.Validate(s)
 }
 

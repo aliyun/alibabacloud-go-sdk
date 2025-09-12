@@ -9,6 +9,8 @@ type iSubmitDocParserJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomOssConfig(v *SubmitDocParserJobRequestCustomOssConfig) *SubmitDocParserJobRequest
+	GetCustomOssConfig() *SubmitDocParserJobRequestCustomOssConfig
 	SetEnhancementMode(v string) *SubmitDocParserJobRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobRequest
@@ -19,6 +21,8 @@ type iSubmitDocParserJobRequest interface {
 	GetFileUrl() *string
 	SetFormulaEnhancement(v bool) *SubmitDocParserJobRequest
 	GetFormulaEnhancement() *bool
+	SetLLMParam(v *SubmitDocParserJobRequestLLMParam) *SubmitDocParserJobRequest
+	GetLLMParam() *SubmitDocParserJobRequestLLMParam
 	SetLlmEnhancement(v bool) *SubmitDocParserJobRequest
 	GetLlmEnhancement() *bool
 	SetMultimediaParameters(v *SubmitDocParserJobRequestMultimediaParameters) *SubmitDocParserJobRequest
@@ -36,7 +40,8 @@ type iSubmitDocParserJobRequest interface {
 }
 
 type SubmitDocParserJobRequest struct {
-	EnhancementMode *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
+	CustomOssConfig *SubmitDocParserJobRequestCustomOssConfig `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty" type:"Struct"`
+	EnhancementMode *string                                   `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -50,6 +55,7 @@ type SubmitDocParserJobRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl              *string                                        `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement   *bool                                          `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	LLMParam             *SubmitDocParserJobRequestLLMParam             `json:"LLMParam,omitempty" xml:"LLMParam,omitempty" type:"Struct"`
 	LlmEnhancement       *bool                                          `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
 	MultimediaParameters *SubmitDocParserJobRequestMultimediaParameters `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty" type:"Struct"`
 	Option               *string                                        `json:"Option,omitempty" xml:"Option,omitempty"`
@@ -65,6 +71,10 @@ func (s SubmitDocParserJobRequest) String() string {
 
 func (s SubmitDocParserJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocParserJobRequest) GetCustomOssConfig() *SubmitDocParserJobRequestCustomOssConfig {
+	return s.CustomOssConfig
 }
 
 func (s *SubmitDocParserJobRequest) GetEnhancementMode() *string {
@@ -85,6 +95,10 @@ func (s *SubmitDocParserJobRequest) GetFileUrl() *string {
 
 func (s *SubmitDocParserJobRequest) GetFormulaEnhancement() *bool {
 	return s.FormulaEnhancement
+}
+
+func (s *SubmitDocParserJobRequest) GetLLMParam() *SubmitDocParserJobRequestLLMParam {
+	return s.LLMParam
 }
 
 func (s *SubmitDocParserJobRequest) GetLlmEnhancement() *bool {
@@ -115,6 +129,11 @@ func (s *SubmitDocParserJobRequest) GetPageIndex() *string {
 	return s.PageIndex
 }
 
+func (s *SubmitDocParserJobRequest) SetCustomOssConfig(v *SubmitDocParserJobRequestCustomOssConfig) *SubmitDocParserJobRequest {
+	s.CustomOssConfig = v
+	return s
+}
+
 func (s *SubmitDocParserJobRequest) SetEnhancementMode(v string) *SubmitDocParserJobRequest {
 	s.EnhancementMode = &v
 	return s
@@ -137,6 +156,11 @@ func (s *SubmitDocParserJobRequest) SetFileUrl(v string) *SubmitDocParserJobRequ
 
 func (s *SubmitDocParserJobRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobRequest {
 	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetLLMParam(v *SubmitDocParserJobRequestLLMParam) *SubmitDocParserJobRequest {
+	s.LLMParam = v
 	return s
 }
 
@@ -176,6 +200,101 @@ func (s *SubmitDocParserJobRequest) SetPageIndex(v string) *SubmitDocParserJobRe
 }
 
 func (s *SubmitDocParserJobRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitDocParserJobRequestCustomOssConfig struct {
+	// example:
+	//
+	// AccessId
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// example:
+	//
+	// AccessKeySecret
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// example:
+	//
+	// StsToken
+	StsToken *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
+}
+
+func (s SubmitDocParserJobRequestCustomOssConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobRequestCustomOssConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) GetAccessId() *string {
+	return s.AccessId
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) GetAccessKeySecret() *string {
+	return s.AccessKeySecret
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) GetStsToken() *string {
+	return s.StsToken
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) SetAccessId(v string) *SubmitDocParserJobRequestCustomOssConfig {
+	s.AccessId = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) SetAccessKeySecret(v string) *SubmitDocParserJobRequestCustomOssConfig {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) SetStsToken(v string) *SubmitDocParserJobRequestCustomOssConfig {
+	s.StsToken = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestCustomOssConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitDocParserJobRequestLLMParam struct {
+	// example:
+	//
+	// qwen-vl-ocr-latest
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// Read all the text from the image.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+}
+
+func (s SubmitDocParserJobRequestLLMParam) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocParserJobRequestLLMParam) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParserJobRequestLLMParam) GetModel() *string {
+	return s.Model
+}
+
+func (s *SubmitDocParserJobRequestLLMParam) GetPrompt() *string {
+	return s.Prompt
+}
+
+func (s *SubmitDocParserJobRequestLLMParam) SetModel(v string) *SubmitDocParserJobRequestLLMParam {
+	s.Model = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestLLMParam) SetPrompt(v string) *SubmitDocParserJobRequestLLMParam {
+	s.Prompt = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequestLLMParam) Validate() error {
 	return dara.Validate(s)
 }
 

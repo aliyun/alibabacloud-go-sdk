@@ -2016,11 +2016,23 @@ func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRe
 	}
 	request := &SubmitDocParserJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CustomOssConfig) {
+		request.CustomOssConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomOssConfig, dara.String("CustomOssConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LLMParam) {
+		request.LLMParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LLMParam, dara.String("LLMParam"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.MultimediaParameters) {
 		request.MultimediaParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultimediaParameters, dara.String("MultimediaParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomOssConfigShrink) {
+		query["CustomOssConfig"] = request.CustomOssConfigShrink
+	}
+
 	if !dara.IsNil(request.EnhancementMode) {
 		query["EnhancementMode"] = request.EnhancementMode
 	}
@@ -2039,6 +2051,10 @@ func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRe
 
 	if !dara.IsNil(request.FormulaEnhancement) {
 		query["FormulaEnhancement"] = request.FormulaEnhancement
+	}
+
+	if !dara.IsNil(request.LLMParamShrink) {
+		query["LLMParam"] = request.LLMParamShrink
 	}
 
 	if !dara.IsNil(request.LlmEnhancement) {

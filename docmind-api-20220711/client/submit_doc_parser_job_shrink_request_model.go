@@ -9,6 +9,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCustomOssConfigShrink(v string) *SubmitDocParserJobShrinkRequest
+	GetCustomOssConfigShrink() *string
 	SetEnhancementMode(v string) *SubmitDocParserJobShrinkRequest
 	GetEnhancementMode() *string
 	SetFileName(v string) *SubmitDocParserJobShrinkRequest
@@ -19,6 +21,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 	GetFileUrl() *string
 	SetFormulaEnhancement(v bool) *SubmitDocParserJobShrinkRequest
 	GetFormulaEnhancement() *bool
+	SetLLMParamShrink(v string) *SubmitDocParserJobShrinkRequest
+	GetLLMParamShrink() *string
 	SetLlmEnhancement(v bool) *SubmitDocParserJobShrinkRequest
 	GetLlmEnhancement() *bool
 	SetMultimediaParametersShrink(v string) *SubmitDocParserJobShrinkRequest
@@ -36,7 +40,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 }
 
 type SubmitDocParserJobShrinkRequest struct {
-	EnhancementMode *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
+	CustomOssConfigShrink *string `json:"CustomOssConfig,omitempty" xml:"CustomOssConfig,omitempty"`
+	EnhancementMode       *string `json:"EnhancementMode,omitempty" xml:"EnhancementMode,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -50,6 +55,7 @@ type SubmitDocParserJobShrinkRequest struct {
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
 	FileUrl                    *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	FormulaEnhancement         *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	LLMParamShrink             *string `json:"LLMParam,omitempty" xml:"LLMParam,omitempty"`
 	LlmEnhancement             *bool   `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
 	MultimediaParametersShrink *string `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty"`
 	Option                     *string `json:"Option,omitempty" xml:"Option,omitempty"`
@@ -65,6 +71,10 @@ func (s SubmitDocParserJobShrinkRequest) String() string {
 
 func (s SubmitDocParserJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocParserJobShrinkRequest) GetCustomOssConfigShrink() *string {
+	return s.CustomOssConfigShrink
 }
 
 func (s *SubmitDocParserJobShrinkRequest) GetEnhancementMode() *string {
@@ -85,6 +95,10 @@ func (s *SubmitDocParserJobShrinkRequest) GetFileUrl() *string {
 
 func (s *SubmitDocParserJobShrinkRequest) GetFormulaEnhancement() *bool {
 	return s.FormulaEnhancement
+}
+
+func (s *SubmitDocParserJobShrinkRequest) GetLLMParamShrink() *string {
+	return s.LLMParamShrink
 }
 
 func (s *SubmitDocParserJobShrinkRequest) GetLlmEnhancement() *bool {
@@ -115,6 +129,11 @@ func (s *SubmitDocParserJobShrinkRequest) GetPageIndex() *string {
 	return s.PageIndex
 }
 
+func (s *SubmitDocParserJobShrinkRequest) SetCustomOssConfigShrink(v string) *SubmitDocParserJobShrinkRequest {
+	s.CustomOssConfigShrink = &v
+	return s
+}
+
 func (s *SubmitDocParserJobShrinkRequest) SetEnhancementMode(v string) *SubmitDocParserJobShrinkRequest {
 	s.EnhancementMode = &v
 	return s
@@ -137,6 +156,11 @@ func (s *SubmitDocParserJobShrinkRequest) SetFileUrl(v string) *SubmitDocParserJ
 
 func (s *SubmitDocParserJobShrinkRequest) SetFormulaEnhancement(v bool) *SubmitDocParserJobShrinkRequest {
 	s.FormulaEnhancement = &v
+	return s
+}
+
+func (s *SubmitDocParserJobShrinkRequest) SetLLMParamShrink(v string) *SubmitDocParserJobShrinkRequest {
+	s.LLMParamShrink = &v
 	return s
 }
 
