@@ -11,6 +11,8 @@ type iDescribeSQLWebSocketDomainRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DescribeSQLWebSocketDomainRequest
 	GetDBClusterId() *string
+	SetModule(v string) *DescribeSQLWebSocketDomainRequest
+	GetModule() *string
 	SetRegionId(v string) *DescribeSQLWebSocketDomainRequest
 	GetRegionId() *string
 }
@@ -26,6 +28,7 @@ type DescribeSQLWebSocketDomainRequest struct {
 	//
 	// amv-bp1lw6g669zpi660
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Module      *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The region ID
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
@@ -50,12 +53,21 @@ func (s *DescribeSQLWebSocketDomainRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DescribeSQLWebSocketDomainRequest) GetModule() *string {
+	return s.Module
+}
+
 func (s *DescribeSQLWebSocketDomainRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeSQLWebSocketDomainRequest) SetDBClusterId(v string) *DescribeSQLWebSocketDomainRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainRequest) SetModule(v string) *DescribeSQLWebSocketDomainRequest {
+	s.Module = &v
 	return s
 }
 

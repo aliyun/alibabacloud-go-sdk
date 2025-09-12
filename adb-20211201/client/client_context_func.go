@@ -7270,6 +7270,10 @@ func (client *Client) DescribeSQLWebSocketDomainWithContext(ctx context.Context,
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.Module) {
+		query["Module"] = request.Module
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
