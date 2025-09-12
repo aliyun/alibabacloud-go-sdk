@@ -335,6 +335,66 @@ func (client *Client) CreateCustomCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 创建外部子CA证书
+//
+// @param tmpReq - CreateExternalCACertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExternalCACertificateResponse
+func (client *Client) CreateExternalCACertificateWithContext(ctx context.Context, tmpReq *CreateExternalCACertificateRequest, runtime *dara.RuntimeOptions) (_result *CreateExternalCACertificateResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateExternalCACertificateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApiPassthrough) {
+		request.ApiPassthroughShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApiPassthrough, dara.String("ApiPassthrough"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiPassthroughShrink) {
+		query["ApiPassthrough"] = request.ApiPassthroughShrink
+	}
+
+	if !dara.IsNil(request.Csr) {
+		query["Csr"] = request.Csr
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Validity) {
+		query["Validity"] = request.Validity
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExternalCACertificate"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExternalCACertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes a client certificate or a server certificate.
 //
 // Description:
@@ -1329,6 +1389,52 @@ func (client *Client) ListClientCertificateWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListClientCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询私有CA机构证书
+//
+// @param request - ListPcaCaCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPcaCaCertificateResponse
+func (client *Client) ListPcaCaCertificateWithContext(ctx context.Context, request *ListPcaCaCertificateRequest, runtime *dara.RuntimeOptions) (_result *ListPcaCaCertificateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPcaCaCertificate"),
+		Version:     dara.String("2020-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPcaCaCertificateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
