@@ -458,6 +458,7 @@ type ExtendClusterRequestNodeGroups struct {
   ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
   // Set the hostnames for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
   Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+  HyperNodes []*ExtendClusterRequestNodeGroupsHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
   // Set the login password for the purchased nodes. This parameter is not effective when the Amount parameter is set to 0.
   // 
   // example:
@@ -532,6 +533,10 @@ func (s *ExtendClusterRequestNodeGroups) GetHostnames() []*string  {
   return s.Hostnames
 }
 
+func (s *ExtendClusterRequestNodeGroups) GetHyperNodes() []*ExtendClusterRequestNodeGroupsHyperNodes  {
+  return s.HyperNodes
+}
+
 func (s *ExtendClusterRequestNodeGroups) GetLoginPassword() *string  {
   return s.LoginPassword
 }
@@ -588,6 +593,11 @@ func (s *ExtendClusterRequestNodeGroups) SetHostnames(v []*string) *ExtendCluste
   return s
 }
 
+func (s *ExtendClusterRequestNodeGroups) SetHyperNodes(v []*ExtendClusterRequestNodeGroupsHyperNodes) *ExtendClusterRequestNodeGroups {
+  s.HyperNodes = v
+  return s
+}
+
 func (s *ExtendClusterRequestNodeGroups) SetLoginPassword(v string) *ExtendClusterRequestNodeGroups {
   s.LoginPassword = &v
   return s
@@ -634,6 +644,136 @@ func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterReque
 }
 
 func (s *ExtendClusterRequestNodeGroups) Validate() error {
+  return dara.Validate(s)
+}
+
+type ExtendClusterRequestNodeGroupsHyperNodes struct {
+  DataDisk []*ExtendClusterRequestNodeGroupsHyperNodesDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+  Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+  HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
+  LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+  VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+  VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ExtendClusterRequestNodeGroupsHyperNodes) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExtendClusterRequestNodeGroupsHyperNodes) GoString() string {
+  return s.String()
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetDataDisk() []*ExtendClusterRequestNodeGroupsHyperNodesDataDisk  {
+  return s.DataDisk
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetHostname() *string  {
+  return s.Hostname
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetHyperNodeId() *string  {
+  return s.HyperNodeId
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetLoginPassword() *string  {
+  return s.LoginPassword
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetVSwitchId() *string  {
+  return s.VSwitchId
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) GetVpcId() *string  {
+  return s.VpcId
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetDataDisk(v []*ExtendClusterRequestNodeGroupsHyperNodesDataDisk) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.DataDisk = v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetHostname(v string) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.Hostname = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetHyperNodeId(v string) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.HyperNodeId = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetLoginPassword(v string) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.LoginPassword = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetVSwitchId(v string) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.VSwitchId = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) SetVpcId(v string) *ExtendClusterRequestNodeGroupsHyperNodes {
+  s.VpcId = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodes) Validate() error {
+  return dara.Validate(s)
+}
+
+type ExtendClusterRequestNodeGroupsHyperNodesDataDisk struct {
+  Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+  DeleteWithNode *bool `json:"DeleteWithNode,omitempty" xml:"DeleteWithNode,omitempty"`
+  PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+  Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ExtendClusterRequestNodeGroupsHyperNodesDataDisk) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExtendClusterRequestNodeGroupsHyperNodesDataDisk) GoString() string {
+  return s.String()
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) GetCategory() *string  {
+  return s.Category
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) GetDeleteWithNode() *bool  {
+  return s.DeleteWithNode
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) GetPerformanceLevel() *string  {
+  return s.PerformanceLevel
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) GetSize() *int32  {
+  return s.Size
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) SetCategory(v string) *ExtendClusterRequestNodeGroupsHyperNodesDataDisk {
+  s.Category = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) SetDeleteWithNode(v bool) *ExtendClusterRequestNodeGroupsHyperNodesDataDisk {
+  s.DeleteWithNode = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) SetPerformanceLevel(v string) *ExtendClusterRequestNodeGroupsHyperNodesDataDisk {
+  s.PerformanceLevel = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) SetSize(v int32) *ExtendClusterRequestNodeGroupsHyperNodesDataDisk {
+  s.Size = &v
+  return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsHyperNodesDataDisk) Validate() error {
   return dara.Validate(s)
 }
 

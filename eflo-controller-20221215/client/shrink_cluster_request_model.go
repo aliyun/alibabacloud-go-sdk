@@ -74,6 +74,7 @@ func (s *ShrinkClusterRequest) Validate() error {
 }
 
 type ShrinkClusterRequestNodeGroups struct {
+	HyperNodes []*ShrinkClusterRequestNodeGroupsHyperNodes `json:"HyperNodes,omitempty" xml:"HyperNodes,omitempty" type:"Repeated"`
 	// The node group ID.
 	//
 	// example:
@@ -92,12 +93,21 @@ func (s ShrinkClusterRequestNodeGroups) GoString() string {
 	return s.String()
 }
 
+func (s *ShrinkClusterRequestNodeGroups) GetHyperNodes() []*ShrinkClusterRequestNodeGroupsHyperNodes {
+	return s.HyperNodes
+}
+
 func (s *ShrinkClusterRequestNodeGroups) GetNodeGroupId() *string {
 	return s.NodeGroupId
 }
 
 func (s *ShrinkClusterRequestNodeGroups) GetNodes() []*ShrinkClusterRequestNodeGroupsNodes {
 	return s.Nodes
+}
+
+func (s *ShrinkClusterRequestNodeGroups) SetHyperNodes(v []*ShrinkClusterRequestNodeGroupsHyperNodes) *ShrinkClusterRequestNodeGroups {
+	s.HyperNodes = v
+	return s
 }
 
 func (s *ShrinkClusterRequestNodeGroups) SetNodeGroupId(v string) *ShrinkClusterRequestNodeGroups {
@@ -111,6 +121,31 @@ func (s *ShrinkClusterRequestNodeGroups) SetNodes(v []*ShrinkClusterRequestNodeG
 }
 
 func (s *ShrinkClusterRequestNodeGroups) Validate() error {
+	return dara.Validate(s)
+}
+
+type ShrinkClusterRequestNodeGroupsHyperNodes struct {
+	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
+}
+
+func (s ShrinkClusterRequestNodeGroupsHyperNodes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ShrinkClusterRequestNodeGroupsHyperNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ShrinkClusterRequestNodeGroupsHyperNodes) GetHyperNodeId() *string {
+	return s.HyperNodeId
+}
+
+func (s *ShrinkClusterRequestNodeGroupsHyperNodes) SetHyperNodeId(v string) *ShrinkClusterRequestNodeGroupsHyperNodes {
+	s.HyperNodeId = &v
+	return s
+}
+
+func (s *ShrinkClusterRequestNodeGroupsHyperNodes) Validate() error {
 	return dara.Validate(s)
 }
 
