@@ -110,6 +110,10 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// e01-cn-2r42tmj4z02
+	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
 	// The system image ID.
 	//
 	// example:
@@ -248,6 +252,10 @@ func (s *ListClusterNodesResponseBodyNodes) GetHpnZone() *string {
 	return s.HpnZone
 }
 
+func (s *ListClusterNodesResponseBodyNodes) GetHyperNodeId() *string {
+	return s.HyperNodeId
+}
+
 func (s *ListClusterNodesResponseBodyNodes) GetImageId() *string {
 	return s.ImageId
 }
@@ -331,6 +339,11 @@ func (s *ListClusterNodesResponseBodyNodes) SetHostname(v string) *ListClusterNo
 
 func (s *ListClusterNodesResponseBodyNodes) SetHpnZone(v string) *ListClusterNodesResponseBodyNodes {
 	s.HpnZone = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetHyperNodeId(v string) *ListClusterNodesResponseBodyNodes {
+	s.HyperNodeId = &v
 	return s
 }
 
