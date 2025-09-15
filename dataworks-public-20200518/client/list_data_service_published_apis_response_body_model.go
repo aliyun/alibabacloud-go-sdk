@@ -280,6 +280,10 @@ type ListDataServicePublishedApisResponseBodyDataApis struct {
 	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
 	// The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
 	ScriptDetails *ListDataServicePublishedApisResponseBodyDataApisScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	SqlMode *int32 `json:"SqlMode,omitempty" xml:"SqlMode,omitempty"`
 	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
 	//
 	// example:
@@ -380,6 +384,10 @@ func (s *ListDataServicePublishedApisResponseBodyDataApis) GetScriptDetails() *L
 	return s.ScriptDetails
 }
 
+func (s *ListDataServicePublishedApisResponseBodyDataApis) GetSqlMode() *int32 {
+	return s.SqlMode
+}
+
 func (s *ListDataServicePublishedApisResponseBodyDataApis) GetStatus() *int32 {
 	return s.Status
 }
@@ -477,6 +485,11 @@ func (s *ListDataServicePublishedApisResponseBodyDataApis) SetResponseContentTyp
 
 func (s *ListDataServicePublishedApisResponseBodyDataApis) SetScriptDetails(v *ListDataServicePublishedApisResponseBodyDataApisScriptDetails) *ListDataServicePublishedApisResponseBodyDataApis {
 	s.ScriptDetails = v
+	return s
+}
+
+func (s *ListDataServicePublishedApisResponseBodyDataApis) SetSqlMode(v int32) *ListDataServicePublishedApisResponseBodyDataApis {
+	s.SqlMode = &v
 	return s
 }
 
