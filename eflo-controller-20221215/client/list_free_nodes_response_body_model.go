@@ -98,6 +98,10 @@ type ListFreeNodesResponseBodyNodes struct {
 	//
 	// A1
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	HyperNodeId *string `json:"HyperNodeId,omitempty" xml:"HyperNodeId,omitempty"`
 	// The instance type.
 	//
 	// example:
@@ -162,6 +166,10 @@ func (s *ListFreeNodesResponseBodyNodes) GetHpnZone() *string {
 	return s.HpnZone
 }
 
+func (s *ListFreeNodesResponseBodyNodes) GetHyperNodeId() *string {
+	return s.HyperNodeId
+}
+
 func (s *ListFreeNodesResponseBodyNodes) GetMachineType() *string {
 	return s.MachineType
 }
@@ -207,6 +215,11 @@ func (s *ListFreeNodesResponseBodyNodes) SetExpiredTime(v string) *ListFreeNodes
 
 func (s *ListFreeNodesResponseBodyNodes) SetHpnZone(v string) *ListFreeNodesResponseBodyNodes {
 	s.HpnZone = &v
+	return s
+}
+
+func (s *ListFreeNodesResponseBodyNodes) SetHyperNodeId(v string) *ListFreeNodesResponseBodyNodes {
+	s.HyperNodeId = &v
 	return s
 }
 
