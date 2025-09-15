@@ -71,6 +71,8 @@ type iGetUserCertificateDetailResponseBody interface {
 	GetSignPrivateKey() *string
 	SetStartDate(v string) *GetUserCertificateDetailResponseBody
 	GetStartDate() *string
+	SetTags(v []*GetUserCertificateDetailResponseBodyTags) *GetUserCertificateDetailResponseBody
+	GetTags() []*GetUserCertificateDetailResponseBodyTags
 }
 
 type GetUserCertificateDetailResponseBody struct {
@@ -279,7 +281,8 @@ type GetUserCertificateDetailResponseBody struct {
 	// example:
 	//
 	// 2018-07-13
-	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartDate *string                                     `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Tags      []*GetUserCertificateDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetUserCertificateDetailResponseBody) String() string {
@@ -412,6 +415,10 @@ func (s *GetUserCertificateDetailResponseBody) GetSignPrivateKey() *string {
 
 func (s *GetUserCertificateDetailResponseBody) GetStartDate() *string {
 	return s.StartDate
+}
+
+func (s *GetUserCertificateDetailResponseBody) GetTags() []*GetUserCertificateDetailResponseBodyTags {
+	return s.Tags
 }
 
 func (s *GetUserCertificateDetailResponseBody) SetAlgorithm(v string) *GetUserCertificateDetailResponseBody {
@@ -569,6 +576,11 @@ func (s *GetUserCertificateDetailResponseBody) SetStartDate(v string) *GetUserCe
 	return s
 }
 
+func (s *GetUserCertificateDetailResponseBody) SetTags(v []*GetUserCertificateDetailResponseBodyTags) *GetUserCertificateDetailResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetUserCertificateDetailResponseBody) Validate() error {
 	return dara.Validate(s)
 }
@@ -660,5 +672,40 @@ func (s *GetUserCertificateDetailResponseBodyCertChain) SetRemainDay(v int32) *G
 }
 
 func (s *GetUserCertificateDetailResponseBodyCertChain) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetUserCertificateDetailResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetUserCertificateDetailResponseBodyTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetUserCertificateDetailResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserCertificateDetailResponseBodyTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *GetUserCertificateDetailResponseBodyTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *GetUserCertificateDetailResponseBodyTags) SetTagKey(v string) *GetUserCertificateDetailResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyTags) SetTagValue(v string) *GetUserCertificateDetailResponseBodyTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *GetUserCertificateDetailResponseBodyTags) Validate() error {
 	return dara.Validate(s)
 }
