@@ -65,6 +65,8 @@ type iGetJobResponseBody interface {
 	GetResourceLevel() *string
 	SetResourceType(v string) *GetJobResponseBody
 	GetResourceType() *string
+	SetRestartRecord(v []*GetJobResponseBodyRestartRecord) *GetJobResponseBody
+	GetRestartRecord() []*GetJobResponseBodyRestartRecord
 	SetRestartTimes(v string) *GetJobResponseBody
 	GetRestartTimes() *string
 	SetSettings(v *JobSettings) *GetJobResponseBody
@@ -237,7 +239,8 @@ type GetJobResponseBody struct {
 	// example:
 	//
 	// ECS
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceType  *string                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RestartRecord []*GetJobResponseBodyRestartRecord `json:"RestartRecord,omitempty" xml:"RestartRecord,omitempty" type:"Repeated"`
 	// The number of retries and the maximum number of retries used by the job.
 	//
 	// example:
@@ -448,6 +451,10 @@ func (s *GetJobResponseBody) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *GetJobResponseBody) GetRestartRecord() []*GetJobResponseBodyRestartRecord {
+	return s.RestartRecord
+}
+
 func (s *GetJobResponseBody) GetRestartTimes() *string {
 	return s.RestartTimes
 }
@@ -637,6 +644,11 @@ func (s *GetJobResponseBody) SetResourceLevel(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetResourceType(v string) *GetJobResponseBody {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *GetJobResponseBody) SetRestartRecord(v []*GetJobResponseBodyRestartRecord) *GetJobResponseBody {
+	s.RestartRecord = v
 	return s
 }
 
@@ -1200,6 +1212,216 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBod
 }
 
 func (s *GetJobResponseBodyPodsHistoryPods) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobResponseBodyRestartRecord struct {
+	DetailErrorInfoList  []*GetJobResponseBodyRestartRecordDetailErrorInfoList `json:"DetailErrorInfoList,omitempty" xml:"DetailErrorInfoList,omitempty" type:"Repeated"`
+	JobRestartCount      *int64                                                `json:"JobRestartCount,omitempty" xml:"JobRestartCount,omitempty"`
+	OccurPhase           *string                                               `json:"OccurPhase,omitempty" xml:"OccurPhase,omitempty"`
+	OccurTime            *string                                               `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	Reason               *string                                               `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RestartDurationInSec *int64                                                `json:"RestartDurationInSec,omitempty" xml:"RestartDurationInSec,omitempty"`
+	RestartFailReason    *string                                               `json:"RestartFailReason,omitempty" xml:"RestartFailReason,omitempty"`
+	RestartStatus        *string                                               `json:"RestartStatus,omitempty" xml:"RestartStatus,omitempty"`
+	TriggerID            *string                                               `json:"TriggerID,omitempty" xml:"TriggerID,omitempty"`
+}
+
+func (s GetJobResponseBodyRestartRecord) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyRestartRecord) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetDetailErrorInfoList() []*GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	return s.DetailErrorInfoList
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetJobRestartCount() *int64 {
+	return s.JobRestartCount
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetOccurPhase() *string {
+	return s.OccurPhase
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetOccurTime() *string {
+	return s.OccurTime
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetReason() *string {
+	return s.Reason
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetRestartDurationInSec() *int64 {
+	return s.RestartDurationInSec
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetRestartFailReason() *string {
+	return s.RestartFailReason
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetRestartStatus() *string {
+	return s.RestartStatus
+}
+
+func (s *GetJobResponseBodyRestartRecord) GetTriggerID() *string {
+	return s.TriggerID
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetDetailErrorInfoList(v []*GetJobResponseBodyRestartRecordDetailErrorInfoList) *GetJobResponseBodyRestartRecord {
+	s.DetailErrorInfoList = v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetJobRestartCount(v int64) *GetJobResponseBodyRestartRecord {
+	s.JobRestartCount = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetOccurPhase(v string) *GetJobResponseBodyRestartRecord {
+	s.OccurPhase = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetOccurTime(v string) *GetJobResponseBodyRestartRecord {
+	s.OccurTime = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetReason(v string) *GetJobResponseBodyRestartRecord {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetRestartDurationInSec(v int64) *GetJobResponseBodyRestartRecord {
+	s.RestartDurationInSec = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetRestartFailReason(v string) *GetJobResponseBodyRestartRecord {
+	s.RestartFailReason = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetRestartStatus(v string) *GetJobResponseBodyRestartRecord {
+	s.RestartStatus = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) SetTriggerID(v string) *GetJobResponseBodyRestartRecord {
+	s.TriggerID = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecord) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetJobResponseBodyRestartRecordDetailErrorInfoList struct {
+	AddJobLevelBlacklist *bool   `json:"AddJobLevelBlacklist,omitempty" xml:"AddJobLevelBlacklist,omitempty"`
+	AddNodeToBlacklist   *bool   `json:"AddNodeToBlacklist,omitempty" xml:"AddNodeToBlacklist,omitempty"`
+	DetailErrorMsg       *string `json:"DetailErrorMsg,omitempty" xml:"DetailErrorMsg,omitempty"`
+	ErrorCode            *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg             *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorSource          *string `json:"ErrorSource,omitempty" xml:"ErrorSource,omitempty"`
+	Node                 *string `json:"Node,omitempty" xml:"Node,omitempty"`
+	Pod                  *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	TriggerRestart       *bool   `json:"TriggerRestart,omitempty" xml:"TriggerRestart,omitempty"`
+}
+
+func (s GetJobResponseBodyRestartRecordDetailErrorInfoList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetJobResponseBodyRestartRecordDetailErrorInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetAddJobLevelBlacklist() *bool {
+	return s.AddJobLevelBlacklist
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetAddNodeToBlacklist() *bool {
+	return s.AddNodeToBlacklist
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetDetailErrorMsg() *string {
+	return s.DetailErrorMsg
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetErrorMsg() *string {
+	return s.ErrorMsg
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetErrorSource() *string {
+	return s.ErrorSource
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetNode() *string {
+	return s.Node
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetPod() *string {
+	return s.Pod
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) GetTriggerRestart() *bool {
+	return s.TriggerRestart
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetAddJobLevelBlacklist(v bool) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.AddJobLevelBlacklist = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetAddNodeToBlacklist(v bool) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.AddNodeToBlacklist = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetDetailErrorMsg(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.DetailErrorMsg = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetErrorCode(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetErrorMsg(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetErrorSource(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.ErrorSource = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetNode(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.Node = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetPod(v string) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.Pod = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) SetTriggerRestart(v bool) *GetJobResponseBodyRestartRecordDetailErrorInfoList {
+	s.TriggerRestart = &v
+	return s
+}
+
+func (s *GetJobResponseBodyRestartRecordDetailErrorInfoList) Validate() error {
 	return dara.Validate(s)
 }
 
