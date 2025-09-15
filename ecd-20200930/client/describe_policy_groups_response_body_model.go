@@ -134,6 +134,10 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	AuthorizeAccessPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
 	// The security group rules.
 	AuthorizeSecurityPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	AutoReconnect *string `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
 	// Indicates whether the webcam redirection feature is enabled.
 	//
 	// Valid values:
@@ -440,6 +444,10 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// example:
+	//
+	// off
+	MobileSafeMenu *string `json:"MobileSafeMenu,omitempty" xml:"MobileSafeMenu,omitempty"`
 	// Specifies whether to display the shut down button in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace mobile clients (including the Android client and the iOS client).
 	//
 	// > Mobile clients of V7.4 and higher versions required.
@@ -454,6 +462,14 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// example:
+	//
+	// off
+	MobileWuyingKeeper *string `json:"MobileWuyingKeeper,omitempty" xml:"MobileWuyingKeeper,omitempty"`
+	// example:
+	//
+	// off
+	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
 	// The name of the cloud computer policy.
 	//
 	// example:
@@ -569,9 +585,11 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 10
-	RecordEventDuration *int32 `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventDuration *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventFileExts []*string `json:"RecordEventFileExts,omitempty" xml:"RecordEventFileExts,omitempty" type:"Repeated"`
 	// The array of absolute paths of the monitored files in the screen recording audit policy.
-	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventFilePaths []*string                                                                `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventLevels    []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels `json:"RecordEventLevels,omitempty" xml:"RecordEventLevels,omitempty" type:"Repeated"`
 	// The array of absolute paths of the monitored registry entries in the screen recording audit policy.
 	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
 	// Indicates whether the screen recording feature is enabled.
@@ -1023,6 +1041,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAuthorizeSecur
 	return s.AuthorizeSecurityPolicyRules
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAutoReconnect() *string {
+	return s.AutoReconnect
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCameraRedirect() *string {
 	return s.CameraRedirect
 }
@@ -1195,8 +1217,20 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileRestart(
 	return s.MobileRestart
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileSafeMenu() *string {
+	return s.MobileSafeMenu
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileShutdown() *string {
 	return s.MobileShutdown
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileWuyingKeeper() *string {
+	return s.MobileWuyingKeeper
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetMobileWyAssistant() *string {
+	return s.MobileWyAssistant
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetName() *string {
@@ -1251,8 +1285,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRecordEventDur
 	return s.RecordEventDuration
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRecordEventFileExts() []*string {
+	return s.RecordEventFileExts
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRecordEventFilePaths() []*string {
 	return s.RecordEventFilePaths
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRecordEventLevels() []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels {
+	return s.RecordEventLevels
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetRecordEventRegisters() []*string {
@@ -1475,6 +1517,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAuthorizeSecur
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAutoReconnect(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.AutoReconnect = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCameraRedirect(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.CameraRedirect = &v
 	return s
@@ -1690,8 +1737,23 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileRestart(
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileSafeMenu(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MobileSafeMenu = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileShutdown(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.MobileShutdown = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileWuyingKeeper(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MobileWuyingKeeper = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetMobileWyAssistant(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.MobileWyAssistant = &v
 	return s
 }
 
@@ -1760,8 +1822,18 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordEventDur
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordEventFileExts(v []*string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RecordEventFileExts = v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordEventFilePaths(v []*string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.RecordEventFilePaths = v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetRecordEventLevels(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.RecordEventLevels = v
 	return s
 }
 
@@ -2612,6 +2684,41 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule) Se
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels struct {
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) GetEventLevel() *string {
+	return s.EventLevel
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) GetEventType() *string {
+	return s.EventType
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) SetEventLevel(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) SetEventType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels) Validate() error {
 	return dara.Validate(s)
 }
 

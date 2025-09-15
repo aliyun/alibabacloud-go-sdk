@@ -9,10 +9,18 @@ type iDescribeDesktopGroupSessionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDesktopGroupIds(v []*string) *DescribeDesktopGroupSessionsRequest
+	GetDesktopGroupIds() []*string
+	SetDesktopGroupName(v string) *DescribeDesktopGroupSessionsRequest
+	GetDesktopGroupName() *string
 	SetEndTime(v string) *DescribeDesktopGroupSessionsRequest
 	GetEndTime() *string
 	SetEndUserId(v string) *DescribeDesktopGroupSessionsRequest
 	GetEndUserId() *string
+	SetFillTerminalInfo(v bool) *DescribeDesktopGroupSessionsRequest
+	GetFillTerminalInfo() *bool
+	SetLanguage(v string) *DescribeDesktopGroupSessionsRequest
+	GetLanguage() *string
 	SetMaxResults(v int32) *DescribeDesktopGroupSessionsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeDesktopGroupSessionsRequest
@@ -28,6 +36,11 @@ type iDescribeDesktopGroupSessionsRequest interface {
 }
 
 type DescribeDesktopGroupSessionsRequest struct {
+	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ecd-4oyi32wmrctgx****
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
 	// The end of the time range to query.
 	//
 	// example:
@@ -39,7 +52,12 @@ type DescribeDesktopGroupSessionsRequest struct {
 	// example:
 	//
 	// xianqiu
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId        *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	FillTerminalInfo *bool   `json:"FillTerminalInfo,omitempty" xml:"FillTerminalInfo,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The number of entries per page.
 	//
 	// example:
@@ -110,12 +128,28 @@ func (s DescribeDesktopGroupSessionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopGroupSessionsRequest) GetDesktopGroupIds() []*string {
+	return s.DesktopGroupIds
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) GetDesktopGroupName() *string {
+	return s.DesktopGroupName
+}
+
 func (s *DescribeDesktopGroupSessionsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
 func (s *DescribeDesktopGroupSessionsRequest) GetEndUserId() *string {
 	return s.EndUserId
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) GetFillTerminalInfo() *bool {
+	return s.FillTerminalInfo
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) GetLanguage() *string {
+	return s.Language
 }
 
 func (s *DescribeDesktopGroupSessionsRequest) GetMaxResults() *int32 {
@@ -142,6 +176,16 @@ func (s *DescribeDesktopGroupSessionsRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
+func (s *DescribeDesktopGroupSessionsRequest) SetDesktopGroupIds(v []*string) *DescribeDesktopGroupSessionsRequest {
+	s.DesktopGroupIds = v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetDesktopGroupName(v string) *DescribeDesktopGroupSessionsRequest {
+	s.DesktopGroupName = &v
+	return s
+}
+
 func (s *DescribeDesktopGroupSessionsRequest) SetEndTime(v string) *DescribeDesktopGroupSessionsRequest {
 	s.EndTime = &v
 	return s
@@ -149,6 +193,16 @@ func (s *DescribeDesktopGroupSessionsRequest) SetEndTime(v string) *DescribeDesk
 
 func (s *DescribeDesktopGroupSessionsRequest) SetEndUserId(v string) *DescribeDesktopGroupSessionsRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetFillTerminalInfo(v bool) *DescribeDesktopGroupSessionsRequest {
+	s.FillTerminalInfo = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsRequest) SetLanguage(v string) *DescribeDesktopGroupSessionsRequest {
+	s.Language = &v
 	return s
 }
 

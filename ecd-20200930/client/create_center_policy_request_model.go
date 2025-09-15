@@ -17,6 +17,8 @@ type iCreateCenterPolicyRequest interface {
 	GetAuthorizeAccessPolicyRule() []*CreateCenterPolicyRequestAuthorizeAccessPolicyRule
 	SetAuthorizeSecurityPolicyRule(v []*CreateCenterPolicyRequestAuthorizeSecurityPolicyRule) *CreateCenterPolicyRequest
 	GetAuthorizeSecurityPolicyRule() []*CreateCenterPolicyRequestAuthorizeSecurityPolicyRule
+	SetAutoReconnect(v string) *CreateCenterPolicyRequest
+	GetAutoReconnect() *string
 	SetBusinessType(v int32) *CreateCenterPolicyRequest
 	GetBusinessType() *int32
 	SetCameraRedirect(v string) *CreateCenterPolicyRequest
@@ -27,6 +29,10 @@ type iCreateCenterPolicyRequest interface {
 	GetClientType() []*CreateCenterPolicyRequestClientType
 	SetClipboard(v string) *CreateCenterPolicyRequest
 	GetClipboard() *string
+	SetClipboardGraineds(v []*CreateCenterPolicyRequestClipboardGraineds) *CreateCenterPolicyRequest
+	GetClipboardGraineds() []*CreateCenterPolicyRequestClipboardGraineds
+	SetClipboardScope(v string) *CreateCenterPolicyRequest
+	GetClipboardScope() *string
 	SetColorEnhancement(v string) *CreateCenterPolicyRequest
 	GetColorEnhancement() *string
 	SetCpdDriveClipboard(v string) *CreateCenterPolicyRequest
@@ -99,8 +105,14 @@ type iCreateCenterPolicyRequest interface {
 	GetMemorySingleRateLimit() *int32
 	SetMobileRestart(v string) *CreateCenterPolicyRequest
 	GetMobileRestart() *string
+	SetMobileSafeMenu(v string) *CreateCenterPolicyRequest
+	GetMobileSafeMenu() *string
 	SetMobileShutdown(v string) *CreateCenterPolicyRequest
 	GetMobileShutdown() *string
+	SetMobileWuyingKeeper(v string) *CreateCenterPolicyRequest
+	GetMobileWuyingKeeper() *string
+	SetMobileWyAssistant(v string) *CreateCenterPolicyRequest
+	GetMobileWyAssistant() *string
 	SetName(v string) *CreateCenterPolicyRequest
 	GetName() *string
 	SetNetRedirect(v string) *CreateCenterPolicyRequest
@@ -117,8 +129,12 @@ type iCreateCenterPolicyRequest interface {
 	GetQualityEnhancement() *string
 	SetRecordEventDuration(v int32) *CreateCenterPolicyRequest
 	GetRecordEventDuration() *int32
+	SetRecordEventFileExts(v []*string) *CreateCenterPolicyRequest
+	GetRecordEventFileExts() []*string
 	SetRecordEventFilePaths(v []*string) *CreateCenterPolicyRequest
 	GetRecordEventFilePaths() []*string
+	SetRecordEventLevels(v []*CreateCenterPolicyRequestRecordEventLevels) *CreateCenterPolicyRequest
+	GetRecordEventLevels() []*CreateCenterPolicyRequestRecordEventLevels
 	SetRecordEventRegisters(v []*string) *CreateCenterPolicyRequest
 	GetRecordEventRegisters() []*string
 	SetRecordEvents(v []*string) *CreateCenterPolicyRequest
@@ -260,6 +276,10 @@ type CreateCenterPolicyRequest struct {
 	AuthorizeAccessPolicyRule []*CreateCenterPolicyRequestAuthorizeAccessPolicyRule `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
 	// The security group rule.
 	AuthorizeSecurityPolicyRule []*CreateCenterPolicyRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
+	// example:
+	//
+	// off
+	AutoReconnect *string `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
 	// The business type.
 	//
 	// Valid values:
@@ -304,7 +324,12 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// off
-	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	Clipboard         *string                                       `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	ClipboardGraineds []*CreateCenterPolicyRequestClipboardGraineds `json:"ClipboardGraineds,omitempty" xml:"ClipboardGraineds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// GLOBAL
+	ClipboardScope *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
 	// Specifies whether to enable color enhancement for design and 3D applications.
 	//
 	// Valid values:
@@ -580,6 +605,10 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
+	// example:
+	//
+	// off
+	MobileSafeMenu *string `json:"MobileSafeMenu,omitempty" xml:"MobileSafeMenu,omitempty"`
 	// Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
@@ -594,6 +623,14 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
+	// example:
+	//
+	// off
+	MobileWuyingKeeper *string `json:"MobileWuyingKeeper,omitempty" xml:"MobileWuyingKeeper,omitempty"`
+	// example:
+	//
+	// off
+	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
 	// The policy name.
 	//
 	// This parameter is required.
@@ -675,9 +712,11 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// 10
-	RecordEventDuration *int32 `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventDuration *int32    `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
+	RecordEventFileExts []*string `json:"RecordEventFileExts,omitempty" xml:"RecordEventFileExts,omitempty" type:"Repeated"`
 	// The absolute paths to screen recording files.
-	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventFilePaths []*string                                     `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
+	RecordEventLevels    []*CreateCenterPolicyRequestRecordEventLevels `json:"RecordEventLevels,omitempty" xml:"RecordEventLevels,omitempty" type:"Repeated"`
 	// The absolute paths to screen recording registries.
 	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
 	// The events that trigger screen recording.
@@ -1151,6 +1190,10 @@ func (s *CreateCenterPolicyRequest) GetAuthorizeSecurityPolicyRule() []*CreateCe
 	return s.AuthorizeSecurityPolicyRule
 }
 
+func (s *CreateCenterPolicyRequest) GetAutoReconnect() *string {
+	return s.AutoReconnect
+}
+
 func (s *CreateCenterPolicyRequest) GetBusinessType() *int32 {
 	return s.BusinessType
 }
@@ -1169,6 +1212,14 @@ func (s *CreateCenterPolicyRequest) GetClientType() []*CreateCenterPolicyRequest
 
 func (s *CreateCenterPolicyRequest) GetClipboard() *string {
 	return s.Clipboard
+}
+
+func (s *CreateCenterPolicyRequest) GetClipboardGraineds() []*CreateCenterPolicyRequestClipboardGraineds {
+	return s.ClipboardGraineds
+}
+
+func (s *CreateCenterPolicyRequest) GetClipboardScope() *string {
+	return s.ClipboardScope
 }
 
 func (s *CreateCenterPolicyRequest) GetColorEnhancement() *string {
@@ -1315,8 +1366,20 @@ func (s *CreateCenterPolicyRequest) GetMobileRestart() *string {
 	return s.MobileRestart
 }
 
+func (s *CreateCenterPolicyRequest) GetMobileSafeMenu() *string {
+	return s.MobileSafeMenu
+}
+
 func (s *CreateCenterPolicyRequest) GetMobileShutdown() *string {
 	return s.MobileShutdown
+}
+
+func (s *CreateCenterPolicyRequest) GetMobileWuyingKeeper() *string {
+	return s.MobileWuyingKeeper
+}
+
+func (s *CreateCenterPolicyRequest) GetMobileWyAssistant() *string {
+	return s.MobileWyAssistant
 }
 
 func (s *CreateCenterPolicyRequest) GetName() *string {
@@ -1351,8 +1414,16 @@ func (s *CreateCenterPolicyRequest) GetRecordEventDuration() *int32 {
 	return s.RecordEventDuration
 }
 
+func (s *CreateCenterPolicyRequest) GetRecordEventFileExts() []*string {
+	return s.RecordEventFileExts
+}
+
 func (s *CreateCenterPolicyRequest) GetRecordEventFilePaths() []*string {
 	return s.RecordEventFilePaths
+}
+
+func (s *CreateCenterPolicyRequest) GetRecordEventLevels() []*CreateCenterPolicyRequestRecordEventLevels {
+	return s.RecordEventLevels
 }
 
 func (s *CreateCenterPolicyRequest) GetRecordEventRegisters() []*string {
@@ -1587,6 +1658,11 @@ func (s *CreateCenterPolicyRequest) SetAuthorizeSecurityPolicyRule(v []*CreateCe
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetAutoReconnect(v string) *CreateCenterPolicyRequest {
+	s.AutoReconnect = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetBusinessType(v int32) *CreateCenterPolicyRequest {
 	s.BusinessType = &v
 	return s
@@ -1609,6 +1685,16 @@ func (s *CreateCenterPolicyRequest) SetClientType(v []*CreateCenterPolicyRequest
 
 func (s *CreateCenterPolicyRequest) SetClipboard(v string) *CreateCenterPolicyRequest {
 	s.Clipboard = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetClipboardGraineds(v []*CreateCenterPolicyRequestClipboardGraineds) *CreateCenterPolicyRequest {
+	s.ClipboardGraineds = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetClipboardScope(v string) *CreateCenterPolicyRequest {
+	s.ClipboardScope = &v
 	return s
 }
 
@@ -1792,8 +1878,23 @@ func (s *CreateCenterPolicyRequest) SetMobileRestart(v string) *CreateCenterPoli
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetMobileSafeMenu(v string) *CreateCenterPolicyRequest {
+	s.MobileSafeMenu = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetMobileShutdown(v string) *CreateCenterPolicyRequest {
 	s.MobileShutdown = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMobileWuyingKeeper(v string) *CreateCenterPolicyRequest {
+	s.MobileWuyingKeeper = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetMobileWyAssistant(v string) *CreateCenterPolicyRequest {
+	s.MobileWyAssistant = &v
 	return s
 }
 
@@ -1837,8 +1938,18 @@ func (s *CreateCenterPolicyRequest) SetRecordEventDuration(v int32) *CreateCente
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetRecordEventFileExts(v []*string) *CreateCenterPolicyRequest {
+	s.RecordEventFileExts = v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetRecordEventFilePaths(v []*string) *CreateCenterPolicyRequest {
 	s.RecordEventFilePaths = v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetRecordEventLevels(v []*CreateCenterPolicyRequestRecordEventLevels) *CreateCenterPolicyRequest {
+	s.RecordEventLevels = v
 	return s
 }
 
@@ -2379,6 +2490,51 @@ func (s *CreateCenterPolicyRequestClientType) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateCenterPolicyRequestClipboardGraineds struct {
+	ClipboardSize *int32  `json:"ClipboardSize,omitempty" xml:"ClipboardSize,omitempty"`
+	ClipboardType *string `json:"ClipboardType,omitempty" xml:"ClipboardType,omitempty"`
+	GrainedType   *string `json:"GrainedType,omitempty" xml:"GrainedType,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestClipboardGraineds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestClipboardGraineds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetClipboardSize() *int32 {
+	return s.ClipboardSize
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetClipboardType() *string {
+	return s.ClipboardType
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) GetGrainedType() *string {
+	return s.GrainedType
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetClipboardSize(v int32) *CreateCenterPolicyRequestClipboardGraineds {
+	s.ClipboardSize = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetClipboardType(v string) *CreateCenterPolicyRequestClipboardGraineds {
+	s.ClipboardType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) SetGrainedType(v string) *CreateCenterPolicyRequestClipboardGraineds {
+	s.GrainedType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestClipboardGraineds) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateCenterPolicyRequestDeviceRedirects struct {
 	// The peripheral type.
 	//
@@ -2712,6 +2868,47 @@ func (s *CreateCenterPolicyRequestNetRedirectRule) SetRuleType(v string) *Create
 }
 
 func (s *CreateCenterPolicyRequestNetRedirectRule) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateCenterPolicyRequestRecordEventLevels struct {
+	// example:
+	//
+	// HIGH
+	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// example:
+	//
+	// StartApplication
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+}
+
+func (s CreateCenterPolicyRequestRecordEventLevels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCenterPolicyRequestRecordEventLevels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCenterPolicyRequestRecordEventLevels) GetEventLevel() *string {
+	return s.EventLevel
+}
+
+func (s *CreateCenterPolicyRequestRecordEventLevels) GetEventType() *string {
+	return s.EventType
+}
+
+func (s *CreateCenterPolicyRequestRecordEventLevels) SetEventLevel(v string) *CreateCenterPolicyRequestRecordEventLevels {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestRecordEventLevels) SetEventType(v string) *CreateCenterPolicyRequestRecordEventLevels {
+	s.EventType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestRecordEventLevels) Validate() error {
 	return dara.Validate(s)
 }
 

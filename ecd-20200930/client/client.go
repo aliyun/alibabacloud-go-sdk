@@ -3072,6 +3072,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["AuthorizeSecurityPolicyRule"] = request.AuthorizeSecurityPolicyRule
 	}
 
+	if !dara.IsNil(request.AutoReconnect) {
+		query["AutoReconnect"] = request.AutoReconnect
+	}
+
 	if !dara.IsNil(request.BusinessType) {
 		query["BusinessType"] = request.BusinessType
 	}
@@ -3090,6 +3094,14 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.Clipboard) {
 		query["Clipboard"] = request.Clipboard
+	}
+
+	if !dara.IsNil(request.ClipboardGraineds) {
+		query["ClipboardGraineds"] = request.ClipboardGraineds
+	}
+
+	if !dara.IsNil(request.ClipboardScope) {
+		query["ClipboardScope"] = request.ClipboardScope
 	}
 
 	if !dara.IsNil(request.ColorEnhancement) {
@@ -3236,8 +3248,20 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["MobileRestart"] = request.MobileRestart
 	}
 
+	if !dara.IsNil(request.MobileSafeMenu) {
+		query["MobileSafeMenu"] = request.MobileSafeMenu
+	}
+
 	if !dara.IsNil(request.MobileShutdown) {
 		query["MobileShutdown"] = request.MobileShutdown
+	}
+
+	if !dara.IsNil(request.MobileWuyingKeeper) {
+		query["MobileWuyingKeeper"] = request.MobileWuyingKeeper
+	}
+
+	if !dara.IsNil(request.MobileWyAssistant) {
+		query["MobileWyAssistant"] = request.MobileWyAssistant
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -3272,8 +3296,16 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["RecordEventDuration"] = request.RecordEventDuration
 	}
 
+	if !dara.IsNil(request.RecordEventFileExts) {
+		query["RecordEventFileExts"] = request.RecordEventFileExts
+	}
+
 	if !dara.IsNil(request.RecordEventFilePaths) {
 		query["RecordEventFilePaths"] = request.RecordEventFilePaths
+	}
+
+	if !dara.IsNil(request.RecordEventLevels) {
+		query["RecordEventLevels"] = request.RecordEventLevels
 	}
 
 	if !dara.IsNil(request.RecordEventRegisters) {
@@ -9309,12 +9341,28 @@ func (client *Client) DescribeDesktopGroupSessionsWithOptions(request *DescribeD
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DesktopGroupIds) {
+		query["DesktopGroupIds"] = request.DesktopGroupIds
+	}
+
+	if !dara.IsNil(request.DesktopGroupName) {
+		query["DesktopGroupName"] = request.DesktopGroupName
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
 	if !dara.IsNil(request.EndUserId) {
 		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.FillTerminalInfo) {
+		query["FillTerminalInfo"] = request.FillTerminalInfo
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -9851,6 +9899,14 @@ func (client *Client) DescribeDesktopSessionsWithOptions(request *DescribeDeskto
 
 	if !dara.IsNil(request.EndUserIdFilter) {
 		query["EndUserIdFilter"] = request.EndUserIdFilter
+	}
+
+	if !dara.IsNil(request.FillHardwareInfo) {
+		query["FillHardwareInfo"] = request.FillHardwareInfo
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.OfficeSiteId) {
@@ -17223,6 +17279,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["AuthorizeSecurityPolicyRule"] = request.AuthorizeSecurityPolicyRule
 	}
 
+	if !dara.IsNil(request.AutoReconnect) {
+		query["AutoReconnect"] = request.AutoReconnect
+	}
+
 	if !dara.IsNil(request.BusinessType) {
 		query["BusinessType"] = request.BusinessType
 	}
@@ -17241,6 +17301,14 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.Clipboard) {
 		query["Clipboard"] = request.Clipboard
+	}
+
+	if !dara.IsNil(request.ClipboardGraineds) {
+		query["ClipboardGraineds"] = request.ClipboardGraineds
+	}
+
+	if !dara.IsNil(request.ClipboardScope) {
+		query["ClipboardScope"] = request.ClipboardScope
 	}
 
 	if !dara.IsNil(request.ColorEnhancement) {
@@ -17387,8 +17455,20 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["MobileRestart"] = request.MobileRestart
 	}
 
+	if !dara.IsNil(request.MobileSafeMenu) {
+		query["MobileSafeMenu"] = request.MobileSafeMenu
+	}
+
 	if !dara.IsNil(request.MobileShutdown) {
 		query["MobileShutdown"] = request.MobileShutdown
+	}
+
+	if !dara.IsNil(request.MobileWuyingKeeper) {
+		query["MobileWuyingKeeper"] = request.MobileWuyingKeeper
+	}
+
+	if !dara.IsNil(request.MobileWyAssistant) {
+		query["MobileWyAssistant"] = request.MobileWyAssistant
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -17427,8 +17507,16 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["RecordEventDuration"] = request.RecordEventDuration
 	}
 
+	if !dara.IsNil(request.RecordEventFileExts) {
+		query["RecordEventFileExts"] = request.RecordEventFileExts
+	}
+
 	if !dara.IsNil(request.RecordEventFilePaths) {
 		query["RecordEventFilePaths"] = request.RecordEventFilePaths
+	}
+
+	if !dara.IsNil(request.RecordEventLevels) {
+		query["RecordEventLevels"] = request.RecordEventLevels
 	}
 
 	if !dara.IsNil(request.RecordEventRegisters) {

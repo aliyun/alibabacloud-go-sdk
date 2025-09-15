@@ -226,7 +226,8 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	// example:
 	//
 	// Connected
-	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	SessionStatus *string                                                       `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	TerminalInfo  *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
 	// The total duration of the sessions.
 	//
 	// example:
@@ -313,6 +314,10 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetSessionIdleTime() 
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetSessionStatus() *string {
 	return s.SessionStatus
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetTerminalInfo() *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo {
+	return s.TerminalInfo
 }
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) GetTotalConnectionDuration() *int64 {
@@ -409,11 +414,83 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetSessionStatus(v st
 	return s
 }
 
+func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetTerminalInfo(v *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) *DescribeDesktopGroupSessionsResponseBodySessions {
+	s.TerminalInfo = v
+	return s
+}
+
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetTotalConnectionDuration(v int64) *DescribeDesktopGroupSessionsResponseBodySessions {
 	s.TotalConnectionDuration = &v
 	return s
 }
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo struct {
+	// example:
+	//
+	// wuying_mac_x86_64
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// Mac
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// 96c530bc-6095-4014-8bbc-d461b8ac****
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// EBFDC7773BEBAD418A9F89429652****
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) GetModel() *string {
+	return s.Model
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) GetProductName() *string {
+	return s.ProductName
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) GetSerialNumber() *string {
+	return s.SerialNumber
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) GetUuid() *string {
+	return s.Uuid
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) SetModel(v string) *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo {
+	s.Model = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) SetProductName(v string) *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo {
+	s.ProductName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) SetSerialNumber(v string) *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) SetUuid(v string) *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo {
+	s.Uuid = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo) Validate() error {
 	return dara.Validate(s)
 }

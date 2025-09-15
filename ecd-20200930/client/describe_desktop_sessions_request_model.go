@@ -21,6 +21,10 @@ type iDescribeDesktopSessionsRequest interface {
 	GetEndUserId() *string
 	SetEndUserIdFilter(v string) *DescribeDesktopSessionsRequest
 	GetEndUserIdFilter() *string
+	SetFillHardwareInfo(v bool) *DescribeDesktopSessionsRequest
+	GetFillHardwareInfo() *bool
+	SetLanguage(v string) *DescribeDesktopSessionsRequest
+	GetLanguage() *string
 	SetOfficeSiteId(v string) *DescribeDesktopSessionsRequest
 	GetOfficeSiteId() *string
 	SetPageNumber(v int32) *DescribeDesktopSessionsRequest
@@ -71,7 +75,12 @@ type DescribeDesktopSessionsRequest struct {
 	// example:
 	//
 	// alice
-	EndUserIdFilter *string `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
+	EndUserIdFilter  *string `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
+	FillHardwareInfo *bool   `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The office network ID.
 	//
 	// example:
@@ -167,6 +176,14 @@ func (s *DescribeDesktopSessionsRequest) GetEndUserIdFilter() *string {
 	return s.EndUserIdFilter
 }
 
+func (s *DescribeDesktopSessionsRequest) GetFillHardwareInfo() *bool {
+	return s.FillHardwareInfo
+}
+
+func (s *DescribeDesktopSessionsRequest) GetLanguage() *string {
+	return s.Language
+}
+
 func (s *DescribeDesktopSessionsRequest) GetOfficeSiteId() *string {
 	return s.OfficeSiteId
 }
@@ -226,6 +243,16 @@ func (s *DescribeDesktopSessionsRequest) SetEndUserId(v string) *DescribeDesktop
 
 func (s *DescribeDesktopSessionsRequest) SetEndUserIdFilter(v string) *DescribeDesktopSessionsRequest {
 	s.EndUserIdFilter = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetFillHardwareInfo(v bool) *DescribeDesktopSessionsRequest {
+	s.FillHardwareInfo = &v
+	return s
+}
+
+func (s *DescribeDesktopSessionsRequest) SetLanguage(v string) *DescribeDesktopSessionsRequest {
+	s.Language = &v
 	return s
 }
 
