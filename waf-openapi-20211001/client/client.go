@@ -1055,6 +1055,126 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 
 // Summary:
 //
+// Creates a hybrid cloud cluster.
+//
+// @param request - CreateHybridCloudClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHybridCloudClusterResponse
+func (client *Client) CreateHybridCloudClusterWithOptions(request *CreateHybridCloudClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateHybridCloudClusterResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessMode) {
+		query["AccessMode"] = request.AccessMode
+	}
+
+	if !dara.IsNil(request.AccessRegion) {
+		query["AccessRegion"] = request.AccessRegion
+	}
+
+	if !dara.IsNil(request.ClusterName) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.HttpPorts) {
+		query["HttpPorts"] = request.HttpPorts
+	}
+
+	if !dara.IsNil(request.HttpsPorts) {
+		query["HttpsPorts"] = request.HttpsPorts
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogFieldsNotReturned) {
+		query["LogFieldsNotReturned"] = request.LogFieldsNotReturned
+	}
+
+	if !dara.IsNil(request.ProtectionServerCount) {
+		query["ProtectionServerCount"] = request.ProtectionServerCount
+	}
+
+	if !dara.IsNil(request.ProxyStatus) {
+		query["ProxyStatus"] = request.ProxyStatus
+	}
+
+	if !dara.IsNil(request.ProxyType) {
+		query["ProxyType"] = request.ProxyType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.RuleConfig) {
+		query["RuleConfig"] = request.RuleConfig
+	}
+
+	if !dara.IsNil(request.RuleStatus) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHybridCloudCluster"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHybridCloudClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a hybrid cloud cluster.
+//
+// @param request - CreateHybridCloudClusterRequest
+//
+// @return CreateHybridCloudClusterResponse
+func (client *Client) CreateHybridCloudCluster(request *CreateHybridCloudClusterRequest) (_result *CreateHybridCloudClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateHybridCloudClusterResponse{}
+	_body, _err := client.CreateHybridCloudClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增集群规则信息
 //
 // @param request - CreateHybridCloudClusterRuleRequest
@@ -4887,6 +5007,92 @@ func (client *Client) DescribeCnameCount(request *DescribeCnameCountRequest) (_r
 
 // Summary:
 //
+// 查询日志服务支持的所有字段
+//
+// @param tmpReq - DescribeCommonLogFieldsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCommonLogFieldsResponse
+func (client *Client) DescribeCommonLogFieldsWithOptions(tmpReq *DescribeCommonLogFieldsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCommonLogFieldsResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCommonLogFieldsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LogKeyList) {
+		request.LogKeyListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LogKeyList, dara.String("LogKeyList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.IsRequired) {
+		query["IsRequired"] = request.IsRequired
+	}
+
+	if !dara.IsNil(request.LogKeyListShrink) {
+		query["LogKeyList"] = request.LogKeyListShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCommonLogFields"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCommonLogFieldsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志服务支持的所有字段
+//
+// @param request - DescribeCommonLogFieldsRequest
+//
+// @return DescribeCommonLogFieldsResponse
+func (client *Client) DescribeCommonLogFields(request *DescribeCommonLogFieldsRequest) (_result *DescribeCommonLogFieldsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCommonLogFieldsResponse{}
+	_body, _err := client.DescribeCommonLogFieldsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询自定义正则规则编译结果
 //
 // @param request - DescribeCustomBaseRuleCompileResultRequest
@@ -5082,6 +5288,90 @@ func (client *Client) DescribeDefaultHttps(request *DescribeDefaultHttpsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDefaultHttpsResponse{}
 	_body, _err := client.DescribeDefaultHttpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询可以被防护组绑定的防护对象列表
+//
+// @param request - DescribeDefenseGroupValidResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseGroupValidResourcesResponse
+func (client *Client) DescribeDefenseGroupValidResourcesWithOptions(request *DescribeDefenseGroupValidResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefenseGroupValidResourcesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Resource) {
+		query["Resource"] = request.Resource
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDefenseGroupValidResources"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDefenseGroupValidResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询可以被防护组绑定的防护对象列表
+//
+// @param request - DescribeDefenseGroupValidResourcesRequest
+//
+// @return DescribeDefenseGroupValidResourcesResponse
+func (client *Client) DescribeDefenseGroupValidResources(request *DescribeDefenseGroupValidResourcesRequest) (_result *DescribeDefenseGroupValidResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDefenseGroupValidResourcesResponse{}
+	_body, _err := client.DescribeDefenseGroupValidResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6214,6 +6504,94 @@ func (client *Client) DescribeDefenseTemplateValidGroups(request *DescribeDefens
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeDefenseTemplateValidGroupsResponse{}
 	_body, _err := client.DescribeDefenseTemplateValidGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询可以被自定义模板绑定的防护对象列表
+//
+// @param request - DescribeDefenseTemplateValidResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseTemplateValidResourcesResponse
+func (client *Client) DescribeDefenseTemplateValidResourcesWithOptions(request *DescribeDefenseTemplateValidResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefenseTemplateValidResourcesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DefenseScene) {
+		query["DefenseScene"] = request.DefenseScene
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Resource) {
+		query["Resource"] = request.Resource
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDefenseTemplateValidResources"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDefenseTemplateValidResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询可以被自定义模板绑定的防护对象列表
+//
+// @param request - DescribeDefenseTemplateValidResourcesRequest
+//
+// @return DescribeDefenseTemplateValidResourcesResponse
+func (client *Client) DescribeDefenseTemplateValidResources(request *DescribeDefenseTemplateValidResourcesRequest) (_result *DescribeDefenseTemplateValidResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDefenseTemplateValidResourcesResponse{}
+	_body, _err := client.DescribeDefenseTemplateValidResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11529,6 +11907,78 @@ func (client *Client) DescribeUserEventType(request *DescribeUserEventTypeReques
 
 // Summary:
 //
+// 查询用户日志配置
+//
+// @param request - DescribeUserLogFieldConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserLogFieldConfigResponse
+func (client *Client) DescribeUserLogFieldConfigWithOptions(request *DescribeUserLogFieldConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserLogFieldConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeliveryType) {
+		query["DeliveryType"] = request.DeliveryType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserLogFieldConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserLogFieldConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户日志配置
+//
+// @param request - DescribeUserLogFieldConfigRequest
+//
+// @return DescribeUserLogFieldConfigResponse
+func (client *Client) DescribeUserLogFieldConfig(request *DescribeUserLogFieldConfigRequest) (_result *DescribeUserLogFieldConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUserLogFieldConfigResponse{}
+	_body, _err := client.DescribeUserLogFieldConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries available regions for log storage.
 //
 // @param request - DescribeUserSlsLogRegionsRequest
@@ -14662,6 +15112,166 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyTemplateResourcesResponse{}
 	_body, _err := client.ModifyTemplateResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户日志服务的默认字段配置
+//
+// @param request - ModifyUserLogFieldConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserLogFieldConfigResponse
+func (client *Client) ModifyUserLogFieldConfigWithOptions(request *ModifyUserLogFieldConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserLogFieldConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeliveryType) {
+		query["DeliveryType"] = request.DeliveryType
+	}
+
+	if !dara.IsNil(request.ExtendConfig) {
+		query["ExtendConfig"] = request.ExtendConfig
+	}
+
+	if !dara.IsNil(request.FieldList) {
+		query["FieldList"] = request.FieldList
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogDeliveryStrategy) {
+		query["LogDeliveryStrategy"] = request.LogDeliveryStrategy
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserLogFieldConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserLogFieldConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户日志服务的默认字段配置
+//
+// @param request - ModifyUserLogFieldConfigRequest
+//
+// @return ModifyUserLogFieldConfigResponse
+func (client *Client) ModifyUserLogFieldConfig(request *ModifyUserLogFieldConfigRequest) (_result *ModifyUserLogFieldConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyUserLogFieldConfigResponse{}
+	_body, _err := client.ModifyUserLogFieldConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开通或关闭WAF日志服务
+//
+// @param request - ModifyUserWafLogStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserWafLogStatusResponse
+func (client *Client) ModifyUserWafLogStatusWithOptions(request *ModifyUserWafLogStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserWafLogStatusResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogRegionId) {
+		query["LogRegionId"] = request.LogRegionId
+	}
+
+	if !dara.IsNil(request.LogStatus) {
+		query["LogStatus"] = request.LogStatus
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserWafLogStatus"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserWafLogStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开通或关闭WAF日志服务
+//
+// @param request - ModifyUserWafLogStatusRequest
+//
+// @return ModifyUserWafLogStatusResponse
+func (client *Client) ModifyUserWafLogStatus(request *ModifyUserWafLogStatusRequest) (_result *ModifyUserWafLogStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyUserWafLogStatusResponse{}
+	_body, _err := client.ModifyUserWafLogStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
