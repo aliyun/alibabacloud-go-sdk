@@ -22,8 +22,6 @@ type DescribeSQLWebSocketDomainRequest struct {
 	//
 	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// amv-bp1lw6g669zpi660
