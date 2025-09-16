@@ -11,6 +11,8 @@ type iCreateRoutineRequest interface {
 	GoString() string
 	SetDescription(v string) *CreateRoutineRequest
 	GetDescription() *string
+	SetHasAssets(v bool) *CreateRoutineRequest
+	GetHasAssets() *bool
 	SetName(v string) *CreateRoutineRequest
 	GetName() *string
 }
@@ -22,6 +24,7 @@ type CreateRoutineRequest struct {
 	//
 	// the description of this routine
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HasAssets   *bool   `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
 	// The routine name, which must be unique in the same account.
 	//
 	// This parameter is required.
@@ -44,12 +47,21 @@ func (s *CreateRoutineRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateRoutineRequest) GetHasAssets() *bool {
+	return s.HasAssets
+}
+
 func (s *CreateRoutineRequest) GetName() *string {
 	return s.Name
 }
 
 func (s *CreateRoutineRequest) SetDescription(v string) *CreateRoutineRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateRoutineRequest) SetHasAssets(v bool) *CreateRoutineRequest {
+	s.HasAssets = &v
 	return s
 }
 

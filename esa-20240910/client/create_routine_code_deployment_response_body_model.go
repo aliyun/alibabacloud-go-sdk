@@ -1,0 +1,110 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateRoutineCodeDeploymentResponseBody interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCodeVersions(v []*CreateRoutineCodeDeploymentResponseBodyCodeVersions) *CreateRoutineCodeDeploymentResponseBody
+	GetCodeVersions() []*CreateRoutineCodeDeploymentResponseBodyCodeVersions
+	SetDeploymentId(v string) *CreateRoutineCodeDeploymentResponseBody
+	GetDeploymentId() *string
+	SetRequestId(v string) *CreateRoutineCodeDeploymentResponseBody
+	GetRequestId() *string
+	SetStrategy(v string) *CreateRoutineCodeDeploymentResponseBody
+	GetStrategy() *string
+}
+
+type CreateRoutineCodeDeploymentResponseBody struct {
+	CodeVersions []*CreateRoutineCodeDeploymentResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
+	DeploymentId *string                                                `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
+	RequestId    *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Strategy     *string                                                `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+}
+
+func (s CreateRoutineCodeDeploymentResponseBody) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRoutineCodeDeploymentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) GetCodeVersions() []*CreateRoutineCodeDeploymentResponseBodyCodeVersions {
+	return s.CodeVersions
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) GetDeploymentId() *string {
+	return s.DeploymentId
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) GetStrategy() *string {
+	return s.Strategy
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) SetCodeVersions(v []*CreateRoutineCodeDeploymentResponseBodyCodeVersions) *CreateRoutineCodeDeploymentResponseBody {
+	s.CodeVersions = v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) SetDeploymentId(v string) *CreateRoutineCodeDeploymentResponseBody {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) SetRequestId(v string) *CreateRoutineCodeDeploymentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) SetStrategy(v string) *CreateRoutineCodeDeploymentResponseBody {
+	s.Strategy = &v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateRoutineCodeDeploymentResponseBodyCodeVersions struct {
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	Percentage  *int64  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+}
+
+func (s CreateRoutineCodeDeploymentResponseBodyCodeVersions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateRoutineCodeDeploymentResponseBodyCodeVersions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBodyCodeVersions) GetCodeVersion() *string {
+	return s.CodeVersion
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBodyCodeVersions) GetPercentage() *int64 {
+	return s.Percentage
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBodyCodeVersions) SetCodeVersion(v string) *CreateRoutineCodeDeploymentResponseBodyCodeVersions {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBodyCodeVersions) SetPercentage(v int64) *CreateRoutineCodeDeploymentResponseBodyCodeVersions {
+	s.Percentage = &v
+	return s
+}
+
+func (s *CreateRoutineCodeDeploymentResponseBodyCodeVersions) Validate() error {
+	return dara.Validate(s)
+}

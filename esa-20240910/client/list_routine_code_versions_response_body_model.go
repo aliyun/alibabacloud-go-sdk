@@ -88,9 +88,13 @@ func (s *ListRoutineCodeVersionsResponseBody) Validate() error {
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
-	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	CodeVersion     *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	BuildId         *int64                                                      `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	CodeDescription *string                                                     `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	CodeVersion     *string                                                     `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	ConfOptions     *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
+	CreateTime      *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtraInfo       *string                                                     `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Status          *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListRoutineCodeVersionsResponseBodyCodeVersions) String() string {
@@ -101,6 +105,10 @@ func (s ListRoutineCodeVersionsResponseBodyCodeVersions) GoString() string {
 	return s.String()
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetBuildId() *int64 {
+	return s.BuildId
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetCodeDescription() *string {
 	return s.CodeDescription
 }
@@ -109,8 +117,25 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetCodeVersion() *stri
 	return s.CodeVersion
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetConfOptions() *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions {
+	return s.ConfOptions
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetCreateTime() *string {
 	return s.CreateTime
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetExtraInfo() *string {
+	return s.ExtraInfo
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetBuildId(v int64) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.BuildId = &v
+	return s
 }
 
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCodeDescription(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
@@ -123,11 +148,51 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCodeVersion(v strin
 	return s
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetConfOptions(v *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.ConfOptions = v
+	return s
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCreateTime(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
 	s.CreateTime = &v
 	return s
 }
 
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetExtraInfo(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetStatus(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.Status = &v
+	return s
+}
+
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions struct {
+	NotFoundStrategy *string `json:"NotFoundStrategy,omitempty" xml:"NotFoundStrategy,omitempty"`
+}
+
+func (s ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) GetNotFoundStrategy() *string {
+	return s.NotFoundStrategy
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) SetNotFoundStrategy(v string) *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions {
+	s.NotFoundStrategy = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions) Validate() error {
 	return dara.Validate(s)
 }

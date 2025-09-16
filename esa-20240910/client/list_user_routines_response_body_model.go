@@ -112,9 +112,11 @@ func (s *ListUserRoutinesResponseBody) Validate() error {
 }
 
 type ListUserRoutinesResponseBodyRoutines struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HasAssets            *bool   `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
+	RoutineName          *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 }
 
 func (s ListUserRoutinesResponseBodyRoutines) String() string {
@@ -129,8 +131,16 @@ func (s *ListUserRoutinesResponseBodyRoutines) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *ListUserRoutinesResponseBodyRoutines) GetDefaultRelatedRecord() *string {
+	return s.DefaultRelatedRecord
+}
+
 func (s *ListUserRoutinesResponseBodyRoutines) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListUserRoutinesResponseBodyRoutines) GetHasAssets() *bool {
+	return s.HasAssets
 }
 
 func (s *ListUserRoutinesResponseBodyRoutines) GetRoutineName() *string {
@@ -142,8 +152,18 @@ func (s *ListUserRoutinesResponseBodyRoutines) SetCreateTime(v string) *ListUser
 	return s
 }
 
+func (s *ListUserRoutinesResponseBodyRoutines) SetDefaultRelatedRecord(v string) *ListUserRoutinesResponseBodyRoutines {
+	s.DefaultRelatedRecord = &v
+	return s
+}
+
 func (s *ListUserRoutinesResponseBodyRoutines) SetDescription(v string) *ListUserRoutinesResponseBodyRoutines {
 	s.Description = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBodyRoutines) SetHasAssets(v bool) *ListUserRoutinesResponseBodyRoutines {
+	s.HasAssets = &v
 	return s
 }
 

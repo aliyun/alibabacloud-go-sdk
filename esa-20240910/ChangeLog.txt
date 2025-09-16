@@ -1,3 +1,27 @@
+2025-09-16 Version: v2.37.0
+- Support API CreateHttpIncomingRequestHeaderModificationRule.
+- Support API CreateHttpIncomingResponseHeaderModificationRule.
+- Support API CreateRoutineCodeDeployment.
+- Support API CreateRoutineWithAssetsCodeVersion.
+- Support API DeleteHttpIncomingRequestHeaderModificationRule.
+- Support API DeleteHttpIncomingResponseHeaderModificationRule.
+- Support API GetHttpIncomingRequestHeaderModificationRule.
+- Support API GetHttpIncomingResponseHeaderModificationRule.
+- Support API ListHttpIncomingRequestHeaderModificationRules.
+- Support API ListHttpIncomingResponseHeaderModificationRules.
+- Support API UpdateHttpIncomingRequestHeaderModificationRule.
+- Support API UpdateHttpIncomingResponseHeaderModificationRule.
+- Update API CreateRoutine: add request parameters HasAssets.
+- Update API GetRoutine: add response parameters Body.HasAssets.
+- Update API GetRoutine: add response parameters Body.Envs.$.CodeDeploy.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.BuildId.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.ConfOptions.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.ExtraInfo.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.Status.
+- Update API ListUserRoutines: add response parameters Body.Routines.$.DefaultRelatedRecord.
+- Update API ListUserRoutines: add response parameters Body.Routines.$.HasAssets.
+
+
 2025-08-21 Version: v2.36.2
 - Update API GetRecord: add response parameters Body.RecordModel.Data.Tags.
 - Update API ListRecords: add response parameters Body.Records.$.Data.Tags.

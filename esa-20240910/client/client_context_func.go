@@ -1517,6 +1517,150 @@ func (client *Client) CreateEdgeContainerAppVersionWithContext(ctx context.Conte
 
 // Summary:
 //
+// 新增HTTP入站请求头规则
+//
+// @param tmpReq - CreateHttpIncomingRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpIncomingRequestHeaderModificationRuleResponse
+func (client *Client) CreateHttpIncomingRequestHeaderModificationRuleWithContext(ctx context.Context, tmpReq *CreateHttpIncomingRequestHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateHttpIncomingRequestHeaderModificationRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHttpIncomingRequestHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RequestHeaderModification) {
+		request.RequestHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestHeaderModification, dara.String("RequestHeaderModification"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RequestHeaderModificationShrink) {
+		query["RequestHeaderModification"] = request.RequestHeaderModificationShrink
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHttpIncomingRequestHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHttpIncomingRequestHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增HTTP入站响应头规则
+//
+// @param tmpReq - CreateHttpIncomingResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpIncomingResponseHeaderModificationRuleResponse
+func (client *Client) CreateHttpIncomingResponseHeaderModificationRuleWithContext(ctx context.Context, tmpReq *CreateHttpIncomingResponseHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateHttpIncomingResponseHeaderModificationRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateHttpIncomingResponseHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResponseHeaderModification) {
+		request.ResponseHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResponseHeaderModification, dara.String("ResponseHeaderModification"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResponseHeaderModificationShrink) {
+		query["ResponseHeaderModification"] = request.ResponseHeaderModificationShrink
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHttpIncomingResponseHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHttpIncomingResponseHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Add HTTP Request Header Rule
 //
 // @param tmpReq - CreateHttpRequestHeaderModificationRuleRequest
@@ -2802,6 +2946,10 @@ func (client *Client) CreateRoutineWithContext(ctx context.Context, request *Cre
 		body["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.HasAssets) {
+		body["HasAssets"] = request.HasAssets
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
 	}
@@ -2821,6 +2969,66 @@ func (client *Client) CreateRoutineWithContext(ctx context.Context, request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRoutineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布Routine某版本代码
+//
+// @param tmpReq - CreateRoutineCodeDeploymentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineCodeDeploymentResponse
+func (client *Client) CreateRoutineCodeDeploymentWithContext(ctx context.Context, tmpReq *CreateRoutineCodeDeploymentRequest, runtime *dara.RuntimeOptions) (_result *CreateRoutineCodeDeploymentResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateRoutineCodeDeploymentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CodeVersions) {
+		request.CodeVersionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CodeVersions, dara.String("CodeVersions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CodeVersionsShrink) {
+		body["CodeVersions"] = request.CodeVersionsShrink
+	}
+
+	if !dara.IsNil(request.Env) {
+		body["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Strategy) {
+		body["Strategy"] = request.Strategy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRoutineCodeDeployment"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRoutineCodeDeploymentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2941,6 +3149,70 @@ func (client *Client) CreateRoutineRouteWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRoutineRouteResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建带Assets资源的Routine代码版本
+//
+// @param tmpReq - CreateRoutineWithAssetsCodeVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineWithAssetsCodeVersionResponse
+func (client *Client) CreateRoutineWithAssetsCodeVersionWithContext(ctx context.Context, tmpReq *CreateRoutineWithAssetsCodeVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateRoutineWithAssetsCodeVersionResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateRoutineWithAssetsCodeVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ConfOptions) {
+		request.ConfOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfOptions, dara.String("ConfOptions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BuildId) {
+		body["BuildId"] = request.BuildId
+	}
+
+	if !dara.IsNil(request.CodeDescription) {
+		body["CodeDescription"] = request.CodeDescription
+	}
+
+	if !dara.IsNil(request.ConfOptionsShrink) {
+		body["ConfOptions"] = request.ConfOptionsShrink
+	}
+
+	if !dara.IsNil(request.ExtraInfo) {
+		body["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRoutineWithAssetsCodeVersion"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRoutineWithAssetsCodeVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4415,6 +4687,98 @@ func (client *Client) DeleteEdgeContainerAppVersionWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteEdgeContainerAppVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除HTTP入站请求头规则
+//
+// @param request - DeleteHttpIncomingRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpIncomingRequestHeaderModificationRuleResponse
+func (client *Client) DeleteHttpIncomingRequestHeaderModificationRuleWithContext(ctx context.Context, request *DeleteHttpIncomingRequestHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteHttpIncomingRequestHeaderModificationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHttpIncomingRequestHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHttpIncomingRequestHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除HTTP入站响应头规则
+//
+// @param request - DeleteHttpIncomingResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHttpIncomingResponseHeaderModificationRuleResponse
+func (client *Client) DeleteHttpIncomingResponseHeaderModificationRuleWithContext(ctx context.Context, request *DeleteHttpIncomingResponseHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteHttpIncomingResponseHeaderModificationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteHttpIncomingResponseHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteHttpIncomingResponseHeaderModificationRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7797,6 +8161,82 @@ func (client *Client) GetErServiceWithContext(ctx context.Context, request *GetE
 
 // Summary:
 //
+// 查询HTTP入站请求头规则详情
+//
+// @param request - GetHttpIncomingRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpIncomingRequestHeaderModificationRuleResponse
+func (client *Client) GetHttpIncomingRequestHeaderModificationRuleWithContext(ctx context.Context, request *GetHttpIncomingRequestHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *GetHttpIncomingRequestHeaderModificationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetHttpIncomingRequestHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetHttpIncomingRequestHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP入站响应头规则
+//
+// @param request - GetHttpIncomingResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHttpIncomingResponseHeaderModificationRuleResponse
+func (client *Client) GetHttpIncomingResponseHeaderModificationRuleWithContext(ctx context.Context, request *GetHttpIncomingResponseHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *GetHttpIncomingResponseHeaderModificationRuleResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetHttpIncomingResponseHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetHttpIncomingResponseHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query HTTP Request Header Rule Details
 //
 // @param request - GetHttpRequestHeaderModificationRuleRequest
@@ -10267,6 +10707,82 @@ func (client *Client) ListEdgeRoutineRecordsWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEdgeRoutineRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP入站请求头规则列表
+//
+// @param request - ListHttpIncomingRequestHeaderModificationRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpIncomingRequestHeaderModificationRulesResponse
+func (client *Client) ListHttpIncomingRequestHeaderModificationRulesWithContext(ctx context.Context, request *ListHttpIncomingRequestHeaderModificationRulesRequest, runtime *dara.RuntimeOptions) (_result *ListHttpIncomingRequestHeaderModificationRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListHttpIncomingRequestHeaderModificationRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListHttpIncomingRequestHeaderModificationRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询HTTP入站响应头规则列表
+//
+// @param request - ListHttpIncomingResponseHeaderModificationRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHttpIncomingResponseHeaderModificationRulesResponse
+func (client *Client) ListHttpIncomingResponseHeaderModificationRulesWithContext(ctx context.Context, request *ListHttpIncomingResponseHeaderModificationRulesRequest, runtime *dara.RuntimeOptions) (_result *ListHttpIncomingResponseHeaderModificationRulesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListHttpIncomingResponseHeaderModificationRules"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListHttpIncomingResponseHeaderModificationRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14089,7 +14605,7 @@ func (client *Client) UpdateCompressionRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改站点中国大陆网络接入优化配置
+// Modifies the configuration of the Chinese mainland network access optimization.
 //
 // @param request - UpdateCrossBorderOptimizationRequest
 //
@@ -14351,6 +14867,150 @@ func (client *Client) UpdateEdgeContainerAppResourceReserveWithContext(ctx conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateEdgeContainerAppResourceReserveResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTP入站请求头规则
+//
+// @param tmpReq - UpdateHttpIncomingRequestHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpIncomingRequestHeaderModificationRuleResponse
+func (client *Client) UpdateHttpIncomingRequestHeaderModificationRuleWithContext(ctx context.Context, tmpReq *UpdateHttpIncomingRequestHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateHttpIncomingRequestHeaderModificationRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHttpIncomingRequestHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RequestHeaderModification) {
+		request.RequestHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestHeaderModification, dara.String("RequestHeaderModification"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.RequestHeaderModificationShrink) {
+		query["RequestHeaderModification"] = request.RequestHeaderModificationShrink
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateHttpIncomingRequestHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateHttpIncomingRequestHeaderModificationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改HTTP入站响应头规则
+//
+// @param tmpReq - UpdateHttpIncomingResponseHeaderModificationRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHttpIncomingResponseHeaderModificationRuleResponse
+func (client *Client) UpdateHttpIncomingResponseHeaderModificationRuleWithContext(ctx context.Context, tmpReq *UpdateHttpIncomingResponseHeaderModificationRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateHttpIncomingResponseHeaderModificationRuleResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateHttpIncomingResponseHeaderModificationRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResponseHeaderModification) {
+		request.ResponseHeaderModificationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResponseHeaderModification, dara.String("ResponseHeaderModification"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.ResponseHeaderModificationShrink) {
+		query["ResponseHeaderModification"] = request.ResponseHeaderModificationShrink
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.RuleEnable) {
+		query["RuleEnable"] = request.RuleEnable
+	}
+
+	if !dara.IsNil(request.RuleName) {
+		query["RuleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.Sequence) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateHttpIncomingResponseHeaderModificationRule"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateHttpIncomingResponseHeaderModificationRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
