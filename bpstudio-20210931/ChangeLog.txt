@@ -1,3 +1,10 @@
+2025-09-16 Version: v8.2.0
+- Support API CreateTask.
+- Support API ExecuteTask.
+- Support API GetTask.
+- Update API CreateApplication: add request parameters CreateAsync.
+
+
 2025-08-11 Version: v8.1.1
 - Generated golang 2021-09-31 for BPStudio.
 

@@ -308,6 +308,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		body["Configuration"] = request.ConfigurationShrink
 	}
 
+	if !dara.IsNil(request.CreateAsync) {
+		body["CreateAsync"] = request.CreateAsync
+	}
+
 	if !dara.IsNil(request.InstancesShrink) {
 		body["Instances"] = request.InstancesShrink
 	}
@@ -366,6 +370,84 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateApplicationResponse{}
 	_body, _err := client.CreateApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建任务
+//
+// @param tmpReq - CreateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskResponse
+func (client *Client) CreateTaskWithOptions(tmpReq *CreateTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Variables) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, dara.String("Variables"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.VariablesShrink) {
+		body["Variables"] = request.VariablesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTask"),
+		Version:     dara.String("2021-09-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建任务
+//
+// @param request - CreateTaskRequest
+//
+// @return CreateTaskResponse
+func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -680,6 +762,66 @@ func (client *Client) ExecuteOperationSync(request *ExecuteOperationSyncRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &ExecuteOperationSyncResponse{}
 	_body, _err := client.ExecuteOperationSyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建任务
+//
+// @param request - ExecuteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteTaskResponse
+func (client *Client) ExecuteTaskWithOptions(request *ExecuteTaskRequest, runtime *dara.RuntimeOptions) (_result *ExecuteTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteTask"),
+		Version:     dara.String("2021-09-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建任务
+//
+// @param request - ExecuteTaskRequest
+//
+// @return ExecuteTaskResponse
+func (client *Client) ExecuteTask(request *ExecuteTaskRequest) (_result *ExecuteTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExecuteTaskResponse{}
+	_body, _err := client.ExecuteTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1294,6 +1436,66 @@ func (client *Client) GetResult4QueryInstancePrice4Modify(request *GetResult4Que
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetResult4QueryInstancePrice4ModifyResponse{}
 	_body, _err := client.GetResult4QueryInstancePrice4ModifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Task信息
+//
+// @param request - GetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
+func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTask"),
+		Version:     dara.String("2021-09-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Task信息
+//
+// @param request - GetTaskRequest
+//
+// @return GetTaskResponse
+func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

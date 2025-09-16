@@ -15,6 +15,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetClientToken() *string
 	SetConfigurationShrink(v string) *CreateApplicationShrinkRequest
 	GetConfigurationShrink() *string
+	SetCreateAsync(v bool) *CreateApplicationShrinkRequest
+	GetCreateAsync() *bool
 	SetInstancesShrink(v string) *CreateApplicationShrinkRequest
 	GetInstancesShrink() *string
 	SetName(v string) *CreateApplicationShrinkRequest
@@ -48,6 +50,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// {"enableMonitor":"0", "enableReport":"1"}
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	CreateAsync         *bool   `json:"CreateAsync,omitempty" xml:"CreateAsync,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The name of the application.
@@ -105,6 +108,10 @@ func (s *CreateApplicationShrinkRequest) GetConfigurationShrink() *string {
 	return s.ConfigurationShrink
 }
 
+func (s *CreateApplicationShrinkRequest) GetCreateAsync() *bool {
+	return s.CreateAsync
+}
+
 func (s *CreateApplicationShrinkRequest) GetInstancesShrink() *string {
 	return s.InstancesShrink
 }
@@ -141,6 +148,11 @@ func (s *CreateApplicationShrinkRequest) SetClientToken(v string) *CreateApplica
 
 func (s *CreateApplicationShrinkRequest) SetConfigurationShrink(v string) *CreateApplicationShrinkRequest {
 	s.ConfigurationShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetCreateAsync(v bool) *CreateApplicationShrinkRequest {
+	s.CreateAsync = &v
 	return s
 }
 

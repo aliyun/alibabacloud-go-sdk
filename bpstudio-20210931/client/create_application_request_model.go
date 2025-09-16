@@ -15,6 +15,8 @@ type iCreateApplicationRequest interface {
 	GetClientToken() *string
 	SetConfiguration(v map[string]*string) *CreateApplicationRequest
 	GetConfiguration() map[string]*string
+	SetCreateAsync(v bool) *CreateApplicationRequest
+	GetCreateAsync() *bool
 	SetInstances(v []*CreateApplicationRequestInstances) *CreateApplicationRequest
 	GetInstances() []*CreateApplicationRequestInstances
 	SetName(v string) *CreateApplicationRequest
@@ -48,6 +50,7 @@ type CreateApplicationRequest struct {
 	//
 	// {"enableMonitor":"0", "enableReport":"1"}
 	Configuration map[string]*string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	CreateAsync   *bool              `json:"CreateAsync,omitempty" xml:"CreateAsync,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	Instances []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The name of the application.
@@ -105,6 +108,10 @@ func (s *CreateApplicationRequest) GetConfiguration() map[string]*string {
 	return s.Configuration
 }
 
+func (s *CreateApplicationRequest) GetCreateAsync() *bool {
+	return s.CreateAsync
+}
+
 func (s *CreateApplicationRequest) GetInstances() []*CreateApplicationRequestInstances {
 	return s.Instances
 }
@@ -141,6 +148,11 @@ func (s *CreateApplicationRequest) SetClientToken(v string) *CreateApplicationRe
 
 func (s *CreateApplicationRequest) SetConfiguration(v map[string]*string) *CreateApplicationRequest {
 	s.Configuration = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetCreateAsync(v bool) *CreateApplicationRequest {
+	s.CreateAsync = &v
 	return s
 }
 
