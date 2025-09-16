@@ -1300,6 +1300,10 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 	}
 	request := &CreateWmEmbedTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AudioControl) {
+		request.AudioControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AudioControl, dara.String("AudioControl"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.CsvControl) {
 		request.CsvControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CsvControl, dara.String("CsvControl"), dara.String("json"))
 	}
@@ -1312,12 +1316,19 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 		request.ImageControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ImageControl, dara.String("ImageControl"), dara.String("json"))
 	}
 
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.CsvControlShrink) {
-		query["CsvControl"] = request.CsvControlShrink
+	if !dara.IsNil(tmpReq.VideoControl) {
+		request.VideoControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoControl, dara.String("VideoControl"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AudioControlShrink) {
+		body["AudioControl"] = request.AudioControlShrink
+	}
+
+	if !dara.IsNil(request.CsvControlShrink) {
+		body["CsvControl"] = request.CsvControlShrink
+	}
+
 	if !dara.IsNil(request.DocumentControlShrink) {
 		body["DocumentControl"] = request.DocumentControlShrink
 	}
@@ -1342,8 +1353,16 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 		body["ImageEmbedLevel"] = request.ImageEmbedLevel
 	}
 
+	if !dara.IsNil(request.InvisibleEnable) {
+		body["InvisibleEnable"] = request.InvisibleEnable
+	}
+
 	if !dara.IsNil(request.VideoBitrate) {
 		body["VideoBitrate"] = request.VideoBitrate
+	}
+
+	if !dara.IsNil(request.VideoControlShrink) {
+		body["VideoControl"] = request.VideoControlShrink
 	}
 
 	if !dara.IsNil(request.VideoIsLong) {
@@ -1367,8 +1386,7 @@ func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequ
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateWmEmbedTask"),
@@ -4097,7 +4115,7 @@ func (client *Client) ListClientUsers(request *ListClientUsersRequest) (_result 
 
 // Summary:
 //
-// 批量查询connector
+// # Batch query connectors
 //
 // @param request - ListConnectorsRequest
 //
@@ -4135,7 +4153,7 @@ func (client *Client) ListConnectorsWithOptions(request *ListConnectorsRequest, 
 
 // Summary:
 //
-// 批量查询connector
+// # Batch query connectors
 //
 // @param request - ListConnectorsRequest
 //

@@ -9,6 +9,8 @@ type iCreateWmEmbedTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudioControlShrink(v string) *CreateWmEmbedTaskShrinkRequest
+	GetAudioControlShrink() *string
 	SetCsvControlShrink(v string) *CreateWmEmbedTaskShrinkRequest
 	GetCsvControlShrink() *string
 	SetDocumentControlShrink(v string) *CreateWmEmbedTaskShrinkRequest
@@ -23,8 +25,12 @@ type iCreateWmEmbedTaskShrinkRequest interface {
 	GetImageEmbedJpegQuality() *int64
 	SetImageEmbedLevel(v int64) *CreateWmEmbedTaskShrinkRequest
 	GetImageEmbedLevel() *int64
+	SetInvisibleEnable(v bool) *CreateWmEmbedTaskShrinkRequest
+	GetInvisibleEnable() *bool
 	SetVideoBitrate(v string) *CreateWmEmbedTaskShrinkRequest
 	GetVideoBitrate() *string
+	SetVideoControlShrink(v string) *CreateWmEmbedTaskShrinkRequest
+	GetVideoControlShrink() *string
 	SetVideoIsLong(v bool) *CreateWmEmbedTaskShrinkRequest
 	GetVideoIsLong() *bool
 	SetWmInfoBytesB64(v string) *CreateWmEmbedTaskShrinkRequest
@@ -38,6 +44,7 @@ type iCreateWmEmbedTaskShrinkRequest interface {
 }
 
 type CreateWmEmbedTaskShrinkRequest struct {
+	AudioControlShrink    *string `json:"AudioControl,omitempty" xml:"AudioControl,omitempty"`
 	CsvControlShrink      *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
 	DocumentControlShrink *string `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty"`
 	// This parameter is required.
@@ -61,10 +68,12 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	//
 	// 2
 	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
+	InvisibleEnable *bool  `json:"InvisibleEnable,omitempty" xml:"InvisibleEnable,omitempty"`
 	// example:
 	//
 	// 3000k
-	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoBitrate       *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoControlShrink *string `json:"VideoControl,omitempty" xml:"VideoControl,omitempty"`
 	// example:
 	//
 	// false
@@ -97,6 +106,10 @@ func (s CreateWmEmbedTaskShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWmEmbedTaskShrinkRequest) GetAudioControlShrink() *string {
+	return s.AudioControlShrink
+}
+
 func (s *CreateWmEmbedTaskShrinkRequest) GetCsvControlShrink() *string {
 	return s.CsvControlShrink
 }
@@ -125,8 +138,16 @@ func (s *CreateWmEmbedTaskShrinkRequest) GetImageEmbedLevel() *int64 {
 	return s.ImageEmbedLevel
 }
 
+func (s *CreateWmEmbedTaskShrinkRequest) GetInvisibleEnable() *bool {
+	return s.InvisibleEnable
+}
+
 func (s *CreateWmEmbedTaskShrinkRequest) GetVideoBitrate() *string {
 	return s.VideoBitrate
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) GetVideoControlShrink() *string {
+	return s.VideoControlShrink
 }
 
 func (s *CreateWmEmbedTaskShrinkRequest) GetVideoIsLong() *bool {
@@ -147,6 +168,11 @@ func (s *CreateWmEmbedTaskShrinkRequest) GetWmInfoUint() *string {
 
 func (s *CreateWmEmbedTaskShrinkRequest) GetWmType() *string {
 	return s.WmType
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetAudioControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.AudioControlShrink = &v
+	return s
 }
 
 func (s *CreateWmEmbedTaskShrinkRequest) SetCsvControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
@@ -184,8 +210,18 @@ func (s *CreateWmEmbedTaskShrinkRequest) SetImageEmbedLevel(v int64) *CreateWmEm
 	return s
 }
 
+func (s *CreateWmEmbedTaskShrinkRequest) SetInvisibleEnable(v bool) *CreateWmEmbedTaskShrinkRequest {
+	s.InvisibleEnable = &v
+	return s
+}
+
 func (s *CreateWmEmbedTaskShrinkRequest) SetVideoBitrate(v string) *CreateWmEmbedTaskShrinkRequest {
 	s.VideoBitrate = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetVideoControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.VideoControlShrink = &v
 	return s
 }
 

@@ -18,11 +18,16 @@ type iListConnectorsResponseBody interface {
 }
 
 type ListConnectorsResponseBody struct {
+	// List of Connectors.
 	Connectors []*ListConnectorsResponseBodyConnectors `json:"Connectors,omitempty" xml:"Connectors,omitempty" type:"Repeated"`
+	// ID of the current request.
+	//
 	// example:
 	//
 	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of Connectors.
+	//
 	// example:
 	//
 	// 1
@@ -69,37 +74,68 @@ func (s *ListConnectorsResponseBody) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectors struct {
-	Applications     []*ListConnectorsResponseBodyConnectorsApplications     `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	ClusterIP        *string                                                 `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
-	ClusterPort      *string                                                 `json:"ClusterPort,omitempty" xml:"ClusterPort,omitempty"`
+	// Collection of associated internal network access applications.
+	Applications []*ListConnectorsResponseBodyConnectorsApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// Cluster IP.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
+	// Cluster port.
+	//
+	// example:
+	//
+	// 8000
+	ClusterPort *string `json:"ClusterPort,omitempty" xml:"ClusterPort,omitempty"`
+	// Collection of deployed ConnectorClients.
 	ConnectorClients []*ListConnectorsResponseBodyConnectorsConnectorClients `json:"ConnectorClients,omitempty" xml:"ConnectorClients,omitempty" type:"Repeated"`
-	// ConnectorID。
+	// Connector ID.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	// Creation time of the Connector.
+	//
 	// example:
 	//
 	// 2022-09-27 18:10:25
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Connector name.
+	//
 	// example:
 	//
 	// connector_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Connector connection status. Values:
+	//
+	// - **Online**: Online.
+	//
+	// - **Offline**: Offline.
+	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Connector instance status. Values:
+	//
+	// - **Enabled**: Enabled.
+	//
+	// - **Disabled**: Disabled.
+	//
 	// example:
 	//
 	// Enabled
-	SwitchStatus *string                                          `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
-	UpgradeTime  *ListConnectorsResponseBodyConnectorsUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
+	SwitchStatus *string `json:"SwitchStatus,omitempty" xml:"SwitchStatus,omitempty"`
+	// Connector upgrade time.
+	UpgradeTime *ListConnectorsResponseBodyConnectorsUpgradeTime `json:"UpgradeTime,omitempty" xml:"UpgradeTime,omitempty" type:"Struct"`
 }
 
 func (s ListConnectorsResponseBodyConnectors) String() string {
@@ -214,10 +250,14 @@ func (s *ListConnectorsResponseBodyConnectors) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectorsApplications struct {
+	// Internal network access application ID.
+	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Internal network access application name.
+	//
 	// example:
 	//
 	// application_name
@@ -255,10 +295,30 @@ func (s *ListConnectorsResponseBodyConnectorsApplications) Validate() error {
 }
 
 type ListConnectorsResponseBodyConnectorsConnectorClients struct {
+	// Connection status between ConnectorClient and ConnectorServer.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	DevTag           *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	Hostname         *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	PublicIp         *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// Unique device identifier for the ConnectorClient.
+	//
+	// example:
+	//
+	// C50A2386-F851-4F11-920B-DF7148DA0C22
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// Hostname of the ConnectorClient.
+	//
+	// example:
+	//
+	// connector_client
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Public IP of the ConnectorClient.
+	//
+	// example:
+	//
+	// 192.0.2.1
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 }
 
 func (s ListConnectorsResponseBodyConnectorsConnectorClients) String() string {
@@ -310,10 +370,14 @@ func (s *ListConnectorsResponseBodyConnectorsConnectorClients) Validate() error 
 }
 
 type ListConnectorsResponseBodyConnectorsUpgradeTime struct {
+	// End time.
+	//
 	// example:
 	//
 	// 23:00
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
+	// Start time.
+	//
 	// example:
 	//
 	// 20:00

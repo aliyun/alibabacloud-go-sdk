@@ -9,6 +9,8 @@ type iCreateWmEmbedTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudioControl(v *CreateWmEmbedTaskRequestAudioControl) *CreateWmEmbedTaskRequest
+	GetAudioControl() *CreateWmEmbedTaskRequestAudioControl
 	SetCsvControl(v *CreateWmEmbedTaskRequestCsvControl) *CreateWmEmbedTaskRequest
 	GetCsvControl() *CreateWmEmbedTaskRequestCsvControl
 	SetDocumentControl(v *CreateWmEmbedTaskRequestDocumentControl) *CreateWmEmbedTaskRequest
@@ -23,8 +25,12 @@ type iCreateWmEmbedTaskRequest interface {
 	GetImageEmbedJpegQuality() *int64
 	SetImageEmbedLevel(v int64) *CreateWmEmbedTaskRequest
 	GetImageEmbedLevel() *int64
+	SetInvisibleEnable(v bool) *CreateWmEmbedTaskRequest
+	GetInvisibleEnable() *bool
 	SetVideoBitrate(v string) *CreateWmEmbedTaskRequest
 	GetVideoBitrate() *string
+	SetVideoControl(v *CreateWmEmbedTaskRequestVideoControl) *CreateWmEmbedTaskRequest
+	GetVideoControl() *CreateWmEmbedTaskRequestVideoControl
 	SetVideoIsLong(v bool) *CreateWmEmbedTaskRequest
 	GetVideoIsLong() *bool
 	SetWmInfoBytesB64(v string) *CreateWmEmbedTaskRequest
@@ -38,6 +44,7 @@ type iCreateWmEmbedTaskRequest interface {
 }
 
 type CreateWmEmbedTaskRequest struct {
+	AudioControl    *CreateWmEmbedTaskRequestAudioControl    `json:"AudioControl,omitempty" xml:"AudioControl,omitempty" type:"Struct"`
 	CsvControl      *CreateWmEmbedTaskRequestCsvControl      `json:"CsvControl,omitempty" xml:"CsvControl,omitempty" type:"Struct"`
 	DocumentControl *CreateWmEmbedTaskRequestDocumentControl `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -61,10 +68,12 @@ type CreateWmEmbedTaskRequest struct {
 	//
 	// 2
 	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
+	InvisibleEnable *bool  `json:"InvisibleEnable,omitempty" xml:"InvisibleEnable,omitempty"`
 	// example:
 	//
 	// 3000k
-	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoBitrate *string                               `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	VideoControl *CreateWmEmbedTaskRequestVideoControl `json:"VideoControl,omitempty" xml:"VideoControl,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -97,6 +106,10 @@ func (s CreateWmEmbedTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateWmEmbedTaskRequest) GetAudioControl() *CreateWmEmbedTaskRequestAudioControl {
+	return s.AudioControl
+}
+
 func (s *CreateWmEmbedTaskRequest) GetCsvControl() *CreateWmEmbedTaskRequestCsvControl {
 	return s.CsvControl
 }
@@ -125,8 +138,16 @@ func (s *CreateWmEmbedTaskRequest) GetImageEmbedLevel() *int64 {
 	return s.ImageEmbedLevel
 }
 
+func (s *CreateWmEmbedTaskRequest) GetInvisibleEnable() *bool {
+	return s.InvisibleEnable
+}
+
 func (s *CreateWmEmbedTaskRequest) GetVideoBitrate() *string {
 	return s.VideoBitrate
+}
+
+func (s *CreateWmEmbedTaskRequest) GetVideoControl() *CreateWmEmbedTaskRequestVideoControl {
+	return s.VideoControl
 }
 
 func (s *CreateWmEmbedTaskRequest) GetVideoIsLong() *bool {
@@ -147,6 +168,11 @@ func (s *CreateWmEmbedTaskRequest) GetWmInfoUint() *string {
 
 func (s *CreateWmEmbedTaskRequest) GetWmType() *string {
 	return s.WmType
+}
+
+func (s *CreateWmEmbedTaskRequest) SetAudioControl(v *CreateWmEmbedTaskRequestAudioControl) *CreateWmEmbedTaskRequest {
+	s.AudioControl = v
+	return s
 }
 
 func (s *CreateWmEmbedTaskRequest) SetCsvControl(v *CreateWmEmbedTaskRequestCsvControl) *CreateWmEmbedTaskRequest {
@@ -184,8 +210,18 @@ func (s *CreateWmEmbedTaskRequest) SetImageEmbedLevel(v int64) *CreateWmEmbedTas
 	return s
 }
 
+func (s *CreateWmEmbedTaskRequest) SetInvisibleEnable(v bool) *CreateWmEmbedTaskRequest {
+	s.InvisibleEnable = &v
+	return s
+}
+
 func (s *CreateWmEmbedTaskRequest) SetVideoBitrate(v string) *CreateWmEmbedTaskRequest {
 	s.VideoBitrate = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetVideoControl(v *CreateWmEmbedTaskRequestVideoControl) *CreateWmEmbedTaskRequest {
+	s.VideoControl = v
 	return s
 }
 
@@ -215,6 +251,66 @@ func (s *CreateWmEmbedTaskRequest) SetWmType(v string) *CreateWmEmbedTaskRequest
 }
 
 func (s *CreateWmEmbedTaskRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestAudioControl struct {
+	MetadataControl *CreateWmEmbedTaskRequestAudioControlMetadataControl `json:"MetadataControl,omitempty" xml:"MetadataControl,omitempty" type:"Struct"`
+}
+
+func (s CreateWmEmbedTaskRequestAudioControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestAudioControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControl) GetMetadataControl() *CreateWmEmbedTaskRequestAudioControlMetadataControl {
+	return s.MetadataControl
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControl) SetMetadataControl(v *CreateWmEmbedTaskRequestAudioControlMetadataControl) *CreateWmEmbedTaskRequestAudioControl {
+	s.MetadataControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestAudioControlMetadataControl struct {
+	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	XmpKvBase64 *string `json:"XmpKvBase64,omitempty" xml:"XmpKvBase64,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestAudioControlMetadataControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestAudioControlMetadataControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControlMetadataControl) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControlMetadataControl) GetXmpKvBase64() *string {
+	return s.XmpKvBase64
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControlMetadataControl) SetEnable(v bool) *CreateWmEmbedTaskRequestAudioControlMetadataControl {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControlMetadataControl) SetXmpKvBase64(v string) *CreateWmEmbedTaskRequestAudioControlMetadataControl {
+	s.XmpKvBase64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestAudioControlMetadataControl) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -635,6 +731,7 @@ func (s *CreateWmEmbedTaskRequestImageControl) Validate() error {
 
 type CreateWmEmbedTaskRequestImageControlLogoVisibleControl struct {
 	Angle      *int64                                                        `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	Enhance    *bool                                                         `json:"Enhance,omitempty" xml:"Enhance,omitempty"`
 	LogoBase64 *string                                                       `json:"LogoBase64,omitempty" xml:"LogoBase64,omitempty"`
 	Margin     *CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
 	Mode       *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -658,6 +755,10 @@ func (s CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GoString() strin
 
 func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetAngle() *int64 {
 	return s.Angle
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetEnhance() *bool {
+	return s.Enhance
 }
 
 func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetLogoBase64() *string {
@@ -706,6 +807,11 @@ func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) GetVisible() *b
 
 func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetAngle(v int64) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
 	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestImageControlLogoVisibleControl) SetEnhance(v bool) *CreateWmEmbedTaskRequestImageControlLogoVisibleControl {
+	s.Enhance = &v
 	return s
 }
 
@@ -1065,5 +1171,215 @@ func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) SetTop(v 
 }
 
 func (s *CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestVideoControl struct {
+	MetadataControl    *CreateWmEmbedTaskRequestVideoControlMetadataControl    `json:"MetadataControl,omitempty" xml:"MetadataControl,omitempty" type:"Struct"`
+	TextVisibleControl *CreateWmEmbedTaskRequestVideoControlTextVisibleControl `json:"TextVisibleControl,omitempty" xml:"TextVisibleControl,omitempty" type:"Struct"`
+}
+
+func (s CreateWmEmbedTaskRequestVideoControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestVideoControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControl) GetMetadataControl() *CreateWmEmbedTaskRequestVideoControlMetadataControl {
+	return s.MetadataControl
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControl) GetTextVisibleControl() *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	return s.TextVisibleControl
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControl) SetMetadataControl(v *CreateWmEmbedTaskRequestVideoControlMetadataControl) *CreateWmEmbedTaskRequestVideoControl {
+	s.MetadataControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControl) SetTextVisibleControl(v *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) *CreateWmEmbedTaskRequestVideoControl {
+	s.TextVisibleControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestVideoControlMetadataControl struct {
+	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	XmpKvBase64 *string `json:"XmpKvBase64,omitempty" xml:"XmpKvBase64,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlMetadataControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlMetadataControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlMetadataControl) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlMetadataControl) GetXmpKvBase64() *string {
+	return s.XmpKvBase64
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlMetadataControl) SetEnable(v bool) *CreateWmEmbedTaskRequestVideoControlMetadataControl {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlMetadataControl) SetXmpKvBase64(v string) *CreateWmEmbedTaskRequestVideoControlMetadataControl {
+	s.XmpKvBase64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlMetadataControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestVideoControlTextVisibleControl struct {
+	FontColor   *string                                                       `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize    *int32                                                        `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	Margin      *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin `json:"Margin,omitempty" xml:"Margin,omitempty" type:"Struct"`
+	Mode        *string                                                       `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Opacity     *int32                                                        `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	PosX        *int32                                                        `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	PosY        *int32                                                        `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	Visible     *bool                                                         `json:"Visible,omitempty" xml:"Visible,omitempty"`
+	VisibleText *string                                                       `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlTextVisibleControl) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetFontColor() *string {
+	return s.FontColor
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetFontSize() *int32 {
+	return s.FontSize
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetMargin() *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin {
+	return s.Margin
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetMode() *string {
+	return s.Mode
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetOpacity() *int32 {
+	return s.Opacity
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetPosX() *int32 {
+	return s.PosX
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetPosY() *int32 {
+	return s.PosY
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetVisible() *bool {
+	return s.Visible
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) GetVisibleText() *string {
+	return s.VisibleText
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetFontColor(v string) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.FontColor = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetFontSize(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.FontSize = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetMargin(v *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.Margin = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetMode(v string) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetOpacity(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetPosX(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetPosY(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetVisible(v bool) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.Visible = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) SetVisibleText(v string) *CreateWmEmbedTaskRequestVideoControlTextVisibleControl {
+	s.VisibleText = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControl) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin struct {
+	Bottom *int32 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
+	Right  *int32 `json:"Right,omitempty" xml:"Right,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) GetBottom() *int32 {
+	return s.Bottom
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) GetRight() *int32 {
+	return s.Right
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) SetBottom(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin {
+	s.Bottom = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) SetRight(v int32) *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin {
+	s.Right = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin) Validate() error {
 	return dara.Validate(s)
 }
