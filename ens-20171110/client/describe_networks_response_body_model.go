@@ -194,7 +194,8 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// rtb-5**
-	RouterTableId *string `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	RouterTableId       *string                                                         `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	SecondaryCidrBlocks *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the network. Valid values:
 	//
 	// 	- Pending
@@ -260,6 +261,10 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) GetRouteTableIds() *Descri
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) GetRouterTableId() *string {
 	return s.RouterTableId
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetwork) GetSecondaryCidrBlocks() *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks {
+	return s.SecondaryCidrBlocks
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) GetStatus() *string {
@@ -329,6 +334,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetRouterTableId(v string)
 	return s
 }
 
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetSecondaryCidrBlocks(v *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.SecondaryCidrBlocks = v
+	return s
+}
+
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetStatus(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.Status = &v
 	return s
@@ -370,6 +380,31 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) SetRouteTable
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks struct {
+	SecondaryCidrBlock []*string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) GetSecondaryCidrBlock() []*string {
+	return s.SecondaryCidrBlock
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) SetSecondaryCidrBlock(v []*string) *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks {
+	s.SecondaryCidrBlock = v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks) Validate() error {
 	return dara.Validate(s)
 }
 

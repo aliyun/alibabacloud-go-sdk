@@ -45,6 +45,8 @@ type iDescribeNetworkAttributeResponseBody interface {
 	GetRouteTableIds() *DescribeNetworkAttributeResponseBodyRouteTableIds
 	SetRouterTableId(v string) *DescribeNetworkAttributeResponseBody
 	GetRouterTableId() *string
+	SetSecondaryCidrBlocks(v *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) *DescribeNetworkAttributeResponseBody
+	GetSecondaryCidrBlocks() *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks
 	SetStatus(v string) *DescribeNetworkAttributeResponseBody
 	GetStatus() *string
 	SetVSwitchIds(v *DescribeNetworkAttributeResponseBodyVSwitchIds) *DescribeNetworkAttributeResponseBody
@@ -131,7 +133,8 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// rtb-5***
-	RouterTableId *string `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	RouterTableId       *string                                                  `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	SecondaryCidrBlocks *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 	// The status of the network. Valid values:
 	//
 	// 	- Pending
@@ -224,6 +227,10 @@ func (s *DescribeNetworkAttributeResponseBody) GetRouteTableIds() *DescribeNetwo
 
 func (s *DescribeNetworkAttributeResponseBody) GetRouterTableId() *string {
 	return s.RouterTableId
+}
+
+func (s *DescribeNetworkAttributeResponseBody) GetSecondaryCidrBlocks() *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks {
+	return s.SecondaryCidrBlocks
 }
 
 func (s *DescribeNetworkAttributeResponseBody) GetStatus() *string {
@@ -321,6 +328,11 @@ func (s *DescribeNetworkAttributeResponseBody) SetRouteTableIds(v *DescribeNetwo
 
 func (s *DescribeNetworkAttributeResponseBody) SetRouterTableId(v string) *DescribeNetworkAttributeResponseBody {
 	s.RouterTableId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetSecondaryCidrBlocks(v *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) *DescribeNetworkAttributeResponseBody {
+	s.SecondaryCidrBlocks = v
 	return s
 }
 
@@ -555,6 +567,31 @@ func (s *DescribeNetworkAttributeResponseBodyRouteTableIds) SetRouteTableId(v []
 }
 
 func (s *DescribeNetworkAttributeResponseBodyRouteTableIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeNetworkAttributeResponseBodySecondaryCidrBlocks struct {
+	SecondaryCidrBlock []*string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) GetSecondaryCidrBlock() []*string {
+	return s.SecondaryCidrBlock
+}
+
+func (s *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) SetSecondaryCidrBlock(v []*string) *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks {
+	s.SecondaryCidrBlock = v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBodySecondaryCidrBlocks) Validate() error {
 	return dara.Validate(s)
 }
 

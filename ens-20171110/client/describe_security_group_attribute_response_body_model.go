@@ -162,7 +162,9 @@ type DescribeSecurityGroupAttributeResponseBodyPermissionsPermission struct {
 	// example:
 	//
 	// TCP
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp   *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// The policy.
 	//
 	// example:
@@ -223,6 +225,14 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) GetIpP
 	return s.IpProtocol
 }
 
+func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) GetIpv6DestCidrIp() *string {
+	return s.Ipv6DestCidrIp
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) GetIpv6SourceCidrIp() *string {
+	return s.Ipv6SourceCidrIp
+}
+
 func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) GetPolicy() *string {
 	return s.Policy
 }
@@ -265,6 +275,16 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetDir
 
 func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetIpProtocol(v string) *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission {
 	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetIpv6DestCidrIp(v string) *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) SetIpv6SourceCidrIp(v string) *DescribeSecurityGroupAttributeResponseBodyPermissionsPermission {
+	s.Ipv6SourceCidrIp = &v
 	return s
 }
 

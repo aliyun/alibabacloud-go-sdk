@@ -113,7 +113,9 @@ type CreateSecurityGroupRequestPermissions struct {
 	// example:
 	//
 	// TCP
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp   *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
 	// The action of the security group rule. Valid values:
 	//
 	// 	- Accept
@@ -192,6 +194,14 @@ func (s *CreateSecurityGroupRequestPermissions) GetIpProtocol() *string {
 	return s.IpProtocol
 }
 
+func (s *CreateSecurityGroupRequestPermissions) GetIpv6DestCidrIp() *string {
+	return s.Ipv6DestCidrIp
+}
+
+func (s *CreateSecurityGroupRequestPermissions) GetIpv6SourceCidrIp() *string {
+	return s.Ipv6SourceCidrIp
+}
+
 func (s *CreateSecurityGroupRequestPermissions) GetPolicy() *string {
 	return s.Policy
 }
@@ -229,6 +239,16 @@ func (s *CreateSecurityGroupRequestPermissions) SetDirection(v string) *CreateSe
 
 func (s *CreateSecurityGroupRequestPermissions) SetIpProtocol(v string) *CreateSecurityGroupRequestPermissions {
 	s.IpProtocol = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetIpv6DestCidrIp(v string) *CreateSecurityGroupRequestPermissions {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *CreateSecurityGroupRequestPermissions) SetIpv6SourceCidrIp(v string) *CreateSecurityGroupRequestPermissions {
+	s.Ipv6SourceCidrIp = &v
 	return s
 }
 
