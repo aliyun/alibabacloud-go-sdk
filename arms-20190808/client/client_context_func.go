@@ -14146,6 +14146,10 @@ func (client *Client) UpdateRumAppWithContext(ctx context.Context, request *Upda
 		query["Stop"] = request.Stop
 	}
 
+	if !dara.IsNil(request.WebSDKConfigJson) {
+		query["WebSDKConfigJson"] = request.WebSDKConfigJson
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

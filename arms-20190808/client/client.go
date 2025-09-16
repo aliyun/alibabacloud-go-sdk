@@ -18862,6 +18862,10 @@ func (client *Client) UpdateRumAppWithOptions(request *UpdateRumAppRequest, runt
 		query["Stop"] = request.Stop
 	}
 
+	if !dara.IsNil(request.WebSDKConfigJson) {
+		query["WebSDKConfigJson"] = request.WebSDKConfigJson
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

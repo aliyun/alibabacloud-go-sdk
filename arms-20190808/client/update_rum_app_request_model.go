@@ -35,6 +35,8 @@ type iUpdateRumAppRequest interface {
 	GetServiceDomainOperationJson() *string
 	SetStop(v bool) *UpdateRumAppRequest
 	GetStop() *bool
+	SetWebSDKConfigJson(v string) *UpdateRumAppRequest
+	GetWebSDKConfigJson() *string
 }
 
 type UpdateRumAppRequest struct {
@@ -119,7 +121,8 @@ type UpdateRumAppRequest struct {
 	// example:
 	//
 	// true
-	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	Stop             *bool   `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	WebSDKConfigJson *string `json:"WebSDKConfigJson,omitempty" xml:"WebSDKConfigJson,omitempty"`
 }
 
 func (s UpdateRumAppRequest) String() string {
@@ -180,6 +183,10 @@ func (s *UpdateRumAppRequest) GetServiceDomainOperationJson() *string {
 
 func (s *UpdateRumAppRequest) GetStop() *bool {
 	return s.Stop
+}
+
+func (s *UpdateRumAppRequest) GetWebSDKConfigJson() *string {
+	return s.WebSDKConfigJson
 }
 
 func (s *UpdateRumAppRequest) SetAppConfig(v string) *UpdateRumAppRequest {
@@ -244,6 +251,11 @@ func (s *UpdateRumAppRequest) SetServiceDomainOperationJson(v string) *UpdateRum
 
 func (s *UpdateRumAppRequest) SetStop(v bool) *UpdateRumAppRequest {
 	s.Stop = &v
+	return s
+}
+
+func (s *UpdateRumAppRequest) SetWebSDKConfigJson(v string) *UpdateRumAppRequest {
+	s.WebSDKConfigJson = &v
 	return s
 }
 

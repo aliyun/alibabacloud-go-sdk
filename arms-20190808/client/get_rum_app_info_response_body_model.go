@@ -248,7 +248,8 @@ type GetRumAppInfoResponseBodyData struct {
 	// example:
 	//
 	// RUM
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WebSDKConfigJson *string `json:"WebSDKConfigJson,omitempty" xml:"WebSDKConfigJson,omitempty"`
 }
 
 func (s GetRumAppInfoResponseBodyData) String() string {
@@ -345,6 +346,10 @@ func (s *GetRumAppInfoResponseBodyData) GetTags() []*GetRumAppInfoResponseBodyDa
 
 func (s *GetRumAppInfoResponseBodyData) GetType() *string {
 	return s.Type
+}
+
+func (s *GetRumAppInfoResponseBodyData) GetWebSDKConfigJson() *string {
+	return s.WebSDKConfigJson
 }
 
 func (s *GetRumAppInfoResponseBodyData) SetAppConfig(v string) *GetRumAppInfoResponseBodyData {
@@ -454,6 +459,11 @@ func (s *GetRumAppInfoResponseBodyData) SetTags(v []*GetRumAppInfoResponseBodyDa
 
 func (s *GetRumAppInfoResponseBodyData) SetType(v string) *GetRumAppInfoResponseBodyData {
 	s.Type = &v
+	return s
+}
+
+func (s *GetRumAppInfoResponseBodyData) SetWebSDKConfigJson(v string) *GetRumAppInfoResponseBodyData {
+	s.WebSDKConfigJson = &v
 	return s
 }
 
