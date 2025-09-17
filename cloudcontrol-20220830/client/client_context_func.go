@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("cloudcontrol"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -70,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelTaskResponse
-func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
+func (client *Client) CancelTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -86,34 +38,11 @@ func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to cancel a specified asynchronous task.
-//
-// Description:
-//
-// Only tasks that are in the Pending or Running state can be canceled.
-//
-// You can call the CancelTask operation to cancel a Cloud Control API task, but the tasks that have been started in the downstream Alibaba Cloud services cannot be canceled.
-//
-// @return CancelTaskResponse
-func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CancelTaskResponse{}
-	_body, _err := client.CancelTaskWithOptions(taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -134,7 +63,7 @@ func (client *Client) CancelTask(taskId *string) (_result *CancelTaskResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourceResponse
-func (client *Client) CreateResourceWithOptions(requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
+func (client *Client) CreateResourceWithContext(ctx context.Context, requestPath *string, request *CreateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -165,36 +94,11 @@ func (client *Client) CreateResourceWithOptions(requestPath *string, request *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to create resources.
-//
-// Description:
-//
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - CreateResourceRequest
-//
-// @return CreateResourceResponse
-func (client *Client) CreateResource(requestPath *string, request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateResourceResponse{}
-	_body, _err := client.CreateResourceWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -215,7 +119,7 @@ func (client *Client) CreateResource(requestPath *string, request *CreateResourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceResponse
-func (client *Client) DeleteResourceWithOptions(requestPath *string, tmpReq *DeleteResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteResourceWithContext(ctx context.Context, requestPath *string, tmpReq *DeleteResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -255,36 +159,11 @@ func (client *Client) DeleteResourceWithOptions(requestPath *string, tmpReq *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to delete resources.
-//
-// Description:
-//
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - DeleteResourceRequest
-//
-// @return DeleteResourceResponse
-func (client *Client) DeleteResource(requestPath *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteResourceResponse{}
-	_body, _err := client.DeleteResourceWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -301,7 +180,7 @@ func (client *Client) DeleteResource(requestPath *string, request *DeleteResourc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPriceResponse
-func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPriceResponse, _err error) {
+func (client *Client) GetPriceWithContext(ctx context.Context, requestPath *string, tmpReq *GetPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPriceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -337,32 +216,11 @@ func (client *Client) GetPriceWithOptions(requestPath *string, tmpReq *GetPriceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// An RFQ interface through which users can query resource prices.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - GetPriceRequest
-//
-// @return GetPriceResponse
-func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_result *GetPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetPriceResponse{}
-	_body, _err := client.GetPriceWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -377,7 +235,7 @@ func (client *Client) GetPrice(requestPath *string, request *GetPriceRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceTypeResponse
-func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *GetResourceTypeHeaders, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
+func (client *Client) GetResourceTypeWithContext(ctx context.Context, requestPath *string, headers *GetResourceTypeHeaders, runtime *dara.RuntimeOptions) (_result *GetResourceTypeResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -402,30 +260,11 @@ func (client *Client) GetResourceTypeWithOptions(requestPath *string, headers *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call the operation to obtain resource metadata.
-//
-// @param requestPath - the whole path of resource string
-//
-// @return GetResourceTypeResponse
-func (client *Client) GetResourceType(requestPath *string) (_result *GetResourceTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &GetResourceTypeHeaders{}
-	_result = &GetResourceTypeResponse{}
-	_body, _err := client.GetResourceTypeWithOptions(requestPath, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -448,7 +287,7 @@ func (client *Client) GetResourceType(requestPath *string) (_result *GetResource
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourcesResponse
-func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
+func (client *Client) GetResourcesWithContext(ctx context.Context, requestPath *string, tmpReq *GetResourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourcesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -492,38 +331,11 @@ func (client *Client) GetResourcesWithOptions(requestPath *string, tmpReq *GetRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call the operation to query resources.
-//
-// Description:
-//
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
-//
-// You can call this operation to query resources List and Get based on different request paths.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - GetResourcesRequest
-//
-// @return GetResourcesResponse
-func (client *Client) GetResources(requestPath *string, request *GetResourcesRequest) (_result *GetResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetResourcesResponse{}
-	_body, _err := client.GetResourcesWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -540,7 +352,7 @@ func (client *Client) GetResources(requestPath *string, request *GetResourcesReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResponse
-func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -556,32 +368,11 @@ func (client *Client) GetTaskWithOptions(taskId *string, headers map[string]*str
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to query a specified asynchronous task.
-//
-// Description:
-//
-// GET /api/v1/tasks/{taskId}.
-//
-// @return GetTaskResponse
-func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskResponse{}
-	_body, _err := client.GetTaskWithOptions(taskId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -598,7 +389,7 @@ func (client *Client) GetTask(taskId *string) (_result *GetTaskResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDataSourcesResponse
-func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
+func (client *Client) ListDataSourcesWithContext(ctx context.Context, requestPath *string, tmpReq *ListDataSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataSourcesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -634,32 +425,11 @@ func (client *Client) ListDataSourcesWithOptions(requestPath *string, tmpReq *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - ListDataSourcesRequest
-//
-// @return ListDataSourcesResponse
-func (client *Client) ListDataSources(requestPath *string, request *ListDataSourcesRequest) (_result *ListDataSourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDataSourcesResponse{}
-	_body, _err := client.ListDataSourcesWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -678,7 +448,7 @@ func (client *Client) ListDataSources(requestPath *string, request *ListDataSour
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsResponse
-func (client *Client) ListProductsWithOptions(provider *string, request *ListProductsRequest, headers *ListProductsHeaders, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListProductsWithContext(ctx context.Context, provider *string, request *ListProductsRequest, headers *ListProductsHeaders, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -717,34 +487,11 @@ func (client *Client) ListProductsWithOptions(provider *string, request *ListPro
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to list the supported services.
-//
-// Description:
-//
-// GET /api/v1/providers/{provider}/products.
-//
-// @param request - ListProductsRequest
-//
-// @return ListProductsResponse
-func (client *Client) ListProducts(provider *string, request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ListProductsHeaders{}
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(provider, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -763,7 +510,7 @@ func (client *Client) ListProducts(provider *string, request *ListProductsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListResourceTypesResponse
-func (client *Client) ListResourceTypesWithOptions(provider *string, product *string, tmpReq *ListResourceTypesRequest, headers *ListResourceTypesHeaders, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
+func (client *Client) ListResourceTypesWithContext(ctx context.Context, provider *string, product *string, tmpReq *ListResourceTypesRequest, headers *ListResourceTypesHeaders, runtime *dara.RuntimeOptions) (_result *ListResourceTypesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -812,34 +559,11 @@ func (client *Client) ListResourceTypesWithOptions(provider *string, product *st
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListResourceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to list the resource types of a service.
-//
-// Description:
-//
-// GET /api/v1/providers/{provider}/products/{product}/resourceTypes.
-//
-// @param request - ListResourceTypesRequest
-//
-// @return ListResourceTypesResponse
-func (client *Client) ListResourceTypes(provider *string, product *string, request *ListResourceTypesRequest) (_result *ListResourceTypesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ListResourceTypesHeaders{}
-	_result = &ListResourceTypesResponse{}
-	_body, _err := client.ListResourceTypesWithOptions(provider, product, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -864,7 +588,7 @@ func (client *Client) ListResourceTypes(provider *string, product *string, reque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateResourceResponse
-func (client *Client) UpdateResourceWithOptions(requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
+func (client *Client) UpdateResourceWithContext(ctx context.Context, requestPath *string, request *UpdateResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -895,39 +619,10 @@ func (client *Client) UpdateResourceWithOptions(requestPath *string, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Calls this operation to update resources.
-//
-// Description:
-//
-// You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
-//
-// If resources fail to be updated at any time, the Cloud Control API does not roll the resource back to the original status.
-//
-// The resource APIs cannot be rolled back. If the API operation is partially failed to be called, you can call the GetResource operation to view the latest status of the resource. If necessary, you can call the UpdateResource or DeleteResource operation to manually compensate for the failure.
-//
-// @param requestPath - the whole path of resource string
-//
-// @param request - UpdateResourceRequest
-//
-// @return UpdateResourceResponse
-func (client *Client) UpdateResource(requestPath *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateResourceResponse{}
-	_body, _err := client.UpdateResourceWithOptions(requestPath, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
