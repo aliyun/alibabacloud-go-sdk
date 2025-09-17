@@ -22,11 +22,17 @@ type iSplitTrafficControlTargetRequest interface {
 }
 
 type SplitTrafficControlTargetRequest struct {
-	Environment *string  `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SetPoints   []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
-	SetValues   []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
-	TimePoints  []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Prod
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// learn-pairec-xxx
+	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetPoints  []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
+	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
 func (s SplitTrafficControlTargetRequest) String() string {

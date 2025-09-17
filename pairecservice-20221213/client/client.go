@@ -5379,6 +5379,70 @@ func (client *Client) GetScene(SceneId *string, request *GetSceneRequest) (_resu
 
 // Summary:
 //
+// 获取服务详细信息。
+//
+// @param request - GetServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceResponse
+func (client *Client) GetServiceWithOptions(ServiceId *string, request *GetServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetService"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/services/" + dara.PercentEncode(dara.StringValue(ServiceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取服务详细信息。
+//
+// @param request - GetServiceRequest
+//
+// @return GetServiceResponse
+func (client *Client) GetService(ServiceId *string, request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetServiceResponse{}
+	_body, _err := client.GetServiceWithOptions(ServiceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取指定人群下的指定子人群的详细信息。
 //
 // @param request - GetSubCrowdRequest

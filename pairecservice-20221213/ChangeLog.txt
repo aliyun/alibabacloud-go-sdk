@@ -1,3 +1,7 @@
+2025-09-17 Version: v3.3.0
+- Support API GetService.
+
+
 2025-08-29 Version: v3.2.2
 - Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.EffectiveSceneNameList.
 - Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.ServiceIdList.
