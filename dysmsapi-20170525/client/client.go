@@ -4503,6 +4503,102 @@ func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCar
 
 // Summary:
 //
+// 发送物流短信
+//
+// @param request - SendLogisticsSmsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendLogisticsSmsResponse
+func (client *Client) SendLogisticsSmsWithOptions(request *SendLogisticsSmsRequest, runtime *dara.RuntimeOptions) (_result *SendLogisticsSmsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpressCompanyCode) {
+		query["ExpressCompanyCode"] = request.ExpressCompanyCode
+	}
+
+	if !dara.IsNil(request.MailNo) {
+		query["MailNo"] = request.MailNo
+	}
+
+	if !dara.IsNil(request.OutId) {
+		query["OutId"] = request.OutId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlatformCompanyCode) {
+		query["PlatformCompanyCode"] = request.PlatformCompanyCode
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SignName) {
+		query["SignName"] = request.SignName
+	}
+
+	if !dara.IsNil(request.TemplateCode) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !dara.IsNil(request.TemplateParam) {
+		query["TemplateParam"] = request.TemplateParam
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendLogisticsSms"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendLogisticsSmsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送物流短信
+//
+// @param request - SendLogisticsSmsRequest
+//
+// @return SendLogisticsSmsResponse
+func (client *Client) SendLogisticsSms(request *SendLogisticsSmsRequest) (_result *SendLogisticsSmsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendLogisticsSmsResponse{}
+	_body, _err := client.SendLogisticsSmsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
 //
 // Description:
@@ -5670,6 +5766,86 @@ func (client *Client) ValidPhoneCode(request *ValidPhoneCodeRequest) (_result *V
 	runtime := &dara.RuntimeOptions{}
 	_result = &ValidPhoneCodeResponse{}
 	_body, _err := client.ValidPhoneCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 物流短信运单号校验
+//
+// @param request - VerifyLogisticsSmsMailNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyLogisticsSmsMailNoResponse
+func (client *Client) VerifyLogisticsSmsMailNoWithOptions(request *VerifyLogisticsSmsMailNoRequest, runtime *dara.RuntimeOptions) (_result *VerifyLogisticsSmsMailNoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExpressCompanyCode) {
+		query["ExpressCompanyCode"] = request.ExpressCompanyCode
+	}
+
+	if !dara.IsNil(request.MailNo) {
+		query["MailNo"] = request.MailNo
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlatformCompanyCode) {
+		query["PlatformCompanyCode"] = request.PlatformCompanyCode
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyLogisticsSmsMailNo"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyLogisticsSmsMailNoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 物流短信运单号校验
+//
+// @param request - VerifyLogisticsSmsMailNoRequest
+//
+// @return VerifyLogisticsSmsMailNoResponse
+func (client *Client) VerifyLogisticsSmsMailNo(request *VerifyLogisticsSmsMailNoRequest) (_result *VerifyLogisticsSmsMailNoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VerifyLogisticsSmsMailNoResponse{}
+	_body, _err := client.VerifyLogisticsSmsMailNoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
