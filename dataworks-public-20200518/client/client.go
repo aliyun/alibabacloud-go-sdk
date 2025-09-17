@@ -16742,7 +16742,7 @@ func (client *Client) ListNodesByOutput(request *ListNodesByOutputRequest) (_res
 
 // Summary:
 //
-// Queries a list of permission request orders.
+// Views permission requests.
 //
 // @param request - ListPermissionApplyOrdersRequest
 //
@@ -16832,7 +16832,7 @@ func (client *Client) ListPermissionApplyOrdersWithOptions(request *ListPermissi
 
 // Summary:
 //
-// Queries a list of permission request orders.
+// Views permission requests.
 //
 // @param request - ListPermissionApplyOrdersRequest
 //

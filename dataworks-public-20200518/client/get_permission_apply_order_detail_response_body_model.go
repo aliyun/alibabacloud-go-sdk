@@ -72,7 +72,9 @@ type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail struct {
 	// The list of Alibaba Cloud accounts that are used to process the permission request order.
 	ApproveAccountList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList `json:"ApproveAccountList,omitempty" xml:"ApproveAccountList,omitempty" type:"Repeated"`
 	// The content of the permission request.
-	ApproveContent *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	ApproveContent           *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	FinishAapprovalTimestamp *int64                                                                   `json:"FinishAapprovalTimestamp,omitempty" xml:"FinishAapprovalTimestamp,omitempty"`
+	FinishApprovalComment    *string                                                                  `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
 	// The ID of the permission request order.
 	//
 	// example:
@@ -121,6 +123,14 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) GetApproveCo
 	return s.ApproveContent
 }
 
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) GetFinishAapprovalTimestamp() *int64 {
+	return s.FinishAapprovalTimestamp
+}
+
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) GetFinishApprovalComment() *string {
+	return s.FinishApprovalComment
+}
+
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) GetFlowId() *string {
 	return s.FlowId
 }
@@ -150,6 +160,16 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) SetApproveAc
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) SetApproveContent(v *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail {
 	s.ApproveContent = v
+	return s
+}
+
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) SetFinishAapprovalTimestamp(v int64) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail {
+	s.FinishAapprovalTimestamp = &v
+	return s
+}
+
+func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) SetFinishApprovalComment(v string) *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail {
+	s.FinishApprovalComment = &v
 	return s
 }
 

@@ -141,7 +141,9 @@ type ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder struct {
 	// 1615284086000
 	ApplyTimestamp *int64 `json:"ApplyTimestamp,omitempty" xml:"ApplyTimestamp,omitempty"`
 	// The content of the permission request order.
-	ApproveContent *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	ApproveContent          *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	FinishApprovalComment   *string                                                                   `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
+	FinishApprovalTimestamp *int64                                                                    `json:"FinishApprovalTimestamp,omitempty" xml:"FinishApprovalTimestamp,omitempty"`
 	// The ID of the permission request order.
 	//
 	// example:
@@ -184,6 +186,14 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) GetApproveC
 	return s.ApproveContent
 }
 
+func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) GetFinishApprovalComment() *string {
+	return s.FinishApprovalComment
+}
+
+func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) GetFinishApprovalTimestamp() *int64 {
+	return s.FinishApprovalTimestamp
+}
+
 func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) GetFlowId() *string {
 	return s.FlowId
 }
@@ -204,6 +214,16 @@ func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) SetApplyTim
 
 func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) SetApproveContent(v *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent) *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder {
 	s.ApproveContent = v
+	return s
+}
+
+func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) SetFinishApprovalComment(v string) *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder {
+	s.FinishApprovalComment = &v
+	return s
+}
+
+func (s *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder) SetFinishApprovalTimestamp(v int64) *ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder {
+	s.FinishApprovalTimestamp = &v
 	return s
 }
 

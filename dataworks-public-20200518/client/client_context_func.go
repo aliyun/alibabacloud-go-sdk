@@ -12241,7 +12241,7 @@ func (client *Client) ListNodesByOutputWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of permission request orders.
+// Views permission requests.
 //
 // @param request - ListPermissionApplyOrdersRequest
 //

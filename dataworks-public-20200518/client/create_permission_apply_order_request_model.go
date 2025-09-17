@@ -32,7 +32,7 @@ type iCreatePermissionApplyOrderRequest interface {
 }
 
 type CreatePermissionApplyOrderRequest struct {
-	// The objects on which you want to request permissions.
+	// The list of requested objects.
 	//
 	// This parameter is required.
 	ApplyObject []*CreatePermissionApplyOrderRequestApplyObject `json:"ApplyObject,omitempty" xml:"ApplyObject,omitempty" type:"Repeated"`
@@ -44,7 +44,10 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// I need to use this table
 	ApplyReason *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
-	ApplyType   *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// example:
+	//
+	// MaxComputeTable
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	// The ID of the Alibaba Cloud account for which you want to request permissions. If you want to request permissions for multiple Alibaba Cloud accounts, separate the IDs of the accounts with commas (,).
 	//
 	// This parameter is required.
@@ -53,7 +56,10 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// 267842600408993176,267842600408993177
 	ApplyUserIds *string `json:"ApplyUserIds,omitempty" xml:"ApplyUserIds,omitempty"`
-	CatalogName  *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The expiration time of the permissions that you request. This value is a UNIX timestamp. The default value is January 1, 2065. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions. You can go to the Workspace Management page in the DataWorks console, click MaxCompute Management in the left-side navigation pane, and then check whether column-level access control is enabled. You can go to your DataWorks workspace, view the security level of the fields in Data Map, and then view the security level of the Alibaba Cloud account on the User Management page.
 	//
 	// example:
@@ -62,7 +68,7 @@ type CreatePermissionApplyOrderRequest struct {
 	Deadline *int64 `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	// Deprecated
 	//
-	// The type of the compute engine in which you want to request permissions on the fields of a table. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
+	// The type of compute engine for permission requests. Currently only supports ODPS, which means only MaxCompute compute engine permissions are supported.
 	//
 	// if can be null:
 	// true
@@ -71,7 +77,7 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// odps
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The name of the MaxCompute project in which you request permissions on the fields of a table.
+	// The name of the MaxCompute project you request access to.
 	//
 	// example:
 	//
@@ -79,7 +85,7 @@ type CreatePermissionApplyOrderRequest struct {
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
 	// Deprecated
 	//
-	// The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
+	// The request type. The only supported value is 1, which represents an object ACL permission request.
 	//
 	// if can be null:
 	// true
@@ -88,7 +94,7 @@ type CreatePermissionApplyOrderRequest struct {
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The ID of the DataWorks workspace that is associated with the MaxCompute project in which you want to request permissions on the fields of a table. You can go to the SettingCenter page in the DataWorks console to view the workspace ID.
+	// The DataWorks workspace ID to which the MaxCompute project belongs for permission requests. You can check the workspace ID on the DataWorks workspace configuration page.
 	//
 	// example:
 	//
@@ -199,15 +205,15 @@ func (s *CreatePermissionApplyOrderRequest) Validate() error {
 }
 
 type CreatePermissionApplyOrderRequestApplyObject struct {
-	// The permission that you want to request. If you want to request multiple permissions at the same time, separate them with commas (,). You can request only the following permissions: Select, Describe, Drop, Alter, Update, and Download.
+	// The type of permissions requested. Use commas (,) to separate multiple permission types in a single request. Currently only supports Select, Describe, Drop, Alter, Update, and Download permission types.
 	//
 	// example:
 	//
 	// Select,Describe
 	Actions *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	// The fields on which you want to request permissions.
+	// The list of column objects.
 	ColumnMetaList []*CreatePermissionApplyOrderRequestApplyObjectColumnMetaList `json:"ColumnMetaList,omitempty" xml:"ColumnMetaList,omitempty" type:"Repeated"`
-	// The name of the object on which you want to request permissions. You can request permissions only on MaxCompute tables. Set this parameter to the name of the table on which you want to request permissions.
+	// The object you request access to. Currently, only permission requests for MaxCompute tables are supported. The name of the target table needs to be entered here.
 	//
 	// example:
 	//
@@ -255,8 +261,11 @@ func (s *CreatePermissionApplyOrderRequestApplyObject) Validate() error {
 }
 
 type CreatePermissionApplyOrderRequestApplyObjectColumnMetaList struct {
+	// example:
+	//
+	// Select
 	Actions *string `json:"Actions,omitempty" xml:"Actions,omitempty"`
-	// The field on which you want to request permissions. If you want to request permissions on an entire table, enter all fields in the table. You can request permissions on specific fields of a table in a MaxCompute project only after LabelSecurity is enabled for this project. If LabelSecurity is disabled, you can request permissions only on an entire table.
+	// Permissions for the target columns. Enter the column names here. If applying for permissions on the entire table, enter all column names of the table. Permissions for specific columns can only be requested if labelSecurity is enabled for the MaxCompute project. Otherwise, you can only apply for permissions on the entire table.
 	//
 	// example:
 	//

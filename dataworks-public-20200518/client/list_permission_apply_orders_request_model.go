@@ -38,7 +38,31 @@ type iListPermissionApplyOrdersRequest interface {
 }
 
 type ListPermissionApplyOrdersRequest struct {
-	ApplyType   *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// 设置申请单类型，枚举值为：
+	//
+	// - [ MaxComputeTable]  MaxCompute表权限申请单
+	//
+	// - [ MaxComputeFunction] MaxCompute函数申请单
+	//
+	// - [ MaxComputeResource] MaxCompute资源申请单
+	//
+	// - [ DLFSchema] DLF1.0版本Schema权限申请单
+	//
+	// - [ DLFTable] DLF1.0版本表权限申请单
+	//
+	// - [ DLFColumn] DLF1.0版本列权限申请单
+	//
+	// - [ DsApiDeploy] 发布数据服务权限申请单
+	//
+	// example:
+	//
+	// MaxComputeTable
+	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
+	// 查询的数据目录名称。
+	//
+	// example:
+	//
+	// hive
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
 	// The end of the time range to query. You can query all the permissions request orders that have been submitted before the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders that are submitted before the current time are queried.
 	//
@@ -46,8 +70,6 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// 1617200471885
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Deprecated
-	//
 	// The type of the compute engine with which the permission request order is associated. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
 	//
 	// example:
@@ -74,8 +96,6 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// aMaxComputeProject
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
-	// Deprecated
-	//
 	// The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
 	//
 	// example:
