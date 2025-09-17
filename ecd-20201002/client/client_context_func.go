@@ -664,6 +664,14 @@ func (client *Client) DescribeUserResourcesWithContext(ctx context.Context, requ
 		query["ProtocolType"] = request.ProtocolType
 	}
 
+	if !dara.IsNil(request.QueryDesktopDurationList) {
+		query["QueryDesktopDurationList"] = request.QueryDesktopDurationList
+	}
+
+	if !dara.IsNil(request.QueryDesktopTimers) {
+		query["QueryDesktopTimers"] = request.QueryDesktopTimers
+	}
+
 	if !dara.IsNil(request.QueryFotaUpdate) {
 		query["QueryFotaUpdate"] = request.QueryFotaUpdate
 	}

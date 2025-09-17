@@ -9,6 +9,8 @@ type iDescribeUserResourcesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetMaxResults(v int32) *DescribeUserResourcesResponseBody
+	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeUserResourcesResponseBody
 	GetNextToken() *string
 	SetQueryFailedResourceTypes(v []*string) *DescribeUserResourcesResponseBody
@@ -19,9 +21,15 @@ type iDescribeUserResourcesResponseBody interface {
 	GetRequestId() *string
 	SetResources(v []*DescribeUserResourcesResponseBodyResources) *DescribeUserResourcesResponseBody
 	GetResources() []*DescribeUserResourcesResponseBodyResources
+	SetTotalCount(v int32) *DescribeUserResourcesResponseBody
+	GetTotalCount() *int32
 }
 
 type DescribeUserResourcesResponseBody struct {
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
@@ -36,6 +44,10 @@ type DescribeUserResourcesResponseBody struct {
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources []*DescribeUserResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeUserResourcesResponseBody) String() string {
@@ -44,6 +56,10 @@ func (s DescribeUserResourcesResponseBody) String() string {
 
 func (s DescribeUserResourcesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
 }
 
 func (s *DescribeUserResourcesResponseBody) GetNextToken() *string {
@@ -64,6 +80,15 @@ func (s *DescribeUserResourcesResponseBody) GetRequestId() *string {
 
 func (s *DescribeUserResourcesResponseBody) GetResources() []*DescribeUserResourcesResponseBodyResources {
 	return s.Resources
+}
+
+func (s *DescribeUserResourcesResponseBody) GetTotalCount() *int32 {
+	return s.TotalCount
+}
+
+func (s *DescribeUserResourcesResponseBody) SetMaxResults(v int32) *DescribeUserResourcesResponseBody {
+	s.MaxResults = &v
+	return s
 }
 
 func (s *DescribeUserResourcesResponseBody) SetNextToken(v string) *DescribeUserResourcesResponseBody {
@@ -88,6 +113,11 @@ func (s *DescribeUserResourcesResponseBody) SetRequestId(v string) *DescribeUser
 
 func (s *DescribeUserResourcesResponseBody) SetResources(v []*DescribeUserResourcesResponseBodyResources) *DescribeUserResourcesResponseBody {
 	s.Resources = v
+	return s
+}
+
+func (s *DescribeUserResourcesResponseBody) SetTotalCount(v int32) *DescribeUserResourcesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 

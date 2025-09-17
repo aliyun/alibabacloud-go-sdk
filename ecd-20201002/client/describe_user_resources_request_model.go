@@ -43,6 +43,10 @@ type iDescribeUserResourcesRequest interface {
 	GetProductTypes() []*string
 	SetProtocolType(v string) *DescribeUserResourcesRequest
 	GetProtocolType() *string
+	SetQueryDesktopDurationList(v bool) *DescribeUserResourcesRequest
+	GetQueryDesktopDurationList() *bool
+	SetQueryDesktopTimers(v bool) *DescribeUserResourcesRequest
+	GetQueryDesktopTimers() *bool
 	SetQueryFotaUpdate(v bool) *DescribeUserResourcesRequest
 	GetQueryFotaUpdate() *bool
 	SetRefreshFotaUpdate(v bool) *DescribeUserResourcesRequest
@@ -94,6 +98,8 @@ type DescribeUserResourcesRequest struct {
 	//
 	// 7.6.0-R-20241112.222305
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// false
@@ -130,6 +136,12 @@ type DescribeUserResourcesRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// if can be null:
+	// true
+	QueryDesktopDurationList *bool `json:"QueryDesktopDurationList,omitempty" xml:"QueryDesktopDurationList,omitempty"`
+	// if can be null:
+	// true
+	QueryDesktopTimers *bool `json:"QueryDesktopTimers,omitempty" xml:"QueryDesktopTimers,omitempty"`
 	// example:
 	//
 	// false
@@ -236,6 +248,14 @@ func (s *DescribeUserResourcesRequest) GetProductTypes() []*string {
 
 func (s *DescribeUserResourcesRequest) GetProtocolType() *string {
 	return s.ProtocolType
+}
+
+func (s *DescribeUserResourcesRequest) GetQueryDesktopDurationList() *bool {
+	return s.QueryDesktopDurationList
+}
+
+func (s *DescribeUserResourcesRequest) GetQueryDesktopTimers() *bool {
+	return s.QueryDesktopTimers
 }
 
 func (s *DescribeUserResourcesRequest) GetQueryFotaUpdate() *bool {
@@ -356,6 +376,16 @@ func (s *DescribeUserResourcesRequest) SetProductTypes(v []*string) *DescribeUse
 
 func (s *DescribeUserResourcesRequest) SetProtocolType(v string) *DescribeUserResourcesRequest {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetQueryDesktopDurationList(v bool) *DescribeUserResourcesRequest {
+	s.QueryDesktopDurationList = &v
+	return s
+}
+
+func (s *DescribeUserResourcesRequest) SetQueryDesktopTimers(v bool) *DescribeUserResourcesRequest {
+	s.QueryDesktopTimers = &v
 	return s
 }
 
