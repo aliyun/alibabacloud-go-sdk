@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("appstream-center"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
+func (client *Client) GetConnectionTicketWithContext(ctx context.Context, request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -185,29 +137,11 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取连接信息
-//
-// @param request - GetConnectionTicketRequest
-//
-// @return GetConnectionTicketResponse
-func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetConnectionTicketResponse{}
-	_body, _err := client.GetConnectionTicketWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -220,7 +154,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPublishedAppInfoResponse
-func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppInfoRequest, runtime *dara.RuntimeOptions) (_result *ListPublishedAppInfoResponse, _err error) {
+func (client *Client) ListPublishedAppInfoWithContext(ctx context.Context, request *ListPublishedAppInfoRequest, runtime *dara.RuntimeOptions) (_result *ListPublishedAppInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -301,29 +235,11 @@ func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppI
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPublishedAppInfoResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 已上架应用列表
-//
-// @param request - ListPublishedAppInfoRequest
-//
-// @return ListPublishedAppInfoResponse
-func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest) (_result *ListPublishedAppInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPublishedAppInfoResponse{}
-	_body, _err := client.ListPublishedAppInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -336,7 +252,7 @@ func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListRunningAppsResponse
-func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRunningAppsResponse, _err error) {
+func (client *Client) ListRunningAppsWithContext(ctx context.Context, request *ListRunningAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRunningAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -405,29 +321,11 @@ func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRunningAppsResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 运行中应用列表
-//
-// @param request - ListRunningAppsRequest
-//
-// @return ListRunningAppsResponse
-func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result *ListRunningAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListRunningAppsResponse{}
-	_body, _err := client.ListRunningAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -440,7 +338,7 @@ func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResetAppResourcesResponse
-func (client *Client) ResetAppResourcesWithOptions(request *ResetAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ResetAppResourcesResponse, _err error) {
+func (client *Client) ResetAppResourcesWithContext(ctx context.Context, request *ResetAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ResetAppResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -513,29 +411,11 @@ func (client *Client) ResetAppResourcesWithOptions(request *ResetAppResourcesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ResetAppResourcesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重置应用资源
-//
-// @param request - ResetAppResourcesRequest
-//
-// @return ResetAppResourcesResponse
-func (client *Client) ResetAppResources(request *ResetAppResourcesRequest) (_result *ResetAppResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ResetAppResourcesResponse{}
-	_body, _err := client.ResetAppResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -548,7 +428,7 @@ func (client *Client) ResetAppResources(request *ResetAppResourcesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartAppResourcesResponse
-func (client *Client) RestartAppResourcesWithOptions(request *RestartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *RestartAppResourcesResponse, _err error) {
+func (client *Client) RestartAppResourcesWithContext(ctx context.Context, request *RestartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *RestartAppResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -621,29 +501,11 @@ func (client *Client) RestartAppResourcesWithOptions(request *RestartAppResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartAppResourcesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重启应用资源
-//
-// @param request - RestartAppResourcesRequest
-//
-// @return RestartAppResourcesResponse
-func (client *Client) RestartAppResources(request *RestartAppResourcesRequest) (_result *RestartAppResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RestartAppResourcesResponse{}
-	_body, _err := client.RestartAppResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -656,7 +518,7 @@ func (client *Client) RestartAppResources(request *RestartAppResourcesRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartAppResourcesResponse
-func (client *Client) StartAppResourcesWithOptions(request *StartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StartAppResourcesResponse, _err error) {
+func (client *Client) StartAppResourcesWithContext(ctx context.Context, request *StartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StartAppResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -729,29 +591,11 @@ func (client *Client) StartAppResourcesWithOptions(request *StartAppResourcesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartAppResourcesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 启动应用资源
-//
-// @param request - StartAppResourcesRequest
-//
-// @return StartAppResourcesResponse
-func (client *Client) StartAppResources(request *StartAppResourcesRequest) (_result *StartAppResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StartAppResourcesResponse{}
-	_body, _err := client.StartAppResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -764,7 +608,7 @@ func (client *Client) StartAppResources(request *StartAppResourcesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopAppResponse
-func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *dara.RuntimeOptions) (_result *StopAppResponse, _err error) {
+func (client *Client) StopAppWithContext(ctx context.Context, request *StopAppRequest, runtime *dara.RuntimeOptions) (_result *StopAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -869,29 +713,11 @@ func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *dara.
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAppResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 停止应用
-//
-// @param request - StopAppRequest
-//
-// @return StopAppResponse
-func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopAppResponse{}
-	_body, _err := client.StopAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -904,7 +730,7 @@ func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopAppResourcesResponse
-func (client *Client) StopAppResourcesWithOptions(request *StopAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StopAppResourcesResponse, _err error) {
+func (client *Client) StopAppResourcesWithContext(ctx context.Context, request *StopAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StopAppResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -977,29 +803,11 @@ func (client *Client) StopAppResourcesWithOptions(request *StopAppResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopAppResourcesResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 关闭应用资源
-//
-// @param request - StopAppResourcesRequest
-//
-// @return StopAppResourcesResponse
-func (client *Client) StopAppResources(request *StopAppResourcesRequest) (_result *StopAppResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &StopAppResourcesResponse{}
-	_body, _err := client.StopAppResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1012,7 +820,7 @@ func (client *Client) StopAppResources(request *StopAppResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnbindResponse
-func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
+func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1085,28 +893,10 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.Ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnbindResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 解绑实例
-//
-// @param request - UnbindRequest
-//
-// @return UnbindResponse
-func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnbindResponse{}
-	_body, _err := client.UnbindWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
