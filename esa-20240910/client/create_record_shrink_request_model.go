@@ -122,6 +122,8 @@ type CreateRecordShrinkRequest struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 30
