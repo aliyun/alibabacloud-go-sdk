@@ -15,6 +15,8 @@ type iOpenStructSaseUser interface {
 	GetCustomFields() []*IdpCustomField
 	SetDepartments(v []*OpenStructSaseDepartment) *OpenStructSaseUser
 	GetDepartments() []*OpenStructSaseDepartment
+	SetDescription(v string) *OpenStructSaseUser
+	GetDescription() *string
 	SetEmail(v string) *OpenStructSaseUser
 	GetEmail() *string
 	SetIdpConfigId(v string) *OpenStructSaseUser
@@ -45,6 +47,7 @@ type OpenStructSaseUser struct {
 	CreateTimeUnix *int64                      `json:"CreateTimeUnix,omitempty" xml:"CreateTimeUnix,omitempty"`
 	CustomFields   []*IdpCustomField           `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	Departments    []*OpenStructSaseDepartment `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
+	Description    *string                     `json:"Description,omitempty" xml:"Description,omitempty"`
 	Email          *string                     `json:"Email,omitempty" xml:"Email,omitempty"`
 	IdpConfigId    *string                     `json:"IdpConfigId,omitempty" xml:"IdpConfigId,omitempty"`
 	LeaveTimeUnix  *int64                      `json:"LeaveTimeUnix,omitempty" xml:"LeaveTimeUnix,omitempty"`
@@ -77,6 +80,10 @@ func (s *OpenStructSaseUser) GetCustomFields() []*IdpCustomField {
 
 func (s *OpenStructSaseUser) GetDepartments() []*OpenStructSaseDepartment {
 	return s.Departments
+}
+
+func (s *OpenStructSaseUser) GetDescription() *string {
+	return s.Description
 }
 
 func (s *OpenStructSaseUser) GetEmail() *string {
@@ -139,6 +146,11 @@ func (s *OpenStructSaseUser) SetCustomFields(v []*IdpCustomField) *OpenStructSas
 
 func (s *OpenStructSaseUser) SetDepartments(v []*OpenStructSaseDepartment) *OpenStructSaseUser {
 	s.Departments = v
+	return s
+}
+
+func (s *OpenStructSaseUser) SetDescription(v string) *OpenStructSaseUser {
+	s.Description = &v
 	return s
 }
 
