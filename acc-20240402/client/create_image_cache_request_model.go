@@ -213,7 +213,7 @@ type CreateImageCacheRequestImageRegistryCredentials struct {
 	// example:
 	//
 	// myusername
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateImageCacheRequestImageRegistryCredentials) String() string {
@@ -240,8 +240,8 @@ func (s *CreateImageCacheRequestImageRegistryCredentials) GetUsePlainHttp() *boo
 	return s.UsePlainHttp
 }
 
-func (s *CreateImageCacheRequestImageRegistryCredentials) GetUserName() *string {
-	return s.UserName
+func (s *CreateImageCacheRequestImageRegistryCredentials) GetUsername() *string {
+	return s.Username
 }
 
 func (s *CreateImageCacheRequestImageRegistryCredentials) SetPassword(v string) *CreateImageCacheRequestImageRegistryCredentials {
@@ -264,8 +264,8 @@ func (s *CreateImageCacheRequestImageRegistryCredentials) SetUsePlainHttp(v bool
 	return s
 }
 
-func (s *CreateImageCacheRequestImageRegistryCredentials) SetUserName(v string) *CreateImageCacheRequestImageRegistryCredentials {
-	s.UserName = &v
+func (s *CreateImageCacheRequestImageRegistryCredentials) SetUsername(v string) *CreateImageCacheRequestImageRegistryCredentials {
+	s.Username = &v
 	return s
 }
 
