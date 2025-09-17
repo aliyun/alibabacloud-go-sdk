@@ -162,6 +162,10 @@ type GetInstanceVpcEndpointResponseBodyLinkedVpcs struct {
 	//
 	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// PRIVATE_ZONE_CONFLICT_AT_{private_zone_id}
+	Issue *string `json:"Issue,omitempty" xml:"Issue,omitempty"`
 	// The status of the VPC. Valid values:
 	//
 	// 	- `CREATING`
@@ -202,6 +206,10 @@ func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) GetIp() *string {
 	return s.Ip
 }
 
+func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) GetIssue() *string {
+	return s.Issue
+}
+
 func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) GetStatus() *string {
 	return s.Status
 }
@@ -221,6 +229,11 @@ func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetDefaultAccess(v bool) 
 
 func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetIp(v string) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
 	s.Ip = &v
+	return s
+}
+
+func (s *GetInstanceVpcEndpointResponseBodyLinkedVpcs) SetIssue(v string) *GetInstanceVpcEndpointResponseBodyLinkedVpcs {
+	s.Issue = &v
 	return s
 }
 
