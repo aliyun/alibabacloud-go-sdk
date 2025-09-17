@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("appstream-center"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FindIdpListByLoginIdentifierResponse
-func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpListByLoginIdentifierRequest, runtime *dara.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
+func (client *Client) FindIdpListByLoginIdentifierWithContext(ctx context.Context, tmpReq *FindIdpListByLoginIdentifierRequest, runtime *dara.RuntimeOptions) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -129,29 +81,11 @@ func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &FindIdpListByLoginIdentifierResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 身份认证查询接口
-//
-// @param request - FindIdpListByLoginIdentifierRequest
-//
-// @return FindIdpListByLoginIdentifierResponse
-func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginIdentifierRequest) (_result *FindIdpListByLoginIdentifierResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FindIdpListByLoginIdentifierResponse{}
-	_body, _err := client.FindIdpListByLoginIdentifierWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -164,7 +98,7 @@ func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginId
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLoginTokenResponse
-func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
+func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -339,29 +273,11 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLoginTokenResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # GetLoginToken
-//
-// @param request - GetLoginTokenRequest
-//
-// @return GetLoginTokenResponse
-func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *GetLoginTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLoginTokenResponse{}
-	_body, _err := client.GetLoginTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -374,7 +290,7 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetStsTokenResponse
-func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtime *dara.RuntimeOptions) (_result *GetStsTokenResponse, _err error) {
+func (client *Client) GetStsTokenWithContext(ctx context.Context, request *GetStsTokenRequest, runtime *dara.RuntimeOptions) (_result *GetStsTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -419,29 +335,11 @@ func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetStsTokenResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取无影StsToken
-//
-// @param request - GetStsTokenRequest
-//
-// @return GetStsTokenResponse
-func (client *Client) GetStsToken(request *GetStsTokenRequest) (_result *GetStsTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetStsTokenResponse{}
-	_body, _err := client.GetStsTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -450,7 +348,7 @@ func (client *Client) GetStsToken(request *GetStsTokenRequest) (_result *GetStsT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshLoginTokenResponse
-func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
+func (client *Client) RefreshLoginTokenWithContext(ctx context.Context, request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -507,24 +405,10 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.DoRPCRequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
+	_body, _err := client.DoRPCRequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - RefreshLoginTokenRequest
-//
-// @return RefreshLoginTokenResponse
-func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_result *RefreshLoginTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefreshLoginTokenResponse{}
-	_body, _err := client.RefreshLoginTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
