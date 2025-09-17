@@ -622,13 +622,17 @@ type CreateDomainRequestRedirect struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	SniHost         *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WLProxyClientIp *bool   `json:"WLProxyClientIp,omitempty" xml:"WLProxyClientIp,omitempty"`
+	WebServerType   *bool   `json:"WebServerType,omitempty" xml:"WebServerType,omitempty"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	XClientIp    *bool  `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
+	XTrueIp      *bool  `json:"XTrueIp,omitempty" xml:"XTrueIp,omitempty"`
 	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -713,8 +717,24 @@ func (s *CreateDomainRequestRedirect) GetSniHost() *string {
 	return s.SniHost
 }
 
+func (s *CreateDomainRequestRedirect) GetWLProxyClientIp() *bool {
+	return s.WLProxyClientIp
+}
+
+func (s *CreateDomainRequestRedirect) GetWebServerType() *bool {
+	return s.WebServerType
+}
+
 func (s *CreateDomainRequestRedirect) GetWriteTimeout() *int32 {
 	return s.WriteTimeout
+}
+
+func (s *CreateDomainRequestRedirect) GetXClientIp() *bool {
+	return s.XClientIp
+}
+
+func (s *CreateDomainRequestRedirect) GetXTrueIp() *bool {
+	return s.XTrueIp
 }
 
 func (s *CreateDomainRequestRedirect) GetXffProto() *bool {
@@ -801,8 +821,28 @@ func (s *CreateDomainRequestRedirect) SetSniHost(v string) *CreateDomainRequestR
 	return s
 }
 
+func (s *CreateDomainRequestRedirect) SetWLProxyClientIp(v bool) *CreateDomainRequestRedirect {
+	s.WLProxyClientIp = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetWebServerType(v bool) *CreateDomainRequestRedirect {
+	s.WebServerType = &v
+	return s
+}
+
 func (s *CreateDomainRequestRedirect) SetWriteTimeout(v int32) *CreateDomainRequestRedirect {
 	s.WriteTimeout = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetXClientIp(v bool) *CreateDomainRequestRedirect {
+	s.XClientIp = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirect) SetXTrueIp(v bool) *CreateDomainRequestRedirect {
+	s.XTrueIp = &v
 	return s
 }
 

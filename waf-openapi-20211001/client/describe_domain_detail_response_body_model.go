@@ -689,13 +689,17 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	// example:
 	//
 	// www.aliyundoc.com
-	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	SniHost         *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
+	WLProxyClientIp *bool   `json:"WLProxyClientIp,omitempty" xml:"WLProxyClientIp,omitempty"`
+	WebServerType   *bool   `json:"WebServerType,omitempty" xml:"WebServerType,omitempty"`
 	// The write timeout period. Unit: seconds. Valid values: 5 to 1800.
 	//
 	// example:
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	XClientIp    *bool  `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
+	XTrueIp      *bool  `json:"XTrueIp,omitempty" xml:"XTrueIp,omitempty"`
 	// Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -780,8 +784,24 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetSniHost() *string {
 	return s.SniHost
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) GetWLProxyClientIp() *bool {
+	return s.WLProxyClientIp
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetWebServerType() *bool {
+	return s.WebServerType
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) GetWriteTimeout() *int32 {
 	return s.WriteTimeout
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetXClientIp() *bool {
+	return s.XClientIp
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetXTrueIp() *bool {
+	return s.XTrueIp
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) GetXffProto() *bool {
@@ -868,8 +888,28 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetSniHost(v string) *Describ
 	return s
 }
 
+func (s *DescribeDomainDetailResponseBodyRedirect) SetWLProxyClientIp(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.WLProxyClientIp = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetWebServerType(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.WebServerType = &v
+	return s
+}
+
 func (s *DescribeDomainDetailResponseBodyRedirect) SetWriteTimeout(v int32) *DescribeDomainDetailResponseBodyRedirect {
 	s.WriteTimeout = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetXClientIp(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.XClientIp = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetXTrueIp(v bool) *DescribeDomainDetailResponseBodyRedirect {
+	s.XTrueIp = &v
 	return s
 }
 

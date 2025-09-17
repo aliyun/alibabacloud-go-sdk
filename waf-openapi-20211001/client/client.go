@@ -7517,6 +7517,78 @@ func (client *Client) DescribeFreeUserEvents(request *DescribeFreeUserEventsRequ
 
 // Summary:
 //
+// Queries the system status of a node in a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudBasicMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudBasicMonitorResponse
+func (client *Client) DescribeHybridCloudBasicMonitorWithOptions(request *DescribeHybridCloudBasicMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudBasicMonitorResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Mid) {
+		query["Mid"] = request.Mid
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudBasicMonitor"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudBasicMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the system status of a node in a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudBasicMonitorRequest
+//
+// @return DescribeHybridCloudBasicMonitorResponse
+func (client *Client) DescribeHybridCloudBasicMonitor(request *DescribeHybridCloudBasicMonitorRequest) (_result *DescribeHybridCloudBasicMonitorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudBasicMonitorResponse{}
+	_body, _err := client.DescribeHybridCloudBasicMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the rule information about a hybrid cloud cluster.
 //
 // @param request - DescribeHybridCloudClusterRuleRequest
@@ -7656,6 +7728,102 @@ func (client *Client) DescribeHybridCloudClusterRules(request *DescribeHybridClo
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHybridCloudClusterRulesResponse{}
 	_body, _err := client.DescribeHybridCloudClusterRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群机器列表
+//
+// @param request - DescribeHybridCloudClusterServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudClusterServersResponse
+func (client *Client) DescribeHybridCloudClusterServersWithOptions(request *DescribeHybridCloudClusterServersRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudClusterServersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.GroupType) {
+		query["GroupType"] = request.GroupType
+	}
+
+	if !dara.IsNil(request.HostName) {
+		query["HostName"] = request.HostName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Ip) {
+		query["Ip"] = request.Ip
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudClusterServers"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudClusterServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群机器列表
+//
+// @param request - DescribeHybridCloudClusterServersRequest
+//
+// @return DescribeHybridCloudClusterServersResponse
+func (client *Client) DescribeHybridCloudClusterServers(request *DescribeHybridCloudClusterServersRequest) (_result *DescribeHybridCloudClusterServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudClusterServersResponse{}
+	_body, _err := client.DescribeHybridCloudClusterServersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7825,6 +7993,166 @@ func (client *Client) DescribeHybridCloudGroups(request *DescribeHybridCloudGrou
 
 // Summary:
 //
+// Queries the status of applications running on a hybrid cloud cluster node.
+//
+// @param request - DescribeHybridCloudProcessMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudProcessMonitorResponse
+func (client *Client) DescribeHybridCloudProcessMonitorWithOptions(request *DescribeHybridCloudProcessMonitorRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudProcessMonitorResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Mid) {
+		query["Mid"] = request.Mid
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudProcessMonitor"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudProcessMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status of applications running on a hybrid cloud cluster node.
+//
+// @param request - DescribeHybridCloudProcessMonitorRequest
+//
+// @return DescribeHybridCloudProcessMonitorResponse
+func (client *Client) DescribeHybridCloudProcessMonitor(request *DescribeHybridCloudProcessMonitorRequest) (_result *DescribeHybridCloudProcessMonitorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudProcessMonitorResponse{}
+	_body, _err := client.DescribeHybridCloudProcessMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询混合云域名详情
+//
+// @param request - DescribeHybridCloudResourceDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudResourceDetailResponse
+func (client *Client) DescribeHybridCloudResourceDetailWithOptions(request *DescribeHybridCloudResourceDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudResourceDetailResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Backend) {
+		query["Backend"] = request.Backend
+	}
+
+	if !dara.IsNil(request.CnameEnabled) {
+		query["CnameEnabled"] = request.CnameEnabled
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudResourceDetail"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudResourceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询混合云域名详情
+//
+// @param request - DescribeHybridCloudResourceDetailRequest
+//
+// @return DescribeHybridCloudResourceDetailResponse
+func (client *Client) DescribeHybridCloudResourceDetail(request *DescribeHybridCloudResourceDetailRequest) (_result *DescribeHybridCloudResourceDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudResourceDetailResponse{}
+	_body, _err := client.DescribeHybridCloudResourceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the domain names that are added to a Web Application Firewall (WAF) instance in hybrid cloud mode.
 //
 // @param request - DescribeHybridCloudResourcesRequest
@@ -7913,6 +8241,62 @@ func (client *Client) DescribeHybridCloudResources(request *DescribeHybridCloudR
 
 // Summary:
 //
+// 获取SDK信息
+//
+// @param request - DescribeHybridCloudSdkServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudSdkServersResponse
+func (client *Client) DescribeHybridCloudSdkServersWithOptions(request *DescribeHybridCloudSdkServersRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudSdkServersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudSdkServers"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudSdkServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取SDK信息
+//
+// @param request - DescribeHybridCloudSdkServersRequest
+//
+// @return DescribeHybridCloudSdkServersResponse
+func (client *Client) DescribeHybridCloudSdkServers(request *DescribeHybridCloudSdkServersRequest) (_result *DescribeHybridCloudSdkServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudSdkServersResponse{}
+	_body, _err := client.DescribeHybridCloudSdkServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the regions that the hybrid cloud mode supports, such as the Internet service providers (ISPs), continents, and cities.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
@@ -7980,6 +8364,74 @@ func (client *Client) DescribeHybridCloudServerRegions(request *DescribeHybridCl
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHybridCloudServerRegionsResponse{}
 	_body, _err := client.DescribeHybridCloudServerRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入区域
+//
+// @param request - DescribeHybridCloudSupportRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudSupportRegionsResponse
+func (client *Client) DescribeHybridCloudSupportRegionsWithOptions(request *DescribeHybridCloudSupportRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudSupportRegionsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudSupportRegions"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudSupportRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入区域
+//
+// @param request - DescribeHybridCloudSupportRegionsRequest
+//
+// @return DescribeHybridCloudSupportRegionsResponse
+func (client *Client) DescribeHybridCloudSupportRegions(request *DescribeHybridCloudSupportRegionsRequest) (_result *DescribeHybridCloudSupportRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudSupportRegionsResponse{}
+	_body, _err := client.DescribeHybridCloudSupportRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8068,6 +8520,74 @@ func (client *Client) DescribeHybridCloudUnassignedMachines(request *DescribeHyb
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHybridCloudUnassignedMachinesResponse{}
 	_body, _err := client.DescribeHybridCloudUnassignedMachinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ports that are not supported by the hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudUnsupportPortsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudUnsupportPortsResponse
+func (client *Client) DescribeHybridCloudUnsupportPortsWithOptions(request *DescribeHybridCloudUnsupportPortsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHybridCloudUnsupportPortsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHybridCloudUnsupportPorts"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHybridCloudUnsupportPortsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ports that are not supported by the hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudUnsupportPortsRequest
+//
+// @return DescribeHybridCloudUnsupportPortsResponse
+func (client *Client) DescribeHybridCloudUnsupportPorts(request *DescribeHybridCloudUnsupportPortsRequest) (_result *DescribeHybridCloudUnsupportPortsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHybridCloudUnsupportPortsResponse{}
+	_body, _err := client.DescribeHybridCloudUnsupportPortsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14144,6 +14664,130 @@ func (client *Client) ModifyDomainPunishStatus(request *ModifyDomainPunishStatus
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyDomainPunishStatusResponse{}
 	_body, _err := client.ModifyDomainPunishStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies information about a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudClusterResponse
+func (client *Client) ModifyHybridCloudClusterWithOptions(request *ModifyHybridCloudClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyHybridCloudClusterResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessMode) {
+		query["AccessMode"] = request.AccessMode
+	}
+
+	if !dara.IsNil(request.AccessRegion) {
+		query["AccessRegion"] = request.AccessRegion
+	}
+
+	if !dara.IsNil(request.ClusterName) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.HttpPorts) {
+		query["HttpPorts"] = request.HttpPorts
+	}
+
+	if !dara.IsNil(request.HttpsPorts) {
+		query["HttpsPorts"] = request.HttpsPorts
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogFieldsNotReturned) {
+		query["LogFieldsNotReturned"] = request.LogFieldsNotReturned
+	}
+
+	if !dara.IsNil(request.ProtectionServerCount) {
+		query["ProtectionServerCount"] = request.ProtectionServerCount
+	}
+
+	if !dara.IsNil(request.ProxyStatus) {
+		query["ProxyStatus"] = request.ProxyStatus
+	}
+
+	if !dara.IsNil(request.ProxyType) {
+		query["ProxyType"] = request.ProxyType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.RuleConfig) {
+		query["RuleConfig"] = request.RuleConfig
+	}
+
+	if !dara.IsNil(request.RuleStatus) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyHybridCloudCluster"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyHybridCloudClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies information about a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudClusterRequest
+//
+// @return ModifyHybridCloudClusterResponse
+func (client *Client) ModifyHybridCloudCluster(request *ModifyHybridCloudClusterRequest) (_result *ModifyHybridCloudClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyHybridCloudClusterResponse{}
+	_body, _err := client.ModifyHybridCloudClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
