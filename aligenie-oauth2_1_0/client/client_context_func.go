@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("aligenie"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -66,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePlayingListResponse
-func (client *Client) CreatePlayingListWithOptions(tmpReq *CreatePlayingListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePlayingListResponse, _err error) {
+func (client *Client) CreatePlayingListWithContext(ctx context.Context, tmpReq *CreatePlayingListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePlayingListResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -108,30 +60,11 @@ func (client *Client) CreatePlayingListWithOptions(tmpReq *CreatePlayingListRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePlayingListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建播放列表
-//
-// @param request - CreatePlayingListRequest
-//
-// @return CreatePlayingListResponse
-func (client *Client) CreatePlayingList(request *CreatePlayingListRequest) (_result *CreatePlayingListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePlayingListResponse{}
-	_body, _err := client.CreatePlayingListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -146,7 +79,7 @@ func (client *Client) CreatePlayingList(request *CreatePlayingListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteSceneResponse
-func (client *Client) ExecuteSceneWithOptions(request *ExecuteSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteSceneResponse, _err error) {
+func (client *Client) ExecuteSceneWithContext(ctx context.Context, request *ExecuteSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteSceneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -172,30 +105,11 @@ func (client *Client) ExecuteSceneWithOptions(request *ExecuteSceneRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行场景
-//
-// @param request - ExecuteSceneRequest
-//
-// @return ExecuteSceneResponse
-func (client *Client) ExecuteScene(request *ExecuteSceneRequest) (_result *ExecuteSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteSceneResponse{}
-	_body, _err := client.ExecuteSceneWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -210,7 +124,7 @@ func (client *Client) ExecuteScene(request *ExecuteSceneRequest) (_result *Execu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteSmartHomeSceneResponse
-func (client *Client) ExecuteSmartHomeSceneWithOptions(request *ExecuteSmartHomeSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteSmartHomeSceneResponse, _err error) {
+func (client *Client) ExecuteSmartHomeSceneWithContext(ctx context.Context, request *ExecuteSmartHomeSceneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteSmartHomeSceneResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -240,30 +154,11 @@ func (client *Client) ExecuteSmartHomeSceneWithOptions(request *ExecuteSmartHome
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteSmartHomeSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 执行场景（全屋）
-//
-// @param request - ExecuteSmartHomeSceneRequest
-//
-// @return ExecuteSmartHomeSceneResponse
-func (client *Client) ExecuteSmartHomeScene(request *ExecuteSmartHomeSceneRequest) (_result *ExecuteSmartHomeSceneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ExecuteSmartHomeSceneResponse{}
-	_body, _err := client.ExecuteSmartHomeSceneWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -276,7 +171,7 @@ func (client *Client) ExecuteSmartHomeScene(request *ExecuteSmartHomeSceneReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSceneListResponse
-func (client *Client) GetSceneListWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSceneListResponse, _err error) {
+func (client *Client) GetSceneListWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSceneListResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -292,28 +187,11 @@ func (client *Client) GetSceneListWithOptions(headers map[string]*string, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSceneListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取场景列表
-//
-// @return GetSceneListResponse
-func (client *Client) GetSceneList() (_result *GetSceneListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSceneListResponse{}
-	_body, _err := client.GetSceneListWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -326,7 +204,7 @@ func (client *Client) GetSceneList() (_result *GetSceneListResponse, _err error)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSmartHomeSceneListResponse
-func (client *Client) GetSmartHomeSceneListWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSmartHomeSceneListResponse, _err error) {
+func (client *Client) GetSmartHomeSceneListWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSmartHomeSceneListResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -342,28 +220,11 @@ func (client *Client) GetSmartHomeSceneListWithOptions(headers map[string]*strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSmartHomeSceneListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取场景列表（全屋）
-//
-// @return GetSmartHomeSceneListResponse
-func (client *Client) GetSmartHomeSceneList() (_result *GetSmartHomeSceneListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSmartHomeSceneListResponse{}
-	_body, _err := client.GetSmartHomeSceneListWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -376,7 +237,7 @@ func (client *Client) GetSmartHomeSceneList() (_result *GetSmartHomeSceneListRes
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserBasicInfoResponse
-func (client *Client) GetUserBasicInfoWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserBasicInfoResponse, _err error) {
+func (client *Client) GetUserBasicInfoWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserBasicInfoResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -392,28 +253,11 @@ func (client *Client) GetUserBasicInfoWithOptions(headers map[string]*string, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserBasicInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取
-//
-// @return GetUserBasicInfoResponse
-func (client *Client) GetUserBasicInfo() (_result *GetUserBasicInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserBasicInfoResponse{}
-	_body, _err := client.GetUserBasicInfoWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -426,7 +270,7 @@ func (client *Client) GetUserBasicInfo() (_result *GetUserBasicInfoResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserPhoneResponse
-func (client *Client) GetUserPhoneWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserPhoneResponse, _err error) {
+func (client *Client) GetUserPhoneWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserPhoneResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -442,28 +286,11 @@ func (client *Client) GetUserPhoneWithOptions(headers map[string]*string, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserPhoneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取天猫精灵用户绑定的手机号
-//
-// @return GetUserPhoneResponse
-func (client *Client) GetUserPhone() (_result *GetUserPhoneResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserPhoneResponse{}
-	_body, _err := client.GetUserPhoneWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -478,7 +305,7 @@ func (client *Client) GetUserPhone() (_result *GetUserPhoneResponse, _err error)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OAuth2RevocationEndpointResponse
-func (client *Client) OAuth2RevocationEndpointWithOptions(request *OAuth2RevocationEndpointRequest, headers *OAuth2RevocationEndpointHeaders, runtime *dara.RuntimeOptions) (_result *OAuth2RevocationEndpointResponse, _err error) {
+func (client *Client) OAuth2RevocationEndpointWithContext(ctx context.Context, request *OAuth2RevocationEndpointRequest, headers *OAuth2RevocationEndpointHeaders, runtime *dara.RuntimeOptions) (_result *OAuth2RevocationEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -521,30 +348,11 @@ func (client *Client) OAuth2RevocationEndpointWithOptions(request *OAuth2Revocat
 		BodyType:    dara.String("json"),
 	}
 	_result = &OAuth2RevocationEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # OAuth2令牌撤销端点
-//
-// @param request - OAuth2RevocationEndpointRequest
-//
-// @return OAuth2RevocationEndpointResponse
-func (client *Client) OAuth2RevocationEndpoint(request *OAuth2RevocationEndpointRequest) (_result *OAuth2RevocationEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &OAuth2RevocationEndpointHeaders{}
-	_result = &OAuth2RevocationEndpointResponse{}
-	_body, _err := client.OAuth2RevocationEndpointWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -559,7 +367,7 @@ func (client *Client) OAuth2RevocationEndpoint(request *OAuth2RevocationEndpoint
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OAuth2TokenEndpointResponse
-func (client *Client) OAuth2TokenEndpointWithOptions(request *OAuth2TokenEndpointRequest, headers *OAuth2TokenEndpointHeaders, runtime *dara.RuntimeOptions) (_result *OAuth2TokenEndpointResponse, _err error) {
+func (client *Client) OAuth2TokenEndpointWithContext(ctx context.Context, request *OAuth2TokenEndpointRequest, headers *OAuth2TokenEndpointHeaders, runtime *dara.RuntimeOptions) (_result *OAuth2TokenEndpointResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -610,30 +418,11 @@ func (client *Client) OAuth2TokenEndpointWithOptions(request *OAuth2TokenEndpoin
 		BodyType:    dara.String("json"),
 	}
 	_result = &OAuth2TokenEndpointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # OAuth2令牌端点
-//
-// @param request - OAuth2TokenEndpointRequest
-//
-// @return OAuth2TokenEndpointResponse
-func (client *Client) OAuth2TokenEndpoint(request *OAuth2TokenEndpointRequest) (_result *OAuth2TokenEndpointResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &OAuth2TokenEndpointHeaders{}
-	_result = &OAuth2TokenEndpointResponse{}
-	_body, _err := client.OAuth2TokenEndpointWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -648,7 +437,7 @@ func (client *Client) OAuth2TokenEndpoint(request *OAuth2TokenEndpointRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PushDeviceNotificationResponse
-func (client *Client) PushDeviceNotificationWithOptions(tmpReq *PushDeviceNotificationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PushDeviceNotificationResponse, _err error) {
+func (client *Client) PushDeviceNotificationWithContext(ctx context.Context, tmpReq *PushDeviceNotificationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PushDeviceNotificationResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -688,30 +477,11 @@ func (client *Client) PushDeviceNotificationWithOptions(tmpReq *PushDeviceNotifi
 		BodyType:    dara.String("json"),
 	}
 	_result = &PushDeviceNotificationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 推送设备通知
-//
-// @param request - PushDeviceNotificationRequest
-//
-// @return PushDeviceNotificationResponse
-func (client *Client) PushDeviceNotification(request *PushDeviceNotificationRequest) (_result *PushDeviceNotificationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PushDeviceNotificationResponse{}
-	_body, _err := client.PushDeviceNotificationWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -724,7 +494,7 @@ func (client *Client) PushDeviceNotification(request *PushDeviceNotificationRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDeviceListResponse
-func (client *Client) QueryDeviceListWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryDeviceListResponse, _err error) {
+func (client *Client) QueryDeviceListWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryDeviceListResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -740,27 +510,10 @@ func (client *Client) QueryDeviceListWithOptions(headers map[string]*string, run
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDeviceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询设备列表
-//
-// @return QueryDeviceListResponse
-func (client *Client) QueryDeviceList() (_result *QueryDeviceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryDeviceListResponse{}
-	_body, _err := client.QueryDeviceListWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
