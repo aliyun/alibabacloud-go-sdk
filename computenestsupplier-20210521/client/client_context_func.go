@@ -337,6 +337,90 @@ func (client *Client) CreateArtifactWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
+// 创建运维公告
+//
+// @param tmpReq - CreateOpsNoticeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpsNoticeResponse
+func (client *Client) CreateOpsNoticeWithContext(ctx context.Context, tmpReq *CreateOpsNoticeRequest, runtime *dara.RuntimeOptions) (_result *CreateOpsNoticeResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateOpsNoticeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Attributes) {
+		request.AttributesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attributes, dara.String("Attributes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttributesShrink) {
+		query["Attributes"] = request.AttributesShrink
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.ServiceVersion) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !dara.IsNil(request.Severity) {
+		query["Severity"] = request.Severity
+	}
+
+	if !dara.IsNil(request.Solutions) {
+		query["Solutions"] = request.Solutions
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateOpsNotice"),
+		Version:     dara.String("2021-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateOpsNoticeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a service.
 //
 // @param tmpReq - CreateServiceRequest
@@ -1505,6 +1589,52 @@ func (client *Client) GetNetworkAvailableZonesWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查看运维公告详情
+//
+// @param request - GetOpsNoticeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpsNoticeResponse
+func (client *Client) GetOpsNoticeWithContext(ctx context.Context, request *GetOpsNoticeRequest, runtime *dara.RuntimeOptions) (_result *GetOpsNoticeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NoticeId) {
+		query["NoticeId"] = request.NoticeId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetOpsNotice"),
+		Version:     dara.String("2021-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetOpsNoticeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a service.
 //
 // @param request - GetServiceRequest
@@ -2467,6 +2597,60 @@ func (client *Client) ListArtifactsWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListArtifactsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询运维公告
+//
+// @param request - ListOpsNoticesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOpsNoticesResponse
+func (client *Client) ListOpsNoticesWithContext(ctx context.Context, request *ListOpsNoticesRequest, runtime *dara.RuntimeOptions) (_result *ListOpsNoticesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOpsNotices"),
+		Version:     dara.String("2021-05-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOpsNoticesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4458,6 +4642,10 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, tmpReq *Upda
 
 	if !dara.IsNil(request.ServiceInfo) {
 		query["ServiceInfo"] = request.ServiceInfo
+	}
+
+	if !dara.IsNil(request.ServiceLocaleConfigs) {
+		query["ServiceLocaleConfigs"] = request.ServiceLocaleConfigs
 	}
 
 	if !dara.IsNil(request.ServiceType) {

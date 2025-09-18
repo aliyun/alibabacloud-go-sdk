@@ -267,7 +267,8 @@ type ListServicesResponseBodyServices struct {
 	// service-70a3b15bb62643xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The information about the service.
-	ServiceInfos []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceInfos         []*ListServicesResponseBodyServicesServiceInfos         `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceLocaleConfigs []*ListServicesResponseBodyServicesServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
 	// The type of the service. Valid values:
 	//
 	// 	- private: The service is a private service and is deployed within the account of a customer.
@@ -494,6 +495,10 @@ func (s *ListServicesResponseBodyServices) GetServiceInfos() []*ListServicesResp
 	return s.ServiceInfos
 }
 
+func (s *ListServicesResponseBodyServices) GetServiceLocaleConfigs() []*ListServicesResponseBodyServicesServiceLocaleConfigs {
+	return s.ServiceLocaleConfigs
+}
+
 func (s *ListServicesResponseBodyServices) GetServiceType() *string {
 	return s.ServiceType
 }
@@ -660,6 +665,11 @@ func (s *ListServicesResponseBodyServices) SetServiceId(v string) *ListServicesR
 
 func (s *ListServicesResponseBodyServices) SetServiceInfos(v []*ListServicesResponseBodyServicesServiceInfos) *ListServicesResponseBodyServices {
 	s.ServiceInfos = v
+	return s
+}
+
+func (s *ListServicesResponseBodyServices) SetServiceLocaleConfigs(v []*ListServicesResponseBodyServicesServiceLocaleConfigs) *ListServicesResponseBodyServices {
+	s.ServiceLocaleConfigs = v
 	return s
 }
 
@@ -889,6 +899,51 @@ func (s *ListServicesResponseBodyServicesServiceInfos) SetShortDescription(v str
 }
 
 func (s *ListServicesResponseBodyServicesServiceInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListServicesResponseBodyServicesServiceLocaleConfigs struct {
+	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
+	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+}
+
+func (s ListServicesResponseBodyServicesServiceLocaleConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListServicesResponseBodyServicesServiceLocaleConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) GetEnValue() *string {
+	return s.EnValue
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) GetOriginalValue() *string {
+	return s.OriginalValue
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) GetZhValue() *string {
+	return s.ZhValue
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) SetEnValue(v string) *ListServicesResponseBodyServicesServiceLocaleConfigs {
+	s.EnValue = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) SetOriginalValue(v string) *ListServicesResponseBodyServicesServiceLocaleConfigs {
+	s.OriginalValue = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) SetZhValue(v string) *ListServicesResponseBodyServicesServiceLocaleConfigs {
+	s.ZhValue = &v
+	return s
+}
+
+func (s *ListServicesResponseBodyServicesServiceLocaleConfigs) Validate() error {
 	return dara.Validate(s)
 }
 

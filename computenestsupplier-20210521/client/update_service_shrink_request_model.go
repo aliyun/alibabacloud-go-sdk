@@ -47,6 +47,8 @@ type iUpdateServiceShrinkRequest interface {
 	GetServiceId() *string
 	SetServiceInfo(v []*UpdateServiceShrinkRequestServiceInfo) *UpdateServiceShrinkRequest
 	GetServiceInfo() []*UpdateServiceShrinkRequestServiceInfo
+	SetServiceLocaleConfigs(v []*UpdateServiceShrinkRequestServiceLocaleConfigs) *UpdateServiceShrinkRequest
+	GetServiceLocaleConfigs() []*UpdateServiceShrinkRequestServiceLocaleConfigs
 	SetServiceType(v string) *UpdateServiceShrinkRequest
 	GetServiceType() *string
 	SetServiceVersion(v string) *UpdateServiceShrinkRequest
@@ -201,7 +203,8 @@ type UpdateServiceShrinkRequest struct {
 	// service-1dda29c3eca648xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service details.
-	ServiceInfo []*UpdateServiceShrinkRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceInfo          []*UpdateServiceShrinkRequestServiceInfo          `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceLocaleConfigs []*UpdateServiceShrinkRequestServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
 	// The service type. Valid values:
 	//
 	// 	- private: The service is a private service and is deployed within the account of a customer.
@@ -352,6 +355,10 @@ func (s *UpdateServiceShrinkRequest) GetServiceInfo() []*UpdateServiceShrinkRequ
 	return s.ServiceInfo
 }
 
+func (s *UpdateServiceShrinkRequest) GetServiceLocaleConfigs() []*UpdateServiceShrinkRequestServiceLocaleConfigs {
+	return s.ServiceLocaleConfigs
+}
+
 func (s *UpdateServiceShrinkRequest) GetServiceType() *string {
 	return s.ServiceType
 }
@@ -476,6 +483,11 @@ func (s *UpdateServiceShrinkRequest) SetServiceId(v string) *UpdateServiceShrink
 
 func (s *UpdateServiceShrinkRequest) SetServiceInfo(v []*UpdateServiceShrinkRequestServiceInfo) *UpdateServiceShrinkRequest {
 	s.ServiceInfo = v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetServiceLocaleConfigs(v []*UpdateServiceShrinkRequestServiceLocaleConfigs) *UpdateServiceShrinkRequest {
+	s.ServiceLocaleConfigs = v
 	return s
 }
 
@@ -726,5 +738,50 @@ func (s *UpdateServiceShrinkRequestServiceInfoSoftwares) SetVersion(v string) *U
 }
 
 func (s *UpdateServiceShrinkRequestServiceInfoSoftwares) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateServiceShrinkRequestServiceLocaleConfigs struct {
+	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
+	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+}
+
+func (s UpdateServiceShrinkRequestServiceLocaleConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateServiceShrinkRequestServiceLocaleConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) GetEnValue() *string {
+	return s.EnValue
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) GetOriginalValue() *string {
+	return s.OriginalValue
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) GetZhValue() *string {
+	return s.ZhValue
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) SetEnValue(v string) *UpdateServiceShrinkRequestServiceLocaleConfigs {
+	s.EnValue = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) SetOriginalValue(v string) *UpdateServiceShrinkRequestServiceLocaleConfigs {
+	s.OriginalValue = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) SetZhValue(v string) *UpdateServiceShrinkRequestServiceLocaleConfigs {
+	s.ZhValue = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequestServiceLocaleConfigs) Validate() error {
 	return dara.Validate(s)
 }

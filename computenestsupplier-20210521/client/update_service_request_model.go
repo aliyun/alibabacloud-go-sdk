@@ -47,6 +47,8 @@ type iUpdateServiceRequest interface {
 	GetServiceId() *string
 	SetServiceInfo(v []*UpdateServiceRequestServiceInfo) *UpdateServiceRequest
 	GetServiceInfo() []*UpdateServiceRequestServiceInfo
+	SetServiceLocaleConfigs(v []*UpdateServiceRequestServiceLocaleConfigs) *UpdateServiceRequest
+	GetServiceLocaleConfigs() []*UpdateServiceRequestServiceLocaleConfigs
 	SetServiceType(v string) *UpdateServiceRequest
 	GetServiceType() *string
 	SetServiceVersion(v string) *UpdateServiceRequest
@@ -201,7 +203,8 @@ type UpdateServiceRequest struct {
 	// service-1dda29c3eca648xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service details.
-	ServiceInfo []*UpdateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceInfo          []*UpdateServiceRequestServiceInfo          `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	ServiceLocaleConfigs []*UpdateServiceRequestServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
 	// The service type. Valid values:
 	//
 	// 	- private: The service is a private service and is deployed within the account of a customer.
@@ -352,6 +355,10 @@ func (s *UpdateServiceRequest) GetServiceInfo() []*UpdateServiceRequestServiceIn
 	return s.ServiceInfo
 }
 
+func (s *UpdateServiceRequest) GetServiceLocaleConfigs() []*UpdateServiceRequestServiceLocaleConfigs {
+	return s.ServiceLocaleConfigs
+}
+
 func (s *UpdateServiceRequest) GetServiceType() *string {
 	return s.ServiceType
 }
@@ -476,6 +483,11 @@ func (s *UpdateServiceRequest) SetServiceId(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetServiceInfo(v []*UpdateServiceRequestServiceInfo) *UpdateServiceRequest {
 	s.ServiceInfo = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetServiceLocaleConfigs(v []*UpdateServiceRequestServiceLocaleConfigs) *UpdateServiceRequest {
+	s.ServiceLocaleConfigs = v
 	return s
 }
 
@@ -1074,6 +1086,51 @@ func (s *UpdateServiceRequestServiceInfoSoftwares) SetVersion(v string) *UpdateS
 }
 
 func (s *UpdateServiceRequestServiceInfoSoftwares) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateServiceRequestServiceLocaleConfigs struct {
+	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
+	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+}
+
+func (s UpdateServiceRequestServiceLocaleConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateServiceRequestServiceLocaleConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) GetEnValue() *string {
+	return s.EnValue
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) GetOriginalValue() *string {
+	return s.OriginalValue
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) GetZhValue() *string {
+	return s.ZhValue
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) SetEnValue(v string) *UpdateServiceRequestServiceLocaleConfigs {
+	s.EnValue = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) SetOriginalValue(v string) *UpdateServiceRequestServiceLocaleConfigs {
+	s.OriginalValue = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) SetZhValue(v string) *UpdateServiceRequestServiceLocaleConfigs {
+	s.ZhValue = &v
+	return s
+}
+
+func (s *UpdateServiceRequestServiceLocaleConfigs) Validate() error {
 	return dara.Validate(s)
 }
 
