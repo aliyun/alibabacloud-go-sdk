@@ -330,7 +330,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// 3.5.3
-	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EdasContainerVersion *string                                                  `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EmptyDirDesc         []*DescribeApplicationConfigResponseBodyDataEmptyDirDesc `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
 	// Indicates whether access to Application High Availability Service (AHAS) is enabled. Valid values:
 	//
 	// 	- **true**: Access to AHAS is enabled.
@@ -1027,6 +1028,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetEdasContainerVersion() *s
 	return s.EdasContainerVersion
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetEmptyDirDesc() []*DescribeApplicationConfigResponseBodyDataEmptyDirDesc {
+	return s.EmptyDirDesc
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetEnableAhas() *string {
 	return s.EnableAhas
 }
@@ -1408,6 +1413,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetDotnet(v string) *Describ
 
 func (s *DescribeApplicationConfigResponseBodyData) SetEdasContainerVersion(v string) *DescribeApplicationConfigResponseBodyData {
 	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetEmptyDirDesc(v []*DescribeApplicationConfigResponseBodyDataEmptyDirDesc) *DescribeApplicationConfigResponseBodyData {
+	s.EmptyDirDesc = v
 	return s
 }
 
@@ -1845,6 +1855,41 @@ func (s *DescribeApplicationConfigResponseBodyDataConfigMapMountDesc) Validate()
 	return dara.Validate(s)
 }
 
+type DescribeApplicationConfigResponseBodyDataEmptyDirDesc struct {
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataEmptyDirDesc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataEmptyDirDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataEmptyDirDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) SetName(v string) *DescribeApplicationConfigResponseBodyDataEmptyDirDesc {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataEmptyDirDesc) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeApplicationConfigResponseBodyDataInitContainersConfig struct {
 	// The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
 	//
@@ -1876,6 +1921,7 @@ type DescribeApplicationConfigResponseBodyDataInitContainersConfig struct {
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
 	// The information of ConfigMap.
 	ConfigMapMountDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	EmptyDirDesc       []*DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc       `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty" type:"Repeated"`
 	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
 	//
 	// 	- Customize
@@ -1932,6 +1978,10 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) GetConfi
 	return s.ConfigMapMountDesc
 }
 
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) GetEmptyDirDesc() []*DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc {
+	return s.EmptyDirDesc
+}
+
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) GetEnvs() *string {
 	return s.Envs
 }
@@ -1956,6 +2006,11 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetComma
 
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetConfigMapMountDesc(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
 	s.ConfigMapMountDesc = v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetEmptyDirDesc(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.EmptyDirDesc = v
 	return s
 }
 
@@ -2050,6 +2105,41 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapM
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc struct {
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) GetName() *string {
+	return s.Name
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc {
+	s.MountPath = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) SetName(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -41,6 +41,8 @@ type iDeployApplicationRequest interface {
 	GetDotnet() *string
 	SetEdasContainerVersion(v string) *DeployApplicationRequest
 	GetEdasContainerVersion() *string
+	SetEmptyDirDesc(v string) *DeployApplicationRequest
+	GetEmptyDirDesc() *string
 	SetEnableAhas(v string) *DeployApplicationRequest
 	GetEnableAhas() *string
 	SetEnableCpuBurst(v bool) *DeployApplicationRequest
@@ -332,6 +334,7 @@ type DeployApplicationRequest struct {
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EmptyDirDesc         *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
 	// Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
 	//
 	// 	- **true**: Access to AHAS is enabled.
@@ -1071,6 +1074,10 @@ func (s *DeployApplicationRequest) GetEdasContainerVersion() *string {
 	return s.EdasContainerVersion
 }
 
+func (s *DeployApplicationRequest) GetEmptyDirDesc() *string {
+	return s.EmptyDirDesc
+}
+
 func (s *DeployApplicationRequest) GetEnableAhas() *string {
 	return s.EnableAhas
 }
@@ -1388,6 +1395,11 @@ func (s *DeployApplicationRequest) SetDotnet(v string) *DeployApplicationRequest
 
 func (s *DeployApplicationRequest) SetEdasContainerVersion(v string) *DeployApplicationRequest {
 	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetEmptyDirDesc(v string) *DeployApplicationRequest {
+	s.EmptyDirDesc = &v
 	return s
 }
 

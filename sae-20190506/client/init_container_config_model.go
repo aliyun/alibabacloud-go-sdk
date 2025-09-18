@@ -15,6 +15,8 @@ type iInitContainerConfig interface {
 	GetCommandArgs() *string
 	SetConfigMapMountDesc(v string) *InitContainerConfig
 	GetConfigMapMountDesc() *string
+	SetEmptyDirDesc(v string) *InitContainerConfig
+	GetEmptyDirDesc() *string
 	SetEnvs(v string) *InitContainerConfig
 	GetEnvs() *string
 	SetImageUrl(v string) *InitContainerConfig
@@ -27,6 +29,7 @@ type InitContainerConfig struct {
 	Command            *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	CommandArgs        *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	EmptyDirDesc       *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
 	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
 	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -50,6 +53,10 @@ func (s *InitContainerConfig) GetCommandArgs() *string {
 
 func (s *InitContainerConfig) GetConfigMapMountDesc() *string {
 	return s.ConfigMapMountDesc
+}
+
+func (s *InitContainerConfig) GetEmptyDirDesc() *string {
+	return s.EmptyDirDesc
 }
 
 func (s *InitContainerConfig) GetEnvs() *string {
@@ -76,6 +83,11 @@ func (s *InitContainerConfig) SetCommandArgs(v string) *InitContainerConfig {
 
 func (s *InitContainerConfig) SetConfigMapMountDesc(v string) *InitContainerConfig {
 	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetEmptyDirDesc(v string) *InitContainerConfig {
+	s.EmptyDirDesc = &v
 	return s
 }
 

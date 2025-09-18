@@ -867,6 +867,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
 	}
 
+	if !dara.IsNil(request.EmptyDirDesc) {
+		body["EmptyDirDesc"] = request.EmptyDirDesc
+	}
+
 	if !dara.IsNil(request.EnableSidecarResourceIsolated) {
 		body["EnableSidecarResourceIsolated"] = request.EnableSidecarResourceIsolated
 	}
@@ -3415,6 +3419,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !dara.IsNil(request.ConfigMapMountDesc) {
 		body["ConfigMapMountDesc"] = request.ConfigMapMountDesc
+	}
+
+	if !dara.IsNil(request.EmptyDirDesc) {
+		body["EmptyDirDesc"] = request.EmptyDirDesc
 	}
 
 	if !dara.IsNil(request.EnableSidecarResourceIsolated) {
@@ -9037,6 +9045,62 @@ func (client *Client) PublishWebApplicationRevision(ApplicationId *string, reque
 	headers := make(map[string]*string)
 	_result = &PublishWebApplicationRevisionResponse{}
 	_body, _err := client.PublishWebApplicationRevisionWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - QueryArmsEnableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryArmsEnableResponse
+func (client *Client) QueryArmsEnableWithOptions(request *QueryArmsEnableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryArmsEnableResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryArmsEnable"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/arms/queryArms"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryArmsEnableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - QueryArmsEnableRequest
+//
+// @return QueryArmsEnableResponse
+func (client *Client) QueryArmsEnable(request *QueryArmsEnableRequest) (_result *QueryArmsEnableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryArmsEnableResponse{}
+	_body, _err := client.QueryArmsEnableWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

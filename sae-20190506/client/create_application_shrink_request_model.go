@@ -45,6 +45,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetDotnet() *string
 	SetEdasContainerVersion(v string) *CreateApplicationShrinkRequest
 	GetEdasContainerVersion() *string
+	SetEmptyDirDesc(v string) *CreateApplicationShrinkRequest
+	GetEmptyDirDesc() *string
 	SetEnableCpuBurst(v bool) *CreateApplicationShrinkRequest
 	GetEnableCpuBurst() *bool
 	SetEnableEbpf(v string) *CreateApplicationShrinkRequest
@@ -354,6 +356,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
+	EmptyDirDesc         *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
 	// Enable CPU Burst.
 	//
 	// - true: enable
@@ -1025,6 +1028,10 @@ func (s *CreateApplicationShrinkRequest) GetEdasContainerVersion() *string {
 	return s.EdasContainerVersion
 }
 
+func (s *CreateApplicationShrinkRequest) GetEmptyDirDesc() *string {
+	return s.EmptyDirDesc
+}
+
 func (s *CreateApplicationShrinkRequest) GetEnableCpuBurst() *bool {
 	return s.EnableCpuBurst
 }
@@ -1360,6 +1367,11 @@ func (s *CreateApplicationShrinkRequest) SetDotnet(v string) *CreateApplicationS
 
 func (s *CreateApplicationShrinkRequest) SetEdasContainerVersion(v string) *CreateApplicationShrinkRequest {
 	s.EdasContainerVersion = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetEmptyDirDesc(v string) *CreateApplicationShrinkRequest {
+	s.EmptyDirDesc = &v
 	return s
 }
 
