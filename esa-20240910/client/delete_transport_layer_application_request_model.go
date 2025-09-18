@@ -16,12 +16,16 @@ type iDeleteTransportLayerApplicationRequest interface {
 }
 
 type DeleteTransportLayerApplicationRequest struct {
+	// Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 170996390868****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	//
 	// This parameter is required.
 	//
 	// example:

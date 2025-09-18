@@ -120,21 +120,7 @@ func (s *GetRoutineResponseBody) Validate() error {
 }
 
 type GetRoutineResponseBodyEnvs struct {
-	// The regions for canary release.
-	CanaryAreaList []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
-	// The version number for canary release.
-	//
-	// example:
-	//
-	// 1710120201067577628
-	CanaryCodeVersion *string                               `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
-	CodeDeploy        *GetRoutineResponseBodyEnvsCodeDeploy `json:"CodeDeploy,omitempty" xml:"CodeDeploy,omitempty" type:"Struct"`
-	// The version number of the code in the environment.
-	//
-	// example:
-	//
-	// 1710120201067577628
-	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	CodeDeploy *GetRoutineResponseBodyEnvsCodeDeploy `json:"CodeDeploy,omitempty" xml:"CodeDeploy,omitempty" type:"Struct"`
 	// The environment type.
 	//
 	// example:
@@ -151,43 +137,16 @@ func (s GetRoutineResponseBodyEnvs) GoString() string {
 	return s.String()
 }
 
-func (s *GetRoutineResponseBodyEnvs) GetCanaryAreaList() []*string {
-	return s.CanaryAreaList
-}
-
-func (s *GetRoutineResponseBodyEnvs) GetCanaryCodeVersion() *string {
-	return s.CanaryCodeVersion
-}
-
 func (s *GetRoutineResponseBodyEnvs) GetCodeDeploy() *GetRoutineResponseBodyEnvsCodeDeploy {
 	return s.CodeDeploy
-}
-
-func (s *GetRoutineResponseBodyEnvs) GetCodeVersion() *string {
-	return s.CodeVersion
 }
 
 func (s *GetRoutineResponseBodyEnvs) GetEnv() *string {
 	return s.Env
 }
 
-func (s *GetRoutineResponseBodyEnvs) SetCanaryAreaList(v []*string) *GetRoutineResponseBodyEnvs {
-	s.CanaryAreaList = v
-	return s
-}
-
-func (s *GetRoutineResponseBodyEnvs) SetCanaryCodeVersion(v string) *GetRoutineResponseBodyEnvs {
-	s.CanaryCodeVersion = &v
-	return s
-}
-
 func (s *GetRoutineResponseBodyEnvs) SetCodeDeploy(v *GetRoutineResponseBodyEnvsCodeDeploy) *GetRoutineResponseBodyEnvs {
 	s.CodeDeploy = v
-	return s
-}
-
-func (s *GetRoutineResponseBodyEnvs) SetCodeVersion(v string) *GetRoutineResponseBodyEnvs {
-	s.CodeVersion = &v
 	return s
 }
 

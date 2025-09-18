@@ -16,12 +16,16 @@ type iGetTransportLayerApplicationRequest interface {
 }
 
 type GetTransportLayerApplicationRequest struct {
+	// Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 170997271816****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:

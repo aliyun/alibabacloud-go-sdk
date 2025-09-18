@@ -3587,7 +3587,7 @@ func (client *Client) CreateSiteDeliveryTaskWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建四层应用
+// # Create Transport Layer Application
 //
 // @param tmpReq - CreateTransportLayerApplicationRequest
 //
@@ -3628,6 +3628,10 @@ func (client *Client) CreateTransportLayerApplicationWithContext(ctx context.Con
 
 	if !dara.IsNil(request.SiteId) {
 		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StaticIp) {
+		query["StaticIp"] = request.StaticIp
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6103,7 +6107,7 @@ func (client *Client) DeleteSiteOriginClientCertificateWithContext(ctx context.C
 
 // Summary:
 //
-// 删除四层应用
+// # Delete Transport Layer Application
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -9911,7 +9915,7 @@ func (client *Client) GetTieredCacheWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 查询四层应用详情
+// # Query details of the transport layer application
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -12297,7 +12301,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询四层应用列表
+// # List of Transport Layer Applications
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -17301,7 +17305,7 @@ func (client *Client) UpdateTieredCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改四层应用
+// # Modify Transport Layer Application
 //
 // @param tmpReq - UpdateTransportLayerApplicationRequest
 //
@@ -17342,6 +17346,10 @@ func (client *Client) UpdateTransportLayerApplicationWithContext(ctx context.Con
 
 	if !dara.IsNil(request.SiteId) {
 		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.StaticIp) {
+		query["StaticIp"] = request.StaticIp
 	}
 
 	req := &openapiutil.OpenApiRequest{

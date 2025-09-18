@@ -5075,7 +5075,7 @@ func (client *Client) CreateSlrRoleForRealtimeLog() (_result *CreateSlrRoleForRe
 
 // Summary:
 //
-// 创建四层应用
+// # Create Transport Layer Application
 //
 // @param tmpReq - CreateTransportLayerApplicationRequest
 //
@@ -5118,6 +5118,10 @@ func (client *Client) CreateTransportLayerApplicationWithOptions(tmpReq *CreateT
 		query["SiteId"] = request.SiteId
 	}
 
+	if !dara.IsNil(request.StaticIp) {
+		query["StaticIp"] = request.StaticIp
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5143,7 +5147,7 @@ func (client *Client) CreateTransportLayerApplicationWithOptions(tmpReq *CreateT
 
 // Summary:
 //
-// 创建四层应用
+// # Create Transport Layer Application
 //
 // @param request - CreateTransportLayerApplicationRequest
 //
@@ -8501,7 +8505,7 @@ func (client *Client) DeleteSiteOriginClientCertificate(request *DeleteSiteOrigi
 
 // Summary:
 //
-// 删除四层应用
+// # Delete Transport Layer Application
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -8547,7 +8551,7 @@ func (client *Client) DeleteTransportLayerApplicationWithOptions(request *Delete
 
 // Summary:
 //
-// 删除四层应用
+// # Delete Transport Layer Application
 //
 // @param request - DeleteTransportLayerApplicationRequest
 //
@@ -14212,7 +14216,7 @@ func (client *Client) GetTieredCache(request *GetTieredCacheRequest) (_result *G
 
 // Summary:
 //
-// 查询四层应用详情
+// # Query details of the transport layer application
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -14250,7 +14254,7 @@ func (client *Client) GetTransportLayerApplicationWithOptions(request *GetTransp
 
 // Summary:
 //
-// 查询四层应用详情
+// # Query details of the transport layer application
 //
 // @param request - GetTransportLayerApplicationRequest
 //
@@ -17783,7 +17787,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 查询四层应用列表
+// # List of Transport Layer Applications
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -17821,7 +17825,7 @@ func (client *Client) ListTransportLayerApplicationsWithOptions(request *ListTra
 
 // Summary:
 //
-// 查询四层应用列表
+// # List of Transport Layer Applications
 //
 // @param request - ListTransportLayerApplicationsRequest
 //
@@ -24472,7 +24476,7 @@ func (client *Client) UpdateTieredCache(request *UpdateTieredCacheRequest) (_res
 
 // Summary:
 //
-// 修改四层应用
+// # Modify Transport Layer Application
 //
 // @param tmpReq - UpdateTransportLayerApplicationRequest
 //
@@ -24515,6 +24519,10 @@ func (client *Client) UpdateTransportLayerApplicationWithOptions(tmpReq *UpdateT
 		query["SiteId"] = request.SiteId
 	}
 
+	if !dara.IsNil(request.StaticIp) {
+		query["StaticIp"] = request.StaticIp
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -24540,7 +24548,7 @@ func (client *Client) UpdateTransportLayerApplicationWithOptions(tmpReq *UpdateT
 
 // Summary:
 //
-// 修改四层应用
+// # Modify Transport Layer Application
 //
 // @param request - UpdateTransportLayerApplicationRequest
 //

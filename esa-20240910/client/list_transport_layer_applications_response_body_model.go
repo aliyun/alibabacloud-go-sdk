@@ -22,19 +22,28 @@ type iListTransportLayerApplicationsResponseBody interface {
 }
 
 type ListTransportLayerApplicationsResponseBody struct {
+	// List of transport layer applications.
 	Applications []*ListTransportLayerApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size.
+	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of transport layer applications.
+	//
 	// example:
 	//
 	// 1
@@ -99,30 +108,76 @@ func (s *ListTransportLayerApplicationsResponseBody) Validate() error {
 }
 
 type ListTransportLayerApplicationsResponseBodyApplications struct {
+	// Layer 4 application ID.
+	//
 	// example:
 	//
 	// 170997271816****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// CNAME domain name corresponding to the Layer 4 acceleration application. This field is not empty only when the site is accessed via CNAME.
+	//
 	// example:
 	//
 	// example.com.ialicdn.com
-	Cname                   *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// Whether to enable China mainland network access optimization. It is disabled by default. The value range is:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	IpAccessRule            *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	Ipv6                    *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// IP access rule switch. When enabled, the IP access rules in WAF take effect on the Layer 4 application.
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
+	// IPv6 switch.
+	//
+	// example:
+	//
+	// on
+	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// Domain name of the Layer 4 application.
+	//
 	// example:
 	//
 	// test.example.com
-	RecordName *string                                                        `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	Rules      []*ListTransportLayerApplicationsResponseBodyApplicationsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// List of forwarding rules.
+	Rules []*ListTransportLayerApplicationsResponseBodyApplicationsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// Number of forwarding rules contained in the Layer 4 acceleration application.
+	//
 	// example:
 	//
 	// 1
 	RulesCount *int32 `json:"RulesCount,omitempty" xml:"RulesCount,omitempty"`
+	// Site ID.
+	//
 	// example:
 	//
 	// 36556540048****
-	SiteId *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	StaticIp *string `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
+	// This parameter is required.
+	StaticIpV4List []*ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List `json:"StaticIpV4List,omitempty" xml:"StaticIpV4List,omitempty" type:"Repeated"`
+	// Status of the Layer 4 application
+	//
+	// - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+	//
+	// - **active**: Active.
+	//
+	// example:
+	//
+	// active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -168,6 +223,14 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) GetRulesCount()
 
 func (s *ListTransportLayerApplicationsResponseBodyApplications) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplications) GetStaticIp() *string {
+	return s.StaticIp
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplications) GetStaticIpV4List() []*ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List {
+	return s.StaticIpV4List
 }
 
 func (s *ListTransportLayerApplicationsResponseBodyApplications) GetStatus() *string {
@@ -219,6 +282,16 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) SetSiteId(v int
 	return s
 }
 
+func (s *ListTransportLayerApplicationsResponseBodyApplications) SetStaticIp(v string) *ListTransportLayerApplicationsResponseBodyApplications {
+	s.StaticIp = &v
+	return s
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplications) SetStaticIpV4List(v []*ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) *ListTransportLayerApplicationsResponseBodyApplications {
+	s.StaticIpV4List = v
+	return s
+}
+
 func (s *ListTransportLayerApplicationsResponseBodyApplications) SetStatus(v string) *ListTransportLayerApplicationsResponseBodyApplications {
 	s.Status = &v
 	return s
@@ -229,31 +302,80 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) Validate() erro
 }
 
 type ListTransportLayerApplicationsResponseBodyApplicationsRules struct {
+	// Client IP pass-through protocol, supports:
+	//
+	// - **off**: No pass-through.
+	//
+	// - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+	//
+	// - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+	//
+	// - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+	//
 	// example:
 	//
 	// off
 	ClientIPPassThroughMode *string `json:"ClientIPPassThroughMode,omitempty" xml:"ClientIPPassThroughMode,omitempty"`
-	Comment                 *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Comment information for the rule.
+	//
+	// example:
+	//
+	// 测试
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Edge port. Supports:
+	//
+	// - A single port, e.g., 80.
+	//
+	// - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+	//
+	// - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+	//
 	// example:
 	//
 	// 80
 	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
+	// Forwarding rule protocol, with values:
+	//
+	// - TCP: TCP protocol.
+	//
+	// - UDP: UDP protocol.
+	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Layer 4 acceleration rule ID.
+	//
 	// example:
 	//
 	// 20258028****
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// Specific value of the source, which needs to match the source type.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Source port. Supports:
+	//
+	// - A single port, when the source port is a single port, any valid combination of edge ports is supported.
+	//
+	// - Port range, only when the edge port is a port range, the source port can be set to a port range, and the range size must be consistent with the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which are inconsistent.
+	//
 	// example:
 	//
 	// 80
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// Source type, supports:
+	//
+	// - **ip**: IP.
+	//
+	// - **domain**: Domain name.
+	//
+	// - **OP**: Origin pool.
+	//
+	// - **LB**: Load balancer.
+	//
 	// example:
 	//
 	// ip
@@ -341,5 +463,40 @@ func (s *ListTransportLayerApplicationsResponseBodyApplicationsRules) SetSourceT
 }
 
 func (s *ListTransportLayerApplicationsResponseBodyApplicationsRules) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List struct {
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) GetAddress() *string {
+	return s.Address
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) SetAddress(v string) *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List {
+	s.Address = &v
+	return s
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) SetStatus(v string) *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List) Validate() error {
 	return dara.Validate(s)
 }

@@ -21,26 +21,58 @@ type iCreateTransportLayerApplicationShrinkRequest interface {
 	GetRulesShrink() *string
 	SetSiteId(v int64) *CreateTransportLayerApplicationShrinkRequest
 	GetSiteId() *int64
+	SetStaticIp(v string) *CreateTransportLayerApplicationShrinkRequest
+	GetStaticIp() *string
 }
 
 type CreateTransportLayerApplicationShrinkRequest struct {
+	// Whether to enable China mainland network access optimization, default is disabled. Value range:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	IpAccessRule            *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	Ipv6                    *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
+	// IPv6 switch.
+	//
+	// example:
+	//
+	// off
+	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	// Domain name of the transport layer application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aaa.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// List of forwarding rules.
+	//
 	// This parameter is required.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456****
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId   *int64  `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	StaticIp *string `json:"StaticIp,omitempty" xml:"StaticIp,omitempty"`
 }
 
 func (s CreateTransportLayerApplicationShrinkRequest) String() string {
@@ -75,6 +107,10 @@ func (s *CreateTransportLayerApplicationShrinkRequest) GetSiteId() *int64 {
 	return s.SiteId
 }
 
+func (s *CreateTransportLayerApplicationShrinkRequest) GetStaticIp() *string {
+	return s.StaticIp
+}
+
 func (s *CreateTransportLayerApplicationShrinkRequest) SetCrossBorderOptimization(v string) *CreateTransportLayerApplicationShrinkRequest {
 	s.CrossBorderOptimization = &v
 	return s
@@ -102,6 +138,11 @@ func (s *CreateTransportLayerApplicationShrinkRequest) SetRulesShrink(v string) 
 
 func (s *CreateTransportLayerApplicationShrinkRequest) SetSiteId(v int64) *CreateTransportLayerApplicationShrinkRequest {
 	s.SiteId = &v
+	return s
+}
+
+func (s *CreateTransportLayerApplicationShrinkRequest) SetStaticIp(v string) *CreateTransportLayerApplicationShrinkRequest {
+	s.StaticIp = &v
 	return s
 }
 
