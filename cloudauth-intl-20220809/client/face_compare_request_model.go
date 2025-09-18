@@ -9,6 +9,8 @@ type iFaceCompareRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFacePictureQualityCheck(v string) *FaceCompareRequest
+	GetFacePictureQualityCheck() *string
 	SetMerchantBizId(v string) *FaceCompareRequest
 	GetMerchantBizId() *string
 	SetSourceFacePicture(v string) *FaceCompareRequest
@@ -22,6 +24,10 @@ type iFaceCompareRequest interface {
 }
 
 type FaceCompareRequest struct {
+	// example:
+	//
+	// N
+	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
@@ -46,6 +52,10 @@ func (s FaceCompareRequest) GoString() string {
 	return s.String()
 }
 
+func (s *FaceCompareRequest) GetFacePictureQualityCheck() *string {
+	return s.FacePictureQualityCheck
+}
+
 func (s *FaceCompareRequest) GetMerchantBizId() *string {
 	return s.MerchantBizId
 }
@@ -64,6 +74,11 @@ func (s *FaceCompareRequest) GetTargetFacePicture() *string {
 
 func (s *FaceCompareRequest) GetTargetFacePictureUrl() *string {
 	return s.TargetFacePictureUrl
+}
+
+func (s *FaceCompareRequest) SetFacePictureQualityCheck(v string) *FaceCompareRequest {
+	s.FacePictureQualityCheck = &v
+	return s
 }
 
 func (s *FaceCompareRequest) SetMerchantBizId(v string) *FaceCompareRequest {

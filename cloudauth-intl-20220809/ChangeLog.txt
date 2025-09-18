@@ -1,3 +1,7 @@
+2025-09-18 Version: v3.11.1
+- Update API FaceCompare: add request parameters FacePictureQualityCheck.
+
+
 2025-09-08 Version: v3.11.0
 - Support API CredentialRecognitionIntl.
 

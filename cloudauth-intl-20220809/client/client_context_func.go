@@ -992,6 +992,10 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureQualityCheck) {
+		query["FacePictureQualityCheck"] = request.FacePictureQualityCheck
+	}
+
 	if !dara.IsNil(request.MerchantBizId) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
