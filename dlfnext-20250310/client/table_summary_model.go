@@ -41,6 +41,8 @@ type iTableSummary interface {
 	GetTotalFileCount() *int64
 	SetTotalFileSizeInBytes(v int64) *TableSummary
 	GetTotalFileSizeInBytes() *int64
+	SetTotalMetaSizeInBytes(v int64) *TableSummary
+	GetTotalMetaSizeInBytes() *int64
 	SetUpdatedAt(v int64) *TableSummary
 	GetUpdatedAt() *int64
 }
@@ -67,6 +69,7 @@ type TableSummary struct {
 	// 30-day access count
 	TotalFileCount       *int64 `json:"totalFileCount,omitempty" xml:"totalFileCount,omitempty"`
 	TotalFileSizeInBytes *int64 `json:"totalFileSizeInBytes,omitempty" xml:"totalFileSizeInBytes,omitempty"`
+	TotalMetaSizeInBytes *int64 `json:"totalMetaSizeInBytes,omitempty" xml:"totalMetaSizeInBytes,omitempty"`
 	UpdatedAt            *int64 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
@@ -140,6 +143,10 @@ func (s *TableSummary) GetTotalFileCount() *int64 {
 
 func (s *TableSummary) GetTotalFileSizeInBytes() *int64 {
 	return s.TotalFileSizeInBytes
+}
+
+func (s *TableSummary) GetTotalMetaSizeInBytes() *int64 {
+	return s.TotalMetaSizeInBytes
 }
 
 func (s *TableSummary) GetUpdatedAt() *int64 {
@@ -223,6 +230,11 @@ func (s *TableSummary) SetTotalFileCount(v int64) *TableSummary {
 
 func (s *TableSummary) SetTotalFileSizeInBytes(v int64) *TableSummary {
 	s.TotalFileSizeInBytes = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalMetaSizeInBytes(v int64) *TableSummary {
+	s.TotalMetaSizeInBytes = &v
 	return s
 }
 

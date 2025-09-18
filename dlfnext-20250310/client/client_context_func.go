@@ -1595,6 +1595,51 @@ func (client *Client) GetTableSummaryWithContext(ctx context.Context, catalogId 
 
 // Summary:
 //
+// 获取数据湖表的临时访问凭证
+//
+// @param request - GetTableTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableTokenResponse
+func (client *Client) GetTableTokenWithContext(ctx context.Context, catalogId *string, database *string, table *string, request *GetTableTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTableTokenResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsInternal) {
+		query["isInternal"] = request.IsInternal
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableToken"),
+		Version:     dara.String("2025-03-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dlf/v1/" + dara.PercentEncode(dara.StringValue(catalogId)) + "/databases/" + dara.PercentEncode(dara.StringValue(database)) + "/tables/" + dara.PercentEncode(dara.StringValue(table)) + "/token"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取用户
 //
 // @param request - GetUserRequest
@@ -2558,6 +2603,10 @@ func (client *Client) ListTableDetailsWithContext(ctx context.Context, catalogId
 
 	if !dara.IsNil(request.TableNamePattern) {
 		query["tableNamePattern"] = request.TableNamePattern
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{

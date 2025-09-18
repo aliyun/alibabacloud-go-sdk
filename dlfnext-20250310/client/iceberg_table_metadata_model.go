@@ -13,6 +13,8 @@ type iIcebergTableMetadata interface {
 	GetCurrentSnapshot() *IcebergSnapshot
 	SetFields(v []*IcebergNestedField) *IcebergTableMetadata
 	GetFields() []*IcebergNestedField
+	SetIdentifierFieldIds(v []*int32) *IcebergTableMetadata
+	GetIdentifierFieldIds() []*int32
 	SetPartitionFields(v []*IcebergPartitionField) *IcebergTableMetadata
 	GetPartitionFields() []*IcebergPartitionField
 	SetProperties(v map[string]*string) *IcebergTableMetadata
@@ -20,10 +22,11 @@ type iIcebergTableMetadata interface {
 }
 
 type IcebergTableMetadata struct {
-	CurrentSnapshot *IcebergSnapshot         `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
-	Fields          []*IcebergNestedField    `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	PartitionFields []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
-	Properties      map[string]*string       `json:"properties,omitempty" xml:"properties,omitempty"`
+	CurrentSnapshot    *IcebergSnapshot         `json:"currentSnapshot,omitempty" xml:"currentSnapshot,omitempty"`
+	Fields             []*IcebergNestedField    `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	IdentifierFieldIds []*int32                 `json:"identifierFieldIds,omitempty" xml:"identifierFieldIds,omitempty" type:"Repeated"`
+	PartitionFields    []*IcebergPartitionField `json:"partitionFields,omitempty" xml:"partitionFields,omitempty" type:"Repeated"`
+	Properties         map[string]*string       `json:"properties,omitempty" xml:"properties,omitempty"`
 }
 
 func (s IcebergTableMetadata) String() string {
@@ -42,6 +45,10 @@ func (s *IcebergTableMetadata) GetFields() []*IcebergNestedField {
 	return s.Fields
 }
 
+func (s *IcebergTableMetadata) GetIdentifierFieldIds() []*int32 {
+	return s.IdentifierFieldIds
+}
+
 func (s *IcebergTableMetadata) GetPartitionFields() []*IcebergPartitionField {
 	return s.PartitionFields
 }
@@ -57,6 +64,11 @@ func (s *IcebergTableMetadata) SetCurrentSnapshot(v *IcebergSnapshot) *IcebergTa
 
 func (s *IcebergTableMetadata) SetFields(v []*IcebergNestedField) *IcebergTableMetadata {
 	s.Fields = v
+	return s
+}
+
+func (s *IcebergTableMetadata) SetIdentifierFieldIds(v []*int32) *IcebergTableMetadata {
+	s.IdentifierFieldIds = v
 	return s
 }
 

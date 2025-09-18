@@ -15,6 +15,8 @@ type iTableCompaction interface {
 	GetCuUsage() *float64
 	SetLastCompactedFileTime(v int64) *TableCompaction
 	GetLastCompactedFileTime() *int64
+	SetLatencyFileEarliestTime(v int64) *TableCompaction
+	GetLatencyFileEarliestTime() *int64
 	SetMaxLevel0FileCount(v string) *TableCompaction
 	GetMaxLevel0FileCount() *string
 	SetTableId(v string) *TableCompaction
@@ -22,11 +24,20 @@ type iTableCompaction interface {
 }
 
 type TableCompaction struct {
-	CatalogId             *string  `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	CuUsage               *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	LastCompactedFileTime *int64   `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
-	MaxLevel0FileCount    *string  `json:"maxLevel0FileCount,omitempty" xml:"maxLevel0FileCount,omitempty"`
-	TableId               *string  `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	CatalogId *string  `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	CuUsage   *float64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	// Deprecated
+	//
+	// if can be null:
+	// true
+	LastCompactedFileTime   *int64 `json:"lastCompactedFileTime,omitempty" xml:"lastCompactedFileTime,omitempty"`
+	LatencyFileEarliestTime *int64 `json:"latencyFileEarliestTime,omitempty" xml:"latencyFileEarliestTime,omitempty"`
+	// Deprecated
+	//
+	// if can be null:
+	// true
+	MaxLevel0FileCount *string `json:"maxLevel0FileCount,omitempty" xml:"maxLevel0FileCount,omitempty"`
+	TableId            *string `json:"tableId,omitempty" xml:"tableId,omitempty"`
 }
 
 func (s TableCompaction) String() string {
@@ -49,6 +60,10 @@ func (s *TableCompaction) GetLastCompactedFileTime() *int64 {
 	return s.LastCompactedFileTime
 }
 
+func (s *TableCompaction) GetLatencyFileEarliestTime() *int64 {
+	return s.LatencyFileEarliestTime
+}
+
 func (s *TableCompaction) GetMaxLevel0FileCount() *string {
 	return s.MaxLevel0FileCount
 }
@@ -69,6 +84,11 @@ func (s *TableCompaction) SetCuUsage(v float64) *TableCompaction {
 
 func (s *TableCompaction) SetLastCompactedFileTime(v int64) *TableCompaction {
 	s.LastCompactedFileTime = &v
+	return s
+}
+
+func (s *TableCompaction) SetLatencyFileEarliestTime(v int64) *TableCompaction {
+	s.LatencyFileEarliestTime = &v
 	return s
 }
 

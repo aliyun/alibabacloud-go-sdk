@@ -15,6 +15,8 @@ type iListTableDetailsRequest interface {
 	GetPageToken() *string
 	SetTableNamePattern(v string) *ListTableDetailsRequest
 	GetTableNamePattern() *string
+	SetType(v string) *ListTableDetailsRequest
+	GetType() *string
 }
 
 type ListTableDetailsRequest struct {
@@ -27,6 +29,7 @@ type ListTableDetailsRequest struct {
 	// ""
 	PageToken        *string `json:"pageToken,omitempty" xml:"pageToken,omitempty"`
 	TableNamePattern *string `json:"tableNamePattern,omitempty" xml:"tableNamePattern,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTableDetailsRequest) String() string {
@@ -49,6 +52,10 @@ func (s *ListTableDetailsRequest) GetTableNamePattern() *string {
 	return s.TableNamePattern
 }
 
+func (s *ListTableDetailsRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *ListTableDetailsRequest) SetMaxResults(v int32) *ListTableDetailsRequest {
 	s.MaxResults = &v
 	return s
@@ -61,6 +68,11 @@ func (s *ListTableDetailsRequest) SetPageToken(v string) *ListTableDetailsReques
 
 func (s *ListTableDetailsRequest) SetTableNamePattern(v string) *ListTableDetailsRequest {
 	s.TableNamePattern = &v
+	return s
+}
+
+func (s *ListTableDetailsRequest) SetType(v string) *ListTableDetailsRequest {
+	s.Type = &v
 	return s
 }
 
