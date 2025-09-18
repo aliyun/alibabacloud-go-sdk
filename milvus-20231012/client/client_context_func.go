@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("milvus"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDefaultRoleResponse
-func (client *Client) CreateDefaultRoleWithOptions(headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDefaultRoleResponse, _err error) {
+func (client *Client) CreateDefaultRoleWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDefaultRoleResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -80,28 +32,11 @@ func (client *Client) CreateDefaultRoleWithOptions(headers map[string]*string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDefaultRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Create a service role for Milvus to access other cloud products
-//
-// @return CreateDefaultRoleResponse
-func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDefaultRoleResponse{}
-	_body, _err := client.CreateDefaultRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -116,7 +51,7 @@ func (client *Client) CreateDefaultRole() (_result *CreateDefaultRoleResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccessControlListResponse
-func (client *Client) DescribeAccessControlListWithOptions(request *DescribeAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAccessControlListResponse, _err error) {
+func (client *Client) DescribeAccessControlListWithContext(ctx context.Context, request *DescribeAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAccessControlListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -142,30 +77,11 @@ func (client *Client) DescribeAccessControlListWithOptions(request *DescribeAcce
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAccessControlListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Get the public IP address whitelist of a Milvus instance.
-//
-// @param request - DescribeAccessControlListRequest
-//
-// @return DescribeAccessControlListResponse
-func (client *Client) DescribeAccessControlList(request *DescribeAccessControlListRequest) (_result *DescribeAccessControlListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeAccessControlListResponse{}
-	_body, _err := client.DescribeAccessControlListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -180,7 +96,7 @@ func (client *Client) DescribeAccessControlList(request *DescribeAccessControlLi
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceConfigsResponse
-func (client *Client) DescribeInstanceConfigsWithOptions(request *DescribeInstanceConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigsResponse, _err error) {
+func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, request *DescribeInstanceConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceConfigsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -206,30 +122,11 @@ func (client *Client) DescribeInstanceConfigsWithOptions(request *DescribeInstan
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Get information about the custom configuration of each component of Milvus.
-//
-// @param request - DescribeInstanceConfigsRequest
-//
-// @return DescribeInstanceConfigsResponse
-func (client *Client) DescribeInstanceConfigs(request *DescribeInstanceConfigsRequest) (_result *DescribeInstanceConfigsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeInstanceConfigsResponse{}
-	_body, _err := client.DescribeInstanceConfigsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -244,7 +141,7 @@ func (client *Client) DescribeInstanceConfigs(request *DescribeInstanceConfigsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceDetailResponse
-func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceDetailResponse, _err error) {
+func (client *Client) GetInstanceDetailWithContext(ctx context.Context, request *GetInstanceDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -270,30 +167,11 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Get the details of an instance.
-//
-// @param request - GetInstanceDetailRequest
-//
-// @return GetInstanceDetailResponse
-func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_result *GetInstanceDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetInstanceDetailResponse{}
-	_body, _err := client.GetInstanceDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -308,7 +186,7 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -364,30 +242,11 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Get the list of Milvus instances under the current account.
-//
-// @param request - ListInstancesRequest
-//
-// @return ListInstancesResponse
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -402,7 +261,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceConfigResponse
-func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
+func (client *Client) ModifyInstanceConfigWithContext(ctx context.Context, request *ModifyInstanceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -436,30 +295,11 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Update the configuration parameters of each component of Milvus.
-//
-// @param request - ModifyInstanceConfigRequest
-//
-// @return ModifyInstanceConfigResponse
-func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest) (_result *ModifyInstanceConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyInstanceConfigResponse{}
-	_body, _err := client.ModifyInstanceConfigWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -474,7 +314,7 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateAccessControlListResponse
-func (client *Client) UpdateAccessControlListWithOptions(request *UpdateAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAccessControlListResponse, _err error) {
+func (client *Client) UpdateAccessControlListWithContext(ctx context.Context, request *UpdateAccessControlListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAccessControlListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -508,30 +348,11 @@ func (client *Client) UpdateAccessControlListWithOptions(request *UpdateAccessCo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAccessControlListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Configure Public IP Address Whitelist
-//
-// @param request - UpdateAccessControlListRequest
-//
-// @return UpdateAccessControlListResponse
-func (client *Client) UpdateAccessControlList(request *UpdateAccessControlListRequest) (_result *UpdateAccessControlListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateAccessControlListResponse{}
-	_body, _err := client.UpdateAccessControlListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -546,7 +367,7 @@ func (client *Client) UpdateAccessControlList(request *UpdateAccessControlListRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
+func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -576,30 +397,11 @@ func (client *Client) UpdateInstanceNameWithOptions(request *UpdateInstanceNameR
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the name of an instance.
-//
-// @param request - UpdateInstanceNameRequest
-//
-// @return UpdateInstanceNameResponse
-func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_result *UpdateInstanceNameResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateInstanceNameResponse{}
-	_body, _err := client.UpdateInstanceNameWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -614,7 +416,7 @@ func (client *Client) UpdateInstanceName(request *UpdateInstanceNameRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePublicNetworkStatusResponse
-func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublicNetworkStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePublicNetworkStatusResponse, _err error) {
+func (client *Client) UpdatePublicNetworkStatusWithContext(ctx context.Context, request *UpdatePublicNetworkStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePublicNetworkStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -652,29 +454,10 @@ func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublic
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePublicNetworkStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enable or disable Internet access for Milvus.
-//
-// @param request - UpdatePublicNetworkStatusRequest
-//
-// @return UpdatePublicNetworkStatusResponse
-func (client *Client) UpdatePublicNetworkStatus(request *UpdatePublicNetworkStatusRequest) (_result *UpdatePublicNetworkStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdatePublicNetworkStatusResponse{}
-	_body, _err := client.UpdatePublicNetworkStatusWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
