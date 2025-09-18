@@ -112,7 +112,9 @@ type GetBatchMediaProducingJobResponseBodyEditingBatchJob struct {
 	// 	"ErrorMessage": "The specified clips id not found:[\\"****30d0b5e871eebb2ff7f6c75a****\\"]"
 	//
 	// }
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	ExtendInput  *string `json:"ExtendInput,omitempty" xml:"ExtendInput,omitempty"`
+	ExtendOutput *string `json:"ExtendOutput,omitempty" xml:"ExtendOutput,omitempty"`
 	// The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
 	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
 	// The job ID.
@@ -196,6 +198,14 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) GetExtend() *stri
 	return s.Extend
 }
 
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) GetExtendInput() *string {
+	return s.ExtendInput
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) GetExtendOutput() *string {
+	return s.ExtendOutput
+}
+
 func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) GetInputConfig() *string {
 	return s.InputConfig
 }
@@ -245,6 +255,16 @@ func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetEditingConfig(
 
 func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetExtend(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
 	s.Extend = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetExtendInput(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.ExtendInput = &v
+	return s
+}
+
+func (s *GetBatchMediaProducingJobResponseBodyEditingBatchJob) SetExtendOutput(v string) *GetBatchMediaProducingJobResponseBodyEditingBatchJob {
+	s.ExtendOutput = &v
 	return s
 }
 

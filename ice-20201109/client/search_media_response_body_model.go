@@ -1230,6 +1230,10 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Active
+	StreamStatus *string `json:"StreamStatus,omitempty" xml:"StreamStatus,omitempty"`
 	// The title of the media asset.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The transcoding status of the media asset.
@@ -1339,6 +1343,10 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) GetSpriteImages() *
 
 func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) GetStatus() *string {
 	return s.Status
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) GetStreamStatus() *string {
+	return s.StreamStatus
 }
 
 func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) GetTitle() *string {
@@ -1458,6 +1466,11 @@ func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetSpriteImages(v s
 
 func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetStatus(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
 	s.Status = &v
+	return s
+}
+
+func (s *SearchMediaResponseBodyMediaInfoListMediaBasicInfo) SetStreamStatus(v string) *SearchMediaResponseBodyMediaInfoListMediaBasicInfo {
+	s.StreamStatus = &v
 	return s
 }
 

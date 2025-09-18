@@ -479,6 +479,60 @@ func (client *Client) AddMediaMarksWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
+// 打标流媒资
+//
+// @param request - AddStreamTagToSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddStreamTagToSearchLibResponse
+func (client *Client) AddStreamTagToSearchLibWithContext(ctx context.Context, request *AddStreamTagToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *AddStreamTagToSearchLibResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.MsgBody) {
+		query["MsgBody"] = request.MsgBody
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddStreamTagToSearchLib"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddStreamTagToSearchLibResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a template.
 //
 // Description:
@@ -941,6 +995,56 @@ func (client *Client) CloseMediaConnectFlowFailoverWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &CloseMediaConnectFlowFailoverResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭流媒资
+//
+// @param request - CloseStreamToSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseStreamToSearchLibResponse
+func (client *Client) CloseStreamToSearchLibWithContext(ctx context.Context, request *CloseStreamToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *CloseStreamToSearchLibResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloseStreamToSearchLib"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloseStreamToSearchLibResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2649,6 +2753,56 @@ func (client *Client) CreateSourceLocationWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSourceLocationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建流媒资
+//
+// @param request - CreateStreamToSearchLibRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStreamToSearchLibResponse
+func (client *Client) CreateStreamToSearchLibWithContext(ctx context.Context, request *CreateStreamToSearchLibRequest, runtime *dara.RuntimeOptions) (_result *CreateStreamToSearchLibResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Input) {
+		query["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStreamToSearchLib"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStreamToSearchLibResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8235,6 +8389,80 @@ func (client *Client) GetStorageListWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetStorageListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询流媒资打标
+//
+// @param request - GetStreamTagListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStreamTagListResponse
+func (client *Client) GetStreamTagListWithContext(ctx context.Context, request *GetStreamTagListRequest, runtime *dara.RuntimeOptions) (_result *GetStreamTagListResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MediaId) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchLibName) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStreamTagList"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStreamTagListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
