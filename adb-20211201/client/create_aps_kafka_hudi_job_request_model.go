@@ -116,8 +116,6 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// 2ACU
 	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 0
