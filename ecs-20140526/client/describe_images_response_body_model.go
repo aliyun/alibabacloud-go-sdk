@@ -277,7 +277,8 @@ type DescribeImagesResponseBodyImagesImage struct {
 	// example:
 	//
 	// true
-	IsSupportIoOptimized *bool `json:"IsSupportIoOptimized,omitempty" xml:"IsSupportIoOptimized,omitempty"`
+	IsSupportIoOptimized *bool   `json:"IsSupportIoOptimized,omitempty" xml:"IsSupportIoOptimized,omitempty"`
+	LicenseType          *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	// Indicates whether the image supports logons of non-root users. Valid values:
 	//
 	// 	- true: The image supports logons of non-root users.
@@ -460,6 +461,10 @@ func (s *DescribeImagesResponseBodyImagesImage) GetIsSupportIoOptimized() *bool 
 	return s.IsSupportIoOptimized
 }
 
+func (s *DescribeImagesResponseBodyImagesImage) GetLicenseType() *string {
+	return s.LicenseType
+}
+
 func (s *DescribeImagesResponseBodyImagesImage) GetLoginAsNonRootSupported() *bool {
 	return s.LoginAsNonRootSupported
 }
@@ -604,6 +609,11 @@ func (s *DescribeImagesResponseBodyImagesImage) SetIsSupportCloudinit(v bool) *D
 
 func (s *DescribeImagesResponseBodyImagesImage) SetIsSupportIoOptimized(v bool) *DescribeImagesResponseBodyImagesImage {
 	s.IsSupportIoOptimized = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImagesImage) SetLicenseType(v string) *DescribeImagesResponseBodyImagesImage {
+	s.LicenseType = &v
 	return s
 }
 

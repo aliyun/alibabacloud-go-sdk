@@ -487,6 +487,8 @@ type DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSyst
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
 	// The inactive disks that were released and whose data must be cleared.
 	InactiveDisks *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks `json:"InactiveDisks,omitempty" xml:"InactiveDisks,omitempty" type:"Struct"`
+	MetricName    *string                                                                                                               `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	MetricValue   *string                                                                                                               `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
 	// The migration solution of the instance. Valid value: MigrationPlan. Instances can be migrated only by using migration plans.
 	MigrationOptions *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeMigrationOptions `json:"MigrationOptions,omitempty" xml:"MigrationOptions,omitempty" type:"Struct"`
 	// The online repair policy for the damaged disk. Valid value: IsolateOnly, which indicates that damaged disks are isolated but not repaired.
@@ -567,6 +569,14 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 	return s.InactiveDisks
 }
 
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetMetricName() *string {
+	return s.MetricName
+}
+
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetMetricValue() *string {
+	return s.MetricValue
+}
+
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) GetMigrationOptions() *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeMigrationOptions {
 	return s.MigrationOptions
 }
@@ -627,6 +637,16 @@ func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstance
 
 func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) SetInactiveDisks(v *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks) *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute {
 	s.InactiveDisks = v
+	return s
+}
+
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) SetMetricName(v string) *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute) SetMetricValue(v string) *DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttribute {
+	s.MetricValue = &v
 	return s
 }
 

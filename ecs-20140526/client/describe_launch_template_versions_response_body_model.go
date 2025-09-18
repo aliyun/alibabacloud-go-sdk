@@ -540,6 +540,7 @@ type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTe
 	//
 	// >  `SecurityGroupId` and `SecurityGroupIds` are mutually exclusive in the response.
 	SecurityGroupIds *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	SecurityOptions  *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions  `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the spot instance. Unit: hours. Valid values:
 	//
 	// 	- 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
@@ -756,6 +757,10 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 	return s.SecurityGroupIds
 }
 
+func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData) GetSecurityOptions() *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions {
+	return s.SecurityOptions
+}
+
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData) GetSpotDuration() *int32 {
 	return s.SpotDuration
 }
@@ -970,6 +975,11 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData) SetSecurityGroupIds(v *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityGroupIds) *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData) SetSecurityOptions(v *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateData {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -1673,6 +1683,31 @@ func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaun
 }
 
 func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityGroupIds) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions struct {
+	TrustedSystemMode *string `json:"TrustedSystemMode,omitempty" xml:"TrustedSystemMode,omitempty"`
+}
+
+func (s DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) GetTrustedSystemMode() *string {
+	return s.TrustedSystemMode
+}
+
+func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) SetTrustedSystemMode(v string) *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions {
+	s.TrustedSystemMode = &v
+	return s
+}
+
+func (s *DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

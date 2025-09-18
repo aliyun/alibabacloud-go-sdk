@@ -13,6 +13,8 @@ type iStartTerminalSessionRequest interface {
 	GetCommandLine() *string
 	SetConnectionType(v string) *StartTerminalSessionRequest
 	GetConnectionType() *string
+	SetEncryptionOptions(v *StartTerminalSessionRequestEncryptionOptions) *StartTerminalSessionRequest
+	GetEncryptionOptions() *StartTerminalSessionRequestEncryptionOptions
 	SetInstanceId(v []*string) *StartTerminalSessionRequest
 	GetInstanceId() []*string
 	SetOwnerAccount(v string) *StartTerminalSessionRequest
@@ -53,7 +55,8 @@ type StartTerminalSessionRequest struct {
 	// example:
 	//
 	// Intranet
-	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	ConnectionType    *string                                       `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	EncryptionOptions *StartTerminalSessionRequestEncryptionOptions `json:"EncryptionOptions,omitempty" xml:"EncryptionOptions,omitempty" type:"Struct"`
 	// The instance IDs.
 	//
 	// This parameter is required.
@@ -111,6 +114,10 @@ func (s *StartTerminalSessionRequest) GetConnectionType() *string {
 	return s.ConnectionType
 }
 
+func (s *StartTerminalSessionRequest) GetEncryptionOptions() *StartTerminalSessionRequestEncryptionOptions {
+	return s.EncryptionOptions
+}
+
 func (s *StartTerminalSessionRequest) GetInstanceId() []*string {
 	return s.InstanceId
 }
@@ -158,6 +165,11 @@ func (s *StartTerminalSessionRequest) SetCommandLine(v string) *StartTerminalSes
 
 func (s *StartTerminalSessionRequest) SetConnectionType(v string) *StartTerminalSessionRequest {
 	s.ConnectionType = &v
+	return s
+}
+
+func (s *StartTerminalSessionRequest) SetEncryptionOptions(v *StartTerminalSessionRequestEncryptionOptions) *StartTerminalSessionRequest {
+	s.EncryptionOptions = v
 	return s
 }
 
@@ -212,5 +224,50 @@ func (s *StartTerminalSessionRequest) SetUsername(v string) *StartTerminalSessio
 }
 
 func (s *StartTerminalSessionRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartTerminalSessionRequestEncryptionOptions struct {
+	Enabled  *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s StartTerminalSessionRequestEncryptionOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartTerminalSessionRequestEncryptionOptions) GoString() string {
+	return s.String()
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) GetKMSKeyId() *string {
+	return s.KMSKeyId
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) GetMode() *string {
+	return s.Mode
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) SetEnabled(v bool) *StartTerminalSessionRequestEncryptionOptions {
+	s.Enabled = &v
+	return s
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) SetKMSKeyId(v string) *StartTerminalSessionRequestEncryptionOptions {
+	s.KMSKeyId = &v
+	return s
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) SetMode(v string) *StartTerminalSessionRequestEncryptionOptions {
+	s.Mode = &v
+	return s
+}
+
+func (s *StartTerminalSessionRequestEncryptionOptions) Validate() error {
 	return dara.Validate(s)
 }

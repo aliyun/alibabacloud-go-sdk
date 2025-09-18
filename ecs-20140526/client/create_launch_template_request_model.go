@@ -95,6 +95,8 @@ type iCreateLaunchTemplateRequest interface {
 	GetSecurityGroupId() *string
 	SetSecurityGroupIds(v []*string) *CreateLaunchTemplateRequest
 	GetSecurityGroupIds() []*string
+	SetSecurityOptions(v *CreateLaunchTemplateRequestSecurityOptions) *CreateLaunchTemplateRequest
+	GetSecurityOptions() *CreateLaunchTemplateRequestSecurityOptions
 	SetSpotDuration(v int32) *CreateLaunchTemplateRequest
 	GetSpotDuration() *int32
 	SetSpotPriceLimit(v float32) *CreateLaunchTemplateRequest
@@ -448,7 +450,8 @@ type CreateLaunchTemplateRequest struct {
 	// example:
 	//
 	// sg-bp15ed6xe1yxeycg7****
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityGroupIds []*string                                   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	SecurityOptions  *CreateLaunchTemplateRequestSecurityOptions `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
 	// 	- 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
@@ -709,6 +712,10 @@ func (s *CreateLaunchTemplateRequest) GetSecurityGroupIds() []*string {
 	return s.SecurityGroupIds
 }
 
+func (s *CreateLaunchTemplateRequest) GetSecurityOptions() *CreateLaunchTemplateRequestSecurityOptions {
+	return s.SecurityOptions
+}
+
 func (s *CreateLaunchTemplateRequest) GetSpotDuration() *int32 {
 	return s.SpotDuration
 }
@@ -965,6 +972,11 @@ func (s *CreateLaunchTemplateRequest) SetSecurityGroupId(v string) *CreateLaunch
 
 func (s *CreateLaunchTemplateRequest) SetSecurityGroupIds(v []*string) *CreateLaunchTemplateRequest {
 	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CreateLaunchTemplateRequest) SetSecurityOptions(v *CreateLaunchTemplateRequestSecurityOptions) *CreateLaunchTemplateRequest {
+	s.SecurityOptions = v
 	return s
 }
 
@@ -1799,6 +1811,31 @@ func (s *CreateLaunchTemplateRequestNetworkInterface) SetVSwitchId(v string) *Cr
 }
 
 func (s *CreateLaunchTemplateRequestNetworkInterface) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateLaunchTemplateRequestSecurityOptions struct {
+	TrustedSystemMode *string `json:"TrustedSystemMode,omitempty" xml:"TrustedSystemMode,omitempty"`
+}
+
+func (s CreateLaunchTemplateRequestSecurityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateLaunchTemplateRequestSecurityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLaunchTemplateRequestSecurityOptions) GetTrustedSystemMode() *string {
+	return s.TrustedSystemMode
+}
+
+func (s *CreateLaunchTemplateRequestSecurityOptions) SetTrustedSystemMode(v string) *CreateLaunchTemplateRequestSecurityOptions {
+	s.TrustedSystemMode = &v
+	return s
+}
+
+func (s *CreateLaunchTemplateRequestSecurityOptions) Validate() error {
 	return dara.Validate(s)
 }
 

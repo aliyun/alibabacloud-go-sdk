@@ -6853,6 +6853,10 @@ func (client *Client) CreateLaunchTemplateWithOptions(request *CreateLaunchTempl
 		query["SecurityGroupIds"] = request.SecurityGroupIds
 	}
 
+	if !dara.IsNil(request.SecurityOptions) {
+		query["SecurityOptions"] = request.SecurityOptions
+	}
+
 	if !dara.IsNil(request.SpotDuration) {
 		query["SpotDuration"] = request.SpotDuration
 	}
@@ -7151,6 +7155,10 @@ func (client *Client) CreateLaunchTemplateVersionWithOptions(request *CreateLaun
 
 	if !dara.IsNil(request.SecurityGroupIds) {
 		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	if !dara.IsNil(request.SecurityOptions) {
+		query["SecurityOptions"] = request.SecurityOptions
 	}
 
 	if !dara.IsNil(request.SpotDuration) {
@@ -43120,16 +43128,22 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 //
 //   - If you want to permanently close a session and invalidate the WebSocket URL, call the EndTerminalSession operation.
 //
-// @param request - StartTerminalSessionRequest
+// @param tmpReq - StartTerminalSessionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartTerminalSessionResponse
-func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) StartTerminalSessionWithOptions(tmpReq *StartTerminalSessionRequest, runtime *dara.RuntimeOptions) (_result *StartTerminalSessionResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &StartTerminalSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EncryptionOptions) {
+		request.EncryptionOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionOptions, dara.String("EncryptionOptions"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CommandLine) {
 		query["CommandLine"] = request.CommandLine
@@ -43137,6 +43151,10 @@ func (client *Client) StartTerminalSessionWithOptions(request *StartTerminalSess
 
 	if !dara.IsNil(request.ConnectionType) {
 		query["ConnectionType"] = request.ConnectionType
+	}
+
+	if !dara.IsNil(request.EncryptionOptionsShrink) {
+		query["EncryptionOptions"] = request.EncryptionOptionsShrink
 	}
 
 	if !dara.IsNil(request.InstanceId) {

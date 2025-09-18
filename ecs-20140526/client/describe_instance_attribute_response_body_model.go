@@ -133,7 +133,10 @@ type DescribeInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// false
-	EnableJumboFrame        *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// example:
+	//
+	// True
 	EnableNetworkEncryption *bool `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
 	// The time when the instance expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
 	//
@@ -232,7 +235,10 @@ type DescribeInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 16384
-	Memory         *int32                                               `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// Details about network options.
+	//
+	// >  This parameter is in invitational preview and is not publicly available.
 	NetworkOptions *DescribeInstanceAttributeResponseBodyNetworkOptions `json:"NetworkOptions,omitempty" xml:"NetworkOptions,omitempty" type:"Struct"`
 	// The reason why the instance was locked. Valid values:
 	//
@@ -793,9 +799,15 @@ func (s *DescribeInstanceAttributeResponseBodyInnerIpAddress) Validate() error {
 }
 
 type DescribeInstanceAttributeResponseBodyNetworkOptions struct {
-	BandwidthWeighting      *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	EnableJumboFrame        *bool   `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	EnableNetworkEncryption *bool   `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
+	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
+	// example:
+	//
+	// false
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+	// example:
+	//
+	// False
+	EnableNetworkEncryption *bool `json:"EnableNetworkEncryption,omitempty" xml:"EnableNetworkEncryption,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyNetworkOptions) String() string {
