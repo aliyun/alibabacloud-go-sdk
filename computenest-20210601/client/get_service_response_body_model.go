@@ -49,6 +49,8 @@ type iGetServiceResponseBody interface {
 	GetServiceId() *string
 	SetServiceInfos(v []*GetServiceResponseBodyServiceInfos) *GetServiceResponseBody
 	GetServiceInfos() []*GetServiceResponseBodyServiceInfos
+	SetServiceLocaleConfigs(v []*GetServiceResponseBodyServiceLocaleConfigs) *GetServiceResponseBody
+	GetServiceLocaleConfigs() []*GetServiceResponseBodyServiceLocaleConfigs
 	SetServiceProductUrl(v string) *GetServiceResponseBody
 	GetServiceProductUrl() *string
 	SetServiceType(v string) *GetServiceResponseBody
@@ -205,7 +207,8 @@ type GetServiceResponseBody struct {
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The information about the service.
-	ServiceInfos []*GetServiceResponseBodyServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceInfos         []*GetServiceResponseBodyServiceInfos         `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	ServiceLocaleConfigs []*GetServiceResponseBodyServiceLocaleConfigs `json:"ServiceLocaleConfigs,omitempty" xml:"ServiceLocaleConfigs,omitempty" type:"Repeated"`
 	// The URL of the service page.
 	//
 	// example:
@@ -424,6 +427,10 @@ func (s *GetServiceResponseBody) GetServiceInfos() []*GetServiceResponseBodyServ
 	return s.ServiceInfos
 }
 
+func (s *GetServiceResponseBody) GetServiceLocaleConfigs() []*GetServiceResponseBodyServiceLocaleConfigs {
+	return s.ServiceLocaleConfigs
+}
+
 func (s *GetServiceResponseBody) GetServiceProductUrl() *string {
 	return s.ServiceProductUrl
 }
@@ -585,6 +592,11 @@ func (s *GetServiceResponseBody) SetServiceId(v string) *GetServiceResponseBody 
 
 func (s *GetServiceResponseBody) SetServiceInfos(v []*GetServiceResponseBodyServiceInfos) *GetServiceResponseBody {
 	s.ServiceInfos = v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetServiceLocaleConfigs(v []*GetServiceResponseBodyServiceLocaleConfigs) *GetServiceResponseBody {
+	s.ServiceLocaleConfigs = v
 	return s
 }
 
@@ -1374,6 +1386,51 @@ func (s *GetServiceResponseBodyServiceInfosSoftwares) SetVersion(v string) *GetS
 }
 
 func (s *GetServiceResponseBodyServiceInfosSoftwares) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetServiceResponseBodyServiceLocaleConfigs struct {
+	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
+	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+}
+
+func (s GetServiceResponseBodyServiceLocaleConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetServiceResponseBodyServiceLocaleConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) GetEnValue() *string {
+	return s.EnValue
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) GetOriginalValue() *string {
+	return s.OriginalValue
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) GetZhValue() *string {
+	return s.ZhValue
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) SetEnValue(v string) *GetServiceResponseBodyServiceLocaleConfigs {
+	s.EnValue = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) SetOriginalValue(v string) *GetServiceResponseBodyServiceLocaleConfigs {
+	s.OriginalValue = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) SetZhValue(v string) *GetServiceResponseBodyServiceLocaleConfigs {
+	s.ZhValue = &v
+	return s
+}
+
+func (s *GetServiceResponseBodyServiceLocaleConfigs) Validate() error {
 	return dara.Validate(s)
 }
 
