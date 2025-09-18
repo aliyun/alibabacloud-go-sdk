@@ -22,26 +22,27 @@ type iListComponentsResponseBody interface {
 }
 
 type ListComponentsResponseBody struct {
+	// The list of component information.
 	Components []*ListComponentsResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// FFAC608A-5DC3-174F-93C6-9F88CA6D5875
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -107,27 +108,27 @@ func (s *ListComponentsResponseBody) Validate() error {
 }
 
 type ListComponentsResponseBodyComponents struct {
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// KNOX
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 属性列表。
+	// The list of attributes.
 	Attributes []*Attribute `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	// 组件名称。
+	// The component name.
 	//
 	// example:
 	//
 	// KNOX
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 命名空间。
+	// The reserved field.
 	//
 	// example:
 	//
 	// “”
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// 安装该组件的机器总数。
+	// The total number of instances on which the component is installed.
 	//
 	// example:
 	//

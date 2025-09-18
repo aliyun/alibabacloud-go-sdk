@@ -26,8 +26,6 @@ type ApplicationConfigFile struct {
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// 配置文件名称。
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// core-site.xml

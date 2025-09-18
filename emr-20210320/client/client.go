@@ -899,6 +899,74 @@ func (client *Client) DeleteUsers(request *DeleteUsersRequest) (_result *DeleteU
 	return _result, _err
 }
 
+// @param request - ExportApplicationConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportApplicationConfigsResponse
+func (client *Client) ExportApplicationConfigsWithOptions(request *ExportApplicationConfigsRequest, runtime *dara.RuntimeOptions) (_result *ExportApplicationConfigsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationConfigFiles) {
+		query["ApplicationConfigFiles"] = request.ApplicationConfigFiles
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ExportMode) {
+		query["ExportMode"] = request.ExportMode
+	}
+
+	if !dara.IsNil(request.FileFormat) {
+		query["FileFormat"] = request.FileFormat
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportApplicationConfigs"),
+		Version:     dara.String("2021-03-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportApplicationConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ExportApplicationConfigsRequest
+//
+// @return ExportApplicationConfigsResponse
+func (client *Client) ExportApplicationConfigs(request *ExportApplicationConfigsRequest) (_result *ExportApplicationConfigsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExportApplicationConfigsResponse{}
+	_body, _err := client.ExportApplicationConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the detailed configuration information about an API operation template.
@@ -963,6 +1031,10 @@ func (client *Client) GetApiTemplate(request *GetApiTemplateRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an application.
+//
 // Description:
 //
 // 查询应用详情。
@@ -1013,6 +1085,10 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the details of an application.
+//
 // Description:
 //
 // 查询应用详情。
@@ -2982,6 +3058,10 @@ func (client *Client) ListAutoScalingActivitiesWithOptions(request *ListAutoScal
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.InstanceChargeTypes) {
+		query["InstanceChargeTypes"] = request.InstanceChargeTypes
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -3155,6 +3235,10 @@ func (client *Client) ListClusters(request *ListClustersRequest) (_result *ListC
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of component instances.
+//
 // @param request - ListComponentInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3229,6 +3313,10 @@ func (client *Client) ListComponentInstancesWithOptions(request *ListComponentIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the list of component instances.
+//
 // @param request - ListComponentInstancesRequest
 //
 // @return ListComponentInstancesResponse
@@ -3243,6 +3331,10 @@ func (client *Client) ListComponentInstances(request *ListComponentInstancesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of components.
+//
 // @param request - ListComponentsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3305,6 +3397,10 @@ func (client *Client) ListComponentsWithOptions(request *ListComponentsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of components.
+//
 // @param request - ListComponentsRequest
 //
 // @return ListComponentsResponse

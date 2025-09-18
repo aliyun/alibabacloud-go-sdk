@@ -22,26 +22,27 @@ type iListComponentInstancesResponseBody interface {
 }
 
 type ListComponentInstancesResponseBody struct {
+	// The list of instance component installation information.
 	ComponentInstances []*ListComponentInstancesResponseBodyComponentInstances `json:"ComponentInstances,omitempty" xml:"ComponentInstances,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 2
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// “”
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// 7345241A-014C-17D2-A3AC-C72771188F46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -107,120 +108,120 @@ func (s *ListComponentInstancesResponseBody) Validate() error {
 }
 
 type ListComponentInstancesResponseBodyComponentInstances struct {
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// KNOX
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 组件服务状态，取值如下：
+	// The status of the component service. Valid values:
 	//
-	// - active：主服务
+	// 	- active: the primary service.
 	//
-	// - standby：备用服务。
+	// 	- standby: the standby service.
 	//
 	// example:
 	//
 	// active
 	BizState *string `json:"BizState,omitempty" xml:"BizState,omitempty"`
-	// Commission状态，取值如下：
+	// The status of the Commission. Valid values:
 	//
-	// - COMMISSIONED：已上线
+	// 	- COMMISSIONED
 	//
-	// - COMMISSIONING：上线中
+	// 	- COMMISSIONING
 	//
-	// - DECOMMISSIONED：已下线
+	// 	- DECOMMISSIONED
 	//
-	// - DECOMMISSIONINPROGRESS：下线进程中
+	// 	- DECOMMISSIONINPROGRESS
 	//
-	// - DECOMMISSIONFAILED：下线失败
+	// 	- DECOMMISSIONFAILED
 	//
-	// - INSERVICE：服务中
+	// 	- INSERVICE
 	//
-	// - UNKNOWN：未知状态。
-	//
-	// <p>
+	// 	- UNKNOWN
 	//
 	// example:
 	//
 	// INSERVICE
 	CommissionState *string `json:"CommissionState,omitempty" xml:"CommissionState,omitempty"`
-	// 组件实例操作状态，取值如下：
+	// The status of the component. Valid values:
 	//
-	// - WAITING：等待中
+	// 	- WAITING
 	//
-	// - INSTALLING：安装中
+	// 	- INSTALLING
 	//
-	// - INSTALLED：已安装
+	// 	- INSTALLED
 	//
-	// - INSTALL_FAILED：安装失败
+	// 	- INSTALL_FAILED
 	//
-	// - STARTING：启动中
+	// 	- STARTING
 	//
-	// - STARTED：已启动
+	// 	- STARTED
 	//
-	// - START_FAILED：启动失败
+	// 	- START_FAILED
 	//
-	// - STOPPING：停止中
+	// 	- STOPPING
 	//
-	// - STOPPED：已停止
+	// 	- STOPPED
 	//
-	// - STOP_FAILED：停止失败
+	// 	- STOP_FAILED
 	//
 	// example:
 	//
 	// STARTED
 	ComponentInstanceState *string `json:"ComponentInstanceState,omitempty" xml:"ComponentInstanceState,omitempty"`
-	// 组件名称。
+	// The component name.
 	//
 	// example:
 	//
 	// KNOX
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 安装时间戳。
+	// The timestamp of the installation.
 	//
 	// example:
 	//
 	// 1628248947000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 期望状态，取值如下：
+	// Valid values:
 	//
-	// - WAITING：等待中
+	// 	- WAITING
 	//
-	// - INSTALLING：安装中
+	// 	- INSTALLING
 	//
-	// - INSTALLED：已安装
+	// 	- INSTALLED
 	//
-	// - INSTALL_FAILED：安装失败
+	// 	- INSTALL_FAILED
 	//
-	// - STARTING：启动中
+	// 	- STARTING
 	//
-	// - STARTED：已启动
+	// 	- STARTED
 	//
-	// - START_FAILED：启动失败
+	// 	- START_FAILED
 	//
-	// - STOPPING：停止中
+	// 	- STOPPING
 	//
-	// - STOPPED：已停止
+	// 	- STOPPED
 	//
-	// - STOP_FAILED：停止失败。
+	// 	- STOP_FAILED
 	//
 	// example:
 	//
 	// STARTED
 	DesiredState *string `json:"DesiredState,omitempty" xml:"DesiredState,omitempty"`
-	// 节点ID。
+	// The instance ID.
 	//
 	// example:
 	//
 	// i-bp17yy050pxo01m2****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点名称。
+	// The instance name.
 	//
 	// example:
 	//
 	// emr-worker-1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

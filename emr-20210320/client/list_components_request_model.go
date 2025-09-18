@@ -26,13 +26,13 @@ type iListComponentsRequest interface {
 }
 
 type ListComponentsRequest struct {
-	// 应用名称列表。
+	// The application name.
 	//
 	// example:
 	//
 	// 20
 	ApplicationNames []*string `json:"ApplicationNames,omitempty" xml:"ApplicationNames,omitempty" type:"Repeated"`
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -40,29 +40,31 @@ type ListComponentsRequest struct {
 	//
 	// C-8CFEBCCFFEF5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 组件名称列表。
+	// The list of component names.
 	//
 	// example:
 	//
 	// ["HDFS"]
 	ComponentNames []*string `json:"ComponentNames,omitempty" xml:"ComponentNames,omitempty" type:"Repeated"`
+	// The list of component status.
+	//
 	// example:
 	//
 	// null
 	ComponentStates []*string `json:"ComponentStates,omitempty" xml:"ComponentStates,omitempty" type:"Repeated"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地域ID。
+	// The region ID. You can call the [ListRegions](url) view.
 	//
 	// This parameter is required.
 	//

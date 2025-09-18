@@ -9,6 +9,8 @@ type iUpdateSpecNodeGroup interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetModifyType(v string) *UpdateSpecNodeGroup
+	GetModifyType() *string
 	SetNewInstanceType(v string) *UpdateSpecNodeGroup
 	GetNewInstanceType() *string
 	SetNodeGroupId(v string) *UpdateSpecNodeGroup
@@ -16,6 +18,7 @@ type iUpdateSpecNodeGroup interface {
 }
 
 type UpdateSpecNodeGroup struct {
+	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// 新实例类型。
 	//
 	// This parameter is required.
@@ -42,12 +45,21 @@ func (s UpdateSpecNodeGroup) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateSpecNodeGroup) GetModifyType() *string {
+	return s.ModifyType
+}
+
 func (s *UpdateSpecNodeGroup) GetNewInstanceType() *string {
 	return s.NewInstanceType
 }
 
 func (s *UpdateSpecNodeGroup) GetNodeGroupId() *string {
 	return s.NodeGroupId
+}
+
+func (s *UpdateSpecNodeGroup) SetModifyType(v string) *UpdateSpecNodeGroup {
+	s.ModifyType = &v
+	return s
 }
 
 func (s *UpdateSpecNodeGroup) SetNewInstanceType(v string) *UpdateSpecNodeGroup {

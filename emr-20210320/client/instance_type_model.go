@@ -23,6 +23,8 @@ type iInstanceType interface {
 	GetLocalStorageAmount() *int32
 	SetLocalStorageCapacity(v int64) *InstanceType
 	GetLocalStorageCapacity() *int64
+	SetModifyType(v string) *InstanceType
+	GetModifyType() *string
 	SetOptimized(v bool) *InstanceType
 	GetOptimized() *bool
 }
@@ -99,7 +101,8 @@ type InstanceType struct {
 	// example:
 	//
 	// 40
-	LocalStorageCapacity *int64 `json:"LocalStorageCapacity,omitempty" xml:"LocalStorageCapacity,omitempty"`
+	LocalStorageCapacity *int64  `json:"LocalStorageCapacity,omitempty" xml:"LocalStorageCapacity,omitempty"`
+	ModifyType           *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// 是否IO优化类型。
 	//
 	// example:
@@ -144,6 +147,10 @@ func (s *InstanceType) GetLocalStorageCapacity() *int64 {
 	return s.LocalStorageCapacity
 }
 
+func (s *InstanceType) GetModifyType() *string {
+	return s.ModifyType
+}
+
 func (s *InstanceType) GetOptimized() *bool {
 	return s.Optimized
 }
@@ -180,6 +187,11 @@ func (s *InstanceType) SetLocalStorageAmount(v int32) *InstanceType {
 
 func (s *InstanceType) SetLocalStorageCapacity(v int64) *InstanceType {
 	s.LocalStorageCapacity = &v
+	return s
+}
+
+func (s *InstanceType) SetModifyType(v string) *InstanceType {
+	s.ModifyType = &v
 	return s
 }
 

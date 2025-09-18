@@ -18,7 +18,7 @@ type iGetApplicationRequest interface {
 }
 
 type GetApplicationRequest struct {
-	// 应用名称。
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetApplicationRequest struct {
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 集群ID。
+	// The request ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetApplicationRequest struct {
 	//
 	// c-e6a9d46e92675****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 地域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//

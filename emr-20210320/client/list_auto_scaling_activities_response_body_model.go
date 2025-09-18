@@ -161,8 +161,9 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	// example:
 	//
 	// 10
-	ExpectNum         *int32            `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
-	InstanceTypeToNum map[string]*int32 `json:"InstanceTypeToNum,omitempty" xml:"InstanceTypeToNum,omitempty"`
+	ExpectNum           *int32                                                                       `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
+	InstanceTypeDetails []*ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails `json:"InstanceTypeDetails,omitempty" xml:"InstanceTypeDetails,omitempty" type:"Repeated"`
+	InstanceTypeToNum   map[string]*int32                                                            `json:"InstanceTypeToNum,omitempty" xml:"InstanceTypeToNum,omitempty"`
 	// The ID of the node group.
 	//
 	// example:
@@ -181,7 +182,10 @@ type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// op-13c37a77c505****
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	PolicyType  *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// PRIORITY
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The name of the scaling rule.
 	//
 	// example:
@@ -230,6 +234,10 @@ func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) GetEndTime() *i
 
 func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) GetExpectNum() *int32 {
 	return s.ExpectNum
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) GetInstanceTypeDetails() []*ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails {
+	return s.InstanceTypeDetails
 }
 
 func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) GetInstanceTypeToNum() map[string]*int32 {
@@ -295,6 +303,11 @@ func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetExpectNum(v 
 	return s
 }
 
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetInstanceTypeDetails(v []*ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) *ListAutoScalingActivitiesResponseBodyScalingActivities {
+	s.InstanceTypeDetails = v
+	return s
+}
+
 func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetInstanceTypeToNum(v map[string]*int32) *ListAutoScalingActivitiesResponseBodyScalingActivities {
 	s.InstanceTypeToNum = v
 	return s
@@ -331,5 +344,53 @@ func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) SetStartTime(v 
 }
 
 func (s *ListAutoScalingActivitiesResponseBodyScalingActivities) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails struct {
+	// example:
+	//
+	// ecs.g6.xlarge
+	InstanceType        *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OnDemandInstanceIds []*string `json:"OnDemandInstanceIds,omitempty" xml:"OnDemandInstanceIds,omitempty" type:"Repeated"`
+	SpotInstanceIds     []*string `json:"SpotInstanceIds,omitempty" xml:"SpotInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) GetInstanceType() *string {
+	return s.InstanceType
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) GetOnDemandInstanceIds() []*string {
+	return s.OnDemandInstanceIds
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) GetSpotInstanceIds() []*string {
+	return s.SpotInstanceIds
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) SetInstanceType(v string) *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) SetOnDemandInstanceIds(v []*string) *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails {
+	s.OnDemandInstanceIds = v
+	return s
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) SetSpotInstanceIds(v []*string) *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails {
+	s.SpotInstanceIds = v
+	return s
+}
+
+func (s *ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails) Validate() error {
 	return dara.Validate(s)
 }

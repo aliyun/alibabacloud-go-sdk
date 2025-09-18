@@ -13,6 +13,8 @@ type iListAutoScalingActivitiesRequest interface {
 	GetClusterId() *string
 	SetEndTime(v int64) *ListAutoScalingActivitiesRequest
 	GetEndTime() *int64
+	SetInstanceChargeTypes(v []*string) *ListAutoScalingActivitiesRequest
+	GetInstanceChargeTypes() []*string
 	SetMaxResults(v int32) *ListAutoScalingActivitiesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListAutoScalingActivitiesRequest
@@ -48,6 +50,20 @@ type ListAutoScalingActivitiesRequest struct {
 	//
 	// 1639718634819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 实例付费类型枚举值：
+	//
+	// - ONDEMAND: 按量付费实例
+	//
+	// - SPOT: 竞价实例
+	//
+	// 默认为null代表全选
+	//
+	// 举例: ["ONDEMAND", "SPOT"]
+	//
+	// example:
+	//
+	// ONDEMAND
+	InstanceChargeTypes []*string `json:"InstanceChargeTypes,omitempty" xml:"InstanceChargeTypes,omitempty" type:"Repeated"`
 	// The number of entries to return on each page.
 	//
 	// example:
@@ -90,7 +106,10 @@ type ListAutoScalingActivitiesRequest struct {
 	//
 	// SCALE_IN
 	ScalingActivityType *string `json:"ScalingActivityType,omitempty" xml:"ScalingActivityType,omitempty"`
-	ScalingPolicyType   *string `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
+	// example:
+	//
+	// MANAGED
+	ScalingPolicyType *string `json:"ScalingPolicyType,omitempty" xml:"ScalingPolicyType,omitempty"`
 	// The name of the scaling rule.
 	//
 	// example:
@@ -119,6 +138,10 @@ func (s *ListAutoScalingActivitiesRequest) GetClusterId() *string {
 
 func (s *ListAutoScalingActivitiesRequest) GetEndTime() *int64 {
 	return s.EndTime
+}
+
+func (s *ListAutoScalingActivitiesRequest) GetInstanceChargeTypes() []*string {
+	return s.InstanceChargeTypes
 }
 
 func (s *ListAutoScalingActivitiesRequest) GetMaxResults() *int32 {
@@ -164,6 +187,11 @@ func (s *ListAutoScalingActivitiesRequest) SetClusterId(v string) *ListAutoScali
 
 func (s *ListAutoScalingActivitiesRequest) SetEndTime(v int64) *ListAutoScalingActivitiesRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListAutoScalingActivitiesRequest) SetInstanceChargeTypes(v []*string) *ListAutoScalingActivitiesRequest {
+	s.InstanceChargeTypes = v
 	return s
 }
 

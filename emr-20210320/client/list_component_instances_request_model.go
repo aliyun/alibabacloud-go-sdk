@@ -32,13 +32,13 @@ type iListComponentInstancesRequest interface {
 }
 
 type ListComponentInstancesRequest struct {
-	// 应用名称列表。
+	// The list of component names.
 	//
 	// example:
 	//
 	// c-b933c5aac8fe****
 	ApplicationNames []*string `json:"ApplicationNames,omitempty" xml:"ApplicationNames,omitempty" type:"Repeated"`
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -46,41 +46,43 @@ type ListComponentInstancesRequest struct {
 	//
 	// C-8CFEBCCFFEF5****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 组件名称列表。
+	// The list of component names.
 	//
 	// example:
 	//
 	// ["HDFS"]
 	ComponentNames []*string `json:"ComponentNames,omitempty" xml:"ComponentNames,omitempty" type:"Repeated"`
+	// The list of component status.
+	//
 	// example:
 	//
 	// null
 	ComponentStates []*string `json:"ComponentStates,omitempty" xml:"ComponentStates,omitempty" type:"Repeated"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// “”
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 节点ID列表。
+	// The list of instance IDs.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
-	// 节点名称列表。
+	// The instance IDs.
 	//
 	// example:
 	//
 	// 20
 	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
-	// 地域ID。
+	// The region ID. You can call the [ListRegions](url) view.
 	//
 	// This parameter is required.
 	//
@@ -88,6 +90,8 @@ type ListComponentInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i

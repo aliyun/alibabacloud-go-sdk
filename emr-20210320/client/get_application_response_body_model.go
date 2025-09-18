@@ -16,8 +16,9 @@ type iGetApplicationResponseBody interface {
 }
 
 type GetApplicationResponseBody struct {
+	// The application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -56,27 +57,27 @@ func (s *GetApplicationResponseBody) Validate() error {
 }
 
 type GetApplicationResponseBodyApplication struct {
-	// 操作列表。
+	// The list of actions supported by the application.
 	Actions []*GetApplicationResponseBodyApplicationActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// 应用名称。
+	// The application name.
 	//
 	// example:
 	//
 	// HDFS
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 应用操作状态。
+	// The status of the application.
 	//
 	// example:
 	//
 	// RUNNING
 	ApplicationState *string `json:"ApplicationState,omitempty" xml:"ApplicationState,omitempty"`
-	// 应用版本。
+	// The application version.
 	//
 	// example:
 	//
 	// 2.8.1
 	ApplicationVersion *string `json:"ApplicationVersion,omitempty" xml:"ApplicationVersion,omitempty"`
-	// 社区版本。
+	// The community version.
 	//
 	// example:
 	//
@@ -142,33 +143,39 @@ func (s *GetApplicationResponseBodyApplication) Validate() error {
 }
 
 type GetApplicationResponseBodyApplicationActions struct {
-	// 操作名称。
+	// The action name.
 	//
 	// example:
 	//
 	// decommission
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// 操作参数。
+	// The list of action parameters.
 	ActionParams []*GetApplicationResponseBodyApplicationActionsActionParams `json:"ActionParams,omitempty" xml:"ActionParams,omitempty" type:"Repeated"`
-	// 命令。
+	// The action command.
 	//
 	// example:
 	//
 	// decommission
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// 组件名称。
+	// The component name.
 	//
 	// example:
 	//
 	// DataNode
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 操作描述。
+	// The description of the action.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 执行范围。
+	// The execution scope. Valid values:
+	//
+	// 	- APPLICATION: the application scope.
+	//
+	// 	- COMPONENT: the component scope.
+	//
+	// 	- COMPONENT_INSTANCE: the component instance scope.
 	//
 	// example:
 	//
@@ -243,19 +250,19 @@ func (s *GetApplicationResponseBodyApplicationActions) Validate() error {
 }
 
 type GetApplicationResponseBodyApplicationActionsActionParams struct {
-	// 动作参数描述。
+	// Description
 	//
 	// example:
 	//
 	// start
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 动作参数KEY。
+	// The parameter name.
 	//
 	// example:
 	//
 	// timeout
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 动作参数属性。
+	// The parameter value attribute.
 	ValueAttribute *GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute `json:"ValueAttribute,omitempty" xml:"ValueAttribute,omitempty" type:"Struct"`
 }
 
@@ -299,37 +306,37 @@ func (s *GetApplicationResponseBodyApplicationActionsActionParams) Validate() er
 }
 
 type GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute struct {
-	// 值表述。
+	// Value description.
 	//
 	// example:
 	//
 	// 描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 值步长。
+	// The size of the value increment.
 	//
 	// example:
 	//
 	// 1
 	ValueIncrementStep *string `json:"ValueIncrementStep,omitempty" xml:"ValueIncrementStep,omitempty"`
-	// 最大值。
+	// The maximum range of values.
 	//
 	// example:
 	//
 	// 100
 	ValueMaximum *string `json:"ValueMaximum,omitempty" xml:"ValueMaximum,omitempty"`
-	// 最小值。
+	// The minimum range of values.
 	//
 	// example:
 	//
 	// 1
 	ValueMinimum *string `json:"ValueMinimum,omitempty" xml:"ValueMinimum,omitempty"`
-	// 属性值类型。
+	// The value type of the column.
 	//
 	// example:
 	//
 	// int
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
-	// 值单位。
+	// The unit of the value.
 	//
 	// example:
 	//
