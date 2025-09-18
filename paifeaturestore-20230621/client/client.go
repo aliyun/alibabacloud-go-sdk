@@ -2164,6 +2164,10 @@ func (client *Client) ListDatasourceTablesWithOptions(InstanceId *string, Dataso
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
 	if !dara.IsNil(request.TableName) {
 		query["TableName"] = request.TableName
 	}

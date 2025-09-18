@@ -9,11 +9,17 @@ type iListDatasourceTablesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetSchemaName(v string) *ListDatasourceTablesRequest
+	GetSchemaName() *string
 	SetTableName(v string) *ListDatasourceTablesRequest
 	GetTableName() *string
 }
 
 type ListDatasourceTablesRequest struct {
+	// example:
+	//
+	// default
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// example:
 	//
 	// table1
@@ -28,8 +34,17 @@ func (s ListDatasourceTablesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDatasourceTablesRequest) GetSchemaName() *string {
+	return s.SchemaName
+}
+
 func (s *ListDatasourceTablesRequest) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *ListDatasourceTablesRequest) SetSchemaName(v string) *ListDatasourceTablesRequest {
+	s.SchemaName = &v
+	return s
 }
 
 func (s *ListDatasourceTablesRequest) SetTableName(v string) *ListDatasourceTablesRequest {

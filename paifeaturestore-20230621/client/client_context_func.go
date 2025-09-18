@@ -1514,6 +1514,10 @@ func (client *Client) ListDatasourceTablesWithContext(ctx context.Context, Insta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.SchemaName) {
+		query["SchemaName"] = request.SchemaName
+	}
+
 	if !dara.IsNil(request.TableName) {
 		query["TableName"] = request.TableName
 	}
