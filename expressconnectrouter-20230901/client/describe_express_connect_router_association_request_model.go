@@ -29,6 +29,8 @@ type iDescribeExpressConnectRouterAssociationRequest interface {
 	GetNextToken() *string
 	SetTransitRouterId(v string) *DescribeExpressConnectRouterAssociationRequest
 	GetTransitRouterId() *string
+	SetVersion(v string) *DescribeExpressConnectRouterAssociationRequest
+	GetVersion() *string
 	SetVpcId(v string) *DescribeExpressConnectRouterAssociationRequest
 	GetVpcId() *string
 }
@@ -112,6 +114,7 @@ type DescribeExpressConnectRouterAssociationRequest struct {
 	//
 	// tr-2ze4i71c6be454e2l****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -168,6 +171,10 @@ func (s *DescribeExpressConnectRouterAssociationRequest) GetTransitRouterId() *s
 	return s.TransitRouterId
 }
 
+func (s *DescribeExpressConnectRouterAssociationRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterAssociationRequest) GetVpcId() *string {
 	return s.VpcId
 }
@@ -219,6 +226,11 @@ func (s *DescribeExpressConnectRouterAssociationRequest) SetNextToken(v string) 
 
 func (s *DescribeExpressConnectRouterAssociationRequest) SetTransitRouterId(v string) *DescribeExpressConnectRouterAssociationRequest {
 	s.TransitRouterId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAssociationRequest) SetVersion(v string) *DescribeExpressConnectRouterAssociationRequest {
+	s.Version = &v
 	return s
 }
 

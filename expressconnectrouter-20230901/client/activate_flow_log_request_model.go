@@ -17,6 +17,8 @@ type iActivateFlowLogRequest interface {
 	GetEcrId() *string
 	SetFlowLogId(v string) *ActivateFlowLogRequest
 	GetFlowLogId() *string
+	SetVersion(v string) *ActivateFlowLogRequest
+	GetVersion() *string
 }
 
 type ActivateFlowLogRequest struct {
@@ -56,6 +58,7 @@ type ActivateFlowLogRequest struct {
 	//
 	// flowlog-m5evbtbpt****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ActivateFlowLogRequest) String() string {
@@ -82,6 +85,10 @@ func (s *ActivateFlowLogRequest) GetFlowLogId() *string {
 	return s.FlowLogId
 }
 
+func (s *ActivateFlowLogRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ActivateFlowLogRequest) SetClientToken(v string) *ActivateFlowLogRequest {
 	s.ClientToken = &v
 	return s
@@ -99,6 +106,11 @@ func (s *ActivateFlowLogRequest) SetEcrId(v string) *ActivateFlowLogRequest {
 
 func (s *ActivateFlowLogRequest) SetFlowLogId(v string) *ActivateFlowLogRequest {
 	s.FlowLogId = &v
+	return s
+}
+
+func (s *ActivateFlowLogRequest) SetVersion(v string) *ActivateFlowLogRequest {
+	s.Version = &v
 	return s
 }
 

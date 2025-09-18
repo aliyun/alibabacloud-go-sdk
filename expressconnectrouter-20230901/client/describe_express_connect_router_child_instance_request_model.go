@@ -27,6 +27,8 @@ type iDescribeExpressConnectRouterChildInstanceRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeExpressConnectRouterChildInstanceRequest
 	GetNextToken() *string
+	SetVersion(v string) *DescribeExpressConnectRouterChildInstanceRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterChildInstanceRequest struct {
@@ -98,6 +100,7 @@ type DescribeExpressConnectRouterChildInstanceRequest struct {
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterChildInstanceRequest) String() string {
@@ -144,6 +147,10 @@ func (s *DescribeExpressConnectRouterChildInstanceRequest) GetNextToken() *strin
 	return s.NextToken
 }
 
+func (s *DescribeExpressConnectRouterChildInstanceRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterChildInstanceRequest) SetAssociationId(v string) *DescribeExpressConnectRouterChildInstanceRequest {
 	s.AssociationId = &v
 	return s
@@ -186,6 +193,11 @@ func (s *DescribeExpressConnectRouterChildInstanceRequest) SetMaxResults(v int32
 
 func (s *DescribeExpressConnectRouterChildInstanceRequest) SetNextToken(v string) *DescribeExpressConnectRouterChildInstanceRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterChildInstanceRequest) SetVersion(v string) *DescribeExpressConnectRouterChildInstanceRequest {
+	s.Version = &v
 	return s
 }
 

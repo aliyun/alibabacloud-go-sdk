@@ -13,6 +13,8 @@ type iListExpressConnectRouterSupportedRegionRequest interface {
 	GetClientToken() *string
 	SetNodeType(v string) *ListExpressConnectRouterSupportedRegionRequest
 	GetNodeType() *string
+	SetVersion(v string) *ListExpressConnectRouterSupportedRegionRequest
+	GetVersion() *string
 }
 
 type ListExpressConnectRouterSupportedRegionRequest struct {
@@ -40,6 +42,7 @@ type ListExpressConnectRouterSupportedRegionRequest struct {
 	//
 	// VBR
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListExpressConnectRouterSupportedRegionRequest) String() string {
@@ -58,6 +61,10 @@ func (s *ListExpressConnectRouterSupportedRegionRequest) GetNodeType() *string {
 	return s.NodeType
 }
 
+func (s *ListExpressConnectRouterSupportedRegionRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ListExpressConnectRouterSupportedRegionRequest) SetClientToken(v string) *ListExpressConnectRouterSupportedRegionRequest {
 	s.ClientToken = &v
 	return s
@@ -65,6 +72,11 @@ func (s *ListExpressConnectRouterSupportedRegionRequest) SetClientToken(v string
 
 func (s *ListExpressConnectRouterSupportedRegionRequest) SetNodeType(v string) *ListExpressConnectRouterSupportedRegionRequest {
 	s.NodeType = &v
+	return s
+}
+
+func (s *ListExpressConnectRouterSupportedRegionRequest) SetVersion(v string) *ListExpressConnectRouterSupportedRegionRequest {
+	s.Version = &v
 	return s
 }
 

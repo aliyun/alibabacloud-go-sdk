@@ -15,6 +15,8 @@ type iDescribeExpressConnectRouterInterRegionTransitModeRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *DescribeExpressConnectRouterInterRegionTransitModeRequest
 	GetEcrId() *string
+	SetVersion(v string) *DescribeExpressConnectRouterInterRegionTransitModeRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeRequest struct {
@@ -45,7 +47,8 @@ type DescribeExpressConnectRouterInterRegionTransitModeRequest struct {
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterInterRegionTransitModeRequest) String() string {
@@ -68,6 +71,10 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) GetEcrId() *
 	return s.EcrId
 }
 
+func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetClientToken(v string) *DescribeExpressConnectRouterInterRegionTransitModeRequest {
 	s.ClientToken = &v
 	return s
@@ -80,6 +87,11 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetDryRun(v 
 
 func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetEcrId(v string) *DescribeExpressConnectRouterInterRegionTransitModeRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetVersion(v string) *DescribeExpressConnectRouterInterRegionTransitModeRequest {
+	s.Version = &v
 	return s
 }
 

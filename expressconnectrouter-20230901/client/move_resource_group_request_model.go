@@ -19,6 +19,8 @@ type iMoveResourceGroupRequest interface {
 	GetResourceId() *string
 	SetResourceType(v string) *MoveResourceGroupRequest
 	GetResourceType() *string
+	SetVersion(v string) *MoveResourceGroupRequest
+	GetVersion() *string
 }
 
 type MoveResourceGroupRequest struct {
@@ -62,6 +64,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s MoveResourceGroupRequest) String() string {
@@ -92,6 +95,10 @@ func (s *MoveResourceGroupRequest) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *MoveResourceGroupRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *MoveResourceGroupRequest) SetClientToken(v string) *MoveResourceGroupRequest {
 	s.ClientToken = &v
 	return s
@@ -114,6 +121,11 @@ func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupReq
 
 func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetVersion(v string) *MoveResourceGroupRequest {
+	s.Version = &v
 	return s
 }
 

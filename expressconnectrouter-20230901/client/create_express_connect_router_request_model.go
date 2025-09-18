@@ -23,6 +23,8 @@ type iCreateExpressConnectRouterRequest interface {
 	GetResourceGroupId() *string
 	SetTag(v []*CreateExpressConnectRouterRequestTag) *CreateExpressConnectRouterRequest
 	GetTag() []*CreateExpressConnectRouterRequestTag
+	SetVersion(v string) *CreateExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type CreateExpressConnectRouterRequest struct {
@@ -79,7 +81,8 @@ type CreateExpressConnectRouterRequest struct {
 	// The information about the tags.
 	//
 	// You can specify at most 20 tags in each call.
-	Tag []*CreateExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag     []*CreateExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version *string                                 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateExpressConnectRouterRequest) String() string {
@@ -118,6 +121,10 @@ func (s *CreateExpressConnectRouterRequest) GetTag() []*CreateExpressConnectRout
 	return s.Tag
 }
 
+func (s *CreateExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateExpressConnectRouterRequest) SetAlibabaSideAsn(v int64) *CreateExpressConnectRouterRequest {
 	s.AlibabaSideAsn = &v
 	return s
@@ -150,6 +157,11 @@ func (s *CreateExpressConnectRouterRequest) SetResourceGroupId(v string) *Create
 
 func (s *CreateExpressConnectRouterRequest) SetTag(v []*CreateExpressConnectRouterRequestTag) *CreateExpressConnectRouterRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateExpressConnectRouterRequest) SetVersion(v string) *CreateExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

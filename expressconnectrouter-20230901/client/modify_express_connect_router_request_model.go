@@ -19,6 +19,8 @@ type iModifyExpressConnectRouterRequest interface {
 	GetEcrId() *string
 	SetName(v string) *ModifyExpressConnectRouterRequest
 	GetName() *string
+	SetVersion(v string) *ModifyExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type ModifyExpressConnectRouterRequest struct {
@@ -65,7 +67,8 @@ type ModifyExpressConnectRouterRequest struct {
 	// example:
 	//
 	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterRequest) String() string {
@@ -96,6 +99,10 @@ func (s *ModifyExpressConnectRouterRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *ModifyExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyExpressConnectRouterRequest) SetClientToken(v string) *ModifyExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -118,6 +125,11 @@ func (s *ModifyExpressConnectRouterRequest) SetEcrId(v string) *ModifyExpressCon
 
 func (s *ModifyExpressConnectRouterRequest) SetName(v string) *ModifyExpressConnectRouterRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterRequest) SetVersion(v string) *ModifyExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

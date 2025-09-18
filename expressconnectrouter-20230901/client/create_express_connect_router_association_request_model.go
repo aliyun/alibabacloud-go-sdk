@@ -31,6 +31,8 @@ type iCreateExpressConnectRouterAssociationRequest interface {
 	GetTransitRouterId() *string
 	SetTransitRouterOwnerId(v int64) *CreateExpressConnectRouterAssociationRequest
 	GetTransitRouterOwnerId() *int64
+	SetVersion(v string) *CreateExpressConnectRouterAssociationRequest
+	GetVersion() *string
 	SetVpcId(v string) *CreateExpressConnectRouterAssociationRequest
 	GetVpcId() *string
 	SetVpcOwnerId(v int64) *CreateExpressConnectRouterAssociationRequest
@@ -121,7 +123,8 @@ type CreateExpressConnectRouterAssociationRequest struct {
 	// example:
 	//
 	// 189159362009****
-	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	TransitRouterOwnerId *int64  `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -190,6 +193,10 @@ func (s *CreateExpressConnectRouterAssociationRequest) GetTransitRouterOwnerId()
 	return s.TransitRouterOwnerId
 }
 
+func (s *CreateExpressConnectRouterAssociationRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateExpressConnectRouterAssociationRequest) GetVpcId() *string {
 	return s.VpcId
 }
@@ -250,6 +257,11 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetTransitRouterId(v stri
 
 func (s *CreateExpressConnectRouterAssociationRequest) SetTransitRouterOwnerId(v int64) *CreateExpressConnectRouterAssociationRequest {
 	s.TransitRouterOwnerId = &v
+	return s
+}
+
+func (s *CreateExpressConnectRouterAssociationRequest) SetVersion(v string) *CreateExpressConnectRouterAssociationRequest {
+	s.Version = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iListTagResourcesRequest interface {
 	GetResourceType() *string
 	SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest
 	GetTag() []*ListTagResourcesRequestTag
+	SetVersion(v string) *ListTagResourcesRequest
+	GetVersion() *string
 }
 
 type ListTagResourcesRequest struct {
@@ -51,7 +53,8 @@ type ListTagResourcesRequest struct {
 	// The tag.
 	//
 	// You can specify at most 20 tags.
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag     []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version *string                       `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -82,6 +85,10 @@ func (s *ListTagResourcesRequest) GetTag() []*ListTagResourcesRequestTag {
 	return s.Tag
 }
 
+func (s *ListTagResourcesRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesRequest {
 	s.MaxResults = &v
 	return s
@@ -104,6 +111,11 @@ func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesReq
 
 func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetVersion(v string) *ListTagResourcesRequest {
+	s.Version = &v
 	return s
 }
 

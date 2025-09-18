@@ -23,6 +23,8 @@ type iModifyExpressConnectRouterAssociationAllowedPrefixRequest interface {
 	GetEcrId() *string
 	SetOwnerAccount(v string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest
 	GetOwnerAccount() *string
+	SetVersion(v string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+	GetVersion() *string
 }
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
@@ -75,6 +77,7 @@ type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
 	// ecr-mezk2idmsd0vx2****
 	EcrId        *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterAssociationAllowedPrefixRequest) String() string {
@@ -113,6 +116,10 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) GetOwnerAcco
 	return s.OwnerAccount
 }
 
+func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetAllowedPrefixes(v []*string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest {
 	s.AllowedPrefixes = v
 	return s
@@ -145,6 +152,11 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetEcrId(v s
 
 func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetOwnerAccount(v string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest {
 	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetVersion(v string) *ModifyExpressConnectRouterAssociationAllowedPrefixRequest {
+	s.Version = &v
 	return s
 }
 

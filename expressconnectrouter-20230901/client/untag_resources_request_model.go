@@ -21,6 +21,8 @@ type iUntagResourcesRequest interface {
 	GetResourceType() *string
 	SetTagKey(v []*string) *UntagResourcesRequest
 	GetTagKey() []*string
+	SetVersion(v string) *UntagResourcesRequest
+	GetVersion() *string
 }
 
 type UntagResourcesRequest struct {
@@ -69,7 +71,8 @@ type UntagResourcesRequest struct {
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The keys of the tags that you want to remove from the ECRs.
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	TagKey  []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	Version *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -104,6 +107,10 @@ func (s *UntagResourcesRequest) GetTagKey() []*string {
 	return s.TagKey
 }
 
+func (s *UntagResourcesRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
 	return s
@@ -131,6 +138,11 @@ func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest
 
 func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 	s.TagKey = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetVersion(v string) *UntagResourcesRequest {
+	s.Version = &v
 	return s
 }
 

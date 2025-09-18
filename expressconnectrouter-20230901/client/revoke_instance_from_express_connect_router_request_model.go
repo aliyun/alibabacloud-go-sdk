@@ -23,6 +23,8 @@ type iRevokeInstanceFromExpressConnectRouterRequest interface {
 	GetInstanceRegionId() *string
 	SetInstanceType(v string) *RevokeInstanceFromExpressConnectRouterRequest
 	GetInstanceType() *string
+	SetVersion(v string) *RevokeInstanceFromExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type RevokeInstanceFromExpressConnectRouterRequest struct {
@@ -90,6 +92,7 @@ type RevokeInstanceFromExpressConnectRouterRequest struct {
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s RevokeInstanceFromExpressConnectRouterRequest) String() string {
@@ -128,6 +131,10 @@ func (s *RevokeInstanceFromExpressConnectRouterRequest) GetInstanceType() *strin
 	return s.InstanceType
 }
 
+func (s *RevokeInstanceFromExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *RevokeInstanceFromExpressConnectRouterRequest) SetClientToken(v string) *RevokeInstanceFromExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -160,6 +167,11 @@ func (s *RevokeInstanceFromExpressConnectRouterRequest) SetInstanceRegionId(v st
 
 func (s *RevokeInstanceFromExpressConnectRouterRequest) SetInstanceType(v string) *RevokeInstanceFromExpressConnectRouterRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *RevokeInstanceFromExpressConnectRouterRequest) SetVersion(v string) *RevokeInstanceFromExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

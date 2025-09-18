@@ -19,6 +19,8 @@ type iDescribeDisabledExpressConnectRouterRouteEntriesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeDisabledExpressConnectRouterRouteEntriesRequest
 	GetNextToken() *string
+	SetVersion(v string) *DescribeDisabledExpressConnectRouterRouteEntriesRequest
+	GetVersion() *string
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
@@ -66,6 +68,7 @@ type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
 	//
 	// FFv4fzkNPW8Z+cZ+DBXXQ3Gmf3XlCgpBH43oaTYTAAcGc708Zb+pDyAGVJBo/MKsyrtZfPnX9Ztf02vgdIDyaNe8UuZdf/JJk069qxGKzqSKg=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDisabledExpressConnectRouterRouteEntriesRequest) String() string {
@@ -96,6 +99,10 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) GetNextToken()
 	return s.NextToken
 }
 
+func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetClientToken(v string) *DescribeDisabledExpressConnectRouterRouteEntriesRequest {
 	s.ClientToken = &v
 	return s
@@ -118,6 +125,11 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetMaxResults(
 
 func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetNextToken(v string) *DescribeDisabledExpressConnectRouterRouteEntriesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetVersion(v string) *DescribeDisabledExpressConnectRouterRouteEntriesRequest {
+	s.Version = &v
 	return s
 }
 

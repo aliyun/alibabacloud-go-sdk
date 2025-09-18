@@ -21,6 +21,8 @@ type iModifyExpressConnectRouterChildInstanceRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *ModifyExpressConnectRouterChildInstanceRequest
 	GetEcrId() *string
+	SetVersion(v string) *ModifyExpressConnectRouterChildInstanceRequest
+	GetVersion() *string
 }
 
 type ModifyExpressConnectRouterChildInstanceRequest struct {
@@ -53,7 +55,8 @@ type ModifyExpressConnectRouterChildInstanceRequest struct {
 	// example:
 	//
 	// ecr-gny3gqp41n7vrrn5iz
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterChildInstanceRequest) String() string {
@@ -88,6 +91,10 @@ func (s *ModifyExpressConnectRouterChildInstanceRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *ModifyExpressConnectRouterChildInstanceRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyExpressConnectRouterChildInstanceRequest) SetChildInstanceId(v string) *ModifyExpressConnectRouterChildInstanceRequest {
 	s.ChildInstanceId = &v
 	return s
@@ -115,6 +122,11 @@ func (s *ModifyExpressConnectRouterChildInstanceRequest) SetDryRun(v bool) *Modi
 
 func (s *ModifyExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *ModifyExpressConnectRouterChildInstanceRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterChildInstanceRequest) SetVersion(v string) *ModifyExpressConnectRouterChildInstanceRequest {
+	s.Version = &v
 	return s
 }
 

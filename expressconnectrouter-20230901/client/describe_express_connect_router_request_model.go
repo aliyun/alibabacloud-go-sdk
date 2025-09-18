@@ -25,6 +25,8 @@ type iDescribeExpressConnectRouterRequest interface {
 	GetResourceGroupId() *string
 	SetTag(v []*DescribeExpressConnectRouterRequestTag) *DescribeExpressConnectRouterRequest
 	GetTag() []*DescribeExpressConnectRouterRequestTag
+	SetVersion(v string) *DescribeExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterRequest struct {
@@ -83,7 +85,8 @@ type DescribeExpressConnectRouterRequest struct {
 	// rg-aek2aq7f4va****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource tags. You can specify up to 20 tags.
-	Tag []*DescribeExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag     []*DescribeExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version *string                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRequest) String() string {
@@ -126,6 +129,10 @@ func (s *DescribeExpressConnectRouterRequest) GetTag() []*DescribeExpressConnect
 	return s.Tag
 }
 
+func (s *DescribeExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterRequest) SetClientToken(v string) *DescribeExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -163,6 +170,11 @@ func (s *DescribeExpressConnectRouterRequest) SetResourceGroupId(v string) *Desc
 
 func (s *DescribeExpressConnectRouterRequest) SetTag(v []*DescribeExpressConnectRouterRequestTag) *DescribeExpressConnectRouterRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterRequest) SetVersion(v string) *DescribeExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

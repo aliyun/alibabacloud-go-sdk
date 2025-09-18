@@ -25,6 +25,8 @@ type iAttachExpressConnectRouterChildInstanceRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *AttachExpressConnectRouterChildInstanceRequest
 	GetEcrId() *string
+	SetVersion(v string) *AttachExpressConnectRouterChildInstanceRequest
+	GetVersion() *string
 }
 
 type AttachExpressConnectRouterChildInstanceRequest struct {
@@ -93,7 +95,8 @@ type AttachExpressConnectRouterChildInstanceRequest struct {
 	// example:
 	//
 	// ecr-a5xqrgbeidz1w8****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AttachExpressConnectRouterChildInstanceRequest) String() string {
@@ -136,6 +139,10 @@ func (s *AttachExpressConnectRouterChildInstanceRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *AttachExpressConnectRouterChildInstanceRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *AttachExpressConnectRouterChildInstanceRequest) SetChildInstanceId(v string) *AttachExpressConnectRouterChildInstanceRequest {
 	s.ChildInstanceId = &v
 	return s
@@ -173,6 +180,11 @@ func (s *AttachExpressConnectRouterChildInstanceRequest) SetDryRun(v bool) *Atta
 
 func (s *AttachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *AttachExpressConnectRouterChildInstanceRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *AttachExpressConnectRouterChildInstanceRequest) SetVersion(v string) *AttachExpressConnectRouterChildInstanceRequest {
+	s.Version = &v
 	return s
 }
 

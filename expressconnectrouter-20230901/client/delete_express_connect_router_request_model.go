@@ -15,6 +15,8 @@ type iDeleteExpressConnectRouterRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *DeleteExpressConnectRouterRequest
 	GetEcrId() *string
+	SetVersion(v string) *DeleteExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type DeleteExpressConnectRouterRequest struct {
@@ -45,7 +47,8 @@ type DeleteExpressConnectRouterRequest struct {
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DeleteExpressConnectRouterRequest) String() string {
@@ -68,6 +71,10 @@ func (s *DeleteExpressConnectRouterRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *DeleteExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DeleteExpressConnectRouterRequest) SetClientToken(v string) *DeleteExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -80,6 +87,11 @@ func (s *DeleteExpressConnectRouterRequest) SetDryRun(v bool) *DeleteExpressConn
 
 func (s *DeleteExpressConnectRouterRequest) SetEcrId(v string) *DeleteExpressConnectRouterRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *DeleteExpressConnectRouterRequest) SetVersion(v string) *DeleteExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

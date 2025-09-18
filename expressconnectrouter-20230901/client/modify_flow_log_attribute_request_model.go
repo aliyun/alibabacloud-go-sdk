@@ -25,6 +25,8 @@ type iModifyFlowLogAttributeRequest interface {
 	GetInterval() *int32
 	SetSamplingRate(v string) *ModifyFlowLogAttributeRequest
 	GetSamplingRate() *string
+	SetVersion(v string) *ModifyFlowLogAttributeRequest
+	GetVersion() *string
 }
 
 type ModifyFlowLogAttributeRequest struct {
@@ -104,6 +106,7 @@ type ModifyFlowLogAttributeRequest struct {
 	//
 	// 1:4096
 	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyFlowLogAttributeRequest) String() string {
@@ -146,6 +149,10 @@ func (s *ModifyFlowLogAttributeRequest) GetSamplingRate() *string {
 	return s.SamplingRate
 }
 
+func (s *ModifyFlowLogAttributeRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyFlowLogAttributeRequest) SetClientToken(v string) *ModifyFlowLogAttributeRequest {
 	s.ClientToken = &v
 	return s
@@ -183,6 +190,11 @@ func (s *ModifyFlowLogAttributeRequest) SetInterval(v int32) *ModifyFlowLogAttri
 
 func (s *ModifyFlowLogAttributeRequest) SetSamplingRate(v string) *ModifyFlowLogAttributeRequest {
 	s.SamplingRate = &v
+	return s
+}
+
+func (s *ModifyFlowLogAttributeRequest) SetVersion(v string) *ModifyFlowLogAttributeRequest {
+	s.Version = &v
 	return s
 }
 

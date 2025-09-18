@@ -19,6 +19,8 @@ type iDetachExpressConnectRouterChildInstanceRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *DetachExpressConnectRouterChildInstanceRequest
 	GetEcrId() *string
+	SetVersion(v string) *DetachExpressConnectRouterChildInstanceRequest
+	GetVersion() *string
 }
 
 type DetachExpressConnectRouterChildInstanceRequest struct {
@@ -65,7 +67,8 @@ type DetachExpressConnectRouterChildInstanceRequest struct {
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DetachExpressConnectRouterChildInstanceRequest) String() string {
@@ -96,6 +99,10 @@ func (s *DetachExpressConnectRouterChildInstanceRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *DetachExpressConnectRouterChildInstanceRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DetachExpressConnectRouterChildInstanceRequest) SetChildInstanceId(v string) *DetachExpressConnectRouterChildInstanceRequest {
 	s.ChildInstanceId = &v
 	return s
@@ -118,6 +125,11 @@ func (s *DetachExpressConnectRouterChildInstanceRequest) SetDryRun(v bool) *Deta
 
 func (s *DetachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *DetachExpressConnectRouterChildInstanceRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *DetachExpressConnectRouterChildInstanceRequest) SetVersion(v string) *DetachExpressConnectRouterChildInstanceRequest {
+	s.Version = &v
 	return s
 }
 

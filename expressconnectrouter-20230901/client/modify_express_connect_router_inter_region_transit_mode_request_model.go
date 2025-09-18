@@ -17,6 +17,8 @@ type iModifyExpressConnectRouterInterRegionTransitModeRequest interface {
 	GetEcrId() *string
 	SetTransitModeList(v []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList) *ModifyExpressConnectRouterInterRegionTransitModeRequest
 	GetTransitModeList() []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList
+	SetVersion(v string) *ModifyExpressConnectRouterInterRegionTransitModeRequest
+	GetVersion() *string
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequest struct {
@@ -50,6 +52,7 @@ type ModifyExpressConnectRouterInterRegionTransitModeRequest struct {
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 	// The cross-region forwarding modes.
 	TransitModeList []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList `json:"TransitModeList,omitempty" xml:"TransitModeList,omitempty" type:"Repeated"`
+	Version         *string                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterInterRegionTransitModeRequest) String() string {
@@ -76,6 +79,10 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) GetTransitMode
 	return s.TransitModeList
 }
 
+func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetClientToken(v string) *ModifyExpressConnectRouterInterRegionTransitModeRequest {
 	s.ClientToken = &v
 	return s
@@ -93,6 +100,11 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetEcrId(v str
 
 func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetTransitModeList(v []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList) *ModifyExpressConnectRouterInterRegionTransitModeRequest {
 	s.TransitModeList = v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetVersion(v string) *ModifyExpressConnectRouterInterRegionTransitModeRequest {
+	s.Version = &v
 	return s
 }
 

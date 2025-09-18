@@ -33,6 +33,8 @@ type iDescribeFlowLogsRequest interface {
 	GetResourceGroupId() *string
 	SetTag(v []*DescribeFlowLogsRequestTag) *DescribeFlowLogsRequest
 	GetTag() []*DescribeFlowLogsRequestTag
+	SetVersion(v string) *DescribeFlowLogsRequest
+	GetVersion() *string
 }
 
 type DescribeFlowLogsRequest struct {
@@ -140,6 +142,7 @@ type DescribeFlowLogsRequest struct {
 	ProjectName     *string                       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	ResourceGroupId *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeFlowLogsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version         *string                       `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeFlowLogsRequest) String() string {
@@ -196,6 +199,10 @@ func (s *DescribeFlowLogsRequest) GetResourceGroupId() *string {
 
 func (s *DescribeFlowLogsRequest) GetTag() []*DescribeFlowLogsRequestTag {
 	return s.Tag
+}
+
+func (s *DescribeFlowLogsRequest) GetVersion() *string {
+	return s.Version
 }
 
 func (s *DescribeFlowLogsRequest) SetClientToken(v string) *DescribeFlowLogsRequest {
@@ -255,6 +262,11 @@ func (s *DescribeFlowLogsRequest) SetResourceGroupId(v string) *DescribeFlowLogs
 
 func (s *DescribeFlowLogsRequest) SetTag(v []*DescribeFlowLogsRequestTag) *DescribeFlowLogsRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *DescribeFlowLogsRequest) SetVersion(v string) *DescribeFlowLogsRequest {
+	s.Version = &v
 	return s
 }
 

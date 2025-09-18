@@ -17,6 +17,8 @@ type iDeleteFlowlogRequest interface {
 	GetEcrId() *string
 	SetFlowLogId(v string) *DeleteFlowlogRequest
 	GetFlowLogId() *string
+	SetVersion(v string) *DeleteFlowlogRequest
+	GetVersion() *string
 }
 
 type DeleteFlowlogRequest struct {
@@ -56,6 +58,7 @@ type DeleteFlowlogRequest struct {
 	//
 	// flowlog-m5evbtbpt****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DeleteFlowlogRequest) String() string {
@@ -82,6 +85,10 @@ func (s *DeleteFlowlogRequest) GetFlowLogId() *string {
 	return s.FlowLogId
 }
 
+func (s *DeleteFlowlogRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DeleteFlowlogRequest) SetClientToken(v string) *DeleteFlowlogRequest {
 	s.ClientToken = &v
 	return s
@@ -99,6 +106,11 @@ func (s *DeleteFlowlogRequest) SetEcrId(v string) *DeleteFlowlogRequest {
 
 func (s *DeleteFlowlogRequest) SetFlowLogId(v string) *DeleteFlowlogRequest {
 	s.FlowLogId = &v
+	return s
+}
+
+func (s *DeleteFlowlogRequest) SetVersion(v string) *DeleteFlowlogRequest {
+	s.Version = &v
 	return s
 }
 

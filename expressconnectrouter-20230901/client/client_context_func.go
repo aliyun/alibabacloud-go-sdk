@@ -21,6 +21,11 @@ func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *A
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -39,7 +44,8 @@ func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *A
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ActivateFlowLog"),
@@ -79,6 +85,11 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChildInstanceId) {
 		body["ChildInstanceId"] = request.ChildInstanceId
@@ -113,7 +124,8 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("AttachExpressConnectRouterChildInstance"),
@@ -149,6 +161,11 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx contex
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -167,7 +184,8 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx contex
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CheckAddRegionToExpressConnectRouter"),
@@ -207,6 +225,11 @@ func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context,
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlibabaSideAsn) {
 		body["AlibabaSideAsn"] = request.AlibabaSideAsn
@@ -237,7 +260,8 @@ func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context,
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateExpressConnectRouter"),
@@ -273,6 +297,11 @@ func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx conte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllowedPrefixes) {
 		body["AllowedPrefixes"] = request.AllowedPrefixes
@@ -327,7 +356,8 @@ func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx conte
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateExpressConnectRouterAssociation"),
@@ -396,6 +426,10 @@ func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *Cre
 		query["Tag"] = request.Tag
 	}
 
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -455,6 +489,11 @@ func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -473,7 +512,8 @@ func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request 
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeactivateFlowLog"),
@@ -517,6 +557,11 @@ func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context,
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -531,7 +576,8 @@ func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context,
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteExpressConnectRouter"),
@@ -567,6 +613,11 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithContext(ctx conte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationId) {
 		body["AssociationId"] = request.AssociationId
@@ -589,7 +640,8 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithContext(ctx conte
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteExpressConnectRouterAssociation"),
@@ -628,6 +680,10 @@ func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *Del
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FlowLogId) {
 		query["FlowLogId"] = request.FlowLogId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
 	}
 
 	body := map[string]interface{}{}
@@ -681,6 +737,11 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContex
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -703,7 +764,8 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContex
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeDisabledExpressConnectRouterRouteEntries"),
@@ -739,6 +801,11 @@ func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Contex
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -773,7 +840,8 @@ func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Contex
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouter"),
@@ -809,6 +877,11 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContex
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationId) {
 		body["AssociationId"] = request.AssociationId
@@ -835,7 +908,8 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContex
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterAllowedPrefixHistory"),
@@ -871,6 +945,11 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationId) {
 		body["AssociationId"] = request.AssociationId
@@ -917,7 +996,8 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterAssociation"),
@@ -953,6 +1033,11 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx c
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationId) {
 		body["AssociationId"] = request.AssociationId
@@ -991,7 +1076,8 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx c
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterChildInstance"),
@@ -1027,6 +1113,11 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithCont
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1041,7 +1132,8 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithCont
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterInterRegionTransitMode"),
@@ -1077,6 +1169,11 @@ func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1091,7 +1188,8 @@ func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterRegion"),
@@ -1127,6 +1225,11 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithContext(ctx co
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AsPath) {
 		body["AsPath"] = request.AsPath
@@ -1169,7 +1272,8 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithContext(ctx co
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeExpressConnectRouterRouteEntries"),
@@ -1242,6 +1346,10 @@ func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *
 		query["Tag"] = request.Tag
 	}
 
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1293,6 +1401,11 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(c
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CallerType) {
 		body["CallerType"] = request.CallerType
@@ -1343,7 +1456,8 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(c
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DescribeInstanceGrantedToExpressConnectRouter"),
@@ -1383,6 +1497,11 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChildInstanceId) {
 		body["ChildInstanceId"] = request.ChildInstanceId
@@ -1405,7 +1524,8 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DetachExpressConnectRouterChildInstance"),
@@ -1441,6 +1561,11 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1463,7 +1588,8 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DisableExpressConnectRouterRouteEntries"),
@@ -1499,6 +1625,11 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx cont
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1521,7 +1652,8 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx cont
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("EnableExpressConnectRouterRouteEntries"),
@@ -1563,6 +1695,11 @@ func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1577,7 +1714,8 @@ func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ForceDeleteExpressConnectRouter"),
@@ -1617,6 +1755,11 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1647,7 +1790,8 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GrantInstanceToExpressConnectRouter"),
@@ -1683,6 +1827,11 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1693,7 +1842,8 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListExpressConnectRouterSupportedRegion"),
@@ -1729,6 +1879,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
@@ -1751,7 +1906,8 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListTagResources"),
@@ -1791,6 +1947,11 @@ func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context,
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -1813,7 +1974,8 @@ func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context,
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyExpressConnectRouter"),
@@ -1849,6 +2011,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx conte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssociationId) {
 		body["AssociationId"] = request.AssociationId
@@ -1871,7 +2038,8 @@ func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx conte
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyExpressConnectRouterAssociation"),
@@ -1907,6 +2075,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithCont
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllowedPrefixes) {
 		body["AllowedPrefixes"] = request.AllowedPrefixes
@@ -1937,7 +2110,8 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithCont
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyExpressConnectRouterAssociationAllowedPrefix"),
@@ -1973,6 +2147,11 @@ func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx con
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChildInstanceId) {
 		body["ChildInstanceId"] = request.ChildInstanceId
@@ -1999,7 +2178,8 @@ func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx con
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyExpressConnectRouterChildInstance"),
@@ -2035,6 +2215,11 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContex
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -2053,7 +2238,8 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContex
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyExpressConnectRouterInterRegionTransitMode"),
@@ -2104,6 +2290,10 @@ func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.SamplingRate) {
 		query["SamplingRate"] = request.SamplingRate
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
 	}
 
 	body := map[string]interface{}{}
@@ -2161,6 +2351,11 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -2183,7 +2378,8 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("MoveResourceGroup"),
@@ -2219,6 +2415,11 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx cont
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -2249,7 +2450,8 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx cont
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("RevokeInstanceFromExpressConnectRouter"),
@@ -2289,6 +2491,11 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithCon
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -2303,7 +2510,8 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithCon
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("SynchronizeExpressConnectRouterInterRegionBandwidth"),
@@ -2339,6 +2547,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
@@ -2361,7 +2574,8 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("TagResources"),
@@ -2397,6 +2611,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
 		body["All"] = request.All
@@ -2423,7 +2642,8 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UntagResources"),

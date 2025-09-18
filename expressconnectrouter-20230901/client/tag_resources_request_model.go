@@ -19,6 +19,8 @@ type iTagResourcesRequest interface {
 	GetResourceType() *string
 	SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest
 	GetTag() []*TagResourcesRequestTag
+	SetVersion(v string) *TagResourcesRequest
+	GetVersion() *string
 }
 
 type TagResourcesRequest struct {
@@ -57,7 +59,8 @@ type TagResourcesRequest struct {
 	// The tags to be added.
 	//
 	// This parameter is required.
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag     []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version *string                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -88,6 +91,10 @@ func (s *TagResourcesRequest) GetTag() []*TagResourcesRequestTag {
 	return s.Tag
 }
 
+func (s *TagResourcesRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *TagResourcesRequest) SetClientToken(v string) *TagResourcesRequest {
 	s.ClientToken = &v
 	return s
@@ -110,6 +117,11 @@ func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
 
 func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetVersion(v string) *TagResourcesRequest {
+	s.Version = &v
 	return s
 }
 

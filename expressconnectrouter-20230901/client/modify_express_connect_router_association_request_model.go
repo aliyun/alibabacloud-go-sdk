@@ -19,6 +19,8 @@ type iModifyExpressConnectRouterAssociationRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *ModifyExpressConnectRouterAssociationRequest
 	GetEcrId() *string
+	SetVersion(v string) *ModifyExpressConnectRouterAssociationRequest
+	GetVersion() *string
 }
 
 type ModifyExpressConnectRouterAssociationRequest struct {
@@ -45,7 +47,8 @@ type ModifyExpressConnectRouterAssociationRequest struct {
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterAssociationRequest) String() string {
@@ -76,6 +79,10 @@ func (s *ModifyExpressConnectRouterAssociationRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *ModifyExpressConnectRouterAssociationRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ModifyExpressConnectRouterAssociationRequest) SetAssociationId(v string) *ModifyExpressConnectRouterAssociationRequest {
 	s.AssociationId = &v
 	return s
@@ -98,6 +105,11 @@ func (s *ModifyExpressConnectRouterAssociationRequest) SetDryRun(v bool) *Modify
 
 func (s *ModifyExpressConnectRouterAssociationRequest) SetEcrId(v string) *ModifyExpressConnectRouterAssociationRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *ModifyExpressConnectRouterAssociationRequest) SetVersion(v string) *ModifyExpressConnectRouterAssociationRequest {
+	s.Version = &v
 	return s
 }
 

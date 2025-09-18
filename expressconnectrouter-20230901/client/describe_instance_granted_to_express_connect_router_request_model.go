@@ -33,6 +33,8 @@ type iDescribeInstanceGrantedToExpressConnectRouterRequest interface {
 	GetResourceGroupId() *string
 	SetTagModels(v []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels) *DescribeInstanceGrantedToExpressConnectRouterRequest
 	GetTagModels() []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels
+	SetVersion(v string) *DescribeInstanceGrantedToExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
@@ -126,6 +128,7 @@ type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	TagModels []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
+	Version   *string                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceGrantedToExpressConnectRouterRequest) String() string {
@@ -182,6 +185,10 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) GetResourceGroupI
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) GetTagModels() []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels {
 	return s.TagModels
+}
+
+func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
 }
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetCallerType(v string) *DescribeInstanceGrantedToExpressConnectRouterRequest {
@@ -241,6 +248,11 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetResourceGroupI
 
 func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetTagModels(v []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels) *DescribeInstanceGrantedToExpressConnectRouterRequest {
 	s.TagModels = v
+	return s
+}
+
+func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetVersion(v string) *DescribeInstanceGrantedToExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

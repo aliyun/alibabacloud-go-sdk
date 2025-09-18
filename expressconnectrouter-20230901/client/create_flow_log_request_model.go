@@ -35,6 +35,8 @@ type iCreateFlowLogRequest interface {
 	GetSamplingRate() *string
 	SetTag(v []*CreateFlowLogRequestTag) *CreateFlowLogRequest
 	GetTag() []*CreateFlowLogRequestTag
+	SetVersion(v string) *CreateFlowLogRequest
+	GetVersion() *string
 }
 
 type CreateFlowLogRequest struct {
@@ -172,6 +174,7 @@ type CreateFlowLogRequest struct {
 	// 1:4096
 	SamplingRate *string                    `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
 	Tag          []*CreateFlowLogRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Version      *string                    `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateFlowLogRequest) String() string {
@@ -232,6 +235,10 @@ func (s *CreateFlowLogRequest) GetSamplingRate() *string {
 
 func (s *CreateFlowLogRequest) GetTag() []*CreateFlowLogRequestTag {
 	return s.Tag
+}
+
+func (s *CreateFlowLogRequest) GetVersion() *string {
+	return s.Version
 }
 
 func (s *CreateFlowLogRequest) SetClientToken(v string) *CreateFlowLogRequest {
@@ -296,6 +303,11 @@ func (s *CreateFlowLogRequest) SetSamplingRate(v string) *CreateFlowLogRequest {
 
 func (s *CreateFlowLogRequest) SetTag(v []*CreateFlowLogRequestTag) *CreateFlowLogRequest {
 	s.Tag = v
+	return s
+}
+
+func (s *CreateFlowLogRequest) SetVersion(v string) *CreateFlowLogRequest {
+	s.Version = &v
 	return s
 }
 

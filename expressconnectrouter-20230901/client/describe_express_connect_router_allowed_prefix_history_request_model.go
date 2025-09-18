@@ -21,6 +21,8 @@ type iDescribeExpressConnectRouterAllowedPrefixHistoryRequest interface {
 	GetInstanceId() *string
 	SetInstanceType(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest
 	GetInstanceType() *string
+	SetVersion(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
@@ -78,6 +80,7 @@ type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
 	//
 	// VPC
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAllowedPrefixHistoryRequest) String() string {
@@ -112,6 +115,10 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) GetInstanceTyp
 	return s.InstanceType
 }
 
+func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetAssociationId(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest {
 	s.AssociationId = &v
 	return s
@@ -139,6 +146,11 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetInstanceId(
 
 func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetInstanceType(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetVersion(v string) *DescribeExpressConnectRouterAllowedPrefixHistoryRequest {
+	s.Version = &v
 	return s
 }
 

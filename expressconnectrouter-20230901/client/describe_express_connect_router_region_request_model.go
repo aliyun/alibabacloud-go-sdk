@@ -15,6 +15,8 @@ type iDescribeExpressConnectRouterRegionRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *DescribeExpressConnectRouterRegionRequest
 	GetEcrId() *string
+	SetVersion(v string) *DescribeExpressConnectRouterRegionRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterRegionRequest struct {
@@ -45,7 +47,8 @@ type DescribeExpressConnectRouterRegionRequest struct {
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRegionRequest) String() string {
@@ -68,6 +71,10 @@ func (s *DescribeExpressConnectRouterRegionRequest) GetEcrId() *string {
 	return s.EcrId
 }
 
+func (s *DescribeExpressConnectRouterRegionRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterRegionRequest) SetClientToken(v string) *DescribeExpressConnectRouterRegionRequest {
 	s.ClientToken = &v
 	return s
@@ -80,6 +87,11 @@ func (s *DescribeExpressConnectRouterRegionRequest) SetDryRun(v bool) *DescribeE
 
 func (s *DescribeExpressConnectRouterRegionRequest) SetEcrId(v string) *DescribeExpressConnectRouterRegionRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterRegionRequest) SetVersion(v string) *DescribeExpressConnectRouterRegionRequest {
+	s.Version = &v
 	return s
 }
 

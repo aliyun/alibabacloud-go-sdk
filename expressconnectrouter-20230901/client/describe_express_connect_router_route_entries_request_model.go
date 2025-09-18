@@ -29,6 +29,8 @@ type iDescribeExpressConnectRouterRouteEntriesRequest interface {
 	GetNexthopInstanceId() *string
 	SetQueryRegionId(v string) *DescribeExpressConnectRouterRouteEntriesRequest
 	GetQueryRegionId() *string
+	SetVersion(v string) *DescribeExpressConnectRouterRouteEntriesRequest
+	GetVersion() *string
 }
 
 type DescribeExpressConnectRouterRouteEntriesRequest struct {
@@ -106,6 +108,7 @@ type DescribeExpressConnectRouterRouteEntriesRequest struct {
 	//
 	// cn-hangzhou
 	QueryRegionId *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRouteEntriesRequest) String() string {
@@ -156,6 +159,10 @@ func (s *DescribeExpressConnectRouterRouteEntriesRequest) GetQueryRegionId() *st
 	return s.QueryRegionId
 }
 
+func (s *DescribeExpressConnectRouterRouteEntriesRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetAsPath(v string) *DescribeExpressConnectRouterRouteEntriesRequest {
 	s.AsPath = &v
 	return s
@@ -203,6 +210,11 @@ func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v
 
 func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetQueryRegionId(v string) *DescribeExpressConnectRouterRouteEntriesRequest {
 	s.QueryRegionId = &v
+	return s
+}
+
+func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetVersion(v string) *DescribeExpressConnectRouterRouteEntriesRequest {
+	s.Version = &v
 	return s
 }
 

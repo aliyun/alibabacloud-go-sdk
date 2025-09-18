@@ -15,6 +15,8 @@ type iSynchronizeExpressConnectRouterInterRegionBandwidthRequest interface {
 	GetDryRun() *bool
 	SetEcrId(v string) *SynchronizeExpressConnectRouterInterRegionBandwidthRequest
 	GetEcrId() *string
+	SetVersion(v string) *SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+	GetVersion() *string
 }
 
 type SynchronizeExpressConnectRouterInterRegionBandwidthRequest struct {
@@ -45,7 +47,8 @@ type SynchronizeExpressConnectRouterInterRegionBandwidthRequest struct {
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
-	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	EcrId   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s SynchronizeExpressConnectRouterInterRegionBandwidthRequest) String() string {
@@ -68,6 +71,10 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) GetEcrId() 
 	return s.EcrId
 }
 
+func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetClientToken(v string) *SynchronizeExpressConnectRouterInterRegionBandwidthRequest {
 	s.ClientToken = &v
 	return s
@@ -80,6 +87,11 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetDryRun(v
 
 func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetEcrId(v string) *SynchronizeExpressConnectRouterInterRegionBandwidthRequest {
 	s.EcrId = &v
+	return s
+}
+
+func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetVersion(v string) *SynchronizeExpressConnectRouterInterRegionBandwidthRequest {
+	s.Version = &v
 	return s
 }
 

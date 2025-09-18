@@ -23,6 +23,8 @@ type iGrantInstanceToExpressConnectRouterRequest interface {
 	GetInstanceRegionId() *string
 	SetInstanceType(v string) *GrantInstanceToExpressConnectRouterRequest
 	GetInstanceType() *string
+	SetVersion(v string) *GrantInstanceToExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type GrantInstanceToExpressConnectRouterRequest struct {
@@ -90,6 +92,7 @@ type GrantInstanceToExpressConnectRouterRequest struct {
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Version      *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GrantInstanceToExpressConnectRouterRequest) String() string {
@@ -128,6 +131,10 @@ func (s *GrantInstanceToExpressConnectRouterRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
 
+func (s *GrantInstanceToExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *GrantInstanceToExpressConnectRouterRequest) SetClientToken(v string) *GrantInstanceToExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -160,6 +167,11 @@ func (s *GrantInstanceToExpressConnectRouterRequest) SetInstanceRegionId(v strin
 
 func (s *GrantInstanceToExpressConnectRouterRequest) SetInstanceType(v string) *GrantInstanceToExpressConnectRouterRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *GrantInstanceToExpressConnectRouterRequest) SetVersion(v string) *GrantInstanceToExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

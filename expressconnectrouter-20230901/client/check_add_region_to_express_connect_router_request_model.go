@@ -17,6 +17,8 @@ type iCheckAddRegionToExpressConnectRouterRequest interface {
 	GetEcrId() *string
 	SetFreshRegionId(v string) *CheckAddRegionToExpressConnectRouterRequest
 	GetFreshRegionId() *string
+	SetVersion(v string) *CheckAddRegionToExpressConnectRouterRequest
+	GetVersion() *string
 }
 
 type CheckAddRegionToExpressConnectRouterRequest struct {
@@ -56,6 +58,7 @@ type CheckAddRegionToExpressConnectRouterRequest struct {
 	//
 	// cn-hangzhou
 	FreshRegionId *string `json:"FreshRegionId,omitempty" xml:"FreshRegionId,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CheckAddRegionToExpressConnectRouterRequest) String() string {
@@ -82,6 +85,10 @@ func (s *CheckAddRegionToExpressConnectRouterRequest) GetFreshRegionId() *string
 	return s.FreshRegionId
 }
 
+func (s *CheckAddRegionToExpressConnectRouterRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CheckAddRegionToExpressConnectRouterRequest) SetClientToken(v string) *CheckAddRegionToExpressConnectRouterRequest {
 	s.ClientToken = &v
 	return s
@@ -99,6 +106,11 @@ func (s *CheckAddRegionToExpressConnectRouterRequest) SetEcrId(v string) *CheckA
 
 func (s *CheckAddRegionToExpressConnectRouterRequest) SetFreshRegionId(v string) *CheckAddRegionToExpressConnectRouterRequest {
 	s.FreshRegionId = &v
+	return s
+}
+
+func (s *CheckAddRegionToExpressConnectRouterRequest) SetVersion(v string) *CheckAddRegionToExpressConnectRouterRequest {
+	s.Version = &v
 	return s
 }
 

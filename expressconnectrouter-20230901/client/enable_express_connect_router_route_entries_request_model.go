@@ -19,6 +19,8 @@ type iEnableExpressConnectRouterRouteEntriesRequest interface {
   GetEcrId() *string 
   SetNexthopInstanceId(v string) *EnableExpressConnectRouterRouteEntriesRequest
   GetNexthopInstanceId() *string 
+  SetVersion(v string) *EnableExpressConnectRouterRouteEntriesRequest
+  GetVersion() *string 
 }
 
 type EnableExpressConnectRouterRouteEntriesRequest struct {
@@ -66,6 +68,7 @@ type EnableExpressConnectRouterRouteEntriesRequest struct {
   // 
   // tr-hp3u4u5f03tfuljis****
   NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+  Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s EnableExpressConnectRouterRouteEntriesRequest) String() string {
@@ -96,6 +99,10 @@ func (s *EnableExpressConnectRouterRouteEntriesRequest) GetNexthopInstanceId() *
   return s.NexthopInstanceId
 }
 
+func (s *EnableExpressConnectRouterRouteEntriesRequest) GetVersion() *string  {
+  return s.Version
+}
+
 func (s *EnableExpressConnectRouterRouteEntriesRequest) SetClientToken(v string) *EnableExpressConnectRouterRouteEntriesRequest {
   s.ClientToken = &v
   return s
@@ -118,6 +125,11 @@ func (s *EnableExpressConnectRouterRouteEntriesRequest) SetEcrId(v string) *Enab
 
 func (s *EnableExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v string) *EnableExpressConnectRouterRouteEntriesRequest {
   s.NexthopInstanceId = &v
+  return s
+}
+
+func (s *EnableExpressConnectRouterRouteEntriesRequest) SetVersion(v string) *EnableExpressConnectRouterRouteEntriesRequest {
+  s.Version = &v
   return s
 }
 
