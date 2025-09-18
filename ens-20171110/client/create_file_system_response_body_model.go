@@ -11,6 +11,8 @@ type iCreateFileSystemResponseBody interface {
 	GoString() string
 	SetAllocationId(v []*string) *CreateFileSystemResponseBody
 	GetAllocationId() []*string
+	SetAllocationIds(v []*CreateFileSystemResponseBodyAllocationIds) *CreateFileSystemResponseBody
+	GetAllocationIds() []*CreateFileSystemResponseBodyAllocationIds
 	SetBizStatusCode(v string) *CreateFileSystemResponseBody
 	GetBizStatusCode() *string
 	SetRequestId(v string) *CreateFileSystemResponseBody
@@ -21,7 +23,8 @@ type iCreateFileSystemResponseBody interface {
 
 type CreateFileSystemResponseBody struct {
 	// The information about the file system that was created.
-	AllocationId []*string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	AllocationId  []*string                                    `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	AllocationIds []*CreateFileSystemResponseBodyAllocationIds `json:"AllocationIds,omitempty" xml:"AllocationIds,omitempty" type:"Repeated"`
 	// The status code for successful operations. Valid values:
 	//
 	// 	- PartSuccess: The operation is partially successful.
@@ -54,6 +57,10 @@ func (s *CreateFileSystemResponseBody) GetAllocationId() []*string {
 	return s.AllocationId
 }
 
+func (s *CreateFileSystemResponseBody) GetAllocationIds() []*CreateFileSystemResponseBodyAllocationIds {
+	return s.AllocationIds
+}
+
 func (s *CreateFileSystemResponseBody) GetBizStatusCode() *string {
 	return s.BizStatusCode
 }
@@ -68,6 +75,11 @@ func (s *CreateFileSystemResponseBody) GetUnAllocationId() []*string {
 
 func (s *CreateFileSystemResponseBody) SetAllocationId(v []*string) *CreateFileSystemResponseBody {
 	s.AllocationId = v
+	return s
+}
+
+func (s *CreateFileSystemResponseBody) SetAllocationIds(v []*CreateFileSystemResponseBodyAllocationIds) *CreateFileSystemResponseBody {
+	s.AllocationIds = v
 	return s
 }
 
@@ -87,5 +99,40 @@ func (s *CreateFileSystemResponseBody) SetUnAllocationId(v []*string) *CreateFil
 }
 
 func (s *CreateFileSystemResponseBody) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateFileSystemResponseBodyAllocationIds struct {
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateFileSystemResponseBodyAllocationIds) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateFileSystemResponseBodyAllocationIds) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileSystemResponseBodyAllocationIds) GetEnsRegionId() *string {
+	return s.EnsRegionId
+}
+
+func (s *CreateFileSystemResponseBodyAllocationIds) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *CreateFileSystemResponseBodyAllocationIds) SetEnsRegionId(v string) *CreateFileSystemResponseBodyAllocationIds {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateFileSystemResponseBodyAllocationIds) SetInstanceId(v string) *CreateFileSystemResponseBodyAllocationIds {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateFileSystemResponseBodyAllocationIds) Validate() error {
 	return dara.Validate(s)
 }
