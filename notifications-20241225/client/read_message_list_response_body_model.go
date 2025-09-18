@@ -213,6 +213,7 @@ func (s *ReadMessageListResponseBodyData) Validate() error {
 }
 
 type ReadMessageListResponseBodyDataRows struct {
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
 	// CategoryName
 	//
 	// example:
@@ -294,6 +295,10 @@ func (s ReadMessageListResponseBodyDataRows) GoString() string {
 	return s.String()
 }
 
+func (s *ReadMessageListResponseBodyDataRows) GetCategoryCode() *string {
+	return s.CategoryCode
+}
+
 func (s *ReadMessageListResponseBodyDataRows) GetCategoryName() *string {
 	return s.CategoryName
 }
@@ -344,6 +349,11 @@ func (s *ReadMessageListResponseBodyDataRows) GetTitle() *string {
 
 func (s *ReadMessageListResponseBodyDataRows) GetTitleh() *string {
 	return s.Titleh
+}
+
+func (s *ReadMessageListResponseBodyDataRows) SetCategoryCode(v string) *ReadMessageListResponseBodyDataRows {
+	s.CategoryCode = &v
+	return s
 }
 
 func (s *ReadMessageListResponseBodyDataRows) SetCategoryName(v string) *ReadMessageListResponseBodyDataRows {

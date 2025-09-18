@@ -23,6 +23,10 @@ type iReadMessageContentRequest interface {
 	GetClientSource() *string
 	SetCookies(v string) *ReadMessageContentRequest
 	GetCookies() *string
+	SetGroupCode(v string) *ReadMessageContentRequest
+	GetGroupCode() *string
+	SetHistory(v bool) *ReadMessageContentRequest
+	GetHistory() *bool
 	SetMsgId(v string) *ReadMessageContentRequest
 	GetMsgId() *string
 	SetSrcUrl(v string) *ReadMessageContentRequest
@@ -43,6 +47,8 @@ type ReadMessageContentRequest struct {
 	ClassId        *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	ClientSource   *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
 	Cookies        *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	GroupCode      *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	History        *bool   `json:"History,omitempty" xml:"History,omitempty"`
 	MsgId          *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 	SrcUrl         *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
 	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -84,6 +90,14 @@ func (s *ReadMessageContentRequest) GetClientSource() *string {
 
 func (s *ReadMessageContentRequest) GetCookies() *string {
 	return s.Cookies
+}
+
+func (s *ReadMessageContentRequest) GetGroupCode() *string {
+	return s.GroupCode
+}
+
+func (s *ReadMessageContentRequest) GetHistory() *bool {
+	return s.History
 }
 
 func (s *ReadMessageContentRequest) GetMsgId() *string {
@@ -138,6 +152,16 @@ func (s *ReadMessageContentRequest) SetClientSource(v string) *ReadMessageConten
 
 func (s *ReadMessageContentRequest) SetCookies(v string) *ReadMessageContentRequest {
 	s.Cookies = &v
+	return s
+}
+
+func (s *ReadMessageContentRequest) SetGroupCode(v string) *ReadMessageContentRequest {
+	s.GroupCode = &v
+	return s
+}
+
+func (s *ReadMessageContentRequest) SetHistory(v bool) *ReadMessageContentRequest {
+	s.History = &v
 	return s
 }
 

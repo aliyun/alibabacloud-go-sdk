@@ -194,6 +194,10 @@ func (client *Client) DeleteAllMessageWithOptions(request *DeleteAllMessageReque
 		body["Cookies"] = request.Cookies
 	}
 
+	if !dara.IsNil(request.GroupCode) {
+		body["GroupCode"] = request.GroupCode
+	}
+
 	if !dara.IsNil(request.SrcUrl) {
 		body["SrcUrl"] = request.SrcUrl
 	}
@@ -288,6 +292,10 @@ func (client *Client) ReadAllMessageWithOptions(request *ReadAllMessageRequest, 
 
 	if !dara.IsNil(request.Cookies) {
 		body["Cookies"] = request.Cookies
+	}
+
+	if !dara.IsNil(request.GroupCode) {
+		body["GroupCode"] = request.GroupCode
 	}
 
 	if !dara.IsNil(request.SrcUrl) {
@@ -574,6 +582,14 @@ func (client *Client) ReadMessageContentWithOptions(request *ReadMessageContentR
 		body["Cookies"] = request.Cookies
 	}
 
+	if !dara.IsNil(request.GroupCode) {
+		body["GroupCode"] = request.GroupCode
+	}
+
+	if !dara.IsNil(request.History) {
+		body["History"] = request.History
+	}
+
 	if !dara.IsNil(request.MsgId) {
 		body["MsgId"] = request.MsgId
 	}
@@ -680,6 +696,14 @@ func (client *Client) ReadMessageListWithOptions(request *ReadMessageListRequest
 
 	if !dara.IsNil(request.Cookies) {
 		body["Cookies"] = request.Cookies
+	}
+
+	if !dara.IsNil(request.GroupCode) {
+		body["GroupCode"] = request.GroupCode
+	}
+
+	if !dara.IsNil(request.History) {
+		body["History"] = request.History
 	}
 
 	if !dara.IsNil(request.Loc) {

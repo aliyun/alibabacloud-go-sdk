@@ -93,10 +93,11 @@ func (s *ReadNumGroupTotalResponseBody) Validate() error {
 }
 
 type ReadNumGroupTotalResponseBodyData struct {
-	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	ReadCount   *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UnReadCount *int64 `json:"UnReadCount,omitempty" xml:"UnReadCount,omitempty"`
+	GroupCode   *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	ReadCount   *int64  `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UnReadCount *int64  `json:"UnReadCount,omitempty" xml:"UnReadCount,omitempty"`
 }
 
 func (s ReadNumGroupTotalResponseBodyData) String() string {
@@ -105,6 +106,10 @@ func (s ReadNumGroupTotalResponseBodyData) String() string {
 
 func (s ReadNumGroupTotalResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ReadNumGroupTotalResponseBodyData) GetGroupCode() *string {
+	return s.GroupCode
 }
 
 func (s *ReadNumGroupTotalResponseBodyData) GetId() *int64 {
@@ -121,6 +126,11 @@ func (s *ReadNumGroupTotalResponseBodyData) GetTotalCount() *int64 {
 
 func (s *ReadNumGroupTotalResponseBodyData) GetUnReadCount() *int64 {
 	return s.UnReadCount
+}
+
+func (s *ReadNumGroupTotalResponseBodyData) SetGroupCode(v string) *ReadNumGroupTotalResponseBodyData {
+	s.GroupCode = &v
+	return s
 }
 
 func (s *ReadNumGroupTotalResponseBodyData) SetId(v int64) *ReadNumGroupTotalResponseBodyData {

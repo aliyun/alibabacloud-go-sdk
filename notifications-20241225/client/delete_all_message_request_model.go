@@ -23,6 +23,8 @@ type iDeleteAllMessageRequest interface {
 	GetClientSource() *string
 	SetCookies(v string) *DeleteAllMessageRequest
 	GetCookies() *string
+	SetGroupCode(v string) *DeleteAllMessageRequest
+	GetGroupCode() *string
 	SetSrcUrl(v string) *DeleteAllMessageRequest
 	GetSrcUrl() *string
 	SetTenantCode(v string) *DeleteAllMessageRequest
@@ -39,6 +41,7 @@ type DeleteAllMessageRequest struct {
 	ClassId        *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	ClientSource   *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
 	Cookies        *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	GroupCode      *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
 	SrcUrl         *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
 	TenantCode     *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
 	UidType        *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
@@ -78,6 +81,10 @@ func (s *DeleteAllMessageRequest) GetClientSource() *string {
 
 func (s *DeleteAllMessageRequest) GetCookies() *string {
 	return s.Cookies
+}
+
+func (s *DeleteAllMessageRequest) GetGroupCode() *string {
+	return s.GroupCode
 }
 
 func (s *DeleteAllMessageRequest) GetSrcUrl() *string {
@@ -124,6 +131,11 @@ func (s *DeleteAllMessageRequest) SetClientSource(v string) *DeleteAllMessageReq
 
 func (s *DeleteAllMessageRequest) SetCookies(v string) *DeleteAllMessageRequest {
 	s.Cookies = &v
+	return s
+}
+
+func (s *DeleteAllMessageRequest) SetGroupCode(v string) *DeleteAllMessageRequest {
+	s.GroupCode = &v
 	return s
 }
 

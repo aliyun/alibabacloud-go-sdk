@@ -25,6 +25,10 @@ type iReadMessageListRequest interface {
 	GetContent() *string
 	SetCookies(v string) *ReadMessageListRequest
 	GetCookies() *string
+	SetGroupCode(v string) *ReadMessageListRequest
+	GetGroupCode() *string
+	SetHistory(v string) *ReadMessageListRequest
+	GetHistory() *string
 	SetLoc(v string) *ReadMessageListRequest
 	GetLoc() *string
 	SetMaxResults(v int32) *ReadMessageListRequest
@@ -95,7 +99,9 @@ type ReadMessageListRequest struct {
 	// example:
 	//
 	// /
-	Cookies *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	Cookies   *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	History   *string `json:"History,omitempty" xml:"History,omitempty"`
 	// 栏位 nav代表控制台topbar
 	//
 	// example:
@@ -198,6 +204,14 @@ func (s *ReadMessageListRequest) GetCookies() *string {
 	return s.Cookies
 }
 
+func (s *ReadMessageListRequest) GetGroupCode() *string {
+	return s.GroupCode
+}
+
+func (s *ReadMessageListRequest) GetHistory() *string {
+	return s.History
+}
+
 func (s *ReadMessageListRequest) GetLoc() *string {
 	return s.Loc
 }
@@ -275,6 +289,16 @@ func (s *ReadMessageListRequest) SetContent(v string) *ReadMessageListRequest {
 
 func (s *ReadMessageListRequest) SetCookies(v string) *ReadMessageListRequest {
 	s.Cookies = &v
+	return s
+}
+
+func (s *ReadMessageListRequest) SetGroupCode(v string) *ReadMessageListRequest {
+	s.GroupCode = &v
+	return s
+}
+
+func (s *ReadMessageListRequest) SetHistory(v string) *ReadMessageListRequest {
+	s.History = &v
 	return s
 }
 
