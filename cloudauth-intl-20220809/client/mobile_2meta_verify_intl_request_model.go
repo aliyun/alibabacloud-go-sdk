@@ -20,25 +20,53 @@ type iMobile2MetaVerifyIntlRequest interface {
 }
 
 type Mobile2MetaVerifyIntlRequest struct {
+	// The mobile number.
+	//
+	// >
+	//
+	// > - If **paramType*	- is set to **normal**, enter the plaintext value.
+	//
+	// > - If **paramType*	- is set to **md5**, enter the 32-bit lowercase MD5 string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 186****1234
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The parameter type:
+	//
+	// - **normal**: plaintext
+	//
+	// - **md5**: MD5-encrypted
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The product to use. Set this parameter to the static value **MOBILE_2META**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MOBILE_2META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name.
+	//
+	// >
+	//
+	// > - If **paramType*	- is set to **normal**, enter the plaintext value.
+	//
+	// > - If **paramType*	- is set to **md5**, enter the 32-bit lowercase MD5 string.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

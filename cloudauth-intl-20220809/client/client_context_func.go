@@ -9,7 +9,11 @@ import (
 
 // Summary:
 //
-// 地址相似比对
+// # Address Similarity Comparison
+//
+// Description:
+//
+// API for comparing two addresses, standardizing and checking address consistency.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -149,7 +153,7 @@ func (client *Client) AddressVerifyIntlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 地址核验
+// This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
 //
 // @param request - AddressVerifyV2IntlRequest
 //
@@ -599,7 +603,11 @@ func (client *Client) CredentialVerifyIntlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 人脸凭证核验
+// # Face Credential Verification
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -797,7 +805,7 @@ func (client *Client) DocOcrWithContext(ctx context.Context, request *DocOcrRequ
 
 // Summary:
 //
-// 全球证件ocr识别接口
+// # Global Document OCR Recognition Interface
 //
 // @param request - DocOcrMaxRequest
 //
@@ -887,7 +895,7 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 
 // Summary:
 //
-// ekyc纯服务端接口
+// This topic describes how to integrate with ID Verification using only the server-side API.
 //
 // @param request - EkycVerifyRequest
 //
@@ -979,7 +987,7 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 
 // Summary:
 //
-// 人脸比对
+// This topic describes how to integrate FaceCompare using only the server-side API.
 //
 // @param request - FaceCompareRequest
 //
@@ -1043,7 +1051,7 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 
 // Summary:
 //
-// 国际人脸保镖纯服务端接口
+// This topic describes how to set up the server for FACE_GUARD.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -1097,7 +1105,7 @@ func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *Fac
 
 // Summary:
 //
-// 静默活体API 纯服务端
+// Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
 //
 // @param request - FaceLivenessRequest
 //
@@ -1223,7 +1231,7 @@ func (client *Client) FraudResultCallBackWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 身份二要素有效期核验
+// This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -1297,7 +1305,7 @@ func (client *Client) Id2MetaPeriodVerifyIntlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 身份二要素国际版接口
+// Verifies that a name and an ID card number are consistent.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -1378,6 +1386,10 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["Authorize"] = request.Authorize
 	}
 
+	if !dara.IsNil(request.AutoRegistration) {
+		query["AutoRegistration"] = request.AutoRegistration
+	}
+
 	if !dara.IsNil(request.CallbackToken) {
 		query["CallbackToken"] = request.CallbackToken
 	}
@@ -1438,8 +1450,20 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["ExperienceCode"] = request.ExperienceCode
 	}
 
+	if !dara.IsNil(request.FaceGroupCodes) {
+		query["FaceGroupCodes"] = request.FaceGroupCodes
+	}
+
 	if !dara.IsNil(request.FacePictureUrl) {
 		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceRegisterGroupCode) {
+		query["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
+	}
+
+	if !dara.IsNil(request.FaceVerifyThreshold) {
+		query["FaceVerifyThreshold"] = request.FaceVerifyThreshold
 	}
 
 	if !dara.IsNil(request.IdFaceQuality) {
@@ -1498,8 +1522,16 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["ProductFlow"] = request.ProductFlow
 	}
 
+	if !dara.IsNil(request.ReturnFaces) {
+		query["ReturnFaces"] = request.ReturnFaces
+	}
+
 	if !dara.IsNil(request.ReturnUrl) {
 		query["ReturnUrl"] = request.ReturnUrl
+	}
+
+	if !dara.IsNil(request.SaveFacePicture) {
+		query["SaveFacePicture"] = request.SaveFacePicture
 	}
 
 	if !dara.IsNil(request.SceneCode) {
@@ -1526,8 +1558,20 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 		query["StyleConfig"] = request.StyleConfig
 	}
 
+	if !dara.IsNil(request.TargetFacePicture) {
+		query["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
 	if !dara.IsNil(request.UseNFC) {
 		query["UseNFC"] = request.UseNFC
+	}
+
+	if !dara.IsNil(request.VerifyModel) {
+		query["VerifyModel"] = request.VerifyModel
 	}
 
 	body := map[string]interface{}{}
@@ -1561,7 +1605,7 @@ func (client *Client) InitializeWithContext(ctx context.Context, tmpReq *Initial
 
 // Summary:
 //
-// 手机号二要素核验API
+// Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //

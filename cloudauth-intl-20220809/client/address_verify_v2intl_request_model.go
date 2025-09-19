@@ -24,25 +24,48 @@ type iAddressVerifyV2IntlRequest interface {
 }
 
 type AddressVerifyV2IntlRequest struct {
+	// DeviceToken obtained via the client SDK
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tk9SSUQuMS*****************ZDNmNWY5NzQxOW1o
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// Supported: Chinese mobile phone numbers
+	//
 	// example:
 	//
 	// 1872334****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Fixed value: ADD_VERIFY_PRO
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ADD_VERIFY_PRO
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// List of prohibited countries or regions
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Currently supported: USA
 	RegCountry *string `json:"RegCountry,omitempty" xml:"RegCountry,omitempty"`
-	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Detailed address text content
+	//
+	// example:
+	//
+	// 浙江省杭州市西湖区灯彩街云谷园区
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Address verification method:
+	//
+	// - **HOME**: Home address verification
+	//
+	// - **WORK**: Work address verification
+	//
 	// example:
 	//
 	// HOME

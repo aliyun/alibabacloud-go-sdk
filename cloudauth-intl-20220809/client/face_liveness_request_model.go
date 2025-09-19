@@ -28,31 +28,59 @@ type iFaceLivenessRequest interface {
 }
 
 type FaceLivenessRequest struct {
+	// Specifies whether to crop the facial image. The default value is F.
+	//
+	// - **T**: allows cropping.
+	//
+	// - **F**: Forbidden
+	//
 	// example:
 	//
 	// T
 	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
+	// The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
+	//
 	// example:
 	//
 	// https://digital-face-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	// Specifies whether to return the facial image quality score. The default value is F.
+	//
+	// - **T**: returns the score.
+	//
+	// - **F**: does not return the score.
+	//
 	// example:
 	//
 	// T
 	FaceQuality *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	// A custom unique business identifier. You can use this identifier to track and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure the identifier is unique.
+	//
+	// > Alibaba Cloud servers do not check the uniqueness of this value. For better tracking, ensure this value is unique.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// A  custom user ID or another identifier for a specific user, such as a mobile number or email address. For security, desensitize this value in advance, for example, by hashing it.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// Specifies whether to enable occlusion detection. The default value is F.
+	//
+	// - **T**: enables the feature.
+	//
+	// - **F**: disables the feature.
+	//
 	// example:
 	//
 	// T
 	Occlusion *string `json:"Occlusion,omitempty" xml:"Occlusion,omitempty"`
+	// The product solution to use. Set the value to **FACE_LIVENESS_MIN*	- to use the passive liveness detection API.
+	//
 	// example:
 	//
 	// FACE_LIVENESS_MIN

@@ -38,45 +38,110 @@ type iDocOcrMaxRequest interface {
 }
 
 type DocOcrMaxRequest struct {
+	// Page expected to be recognized
+	//
+	// - 01 (default): ID portrait.
+	//
+	// - 02: Back of the certificate
+	//
+	// example:
+	//
+	// 01
 	DocPage *string `json:"DocPage,omitempty" xml:"DocPage,omitempty"`
+	// Document type.
+	//
+	// Format: Country (region) code + document type abbreviation + page (optional)
+	//
+	// Note: If provided, it will automatically check if it matches the model recognition result; if empty, the document type will be returned after model recognition.
+	//
 	// example:
 	//
 	// CNSSC01
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// Document image, base64 encoded binary stream
+	//
 	// example:
 	//
 	// base64
 	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// Document image URL
+	//
 	// example:
 	//
 	// https://***********.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
-	IdSpoof         *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	// Whether to turn on the certificate anti-counterfeiting function:
+	//
+	// - T: open
+	//
+	// - F (default): not turned on.
+	//
+	// example:
+	//
+	// F
+	IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	// Custom OCR quality detection threshold mode:
+	//
+	// - 0: System default
+	//
+	// - 1: Strict mode
+	//
+	// - 2: Lenient mode
+	//
+	// - 3 (default): Disable quality detection
+	//
 	// example:
 	//
 	// 0
 	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c******
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+	//
 	// example:
 	//
 	// 123456789
 	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// OCR recognition mode.
+	//
+	// 0: General document mode.
+	//
+	// 1: Custom mode.
+	//
 	// example:
 	//
 	// 0
 	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
+	// The product solution to be integrated.
+	//
+	// Value: ID_OCR_MAX
+	//
 	// example:
 	//
 	// ID_OCR_MAX
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Prompt      *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Prompt (for custom mode)
+	//
+	// example:
+	//
+	// xxxocr识别
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// Custom scene code, used to distinguish business scenarios, a 10-digit number.
+	//
 	// example:
 	//
 	// 1234567890
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// Whether to enable document anti-counterfeiting function, default is not enabled.
+	//
+	// - T: Enable document anti-counterfeiting function.
+	//
+	// - F: Do not enable.
+	//
 	// example:
 	//
 	// F

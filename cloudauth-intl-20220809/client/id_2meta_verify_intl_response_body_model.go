@@ -20,19 +20,26 @@ type iId2MetaVerifyIntlResponseBody interface {
 }
 
 type Id2MetaVerifyIntlResponseBody struct {
+	// [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/ok4bwxwmu1n94o76?spm=a2c63.p38356.0.i54#942707fca218x).
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed description of the response code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EFA11401-C961-5E89-A2D3-BF9883E5CC3D
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *Id2MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *Id2MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s Id2MetaVerifyIntlResponseBody) String() string {
@@ -84,6 +91,14 @@ func (s *Id2MetaVerifyIntlResponseBody) Validate() error {
 }
 
 type Id2MetaVerifyIntlResponseBodyResult struct {
+	// The verification result:
+	//
+	// - 1: The information is consistent. This result is billable.
+	//
+	// - 2: The information is inconsistent. This result is billable.
+	//
+	// - 3: No record is found. This result is not billable.
+	//
 	// example:
 	//
 	// 1

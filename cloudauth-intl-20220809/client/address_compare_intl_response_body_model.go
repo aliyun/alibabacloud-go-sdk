@@ -20,19 +20,26 @@ type iAddressCompareIntlResponseBody interface {
 }
 
 type AddressCompareIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 86C40EC3-5940-5F47-995C-BFE90B70E540
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *AddressCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
+	Result *AddressCompareIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s AddressCompareIntlResponseBody) String() string {
@@ -84,6 +91,45 @@ func (s *AddressCompareIntlResponseBody) Validate() error {
 }
 
 type AddressCompareIntlResponseBodyResult struct {
+	// The values of sameLevel include:
+	//
+	// - all: Exactly the same
+	//
+	// - prov: Provincial level
+	//
+	// - city: City level
+	//
+	// - district: District level
+	//
+	// - town: Town level
+	//
+	// - road: Road level
+	//
+	// - roadno: Road number
+	//
+	// - poi: Point of interest (e.g., residential area)
+	//
+	// - roomno: Room number
+	//
+	// example:
+	//
+	// {
+	//
+	//      sameLevel: "city",
+	//
+	//      distance:  5997.34m, -- 地址相差距离
+	//
+	//      same_info: {    -- 相同信息
+	//
+	//               prov: "浙江省",
+	//
+	//               city: "杭州市",
+	//
+	//               district: "西湖区"
+	//
+	//       }
+	//
+	// }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 

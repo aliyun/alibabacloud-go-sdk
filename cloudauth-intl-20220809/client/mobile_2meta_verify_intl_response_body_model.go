@@ -20,10 +20,14 @@ type iMobile2MetaVerifyIntlResponseBody interface {
 }
 
 type Mobile2MetaVerifyIntlResponseBody struct {
+	// [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/mobile-2meta?spm=a2c63.p38356.0.i13#cbf2539971xzr).
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A detailed description of the response code.
+	//
 	// example:
 	//
 	// success
@@ -33,8 +37,9 @@ type Mobile2MetaVerifyIntlResponseBody struct {
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *Mobile2MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *Mobile2MetaVerifyIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s Mobile2MetaVerifyIntlResponseBody) String() string {
@@ -86,10 +91,26 @@ func (s *Mobile2MetaVerifyIntlResponseBody) Validate() error {
 }
 
 type Mobile2MetaVerifyIntlResponseBodyResult struct {
+	// The verification result:
+	//
+	// - 1: The information is consistent. (Billed)
+	//
+	// - 2: The information is inconsistent. (Billed)
+	//
+	// - 3: No record is found. (Not billed)
+	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The carrier name:
+	//
+	// - CMCC: China Mobile
+	//
+	// - CUCC: China Unicom
+	//
+	// - CTCC: China Telecom
+	//
 	// example:
 	//
 	// CMCC

@@ -20,19 +20,26 @@ type iFaceLivenessResponseBody interface {
 }
 
 type FaceLivenessResponseBody struct {
+	// [The response code.](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#3d0ed52f967g6)
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A detailed description of the response code.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 42EA58CA-5DF4-55D5-82C4-5E7A40DA62BA
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *FaceLivenessResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result object
+	Result *FaceLivenessResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s FaceLivenessResponseBody) String() string {
@@ -84,15 +91,26 @@ func (s *FaceLivenessResponseBody) Validate() error {
 }
 
 type FaceLivenessResponseBodyResult struct {
+	// The results of the passive liveness detection. The value is in the JSON format. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff42f7274agz).
 	ExtFaceInfo *FaceLivenessResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
+	// The authentication result. Valid values:
+	//
+	// - Y: The authentication is passed.
+	//
+	// - N: The authentication is not passed.
+	//
 	// example:
 	//
 	// N
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// The code that corresponds to the verification result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff3e16174tl2).
+	//
 	// example:
 	//
 	// 205
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// The transaction ID.
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8
@@ -148,16 +166,36 @@ func (s *FaceLivenessResponseBodyResult) Validate() error {
 }
 
 type FaceLivenessResponseBodyResultExtFaceInfo struct {
+	// The predicted age of the person in the image. The prediction may fail, resulting in an empty value.
+	//
+	// example:
+	//
+	// 18
 	FaceAge *int32 `json:"FaceAge,omitempty" xml:"FaceAge,omitempty"`
+	// Indicates whether a presentation attack was detected on the captured face. Y means an attack was detected. N means no attack was detected.
+	//
 	// example:
 	//
 	// Y
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
+	// The predicted gender of the person in the image. The prediction may fail, resulting in an empty value.
+	//
+	// - **M**: Male
+	//
+	// - **F**: Female
+	//
+	// example:
+	//
+	// M
 	FaceGender *string `json:"FaceGender,omitempty" xml:"FaceGender,omitempty"`
+	// Optional. The quality score of the live face. The value ranges from 0 to 100.
+	//
 	// example:
 	//
 	// 87.19
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
+	//
 	// example:
 	//
 	// Y

@@ -20,18 +20,25 @@ type iDeepfakeDetectIntlResponseBody interface {
 }
 
 type DeepfakeDetectIntlResponseBody struct {
+	// Return code: 200 indicates a successful request, any other value indicates failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result information.
 	ResultObject *DeepfakeDetectIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,11 +91,34 @@ func (s *DeepfakeDetectIntlResponseBody) Validate() error {
 }
 
 type DeepfakeDetectIntlResponseBodyResultObject struct {
+	// Risk result:
+	//
+	// - **0**: Low risk
+	//
+	// - **1**: High risk
+	//
+	// - **2**: Suspicious
+	//
 	// example:
 	//
 	// 1
-	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// Risk tags. Multiple tags are separated by commas (,). Includes:
+	//
+	// - **SuspectDeepForgery*	- Suspected deep forgery
+	//
+	// - **SuspectPSFace*	- Suspected synthetic attack
+	//
+	// - **SuspectWarterMark*	- Suspected watermark presence
+	//
+	// - **SuspectTemple*	- Suspected template attack
+	//
+	// - **SuspectAIGCFace*	- Suspected generated face
+	//
+	// - **SuspectRemake*	- Suspected rephotographed face
+	//
 	// example:
 	//
 	// SuspectDeepForgery,SuspectWarterMark

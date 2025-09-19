@@ -20,15 +20,39 @@ type iAddressCompareIntlRequest interface {
 }
 
 type AddressCompareIntlRequest struct {
+	// Country name
+	//
+	// - China
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fixed value：中国
 	DefaultCountry *string `json:"DefaultCountry,omitempty" xml:"DefaultCountry,omitempty"`
 	// ADD_VERIFY
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// fixed value：ADD_VERIFY
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Address 1
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州市阿里巴巴西溪园区
 	Text1 *string `json:"Text1,omitempty" xml:"Text1,omitempty"`
+	// Address 2
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 杭州市文一西路969号1号楼
 	Text2 *string `json:"Text2,omitempty" xml:"Text2,omitempty"`
 }
 

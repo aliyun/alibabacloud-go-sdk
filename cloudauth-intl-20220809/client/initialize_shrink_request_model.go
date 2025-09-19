@@ -13,6 +13,8 @@ type iInitializeShrinkRequest interface {
 	GetAppQualityCheck() *string
 	SetAuthorize(v string) *InitializeShrinkRequest
 	GetAuthorize() *string
+	SetAutoRegistration(v string) *InitializeShrinkRequest
+	GetAutoRegistration() *string
 	SetCallbackToken(v string) *InitializeShrinkRequest
 	GetCallbackToken() *string
 	SetCallbackUrl(v string) *InitializeShrinkRequest
@@ -43,10 +45,16 @@ type iInitializeShrinkRequest interface {
 	GetEditOcrResult() *string
 	SetExperienceCode(v string) *InitializeShrinkRequest
 	GetExperienceCode() *string
+	SetFaceGroupCodes(v string) *InitializeShrinkRequest
+	GetFaceGroupCodes() *string
 	SetFacePictureBase64(v string) *InitializeShrinkRequest
 	GetFacePictureBase64() *string
 	SetFacePictureUrl(v string) *InitializeShrinkRequest
 	GetFacePictureUrl() *string
+	SetFaceRegisterGroupCode(v string) *InitializeShrinkRequest
+	GetFaceRegisterGroupCode() *string
+	SetFaceVerifyThreshold(v string) *InitializeShrinkRequest
+	GetFaceVerifyThreshold() *string
 	SetIdFaceQuality(v string) *InitializeShrinkRequest
 	GetIdFaceQuality() *string
 	SetIdSpoof(v string) *InitializeShrinkRequest
@@ -75,8 +83,12 @@ type iInitializeShrinkRequest interface {
 	GetProductCode() *string
 	SetProductFlow(v string) *InitializeShrinkRequest
 	GetProductFlow() *string
+	SetReturnFaces(v string) *InitializeShrinkRequest
+	GetReturnFaces() *string
 	SetReturnUrl(v string) *InitializeShrinkRequest
 	GetReturnUrl() *string
+	SetSaveFacePicture(v string) *InitializeShrinkRequest
+	GetSaveFacePicture() *string
 	SetSceneCode(v string) *InitializeShrinkRequest
 	GetSceneCode() *string
 	SetSecurityLevel(v string) *InitializeShrinkRequest
@@ -89,13 +101,23 @@ type iInitializeShrinkRequest interface {
 	GetShowOcrResult() *string
 	SetStyleConfig(v string) *InitializeShrinkRequest
 	GetStyleConfig() *string
+	SetTargetFacePicture(v string) *InitializeShrinkRequest
+	GetTargetFacePicture() *string
+	SetTargetFacePictureUrl(v string) *InitializeShrinkRequest
+	GetTargetFacePictureUrl() *string
 	SetUseNFC(v string) *InitializeShrinkRequest
 	GetUseNFC() *string
+	SetVerifyModel(v string) *InitializeShrinkRequest
+	GetVerifyModel() *string
 }
 
 type InitializeShrinkRequest struct {
-	AppQualityCheck      *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	Authorize            *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	// example:
+	//
+	// 0
+	AutoRegistration     *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
 	CallbackToken        *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
 	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
@@ -112,16 +134,28 @@ type InitializeShrinkRequest struct {
 	// example:
 	//
 	// 01000000
-	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
-	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	EditOcrResult     *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
-	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	DocType        *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	DocVideo       *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
+	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	EditOcrResult  *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
+	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	// example:
+	//
+	// 0e0c34a77f
+	FaceGroupCodes    *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
 	//
 	// ***
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	// example:
+	//
+	// 0e0c34a77f
+	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
+	// example:
+	//
+	// 0.5
+	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
 	// example:
 	//
 	// *
@@ -164,8 +198,16 @@ type InitializeShrinkRequest struct {
 	ProductFlow *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
 	// example:
 	//
+	// 1
+	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
+	// example:
+	//
 	// http*****
 	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	// example:
+	//
+	// 0
+	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
 	// example:
 	//
 	// PAY**
@@ -175,7 +217,19 @@ type InitializeShrinkRequest struct {
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
 	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
-	UseNFC        *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
+	// example:
+	//
+	// base64
+	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// example:
+	//
+	// https://www.xxxxx.com/1.jpg
+	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+	UseNFC               *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
+	// example:
+	//
+	// 0
+	VerifyModel *string `json:"VerifyModel,omitempty" xml:"VerifyModel,omitempty"`
 }
 
 func (s InitializeShrinkRequest) String() string {
@@ -192,6 +246,10 @@ func (s *InitializeShrinkRequest) GetAppQualityCheck() *string {
 
 func (s *InitializeShrinkRequest) GetAuthorize() *string {
 	return s.Authorize
+}
+
+func (s *InitializeShrinkRequest) GetAutoRegistration() *string {
+	return s.AutoRegistration
 }
 
 func (s *InitializeShrinkRequest) GetCallbackToken() *string {
@@ -254,12 +312,24 @@ func (s *InitializeShrinkRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
 }
 
+func (s *InitializeShrinkRequest) GetFaceGroupCodes() *string {
+	return s.FaceGroupCodes
+}
+
 func (s *InitializeShrinkRequest) GetFacePictureBase64() *string {
 	return s.FacePictureBase64
 }
 
 func (s *InitializeShrinkRequest) GetFacePictureUrl() *string {
 	return s.FacePictureUrl
+}
+
+func (s *InitializeShrinkRequest) GetFaceRegisterGroupCode() *string {
+	return s.FaceRegisterGroupCode
+}
+
+func (s *InitializeShrinkRequest) GetFaceVerifyThreshold() *string {
+	return s.FaceVerifyThreshold
 }
 
 func (s *InitializeShrinkRequest) GetIdFaceQuality() *string {
@@ -318,8 +388,16 @@ func (s *InitializeShrinkRequest) GetProductFlow() *string {
 	return s.ProductFlow
 }
 
+func (s *InitializeShrinkRequest) GetReturnFaces() *string {
+	return s.ReturnFaces
+}
+
 func (s *InitializeShrinkRequest) GetReturnUrl() *string {
 	return s.ReturnUrl
+}
+
+func (s *InitializeShrinkRequest) GetSaveFacePicture() *string {
+	return s.SaveFacePicture
 }
 
 func (s *InitializeShrinkRequest) GetSceneCode() *string {
@@ -346,8 +424,20 @@ func (s *InitializeShrinkRequest) GetStyleConfig() *string {
 	return s.StyleConfig
 }
 
+func (s *InitializeShrinkRequest) GetTargetFacePicture() *string {
+	return s.TargetFacePicture
+}
+
+func (s *InitializeShrinkRequest) GetTargetFacePictureUrl() *string {
+	return s.TargetFacePictureUrl
+}
+
 func (s *InitializeShrinkRequest) GetUseNFC() *string {
 	return s.UseNFC
+}
+
+func (s *InitializeShrinkRequest) GetVerifyModel() *string {
+	return s.VerifyModel
 }
 
 func (s *InitializeShrinkRequest) SetAppQualityCheck(v string) *InitializeShrinkRequest {
@@ -357,6 +447,11 @@ func (s *InitializeShrinkRequest) SetAppQualityCheck(v string) *InitializeShrink
 
 func (s *InitializeShrinkRequest) SetAuthorize(v string) *InitializeShrinkRequest {
 	s.Authorize = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetAutoRegistration(v string) *InitializeShrinkRequest {
+	s.AutoRegistration = &v
 	return s
 }
 
@@ -435,6 +530,11 @@ func (s *InitializeShrinkRequest) SetExperienceCode(v string) *InitializeShrinkR
 	return s
 }
 
+func (s *InitializeShrinkRequest) SetFaceGroupCodes(v string) *InitializeShrinkRequest {
+	s.FaceGroupCodes = &v
+	return s
+}
+
 func (s *InitializeShrinkRequest) SetFacePictureBase64(v string) *InitializeShrinkRequest {
 	s.FacePictureBase64 = &v
 	return s
@@ -442,6 +542,16 @@ func (s *InitializeShrinkRequest) SetFacePictureBase64(v string) *InitializeShri
 
 func (s *InitializeShrinkRequest) SetFacePictureUrl(v string) *InitializeShrinkRequest {
 	s.FacePictureUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetFaceRegisterGroupCode(v string) *InitializeShrinkRequest {
+	s.FaceRegisterGroupCode = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetFaceVerifyThreshold(v string) *InitializeShrinkRequest {
+	s.FaceVerifyThreshold = &v
 	return s
 }
 
@@ -515,8 +625,18 @@ func (s *InitializeShrinkRequest) SetProductFlow(v string) *InitializeShrinkRequ
 	return s
 }
 
+func (s *InitializeShrinkRequest) SetReturnFaces(v string) *InitializeShrinkRequest {
+	s.ReturnFaces = &v
+	return s
+}
+
 func (s *InitializeShrinkRequest) SetReturnUrl(v string) *InitializeShrinkRequest {
 	s.ReturnUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetSaveFacePicture(v string) *InitializeShrinkRequest {
+	s.SaveFacePicture = &v
 	return s
 }
 
@@ -550,8 +670,23 @@ func (s *InitializeShrinkRequest) SetStyleConfig(v string) *InitializeShrinkRequ
 	return s
 }
 
+func (s *InitializeShrinkRequest) SetTargetFacePicture(v string) *InitializeShrinkRequest {
+	s.TargetFacePicture = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetTargetFacePictureUrl(v string) *InitializeShrinkRequest {
+	s.TargetFacePictureUrl = &v
+	return s
+}
+
 func (s *InitializeShrinkRequest) SetUseNFC(v string) *InitializeShrinkRequest {
 	s.UseNFC = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetVerifyModel(v string) *InitializeShrinkRequest {
+	s.VerifyModel = &v
 	return s
 }
 

@@ -24,20 +24,34 @@ type iFaceCompareRequest interface {
 }
 
 type FaceCompareRequest struct {
+	// 是否开启传入人脸图片质量检测
+	//
 	// example:
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
+	// A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
+	// The URL of the portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
+	//
+	// > You must specify either SourceFacePicture or SourceFacePictureUrl.
+	//
 	// example:
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
 	TargetFacePicture    *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// The URL of the base portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
+	//
+	//
+	//
+	// > You must specify either TargetFacePicture or TargetFacePictureUrl.
+	//
 	// example:
 	//
 	// https://***face2.jpeg

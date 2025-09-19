@@ -83,7 +83,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 地址相似比对
+// # Address Similarity Comparison
+//
+// Description:
+//
+// API for comparing two addresses, standardizing and checking address consistency.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -137,7 +141,11 @@ func (client *Client) AddressCompareIntlWithOptions(request *AddressCompareIntlR
 
 // Summary:
 //
-// 地址相似比对
+// # Address Similarity Comparison
+//
+// Description:
+//
+// API for comparing two addresses, standardizing and checking address consistency.
 //
 // @param request - AddressCompareIntlRequest
 //
@@ -263,7 +271,7 @@ func (client *Client) AddressVerifyIntl(request *AddressVerifyIntlRequest) (_res
 
 // Summary:
 //
-// 地址核验
+// This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
 //
 // @param request - AddressVerifyV2IntlRequest
 //
@@ -325,7 +333,7 @@ func (client *Client) AddressVerifyV2IntlWithOptions(request *AddressVerifyV2Int
 
 // Summary:
 //
-// 地址核验
+// This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
 //
 // @param request - AddressVerifyV2IntlRequest
 //
@@ -957,7 +965,11 @@ func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlA
 
 // Summary:
 //
-// 人脸凭证核验
+// # Face Credential Verification
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -1021,7 +1033,11 @@ func (client *Client) DeepfakeDetectIntlWithOptions(request *DeepfakeDetectIntlR
 
 // Summary:
 //
-// 人脸凭证核验
+// # Face Credential Verification
+//
+// Description:
+//
+// Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
 //
 // @param request - DeepfakeDetectIntlRequest
 //
@@ -1209,7 +1225,7 @@ func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _
 
 // Summary:
 //
-// 全球证件ocr识别接口
+// # Global Document OCR Recognition Interface
 //
 // @param request - DocOcrMaxRequest
 //
@@ -1299,7 +1315,7 @@ func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *d
 
 // Summary:
 //
-// 全球证件ocr识别接口
+// # Global Document OCR Recognition Interface
 //
 // @param request - DocOcrMaxRequest
 //
@@ -1317,7 +1333,7 @@ func (client *Client) DocOcrMax(request *DocOcrMaxRequest) (_result *DocOcrMaxRe
 
 // Summary:
 //
-// ekyc纯服务端接口
+// This topic describes how to integrate with ID Verification using only the server-side API.
 //
 // @param request - EkycVerifyRequest
 //
@@ -1409,7 +1425,7 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 
 // Summary:
 //
-// ekyc纯服务端接口
+// This topic describes how to integrate with ID Verification using only the server-side API.
 //
 // @param request - EkycVerifyRequest
 //
@@ -1427,7 +1443,7 @@ func (client *Client) EkycVerify(request *EkycVerifyRequest) (_result *EkycVerif
 
 // Summary:
 //
-// 人脸比对
+// This topic describes how to integrate FaceCompare using only the server-side API.
 //
 // @param request - FaceCompareRequest
 //
@@ -1491,7 +1507,7 @@ func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtim
 
 // Summary:
 //
-// 人脸比对
+// This topic describes how to integrate FaceCompare using only the server-side API.
 //
 // @param request - FaceCompareRequest
 //
@@ -1509,7 +1525,7 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
-// 国际人脸保镖纯服务端接口
+// This topic describes how to set up the server for FACE_GUARD.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -1563,7 +1579,7 @@ func (client *Client) FaceGuardRiskWithOptions(request *FaceGuardRiskRequest, ru
 
 // Summary:
 //
-// 国际人脸保镖纯服务端接口
+// This topic describes how to set up the server for FACE_GUARD.
 //
 // @param request - FaceGuardRiskRequest
 //
@@ -1581,7 +1597,7 @@ func (client *Client) FaceGuardRisk(request *FaceGuardRiskRequest) (_result *Fac
 
 // Summary:
 //
-// 静默活体API 纯服务端
+// Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
 //
 // @param request - FaceLivenessRequest
 //
@@ -1653,7 +1669,7 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 
 // Summary:
 //
-// 静默活体API 纯服务端
+// Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
 //
 // @param request - FaceLivenessRequest
 //
@@ -1743,7 +1759,7 @@ func (client *Client) FraudResultCallBack(request *FraudResultCallBackRequest) (
 
 // Summary:
 //
-// 身份二要素有效期核验
+// This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -1817,7 +1833,7 @@ func (client *Client) Id2MetaPeriodVerifyIntlWithOptions(request *Id2MetaPeriodV
 
 // Summary:
 //
-// 身份二要素有效期核验
+// This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
 //
 // @param request - Id2MetaPeriodVerifyIntlRequest
 //
@@ -1835,7 +1851,7 @@ func (client *Client) Id2MetaPeriodVerifyIntl(request *Id2MetaPeriodVerifyIntlRe
 
 // Summary:
 //
-// 身份二要素国际版接口
+// Verifies that a name and an ID card number are consistent.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -1889,7 +1905,7 @@ func (client *Client) Id2MetaVerifyIntlWithOptions(request *Id2MetaVerifyIntlReq
 
 // Summary:
 //
-// 身份二要素国际版接口
+// Verifies that a name and an ID card number are consistent.
 //
 // @param request - Id2MetaVerifyIntlRequest
 //
@@ -1932,6 +1948,10 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 	if !dara.IsNil(request.Authorize) {
 		query["Authorize"] = request.Authorize
+	}
+
+	if !dara.IsNil(request.AutoRegistration) {
+		query["AutoRegistration"] = request.AutoRegistration
 	}
 
 	if !dara.IsNil(request.CallbackToken) {
@@ -1994,8 +2014,20 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["ExperienceCode"] = request.ExperienceCode
 	}
 
+	if !dara.IsNil(request.FaceGroupCodes) {
+		query["FaceGroupCodes"] = request.FaceGroupCodes
+	}
+
 	if !dara.IsNil(request.FacePictureUrl) {
 		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.FaceRegisterGroupCode) {
+		query["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
+	}
+
+	if !dara.IsNil(request.FaceVerifyThreshold) {
+		query["FaceVerifyThreshold"] = request.FaceVerifyThreshold
 	}
 
 	if !dara.IsNil(request.IdFaceQuality) {
@@ -2054,8 +2086,16 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["ProductFlow"] = request.ProductFlow
 	}
 
+	if !dara.IsNil(request.ReturnFaces) {
+		query["ReturnFaces"] = request.ReturnFaces
+	}
+
 	if !dara.IsNil(request.ReturnUrl) {
 		query["ReturnUrl"] = request.ReturnUrl
+	}
+
+	if !dara.IsNil(request.SaveFacePicture) {
+		query["SaveFacePicture"] = request.SaveFacePicture
 	}
 
 	if !dara.IsNil(request.SceneCode) {
@@ -2082,8 +2122,20 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["StyleConfig"] = request.StyleConfig
 	}
 
+	if !dara.IsNil(request.TargetFacePicture) {
+		query["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
 	if !dara.IsNil(request.UseNFC) {
 		query["UseNFC"] = request.UseNFC
+	}
+
+	if !dara.IsNil(request.VerifyModel) {
+		query["VerifyModel"] = request.VerifyModel
 	}
 
 	body := map[string]interface{}{}
@@ -2135,7 +2187,7 @@ func (client *Client) Initialize(request *InitializeRequest) (_result *Initializ
 
 // Summary:
 //
-// 客户端连接保持
+// If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
 //
 // @param request - KeepaliveIntlRequest
 //
@@ -2166,7 +2218,7 @@ func (client *Client) KeepaliveIntlWithOptions(runtime *dara.RuntimeOptions) (_r
 
 // Summary:
 //
-// 客户端连接保持
+// If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
 //
 // @return KeepaliveIntlResponse
 func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err error) {
@@ -2182,7 +2234,7 @@ func (client *Client) KeepaliveIntl() (_result *KeepaliveIntlResponse, _err erro
 
 // Summary:
 //
-// 手机号二要素核验API
+// Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //
@@ -2236,7 +2288,7 @@ func (client *Client) Mobile2MetaVerifyIntlWithOptions(request *Mobile2MetaVerif
 
 // Summary:
 //
-// 手机号二要素核验API
+// Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
 //
 // @param request - Mobile2MetaVerifyIntlRequest
 //

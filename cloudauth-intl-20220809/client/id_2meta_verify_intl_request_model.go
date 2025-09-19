@@ -20,19 +20,36 @@ type iId2MetaVerifyIntlRequest interface {
 }
 
 type Id2MetaVerifyIntlRequest struct {
+	// The ID card number.
+	//
+	// > Only ID cards of residents in the Chinese mainland are supported.
+	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// The parameter type.
+	//
+	// **normal**: The original value in plaintext.
+	//
+	// > Due to limitations of the authoritative data source, two-factor ID verification does not support MD5 encryption.
+	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The product plan. This is a static field. Set the value to **ID_2META**.
+	//
 	// example:
 	//
 	// ID_2META
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// Zhang*
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s Id2MetaVerifyIntlRequest) String() string {

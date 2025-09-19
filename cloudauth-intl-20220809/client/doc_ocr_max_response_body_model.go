@@ -20,21 +20,26 @@ type iDocOcrMaxResponseBody interface {
 }
 
 type DocOcrMaxResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DocOcrMaxResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *DocOcrMaxResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DocOcrMaxResponseBody) String() string {
@@ -86,6 +91,8 @@ func (s *DocOcrMaxResponseBody) Validate() error {
 }
 
 type DocOcrMaxResponseBodyResult struct {
+	// Card and document recognition result	Only returned when the interface response is successful
+	//
 	// example:
 	//
 	// {
@@ -118,14 +125,24 @@ type DocOcrMaxResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Whether the authentication passed.
+	//
+	// - Y: Passed.
+	//
+	// - N: Not passed.
+	//
 	// example:
 	//
 	// Y
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Sub-result code.
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// Authentication ID
+	//
 	// example:
 	//
 	// hk573be80f944d95ac812e0*******a8

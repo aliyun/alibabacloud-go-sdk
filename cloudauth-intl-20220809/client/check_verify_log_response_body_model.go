@@ -128,10 +128,32 @@ type CheckVerifyLogResponseBodyResult struct {
 	// example:
 	//
 	// OCR拍摄证件页面
-	InterruptPage   *string `json:"InterruptPage,omitempty" xml:"InterruptPage,omitempty"`
+	InterruptPage *string `json:"InterruptPage,omitempty" xml:"InterruptPage,omitempty"`
+	// The page where the authentication process stops. Possible English values:
+	//
+	// The following are the values in an unordered list:
+	//
+	// - LOADING
+	//
+	// - GUIDE
+	//
+	// - FACE
+	//
+	// - OCR_SCAN
+	//
+	// - OCR_RESULT
+	//
+	// - NFC_INPUT
+	//
+	// - NFC_READ
+	//
+	// example:
+	//
+	// LOADING
 	InterruptPageEn *string `json:"InterruptPageEn,omitempty" xml:"InterruptPageEn,omitempty"`
 	// SDK operation log details
-	LogInfo   []*string `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Repeated"`
+	LogInfo []*string `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Repeated"`
+	// SDK Operation Log Details (English Version)
 	LogInfoEn []*string `json:"LogInfoEn,omitempty" xml:"LogInfoEn,omitempty" type:"Repeated"`
 	// SDK operation log statistics details
 	//

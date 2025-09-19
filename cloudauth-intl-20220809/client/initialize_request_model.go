@@ -13,6 +13,8 @@ type iInitializeRequest interface {
 	GetAppQualityCheck() *string
 	SetAuthorize(v string) *InitializeRequest
 	GetAuthorize() *string
+	SetAutoRegistration(v string) *InitializeRequest
+	GetAutoRegistration() *string
 	SetCallbackToken(v string) *InitializeRequest
 	GetCallbackToken() *string
 	SetCallbackUrl(v string) *InitializeRequest
@@ -43,10 +45,16 @@ type iInitializeRequest interface {
 	GetEditOcrResult() *string
 	SetExperienceCode(v string) *InitializeRequest
 	GetExperienceCode() *string
+	SetFaceGroupCodes(v string) *InitializeRequest
+	GetFaceGroupCodes() *string
 	SetFacePictureBase64(v string) *InitializeRequest
 	GetFacePictureBase64() *string
 	SetFacePictureUrl(v string) *InitializeRequest
 	GetFacePictureUrl() *string
+	SetFaceRegisterGroupCode(v string) *InitializeRequest
+	GetFaceRegisterGroupCode() *string
+	SetFaceVerifyThreshold(v string) *InitializeRequest
+	GetFaceVerifyThreshold() *string
 	SetIdFaceQuality(v string) *InitializeRequest
 	GetIdFaceQuality() *string
 	SetIdSpoof(v string) *InitializeRequest
@@ -75,8 +83,12 @@ type iInitializeRequest interface {
 	GetProductCode() *string
 	SetProductFlow(v string) *InitializeRequest
 	GetProductFlow() *string
+	SetReturnFaces(v string) *InitializeRequest
+	GetReturnFaces() *string
 	SetReturnUrl(v string) *InitializeRequest
 	GetReturnUrl() *string
+	SetSaveFacePicture(v string) *InitializeRequest
+	GetSaveFacePicture() *string
 	SetSceneCode(v string) *InitializeRequest
 	GetSceneCode() *string
 	SetSecurityLevel(v string) *InitializeRequest
@@ -89,13 +101,23 @@ type iInitializeRequest interface {
 	GetShowOcrResult() *string
 	SetStyleConfig(v string) *InitializeRequest
 	GetStyleConfig() *string
+	SetTargetFacePicture(v string) *InitializeRequest
+	GetTargetFacePicture() *string
+	SetTargetFacePictureUrl(v string) *InitializeRequest
+	GetTargetFacePictureUrl() *string
 	SetUseNFC(v string) *InitializeRequest
 	GetUseNFC() *string
+	SetVerifyModel(v string) *InitializeRequest
+	GetVerifyModel() *string
 }
 
 type InitializeRequest struct {
-	AppQualityCheck      *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
-	Authorize            *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	// example:
+	//
+	// 0
+	AutoRegistration     *string `json:"AutoRegistration,omitempty" xml:"AutoRegistration,omitempty"`
 	CallbackToken        *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
 	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	ChameleonFrameEnable *string `json:"ChameleonFrameEnable,omitempty" xml:"ChameleonFrameEnable,omitempty"`
@@ -112,16 +134,28 @@ type InitializeRequest struct {
 	// example:
 	//
 	// 01000000
-	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
-	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
-	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
-	EditOcrResult     *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
-	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	DocType        *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	DocVideo       *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
+	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	EditOcrResult  *string `json:"EditOcrResult,omitempty" xml:"EditOcrResult,omitempty"`
+	ExperienceCode *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	// example:
+	//
+	// 0e0c34a77f
+	FaceGroupCodes    *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
 	//
 	// ***
 	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	// example:
+	//
+	// 0e0c34a77f
+	FaceRegisterGroupCode *string `json:"FaceRegisterGroupCode,omitempty" xml:"FaceRegisterGroupCode,omitempty"`
+	// example:
+	//
+	// 0.5
+	FaceVerifyThreshold *string `json:"FaceVerifyThreshold,omitempty" xml:"FaceVerifyThreshold,omitempty"`
 	// example:
 	//
 	// *
@@ -164,8 +198,16 @@ type InitializeRequest struct {
 	ProductFlow *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
 	// example:
 	//
+	// 1
+	ReturnFaces *string `json:"ReturnFaces,omitempty" xml:"ReturnFaces,omitempty"`
+	// example:
+	//
 	// http*****
 	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	// example:
+	//
+	// 0
+	SaveFacePicture *string `json:"SaveFacePicture,omitempty" xml:"SaveFacePicture,omitempty"`
 	// example:
 	//
 	// PAY**
@@ -175,7 +217,19 @@ type InitializeRequest struct {
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
 	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
-	UseNFC        *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
+	// example:
+	//
+	// base64
+	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// example:
+	//
+	// https://www.xxxxx.com/1.jpg
+	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+	UseNFC               *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
+	// example:
+	//
+	// 0
+	VerifyModel *string `json:"VerifyModel,omitempty" xml:"VerifyModel,omitempty"`
 }
 
 func (s InitializeRequest) String() string {
@@ -192,6 +246,10 @@ func (s *InitializeRequest) GetAppQualityCheck() *string {
 
 func (s *InitializeRequest) GetAuthorize() *string {
 	return s.Authorize
+}
+
+func (s *InitializeRequest) GetAutoRegistration() *string {
+	return s.AutoRegistration
 }
 
 func (s *InitializeRequest) GetCallbackToken() *string {
@@ -254,12 +312,24 @@ func (s *InitializeRequest) GetExperienceCode() *string {
 	return s.ExperienceCode
 }
 
+func (s *InitializeRequest) GetFaceGroupCodes() *string {
+	return s.FaceGroupCodes
+}
+
 func (s *InitializeRequest) GetFacePictureBase64() *string {
 	return s.FacePictureBase64
 }
 
 func (s *InitializeRequest) GetFacePictureUrl() *string {
 	return s.FacePictureUrl
+}
+
+func (s *InitializeRequest) GetFaceRegisterGroupCode() *string {
+	return s.FaceRegisterGroupCode
+}
+
+func (s *InitializeRequest) GetFaceVerifyThreshold() *string {
+	return s.FaceVerifyThreshold
 }
 
 func (s *InitializeRequest) GetIdFaceQuality() *string {
@@ -318,8 +388,16 @@ func (s *InitializeRequest) GetProductFlow() *string {
 	return s.ProductFlow
 }
 
+func (s *InitializeRequest) GetReturnFaces() *string {
+	return s.ReturnFaces
+}
+
 func (s *InitializeRequest) GetReturnUrl() *string {
 	return s.ReturnUrl
+}
+
+func (s *InitializeRequest) GetSaveFacePicture() *string {
+	return s.SaveFacePicture
 }
 
 func (s *InitializeRequest) GetSceneCode() *string {
@@ -346,8 +424,20 @@ func (s *InitializeRequest) GetStyleConfig() *string {
 	return s.StyleConfig
 }
 
+func (s *InitializeRequest) GetTargetFacePicture() *string {
+	return s.TargetFacePicture
+}
+
+func (s *InitializeRequest) GetTargetFacePictureUrl() *string {
+	return s.TargetFacePictureUrl
+}
+
 func (s *InitializeRequest) GetUseNFC() *string {
 	return s.UseNFC
+}
+
+func (s *InitializeRequest) GetVerifyModel() *string {
+	return s.VerifyModel
 }
 
 func (s *InitializeRequest) SetAppQualityCheck(v string) *InitializeRequest {
@@ -357,6 +447,11 @@ func (s *InitializeRequest) SetAppQualityCheck(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetAuthorize(v string) *InitializeRequest {
 	s.Authorize = &v
+	return s
+}
+
+func (s *InitializeRequest) SetAutoRegistration(v string) *InitializeRequest {
+	s.AutoRegistration = &v
 	return s
 }
 
@@ -435,6 +530,11 @@ func (s *InitializeRequest) SetExperienceCode(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetFaceGroupCodes(v string) *InitializeRequest {
+	s.FaceGroupCodes = &v
+	return s
+}
+
 func (s *InitializeRequest) SetFacePictureBase64(v string) *InitializeRequest {
 	s.FacePictureBase64 = &v
 	return s
@@ -442,6 +542,16 @@ func (s *InitializeRequest) SetFacePictureBase64(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetFacePictureUrl(v string) *InitializeRequest {
 	s.FacePictureUrl = &v
+	return s
+}
+
+func (s *InitializeRequest) SetFaceRegisterGroupCode(v string) *InitializeRequest {
+	s.FaceRegisterGroupCode = &v
+	return s
+}
+
+func (s *InitializeRequest) SetFaceVerifyThreshold(v string) *InitializeRequest {
+	s.FaceVerifyThreshold = &v
 	return s
 }
 
@@ -515,8 +625,18 @@ func (s *InitializeRequest) SetProductFlow(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetReturnFaces(v string) *InitializeRequest {
+	s.ReturnFaces = &v
+	return s
+}
+
 func (s *InitializeRequest) SetReturnUrl(v string) *InitializeRequest {
 	s.ReturnUrl = &v
+	return s
+}
+
+func (s *InitializeRequest) SetSaveFacePicture(v string) *InitializeRequest {
+	s.SaveFacePicture = &v
 	return s
 }
 
@@ -550,8 +670,23 @@ func (s *InitializeRequest) SetStyleConfig(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetTargetFacePicture(v string) *InitializeRequest {
+	s.TargetFacePicture = &v
+	return s
+}
+
+func (s *InitializeRequest) SetTargetFacePictureUrl(v string) *InitializeRequest {
+	s.TargetFacePictureUrl = &v
+	return s
+}
+
 func (s *InitializeRequest) SetUseNFC(v string) *InitializeRequest {
 	s.UseNFC = &v
+	return s
+}
+
+func (s *InitializeRequest) SetVerifyModel(v string) *InitializeRequest {
+	s.VerifyModel = &v
 	return s
 }
 
