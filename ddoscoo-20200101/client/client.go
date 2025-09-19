@@ -586,6 +586,10 @@ func (client *Client) ConfigL7UsKeepaliveWithOptions(request *ConfigL7UsKeepaliv
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.DownstreamKeepalive) {
+		query["DownstreamKeepalive"] = request.DownstreamKeepalive
+	}
+
 	if !dara.IsNil(request.UpstreamKeepalive) {
 		query["UpstreamKeepalive"] = request.UpstreamKeepalive
 	}

@@ -11,6 +11,8 @@ type iConfigL7UsKeepaliveRequest interface {
 	GoString() string
 	SetDomain(v string) *ConfigL7UsKeepaliveRequest
 	GetDomain() *string
+	SetDownstreamKeepalive(v string) *ConfigL7UsKeepaliveRequest
+	GetDownstreamKeepalive() *string
 	SetUpstreamKeepalive(v string) *ConfigL7UsKeepaliveRequest
 	GetUpstreamKeepalive() *string
 }
@@ -23,7 +25,8 @@ type ConfigL7UsKeepaliveRequest struct {
 	// example:
 	//
 	// www.aliyun.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DownstreamKeepalive *string `json:"DownstreamKeepalive,omitempty" xml:"DownstreamKeepalive,omitempty"`
 	// The settings for back-to-origin persistent connections. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
 	// 	- **enabled**: the switch for back-to-origin persistent connections. This field is required, and the value is of the Boolean type.
@@ -52,12 +55,21 @@ func (s *ConfigL7UsKeepaliveRequest) GetDomain() *string {
 	return s.Domain
 }
 
+func (s *ConfigL7UsKeepaliveRequest) GetDownstreamKeepalive() *string {
+	return s.DownstreamKeepalive
+}
+
 func (s *ConfigL7UsKeepaliveRequest) GetUpstreamKeepalive() *string {
 	return s.UpstreamKeepalive
 }
 
 func (s *ConfigL7UsKeepaliveRequest) SetDomain(v string) *ConfigL7UsKeepaliveRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *ConfigL7UsKeepaliveRequest) SetDownstreamKeepalive(v string) *ConfigL7UsKeepaliveRequest {
+	s.DownstreamKeepalive = &v
 	return s
 }
 

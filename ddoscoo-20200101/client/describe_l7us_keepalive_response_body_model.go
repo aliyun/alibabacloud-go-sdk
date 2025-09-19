@@ -57,6 +57,7 @@ func (s *DescribeL7UsKeepaliveResponseBody) Validate() error {
 }
 
 type DescribeL7UsKeepaliveResponseBodyRsKeepalive struct {
+	DsKeepaliveTimeout *int64 `json:"DsKeepaliveTimeout,omitempty" xml:"DsKeepaliveTimeout,omitempty"`
 	// Indicates whether Back-to-origin Persistent Connections is turned on. Valid values:
 	//
 	// 	- **true**
@@ -89,6 +90,10 @@ func (s DescribeL7UsKeepaliveResponseBodyRsKeepalive) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) GetDsKeepaliveTimeout() *int64 {
+	return s.DsKeepaliveTimeout
+}
+
 func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) GetEnabled() *bool {
 	return s.Enabled
 }
@@ -99,6 +104,11 @@ func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) GetKeepaliveRequests() *i
 
 func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) GetKeepaliveTimeout() *int64 {
 	return s.KeepaliveTimeout
+}
+
+func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) SetDsKeepaliveTimeout(v int64) *DescribeL7UsKeepaliveResponseBodyRsKeepalive {
+	s.DsKeepaliveTimeout = &v
+	return s
 }
 
 func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) SetEnabled(v bool) *DescribeL7UsKeepaliveResponseBodyRsKeepalive {

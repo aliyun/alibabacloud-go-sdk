@@ -402,6 +402,10 @@ func (client *Client) ConfigL7UsKeepaliveWithContext(ctx context.Context, reques
 		query["Domain"] = request.Domain
 	}
 
+	if !dara.IsNil(request.DownstreamKeepalive) {
+		query["DownstreamKeepalive"] = request.DownstreamKeepalive
+	}
+
 	if !dara.IsNil(request.UpstreamKeepalive) {
 		query["UpstreamKeepalive"] = request.UpstreamKeepalive
 	}

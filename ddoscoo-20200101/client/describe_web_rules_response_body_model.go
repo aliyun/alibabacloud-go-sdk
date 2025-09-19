@@ -109,7 +109,8 @@ type DescribeWebRulesResponseBodyWebRules struct {
 	// example:
 	//
 	// default
-	CcTemplate *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
+	CcTemplate     *string `json:"CcTemplate,omitempty" xml:"CcTemplate,omitempty"`
+	CertExpireTime *int64  `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
 	// The name of the SSL certificate.
 	//
 	// example:
@@ -263,7 +264,8 @@ type DescribeWebRulesResponseBodyWebRules struct {
 	// example:
 	//
 	// tls1.1
-	SslProtocols *string `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
+	SslProtocols       *string   `json:"SslProtocols,omitempty" xml:"SslProtocols,omitempty"`
+	Tls13CustomCiphers []*string `json:"Tls13CustomCiphers,omitempty" xml:"Tls13CustomCiphers,omitempty" type:"Repeated"`
 	// The name of the certificate uploaded by the user to the certificate center.
 	//
 	// example:
@@ -296,6 +298,10 @@ func (s *DescribeWebRulesResponseBodyWebRules) GetCcRuleEnabled() *bool {
 
 func (s *DescribeWebRulesResponseBodyWebRules) GetCcTemplate() *string {
 	return s.CcTemplate
+}
+
+func (s *DescribeWebRulesResponseBodyWebRules) GetCertExpireTime() *int64 {
+	return s.CertExpireTime
 }
 
 func (s *DescribeWebRulesResponseBodyWebRules) GetCertName() *string {
@@ -374,6 +380,10 @@ func (s *DescribeWebRulesResponseBodyWebRules) GetSslProtocols() *string {
 	return s.SslProtocols
 }
 
+func (s *DescribeWebRulesResponseBodyWebRules) GetTls13CustomCiphers() []*string {
+	return s.Tls13CustomCiphers
+}
+
 func (s *DescribeWebRulesResponseBodyWebRules) GetUserCertName() *string {
 	return s.UserCertName
 }
@@ -399,6 +409,11 @@ func (s *DescribeWebRulesResponseBodyWebRules) SetCcRuleEnabled(v bool) *Describ
 
 func (s *DescribeWebRulesResponseBodyWebRules) SetCcTemplate(v string) *DescribeWebRulesResponseBodyWebRules {
 	s.CcTemplate = &v
+	return s
+}
+
+func (s *DescribeWebRulesResponseBodyWebRules) SetCertExpireTime(v int64) *DescribeWebRulesResponseBodyWebRules {
+	s.CertExpireTime = &v
 	return s
 }
 
@@ -494,6 +509,11 @@ func (s *DescribeWebRulesResponseBodyWebRules) SetSslCiphers(v string) *Describe
 
 func (s *DescribeWebRulesResponseBodyWebRules) SetSslProtocols(v string) *DescribeWebRulesResponseBodyWebRules {
 	s.SslProtocols = &v
+	return s
+}
+
+func (s *DescribeWebRulesResponseBodyWebRules) SetTls13CustomCiphers(v []*string) *DescribeWebRulesResponseBodyWebRules {
+	s.Tls13CustomCiphers = v
 	return s
 }
 
