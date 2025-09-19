@@ -57,6 +57,78 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 绑定应用域名
+//
+// @param request - BindAppDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAppDomainResponse
+func (client *Client) BindAppDomainWithOptions(request *BindAppDomainRequest, runtime *dara.RuntimeOptions) (_result *BindAppDomainResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
+	if !dara.IsNil(request.OperateType) {
+		query["OperateType"] = request.OperateType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindAppDomain"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindAppDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定应用域名
+//
+// @param request - BindAppDomainRequest
+//
+// @return BindAppDomainResponse
+func (client *Client) BindAppDomain(request *BindAppDomainRequest) (_result *BindAppDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindAppDomainResponse{}
+	_body, _err := client.BindAppDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 提交创建Logo任务
 //
 // @param request - CreateLogoTaskRequest
@@ -120,6 +192,202 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateLogoTaskResponse{}
 	_body, _err := client.CreateLogoTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除域名的SSL证书
+//
+// @param request - DeleteAppDomainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppDomainCertificateResponse
+func (client *Client) DeleteAppDomainCertificateWithOptions(request *DeleteAppDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppDomainCertificateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppDomainCertificate"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppDomainCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除域名的SSL证书
+//
+// @param request - DeleteAppDomainCertificateRequest
+//
+// @return DeleteAppDomainCertificateResponse
+func (client *Client) DeleteAppDomainCertificate(request *DeleteAppDomainCertificateRequest) (_result *DeleteAppDomainCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppDomainCertificateResponse{}
+	_body, _err := client.DeleteAppDomainCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除域名的跳转规则
+//
+// @param request - DeleteAppDomainRedirectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppDomainRedirectResponse
+func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomainRedirectRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppDomainRedirectResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.RecordId) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAppDomainRedirect"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppDomainRedirectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除域名的跳转规则
+//
+// @param request - DeleteAppDomainRedirectRequest
+//
+// @return DeleteAppDomainRedirectResponse
+func (client *Client) DeleteAppDomainRedirect(request *DeleteAppDomainRedirectRequest) (_result *DeleteAppDomainRedirectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAppDomainRedirectResponse{}
+	_body, _err := client.DeleteAppDomainRedirectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名的DNS解析记录
+//
+// @param request - DescribeAppDomainDnsRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppDomainDnsRecordResponse
+func (client *Client) DescribeAppDomainDnsRecordWithOptions(request *DescribeAppDomainDnsRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeAppDomainDnsRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.Purpose) {
+		query["Purpose"] = request.Purpose
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAppDomainDnsRecord"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAppDomainDnsRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名的DNS解析记录
+//
+// @param request - DescribeAppDomainDnsRecordRequest
+//
+// @return DescribeAppDomainDnsRecordResponse
+func (client *Client) DescribeAppDomainDnsRecord(request *DescribeAppDomainDnsRecordRequest) (_result *DescribeAppDomainDnsRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAppDomainDnsRecordResponse{}
+	_body, _err := client.DescribeAppDomainDnsRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -397,6 +665,158 @@ func (client *Client) GetUserTmpIdentityForPartner(request *GetUserTmpIdentityFo
 
 // Summary:
 //
+// 查询域名的跳转规则列表
+//
+// @param request - ListAppDomainRedirectRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppDomainRedirectRecordsResponse
+func (client *Client) ListAppDomainRedirectRecordsWithOptions(request *ListAppDomainRedirectRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListAppDomainRedirectRecordsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppDomainRedirectRecords"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppDomainRedirectRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询域名的跳转规则列表
+//
+// @param request - ListAppDomainRedirectRecordsRequest
+//
+// @return ListAppDomainRedirectRecordsResponse
+func (client *Client) ListAppDomainRedirectRecords(request *ListAppDomainRedirectRecordsRequest) (_result *ListAppDomainRedirectRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppDomainRedirectRecordsResponse{}
+	_body, _err := client.ListAppDomainRedirectRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用实例下的所有域名列表
+//
+// @param request - ListAppInstanceDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppInstanceDomainsResponse
+func (client *Client) ListAppInstanceDomainsWithOptions(request *ListAppInstanceDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceDomainsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OrderColumn) {
+		query["OrderColumn"] = request.OrderColumn
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppInstanceDomains"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppInstanceDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用实例下的所有域名列表
+//
+// @param request - ListAppInstanceDomainsRequest
+//
+// @return ListAppInstanceDomainsResponse
+func (client *Client) ListAppInstanceDomains(request *ListAppInstanceDomainsRequest) (_result *ListAppInstanceDomainsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppInstanceDomainsResponse{}
+	_body, _err := client.ListAppInstanceDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴操作应用
 //
 // @param request - OperateAppInstanceForPartnerRequest
@@ -655,6 +1075,86 @@ func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchI
 
 // Summary:
 //
+// 设置域名的SSL证书
+//
+// @param request - SetAppDomainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAppDomainCertificateResponse
+func (client *Client) SetAppDomainCertificateWithOptions(request *SetAppDomainCertificateRequest, runtime *dara.RuntimeOptions) (_result *SetAppDomainCertificateResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.CertificateName) {
+		query["CertificateName"] = request.CertificateName
+	}
+
+	if !dara.IsNil(request.CertificateType) {
+		query["CertificateType"] = request.CertificateType
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.PrivateKey) {
+		query["PrivateKey"] = request.PrivateKey
+	}
+
+	if !dara.IsNil(request.PublicKey) {
+		query["PublicKey"] = request.PublicKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAppDomainCertificate"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAppDomainCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置域名的SSL证书
+//
+// @param request - SetAppDomainCertificateRequest
+//
+// @return SetAppDomainCertificateResponse
+func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRequest) (_result *SetAppDomainCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetAppDomainCertificateResponse{}
+	_body, _err := client.SetAppDomainCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 合作伙伴同步应用实例
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
@@ -728,6 +1228,70 @@ func (client *Client) SyncAppInstanceForPartner(request *SyncAppInstanceForPartn
 	runtime := &dara.RuntimeOptions{}
 	_result = &SyncAppInstanceForPartnerResponse{}
 	_body, _err := client.SyncAppInstanceForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑应用域名
+//
+// @param request - UnbindAppDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindAppDomainResponse
+func (client *Client) UnbindAppDomainWithOptions(request *UnbindAppDomainRequest, runtime *dara.RuntimeOptions) (_result *UnbindAppDomainResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindAppDomain"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindAppDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑应用域名
+//
+// @param request - UnbindAppDomainRequest
+//
+// @return UnbindAppDomainResponse
+func (client *Client) UnbindAppDomain(request *UnbindAppDomainRequest) (_result *UnbindAppDomainResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnbindAppDomainResponse{}
+	_body, _err := client.UnbindAppDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
