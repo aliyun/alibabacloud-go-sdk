@@ -35,6 +35,8 @@ type iGetResourceGroupResponseBody interface {
 	GetTags() []*GetResourceGroupResponseBodyTags
 	SetUserVpc(v *UserVpc) *GetResourceGroupResponseBody
 	GetUserVpc() *UserVpc
+	SetVersion(v string) *GetResourceGroupResponseBody
+	GetVersion() *string
 	SetWorkspaceID(v string) *GetResourceGroupResponseBody
 	GetWorkspaceID() *string
 }
@@ -86,6 +88,7 @@ type GetResourceGroupResponseBody struct {
 	SupportRDMA *bool                               `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
 	Tags        []*GetResourceGroupResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	UserVpc     *UserVpc                            `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	Version     *string                             `json:"Version,omitempty" xml:"Version,omitempty"`
 	// example:
 	//
 	// 35201
@@ -150,6 +153,10 @@ func (s *GetResourceGroupResponseBody) GetTags() []*GetResourceGroupResponseBody
 
 func (s *GetResourceGroupResponseBody) GetUserVpc() *UserVpc {
 	return s.UserVpc
+}
+
+func (s *GetResourceGroupResponseBody) GetVersion() *string {
+	return s.Version
 }
 
 func (s *GetResourceGroupResponseBody) GetWorkspaceID() *string {
@@ -218,6 +225,11 @@ func (s *GetResourceGroupResponseBody) SetTags(v []*GetResourceGroupResponseBody
 
 func (s *GetResourceGroupResponseBody) SetUserVpc(v *UserVpc) *GetResourceGroupResponseBody {
 	s.UserVpc = v
+	return s
+}
+
+func (s *GetResourceGroupResponseBody) SetVersion(v string) *GetResourceGroupResponseBody {
+	s.Version = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iResourceGroup interface {
 	GetResourceGroupID() *string
 	SetUserVpc(v *UserVpc) *ResourceGroup
 	GetUserVpc() *UserVpc
+	SetVersion(v string) *ResourceGroup
+	GetVersion() *string
 	SetWorkspaceID(v string) *ResourceGroup
 	GetWorkspaceID() *string
 }
@@ -41,6 +43,7 @@ type ResourceGroup struct {
 	// rg17tmvwiokhzaxg
 	ResourceGroupID *string  `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	UserVpc         *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	Version         *string  `json:"Version,omitempty" xml:"Version,omitempty"`
 	// example:
 	//
 	// 23000
@@ -83,6 +86,10 @@ func (s *ResourceGroup) GetUserVpc() *UserVpc {
 	return s.UserVpc
 }
 
+func (s *ResourceGroup) GetVersion() *string {
+	return s.Version
+}
+
 func (s *ResourceGroup) GetWorkspaceID() *string {
 	return s.WorkspaceID
 }
@@ -119,6 +126,11 @@ func (s *ResourceGroup) SetResourceGroupID(v string) *ResourceGroup {
 
 func (s *ResourceGroup) SetUserVpc(v *UserVpc) *ResourceGroup {
 	s.UserVpc = v
+	return s
+}
+
+func (s *ResourceGroup) SetVersion(v string) *ResourceGroup {
+	s.Version = &v
 	return s
 }
 

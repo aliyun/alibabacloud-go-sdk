@@ -31,6 +31,8 @@ type iListResourceGroupsRequest interface {
 	GetSortBy() *string
 	SetStatus(v string) *ListResourceGroupsRequest
 	GetStatus() *string
+	SetVersions(v string) *ListResourceGroupsRequest
+	GetVersions() *string
 }
 
 type ListResourceGroupsRequest struct {
@@ -72,6 +74,10 @@ type ListResourceGroupsRequest struct {
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1.0
+	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
 }
 
 func (s ListResourceGroupsRequest) String() string {
@@ -126,6 +132,10 @@ func (s *ListResourceGroupsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListResourceGroupsRequest) GetVersions() *string {
+	return s.Versions
+}
+
 func (s *ListResourceGroupsRequest) SetComputingResourceProvider(v string) *ListResourceGroupsRequest {
 	s.ComputingResourceProvider = &v
 	return s
@@ -178,6 +188,11 @@ func (s *ListResourceGroupsRequest) SetSortBy(v string) *ListResourceGroupsReque
 
 func (s *ListResourceGroupsRequest) SetStatus(v string) *ListResourceGroupsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListResourceGroupsRequest) SetVersions(v string) *ListResourceGroupsRequest {
+	s.Versions = &v
 	return s
 }
 

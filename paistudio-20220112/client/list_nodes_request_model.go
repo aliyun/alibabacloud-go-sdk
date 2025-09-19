@@ -31,6 +31,8 @@ type iListNodesRequest interface {
 	GetNodeTypes() *string
 	SetOrder(v string) *ListNodesRequest
 	GetOrder() *string
+	SetOrderInstanceIds(v string) *ListNodesRequest
+	GetOrderInstanceIds() *string
 	SetOrderStatuses(v string) *ListNodesRequest
 	GetOrderStatuses() *string
 	SetPageNumber(v int32) *ListNodesRequest
@@ -87,6 +89,10 @@ type ListNodesRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 260590501560397
+	OrderInstanceIds *string `json:"OrderInstanceIds,omitempty" xml:"OrderInstanceIds,omitempty"`
 	// example:
 	//
 	// Ready
@@ -169,6 +175,10 @@ func (s *ListNodesRequest) GetNodeTypes() *string {
 
 func (s *ListNodesRequest) GetOrder() *string {
 	return s.Order
+}
+
+func (s *ListNodesRequest) GetOrderInstanceIds() *string {
+	return s.OrderInstanceIds
 }
 
 func (s *ListNodesRequest) GetOrderStatuses() *string {
@@ -259,6 +269,11 @@ func (s *ListNodesRequest) SetNodeTypes(v string) *ListNodesRequest {
 
 func (s *ListNodesRequest) SetOrder(v string) *ListNodesRequest {
 	s.Order = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetOrderInstanceIds(v string) *ListNodesRequest {
+	s.OrderInstanceIds = &v
 	return s
 }
 

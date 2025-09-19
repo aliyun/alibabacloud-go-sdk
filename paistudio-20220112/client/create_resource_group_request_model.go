@@ -21,6 +21,8 @@ type iCreateResourceGroupRequest interface {
 	GetTag() []*CreateResourceGroupRequestTag
 	SetUserVpc(v *UserVpc) *CreateResourceGroupRequest
 	GetUserVpc() *UserVpc
+	SetVersion(v string) *CreateResourceGroupRequest
+	GetVersion() *string
 }
 
 type CreateResourceGroupRequest struct {
@@ -42,6 +44,10 @@ type CreateResourceGroupRequest struct {
 	ResourceType *string                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*CreateResourceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	UserVpc      *UserVpc                         `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateResourceGroupRequest) String() string {
@@ -76,6 +82,10 @@ func (s *CreateResourceGroupRequest) GetUserVpc() *UserVpc {
 	return s.UserVpc
 }
 
+func (s *CreateResourceGroupRequest) GetVersion() *string {
+	return s.Version
+}
+
 func (s *CreateResourceGroupRequest) SetComputingResourceProvider(v string) *CreateResourceGroupRequest {
 	s.ComputingResourceProvider = &v
 	return s
@@ -103,6 +113,11 @@ func (s *CreateResourceGroupRequest) SetTag(v []*CreateResourceGroupRequestTag) 
 
 func (s *CreateResourceGroupRequest) SetUserVpc(v *UserVpc) *CreateResourceGroupRequest {
 	s.UserVpc = v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetVersion(v string) *CreateResourceGroupRequest {
+	s.Version = &v
 	return s
 }
 

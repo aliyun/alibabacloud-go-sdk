@@ -35,6 +35,8 @@ type iListQuotasRequest interface {
 	GetStatuses() *string
 	SetVerbose(v bool) *ListQuotasRequest
 	GetVerbose() *bool
+	SetVersions(v string) *ListQuotasRequest
+	GetVersions() *string
 	SetWorkspaceIds(v string) *ListQuotasRequest
 	GetWorkspaceIds() *string
 	SetWorkspaceName(v string) *ListQuotasRequest
@@ -85,6 +87,10 @@ type ListQuotasRequest struct {
 	// Creating
 	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 	Verbose  *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 1.0
+	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
 	// example:
 	//
 	// 21345,38727
@@ -150,6 +156,10 @@ func (s *ListQuotasRequest) GetStatuses() *string {
 
 func (s *ListQuotasRequest) GetVerbose() *bool {
 	return s.Verbose
+}
+
+func (s *ListQuotasRequest) GetVersions() *string {
+	return s.Versions
 }
 
 func (s *ListQuotasRequest) GetWorkspaceIds() *string {
@@ -222,6 +232,11 @@ func (s *ListQuotasRequest) SetStatuses(v string) *ListQuotasRequest {
 
 func (s *ListQuotasRequest) SetVerbose(v bool) *ListQuotasRequest {
 	s.Verbose = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetVersions(v string) *ListQuotasRequest {
+	s.Versions = &v
 	return s
 }
 

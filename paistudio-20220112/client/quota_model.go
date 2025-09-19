@@ -19,6 +19,8 @@ type iQuota interface {
 	GetGmtCreatedTime() *string
 	SetGmtModifiedTime(v string) *Quota
 	GetGmtModifiedTime() *string
+	SetHyperZones(v []*string) *Quota
+	GetHyperZones() []*string
 	SetLabels(v []*Label) *Quota
 	GetLabels() []*Label
 	SetLatestOperationId(v string) *Quota
@@ -49,6 +51,8 @@ type iQuota interface {
 	GetStatus() *string
 	SetSubQuotas(v []*QuotaIdName) *Quota
 	GetSubQuotas() []*QuotaIdName
+	SetVersion(v string) *Quota
+	GetVersion() *string
 	SetWorkspaces(v []*WorkspaceIdName) *Quota
 	GetWorkspaces() []*WorkspaceIdName
 }
@@ -59,6 +63,7 @@ type Quota struct {
 	Description       *string       `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreatedTime    *string       `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	GmtModifiedTime   *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	HyperZones        []*string     `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
 	Labels            []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	LatestOperationId *string       `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
 	Min               *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
@@ -80,6 +85,7 @@ type Quota struct {
 	ResourceType     *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
 	SubQuotas        []*QuotaIdName     `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
+	Version          *string            `json:"Version,omitempty" xml:"Version,omitempty"`
 	Workspaces       []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -109,6 +115,10 @@ func (s *Quota) GetGmtCreatedTime() *string {
 
 func (s *Quota) GetGmtModifiedTime() *string {
 	return s.GmtModifiedTime
+}
+
+func (s *Quota) GetHyperZones() []*string {
+	return s.HyperZones
 }
 
 func (s *Quota) GetLabels() []*Label {
@@ -171,6 +181,10 @@ func (s *Quota) GetSubQuotas() []*QuotaIdName {
 	return s.SubQuotas
 }
 
+func (s *Quota) GetVersion() *string {
+	return s.Version
+}
+
 func (s *Quota) GetWorkspaces() []*WorkspaceIdName {
 	return s.Workspaces
 }
@@ -197,6 +211,11 @@ func (s *Quota) SetGmtCreatedTime(v string) *Quota {
 
 func (s *Quota) SetGmtModifiedTime(v string) *Quota {
 	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Quota) SetHyperZones(v []*string) *Quota {
+	s.HyperZones = v
 	return s
 }
 
@@ -272,6 +291,11 @@ func (s *Quota) SetStatus(v string) *Quota {
 
 func (s *Quota) SetSubQuotas(v []*QuotaIdName) *Quota {
 	s.SubQuotas = v
+	return s
+}
+
+func (s *Quota) SetVersion(v string) *Quota {
+	s.Version = &v
 	return s
 }
 

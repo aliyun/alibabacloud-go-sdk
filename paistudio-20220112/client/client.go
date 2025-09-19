@@ -474,6 +474,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		body["UserVpc"] = request.UserVpc
 	}
 
+	if !dara.IsNil(request.Version) {
+		body["Version"] = request.Version
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -2296,6 +2300,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 		query["Order"] = request.Order
 	}
 
+	if !dara.IsNil(request.OrderInstanceIds) {
+		query["OrderInstanceIds"] = request.OrderInstanceIds
+	}
+
 	if !dara.IsNil(request.OrderStatuses) {
 		query["OrderStatuses"] = request.OrderStatuses
 	}
@@ -2580,6 +2588,10 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 		query["Verbose"] = request.Verbose
 	}
 
+	if !dara.IsNil(request.Versions) {
+		query["Versions"] = request.Versions
+	}
+
 	if !dara.IsNil(request.WorkspaceIds) {
 		query["WorkspaceIds"] = request.WorkspaceIds
 	}
@@ -2802,6 +2814,10 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Versions) {
+		query["Versions"] = request.Versions
 	}
 
 	req := &openapiutil.OpenApiRequest{
