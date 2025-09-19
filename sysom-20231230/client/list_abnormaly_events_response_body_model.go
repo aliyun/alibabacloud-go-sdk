@@ -88,12 +88,13 @@ type ListAbnormalyEventsResponseBodyData struct {
 	// example:
 	//
 	// i-wz9d00ut2ska3mlyhn6j
-	Instance  *string                                    `json:"instance,omitempty" xml:"instance,omitempty"`
-	Item      *string                                    `json:"item,omitempty" xml:"item,omitempty"`
-	Level     *string                                    `json:"level,omitempty" xml:"level,omitempty"`
-	Namespace *string                                    `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Opts      []*ListAbnormalyEventsResponseBodyDataOpts `json:"opts,omitempty" xml:"opts,omitempty" type:"Repeated"`
-	Pod       *string                                    `json:"pod,omitempty" xml:"pod,omitempty"`
+	Instance   *string                                        `json:"instance,omitempty" xml:"instance,omitempty"`
+	Item       *string                                        `json:"item,omitempty" xml:"item,omitempty"`
+	Level      *string                                        `json:"level,omitempty" xml:"level,omitempty"`
+	Namespace  *string                                        `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Opts       []*ListAbnormalyEventsResponseBodyDataOpts     `json:"opts,omitempty" xml:"opts,omitempty" type:"Repeated"`
+	Pod        *string                                        `json:"pod,omitempty" xml:"pod,omitempty"`
+	RawMetrics *ListAbnormalyEventsResponseBodyDataRawMetrics `json:"raw_metrics,omitempty" xml:"raw_metrics,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-shanghai
@@ -151,6 +152,10 @@ func (s *ListAbnormalyEventsResponseBodyData) GetOpts() []*ListAbnormalyEventsRe
 
 func (s *ListAbnormalyEventsResponseBodyData) GetPod() *string {
 	return s.Pod
+}
+
+func (s *ListAbnormalyEventsResponseBodyData) GetRawMetrics() *ListAbnormalyEventsResponseBodyDataRawMetrics {
+	return s.RawMetrics
 }
 
 func (s *ListAbnormalyEventsResponseBodyData) GetRegionId() *string {
@@ -212,6 +217,11 @@ func (s *ListAbnormalyEventsResponseBodyData) SetOpts(v []*ListAbnormalyEventsRe
 
 func (s *ListAbnormalyEventsResponseBodyData) SetPod(v string) *ListAbnormalyEventsResponseBodyData {
 	s.Pod = &v
+	return s
+}
+
+func (s *ListAbnormalyEventsResponseBodyData) SetRawMetrics(v *ListAbnormalyEventsResponseBodyDataRawMetrics) *ListAbnormalyEventsResponseBodyData {
+	s.RawMetrics = v
 	return s
 }
 
@@ -311,5 +321,50 @@ func (s *ListAbnormalyEventsResponseBodyDataOptsResult) SetUrl(v string) *ListAb
 }
 
 func (s *ListAbnormalyEventsResponseBodyDataOptsResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListAbnormalyEventsResponseBodyDataRawMetrics struct {
+	EndTime   *float32  `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	Metrics   []*string `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	StartTime *float32  `json:"start_time,omitempty" xml:"start_time,omitempty"`
+}
+
+func (s ListAbnormalyEventsResponseBodyDataRawMetrics) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListAbnormalyEventsResponseBodyDataRawMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) GetEndTime() *float32 {
+	return s.EndTime
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) GetMetrics() []*string {
+	return s.Metrics
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) GetStartTime() *float32 {
+	return s.StartTime
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) SetEndTime(v float32) *ListAbnormalyEventsResponseBodyDataRawMetrics {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) SetMetrics(v []*string) *ListAbnormalyEventsResponseBodyDataRawMetrics {
+	s.Metrics = v
+	return s
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) SetStartTime(v float32) *ListAbnormalyEventsResponseBodyDataRawMetrics {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListAbnormalyEventsResponseBodyDataRawMetrics) Validate() error {
 	return dara.Validate(s)
 }
