@@ -29,6 +29,8 @@ type iDescribeGatewayResponseBody interface {
 	GetInternetStatus() *string
 	SetIntranetDomain(v string) *DescribeGatewayResponseBody
 	GetIntranetDomain() *string
+	SetIntranetEnabled(v bool) *DescribeGatewayResponseBody
+	GetIntranetEnabled() *bool
 	SetIsDefault(v bool) *DescribeGatewayResponseBody
 	GetIsDefault() *bool
 	SetReplicas(v int32) *DescribeGatewayResponseBody
@@ -120,7 +122,8 @@ type DescribeGatewayResponseBody struct {
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-hangzhou.pai-eas.aliyuncs.com
-	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetDomain  *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetEnabled *bool   `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
 	// Indicates whether it is the default private gateway.
 	//
 	// example:
@@ -223,6 +226,10 @@ func (s *DescribeGatewayResponseBody) GetIntranetDomain() *string {
 	return s.IntranetDomain
 }
 
+func (s *DescribeGatewayResponseBody) GetIntranetEnabled() *bool {
+	return s.IntranetEnabled
+}
+
 func (s *DescribeGatewayResponseBody) GetIsDefault() *bool {
 	return s.IsDefault
 }
@@ -294,6 +301,11 @@ func (s *DescribeGatewayResponseBody) SetInternetStatus(v string) *DescribeGatew
 
 func (s *DescribeGatewayResponseBody) SetIntranetDomain(v string) *DescribeGatewayResponseBody {
 	s.IntranetDomain = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetIntranetEnabled(v bool) *DescribeGatewayResponseBody {
+	s.IntranetEnabled = &v
 	return s
 }
 

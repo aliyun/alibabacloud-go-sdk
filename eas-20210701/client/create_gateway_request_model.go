@@ -19,6 +19,8 @@ type iCreateGatewayRequest interface {
 	GetEnableInternet() *bool
 	SetEnableIntranet(v bool) *CreateGatewayRequest
 	GetEnableIntranet() *bool
+	SetGatewayType(v string) *CreateGatewayRequest
+	GetGatewayType() *string
 	SetInstanceType(v string) *CreateGatewayRequest
 	GetInstanceType() *string
 	SetName(v string) *CreateGatewayRequest
@@ -73,7 +75,8 @@ type CreateGatewayRequest struct {
 	// example:
 	//
 	// true
-	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	EnableIntranet *bool   `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	GatewayType    *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	// The instance type used by the private gateway. Valid values:
 	//
 	// 	- 2c4g
@@ -83,8 +86,6 @@ type CreateGatewayRequest struct {
 	// 	- 8c16g
 	//
 	// 	- 16c32g
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -132,6 +133,10 @@ func (s *CreateGatewayRequest) GetEnableIntranet() *bool {
 	return s.EnableIntranet
 }
 
+func (s *CreateGatewayRequest) GetGatewayType() *string {
+	return s.GatewayType
+}
+
 func (s *CreateGatewayRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
@@ -166,6 +171,11 @@ func (s *CreateGatewayRequest) SetEnableInternet(v bool) *CreateGatewayRequest {
 
 func (s *CreateGatewayRequest) SetEnableIntranet(v bool) *CreateGatewayRequest {
 	s.EnableIntranet = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetGatewayType(v string) *CreateGatewayRequest {
+	s.GatewayType = &v
 	return s
 }
 

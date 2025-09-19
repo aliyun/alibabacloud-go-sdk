@@ -351,6 +351,10 @@ func (client *Client) CreateGatewayWithContext(ctx context.Context, request *Cre
 		body["EnableIntranet"] = request.EnableIntranet
 	}
 
+	if !dara.IsNil(request.GatewayType) {
+		body["GatewayType"] = request.GatewayType
+	}
+
 	if !dara.IsNil(request.InstanceType) {
 		body["InstanceType"] = request.InstanceType
 	}
@@ -2767,12 +2771,28 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !dara.IsNil(request.GatewayId) {
 		query["GatewayId"] = request.GatewayId
 	}
 
 	if !dara.IsNil(request.GatewayName) {
 		query["GatewayName"] = request.GatewayName
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		query["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.InternetEnabled) {
+		query["InternetEnabled"] = request.InternetEnabled
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -2785,6 +2805,14 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListG
 
 	if !dara.IsNil(request.ResourceName) {
 		query["ResourceName"] = request.ResourceName
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4125,6 +4153,14 @@ func (client *Client) UpdateGatewayWithContext(ctx context.Context, GatewayId *s
 
 	if !dara.IsNil(request.Replicas) {
 		body["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.VSwitchIds) {
+		body["VSwitchIds"] = request.VSwitchIds
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
 	}
 
 	req := &openapiutil.OpenApiRequest{

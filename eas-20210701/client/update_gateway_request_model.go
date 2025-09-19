@@ -23,6 +23,10 @@ type iUpdateGatewayRequest interface {
 	GetName() *string
 	SetReplicas(v int32) *UpdateGatewayRequest
 	GetReplicas() *int32
+	SetVSwitchIds(v []*string) *UpdateGatewayRequest
+	GetVSwitchIds() []*string
+	SetVpcId(v string) *UpdateGatewayRequest
+	GetVpcId() *string
 }
 
 type UpdateGatewayRequest struct {
@@ -87,7 +91,9 @@ type UpdateGatewayRequest struct {
 	// example:
 	//
 	// 2
-	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas   *int32    `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateGatewayRequest) String() string {
@@ -126,6 +132,14 @@ func (s *UpdateGatewayRequest) GetReplicas() *int32 {
 	return s.Replicas
 }
 
+func (s *UpdateGatewayRequest) GetVSwitchIds() []*string {
+	return s.VSwitchIds
+}
+
+func (s *UpdateGatewayRequest) GetVpcId() *string {
+	return s.VpcId
+}
+
 func (s *UpdateGatewayRequest) SetEnableInternet(v bool) *UpdateGatewayRequest {
 	s.EnableInternet = &v
 	return s
@@ -158,6 +172,16 @@ func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
 
 func (s *UpdateGatewayRequest) SetReplicas(v int32) *UpdateGatewayRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetVSwitchIds(v []*string) *UpdateGatewayRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetVpcId(v string) *UpdateGatewayRequest {
+	s.VpcId = &v
 	return s
 }
 

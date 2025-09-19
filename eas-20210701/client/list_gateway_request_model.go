@@ -9,19 +9,32 @@ type iListGatewayRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChargeType(v string) *ListGatewayRequest
+	GetChargeType() *string
 	SetGatewayId(v string) *ListGatewayRequest
 	GetGatewayId() *string
 	SetGatewayName(v string) *ListGatewayRequest
 	GetGatewayName() *string
+	SetGatewayType(v string) *ListGatewayRequest
+	GetGatewayType() *string
+	SetInternetEnabled(v bool) *ListGatewayRequest
+	GetInternetEnabled() *bool
+	SetOrder(v string) *ListGatewayRequest
+	GetOrder() *string
 	SetPageNumber(v int32) *ListGatewayRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListGatewayRequest
 	GetPageSize() *int32
 	SetResourceName(v string) *ListGatewayRequest
 	GetResourceName() *string
+	SetSort(v string) *ListGatewayRequest
+	GetSort() *string
+	SetStatus(v string) *ListGatewayRequest
+	GetStatus() *string
 }
 
 type ListGatewayRequest struct {
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
 	//
 	// example:
@@ -33,7 +46,10 @@ type ListGatewayRequest struct {
 	// example:
 	//
 	// mygateway1
-	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	GatewayName     *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	GatewayType     *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -52,6 +68,8 @@ type ListGatewayRequest struct {
 	//
 	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListGatewayRequest) String() string {
@@ -62,12 +80,28 @@ func (s ListGatewayRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListGatewayRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *ListGatewayRequest) GetGatewayId() *string {
 	return s.GatewayId
 }
 
 func (s *ListGatewayRequest) GetGatewayName() *string {
 	return s.GatewayName
+}
+
+func (s *ListGatewayRequest) GetGatewayType() *string {
+	return s.GatewayType
+}
+
+func (s *ListGatewayRequest) GetInternetEnabled() *bool {
+	return s.InternetEnabled
+}
+
+func (s *ListGatewayRequest) GetOrder() *string {
+	return s.Order
 }
 
 func (s *ListGatewayRequest) GetPageNumber() *int32 {
@@ -82,6 +116,19 @@ func (s *ListGatewayRequest) GetResourceName() *string {
 	return s.ResourceName
 }
 
+func (s *ListGatewayRequest) GetSort() *string {
+	return s.Sort
+}
+
+func (s *ListGatewayRequest) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListGatewayRequest) SetChargeType(v string) *ListGatewayRequest {
+	s.ChargeType = &v
+	return s
+}
+
 func (s *ListGatewayRequest) SetGatewayId(v string) *ListGatewayRequest {
 	s.GatewayId = &v
 	return s
@@ -89,6 +136,21 @@ func (s *ListGatewayRequest) SetGatewayId(v string) *ListGatewayRequest {
 
 func (s *ListGatewayRequest) SetGatewayName(v string) *ListGatewayRequest {
 	s.GatewayName = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetGatewayType(v string) *ListGatewayRequest {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetInternetEnabled(v bool) *ListGatewayRequest {
+	s.InternetEnabled = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetOrder(v string) *ListGatewayRequest {
+	s.Order = &v
 	return s
 }
 
@@ -104,6 +166,16 @@ func (s *ListGatewayRequest) SetPageSize(v int32) *ListGatewayRequest {
 
 func (s *ListGatewayRequest) SetResourceName(v string) *ListGatewayRequest {
 	s.ResourceName = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetSort(v string) *ListGatewayRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetStatus(v string) *ListGatewayRequest {
+	s.Status = &v
 	return s
 }
 

@@ -159,7 +159,8 @@ type ListGatewayResponseBodyGateways struct {
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
-	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetDomain  *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetEnabled *bool   `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
 	// Indicates whether it is the default private gateway.
 	//
 	// example:
@@ -248,6 +249,10 @@ func (s *ListGatewayResponseBodyGateways) GetIntranetDomain() *string {
 	return s.IntranetDomain
 }
 
+func (s *ListGatewayResponseBodyGateways) GetIntranetEnabled() *bool {
+	return s.IntranetEnabled
+}
+
 func (s *ListGatewayResponseBodyGateways) GetIsDefault() *bool {
 	return s.IsDefault
 }
@@ -305,6 +310,11 @@ func (s *ListGatewayResponseBodyGateways) SetInternetEnabled(v bool) *ListGatewa
 
 func (s *ListGatewayResponseBodyGateways) SetIntranetDomain(v string) *ListGatewayResponseBodyGateways {
 	s.IntranetDomain = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetIntranetEnabled(v bool) *ListGatewayResponseBodyGateways {
+	s.IntranetEnabled = &v
 	return s
 }
 
