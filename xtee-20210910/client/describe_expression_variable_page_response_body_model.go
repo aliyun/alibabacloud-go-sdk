@@ -24,7 +24,7 @@ type iDescribeExpressionVariablePageResponseBody interface {
 }
 
 type DescribeExpressionVariablePageResponseBody struct {
-	// Request ID
+	// Request ID.
 	//
 	// example:
 	//
@@ -36,15 +36,15 @@ type DescribeExpressionVariablePageResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Page size, with a default value of 10
+	// Page size, with a default value of 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Returned object
+	// Returned object.
 	ResultObject []*DescribeExpressionVariablePageResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Repeated"`
-	// Total number of items
+	// Total number of items.
 	//
 	// example:
 	//
@@ -143,18 +143,26 @@ type DescribeExpressionVariablePageResponseBodyResultObject struct {
 	//
 	// 1565701886000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Primary key of custom variable
+	// Primary key of custom variable.
 	//
 	// example:
 	//
 	// 2793
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Variable return type
+	// Query variable name.
+	//
+	// example:
+	//
+	// ex_OERlw0Zqfb23
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Variable return type.
 	//
 	// example:
 	//
 	// DOUBLE
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
+	// Associated Strategies.
+	RuleList []*string `json:"ruleList,omitempty" xml:"ruleList,omitempty" type:"Repeated"`
 	// Status.
 	//
 	// example:
@@ -199,8 +207,16 @@ func (s *DescribeExpressionVariablePageResponseBodyResultObject) GetId() *int64 
 	return s.Id
 }
 
+func (s *DescribeExpressionVariablePageResponseBodyResultObject) GetName() *string {
+	return s.Name
+}
+
 func (s *DescribeExpressionVariablePageResponseBodyResultObject) GetOutputs() *string {
 	return s.Outputs
+}
+
+func (s *DescribeExpressionVariablePageResponseBodyResultObject) GetRuleList() []*string {
+	return s.RuleList
 }
 
 func (s *DescribeExpressionVariablePageResponseBodyResultObject) GetStatus() *string {
@@ -235,8 +251,18 @@ func (s *DescribeExpressionVariablePageResponseBodyResultObject) SetId(v int64) 
 	return s
 }
 
+func (s *DescribeExpressionVariablePageResponseBodyResultObject) SetName(v string) *DescribeExpressionVariablePageResponseBodyResultObject {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeExpressionVariablePageResponseBodyResultObject) SetOutputs(v string) *DescribeExpressionVariablePageResponseBodyResultObject {
 	s.Outputs = &v
+	return s
+}
+
+func (s *DescribeExpressionVariablePageResponseBodyResultObject) SetRuleList(v []*string) *DescribeExpressionVariablePageResponseBodyResultObject {
+	s.RuleList = v
 	return s
 }
 

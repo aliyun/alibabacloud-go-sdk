@@ -46,19 +46,19 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Event code
+	// Event code.
 	//
 	// example:
 	//
 	// de_aamexg3015,de_aamexg3342
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Variable return type
+	// Variable return type.
 	//
 	// example:
 	//
 	// STRING
 	Outputs *string `json:"outputs,omitempty" xml:"outputs,omitempty"`
-	// Page size, with a default value of 10
+	// Page size, with a default value of 10.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// Region code.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type DescribeExpressionVariablePageRequest struct {
 	//
 	// ENABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Variable name/description
+	// Variable name/description.
 	//
 	// example:
 	//

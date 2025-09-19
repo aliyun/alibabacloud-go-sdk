@@ -4516,6 +4516,10 @@ func (client *Client) DescribeCustVariablePageWithContext(ctx context.Context, r
 		query["regId"] = request.RegId
 	}
 
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5629,7 +5633,11 @@ func (client *Client) DescribeEventUploadPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询事件变量
+// # Query event variables
+//
+// Description:
+//
+// # Cumulative Variable List Query
 //
 // @param request - DescribeEventVariableListRequest
 //
@@ -5871,6 +5879,10 @@ func (client *Client) DescribeEventsVariableListWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Self-service call list.
+//
 // @param request - DescribeExcuteNumRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6127,7 +6139,7 @@ func (client *Client) DescribeExpressionVariableFunctionListWithContext(ctx cont
 
 // Summary:
 //
-// # Paged Query for Custom Variables
+// Paged Query for Custom Variables.
 //
 // @param request - DescribeExpressionVariablePageRequest
 //
@@ -7921,6 +7933,64 @@ func (client *Client) DescribeNameListVariablePageListWithContext(ctx context.Co
 
 // Summary:
 //
+// # Query Operation Log Monitoring Statistics
+//
+// @param request - DescribeOperationLogMonitoringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOperationLogMonitoringResponse
+func (client *Client) DescribeOperationLogMonitoringWithContext(ctx context.Context, request *DescribeOperationLogMonitoringRequest, runtime *dara.RuntimeOptions) (_result *DescribeOperationLogMonitoringResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["regId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserNameSearch) {
+		query["userNameSearch"] = request.UserNameSearch
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOperationLogMonitoring"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOperationLogMonitoringResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query event list by event name
 //
 // @param request - DescribeOperationLogPageListRequest
@@ -7946,6 +8016,10 @@ func (client *Client) DescribeOperationLogPageListWithContext(ctx context.Contex
 		query["endDate"] = request.EndDate
 	}
 
+	if !dara.IsNil(request.OperationSummary) {
+		query["operationSummary"] = request.OperationSummary
+	}
+
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
 	}
@@ -7956,6 +8030,10 @@ func (client *Client) DescribeOperationLogPageListWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.StartDate) {
 		query["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserNameSearch) {
+		query["userNameSearch"] = request.UserNameSearch
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9693,6 +9771,10 @@ func (client *Client) DescribeSDKDownloadListWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Query SAF permissions.
+//
 // @param request - DescribeSafConsoleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12761,6 +12843,84 @@ func (client *Client) DescribeVariableSceneListWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVariableSceneListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Variable Version List Query
+//
+// @param request - DescribeVersionPageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVersionPageListResponse
+func (client *Client) DescribeVersionPageListWithContext(ctx context.Context, request *DescribeVersionPageListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVersionPageListResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["currentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ObjectCode) {
+		query["objectCode"] = request.ObjectCode
+	}
+
+	if !dara.IsNil(request.ObjectId) {
+		query["objectId"] = request.ObjectId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Paging) {
+		query["paging"] = request.Paging
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["regId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVersionPageList"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVersionPageListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

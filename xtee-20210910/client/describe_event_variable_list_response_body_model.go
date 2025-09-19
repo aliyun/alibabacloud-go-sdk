@@ -16,7 +16,13 @@ type iDescribeEventVariableListResponseBody interface {
 }
 
 type DescribeEventVariableListResponseBody struct {
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// A32FE941-35F2-5378-B37C-4B8FDB16F094
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return object.
 	ResultObject *DescribeEventVariableListResponseBodyResultObject `json:"resultObject,omitempty" xml:"resultObject,omitempty" type:"Struct"`
 }
 
@@ -51,20 +57,38 @@ func (s *DescribeEventVariableListResponseBody) Validate() error {
 }
 
 type DescribeEventVariableListResponseBodyResultObject struct {
-	Actions                 []*DescribeEventVariableListResponseBodyResultObjectActions                 `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	DeviceVariables         []*DescribeEventVariableListResponseBodyResultObjectDeviceVariables         `json:"deviceVariables,omitempty" xml:"deviceVariables,omitempty" type:"Repeated"`
-	ExpressionVariables     []*DescribeEventVariableListResponseBodyResultObjectExpressionVariables     `json:"expressionVariables,omitempty" xml:"expressionVariables,omitempty" type:"Repeated"`
-	FavoriteVariables       []*DescribeEventVariableListResponseBodyResultObjectFavoriteVariables       `json:"favoriteVariables,omitempty" xml:"favoriteVariables,omitempty" type:"Repeated"`
-	MiddleVariables         []*DescribeEventVariableListResponseBodyResultObjectMiddleVariables         `json:"middleVariables,omitempty" xml:"middleVariables,omitempty" type:"Repeated"`
-	ModelVariables          []*DescribeEventVariableListResponseBodyResultObjectModelVariables          `json:"modelVariables,omitempty" xml:"modelVariables,omitempty" type:"Repeated"`
-	NameList                []*DescribeEventVariableListResponseBodyResultObjectNameList                `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// Action variable.
+	Actions []*DescribeEventVariableListResponseBodyResultObjectActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// Device variable.
+	DeviceVariables []*DescribeEventVariableListResponseBodyResultObjectDeviceVariables `json:"deviceVariables,omitempty" xml:"deviceVariables,omitempty" type:"Repeated"`
+	// Custom variable.
+	ExpressionVariables []*DescribeEventVariableListResponseBodyResultObjectExpressionVariables `json:"expressionVariables,omitempty" xml:"expressionVariables,omitempty" type:"Repeated"`
+	// Favorite variables.
+	FavoriteVariables []*DescribeEventVariableListResponseBodyResultObjectFavoriteVariables `json:"favoriteVariables,omitempty" xml:"favoriteVariables,omitempty" type:"Repeated"`
+	// Intermediate variable return object.
+	MiddleVariables []*DescribeEventVariableListResponseBodyResultObjectMiddleVariables `json:"middleVariables,omitempty" xml:"middleVariables,omitempty" type:"Repeated"`
+	// An array of model variables.
+	ModelVariables []*DescribeEventVariableListResponseBodyResultObjectModelVariables `json:"modelVariables,omitempty" xml:"modelVariables,omitempty" type:"Repeated"`
+	// List of name variables.
+	NameList []*DescribeEventVariableListResponseBodyResultObjectNameList `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// List of available functions for the original variable.
 	NativeVariableFunctions []*DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctions `json:"nativeVariableFunctions,omitempty" xml:"nativeVariableFunctions,omitempty" type:"Repeated"`
-	NativeVariables         []*DescribeEventVariableListResponseBodyResultObjectNativeVariables         `json:"nativeVariables,omitempty" xml:"nativeVariables,omitempty" type:"Repeated"`
-	QueryVariables          []*DescribeEventVariableListResponseBodyResultObjectQueryVariables          `json:"queryVariables,omitempty" xml:"queryVariables,omitempty" type:"Repeated"`
-	SelfVariables           []*DescribeEventVariableListResponseBodyResultObjectSelfVariables           `json:"selfVariables,omitempty" xml:"selfVariables,omitempty" type:"Repeated"`
-	SysVariables            []*DescribeEventVariableListResponseBodyResultObjectSysVariables            `json:"sysVariables,omitempty" xml:"sysVariables,omitempty" type:"Repeated"`
-	ThirdVariables          map[string]interface{}                                                      `json:"thirdVariables,omitempty" xml:"thirdVariables,omitempty"`
-	VelocityVariables       []*DescribeEventVariableListResponseBodyResultObjectVelocityVariables       `json:"velocityVariables,omitempty" xml:"velocityVariables,omitempty" type:"Repeated"`
+	// List of event fields.
+	NativeVariables []*DescribeEventVariableListResponseBodyResultObjectNativeVariables `json:"nativeVariables,omitempty" xml:"nativeVariables,omitempty" type:"Repeated"`
+	// An array of custom query variables.
+	QueryVariables []*DescribeEventVariableListResponseBodyResultObjectQueryVariables `json:"queryVariables,omitempty" xml:"queryVariables,omitempty" type:"Repeated"`
+	// Custom variables (custom variables, cumulative variables, custom system variables).
+	SelfVariables []*DescribeEventVariableListResponseBodyResultObjectSelfVariables `json:"selfVariables,omitempty" xml:"selfVariables,omitempty" type:"Repeated"`
+	// System variables.
+	SysVariables []*DescribeEventVariableListResponseBodyResultObjectSysVariables `json:"sysVariables,omitempty" xml:"sysVariables,omitempty" type:"Repeated"`
+	// Other related variables.
+	//
+	// example:
+	//
+	// {}
+	ThirdVariables map[string]interface{} `json:"thirdVariables,omitempty" xml:"thirdVariables,omitempty"`
+	// An array of accumulated variables.
+	VelocityVariables []*DescribeEventVariableListResponseBodyResultObjectVelocityVariables `json:"velocityVariables,omitempty" xml:"velocityVariables,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObject) String() string {
@@ -206,31 +230,148 @@ func (s *DescribeEventVariableListResponseBodyResultObject) Validate() error {
 }
 
 type DescribeEventVariableListResponseBodyResultObjectActions struct {
-	Code             *string                                                                   `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                   `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                   `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                   `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                   `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                   `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                     `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                   `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                    `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                   `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                   `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                    `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                   `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                   `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                   `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                   `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                   `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                   `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                   `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                   `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                   `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// deAddResult
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// 决策结果
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// ACTION
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Expression display. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 3144
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input type of the parameter.
+	//
+	// example:
+	//
+	// STRING
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input parameters. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// __addDeResult__
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Anomaly value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 决策结果
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// ACTION
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectActionsVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                   `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                   `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectActions) String() string {
@@ -471,7 +612,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectActions) Validate() er
 }
 
 type DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -506,6 +657,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold
 }
 
 type DescribeEventVariableListResponseBodyResultObjectActionsVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -531,31 +687,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectActionsVariableVelocit
 }
 
 type DescribeEventVariableListResponseBodyResultObjectDeviceVariables struct {
-	Code             *string                                                                           `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                           `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                           `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                           `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                           `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                           `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                             `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                           `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                            `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                           `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                           `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                            `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                           `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                           `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                           `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                           `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                           `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                           `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                           `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// queryPhoneSimulatorInfo(deviceToken)?.deviceName
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// 设备信息-设备名称
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display type and grouping label.
+	//
+	// example:
+	//
+	// DEVICE
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// The display value of the calculation expression. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// The favorite flag.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// The detailed information of the field in the field pool. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// The field rank.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// The source of the field. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 41
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// The required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input for the variable. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// __device_name__
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// The output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 设备信息-设备名称-deviceName
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// DEVICE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectDeviceVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                           `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                           `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// The X label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// The Y label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectDeviceVariables) String() string {
@@ -796,7 +1069,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectDeviceVariables) Valid
 }
 
 type DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputThreshold struct {
+	// The minimum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -831,6 +1114,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputT
 }
 
 type DescribeEventVariableListResponseBodyResultObjectDeviceVariablesVariableVelocity struct {
+	// The IV value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -856,31 +1144,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectDeviceVariablesVariabl
 }
 
 type DescribeEventVariableListResponseBodyResultObjectExpressionVariables struct {
-	Code             *string                                                                               `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                               `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                               `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                               `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                               `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                               `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                                 `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                               `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                                `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                               `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                               `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                                `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                               `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                               `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                               `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                               `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                               `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectExpressionVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                               `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                               `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                               `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                               `json:"type,omitempty" xml:"type,omitempty"`
+	// The code of the variable.
+	//
+	// example:
+	//
+	// deInvokeSelfVariable(390397)
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// The definition ID of the variable. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// 获取手机号前7位
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display type and grouping label.
+	//
+	// example:
+	//
+	// EXPRESSION
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// The display value of the calculation expression.
+	//
+	// example:
+	//
+	// @testaaa +1
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// The favorite flag.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// The detailed information of the field in the field pool. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// The field rank.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// The source of the field. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// The input type of the variable.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 3148
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// The required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Multiple input parameters separated by commas. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// The name of the variable.
+	//
+	// example:
+	//
+	// ex_w2yIClHCc150
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The outlier value.
+	//
+	// example:
+	//
+	// -1
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// The output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectExpressionVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// The parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 获取手机号前7位
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the variable.
+	//
+	// example:
+	//
+	// EXPRESSION
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectExpressionVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                               `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                               `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// The X label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// The Y label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectExpressionVariables) String() string {
@@ -1121,7 +1526,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectExpressionVariables) V
 }
 
 type DescribeEventVariableListResponseBodyResultObjectExpressionVariablesOutputThreshold struct {
+	// The maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -1156,6 +1571,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectExpressionVariablesOut
 }
 
 type DescribeEventVariableListResponseBodyResultObjectExpressionVariablesVariableVelocity struct {
+	// The IV value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -1181,31 +1601,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectExpressionVariablesVar
 }
 
 type DescribeEventVariableListResponseBodyResultObjectFavoriteVariables struct {
-	Code             *string                                                                             `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                             `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                             `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                             `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                             `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                             `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                               `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                             `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                              `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                             `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                             `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                              `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                             `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                             `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                             `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                             `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                             `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                             `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                             `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                             `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                             `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// deFunctionProcess(ip,\\"isIp\\")
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID.
+	//
+	// example:
+	//
+	// 16
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description of the variable.
+	//
+	// example:
+	//
+	// 判断是否符合IPv4标准
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// SYSTEM_BIND
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Expression display value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// BOOLEAN
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 34
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input parameters should be separated by commas. Some variables may not have this field.
+	//
+	// example:
+	//
+	// ip
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// __isIpAddressV4__
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Anomaly value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// IP是否符合IPV4格式
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// SYSTEM_BIND
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                             `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                             `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectFavoriteVariables) String() string {
@@ -1446,7 +1983,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectFavoriteVariables) Val
 }
 
 type DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -1481,6 +2028,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutpu
 }
 
 type DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -1506,31 +2058,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesVaria
 }
 
 type DescribeEventVariableListResponseBodyResultObjectMiddleVariables struct {
-	Code             *string                                                                           `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                           `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                           `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                           `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                           `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                           `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                             `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                           `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                            `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                           `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                           `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                            `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                           `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                           `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                           `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                           `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                           `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                           `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                           `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// mid
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID.
+	//
+	// example:
+	//
+	// register
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Variable description.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// MIDDLE
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Calculate the display value of the expression. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Variable source.
+	//
+	// example:
+	//
+	// DEFAULT
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 49
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input field type, indicating the type of input parameters, mainly used for function classification. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input of the variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// mid
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// midVaribale
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// MIDDLE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This type of variable does not return this field.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectMiddleVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                           `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                           `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectMiddleVariables) String() string {
@@ -1771,7 +2440,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectMiddleVariables) Valid
 }
 
 type DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 0
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -1806,6 +2485,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputT
 }
 
 type DescribeEventVariableListResponseBodyResultObjectMiddleVariablesVariableVelocity struct {
+	// id value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -1831,31 +2515,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectMiddleVariablesVariabl
 }
 
 type DescribeEventVariableListResponseBodyResultObjectModelVariables struct {
-	Code             *string                                                                          `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                          `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                          `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                          `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                          `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                          `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                            `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                          `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                           `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                          `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                          `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                           `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                          `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                          `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                          `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                          `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                          `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectModelVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                          `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                          `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                          `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                          `json:"type,omitempty" xml:"type,omitempty"`
+	// The code of the model variable.
+	//
+	// example:
+	//
+	// getAIData(model)
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// The definition ID of the model variable. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// The description of the model variable.
+	//
+	// example:
+	//
+	// BL_t_show
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display type and grouping label.
+	//
+	// example:
+	//
+	// MODEL
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// The display value of the calculation expression. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// The favorite flag.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// The detailed information of the field in the field pool. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// The field rank.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// The source of the field. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// The type of the field.
+	//
+	// example:
+	//
+	// DOUBLE
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// The primary key ID of the model variable.
+	//
+	// example:
+	//
+	// 43
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// The required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Multiple input parameters separated by commas. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// The name of the model variable.
+	//
+	// example:
+	//
+	// mo_qbbyf33o66f2
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// The output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectModelVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// The parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The title of the model variable.
+	//
+	// example:
+	//
+	// BL_t_show
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the model variable.
+	//
+	// example:
+	//
+	// MODEL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectModelVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                          `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                          `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// The X label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// The Y label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectModelVariables) String() string {
@@ -2096,7 +2897,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectModelVariables) Valida
 }
 
 type DescribeEventVariableListResponseBodyResultObjectModelVariablesOutputThreshold struct {
+	// The maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -2131,6 +2942,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectModelVariablesOutputTh
 }
 
 type DescribeEventVariableListResponseBodyResultObjectModelVariablesVariableVelocity struct {
+	// The IV value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -2156,31 +2972,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectModelVariablesVariable
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNameList struct {
-	Code             *string                                                                    `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                    `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                    `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                    `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                    `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                    `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                      `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                    `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                     `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                    `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                    `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                     `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                    `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                    `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                    `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                    `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                    `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                    `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                    `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                    `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                    `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// nl_UN8otElLb490
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not currently returned.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// NAME_LIST
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Calculate the expression display value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 34
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input parameters. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// nl_UN8otElLb490
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned currently.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 白名单
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// NAME_LIST
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectNameListVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                    `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                    `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectNameList) String() string {
@@ -2421,7 +3354,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNameList) Validate() e
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -2456,6 +3399,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshol
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNameListVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -2481,31 +3429,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNameListVariableVeloci
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctions struct {
-	Code             *string                                                                                   `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                                   `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                                   `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                                   `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                                   `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                                   `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                                     `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                                   `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                                    `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                                   `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                                   `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                                    `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                                   `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                                   `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                                   `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                                   `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                                   `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                                   `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                                   `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                                   `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                                   `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// getHourOfTimestamp({data})
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description information.
+	//
+	// example:
+	//
+	// 时间戳，可以是秒或者毫秒
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// FUNC
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Calculate the expression display value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Variable return type.
+	//
+	// example:
+	//
+	// LONG
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Primary key ID.
+	//
+	// example:
+	//
+	// 93
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter.
+	//
+	// example:
+	//
+	// DATE
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// __getHourOfTimestamp__
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Exception value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Variable title.
+	//
+	// example:
+	//
+	// 根据时间戳获取小时
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// FUNC
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This type of variable does not return this field.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                                   `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                                   `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctions) String() string {
@@ -2746,7 +3811,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunction
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 0
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -2781,6 +3856,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunction
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -2806,31 +3886,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariableFunction
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariables struct {
-	Code             *string                                                                           `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                           `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                           `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                           `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                           `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                           `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                             `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                           `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                            `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                           `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                           `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                            `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                           `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                           `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                           `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                           `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                           `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                           `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                           `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                           `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                           `json:"type,omitempty" xml:"type,omitempty"`
+	// variable code.
+	//
+	// example:
+	//
+	// age
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format.
+	//
+	// example:
+	//
+	// {}
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Associated variable definition ID.
+	//
+	// example:
+	//
+	// register
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Variable description.
+	//
+	// example:
+	//
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// NATIVE
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Calculate expression display value.
+	//
+	// example:
+	//
+	// 无
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite Identifier.
+	//
+	// example:
+	//
+	// true
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Field pool field details.
+	//
+	// example:
+	//
+	// 无
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field Sorting.
+	//
+	// example:
+	//
+	// 1
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Variable source.
+	//
+	// example:
+	//
+	// DEFINE
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Variable ID.
+	//
+	// example:
+	//
+	// 223
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input field type, indicating the type of input parameters, mainly used for function categorization.
+	//
+	// example:
+	//
+	// STRING
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameters.
+	//
+	// example:
+	//
+	// 无
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input of the variable. Event field is not present.
+	//
+	// example:
+	//
+	// 无
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// variable name.
+	//
+	// example:
+	//
+	// age
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// outlier.
+	//
+	// example:
+	//
+	// 无
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output score threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent name.
+	//
+	// example:
+	//
+	// parentName
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Variable source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// 年龄
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// NATIVE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable indicator information.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectNativeVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                           `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                           `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label.
+	//
+	// example:
+	//
+	// x
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label.
+	//
+	// example:
+	//
+	// y
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectNativeVariables) String() string {
@@ -3071,7 +4268,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariables) Valid
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -3106,6 +4313,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputT
 }
 
 type DescribeEventVariableListResponseBodyResultObjectNativeVariablesVariableVelocity struct {
+	// iv value.
+	//
+	// example:
+	//
+	// 无
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -3131,31 +4343,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectNativeVariablesVariabl
 }
 
 type DescribeEventVariableListResponseBodyResultObjectQueryVariables struct {
-	Code             *string                                                                          `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                          `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                          `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                          `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                          `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                          `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                            `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                          `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                           `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                          `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                          `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                           `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                          `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                          `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                          `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                          `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                          `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectQueryVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                          `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                          `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                          `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                          `json:"type,omitempty" xml:"type,omitempty"`
+	// The code of the query variable.
+	//
+	// example:
+	//
+	// deInvokeQueryVariable(376773)
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// The definition ID of the query variable. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// The description of the query variable.
+	//
+	// example:
+	//
+	// 年龄计算
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display type and grouping label.
+	//
+	// example:
+	//
+	// QUERY_EXPRESSION
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// The display value of the calculation expression. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// SELECT  AVG( $source )\\nFROM testCase\\nWHERE  $age > 0
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// The favorite flag.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// The detailed information of the field in the field pool. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// The field rank.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// The source of the field. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// The type of the field.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// The primary key ID of the query variable.
+	//
+	// example:
+	//
+	// 3148
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// The required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Multiple input parameters separated by commas. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// The name of the query variable.
+	//
+	// example:
+	//
+	// ex_qWtKgCox350f
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The outlier value.
+	//
+	// example:
+	//
+	// SYS_ERROR
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// The output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectQueryVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// The parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// DATA_SOURCE
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The title of the query variable. The title of the query variable.
+	//
+	// example:
+	//
+	// 年龄计算
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the query variable.
+	//
+	// example:
+	//
+	// QUERY_EXPRESSION
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectQueryVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                          `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                          `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// The X label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// The Y label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectQueryVariables) String() string {
@@ -3396,7 +4725,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectQueryVariables) Valida
 }
 
 type DescribeEventVariableListResponseBodyResultObjectQueryVariablesOutputThreshold struct {
+	// The maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -3431,6 +4770,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectQueryVariablesOutputTh
 }
 
 type DescribeEventVariableListResponseBodyResultObjectQueryVariablesVariableVelocity struct {
+	// The IV value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -3456,31 +4800,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectQueryVariablesVariable
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSelfVariables struct {
-	Code             *string                                                                         `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                         `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                         `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                         `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                         `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                         `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                           `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                         `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                          `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                         `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                         `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                          `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                         `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                         `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                         `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                         `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                         `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                         `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                         `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                         `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                         `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// deReadVelocity(hitRules,\\"dUd5ioJ8014\\",1,\\"MO\\",0,true,\\"SUM\\")
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// Variable definition ID. Only returned for custom system variables.
+	//
+	// example:
+	//
+	// 49
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description of the variable.
+	//
+	// example:
+	//
+	// 变量的描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// SELF_BIND
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Expression name.
+	//
+	// example:
+	//
+	// @IP地址
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Variable ID.
+	//
+	// example:
+	//
+	// 3174
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Input parameters. Only returned when custom system variables are defined.
+	//
+	// example:
+	//
+	// ip
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// ex_isvspbF2c7ac
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Anomaly value. Returned when the variable is a custom variable (type= EXPRESSION).
+	//
+	// example:
+	//
+	// -1
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent node. This field is not returned currently.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// 获取手机号前七位
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// EXPRESSION
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectSelfVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                         `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                         `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectSelfVariables) String() string {
@@ -3721,7 +5182,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSelfVariables) Validat
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -3756,6 +5227,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThr
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSelfVariablesVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -3781,31 +5257,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSelfVariablesVariableV
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSysVariables struct {
-	Code             *string                                                                        `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                        `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                        `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                        `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                        `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                        `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                          `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                        `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                         `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                        `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                        `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                         `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                        `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                        `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                        `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                        `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                        `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                        `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                        `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                        `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                        `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable code.
+	//
+	// example:
+	//
+	// parseIpV2(ip)?.cityId
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// ID of the bound variable definition.
+	//
+	// example:
+	//
+	// 2488
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// Description of the variable.
+	//
+	// example:
+	//
+	// 通过IP地址库解析IP所在的城市Code，例如，输入“42.120.74.211”，经过该变量运算，输出“330100”。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display type and group label.
+	//
+	// example:
+	//
+	// SYSTEM_BIND
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// Calculate the expression display value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// Favorite identifier.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// Details of the field pool. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// Field sorting.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// Source of the field. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// Field type.
+	//
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// Variable ID.
+	//
+	// example:
+	//
+	// 3151
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// Input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// Required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Variable value input.
+	//
+	// example:
+	//
+	// ip
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// Variable name.
+	//
+	// example:
+	//
+	// __ipLocationCityCode__
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// Output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// Parent name.
+	//
+	// example:
+	//
+	// 无
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// Source type.
+	//
+	// example:
+	//
+	// SAF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// Title.
+	//
+	// example:
+	//
+	// IP所在地_城市Code
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// Variable type.
+	//
+	// example:
+	//
+	// SYSTEM_BIND
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectSysVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                        `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                        `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// x label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// y label. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectSysVariables) String() string {
@@ -4046,7 +5639,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSysVariables) Validate
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThreshold struct {
+	// Maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// Minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -4081,6 +5684,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThre
 }
 
 type DescribeEventVariableListResponseBodyResultObjectSysVariablesVariableVelocity struct {
+	// iv value. This type of variable does not return this field.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 
@@ -4106,31 +5714,148 @@ func (s *DescribeEventVariableListResponseBodyResultObjectSysVariablesVariableVe
 }
 
 type DescribeEventVariableListResponseBodyResultObjectVelocityVariables struct {
-	Code             *string                                                                             `json:"code,omitempty" xml:"code,omitempty"`
-	DataDisplay      *string                                                                             `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
-	DefineId         *string                                                                             `json:"defineId,omitempty" xml:"defineId,omitempty"`
-	Description      *string                                                                             `json:"description,omitempty" xml:"description,omitempty"`
-	DisplayType      *string                                                                             `json:"displayType,omitempty" xml:"displayType,omitempty"`
-	ExpressionTitle  *string                                                                             `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
-	FavoriteFlag     *bool                                                                               `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
-	FieldDetail      *string                                                                             `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
-	FieldRank        *int32                                                                              `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
-	FieldSource      *string                                                                             `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
-	FieldType        *string                                                                             `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
-	Id               *int64                                                                              `json:"id,omitempty" xml:"id,omitempty"`
-	InputFieldType   *string                                                                             `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
-	InputRequired    *string                                                                             `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
-	Inputs           *string                                                                             `json:"inputs,omitempty" xml:"inputs,omitempty"`
-	Name             *string                                                                             `json:"name,omitempty" xml:"name,omitempty"`
-	Outlier          *string                                                                             `json:"outlier,omitempty" xml:"outlier,omitempty"`
-	OutputThreshold  *DescribeEventVariableListResponseBodyResultObjectVelocityVariablesOutputThreshold  `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
-	ParentName       *string                                                                             `json:"parentName,omitempty" xml:"parentName,omitempty"`
-	SourceType       *string                                                                             `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Title            *string                                                                             `json:"title,omitempty" xml:"title,omitempty"`
-	Type             *string                                                                             `json:"type,omitempty" xml:"type,omitempty"`
+	// The code of the variable.
+	//
+	// example:
+	//
+	// deReadVelocity(userId,\\"hFsEFUEe88a\\",1,\\"H\\",0,true,\\"COUNT\\")
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Data distribution display, in JSON format. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DataDisplay *string `json:"dataDisplay,omitempty" xml:"dataDisplay,omitempty"`
+	// The definition ID of the variable. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	DefineId *string `json:"defineId,omitempty" xml:"defineId,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// 累计用户省份次数。
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display type and grouping label.
+	//
+	// example:
+	//
+	// SELF_VELOCITY
+	DisplayType *string `json:"displayType,omitempty" xml:"displayType,omitempty"`
+	// The display value of the calculation expression. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ExpressionTitle *string `json:"expressionTitle,omitempty" xml:"expressionTitle,omitempty"`
+	// The favorite flag.
+	//
+	// example:
+	//
+	// false
+	FavoriteFlag *bool `json:"favoriteFlag,omitempty" xml:"favoriteFlag,omitempty"`
+	// The detailed information of the field in the field pool. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldDetail *string `json:"fieldDetail,omitempty" xml:"fieldDetail,omitempty"`
+	// The field rank.
+	//
+	// example:
+	//
+	// 0
+	FieldRank *int32 `json:"fieldRank,omitempty" xml:"fieldRank,omitempty"`
+	// The source of the field. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	FieldSource *string `json:"fieldSource,omitempty" xml:"fieldSource,omitempty"`
+	// The type of the field.
+	//
+	// example:
+	//
+	// DOUBLE
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// The primary key ID.
+	//
+	// example:
+	//
+	// 3148
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The input type of the parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputFieldType *string `json:"inputFieldType,omitempty" xml:"inputFieldType,omitempty"`
+	// The required parameter. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	InputRequired *string `json:"inputRequired,omitempty" xml:"inputRequired,omitempty"`
+	// Multiple input parameters separated by commas. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Inputs *string `json:"inputs,omitempty" xml:"inputs,omitempty"`
+	// The name of the variable.
+	//
+	// example:
+	//
+	// hFsEFUEe88a
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The outlier value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	Outlier *string `json:"outlier,omitempty" xml:"outlier,omitempty"`
+	// The output value threshold.
+	OutputThreshold *DescribeEventVariableListResponseBodyResultObjectVelocityVariablesOutputThreshold `json:"outputThreshold,omitempty" xml:"outputThreshold,omitempty" type:"Struct"`
+	// The parent node. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	ParentName *string `json:"parentName,omitempty" xml:"parentName,omitempty"`
+	// The source type.
+	//
+	// example:
+	//
+	// SAF_SELF
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The title of the variable.
+	//
+	// example:
+	//
+	// 累计用户省份次数
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The type of the variable.
+	//
+	// example:
+	//
+	// SELF_VELOCITY
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable metric information. This field is not returned for this type of variable.
 	VariableVelocity *DescribeEventVariableListResponseBodyResultObjectVelocityVariablesVariableVelocity `json:"variableVelocity,omitempty" xml:"variableVelocity,omitempty" type:"Struct"`
-	XLabel           *string                                                                             `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
-	YLabel           *string                                                                             `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
+	// The X label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	XLabel *string `json:"xLabel,omitempty" xml:"xLabel,omitempty"`
+	// The Y label. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
+	YLabel *string `json:"yLabel,omitempty" xml:"yLabel,omitempty"`
 }
 
 func (s DescribeEventVariableListResponseBodyResultObjectVelocityVariables) String() string {
@@ -4371,7 +6096,17 @@ func (s *DescribeEventVariableListResponseBodyResultObjectVelocityVariables) Val
 }
 
 type DescribeEventVariableListResponseBodyResultObjectVelocityVariablesOutputThreshold struct {
+	// The maximum value.
+	//
+	// example:
+	//
+	// 10
 	MaxValue *float64 `json:"maxValue,omitempty" xml:"maxValue,omitempty"`
+	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	MinValue *float64 `json:"minValue,omitempty" xml:"minValue,omitempty"`
 }
 
@@ -4406,6 +6141,11 @@ func (s *DescribeEventVariableListResponseBodyResultObjectVelocityVariablesOutpu
 }
 
 type DescribeEventVariableListResponseBodyResultObjectVelocityVariablesVariableVelocity struct {
+	// The IV value. This field is not returned for this type of variable.
+	//
+	// example:
+	//
+	// This type does not have this field
 	Iv *string `json:"iv,omitempty" xml:"iv,omitempty"`
 }
 

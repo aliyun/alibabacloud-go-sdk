@@ -23,6 +23,8 @@ type iDescribeCustVariablePageRequest interface {
 	GetPageSize() *int32
 	SetRegId(v string) *DescribeCustVariablePageRequest
 	GetRegId() *string
+	SetStatus(v string) *DescribeCustVariablePageRequest
+	GetStatus() *string
 }
 
 type DescribeCustVariablePageRequest struct {
@@ -36,7 +38,7 @@ type DescribeCustVariablePageRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Creation type
+	// Creation type.
 	//
 	// example:
 	//
@@ -48,30 +50,36 @@ type DescribeCustVariablePageRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
-	// Description
+	// Description.
 	//
 	// example:
 	//
 	// 累计变量描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event code
+	// Event code.
 	//
 	// example:
 	//
 	// de_aheldm3876
 	EventCode *string `json:"eventCode,omitempty" xml:"eventCode,omitempty"`
-	// Number of records per page, default value: 10
+	// Number of records per page, default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// Region code.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
+	// status.
+	//
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s DescribeCustVariablePageRequest) String() string {
@@ -110,6 +118,10 @@ func (s *DescribeCustVariablePageRequest) GetRegId() *string {
 	return s.RegId
 }
 
+func (s *DescribeCustVariablePageRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *DescribeCustVariablePageRequest) SetLang(v string) *DescribeCustVariablePageRequest {
 	s.Lang = &v
 	return s
@@ -142,6 +154,11 @@ func (s *DescribeCustVariablePageRequest) SetPageSize(v int32) *DescribeCustVari
 
 func (s *DescribeCustVariablePageRequest) SetRegId(v string) *DescribeCustVariablePageRequest {
 	s.RegId = &v
+	return s
+}
+
+func (s *DescribeCustVariablePageRequest) SetStatus(v string) *DescribeCustVariablePageRequest {
+	s.Status = &v
 	return s
 }
 

@@ -24,12 +24,47 @@ type iDescribeExcuteNumRequest interface {
 }
 
 type DescribeExcuteNumRequest struct {
+	// Service code.
+	//
 	// This parameter is required.
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Degree    *string `json:"Degree,omitempty" xml:"Degree,omitempty"`
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	//
+	// example:
+	//
+	// saf_all
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This field is currently unused and has no query significance.
+	//
+	// example:
+	//
+	// 暂时不需要传入
+	Degree *string `json:"Degree,omitempty" xml:"Degree,omitempty"`
+	// End date, format yyyy-MM-dd, e.g., 2025-03-13.
+	//
+	// example:
+	//
+	// 2025-03-15
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Set the language type for requests and received messages, default value is **zh**. Values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Request source IP address.
+	//
+	// example:
+	//
+	// 220.250.21.83
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// Start date, format yyyy-MM-dd, e.g., 2025-03-10.
+	//
+	// example:
+	//
+	// 2025-03-10
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

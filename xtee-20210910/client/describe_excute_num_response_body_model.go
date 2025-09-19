@@ -18,9 +18,16 @@ type iDescribeExcuteNumResponseBody interface {
 }
 
 type DescribeExcuteNumResponseBody struct {
+	// Service category names.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Data       []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned data.
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Request ID.
+	//
+	// example:
+	//
+	// A32FE941-35F2-5378-B37C-4B8FDB16F094
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeExcuteNumResponseBody) String() string {

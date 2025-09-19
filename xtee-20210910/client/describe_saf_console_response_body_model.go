@@ -16,8 +16,14 @@ type iDescribeSafConsoleResponseBody interface {
 }
 
 type DescribeSafConsoleResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	BizData   []*string `json:"bizData,omitempty" xml:"bizData,omitempty" type:"Repeated"`
+	// Request ID.
+	//
+	// example:
+	//
+	// A32FE941-35F2-5378-B37C-4B8FDB16F094
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
+	BizData []*string `json:"bizData,omitempty" xml:"bizData,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSafConsoleResponseBody) String() string {

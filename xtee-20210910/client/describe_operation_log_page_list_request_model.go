@@ -15,12 +15,16 @@ type iDescribeOperationLogPageListRequest interface {
 	GetCurrentPage() *int32
 	SetEndDate(v int64) *DescribeOperationLogPageListRequest
 	GetEndDate() *int64
+	SetOperationSummary(v string) *DescribeOperationLogPageListRequest
+	GetOperationSummary() *string
 	SetPageSize(v int32) *DescribeOperationLogPageListRequest
 	GetPageSize() *int32
 	SetRegId(v string) *DescribeOperationLogPageListRequest
 	GetRegId() *string
 	SetStartDate(v int64) *DescribeOperationLogPageListRequest
 	GetStartDate() *int64
+	SetUserNameSearch(v string) *DescribeOperationLogPageListRequest
+	GetUserNameSearch() *string
 }
 
 type DescribeOperationLogPageListRequest struct {
@@ -46,13 +50,19 @@ type DescribeOperationLogPageListRequest struct {
 	//
 	// 1733364850919
 	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// Operation Summary.
+	//
+	// example:
+	//
+	// Update
+	OperationSummary *string `json:"operationSummary,omitempty" xml:"operationSummary,omitempty"`
 	// Page size, default value is 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Region code
+	// Region code.
 	//
 	// example:
 	//
@@ -64,6 +74,12 @@ type DescribeOperationLogPageListRequest struct {
 	//
 	// 1733364850919
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// User Name Search.
+	//
+	// example:
+	//
+	// root
+	UserNameSearch *string `json:"userNameSearch,omitempty" xml:"userNameSearch,omitempty"`
 }
 
 func (s DescribeOperationLogPageListRequest) String() string {
@@ -86,6 +102,10 @@ func (s *DescribeOperationLogPageListRequest) GetEndDate() *int64 {
 	return s.EndDate
 }
 
+func (s *DescribeOperationLogPageListRequest) GetOperationSummary() *string {
+	return s.OperationSummary
+}
+
 func (s *DescribeOperationLogPageListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -96,6 +116,10 @@ func (s *DescribeOperationLogPageListRequest) GetRegId() *string {
 
 func (s *DescribeOperationLogPageListRequest) GetStartDate() *int64 {
 	return s.StartDate
+}
+
+func (s *DescribeOperationLogPageListRequest) GetUserNameSearch() *string {
+	return s.UserNameSearch
 }
 
 func (s *DescribeOperationLogPageListRequest) SetLang(v string) *DescribeOperationLogPageListRequest {
@@ -113,6 +137,11 @@ func (s *DescribeOperationLogPageListRequest) SetEndDate(v int64) *DescribeOpera
 	return s
 }
 
+func (s *DescribeOperationLogPageListRequest) SetOperationSummary(v string) *DescribeOperationLogPageListRequest {
+	s.OperationSummary = &v
+	return s
+}
+
 func (s *DescribeOperationLogPageListRequest) SetPageSize(v int32) *DescribeOperationLogPageListRequest {
 	s.PageSize = &v
 	return s
@@ -125,6 +154,11 @@ func (s *DescribeOperationLogPageListRequest) SetRegId(v string) *DescribeOperat
 
 func (s *DescribeOperationLogPageListRequest) SetStartDate(v int64) *DescribeOperationLogPageListRequest {
 	s.StartDate = &v
+	return s
+}
+
+func (s *DescribeOperationLogPageListRequest) SetUserNameSearch(v string) *DescribeOperationLogPageListRequest {
+	s.UserNameSearch = &v
 	return s
 }
 

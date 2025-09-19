@@ -18,9 +18,29 @@ type iDescribeSafConsoleRequest interface {
 }
 
 type DescribeSafConsoleRequest struct {
-	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Set the language type for requests and received messages, default value is **zh**. Values:
+	//
+	// - **zh**: Chinese
+	//
+	// - **en**: English
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Query content.
+	//
+	// example:
+	//
+	// ei_riskLpInfo
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Service to be called.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ei_riskLpInfo
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
 }
 

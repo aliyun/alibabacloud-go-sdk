@@ -26,15 +26,58 @@ type iDescribeEventVariableListRequest interface {
 }
 
 type DescribeEventVariableListRequest struct {
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Sets the language type for requests and received messages, with a default value of **zh**. The values are: - **zh**: Chinese - **en**: English
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Create Type.
+	//
+	// example:
+	//
+	// NORMAL
 	CreateType *string `json:"createType,omitempty" xml:"createType,omitempty"`
-	FilterDTO  *string `json:"filterDTO,omitempty" xml:"filterDTO,omitempty"`
+	// Filter object.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "type": "EXPRESSION",
+	//
+	//     "name": "ex_NgR6nDVD821c"
+	//
+	// }
+	FilterDTO *string `json:"filterDTO,omitempty" xml:"filterDTO,omitempty"`
+	// Associated event eventCode.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// de_awkhwh0314
 	RefObjId *string `json:"refObjId,omitempty" xml:"refObjId,omitempty"`
+	// Association Type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// EVENT
 	RefObjType *string `json:"refObjType,omitempty" xml:"refObjType,omitempty"`
-	RegId      *string `json:"regId,omitempty" xml:"regId,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Region Code.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegId *string `json:"regId,omitempty" xml:"regId,omitempty"`
+	// type.
+	//
+	// example:
+	//
+	// NATIVE
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeEventVariableListRequest) String() string {
