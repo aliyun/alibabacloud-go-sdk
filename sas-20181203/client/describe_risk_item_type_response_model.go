@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iDescribeRiskItemTypeResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeRiskItemTypeResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeRiskItemTypeResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeRiskItemTypeResponseBody) *DescribeRiskItemTypeResponse
+	GetBody() *DescribeRiskItemTypeResponseBody
+}
+
+type DescribeRiskItemTypeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRiskItemTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRiskItemTypeResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeRiskItemTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskItemTypeResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeRiskItemTypeResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeRiskItemTypeResponse) GetBody() *DescribeRiskItemTypeResponseBody {
+	return s.Body
+}
+
+func (s *DescribeRiskItemTypeResponse) SetHeaders(v map[string]*string) *DescribeRiskItemTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRiskItemTypeResponse) SetStatusCode(v int32) *DescribeRiskItemTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRiskItemTypeResponse) SetBody(v *DescribeRiskItemTypeResponseBody) *DescribeRiskItemTypeResponse {
+	s.Body = v
+	return s
+}
+
+func (s *DescribeRiskItemTypeResponse) Validate() error {
+	return dara.Validate(s)
+}

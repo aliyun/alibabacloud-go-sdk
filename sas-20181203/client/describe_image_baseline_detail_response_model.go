@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iDescribeImageBaselineDetailResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *DescribeImageBaselineDetailResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *DescribeImageBaselineDetailResponse
+	GetStatusCode() *int32
+	SetBody(v *DescribeImageBaselineDetailResponseBody) *DescribeImageBaselineDetailResponse
+	GetBody() *DescribeImageBaselineDetailResponseBody
+}
+
+type DescribeImageBaselineDetailResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageBaselineDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeImageBaselineDetailResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeImageBaselineDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageBaselineDetailResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *DescribeImageBaselineDetailResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *DescribeImageBaselineDetailResponse) GetBody() *DescribeImageBaselineDetailResponseBody {
+	return s.Body
+}
+
+func (s *DescribeImageBaselineDetailResponse) SetHeaders(v map[string]*string) *DescribeImageBaselineDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageBaselineDetailResponse) SetStatusCode(v int32) *DescribeImageBaselineDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageBaselineDetailResponse) SetBody(v *DescribeImageBaselineDetailResponseBody) *DescribeImageBaselineDetailResponse {
+	s.Body = v
+	return s
+}
+
+func (s *DescribeImageBaselineDetailResponse) Validate() error {
+	return dara.Validate(s)
+}
