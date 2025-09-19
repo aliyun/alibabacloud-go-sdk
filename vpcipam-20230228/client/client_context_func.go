@@ -25,7 +25,7 @@ import (
 //
 //		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
 //
-//		- You can provision at most 50 CIDR blocks to each pool.
+//		- A maximum of 1 CIDR block can be provisioned to a public IPv6 top-level pool, while up to 50 CIDR blocks can be provisioned to other types of address pools.
 //
 // @param request - AddIpamPoolCidrRequest
 //
@@ -334,6 +334,10 @@ func (client *Client) CreateIpamWithContext(ctx context.Context, request *Create
 // Summary:
 //
 // Creates an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+// The number of public IPv6 IPAM top pool for a specific ISP that a user is allowed to create per region is limited to 1.
 //
 // @param request - CreateIpamPoolRequest
 //

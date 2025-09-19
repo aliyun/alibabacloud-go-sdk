@@ -24,9 +24,9 @@ type iAddIpamPoolCidrRequest interface {
 }
 
 type AddIpamPoolCidrRequest struct {
-	// The CIDR block that you want to provision.
+	// The CIDR block to be provisioned.
 	//
-	// >  Only IPv4 CIDR blocks are supported.
+	// > For private top-level pools, provisioning can only be done by entering a CIDR block.
 	//
 	// example:
 	//
@@ -57,8 +57,15 @@ type AddIpamPoolCidrRequest struct {
 	// example:
 	//
 	// ipam-pool-6rcq3tobayc20t****
-	IpamPoolId    *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	NetmaskLength *int32  `json:"NetmaskLength,omitempty" xml:"NetmaskLength,omitempty"`
+	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
+	// Provision CIDR address segments through a mask method.
+	//
+	// > The public IPv6 top-level pool only supports provisioning via a mask.
+	//
+	// example:
+	//
+	// 24
+	NetmaskLength *int32 `json:"NetmaskLength,omitempty" xml:"NetmaskLength,omitempty"`
 	// The ID of the region where the IPAM instance is hosted.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.

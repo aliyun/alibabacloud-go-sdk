@@ -73,7 +73,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 //		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
 //
-//		- You can provision at most 50 CIDR blocks to each pool.
+//		- A maximum of 1 CIDR block can be provisioned to a public IPv6 top-level pool, while up to 50 CIDR blocks can be provisioned to other types of address pools.
 //
 // @param request - AddIpamPoolCidrRequest
 //
@@ -151,7 +151,7 @@ func (client *Client) AddIpamPoolCidrWithOptions(request *AddIpamPoolCidrRequest
 //
 //		- CIDR blocks provisioned to an IPAM pool cannot overlap with the CIDR blocks provisioned to other pools in the same scope.
 //
-//		- You can provision at most 50 CIDR blocks to each pool.
+//		- A maximum of 1 CIDR block can be provisioned to a public IPv6 top-level pool, while up to 50 CIDR blocks can be provisioned to other types of address pools.
 //
 // @param request - AddIpamPoolCidrRequest
 //
@@ -487,6 +487,10 @@ func (client *Client) CreateIpam(request *CreateIpamRequest) (_result *CreateIpa
 //
 // Creates an IP Address Manager (IPAM) pool.
 //
+// Description:
+//
+// The number of public IPv6 IPAM top pool for a specific ISP that a user is allowed to create per region is limited to 1.
+//
 // @param request - CreateIpamPoolRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -604,6 +608,10 @@ func (client *Client) CreateIpamPoolWithOptions(request *CreateIpamPoolRequest, 
 // Summary:
 //
 // Creates an IP Address Manager (IPAM) pool.
+//
+// Description:
+//
+// The number of public IPv6 IPAM top pool for a specific ISP that a user is allowed to create per region is limited to 1.
 //
 // @param request - CreateIpamPoolRequest
 //

@@ -158,7 +158,8 @@ type ListIpamPoolsResponseBodyIpamPools struct {
 	// example:
 	//
 	// true
-	AutoImport *bool `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	AutoImport *bool     `json:"AutoImport,omitempty" xml:"AutoImport,omitempty"`
+	Cidrs      []*string `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Repeated"`
 	// The time when the IPAM pool was created.
 	//
 	// example:
@@ -314,6 +315,10 @@ func (s *ListIpamPoolsResponseBodyIpamPools) GetAutoImport() *bool {
 	return s.AutoImport
 }
 
+func (s *ListIpamPoolsResponseBodyIpamPools) GetCidrs() []*string {
+	return s.Cidrs
+}
+
 func (s *ListIpamPoolsResponseBodyIpamPools) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -411,6 +416,11 @@ func (s *ListIpamPoolsResponseBodyIpamPools) SetAllocationMinCidrMask(v int32) *
 
 func (s *ListIpamPoolsResponseBodyIpamPools) SetAutoImport(v bool) *ListIpamPoolsResponseBodyIpamPools {
 	s.AutoImport = &v
+	return s
+}
+
+func (s *ListIpamPoolsResponseBodyIpamPools) SetCidrs(v []*string) *ListIpamPoolsResponseBodyIpamPools {
+	s.Cidrs = v
 	return s
 }
 

@@ -52,25 +52,25 @@ type iCreateIpamPoolRequest interface {
 }
 
 type CreateIpamPoolRequest struct {
-	// The default network mask assigned to the IPAM pool.
+	// The default network mask assigned by the IPAM address pool.
 	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// > The IPv4 network mask value range is 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
 	//
 	// example:
 	//
 	// 28
 	AllocationDefaultCidrMask *int32 `json:"AllocationDefaultCidrMask,omitempty" xml:"AllocationDefaultCidrMask,omitempty"`
-	// The maximum network mask assigned to the IPAM pool.
+	// The maximum network mask assigned by the IPAM address pool.
 	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// > The IPv4 network mask value range is **0 to 32*	- bits, and the IPv6 network mask value range is **0 to 128*	- bits.
 	//
 	// example:
 	//
 	// 32
 	AllocationMaxCidrMask *int32 `json:"AllocationMaxCidrMask,omitempty" xml:"AllocationMaxCidrMask,omitempty"`
-	// The minimum network mask assigned to the IPAM pool.
+	// The minimum network mask assigned by the IPAM address pool.
 	//
-	// An IPv4 mask must be **0 to 32*	- bits in length.
+	// > The IPv4 network mask value range is **0 to 32*	- bits, and the IPv6 network mask value range is **0 to 128*	- bits.
 	//
 	// example:
 	//
@@ -100,15 +100,19 @@ type CreateIpamPoolRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The IP version. Only **IPv4*	- is supported.
+	// IP address protocol version. Values:
+	//
+	// - **IPv4**: IPv4 protocol.
+	//
+	// - **IPv6**: IPv6 protocol.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The description of the IPAM pool.
+	// Description of the IPAM address pool.
 	//
-	// It must be 2 to 256 characters in length. It must start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+	// The length should be between 1 to 256 characters, and it must start with an uppercase or lowercase English letter or a Chinese character, but cannot begin with `http://` or `https://`. If left blank, the default value is empty.
 	//
 	// example:
 	//
@@ -129,7 +133,22 @@ type CreateIpamPoolRequest struct {
 	// example:
 	//
 	// ipam-scope-glfmcyldpm8lsy****
-	IpamScopeId  *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	IpamScopeId *string `json:"IpamScopeId,omitempty" xml:"IpamScopeId,omitempty"`
+	// The type of the IPv6 CIDR block of the VPC. Valid values:
+	//
+	// 	- **BGP*	- (default)
+	//
+	// 	- **ChinaMobile**
+	//
+	// 	- **ChinaUnicom**
+	//
+	// 	- **ChinaTelecom**
+	//
+	// >  If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+	//
+	// example:
+	//
+	// BGP
 	Ipv6Isp      *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
