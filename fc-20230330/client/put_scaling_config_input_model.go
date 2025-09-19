@@ -9,15 +9,21 @@ type iPutScalingConfigInput interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetResidentConfig(v *ResidentConfig) *PutScalingConfigInput
-	GetResidentConfig() *ResidentConfig
-	SetResourceType(v string) *PutScalingConfigInput
-	GetResourceType() *string
+	SetHorizontalScalingPolicies(v []*ScalingPolicy) *PutScalingConfigInput
+	GetHorizontalScalingPolicies() []*ScalingPolicy
+	SetMinInstances(v int64) *PutScalingConfigInput
+	GetMinInstances() *int64
+	SetResidentPoolId(v string) *PutScalingConfigInput
+	GetResidentPoolId() *string
+	SetScheduledPolicies(v []*ScheduledPolicy) *PutScalingConfigInput
+	GetScheduledPolicies() []*ScheduledPolicy
 }
 
 type PutScalingConfigInput struct {
-	ResidentConfig *ResidentConfig `json:"residentConfig,omitempty" xml:"residentConfig,omitempty"`
-	ResourceType   *string         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ScheduledPolicies         []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
 }
 
 func (s PutScalingConfigInput) String() string {
@@ -28,21 +34,39 @@ func (s PutScalingConfigInput) GoString() string {
 	return s.String()
 }
 
-func (s *PutScalingConfigInput) GetResidentConfig() *ResidentConfig {
-	return s.ResidentConfig
+func (s *PutScalingConfigInput) GetHorizontalScalingPolicies() []*ScalingPolicy {
+	return s.HorizontalScalingPolicies
 }
 
-func (s *PutScalingConfigInput) GetResourceType() *string {
-	return s.ResourceType
+func (s *PutScalingConfigInput) GetMinInstances() *int64 {
+	return s.MinInstances
 }
 
-func (s *PutScalingConfigInput) SetResidentConfig(v *ResidentConfig) *PutScalingConfigInput {
-	s.ResidentConfig = v
+func (s *PutScalingConfigInput) GetResidentPoolId() *string {
+	return s.ResidentPoolId
+}
+
+func (s *PutScalingConfigInput) GetScheduledPolicies() []*ScheduledPolicy {
+	return s.ScheduledPolicies
+}
+
+func (s *PutScalingConfigInput) SetHorizontalScalingPolicies(v []*ScalingPolicy) *PutScalingConfigInput {
+	s.HorizontalScalingPolicies = v
 	return s
 }
 
-func (s *PutScalingConfigInput) SetResourceType(v string) *PutScalingConfigInput {
-	s.ResourceType = &v
+func (s *PutScalingConfigInput) SetMinInstances(v int64) *PutScalingConfigInput {
+	s.MinInstances = &v
+	return s
+}
+
+func (s *PutScalingConfigInput) SetResidentPoolId(v string) *PutScalingConfigInput {
+	s.ResidentPoolId = &v
+	return s
+}
+
+func (s *PutScalingConfigInput) SetScheduledPolicies(v []*ScheduledPolicy) *PutScalingConfigInput {
+	s.ScheduledPolicies = v
 	return s
 }
 

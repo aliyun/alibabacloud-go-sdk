@@ -11,10 +11,13 @@ type iUpdateResidentResourcePoolInput interface {
 	GoString() string
 	SetName(v string) *UpdateResidentResourcePoolInput
 	GetName() *string
+	SetUseScaling(v bool) *UpdateResidentResourcePoolInput
+	GetUseScaling() *bool
 }
 
 type UpdateResidentResourcePoolInput struct {
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	UseScaling *bool   `json:"useScaling,omitempty" xml:"useScaling,omitempty"`
 }
 
 func (s UpdateResidentResourcePoolInput) String() string {
@@ -29,8 +32,17 @@ func (s *UpdateResidentResourcePoolInput) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateResidentResourcePoolInput) GetUseScaling() *bool {
+	return s.UseScaling
+}
+
 func (s *UpdateResidentResourcePoolInput) SetName(v string) *UpdateResidentResourcePoolInput {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateResidentResourcePoolInput) SetUseScaling(v bool) *UpdateResidentResourcePoolInput {
+	s.UseScaling = &v
 	return s
 }
 

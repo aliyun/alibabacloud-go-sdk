@@ -11,13 +11,13 @@ type iResidentResourceAllocationStatus interface {
 	GoString() string
 	SetLastAllocatedTime(v string) *ResidentResourceAllocationStatus
 	GetLastAllocatedTime() *string
-	SetLastAllocation(v *ResidentResourceAllocation) *ResidentResourceAllocationStatus
-	GetLastAllocation() *ResidentResourceAllocation
+	SetLastAllocation(v []*ResidentResourceAllocation) *ResidentResourceAllocationStatus
+	GetLastAllocation() []*ResidentResourceAllocation
 }
 
 type ResidentResourceAllocationStatus struct {
-	LastAllocatedTime *string                     `json:"lastAllocatedTime,omitempty" xml:"lastAllocatedTime,omitempty"`
-	LastAllocation    *ResidentResourceAllocation `json:"lastAllocation,omitempty" xml:"lastAllocation,omitempty"`
+	LastAllocatedTime *string                       `json:"lastAllocatedTime,omitempty" xml:"lastAllocatedTime,omitempty"`
+	LastAllocation    []*ResidentResourceAllocation `json:"lastAllocation" xml:"lastAllocation" type:"Repeated"`
 }
 
 func (s ResidentResourceAllocationStatus) String() string {
@@ -32,7 +32,7 @@ func (s *ResidentResourceAllocationStatus) GetLastAllocatedTime() *string {
 	return s.LastAllocatedTime
 }
 
-func (s *ResidentResourceAllocationStatus) GetLastAllocation() *ResidentResourceAllocation {
+func (s *ResidentResourceAllocationStatus) GetLastAllocation() []*ResidentResourceAllocation {
 	return s.LastAllocation
 }
 
@@ -41,7 +41,7 @@ func (s *ResidentResourceAllocationStatus) SetLastAllocatedTime(v string) *Resid
 	return s
 }
 
-func (s *ResidentResourceAllocationStatus) SetLastAllocation(v *ResidentResourceAllocation) *ResidentResourceAllocationStatus {
+func (s *ResidentResourceAllocationStatus) SetLastAllocation(v []*ResidentResourceAllocation) *ResidentResourceAllocationStatus {
 	s.LastAllocation = v
 	return s
 }

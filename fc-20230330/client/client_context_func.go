@@ -585,6 +585,51 @@ func (client *Client) DeleteProvisionConfigWithContext(ctx context.Context, func
 
 // Summary:
 //
+// 删除弹性配置
+//
+// @param request - DeleteScalingConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScalingConfigResponse
+func (client *Client) DeleteScalingConfigWithContext(ctx context.Context, functionName *string, request *DeleteScalingConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteScalingConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScalingConfig"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/scaling-config"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &DeleteScalingConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a trigger.
 //
 // @param headers - map
@@ -1162,6 +1207,51 @@ func (client *Client) GetProvisionConfigWithContext(ctx context.Context, functio
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProvisionConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取弹性配置
+//
+// @param request - GetScalingConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScalingConfigResponse
+func (client *Client) GetScalingConfigWithContext(ctx context.Context, functionName *string, request *GetScalingConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetScalingConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScalingConfig"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/scaling-config"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScalingConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1965,6 +2055,59 @@ func (client *Client) ListProvisionConfigsWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 获取弹性配置列表
+//
+// @param request - ListScalingConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScalingConfigsResponse
+func (client *Client) ListScalingConfigsWithContext(ctx context.Context, request *ListScalingConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListScalingConfigsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FunctionName) {
+		query["functionName"] = request.FunctionName
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListScalingConfigs"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/scaling-configs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListScalingConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists all tagged resources.
 //
 // @param tmpReq - ListTagResourcesRequest
@@ -2333,6 +2476,52 @@ func (client *Client) PutProvisionConfigWithContext(ctx context.Context, functio
 		BodyType:    dara.String("json"),
 	}
 	_result = &PutProvisionConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置弹性配置
+//
+// @param request - PutScalingConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutScalingConfigResponse
+func (client *Client) PutScalingConfigWithContext(ctx context.Context, functionName *string, request *PutScalingConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PutScalingConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Qualifier) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutScalingConfig"),
+		Version:     dara.String("2023-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2023-03-30/functions/" + dara.PercentEncode(dara.StringValue(functionName)) + "/scaling-config"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutScalingConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

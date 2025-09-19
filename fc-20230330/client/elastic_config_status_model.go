@@ -23,6 +23,8 @@ type iElasticConfigStatus interface {
   GetScalingPolicies() []*ScalingPolicy 
   SetScheduledPolicies(v []*ScheduledPolicy) *ElasticConfigStatus
   GetScheduledPolicies() []*ScheduledPolicy 
+  SetTargetInstances(v int64) *ElasticConfigStatus
+  GetTargetInstances() *int64 
 }
 
 type ElasticConfigStatus struct {
@@ -33,6 +35,7 @@ type ElasticConfigStatus struct {
   ResidentPoolId *string `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
   ScalingPolicies []*ScalingPolicy `json:"scalingPolicies" xml:"scalingPolicies" type:"Repeated"`
   ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
+  TargetInstances *int64 `json:"targetInstances,omitempty" xml:"targetInstances,omitempty"`
 }
 
 func (s ElasticConfigStatus) String() string {
@@ -71,6 +74,10 @@ func (s *ElasticConfigStatus) GetScheduledPolicies() []*ScheduledPolicy  {
   return s.ScheduledPolicies
 }
 
+func (s *ElasticConfigStatus) GetTargetInstances() *int64  {
+  return s.TargetInstances
+}
+
 func (s *ElasticConfigStatus) SetCurrentError(v string) *ElasticConfigStatus {
   s.CurrentError = &v
   return s
@@ -103,6 +110,11 @@ func (s *ElasticConfigStatus) SetScalingPolicies(v []*ScalingPolicy) *ElasticCon
 
 func (s *ElasticConfigStatus) SetScheduledPolicies(v []*ScheduledPolicy) *ElasticConfigStatus {
   s.ScheduledPolicies = v
+  return s
+}
+
+func (s *ElasticConfigStatus) SetTargetInstances(v int64) *ElasticConfigStatus {
+  s.TargetInstances = &v
   return s
 }
 

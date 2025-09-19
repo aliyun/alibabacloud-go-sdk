@@ -9,24 +9,33 @@ type iScalingConfigStatus interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetFunctionName(v string) *ScalingConfigStatus
-	GetFunctionName() *string
-	SetQualifier(v string) *ScalingConfigStatus
-	GetQualifier() *string
-	SetResidentConfig(v *ResidentConfig) *ScalingConfigStatus
-	GetResidentConfig() *ResidentConfig
-	SetResourceType(v string) *ScalingConfigStatus
-	GetResourceType() *string
-	SetScalingStatus(v *ScalingStatus) *ScalingConfigStatus
-	GetScalingStatus() *ScalingStatus
+	SetCurrentError(v string) *ScalingConfigStatus
+	GetCurrentError() *string
+	SetCurrentInstances(v int64) *ScalingConfigStatus
+	GetCurrentInstances() *int64
+	SetFunctionArn(v string) *ScalingConfigStatus
+	GetFunctionArn() *string
+	SetHorizontalScalingPolicies(v []*ScalingPolicy) *ScalingConfigStatus
+	GetHorizontalScalingPolicies() []*ScalingPolicy
+	SetMinInstances(v int64) *ScalingConfigStatus
+	GetMinInstances() *int64
+	SetResidentPoolId(v string) *ScalingConfigStatus
+	GetResidentPoolId() *string
+	SetScheduledPolicies(v []*ScheduledPolicy) *ScalingConfigStatus
+	GetScheduledPolicies() []*ScheduledPolicy
+	SetTargetInstances(v int64) *ScalingConfigStatus
+	GetTargetInstances() *int64
 }
 
 type ScalingConfigStatus struct {
-	FunctionName   *string         `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Qualifier      *string         `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	ResidentConfig *ResidentConfig `json:"residentConfig,omitempty" xml:"residentConfig,omitempty"`
-	ResourceType   *string         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	ScalingStatus  *ScalingStatus  `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
+	CurrentError              *string            `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	CurrentInstances          *int64             `json:"currentInstances,omitempty" xml:"currentInstances,omitempty"`
+	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	HorizontalScalingPolicies []*ScalingPolicy   `json:"horizontalScalingPolicies" xml:"horizontalScalingPolicies" type:"Repeated"`
+	MinInstances              *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
+	ResidentPoolId            *string            `json:"residentPoolId,omitempty" xml:"residentPoolId,omitempty"`
+	ScheduledPolicies         []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
+	TargetInstances           *int64             `json:"targetInstances,omitempty" xml:"targetInstances,omitempty"`
 }
 
 func (s ScalingConfigStatus) String() string {
@@ -37,48 +46,75 @@ func (s ScalingConfigStatus) GoString() string {
 	return s.String()
 }
 
-func (s *ScalingConfigStatus) GetFunctionName() *string {
-	return s.FunctionName
+func (s *ScalingConfigStatus) GetCurrentError() *string {
+	return s.CurrentError
 }
 
-func (s *ScalingConfigStatus) GetQualifier() *string {
-	return s.Qualifier
+func (s *ScalingConfigStatus) GetCurrentInstances() *int64 {
+	return s.CurrentInstances
 }
 
-func (s *ScalingConfigStatus) GetResidentConfig() *ResidentConfig {
-	return s.ResidentConfig
+func (s *ScalingConfigStatus) GetFunctionArn() *string {
+	return s.FunctionArn
 }
 
-func (s *ScalingConfigStatus) GetResourceType() *string {
-	return s.ResourceType
+func (s *ScalingConfigStatus) GetHorizontalScalingPolicies() []*ScalingPolicy {
+	return s.HorizontalScalingPolicies
 }
 
-func (s *ScalingConfigStatus) GetScalingStatus() *ScalingStatus {
-	return s.ScalingStatus
+func (s *ScalingConfigStatus) GetMinInstances() *int64 {
+	return s.MinInstances
 }
 
-func (s *ScalingConfigStatus) SetFunctionName(v string) *ScalingConfigStatus {
-	s.FunctionName = &v
+func (s *ScalingConfigStatus) GetResidentPoolId() *string {
+	return s.ResidentPoolId
+}
+
+func (s *ScalingConfigStatus) GetScheduledPolicies() []*ScheduledPolicy {
+	return s.ScheduledPolicies
+}
+
+func (s *ScalingConfigStatus) GetTargetInstances() *int64 {
+	return s.TargetInstances
+}
+
+func (s *ScalingConfigStatus) SetCurrentError(v string) *ScalingConfigStatus {
+	s.CurrentError = &v
 	return s
 }
 
-func (s *ScalingConfigStatus) SetQualifier(v string) *ScalingConfigStatus {
-	s.Qualifier = &v
+func (s *ScalingConfigStatus) SetCurrentInstances(v int64) *ScalingConfigStatus {
+	s.CurrentInstances = &v
 	return s
 }
 
-func (s *ScalingConfigStatus) SetResidentConfig(v *ResidentConfig) *ScalingConfigStatus {
-	s.ResidentConfig = v
+func (s *ScalingConfigStatus) SetFunctionArn(v string) *ScalingConfigStatus {
+	s.FunctionArn = &v
 	return s
 }
 
-func (s *ScalingConfigStatus) SetResourceType(v string) *ScalingConfigStatus {
-	s.ResourceType = &v
+func (s *ScalingConfigStatus) SetHorizontalScalingPolicies(v []*ScalingPolicy) *ScalingConfigStatus {
+	s.HorizontalScalingPolicies = v
 	return s
 }
 
-func (s *ScalingConfigStatus) SetScalingStatus(v *ScalingStatus) *ScalingConfigStatus {
-	s.ScalingStatus = v
+func (s *ScalingConfigStatus) SetMinInstances(v int64) *ScalingConfigStatus {
+	s.MinInstances = &v
+	return s
+}
+
+func (s *ScalingConfigStatus) SetResidentPoolId(v string) *ScalingConfigStatus {
+	s.ResidentPoolId = &v
+	return s
+}
+
+func (s *ScalingConfigStatus) SetScheduledPolicies(v []*ScheduledPolicy) *ScalingConfigStatus {
+	s.ScheduledPolicies = v
+	return s
+}
+
+func (s *ScalingConfigStatus) SetTargetInstances(v int64) *ScalingConfigStatus {
+	s.TargetInstances = &v
 	return s
 }
 
