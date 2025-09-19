@@ -75,6 +75,12 @@ type iPushRequest interface {
 	GetAndroidOpenType() *string
 	SetAndroidOpenUrl(v string) *PushRequest
 	GetAndroidOpenUrl() *string
+	SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest
+	GetAndroidOppoPrivateContentParameters() map[string]*string
+	SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest
+	GetAndroidOppoPrivateMsgTemplateId() *string
+	SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest
+	GetAndroidOppoPrivateTitleParameters() map[string]*string
 	SetAndroidPopupActivity(v string) *PushRequest
 	GetAndroidPopupActivity() *string
 	SetAndroidPopupBody(v string) *PushRequest
@@ -179,12 +185,6 @@ type iPushRequest interface {
 	GetTitle() *string
 	SetTrim(v bool) *PushRequest
 	GetTrim() *bool
-	SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest
-	GetAndroidOppoPrivateContentParameters() map[string]*string
-	SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest
-	GetAndroidOppoPrivateMsgTemplateId() *string
-	SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest
-	GetAndroidOppoPrivateTitleParameters() map[string]*string
 	SetIOSApnsEnv(v string) *PushRequest
 	GetIOSApnsEnv() *string
 	SetIOSBadge(v int32) *PushRequest
@@ -333,7 +333,10 @@ type PushRequest struct {
 	// example:
 	//
 	// https://xxxx.xxx
-	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOpenUrl                      *string            `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoPrivateContentParameters map[string]*string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
+	AndroidOppoPrivateMsgTemplateId     *string            `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
+	AndroidOppoPrivateTitleParameters   map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
@@ -479,10 +482,7 @@ type PushRequest struct {
 	// example:
 	//
 	// false
-	Trim                                *bool              `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	AndroidOppoPrivateContentParameters map[string]*string `json:"androidOppoPrivateContentParameters,omitempty" xml:"androidOppoPrivateContentParameters,omitempty"`
-	AndroidOppoPrivateMsgTemplateId     *string            `json:"androidOppoPrivateMsgTemplateId,omitempty" xml:"androidOppoPrivateMsgTemplateId,omitempty"`
-	AndroidOppoPrivateTitleParameters   map[string]*string `json:"androidOppoPrivateTitleParameters,omitempty" xml:"androidOppoPrivateTitleParameters,omitempty"`
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
 	// example:
 	//
 	// DEV
@@ -687,6 +687,18 @@ func (s *PushRequest) GetAndroidOpenType() *string {
 
 func (s *PushRequest) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
+}
+
+func (s *PushRequest) GetAndroidOppoPrivateContentParameters() map[string]*string {
+	return s.AndroidOppoPrivateContentParameters
+}
+
+func (s *PushRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
+	return s.AndroidOppoPrivateMsgTemplateId
+}
+
+func (s *PushRequest) GetAndroidOppoPrivateTitleParameters() map[string]*string {
+	return s.AndroidOppoPrivateTitleParameters
 }
 
 func (s *PushRequest) GetAndroidPopupActivity() *string {
@@ -895,18 +907,6 @@ func (s *PushRequest) GetTitle() *string {
 
 func (s *PushRequest) GetTrim() *bool {
 	return s.Trim
-}
-
-func (s *PushRequest) GetAndroidOppoPrivateContentParameters() map[string]*string {
-	return s.AndroidOppoPrivateContentParameters
-}
-
-func (s *PushRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
-	return s.AndroidOppoPrivateMsgTemplateId
-}
-
-func (s *PushRequest) GetAndroidOppoPrivateTitleParameters() map[string]*string {
-	return s.AndroidOppoPrivateTitleParameters
 }
 
 func (s *PushRequest) GetIOSApnsEnv() *string {
@@ -1159,6 +1159,21 @@ func (s *PushRequest) SetAndroidOpenType(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidOpenUrl(v string) *PushRequest {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest {
+	s.AndroidOppoPrivateContentParameters = v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest {
+	s.AndroidOppoPrivateMsgTemplateId = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest {
+	s.AndroidOppoPrivateTitleParameters = v
 	return s
 }
 
@@ -1419,21 +1434,6 @@ func (s *PushRequest) SetTitle(v string) *PushRequest {
 
 func (s *PushRequest) SetTrim(v bool) *PushRequest {
 	s.Trim = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidOppoPrivateContentParameters(v map[string]*string) *PushRequest {
-	s.AndroidOppoPrivateContentParameters = v
-	return s
-}
-
-func (s *PushRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushRequest {
-	s.AndroidOppoPrivateMsgTemplateId = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidOppoPrivateTitleParameters(v map[string]*string) *PushRequest {
-	s.AndroidOppoPrivateTitleParameters = v
 	return s
 }
 

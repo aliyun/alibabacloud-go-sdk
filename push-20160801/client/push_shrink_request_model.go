@@ -75,6 +75,12 @@ type iPushShrinkRequest interface {
 	GetAndroidOpenType() *string
 	SetAndroidOpenUrl(v string) *PushShrinkRequest
 	GetAndroidOpenUrl() *string
+	SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest
+	GetAndroidOppoPrivateContentParametersShrink() *string
+	SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest
+	GetAndroidOppoPrivateMsgTemplateId() *string
+	SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest
+	GetAndroidOppoPrivateTitleParametersShrink() *string
 	SetAndroidPopupActivity(v string) *PushShrinkRequest
 	GetAndroidPopupActivity() *string
 	SetAndroidPopupBody(v string) *PushShrinkRequest
@@ -179,12 +185,6 @@ type iPushShrinkRequest interface {
 	GetTitle() *string
 	SetTrim(v bool) *PushShrinkRequest
 	GetTrim() *bool
-	SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest
-	GetAndroidOppoPrivateContentParametersShrink() *string
-	SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest
-	GetAndroidOppoPrivateMsgTemplateId() *string
-	SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest
-	GetAndroidOppoPrivateTitleParametersShrink() *string
 	SetIOSApnsEnv(v string) *PushShrinkRequest
 	GetIOSApnsEnv() *string
 	SetIOSBadge(v int32) *PushShrinkRequest
@@ -333,7 +333,10 @@ type PushShrinkRequest struct {
 	// example:
 	//
 	// https://xxxx.xxx
-	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOpenUrl                            *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoPrivateContentParametersShrink *string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
+	AndroidOppoPrivateMsgTemplateId           *string `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
+	AndroidOppoPrivateTitleParametersShrink   *string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
@@ -479,10 +482,7 @@ type PushShrinkRequest struct {
 	// example:
 	//
 	// false
-	Trim                                      *bool   `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	AndroidOppoPrivateContentParametersShrink *string `json:"androidOppoPrivateContentParameters,omitempty" xml:"androidOppoPrivateContentParameters,omitempty"`
-	AndroidOppoPrivateMsgTemplateId           *string `json:"androidOppoPrivateMsgTemplateId,omitempty" xml:"androidOppoPrivateMsgTemplateId,omitempty"`
-	AndroidOppoPrivateTitleParametersShrink   *string `json:"androidOppoPrivateTitleParameters,omitempty" xml:"androidOppoPrivateTitleParameters,omitempty"`
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
 	// example:
 	//
 	// DEV
@@ -687,6 +687,18 @@ func (s *PushShrinkRequest) GetAndroidOpenType() *string {
 
 func (s *PushShrinkRequest) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoPrivateContentParametersShrink() *string {
+	return s.AndroidOppoPrivateContentParametersShrink
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
+	return s.AndroidOppoPrivateMsgTemplateId
+}
+
+func (s *PushShrinkRequest) GetAndroidOppoPrivateTitleParametersShrink() *string {
+	return s.AndroidOppoPrivateTitleParametersShrink
 }
 
 func (s *PushShrinkRequest) GetAndroidPopupActivity() *string {
@@ -895,18 +907,6 @@ func (s *PushShrinkRequest) GetTitle() *string {
 
 func (s *PushShrinkRequest) GetTrim() *bool {
 	return s.Trim
-}
-
-func (s *PushShrinkRequest) GetAndroidOppoPrivateContentParametersShrink() *string {
-	return s.AndroidOppoPrivateContentParametersShrink
-}
-
-func (s *PushShrinkRequest) GetAndroidOppoPrivateMsgTemplateId() *string {
-	return s.AndroidOppoPrivateMsgTemplateId
-}
-
-func (s *PushShrinkRequest) GetAndroidOppoPrivateTitleParametersShrink() *string {
-	return s.AndroidOppoPrivateTitleParametersShrink
 }
 
 func (s *PushShrinkRequest) GetIOSApnsEnv() *string {
@@ -1159,6 +1159,21 @@ func (s *PushShrinkRequest) SetAndroidOpenType(v string) *PushShrinkRequest {
 
 func (s *PushShrinkRequest) SetAndroidOpenUrl(v string) *PushShrinkRequest {
 	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest {
+	s.AndroidOppoPrivateContentParametersShrink = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest {
+	s.AndroidOppoPrivateMsgTemplateId = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest {
+	s.AndroidOppoPrivateTitleParametersShrink = &v
 	return s
 }
 
@@ -1419,21 +1434,6 @@ func (s *PushShrinkRequest) SetTitle(v string) *PushShrinkRequest {
 
 func (s *PushShrinkRequest) SetTrim(v bool) *PushShrinkRequest {
 	s.Trim = &v
-	return s
-}
-
-func (s *PushShrinkRequest) SetAndroidOppoPrivateContentParametersShrink(v string) *PushShrinkRequest {
-	s.AndroidOppoPrivateContentParametersShrink = &v
-	return s
-}
-
-func (s *PushShrinkRequest) SetAndroidOppoPrivateMsgTemplateId(v string) *PushShrinkRequest {
-	s.AndroidOppoPrivateMsgTemplateId = &v
-	return s
-}
-
-func (s *PushShrinkRequest) SetAndroidOppoPrivateTitleParametersShrink(v string) *PushShrinkRequest {
-	s.AndroidOppoPrivateTitleParametersShrink = &v
 	return s
 }
 

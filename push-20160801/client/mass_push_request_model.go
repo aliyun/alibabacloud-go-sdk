@@ -176,7 +176,10 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// https://xxxx.xxx
-	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOpenUrl                      *string            `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidOppoPrivateContentParameters map[string]*string `json:"AndroidOppoPrivateContentParameters,omitempty" xml:"AndroidOppoPrivateContentParameters,omitempty"`
+	AndroidOppoPrivateMsgTemplateId     *string            `json:"AndroidOppoPrivateMsgTemplateId,omitempty" xml:"AndroidOppoPrivateMsgTemplateId,omitempty"`
+	AndroidOppoPrivateTitleParameters   map[string]*string `json:"AndroidOppoPrivateTitleParameters,omitempty" xml:"AndroidOppoPrivateTitleParameters,omitempty"`
 	// example:
 	//
 	// com.alibaba.cloudpushdemo.bizactivity
@@ -301,10 +304,7 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// false
-	Trim                                *bool              `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	AndroidOppoPrivateContentParameters map[string]*string `json:"androidOppoPrivateContentParameters,omitempty" xml:"androidOppoPrivateContentParameters,omitempty"`
-	AndroidOppoPrivateMsgTemplateId     *string            `json:"androidOppoPrivateMsgTemplateId,omitempty" xml:"androidOppoPrivateMsgTemplateId,omitempty"`
-	AndroidOppoPrivateTitleParameters   map[string]*string `json:"androidOppoPrivateTitleParameters,omitempty" xml:"androidOppoPrivateTitleParameters,omitempty"`
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
 	// example:
 	//
 	// DEV
@@ -511,6 +511,18 @@ func (s *MassPushRequestPushTask) GetAndroidOpenUrl() *string {
 	return s.AndroidOpenUrl
 }
 
+func (s *MassPushRequestPushTask) GetAndroidOppoPrivateContentParameters() map[string]*string {
+	return s.AndroidOppoPrivateContentParameters
+}
+
+func (s *MassPushRequestPushTask) GetAndroidOppoPrivateMsgTemplateId() *string {
+	return s.AndroidOppoPrivateMsgTemplateId
+}
+
+func (s *MassPushRequestPushTask) GetAndroidOppoPrivateTitleParameters() map[string]*string {
+	return s.AndroidOppoPrivateTitleParameters
+}
+
 func (s *MassPushRequestPushTask) GetAndroidPopupActivity() *string {
 	return s.AndroidPopupActivity
 }
@@ -689,18 +701,6 @@ func (s *MassPushRequestPushTask) GetTitle() *string {
 
 func (s *MassPushRequestPushTask) GetTrim() *bool {
 	return s.Trim
-}
-
-func (s *MassPushRequestPushTask) GetAndroidOppoPrivateContentParameters() map[string]*string {
-	return s.AndroidOppoPrivateContentParameters
-}
-
-func (s *MassPushRequestPushTask) GetAndroidOppoPrivateMsgTemplateId() *string {
-	return s.AndroidOppoPrivateMsgTemplateId
-}
-
-func (s *MassPushRequestPushTask) GetAndroidOppoPrivateTitleParameters() map[string]*string {
-	return s.AndroidOppoPrivateTitleParameters
 }
 
 func (s *MassPushRequestPushTask) GetIOSApnsEnv() *string {
@@ -956,6 +956,21 @@ func (s *MassPushRequestPushTask) SetAndroidOpenUrl(v string) *MassPushRequestPu
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetAndroidOppoPrivateContentParameters(v map[string]*string) *MassPushRequestPushTask {
+	s.AndroidOppoPrivateContentParameters = v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOppoPrivateMsgTemplateId(v string) *MassPushRequestPushTask {
+	s.AndroidOppoPrivateMsgTemplateId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOppoPrivateTitleParameters(v map[string]*string) *MassPushRequestPushTask {
+	s.AndroidOppoPrivateTitleParameters = v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetAndroidPopupActivity(v string) *MassPushRequestPushTask {
 	s.AndroidPopupActivity = &v
 	return s
@@ -1178,21 +1193,6 @@ func (s *MassPushRequestPushTask) SetTitle(v string) *MassPushRequestPushTask {
 
 func (s *MassPushRequestPushTask) SetTrim(v bool) *MassPushRequestPushTask {
 	s.Trim = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidOppoPrivateContentParameters(v map[string]*string) *MassPushRequestPushTask {
-	s.AndroidOppoPrivateContentParameters = v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidOppoPrivateMsgTemplateId(v string) *MassPushRequestPushTask {
-	s.AndroidOppoPrivateMsgTemplateId = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidOppoPrivateTitleParameters(v map[string]*string) *MassPushRequestPushTask {
-	s.AndroidOppoPrivateTitleParameters = v
 	return s
 }
 

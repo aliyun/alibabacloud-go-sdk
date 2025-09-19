@@ -904,11 +904,11 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 	request := &PushShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.AndroidOppoPrivateContentParameters) {
-		request.AndroidOppoPrivateContentParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidOppoPrivateContentParameters, dara.String("androidOppoPrivateContentParameters"), dara.String("json"))
+		request.AndroidOppoPrivateContentParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidOppoPrivateContentParameters, dara.String("AndroidOppoPrivateContentParameters"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.AndroidOppoPrivateTitleParameters) {
-		request.AndroidOppoPrivateTitleParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidOppoPrivateTitleParameters, dara.String("androidOppoPrivateTitleParameters"), dara.String("json"))
+		request.AndroidOppoPrivateTitleParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AndroidOppoPrivateTitleParameters, dara.String("AndroidOppoPrivateTitleParameters"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -1042,6 +1042,18 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 
 	if !dara.IsNil(request.AndroidOpenUrl) {
 		query["AndroidOpenUrl"] = request.AndroidOpenUrl
+	}
+
+	if !dara.IsNil(request.AndroidOppoPrivateContentParametersShrink) {
+		query["AndroidOppoPrivateContentParameters"] = request.AndroidOppoPrivateContentParametersShrink
+	}
+
+	if !dara.IsNil(request.AndroidOppoPrivateMsgTemplateId) {
+		query["AndroidOppoPrivateMsgTemplateId"] = request.AndroidOppoPrivateMsgTemplateId
+	}
+
+	if !dara.IsNil(request.AndroidOppoPrivateTitleParametersShrink) {
+		query["AndroidOppoPrivateTitleParameters"] = request.AndroidOppoPrivateTitleParametersShrink
 	}
 
 	if !dara.IsNil(request.AndroidPopupActivity) {
@@ -1250,18 +1262,6 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 
 	if !dara.IsNil(request.Trim) {
 		query["Trim"] = request.Trim
-	}
-
-	if !dara.IsNil(request.AndroidOppoPrivateContentParametersShrink) {
-		query["androidOppoPrivateContentParameters"] = request.AndroidOppoPrivateContentParametersShrink
-	}
-
-	if !dara.IsNil(request.AndroidOppoPrivateMsgTemplateId) {
-		query["androidOppoPrivateMsgTemplateId"] = request.AndroidOppoPrivateMsgTemplateId
-	}
-
-	if !dara.IsNil(request.AndroidOppoPrivateTitleParametersShrink) {
-		query["androidOppoPrivateTitleParameters"] = request.AndroidOppoPrivateTitleParametersShrink
 	}
 
 	if !dara.IsNil(request.IOSApnsEnv) {
