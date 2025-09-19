@@ -27,6 +27,8 @@ type iPushShrinkRequest interface {
 	GetAndroidExtParameters() *string
 	SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest
 	GetAndroidHonorTargetUserType() *int32
+	SetAndroidHuaweiLiveNotificationPayload(v string) *PushShrinkRequest
+	GetAndroidHuaweiLiveNotificationPayload() *string
 	SetAndroidHuaweiReceiptId(v string) *PushShrinkRequest
 	GetAndroidHuaweiReceiptId() *string
 	SetAndroidHuaweiTargetUserType(v int32) *PushShrinkRequest
@@ -135,6 +137,8 @@ type iPushShrinkRequest interface {
 	GetHarmonyImageUrl() *string
 	SetHarmonyInboxContent(v string) *PushShrinkRequest
 	GetHarmonyInboxContent() *string
+	SetHarmonyLiveViewPayload(v string) *PushShrinkRequest
+	GetHarmonyLiveViewPayload() *string
 	SetHarmonyNotificationSlotType(v string) *PushShrinkRequest
 	GetHarmonyNotificationSlotType() *string
 	SetHarmonyNotifyId(v int32) *PushShrinkRequest
@@ -248,8 +252,9 @@ type PushShrinkRequest struct {
 	// example:
 	//
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
-	AndroidExtParameters       *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidHonorTargetUserType *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidExtParameters                 *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType           *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
 	// example:
 	//
 	// RCP4C123456
@@ -411,6 +416,7 @@ type PushShrinkRequest struct {
 	HarmonyExtensionPush        *bool   `json:"HarmonyExtensionPush,omitempty" xml:"HarmonyExtensionPush,omitempty"`
 	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
 	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
+	HarmonyLiveViewPayload      *string `json:"HarmonyLiveViewPayload,omitempty" xml:"HarmonyLiveViewPayload,omitempty"`
 	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
 	HarmonyNotifyId             *int32  `json:"HarmonyNotifyId,omitempty" xml:"HarmonyNotifyId,omitempty"`
 	HarmonyReceiptId            *string `json:"HarmonyReceiptId,omitempty" xml:"HarmonyReceiptId,omitempty"`
@@ -591,6 +597,10 @@ func (s *PushShrinkRequest) GetAndroidExtParameters() *string {
 
 func (s *PushShrinkRequest) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
+}
+
+func (s *PushShrinkRequest) GetAndroidHuaweiLiveNotificationPayload() *string {
+	return s.AndroidHuaweiLiveNotificationPayload
 }
 
 func (s *PushShrinkRequest) GetAndroidHuaweiReceiptId() *string {
@@ -807,6 +817,10 @@ func (s *PushShrinkRequest) GetHarmonyImageUrl() *string {
 
 func (s *PushShrinkRequest) GetHarmonyInboxContent() *string {
 	return s.HarmonyInboxContent
+}
+
+func (s *PushShrinkRequest) GetHarmonyLiveViewPayload() *string {
+	return s.HarmonyLiveViewPayload
 }
 
 func (s *PushShrinkRequest) GetHarmonyNotificationSlotType() *string {
@@ -1039,6 +1053,11 @@ func (s *PushShrinkRequest) SetAndroidExtParameters(v string) *PushShrinkRequest
 
 func (s *PushShrinkRequest) SetAndroidHonorTargetUserType(v int32) *PushShrinkRequest {
 	s.AndroidHonorTargetUserType = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetAndroidHuaweiLiveNotificationPayload(v string) *PushShrinkRequest {
+	s.AndroidHuaweiLiveNotificationPayload = &v
 	return s
 }
 
@@ -1309,6 +1328,11 @@ func (s *PushShrinkRequest) SetHarmonyImageUrl(v string) *PushShrinkRequest {
 
 func (s *PushShrinkRequest) SetHarmonyInboxContent(v string) *PushShrinkRequest {
 	s.HarmonyInboxContent = &v
+	return s
+}
+
+func (s *PushShrinkRequest) SetHarmonyLiveViewPayload(v string) *PushShrinkRequest {
+	s.HarmonyLiveViewPayload = &v
 	return s
 }
 

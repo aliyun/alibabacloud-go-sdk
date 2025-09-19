@@ -948,6 +948,10 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 		query["AndroidHonorTargetUserType"] = request.AndroidHonorTargetUserType
 	}
 
+	if !dara.IsNil(request.AndroidHuaweiLiveNotificationPayload) {
+		query["AndroidHuaweiLiveNotificationPayload"] = request.AndroidHuaweiLiveNotificationPayload
+	}
+
 	if !dara.IsNil(request.AndroidHuaweiReceiptId) {
 		query["AndroidHuaweiReceiptId"] = request.AndroidHuaweiReceiptId
 	}
@@ -1162,6 +1166,10 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 
 	if !dara.IsNil(request.HarmonyInboxContent) {
 		query["HarmonyInboxContent"] = request.HarmonyInboxContent
+	}
+
+	if !dara.IsNil(request.HarmonyLiveViewPayload) {
+		query["HarmonyLiveViewPayload"] = request.HarmonyLiveViewPayload
 	}
 
 	if !dara.IsNil(request.HarmonyNotificationSlotType) {

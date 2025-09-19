@@ -27,6 +27,8 @@ type iPushRequest interface {
 	GetAndroidExtParameters() *string
 	SetAndroidHonorTargetUserType(v int32) *PushRequest
 	GetAndroidHonorTargetUserType() *int32
+	SetAndroidHuaweiLiveNotificationPayload(v string) *PushRequest
+	GetAndroidHuaweiLiveNotificationPayload() *string
 	SetAndroidHuaweiReceiptId(v string) *PushRequest
 	GetAndroidHuaweiReceiptId() *string
 	SetAndroidHuaweiTargetUserType(v int32) *PushRequest
@@ -135,6 +137,8 @@ type iPushRequest interface {
 	GetHarmonyImageUrl() *string
 	SetHarmonyInboxContent(v string) *PushRequest
 	GetHarmonyInboxContent() *string
+	SetHarmonyLiveViewPayload(v string) *PushRequest
+	GetHarmonyLiveViewPayload() *string
 	SetHarmonyNotificationSlotType(v string) *PushRequest
 	GetHarmonyNotificationSlotType() *string
 	SetHarmonyNotifyId(v int32) *PushRequest
@@ -248,8 +252,9 @@ type PushRequest struct {
 	// example:
 	//
 	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
-	AndroidExtParameters       *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidHonorTargetUserType *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidExtParameters                 *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType           *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	AndroidHuaweiLiveNotificationPayload *string `json:"AndroidHuaweiLiveNotificationPayload,omitempty" xml:"AndroidHuaweiLiveNotificationPayload,omitempty"`
 	// example:
 	//
 	// RCP4C123456
@@ -411,6 +416,7 @@ type PushRequest struct {
 	HarmonyExtensionPush        *bool   `json:"HarmonyExtensionPush,omitempty" xml:"HarmonyExtensionPush,omitempty"`
 	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
 	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
+	HarmonyLiveViewPayload      *string `json:"HarmonyLiveViewPayload,omitempty" xml:"HarmonyLiveViewPayload,omitempty"`
 	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
 	HarmonyNotifyId             *int32  `json:"HarmonyNotifyId,omitempty" xml:"HarmonyNotifyId,omitempty"`
 	HarmonyReceiptId            *string `json:"HarmonyReceiptId,omitempty" xml:"HarmonyReceiptId,omitempty"`
@@ -591,6 +597,10 @@ func (s *PushRequest) GetAndroidExtParameters() *string {
 
 func (s *PushRequest) GetAndroidHonorTargetUserType() *int32 {
 	return s.AndroidHonorTargetUserType
+}
+
+func (s *PushRequest) GetAndroidHuaweiLiveNotificationPayload() *string {
+	return s.AndroidHuaweiLiveNotificationPayload
 }
 
 func (s *PushRequest) GetAndroidHuaweiReceiptId() *string {
@@ -807,6 +817,10 @@ func (s *PushRequest) GetHarmonyImageUrl() *string {
 
 func (s *PushRequest) GetHarmonyInboxContent() *string {
 	return s.HarmonyInboxContent
+}
+
+func (s *PushRequest) GetHarmonyLiveViewPayload() *string {
+	return s.HarmonyLiveViewPayload
 }
 
 func (s *PushRequest) GetHarmonyNotificationSlotType() *string {
@@ -1039,6 +1053,11 @@ func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
 
 func (s *PushRequest) SetAndroidHonorTargetUserType(v int32) *PushRequest {
 	s.AndroidHonorTargetUserType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidHuaweiLiveNotificationPayload(v string) *PushRequest {
+	s.AndroidHuaweiLiveNotificationPayload = &v
 	return s
 }
 
@@ -1309,6 +1328,11 @@ func (s *PushRequest) SetHarmonyImageUrl(v string) *PushRequest {
 
 func (s *PushRequest) SetHarmonyInboxContent(v string) *PushRequest {
 	s.HarmonyInboxContent = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyLiveViewPayload(v string) *PushRequest {
+	s.HarmonyLiveViewPayload = &v
 	return s
 }
 

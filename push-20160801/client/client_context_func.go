@@ -594,6 +594,10 @@ func (client *Client) PushWithContext(ctx context.Context, tmpReq *PushRequest, 
 		query["AndroidHonorTargetUserType"] = request.AndroidHonorTargetUserType
 	}
 
+	if !dara.IsNil(request.AndroidHuaweiLiveNotificationPayload) {
+		query["AndroidHuaweiLiveNotificationPayload"] = request.AndroidHuaweiLiveNotificationPayload
+	}
+
 	if !dara.IsNil(request.AndroidHuaweiReceiptId) {
 		query["AndroidHuaweiReceiptId"] = request.AndroidHuaweiReceiptId
 	}
@@ -808,6 +812,10 @@ func (client *Client) PushWithContext(ctx context.Context, tmpReq *PushRequest, 
 
 	if !dara.IsNil(request.HarmonyInboxContent) {
 		query["HarmonyInboxContent"] = request.HarmonyInboxContent
+	}
+
+	if !dara.IsNil(request.HarmonyLiveViewPayload) {
+		query["HarmonyLiveViewPayload"] = request.HarmonyLiveViewPayload
 	}
 
 	if !dara.IsNil(request.HarmonyNotificationSlotType) {
