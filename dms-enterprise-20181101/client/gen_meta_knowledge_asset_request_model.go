@@ -15,6 +15,10 @@ type iGenMetaKnowledgeAssetRequest interface {
 
 type GenMetaKnowledgeAssetRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1860****
 	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 }
 

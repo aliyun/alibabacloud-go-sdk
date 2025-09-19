@@ -166,6 +166,7 @@ type ListDifyInstancesResponseBodyRootData struct {
 	EnterpriseInternetUrl *string `json:"EnterpriseInternetUrl,omitempty" xml:"EnterpriseInternetUrl,omitempty"`
 	EnterpriseIntranetUrl *string `json:"EnterpriseIntranetUrl,omitempty" xml:"EnterpriseIntranetUrl,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InternetUrl           *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
 	IntranetUrl           *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
 	MajorVersion          *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
@@ -206,6 +207,10 @@ func (s *ListDifyInstancesResponseBodyRootData) GetEnterpriseIntranetUrl() *stri
 
 func (s *ListDifyInstancesResponseBodyRootData) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) GetInstanceName() *string {
+	return s.InstanceName
 }
 
 func (s *ListDifyInstancesResponseBodyRootData) GetInternetUrl() *string {
@@ -267,6 +272,11 @@ func (s *ListDifyInstancesResponseBodyRootData) SetEnterpriseIntranetUrl(v strin
 
 func (s *ListDifyInstancesResponseBodyRootData) SetInstanceId(v string) *ListDifyInstancesResponseBodyRootData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) SetInstanceName(v string) *ListDifyInstancesResponseBodyRootData {
+	s.InstanceName = &v
 	return s
 }
 

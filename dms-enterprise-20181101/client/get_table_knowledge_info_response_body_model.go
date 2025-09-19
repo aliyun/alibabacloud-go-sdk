@@ -22,11 +22,26 @@ type iGetTableKnowledgeInfoResponseBody interface {
 }
 
 type GetTableKnowledgeInfoResponseBody struct {
-	ErrorCode    *string             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table        *TableKnowledgeInfo `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// bill_orders
+	Table *TableKnowledgeInfo `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s GetTableKnowledgeInfoResponseBody) String() string {

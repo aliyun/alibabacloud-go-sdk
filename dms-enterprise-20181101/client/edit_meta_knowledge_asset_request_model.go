@@ -23,12 +23,30 @@ type iEditMetaKnowledgeAssetRequest interface {
 
 type EditMetaKnowledgeAssetRequest struct {
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // test
   AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+  // example:
+  // 
+  // test_column
   ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // 1930****
   DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // table_name
   TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+  // example:
+  // 
+  // dbo
   TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 

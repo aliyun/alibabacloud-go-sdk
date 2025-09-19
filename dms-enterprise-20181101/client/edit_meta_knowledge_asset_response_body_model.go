@@ -20,9 +20,21 @@ type iEditMetaKnowledgeAssetResponseBody interface {
 }
 
 type EditMetaKnowledgeAssetResponseBody struct {
+  // example:
+  // 
+  // UnknownError
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+  // example:
+  // 
+  // UnknownError
   ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+  // example:
+  // 
+  // C51420E3-144A-4A94-B473-8662FCF4AD10
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // example:
+  // 
+  // true
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

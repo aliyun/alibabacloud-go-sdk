@@ -111,8 +111,9 @@ func (s *DescribeDifyEditionsResponseBody) Validate() error {
 }
 
 type DescribeDifyEditionsResponseBodyData struct {
-	Community  []*string `json:"Community,omitempty" xml:"Community,omitempty" type:"Repeated"`
-	Enterprise []*string `json:"Enterprise,omitempty" xml:"Enterprise,omitempty" type:"Repeated"`
+	Community     []*string `json:"Community,omitempty" xml:"Community,omitempty" type:"Repeated"`
+	Enterprise    []*string `json:"Enterprise,omitempty" xml:"Enterprise,omitempty" type:"Repeated"`
+	OpenCommunity []*string `json:"OpenCommunity,omitempty" xml:"OpenCommunity,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDifyEditionsResponseBodyData) String() string {
@@ -131,6 +132,10 @@ func (s *DescribeDifyEditionsResponseBodyData) GetEnterprise() []*string {
 	return s.Enterprise
 }
 
+func (s *DescribeDifyEditionsResponseBodyData) GetOpenCommunity() []*string {
+	return s.OpenCommunity
+}
+
 func (s *DescribeDifyEditionsResponseBodyData) SetCommunity(v []*string) *DescribeDifyEditionsResponseBodyData {
 	s.Community = v
 	return s
@@ -138,6 +143,11 @@ func (s *DescribeDifyEditionsResponseBodyData) SetCommunity(v []*string) *Descri
 
 func (s *DescribeDifyEditionsResponseBodyData) SetEnterprise(v []*string) *DescribeDifyEditionsResponseBodyData {
 	s.Enterprise = v
+	return s
+}
+
+func (s *DescribeDifyEditionsResponseBodyData) SetOpenCommunity(v []*string) *DescribeDifyEditionsResponseBodyData {
+	s.OpenCommunity = v
 	return s
 }
 

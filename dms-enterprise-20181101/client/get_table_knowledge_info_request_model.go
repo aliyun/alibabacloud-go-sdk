@@ -19,9 +19,20 @@ type iGetTableKnowledgeInfoRequest interface {
 
 type GetTableKnowledgeInfoRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 325
 	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// This parameter is required.
-	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	//
+	// example:
+	//
+	// table_name
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// dbo
 	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 

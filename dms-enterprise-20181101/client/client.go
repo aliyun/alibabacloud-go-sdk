@@ -812,6 +812,82 @@ func (client *Client) AnalyzeSQLLineage(request *AnalyzeSQLLineageRequest) (_res
 
 // Summary:
 //
+// 根据用户提供的数据库ID，回答对应引擎的语法问题
+//
+// Description:
+//
+// 根据用户提供的数据库ID，回答对应引擎的语法问题
+//
+// @param request - AnswerSqlSyntaxByMetaAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnswerSqlSyntaxByMetaAgentResponse
+func (client *Client) AnswerSqlSyntaxByMetaAgentWithOptions(request *AnswerSqlSyntaxByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *AnswerSqlSyntaxByMetaAgentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnswerSqlSyntaxByMetaAgent"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AnswerSqlSyntaxByMetaAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据用户提供的数据库ID，回答对应引擎的语法问题
+//
+// Description:
+//
+// 根据用户提供的数据库ID，回答对应引擎的语法问题
+//
+// @param request - AnswerSqlSyntaxByMetaAgentRequest
+//
+// @return AnswerSqlSyntaxByMetaAgentResponse
+func (client *Client) AnswerSqlSyntaxByMetaAgent(request *AnswerSqlSyntaxByMetaAgentRequest) (_result *AnswerSqlSyntaxByMetaAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AnswerSqlSyntaxByMetaAgentResponse{}
+	_body, _err := client.AnswerSqlSyntaxByMetaAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Reviews a ticket.
 //
 // @param request - ApproveOrderRequest
@@ -7499,6 +7575,90 @@ func (client *Client) ExecuteStructSync(request *ExecuteStructSyncRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ExecuteStructSyncResponse{}
 	_body, _err := client.ExecuteStructSyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+//
+// Description:
+//
+// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+//
+// @param request - FixSqlByMetaAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FixSqlByMetaAgentResponse
+func (client *Client) FixSqlByMetaAgentWithOptions(request *FixSqlByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *FixSqlByMetaAgentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Error) {
+		query["Error"] = request.Error
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Sql) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FixSqlByMetaAgent"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FixSqlByMetaAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+//
+// Description:
+//
+// 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+//
+// @param request - FixSqlByMetaAgentRequest
+//
+// @return FixSqlByMetaAgentResponse
+func (client *Client) FixSqlByMetaAgent(request *FixSqlByMetaAgentRequest) (_result *FixSqlByMetaAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FixSqlByMetaAgentResponse{}
+	_body, _err := client.FixSqlByMetaAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18789,6 +18949,86 @@ func (client *Client) OfflineTaskFlow(request *OfflineTaskFlowRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &OfflineTaskFlowResponse{}
 	_body, _err := client.OfflineTaskFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+//
+// Description:
+//
+// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+//
+// @param request - OptimizeSqlByMetaAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OptimizeSqlByMetaAgentResponse
+func (client *Client) OptimizeSqlByMetaAgentWithOptions(request *OptimizeSqlByMetaAgentRequest, runtime *dara.RuntimeOptions) (_result *OptimizeSqlByMetaAgentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Sql) {
+		query["Sql"] = request.Sql
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OptimizeSqlByMetaAgent"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OptimizeSqlByMetaAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+//
+// Description:
+//
+// 根据用户提供的SQL数据库ID，分析SQL性能并优化
+//
+// @param request - OptimizeSqlByMetaAgentRequest
+//
+// @return OptimizeSqlByMetaAgentResponse
+func (client *Client) OptimizeSqlByMetaAgent(request *OptimizeSqlByMetaAgentRequest) (_result *OptimizeSqlByMetaAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OptimizeSqlByMetaAgentResponse{}
+	_body, _err := client.OptimizeSqlByMetaAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

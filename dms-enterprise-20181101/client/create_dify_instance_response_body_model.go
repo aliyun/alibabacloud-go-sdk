@@ -111,7 +111,9 @@ func (s *CreateDifyInstanceResponseBody) Validate() error {
 }
 
 type CreateDifyInstanceResponseBodyData struct {
+	AppUuid         *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	ResourceQuota   *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -130,8 +132,16 @@ func (s CreateDifyInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDifyInstanceResponseBodyData) GetAppUuid() *string {
+	return s.AppUuid
+}
+
 func (s *CreateDifyInstanceResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *CreateDifyInstanceResponseBodyData) GetInstanceName() *string {
+	return s.InstanceName
 }
 
 func (s *CreateDifyInstanceResponseBodyData) GetReplicas() *int32 {
@@ -166,8 +176,18 @@ func (s *CreateDifyInstanceResponseBodyData) GetZoneId() *string {
 	return s.ZoneId
 }
 
+func (s *CreateDifyInstanceResponseBodyData) SetAppUuid(v string) *CreateDifyInstanceResponseBodyData {
+	s.AppUuid = &v
+	return s
+}
+
 func (s *CreateDifyInstanceResponseBodyData) SetInstanceId(v string) *CreateDifyInstanceResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetInstanceName(v string) *CreateDifyInstanceResponseBodyData {
+	s.InstanceName = &v
 	return s
 }
 
