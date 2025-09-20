@@ -441,6 +441,88 @@ func (client *Client) ApplyFileUploadLease(CategoryId *string, WorkspaceId *stri
 
 // Summary:
 //
+// 修改类目解析配置
+//
+// @param tmpReq - ChangeParseSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeParseSettingResponse
+func (client *Client) ChangeParseSettingWithOptions(WorkspaceId *string, tmpReq *ChangeParseSettingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeParseSettingResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ChangeParseSettingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ParserConfig) {
+		request.ParserConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ParserConfig, dara.String("ParserConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !dara.IsNil(request.FileType) {
+		body["FileType"] = request.FileType
+	}
+
+	if !dara.IsNil(request.Parser) {
+		body["Parser"] = request.Parser
+	}
+
+	if !dara.IsNil(request.ParserConfigShrink) {
+		body["ParserConfig"] = request.ParserConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeParseSetting"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/parser/settings"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeParseSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改类目解析配置
+//
+// @param request - ChangeParseSettingRequest
+//
+// @return ChangeParseSettingResponse
+func (client *Client) ChangeParseSetting(WorkspaceId *string, request *ChangeParseSettingRequest) (_result *ChangeParseSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeParseSettingResponse{}
+	_body, _err := client.ChangeParseSettingWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建并发布智能体应用
 //
 // @param tmpReq - CreateAndPulishAgentRequest
@@ -1687,6 +1769,70 @@ func (client *Client) GetAlipayUrl(request *GetAlipayUrlRequest) (_result *GetAl
 
 // Summary:
 //
+// 获取文件支持的解析器类型
+//
+// @param request - GetAvailableParserTypesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAvailableParserTypesResponse
+func (client *Client) GetAvailableParserTypesWithOptions(WorkspaceId *string, request *GetAvailableParserTypesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAvailableParserTypesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAvailableParserTypes"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/parser/parsertype"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAvailableParserTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件支持的解析器类型
+//
+// @param request - GetAvailableParserTypesRequest
+//
+// @return GetAvailableParserTypesResponse
+func (client *Client) GetAvailableParserTypes(WorkspaceId *string, request *GetAvailableParserTypesRequest) (_result *GetAvailableParserTypesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAvailableParserTypesResponse{}
+	_body, _err := client.GetAvailableParserTypesWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the current status of a specified knowledge base creation or add document job.
 //
 // Description:
@@ -1879,6 +2025,70 @@ func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memor
 
 // Summary:
 //
+// 获取类目解析配置
+//
+// @param request - GetParseSettingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParseSettingsResponse
+func (client *Client) GetParseSettingsWithOptions(WorkspaceId *string, request *GetParseSettingsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParseSettingsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryId) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetParseSettings"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/parser/settings"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetParseSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取类目解析配置
+//
+// @param request - GetParseSettingsRequest
+//
+// @return GetParseSettingsResponse
+func (client *Client) GetParseSettings(WorkspaceId *string, request *GetParseSettingsRequest) (_result *GetParseSettingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetParseSettingsResponse{}
+	_body, _err := client.GetParseSettingsWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains a prompt template based on the template ID.
 //
 // @param headers - map
@@ -1970,6 +2180,90 @@ func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_
 	headers := make(map[string]*string)
 	_result = &GetPublishedAgentResponse{}
 	_body, _err := client.GetPublishedAgentWithOptions(workspaceId, appCode, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 高代码部署服务
+//
+// @param request - HighCodeDeployRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HighCodeDeployResponse
+func (client *Client) HighCodeDeployWithOptions(workspaceId *string, request *HighCodeDeployRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *HighCodeDeployResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentDesc) {
+		body["agentDesc"] = request.AgentDesc
+	}
+
+	if !dara.IsNil(request.AgentId) {
+		body["agentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.AgentName) {
+		body["agentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.SourceCodeName) {
+		body["sourceCodeName"] = request.SourceCodeName
+	}
+
+	if !dara.IsNil(request.SourceCodeOssUrl) {
+		body["sourceCodeOssUrl"] = request.SourceCodeOssUrl
+	}
+
+	if !dara.IsNil(request.TelemetryEnabled) {
+		body["telemetryEnabled"] = request.TelemetryEnabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HighCodeDeploy"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/highCode/publish"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HighCodeDeployResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 高代码部署服务
+//
+// @param request - HighCodeDeployRequest
+//
+// @return HighCodeDeployResponse
+func (client *Client) HighCodeDeploy(workspaceId *string, request *HighCodeDeployRequest) (_result *HighCodeDeployResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &HighCodeDeployResponse{}
+	_body, _err := client.HighCodeDeployWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
