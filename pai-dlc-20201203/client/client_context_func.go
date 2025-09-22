@@ -337,6 +337,55 @@ func (client *Client) DeleteTensorboardWithContext(ctx context.Context, Tensorbo
 
 // Summary:
 //
+// 获取 Dashboard 链接
+//
+// @param request - GetDashboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDashboardResponse
+func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string, request *GetDashboardRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDashboardResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsShared) {
+		query["isShared"] = request.IsShared
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["token"] = request.Token
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDashboard"),
+		Version:     dara.String("2020-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/jobs/" + dara.PercentEncode(dara.StringValue(jobId)) + "/dashboard"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDashboardResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the configuration and runtime information of a job.
 //
 // @param request - GetJobRequest
