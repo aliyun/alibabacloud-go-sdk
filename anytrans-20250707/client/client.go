@@ -807,6 +807,176 @@ func (client *Client) SubmitLongTextTranslateTask(request *SubmitLongTextTransla
 
 // Summary:
 //
+// 通义多模态翻译术语编辑
+//
+// @param tmpReq - TermEditRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TermEditResponse
+func (client *Client) TermEditWithOptions(tmpReq *TermEditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermEditResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &TermEditShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("ext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.ExtShrink) {
+		body["ext"] = request.ExtShrink
+	}
+
+	if !dara.IsNil(request.Scene) {
+		body["scene"] = request.Scene
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		body["sourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		body["targetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TermEdit"),
+		Version:     dara.String("2025-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/anytrans/translate/intervene/edit"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TermEditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通义多模态翻译术语编辑
+//
+// @param request - TermEditRequest
+//
+// @return TermEditResponse
+func (client *Client) TermEdit(request *TermEditRequest) (_result *TermEditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TermEditResponse{}
+	_body, _err := client.TermEditWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通义多模态翻译术语查询
+//
+// @param request - TermQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TermQueryResponse
+func (client *Client) TermQueryWithOptions(request *TermQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermQueryResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Scene) {
+		body["scene"] = request.Scene
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		body["sourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		body["targetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.Text) {
+		body["text"] = request.Text
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TermQuery"),
+		Version:     dara.String("2025-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/anytrans/translate/intervene/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TermQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通义多模态翻译术语查询
+//
+// @param request - TermQueryRequest
+//
+// @return TermQueryResponse
+func (client *Client) TermQuery(request *TermQueryRequest) (_result *TermQueryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TermQueryResponse{}
+	_body, _err := client.TermQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通义多模态翻译文本翻译
 //
 // @param tmpReq - TextTranslateRequest
