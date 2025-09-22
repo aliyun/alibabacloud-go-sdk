@@ -9208,6 +9208,10 @@ func (client *Client) DescribeTemplateResourcesWithContext(ctx context.Context, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetApi) {
+		query["AssetApi"] = request.AssetApi
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -12180,6 +12184,10 @@ func (client *Client) ModifyTemplateResourcesWithContext(ctx context.Context, re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindAssets) {
+		query["BindAssets"] = request.BindAssets
+	}
+
 	if !dara.IsNil(request.BindResourceGroups) {
 		query["BindResourceGroups"] = request.BindResourceGroups
 	}
@@ -12202,6 +12210,10 @@ func (client *Client) ModifyTemplateResourcesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.TemplateId) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.UnbindAssets) {
+		query["UnbindAssets"] = request.UnbindAssets
 	}
 
 	if !dara.IsNil(request.UnbindResourceGroups) {

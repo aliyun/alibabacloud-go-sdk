@@ -9,6 +9,8 @@ type iDescribeTemplateResourcesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAssetApi(v string) *DescribeTemplateResourcesRequest
+	GetAssetApi() *string
 	SetInstanceId(v string) *DescribeTemplateResourcesRequest
 	GetInstanceId() *string
 	SetMaxResults(v int32) *DescribeTemplateResourcesRequest
@@ -28,6 +30,10 @@ type iDescribeTemplateResourcesRequest interface {
 }
 
 type DescribeTemplateResourcesRequest struct {
+	// example:
+	//
+	// abc.com
+	AssetApi *string `json:"AssetApi,omitempty" xml:"AssetApi,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
@@ -87,6 +93,10 @@ func (s DescribeTemplateResourcesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTemplateResourcesRequest) GetAssetApi() *string {
+	return s.AssetApi
+}
+
 func (s *DescribeTemplateResourcesRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -117,6 +127,11 @@ func (s *DescribeTemplateResourcesRequest) GetResourceType() *string {
 
 func (s *DescribeTemplateResourcesRequest) GetTemplateId() *int64 {
 	return s.TemplateId
+}
+
+func (s *DescribeTemplateResourcesRequest) SetAssetApi(v string) *DescribeTemplateResourcesRequest {
+	s.AssetApi = &v
+	return s
 }
 
 func (s *DescribeTemplateResourcesRequest) SetInstanceId(v string) *DescribeTemplateResourcesRequest {

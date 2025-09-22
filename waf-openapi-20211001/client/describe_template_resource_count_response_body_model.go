@@ -57,6 +57,10 @@ func (s *DescribeTemplateResourceCountResponseBody) Validate() error {
 }
 
 type DescribeTemplateResourceCountResponseBodyResourceCount struct {
+	// example:
+	//
+	// 10
+	AssetCount *int32 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
 	// The number of protected object groups.
 	//
 	// example:
@@ -85,6 +89,10 @@ func (s DescribeTemplateResourceCountResponseBodyResourceCount) GoString() strin
 	return s.String()
 }
 
+func (s *DescribeTemplateResourceCountResponseBodyResourceCount) GetAssetCount() *int32 {
+	return s.AssetCount
+}
+
 func (s *DescribeTemplateResourceCountResponseBodyResourceCount) GetGroupCount() *int32 {
 	return s.GroupCount
 }
@@ -95,6 +103,11 @@ func (s *DescribeTemplateResourceCountResponseBodyResourceCount) GetSingleCount(
 
 func (s *DescribeTemplateResourceCountResponseBodyResourceCount) GetTemplateId() *int64 {
 	return s.TemplateId
+}
+
+func (s *DescribeTemplateResourceCountResponseBodyResourceCount) SetAssetCount(v int32) *DescribeTemplateResourceCountResponseBodyResourceCount {
+	s.AssetCount = &v
+	return s
 }
 
 func (s *DescribeTemplateResourceCountResponseBodyResourceCount) SetGroupCount(v int32) *DescribeTemplateResourceCountResponseBodyResourceCount {

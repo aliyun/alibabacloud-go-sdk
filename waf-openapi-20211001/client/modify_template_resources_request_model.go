@@ -9,6 +9,8 @@ type iModifyTemplateResourcesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBindAssets(v []*string) *ModifyTemplateResourcesRequest
+	GetBindAssets() []*string
 	SetBindResourceGroups(v []*string) *ModifyTemplateResourcesRequest
 	GetBindResourceGroups() []*string
 	SetBindResources(v []*string) *ModifyTemplateResourcesRequest
@@ -21,6 +23,8 @@ type iModifyTemplateResourcesRequest interface {
 	GetResourceManagerResourceGroupId() *string
 	SetTemplateId(v int64) *ModifyTemplateResourcesRequest
 	GetTemplateId() *int64
+	SetUnbindAssets(v []*string) *ModifyTemplateResourcesRequest
+	GetUnbindAssets() []*string
 	SetUnbindResourceGroups(v []*string) *ModifyTemplateResourcesRequest
 	GetUnbindResourceGroups() []*string
 	SetUnbindResources(v []*string) *ModifyTemplateResourcesRequest
@@ -28,6 +32,7 @@ type iModifyTemplateResourcesRequest interface {
 }
 
 type ModifyTemplateResourcesRequest struct {
+	BindAssets []*string `json:"BindAssets,omitempty" xml:"BindAssets,omitempty" type:"Repeated"`
 	// The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
 	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
 	// The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
@@ -65,7 +70,8 @@ type ModifyTemplateResourcesRequest struct {
 	// example:
 	//
 	// 2291
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId   *int64    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	UnbindAssets []*string `json:"UnbindAssets,omitempty" xml:"UnbindAssets,omitempty" type:"Repeated"`
 	// The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
 	// The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
@@ -78,6 +84,10 @@ func (s ModifyTemplateResourcesRequest) String() string {
 
 func (s ModifyTemplateResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyTemplateResourcesRequest) GetBindAssets() []*string {
+	return s.BindAssets
 }
 
 func (s *ModifyTemplateResourcesRequest) GetBindResourceGroups() []*string {
@@ -104,12 +114,21 @@ func (s *ModifyTemplateResourcesRequest) GetTemplateId() *int64 {
 	return s.TemplateId
 }
 
+func (s *ModifyTemplateResourcesRequest) GetUnbindAssets() []*string {
+	return s.UnbindAssets
+}
+
 func (s *ModifyTemplateResourcesRequest) GetUnbindResourceGroups() []*string {
 	return s.UnbindResourceGroups
 }
 
 func (s *ModifyTemplateResourcesRequest) GetUnbindResources() []*string {
 	return s.UnbindResources
+}
+
+func (s *ModifyTemplateResourcesRequest) SetBindAssets(v []*string) *ModifyTemplateResourcesRequest {
+	s.BindAssets = v
+	return s
 }
 
 func (s *ModifyTemplateResourcesRequest) SetBindResourceGroups(v []*string) *ModifyTemplateResourcesRequest {
@@ -139,6 +158,11 @@ func (s *ModifyTemplateResourcesRequest) SetResourceManagerResourceGroupId(v str
 
 func (s *ModifyTemplateResourcesRequest) SetTemplateId(v int64) *ModifyTemplateResourcesRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *ModifyTemplateResourcesRequest) SetUnbindAssets(v []*string) *ModifyTemplateResourcesRequest {
+	s.UnbindAssets = v
 	return s
 }
 
