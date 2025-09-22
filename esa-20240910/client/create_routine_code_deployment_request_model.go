@@ -26,9 +26,13 @@ type CreateRoutineCodeDeploymentRequest struct {
 	//
 	// example:
 	//
-	// production
+	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	//
@@ -88,8 +92,16 @@ func (s *CreateRoutineCodeDeploymentRequest) Validate() error {
 
 type CreateRoutineCodeDeploymentRequestCodeVersions struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1723599747213377175
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	Percentage *int64 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 }
 

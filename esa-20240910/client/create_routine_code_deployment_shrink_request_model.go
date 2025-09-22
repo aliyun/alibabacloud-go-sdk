@@ -26,9 +26,13 @@ type CreateRoutineCodeDeploymentShrinkRequest struct {
 	//
 	// example:
 	//
-	// production
+	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	//

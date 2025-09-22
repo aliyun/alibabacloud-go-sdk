@@ -15,6 +15,8 @@ type iPurchaseRatePlanRequest interface {
 	GetAutoPay() *bool
 	SetAutoRenew(v bool) *PurchaseRatePlanRequest
 	GetAutoRenew() *bool
+	SetChannel(v string) *PurchaseRatePlanRequest
+	GetChannel() *string
 	SetChargeType(v string) *PurchaseRatePlanRequest
 	GetChargeType() *string
 	SetCoverage(v string) *PurchaseRatePlanRequest
@@ -48,7 +50,8 @@ type PurchaseRatePlanRequest struct {
 	// example:
 	//
 	// true
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Channel   *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	// The billing method. Valid values:
 	//
 	// 	- PREPAY: subscription.
@@ -127,6 +130,10 @@ func (s *PurchaseRatePlanRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *PurchaseRatePlanRequest) GetChannel() *string {
+	return s.Channel
+}
+
 func (s *PurchaseRatePlanRequest) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -167,6 +174,11 @@ func (s *PurchaseRatePlanRequest) SetAutoPay(v bool) *PurchaseRatePlanRequest {
 
 func (s *PurchaseRatePlanRequest) SetAutoRenew(v bool) *PurchaseRatePlanRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *PurchaseRatePlanRequest) SetChannel(v string) *PurchaseRatePlanRequest {
+	s.Channel = &v
 	return s
 }
 

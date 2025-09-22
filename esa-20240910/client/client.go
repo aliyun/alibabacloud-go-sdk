@@ -13250,6 +13250,70 @@ func (client *Client) GetRoutine(request *GetRoutineRequest) (_result *GetRoutin
 
 // Summary:
 //
+// 查询Routine某版本代码
+//
+// @param request - GetRoutineCodeVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineCodeVersionResponse
+func (client *Client) GetRoutineCodeVersionWithOptions(request *GetRoutineCodeVersionRequest, runtime *dara.RuntimeOptions) (_result *GetRoutineCodeVersionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CodeVersion) {
+		body["CodeVersion"] = request.CodeVersion
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRoutineCodeVersion"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRoutineCodeVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine某版本代码
+//
+// @param request - GetRoutineCodeVersionRequest
+//
+// @return GetRoutineCodeVersionResponse
+func (client *Client) GetRoutineCodeVersion(request *GetRoutineCodeVersionRequest) (_result *GetRoutineCodeVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRoutineCodeVersionResponse{}
+	_body, _err := client.GetRoutineCodeVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询单条边缘函数路由配置
 //
 // @param request - GetRoutineRouteRequest
@@ -19320,6 +19384,10 @@ func (client *Client) PurchaseRatePlanWithOptions(request *PurchaseRatePlanReque
 		query["AutoRenew"] = request.AutoRenew
 	}
 
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -23611,6 +23679,70 @@ func (client *Client) UpdateRewriteUrlRule(request *UpdateRewriteUrlRuleRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRewriteUrlRuleResponse{}
 	_body, _err := client.UpdateRewriteUrlRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Routine描述信息
+//
+// @param request - UpdateRoutineConfigDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoutineConfigDescriptionResponse
+func (client *Client) UpdateRoutineConfigDescriptionWithOptions(request *UpdateRoutineConfigDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateRoutineConfigDescriptionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRoutineConfigDescription"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRoutineConfigDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Routine描述信息
+//
+// @param request - UpdateRoutineConfigDescriptionRequest
+//
+// @return UpdateRoutineConfigDescriptionResponse
+func (client *Client) UpdateRoutineConfigDescription(request *UpdateRoutineConfigDescriptionRequest) (_result *UpdateRoutineConfigDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateRoutineConfigDescriptionResponse{}
+	_body, _err := client.UpdateRoutineConfigDescriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

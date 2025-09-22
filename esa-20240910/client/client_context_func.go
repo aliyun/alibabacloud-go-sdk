@@ -9325,6 +9325,52 @@ func (client *Client) GetRoutineWithContext(ctx context.Context, request *GetRou
 
 // Summary:
 //
+// 查询Routine某版本代码
+//
+// @param request - GetRoutineCodeVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineCodeVersionResponse
+func (client *Client) GetRoutineCodeVersionWithContext(ctx context.Context, request *GetRoutineCodeVersionRequest, runtime *dara.RuntimeOptions) (_result *GetRoutineCodeVersionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CodeVersion) {
+		body["CodeVersion"] = request.CodeVersion
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRoutineCodeVersion"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRoutineCodeVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询单条边缘函数路由配置
 //
 // @param request - GetRoutineRouteRequest
@@ -13444,6 +13490,10 @@ func (client *Client) PurchaseRatePlanWithContext(ctx context.Context, request *
 		query["AutoRenew"] = request.AutoRenew
 	}
 
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -16663,6 +16713,52 @@ func (client *Client) UpdateRewriteUrlRuleWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRewriteUrlRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Routine描述信息
+//
+// @param request - UpdateRoutineConfigDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoutineConfigDescriptionResponse
+func (client *Client) UpdateRoutineConfigDescriptionWithContext(ctx context.Context, request *UpdateRoutineConfigDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateRoutineConfigDescriptionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRoutineConfigDescription"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRoutineConfigDescriptionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
