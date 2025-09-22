@@ -88,6 +88,55 @@ func (client *Client) BatchTranslateWithContext(ctx context.Context, tmpReq *Bat
 
 // Summary:
 //
+// 通义多模态翻译获文档翻译任务
+//
+// @param request - GetDocTranslateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocTranslateTaskResponse
+func (client *Client) GetDocTranslateTaskWithContext(ctx context.Context, request *GetDocTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocTranslateTaskResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["taskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDocTranslateTask"),
+		Version:     dara.String("2025-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/anytrans/translate/doc/get"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDocTranslateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 通义多模态翻译获取html翻译结果
 //
 // @param request - GetHtmlTranslateTaskRequest
@@ -225,6 +274,81 @@ func (client *Client) GetLongTextTranslateTaskWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLongTextTranslateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通义多模态翻译提交文档翻译任务
+//
+// @param tmpReq - SubmitDocTranslateTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocTranslateTaskResponse
+func (client *Client) SubmitDocTranslateTaskWithContext(ctx context.Context, tmpReq *SubmitDocTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitDocTranslateTaskResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitDocTranslateTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ext) {
+		request.ExtShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ext, dara.String("ext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExtShrink) {
+		body["ext"] = request.ExtShrink
+	}
+
+	if !dara.IsNil(request.Format) {
+		body["format"] = request.Format
+	}
+
+	if !dara.IsNil(request.Scene) {
+		body["scene"] = request.Scene
+	}
+
+	if !dara.IsNil(request.SourceLanguage) {
+		body["sourceLanguage"] = request.SourceLanguage
+	}
+
+	if !dara.IsNil(request.TargetLanguage) {
+		body["targetLanguage"] = request.TargetLanguage
+	}
+
+	if !dara.IsNil(request.Text) {
+		body["text"] = request.Text
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitDocTranslateTask"),
+		Version:     dara.String("2025-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/anytrans/translate/doc/submit"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitDocTranslateTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
