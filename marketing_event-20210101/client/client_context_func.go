@@ -2,65 +2,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("marketing_event"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // @param request - AddSumRecordFlowPopRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddSumRecordFlowPopResponse
-func (client *Client) AddSumRecordFlowPopWithOptions(request *AddSumRecordFlowPopRequest, runtime *dara.RuntimeOptions) (_result *AddSumRecordFlowPopResponse, _err error) {
+func (client *Client) AddSumRecordFlowPopWithContext(ctx context.Context, request *AddSumRecordFlowPopRequest, runtime *dara.RuntimeOptions) (_result *AddSumRecordFlowPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -113,25 +65,11 @@ func (client *Client) AddSumRecordFlowPopWithOptions(request *AddSumRecordFlowPo
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddSumRecordFlowPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - AddSumRecordFlowPopRequest
-//
-// @return AddSumRecordFlowPopResponse
-func (client *Client) AddSumRecordFlowPop(request *AddSumRecordFlowPopRequest) (_result *AddSumRecordFlowPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddSumRecordFlowPopResponse{}
-	_body, _err := client.AddSumRecordFlowPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -140,7 +78,7 @@ func (client *Client) AddSumRecordFlowPop(request *AddSumRecordFlowPopRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindExhibitorRfidPopResponse
-func (client *Client) BindExhibitorRfidPopWithOptions(request *BindExhibitorRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindExhibitorRfidPopResponse, _err error) {
+func (client *Client) BindExhibitorRfidPopWithContext(ctx context.Context, request *BindExhibitorRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindExhibitorRfidPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -193,25 +131,11 @@ func (client *Client) BindExhibitorRfidPopWithOptions(request *BindExhibitorRfid
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindExhibitorRfidPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - BindExhibitorRfidPopRequest
-//
-// @return BindExhibitorRfidPopResponse
-func (client *Client) BindExhibitorRfidPop(request *BindExhibitorRfidPopRequest) (_result *BindExhibitorRfidPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindExhibitorRfidPopResponse{}
-	_body, _err := client.BindExhibitorRfidPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -220,7 +144,7 @@ func (client *Client) BindExhibitorRfidPop(request *BindExhibitorRfidPopRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BindGuestRfidPopResponse
-func (client *Client) BindGuestRfidPopWithOptions(request *BindGuestRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindGuestRfidPopResponse, _err error) {
+func (client *Client) BindGuestRfidPopWithContext(ctx context.Context, request *BindGuestRfidPopRequest, runtime *dara.RuntimeOptions) (_result *BindGuestRfidPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -273,25 +197,11 @@ func (client *Client) BindGuestRfidPopWithOptions(request *BindGuestRfidPopReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &BindGuestRfidPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - BindGuestRfidPopRequest
-//
-// @return BindGuestRfidPopResponse
-func (client *Client) BindGuestRfidPop(request *BindGuestRfidPopRequest) (_result *BindGuestRfidPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &BindGuestRfidPopResponse{}
-	_body, _err := client.BindGuestRfidPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -300,7 +210,7 @@ func (client *Client) BindGuestRfidPop(request *BindGuestRfidPopRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckNFCBindPopResponse
-func (client *Client) CheckNFCBindPopWithOptions(request *CheckNFCBindPopRequest, runtime *dara.RuntimeOptions) (_result *CheckNFCBindPopResponse, _err error) {
+func (client *Client) CheckNFCBindPopWithContext(ctx context.Context, request *CheckNFCBindPopRequest, runtime *dara.RuntimeOptions) (_result *CheckNFCBindPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -329,25 +239,11 @@ func (client *Client) CheckNFCBindPopWithOptions(request *CheckNFCBindPopRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckNFCBindPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CheckNFCBindPopRequest
-//
-// @return CheckNFCBindPopResponse
-func (client *Client) CheckNFCBindPop(request *CheckNFCBindPopRequest) (_result *CheckNFCBindPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckNFCBindPopResponse{}
-	_body, _err := client.CheckNFCBindPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -360,7 +256,7 @@ func (client *Client) CheckNFCBindPop(request *CheckNFCBindPopRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FindGuestCredentialsRecordResponse
-func (client *Client) FindGuestCredentialsRecordWithOptions(request *FindGuestCredentialsRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestCredentialsRecordResponse, _err error) {
+func (client *Client) FindGuestCredentialsRecordWithContext(ctx context.Context, request *FindGuestCredentialsRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestCredentialsRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -397,29 +293,11 @@ func (client *Client) FindGuestCredentialsRecordWithOptions(request *FindGuestCr
 		BodyType:    dara.String("json"),
 	}
 	_result = &FindGuestCredentialsRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 拉取领证人员记录
-//
-// @param request - FindGuestCredentialsRecordRequest
-//
-// @return FindGuestCredentialsRecordResponse
-func (client *Client) FindGuestCredentialsRecord(request *FindGuestCredentialsRecordRequest) (_result *FindGuestCredentialsRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FindGuestCredentialsRecordResponse{}
-	_body, _err := client.FindGuestCredentialsRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -432,7 +310,7 @@ func (client *Client) FindGuestCredentialsRecord(request *FindGuestCredentialsRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FindGuestTicketRecordResponse
-func (client *Client) FindGuestTicketRecordWithOptions(request *FindGuestTicketRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestTicketRecordResponse, _err error) {
+func (client *Client) FindGuestTicketRecordWithContext(ctx context.Context, request *FindGuestTicketRecordRequest, runtime *dara.RuntimeOptions) (_result *FindGuestTicketRecordResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -469,29 +347,11 @@ func (client *Client) FindGuestTicketRecordWithOptions(request *FindGuestTicketR
 		BodyType:    dara.String("json"),
 	}
 	_result = &FindGuestTicketRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 云栖大会获取取票人信息list接口
-//
-// @param request - FindGuestTicketRecordRequest
-//
-// @return FindGuestTicketRecordResponse
-func (client *Client) FindGuestTicketRecord(request *FindGuestTicketRecordRequest) (_result *FindGuestTicketRecordResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &FindGuestTicketRecordResponse{}
-	_body, _err := client.FindGuestTicketRecordWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -500,7 +360,7 @@ func (client *Client) FindGuestTicketRecord(request *FindGuestTicketRecordReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAllActivityInfoResponse
-func (client *Client) QueryAllActivityInfoWithOptions(request *QueryAllActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAllActivityInfoResponse, _err error) {
+func (client *Client) QueryAllActivityInfoWithContext(ctx context.Context, request *QueryAllActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAllActivityInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -521,25 +381,11 @@ func (client *Client) QueryAllActivityInfoWithOptions(request *QueryAllActivityI
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAllActivityInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryAllActivityInfoRequest
-//
-// @return QueryAllActivityInfoResponse
-func (client *Client) QueryAllActivityInfo(request *QueryAllActivityInfoRequest) (_result *QueryAllActivityInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAllActivityInfoResponse{}
-	_body, _err := client.QueryAllActivityInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -548,7 +394,7 @@ func (client *Client) QueryAllActivityInfo(request *QueryAllActivityInfoRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryOrderSessionListPopResponse
-func (client *Client) QueryOrderSessionListPopWithOptions(request *QueryOrderSessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QueryOrderSessionListPopResponse, _err error) {
+func (client *Client) QueryOrderSessionListPopWithContext(ctx context.Context, request *QueryOrderSessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QueryOrderSessionListPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -577,25 +423,11 @@ func (client *Client) QueryOrderSessionListPopWithOptions(request *QueryOrderSes
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryOrderSessionListPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryOrderSessionListPopRequest
-//
-// @return QueryOrderSessionListPopResponse
-func (client *Client) QueryOrderSessionListPop(request *QueryOrderSessionListPopRequest) (_result *QueryOrderSessionListPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryOrderSessionListPopResponse{}
-	_body, _err := client.QueryOrderSessionListPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -604,7 +436,7 @@ func (client *Client) QueryOrderSessionListPop(request *QueryOrderSessionListPop
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySessionByActivityIdPopResponse
-func (client *Client) QuerySessionByActivityIdPopWithOptions(request *QuerySessionByActivityIdPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionByActivityIdPopResponse, _err error) {
+func (client *Client) QuerySessionByActivityIdPopWithContext(ctx context.Context, request *QuerySessionByActivityIdPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionByActivityIdPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -629,25 +461,11 @@ func (client *Client) QuerySessionByActivityIdPopWithOptions(request *QuerySessi
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySessionByActivityIdPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QuerySessionByActivityIdPopRequest
-//
-// @return QuerySessionByActivityIdPopResponse
-func (client *Client) QuerySessionByActivityIdPop(request *QuerySessionByActivityIdPopRequest) (_result *QuerySessionByActivityIdPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySessionByActivityIdPopResponse{}
-	_body, _err := client.QuerySessionByActivityIdPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -656,7 +474,7 @@ func (client *Client) QuerySessionByActivityIdPop(request *QuerySessionByActivit
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySessionListPopResponse
-func (client *Client) QuerySessionListPopWithOptions(request *QuerySessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionListPopResponse, _err error) {
+func (client *Client) QuerySessionListPopWithContext(ctx context.Context, request *QuerySessionListPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionListPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -685,25 +503,11 @@ func (client *Client) QuerySessionListPopWithOptions(request *QuerySessionListPo
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySessionListPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QuerySessionListPopRequest
-//
-// @return QuerySessionListPopResponse
-func (client *Client) QuerySessionListPop(request *QuerySessionListPopRequest) (_result *QuerySessionListPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySessionListPopResponse{}
-	_body, _err := client.QuerySessionListPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -712,7 +516,7 @@ func (client *Client) QuerySessionListPop(request *QuerySessionListPopRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySignInRecordPopResponse
-func (client *Client) QuerySignInRecordPopWithOptions(request *QuerySignInRecordPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySignInRecordPopResponse, _err error) {
+func (client *Client) QuerySignInRecordPopWithContext(ctx context.Context, request *QuerySignInRecordPopRequest, runtime *dara.RuntimeOptions) (_result *QuerySignInRecordPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -753,25 +557,11 @@ func (client *Client) QuerySignInRecordPopWithOptions(request *QuerySignInRecord
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySignInRecordPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QuerySignInRecordPopRequest
-//
-// @return QuerySignInRecordPopResponse
-func (client *Client) QuerySignInRecordPop(request *QuerySignInRecordPopRequest) (_result *QuerySignInRecordPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySignInRecordPopResponse{}
-	_body, _err := client.QuerySignInRecordPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -780,7 +570,7 @@ func (client *Client) QuerySignInRecordPop(request *QuerySignInRecordPopRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySingleActivityInfoResponse
-func (client *Client) QuerySingleActivityInfoWithOptions(request *QuerySingleActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QuerySingleActivityInfoResponse, _err error) {
+func (client *Client) QuerySingleActivityInfoWithContext(ctx context.Context, request *QuerySingleActivityInfoRequest, runtime *dara.RuntimeOptions) (_result *QuerySingleActivityInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -801,25 +591,11 @@ func (client *Client) QuerySingleActivityInfoWithOptions(request *QuerySingleAct
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySingleActivityInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QuerySingleActivityInfoRequest
-//
-// @return QuerySingleActivityInfoResponse
-func (client *Client) QuerySingleActivityInfo(request *QuerySingleActivityInfoRequest) (_result *QuerySingleActivityInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySingleActivityInfoResponse{}
-	_body, _err := client.QuerySingleActivityInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -828,7 +604,7 @@ func (client *Client) QuerySingleActivityInfo(request *QuerySingleActivityInfoRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SyncSignInInfoResponse
-func (client *Client) SyncSignInInfoWithOptions(request *SyncSignInInfoRequest, runtime *dara.RuntimeOptions) (_result *SyncSignInInfoResponse, _err error) {
+func (client *Client) SyncSignInInfoWithContext(ctx context.Context, request *SyncSignInInfoRequest, runtime *dara.RuntimeOptions) (_result *SyncSignInInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -849,25 +625,11 @@ func (client *Client) SyncSignInInfoWithOptions(request *SyncSignInInfoRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SyncSignInInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SyncSignInInfoRequest
-//
-// @return SyncSignInInfoResponse
-func (client *Client) SyncSignInInfo(request *SyncSignInInfoRequest) (_result *SyncSignInInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SyncSignInInfoResponse{}
-	_body, _err := client.SyncSignInInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -876,7 +638,7 @@ func (client *Client) SyncSignInInfo(request *SyncSignInInfoRequest) (_result *S
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TicketOrCredentialsSignInPopResponse
-func (client *Client) TicketOrCredentialsSignInPopWithOptions(request *TicketOrCredentialsSignInPopRequest, runtime *dara.RuntimeOptions) (_result *TicketOrCredentialsSignInPopResponse, _err error) {
+func (client *Client) TicketOrCredentialsSignInPopWithContext(ctx context.Context, request *TicketOrCredentialsSignInPopRequest, runtime *dara.RuntimeOptions) (_result *TicketOrCredentialsSignInPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -929,25 +691,11 @@ func (client *Client) TicketOrCredentialsSignInPopWithOptions(request *TicketOrC
 		BodyType:    dara.String("json"),
 	}
 	_result = &TicketOrCredentialsSignInPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - TicketOrCredentialsSignInPopRequest
-//
-// @return TicketOrCredentialsSignInPopResponse
-func (client *Client) TicketOrCredentialsSignInPop(request *TicketOrCredentialsSignInPopRequest) (_result *TicketOrCredentialsSignInPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TicketOrCredentialsSignInPopResponse{}
-	_body, _err := client.TicketOrCredentialsSignInPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -956,7 +704,7 @@ func (client *Client) TicketOrCredentialsSignInPop(request *TicketOrCredentialsS
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateCredentialsStatusPopResponse
-func (client *Client) UpdateCredentialsStatusPopWithOptions(request *UpdateCredentialsStatusPopRequest, runtime *dara.RuntimeOptions) (_result *UpdateCredentialsStatusPopResponse, _err error) {
+func (client *Client) UpdateCredentialsStatusPopWithContext(ctx context.Context, request *UpdateCredentialsStatusPopRequest, runtime *dara.RuntimeOptions) (_result *UpdateCredentialsStatusPopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -997,25 +745,11 @@ func (client *Client) UpdateCredentialsStatusPopWithOptions(request *UpdateCrede
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCredentialsStatusPopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateCredentialsStatusPopRequest
-//
-// @return UpdateCredentialsStatusPopResponse
-func (client *Client) UpdateCredentialsStatusPop(request *UpdateCredentialsStatusPopRequest) (_result *UpdateCredentialsStatusPopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateCredentialsStatusPopResponse{}
-	_body, _err := client.UpdateCredentialsStatusPopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1024,7 +758,7 @@ func (client *Client) UpdateCredentialsStatusPop(request *UpdateCredentialsStatu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateTicketRecordByticketCodePopResponse
-func (client *Client) UpdateTicketRecordByticketCodePopWithOptions(request *UpdateTicketRecordByticketCodePopRequest, runtime *dara.RuntimeOptions) (_result *UpdateTicketRecordByticketCodePopResponse, _err error) {
+func (client *Client) UpdateTicketRecordByticketCodePopWithContext(ctx context.Context, request *UpdateTicketRecordByticketCodePopRequest, runtime *dara.RuntimeOptions) (_result *UpdateTicketRecordByticketCodePopResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1065,24 +799,10 @@ func (client *Client) UpdateTicketRecordByticketCodePopWithOptions(request *Upda
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTicketRecordByticketCodePopResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - UpdateTicketRecordByticketCodePopRequest
-//
-// @return UpdateTicketRecordByticketCodePopResponse
-func (client *Client) UpdateTicketRecordByticketCodePop(request *UpdateTicketRecordByticketCodePopRequest) (_result *UpdateTicketRecordByticketCodePopResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateTicketRecordByticketCodePopResponse{}
-	_body, _err := client.UpdateTicketRecordByticketCodePopWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
