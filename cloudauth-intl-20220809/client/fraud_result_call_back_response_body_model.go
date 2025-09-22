@@ -20,18 +20,30 @@ type iFraudResultCallBackResponseBody interface {
 }
 
 type FraudResultCallBackResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4EB35****87EBA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	//
+	// - **true**: Call succeeded.
+	//
+	// - **false**: Call failed.
+	//
 	// example:
 	//
 	// true

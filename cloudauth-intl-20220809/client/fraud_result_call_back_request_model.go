@@ -20,15 +20,34 @@ type iFraudResultCallBackRequest interface {
 }
 
 type FraudResultCallBackRequest struct {
+	// Unique identifier for real-person authentication, corresponding to Ant\\"s verifyId.
+	//
 	// example:
 	//
 	// shs2b27333914876c01de4cb22f5841f
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// Extended parameters, in JSON string format.
+	//
+	// example:
+	//
+	// {}
 	ExtParams *string `json:"ExtParams,omitempty" xml:"ExtParams,omitempty"`
+	// Whether the anti-fraud check passed
+	//
+	// - PASS (Passed)
+	//
+	// - REJECT (Rejected)
+	//
 	// example:
 	//
 	// PASS
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// Environment routing parameter
+	//
+	// - staging (Staging environment)
+	//
+	// - production (Production environment)
+	//
 	// example:
 	//
 	// production

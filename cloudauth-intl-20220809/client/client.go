@@ -690,7 +690,11 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 
 // Summary:
 //
-// 凭证识别
+// # Credential Recognition
+//
+// Description:
+//
+// Detects whether a voucher (such as water, electricity, gas, credit card, etc., e-bills) is forged using AI technology and extracts key information from the voucher.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -754,7 +758,11 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 
 // Summary:
 //
-// 凭证识别
+// # Credential Recognition
+//
+// Description:
+//
+// Detects whether a voucher (such as water, electricity, gas, credit card, etc., e-bills) is forged using AI technology and extracts key information from the voucher.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1687,7 +1695,7 @@ func (client *Client) FaceLiveness(request *FaceLivenessRequest) (_result *FaceL
 
 // Summary:
 //
-// 防伪回调接口
+// # Anti-Fraud Callback Interface
 //
 // @param request - FraudResultCallBackRequest
 //
@@ -1741,7 +1749,7 @@ func (client *Client) FraudResultCallBackWithOptions(request *FraudResultCallBac
 
 // Summary:
 //
-// 防伪回调接口
+// # Anti-Fraud Callback Interface
 //
 // @param request - FraudResultCallBackRequest
 //

@@ -475,7 +475,11 @@ func (client *Client) CheckVerifyLogWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// 凭证识别
+// # Credential Recognition
+//
+// Description:
+//
+// Detects whether a voucher (such as water, electricity, gas, credit card, etc., e-bills) is forged using AI technology and extracts key information from the voucher.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1177,7 +1181,7 @@ func (client *Client) FaceLivenessWithContext(ctx context.Context, request *Face
 
 // Summary:
 //
-// 防伪回调接口
+// # Anti-Fraud Callback Interface
 //
 // @param request - FraudResultCallBackRequest
 //

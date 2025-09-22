@@ -20,19 +20,26 @@ type iCredentialRecognitionIntlResponseBody interface {
 }
 
 type CredentialRecognitionIntlResponseBody struct {
+	// Return code.
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Response message for the returned information.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CredentialRecognitionIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result.
+	Result *CredentialRecognitionIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CredentialRecognitionIntlResponseBody) String() string {
@@ -84,6 +91,8 @@ func (s *CredentialRecognitionIntlResponseBody) Validate() error {
 }
 
 type CredentialRecognitionIntlResponseBodyResult struct {
+	// Identified key information in JSON format.
+	//
 	// example:
 	//
 	// {
@@ -94,10 +103,18 @@ type CredentialRecognitionIntlResponseBodyResult struct {
 	//
 	// }
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// Authentication result description
+	//
 	// example:
 	//
 	// 200
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// Extraction result. Values:
+	//
+	// - S: Success.
+	//
+	// - F: Failure.
+	//
 	// example:
 	//
 	// S
