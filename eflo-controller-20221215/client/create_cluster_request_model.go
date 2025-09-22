@@ -1423,6 +1423,7 @@ func (s *CreateClusterRequestNodeGroupsNodes) Validate() error {
 }
 
 type CreateClusterRequestNodeGroupsNodesDataDisk struct {
+	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// Type
 	//
 	// example:
@@ -1441,6 +1442,7 @@ type CreateClusterRequestNodeGroupsNodesDataDisk struct {
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	ProvisionedIops  *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// Disk size
 	//
 	// example:
@@ -1457,6 +1459,10 @@ func (s CreateClusterRequestNodeGroupsNodesDataDisk) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterRequestNodeGroupsNodesDataDisk) GetBurstingEnabled() *bool {
+	return s.BurstingEnabled
+}
+
 func (s *CreateClusterRequestNodeGroupsNodesDataDisk) GetCategory() *string {
 	return s.Category
 }
@@ -1469,8 +1475,17 @@ func (s *CreateClusterRequestNodeGroupsNodesDataDisk) GetPerformanceLevel() *str
 	return s.PerformanceLevel
 }
 
+func (s *CreateClusterRequestNodeGroupsNodesDataDisk) GetProvisionedIops() *int64 {
+	return s.ProvisionedIops
+}
+
 func (s *CreateClusterRequestNodeGroupsNodesDataDisk) GetSize() *int32 {
 	return s.Size
+}
+
+func (s *CreateClusterRequestNodeGroupsNodesDataDisk) SetBurstingEnabled(v bool) *CreateClusterRequestNodeGroupsNodesDataDisk {
+	s.BurstingEnabled = &v
+	return s
 }
 
 func (s *CreateClusterRequestNodeGroupsNodesDataDisk) SetCategory(v string) *CreateClusterRequestNodeGroupsNodesDataDisk {
@@ -1485,6 +1500,11 @@ func (s *CreateClusterRequestNodeGroupsNodesDataDisk) SetDeleteWithNode(v bool) 
 
 func (s *CreateClusterRequestNodeGroupsNodesDataDisk) SetPerformanceLevel(v string) *CreateClusterRequestNodeGroupsNodesDataDisk {
 	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroupsNodesDataDisk) SetProvisionedIops(v int64) *CreateClusterRequestNodeGroupsNodesDataDisk {
+	s.ProvisionedIops = &v
 	return s
 }
 
