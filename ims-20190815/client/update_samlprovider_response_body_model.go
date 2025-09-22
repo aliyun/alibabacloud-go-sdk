@@ -62,7 +62,8 @@ type UpdateSAMLProviderResponseBodySAMLProvider struct {
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The point in time at which the IdP was created. The time is displayed in UTC.
 	//
 	// example:
@@ -101,6 +102,10 @@ func (s *UpdateSAMLProviderResponseBodySAMLProvider) GetArn() *string {
 	return s.Arn
 }
 
+func (s *UpdateSAMLProviderResponseBodySAMLProvider) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *UpdateSAMLProviderResponseBodySAMLProvider) GetCreateDate() *string {
 	return s.CreateDate
 }
@@ -119,6 +124,11 @@ func (s *UpdateSAMLProviderResponseBodySAMLProvider) GetUpdateDate() *string {
 
 func (s *UpdateSAMLProviderResponseBodySAMLProvider) SetArn(v string) *UpdateSAMLProviderResponseBodySAMLProvider {
 	s.Arn = &v
+	return s
+}
+
+func (s *UpdateSAMLProviderResponseBodySAMLProvider) SetAuthnSignAlgo(v string) *UpdateSAMLProviderResponseBodySAMLProvider {
+	s.AuthnSignAlgo = &v
 	return s
 }
 

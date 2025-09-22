@@ -624,6 +624,10 @@ func (client *Client) CreateSAMLProviderWithContext(ctx context.Context, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -3494,6 +3498,10 @@ func (client *Client) SetUserSsoSettingsWithContext(ctx context.Context, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.AuxiliaryDomain) {
 		query["AuxiliaryDomain"] = request.AuxiliaryDomain
 	}
@@ -4160,6 +4168,10 @@ func (client *Client) UpdateSAMLProviderWithContext(ctx context.Context, request
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.NewDescription) {
 		query["NewDescription"] = request.NewDescription
 	}

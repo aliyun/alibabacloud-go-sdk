@@ -57,6 +57,7 @@ func (s *GetUserSsoSettingsResponseBody) Validate() error {
 }
 
 type GetUserSsoSettingsResponseBodyUserSsoSettings struct {
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The auxiliary domain name.
 	//
 	// example:
@@ -97,6 +98,10 @@ func (s GetUserSsoSettingsResponseBodyUserSsoSettings) GoString() string {
 	return s.String()
 }
 
+func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) GetAuxiliaryDomain() *string {
 	return s.AuxiliaryDomain
 }
@@ -111,6 +116,11 @@ func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) GetSsoEnabled() *bool {
 
 func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) GetSsoLoginWithDomain() *bool {
 	return s.SsoLoginWithDomain
+}
+
+func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) SetAuthnSignAlgo(v string) *GetUserSsoSettingsResponseBodyUserSsoSettings {
+	s.AuthnSignAlgo = &v
+	return s
 }
 
 func (s *GetUserSsoSettingsResponseBodyUserSsoSettings) SetAuxiliaryDomain(v string) *GetUserSsoSettingsResponseBodyUserSsoSettings {

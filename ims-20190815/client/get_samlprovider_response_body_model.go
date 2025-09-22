@@ -62,7 +62,8 @@ type GetSAMLProviderResponseBodySAMLProvider struct {
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -107,6 +108,10 @@ func (s *GetSAMLProviderResponseBodySAMLProvider) GetArn() *string {
 	return s.Arn
 }
 
+func (s *GetSAMLProviderResponseBodySAMLProvider) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *GetSAMLProviderResponseBodySAMLProvider) GetCreateDate() *string {
 	return s.CreateDate
 }
@@ -129,6 +134,11 @@ func (s *GetSAMLProviderResponseBodySAMLProvider) GetUpdateDate() *string {
 
 func (s *GetSAMLProviderResponseBodySAMLProvider) SetArn(v string) *GetSAMLProviderResponseBodySAMLProvider {
 	s.Arn = &v
+	return s
+}
+
+func (s *GetSAMLProviderResponseBodySAMLProvider) SetAuthnSignAlgo(v string) *GetSAMLProviderResponseBodySAMLProvider {
+	s.AuthnSignAlgo = &v
 	return s
 }
 

@@ -898,6 +898,10 @@ func (client *Client) CreateSAMLProviderWithOptions(request *CreateSAMLProviderR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -5551,6 +5555,10 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.AuxiliaryDomain) {
 		query["AuxiliaryDomain"] = request.AuxiliaryDomain
 	}
@@ -6439,6 +6447,10 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthnSignAlgo) {
+		query["AuthnSignAlgo"] = request.AuthnSignAlgo
+	}
+
 	if !dara.IsNil(request.NewDescription) {
 		query["NewDescription"] = request.NewDescription
 	}

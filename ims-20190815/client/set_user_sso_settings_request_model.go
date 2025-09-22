@@ -9,6 +9,8 @@ type iSetUserSsoSettingsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthnSignAlgo(v string) *SetUserSsoSettingsRequest
+	GetAuthnSignAlgo() *string
 	SetAuxiliaryDomain(v string) *SetUserSsoSettingsRequest
 	GetAuxiliaryDomain() *string
 	SetMetadataDocument(v string) *SetUserSsoSettingsRequest
@@ -20,6 +22,7 @@ type iSetUserSsoSettingsRequest interface {
 }
 
 type SetUserSsoSettingsRequest struct {
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The auxiliary domain name.
 	//
 	// example:
@@ -66,6 +69,10 @@ func (s SetUserSsoSettingsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SetUserSsoSettingsRequest) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *SetUserSsoSettingsRequest) GetAuxiliaryDomain() *string {
 	return s.AuxiliaryDomain
 }
@@ -80,6 +87,11 @@ func (s *SetUserSsoSettingsRequest) GetSsoEnabled() *bool {
 
 func (s *SetUserSsoSettingsRequest) GetSsoLoginWithDomain() *bool {
 	return s.SsoLoginWithDomain
+}
+
+func (s *SetUserSsoSettingsRequest) SetAuthnSignAlgo(v string) *SetUserSsoSettingsRequest {
+	s.AuthnSignAlgo = &v
+	return s
 }
 
 func (s *SetUserSsoSettingsRequest) SetAuxiliaryDomain(v string) *SetUserSsoSettingsRequest {

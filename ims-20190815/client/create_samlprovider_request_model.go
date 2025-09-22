@@ -9,6 +9,8 @@ type iCreateSAMLProviderRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthnSignAlgo(v string) *CreateSAMLProviderRequest
+	GetAuthnSignAlgo() *string
 	SetDescription(v string) *CreateSAMLProviderRequest
 	GetDescription() *string
 	SetEncodedSAMLMetadataDocument(v string) *CreateSAMLProviderRequest
@@ -18,6 +20,7 @@ type iCreateSAMLProviderRequest interface {
 }
 
 type CreateSAMLProviderRequest struct {
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The description.
 	//
 	// example:
@@ -52,6 +55,10 @@ func (s CreateSAMLProviderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSAMLProviderRequest) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *CreateSAMLProviderRequest) GetDescription() *string {
 	return s.Description
 }
@@ -62,6 +69,11 @@ func (s *CreateSAMLProviderRequest) GetEncodedSAMLMetadataDocument() *string {
 
 func (s *CreateSAMLProviderRequest) GetSAMLProviderName() *string {
 	return s.SAMLProviderName
+}
+
+func (s *CreateSAMLProviderRequest) SetAuthnSignAlgo(v string) *CreateSAMLProviderRequest {
+	s.AuthnSignAlgo = &v
+	return s
 }
 
 func (s *CreateSAMLProviderRequest) SetDescription(v string) *CreateSAMLProviderRequest {

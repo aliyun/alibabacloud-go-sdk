@@ -9,6 +9,8 @@ type iUpdateSAMLProviderRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthnSignAlgo(v string) *UpdateSAMLProviderRequest
+	GetAuthnSignAlgo() *string
 	SetNewDescription(v string) *UpdateSAMLProviderRequest
 	GetNewDescription() *string
 	SetNewEncodedSAMLMetadataDocument(v string) *UpdateSAMLProviderRequest
@@ -18,6 +20,7 @@ type iUpdateSAMLProviderRequest interface {
 }
 
 type UpdateSAMLProviderRequest struct {
+	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The new description.
 	//
 	// >  You must specify at least one of the `NewDescription` and `NewEncodedSAMLMetadataDocument` parameters.
@@ -52,6 +55,10 @@ func (s UpdateSAMLProviderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateSAMLProviderRequest) GetAuthnSignAlgo() *string {
+	return s.AuthnSignAlgo
+}
+
 func (s *UpdateSAMLProviderRequest) GetNewDescription() *string {
 	return s.NewDescription
 }
@@ -62,6 +69,11 @@ func (s *UpdateSAMLProviderRequest) GetNewEncodedSAMLMetadataDocument() *string 
 
 func (s *UpdateSAMLProviderRequest) GetSAMLProviderName() *string {
 	return s.SAMLProviderName
+}
+
+func (s *UpdateSAMLProviderRequest) SetAuthnSignAlgo(v string) *UpdateSAMLProviderRequest {
+	s.AuthnSignAlgo = &v
+	return s
 }
 
 func (s *UpdateSAMLProviderRequest) SetNewDescription(v string) *UpdateSAMLProviderRequest {
