@@ -1392,6 +1392,10 @@ func (client *Client) CreateDataFlowTaskWithContext(ctx context.Context, request
 		query["TaskAction"] = request.TaskAction
 	}
 
+	if !dara.IsNil(request.TransferFileListPath) {
+		query["TransferFileListPath"] = request.TransferFileListPath
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

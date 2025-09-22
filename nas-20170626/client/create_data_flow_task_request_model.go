@@ -35,6 +35,8 @@ type iCreateDataFlowTaskRequest interface {
 	GetSrcTaskId() *string
 	SetTaskAction(v string) *CreateDataFlowTaskRequest
 	GetTaskAction() *string
+	SetTransferFileListPath(v string) *CreateDataFlowTaskRequest
+	GetTransferFileListPath() *string
 }
 
 type CreateDataFlowTaskRequest struct {
@@ -233,7 +235,8 @@ type CreateDataFlowTaskRequest struct {
 	// example:
 	//
 	// Import
-	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	TaskAction           *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	TransferFileListPath *string `json:"TransferFileListPath,omitempty" xml:"TransferFileListPath,omitempty"`
 }
 
 func (s CreateDataFlowTaskRequest) String() string {
@@ -294,6 +297,10 @@ func (s *CreateDataFlowTaskRequest) GetSrcTaskId() *string {
 
 func (s *CreateDataFlowTaskRequest) GetTaskAction() *string {
 	return s.TaskAction
+}
+
+func (s *CreateDataFlowTaskRequest) GetTransferFileListPath() *string {
+	return s.TransferFileListPath
 }
 
 func (s *CreateDataFlowTaskRequest) SetClientToken(v string) *CreateDataFlowTaskRequest {
@@ -358,6 +365,11 @@ func (s *CreateDataFlowTaskRequest) SetSrcTaskId(v string) *CreateDataFlowTaskRe
 
 func (s *CreateDataFlowTaskRequest) SetTaskAction(v string) *CreateDataFlowTaskRequest {
 	s.TaskAction = &v
+	return s
+}
+
+func (s *CreateDataFlowTaskRequest) SetTransferFileListPath(v string) *CreateDataFlowTaskRequest {
+	s.TransferFileListPath = &v
 	return s
 }
 

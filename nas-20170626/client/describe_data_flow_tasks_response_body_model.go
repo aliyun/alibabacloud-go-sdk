@@ -306,7 +306,8 @@ type DescribeDataFlowTasksResponseBodyTaskInfoTask struct {
 	// example:
 	//
 	// taskId-12345678
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TransferFileListPath *string `json:"TransferFileListPath,omitempty" xml:"TransferFileListPath,omitempty"`
 }
 
 func (s DescribeDataFlowTasksResponseBodyTaskInfoTask) String() string {
@@ -403,6 +404,10 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetTaskAction() *string 
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) GetTransferFileListPath() *string {
+	return s.TransferFileListPath
 }
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetConflictPolicy(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
@@ -512,6 +517,11 @@ func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTaskAction(v string) 
 
 func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTaskId(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
 	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeDataFlowTasksResponseBodyTaskInfoTask) SetTransferFileListPath(v string) *DescribeDataFlowTasksResponseBodyTaskInfoTask {
+	s.TransferFileListPath = &v
 	return s
 }
 

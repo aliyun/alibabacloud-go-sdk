@@ -25,9 +25,38 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-chengdu":          dara.String("nas.aliyuncs.com"),
-		"me-east-1":           dara.String("nas.ap-northeast-1.aliyuncs.com"),
-		"cn-hangzhou-finance": dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-finance":         dara.String("nas.cn-hangzhou-dg-a01.aliyuncs.com"),
+		"ap-northeast-2-pop":          dara.String("nas.aliyuncs.com"),
+		"ap-southeast-2":              dara.String("nas.aliyuncs.com"),
+		"cn-beijing-finance-pop":      dara.String("nas.aliyuncs.com"),
+		"cn-beijing-gov-1":            dara.String("nas.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         dara.String("nas.aliyuncs.com"),
+		"cn-edge-1":                   dara.String("nas.aliyuncs.com"),
+		"cn-fujian":                   dara.String("nas.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": dara.String("nas.aliyuncs.com"),
+		"cn-hangzhou-test-306":        dara.String("nas.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     dara.String("nas.aliyuncs.com"),
+		"cn-qingdao-nebula":           dara.String("nas.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        dara.String("nas.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         dara.String("nas.aliyuncs.com"),
+		"cn-shanghai-inner":           dara.String("nas.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": dara.String("nas.aliyuncs.com"),
+		"cn-shenzhen-inner":           dara.String("nas.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         dara.String("nas.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        dara.String("nas.aliyuncs.com"),
+		"cn-wuhan":                    dara.String("nas.aliyuncs.com"),
+		"cn-yushanfang":               dara.String("nas.aliyuncs.com"),
+		"cn-zhangbei":                 dara.String("nas.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        dara.String("nas.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     dara.String("nas.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       dara.String("nas.aliyuncs.com"),
+		"eu-west-1-oxs":               dara.String("nas.aliyuncs.com"),
+		"rus-west-1-pop":              dara.String("nas.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1988,6 +2017,10 @@ func (client *Client) CreateDataFlowTaskWithOptions(request *CreateDataFlowTaskR
 
 	if !dara.IsNil(request.TaskAction) {
 		query["TaskAction"] = request.TaskAction
+	}
+
+	if !dara.IsNil(request.TransferFileListPath) {
+		query["TransferFileListPath"] = request.TransferFileListPath
 	}
 
 	req := &openapiutil.OpenApiRequest{
