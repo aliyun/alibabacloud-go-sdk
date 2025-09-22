@@ -2791,6 +2791,64 @@ func (client *Client) ExpandDataVolumeWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 扩容实例的独立机身存储
+//
+// @param request - ExpandPhoneDataVolumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExpandPhoneDataVolumeResponse
+func (client *Client) ExpandPhoneDataVolumeWithContext(ctx context.Context, request *ExpandPhoneDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ExpandPhoneDataVolumeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPay) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.PhoneDataVolume) {
+		query["PhoneDataVolume"] = request.PhoneDataVolume
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExpandPhoneDataVolume"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExpandPhoneDataVolumeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Pulls a file from a cloud phone instance and stores it in Object Storage Service (OSS).
 //
 // Description:
