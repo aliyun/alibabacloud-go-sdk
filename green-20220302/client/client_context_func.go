@@ -429,6 +429,52 @@ func (client *Client) ImageModerationWithContext(ctx context.Context, request *I
 
 // Summary:
 //
+// 图片审核
+//
+// @param request - ImageQueueModerationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImageQueueModerationResponse
+func (client *Client) ImageQueueModerationWithContext(ctx context.Context, request *ImageQueueModerationRequest, runtime *dara.RuntimeOptions) (_result *ImageQueueModerationResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Service) {
+		body["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImageQueueModeration"),
+		Version:     dara.String("2022-03-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImageQueueModerationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Content Security Manual Review Result Callback Interface
 //
 // @param request - ManualCallbackRequest
