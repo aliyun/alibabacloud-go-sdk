@@ -91,7 +91,8 @@ type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
 	// example:
 	//
 	// 5
-	DesktopNum *int32 `json:"DesktopNum,omitempty" xml:"DesktopNum,omitempty"`
+	DesktopNum *int32  `json:"DesktopNum,omitempty" xml:"DesktopNum,omitempty"`
+	DiskType   *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the automatic snapshot policy.
 	//
 	// example:
@@ -170,6 +171,10 @@ func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) GetDesktopN
 	return s.DesktopNum
 }
 
+func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) GetDiskType() *string {
+	return s.DiskType
+}
+
 func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) GetPolicyId() *string {
 	return s.PolicyId
 }
@@ -206,6 +211,11 @@ func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) SetCronExpr
 
 func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) SetDesktopNum(v int32) *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies {
 	s.DesktopNum = &v
+	return s
+}
+
+func (s *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies) SetDiskType(v string) *DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies {
+	s.DiskType = &v
 	return s
 }
 

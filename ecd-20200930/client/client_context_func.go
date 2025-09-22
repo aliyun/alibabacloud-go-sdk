@@ -1926,6 +1926,10 @@ func (client *Client) CreateAutoSnapshotPolicyWithContext(ctx context.Context, r
 		query["CronExpression"] = request.CronExpression
 	}
 
+	if !dara.IsNil(request.DiskType) {
+		query["DiskType"] = request.DiskType
+	}
+
 	if !dara.IsNil(request.PolicyName) {
 		query["PolicyName"] = request.PolicyName
 	}
@@ -3530,6 +3534,10 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 		query["BundleModels"] = request.BundleModels
 	}
 
+	if !dara.IsNil(request.ChannelCookie) {
+		query["ChannelCookie"] = request.ChannelCookie
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -4162,6 +4170,10 @@ func (client *Client) CreateNetworkPackageWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.Bandwidth) {
 		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !dara.IsNil(request.ChannelCookie) {
+		query["ChannelCookie"] = request.ChannelCookie
 	}
 
 	if !dara.IsNil(request.InternetChargeType) {
@@ -13187,6 +13199,10 @@ func (client *Client) ModifyAutoSnapshotPolicyWithContext(ctx context.Context, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CronExpression) {
 		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.DiskType) {
+		query["DiskType"] = request.DiskType
 	}
 
 	if !dara.IsNil(request.PolicyId) {

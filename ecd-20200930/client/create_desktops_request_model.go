@@ -21,6 +21,8 @@ type iCreateDesktopsRequest interface {
 	GetBundleId() *string
 	SetBundleModels(v []*CreateDesktopsRequestBundleModels) *CreateDesktopsRequest
 	GetBundleModels() []*CreateDesktopsRequestBundleModels
+	SetChannelCookie(v string) *CreateDesktopsRequest
+	GetChannelCookie() *string
 	SetChargeType(v string) *CreateDesktopsRequest
 	GetChargeType() *string
 	SetDesktopAttachment(v *CreateDesktopsRequestDesktopAttachment) *CreateDesktopsRequest
@@ -115,7 +117,8 @@ type CreateDesktopsRequest struct {
 	//
 	// if can be null:
 	// true
-	BundleModels []*CreateDesktopsRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	BundleModels  []*CreateDesktopsRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	ChannelCookie *string                              `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The billing method of the cloud computers.
 	//
 	// Default value: PostPaid. Valid values:
@@ -406,6 +409,10 @@ func (s *CreateDesktopsRequest) GetBundleModels() []*CreateDesktopsRequestBundle
 	return s.BundleModels
 }
 
+func (s *CreateDesktopsRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
+}
+
 func (s *CreateDesktopsRequest) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -557,6 +564,11 @@ func (s *CreateDesktopsRequest) SetBundleId(v string) *CreateDesktopsRequest {
 
 func (s *CreateDesktopsRequest) SetBundleModels(v []*CreateDesktopsRequestBundleModels) *CreateDesktopsRequest {
 	s.BundleModels = v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetChannelCookie(v string) *CreateDesktopsRequest {
+	s.ChannelCookie = &v
 	return s
 }
 

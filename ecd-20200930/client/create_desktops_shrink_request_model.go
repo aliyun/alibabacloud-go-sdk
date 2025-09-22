@@ -21,6 +21,8 @@ type iCreateDesktopsShrinkRequest interface {
 	GetBundleId() *string
 	SetBundleModels(v []*CreateDesktopsShrinkRequestBundleModels) *CreateDesktopsShrinkRequest
 	GetBundleModels() []*CreateDesktopsShrinkRequestBundleModels
+	SetChannelCookie(v string) *CreateDesktopsShrinkRequest
+	GetChannelCookie() *string
 	SetChargeType(v string) *CreateDesktopsShrinkRequest
 	GetChargeType() *string
 	SetDesktopAttachmentShrink(v string) *CreateDesktopsShrinkRequest
@@ -115,7 +117,8 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// if can be null:
 	// true
-	BundleModels []*CreateDesktopsShrinkRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	BundleModels  []*CreateDesktopsShrinkRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
+	ChannelCookie *string                                    `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The billing method of the cloud computers.
 	//
 	// Default value: PostPaid. Valid values:
@@ -406,6 +409,10 @@ func (s *CreateDesktopsShrinkRequest) GetBundleModels() []*CreateDesktopsShrinkR
 	return s.BundleModels
 }
 
+func (s *CreateDesktopsShrinkRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
+}
+
 func (s *CreateDesktopsShrinkRequest) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -557,6 +564,11 @@ func (s *CreateDesktopsShrinkRequest) SetBundleId(v string) *CreateDesktopsShrin
 
 func (s *CreateDesktopsShrinkRequest) SetBundleModels(v []*CreateDesktopsShrinkRequestBundleModels) *CreateDesktopsShrinkRequest {
 	s.BundleModels = v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetChannelCookie(v string) *CreateDesktopsShrinkRequest {
+	s.ChannelCookie = &v
 	return s
 }
 

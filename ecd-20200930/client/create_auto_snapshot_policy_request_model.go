@@ -11,6 +11,8 @@ type iCreateAutoSnapshotPolicyRequest interface {
 	GoString() string
 	SetCronExpression(v string) *CreateAutoSnapshotPolicyRequest
 	GetCronExpression() *string
+	SetDiskType(v string) *CreateAutoSnapshotPolicyRequest
+	GetDiskType() *string
 	SetPolicyName(v string) *CreateAutoSnapshotPolicyRequest
 	GetPolicyName() *string
 	SetRegionId(v string) *CreateAutoSnapshotPolicyRequest
@@ -28,6 +30,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	//
 	// 0 0 2 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). This parameter is empty by default.
 	//
 	// This parameter is required.
@@ -66,6 +69,10 @@ func (s *CreateAutoSnapshotPolicyRequest) GetCronExpression() *string {
 	return s.CronExpression
 }
 
+func (s *CreateAutoSnapshotPolicyRequest) GetDiskType() *string {
+	return s.DiskType
+}
+
 func (s *CreateAutoSnapshotPolicyRequest) GetPolicyName() *string {
 	return s.PolicyName
 }
@@ -80,6 +87,11 @@ func (s *CreateAutoSnapshotPolicyRequest) GetRetentionDays() *int32 {
 
 func (s *CreateAutoSnapshotPolicyRequest) SetCronExpression(v string) *CreateAutoSnapshotPolicyRequest {
 	s.CronExpression = &v
+	return s
+}
+
+func (s *CreateAutoSnapshotPolicyRequest) SetDiskType(v string) *CreateAutoSnapshotPolicyRequest {
+	s.DiskType = &v
 	return s
 }
 

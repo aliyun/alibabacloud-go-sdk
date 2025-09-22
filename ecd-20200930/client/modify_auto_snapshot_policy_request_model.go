@@ -11,6 +11,8 @@ type iModifyAutoSnapshotPolicyRequest interface {
 	GoString() string
 	SetCronExpression(v string) *ModifyAutoSnapshotPolicyRequest
 	GetCronExpression() *string
+	SetDiskType(v string) *ModifyAutoSnapshotPolicyRequest
+	GetDiskType() *string
 	SetPolicyId(v string) *ModifyAutoSnapshotPolicyRequest
 	GetPolicyId() *string
 	SetPolicyName(v string) *ModifyAutoSnapshotPolicyRequest
@@ -28,6 +30,7 @@ type ModifyAutoSnapshotPolicyRequest struct {
 	//
 	// 0 20 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the automatic snapshot policy.
 	//
 	// This parameter is required.
@@ -70,6 +73,10 @@ func (s *ModifyAutoSnapshotPolicyRequest) GetCronExpression() *string {
 	return s.CronExpression
 }
 
+func (s *ModifyAutoSnapshotPolicyRequest) GetDiskType() *string {
+	return s.DiskType
+}
+
 func (s *ModifyAutoSnapshotPolicyRequest) GetPolicyId() *string {
 	return s.PolicyId
 }
@@ -88,6 +95,11 @@ func (s *ModifyAutoSnapshotPolicyRequest) GetRetentionDays() *int32 {
 
 func (s *ModifyAutoSnapshotPolicyRequest) SetCronExpression(v string) *ModifyAutoSnapshotPolicyRequest {
 	s.CronExpression = &v
+	return s
+}
+
+func (s *ModifyAutoSnapshotPolicyRequest) SetDiskType(v string) *ModifyAutoSnapshotPolicyRequest {
+	s.DiskType = &v
 	return s
 }
 

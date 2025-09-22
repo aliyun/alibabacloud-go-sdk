@@ -15,6 +15,8 @@ type iCreateNetworkPackageRequest interface {
 	GetAutoRenew() *bool
 	SetBandwidth(v int32) *CreateNetworkPackageRequest
 	GetBandwidth() *int32
+	SetChannelCookie(v string) *CreateNetworkPackageRequest
+	GetChannelCookie() *string
 	SetInternetChargeType(v string) *CreateNetworkPackageRequest
 	GetInternetChargeType() *string
 	SetOfficeSiteId(v string) *CreateNetworkPackageRequest
@@ -99,7 +101,8 @@ type CreateNetworkPackageRequest struct {
 	// example:
 	//
 	// 10
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The charge type of the premium bandwidth plan.
 	//
 	// 	- Valid value when the `PayType` parameter is set to `PrePaid`:
@@ -217,6 +220,10 @@ func (s *CreateNetworkPackageRequest) GetBandwidth() *int32 {
 	return s.Bandwidth
 }
 
+func (s *CreateNetworkPackageRequest) GetChannelCookie() *string {
+	return s.ChannelCookie
+}
+
 func (s *CreateNetworkPackageRequest) GetInternetChargeType() *string {
 	return s.InternetChargeType
 }
@@ -261,6 +268,11 @@ func (s *CreateNetworkPackageRequest) SetAutoRenew(v bool) *CreateNetworkPackage
 
 func (s *CreateNetworkPackageRequest) SetBandwidth(v int32) *CreateNetworkPackageRequest {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateNetworkPackageRequest) SetChannelCookie(v string) *CreateNetworkPackageRequest {
+	s.ChannelCookie = &v
 	return s
 }
 
