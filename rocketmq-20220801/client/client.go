@@ -1349,6 +1349,140 @@ func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_resul
 
 // Summary:
 //
+// 执行迁移操作
+//
+// @param request - ExecuteMigrationOperationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteMigrationOperationResponse
+func (client *Client) ExecuteMigrationOperationWithOptions(migrationId *string, stageType *string, operationId *string, request *ExecuteMigrationOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteMigrationOperationResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OperationParam) {
+		body["operationParam"] = request.OperationParam
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteMigrationOperation"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/migrations/" + dara.PercentEncode(dara.StringValue(migrationId)) + "/stages/" + dara.PercentEncode(dara.StringValue(stageType)) + "/operations/" + dara.PercentEncode(dara.StringValue(operationId)) + "/execute"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteMigrationOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行迁移操作
+//
+// @param request - ExecuteMigrationOperationRequest
+//
+// @return ExecuteMigrationOperationResponse
+func (client *Client) ExecuteMigrationOperation(migrationId *string, stageType *string, operationId *string, request *ExecuteMigrationOperationRequest) (_result *ExecuteMigrationOperationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteMigrationOperationResponse{}
+	_body, _err := client.ExecuteMigrationOperationWithOptions(migrationId, stageType, operationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 完成当前迁移阶段
+//
+// @param request - FinishMigrationStageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishMigrationStageResponse
+func (client *Client) FinishMigrationStageWithOptions(migrationId *string, stageType *string, request *FinishMigrationStageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *FinishMigrationStageResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FinishMigrationStage"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/migrations/" + dara.PercentEncode(dara.StringValue(migrationId)) + "/stages/" + dara.PercentEncode(dara.StringValue(stageType)) + "/finish"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FinishMigrationStageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 完成当前迁移阶段
+//
+// @param request - FinishMigrationStageRequest
+//
+// @return FinishMigrationStageResponse
+func (client *Client) FinishMigrationStage(migrationId *string, stageType *string, request *FinishMigrationStageRequest) (_result *FinishMigrationStageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FinishMigrationStageResponse{}
+	_body, _err := client.FinishMigrationStageWithOptions(migrationId, stageType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified consumer group.
 //
 // Description:
@@ -3058,6 +3192,86 @@ func (client *Client) ListMetricMeta(request *ListMetricMetaRequest) (_result *L
 	headers := make(map[string]*string)
 	_result = &ListMetricMetaResponse{}
 	_body, _err := client.ListMetricMetaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询迁移操作列表
+//
+// @param request - ListMigrationOperationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMigrationOperationsResponse
+func (client *Client) ListMigrationOperationsWithOptions(migrationId *string, stageType *string, request *ListMigrationOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationOperationsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		query["operationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMigrationOperations"),
+		Version:     dara.String("2022-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/migrations/" + dara.PercentEncode(dara.StringValue(migrationId)) + "/stages/" + dara.PercentEncode(dara.StringValue(stageType)) + "/operations"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMigrationOperationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询迁移操作列表
+//
+// @param request - ListMigrationOperationsRequest
+//
+// @return ListMigrationOperationsResponse
+func (client *Client) ListMigrationOperations(migrationId *string, stageType *string, request *ListMigrationOperationsRequest) (_result *ListMigrationOperationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMigrationOperationsResponse{}
+	_body, _err := client.ListMigrationOperationsWithOptions(migrationId, stageType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
