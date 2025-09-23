@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCreateNetworkChannelResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *CreateNetworkChannelResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *CreateNetworkChannelResponse
+	GetStatusCode() *int32
+	SetBody(v *CreateNetworkChannelResponseBody) *CreateNetworkChannelResponse
+	GetBody() *CreateNetworkChannelResponseBody
+}
+
+type CreateNetworkChannelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNetworkChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateNetworkChannelResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateNetworkChannelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNetworkChannelResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *CreateNetworkChannelResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *CreateNetworkChannelResponse) GetBody() *CreateNetworkChannelResponseBody {
+	return s.Body
+}
+
+func (s *CreateNetworkChannelResponse) SetHeaders(v map[string]*string) *CreateNetworkChannelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNetworkChannelResponse) SetStatusCode(v int32) *CreateNetworkChannelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateNetworkChannelResponse) SetBody(v *CreateNetworkChannelResponseBody) *CreateNetworkChannelResponse {
+	s.Body = v
+	return s
+}
+
+func (s *CreateNetworkChannelResponse) Validate() error {
+	return dara.Validate(s)
+}

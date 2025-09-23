@@ -1297,7 +1297,8 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// example:
 	//
 	// 2020-03-23T21:35:43Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime          *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBNodeCXLRemoteMemory *string `json:"DBNodeCXLRemoteMemory,omitempty" xml:"DBNodeCXLRemoteMemory,omitempty"`
 	// Node specification.
 	//
 	// example:
@@ -1505,6 +1506,10 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetCreationTime() *strin
 	return s.CreationTime
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetDBNodeCXLRemoteMemory() *string {
+	return s.DBNodeCXLRemoteMemory
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) GetDBNodeClass() *string {
 	return s.DBNodeClass
 }
@@ -1609,6 +1614,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetCpuCores(v string) *D
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetCreationTime(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetDBNodeCXLRemoteMemory(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.DBNodeCXLRemoteMemory = &v
 	return s
 }
 
