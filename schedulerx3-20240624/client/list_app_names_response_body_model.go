@@ -110,9 +110,17 @@ type ListAppNamesResponseBodyData struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// example:
 	//
+	// 1
+	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
 	// 15
 	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// k8s_service
+	WorkerRegistry *string `json:"WorkerRegistry,omitempty" xml:"WorkerRegistry,omitempty"`
 }
 
 func (s ListAppNamesResponseBodyData) String() string {
@@ -131,12 +139,20 @@ func (s *ListAppNamesResponseBodyData) GetAppName() *string {
 	return s.AppName
 }
 
+func (s *ListAppNamesResponseBodyData) GetAppType() *int32 {
+	return s.AppType
+}
+
 func (s *ListAppNamesResponseBodyData) GetId() *int64 {
 	return s.Id
 }
 
 func (s *ListAppNamesResponseBodyData) GetTitle() *string {
 	return s.Title
+}
+
+func (s *ListAppNamesResponseBodyData) GetWorkerRegistry() *string {
+	return s.WorkerRegistry
 }
 
 func (s *ListAppNamesResponseBodyData) SetAppGroupId(v string) *ListAppNamesResponseBodyData {
@@ -149,6 +165,11 @@ func (s *ListAppNamesResponseBodyData) SetAppName(v string) *ListAppNamesRespons
 	return s
 }
 
+func (s *ListAppNamesResponseBodyData) SetAppType(v int32) *ListAppNamesResponseBodyData {
+	s.AppType = &v
+	return s
+}
+
 func (s *ListAppNamesResponseBodyData) SetId(v int64) *ListAppNamesResponseBodyData {
 	s.Id = &v
 	return s
@@ -156,6 +177,11 @@ func (s *ListAppNamesResponseBodyData) SetId(v int64) *ListAppNamesResponseBodyD
 
 func (s *ListAppNamesResponseBodyData) SetTitle(v string) *ListAppNamesResponseBodyData {
 	s.Title = &v
+	return s
+}
+
+func (s *ListAppNamesResponseBodyData) SetWorkerRegistry(v string) *ListAppNamesResponseBodyData {
+	s.WorkerRegistry = &v
 	return s
 }
 

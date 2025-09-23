@@ -100,12 +100,20 @@ func (s *GetJobExecutionProgressResponseBody) Validate() error {
 }
 
 type GetJobExecutionProgressResponseBodyData struct {
+	// example:
+	//
+	// 1758594961000
+	EndTime          *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	JobDescription   *string                                                    `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
 	RootProgress     *GetJobExecutionProgressResponseBodyDataRootProgress       `json:"RootProgress,omitempty" xml:"RootProgress,omitempty" type:"Struct"`
 	ShardingProgress []*GetJobExecutionProgressResponseBodyDataShardingProgress `json:"ShardingProgress,omitempty" xml:"ShardingProgress,omitempty" type:"Repeated"`
-	TaskProgress     []*GetJobExecutionProgressResponseBodyDataTaskProgress     `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty" type:"Repeated"`
-	TotalProgress    *GetJobExecutionProgressResponseBodyDataTotalProgress      `json:"TotalProgress,omitempty" xml:"TotalProgress,omitempty" type:"Struct"`
-	WorkerProgress   []*GetJobExecutionProgressResponseBodyDataWorkerProgress   `json:"WorkerProgress,omitempty" xml:"WorkerProgress,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1758506761000
+	StartTime      *string                                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskProgress   []*GetJobExecutionProgressResponseBodyDataTaskProgress   `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty" type:"Repeated"`
+	TotalProgress  *GetJobExecutionProgressResponseBodyDataTotalProgress    `json:"TotalProgress,omitempty" xml:"TotalProgress,omitempty" type:"Struct"`
+	WorkerProgress []*GetJobExecutionProgressResponseBodyDataWorkerProgress `json:"WorkerProgress,omitempty" xml:"WorkerProgress,omitempty" type:"Repeated"`
 }
 
 func (s GetJobExecutionProgressResponseBodyData) String() string {
@@ -114,6 +122,10 @@ func (s GetJobExecutionProgressResponseBodyData) String() string {
 
 func (s GetJobExecutionProgressResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetJobExecutionProgressResponseBodyData) GetEndTime() *string {
+	return s.EndTime
 }
 
 func (s *GetJobExecutionProgressResponseBodyData) GetJobDescription() *string {
@@ -128,6 +140,10 @@ func (s *GetJobExecutionProgressResponseBodyData) GetShardingProgress() []*GetJo
 	return s.ShardingProgress
 }
 
+func (s *GetJobExecutionProgressResponseBodyData) GetStartTime() *string {
+	return s.StartTime
+}
+
 func (s *GetJobExecutionProgressResponseBodyData) GetTaskProgress() []*GetJobExecutionProgressResponseBodyDataTaskProgress {
 	return s.TaskProgress
 }
@@ -138,6 +154,11 @@ func (s *GetJobExecutionProgressResponseBodyData) GetTotalProgress() *GetJobExec
 
 func (s *GetJobExecutionProgressResponseBodyData) GetWorkerProgress() []*GetJobExecutionProgressResponseBodyDataWorkerProgress {
 	return s.WorkerProgress
+}
+
+func (s *GetJobExecutionProgressResponseBodyData) SetEndTime(v string) *GetJobExecutionProgressResponseBodyData {
+	s.EndTime = &v
+	return s
 }
 
 func (s *GetJobExecutionProgressResponseBodyData) SetJobDescription(v string) *GetJobExecutionProgressResponseBodyData {
@@ -152,6 +173,11 @@ func (s *GetJobExecutionProgressResponseBodyData) SetRootProgress(v *GetJobExecu
 
 func (s *GetJobExecutionProgressResponseBodyData) SetShardingProgress(v []*GetJobExecutionProgressResponseBodyDataShardingProgress) *GetJobExecutionProgressResponseBodyData {
 	s.ShardingProgress = v
+	return s
+}
+
+func (s *GetJobExecutionProgressResponseBodyData) SetStartTime(v string) *GetJobExecutionProgressResponseBodyData {
+	s.StartTime = &v
 	return s
 }
 

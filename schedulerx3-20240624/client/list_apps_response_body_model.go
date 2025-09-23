@@ -217,6 +217,10 @@ type ListAppsResponseBodyDataRecords struct {
 	//
 	// 1827811800555555
 	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
+	// example:
+	//
+	// k8s_service
+	WorkerRegistry *string `json:"WorkerRegistry,omitempty" xml:"WorkerRegistry,omitempty"`
 }
 
 func (s ListAppsResponseBodyDataRecords) String() string {
@@ -281,6 +285,10 @@ func (s *ListAppsResponseBodyDataRecords) GetTitle() *string {
 
 func (s *ListAppsResponseBodyDataRecords) GetUpdater() *string {
 	return s.Updater
+}
+
+func (s *ListAppsResponseBodyDataRecords) GetWorkerRegistry() *string {
+	return s.WorkerRegistry
 }
 
 func (s *ListAppsResponseBodyDataRecords) SetAccessToken(v string) *ListAppsResponseBodyDataRecords {
@@ -350,6 +358,11 @@ func (s *ListAppsResponseBodyDataRecords) SetTitle(v string) *ListAppsResponseBo
 
 func (s *ListAppsResponseBodyDataRecords) SetUpdater(v string) *ListAppsResponseBodyDataRecords {
 	s.Updater = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyDataRecords) SetWorkerRegistry(v string) *ListAppsResponseBodyDataRecords {
+	s.WorkerRegistry = &v
 	return s
 }
 

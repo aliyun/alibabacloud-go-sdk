@@ -9,12 +9,18 @@ type iCreateClusterRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChargeType(v string) *CreateClusterRequest
+	GetChargeType() *string
 	SetClusterName(v string) *CreateClusterRequest
 	GetClusterName() *string
 	SetClusterSpec(v string) *CreateClusterRequest
 	GetClusterSpec() *string
+	SetDuration(v int32) *CreateClusterRequest
+	GetDuration() *int32
 	SetEngineType(v string) *CreateClusterRequest
 	GetEngineType() *string
+	SetPricingCycle(v string) *CreateClusterRequest
+	GetPricingCycle() *string
 	SetTag(v []*CreateClusterRequestTag) *CreateClusterRequest
 	GetTag() []*CreateClusterRequestTag
 	SetVSwitches(v []*CreateClusterRequestVSwitches) *CreateClusterRequest
@@ -24,6 +30,10 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -36,13 +46,21 @@ type CreateClusterRequest struct {
 	//
 	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// example:
+	//
+	// 3
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob
-	EngineType *string                    `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	Tag        []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// example:
+	//
+	// Year
+	PricingCycle *string                    `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Tag          []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	VSwitches []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// VPC id
@@ -63,6 +81,10 @@ func (s CreateClusterRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *CreateClusterRequest) GetClusterName() *string {
 	return s.ClusterName
 }
@@ -71,8 +93,16 @@ func (s *CreateClusterRequest) GetClusterSpec() *string {
 	return s.ClusterSpec
 }
 
+func (s *CreateClusterRequest) GetDuration() *int32 {
+	return s.Duration
+}
+
 func (s *CreateClusterRequest) GetEngineType() *string {
 	return s.EngineType
+}
+
+func (s *CreateClusterRequest) GetPricingCycle() *string {
+	return s.PricingCycle
 }
 
 func (s *CreateClusterRequest) GetTag() []*CreateClusterRequestTag {
@@ -87,6 +117,11 @@ func (s *CreateClusterRequest) GetVpcId() *string {
 	return s.VpcId
 }
 
+func (s *CreateClusterRequest) SetChargeType(v string) *CreateClusterRequest {
+	s.ChargeType = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetClusterName(v string) *CreateClusterRequest {
 	s.ClusterName = &v
 	return s
@@ -97,8 +132,18 @@ func (s *CreateClusterRequest) SetClusterSpec(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetDuration(v int32) *CreateClusterRequest {
+	s.Duration = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetEngineType(v string) *CreateClusterRequest {
 	s.EngineType = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetPricingCycle(v string) *CreateClusterRequest {
+	s.PricingCycle = &v
 	return s
 }
 

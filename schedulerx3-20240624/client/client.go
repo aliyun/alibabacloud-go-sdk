@@ -169,6 +169,10 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChargeType) {
+		body["ChargeType"] = request.ChargeType
+	}
+
 	if !dara.IsNil(request.ClusterName) {
 		body["ClusterName"] = request.ClusterName
 	}
@@ -177,8 +181,16 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		body["ClusterSpec"] = request.ClusterSpec
 	}
 
+	if !dara.IsNil(request.Duration) {
+		body["Duration"] = request.Duration
+	}
+
 	if !dara.IsNil(request.EngineType) {
 		body["EngineType"] = request.EngineType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		body["PricingCycle"] = request.PricingCycle
 	}
 
 	if !dara.IsNil(request.VSwitchesShrink) {

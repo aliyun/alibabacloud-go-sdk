@@ -9,12 +9,18 @@ type iCreateClusterShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChargeType(v string) *CreateClusterShrinkRequest
+	GetChargeType() *string
 	SetClusterName(v string) *CreateClusterShrinkRequest
 	GetClusterName() *string
 	SetClusterSpec(v string) *CreateClusterShrinkRequest
 	GetClusterSpec() *string
+	SetDuration(v int32) *CreateClusterShrinkRequest
+	GetDuration() *int32
 	SetEngineType(v string) *CreateClusterShrinkRequest
 	GetEngineType() *string
+	SetPricingCycle(v string) *CreateClusterShrinkRequest
+	GetPricingCycle() *string
 	SetTag(v []*CreateClusterShrinkRequestTag) *CreateClusterShrinkRequest
 	GetTag() []*CreateClusterShrinkRequestTag
 	SetVSwitchesShrink(v string) *CreateClusterShrinkRequest
@@ -24,6 +30,10 @@ type iCreateClusterShrinkRequest interface {
 }
 
 type CreateClusterShrinkRequest struct {
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -36,13 +46,21 @@ type CreateClusterShrinkRequest struct {
 	//
 	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	// example:
+	//
+	// 3
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxljob
-	EngineType *string                          `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	Tag        []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// example:
+	//
+	// Year
+	PricingCycle *string                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Tag          []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
 	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// VPC id
@@ -63,6 +81,10 @@ func (s CreateClusterShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterShrinkRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *CreateClusterShrinkRequest) GetClusterName() *string {
 	return s.ClusterName
 }
@@ -71,8 +93,16 @@ func (s *CreateClusterShrinkRequest) GetClusterSpec() *string {
 	return s.ClusterSpec
 }
 
+func (s *CreateClusterShrinkRequest) GetDuration() *int32 {
+	return s.Duration
+}
+
 func (s *CreateClusterShrinkRequest) GetEngineType() *string {
 	return s.EngineType
+}
+
+func (s *CreateClusterShrinkRequest) GetPricingCycle() *string {
+	return s.PricingCycle
 }
 
 func (s *CreateClusterShrinkRequest) GetTag() []*CreateClusterShrinkRequestTag {
@@ -87,6 +117,11 @@ func (s *CreateClusterShrinkRequest) GetVpcId() *string {
 	return s.VpcId
 }
 
+func (s *CreateClusterShrinkRequest) SetChargeType(v string) *CreateClusterShrinkRequest {
+	s.ChargeType = &v
+	return s
+}
+
 func (s *CreateClusterShrinkRequest) SetClusterName(v string) *CreateClusterShrinkRequest {
 	s.ClusterName = &v
 	return s
@@ -97,8 +132,18 @@ func (s *CreateClusterShrinkRequest) SetClusterSpec(v string) *CreateClusterShri
 	return s
 }
 
+func (s *CreateClusterShrinkRequest) SetDuration(v int32) *CreateClusterShrinkRequest {
+	s.Duration = &v
+	return s
+}
+
 func (s *CreateClusterShrinkRequest) SetEngineType(v string) *CreateClusterShrinkRequest {
 	s.EngineType = &v
+	return s
+}
+
+func (s *CreateClusterShrinkRequest) SetPricingCycle(v string) *CreateClusterShrinkRequest {
+	s.PricingCycle = &v
 	return s
 }
 
