@@ -9,6 +9,8 @@ type iQueryAppMetadataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEndTimeMs(v int64) *QueryAppMetadataRequest
+	GetEndTimeMs() *int64
 	SetMetaIds(v string) *QueryAppMetadataRequest
 	GetMetaIds() *string
 	SetMetaType(v string) *QueryAppMetadataRequest
@@ -17,9 +19,12 @@ type iQueryAppMetadataRequest interface {
 	GetPid() *string
 	SetRegionId(v string) *QueryAppMetadataRequest
 	GetRegionId() *string
+	SetStartTimeMs(v int64) *QueryAppMetadataRequest
+	GetStartTimeMs() *int64
 }
 
 type QueryAppMetadataRequest struct {
+	EndTimeMs *int64 `json:"EndTimeMs,omitempty" xml:"EndTimeMs,omitempty"`
 	// The metadata IDs. Separate multiple IDs with commas (,).
 	//
 	// You can obtain the exception ID on the **Exception Analysis*	- page of your application in the ARMS console.
@@ -57,7 +62,8 @@ type QueryAppMetadataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTimeMs *int64  `json:"StartTimeMs,omitempty" xml:"StartTimeMs,omitempty"`
 }
 
 func (s QueryAppMetadataRequest) String() string {
@@ -66,6 +72,10 @@ func (s QueryAppMetadataRequest) String() string {
 
 func (s QueryAppMetadataRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAppMetadataRequest) GetEndTimeMs() *int64 {
+	return s.EndTimeMs
 }
 
 func (s *QueryAppMetadataRequest) GetMetaIds() *string {
@@ -82,6 +92,15 @@ func (s *QueryAppMetadataRequest) GetPid() *string {
 
 func (s *QueryAppMetadataRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *QueryAppMetadataRequest) GetStartTimeMs() *int64 {
+	return s.StartTimeMs
+}
+
+func (s *QueryAppMetadataRequest) SetEndTimeMs(v int64) *QueryAppMetadataRequest {
+	s.EndTimeMs = &v
+	return s
 }
 
 func (s *QueryAppMetadataRequest) SetMetaIds(v string) *QueryAppMetadataRequest {
@@ -101,6 +120,11 @@ func (s *QueryAppMetadataRequest) SetPid(v string) *QueryAppMetadataRequest {
 
 func (s *QueryAppMetadataRequest) SetRegionId(v string) *QueryAppMetadataRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *QueryAppMetadataRequest) SetStartTimeMs(v int64) *QueryAppMetadataRequest {
+	s.StartTimeMs = &v
 	return s
 }
 
