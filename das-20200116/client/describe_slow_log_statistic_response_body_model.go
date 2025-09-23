@@ -408,6 +408,8 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 6.211
 	AvgQueryTimeSeconds *float64 `json:"AvgQueryTimeSeconds,omitempty" xml:"AvgQueryTimeSeconds,omitempty"`
+	AvgRequestSize      *float64 `json:"AvgRequestSize,omitempty" xml:"AvgRequestSize,omitempty"`
+	AvgResponseSize     *float64 `json:"AvgResponseSize,omitempty" xml:"AvgResponseSize,omitempty"`
 	// example:
 	//
 	// 1
@@ -425,12 +427,15 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 2.0
 	AvgRowsSent *float64 `json:"AvgRowsSent,omitempty" xml:"AvgRowsSent,omitempty"`
+	AvgRt       *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	AvgScnt     *float64 `json:"AvgScnt,omitempty" xml:"AvgScnt,omitempty"`
 	// example:
 	//
 	// -
 	CPUTime        *float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
 	CPUTimeSeconds *float64 `json:"CPUTimeSeconds,omitempty" xml:"CPUTimeSeconds,omitempty"`
+	ClientIp       *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Cmd            *string  `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	// example:
 	//
 	// SELECT b?.id,b?.t?,b?.id,b?.t? FROM testtb? b? JOIN testtb? b? ON b?.id=b?.id WHERE b?.t? LIKE ? ORDER BY b?.t? DESC
@@ -451,6 +456,7 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// work-wechat-api
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	DbId     *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// example:
 	//
 	// 0
@@ -551,6 +557,8 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	//
 	// 14.402
 	MaxQueryTimeSeconds *float64 `json:"MaxQueryTimeSeconds,omitempty" xml:"MaxQueryTimeSeconds,omitempty"`
+	MaxRequestSize      *float64 `json:"MaxRequestSize,omitempty" xml:"MaxRequestSize,omitempty"`
+	MaxResponseSize     *float64 `json:"MaxResponseSize,omitempty" xml:"MaxResponseSize,omitempty"`
 	// example:
 	//
 	// 1
@@ -567,8 +575,9 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	// example:
 	//
 	// 256
-	MaxRowsSent *int64 `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty"`
-	MaxScnt     *int64 `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty"`
+	MaxRowsSent *int64   `json:"MaxRowsSent,omitempty" xml:"MaxRowsSent,omitempty"`
+	MaxRt       *float64 `json:"MaxRt,omitempty" xml:"MaxRt,omitempty"`
+	MaxScnt     *int64   `json:"MaxScnt,omitempty" xml:"MaxScnt,omitempty"`
 	// example:
 	//
 	// database.collection
@@ -667,8 +676,9 @@ type DescribeSlowLogStatisticResponseBodyDataDataLogs struct {
 	// example:
 	//
 	// 1708568930
-	Timestamp *int64                                                   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Trend     []*DescribeSlowLogStatisticResponseBodyDataDataLogsTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
+	Timestamp  *int64                                                   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TotalCount *int64                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Trend      []*DescribeSlowLogStatisticResponseBodyDataDataLogsTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
 	// example:
 	//
 	// user-1
@@ -739,6 +749,14 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgQueryTimeSecond
 	return s.AvgQueryTimeSeconds
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgRequestSize() *float64 {
+	return s.AvgRequestSize
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgResponseSize() *float64 {
+	return s.AvgResponseSize
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgReturnNum() *float64 {
 	return s.AvgReturnNum
 }
@@ -759,6 +777,10 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgRowsSent() *flo
 	return s.AvgRowsSent
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgRt() *float64 {
+	return s.AvgRt
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetAvgScnt() *float64 {
 	return s.AvgScnt
 }
@@ -769,6 +791,14 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetCPUTime() *float64
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetCPUTimeSeconds() *float64 {
 	return s.CPUTimeSeconds
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetClientIp() *string {
+	return s.ClientIp
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetCmd() *string {
+	return s.Cmd
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetCommand() *string {
@@ -789,6 +819,10 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetDBName() *string {
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetDatabase() *string {
 	return s.Database
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetDbId() *string {
+	return s.DbId
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetDbInstanceName() *string {
@@ -903,6 +937,14 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxQueryTimeSecond
 	return s.MaxQueryTimeSeconds
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxRequestSize() *float64 {
+	return s.MaxRequestSize
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxResponseSize() *float64 {
+	return s.MaxResponseSize
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxReturnNum() *int64 {
 	return s.MaxReturnNum
 }
@@ -921,6 +963,10 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxRowsExamined() 
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxRowsSent() *int64 {
 	return s.MaxRowsSent
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxRt() *float64 {
+	return s.MaxRt
 }
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetMaxScnt() *int64 {
@@ -1039,6 +1085,10 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetTimestamp() *int64
 	return s.Timestamp
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetTotalCount() *int64 {
+	return s.TotalCount
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) GetTrend() []*DescribeSlowLogStatisticResponseBodyDataDataLogsTrend {
 	return s.Trend
 }
@@ -1117,6 +1167,16 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgQueryTimeSecond
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRequestSize(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgRequestSize = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgResponseSize(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgResponseSize = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgReturnNum(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.AvgReturnNum = &v
 	return s
@@ -1142,6 +1202,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRowsSent(v floa
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgRt(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.AvgRt = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetAvgScnt(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.AvgScnt = &v
 	return s
@@ -1154,6 +1219,16 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetCPUTime(v float64)
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetCPUTimeSeconds(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.CPUTimeSeconds = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetClientIp(v string) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetCmd(v string) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.Cmd = &v
 	return s
 }
 
@@ -1179,6 +1254,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetDBName(v string) *
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetDatabase(v string) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.Database = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetDbId(v string) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.DbId = &v
 	return s
 }
 
@@ -1322,6 +1402,16 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxQueryTimeSecond
 	return s
 }
 
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRequestSize(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxRequestSize = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxResponseSize(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxResponseSize = &v
+	return s
+}
+
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxReturnNum(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.MaxReturnNum = &v
 	return s
@@ -1344,6 +1434,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRowsExamined(v 
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRowsSent(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.MaxRowsSent = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetMaxRt(v float64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.MaxRt = &v
 	return s
 }
 
@@ -1489,6 +1584,11 @@ func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetThreadId(v string)
 
 func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetTimestamp(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
 	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeSlowLogStatisticResponseBodyDataDataLogs) SetTotalCount(v int64) *DescribeSlowLogStatisticResponseBodyDataDataLogs {
+	s.TotalCount = &v
 	return s
 }
 

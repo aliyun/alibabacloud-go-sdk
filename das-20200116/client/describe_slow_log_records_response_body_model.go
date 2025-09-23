@@ -258,6 +258,8 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	CPUTimeSeconds *float64 `json:"CPUTimeSeconds,omitempty" xml:"CPUTimeSeconds,omitempty"`
+	ClientIp       *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Cmd            *string  `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	// example:
 	//
 	// SELECT
@@ -266,6 +268,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// test
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DbId   *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	// example:
 	//
 	// rm-2zebg30mk056g****
@@ -313,7 +316,9 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	// example:
 	//
 	// pro-test
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -338,6 +343,8 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	QueryTimeSeconds *float64 `json:"QueryTimeSeconds,omitempty" xml:"QueryTimeSeconds,omitempty"`
+	RequestSize      *int64   `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
+	ResponseSize     *int64   `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
 	// example:
 	//
 	// test
@@ -362,6 +369,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 10
 	RowsSent *int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
+	Rt       *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
 	// example:
 	//
 	// SELECT 	- FROM my_table WHERE ROWNUM <= 10
@@ -433,12 +441,24 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetCPUTimeSeconds() *float6
 	return s.CPUTimeSeconds
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetClientIp() *string {
+	return s.ClientIp
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetCmd() *string {
+	return s.Cmd
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetCommand() *string {
 	return s.Command
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDBName() *string {
 	return s.DBName
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDbId() *string {
+	return s.DbId
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDbInstanceName() *string {
@@ -489,6 +509,14 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetNamespace() *string {
 	return s.Namespace
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetNodeId() *string {
+	return s.NodeId
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetOriginTime() *string {
+	return s.OriginTime
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetPhysicalIOReads() *int64 {
 	return s.PhysicalIOReads
 }
@@ -513,6 +541,14 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetQueryTimeSeconds() *floa
 	return s.QueryTimeSeconds
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetRequestSize() *int64 {
+	return s.RequestSize
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetResponseSize() *int64 {
+	return s.ResponseSize
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetReturnItemNumbers() *string {
 	return s.ReturnItemNumbers
 }
@@ -535,6 +571,10 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetRowsExamined() *int64 {
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetRowsSent() *int64 {
 	return s.RowsSent
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetRt() *int64 {
+	return s.Rt
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetSQLText() *string {
@@ -605,6 +645,16 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetCPUTimeSeconds(v float64
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetClientIp(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetCmd(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.Cmd = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetCommand(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.Command = &v
 	return s
@@ -612,6 +662,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetCommand(v string) *Descr
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetDBName(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetDbId(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.DbId = &v
 	return s
 }
 
@@ -675,6 +730,16 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetNamespace(v string) *Des
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetNodeId(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetOriginTime(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.OriginTime = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetPhysicalIOReads(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.PhysicalIOReads = &v
 	return s
@@ -705,6 +770,16 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetQueryTimeSeconds(v float
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetRequestSize(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.RequestSize = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetResponseSize(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.ResponseSize = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetReturnItemNumbers(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.ReturnItemNumbers = &v
 	return s
@@ -732,6 +807,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetRowsExamined(v int64) *D
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetRowsSent(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.RowsSent = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetRt(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.Rt = &v
 	return s
 }
 
