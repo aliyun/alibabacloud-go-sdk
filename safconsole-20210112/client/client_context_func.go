@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("safconsole"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RevokeFeedbackResponse
-func (client *Client) RevokeFeedbackWithOptions(request *RevokeFeedbackRequest, runtime *dara.RuntimeOptions) (_result *RevokeFeedbackResponse, _err error) {
+func (client *Client) RevokeFeedbackWithContext(ctx context.Context, request *RevokeFeedbackRequest, runtime *dara.RuntimeOptions) (_result *RevokeFeedbackResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -93,29 +45,11 @@ func (client *Client) RevokeFeedbackWithOptions(request *RevokeFeedbackRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeFeedbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Used for external deletion of community samples in risk identification services.
-//
-// @param request - RevokeFeedbackRequest
-//
-// @return RevokeFeedbackResponse
-func (client *Client) RevokeFeedback(request *RevokeFeedbackRequest) (_result *RevokeFeedbackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RevokeFeedbackResponse{}
-	_body, _err := client.RevokeFeedbackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -128,7 +62,7 @@ func (client *Client) RevokeFeedback(request *RevokeFeedbackRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendFeedbackResponse
-func (client *Client) SendFeedbackWithOptions(request *SendFeedbackRequest, runtime *dara.RuntimeOptions) (_result *SendFeedbackResponse, _err error) {
+func (client *Client) SendFeedbackWithContext(ctx context.Context, request *SendFeedbackRequest, runtime *dara.RuntimeOptions) (_result *SendFeedbackResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -165,29 +99,11 @@ func (client *Client) SendFeedbackWithOptions(request *SendFeedbackRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendFeedbackResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Used for the external creation of community samples in risk identification services.
-//
-// @param request - SendFeedbackRequest
-//
-// @return SendFeedbackResponse
-func (client *Client) SendFeedback(request *SendFeedbackRequest) (_result *SendFeedbackResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendFeedbackResponse{}
-	_body, _err := client.SendFeedbackWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -200,7 +116,7 @@ func (client *Client) SendFeedback(request *SendFeedbackRequest) (_result *SendF
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadSampleApiResponse
-func (client *Client) UploadSampleApiWithOptions(request *UploadSampleApiRequest, runtime *dara.RuntimeOptions) (_result *UploadSampleApiResponse, _err error) {
+func (client *Client) UploadSampleApiWithContext(ctx context.Context, request *UploadSampleApiRequest, runtime *dara.RuntimeOptions) (_result *UploadSampleApiResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -237,28 +153,10 @@ func (client *Client) UploadSampleApiWithOptions(request *UploadSampleApiRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadSampleApiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Single User API for Sample Creation
-//
-// @param request - UploadSampleApiRequest
-//
-// @return UploadSampleApiResponse
-func (client *Client) UploadSampleApi(request *UploadSampleApiRequest) (_result *UploadSampleApiResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UploadSampleApiResponse{}
-	_body, _err := client.UploadSampleApiWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
