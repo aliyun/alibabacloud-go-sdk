@@ -108,7 +108,8 @@ type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {
 	// example:
 	//
 	// zhitian
-	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Voice       *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	VoiceSource *string `json:"VoiceSource,omitempty" xml:"VoiceSource,omitempty"`
 	// The speaker type.
 	//
 	// Valid values:
@@ -165,6 +166,10 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) GetVoice() *strin
 	return s.Voice
 }
 
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) GetVoiceSource() *string {
+	return s.VoiceSource
+}
+
 func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) GetVoiceType() *string {
 	return s.VoiceType
 }
@@ -200,6 +205,11 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetTag(v string) 
 
 func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetVoice(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
 	s.Voice = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetVoiceSource(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.VoiceSource = &v
 	return s
 }
 
