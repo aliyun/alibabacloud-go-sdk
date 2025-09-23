@@ -33,6 +33,8 @@ type iUpdateFunctionInput interface {
 	GetGpuConfig() *GPUConfig
 	SetHandler(v string) *UpdateFunctionInput
 	GetHandler() *string
+	SetIdleTimeout(v int32) *UpdateFunctionInput
+	GetIdleTimeout() *int32
 	SetInstanceConcurrency(v int32) *UpdateFunctionInput
 	GetInstanceConcurrency() *int32
 	SetInstanceIsolationMode(v string) *UpdateFunctionInput
@@ -92,7 +94,8 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// index.handler
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	Handler     *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	IdleTimeout *int32  `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
 	// example:
 	//
 	// 1
@@ -183,6 +186,10 @@ func (s *UpdateFunctionInput) GetGpuConfig() *GPUConfig {
 
 func (s *UpdateFunctionInput) GetHandler() *string {
 	return s.Handler
+}
+
+func (s *UpdateFunctionInput) GetIdleTimeout() *int32 {
+	return s.IdleTimeout
 }
 
 func (s *UpdateFunctionInput) GetInstanceConcurrency() *int32 {
@@ -306,6 +313,11 @@ func (s *UpdateFunctionInput) SetGpuConfig(v *GPUConfig) *UpdateFunctionInput {
 
 func (s *UpdateFunctionInput) SetHandler(v string) *UpdateFunctionInput {
 	s.Handler = &v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetIdleTimeout(v int32) *UpdateFunctionInput {
+	s.IdleTimeout = &v
 	return s
 }
 

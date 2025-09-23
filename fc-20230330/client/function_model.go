@@ -43,6 +43,8 @@ type iFunction interface {
 	GetGpuConfig() *GPUConfig
 	SetHandler(v string) *Function
 	GetHandler() *string
+	SetIdleTimeout(v int32) *Function
+	GetIdleTimeout() *int32
 	SetInstanceConcurrency(v int32) *Function
 	GetInstanceConcurrency() *int32
 	SetInstanceIsolationMode(v string) *Function
@@ -145,7 +147,8 @@ type Function struct {
 	// example:
 	//
 	// index.handler
-	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	Handler     *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	IdleTimeout *int32  `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
 	// example:
 	//
 	// 1
@@ -189,8 +192,11 @@ type Function struct {
 	// example:
 	//
 	// python3.10
-	Runtime               *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	SessionAffinity       *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
+	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
+	// example:
+	//
+	// {\"sseEndpointPath\":\"/sse\", \"sessionConcurrencyPerInstance\":20}
 	SessionAffinityConfig *string `json:"sessionAffinityConfig,omitempty" xml:"sessionAffinityConfig,omitempty"`
 	// example:
 	//
@@ -287,6 +293,10 @@ func (s *Function) GetGpuConfig() *GPUConfig {
 
 func (s *Function) GetHandler() *string {
 	return s.Handler
+}
+
+func (s *Function) GetIdleTimeout() *int32 {
+	return s.IdleTimeout
 }
 
 func (s *Function) GetInstanceConcurrency() *int32 {
@@ -475,6 +485,11 @@ func (s *Function) SetGpuConfig(v *GPUConfig) *Function {
 
 func (s *Function) SetHandler(v string) *Function {
 	s.Handler = &v
+	return s
+}
+
+func (s *Function) SetIdleTimeout(v int32) *Function {
+	s.IdleTimeout = &v
 	return s
 }
 
