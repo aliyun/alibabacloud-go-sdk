@@ -835,6 +835,92 @@ func (client *Client) CheckSampleDataSet(request *CheckSampleDataSetRequest) (_r
 
 // Summary:
 //
+// 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+//
+// @param tmpReq - ConfigureResultExportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigureResultExportResponse
+func (client *Client) ConfigureResultExportWithOptions(tmpReq *ConfigureResultExportRequest, runtime *dara.RuntimeOptions) (_result *ConfigureResultExportResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ConfigureResultExportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OssInfo) {
+		request.OssInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OssInfo, dara.String("OssInfo"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SlsInfo) {
+		request.SlsInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SlsInfo, dara.String("SlsInfo"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ExportType) {
+		body["ExportType"] = request.ExportType
+	}
+
+	if !dara.IsNil(request.OssInfoShrink) {
+		body["OssInfo"] = request.OssInfoShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlsInfoShrink) {
+		body["SlsInfo"] = request.SlsInfoShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigureResultExport"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigureResultExportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置导出的SLS 或者OSS 信息，实例级别唯一，遵循一次配置多次使用的原则
+//
+// @param request - ConfigureResultExportRequest
+//
+// @return ConfigureResultExportResponse
+func (client *Client) ConfigureResultExport(request *ConfigureResultExportRequest) (_result *ConfigureResultExportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigureResultExportResponse{}
+	_body, _err := client.ConfigureResultExportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an AnalyticDB Pipeline Service (APS) job.
 //
 // Description:
@@ -1757,6 +1843,86 @@ func (client *Client) CreateApsSlsADBJob(request *CreateApsSlsADBJobRequest) (_r
 
 // Summary:
 //
+// 手动创建备份集
+//
+// @param request - CreateBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBackup"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动创建备份集
+//
+// @param request - CreateBackupRequest
+//
+// @return CreateBackupResponse
+func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *CreateBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBackupResponse{}
+	_body, _err := client.CreateBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
 //
 // Description:
@@ -1804,6 +1970,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !dara.IsNil(request.EnableDefaultResourcePool) {
 		query["EnableDefaultResourcePool"] = request.EnableDefaultResourcePool
+	}
+
+	if !dara.IsNil(request.EnableSSL) {
+		query["EnableSSL"] = request.EnableSSL
 	}
 
 	if !dara.IsNil(request.KmsId) {
@@ -9505,6 +9675,74 @@ func (client *Client) DescribeResourceGroupSpec(request *DescribeResourceGroupSp
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeResourceGroupSpecResponse{}
 	_body, _err := client.DescribeResourceGroupSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户配置的导出信息
+//
+// @param request - DescribeResultExportConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResultExportConfigResponse
+func (client *Client) DescribeResultExportConfigWithOptions(request *DescribeResultExportConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeResultExportConfigResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ExportType) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeResultExportConfig"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeResultExportConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户配置的导出信息
+//
+// @param request - DescribeResultExportConfigRequest
+//
+// @return DescribeResultExportConfigResponse
+func (client *Client) DescribeResultExportConfig(request *DescribeResultExportConfigRequest) (_result *DescribeResultExportConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeResultExportConfigResponse{}
+	_body, _err := client.DescribeResultExportConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

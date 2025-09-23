@@ -11,8 +11,14 @@ type iOpenStructMvRecommendSubTaskModel interface {
 	GoString() string
 	SetEndTime(v string) *OpenStructMvRecommendSubTaskModel
 	GetEndTime() *string
+	SetMinRewriteQueryCount(v int32) *OpenStructMvRecommendSubTaskModel
+	GetMinRewriteQueryCount() *int32
+	SetMinRewriteQueryPattern(v int32) *OpenStructMvRecommendSubTaskModel
+	GetMinRewriteQueryPattern() *int32
 	SetScanQueriesCount(v int64) *OpenStructMvRecommendSubTaskModel
 	GetScanQueriesCount() *int64
+	SetSlowQueryThreshold(v int32) *OpenStructMvRecommendSubTaskModel
+	GetSlowQueryThreshold() *int32
 	SetStartTime(v string) *OpenStructMvRecommendSubTaskModel
 	GetStartTime() *string
 	SetStatus(v string) *OpenStructMvRecommendSubTaskModel
@@ -24,12 +30,15 @@ type iOpenStructMvRecommendSubTaskModel interface {
 }
 
 type OpenStructMvRecommendSubTaskModel struct {
-	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ScanQueriesCount *int64  `json:"ScanQueriesCount,omitempty" xml:"ScanQueriesCount,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubQueriesCount  *int64  `json:"SubQueriesCount,omitempty" xml:"SubQueriesCount,omitempty"`
-	SubtaskId        *int64  `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
+	EndTime                *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MinRewriteQueryCount   *int32  `json:"MinRewriteQueryCount,omitempty" xml:"MinRewriteQueryCount,omitempty"`
+	MinRewriteQueryPattern *int32  `json:"MinRewriteQueryPattern,omitempty" xml:"MinRewriteQueryPattern,omitempty"`
+	ScanQueriesCount       *int64  `json:"ScanQueriesCount,omitempty" xml:"ScanQueriesCount,omitempty"`
+	SlowQueryThreshold     *int32  `json:"SlowQueryThreshold,omitempty" xml:"SlowQueryThreshold,omitempty"`
+	StartTime              *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubQueriesCount        *int64  `json:"SubQueriesCount,omitempty" xml:"SubQueriesCount,omitempty"`
+	SubtaskId              *int64  `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
 }
 
 func (s OpenStructMvRecommendSubTaskModel) String() string {
@@ -44,8 +53,20 @@ func (s *OpenStructMvRecommendSubTaskModel) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *OpenStructMvRecommendSubTaskModel) GetMinRewriteQueryCount() *int32 {
+	return s.MinRewriteQueryCount
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) GetMinRewriteQueryPattern() *int32 {
+	return s.MinRewriteQueryPattern
+}
+
 func (s *OpenStructMvRecommendSubTaskModel) GetScanQueriesCount() *int64 {
 	return s.ScanQueriesCount
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) GetSlowQueryThreshold() *int32 {
+	return s.SlowQueryThreshold
 }
 
 func (s *OpenStructMvRecommendSubTaskModel) GetStartTime() *string {
@@ -69,8 +90,23 @@ func (s *OpenStructMvRecommendSubTaskModel) SetEndTime(v string) *OpenStructMvRe
 	return s
 }
 
+func (s *OpenStructMvRecommendSubTaskModel) SetMinRewriteQueryCount(v int32) *OpenStructMvRecommendSubTaskModel {
+	s.MinRewriteQueryCount = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetMinRewriteQueryPattern(v int32) *OpenStructMvRecommendSubTaskModel {
+	s.MinRewriteQueryPattern = &v
+	return s
+}
+
 func (s *OpenStructMvRecommendSubTaskModel) SetScanQueriesCount(v int64) *OpenStructMvRecommendSubTaskModel {
 	s.ScanQueriesCount = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetSlowQueryThreshold(v int32) *OpenStructMvRecommendSubTaskModel {
+	s.SlowQueryThreshold = &v
 	return s
 }
 

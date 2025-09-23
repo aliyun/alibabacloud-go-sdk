@@ -13,6 +13,10 @@ type iOpenStructMvDetailModel interface {
 	GetBaseTableInfos() []*OpenStructMvDetailModelBaseTableInfos
 	SetBaseTableNames(v [][]*string) *OpenStructMvDetailModel
 	GetBaseTableNames() [][]*string
+	SetEnableDelayAlert(v int32) *OpenStructMvDetailModel
+	GetEnableDelayAlert() *int32
+	SetEnableFailureAlert(v int32) *OpenStructMvDetailModel
+	GetEnableFailureAlert() *int32
 	SetExplicitHit(v int64) *OpenStructMvDetailModel
 	GetExplicitHit() *int64
 	SetFirstRefreshTime(v string) *OpenStructMvDetailModel
@@ -21,6 +25,8 @@ type iOpenStructMvDetailModel interface {
 	GetImplicitHit() *int64
 	SetIsInactive(v bool) *OpenStructMvDetailModel
 	GetIsInactive() *bool
+	SetLatencyTolerance(v int32) *OpenStructMvDetailModel
+	GetLatencyTolerance() *int32
 	SetLocalSize(v int64) *OpenStructMvDetailModel
 	GetLocalSize() *int64
 	SetQueryRewriteEnabled(v bool) *OpenStructMvDetailModel
@@ -42,10 +48,13 @@ type iOpenStructMvDetailModel interface {
 type OpenStructMvDetailModel struct {
 	BaseTableInfos      []*OpenStructMvDetailModelBaseTableInfos `json:"BaseTableInfos,omitempty" xml:"BaseTableInfos,omitempty" type:"Repeated"`
 	BaseTableNames      [][]*string                              `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
+	EnableDelayAlert    *int32                                   `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
+	EnableFailureAlert  *int32                                   `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
 	ExplicitHit         *int64                                   `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
 	FirstRefreshTime    *string                                  `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
 	ImplicitHit         *int64                                   `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
 	IsInactive          *bool                                    `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
+	LatencyTolerance    *int32                                   `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
 	LocalSize           *int64                                   `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
 	QueryRewriteEnabled *bool                                    `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
 	RefreshInterval     *string                                  `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
@@ -72,6 +81,14 @@ func (s *OpenStructMvDetailModel) GetBaseTableNames() [][]*string {
 	return s.BaseTableNames
 }
 
+func (s *OpenStructMvDetailModel) GetEnableDelayAlert() *int32 {
+	return s.EnableDelayAlert
+}
+
+func (s *OpenStructMvDetailModel) GetEnableFailureAlert() *int32 {
+	return s.EnableFailureAlert
+}
+
 func (s *OpenStructMvDetailModel) GetExplicitHit() *int64 {
 	return s.ExplicitHit
 }
@@ -86,6 +103,10 @@ func (s *OpenStructMvDetailModel) GetImplicitHit() *int64 {
 
 func (s *OpenStructMvDetailModel) GetIsInactive() *bool {
 	return s.IsInactive
+}
+
+func (s *OpenStructMvDetailModel) GetLatencyTolerance() *int32 {
+	return s.LatencyTolerance
 }
 
 func (s *OpenStructMvDetailModel) GetLocalSize() *int64 {
@@ -130,6 +151,16 @@ func (s *OpenStructMvDetailModel) SetBaseTableNames(v [][]*string) *OpenStructMv
 	return s
 }
 
+func (s *OpenStructMvDetailModel) SetEnableDelayAlert(v int32) *OpenStructMvDetailModel {
+	s.EnableDelayAlert = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetEnableFailureAlert(v int32) *OpenStructMvDetailModel {
+	s.EnableFailureAlert = &v
+	return s
+}
+
 func (s *OpenStructMvDetailModel) SetExplicitHit(v int64) *OpenStructMvDetailModel {
 	s.ExplicitHit = &v
 	return s
@@ -147,6 +178,11 @@ func (s *OpenStructMvDetailModel) SetImplicitHit(v int64) *OpenStructMvDetailMod
 
 func (s *OpenStructMvDetailModel) SetIsInactive(v bool) *OpenStructMvDetailModel {
 	s.IsInactive = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetLatencyTolerance(v int32) *OpenStructMvDetailModel {
+	s.LatencyTolerance = &v
 	return s
 }
 

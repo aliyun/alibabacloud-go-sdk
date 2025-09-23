@@ -25,6 +25,8 @@ type iCreateDBClusterRequest interface {
 	GetDiskEncryption() *bool
 	SetEnableDefaultResourcePool(v bool) *CreateDBClusterRequest
 	GetEnableDefaultResourcePool() *bool
+	SetEnableSSL(v bool) *CreateDBClusterRequest
+	GetEnableSSL() *bool
 	SetKmsId(v string) *CreateDBClusterRequest
 	GetKmsId() *string
 	SetPayType(v string) *CreateDBClusterRequest
@@ -132,6 +134,7 @@ type CreateDBClusterRequest struct {
 	//
 	// true
 	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
+	EnableSSL                 *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// The ID of the key that is used to encrypt disk data.
 	//
 	// >  This parameter must be specified only when disk encryption is enabled.
@@ -350,6 +353,10 @@ func (s *CreateDBClusterRequest) GetEnableDefaultResourcePool() *bool {
 	return s.EnableDefaultResourcePool
 }
 
+func (s *CreateDBClusterRequest) GetEnableSSL() *bool {
+	return s.EnableSSL
+}
+
 func (s *CreateDBClusterRequest) GetKmsId() *string {
 	return s.KmsId
 }
@@ -467,6 +474,11 @@ func (s *CreateDBClusterRequest) SetDiskEncryption(v bool) *CreateDBClusterReque
 
 func (s *CreateDBClusterRequest) SetEnableDefaultResourcePool(v bool) *CreateDBClusterRequest {
 	s.EnableDefaultResourcePool = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetEnableSSL(v bool) *CreateDBClusterRequest {
+	s.EnableSSL = &v
 	return s
 }
 
