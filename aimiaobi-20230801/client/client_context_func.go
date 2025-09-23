@@ -339,6 +339,56 @@ func (client *Client) AsyncEditTimelineWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 上传招标书文件
+//
+// @param request - AsyncUploadTenderDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncUploadTenderDocResponse
+func (client *Client) AsyncUploadTenderDocWithContext(ctx context.Context, request *AsyncUploadTenderDocRequest, runtime *dara.RuntimeOptions) (_result *AsyncUploadTenderDocResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileKey) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !dara.IsNil(request.TenderDocName) {
+		body["TenderDocName"] = request.TenderDocName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AsyncUploadTenderDoc"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AsyncUploadTenderDocResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 上传剪辑素材
 //
 // @param tmpReq - AsyncUploadVideoRequest
@@ -397,6 +447,60 @@ func (client *Client) AsyncUploadVideoWithContext(ctx context.Context, tmpReq *A
 		BodyType:    dara.String("json"),
 	}
 	_result = &AsyncUploadVideoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 标书写作接口
+//
+// @param request - AsyncWritingBiddingDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AsyncWritingBiddingDocResponse
+func (client *Client) AsyncWritingBiddingDocWithContext(ctx context.Context, request *AsyncWritingBiddingDocRequest, runtime *dara.RuntimeOptions) (_result *AsyncWritingBiddingDocResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CompanyKeyword) {
+		body["CompanyKeyword"] = request.CompanyKeyword
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AsyncWritingBiddingDoc"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AsyncWritingBiddingDocResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1583,6 +1687,52 @@ func (client *Client) DownloadAuditNoteWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 标书下载接口
+//
+// @param request - DownloadBiddingDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadBiddingDocResponse
+func (client *Client) DownloadBiddingDocWithContext(ctx context.Context, request *DownloadBiddingDocRequest, runtime *dara.RuntimeOptions) (_result *DownloadBiddingDocResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadBiddingDoc"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadBiddingDocResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑审核自定义词库记录
 //
 // @param tmpReq - EditAuditTermsRequest
@@ -1641,6 +1791,64 @@ func (client *Client) EditAuditTermsWithContext(ctx context.Context, tmpReq *Edi
 		BodyType:    dara.String("json"),
 	}
 	_result = &EditAuditTermsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑标书内容接口
+//
+// @param request - EditBiddingDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditBiddingDocResponse
+func (client *Client) EditBiddingDocWithContext(ctx context.Context, request *EditBiddingDocRequest, runtime *dara.RuntimeOptions) (_result *EditBiddingDocResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ContentFormat) {
+		body["ContentFormat"] = request.ContentFormat
+	}
+
+	if !dara.IsNil(request.ContentType) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EditBiddingDoc"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EditBiddingDocResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2685,6 +2893,98 @@ func (client *Client) GetAvailableAuditNotesWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAvailableAuditNotesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得标书写作结果接口
+//
+// @param request - GetBiddingDocInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBiddingDocInfoResponse
+func (client *Client) GetBiddingDocInfoWithContext(ctx context.Context, request *GetBiddingDocInfoRequest, runtime *dara.RuntimeOptions) (_result *GetBiddingDocInfoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBiddingDocInfo"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBiddingDocInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得标书功能剩余额度
+//
+// @param request - GetBiddingRemainLimitNumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBiddingRemainLimitNumResponse
+func (client *Client) GetBiddingRemainLimitNumWithContext(ctx context.Context, request *GetBiddingRemainLimitNumRequest, runtime *dara.RuntimeOptions) (_result *GetBiddingRemainLimitNumResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		body["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBiddingRemainLimitNum"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBiddingRemainLimitNumResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4555,6 +4855,84 @@ func (client *Client) ListAuditTermsWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAuditTermsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获得标书写作任务列表
+//
+// @param request - ListBiddingDocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBiddingDocResponse
+func (client *Client) ListBiddingDocWithContext(ctx context.Context, request *ListBiddingDocRequest, runtime *dara.RuntimeOptions) (_result *ListBiddingDocResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateTimeEnd) {
+		body["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !dara.IsNil(request.CreateTimeStart) {
+		body["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !dara.IsNil(request.Current) {
+		body["Current"] = request.Current
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Size) {
+		body["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.Skip) {
+		body["Skip"] = request.Skip
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		body["TaskStatus"] = request.TaskStatus
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBiddingDoc"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBiddingDocResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
