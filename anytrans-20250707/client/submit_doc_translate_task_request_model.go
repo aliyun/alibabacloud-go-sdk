@@ -141,10 +141,7 @@ type SubmitDocTranslateTaskRequestExt struct {
 	//
 	// This text comes from a rigorous academic paper. Please provide a translation that complies with academic standards.
 	DomainHint    *string                                          `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
-	Examples      []*SubmitDocTranslateTaskRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
-	Sensitives    []*string                                        `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*SubmitDocTranslateTaskRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
-	TextTransform *SubmitDocTranslateTaskRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
 }
 
 func (s SubmitDocTranslateTaskRequestExt) String() string {
@@ -159,34 +156,12 @@ func (s *SubmitDocTranslateTaskRequestExt) GetDomainHint() *string {
 	return s.DomainHint
 }
 
-func (s *SubmitDocTranslateTaskRequestExt) GetExamples() []*SubmitDocTranslateTaskRequestExtExamples {
-	return s.Examples
-}
-
-func (s *SubmitDocTranslateTaskRequestExt) GetSensitives() []*string {
-	return s.Sensitives
-}
-
 func (s *SubmitDocTranslateTaskRequestExt) GetTerminologies() []*SubmitDocTranslateTaskRequestExtTerminologies {
 	return s.Terminologies
 }
 
-func (s *SubmitDocTranslateTaskRequestExt) GetTextTransform() *SubmitDocTranslateTaskRequestExtTextTransform {
-	return s.TextTransform
-}
-
 func (s *SubmitDocTranslateTaskRequestExt) SetDomainHint(v string) *SubmitDocTranslateTaskRequestExt {
 	s.DomainHint = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExt) SetExamples(v []*SubmitDocTranslateTaskRequestExtExamples) *SubmitDocTranslateTaskRequestExt {
-	s.Examples = v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExt) SetSensitives(v []*string) *SubmitDocTranslateTaskRequestExt {
-	s.Sensitives = v
 	return s
 }
 
@@ -195,50 +170,7 @@ func (s *SubmitDocTranslateTaskRequestExt) SetTerminologies(v []*SubmitDocTransl
 	return s
 }
 
-func (s *SubmitDocTranslateTaskRequestExt) SetTextTransform(v *SubmitDocTranslateTaskRequestExtTextTransform) *SubmitDocTranslateTaskRequestExt {
-	s.TextTransform = v
-	return s
-}
-
 func (s *SubmitDocTranslateTaskRequestExt) Validate() error {
-	return dara.Validate(s)
-}
-
-type SubmitDocTranslateTaskRequestExtExamples struct {
-	Src *string `json:"src,omitempty" xml:"src,omitempty"`
-	// example:
-	//
-	// llm
-	Tgt *string `json:"tgt,omitempty" xml:"tgt,omitempty"`
-}
-
-func (s SubmitDocTranslateTaskRequestExtExamples) String() string {
-	return dara.Prettify(s)
-}
-
-func (s SubmitDocTranslateTaskRequestExtExamples) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocTranslateTaskRequestExtExamples) GetSrc() *string {
-	return s.Src
-}
-
-func (s *SubmitDocTranslateTaskRequestExtExamples) GetTgt() *string {
-	return s.Tgt
-}
-
-func (s *SubmitDocTranslateTaskRequestExtExamples) SetSrc(v string) *SubmitDocTranslateTaskRequestExtExamples {
-	s.Src = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExtExamples) SetTgt(v string) *SubmitDocTranslateTaskRequestExtExamples {
-	s.Tgt = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExtExamples) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -277,59 +209,5 @@ func (s *SubmitDocTranslateTaskRequestExtTerminologies) SetTgt(v string) *Submit
 }
 
 func (s *SubmitDocTranslateTaskRequestExtTerminologies) Validate() error {
-	return dara.Validate(s)
-}
-
-type SubmitDocTranslateTaskRequestExtTextTransform struct {
-	// example:
-	//
-	// true
-	ToLower *bool `json:"toLower,omitempty" xml:"toLower,omitempty"`
-	// example:
-	//
-	// false
-	ToTitle *bool `json:"toTitle,omitempty" xml:"toTitle,omitempty"`
-	// example:
-	//
-	// true
-	ToUpper *bool `json:"toUpper,omitempty" xml:"toUpper,omitempty"`
-}
-
-func (s SubmitDocTranslateTaskRequestExtTextTransform) String() string {
-	return dara.Prettify(s)
-}
-
-func (s SubmitDocTranslateTaskRequestExtTextTransform) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) GetToLower() *bool {
-	return s.ToLower
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) GetToTitle() *bool {
-	return s.ToTitle
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) GetToUpper() *bool {
-	return s.ToUpper
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) SetToLower(v bool) *SubmitDocTranslateTaskRequestExtTextTransform {
-	s.ToLower = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) SetToTitle(v bool) *SubmitDocTranslateTaskRequestExtTextTransform {
-	s.ToTitle = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) SetToUpper(v bool) *SubmitDocTranslateTaskRequestExtTextTransform {
-	s.ToUpper = &v
-	return s
-}
-
-func (s *SubmitDocTranslateTaskRequestExtTextTransform) Validate() error {
 	return dara.Validate(s)
 }

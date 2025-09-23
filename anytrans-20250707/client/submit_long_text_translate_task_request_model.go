@@ -128,6 +128,7 @@ func (s *SubmitLongTextTranslateTaskRequest) Validate() error {
 }
 
 type SubmitLongTextTranslateTaskRequestExt struct {
+	Config *SubmitLongTextTranslateTaskRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
 	// technology
@@ -144,6 +145,10 @@ func (s SubmitLongTextTranslateTaskRequestExt) String() string {
 
 func (s SubmitLongTextTranslateTaskRequestExt) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExt) GetConfig() *SubmitLongTextTranslateTaskRequestExtConfig {
+	return s.Config
 }
 
 func (s *SubmitLongTextTranslateTaskRequestExt) GetDomainHint() *string {
@@ -164,6 +169,11 @@ func (s *SubmitLongTextTranslateTaskRequestExt) GetTerminologies() []*SubmitLong
 
 func (s *SubmitLongTextTranslateTaskRequestExt) GetTextTransform() *SubmitLongTextTranslateTaskRequestExtTextTransform {
 	return s.TextTransform
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExt) SetConfig(v *SubmitLongTextTranslateTaskRequestExtConfig) *SubmitLongTextTranslateTaskRequestExt {
+	s.Config = v
+	return s
 }
 
 func (s *SubmitLongTextTranslateTaskRequestExt) SetDomainHint(v string) *SubmitLongTextTranslateTaskRequestExt {
@@ -192,6 +202,31 @@ func (s *SubmitLongTextTranslateTaskRequestExt) SetTextTransform(v *SubmitLongTe
 }
 
 func (s *SubmitLongTextTranslateTaskRequestExt) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitLongTextTranslateTaskRequestExtConfig struct {
+	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+}
+
+func (s SubmitLongTextTranslateTaskRequestExtConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitLongTextTranslateTaskRequestExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExtConfig) GetSkipCsiCheck() *bool {
+	return s.SkipCsiCheck
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExtConfig) SetSkipCsiCheck(v bool) *SubmitLongTextTranslateTaskRequestExtConfig {
+	s.SkipCsiCheck = &v
+	return s
+}
+
+func (s *SubmitLongTextTranslateTaskRequestExtConfig) Validate() error {
 	return dara.Validate(s)
 }
 

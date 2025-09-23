@@ -133,6 +133,7 @@ func (s *TextTranslateRequest) Validate() error {
 }
 
 type TextTranslateRequestExt struct {
+	Config *TextTranslateRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
 	// technology
@@ -149,6 +150,10 @@ func (s TextTranslateRequestExt) String() string {
 
 func (s TextTranslateRequestExt) GoString() string {
 	return s.String()
+}
+
+func (s *TextTranslateRequestExt) GetConfig() *TextTranslateRequestExtConfig {
+	return s.Config
 }
 
 func (s *TextTranslateRequestExt) GetDomainHint() *string {
@@ -169,6 +174,11 @@ func (s *TextTranslateRequestExt) GetTerminologies() []*TextTranslateRequestExtT
 
 func (s *TextTranslateRequestExt) GetTextTransform() *TextTranslateRequestExtTextTransform {
 	return s.TextTransform
+}
+
+func (s *TextTranslateRequestExt) SetConfig(v *TextTranslateRequestExtConfig) *TextTranslateRequestExt {
+	s.Config = v
+	return s
 }
 
 func (s *TextTranslateRequestExt) SetDomainHint(v string) *TextTranslateRequestExt {
@@ -197,6 +207,31 @@ func (s *TextTranslateRequestExt) SetTextTransform(v *TextTranslateRequestExtTex
 }
 
 func (s *TextTranslateRequestExt) Validate() error {
+	return dara.Validate(s)
+}
+
+type TextTranslateRequestExtConfig struct {
+	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+}
+
+func (s TextTranslateRequestExtConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s TextTranslateRequestExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TextTranslateRequestExtConfig) GetSkipCsiCheck() *bool {
+	return s.SkipCsiCheck
+}
+
+func (s *TextTranslateRequestExtConfig) SetSkipCsiCheck(v bool) *TextTranslateRequestExtConfig {
+	s.SkipCsiCheck = &v
+	return s
+}
+
+func (s *TextTranslateRequestExtConfig) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -9,6 +9,8 @@ type iBatchTranslateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppName(v string) *BatchTranslateRequest
+	GetAppName() *string
 	SetExt(v *BatchTranslateRequestExt) *BatchTranslateRequest
 	GetExt() *BatchTranslateRequestExt
 	SetFormat(v string) *BatchTranslateRequest
@@ -26,7 +28,8 @@ type iBatchTranslateRequest interface {
 }
 
 type BatchTranslateRequest struct {
-	Ext *BatchTranslateRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
+	AppName *string                   `json:"appName,omitempty" xml:"appName,omitempty"`
+	Ext     *BatchTranslateRequestExt `json:"ext,omitempty" xml:"ext,omitempty" type:"Struct"`
 	// example:
 	//
 	// text
@@ -65,6 +68,10 @@ func (s BatchTranslateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *BatchTranslateRequest) GetAppName() *string {
+	return s.AppName
+}
+
 func (s *BatchTranslateRequest) GetExt() *BatchTranslateRequestExt {
 	return s.Ext
 }
@@ -91,6 +98,11 @@ func (s *BatchTranslateRequest) GetText() map[string]interface{} {
 
 func (s *BatchTranslateRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *BatchTranslateRequest) SetAppName(v string) *BatchTranslateRequest {
+	s.AppName = &v
+	return s
 }
 
 func (s *BatchTranslateRequest) SetExt(v *BatchTranslateRequestExt) *BatchTranslateRequest {
@@ -133,6 +145,7 @@ func (s *BatchTranslateRequest) Validate() error {
 }
 
 type BatchTranslateRequestExt struct {
+	Config *BatchTranslateRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
 	// technology
@@ -149,6 +162,10 @@ func (s BatchTranslateRequestExt) String() string {
 
 func (s BatchTranslateRequestExt) GoString() string {
 	return s.String()
+}
+
+func (s *BatchTranslateRequestExt) GetConfig() *BatchTranslateRequestExtConfig {
+	return s.Config
 }
 
 func (s *BatchTranslateRequestExt) GetDomainHint() *string {
@@ -169,6 +186,11 @@ func (s *BatchTranslateRequestExt) GetTerminologies() []*BatchTranslateRequestEx
 
 func (s *BatchTranslateRequestExt) GetTextTransform() *BatchTranslateRequestExtTextTransform {
 	return s.TextTransform
+}
+
+func (s *BatchTranslateRequestExt) SetConfig(v *BatchTranslateRequestExtConfig) *BatchTranslateRequestExt {
+	s.Config = v
+	return s
 }
 
 func (s *BatchTranslateRequestExt) SetDomainHint(v string) *BatchTranslateRequestExt {
@@ -197,6 +219,31 @@ func (s *BatchTranslateRequestExt) SetTextTransform(v *BatchTranslateRequestExtT
 }
 
 func (s *BatchTranslateRequestExt) Validate() error {
+	return dara.Validate(s)
+}
+
+type BatchTranslateRequestExtConfig struct {
+	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+}
+
+func (s BatchTranslateRequestExtConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchTranslateRequestExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *BatchTranslateRequestExtConfig) GetSkipCsiCheck() *bool {
+	return s.SkipCsiCheck
+}
+
+func (s *BatchTranslateRequestExtConfig) SetSkipCsiCheck(v bool) *BatchTranslateRequestExtConfig {
+	s.SkipCsiCheck = &v
+	return s
+}
+
+func (s *BatchTranslateRequestExtConfig) Validate() error {
 	return dara.Validate(s)
 }
 

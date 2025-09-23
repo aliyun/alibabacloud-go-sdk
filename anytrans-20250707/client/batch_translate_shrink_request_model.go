@@ -9,6 +9,8 @@ type iBatchTranslateShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppName(v string) *BatchTranslateShrinkRequest
+	GetAppName() *string
 	SetExtShrink(v string) *BatchTranslateShrinkRequest
 	GetExtShrink() *string
 	SetFormat(v string) *BatchTranslateShrinkRequest
@@ -26,6 +28,7 @@ type iBatchTranslateShrinkRequest interface {
 }
 
 type BatchTranslateShrinkRequest struct {
+	AppName   *string `json:"appName,omitempty" xml:"appName,omitempty"`
 	ExtShrink *string `json:"ext,omitempty" xml:"ext,omitempty"`
 	// example:
 	//
@@ -65,6 +68,10 @@ func (s BatchTranslateShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *BatchTranslateShrinkRequest) GetAppName() *string {
+	return s.AppName
+}
+
 func (s *BatchTranslateShrinkRequest) GetExtShrink() *string {
 	return s.ExtShrink
 }
@@ -91,6 +98,11 @@ func (s *BatchTranslateShrinkRequest) GetTextShrink() *string {
 
 func (s *BatchTranslateShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *BatchTranslateShrinkRequest) SetAppName(v string) *BatchTranslateShrinkRequest {
+	s.AppName = &v
+	return s
 }
 
 func (s *BatchTranslateShrinkRequest) SetExtShrink(v string) *BatchTranslateShrinkRequest {

@@ -128,6 +128,7 @@ func (s *SubmitHtmlTranslateTaskRequest) Validate() error {
 }
 
 type SubmitHtmlTranslateTaskRequestExt struct {
+	Config *SubmitHtmlTranslateTaskRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
 	// technology
@@ -144,6 +145,10 @@ func (s SubmitHtmlTranslateTaskRequestExt) String() string {
 
 func (s SubmitHtmlTranslateTaskRequestExt) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExt) GetConfig() *SubmitHtmlTranslateTaskRequestExtConfig {
+	return s.Config
 }
 
 func (s *SubmitHtmlTranslateTaskRequestExt) GetDomainHint() *string {
@@ -164,6 +169,11 @@ func (s *SubmitHtmlTranslateTaskRequestExt) GetTerminologies() []*SubmitHtmlTran
 
 func (s *SubmitHtmlTranslateTaskRequestExt) GetTextTransform() *SubmitHtmlTranslateTaskRequestExtTextTransform {
 	return s.TextTransform
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExt) SetConfig(v *SubmitHtmlTranslateTaskRequestExtConfig) *SubmitHtmlTranslateTaskRequestExt {
+	s.Config = v
+	return s
 }
 
 func (s *SubmitHtmlTranslateTaskRequestExt) SetDomainHint(v string) *SubmitHtmlTranslateTaskRequestExt {
@@ -192,6 +202,31 @@ func (s *SubmitHtmlTranslateTaskRequestExt) SetTextTransform(v *SubmitHtmlTransl
 }
 
 func (s *SubmitHtmlTranslateTaskRequestExt) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitHtmlTranslateTaskRequestExtConfig struct {
+	SkipCsiCheck *bool `json:"skipCsiCheck,omitempty" xml:"skipCsiCheck,omitempty"`
+}
+
+func (s SubmitHtmlTranslateTaskRequestExtConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitHtmlTranslateTaskRequestExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExtConfig) GetSkipCsiCheck() *bool {
+	return s.SkipCsiCheck
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExtConfig) SetSkipCsiCheck(v bool) *SubmitHtmlTranslateTaskRequestExtConfig {
+	s.SkipCsiCheck = &v
+	return s
+}
+
+func (s *SubmitHtmlTranslateTaskRequestExtConfig) Validate() error {
 	return dara.Validate(s)
 }
 

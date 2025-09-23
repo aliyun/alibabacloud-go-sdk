@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/anytrans-20250707
+module github.com/alibabacloud-go/anytrans-20250707/v2
 
 go 1.14
 

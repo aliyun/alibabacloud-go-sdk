@@ -82,6 +82,10 @@ func (client *Client) BatchTranslateWithOptions(tmpReq *BatchTranslateRequest, h
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		body["appName"] = request.AppName
+	}
+
 	if !dara.IsNil(request.ExtShrink) {
 		body["ext"] = request.ExtShrink
 	}
