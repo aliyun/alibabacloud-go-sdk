@@ -98,6 +98,74 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加AI节点
+//
+// @param request - AddAINodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAINodeResponse
+func (client *Client) AddAINodeWithOptions(request *AddAINodeRequest, runtime *dara.RuntimeOptions) (_result *AddAINodeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AINodePoolId) {
+		query["AINodePoolId"] = request.AINodePoolId
+	}
+
+	if !dara.IsNil(request.AINodeSpecInfos) {
+		query["AINodeSpecInfos"] = request.AINodeSpecInfos
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAINode"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAINodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加AI节点
+//
+// @param request - AddAINodeRequest
+//
+// @return AddAINodeResponse
+func (client *Client) AddAINode(request *AddAINodeRequest) (_result *AddAINodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddAINodeResponse{}
+	_body, _err := client.AddAINodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Allocates a public endpoint for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
@@ -2240,6 +2308,118 @@ func (client *Client) CreateJDBCDataSource(request *CreateJDBCDataSourceRequest)
 
 // Summary:
 //
+// 创建模型服务
+//
+// @param tmpReq - CreateModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelServiceWithOptions(tmpReq *CreateModelServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateModelServiceResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateModelServiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AiNodes) {
+		request.AiNodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AiNodes, dara.String("AiNodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModelParams) {
+		request.ModelParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelParams, dara.String("ModelParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AiNodesShrink) {
+		query["AiNodes"] = request.AiNodesShrink
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnablePublicConnection) {
+		query["EnablePublicConnection"] = request.EnablePublicConnection
+	}
+
+	if !dara.IsNil(request.InferenceEngine) {
+		query["InferenceEngine"] = request.InferenceEngine
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelParamsShrink) {
+		query["ModelParams"] = request.ModelParamsShrink
+	}
+
+	if !dara.IsNil(request.Replicas) {
+		query["Replicas"] = request.Replicas
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - CreateModelServiceRequest
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelService(request *CreateModelServiceRequest) (_result *CreateModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CreateModelServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a vector namespace.
 //
 // @param request - CreateNamespaceRequest
@@ -3185,6 +3365,78 @@ func (client *Client) CreateVectorIndex(request *CreateVectorIndexRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateVectorIndexResponse{}
 	_body, _err := client.CreateVectorIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI节点
+//
+// @param request - DeleteAINodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAINodeResponse
+func (client *Client) DeleteAINodeWithOptions(request *DeleteAINodeRequest, runtime *dara.RuntimeOptions) (_result *DeleteAINodeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AINodeNum) {
+		query["AINodeNum"] = request.AINodeNum
+	}
+
+	if !dara.IsNil(request.AINodePoolId) {
+		query["AINodePoolId"] = request.AINodePoolId
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NodeNames) {
+		query["NodeNames"] = request.NodeNames
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAINode"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAINodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI节点
+//
+// @param request - DeleteAINodeRequest
+//
+// @return DeleteAINodeResponse
+func (client *Client) DeleteAINode(request *DeleteAINodeRequest) (_result *DeleteAINodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAINodeResponse{}
+	_body, _err := client.DeleteAINodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4261,6 +4513,70 @@ func (client *Client) DeleteJDBCDataSource(request *DeleteJDBCDataSourceRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteJDBCDataSourceResponse{}
 	_body, _err := client.DeleteJDBCDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelServiceWithOptions(request *DeleteModelServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelServiceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelService(request *DeleteModelServiceRequest) (_result *DeleteModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.DeleteModelServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8544,6 +8860,70 @@ func (client *Client) DescribeLogBackups(request *DescribeLogBackupsRequest) (_r
 
 // Summary:
 //
+// 查询模型服务
+//
+// @param request - DescribeModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelServiceResponse
+func (client *Client) DescribeModelServiceWithOptions(request *DescribeModelServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelServiceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelService"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型服务
+//
+// @param request - DescribeModelServiceRequest
+//
+// @return DescribeModelServiceResponse
+func (client *Client) DescribeModelService(request *DescribeModelServiceRequest) (_result *DescribeModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeModelServiceResponse{}
+	_body, _err := client.DescribeModelServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the parameter modification logs of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeModifyParameterLogRequest
@@ -11846,6 +12226,70 @@ func (client *Client) InitVectorDatabase(request *InitVectorDatabaseRequest) (_r
 
 // Summary:
 //
+// 列举AI节点池
+//
+// @param request - ListAINodePoolsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAINodePoolsResponse
+func (client *Client) ListAINodePoolsWithOptions(request *ListAINodePoolsRequest, runtime *dara.RuntimeOptions) (_result *ListAINodePoolsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAINodePools"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAINodePoolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举AI节点池
+//
+// @param request - ListAINodePoolsRequest
+//
+// @return ListAINodePoolsResponse
+func (client *Client) ListAINodePools(request *ListAINodePoolsRequest) (_result *ListAINodePoolsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAINodePoolsResponse{}
+	_body, _err := client.ListAINodePoolsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取备份任务列表
 //
 // @param request - ListBackupJobsRequest
@@ -12546,6 +12990,78 @@ func (client *Client) ListInstanceExtensions(request *ListInstanceExtensionsRequ
 
 // Summary:
 //
+// 查询模型服务
+//
+// @param request - ListModelServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelServicesResponse
+func (client *Client) ListModelServicesWithOptions(request *ListModelServicesRequest, runtime *dara.RuntimeOptions) (_result *ListModelServicesResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelServices"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型服务
+//
+// @param request - ListModelServicesRequest
+//
+// @return ListModelServicesResponse
+func (client *Client) ListModelServices(request *ListModelServicesRequest) (_result *ListModelServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListModelServicesResponse{}
+	_body, _err := client.ListModelServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of namespaces.
 //
 // @param request - ListNamespacesRequest
@@ -13129,6 +13645,66 @@ func (client *Client) ListSupabaseProjects(request *ListSupabaseProjectsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListSupabaseProjectsResponse{}
 	_body, _err := client.ListSupabaseProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取支持的模型列表
+//
+// @param request - ListSupportModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSupportModelsResponse
+func (client *Client) ListSupportModelsWithOptions(request *ListSupportModelsRequest, runtime *dara.RuntimeOptions) (_result *ListSupportModelsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSupportModels"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSupportModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取支持的模型列表
+//
+// @param request - ListSupportModelsRequest
+//
+// @return ListSupportModelsResponse
+func (client *Client) ListSupportModels(request *ListSupportModelsRequest) (_result *ListSupportModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSupportModelsResponse{}
+	_body, _err := client.ListSupportModelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
