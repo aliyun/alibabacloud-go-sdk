@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/bpstudio-20210931/v8
+module github.com/alibabacloud-go/bpstudio-20210931/v9
 
 go 1.14
 

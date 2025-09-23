@@ -9,8 +9,8 @@ type iListTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *ListTemplateResponseBody
-	GetCode() *int32
+	SetCode(v string) *ListTemplateResponseBody
+	GetCode() *string
 	SetData(v []*ListTemplateResponseBodyData) *ListTemplateResponseBody
 	GetData() []*ListTemplateResponseBodyData
 	SetMessage(v string) *ListTemplateResponseBody
@@ -29,7 +29,7 @@ type ListTemplateResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details about templates.
 	Data []*ListTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
@@ -66,7 +66,7 @@ func (s ListTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTemplateResponseBody) GetCode() *int32 {
+func (s *ListTemplateResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -90,7 +90,7 @@ func (s *ListTemplateResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
 }
 
-func (s *ListTemplateResponseBody) SetCode(v int32) *ListTemplateResponseBody {
+func (s *ListTemplateResponseBody) SetCode(v string) *ListTemplateResponseBody {
 	s.Code = &v
 	return s
 }

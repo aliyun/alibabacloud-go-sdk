@@ -9,8 +9,8 @@ type iGetApplicationVariables4FailResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetApplicationVariables4FailResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetApplicationVariables4FailResponseBody
+	GetCode() *string
 	SetData(v []*GetApplicationVariables4FailResponseBodyData) *GetApplicationVariables4FailResponseBody
 	GetData() []*GetApplicationVariables4FailResponseBodyData
 	SetMessage(v string) *GetApplicationVariables4FailResponseBody
@@ -23,7 +23,7 @@ type GetApplicationVariables4FailResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*GetApplicationVariables4FailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -45,7 +45,7 @@ func (s GetApplicationVariables4FailResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetApplicationVariables4FailResponseBody) GetCode() *int32 {
+func (s *GetApplicationVariables4FailResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -61,7 +61,7 @@ func (s *GetApplicationVariables4FailResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetApplicationVariables4FailResponseBody) SetCode(v int32) *GetApplicationVariables4FailResponseBody {
+func (s *GetApplicationVariables4FailResponseBody) SetCode(v string) *GetApplicationVariables4FailResponseBody {
 	s.Code = &v
 	return s
 }

@@ -9,8 +9,8 @@ type iCreateApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *CreateApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *CreateApplicationResponseBody
+	GetCode() *string
 	SetData(v string) *CreateApplicationResponseBody
 	GetData() *string
 	SetMessage(v string) *CreateApplicationResponseBody
@@ -25,7 +25,7 @@ type CreateApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the application.
 	//
 	// example:
@@ -54,7 +54,7 @@ func (s CreateApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateApplicationResponseBody) GetCode() *int32 {
+func (s *CreateApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *CreateApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CreateApplicationResponseBody) SetCode(v int32) *CreateApplicationResponseBody {
+func (s *CreateApplicationResponseBody) SetCode(v string) *CreateApplicationResponseBody {
 	s.Code = &v
 	return s
 }

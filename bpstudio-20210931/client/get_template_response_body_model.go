@@ -9,8 +9,8 @@ type iGetTemplateResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetTemplateResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetTemplateResponseBody
+	GetCode() *string
 	SetData(v *GetTemplateResponseBodyData) *GetTemplateResponseBody
 	GetData() *GetTemplateResponseBodyData
 	SetMessage(v string) *GetTemplateResponseBody
@@ -25,7 +25,7 @@ type GetTemplateResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the template.
 	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The interface returns information
@@ -50,7 +50,7 @@ func (s GetTemplateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTemplateResponseBody) GetCode() *int32 {
+func (s *GetTemplateResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -66,7 +66,7 @@ func (s *GetTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetTemplateResponseBody) SetCode(v int32) *GetTemplateResponseBody {
+func (s *GetTemplateResponseBody) SetCode(v string) *GetTemplateResponseBody {
 	s.Code = &v
 	return s
 }

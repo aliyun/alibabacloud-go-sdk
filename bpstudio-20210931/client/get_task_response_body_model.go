@@ -9,8 +9,8 @@ type iGetTaskResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetTaskResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetTaskResponseBody
+	GetCode() *string
 	SetData(v *GetTaskResponseBodyData) *GetTaskResponseBody
 	GetData() *GetTaskResponseBodyData
 	SetMessage(v string) *GetTaskResponseBody
@@ -23,7 +23,7 @@ type GetTaskResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// example:
 	//
@@ -45,7 +45,7 @@ func (s GetTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskResponseBody) GetCode() *int32 {
+func (s *GetTaskResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -61,7 +61,7 @@ func (s *GetTaskResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetTaskResponseBody) SetCode(v int32) *GetTaskResponseBody {
+func (s *GetTaskResponseBody) SetCode(v string) *GetTaskResponseBody {
 	s.Code = &v
 	return s
 }

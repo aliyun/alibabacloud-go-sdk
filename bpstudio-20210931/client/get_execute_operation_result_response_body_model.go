@@ -9,8 +9,8 @@ type iGetExecuteOperationResultResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetExecuteOperationResultResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetExecuteOperationResultResponseBody
+	GetCode() *string
 	SetData(v *GetExecuteOperationResultResponseBodyData) *GetExecuteOperationResultResponseBody
 	GetData() *GetExecuteOperationResultResponseBodyData
 	SetMessage(v string) *GetExecuteOperationResultResponseBody
@@ -25,7 +25,7 @@ type GetExecuteOperationResultResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed result of the queried operation.
 	Data *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
@@ -50,7 +50,7 @@ func (s GetExecuteOperationResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetExecuteOperationResultResponseBody) GetCode() *int32 {
+func (s *GetExecuteOperationResultResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -66,7 +66,7 @@ func (s *GetExecuteOperationResultResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetExecuteOperationResultResponseBody) SetCode(v int32) *GetExecuteOperationResultResponseBody {
+func (s *GetExecuteOperationResultResponseBody) SetCode(v string) *GetExecuteOperationResultResponseBody {
 	s.Code = &v
 	return s
 }

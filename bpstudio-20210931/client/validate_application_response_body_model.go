@@ -9,8 +9,8 @@ type iValidateApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *ValidateApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *ValidateApplicationResponseBody
+	GetCode() *string
 	SetData(v string) *ValidateApplicationResponseBody
 	GetData() *string
 	SetMessage(v string) *ValidateApplicationResponseBody
@@ -25,7 +25,7 @@ type ValidateApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data of the application.
 	//
 	// example:
@@ -54,7 +54,7 @@ func (s ValidateApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ValidateApplicationResponseBody) GetCode() *int32 {
+func (s *ValidateApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *ValidateApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ValidateApplicationResponseBody) SetCode(v int32) *ValidateApplicationResponseBody {
+func (s *ValidateApplicationResponseBody) SetCode(v string) *ValidateApplicationResponseBody {
 	s.Code = &v
 	return s
 }

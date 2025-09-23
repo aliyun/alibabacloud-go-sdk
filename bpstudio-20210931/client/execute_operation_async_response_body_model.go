@@ -9,8 +9,8 @@ type iExecuteOperationASyncResponseBody interface {
   dara.Model
   String() string
   GoString() string
-  SetCode(v int32) *ExecuteOperationASyncResponseBody
-  GetCode() *int32 
+  SetCode(v string) *ExecuteOperationASyncResponseBody
+  GetCode() *string 
   SetData(v string) *ExecuteOperationASyncResponseBody
   GetData() *string 
   SetMessage(v string) *ExecuteOperationASyncResponseBody
@@ -25,7 +25,7 @@ type ExecuteOperationASyncResponseBody struct {
   // example:
   // 
   // 200
-  Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
   // The operation ID. You can call the GetExecuteOperationResult operation to asynchronously query the result of an operation. The ID expires after one hour.
   // 
   // example:
@@ -54,7 +54,7 @@ func (s ExecuteOperationASyncResponseBody) GoString() string {
   return s.String()
 }
 
-func (s *ExecuteOperationASyncResponseBody) GetCode() *int32  {
+func (s *ExecuteOperationASyncResponseBody) GetCode() *string  {
   return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *ExecuteOperationASyncResponseBody) GetRequestId() *string  {
   return s.RequestId
 }
 
-func (s *ExecuteOperationASyncResponseBody) SetCode(v int32) *ExecuteOperationASyncResponseBody {
+func (s *ExecuteOperationASyncResponseBody) SetCode(v string) *ExecuteOperationASyncResponseBody {
   s.Code = &v
   return s
 }

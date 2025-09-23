@@ -9,8 +9,8 @@ type iChangeResourceGroupResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int64) *ChangeResourceGroupResponseBody
-	GetCode() *int64
+	SetCode(v string) *ChangeResourceGroupResponseBody
+	GetCode() *string
 	SetData(v string) *ChangeResourceGroupResponseBody
 	GetData() *string
 	SetMessage(v string) *ChangeResourceGroupResponseBody
@@ -25,7 +25,7 @@ type ChangeResourceGroupResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// No business data is returned for this parameter.
 	//
 	// example:
@@ -54,7 +54,7 @@ func (s ChangeResourceGroupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ChangeResourceGroupResponseBody) GetCode() *int64 {
+func (s *ChangeResourceGroupResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *ChangeResourceGroupResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ChangeResourceGroupResponseBody) SetCode(v int64) *ChangeResourceGroupResponseBody {
+func (s *ChangeResourceGroupResponseBody) SetCode(v string) *ChangeResourceGroupResponseBody {
 	s.Code = &v
 	return s
 }

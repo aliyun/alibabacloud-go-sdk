@@ -9,8 +9,8 @@ type iListApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *ListApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *ListApplicationResponseBody
+	GetCode() *string
 	SetData(v []*ListApplicationResponseBodyData) *ListApplicationResponseBody
 	GetData() []*ListApplicationResponseBodyData
 	SetMessage(v string) *ListApplicationResponseBody
@@ -29,7 +29,7 @@ type ListApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// App listing information
 	Data []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The interface returns information
@@ -66,7 +66,7 @@ func (s ListApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListApplicationResponseBody) GetCode() *int32 {
+func (s *ListApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -90,7 +90,7 @@ func (s *ListApplicationResponseBody) GetTotalCount() *int32 {
 	return s.TotalCount
 }
 
-func (s *ListApplicationResponseBody) SetCode(v int32) *ListApplicationResponseBody {
+func (s *ListApplicationResponseBody) SetCode(v string) *ListApplicationResponseBody {
 	s.Code = &v
 	return s
 }

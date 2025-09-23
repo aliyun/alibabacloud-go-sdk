@@ -9,8 +9,8 @@ type iCreateTaskResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *CreateTaskResponseBody
-	GetCode() *int32
+	SetCode(v string) *CreateTaskResponseBody
+	GetCode() *string
 	SetData(v int32) *CreateTaskResponseBody
 	GetData() *int32
 	SetMessage(v string) *CreateTaskResponseBody
@@ -23,7 +23,7 @@ type CreateTaskResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// 1994
@@ -48,7 +48,7 @@ func (s CreateTaskResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTaskResponseBody) GetCode() *int32 {
+func (s *CreateTaskResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -64,7 +64,7 @@ func (s *CreateTaskResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *CreateTaskResponseBody) SetCode(v int32) *CreateTaskResponseBody {
+func (s *CreateTaskResponseBody) SetCode(v string) *CreateTaskResponseBody {
 	s.Code = &v
 	return s
 }

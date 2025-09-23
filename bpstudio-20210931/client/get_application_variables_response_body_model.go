@@ -9,8 +9,8 @@ type iGetApplicationVariablesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetApplicationVariablesResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetApplicationVariablesResponseBody
+	GetCode() *string
 	SetData(v []*GetApplicationVariablesResponseBodyData) *GetApplicationVariablesResponseBody
 	GetData() []*GetApplicationVariablesResponseBodyData
 	SetMessage(v string) *GetApplicationVariablesResponseBody
@@ -23,7 +23,7 @@ type GetApplicationVariablesResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*GetApplicationVariablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -45,7 +45,7 @@ func (s GetApplicationVariablesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetApplicationVariablesResponseBody) GetCode() *int32 {
+func (s *GetApplicationVariablesResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -61,7 +61,7 @@ func (s *GetApplicationVariablesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetApplicationVariablesResponseBody) SetCode(v int32) *GetApplicationVariablesResponseBody {
+func (s *GetApplicationVariablesResponseBody) SetCode(v string) *GetApplicationVariablesResponseBody {
 	s.Code = &v
 	return s
 }

@@ -9,8 +9,8 @@ type iReleaseApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *ReleaseApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *ReleaseApplicationResponseBody
+	GetCode() *string
 	SetData(v int64) *ReleaseApplicationResponseBody
 	GetData() *int64
 	SetMessage(v string) *ReleaseApplicationResponseBody
@@ -25,7 +25,7 @@ type ReleaseApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return value.
 	//
 	// example:
@@ -54,7 +54,7 @@ func (s ReleaseApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ReleaseApplicationResponseBody) GetCode() *int32 {
+func (s *ReleaseApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *ReleaseApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ReleaseApplicationResponseBody) SetCode(v int32) *ReleaseApplicationResponseBody {
+func (s *ReleaseApplicationResponseBody) SetCode(v string) *ReleaseApplicationResponseBody {
 	s.Code = &v
 	return s
 }

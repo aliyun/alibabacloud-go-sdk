@@ -9,8 +9,8 @@ type iExecuteOperationSyncResponseBody interface {
   dara.Model
   String() string
   GoString() string
-  SetCode(v int32) *ExecuteOperationSyncResponseBody
-  GetCode() *int32 
+  SetCode(v string) *ExecuteOperationSyncResponseBody
+  GetCode() *string 
   SetData(v *ExecuteOperationSyncResponseBodyData) *ExecuteOperationSyncResponseBody
   GetData() *ExecuteOperationSyncResponseBodyData 
   SetMessage(v string) *ExecuteOperationSyncResponseBody
@@ -23,7 +23,7 @@ type ExecuteOperationSyncResponseBody struct {
   // example:
   // 
   // 200
-  Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+  Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
   // example:
   // 
   // op_xxxxxxxxxxxxxxxxxx_dds_modifyInstanceType_BYSOQGWUV6PME412_ERMEZLXNN3K9N3OL
@@ -46,7 +46,7 @@ func (s ExecuteOperationSyncResponseBody) GoString() string {
   return s.String()
 }
 
-func (s *ExecuteOperationSyncResponseBody) GetCode() *int32  {
+func (s *ExecuteOperationSyncResponseBody) GetCode() *string  {
   return s.Code
 }
 
@@ -62,7 +62,7 @@ func (s *ExecuteOperationSyncResponseBody) GetRequestId() *string  {
   return s.RequestId
 }
 
-func (s *ExecuteOperationSyncResponseBody) SetCode(v int32) *ExecuteOperationSyncResponseBody {
+func (s *ExecuteOperationSyncResponseBody) SetCode(v string) *ExecuteOperationSyncResponseBody {
   s.Code = &v
   return s
 }

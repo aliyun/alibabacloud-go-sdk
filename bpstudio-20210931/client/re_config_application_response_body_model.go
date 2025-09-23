@@ -9,8 +9,8 @@ type iReConfigApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *ReConfigApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *ReConfigApplicationResponseBody
+	GetCode() *string
 	SetMessage(v string) *ReConfigApplicationResponseBody
 	GetMessage() *string
 	SetRequestId(v string) *ReConfigApplicationResponseBody
@@ -21,7 +21,7 @@ type ReConfigApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// Success
@@ -42,7 +42,7 @@ func (s ReConfigApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ReConfigApplicationResponseBody) GetCode() *int32 {
+func (s *ReConfigApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -54,7 +54,7 @@ func (s *ReConfigApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *ReConfigApplicationResponseBody) SetCode(v int32) *ReConfigApplicationResponseBody {
+func (s *ReConfigApplicationResponseBody) SetCode(v string) *ReConfigApplicationResponseBody {
 	s.Code = &v
 	return s
 }

@@ -9,8 +9,8 @@ type iDeployApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *DeployApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *DeployApplicationResponseBody
+	GetCode() *string
 	SetData(v int64) *DeployApplicationResponseBody
 	GetData() *int64
 	SetMessage(v string) *DeployApplicationResponseBody
@@ -25,7 +25,7 @@ type DeployApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data of the application.
 	//
 	// example:
@@ -54,7 +54,7 @@ func (s DeployApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeployApplicationResponseBody) GetCode() *int32 {
+func (s *DeployApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -70,7 +70,7 @@ func (s *DeployApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *DeployApplicationResponseBody) SetCode(v int32) *DeployApplicationResponseBody {
+func (s *DeployApplicationResponseBody) SetCode(v string) *DeployApplicationResponseBody {
 	s.Code = &v
 	return s
 }

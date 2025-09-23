@@ -9,8 +9,8 @@ type iDeleteApplicationResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *DeleteApplicationResponseBody
-	GetCode() *int32
+	SetCode(v string) *DeleteApplicationResponseBody
+	GetCode() *string
 	SetMessage(v string) *DeleteApplicationResponseBody
 	GetMessage() *string
 	SetRequestId(v string) *DeleteApplicationResponseBody
@@ -23,7 +23,7 @@ type DeleteApplicationResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
 	//
 	// example:
@@ -46,7 +46,7 @@ func (s DeleteApplicationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteApplicationResponseBody) GetCode() *int32 {
+func (s *DeleteApplicationResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -58,7 +58,7 @@ func (s *DeleteApplicationResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *DeleteApplicationResponseBody) SetCode(v int32) *DeleteApplicationResponseBody {
+func (s *DeleteApplicationResponseBody) SetCode(v string) *DeleteApplicationResponseBody {
 	s.Code = &v
 	return s
 }

@@ -9,8 +9,8 @@ type iGetTokenResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCode(v int32) *GetTokenResponseBody
-	GetCode() *int32
+	SetCode(v string) *GetTokenResponseBody
+	GetCode() *string
 	SetData(v *GetTokenResponseBodyData) *GetTokenResponseBody
 	GetData() *GetTokenResponseBodyData
 	SetMessage(v string) *GetTokenResponseBody
@@ -25,7 +25,7 @@ type GetTokenResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the token.
 	Data *GetTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
@@ -50,7 +50,7 @@ func (s GetTokenResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetTokenResponseBody) GetCode() *int32 {
+func (s *GetTokenResponseBody) GetCode() *string {
 	return s.Code
 }
 
@@ -66,7 +66,7 @@ func (s *GetTokenResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *GetTokenResponseBody) SetCode(v int32) *GetTokenResponseBody {
+func (s *GetTokenResponseBody) SetCode(v string) *GetTokenResponseBody {
 	s.Code = &v
 	return s
 }
