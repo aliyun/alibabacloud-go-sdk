@@ -1,0 +1,63 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iListRunMetricsResponse interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetHeaders(v map[string]*string) *ListRunMetricsResponse
+	GetHeaders() map[string]*string
+	SetStatusCode(v int32) *ListRunMetricsResponse
+	GetStatusCode() *int32
+	SetBody(v *ListRunMetricsResponseBody) *ListRunMetricsResponse
+	GetBody() *ListRunMetricsResponseBody
+}
+
+type ListRunMetricsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRunMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRunMetricsResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListRunMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRunMetricsResponse) GetHeaders() map[string]*string {
+	return s.Headers
+}
+
+func (s *ListRunMetricsResponse) GetStatusCode() *int32 {
+	return s.StatusCode
+}
+
+func (s *ListRunMetricsResponse) GetBody() *ListRunMetricsResponseBody {
+	return s.Body
+}
+
+func (s *ListRunMetricsResponse) SetHeaders(v map[string]*string) *ListRunMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRunMetricsResponse) SetStatusCode(v int32) *ListRunMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRunMetricsResponse) SetBody(v *ListRunMetricsResponseBody) *ListRunMetricsResponse {
+	s.Body = v
+	return s
+}
+
+func (s *ListRunMetricsResponse) Validate() error {
+	return dara.Validate(s)
+}
