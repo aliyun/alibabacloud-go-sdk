@@ -1063,6 +1063,126 @@ func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_r
 
 // Summary:
 //
+// # Delete Face Group
+//
+// @param request - DeleteFaceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaceGroupResponse
+func (client *Client) DeleteFaceGroupWithOptions(request *DeleteFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceGroupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFaceGroup"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFaceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Face Group
+//
+// @param request - DeleteFaceGroupRequest
+//
+// @return DeleteFaceGroupResponse
+func (client *Client) DeleteFaceGroup(request *DeleteFaceGroupRequest) (_result *DeleteFaceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteFaceGroupResponse{}
+	_body, _err := client.DeleteFaceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Face
+//
+// @param request - DeleteFaceRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFaceRecordResponse
+func (client *Client) DeleteFaceRecordWithOptions(request *DeleteFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaceRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFaceRecord"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFaceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Face
+//
+// @param request - DeleteFaceRecordRequest
+//
+// @return DeleteFaceRecordResponse
+func (client *Client) DeleteFaceRecord(request *DeleteFaceRecordRequest) (_result *DeleteFaceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteFaceRecordResponse{}
+	_body, _err := client.DeleteFaceRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete user authentication record results
 //
 // @param request - DeleteVerifyResultRequest
@@ -1533,6 +1653,128 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
+// # Face Duplication Detection API
+//
+// @param request - FaceDuplicationCheckIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceDuplicationCheckIntlResponse
+func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicationCheckIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceDuplicationCheckIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRegistration) {
+		body["AutoRegistration"] = request.AutoRegistration
+	}
+
+	if !dara.IsNil(request.FaceGroupCodes) {
+		body["FaceGroupCodes"] = request.FaceGroupCodes
+	}
+
+	if !dara.IsNil(request.FaceRegisterGroupCode) {
+		body["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
+	}
+
+	if !dara.IsNil(request.FaceVerifyThreshold) {
+		body["FaceVerifyThreshold"] = request.FaceVerifyThreshold
+	}
+
+	if !dara.IsNil(request.Liveness) {
+		body["Liveness"] = request.Liveness
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		body["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.ReturnFaces) {
+		body["ReturnFaces"] = request.ReturnFaces
+	}
+
+	if !dara.IsNil(request.SaveFacePicture) {
+		body["SaveFacePicture"] = request.SaveFacePicture
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	if !dara.IsNil(request.SourceFacePicture) {
+		body["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	if !dara.IsNil(request.SourceFacePictureUrl) {
+		body["SourceFacePictureUrl"] = request.SourceFacePictureUrl
+	}
+
+	if !dara.IsNil(request.TargetFacePicture) {
+		body["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		body["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	if !dara.IsNil(request.VerifyModel) {
+		body["VerifyModel"] = request.VerifyModel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FaceDuplicationCheckIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FaceDuplicationCheckIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Face Duplication Detection API
+//
+// @param request - FaceDuplicationCheckIntlRequest
+//
+// @return FaceDuplicationCheckIntlResponse
+func (client *Client) FaceDuplicationCheckIntl(request *FaceDuplicationCheckIntlRequest) (_result *FaceDuplicationCheckIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FaceDuplicationCheckIntlResponse{}
+	_body, _err := client.FaceDuplicationCheckIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // This topic describes how to set up the server for FACE_GUARD.
 //
 // @param request - FaceGuardRiskRequest
@@ -1931,7 +2173,7 @@ func (client *Client) Id2MetaVerifyIntl(request *Id2MetaVerifyIntlRequest) (_res
 
 // Summary:
 //
-// 认证初始化
+// # Authentication Initialization
 //
 // @param tmpReq - InitializeRequest
 //
@@ -2177,7 +2419,7 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 
 // Summary:
 //
-// 认证初始化
+// # Authentication Initialization
 //
 // @param request - InitializeRequest
 //
@@ -2381,6 +2623,366 @@ func (client *Client) Mobile3MetaVerifyIntl(request *Mobile3MetaVerifyIntlReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &Mobile3MetaVerifyIntlResponse{}
 	_body, _err := client.Mobile3MetaVerifyIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改人脸库
+//
+// @param request - ModifyFaceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFaceGroupResponse
+func (client *Client) ModifyFaceGroupWithOptions(request *ModifyFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceGroupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFaceGroup"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyFaceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改人脸库
+//
+// @param request - ModifyFaceGroupRequest
+//
+// @return ModifyFaceGroupResponse
+func (client *Client) ModifyFaceGroup(request *ModifyFaceGroupRequest) (_result *ModifyFaceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyFaceGroupResponse{}
+	_body, _err := client.ModifyFaceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增人脸
+//
+// @param request - ModifyFaceRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFaceRecordResponse
+func (client *Client) ModifyFaceRecordWithOptions(request *ModifyFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *ModifyFaceRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FaceGroupCode) {
+		body["FaceGroupCode"] = request.FaceGroupCode
+	}
+
+	if !dara.IsNil(request.ImgOssInfos) {
+		body["ImgOssInfos"] = request.ImgOssInfos
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFaceRecord"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyFaceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增人脸
+//
+// @param request - ModifyFaceRecordRequest
+//
+// @return ModifyFaceRecordResponse
+func (client *Client) ModifyFaceRecord(request *ModifyFaceRecordRequest) (_result *ModifyFaceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyFaceRecordResponse{}
+	_body, _err := client.ModifyFaceRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询人脸库
+//
+// @param request - QueryFaceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFaceGroupResponse
+func (client *Client) QueryFaceGroupWithOptions(request *QueryFaceGroupRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceGroupResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.GroupCode) {
+		query["GroupCode"] = request.GroupCode
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryFaceGroup"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryFaceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询人脸库
+//
+// @param request - QueryFaceGroupRequest
+//
+// @return QueryFaceGroupResponse
+func (client *Client) QueryFaceGroup(request *QueryFaceGroupRequest) (_result *QueryFaceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryFaceGroupResponse{}
+	_body, _err := client.QueryFaceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询人脸记录
+//
+// @param request - QueryFaceRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFaceRecordResponse
+func (client *Client) QueryFaceRecordWithOptions(request *QueryFaceRecordRequest, runtime *dara.RuntimeOptions) (_result *QueryFaceRecordResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.FaceGroupCode) {
+		query["FaceGroupCode"] = request.FaceGroupCode
+	}
+
+	if !dara.IsNil(request.FaceId) {
+		query["FaceId"] = request.FaceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegistrationType) {
+		query["RegistrationType"] = request.RegistrationType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryFaceRecord"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryFaceRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询人脸记录
+//
+// @param request - QueryFaceRecordRequest
+//
+// @return QueryFaceRecordResponse
+func (client *Client) QueryFaceRecord(request *QueryFaceRecordRequest) (_result *QueryFaceRecordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryFaceRecordResponse{}
+	_body, _err := client.QueryFaceRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时token
+//
+// @param request - TempAccessTokenIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TempAccessTokenIntlResponse
+func (client *Client) TempAccessTokenIntlWithOptions(request *TempAccessTokenIntlRequest, runtime *dara.RuntimeOptions) (_result *TempAccessTokenIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TempAccessTokenIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TempAccessTokenIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取临时token
+//
+// @param request - TempAccessTokenIntlRequest
+//
+// @return TempAccessTokenIntlResponse
+func (client *Client) TempAccessTokenIntl(request *TempAccessTokenIntlRequest) (_result *TempAccessTokenIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TempAccessTokenIntlResponse{}
+	_body, _err := client.TempAccessTokenIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

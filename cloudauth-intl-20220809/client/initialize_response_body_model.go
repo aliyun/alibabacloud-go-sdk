@@ -20,10 +20,14 @@ type iInitializeResponseBody interface {
 }
 
 type InitializeResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// success
@@ -33,8 +37,9 @@ type InitializeResponseBody struct {
 	// example:
 	//
 	// 4EB35****87EBA1
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *InitializeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result
+	Result *InitializeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s InitializeResponseBody) String() string {
@@ -86,15 +91,28 @@ func (s *InitializeResponseBody) Validate() error {
 }
 
 type InitializeResponseBodyResult struct {
+	// Client configuration
+	//
 	// example:
 	//
 	// ***
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
-	Protocol  *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Standard encryption protocol for authentication.
+	//
+	// > This field is required when integrating with H5 web pages using iframe embedding.
+	//
+	// example:
+	//
+	// hksb7ba1b28130d24e015d*********
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Authentication ID
+	//
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8
 	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+	// Web authentication URL
+	//
 	// example:
 	//
 	// http****
