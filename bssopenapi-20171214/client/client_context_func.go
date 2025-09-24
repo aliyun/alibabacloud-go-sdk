@@ -2,118 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":                 dara.String("business.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("business.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2-pop":          dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"cn-beijing":                  dara.String("business.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("business.aliyuncs.com"),
-		"cn-beijing-finance-pop":      dara.String("business.aliyuncs.com"),
-		"cn-beijing-gov-1":            dara.String("business.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         dara.String("business.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("business.aliyuncs.com"),
-		"cn-edge-1":                   dara.String("business.aliyuncs.com"),
-		"cn-fujian":                   dara.String("business.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-finance":         dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": dara.String("business.aliyuncs.com"),
-		"cn-hangzhou-test-306":        dara.String("business.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("business.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     dara.String("business.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("business.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       dara.String("business.aliyuncs.com"),
-		"cn-north-2-gov-1":            dara.String("business.aliyuncs.com"),
-		"cn-qingdao":                  dara.String("business.aliyuncs.com"),
-		"cn-qingdao-nebula":           dara.String("business.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        dara.String("business.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         dara.String("business.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("business.aliyuncs.com"),
-		"cn-shanghai-inner":           dara.String("business.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": dara.String("business.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("business.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("business.aliyuncs.com"),
-		"cn-shenzhen-inner":           dara.String("business.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         dara.String("business.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        dara.String("business.aliyuncs.com"),
-		"cn-wuhan":                    dara.String("business.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("business.aliyuncs.com"),
-		"cn-yushanfang":               dara.String("business.aliyuncs.com"),
-		"cn-zhangbei":                 dara.String("business.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        dara.String("business.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("business.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     dara.String("business.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       dara.String("business.aliyuncs.com"),
-		"eu-central-1":                dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1-oxs":               dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"rus-west-1-pop":              dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("business.ap-southeast-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("business.ap-southeast-1.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("bssopenapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -130,7 +22,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddAccountRelationResponse
-func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *AddAccountRelationResponse, _err error) {
+func (client *Client) AddAccountRelationWithContext(ctx context.Context, request *AddAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *AddAccountRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -179,35 +71,11 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a financial relationship.
-//
-// Description:
-//
-// For more information about a financial relationship, see <props="intl">[Usage notes on the trusteeship]( https://www.alibabacloud.com/help/doc-detail/116383.html).
-//
-// If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
-//
-// @param request - AddAccountRelationRequest
-//
-// @return AddAccountRelationResponse
-func (client *Client) AddAccountRelation(request *AddAccountRelationRequest) (_result *AddAccountRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddAccountRelationResponse{}
-	_body, _err := client.AddAccountRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -220,7 +88,7 @@ func (client *Client) AddAccountRelation(request *AddAccountRelationRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AllocateCostUnitResourceResponse
-func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *AllocateCostUnitResourceResponse, _err error) {
+func (client *Client) AllocateCostUnitResourceWithContext(ctx context.Context, request *AllocateCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *AllocateCostUnitResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -261,29 +129,11 @@ func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostU
 		BodyType:    dara.String("json"),
 	}
 	_result = &AllocateCostUnitResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Transfers resource instances from the source cost center to the destination cost center.
-//
-// @param request - AllocateCostUnitResourceRequest
-//
-// @return AllocateCostUnitResourceResponse
-func (client *Client) AllocateCostUnitResource(request *AllocateCostUnitResourceRequest) (_result *AllocateCostUnitResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AllocateCostUnitResourceResponse{}
-	_body, _err := client.AllocateCostUnitResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -296,7 +146,7 @@ func (client *Client) AllocateCostUnitResource(request *AllocateCostUnitResource
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ApplyInvoiceResponse
-func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runtime *dara.RuntimeOptions) (_result *ApplyInvoiceResponse, _err error) {
+func (client *Client) ApplyInvoiceWithContext(ctx context.Context, request *ApplyInvoiceRequest, runtime *dara.RuntimeOptions) (_result *ApplyInvoiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -361,29 +211,11 @@ func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ApplyInvoiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Submits an application for an invoice.
-//
-// @param request - ApplyInvoiceRequest
-//
-// @return ApplyInvoiceResponse
-func (client *Client) ApplyInvoice(request *ApplyInvoiceRequest) (_result *ApplyInvoiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ApplyInvoiceResponse{}
-	_body, _err := client.ApplyInvoiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -396,7 +228,7 @@ func (client *Client) ApplyInvoice(request *ApplyInvoiceRequest) (_result *Apply
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelOrderResponse
-func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
+func (client *Client) CancelOrderWithContext(ctx context.Context, request *CancelOrderRequest, runtime *dara.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -425,29 +257,11 @@ func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Cancels an unpaid order.
-//
-// @param request - CancelOrderRequest
-//
-// @return CancelOrderResponse
-func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CancelOrderResponse{}
-	_body, _err := client.CancelOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -456,7 +270,7 @@ func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelO
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeResellerConsumeAmountResponse
-func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeResellerConsumeAmountRequest, runtime *dara.RuntimeOptions) (_result *ChangeResellerConsumeAmountResponse, _err error) {
+func (client *Client) ChangeResellerConsumeAmountWithContext(ctx context.Context, request *ChangeResellerConsumeAmountRequest, runtime *dara.RuntimeOptions) (_result *ChangeResellerConsumeAmountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -509,25 +323,11 @@ func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeRese
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResellerConsumeAmountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ChangeResellerConsumeAmountRequest
-//
-// @return ChangeResellerConsumeAmountResponse
-func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsumeAmountRequest) (_result *ChangeResellerConsumeAmountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ChangeResellerConsumeAmountResponse{}
-	_body, _err := client.ChangeResellerConsumeAmountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -544,7 +344,7 @@ func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsume
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfirmRelationResponse
-func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest, runtime *dara.RuntimeOptions) (_result *ConfirmRelationResponse, _err error) {
+func (client *Client) ConfirmRelationWithContext(ctx context.Context, request *ConfirmRelationRequest, runtime *dara.RuntimeOptions) (_result *ConfirmRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -593,33 +393,11 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfirmRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Confirms the invitation initiated by the master account.
-//
-// Description:
-//
-// 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
-//
-// @param request - ConfirmRelationRequest
-//
-// @return ConfirmRelationResponse
-func (client *Client) ConfirmRelation(request *ConfirmRelationRequest) (_result *ConfirmRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConfirmRelationResponse{}
-	_body, _err := client.ConfirmRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -632,7 +410,7 @@ func (client *Client) ConfirmRelation(request *ConfirmRelationRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConvertChargeTypeResponse
-func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ConvertChargeTypeResponse, _err error) {
+func (client *Client) ConvertChargeTypeWithContext(ctx context.Context, request *ConvertChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ConvertChargeTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -677,29 +455,11 @@ func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConvertChargeTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
-//
-// @param request - ConvertChargeTypeRequest
-//
-// @return ConvertChargeTypeResponse
-func (client *Client) ConvertChargeType(request *ConvertChargeTypeRequest) (_result *ConvertChargeTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ConvertChargeTypeResponse{}
-	_body, _err := client.ConvertChargeTypeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -716,7 +476,7 @@ func (client *Client) ConvertChargeType(request *ConvertChargeTypeRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAgAccountResponse
-func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAgAccountResponse, _err error) {
+func (client *Client) CreateAgAccountWithContext(ctx context.Context, request *CreateAgAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAgAccountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -773,33 +533,11 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAgAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an account to establish a financial relationship.
-//
-// Description:
-//
-// You can call this operation to create an account so as to establish a master-member financial relationship.
-//
-// @param request - CreateAgAccountRequest
-//
-// @return CreateAgAccountResponse
-func (client *Client) CreateAgAccount(request *CreateAgAccountRequest) (_result *CreateAgAccountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAgAccountResponse{}
-	_body, _err := client.CreateAgAccountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -812,7 +550,7 @@ func (client *Client) CreateAgAccount(request *CreateAgAccountRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCostUnitResponse
-func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateCostUnitResponse, _err error) {
+func (client *Client) CreateCostUnitWithContext(ctx context.Context, request *CreateCostUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateCostUnitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -837,29 +575,11 @@ func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a cost center. You can create multiple cost centers at a time.
-//
-// @param request - CreateCostUnitRequest
-//
-// @return CreateCostUnitResponse
-func (client *Client) CreateCostUnit(request *CreateCostUnitRequest) (_result *CreateCostUnitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateCostUnitResponse{}
-	_body, _err := client.CreateCostUnitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -872,7 +592,7 @@ func (client *Client) CreateCostUnit(request *CreateCostUnitRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateInstanceResponse
-func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -937,29 +657,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
-//
-// @param request - CreateInstanceRequest
-//
-// @return CreateInstanceResponse
-func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateInstanceResponse{}
-	_body, _err := client.CreateInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -972,7 +674,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResellerUserQuotaResponse
-func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *CreateResellerUserQuotaResponse, _err error) {
+func (client *Client) CreateResellerUserQuotaWithContext(ctx context.Context, request *CreateResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *CreateResellerUserQuotaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1009,29 +711,11 @@ func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateReseller
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResellerUserQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
-//
-// @param request - CreateResellerUserQuotaRequest
-//
-// @return CreateResellerUserQuotaResponse
-func (client *Client) CreateResellerUserQuota(request *CreateResellerUserQuotaRequest) (_result *CreateResellerUserQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateResellerUserQuotaResponse{}
-	_body, _err := client.CreateResellerUserQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1044,7 +728,7 @@ func (client *Client) CreateResellerUserQuota(request *CreateResellerUserQuotaRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateResourcePackageResponse
-func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *CreateResourcePackageResponse, _err error) {
+func (client *Client) CreateResourcePackageWithContext(ctx context.Context, request *CreateResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *CreateResourcePackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1093,29 +777,11 @@ func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePa
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a resource plan.
-//
-// @param request - CreateResourcePackageRequest
-//
-// @return CreateResourcePackageResponse
-func (client *Client) CreateResourcePackage(request *CreateResourcePackageRequest) (_result *CreateResourcePackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateResourcePackageResponse{}
-	_body, _err := client.CreateResourcePackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1128,7 +794,7 @@ func (client *Client) CreateResourcePackage(request *CreateResourcePackageReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSavingsPlansInstanceResponse
-func (client *Client) CreateSavingsPlansInstanceWithOptions(tmpReq *CreateSavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateSavingsPlansInstanceResponse, _err error) {
+func (client *Client) CreateSavingsPlansInstanceWithContext(ctx context.Context, tmpReq *CreateSavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateSavingsPlansInstanceResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1203,29 +869,11 @@ func (client *Client) CreateSavingsPlansInstanceWithOptions(tmpReq *CreateSaving
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSavingsPlansInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
-//
-// @param request - CreateSavingsPlansInstanceRequest
-//
-// @return CreateSavingsPlansInstanceResponse
-func (client *Client) CreateSavingsPlansInstance(request *CreateSavingsPlansInstanceRequest) (_result *CreateSavingsPlansInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSavingsPlansInstanceResponse{}
-	_body, _err := client.CreateSavingsPlansInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1238,7 +886,7 @@ func (client *Client) CreateSavingsPlansInstance(request *CreateSavingsPlansInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCostUnitResponse
-func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostUnitResponse, _err error) {
+func (client *Client) DeleteCostUnitWithContext(ctx context.Context, request *DeleteCostUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostUnitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1267,29 +915,11 @@ func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a cost center.
-//
-// @param request - DeleteCostUnitRequest
-//
-// @return DeleteCostUnitResponse
-func (client *Client) DeleteCostUnit(request *DeleteCostUnitRequest) (_result *DeleteCostUnitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteCostUnitResponse{}
-	_body, _err := client.DeleteCostUnitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1306,7 +936,7 @@ func (client *Client) DeleteCostUnit(request *DeleteCostUnitRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCostBudgetsSummaryResponse
-func (client *Client) DescribeCostBudgetsSummaryWithOptions(request *DescribeCostBudgetsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
+func (client *Client) DescribeCostBudgetsSummaryWithContext(ctx context.Context, request *DescribeCostBudgetsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1347,33 +977,11 @@ func (client *Client) DescribeCostBudgetsSummaryWithOptions(request *DescribeCos
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCostBudgetsSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Query the summary information of the user "Cost Management-Budget".
-//
-// Description:
-//
-// This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
-//
-// @param request - DescribeCostBudgetsSummaryRequest
-//
-// @return DescribeCostBudgetsSummaryResponse
-func (client *Client) DescribeCostBudgetsSummary(request *DescribeCostBudgetsSummaryRequest) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCostBudgetsSummaryResponse{}
-	_body, _err := client.DescribeCostBudgetsSummaryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1390,7 +998,7 @@ func (client *Client) DescribeCostBudgetsSummary(request *DescribeCostBudgetsSum
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithOptions(request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
+func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1455,33 +1063,11 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithOptio
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the monthly allocated costs of instances by allocation month.
-//
-// Description:
-//
-// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
-//
-// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
-//
-// @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriod(request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.DescribeInstanceAmortizedCostByAmortizationPeriodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1494,7 +1080,7 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriod(request 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
-func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithOptions(request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
+func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1563,29 +1149,11 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithO
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实例摊销日摊销成本
-//
-// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
-//
-// @return DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
-func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDate(request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse{}
-	_body, _err := client.DescribeInstanceAmortizedCostByAmortizationPeriodDateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1598,7 +1166,7 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDate(requ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceAmortizedCostByConsumePeriodResponse
-func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithOptions(request *DescribeInstanceAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
+func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithContext(ctx context.Context, request *DescribeInstanceAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1663,29 +1231,11 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithOptions(re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceAmortizedCostByConsumePeriodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实例账期月摊销成本
-//
-// @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
-//
-// @return DescribeInstanceAmortizedCostByConsumePeriodResponse
-func (client *Client) DescribeInstanceAmortizedCostByConsumePeriod(request *DescribeInstanceAmortizedCostByConsumePeriodRequest) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceAmortizedCostByConsumePeriodResponse{}
-	_body, _err := client.DescribeInstanceAmortizedCostByConsumePeriodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1706,7 +1256,7 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriod(request *Desc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceBillResponse
-func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceBillResponse, _err error) {
+func (client *Client) DescribeInstanceBillWithContext(ctx context.Context, request *DescribeInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1783,37 +1333,11 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the billing information about instances or billable items in a billing cycle.
-//
-// Description:
-//
-//	  Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
-//
-//		- The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
-//
-//		- You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
-//
-// @param request - DescribeInstanceBillRequest
-//
-// @return DescribeInstanceBillResponse
-func (client *Client) DescribeInstanceBill(request *DescribeInstanceBillRequest) (_result *DescribeInstanceBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceBillResponse{}
-	_body, _err := client.DescribeInstanceBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1826,7 +1350,7 @@ func (client *Client) DescribeInstanceBill(request *DescribeInstanceBillRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
+func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1887,29 +1411,11 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWit
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实例摊销日抵扣还原摊销成本
-//
-// @param request - DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
-//
-// @return DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriod(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1922,7 +1428,7 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriod(re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePricingModuleResponse
-func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingModuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePricingModuleResponse, _err error) {
+func (client *Client) DescribePricingModuleWithContext(ctx context.Context, request *DescribePricingModuleRequest, runtime *dara.RuntimeOptions) (_result *DescribePricingModuleResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1959,29 +1465,11 @@ func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingM
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePricingModuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the pricing information about an Alibaba Cloud service.
-//
-// @param request - DescribePricingModuleRequest
-//
-// @return DescribePricingModuleResponse
-func (client *Client) DescribePricingModule(request *DescribePricingModuleRequest) (_result *DescribePricingModuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePricingModuleResponse{}
-	_body, _err := client.DescribePricingModuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1998,7 +1486,7 @@ func (client *Client) DescribePricingModule(request *DescribePricingModuleReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProductAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithOptions(request *DescribeProductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
+func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithContext(ctx context.Context, request *DescribeProductAmortizedCostByAmortizationPeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2059,33 +1547,11 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithOption
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProductAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the allocated costs of services by allocation month.
-//
-// Description:
-//
-// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
-//
-// @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
-//
-// @return DescribeProductAmortizedCostByAmortizationPeriodResponse
-func (client *Client) DescribeProductAmortizedCostByAmortizationPeriod(request *DescribeProductAmortizedCostByAmortizationPeriodRequest) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProductAmortizedCostByAmortizationPeriodResponse{}
-	_body, _err := client.DescribeProductAmortizedCostByAmortizationPeriodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2098,7 +1564,7 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriod(request *
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeProductAmortizedCostByConsumePeriodResponse
-func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithOptions(request *DescribeProductAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
+func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithContext(ctx context.Context, request *DescribeProductAmortizedCostByConsumePeriodRequest, runtime *dara.RuntimeOptions) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2159,29 +1625,11 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithOptions(req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeProductAmortizedCostByConsumePeriodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 产品账期月摊销成本
-//
-// @param request - DescribeProductAmortizedCostByConsumePeriodRequest
-//
-// @return DescribeProductAmortizedCostByConsumePeriodResponse
-func (client *Client) DescribeProductAmortizedCostByConsumePeriod(request *DescribeProductAmortizedCostByConsumePeriodRequest) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeProductAmortizedCostByConsumePeriodResponse{}
-	_body, _err := client.DescribeProductAmortizedCostByConsumePeriodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2202,7 +1650,7 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriod(request *Descr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceCoverageDetailResponse
-func (client *Client) DescribeResourceCoverageDetailWithOptions(request *DescribeResourceCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageDetailResponse, _err error) {
+func (client *Client) DescribeResourceCoverageDetailWithContext(ctx context.Context, request *DescribeResourceCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2251,37 +1699,11 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourceCoverageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
-//
-// Description:
-//
-// 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-//
-// 2\\. You can call this operation to query the coverage details of RIs or SCUs.
-//
-// 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
-//
-// @param request - DescribeResourceCoverageDetailRequest
-//
-// @return DescribeResourceCoverageDetailResponse
-func (client *Client) DescribeResourceCoverageDetail(request *DescribeResourceCoverageDetailRequest) (_result *DescribeResourceCoverageDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourceCoverageDetailResponse{}
-	_body, _err := client.DescribeResourceCoverageDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2300,7 +1722,7 @@ func (client *Client) DescribeResourceCoverageDetail(request *DescribeResourceCo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceCoverageTotalResponse
-func (client *Client) DescribeResourceCoverageTotalWithOptions(request *DescribeResourceCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageTotalResponse, _err error) {
+func (client *Client) DescribeResourceCoverageTotalWithContext(ctx context.Context, request *DescribeResourceCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceCoverageTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2341,35 +1763,11 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourceCoverageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
-//
-// Description:
-//
-// The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
-//
-// You can call this operation to query the total coverage data of RIs or SCUs.
-//
-// @param request - DescribeResourceCoverageTotalRequest
-//
-// @return DescribeResourceCoverageTotalResponse
-func (client *Client) DescribeResourceCoverageTotal(request *DescribeResourceCoverageTotalRequest) (_result *DescribeResourceCoverageTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourceCoverageTotalResponse{}
-	_body, _err := client.DescribeResourceCoverageTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2382,7 +1780,7 @@ func (client *Client) DescribeResourceCoverageTotal(request *DescribeResourceCov
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourcePackageProductResponse
-func (client *Client) DescribeResourcePackageProductWithOptions(request *DescribeResourcePackageProductRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourcePackageProductResponse, _err error) {
+func (client *Client) DescribeResourcePackageProductWithContext(ctx context.Context, request *DescribeResourcePackageProductRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourcePackageProductResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2407,29 +1805,11 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourcePackageProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about resource plans of an Alibaba Cloud service.
-//
-// @param request - DescribeResourcePackageProductRequest
-//
-// @return DescribeResourcePackageProductResponse
-func (client *Client) DescribeResourcePackageProduct(request *DescribeResourcePackageProductRequest) (_result *DescribeResourcePackageProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourcePackageProductResponse{}
-	_body, _err := client.DescribeResourcePackageProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2442,7 +1822,7 @@ func (client *Client) DescribeResourcePackageProduct(request *DescribeResourcePa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceUsageDetailResponse
-func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeResourceUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageDetailResponse, _err error) {
+func (client *Client) DescribeResourceUsageDetailWithContext(ctx context.Context, request *DescribeResourceUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2491,29 +1871,11 @@ func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourceUsageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
-//
-// @param request - DescribeResourceUsageDetailRequest
-//
-// @return DescribeResourceUsageDetailResponse
-func (client *Client) DescribeResourceUsageDetail(request *DescribeResourceUsageDetailRequest) (_result *DescribeResourceUsageDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourceUsageDetailResponse{}
-	_body, _err := client.DescribeResourceUsageDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2526,7 +1888,7 @@ func (client *Client) DescribeResourceUsageDetail(request *DescribeResourceUsage
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceUsageTotalResponse
-func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeResourceUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageTotalResponse, _err error) {
+func (client *Client) DescribeResourceUsageTotalWithContext(ctx context.Context, request *DescribeResourceUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceUsageTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2567,29 +1929,11 @@ func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeRes
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeResourceUsageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the total usage data of reserved instances or storage capacity units (SCUs).
-//
-// @param request - DescribeResourceUsageTotalRequest
-//
-// @return DescribeResourceUsageTotalResponse
-func (client *Client) DescribeResourceUsageTotal(request *DescribeResourceUsageTotalRequest) (_result *DescribeResourceUsageTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeResourceUsageTotalResponse{}
-	_body, _err := client.DescribeResourceUsageTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2602,7 +1946,7 @@ func (client *Client) DescribeResourceUsageTotal(request *DescribeResourceUsageT
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansCoverageDetailResponse
-func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *DescribeSavingsPlansCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
+func (client *Client) DescribeSavingsPlansCoverageDetailWithContext(ctx context.Context, request *DescribeSavingsPlansCoverageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2647,29 +1991,11 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *Des
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the coverage details of savings plans.
-//
-// @param request - DescribeSavingsPlansCoverageDetailRequest
-//
-// @return DescribeSavingsPlansCoverageDetailResponse
-func (client *Client) DescribeSavingsPlansCoverageDetail(request *DescribeSavingsPlansCoverageDetailRequest) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlansCoverageDetailResponse{}
-	_body, _err := client.DescribeSavingsPlansCoverageDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2682,7 +2008,7 @@ func (client *Client) DescribeSavingsPlansCoverageDetail(request *DescribeSaving
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansCoverageTotalResponse
-func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *DescribeSavingsPlansCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
+func (client *Client) DescribeSavingsPlansCoverageTotalWithContext(ctx context.Context, request *DescribeSavingsPlansCoverageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2719,29 +2045,11 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *Desc
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the coverage summary of savings plans.
-//
-// @param request - DescribeSavingsPlansCoverageTotalRequest
-//
-// @return DescribeSavingsPlansCoverageTotalResponse
-func (client *Client) DescribeSavingsPlansCoverageTotal(request *DescribeSavingsPlansCoverageTotalRequest) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlansCoverageTotalResponse{}
-	_body, _err := client.DescribeSavingsPlansCoverageTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2754,7 +2062,7 @@ func (client *Client) DescribeSavingsPlansCoverageTotal(request *DescribeSavings
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansUsageDetailResponse
-func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *DescribeSavingsPlansUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
+func (client *Client) DescribeSavingsPlansUsageDetailWithContext(ctx context.Context, request *DescribeSavingsPlansUsageDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2799,29 +2107,11 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage details of savings plans.
-//
-// @param request - DescribeSavingsPlansUsageDetailRequest
-//
-// @return DescribeSavingsPlansUsageDetailResponse
-func (client *Client) DescribeSavingsPlansUsageDetail(request *DescribeSavingsPlansUsageDetailRequest) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlansUsageDetailResponse{}
-	_body, _err := client.DescribeSavingsPlansUsageDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2834,7 +2124,7 @@ func (client *Client) DescribeSavingsPlansUsageDetail(request *DescribeSavingsPl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSavingsPlansUsageTotalResponse
-func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *DescribeSavingsPlansUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
+func (client *Client) DescribeSavingsPlansUsageTotalWithContext(ctx context.Context, request *DescribeSavingsPlansUsageTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2871,29 +2161,11 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageTotalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage summary of savings plans.
-//
-// @param request - DescribeSavingsPlansUsageTotalRequest
-//
-// @return DescribeSavingsPlansUsageTotalResponse
-func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPlansUsageTotalRequest) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSavingsPlansUsageTotalResponse{}
-	_body, _err := client.DescribeSavingsPlansUsageTotalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2914,7 +2186,7 @@ func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPla
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSplitItemBillResponse
-func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeSplitItemBillResponse, _err error) {
+func (client *Client) DescribeSplitItemBillWithContext(ctx context.Context, request *DescribeSplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeSplitItemBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2995,37 +2267,11 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeSplitItemBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries split bills.
-//
-// Description:
-//
-//	  The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
-//
-//		- You can query split bills that were generated within the last 12 months by calling this operation.
-//
-//		- You can query split bills only after you enable the [Split Bill](https://usercenter2-intl.aliyun.com/finance/split-bill) service in the User Center console.
-//
-// @param request - DescribeSplitItemBillRequest
-//
-// @return DescribeSplitItemBillResponse
-func (client *Client) DescribeSplitItemBill(request *DescribeSplitItemBillRequest) (_result *DescribeSplitItemBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeSplitItemBillResponse{}
-	_body, _err := client.DescribeSplitItemBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3038,7 +2284,7 @@ func (client *Client) DescribeSplitItemBill(request *DescribeSplitItemBillReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAccountRelationResponse
-func (client *Client) GetAccountRelationWithOptions(request *GetAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *GetAccountRelationResponse, _err error) {
+func (client *Client) GetAccountRelationWithContext(ctx context.Context, request *GetAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *GetAccountRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3059,29 +2305,11 @@ func (client *Client) GetAccountRelationWithOptions(request *GetAccountRelationR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a financial relationship.
-//
-// @param request - GetAccountRelationRequest
-//
-// @return GetAccountRelationResponse
-func (client *Client) GetAccountRelation(request *GetAccountRelationRequest) (_result *GetAccountRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAccountRelationResponse{}
-	_body, _err := client.GetAccountRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3094,7 +2322,7 @@ func (client *Client) GetAccountRelation(request *GetAccountRelationRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCustomerAccountInfoResponse
-func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerAccountInfoResponse, _err error) {
+func (client *Client) GetCustomerAccountInfoWithContext(ctx context.Context, request *GetCustomerAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *GetCustomerAccountInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3119,84 +2347,11 @@ func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAcco
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCustomerAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the account information about a customer of a virtual network operator (VNO).
-//
-// @param request - GetCustomerAccountInfoRequest
-//
-// @return GetCustomerAccountInfoResponse
-func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequest) (_result *GetCustomerAccountInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCustomerAccountInfoResponse{}
-	_body, _err := client.GetCustomerAccountInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IDs of customers of a virtual network operator (VNO).
-//
-// Description:
-//
-// The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
-//
-// @param request - GetCustomerListRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetCustomerListResponse
-func (client *Client) GetCustomerListWithOptions(runtime *dara.RuntimeOptions) (_result *GetCustomerListResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("GetCustomerList"),
-		Version:     dara.String("2017-12-14"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &GetCustomerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IDs of customers of a virtual network operator (VNO).
-//
-// Description:
-//
-// The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
-//
-// @return GetCustomerListResponse
-func (client *Client) GetCustomerList() (_result *GetCustomerListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetCustomerListResponse{}
-	_body, _err := client.GetCustomerListWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3209,7 +2364,7 @@ func (client *Client) GetCustomerList() (_result *GetCustomerListResponse, _err 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOrderDetailResponse
-func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOrderDetailResponse, _err error) {
+func (client *Client) GetOrderDetailWithContext(ctx context.Context, request *GetOrderDetailRequest, runtime *dara.RuntimeOptions) (_result *GetOrderDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3238,29 +2393,11 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOrderDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
-//
-// @param request - GetOrderDetailRequest
-//
-// @return GetOrderDetailResponse
-func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *GetOrderDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetOrderDetailResponse{}
-	_body, _err := client.GetOrderDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3283,7 +2420,7 @@ func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPayAsYouGoPriceResponse
-func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceRequest, runtime *dara.RuntimeOptions) (_result *GetPayAsYouGoPriceResponse, _err error) {
+func (client *Client) GetPayAsYouGoPriceWithContext(ctx context.Context, request *GetPayAsYouGoPriceRequest, runtime *dara.RuntimeOptions) (_result *GetPayAsYouGoPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3328,39 +2465,11 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPayAsYouGoPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the pay-as-you-go price of an Alibaba Cloud service.
-//
-// Description:
-//
-// ### Usage notes
-//
-// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
-//
-// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-//
-// 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
-//
-// @param request - GetPayAsYouGoPriceRequest
-//
-// @return GetPayAsYouGoPriceResponse
-func (client *Client) GetPayAsYouGoPrice(request *GetPayAsYouGoPriceRequest) (_result *GetPayAsYouGoPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPayAsYouGoPriceResponse{}
-	_body, _err := client.GetPayAsYouGoPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3373,7 +2482,7 @@ func (client *Client) GetPayAsYouGoPrice(request *GetPayAsYouGoPriceRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourcePackagePriceResponse
-func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePackagePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePackagePriceResponse, _err error) {
+func (client *Client) GetResourcePackagePriceWithContext(ctx context.Context, request *GetResourcePackagePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePackagePriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3430,29 +2539,11 @@ func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePac
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourcePackagePriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the price of a resource plan.
-//
-// @param request - GetResourcePackagePriceRequest
-//
-// @return GetResourcePackagePriceResponse
-func (client *Client) GetResourcePackagePrice(request *GetResourcePackagePriceRequest) (_result *GetResourcePackagePriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetResourcePackagePriceResponse{}
-	_body, _err := client.GetResourcePackagePriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3473,7 +2564,7 @@ func (client *Client) GetResourcePackagePrice(request *GetResourcePackagePriceRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSubscriptionPriceResponse
-func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPriceRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionPriceResponse, _err error) {
+func (client *Client) GetSubscriptionPriceWithContext(ctx context.Context, request *GetSubscriptionPriceRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionPriceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3538,37 +2629,11 @@ func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubscriptionPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the subscription price of an Alibaba Cloud service.
-//
-// Description:
-//
-// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
-//
-// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
-//
-// 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
-//
-// @param request - GetSubscriptionPriceRequest
-//
-// @return GetSubscriptionPriceResponse
-func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest) (_result *GetSubscriptionPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSubscriptionPriceResponse{}
-	_body, _err := client.GetSubscriptionPriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3589,7 +2654,7 @@ func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InquiryPriceRefundInstanceResponse
-func (client *Client) InquiryPriceRefundInstanceWithOptions(request *InquiryPriceRefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *InquiryPriceRefundInstanceResponse, _err error) {
+func (client *Client) InquiryPriceRefundInstanceWithContext(ctx context.Context, request *InquiryPriceRefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *InquiryPriceRefundInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3626,37 +2691,11 @@ func (client *Client) InquiryPriceRefundInstanceWithOptions(request *InquiryPric
 		BodyType:    dara.String("json"),
 	}
 	_result = &InquiryPriceRefundInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the refundable amount for an instance from which you want to unsubscribe.
-//
-// Description:
-//
-// 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
-//
-// 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-//
-// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/user-guide/refund-rules).
-//
-// @param request - InquiryPriceRefundInstanceRequest
-//
-// @return InquiryPriceRefundInstanceResponse
-func (client *Client) InquiryPriceRefundInstance(request *InquiryPriceRefundInstanceRequest) (_result *InquiryPriceRefundInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &InquiryPriceRefundInstanceResponse{}
-	_body, _err := client.InquiryPriceRefundInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3669,7 +2708,7 @@ func (client *Client) InquiryPriceRefundInstance(request *InquiryPriceRefundInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccountRelationResponse
-func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
+func (client *Client) ModifyAccountRelationWithContext(ctx context.Context, request *ModifyAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3726,29 +2765,11 @@ func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRel
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds or removes permissions granted to a member in a financial relationship.
-//
-// @param request - ModifyAccountRelationRequest
-//
-// @return ModifyAccountRelationResponse
-func (client *Client) ModifyAccountRelation(request *ModifyAccountRelationRequest) (_result *ModifyAccountRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAccountRelationResponse{}
-	_body, _err := client.ModifyAccountRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3761,7 +2782,7 @@ func (client *Client) ModifyAccountRelation(request *ModifyAccountRelationReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyCostUnitResponse
-func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostUnitResponse, _err error) {
+func (client *Client) ModifyCostUnitWithContext(ctx context.Context, request *ModifyCostUnitRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostUnitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3786,29 +2807,11 @@ func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies one or more cost centers.
-//
-// @param request - ModifyCostUnitRequest
-//
-// @return ModifyCostUnitResponse
-func (client *Client) ModifyCostUnit(request *ModifyCostUnitRequest) (_result *ModifyCostUnitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyCostUnitResponse{}
-	_body, _err := client.ModifyCostUnitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3821,7 +2824,7 @@ func (client *Client) ModifyCostUnit(request *ModifyCostUnitRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceResponse
-func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
+func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3874,29 +2877,11 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
-//
-// @param request - ModifyInstanceRequest
-//
-// @return ModifyInstanceResponse
-func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *ModifyInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyInstanceResponse{}
-	_body, _err := client.ModifyInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3909,7 +2894,7 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PayOrderResponse
-func (client *Client) PayOrderWithOptions(request *PayOrderRequest, runtime *dara.RuntimeOptions) (_result *PayOrderResponse, _err error) {
+func (client *Client) PayOrderWithContext(ctx context.Context, request *PayOrderRequest, runtime *dara.RuntimeOptions) (_result *PayOrderResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3958,76 +2943,11 @@ func (client *Client) PayOrderWithOptions(request *PayOrderRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &PayOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 对客订单支付接口
-//
-// @param request - PayOrderRequest
-//
-// @return PayOrderResponse
-func (client *Client) PayOrder(request *PayOrderRequest) (_result *PayOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &PayOrderResponse{}
-	_body, _err := client.PayOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the balance of your account.
-//
-// @param request - QueryAccountBalanceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return QueryAccountBalanceResponse
-func (client *Client) QueryAccountBalanceWithOptions(runtime *dara.RuntimeOptions) (_result *QueryAccountBalanceResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("QueryAccountBalance"),
-		Version:     dara.String("2017-12-14"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &QueryAccountBalanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the balance of your account.
-//
-// @return QueryAccountBalanceResponse
-func (client *Client) QueryAccountBalance() (_result *QueryAccountBalanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAccountBalanceResponse{}
-	_body, _err := client.QueryAccountBalanceWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4048,7 +2968,7 @@ func (client *Client) QueryAccountBalance() (_result *QueryAccountBalanceRespons
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAccountBillResponse
-func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountBillResponse, _err error) {
+func (client *Client) QueryAccountBillWithContext(ctx context.Context, request *QueryAccountBillRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4105,37 +3025,11 @@ func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAccountBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
-//
-//   - You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
-//
-// @param request - QueryAccountBillRequest
-//
-// @return QueryAccountBillResponse
-func (client *Client) QueryAccountBill(request *QueryAccountBillRequest) (_result *QueryAccountBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAccountBillResponse{}
-	_body, _err := client.QueryAccountBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4148,7 +3042,7 @@ func (client *Client) QueryAccountBill(request *QueryAccountBillRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAccountTransactionDetailsResponse
-func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAccountTransactionDetailsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionDetailsResponse, _err error) {
+func (client *Client) QueryAccountTransactionDetailsWithContext(ctx context.Context, request *QueryAccountTransactionDetailsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionDetailsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4205,29 +3099,11 @@ func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAc
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAccountTransactionDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of transactions within your account.
-//
-// @param request - QueryAccountTransactionDetailsRequest
-//
-// @return QueryAccountTransactionDetailsResponse
-func (client *Client) QueryAccountTransactionDetails(request *QueryAccountTransactionDetailsRequest) (_result *QueryAccountTransactionDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAccountTransactionDetailsResponse{}
-	_body, _err := client.QueryAccountTransactionDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4240,7 +3116,7 @@ func (client *Client) QueryAccountTransactionDetails(request *QueryAccountTransa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAccountTransactionsResponse
-func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountTransactionsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionsResponse, _err error) {
+func (client *Client) QueryAccountTransactionsWithContext(ctx context.Context, request *QueryAccountTransactionsRequest, runtime *dara.RuntimeOptions) (_result *QueryAccountTransactionsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4301,29 +3177,11 @@ func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountT
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAccountTransactionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries transactions within your Alibaba Cloud account.
-//
-// @param request - QueryAccountTransactionsRequest
-//
-// @return QueryAccountTransactionsResponse
-func (client *Client) QueryAccountTransactions(request *QueryAccountTransactionsRequest) (_result *QueryAccountTransactionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAccountTransactionsResponse{}
-	_body, _err := client.QueryAccountTransactionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4336,7 +3194,7 @@ func (client *Client) QueryAccountTransactions(request *QueryAccountTransactions
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAvailableInstancesResponse
-func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailableInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryAvailableInstancesResponse, _err error) {
+func (client *Client) QueryAvailableInstancesWithContext(ctx context.Context, request *QueryAvailableInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryAvailableInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4409,29 +3267,11 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAvailableInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries available instances.
-//
-// @param request - QueryAvailableInstancesRequest
-//
-// @return QueryAvailableInstancesResponse
-func (client *Client) QueryAvailableInstances(request *QueryAvailableInstancesRequest) (_result *QueryAvailableInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAvailableInstancesResponse{}
-	_body, _err := client.QueryAvailableInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4444,7 +3284,7 @@ func (client *Client) QueryAvailableInstances(request *QueryAvailableInstancesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryBillResponse
-func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *dara.RuntimeOptions) (_result *QueryBillResponse, _err error) {
+func (client *Client) QueryBillWithContext(ctx context.Context, request *QueryBillRequest, runtime *dara.RuntimeOptions) (_result *QueryBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4509,29 +3349,11 @@ func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bills in a billing cycle.
-//
-// @param request - QueryBillRequest
-//
-// @return QueryBillResponse
-func (client *Client) QueryBill(request *QueryBillRequest) (_result *QueryBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryBillResponse{}
-	_body, _err := client.QueryBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4544,7 +3366,7 @@ func (client *Client) QueryBill(request *QueryBillRequest) (_result *QueryBillRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryBillOverviewResponse
-func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewRequest, runtime *dara.RuntimeOptions) (_result *QueryBillOverviewResponse, _err error) {
+func (client *Client) QueryBillOverviewWithContext(ctx context.Context, request *QueryBillOverviewRequest, runtime *dara.RuntimeOptions) (_result *QueryBillOverviewResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4585,76 +3407,11 @@ func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryBillOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bill overview information in a billing cycle.
-//
-// @param request - QueryBillOverviewRequest
-//
-// @return QueryBillOverviewResponse
-func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_result *QueryBillOverviewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryBillOverviewResponse{}
-	_body, _err := client.QueryBillOverviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
-//
-// @param request - QueryBillToOSSSubscriptionRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return QueryBillToOSSSubscriptionResponse
-func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *dara.RuntimeOptions) (_result *QueryBillToOSSSubscriptionResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("QueryBillToOSSSubscription"),
-		Version:     dara.String("2017-12-14"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &QueryBillToOSSSubscriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
-//
-// @return QueryBillToOSSSubscriptionResponse
-func (client *Client) QueryBillToOSSSubscription() (_result *QueryBillToOSSSubscriptionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryBillToOSSSubscriptionResponse{}
-	_body, _err := client.QueryBillToOSSSubscriptionWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4667,7 +3424,7 @@ func (client *Client) QueryBillToOSSSubscription() (_result *QueryBillToOSSSubsc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCashCouponsResponse
-func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsRequest, runtime *dara.RuntimeOptions) (_result *QueryCashCouponsResponse, _err error) {
+func (client *Client) QueryCashCouponsWithContext(ctx context.Context, request *QueryCashCouponsRequest, runtime *dara.RuntimeOptions) (_result *QueryCashCouponsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4700,29 +3457,11 @@ func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCashCouponsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about vouchers.
-//
-// @param request - QueryCashCouponsRequest
-//
-// @return QueryCashCouponsResponse
-func (client *Client) QueryCashCoupons(request *QueryCashCouponsRequest) (_result *QueryCashCouponsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCashCouponsResponse{}
-	_body, _err := client.QueryCashCouponsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4739,7 +3478,7 @@ func (client *Client) QueryCashCoupons(request *QueryCashCouponsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCommodityListResponse
-func (client *Client) QueryCommodityListWithOptions(request *QueryCommodityListRequest, runtime *dara.RuntimeOptions) (_result *QueryCommodityListResponse, _err error) {
+func (client *Client) QueryCommodityListWithContext(ctx context.Context, request *QueryCommodityListRequest, runtime *dara.RuntimeOptions) (_result *QueryCommodityListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4760,33 +3499,11 @@ func (client *Client) QueryCommodityListWithOptions(request *QueryCommodityListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCommodityListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a service based on the service code.
-//
-// Description:
-//
-// You can call this operation to query the information about a service based on the service code.
-//
-// @param request - QueryCommodityListRequest
-//
-// @return QueryCommodityListResponse
-func (client *Client) QueryCommodityList(request *QueryCommodityListRequest) (_result *QueryCommodityListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCommodityListResponse{}
-	_body, _err := client.QueryCommodityListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4799,7 +3516,7 @@ func (client *Client) QueryCommodityList(request *QueryCommodityListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCostUnitResponse
-func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResponse, _err error) {
+func (client *Client) QueryCostUnitWithContext(ctx context.Context, request *QueryCostUnitRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4836,29 +3553,11 @@ func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCostUnitResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
-//
-// @param request - QueryCostUnitRequest
-//
-// @return QueryCostUnitResponse
-func (client *Client) QueryCostUnit(request *QueryCostUnitRequest) (_result *QueryCostUnitResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCostUnitResponse{}
-	_body, _err := client.QueryCostUnitWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4871,7 +3570,7 @@ func (client *Client) QueryCostUnit(request *QueryCostUnitRequest) (_result *Que
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCostUnitResourceResponse
-func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResourceResponse, _err error) {
+func (client *Client) QueryCostUnitResourceWithContext(ctx context.Context, request *QueryCostUnitResourceRequest, runtime *dara.RuntimeOptions) (_result *QueryCostUnitResourceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4908,29 +3607,11 @@ func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitRes
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCostUnitResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
-//
-// @param request - QueryCostUnitResourceRequest
-//
-// @return QueryCostUnitResourceResponse
-func (client *Client) QueryCostUnitResource(request *QueryCostUnitResourceRequest) (_result *QueryCostUnitResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCostUnitResourceResponse{}
-	_body, _err := client.QueryCostUnitResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -4943,7 +3624,7 @@ func (client *Client) QueryCostUnitResource(request *QueryCostUnitResourceReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryCustomerAddressListResponse
-func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomerAddressListRequest, runtime *dara.RuntimeOptions) (_result *QueryCustomerAddressListResponse, _err error) {
+func (client *Client) QueryCustomerAddressListWithContext(ctx context.Context, request *QueryCustomerAddressListRequest, runtime *dara.RuntimeOptions) (_result *QueryCustomerAddressListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -4968,29 +3649,11 @@ func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomer
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryCustomerAddressListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the addresses to which invoices are mailed.
-//
-// @param request - QueryCustomerAddressListRequest
-//
-// @return QueryCustomerAddressListResponse
-func (client *Client) QueryCustomerAddressList(request *QueryCustomerAddressListRequest) (_result *QueryCustomerAddressListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryCustomerAddressListResponse{}
-	_body, _err := client.QueryCustomerAddressListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5009,7 +3672,7 @@ func (client *Client) QueryCustomerAddressList(request *QueryCustomerAddressList
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDPUtilizationDetailResponse
-func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryDPUtilizationDetailResponse, _err error) {
+func (client *Client) QueryDPUtilizationDetailWithContext(ctx context.Context, request *QueryDPUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryDPUtilizationDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5070,35 +3733,11 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryDPUtilizationDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
-//
-// Description:
-//
-// Limits:
-//
-//   - Only the usage records within the past year can be queried.
-//
-// @param request - QueryDPUtilizationDetailRequest
-//
-// @return QueryDPUtilizationDetailResponse
-func (client *Client) QueryDPUtilizationDetail(request *QueryDPUtilizationDetailRequest) (_result *QueryDPUtilizationDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryDPUtilizationDetailResponse{}
-	_body, _err := client.QueryDPUtilizationDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5111,7 +3750,7 @@ func (client *Client) QueryDPUtilizationDetail(request *QueryDPUtilizationDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryEvaluateListResponse
-func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListRequest, runtime *dara.RuntimeOptions) (_result *QueryEvaluateListResponse, _err error) {
+func (client *Client) QueryEvaluateListWithContext(ctx context.Context, request *QueryEvaluateListRequest, runtime *dara.RuntimeOptions) (_result *QueryEvaluateListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5188,29 +3827,11 @@ func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryEvaluateListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about the orders for which you want to apply for invoices.
-//
-// @param request - QueryEvaluateListRequest
-//
-// @return QueryEvaluateListResponse
-func (client *Client) QueryEvaluateList(request *QueryEvaluateListRequest) (_result *QueryEvaluateListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryEvaluateListResponse{}
-	_body, _err := client.QueryEvaluateListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5223,7 +3844,7 @@ func (client *Client) QueryEvaluateList(request *QueryEvaluateListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryFinancialAccountInfoResponse
-func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinancialAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryFinancialAccountInfoResponse, _err error) {
+func (client *Client) QueryFinancialAccountInfoWithContext(ctx context.Context, request *QueryFinancialAccountInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryFinancialAccountInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5248,29 +3869,11 @@ func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinanci
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryFinancialAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a financial account.
-//
-// @param request - QueryFinancialAccountInfoRequest
-//
-// @return QueryFinancialAccountInfoResponse
-func (client *Client) QueryFinancialAccountInfo(request *QueryFinancialAccountInfoRequest) (_result *QueryFinancialAccountInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryFinancialAccountInfoResponse{}
-	_body, _err := client.QueryFinancialAccountInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5295,7 +3898,7 @@ func (client *Client) QueryFinancialAccountInfo(request *QueryFinancialAccountIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInstanceBillResponse
-func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceBillResponse, _err error) {
+func (client *Client) QueryInstanceBillWithContext(ctx context.Context, request *QueryInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5364,41 +3967,11 @@ func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInstanceBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bills of instances or billable items in a billing cycle.
-//
-// Description:
-//
-// ##
-//
-//   - This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
-//
-//   - Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
-//
-//   - The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
-//
-//   - You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
-//
-// @param request - QueryInstanceBillRequest
-//
-// @return QueryInstanceBillResponse
-func (client *Client) QueryInstanceBill(request *QueryInstanceBillRequest) (_result *QueryInstanceBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryInstanceBillResponse{}
-	_body, _err := client.QueryInstanceBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5411,7 +3984,7 @@ func (client *Client) QueryInstanceBill(request *QueryInstanceBillRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInstanceByTagResponse
-func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceByTagResponse, _err error) {
+func (client *Client) QueryInstanceByTagWithContext(ctx context.Context, request *QueryInstanceByTagRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceByTagResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5444,29 +4017,11 @@ func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInstanceByTagResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries instances by tag.
-//
-// @param request - QueryInstanceByTagRequest
-//
-// @return QueryInstanceByTagResponse
-func (client *Client) QueryInstanceByTag(request *QueryInstanceByTagRequest) (_result *QueryInstanceByTagResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryInstanceByTagResponse{}
-	_body, _err := client.QueryInstanceByTagWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5479,7 +4034,7 @@ func (client *Client) QueryInstanceByTag(request *QueryInstanceByTagRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInstanceGaapCostResponse
-func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaapCostRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceGaapCostResponse, _err error) {
+func (client *Client) QueryInstanceGaapCostWithContext(ctx context.Context, request *QueryInstanceGaapCostRequest, runtime *dara.RuntimeOptions) (_result *QueryInstanceGaapCostResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5524,29 +4079,11 @@ func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaa
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInstanceGaapCostResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The code of the service.
-//
-// @param request - QueryInstanceGaapCostRequest
-//
-// @return QueryInstanceGaapCostResponse
-func (client *Client) QueryInstanceGaapCost(request *QueryInstanceGaapCostRequest) (_result *QueryInstanceGaapCostResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryInstanceGaapCostResponse{}
-	_body, _err := client.QueryInstanceGaapCostWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5559,7 +4096,7 @@ func (client *Client) QueryInstanceGaapCost(request *QueryInstanceGaapCostReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryInvoicingCustomerListResponse
-func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoicingCustomerListRequest, runtime *dara.RuntimeOptions) (_result *QueryInvoicingCustomerListResponse, _err error) {
+func (client *Client) QueryInvoicingCustomerListWithContext(ctx context.Context, request *QueryInvoicingCustomerListRequest, runtime *dara.RuntimeOptions) (_result *QueryInvoicingCustomerListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5584,29 +4121,11 @@ func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoic
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryInvoicingCustomerListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about invoice titles.
-//
-// @param request - QueryInvoicingCustomerListRequest
-//
-// @return QueryInvoicingCustomerListResponse
-func (client *Client) QueryInvoicingCustomerList(request *QueryInvoicingCustomerListRequest) (_result *QueryInvoicingCustomerListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryInvoicingCustomerListResponse{}
-	_body, _err := client.QueryInvoicingCustomerListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5619,7 +4138,7 @@ func (client *Client) QueryInvoicingCustomerList(request *QueryInvoicingCustomer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryOrdersResponse
-func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtime *dara.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
+func (client *Client) QueryOrdersWithContext(ctx context.Context, request *QueryOrdersRequest, runtime *dara.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5680,29 +4199,11 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryOrdersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
-//
-// @param request - QueryOrdersRequest
-//
-// @return QueryOrdersResponse
-func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOrdersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryOrdersResponse{}
-	_body, _err := client.QueryOrdersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5715,7 +4216,7 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPermissionListResponse
-func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionListRequest, runtime *dara.RuntimeOptions) (_result *QueryPermissionListResponse, _err error) {
+func (client *Client) QueryPermissionListWithContext(ctx context.Context, request *QueryPermissionListRequest, runtime *dara.RuntimeOptions) (_result *QueryPermissionListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5740,29 +4241,11 @@ func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionLis
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPermissionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
-//
-// @param request - QueryPermissionListRequest
-//
-// @return QueryPermissionListResponse
-func (client *Client) QueryPermissionList(request *QueryPermissionListRequest) (_result *QueryPermissionListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPermissionListResponse{}
-	_body, _err := client.QueryPermissionListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5775,7 +4258,7 @@ func (client *Client) QueryPermissionList(request *QueryPermissionListRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPrepaidCardsResponse
-func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsRequest, runtime *dara.RuntimeOptions) (_result *QueryPrepaidCardsResponse, _err error) {
+func (client *Client) QueryPrepaidCardsWithContext(ctx context.Context, request *QueryPrepaidCardsRequest, runtime *dara.RuntimeOptions) (_result *QueryPrepaidCardsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5808,29 +4291,11 @@ func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPrepaidCardsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries prepaid cards.
-//
-// @param request - QueryPrepaidCardsRequest
-//
-// @return QueryPrepaidCardsResponse
-func (client *Client) QueryPrepaidCards(request *QueryPrepaidCardsRequest) (_result *QueryPrepaidCardsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPrepaidCardsResponse{}
-	_body, _err := client.QueryPrepaidCardsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5847,7 +4312,7 @@ func (client *Client) QueryPrepaidCards(request *QueryPrepaidCardsRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryPriceEntityListResponse
-func (client *Client) QueryPriceEntityListWithOptions(request *QueryPriceEntityListRequest, runtime *dara.RuntimeOptions) (_result *QueryPriceEntityListResponse, _err error) {
+func (client *Client) QueryPriceEntityListWithContext(ctx context.Context, request *QueryPriceEntityListRequest, runtime *dara.RuntimeOptions) (_result *QueryPriceEntityListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5868,33 +4333,11 @@ func (client *Client) QueryPriceEntityListWithOptions(request *QueryPriceEntityL
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryPriceEntityListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the billable items of a service.
-//
-// Description:
-//
-// You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
-//
-// @param request - QueryPriceEntityListRequest
-//
-// @return QueryPriceEntityListResponse
-func (client *Client) QueryPriceEntityList(request *QueryPriceEntityListRequest) (_result *QueryPriceEntityListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryPriceEntityListResponse{}
-	_body, _err := client.QueryPriceEntityListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5907,7 +4350,7 @@ func (client *Client) QueryPriceEntityList(request *QueryPriceEntityListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryProductListResponse
-func (client *Client) QueryProductListWithOptions(request *QueryProductListRequest, runtime *dara.RuntimeOptions) (_result *QueryProductListResponse, _err error) {
+func (client *Client) QueryProductListWithContext(ctx context.Context, request *QueryProductListRequest, runtime *dara.RuntimeOptions) (_result *QueryProductListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -5940,29 +4383,11 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryProductListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about all Alibaba Cloud services.
-//
-// @param request - QueryProductListRequest
-//
-// @return QueryProductListResponse
-func (client *Client) QueryProductList(request *QueryProductListRequest) (_result *QueryProductListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryProductListResponse{}
-	_body, _err := client.QueryProductListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -5975,7 +4400,7 @@ func (client *Client) QueryProductList(request *QueryProductListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRIUtilizationDetailResponse
-func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
+func (client *Client) QueryRIUtilizationDetailWithContext(ctx context.Context, request *QueryRIUtilizationDetailRequest, runtime *dara.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6028,29 +4453,11 @@ func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtiliz
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage details of a reserved instance (RI).
-//
-// @param request - QueryRIUtilizationDetailRequest
-//
-// @return QueryRIUtilizationDetailResponse
-func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetailRequest) (_result *QueryRIUtilizationDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.QueryRIUtilizationDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6063,7 +4470,7 @@ func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetail
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRedeemResponse
-func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtime *dara.RuntimeOptions) (_result *QueryRedeemResponse, _err error) {
+func (client *Client) QueryRedeemWithContext(ctx context.Context, request *QueryRedeemRequest, runtime *dara.RuntimeOptions) (_result *QueryRedeemResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6084,29 +4491,11 @@ func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRedeemResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about a redemption coupon.
-//
-// @param request - QueryRedeemRequest
-//
-// @return QueryRedeemResponse
-func (client *Client) QueryRedeem(request *QueryRedeemRequest) (_result *QueryRedeemResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRedeemResponse{}
-	_body, _err := client.QueryRedeemWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6119,7 +4508,7 @@ func (client *Client) QueryRedeem(request *QueryRedeemRequest) (_result *QueryRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryRelationListResponse
-func (client *Client) QueryRelationListWithOptions(request *QueryRelationListRequest, runtime *dara.RuntimeOptions) (_result *QueryRelationListResponse, _err error) {
+func (client *Client) QueryRelationListWithContext(ctx context.Context, request *QueryRelationListRequest, runtime *dara.RuntimeOptions) (_result *QueryRelationListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6156,29 +4545,11 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryRelationListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the members of a management account.
-//
-// @param request - QueryRelationListRequest
-//
-// @return QueryRelationListResponse
-func (client *Client) QueryRelationList(request *QueryRelationListRequest) (_result *QueryRelationListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryRelationListResponse{}
-	_body, _err := client.QueryRelationListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6191,7 +4562,7 @@ func (client *Client) QueryRelationList(request *QueryRelationListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryResellerAvailableQuotaResponse
-func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResellerAvailableQuotaRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerAvailableQuotaResponse, _err error) {
+func (client *Client) QueryResellerAvailableQuotaWithContext(ctx context.Context, request *QueryResellerAvailableQuotaRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerAvailableQuotaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6220,29 +4591,11 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryResellerAvailableQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
-//
-// @param request - QueryResellerAvailableQuotaRequest
-//
-// @return QueryResellerAvailableQuotaResponse
-func (client *Client) QueryResellerAvailableQuota(request *QueryResellerAvailableQuotaRequest) (_result *QueryResellerAvailableQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryResellerAvailableQuotaResponse{}
-	_body, _err := client.QueryResellerAvailableQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6255,7 +4608,7 @@ func (client *Client) QueryResellerAvailableQuota(request *QueryResellerAvailabl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryResellerUserAlarmThresholdResponse
-func (client *Client) QueryResellerUserAlarmThresholdWithOptions(request *QueryResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
+func (client *Client) QueryResellerUserAlarmThresholdWithContext(ctx context.Context, request *QueryResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6284,29 +4637,11 @@ func (client *Client) QueryResellerUserAlarmThresholdWithOptions(request *QueryR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryResellerUserAlarmThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询用户的信控预警阀值,该接口暂未测试启用
-//
-// @param request - QueryResellerUserAlarmThresholdRequest
-//
-// @return QueryResellerUserAlarmThresholdResponse
-func (client *Client) QueryResellerUserAlarmThreshold(request *QueryResellerUserAlarmThresholdRequest) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryResellerUserAlarmThresholdResponse{}
-	_body, _err := client.QueryResellerUserAlarmThresholdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6319,7 +4654,7 @@ func (client *Client) QueryResellerUserAlarmThreshold(request *QueryResellerUser
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryResourcePackageInstancesResponse
-func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryResourcePackageInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryResourcePackageInstancesResponse, _err error) {
+func (client *Client) QueryResourcePackageInstancesWithContext(ctx context.Context, request *QueryResourcePackageInstancesRequest, runtime *dara.RuntimeOptions) (_result *QueryResourcePackageInstancesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6368,29 +4703,11 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryResourcePackageInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
-//
-// @param request - QueryResourcePackageInstancesRequest
-//
-// @return QueryResourcePackageInstancesResponse
-func (client *Client) QueryResourcePackageInstances(request *QueryResourcePackageInstancesRequest) (_result *QueryResourcePackageInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryResourcePackageInstancesResponse{}
-	_body, _err := client.QueryResourcePackageInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6403,7 +4720,7 @@ func (client *Client) QueryResourcePackageInstances(request *QueryResourcePackag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySavingsPlansDeductLogResponse
-func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySavingsPlansDeductLogRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
+func (client *Client) QuerySavingsPlansDeductLogWithContext(ctx context.Context, request *QuerySavingsPlansDeductLogRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6452,29 +4769,11 @@ func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySaving
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySavingsPlansDeductLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the deduction details of savings plans.
-//
-// @param request - QuerySavingsPlansDeductLogRequest
-//
-// @return QuerySavingsPlansDeductLogResponse
-func (client *Client) QuerySavingsPlansDeductLog(request *QuerySavingsPlansDeductLogRequest) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySavingsPlansDeductLogResponse{}
-	_body, _err := client.QuerySavingsPlansDeductLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6487,7 +4786,7 @@ func (client *Client) QuerySavingsPlansDeductLog(request *QuerySavingsPlansDeduc
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySavingsPlansDiscountResponse
-func (client *Client) QuerySavingsPlansDiscountWithOptions(request *QuerySavingsPlansDiscountRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDiscountResponse, _err error) {
+func (client *Client) QuerySavingsPlansDiscountWithContext(ctx context.Context, request *QuerySavingsPlansDiscountRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansDiscountResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6508,29 +4807,11 @@ func (client *Client) QuerySavingsPlansDiscountWithOptions(request *QuerySavings
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySavingsPlansDiscountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries discounts on savings plans.
-//
-// @param request - QuerySavingsPlansDiscountRequest
-//
-// @return QuerySavingsPlansDiscountResponse
-func (client *Client) QuerySavingsPlansDiscount(request *QuerySavingsPlansDiscountRequest) (_result *QuerySavingsPlansDiscountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySavingsPlansDiscountResponse{}
-	_body, _err := client.QuerySavingsPlansDiscountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6543,7 +4824,7 @@ func (client *Client) QuerySavingsPlansDiscount(request *QuerySavingsPlansDiscou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySavingsPlansInstanceResponse
-func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansInstanceResponse, _err error) {
+func (client *Client) QuerySavingsPlansInstanceWithContext(ctx context.Context, request *QuerySavingsPlansInstanceRequest, runtime *dara.RuntimeOptions) (_result *QuerySavingsPlansInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6600,29 +4881,11 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySavingsPlansInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the information about savings plan instances of the current user.
-//
-// @param request - QuerySavingsPlansInstanceRequest
-//
-// @return QuerySavingsPlansInstanceResponse
-func (client *Client) QuerySavingsPlansInstance(request *QuerySavingsPlansInstanceRequest) (_result *QuerySavingsPlansInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySavingsPlansInstanceResponse{}
-	_body, _err := client.QuerySavingsPlansInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6635,7 +4898,7 @@ func (client *Client) QuerySavingsPlansInstance(request *QuerySavingsPlansInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySettleBillResponse
-func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySettleBillResponse, _err error) {
+func (client *Client) QuerySettleBillWithContext(ctx context.Context, request *QuerySettleBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySettleBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6704,29 +4967,11 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySettleBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// The code of the service.
-//
-// @param request - QuerySettleBillRequest
-//
-// @return QuerySettleBillResponse
-func (client *Client) QuerySettleBill(request *QuerySettleBillRequest) (_result *QuerySettleBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySettleBillResponse{}
-	_body, _err := client.QuerySettleBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6739,7 +4984,7 @@ func (client *Client) QuerySettleBill(request *QuerySettleBillRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySkuPriceListResponse
-func (client *Client) QuerySkuPriceListWithOptions(tmpReq *QuerySkuPriceListRequest, runtime *dara.RuntimeOptions) (_result *QuerySkuPriceListResponse, _err error) {
+func (client *Client) QuerySkuPriceListWithContext(ctx context.Context, tmpReq *QuerySkuPriceListRequest, runtime *dara.RuntimeOptions) (_result *QuerySkuPriceListResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6766,29 +5011,11 @@ func (client *Client) QuerySkuPriceListWithOptions(tmpReq *QuerySkuPriceListRequ
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySkuPriceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
-//
-// @param request - QuerySkuPriceListRequest
-//
-// @return QuerySkuPriceListResponse
-func (client *Client) QuerySkuPriceList(request *QuerySkuPriceListRequest) (_result *QuerySkuPriceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySkuPriceListResponse{}
-	_body, _err := client.QuerySkuPriceListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6811,7 +5038,7 @@ func (client *Client) QuerySkuPriceList(request *QuerySkuPriceListRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySplitItemBillResponse
-func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySplitItemBillResponse, _err error) {
+func (client *Client) QuerySplitItemBillWithContext(ctx context.Context, request *QuerySplitItemBillRequest, runtime *dara.RuntimeOptions) (_result *QuerySplitItemBillResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6864,39 +5091,11 @@ func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillR
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySplitItemBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries split bills.
-//
-// Description:
-//
-//	  This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
-//
-//		- The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
-//
-//		- You can call this operation to query split bills generated within the last 12 months.
-//
-//		- This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
-//
-// @param request - QuerySplitItemBillRequest
-//
-// @return QuerySplitItemBillResponse
-func (client *Client) QuerySplitItemBill(request *QuerySplitItemBillRequest) (_result *QuerySplitItemBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySplitItemBillResponse{}
-	_body, _err := client.QuerySplitItemBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -6921,7 +5120,7 @@ func (client *Client) QuerySplitItemBill(request *QuerySplitItemBillRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryUserOmsDataResponse
-func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataRequest, runtime *dara.RuntimeOptions) (_result *QueryUserOmsDataResponse, _err error) {
+func (client *Client) QueryUserOmsDataWithContext(ctx context.Context, request *QueryUserOmsDataRequest, runtime *dara.RuntimeOptions) (_result *QueryUserOmsDataResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -6970,41 +5169,11 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryUserOmsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the usage data of an Alibaba Cloud service.
-//
-// Description:
-//
-// You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
-//
-//   - The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
-//
-//   - The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-//
-//   - Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
-//
-//   - You can query the usage data that is recorded in the last quarter.
-//
-// @param request - QueryUserOmsDataRequest
-//
-// @return QueryUserOmsDataResponse
-func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_result *QueryUserOmsDataResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryUserOmsDataResponse{}
-	_body, _err := client.QueryUserOmsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7025,7 +5194,7 @@ func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefundInstanceResponse
-func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
+func (client *Client) RefundInstanceWithContext(ctx context.Context, request *RefundInstanceRequest, runtime *dara.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7066,37 +5235,11 @@ func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefundInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unsubscribes from an instance that is no longer needed.
-//
-// Description:
-//
-// 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
-//
-// 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
-//
-// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/en/user-center/refund-rules).
-//
-// @param request - RefundInstanceRequest
-//
-// @return RefundInstanceResponse
-func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *RefundInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefundInstanceResponse{}
-	_body, _err := client.RefundInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7113,7 +5256,7 @@ func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *R
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseInstanceResponse
-func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
+func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7162,33 +5305,11 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases instances by Virtual Network Operators (VNOs).
-//
-// Description:
-//
-// This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
-//
-// @param request - ReleaseInstanceRequest
-//
-// @return ReleaseInstanceResponse
-func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseInstanceResponse{}
-	_body, _err := client.ReleaseInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7201,7 +5322,7 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RelieveAccountRelationResponse
-func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
+func (client *Client) RelieveAccountRelationWithContext(ctx context.Context, request *RelieveAccountRelationRequest, runtime *dara.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7242,29 +5363,11 @@ func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RelieveAccountRelationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Terminates a financial relationship between the management account and a member.
-//
-// @param request - RelieveAccountRelationRequest
-//
-// @return RelieveAccountRelationResponse
-func (client *Client) RelieveAccountRelation(request *RelieveAccountRelationRequest) (_result *RelieveAccountRelationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RelieveAccountRelationResponse{}
-	_body, _err := client.RelieveAccountRelationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7277,7 +5380,7 @@ func (client *Client) RelieveAccountRelation(request *RelieveAccountRelationRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewChangeInstanceResponse
-func (client *Client) RenewChangeInstanceWithOptions(request *RenewChangeInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewChangeInstanceResponse, _err error) {
+func (client *Client) RenewChangeInstanceWithContext(ctx context.Context, request *RenewChangeInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewChangeInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7326,29 +5429,11 @@ func (client *Client) RenewChangeInstanceWithOptions(request *RenewChangeInstanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewChangeInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 续费变配接口
-//
-// @param request - RenewChangeInstanceRequest
-//
-// @return RenewChangeInstanceResponse
-func (client *Client) RenewChangeInstance(request *RenewChangeInstanceRequest) (_result *RenewChangeInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewChangeInstanceResponse{}
-	_body, _err := client.RenewChangeInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7361,7 +5446,7 @@ func (client *Client) RenewChangeInstance(request *RenewChangeInstanceRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewInstanceResponse
-func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
+func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7406,29 +5491,11 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
-//
-// @param request - RenewInstanceRequest
-//
-// @return RenewInstanceResponse
-func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewInstanceResponse{}
-	_body, _err := client.RenewInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7441,7 +5508,7 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RenewResourcePackageResponse
-func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *RenewResourcePackageResponse, _err error) {
+func (client *Client) RenewResourcePackageWithContext(ctx context.Context, request *RenewResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *RenewResourcePackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7482,29 +5549,11 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 		BodyType:    dara.String("json"),
 	}
 	_result = &RenewResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Renews a resource plan.
-//
-// @param request - RenewResourcePackageRequest
-//
-// @return RenewResourcePackageResponse
-func (client *Client) RenewResourcePackage(request *RenewResourcePackageRequest) (_result *RenewResourcePackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RenewResourcePackageResponse{}
-	_body, _err := client.RenewResourcePackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7517,7 +5566,7 @@ func (client *Client) RenewResourcePackage(request *RenewResourcePackageRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetAllExpirationDayResponse
-func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDayRequest, runtime *dara.RuntimeOptions) (_result *SetAllExpirationDayResponse, _err error) {
+func (client *Client) SetAllExpirationDayWithContext(ctx context.Context, request *SetAllExpirationDayRequest, runtime *dara.RuntimeOptions) (_result *SetAllExpirationDayResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7546,29 +5595,11 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetAllExpirationDayResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sets an expiration date for all Elastic Compute Service (ECS) instances.
-//
-// @param request - SetAllExpirationDayRequest
-//
-// @return SetAllExpirationDayResponse
-func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (_result *SetAllExpirationDayResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetAllExpirationDayResponse{}
-	_body, _err := client.SetAllExpirationDayWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7581,7 +5612,7 @@ func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetRenewalResponse
-func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime *dara.RuntimeOptions) (_result *SetRenewalResponse, _err error) {
+func (client *Client) SetRenewalWithContext(ctx context.Context, request *SetRenewalRequest, runtime *dara.RuntimeOptions) (_result *SetRenewalResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7634,29 +5665,11 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetRenewalResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Enables auto-renewal for an instance.
-//
-// @param request - SetRenewalRequest
-//
-// @return SetRenewalResponse
-func (client *Client) SetRenewal(request *SetRenewalRequest) (_result *SetRenewalResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetRenewalResponse{}
-	_body, _err := client.SetRenewalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7665,7 +5678,7 @@ func (client *Client) SetRenewal(request *SetRenewalRequest) (_result *SetRenewa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetResellerUserAlarmThresholdResponse
-func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
+func (client *Client) SetResellerUserAlarmThresholdWithContext(ctx context.Context, request *SetResellerUserAlarmThresholdRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7698,25 +5711,11 @@ func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResel
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetResellerUserAlarmThresholdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetResellerUserAlarmThresholdRequest
-//
-// @return SetResellerUserAlarmThresholdResponse
-func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlarmThresholdRequest) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetResellerUserAlarmThresholdResponse{}
-	_body, _err := client.SetResellerUserAlarmThresholdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7729,7 +5728,7 @@ func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlar
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetResellerUserQuotaResponse
-func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserQuotaResponse, _err error) {
+func (client *Client) SetResellerUserQuotaWithContext(ctx context.Context, request *SetResellerUserQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserQuotaResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7766,29 +5765,11 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetResellerUserQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modify the quota ledger and consumption ledger.
-//
-// @param request - SetResellerUserQuotaRequest
-//
-// @return SetResellerUserQuotaResponse
-func (client *Client) SetResellerUserQuota(request *SetResellerUserQuotaRequest) (_result *SetResellerUserQuotaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetResellerUserQuotaResponse{}
-	_body, _err := client.SetResellerUserQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7797,7 +5778,7 @@ func (client *Client) SetResellerUserQuota(request *SetResellerUserQuotaRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetResellerUserStatusResponse
-func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserStatusRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserStatusResponse, _err error) {
+func (client *Client) SetResellerUserStatusWithContext(ctx context.Context, request *SetResellerUserStatusRequest, runtime *dara.RuntimeOptions) (_result *SetResellerUserStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7834,25 +5815,11 @@ func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserS
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetResellerUserStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - SetResellerUserStatusRequest
-//
-// @return SetResellerUserStatusResponse
-func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusRequest) (_result *SetResellerUserStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetResellerUserStatusResponse{}
-	_body, _err := client.SetResellerUserStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -7865,7 +5832,7 @@ func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetSavingPlanUserDeductRuleResponse
-func (client *Client) SetSavingPlanUserDeductRuleWithOptions(tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *dara.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
+func (client *Client) SetSavingPlanUserDeductRuleWithContext(ctx context.Context, tmpReq *SetSavingPlanUserDeductRuleRequest, runtime *dara.RuntimeOptions) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
 	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
@@ -7914,29 +5881,11 @@ func (client *Client) SetSavingPlanUserDeductRuleWithOptions(tmpReq *SetSavingPl
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetSavingPlanUserDeductRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 设置节省计划用户级抵扣规则
-//
-// @param request - SetSavingPlanUserDeductRuleRequest
-//
-// @return SetSavingPlanUserDeductRuleResponse
-func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDeductRuleRequest) (_result *SetSavingPlanUserDeductRuleResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SetSavingPlanUserDeductRuleResponse{}
-	_body, _err := client.SetSavingPlanUserDeductRuleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8005,7 +5954,7 @@ func (client *Client) SetSavingPlanUserDeductRule(request *SetSavingPlanUserDedu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubscribeBillToOSSResponse
-func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *SubscribeBillToOSSResponse, _err error) {
+func (client *Client) SubscribeBillToOSSWithContext(ctx context.Context, request *SubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *SubscribeBillToOSSResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8058,85 +6007,11 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubscribeBillToOSSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
-//
-// Description:
-//
-// Before you call this operation, take note of the following items:
-//
-//   - You can subscribe to only one type of bill at a time.
-//
-//   - The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
-//
-//   - The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
-//
-//   - The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-//
-//   - The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
-//
-//   - To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
-//
-// 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
-//
-// 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
-//
-// 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
-//
-// 4.  4.  The directory name must be 1 to 254 characters in length.
-//
-//   - File names:
-//
-//   - **BillingItemDetailForBillingPeriod*	- (Detailed bills of billable items)
-//
-//   - File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
-//
-//   - File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
-//
-//   - **InstanceDetailForBillingPeriod*	- (Detailed bills of instances)
-//
-//   - File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
-//
-//   - File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
-//
-//   - **InstanceDetailMonthly*	- (Instance-based bills summarized by billing cycle)
-//
-//   - File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-//
-//   - **BillingItemDetailMonthly*	- (Billable item-based bills summarized by billing cycle)
-//
-//   - File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-//
-//   - **SplitItemDetailDaily*	- (Split bills summarized by day)
-//
-//   - File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
-//
-//   - **MonthBill*	- (Monthly bill in the PDF format)
-//
-//   - File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
-//
-//   - The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
-//
-// @param request - SubscribeBillToOSSRequest
-//
-// @return SubscribeBillToOSSResponse
-func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_result *SubscribeBillToOSSResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SubscribeBillToOSSResponse{}
-	_body, _err := client.SubscribeBillToOSSWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8149,7 +6024,7 @@ func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8182,29 +6057,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Add tags to resources.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8217,7 +6074,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UnsubscribeBillToOSSResponse
-func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeBillToOSSResponse, _err error) {
+func (client *Client) UnsubscribeBillToOSSWithContext(ctx context.Context, request *UnsubscribeBillToOSSRequest, runtime *dara.RuntimeOptions) (_result *UnsubscribeBillToOSSResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8246,29 +6103,11 @@ func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillTo
 		BodyType:    dara.String("json"),
 	}
 	_result = &UnsubscribeBillToOSSResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
-//
-// @param request - UnsubscribeBillToOSSRequest
-//
-// @return UnsubscribeBillToOSSResponse
-func (client *Client) UnsubscribeBillToOSS(request *UnsubscribeBillToOSSRequest) (_result *UnsubscribeBillToOSSResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UnsubscribeBillToOSSResponse{}
-	_body, _err := client.UnsubscribeBillToOSSWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8281,7 +6120,7 @@ func (client *Client) UnsubscribeBillToOSS(request *UnsubscribeBillToOSSRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8318,29 +6157,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from resources.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -8353,7 +6174,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeResourcePackageResponse
-func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeResourcePackageResponse, _err error) {
+func (client *Client) UpgradeResourcePackageWithContext(ctx context.Context, request *UpgradeResourcePackageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeResourcePackageResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -8390,28 +6211,10 @@ func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResource
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeResourcePackageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Upgrades a resource plan.
-//
-// @param request - UpgradeResourcePackageRequest
-//
-// @return UpgradeResourcePackageResponse
-func (client *Client) UpgradeResourcePackage(request *UpgradeResourcePackageRequest) (_result *UpgradeResourcePackageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpgradeResourcePackageResponse{}
-	_body, _err := client.UpgradeResourcePackageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
