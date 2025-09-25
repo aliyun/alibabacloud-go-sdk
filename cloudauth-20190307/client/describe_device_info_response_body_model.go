@@ -22,19 +22,28 @@ type iDescribeDeviceInfoResponseBody interface {
 }
 
 type DescribeDeviceInfoResponseBody struct {
+	// The current page number being queried.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage    *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Array of device information.
 	DeviceInfoList *DescribeDeviceInfoResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Struct"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -124,22 +133,32 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) Validate() error {
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo struct {
+	// Authorization start date.
+	//
 	// example:
 	//
 	// 20180101
 	BeginDay *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
+	// Corresponds to the BizType in the request.
+	//
 	// example:
 	//
 	// FACE_TEST
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Corresponds to the DeviceId in the request.
+	//
 	// example:
 	//
 	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Authorization expiration date.
+	//
 	// example:
 	//
 	// 20180101
 	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
+	// Corresponds to the UserDeviceId in the request.
+	//
 	// example:
 	//
 	// 3iJ1AY$oHcu7mC69

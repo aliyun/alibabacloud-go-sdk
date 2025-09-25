@@ -20,18 +20,25 @@ type iLivenessFaceVerifyResponseBody interface {
 }
 
 type LivenessFaceVerifyResponseBody struct {
+	// Return code, **200*	- indicates successful API response.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Return result.
 	ResultObject *LivenessFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,18 +91,30 @@ func (s *LivenessFaceVerifyResponseBody) Validate() error {
 }
 
 type LivenessFaceVerifyResponseBodyResultObject struct {
+	// Unique identifier for the real-person authentication request.
+	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// Attachment information of the face authentication subject, including data such as face quality, face attack, face or OCR image, and intent verification.
+	//
 	// example:
 	//
 	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"verifyScore": 50.28594166529785}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	// Authentication result, values:
+	//
+	// - T: Passed
+	//
+	// - F: Not passed
+	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Authentication result code.
+	//
 	// example:
 	//
 	// 200

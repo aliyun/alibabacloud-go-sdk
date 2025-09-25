@@ -22,19 +22,31 @@ type iCreateVerifySettingResponseBody interface {
 }
 
 type CreateVerifySettingResponseBody struct {
+	// Verification scenario name.
+	//
+	// example:
+	//
+	// 用户注册
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// Verification scenario identifier.
+	//
 	// example:
 	//
 	// UserRegister
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Authentication solution name.
+	//
 	// example:
 	//
 	// RPBasic
-	Solution *string   `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	// Authentication steps
 	StepList []*string `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Repeated"`
 }
 

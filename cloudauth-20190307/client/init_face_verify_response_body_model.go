@@ -20,18 +20,25 @@ type iInitFaceVerifyResponseBody interface {
 }
 
 type InitFaceVerifyResponseBody struct {
+	// Return code: 200 indicates success, other values indicate failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
-	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result object.
 	ResultObject *InitFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,10 +91,27 @@ func (s *InitFaceVerifyResponseBody) Validate() error {
 }
 
 type InitFaceVerifyResponseBodyResultObject struct {
+	// Unique identifier for real-person authentication.
+	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
-	CertifyId  *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// URL for real-person authentication in a Web browser, which will redirect according to the ReturnUrl parameter after authentication.
+	//
+	// 	Notice:
+	//
+	// - The CertifyUrl returned by the initialization interface is valid for **30 minutes and can only be used once**. Please use it within the validity period to avoid reuse.
+	//
+	// - This parameter requires the correct input of **MetaInfo*	- to return a CertifyUrl that matches the client. If you cannot obtain it, please check whether **MetaInfo*	- and other input parameters are correct.
+	//
+	// - The domain name of this URL may change with service updates. To ensure normal service availability, it is recommended not to apply access control to this domain name.
+	//
+	// - When redirecting in the browser, try not to use incognito mode or modify the URL, as this may result in a **signature error**.
+	//
+	// example:
+	//
+	// https://t.aliyun.com/****
 	CertifyUrl *string `json:"CertifyUrl,omitempty" xml:"CertifyUrl,omitempty"`
 }
 

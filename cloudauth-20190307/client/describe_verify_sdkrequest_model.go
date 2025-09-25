@@ -14,6 +14,8 @@ type iDescribeVerifySDKRequest interface {
 }
 
 type DescribeVerifySDKRequest struct {
+	// The task ID for generating the SDK.
+	//
 	// This parameter is required.
 	//
 	// example:

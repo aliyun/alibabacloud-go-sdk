@@ -40,58 +40,90 @@ type iLivenessFaceVerifyRequest interface {
 }
 
 type LivenessFaceVerifyRequest struct {
+	// Unique identifier for real-person authentication.
+	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// Whether to allow cropping of the face image:
+	//
+	// - T: Allow cropping
+	//
+	// - F (default): Do not allow cropping.
+	//
 	// example:
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// Device token, used for risk identification.
+	//
 	// example:
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// Base64 encoded photo.
+	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
+	// Image URL.
+	//
 	// example:
 	//
 	// https://ware.cdeledu.com/upfile/uploadPic/2025/03/21/dd62fbb9c966433ab0ba9a7252816b30.jpg
 	FaceContrastPictureUrl *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	// User\\"s network IP address.
+	//
 	// example:
 	//
 	// 114.xxx.xxx.xxx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// User\\"s mobile phone number.
+	//
 	// example:
 	//
 	// 130xxxxxxxx
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Liveness detection parameters.
+	//
 	// example:
 	//
 	// FRONT_CAMERA_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Authorized OSS bucket name.
+	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-1494517779820665
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// Authorized OSS file name.
+	//
 	// example:
 	//
 	// facedetect/17483113370916034.jpg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// A unique business identifier defined by the client side, used for subsequent troubleshooting. The value should be a combination of letters and numbers up to 32 characters long, ensuring uniqueness.
+	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
+	// Fixed value: LR_FR_MIN.
+	//
 	// example:
 	//
 	// LR_FR_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Authentication scenario ID. This ID is automatically generated after creating an authentication scenario in the console.
+	//
 	// example:
 	//
 	// 100000****
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// Your custom user ID (up to 100 characters), please ensure it is unique.
+	//
 	// example:
 	//
 	// 123456789

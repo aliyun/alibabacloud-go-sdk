@@ -28,40 +28,62 @@ type iVerifyMaterialRequest interface {
 }
 
 type VerifyMaterialRequest struct {
+	// A unique ID that identifies a single authentication task, not exceeding 64 characters. For a single authentication task, the system supports unlimited submissions until the final authentication is passed and the task is completed.
+	//
+	// > Different BizIds are required for different authentication tasks.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 39ecf51e-2f81-4dc5-90ee-ff86125b****
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// Identifier for the business scenario using the real-person authentication service. Please refer to [Business Setup](https://help.aliyun.com/document_detail/127885.html) and complete the creation in the console first.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RPMinTest
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// HTTP or HTTPS link to the frontal face image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
 	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
+	// HTTP or HTTPS link to the national emblem side of the ID card.
+	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
 	IdCardBackImageUrl *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
+	// HTTP or HTTPS link to the portrait side of the ID card image.
+	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	IdCardFrontImageUrl *string `json:"IdCardFrontImageUrl,omitempty" xml:"IdCardFrontImageUrl,omitempty"`
+	// ID number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 02343218901123****
 	IdCardNumber *string `json:"IdCardNumber,omitempty" xml:"IdCardNumber,omitempty"`
+	// Name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 张三
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the end user, such as the account ID of the end user.
+	//
 	// example:
 	//
 	// 54sdj

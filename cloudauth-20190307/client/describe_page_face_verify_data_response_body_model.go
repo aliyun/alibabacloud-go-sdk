@@ -30,35 +30,52 @@ type iDescribePageFaceVerifyDataResponseBody interface {
 }
 
 type DescribePageFaceVerifyDataResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *string                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribePageFaceVerifyDataResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// List of returned data.
+	Items []*DescribePageFaceVerifyDataResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Return message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 473469C7-A***B-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the response was successful.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 100
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 5
@@ -159,23 +176,38 @@ func (s *DescribePageFaceVerifyDataResponseBody) Validate() error {
 }
 
 type DescribePageFaceVerifyDataResponseBodyItems struct {
+	// Date.
+	//
 	// example:
 	//
 	// 2024-03-24T00:00:00.000Z
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Product scheme code, please refer to the financial-grade real-person help documentation.
+	//
 	// example:
 	//
 	// ID_PLUS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Scene ID.
+	//
 	// example:
 	//
 	// 20**40
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// Scene name.
+	//
+	// example:
+	//
+	// ****实名认证
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// Number of successful calls.
+	//
 	// example:
 	//
 	// 1
 	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 19

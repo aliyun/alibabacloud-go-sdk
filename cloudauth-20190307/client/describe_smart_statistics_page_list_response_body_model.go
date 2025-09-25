@@ -24,23 +24,34 @@ type iDescribeSmartStatisticsPageListResponseBody interface {
 }
 
 type DescribeSmartStatisticsPageListResponseBody struct {
+	// Current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeSmartStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// Returned data list.
+	Items []*DescribeSmartStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Number of items displayed per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 96943***4E39F805
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 29
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 3
@@ -114,27 +125,44 @@ func (s *DescribeSmartStatisticsPageListResponseBody) Validate() error {
 }
 
 type DescribeSmartStatisticsPageListResponseBodyItems struct {
+	// Date. Format: <i>month/day</i>
+	//
 	// example:
 	//
 	// 11/8
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Pass rate.
+	//
 	// example:
 	//
 	// 25
 	PassRate *string `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
+	// Product solution Code, please refer to the Enhanced Real Person Help Documentation.
+	//
 	// example:
 	//
 	// SMART_VERIFY
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Scene ID.
+	//
 	// example:
 	//
 	// 20**40
-	SceneId   *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// Scene name.
+	//
+	// example:
+	//
+	// ****实名认证
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// Number of successful calls.
+	//
 	// example:
 	//
 	// 1
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 4

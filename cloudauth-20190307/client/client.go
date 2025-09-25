@@ -571,6 +571,34 @@ func (client *Client) CompareFaces(request *CompareFacesRequest) (_result *Compa
 	return _result, _err
 }
 
+// Summary:
+//
+// This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
+//
+// Description:
+//
+// - Interface Name: ContrastFaceVerify.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - Interface Description: An interface for real person authentication through server-side integration.
+//
+// #### Image Format Requirements
+//
+// When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
+//
+// - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
+//
+// - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
+//
+// - Resolution not exceeding 1920*1080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
+//
+// - Photo size: <1MB.
+//
+// - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+//
 // @param request - ContrastFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -683,6 +711,34 @@ func (client *Client) ContrastFaceVerifyWithOptions(request *ContrastFaceVerifyR
 	return _result, _err
 }
 
+// Summary:
+//
+// This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
+//
+// Description:
+//
+// - Interface Name: ContrastFaceVerify.
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - Interface Description: An interface for real person authentication through server-side integration.
+//
+// #### Image Format Requirements
+//
+// When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
+//
+// - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
+//
+// - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
+//
+// - Resolution not exceeding 1920*1080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
+//
+// - Photo size: <1MB.
+//
+// - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+//
 // @param request - ContrastFaceVerifyRequest
 //
 // @return ContrastFaceVerifyResponse
@@ -804,6 +860,16 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 	return _result, _err
 }
 
+// Summary:
+//
+// Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+//
 // @param request - CreateAuthKeyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -854,6 +920,16 @@ func (client *Client) CreateAuthKeyWithOptions(request *CreateAuthKeyRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+//
 // @param request - CreateAuthKeyRequest
 //
 // @return CreateAuthKeyResponse
@@ -868,6 +944,14 @@ func (client *Client) CreateAuthKey(request *CreateAuthKeyRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST.
+//
 // @param request - CreateVerifySettingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -926,6 +1010,14 @@ func (client *Client) CreateVerifySettingWithOptions(request *CreateVerifySettin
 	return _result, _err
 }
 
+// Summary:
+//
+// Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST.
+//
 // @param request - CreateVerifySettingRequest
 //
 // @return CreateVerifySettingResponse
@@ -1139,7 +1231,7 @@ func (client *Client) CredentialProductVerifyV2Advance(request *CredentialProduc
 
 // Summary:
 //
-// 凭证核验
+// # Credential verification
 //
 // @param tmpReq - CredentialVerifyRequest
 //
@@ -1241,7 +1333,7 @@ func (client *Client) CredentialVerifyWithOptions(tmpReq *CredentialVerifyReques
 
 // Summary:
 //
-// 凭证核验
+// # Credential verification
 //
 // @param request - CredentialVerifyRequest
 //
@@ -1664,7 +1756,11 @@ func (client *Client) DeleteFaceVerifyResult(request *DeleteFaceVerifyResultRequ
 
 // Summary:
 //
-// 图片要素核验获取认证结果
+// # Obtain Authentication Results from Image Element Verification
+//
+// Description:
+//
+// After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
 //
 // @param request - DescribeCardVerifyRequest
 //
@@ -1706,7 +1802,11 @@ func (client *Client) DescribeCardVerifyWithOptions(request *DescribeCardVerifyR
 
 // Summary:
 //
-// 图片要素核验获取认证结果
+// # Obtain Authentication Results from Image Element Verification
+//
+// Description:
+//
+// After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
 //
 // @param request - DescribeCardVerifyRequest
 //
@@ -1722,6 +1822,14 @@ func (client *Client) DescribeCardVerify(request *DescribeCardVerifyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
+//
+// Description:
+//
+// Request Method: Supports sending requests using HTTPS POST and GET methods.
+//
 // @param request - DescribeDeviceInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1784,6 +1892,14 @@ func (client *Client) DescribeDeviceInfoWithOptions(request *DescribeDeviceInfoR
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
+//
+// Description:
+//
+// Request Method: Supports sending requests using HTTPS POST and GET methods.
+//
 // @param request - DescribeDeviceInfoRequest
 //
 // @return DescribeDeviceInfoResponse
@@ -1800,7 +1916,7 @@ func (client *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (_r
 
 // Summary:
 //
-// 金融级人脸保镖服务
+// # Financial-Grade Face Guard Service
 //
 // @param request - DescribeFaceGuardRiskRequest
 //
@@ -1854,7 +1970,7 @@ func (client *Client) DescribeFaceGuardRiskWithOptions(request *DescribeFaceGuar
 
 // Summary:
 //
-// 金融级人脸保镖服务
+// # Financial-Grade Face Guard Service
 //
 // @param request - DescribeFaceGuardRiskRequest
 //
@@ -1870,6 +1986,16 @@ func (client *Client) DescribeFaceGuardRisk(request *DescribeFaceGuardRiskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
 // @param request - DescribeFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1916,6 +2042,16 @@ func (client *Client) DescribeFaceVerifyWithOptions(request *DescribeFaceVerifyR
 	return _result, _err
 }
 
+// Summary:
+//
+// After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com.
+//
+// - Request Method: HTTPS POST and GET.
+//
 // @param request - DescribeFaceVerifyRequest
 //
 // @return DescribeFaceVerifyResponse
@@ -1930,6 +2066,10 @@ func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
+//
 // @param request - DescribeOssUploadTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1957,6 +2097,10 @@ func (client *Client) DescribeOssUploadTokenWithOptions(runtime *dara.RuntimeOpt
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
+//
 // @return DescribeOssUploadTokenResponse
 func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -1971,7 +2115,7 @@ func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenR
 
 // Summary:
 //
-// # Open API新增金融级数据统计API
+// # Open API adds financial-grade data statistics API
 //
 // @param request - DescribePageFaceVerifyDataRequest
 //
@@ -2033,7 +2177,7 @@ func (client *Client) DescribePageFaceVerifyDataWithOptions(request *DescribePag
 
 // Summary:
 //
-// # Open API新增金融级数据统计API
+// # Open API adds financial-grade data statistics API
 //
 // @param request - DescribePageFaceVerifyDataRequest
 //
@@ -2049,6 +2193,10 @@ func (client *Client) DescribePageFaceVerifyData(request *DescribePageFaceVerify
 	return _result, _err
 }
 
+// Summary:
+//
+// # Enhanced Real Person Authentication Call Statistics Pagination Query Interface
+//
 // @param request - DescribeSmartStatisticsPageListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2107,6 +2255,10 @@ func (client *Client) DescribeSmartStatisticsPageListWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// # Enhanced Real Person Authentication Call Statistics Pagination Query Interface
+//
 // @param request - DescribeSmartStatisticsPageListRequest
 //
 // @return DescribeSmartStatisticsPageListResponse
@@ -2121,6 +2273,22 @@ func (client *Client) DescribeSmartStatisticsPageList(request *DescribeSmartStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the result of real-person authentication.
+//
+// Description:
+//
+// Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
+//
+// > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
+//
+// Request Method: HTTPS POST and GET.
+//
+// Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
+//
+// Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
+//
 // @param request - DescribeVerifyResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2163,6 +2331,22 @@ func (client *Client) DescribeVerifyResultWithOptions(request *DescribeVerifyRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Query the result of real-person authentication.
+//
+// Description:
+//
+// Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
+//
+// > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
+//
+// Request Method: HTTPS POST and GET.
+//
+// Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
+//
+// Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
+//
 // @param request - DescribeVerifyResultRequest
 //
 // @return DescribeVerifyResultResponse
@@ -2177,6 +2361,16 @@ func (client *Client) DescribeVerifyResult(request *DescribeVerifyResultRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeVerifySDK to get the offline SDK download address.
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
+//
 // @param request - DescribeVerifySDKRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2215,6 +2409,16 @@ func (client *Client) DescribeVerifySDKWithOptions(request *DescribeVerifySDKReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeVerifySDK to get the offline SDK download address.
+//
+// Description:
+//
+// Request Method: Supports sending requests via HTTPS POST and GET methods.
+//
+// Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
+//
 // @param request - DescribeVerifySDKRequest
 //
 // @return DescribeVerifySDKResponse
@@ -2229,6 +2433,32 @@ func (client *Client) DescribeVerifySDK(request *DescribeVerifySDKRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
+//
+// Description:
+//
+// Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
+//
+// Request Method: HTTPS POST and GET
+//
+// API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
+//
+// Applicable Scope: This interface is suitable for wireless SDK integration.
+//
+// Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// Image Restrictions:
+//
+// - Relative or absolute paths of local images are not supported.
+//
+// - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
+//
+// - The face area in the image must be at least 64*64 pixels (px).
+//
+// - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
+//
 // @param request - DescribeVerifyTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2323,6 +2553,32 @@ func (client *Client) DescribeVerifyTokenWithOptions(request *DescribeVerifyToke
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
+//
+// Description:
+//
+// Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
+//
+// Request Method: HTTPS POST and GET
+//
+// API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
+//
+// Applicable Scope: This interface is suitable for wireless SDK integration.
+//
+// Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// Image Restrictions:
+//
+// - Relative or absolute paths of local images are not supported.
+//
+// - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
+//
+// - The face area in the image must be at least 64*64 pixels (px).
+//
+// - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
+//
 // @param request - DescribeVerifyTokenRequest
 //
 // @return DescribeVerifyTokenResponse
@@ -2337,6 +2593,32 @@ func (client *Client) DescribeVerifyToken(request *DescribeVerifyTokenRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// # Detect Validity Attributes in Face Photos
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST.
+//
+// Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
+//
+// Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
+//
+// - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
+//
+// Image Limitations:
+//
+// - Does not support relative or absolute paths of local images.
+//
+// - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
+//
+// - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
+//
+// - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
+//
 // @param request - DetectFaceAttributesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2379,6 +2661,32 @@ func (client *Client) DetectFaceAttributesWithOptions(request *DetectFaceAttribu
 	return _result, _err
 }
 
+// Summary:
+//
+// # Detect Validity Attributes in Face Photos
+//
+// Description:
+//
+// Request Method: Only supports sending requests via HTTPS POST.
+//
+// Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
+//
+// Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
+//
+// - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
+//
+// Image Limitations:
+//
+// - Does not support relative or absolute paths of local images.
+//
+// - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
+//
+// - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
+//
+// - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
+//
 // @param request - DetectFaceAttributesRequest
 //
 // @return DetectFaceAttributesResponse
@@ -2840,6 +3148,201 @@ func (client *Client) Id2MetaVerifyWithOCRAdvance(request *Id2MetaVerifyWithOCRA
 
 // Summary:
 //
+// # Identity Three Elements Verification
+//
+// Description:
+//
+// Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
+//
+// @param request - Id3MetaVerifyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id3MetaVerifyResponse
+func (client *Client) Id3MetaVerifyWithOptions(request *Id3MetaVerifyRequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Crop) {
+		body["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.FaceFile) {
+		body["FaceFile"] = request.FaceFile
+	}
+
+	if !dara.IsNil(request.FaceUrl) {
+		body["FaceUrl"] = request.FaceUrl
+	}
+
+	if !dara.IsNil(request.IdentifyNum) {
+		body["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !dara.IsNil(request.ParamType) {
+		body["ParamType"] = request.ParamType
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Id3MetaVerify"),
+		Version:     dara.String("2019-03-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &Id3MetaVerifyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Identity Three Elements Verification
+//
+// Description:
+//
+// Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
+//
+// @param request - Id3MetaVerifyRequest
+//
+// @return Id3MetaVerifyResponse
+func (client *Client) Id3MetaVerify(request *Id3MetaVerifyRequest) (_result *Id3MetaVerifyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &Id3MetaVerifyResponse{}
+	_body, _err := client.Id3MetaVerifyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Id3MetaVerifyAdvance(request *Id3MetaVerifyAdvanceRequest, runtime *dara.RuntimeOptions) (_result *Id3MetaVerifyResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	id3MetaVerifyReq := &Id3MetaVerifyRequest{}
+	openapiutil.Convert(request, id3MetaVerifyReq)
+	if !dara.IsNil(request.FaceFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FaceFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		if _err != nil {
+			return _result, _err
+		}
+		id3MetaVerifyReq.FaceFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	id3MetaVerifyResp, _err := client.Id3MetaVerifyWithOptions(id3MetaVerifyReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = id3MetaVerifyResp
+	return _result, _err
+}
+
+// Summary:
+//
 // # Initiate an authentication request for image verification
 //
 // Description:
@@ -2944,7 +3447,29 @@ func (client *Client) InitCardVerify(request *InitCardVerifyRequest) (_result *I
 
 // Summary:
 //
-// 实人服务端初始化接口
+// # Real-Person Server Initialization Interface
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+//
+// #### Image Format Requirements
+//
+// When performing real-person authentication, please provide images that meet all of the following conditions:
+//
+// - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
+//
+// - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
+//
+// - Resolution not exceeding 1920*1080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
+//
+// - Photo size: <1MB.
+//
+// - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
 //
 // @param request - InitFaceVerifyRequest
 //
@@ -3136,7 +3661,29 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 // Summary:
 //
-// 实人服务端初始化接口
+// # Real-Person Server Initialization Interface
+//
+// Description:
+//
+// - Service Address: cloudauth.aliyuncs.com
+//
+// - Request Method: HTTPS POST and GET.
+//
+// - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
+//
+// #### Image Format Requirements
+//
+// When performing real-person authentication, please provide images that meet all of the following conditions:
+//
+// - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
+//
+// - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
+//
+// - Resolution not exceeding 1920*1080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
+//
+// - Photo size: <1MB.
+//
+// - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
 //
 // @param request - InitFaceVerifyRequest
 //
@@ -3232,6 +3779,14 @@ func (client *Client) InsertWhiteListSetting(request *InsertWhiteListSettingRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
+//
+// Description:
+//
+// Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
+//
 // @param request - LivenessFaceVerifyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3324,6 +3879,14 @@ func (client *Client) LivenessFaceVerifyWithOptions(request *LivenessFaceVerifyR
 	return _result, _err
 }
 
+// Summary:
+//
+// Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
+//
+// Description:
+//
+// Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
+//
 // @param request - LivenessFaceVerifyRequest
 //
 // @return LivenessFaceVerifyResponse
@@ -4596,6 +5159,36 @@ func (client *Client) VehicleQuery(request *VehicleQueryRequest) (_result *Vehic
 	return _result, _err
 }
 
+// Summary:
+//
+// Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
+//
+// Description:
+//
+// Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
+//
+// Request Method: HTTPS POST and GET.
+//
+// API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
+//
+// Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
+//
+// Image Upload Address Explanation:
+//
+// - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
+//
+// Image Limitations:
+//
+// - Does not support relative or absolute paths of local images.
+//
+// - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
+//
+// - The face area in the image should be at least 64*64 pixels.
+//
+// - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
+//
 // @param request - VerifyMaterialRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4662,6 +5255,36 @@ func (client *Client) VerifyMaterialWithOptions(request *VerifyMaterialRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
+//
+// Description:
+//
+// Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
+//
+// Request Method: HTTPS POST and GET.
+//
+// API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
+//
+// Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
+//
+// Image Upload Address Explanation:
+//
+// - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+//
+// - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
+//
+// Image Limitations:
+//
+// - Does not support relative or absolute paths of local images.
+//
+// - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
+//
+// - The face area in the image should be at least 64*64 pixels.
+//
+// - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
+//
 // @param request - VerifyMaterialRequest
 //
 // @return VerifyMaterialResponse

@@ -20,18 +20,25 @@ type iCredentialVerifyResponseBody interface {
 }
 
 type CredentialVerifyResponseBody struct {
+	// Return code: 200 for success, others for failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result
 	ResultObject *CredentialVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,26 +91,98 @@ func (s *CredentialVerifyResponseBody) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObject struct {
+	// Additional information in JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	// "sameBackgroundDetail": {
+	//
+	// // 相似背景对于的原始图请求RequestId
+	//
+	// "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
+	//
+	// // 相似背景对于的原始图请求商户ID
+	//
+	// "originalMerchantId": "xxxxxxxx"
+	//
+	// }
+	//
+	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	OcrInfo      *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
+	// OCR recognition result.
+	//
+	// example:
+	//
+	// {
+	//
+	//    "certNo":"20216*********",
+	//
+	//   "certType":"小学教师资格",
+	//
+	//    "gender":"男",
+	//
+	//    "subject":"美术",
+	//
+	//     "name":"李**",
+	//
+	//     "ext_info":"{}",
+	//
+	//     "birthDate":"1998-07-28",
+	//
+	//     "idNo":"620************",
+	//
+	//     "certOrg":""
+	//
+	// }
+	OcrInfo *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
+	// Risk result
+	//
+	// - **0**: Low risk
+	//
+	// - **1**: High risk
+	//
+	// - **2**: Suspicious
+	//
 	// example:
 	//
 	// 1
-	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// Risk tags, separated by commas (,), including:
+	//
+	// - **PS**: Image manipulation.
+	//
+	// - **SCREEN_PHOTO**: Screen recapture.
+	//
+	// - **SCREENSHOT**: Screenshot.
+	//
+	// - **WATERMARK**: Watermark.
+	//
+	// - **SAME_BACKGROUND**: Similar background.
+	//
+	// - **ORIGINAL_PHOTO**: Not the original image
+	//
 	// example:
 	//
 	// PS,SCREEN_PHOTO
 	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	// Authority verification details.
+	//
 	// example:
 	//
 	// **
 	VerifyDetail *string `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
+	// The verification result.
+	//
 	// example:
 	//
 	// *
-	VerifyResult *string                                           `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-	VlResult     *CredentialVerifyResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// Qwen interpretation.
+	VlResult *CredentialVerifyResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
 func (s CredentialVerifyResponseBodyResultObject) String() string {
@@ -191,7 +270,25 @@ func (s *CredentialVerifyResponseBodyResultObject) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObjectVlResult struct {
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Image understanding result:
+	//
+	// - When PromptModel is DEFAULT, the output format refers to the example on the right.
+	//
+	// - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
+	//
+	// example:
+	//
+	// {\\"这张图有没有明显的PS特征\\":0,\\"图片是否为正常经营照片\\":1,\\"图片中有没有58、美团、大众点评字样\\":0,\\"这张图有没有网站信息\\":0,\\"图片经营的场景是否为酒店\\":0}
 	VlContent *string `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
 }
 

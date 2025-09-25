@@ -22,19 +22,28 @@ type iDetectFaceAttributesResponseBody interface {
 }
 
 type DetectFaceAttributesResponseBody struct {
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *DetectFaceAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Error code.
+	//
 	// example:
 	//
 	// Error.InternalError
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// ID of this request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the response was successful.
+	//
 	// example:
 	//
 	// true
@@ -99,11 +108,16 @@ func (s *DetectFaceAttributesResponseBody) Validate() error {
 }
 
 type DetectFaceAttributesResponseBodyData struct {
+	// Face detection results.
 	FaceInfos *DetectFaceAttributesResponseBodyDataFaceInfos `json:"FaceInfos,omitempty" xml:"FaceInfos,omitempty" type:"Struct"`
+	// Original image height, in pixels.
+	//
 	// example:
 	//
 	// 1920
 	ImgHeight *int32 `json:"ImgHeight,omitempty" xml:"ImgHeight,omitempty"`
+	// Original image width, in pixels.
+	//
 	// example:
 	//
 	// 1080
@@ -175,8 +189,10 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfos) Validate() error {
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo struct {
+	// Face attributes.
 	FaceAttributes *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes `json:"FaceAttributes,omitempty" xml:"FaceAttributes,omitempty" type:"Struct"`
-	FaceRect       *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect       `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
+	// Position of the face in the original image.
+	FaceRect *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect `json:"FaceRect,omitempty" xml:"FaceRect,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) String() string {
@@ -210,32 +226,64 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfo) 
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes struct {
+	// Face blur level, with higher values indicating more blurriness. Typically, a value ≥2.0 is considered quite blurry. It is recommended to adjust based on actual business data testing.
+	//
 	// example:
 	//
 	// 0.1419367790222168
 	Blur *float32 `json:"Blur,omitempty" xml:"Blur,omitempty"`
+	// A score ranging from 0 to 100. The higher the score, the better the quality. It is recommended to consider a score of 50 or above as acceptable quality.
+	//
 	// example:
 	//
 	// 60
 	Facequal *float32 `json:"Facequal,omitempty" xml:"Facequal,omitempty"`
+	// Whether it is a human face. Values:
+	//
+	// - **None**: Not a human face
+	//
+	// - **Face**: Human face
+	//
+	// - **Profile**: Profile (head turned left or right by more than 30°)
+	//
+	// > If no face is detected, the `faceInfos` in the response will be empty; here, `None` means that a face was detected but is considered to be a cartoon, pet, etc.
+	//
 	// example:
 	//
 	// Face
 	Facetype *string `json:"Facetype,omitempty" xml:"Facetype,omitempty"`
+	// Whether wearing glasses. Values:
+	//
+	// - **None**: Not wearing glasses
+	//
+	// - **Wear**: Wearing regular glasses
+	//
+	// - **Sunglass**: Wearing sunglasses
+	//
 	// example:
 	//
 	// None
-	Glasses  *string                                                                                      `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	Glasses *string `json:"Glasses,omitempty" xml:"Glasses,omitempty"`
+	// Face pose.
 	Headpose *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose `json:"Headpose,omitempty" xml:"Headpose,omitempty" type:"Struct"`
+	// A score ranging from 0 to 100. The higher the score, the more complete the face. It is recommended to consider a score of 70 or above as acceptable completeness.
+	//
 	// example:
 	//
 	// 70
 	Integrity *int32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
+	// Whether wearing a mask. Values:
+	//
+	// - Wear: Wearing a mask.
+	//
+	// - None: Not wearing a mask.
+	//
 	// example:
 	//
 	// Wear
-	Respirator *string                                                                                     `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
-	Smiling    *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
+	Respirator *string `json:"Respirator,omitempty" xml:"Respirator,omitempty"`
+	// Whether smiling.
+	Smiling *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling `json:"Smiling,omitempty" xml:"Smiling,omitempty" type:"Struct"`
 }
 
 func (s DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributes) String() string {
@@ -323,14 +371,20 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesHeadpose struct {
+	// Pitch angle, in degrees.
+	//
 	// example:
 	//
 	// -1.5683923959732056
 	PitchAngle *float32 `json:"PitchAngle,omitempty" xml:"PitchAngle,omitempty"`
+	// Roll angle, in degrees.
+	//
 	// example:
 	//
 	// 7.163370132446289
 	RollAngle *float32 `json:"RollAngle,omitempty" xml:"RollAngle,omitempty"`
+	// Yaw angle, in degrees.
+	//
 	// example:
 	//
 	// -6.925303936004639
@@ -377,10 +431,14 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceAttributesSmiling struct {
+	// Smile threshold.
+	//
 	// example:
 	//
 	// 95
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// Smile score.
+	//
 	// example:
 	//
 	// 97
@@ -418,18 +476,26 @@ func (s *DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFa
 }
 
 type DetectFaceAttributesResponseBodyDataFaceInfosFaceAttributesDetectInfoFaceRect struct {
+	// Height of the face rectangle.
+	//
 	// example:
 	//
 	// 473
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Distance from the top-left corner of the face rectangle to the left edge of the original image, in pixels.
+	//
 	// example:
 	//
 	// 354
 	Left *int32 `json:"Left,omitempty" xml:"Left,omitempty"`
+	// Distance from the top-left corner of the face rectangle to the top edge of the original image, in pixels.
+	//
 	// example:
 	//
 	// 453
 	Top *int32 `json:"Top,omitempty" xml:"Top,omitempty"`
+	// Width of the face rectangle.
+	//
 	// example:
 	//
 	// 473

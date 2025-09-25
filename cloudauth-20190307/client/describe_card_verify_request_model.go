@@ -14,6 +14,10 @@ type iDescribeCardVerifyRequest interface {
 }
 
 type DescribeCardVerifyRequest struct {
+	// Authentication request ID.
+	//
+	// You must first call the initialization interface InitCardVerify to submit an authentication request in order to get the authentication request ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,18 +20,35 @@ type iDescribeCardVerifyResponseBody interface {
 }
 
 type DescribeCardVerifyResponseBody struct {
+	// Return code: 200 indicates success, all others indicate failure.
+	//
+	// Important
+	//
+	// - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
+	//
+	// - Please check the business verification results through the fields in ResultObject.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Interface call return message.
+	//
+	// Important
+	//
+	// - This parameter only indicates whether there was an exception with the interface.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF03****
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Result object.
 	ResultObject *DescribeCardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,13 +101,46 @@ func (s *DescribeCardVerifyResponseBody) Validate() error {
 }
 
 type DescribeCardVerifyResponseBodyResultObject struct {
+	// Identity verification result:
+	//
+	// - 1: Consistent
+	//
+	// - 2: Inconsistent
+	//
+	// - 3: No Record Found
+	//
 	// example:
 	//
 	// 1
-	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	CardInfo    *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
-	FaceDetail  *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Submitted ID card information for verification.
+	//
+	// example:
+	//
+	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
+	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
+	// Image comparison score.
+	//
+	// example:
+	//
+	// {
+	//
+	//  "verifyScore": 50.28594166529785
+	//
+	// }
+	FaceDetail *string `json:"FaceDetail,omitempty" xml:"FaceDetail,omitempty"`
+	// ID card information read by OCR.
+	//
+	// example:
+	//
+	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
 	OcrCardInfo *string `json:"OcrCardInfo,omitempty" xml:"OcrCardInfo,omitempty"`
+	// Returned photo URLs.
+	//
+	// - certUrl  Front side
+	//
+	// - certNationalUrl  National emblem side
+	//
 	// example:
 	//
 	// {

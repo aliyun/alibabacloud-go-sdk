@@ -16,7 +16,10 @@ type iDescribeOssUploadTokenResponseBody interface {
 }
 
 type DescribeOssUploadTokenResponseBody struct {
+	// Information about the OSS upload Token.
 	OssUploadToken *DescribeOssUploadTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 2FA2C773-47DB-4156-B1EE-5B047321A939
@@ -54,30 +57,44 @@ func (s *DescribeOssUploadTokenResponseBody) Validate() error {
 }
 
 type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
+	// OSS bucket for file storage.
+	//
 	// example:
 	//
 	// cloudauth-zhangjiakou-external
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Access endpoint.
+	//
 	// example:
 	//
 	// https://oss-cn-zhangjiakou.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// Expiration time.
+	//
 	// example:
 	//
 	// 1582636610000
 	Expired *int64 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The Key required for file upload.
+	//
 	// example:
 	//
 	// STS.NU8rUBj****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// File storage path.
+	//
 	// example:
 	//
 	// prod/RdNLC@Ox2n-1s7NMt
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The Secret required for file upload.
+	//
 	// example:
 	//
 	// FwmnyoqT8dHj7nJLuM67T****
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	// The Token required for file upload.
+	//
 	// example:
 	//
 	// uWia500nTS5knZaDzq4/KqpvhcLnO****

@@ -20,20 +20,25 @@ type iDescribeFaceGuardRiskResponseBody interface {
 }
 
 type DescribeFaceGuardRiskResponseBody struct {
+	// Return code, **200*	- indicates successful response from the interface.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Returned result information.
 	ResultObject *DescribeFaceGuardRiskResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -86,7 +91,14 @@ func (s *DescribeFaceGuardRiskResponseBody) Validate() error {
 }
 
 type DescribeFaceGuardRiskResponseBodyResultObject struct {
+	// Unique real-person authentication identifier.
+	//
+	// example:
+	//
+	// sha43d9cabd52d370d9f4cca9468f71e
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// Extended information, in JSON format. (Customized return based on tenant requirements)
+	//
 	// example:
 	//
 	// {
@@ -109,7 +121,16 @@ type DescribeFaceGuardRiskResponseBodyResultObject struct {
 	//
 	// }
 	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
-	RiskTags    *string `json:"RiskTags,omitempty" xml:"RiskTags,omitempty"`
+	// Device risk tags.
+	//
+	// - Multiple device risk tags are separated by commas (,). For example, “ROOT,VPN,HOOK”,
+	//
+	// - For more information about device risk tags and their meanings, please refer to the official documentation on Face Guard Tag Descriptions.
+	//
+	// example:
+	//
+	// ROOT,VPN,HOOK
+	RiskTags *string `json:"RiskTags,omitempty" xml:"RiskTags,omitempty"`
 }
 
 func (s DescribeFaceGuardRiskResponseBodyResultObject) String() string {

@@ -20,18 +20,25 @@ type iContrastFaceVerifyResponseBody interface {
 }
 
 type ContrastFaceVerifyResponseBody struct {
+	// Return code: 200 for success, others for failure.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 130A2C10-B9EE-4D84-88E3-5384FF039795
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result
 	ResultObject *ContrastFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -84,19 +91,32 @@ func (s *ContrastFaceVerifyResponseBody) Validate() error {
 }
 
 type ContrastFaceVerifyResponseBodyResultObject struct {
+	// Unique identifier for the real-person verification request.
+	//
+	// example:
+	//
+	// 91707dc296d469ad38e4c5efa6a0****
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
+	// Information about the authenticated entity, which is usually empty in general authentication scenarios.
+	//
 	// example:
 	//
 	// null
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
+	// Attachment information of the authenticated entity, mainly image materials, in JSON format, as follows.
+	//
 	// example:
 	//
 	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"verifyScore": 50.28594166529785}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	// Whether it passed, T for pass, F for fail.
+	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// Description of the authentication result. For details, see the SubCode explanation below.
+	//
 	// example:
 	//
 	// 200

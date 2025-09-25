@@ -24,34 +24,46 @@ type iDescribeSmartStatisticsPageListRequest interface {
 }
 
 type DescribeSmartStatisticsPageListRequest struct {
+	// Current page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// End time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-11-16 23:59:59 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Number of items per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Scene ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 36**01
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// ServiceCode for the real person cloud product, only value: **cloudauthst**.
+	//
 	// example:
 	//
 	// cloudauthst
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Start time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// This parameter is required.
 	//
 	// example:

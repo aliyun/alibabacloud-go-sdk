@@ -20,15 +20,22 @@ type iDescribeVerifyTokenResponseBody interface {
 }
 
 type DescribeVerifyTokenResponseBody struct {
+	// OSS upload token information.
 	OssUploadToken *DescribeVerifyTokenResponseBodyOssUploadToken `json:"OssUploadToken,omitempty" xml:"OssUploadToken,omitempty" type:"Struct"`
+	// The ID of this request.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The entry link for the original H5 verification scheme, which has been discontinued and no longer supports new integrations. If you need to integrate an H5 verification scheme, it is recommended to use the [PC or mobile H5 web integration solution](https://help.aliyun.com/document_detail/173779.html) of financial-grade real-person authentication.
+	//
 	// example:
 	//
 	// http%3A%2F%2Fjiangsu.china.com.cn%2Fuploadfile%2F2015%2F0114%2F1421221304095989.jpg
 	VerifyPageUrl *string `json:"VerifyPageUrl,omitempty" xml:"VerifyPageUrl,omitempty"`
+	// The token for this verification, used to link various interfaces in the verification request, valid for 30 minutes.
+	//
 	// example:
 	//
 	// c302c0797679457685410ee51a5ba375
@@ -84,30 +91,44 @@ func (s *DescribeVerifyTokenResponseBody) Validate() error {
 }
 
 type DescribeVerifyTokenResponseBodyOssUploadToken struct {
+	// OSS file storage bucket.
+	//
 	// example:
 	//
 	// cloudauth-zhangjiakou-external
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Access endpoint.
+	//
 	// example:
 	//
 	// https://oss-cn-zhangjiakou.aliyuncs.com
 	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// Expiration time. Expressed in timestamp format, unit: milliseconds.
+	//
 	// example:
 	//
 	// 1582636610000
 	Expired *int64 `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The key required for file upload.
+	//
 	// example:
 	//
 	// STS.NU8rUBj****
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// File storage path.
+	//
 	// example:
 	//
 	// prod/RdNLC@Ox2n-1s7NMt
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The secret required for file upload.
+	//
 	// example:
 	//
 	// FwmnyoqT8dHj7nJLuM67T****
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
+	// The token required for file upload.
+	//
 	// example:
 	//
 	// uWia500nTS5knZaDzq4/KqpvhcLnO****
