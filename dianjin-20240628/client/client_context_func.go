@@ -2,84 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dianjin"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) _postOSSObject(bucketName *string, form map[string]interface{}) (_result map[string]interface{}, _err error) {
-	request_ := dara.NewRequest()
-	boundary := dara.GetBoundary()
-	request_.Protocol = dara.String("HTTPS")
-	request_.Method = dara.String("POST")
-	request_.Pathname = dara.String("/")
-	request_.Headers = map[string]*string{
-		"host":       dara.String(dara.ToString(form["host"])),
-		"date":       openapiutil.GetDateUTCString(),
-		"user-agent": openapiutil.GetUserAgent(dara.String("")),
-	}
-	request_.Headers["content-type"] = dara.String("multipart/form-data; boundary=" + boundary)
-	request_.Body = dara.ToFileForm(form, boundary)
-	response_, _err := dara.DoRequest(request_, nil)
-	if _err != nil {
-		return nil, _err
-	}
-
-	_result, _err = _postOSSObject_opResponse(response_)
-	if _err != nil {
-		return nil, _err
-	}
-
-	return _result, nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -92,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAnnualDocSummaryTaskResponse
-func (client *Client) CreateAnnualDocSummaryTaskWithOptions(workspaceId *string, request *CreateAnnualDocSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
+func (client *Client) CreateAnnualDocSummaryTaskWithContext(ctx context.Context, workspaceId *string, request *CreateAnnualDocSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -134,30 +60,11 @@ func (client *Client) CreateAnnualDocSummaryTaskWithOptions(workspaceId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAnnualDocSummaryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建按年文档总结任务
-//
-// @param request - CreateAnnualDocSummaryTaskRequest
-//
-// @return CreateAnnualDocSummaryTaskResponse
-func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *CreateAnnualDocSummaryTaskRequest) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateAnnualDocSummaryTaskResponse{}
-	_body, _err := client.CreateAnnualDocSummaryTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -172,7 +79,7 @@ func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDialogResponse
-func (client *Client) CreateDialogWithOptions(workspaceId *string, request *CreateDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogResponse, _err error) {
+func (client *Client) CreateDialogWithContext(ctx context.Context, workspaceId *string, request *CreateDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -222,30 +129,11 @@ func (client *Client) CreateDialogWithOptions(workspaceId *string, request *Crea
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDialogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建外呼会话
-//
-// @param request - CreateDialogRequest
-//
-// @return CreateDialogResponse
-func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogRequest) (_result *CreateDialogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDialogResponse{}
-	_body, _err := client.CreateDialogWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -260,7 +148,7 @@ func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDialogAnalysisTaskResponse
-func (client *Client) CreateDialogAnalysisTaskWithOptions(workspaceId *string, request *CreateDialogAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogAnalysisTaskResponse, _err error) {
+func (client *Client) CreateDialogAnalysisTaskWithContext(ctx context.Context, workspaceId *string, request *CreateDialogAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogAnalysisTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -302,30 +190,11 @@ func (client *Client) CreateDialogAnalysisTaskWithOptions(workspaceId *string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDialogAnalysisTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建会话分析任务
-//
-// @param request - CreateDialogAnalysisTaskRequest
-//
-// @return CreateDialogAnalysisTaskResponse
-func (client *Client) CreateDialogAnalysisTask(workspaceId *string, request *CreateDialogAnalysisTaskRequest) (_result *CreateDialogAnalysisTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDialogAnalysisTaskResponse{}
-	_body, _err := client.CreateDialogAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -340,7 +209,7 @@ func (client *Client) CreateDialogAnalysisTask(workspaceId *string, request *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDocsSummaryTaskResponse
-func (client *Client) CreateDocsSummaryTaskWithOptions(workspaceId *string, request *CreateDocsSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDocsSummaryTaskResponse, _err error) {
+func (client *Client) CreateDocsSummaryTaskWithContext(ctx context.Context, workspaceId *string, request *CreateDocsSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDocsSummaryTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -378,30 +247,11 @@ func (client *Client) CreateDocsSummaryTaskWithOptions(workspaceId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDocsSummaryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建财报总结任务
-//
-// @param request - CreateDocsSummaryTaskRequest
-//
-// @return CreateDocsSummaryTaskResponse
-func (client *Client) CreateDocsSummaryTask(workspaceId *string, request *CreateDocsSummaryTaskRequest) (_result *CreateDocsSummaryTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateDocsSummaryTaskResponse{}
-	_body, _err := client.CreateDocsSummaryTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -416,7 +266,7 @@ func (client *Client) CreateDocsSummaryTask(workspaceId *string, request *Create
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateFinReportSummaryTaskResponse
-func (client *Client) CreateFinReportSummaryTaskWithOptions(workspaceId *string, request *CreateFinReportSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFinReportSummaryTaskResponse, _err error) {
+func (client *Client) CreateFinReportSummaryTaskWithContext(ctx context.Context, workspaceId *string, request *CreateFinReportSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFinReportSummaryTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -470,30 +320,11 @@ func (client *Client) CreateFinReportSummaryTaskWithOptions(workspaceId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateFinReportSummaryTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建财报总结任务
-//
-// @param request - CreateFinReportSummaryTaskRequest
-//
-// @return CreateFinReportSummaryTaskResponse
-func (client *Client) CreateFinReportSummaryTask(workspaceId *string, request *CreateFinReportSummaryTaskRequest) (_result *CreateFinReportSummaryTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateFinReportSummaryTaskResponse{}
-	_body, _err := client.CreateFinReportSummaryTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -508,7 +339,7 @@ func (client *Client) CreateFinReportSummaryTask(workspaceId *string, request *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLibraryResponse
-func (client *Client) CreateLibraryWithOptions(workspaceId *string, request *CreateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLibraryResponse, _err error) {
+func (client *Client) CreateLibraryWithContext(ctx context.Context, workspaceId *string, request *CreateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLibraryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -542,30 +373,11 @@ func (client *Client) CreateLibraryWithOptions(workspaceId *string, request *Cre
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建文档库
-//
-// @param request - CreateLibraryRequest
-//
-// @return CreateLibraryResponse
-func (client *Client) CreateLibrary(workspaceId *string, request *CreateLibraryRequest) (_result *CreateLibraryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateLibraryResponse{}
-	_body, _err := client.CreateLibraryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -580,7 +392,7 @@ func (client *Client) CreateLibrary(workspaceId *string, request *CreateLibraryR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePdfTranslateTaskResponse
-func (client *Client) CreatePdfTranslateTaskWithOptions(workspaceId *string, request *CreatePdfTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePdfTranslateTaskResponse, _err error) {
+func (client *Client) CreatePdfTranslateTaskWithContext(ctx context.Context, workspaceId *string, request *CreatePdfTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePdfTranslateTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -622,30 +434,11 @@ func (client *Client) CreatePdfTranslateTaskWithOptions(workspaceId *string, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePdfTranslateTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建PDF翻译任务
-//
-// @param request - CreatePdfTranslateTaskRequest
-//
-// @return CreatePdfTranslateTaskResponse
-func (client *Client) CreatePdfTranslateTask(workspaceId *string, request *CreatePdfTranslateTaskRequest) (_result *CreatePdfTranslateTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePdfTranslateTaskResponse{}
-	_body, _err := client.CreatePdfTranslateTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -660,7 +453,7 @@ func (client *Client) CreatePdfTranslateTask(workspaceId *string, request *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePredefinedDocumentResponse
-func (client *Client) CreatePredefinedDocumentWithOptions(workspaceId *string, request *CreatePredefinedDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePredefinedDocumentResponse, _err error) {
+func (client *Client) CreatePredefinedDocumentWithContext(ctx context.Context, workspaceId *string, request *CreatePredefinedDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePredefinedDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -698,30 +491,11 @@ func (client *Client) CreatePredefinedDocumentWithOptions(workspaceId *string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePredefinedDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建预定义文档
-//
-// @param request - CreatePredefinedDocumentRequest
-//
-// @return CreatePredefinedDocumentResponse
-func (client *Client) CreatePredefinedDocument(workspaceId *string, request *CreatePredefinedDocumentRequest) (_result *CreatePredefinedDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePredefinedDocumentResponse{}
-	_body, _err := client.CreatePredefinedDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -736,7 +510,7 @@ func (client *Client) CreatePredefinedDocument(workspaceId *string, request *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateQualityCheckTaskResponse
-func (client *Client) CreateQualityCheckTaskWithOptions(workspaceId *string, request *CreateQualityCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateQualityCheckTaskResponse, _err error) {
+func (client *Client) CreateQualityCheckTaskWithContext(ctx context.Context, workspaceId *string, request *CreateQualityCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateQualityCheckTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -782,30 +556,11 @@ func (client *Client) CreateQualityCheckTaskWithOptions(workspaceId *string, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateQualityCheckTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 创建财报总结的任务
-//
-// @param request - CreateQualityCheckTaskRequest
-//
-// @return CreateQualityCheckTaskResponse
-func (client *Client) CreateQualityCheckTask(workspaceId *string, request *CreateQualityCheckTaskRequest) (_result *CreateQualityCheckTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateQualityCheckTaskResponse{}
-	_body, _err := client.CreateQualityCheckTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -820,7 +575,7 @@ func (client *Client) CreateQualityCheckTask(workspaceId *string, request *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDocumentResponse
-func (client *Client) DeleteDocumentWithOptions(workspaceId *string, request *DeleteDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
+func (client *Client) DeleteDocumentWithContext(ctx context.Context, workspaceId *string, request *DeleteDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -850,30 +605,11 @@ func (client *Client) DeleteDocumentWithOptions(workspaceId *string, request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除文档
-//
-// @param request - DeleteDocumentRequest
-//
-// @return DeleteDocumentResponse
-func (client *Client) DeleteDocument(workspaceId *string, request *DeleteDocumentRequest) (_result *DeleteDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteDocumentResponse{}
-	_body, _err := client.DeleteDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -888,7 +624,7 @@ func (client *Client) DeleteDocument(workspaceId *string, request *DeleteDocumen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLibraryResponse
-func (client *Client) DeleteLibraryWithOptions(workspaceId *string, request *DeleteLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLibraryResponse, _err error) {
+func (client *Client) DeleteLibraryWithContext(ctx context.Context, workspaceId *string, request *DeleteLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLibraryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -914,30 +650,11 @@ func (client *Client) DeleteLibraryWithOptions(workspaceId *string, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 删除文档库
-//
-// @param request - DeleteLibraryRequest
-//
-// @return DeleteLibraryResponse
-func (client *Client) DeleteLibrary(workspaceId *string, request *DeleteLibraryRequest) (_result *DeleteLibraryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteLibraryResponse{}
-	_body, _err := client.DeleteLibraryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -952,7 +669,7 @@ func (client *Client) DeleteLibrary(workspaceId *string, request *DeleteLibraryR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EvictTaskResponse
-func (client *Client) EvictTaskWithOptions(workspaceId *string, request *EvictTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EvictTaskResponse, _err error) {
+func (client *Client) EvictTaskWithContext(ctx context.Context, workspaceId *string, request *EvictTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EvictTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -978,30 +695,11 @@ func (client *Client) EvictTaskWithOptions(workspaceId *string, request *EvictTa
 		BodyType:    dara.String("json"),
 	}
 	_result = &EvictTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 中断任务
-//
-// @param request - EvictTaskRequest
-//
-// @return EvictTaskResponse
-func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) (_result *EvictTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &EvictTaskResponse{}
-	_body, _err := client.EvictTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1016,7 +714,7 @@ func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenDocQaResultResponse
-func (client *Client) GenDocQaResultWithOptions(workspaceId *string, request *GenDocQaResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenDocQaResultResponse, _err error) {
+func (client *Client) GenDocQaResultWithContext(ctx context.Context, workspaceId *string, request *GenDocQaResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenDocQaResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1050,30 +748,11 @@ func (client *Client) GenDocQaResultWithOptions(workspaceId *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenDocQaResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据文档解析问答QA
-//
-// @param request - GenDocQaResultRequest
-//
-// @return GenDocQaResultResponse
-func (client *Client) GenDocQaResult(workspaceId *string, request *GenDocQaResultRequest) (_result *GenDocQaResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GenDocQaResultResponse{}
-	_body, _err := client.GenDocQaResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1086,7 +765,7 @@ func (client *Client) GenDocQaResult(workspaceId *string, request *GenDocQaResul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppConfigResponse
-func (client *Client) GetAppConfigWithOptions(workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppConfigResponse, _err error) {
+func (client *Client) GetAppConfigWithContext(ctx context.Context, workspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAppConfigResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1102,28 +781,11 @@ func (client *Client) GetAppConfigWithOptions(workspaceId *string, headers map[s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取app配置
-//
-// @return GetAppConfigResponse
-func (client *Client) GetAppConfig(workspaceId *string) (_result *GetAppConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetAppConfigResponse{}
-	_body, _err := client.GetAppConfigWithOptions(workspaceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1138,7 +800,7 @@ func (client *Client) GetAppConfig(workspaceId *string) (_result *GetAppConfigRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetChatQuestionRespResponse
-func (client *Client) GetChatQuestionRespWithOptions(workspaceId *string, request *GetChatQuestionRespRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetChatQuestionRespResponse, _err error) {
+func (client *Client) GetChatQuestionRespWithContext(ctx context.Context, workspaceId *string, request *GetChatQuestionRespRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetChatQuestionRespResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1168,30 +830,11 @@ func (client *Client) GetChatQuestionRespWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetChatQuestionRespResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取问答结果
-//
-// @param request - GetChatQuestionRespRequest
-//
-// @return GetChatQuestionRespResponse
-func (client *Client) GetChatQuestionResp(workspaceId *string, request *GetChatQuestionRespRequest) (_result *GetChatQuestionRespResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetChatQuestionRespResponse{}
-	_body, _err := client.GetChatQuestionRespWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1206,7 +849,7 @@ func (client *Client) GetChatQuestionResp(workspaceId *string, request *GetChatQ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDialogAnalysisResultResponse
-func (client *Client) GetDialogAnalysisResultWithOptions(workspaceId *string, request *GetDialogAnalysisResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogAnalysisResultResponse, _err error) {
+func (client *Client) GetDialogAnalysisResultWithContext(ctx context.Context, workspaceId *string, request *GetDialogAnalysisResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogAnalysisResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1248,30 +891,11 @@ func (client *Client) GetDialogAnalysisResultWithOptions(workspaceId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDialogAnalysisResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取外呼会话分析结果
-//
-// @param request - GetDialogAnalysisResultRequest
-//
-// @return GetDialogAnalysisResultResponse
-func (client *Client) GetDialogAnalysisResult(workspaceId *string, request *GetDialogAnalysisResultRequest) (_result *GetDialogAnalysisResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDialogAnalysisResultResponse{}
-	_body, _err := client.GetDialogAnalysisResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1286,7 +910,7 @@ func (client *Client) GetDialogAnalysisResult(workspaceId *string, request *GetD
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDialogDetailResponse
-func (client *Client) GetDialogDetailWithOptions(workspaceId *string, request *GetDialogDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogDetailResponse, _err error) {
+func (client *Client) GetDialogDetailWithContext(ctx context.Context, workspaceId *string, request *GetDialogDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogDetailResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1312,30 +936,11 @@ func (client *Client) GetDialogDetailWithOptions(workspaceId *string, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDialogDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取异步任务的结果
-//
-// @param request - GetDialogDetailRequest
-//
-// @return GetDialogDetailResponse
-func (client *Client) GetDialogDetail(workspaceId *string, request *GetDialogDetailRequest) (_result *GetDialogDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDialogDetailResponse{}
-	_body, _err := client.GetDialogDetailWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1350,7 +955,7 @@ func (client *Client) GetDialogDetail(workspaceId *string, request *GetDialogDet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDialogLogResponse
-func (client *Client) GetDialogLogWithOptions(workspaceId *string, request *GetDialogLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogLogResponse, _err error) {
+func (client *Client) GetDialogLogWithContext(ctx context.Context, workspaceId *string, request *GetDialogLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogLogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1380,30 +985,11 @@ func (client *Client) GetDialogLogWithOptions(workspaceId *string, request *GetD
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDialogLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询会话日志
-//
-// @param request - GetDialogLogRequest
-//
-// @return GetDialogLogResponse
-func (client *Client) GetDialogLog(workspaceId *string, request *GetDialogLogRequest) (_result *GetDialogLogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDialogLogResponse{}
-	_body, _err := client.GetDialogLogWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1418,7 +1004,7 @@ func (client *Client) GetDialogLog(workspaceId *string, request *GetDialogLogReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentChunkListResponse
-func (client *Client) GetDocumentChunkListWithOptions(workspaceId *string, request *GetDocumentChunkListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentChunkListResponse, _err error) {
+func (client *Client) GetDocumentChunkListWithContext(ctx context.Context, workspaceId *string, request *GetDocumentChunkListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentChunkListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1472,30 +1058,11 @@ func (client *Client) GetDocumentChunkListWithOptions(workspaceId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentChunkListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取文档的chunk列表
-//
-// @param request - GetDocumentChunkListRequest
-//
-// @return GetDocumentChunkListResponse
-func (client *Client) GetDocumentChunkList(workspaceId *string, request *GetDocumentChunkListRequest) (_result *GetDocumentChunkListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDocumentChunkListResponse{}
-	_body, _err := client.GetDocumentChunkListWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1510,7 +1077,7 @@ func (client *Client) GetDocumentChunkList(workspaceId *string, request *GetDocu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentListResponse
-func (client *Client) GetDocumentListWithOptions(workspaceId *string, request *GetDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentListResponse, _err error) {
+func (client *Client) GetDocumentListWithContext(ctx context.Context, workspaceId *string, request *GetDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1548,30 +1115,11 @@ func (client *Client) GetDocumentListWithOptions(workspaceId *string, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询文档库的文档列表
-//
-// @param request - GetDocumentListRequest
-//
-// @return GetDocumentListResponse
-func (client *Client) GetDocumentList(workspaceId *string, request *GetDocumentListRequest) (_result *GetDocumentListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDocumentListResponse{}
-	_body, _err := client.GetDocumentListWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1586,7 +1134,7 @@ func (client *Client) GetDocumentList(workspaceId *string, request *GetDocumentL
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDocumentUrlResponse
-func (client *Client) GetDocumentUrlWithOptions(workspaceId *string, request *GetDocumentUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentUrlResponse, _err error) {
+func (client *Client) GetDocumentUrlWithContext(ctx context.Context, workspaceId *string, request *GetDocumentUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1612,30 +1160,11 @@ func (client *Client) GetDocumentUrlWithOptions(workspaceId *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetDocumentUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取文档URL
-//
-// @param request - GetDocumentUrlRequest
-//
-// @return GetDocumentUrlResponse
-func (client *Client) GetDocumentUrl(workspaceId *string, request *GetDocumentUrlRequest) (_result *GetDocumentUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetDocumentUrlResponse{}
-	_body, _err := client.GetDocumentUrlWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1650,7 +1179,7 @@ func (client *Client) GetDocumentUrl(workspaceId *string, request *GetDocumentUr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFilterDocumentListResponse
-func (client *Client) GetFilterDocumentListWithOptions(workspaceId *string, request *GetFilterDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFilterDocumentListResponse, _err error) {
+func (client *Client) GetFilterDocumentListWithContext(ctx context.Context, workspaceId *string, request *GetFilterDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFilterDocumentListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1700,30 +1229,11 @@ func (client *Client) GetFilterDocumentListWithOptions(workspaceId *string, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFilterDocumentListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 带条件的分页查询文档库的文档列表
-//
-// @param request - GetFilterDocumentListRequest
-//
-// @return GetFilterDocumentListResponse
-func (client *Client) GetFilterDocumentList(workspaceId *string, request *GetFilterDocumentListRequest) (_result *GetFilterDocumentListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetFilterDocumentListResponse{}
-	_body, _err := client.GetFilterDocumentListWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1738,7 +1248,7 @@ func (client *Client) GetFilterDocumentList(workspaceId *string, request *GetFil
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHistoryListByBizTypeResponse
-func (client *Client) GetHistoryListByBizTypeWithOptions(workspaceId *string, request *GetHistoryListByBizTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHistoryListByBizTypeResponse, _err error) {
+func (client *Client) GetHistoryListByBizTypeWithContext(ctx context.Context, workspaceId *string, request *GetHistoryListByBizTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHistoryListByBizTypeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1776,30 +1286,11 @@ func (client *Client) GetHistoryListByBizTypeWithOptions(workspaceId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHistoryListByBizTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询文档库列表
-//
-// @param request - GetHistoryListByBizTypeRequest
-//
-// @return GetHistoryListByBizTypeResponse
-func (client *Client) GetHistoryListByBizType(workspaceId *string, request *GetHistoryListByBizTypeRequest) (_result *GetHistoryListByBizTypeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetHistoryListByBizTypeResponse{}
-	_body, _err := client.GetHistoryListByBizTypeWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1814,7 +1305,7 @@ func (client *Client) GetHistoryListByBizType(workspaceId *string, request *GetH
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLibraryResponse
-func (client *Client) GetLibraryWithOptions(workspaceId *string, request *GetLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryResponse, _err error) {
+func (client *Client) GetLibraryWithContext(ctx context.Context, workspaceId *string, request *GetLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1840,30 +1331,11 @@ func (client *Client) GetLibraryWithOptions(workspaceId *string, request *GetLib
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取文档库配置详情
-//
-// @param request - GetLibraryRequest
-//
-// @return GetLibraryResponse
-func (client *Client) GetLibrary(workspaceId *string, request *GetLibraryRequest) (_result *GetLibraryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetLibraryResponse{}
-	_body, _err := client.GetLibraryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1878,7 +1350,7 @@ func (client *Client) GetLibrary(workspaceId *string, request *GetLibraryRequest
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLibraryListResponse
-func (client *Client) GetLibraryListWithOptions(workspaceId *string, request *GetLibraryListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryListResponse, _err error) {
+func (client *Client) GetLibraryListWithContext(ctx context.Context, workspaceId *string, request *GetLibraryListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryListResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1912,30 +1384,11 @@ func (client *Client) GetLibraryListWithOptions(workspaceId *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLibraryListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页查询文档库列表
-//
-// @param request - GetLibraryListRequest
-//
-// @return GetLibraryListResponse
-func (client *Client) GetLibraryList(workspaceId *string, request *GetLibraryListRequest) (_result *GetLibraryListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetLibraryListResponse{}
-	_body, _err := client.GetLibraryListWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1950,7 +1403,7 @@ func (client *Client) GetLibraryList(workspaceId *string, request *GetLibraryLis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetParseResultResponse
-func (client *Client) GetParseResultWithOptions(workspaceId *string, request *GetParseResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParseResultResponse, _err error) {
+func (client *Client) GetParseResultWithContext(ctx context.Context, workspaceId *string, request *GetParseResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParseResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1984,30 +1437,11 @@ func (client *Client) GetParseResultWithOptions(workspaceId *string, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetParseResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取解析结果
-//
-// @param request - GetParseResultRequest
-//
-// @return GetParseResultResponse
-func (client *Client) GetParseResult(workspaceId *string, request *GetParseResultRequest) (_result *GetParseResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetParseResultResponse{}
-	_body, _err := client.GetParseResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2022,7 +1456,7 @@ func (client *Client) GetParseResult(workspaceId *string, request *GetParseResul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetQualityCheckTaskResultResponse
-func (client *Client) GetQualityCheckTaskResultWithOptions(workspaceId *string, request *GetQualityCheckTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQualityCheckTaskResultResponse, _err error) {
+func (client *Client) GetQualityCheckTaskResultWithContext(ctx context.Context, workspaceId *string, request *GetQualityCheckTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQualityCheckTaskResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2048,30 +1482,11 @@ func (client *Client) GetQualityCheckTaskResultWithOptions(workspaceId *string, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetQualityCheckTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取异步任务的结果
-//
-// @param request - GetQualityCheckTaskResultRequest
-//
-// @return GetQualityCheckTaskResultResponse
-func (client *Client) GetQualityCheckTaskResult(workspaceId *string, request *GetQualityCheckTaskResultRequest) (_result *GetQualityCheckTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetQualityCheckTaskResultResponse{}
-	_body, _err := client.GetQualityCheckTaskResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2086,7 +1501,7 @@ func (client *Client) GetQualityCheckTaskResult(workspaceId *string, request *Ge
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSummaryTaskResultResponse
-func (client *Client) GetSummaryTaskResultWithOptions(workspaceId *string, request *GetSummaryTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSummaryTaskResultResponse, _err error) {
+func (client *Client) GetSummaryTaskResultWithContext(ctx context.Context, workspaceId *string, request *GetSummaryTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSummaryTaskResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2112,30 +1527,11 @@ func (client *Client) GetSummaryTaskResultWithOptions(workspaceId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSummaryTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取财报总结任务结果
-//
-// @param request - GetSummaryTaskResultRequest
-//
-// @return GetSummaryTaskResultResponse
-func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSummaryTaskResultRequest) (_result *GetSummaryTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetSummaryTaskResultResponse{}
-	_body, _err := client.GetSummaryTaskResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2150,7 +1546,7 @@ func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSumm
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResultResponse
-func (client *Client) GetTaskResultWithOptions(workspaceId *string, request *GetTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
+func (client *Client) GetTaskResultWithContext(ctx context.Context, workspaceId *string, request *GetTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2176,30 +1572,11 @@ func (client *Client) GetTaskResultWithOptions(workspaceId *string, request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResultResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取异步任务结果
-//
-// @param request - GetTaskResultRequest
-//
-// @return GetTaskResultResponse
-func (client *Client) GetTaskResult(workspaceId *string, request *GetTaskResultRequest) (_result *GetTaskResultResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskResultResponse{}
-	_body, _err := client.GetTaskResultWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2214,7 +1591,7 @@ func (client *Client) GetTaskResult(workspaceId *string, request *GetTaskResultR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskStatusResponse
-func (client *Client) GetTaskStatusWithOptions(workspaceId *string, request *GetTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
+func (client *Client) GetTaskStatusWithContext(ctx context.Context, workspaceId *string, request *GetTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2240,30 +1617,11 @@ func (client *Client) GetTaskStatusWithOptions(workspaceId *string, request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取财报总结任务结果
-//
-// @param request - GetTaskStatusRequest
-//
-// @return GetTaskStatusResponse
-func (client *Client) GetTaskStatus(workspaceId *string, request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTaskStatusResponse{}
-	_body, _err := client.GetTaskStatusWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2278,7 +1636,7 @@ func (client *Client) GetTaskStatus(workspaceId *string, request *GetTaskStatusR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InvokePluginResponse
-func (client *Client) InvokePluginWithOptions(workspaceId *string, request *InvokePluginRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokePluginResponse, _err error) {
+func (client *Client) InvokePluginWithContext(ctx context.Context, workspaceId *string, request *InvokePluginRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokePluginResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2308,30 +1666,11 @@ func (client *Client) InvokePluginWithOptions(workspaceId *string, request *Invo
 		BodyType:    dara.String("json"),
 	}
 	_result = &InvokePluginResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 插件调试接口
-//
-// @param request - InvokePluginRequest
-//
-// @return InvokePluginResponse
-func (client *Client) InvokePlugin(workspaceId *string, request *InvokePluginRequest) (_result *InvokePluginResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &InvokePluginResponse{}
-	_body, _err := client.InvokePluginWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2346,7 +1685,7 @@ func (client *Client) InvokePlugin(workspaceId *string, request *InvokePluginReq
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PreviewDocumentResponse
-func (client *Client) PreviewDocumentWithOptions(workspaceId *string, request *PreviewDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewDocumentResponse, _err error) {
+func (client *Client) PreviewDocumentWithContext(ctx context.Context, workspaceId *string, request *PreviewDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2372,30 +1711,11 @@ func (client *Client) PreviewDocumentWithOptions(workspaceId *string, request *P
 		BodyType:    dara.String("json"),
 	}
 	_result = &PreviewDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取文档预览
-//
-// @param request - PreviewDocumentRequest
-//
-// @return PreviewDocumentResponse
-func (client *Client) PreviewDocument(workspaceId *string, request *PreviewDocumentRequest) (_result *PreviewDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PreviewDocumentResponse{}
-	_body, _err := client.PreviewDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2410,7 +1730,7 @@ func (client *Client) PreviewDocument(workspaceId *string, request *PreviewDocum
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReIndexResponse
-func (client *Client) ReIndexWithOptions(workspaceId *string, request *ReIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReIndexResponse, _err error) {
+func (client *Client) ReIndexWithContext(ctx context.Context, workspaceId *string, request *ReIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReIndexResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2436,7 +1756,7 @@ func (client *Client) ReIndexWithOptions(workspaceId *string, request *ReIndexRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReIndexResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2446,25 +1766,6 @@ func (client *Client) ReIndexWithOptions(workspaceId *string, request *ReIndexRe
 
 // Summary:
 //
-// 重新索引
-//
-// @param request - ReIndexRequest
-//
-// @return ReIndexResponse
-func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_result *ReIndexResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ReIndexResponse{}
-	_body, _err := client.ReIndexWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 实时对话
 //
 // @param request - RealTimeDialogRequest
@@ -2474,24 +1775,7 @@ func (client *Client) ReIndex(workspaceId *string, request *ReIndexRequest) (_re
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RealTimeDialogResponse
-func (client *Client) RealTimeDialogWithSSE(workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RealTimeDialogResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.realTimeDialogWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
-	return
-}
-
-// Summary:
-//
-// 实时对话
-//
-// @param request - RealTimeDialogRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RealTimeDialogResponse
-func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealTimeDialogResponse, _err error) {
+func (client *Client) RealTimeDialogWithContext(ctx context.Context, workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealTimeDialogResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2557,30 +1841,11 @@ func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &RealTimeDialogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实时对话
-//
-// @param request - RealTimeDialogRequest
-//
-// @return RealTimeDialogResponse
-func (client *Client) RealTimeDialog(workspaceId *string, request *RealTimeDialogRequest) (_result *RealTimeDialogResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RealTimeDialogResponse{}
-	_body, _err := client.RealTimeDialogWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2595,7 +1860,7 @@ func (client *Client) RealTimeDialog(workspaceId *string, request *RealTimeDialo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RealtimeDialogAssistResponse
-func (client *Client) RealtimeDialogAssistWithOptions(workspaceId *string, request *RealtimeDialogAssistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealtimeDialogAssistResponse, _err error) {
+func (client *Client) RealtimeDialogAssistWithContext(ctx context.Context, workspaceId *string, request *RealtimeDialogAssistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealtimeDialogAssistResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2649,30 +1914,11 @@ func (client *Client) RealtimeDialogAssistWithOptions(workspaceId *string, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RealtimeDialogAssistResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 实时会话辅助
-//
-// @param request - RealtimeDialogAssistRequest
-//
-// @return RealtimeDialogAssistResponse
-func (client *Client) RealtimeDialogAssist(workspaceId *string, request *RealtimeDialogAssistRequest) (_result *RealtimeDialogAssistResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RealtimeDialogAssistResponse{}
-	_body, _err := client.RealtimeDialogAssistWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2687,7 +1933,7 @@ func (client *Client) RealtimeDialogAssist(workspaceId *string, request *Realtim
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RebuildTaskResponse
-func (client *Client) RebuildTaskWithOptions(workspaceId *string, request *RebuildTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RebuildTaskResponse, _err error) {
+func (client *Client) RebuildTaskWithContext(ctx context.Context, workspaceId *string, request *RebuildTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RebuildTaskResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2713,30 +1959,11 @@ func (client *Client) RebuildTaskWithOptions(workspaceId *string, request *Rebui
 		BodyType:    dara.String("json"),
 	}
 	_result = &RebuildTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 重建任务
-//
-// @param request - RebuildTaskRequest
-//
-// @return RebuildTaskResponse
-func (client *Client) RebuildTask(workspaceId *string, request *RebuildTaskRequest) (_result *RebuildTaskResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RebuildTaskResponse{}
-	_body, _err := client.RebuildTaskWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2751,7 +1978,7 @@ func (client *Client) RebuildTask(workspaceId *string, request *RebuildTaskReque
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecallDocumentResponse
-func (client *Client) RecallDocumentWithOptions(workspaceId *string, request *RecallDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecallDocumentResponse, _err error) {
+func (client *Client) RecallDocumentWithContext(ctx context.Context, workspaceId *string, request *RecallDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecallDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2789,30 +2016,11 @@ func (client *Client) RecallDocumentWithOptions(workspaceId *string, request *Re
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecallDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 文档召回。
-//
-// @param request - RecallDocumentRequest
-//
-// @return RecallDocumentResponse
-func (client *Client) RecallDocument(workspaceId *string, request *RecallDocumentRequest) (_result *RecallDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RecallDocumentResponse{}
-	_body, _err := client.RecallDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2827,7 +2035,7 @@ func (client *Client) RecallDocument(workspaceId *string, request *RecallDocumen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RecognizeIntentionResponse
-func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request *RecognizeIntentionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecognizeIntentionResponse, _err error) {
+func (client *Client) RecognizeIntentionWithContext(ctx context.Context, workspaceId *string, request *RecognizeIntentionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecognizeIntentionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2885,7 +2093,7 @@ func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &RecognizeIntentionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2895,25 +2103,6 @@ func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// 意图识别
-//
-// @param request - RecognizeIntentionRequest
-//
-// @return RecognizeIntentionResponse
-func (client *Client) RecognizeIntention(workspaceId *string, request *RecognizeIntentionRequest) (_result *RecognizeIntentionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RecognizeIntentionResponse{}
-	_body, _err := client.RecognizeIntentionWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 运行智能体
 //
 // @param request - RunAgentRequest
@@ -2923,24 +2112,7 @@ func (client *Client) RecognizeIntention(workspaceId *string, request *Recognize
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunAgentResponse
-func (client *Client) RunAgentWithSSE(workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunAgentResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.runAgentWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
-	return
-}
-
-// Summary:
-//
-// 运行智能体
-//
-// @param request - RunAgentRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RunAgentResponse
-func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunAgentResponse, _err error) {
+func (client *Client) RunAgentWithContext(ctx context.Context, workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunAgentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -2994,7 +2166,7 @@ func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgent
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunAgentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3004,25 +2176,6 @@ func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgent
 
 // Summary:
 //
-// 运行智能体
-//
-// @param request - RunAgentRequest
-//
-// @return RunAgentResponse
-func (client *Client) RunAgent(workspaceId *string, request *RunAgentRequest) (_result *RunAgentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RunAgentResponse{}
-	_body, _err := client.RunAgentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 获取生成式对话结果
 //
 // @param request - RunChatResultGenerationRequest
@@ -3032,24 +2185,7 @@ func (client *Client) RunAgent(workspaceId *string, request *RunAgentRequest) (_
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunChatResultGenerationResponse
-func (client *Client) RunChatResultGenerationWithSSE(workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunChatResultGenerationResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.runChatResultGenerationWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
-	return
-}
-
-// Summary:
-//
-// 获取生成式对话结果
-//
-// @param request - RunChatResultGenerationRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RunChatResultGenerationResponse
-func (client *Client) RunChatResultGenerationWithOptions(workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunChatResultGenerationResponse, _err error) {
+func (client *Client) RunChatResultGenerationWithContext(ctx context.Context, workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunChatResultGenerationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3095,7 +2231,7 @@ func (client *Client) RunChatResultGenerationWithOptions(workspaceId *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunChatResultGenerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3107,25 +2243,6 @@ func (client *Client) RunChatResultGenerationWithOptions(workspaceId *string, re
 //
 // 获取生成式对话结果
 //
-// @param request - RunChatResultGenerationRequest
-//
-// @return RunChatResultGenerationResponse
-func (client *Client) RunChatResultGeneration(workspaceId *string, request *RunChatResultGenerationRequest) (_result *RunChatResultGenerationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RunChatResultGenerationResponse{}
-	_body, _err := client.RunChatResultGenerationWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取生成式对话结果
-//
 // @param request - RunLibraryChatGenerationRequest
 //
 // @param headers - map
@@ -3133,24 +2250,7 @@ func (client *Client) RunChatResultGeneration(workspaceId *string, request *RunC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunLibraryChatGenerationResponse
-func (client *Client) RunLibraryChatGenerationWithSSE(workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunLibraryChatGenerationResponse, _yieldErr chan error) {
-	defer close(_yield)
-	client.runLibraryChatGenerationWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
-	return
-}
-
-// Summary:
-//
-// 获取生成式对话结果
-//
-// @param request - RunLibraryChatGenerationRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return RunLibraryChatGenerationResponse
-func (client *Client) RunLibraryChatGenerationWithOptions(workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunLibraryChatGenerationResponse, _err error) {
+func (client *Client) RunLibraryChatGenerationWithContext(ctx context.Context, workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunLibraryChatGenerationResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3244,30 +2344,11 @@ func (client *Client) RunLibraryChatGenerationWithOptions(workspaceId *string, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunLibraryChatGenerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取生成式对话结果
-//
-// @param request - RunLibraryChatGenerationRequest
-//
-// @return RunLibraryChatGenerationResponse
-func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *RunLibraryChatGenerationRequest) (_result *RunLibraryChatGenerationResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &RunLibraryChatGenerationResponse{}
-	_body, _err := client.RunLibraryChatGenerationWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3282,7 +2363,7 @@ func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *Run
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitChatQuestionResponse
-func (client *Client) SubmitChatQuestionWithOptions(workspaceId *string, request *SubmitChatQuestionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitChatQuestionResponse, _err error) {
+func (client *Client) SubmitChatQuestionWithContext(ctx context.Context, workspaceId *string, request *SubmitChatQuestionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitChatQuestionResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3328,30 +2409,11 @@ func (client *Client) SubmitChatQuestionWithOptions(workspaceId *string, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitChatQuestionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 提交问题列表
-//
-// @param request - SubmitChatQuestionRequest
-//
-// @return SubmitChatQuestionResponse
-func (client *Client) SubmitChatQuestion(workspaceId *string, request *SubmitChatQuestionRequest) (_result *SubmitChatQuestionResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &SubmitChatQuestionResponse{}
-	_body, _err := client.SubmitChatQuestionWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3366,7 +2428,7 @@ func (client *Client) SubmitChatQuestion(workspaceId *string, request *SubmitCha
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDocumentResponse
-func (client *Client) UpdateDocumentWithOptions(workspaceId *string, request *UpdateDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentResponse, _err error) {
+func (client *Client) UpdateDocumentWithContext(ctx context.Context, workspaceId *string, request *UpdateDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3404,30 +2466,11 @@ func (client *Client) UpdateDocumentWithOptions(workspaceId *string, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新文档
-//
-// @param request - UpdateDocumentRequest
-//
-// @return UpdateDocumentResponse
-func (client *Client) UpdateDocument(workspaceId *string, request *UpdateDocumentRequest) (_result *UpdateDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateDocumentResponse{}
-	_body, _err := client.UpdateDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3442,7 +2485,7 @@ func (client *Client) UpdateDocument(workspaceId *string, request *UpdateDocumen
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateDocumentChunkResponse
-func (client *Client) UpdateDocumentChunkWithOptions(workspaceId *string, request *UpdateDocumentChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentChunkResponse, _err error) {
+func (client *Client) UpdateDocumentChunkWithContext(ctx context.Context, workspaceId *string, request *UpdateDocumentChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentChunkResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3472,30 +2515,11 @@ func (client *Client) UpdateDocumentChunkWithOptions(workspaceId *string, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDocumentChunkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新文档的chunk
-//
-// @param request - UpdateDocumentChunkRequest
-//
-// @return UpdateDocumentChunkResponse
-func (client *Client) UpdateDocumentChunk(workspaceId *string, request *UpdateDocumentChunkRequest) (_result *UpdateDocumentChunkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateDocumentChunkResponse{}
-	_body, _err := client.UpdateDocumentChunkWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3510,7 +2534,7 @@ func (client *Client) UpdateDocumentChunk(workspaceId *string, request *UpdateDo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLibraryResponse
-func (client *Client) UpdateLibraryWithOptions(workspaceId *string, request *UpdateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLibraryResponse, _err error) {
+func (client *Client) UpdateLibraryWithContext(ctx context.Context, workspaceId *string, request *UpdateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLibraryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3548,30 +2572,11 @@ func (client *Client) UpdateLibraryWithOptions(workspaceId *string, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新文档库配置
-//
-// @param request - UpdateLibraryRequest
-//
-// @return UpdateLibraryResponse
-func (client *Client) UpdateLibrary(workspaceId *string, request *UpdateLibraryRequest) (_result *UpdateLibraryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateLibraryResponse{}
-	_body, _err := client.UpdateLibraryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3586,7 +2591,7 @@ func (client *Client) UpdateLibrary(workspaceId *string, request *UpdateLibraryR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateQaLibraryResponse
-func (client *Client) UpdateQaLibraryWithOptions(workspaceId *string, request *UpdateQaLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQaLibraryResponse, _err error) {
+func (client *Client) UpdateQaLibraryWithContext(ctx context.Context, workspaceId *string, request *UpdateQaLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQaLibraryResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3620,30 +2625,11 @@ func (client *Client) UpdateQaLibraryWithOptions(workspaceId *string, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateQaLibraryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 更新QA问答库
-//
-// @param request - UpdateQaLibraryRequest
-//
-// @return UpdateQaLibraryResponse
-func (client *Client) UpdateQaLibrary(workspaceId *string, request *UpdateQaLibraryRequest) (_result *UpdateQaLibraryResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateQaLibraryResponse{}
-	_body, _err := client.UpdateQaLibraryWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3658,7 +2644,7 @@ func (client *Client) UpdateQaLibrary(workspaceId *string, request *UpdateQaLibr
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UploadDocumentResponse
-func (client *Client) UploadDocumentWithOptions(workspaceId *string, request *UploadDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadDocumentResponse, _err error) {
+func (client *Client) UploadDocumentWithContext(ctx context.Context, workspaceId *string, request *UploadDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadDocumentResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -3696,501 +2682,10 @@ func (client *Client) UploadDocumentWithOptions(workspaceId *string, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadDocumentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
-}
-
-// Summary:
-//
-// 上传文档到文档库
-//
-// @param request - UploadDocumentRequest
-//
-// @return UploadDocumentResponse
-func (client *Client) UploadDocument(workspaceId *string, request *UploadDocumentRequest) (_result *UploadDocumentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UploadDocumentResponse{}
-	_body, _err := client.UploadDocumentWithOptions(workspaceId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UploadDocumentAdvance(workspaceId *string, request *UploadDocumentAdvanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadDocumentResponse, _err error) {
-	// Step 0: init client
-	if dara.IsNil(client.Credential) {
-		_err = &openapi.ClientError{
-			Code:    dara.String("InvalidCredentials"),
-			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
-		}
-		return _result, _err
-	}
-
-	credentialModel, _err := client.Credential.GetCredential()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
-	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
-	securityToken := dara.StringValue(credentialModel.SecurityToken)
-	credentialType := dara.StringValue(credentialModel.Type)
-	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
-	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
-		openPlatformEndpoint = "openplatform.aliyuncs.com"
-	}
-
-	if dara.IsNil(dara.String(credentialType)) {
-		credentialType = "access_key"
-	}
-
-	authConfig := &openapiutil.Config{
-		AccessKeyId:     dara.String(accessKeyId),
-		AccessKeySecret: dara.String(accessKeySecret),
-		SecurityToken:   dara.String(securityToken),
-		Type:            dara.String(credentialType),
-		Endpoint:        dara.String(openPlatformEndpoint),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openapi.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := map[string]*string{
-		"Product":  dara.String("DianJin"),
-		"RegionId": client.RegionId,
-	}
-	authReq := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(authRequest),
-	}
-	authParams := &openapiutil.Params{
-		Action:      dara.String("AuthorizeFileUpload"),
-		Version:     dara.String("2019-12-19"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	authResponse := map[string]interface{}{}
-	fileObj := &dara.FileField{}
-	ossHeader := map[string]interface{}{}
-	tmpBody := map[string]interface{}{}
-	useAccelerate := false
-	authResponseBody := make(map[string]*string)
-	uploadDocumentReq := &UploadDocumentRequest{}
-	openapiutil.Convert(request, uploadDocumentReq)
-	if !dara.IsNil(request.FileUrlObject) {
-		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		tmpBody = dara.ToMap(authResponse["body"])
-		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
-		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
-		fileObj = &dara.FileField{
-			Filename:    authResponseBody["ObjectKey"],
-			Content:     request.FileUrlObject,
-			ContentType: dara.String(""),
-		}
-		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
-			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
-			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
-			"Signature":             dara.StringValue(authResponseBody["Signature"]),
-			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
-			"file":                  fileObj,
-			"success_action_status": "201",
-		}
-		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
-		if _err != nil {
-			return _result, _err
-		}
-		uploadDocumentReq.FileUrl = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
-	}
-
-	uploadDocumentResp, _err := client.UploadDocumentWithOptions(workspaceId, uploadDocumentReq, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = uploadDocumentResp
-	return _result, _err
-}
-
-func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]interface{}, _err error) {
-	var respMap map[string]interface{}
-	bodyStr, _err := dara.ReadAsString(response_.Body)
-	if _err != nil {
-		return _result, _err
-	}
-
-	if (dara.IntValue(response_.StatusCode) >= 400) && (dara.IntValue(response_.StatusCode) < 600) {
-		respMap = dara.ParseXml(bodyStr, nil)
-		err := dara.ToMap(respMap["Error"])
-		_err = &openapi.ClientError{
-			Code:    dara.String(dara.ToString(err["Code"])),
-			Message: dara.String(dara.ToString(err["Message"])),
-			Data: map[string]interface{}{
-				"httpCode":  dara.IntValue(response_.StatusCode),
-				"requestId": dara.ToString(err["RequestId"]),
-				"hostId":    dara.ToString(err["HostId"]),
-			},
-		}
-		return _result, _err
-	}
-
-	respMap = dara.ParseXml(bodyStr, nil)
-	_result = make(map[string]interface{})
-	_err = dara.Convert(dara.ToMap(respMap), &_result)
-
-	return _result, _err
-}
-
-func (client *Client) realTimeDialogWithSSE_opYieldFunc(_yield chan *RealTimeDialogResponse, _yieldErr chan error, workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.Analysis) {
-		body["analysis"] = request.Analysis
-	}
-
-	if !dara.IsNil(request.BizType) {
-		body["bizType"] = request.BizType
-	}
-
-	if !dara.IsNil(request.ConversationModel) {
-		body["conversationModel"] = request.ConversationModel
-	}
-
-	if !dara.IsNil(request.DialogMemoryTurns) {
-		body["dialogMemoryTurns"] = request.DialogMemoryTurns
-	}
-
-	if !dara.IsNil(request.MetaData) {
-		body["metaData"] = request.MetaData
-	}
-
-	if !dara.IsNil(request.OpType) {
-		body["opType"] = request.OpType
-	}
-
-	if !dara.IsNil(request.Recommend) {
-		body["recommend"] = request.Recommend
-	}
-
-	if !dara.IsNil(request.ScriptContentPlayed) {
-		body["scriptContentPlayed"] = request.ScriptContentPlayed
-	}
-
-	if !dara.IsNil(request.SessionId) {
-		body["sessionId"] = request.SessionId
-	}
-
-	if !dara.IsNil(request.Stream) {
-		body["stream"] = request.Stream
-	}
-
-	if !dara.IsNil(request.UserVad) {
-		body["userVad"] = request.UserVad
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("RealTimeDialog"),
-		Version:     dara.String("2024-06-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/realtime/dialog/chat"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
-}
-
-func (client *Client) runAgentWithSSE_opYieldFunc(_yield chan *RunAgentResponse, _yieldErr chan error, workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.BotId) {
-		body["botId"] = request.BotId
-	}
-
-	if !dara.IsNil(request.ModelId) {
-		body["modelId"] = request.ModelId
-	}
-
-	if !dara.IsNil(request.Stream) {
-		body["stream"] = request.Stream
-	}
-
-	if !dara.IsNil(request.ThreadId) {
-		body["threadId"] = request.ThreadId
-	}
-
-	if !dara.IsNil(request.UseDraft) {
-		body["useDraft"] = request.UseDraft
-	}
-
-	if !dara.IsNil(request.UserContent) {
-		body["userContent"] = request.UserContent
-	}
-
-	if !dara.IsNil(request.UserInputs) {
-		body["userInputs"] = request.UserInputs
-	}
-
-	if !dara.IsNil(request.VersionId) {
-		body["versionId"] = request.VersionId
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("RunAgent"),
-		Version:     dara.String("2024-06-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/bot/thread/run"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
-}
-
-func (client *Client) runChatResultGenerationWithSSE_opYieldFunc(_yield chan *RunChatResultGenerationResponse, _yieldErr chan error, workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.InferenceParameters) {
-		body["inferenceParameters"] = request.InferenceParameters
-	}
-
-	if !dara.IsNil(request.Messages) {
-		body["messages"] = request.Messages
-	}
-
-	if !dara.IsNil(request.ModelId) {
-		body["modelId"] = request.ModelId
-	}
-
-	if !dara.IsNil(request.SessionId) {
-		body["sessionId"] = request.SessionId
-	}
-
-	if !dara.IsNil(request.Stream) {
-		body["stream"] = request.Stream
-	}
-
-	if !dara.IsNil(request.Tools) {
-		body["tools"] = request.Tools
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("RunChatResultGeneration"),
-		Version:     dara.String("2024-06-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/run/chat/generation"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
-}
-
-func (client *Client) runLibraryChatGenerationWithSSE_opYieldFunc(_yield chan *RunLibraryChatGenerationResponse, _yieldErr chan error, workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
-	}
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.DocIdList) {
-		body["docIdList"] = request.DocIdList
-	}
-
-	if !dara.IsNil(request.EnableFollowUp) {
-		body["enableFollowUp"] = request.EnableFollowUp
-	}
-
-	if !dara.IsNil(request.EnableMultiQuery) {
-		body["enableMultiQuery"] = request.EnableMultiQuery
-	}
-
-	if !dara.IsNil(request.EnableOpenQa) {
-		body["enableOpenQa"] = request.EnableOpenQa
-	}
-
-	if !dara.IsNil(request.FollowUpLlm) {
-		body["followUpLlm"] = request.FollowUpLlm
-	}
-
-	if !dara.IsNil(request.LibraryId) {
-		body["libraryId"] = request.LibraryId
-	}
-
-	if !dara.IsNil(request.LlmType) {
-		body["llmType"] = request.LlmType
-	}
-
-	if !dara.IsNil(request.MultiQueryLlm) {
-		body["multiQueryLlm"] = request.MultiQueryLlm
-	}
-
-	if !dara.IsNil(request.Query) {
-		body["query"] = request.Query
-	}
-
-	if !dara.IsNil(request.QueryCriteria) {
-		body["queryCriteria"] = request.QueryCriteria
-	}
-
-	if !dara.IsNil(request.RerankType) {
-		body["rerankType"] = request.RerankType
-	}
-
-	if !dara.IsNil(request.SessionId) {
-		body["sessionId"] = request.SessionId
-	}
-
-	if !dara.IsNil(request.Stream) {
-		body["stream"] = request.Stream
-	}
-
-	if !dara.IsNil(request.SubQueryList) {
-		body["subQueryList"] = request.SubQueryList
-	}
-
-	if !dara.IsNil(request.TextSearchParameter) {
-		body["textSearchParameter"] = request.TextSearchParameter
-	}
-
-	if !dara.IsNil(request.TopK) {
-		body["topK"] = request.TopK
-	}
-
-	if !dara.IsNil(request.VectorSearchParameter) {
-		body["vectorSearchParameter"] = request.VectorSearchParameter
-	}
-
-	if !dara.IsNil(request.WithDocumentReference) {
-		body["withDocumentReference"] = request.WithDocumentReference
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("RunLibraryChatGeneration"),
-		Version:     dara.String("2024-06-28"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/run/library/chat/generation"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	sseResp := make(chan *openapi.SSEResponse, 1)
-	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
-	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
-		}
-	}
 }
