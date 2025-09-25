@@ -10148,6 +10148,146 @@ func (client *Client) DescribeSparkAppType(request *DescribeSparkAppTypeRequest)
 
 // Summary:
 //
+// 查询Spark审计日志
+//
+// @param request - DescribeSparkAuditLogRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSparkAuditLogRecordsResponse
+func (client *Client) DescribeSparkAuditLogRecordsWithOptions(request *DescribeSparkAuditLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSparkAuditLogRecordsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientIp) {
+		query["ClientIp"] = request.ClientIp
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		query["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.ProxyUser) {
+		query["ProxyUser"] = request.ProxyUser
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SQLText) {
+		query["SQLText"] = request.SQLText
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatementId) {
+		query["StatementId"] = request.StatementId
+	}
+
+	if !dara.IsNil(request.StatementSource) {
+		query["StatementSource"] = request.StatementSource
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TotalTime) {
+		query["TotalTime"] = request.TotalTime
+	}
+
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSparkAuditLogRecords"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSparkAuditLogRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Spark审计日志
+//
+// @param request - DescribeSparkAuditLogRecordsRequest
+//
+// @return DescribeSparkAuditLogRecordsResponse
+func (client *Client) DescribeSparkAuditLogRecords(request *DescribeSparkAuditLogRecordsRequest) (_result *DescribeSparkAuditLogRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSparkAuditLogRecordsResponse{}
+	_body, _err := client.DescribeSparkAuditLogRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the execution logs of Spark code.
 //
 // Description:
@@ -17538,6 +17678,78 @@ func (client *Client) ModifyPerformanceView(request *ModifyPerformanceViewReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPerformanceViewResponse{}
 	_body, _err := client.ModifyPerformanceViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改SQL脚本模板位置
+//
+// @param request - ModifySqlTemplatePositionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySqlTemplatePositionResponse
+func (client *Client) ModifySqlTemplatePositionWithOptions(request *ModifySqlTemplatePositionRequest, runtime *dara.RuntimeOptions) (_result *ModifySqlTemplatePositionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetTemplateGroupId) {
+		query["TargetTemplateGroupId"] = request.TargetTemplateGroupId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySqlTemplatePosition"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySqlTemplatePositionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改SQL脚本模板位置
+//
+// @param request - ModifySqlTemplatePositionRequest
+//
+// @return ModifySqlTemplatePositionResponse
+func (client *Client) ModifySqlTemplatePosition(request *ModifySqlTemplatePositionRequest) (_result *ModifySqlTemplatePositionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySqlTemplatePositionResponse{}
+	_body, _err := client.ModifySqlTemplatePositionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

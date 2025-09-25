@@ -201,6 +201,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// job_default
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	UseCachePool      *bool   `json:"UseCachePool,omitempty" xml:"UseCachePool,omitempty"`
 }
 
 func (s DescribeJobResourceUsageResponseBodyDataJobAcuUsage) String() string {
@@ -231,6 +232,10 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetResourceGroupNa
 	return s.ResourceGroupName
 }
 
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) GetUseCachePool() *bool {
+	return s.UseCachePool
+}
+
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetAcuUsageDetail(v *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail) *DescribeJobResourceUsageResponseBodyDataJobAcuUsage {
 	s.AcuUsageDetail = v
 	return s
@@ -253,6 +258,11 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetJobStartTime(v 
 
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetResourceGroupName(v string) *DescribeJobResourceUsageResponseBodyDataJobAcuUsage {
 	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsage) SetUseCachePool(v bool) *DescribeJobResourceUsageResponseBodyDataJobAcuUsage {
+	s.UseCachePool = &v
 	return s
 }
 
