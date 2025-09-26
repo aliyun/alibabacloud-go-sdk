@@ -1,0 +1,66 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+	"github.com/alibabacloud-go/tea/dara"
+)
+
+type iCodeInterpreterResult interface {
+	dara.Model
+	String() string
+	GoString() string
+	SetCode(v string) *CodeInterpreterResult
+	GetCode() *string
+	SetData(v *CodeInterpreter) *CodeInterpreterResult
+	GetData() *CodeInterpreter
+	SetRequestId(v string) *CodeInterpreterResult
+	GetRequestId() *string
+}
+
+type CodeInterpreterResult struct {
+	// SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 代码解释器的详细信息
+	Data *CodeInterpreter `json:"data,omitempty" xml:"data,omitempty"`
+	// 唯一的请求标识符，用于问题追踪
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CodeInterpreterResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CodeInterpreterResult) GoString() string {
+	return s.String()
+}
+
+func (s *CodeInterpreterResult) GetCode() *string {
+	return s.Code
+}
+
+func (s *CodeInterpreterResult) GetData() *CodeInterpreter {
+	return s.Data
+}
+
+func (s *CodeInterpreterResult) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *CodeInterpreterResult) SetCode(v string) *CodeInterpreterResult {
+	s.Code = &v
+	return s
+}
+
+func (s *CodeInterpreterResult) SetData(v *CodeInterpreter) *CodeInterpreterResult {
+	s.Data = v
+	return s
+}
+
+func (s *CodeInterpreterResult) SetRequestId(v string) *CodeInterpreterResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CodeInterpreterResult) Validate() error {
+	return dara.Validate(s)
+}
