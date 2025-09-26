@@ -213,6 +213,8 @@ type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources struct {
 	DatabaseInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesDatabaseInfo `json:"DatabaseInfo,omitempty" xml:"DatabaseInfo,omitempty" type:"Struct"`
 	// The information about the instance.
 	InstanceInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Struct"`
+	RowInfo      *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo      `json:"RowInfo,omitempty" xml:"RowInfo,omitempty" type:"Struct"`
+	RowValueInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo `json:"RowValueInfo,omitempty" xml:"RowValueInfo,omitempty" type:"Struct"`
 	// The information about the table.
 	TableInfo *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo `json:"TableInfo,omitempty" xml:"TableInfo,omitempty" type:"Struct"`
 }
@@ -237,6 +239,14 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GetIn
 	return s.InstanceInfo
 }
 
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GetRowInfo() *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	return s.RowInfo
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GetRowValueInfo() *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo {
+	return s.RowValueInfo
+}
+
 func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) GetTableInfo() *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesTableInfo {
 	return s.TableInfo
 }
@@ -253,6 +263,16 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetDa
 
 func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetInstanceInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
 	s.InstanceInfo = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetRowInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.RowInfo = v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources) SetRowValueInfo(v *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResources {
+	s.RowValueInfo = v
 	return s
 }
 
@@ -580,6 +600,116 @@ func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanc
 }
 
 func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesInstanceInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo struct {
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbId       *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	MatchMode  *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	RowGroupId *int64  `json:"RowGroupId,omitempty" xml:"RowGroupId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetColumnName() *string {
+	return s.ColumnName
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetDbId() *int64 {
+	return s.DbId
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetLogic() *bool {
+	return s.Logic
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetMatchMode() *string {
+	return s.MatchMode
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetRowGroupId() *int64 {
+	return s.RowGroupId
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetSchemaName() *string {
+	return s.SchemaName
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) GetTableName() *string {
+	return s.TableName
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetColumnName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetDbId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.DbId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetLogic(v bool) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.Logic = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetMatchMode(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.MatchMode = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetRowGroupId(v int64) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.RowGroupId = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetSchemaName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) SetTableName(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo struct {
+	RowValue *string `json:"RowValue,omitempty" xml:"RowValue,omitempty"`
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) GetRowValue() *string {
+	return s.RowValue
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) SetRowValue(v string) *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo {
+	s.RowValue = &v
+	return s
+}
+
+func (s *GetPermApplyOrderDetailResponseBodyPermApplyOrderDetailResourcesRowValueInfo) Validate() error {
 	return dara.Validate(s)
 }
 
