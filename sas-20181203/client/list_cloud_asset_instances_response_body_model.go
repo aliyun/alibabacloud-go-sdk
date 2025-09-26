@@ -346,7 +346,9 @@ type ListCloudAssetInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 0
-	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Vendor         *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	VendorUid      *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s ListCloudAssetInstancesResponseBodyInstances) String() string {
@@ -411,6 +413,14 @@ func (s *ListCloudAssetInstancesResponseBodyInstances) GetTags() []*string {
 
 func (s *ListCloudAssetInstancesResponseBodyInstances) GetVendor() *int32 {
 	return s.Vendor
+}
+
+func (s *ListCloudAssetInstancesResponseBodyInstances) GetVendorUid() *string {
+	return s.VendorUid
+}
+
+func (s *ListCloudAssetInstancesResponseBodyInstances) GetVendorUserName() *string {
+	return s.VendorUserName
 }
 
 func (s *ListCloudAssetInstancesResponseBodyInstances) SetAlarmStatus(v string) *ListCloudAssetInstancesResponseBodyInstances {
@@ -480,6 +490,16 @@ func (s *ListCloudAssetInstancesResponseBodyInstances) SetTags(v []*string) *Lis
 
 func (s *ListCloudAssetInstancesResponseBodyInstances) SetVendor(v int32) *ListCloudAssetInstancesResponseBodyInstances {
 	s.Vendor = &v
+	return s
+}
+
+func (s *ListCloudAssetInstancesResponseBodyInstances) SetVendorUid(v string) *ListCloudAssetInstancesResponseBodyInstances {
+	s.VendorUid = &v
+	return s
+}
+
+func (s *ListCloudAssetInstancesResponseBodyInstances) SetVendorUserName(v string) *ListCloudAssetInstancesResponseBodyInstances {
+	s.VendorUserName = &v
 	return s
 }
 

@@ -16,7 +16,13 @@ type iGetUserLangResponseBody interface {
 }
 
 type GetUserLangResponseBody struct {
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 23AD0BD2-8771-5647-819E-6BA51E21****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The language settings.
 	SasUserLang *GetUserLangResponseBodySasUserLang `json:"SasUserLang,omitempty" xml:"SasUserLang,omitempty" type:"Struct"`
 }
 
@@ -51,6 +57,15 @@ func (s *GetUserLangResponseBody) Validate() error {
 }
 
 type GetUserLangResponseBodySasUserLang struct {
+	// The language specified for log analysis. Valid values:
+	//
+	// 	- zh: Chinese
+	//
+	// 	- en: English
+	//
+	// example:
+	//
+	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 

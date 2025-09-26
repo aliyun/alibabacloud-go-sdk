@@ -163,7 +163,8 @@ type ListCheckInstanceResultResponseBodyBasicData struct {
 	// example:
 	//
 	// Task is failed.
-	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	StatusMessage  *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s ListCheckInstanceResultResponseBodyBasicData) String() string {
@@ -202,6 +203,10 @@ func (s *ListCheckInstanceResultResponseBodyBasicData) GetStatusMessage() *strin
 	return s.StatusMessage
 }
 
+func (s *ListCheckInstanceResultResponseBodyBasicData) GetVendorUserName() *string {
+	return s.VendorUserName
+}
+
 func (s *ListCheckInstanceResultResponseBodyBasicData) SetId(v int64) *ListCheckInstanceResultResponseBodyBasicData {
 	s.Id = &v
 	return s
@@ -234,6 +239,11 @@ func (s *ListCheckInstanceResultResponseBodyBasicData) SetStatus(v string) *List
 
 func (s *ListCheckInstanceResultResponseBodyBasicData) SetStatusMessage(v string) *ListCheckInstanceResultResponseBodyBasicData {
 	s.StatusMessage = &v
+	return s
+}
+
+func (s *ListCheckInstanceResultResponseBodyBasicData) SetVendorUserName(v string) *ListCheckInstanceResultResponseBodyBasicData {
+	s.VendorUserName = &v
 	return s
 }
 

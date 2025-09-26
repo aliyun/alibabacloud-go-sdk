@@ -28,47 +28,63 @@ type ExportRecordRequest struct {
   // 
   // virusScanExport
   ExportFileType *string `json:"ExportFileType,omitempty" xml:"ExportFileType,omitempty"`
-  // The type of the check result list that you want to export. Valid values:
+  // The type of detection result list to be exported. Values:
   // 
-  // 	- **assetInstance**: the list of servers displayed on the Host page
+  // - **assetInstance**: List of servers in the asset center 
   // 
-  // 	- **user**: the list of fingerprints for accounts
+  // - **user**: List of asset fingerprints for accounts 
   // 
-  // 	- **port**: the list of fingerprints for ports
+  // - **port**: List of asset fingerprints for ports 
   // 
-  // 	- **process**: the list of fingerprints for processes
+  // - **process**: List of asset fingerprints for processes 
   // 
-  // 	- **sca**: the list of fingerprints for middleware assets
+  // - **sca**: List of asset fingerprints for middleware 
   // 
-  // 	- **database**: the list of fingerprints for databases
+  // - **database**: List of asset fingerprints for databases 
   // 
-  // 	- **web**: the list of fingerprints for web services
+  // - **web**: List of asset fingerprints for web services 
   // 
-  // 	- **software**: the list of fingerprints for software assets
+  // - **software**: List of asset fingerprints for software 
   // 
-  // 	- **cron**: the list of fingerprints for scheduled tasks
+  // - **cron**: List of asset fingerprints for scheduled tasks 
   // 
-  // 	- **autorun**: the list of fingerprints for startup items
+  // - **autorun**: List of asset fingerprints for startup items 
   // 
-  // 	- **lkm**: the list of fingerprints for kernel modules
+  // - **lkm**: List of asset fingerprints for kernel modules 
   // 
-  // 	- **webserver**: the list of fingerprints for websites
+  // - **webserver**: List of asset fingerprints for web sites 
   // 
-  // 	- **virusScanExport**: the details of the virus scan tasks
+  // - **virusScanExport**: List of details for virus scan tasks 
   // 
-  // 	- **imageVulExport**: the list of image system vulnerabilities
+  // - **imageVulExport**: List of system vulnerabilities in images 
   // 
-  // 	- **imageBaseLineExport**: the list of check results for image baselines
+  // - **imageBaseLineExport**: List of baseline check results in images 
   // 
-  // 	- **imageAffectedMaliciousExport**: the list of check results for malicious image samples
+  // - **imageAffectedMaliciousExport**: List of malicious sample check results in images 
   // 
-  // 	- **baselineCspm**: the list of check results for configuration assessment
+  // - **baselineCspm**: List of detection results for cloud platform configuration checks 
   // 
-  // 	- **attack**: the list of alert events for attack analysis
+  // - **attack**: List of alert events for attack analysis 
   // 
-  // 	- **accessKey**: the list of alerts that are generated for AccessKey pair leaks
+  // - **accessKey**: List of alert events for AK leak detection 
   // 
-  // 	- **exportObjectScanEvents**: the list of alerts generated for malicious files
+  // - **exportObjectScanEvents**: List of alert events for malicious file detection 
+  // 
+  // - **domainDetail**: Website assets 
+  // 
+  // - **assetsPropertyScaProcessDetail**: RASP protection process for application protection 
+  // 
+  // - **exportHcWarning**: List of system baseline risks 
+  // 
+  // - **raspAttackAlert**: List of attack alerts for Application Protection
+  // 
+  // - **raspApplicationConfiguration**: List of application configurations for Application Protection
+  // 
+  // - **raspWeaknessDetection**: List of weakness detections for Application Protection
+  // 
+  // - **raspInMemoryWebshellDetection**: List of in-memory webshell detection alerts for Application Protection
+  // 
+  // - **raspInMemoryWebshellInsertion**: List of in-memory webshell insertion alerts for Application Protection
   // 
   // This parameter is required.
   // 

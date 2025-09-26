@@ -183,7 +183,8 @@ type GetCloudAssetDetailResponseBodyInstances struct {
 	// example:
 	//
 	// 1.2.XX.XX
-	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	OriginalAssetInfo *string `json:"OriginalAssetInfo,omitempty" xml:"OriginalAssetInfo,omitempty"`
 	// The region in which the cloud asset resides.
 	//
 	// > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
@@ -223,7 +224,9 @@ type GetCloudAssetDetailResponseBodyInstances struct {
 	// example:
 	//
 	// 0
-	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	Vendor         *int32  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	VendorUid      *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s GetCloudAssetDetailResponseBodyInstances) String() string {
@@ -274,6 +277,10 @@ func (s *GetCloudAssetDetailResponseBodyInstances) GetInternetIp() *string {
 	return s.InternetIp
 }
 
+func (s *GetCloudAssetDetailResponseBodyInstances) GetOriginalAssetInfo() *string {
+	return s.OriginalAssetInfo
+}
+
 func (s *GetCloudAssetDetailResponseBodyInstances) GetRegionId() *string {
 	return s.RegionId
 }
@@ -288,6 +295,14 @@ func (s *GetCloudAssetDetailResponseBodyInstances) GetSecurityInfo() *string {
 
 func (s *GetCloudAssetDetailResponseBodyInstances) GetVendor() *int32 {
 	return s.Vendor
+}
+
+func (s *GetCloudAssetDetailResponseBodyInstances) GetVendorUid() *string {
+	return s.VendorUid
+}
+
+func (s *GetCloudAssetDetailResponseBodyInstances) GetVendorUserName() *string {
+	return s.VendorUserName
 }
 
 func (s *GetCloudAssetDetailResponseBodyInstances) SetAlarmStatus(v string) *GetCloudAssetDetailResponseBodyInstances {
@@ -340,6 +355,11 @@ func (s *GetCloudAssetDetailResponseBodyInstances) SetInternetIp(v string) *GetC
 	return s
 }
 
+func (s *GetCloudAssetDetailResponseBodyInstances) SetOriginalAssetInfo(v string) *GetCloudAssetDetailResponseBodyInstances {
+	s.OriginalAssetInfo = &v
+	return s
+}
+
 func (s *GetCloudAssetDetailResponseBodyInstances) SetRegionId(v string) *GetCloudAssetDetailResponseBodyInstances {
 	s.RegionId = &v
 	return s
@@ -357,6 +377,16 @@ func (s *GetCloudAssetDetailResponseBodyInstances) SetSecurityInfo(v string) *Ge
 
 func (s *GetCloudAssetDetailResponseBodyInstances) SetVendor(v int32) *GetCloudAssetDetailResponseBodyInstances {
 	s.Vendor = &v
+	return s
+}
+
+func (s *GetCloudAssetDetailResponseBodyInstances) SetVendorUid(v string) *GetCloudAssetDetailResponseBodyInstances {
+	s.VendorUid = &v
+	return s
+}
+
+func (s *GetCloudAssetDetailResponseBodyInstances) SetVendorUserName(v string) *GetCloudAssetDetailResponseBodyInstances {
+	s.VendorUserName = &v
 	return s
 }
 

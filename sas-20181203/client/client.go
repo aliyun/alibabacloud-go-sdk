@@ -41583,7 +41583,7 @@ func (client *Client) GetTenantCheckAvailable() (_result *GetTenantCheckAvailabl
 
 // Summary:
 //
-// 获取语言设置
+// Queries the language settings of log analysis.
 //
 // @param request - GetUserLangRequest
 //
@@ -41614,7 +41614,7 @@ func (client *Client) GetUserLangWithOptions(runtime *dara.RuntimeOptions) (_res
 
 // Summary:
 //
-// 获取语言设置
+// Queries the language settings of log analysis.
 //
 // @return GetUserLangResponse
 func (client *Client) GetUserLang() (_result *GetUserLangResponse, _err error) {

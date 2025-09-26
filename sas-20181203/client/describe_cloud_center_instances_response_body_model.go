@@ -651,6 +651,14 @@ type DescribeCloudCenterInstancesResponseBodyInstances struct {
 	//
 	// Tencent
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	// example:
+	//
+	// 123
+	VendorUid *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	// example:
+	//
+	// VendorUserName
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 	// The ID of the VPC to which the asset belongs.
 	//
 	// example:
@@ -893,6 +901,14 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetVendor() *int32 {
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetVendorName() *string {
 	return s.VendorName
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetVendorUid() *string {
+	return s.VendorUid
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetVendorUserName() *string {
+	return s.VendorUserName
 }
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) GetVpcInstanceId() *string {
@@ -1169,6 +1185,16 @@ func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetVendor(v int32) *
 
 func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetVendorName(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
 	s.VendorName = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetVendorUid(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.VendorUid = &v
+	return s
+}
+
+func (s *DescribeCloudCenterInstancesResponseBodyInstances) SetVendorUserName(v string) *DescribeCloudCenterInstancesResponseBodyInstances {
+	s.VendorUserName = &v
 	return s
 }
 

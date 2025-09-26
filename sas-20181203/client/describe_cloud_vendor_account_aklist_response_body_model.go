@@ -146,6 +146,8 @@ type DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs struct {
 	//
 	// test
 	VendorAuthAlias *string `json:"VendorAuthAlias,omitempty" xml:"VendorAuthAlias,omitempty"`
+	VendorUid       *string `json:"VendorUid,omitempty" xml:"VendorUid,omitempty"`
+	VendorUserName  *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) String() string {
@@ -200,6 +202,14 @@ func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) GetV
 	return s.VendorAuthAlias
 }
 
+func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) GetVendorUid() *string {
+	return s.VendorUid
+}
+
+func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) GetVendorUserName() *string {
+	return s.VendorUserName
+}
+
 func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetAkType(v string) *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs {
 	s.AkType = &v
 	return s
@@ -252,6 +262,16 @@ func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetV
 
 func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetVendorAuthAlias(v string) *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs {
 	s.VendorAuthAlias = &v
+	return s
+}
+
+func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetVendorUid(v string) *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs {
+	s.VendorUid = &v
+	return s
+}
+
+func (s *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs) SetVendorUserName(v string) *DescribeCloudVendorAccountAKListResponseBodyCloudVendorAccountAKs {
+	s.VendorUserName = &v
 	return s
 }
 
