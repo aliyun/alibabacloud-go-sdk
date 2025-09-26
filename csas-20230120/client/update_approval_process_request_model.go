@@ -290,8 +290,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig)
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) String() string {
@@ -306,12 +307,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigF
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -370,8 +380,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaC
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) String() string {
@@ -386,12 +397,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaC
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -450,8 +470,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig) Vali
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) String() string {
@@ -466,12 +487,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldM
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -530,8 +560,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) String() string {
@@ -546,12 +577,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConf
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -610,8 +650,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) String() string {
@@ -626,12 +667,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConf
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -690,8 +740,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) String() string {
@@ -706,12 +757,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaCo
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -770,8 +830,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) String() string {
@@ -786,12 +847,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -850,8 +920,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) String() string {
@@ -866,12 +937,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -930,8 +1010,9 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) String() string {
@@ -946,12 +1027,21 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 	return s.DisplayField
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) SetDisplayField(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) SetDisplayFieldValue(v string) *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 

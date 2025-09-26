@@ -306,7 +306,8 @@ type GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
 	// example:
 	//
 	// 名称
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
 	// example:
 	//
 	// 名称
@@ -325,12 +326,21 @@ func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetD
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -402,8 +412,9 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Valida
 }
 
 type GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) String() string {
@@ -418,12 +429,21 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -495,8 +515,9 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() error 
 }
 
 type GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) String() string {
@@ -511,12 +532,21 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetDispla
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -588,8 +618,9 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) String() string {
@@ -604,12 +635,21 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) G
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -681,8 +721,9 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) String() string {
@@ -697,12 +738,21 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) G
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -771,8 +821,9 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) String() string {
@@ -787,12 +838,21 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap)
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -864,8 +924,9 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) String() string {
@@ -880,12 +941,21 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) G
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -995,8 +1065,9 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate() 
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) String() string {
@@ -1011,12 +1082,21 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) Get
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
@@ -1085,8 +1165,9 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {
-	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
-	SystemField  *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
+	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) String() string {
@@ -1101,12 +1182,21 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap)
 	return s.DisplayField
 }
 
+func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GetDisplayFieldValue() *string {
+	return s.DisplayFieldValue
+}
+
 func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) GetSystemField() *string {
 	return s.SystemField
 }
 
 func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) SetDisplayField(v string) *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
 	s.DisplayField = &v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) SetDisplayFieldValue(v string) *GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap {
+	s.DisplayFieldValue = &v
 	return s
 }
 
