@@ -592,9 +592,11 @@ type CreateJobRequestTasksTaskSpecResource struct {
 	// example:
 	//
 	// 2
-	Cores         *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks         []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	InstanceTypes []*string                                     `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Cores          *float32                                      `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks          []*CreateJobRequestTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	EnableHT       *bool                                         `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
+	HostNamePrefix *string                                       `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	InstanceTypes  []*string                                     `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 4
@@ -617,6 +619,14 @@ func (s *CreateJobRequestTasksTaskSpecResource) GetDisks() []*CreateJobRequestTa
 	return s.Disks
 }
 
+func (s *CreateJobRequestTasksTaskSpecResource) GetEnableHT() *bool {
+	return s.EnableHT
+}
+
+func (s *CreateJobRequestTasksTaskSpecResource) GetHostNamePrefix() *string {
+	return s.HostNamePrefix
+}
+
 func (s *CreateJobRequestTasksTaskSpecResource) GetInstanceTypes() []*string {
 	return s.InstanceTypes
 }
@@ -632,6 +642,16 @@ func (s *CreateJobRequestTasksTaskSpecResource) SetCores(v float32) *CreateJobRe
 
 func (s *CreateJobRequestTasksTaskSpecResource) SetDisks(v []*CreateJobRequestTasksTaskSpecResourceDisks) *CreateJobRequestTasksTaskSpecResource {
 	s.Disks = v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecResource) SetEnableHT(v bool) *CreateJobRequestTasksTaskSpecResource {
+	s.EnableHT = &v
+	return s
+}
+
+func (s *CreateJobRequestTasksTaskSpecResource) SetHostNamePrefix(v string) *CreateJobRequestTasksTaskSpecResource {
+	s.HostNamePrefix = &v
 	return s
 }
 

@@ -99,7 +99,8 @@ func (s *ListExecutorsResponseBody) Validate() error {
 }
 
 type ListExecutorsResponseBodyExecutors struct {
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// example:
 	//
 	// 0
@@ -157,6 +158,10 @@ func (s ListExecutorsResponseBodyExecutors) String() string {
 
 func (s ListExecutorsResponseBodyExecutors) GoString() string {
 	return s.String()
+}
+
+func (s *ListExecutorsResponseBodyExecutors) GetAllocationSpec() *string {
+	return s.AllocationSpec
 }
 
 func (s *ListExecutorsResponseBodyExecutors) GetAppName() *string {
@@ -249,6 +254,11 @@ func (s *ListExecutorsResponseBodyExecutors) GetTaskSustainable() *bool {
 
 func (s *ListExecutorsResponseBodyExecutors) GetVswitchId() *string {
 	return s.VswitchId
+}
+
+func (s *ListExecutorsResponseBodyExecutors) SetAllocationSpec(v string) *ListExecutorsResponseBodyExecutors {
+	s.AllocationSpec = &v
+	return s
 }
 
 func (s *ListExecutorsResponseBodyExecutors) SetAppName(v string) *ListExecutorsResponseBodyExecutors {

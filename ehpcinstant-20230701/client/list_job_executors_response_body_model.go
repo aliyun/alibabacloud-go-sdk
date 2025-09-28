@@ -246,6 +246,7 @@ func (s *ListJobExecutorsResponseBodyExecutorStatus) Validate() error {
 }
 
 type ListJobExecutorsResponseBodyExecutors struct {
+	AllocationSpec *string `json:"AllocationSpec,omitempty" xml:"AllocationSpec,omitempty"`
 	// example:
 	//
 	// 0
@@ -283,6 +284,10 @@ func (s ListJobExecutorsResponseBodyExecutors) String() string {
 
 func (s ListJobExecutorsResponseBodyExecutors) GoString() string {
 	return s.String()
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) GetAllocationSpec() *string {
+	return s.AllocationSpec
 }
 
 func (s *ListJobExecutorsResponseBodyExecutors) GetArrayIndex() *int32 {
@@ -339,6 +344,11 @@ func (s *ListJobExecutorsResponseBodyExecutors) GetStatusReason() *string {
 
 func (s *ListJobExecutorsResponseBodyExecutors) GetTags() []*ListJobExecutorsResponseBodyExecutorsTags {
 	return s.Tags
+}
+
+func (s *ListJobExecutorsResponseBodyExecutors) SetAllocationSpec(v string) *ListJobExecutorsResponseBodyExecutors {
+	s.AllocationSpec = &v
+	return s
 }
 
 func (s *ListJobExecutorsResponseBodyExecutors) SetArrayIndex(v int32) *ListJobExecutorsResponseBodyExecutors {

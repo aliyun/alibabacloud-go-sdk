@@ -712,9 +712,11 @@ type GetJobResponseBodyJobInfoTasksTaskSpecResource struct {
 	// example:
 	//
 	// 1
-	Cores         *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Disks         []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	InstanceTypes []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Cores          *float32                                               `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Disks          []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	EnableHT       *bool                                                  `json:"EnableHT,omitempty" xml:"EnableHT,omitempty"`
+	HostNamePrefix *string                                                `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	InstanceTypes  []*string                                              `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 4
@@ -737,6 +739,14 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) GetDisks() []*GetJobRes
 	return s.Disks
 }
 
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) GetEnableHT() *bool {
+	return s.EnableHT
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) GetHostNamePrefix() *string {
+	return s.HostNamePrefix
+}
+
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) GetInstanceTypes() []*string {
 	return s.InstanceTypes
 }
@@ -752,6 +762,16 @@ func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetCores(v float32) *Ge
 
 func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetDisks(v []*GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks) *GetJobResponseBodyJobInfoTasksTaskSpecResource {
 	s.Disks = v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetEnableHT(v bool) *GetJobResponseBodyJobInfoTasksTaskSpecResource {
+	s.EnableHT = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfoTasksTaskSpecResource) SetHostNamePrefix(v string) *GetJobResponseBodyJobInfoTasksTaskSpecResource {
+	s.HostNamePrefix = &v
 	return s
 }
 
