@@ -17,6 +17,8 @@ type iGetAuthSummaryResponseBody interface {
 	GetAllowUserUnbind() *int32
 	SetAutoBind(v int32) *GetAuthSummaryResponseBody
 	GetAutoBind() *int32
+	SetClusterNodeCheck(v int32) *GetAuthSummaryResponseBody
+	GetClusterNodeCheck() *int32
 	SetDefaultAuthToAll(v int32) *GetAuthSummaryResponseBody
 	GetDefaultAuthToAll() *int32
 	SetHasPreBindSetting(v bool) *GetAuthSummaryResponseBody
@@ -83,7 +85,8 @@ type GetAuthSummaryResponseBody struct {
 	// example:
 	//
 	// 1
-	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	AutoBind         *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	ClusterNodeCheck *int32 `json:"ClusterNodeCheck,omitempty" xml:"ClusterNodeCheck,omitempty"`
 	// Indicates whether the protection quota is supported for all assets. Valid values:
 	//
 	// 	- **0**: no
@@ -191,6 +194,10 @@ func (s *GetAuthSummaryResponseBody) GetAutoBind() *int32 {
 	return s.AutoBind
 }
 
+func (s *GetAuthSummaryResponseBody) GetClusterNodeCheck() *int32 {
+	return s.ClusterNodeCheck
+}
+
 func (s *GetAuthSummaryResponseBody) GetDefaultAuthToAll() *int32 {
 	return s.DefaultAuthToAll
 }
@@ -256,6 +263,11 @@ func (s *GetAuthSummaryResponseBody) SetAllowUserUnbind(v int32) *GetAuthSummary
 
 func (s *GetAuthSummaryResponseBody) SetAutoBind(v int32) *GetAuthSummaryResponseBody {
 	s.AutoBind = &v
+	return s
+}
+
+func (s *GetAuthSummaryResponseBody) SetClusterNodeCheck(v int32) *GetAuthSummaryResponseBody {
+	s.ClusterNodeCheck = &v
 	return s
 }
 

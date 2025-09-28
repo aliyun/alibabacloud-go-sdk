@@ -126,6 +126,7 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// no
 	IsSiemDaAccount     *string `json:"IsSiemDaAccount,omitempty" xml:"IsSiemDaAccount,omitempty"`
+	PostBasicService    *int32  `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
 	SaleInstance        *string `json:"SaleInstance,omitempty" xml:"SaleInstance,omitempty"`
 	// The edition of Security Center that you use. Valid value:
@@ -202,6 +203,10 @@ func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) GetIsSiemDaAccount
 	return s.IsSiemDaAccount
 }
 
+func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) GetPostBasicService() *int32 {
+	return s.PostBasicService
+}
+
 func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) GetPostPayModuleSwitch() *string {
 	return s.PostPayModuleSwitch
 }
@@ -271,6 +276,11 @@ func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) SetIsSiemControlAc
 
 func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) SetIsSiemDaAccount(v string) *ListAccountsInResourceDirectoryResponseBodyAccounts {
 	s.IsSiemDaAccount = &v
+	return s
+}
+
+func (s *ListAccountsInResourceDirectoryResponseBodyAccounts) SetPostBasicService(v int32) *ListAccountsInResourceDirectoryResponseBodyAccounts {
+	s.PostBasicService = &v
 	return s
 }
 
