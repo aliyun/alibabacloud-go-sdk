@@ -757,6 +757,166 @@ func (client *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Contex
 
 // Summary:
 //
+// 因底层升级批量迁移
+//
+// @param tmpReq - BatchEventMigrateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchEventMigrateInstanceResponse
+func (client *Client) BatchEventMigrateInstanceWithContext(ctx context.Context, tmpReq *BatchEventMigrateInstanceRequest, runtime *dara.RuntimeOptions) (_result *BatchEventMigrateInstanceResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchEventMigrateInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventInfos) {
+		request.EventInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventInfos, dara.String("EventInfos"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventInfosShrink) {
+		query["EventInfos"] = request.EventInfosShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchEventMigrateInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchEventMigrateInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量因系统维护实例重启
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `Action` 参数固定为 `BatchEventRebootInstance`。
+//
+// - `Version` 参数固定为 `2017-11-10`。
+//
+// - `EventInfos` 是一个数组，每个元素包含需要重启实例的信息，包括事件ID、资源ID、操作类型（立即执行或预约执行）以及可选的计划时间戳（毫秒）。
+//
+// - 如果选择预约执行，则必须提供 `PlanTime` 字段的时间戳。
+//
+// - 返回结果中，`Results` 数组包含了每个请求的结果信息，包括消息、资源ID、事件ID和状态码。
+//
+// - 错误情况下，返回相应的错误代码和消息。
+//
+// @param tmpReq - BatchEventRebootInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchEventRebootInstanceResponse
+func (client *Client) BatchEventRebootInstanceWithContext(ctx context.Context, tmpReq *BatchEventRebootInstanceRequest, runtime *dara.RuntimeOptions) (_result *BatchEventRebootInstanceResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchEventRebootInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventInfos) {
+		request.EventInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventInfos, dara.String("EventInfos"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventInfosShrink) {
+		query["EventInfos"] = request.EventInfosShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchEventRebootInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchEventRebootInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量操作重新部署
+//
+// @param tmpReq - BatchEventRedeployInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchEventRedeployInstanceResponse
+func (client *Client) BatchEventRedeployInstanceWithContext(ctx context.Context, tmpReq *BatchEventRedeployInstanceRequest, runtime *dara.RuntimeOptions) (_result *BatchEventRedeployInstanceResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchEventRedeployInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventInfos) {
+		request.EventInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventInfos, dara.String("EventInfos"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventInfosShrink) {
+		query["EventInfos"] = request.EventInfosShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchEventRedeployInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchEventRedeployInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 清理分发数据
 //
 // @param request - CleanDistDataRequest
@@ -5872,6 +6032,10 @@ func (client *Client) DescribeEnsNetDistrictWithContext(ctx context.Context, req
 		query["NetDistrictCode"] = request.NetDistrictCode
 	}
 
+	if !dara.IsNil(request.NetDistrictCodeNode) {
+		query["NetDistrictCodeNode"] = request.NetDistrictCodeNode
+	}
+
 	if !dara.IsNil(request.NetLevelCode) {
 		query["NetLevelCode"] = request.NetLevelCode
 	}
@@ -6963,6 +7127,86 @@ func (client *Client) DescribeHaVipsWithContext(ctx context.Context, request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeHaVipsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询事件列表
+//
+// @param tmpReq - DescribeHistoryEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryEventsResponse
+func (client *Client) DescribeHistoryEventsWithContext(ctx context.Context, tmpReq *DescribeHistoryEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryEventsResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeHistoryEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventLevels) {
+		request.EventLevelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventLevels, dara.String("EventLevels"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.EventStatus) {
+		request.EventStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventStatus, dara.String("EventStatus"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.EventTypes) {
+		request.EventTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventTypes, dara.String("EventTypes"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.ResourceIds) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, dara.String("ResourceIds"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventLevelsShrink) {
+		query["EventLevels"] = request.EventLevelsShrink
+	}
+
+	if !dara.IsNil(request.EventStatusShrink) {
+		query["EventStatus"] = request.EventStatusShrink
+	}
+
+	if !dara.IsNil(request.EventTypesShrink) {
+		query["EventTypes"] = request.EventTypesShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceIdsShrink) {
+		query["ResourceIds"] = request.ResourceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryEvents"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryEventsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9941,6 +10185,188 @@ func (client *Client) DistApplicationDataWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DistApplicationDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 因底层升级需要迁移
+//
+// @param request - EventMigrateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EventMigrateInstanceResponse
+func (client *Client) EventMigrateInstanceWithContext(ctx context.Context, request *EventMigrateInstanceRequest, runtime *dara.RuntimeOptions) (_result *EventMigrateInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataPolicy) {
+		query["DataPolicy"] = request.DataPolicy
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.OpsType) {
+		query["OpsType"] = request.OpsType
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.PlanTime) {
+		query["PlanTime"] = request.PlanTime
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EventMigrateInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EventMigrateInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 因系统维护实例重启
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于触发一个实例的重启事件。
+//
+// - `OpsType`参数可选，若不提供，默认为`scheduled`（预约执行）。
+//
+// - 当选择`scheduled`时，必须提供`PlanTime`参数，格式为时间戳（毫秒）。
+//
+// - 如果需要立即执行重启，请设置`OpsType`为`immediate`。
+//
+// @param request - EventRebootInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EventRebootInstanceResponse
+func (client *Client) EventRebootInstanceWithContext(ctx context.Context, request *EventRebootInstanceRequest, runtime *dara.RuntimeOptions) (_result *EventRebootInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.OpsType) {
+		query["OpsType"] = request.OpsType
+	}
+
+	if !dara.IsNil(request.PlanTime) {
+		query["PlanTime"] = request.PlanTime
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EventRebootInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EventRebootInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 节点内迁移
+//
+// @param request - EventRedeployInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EventRedeployInstanceResponse
+func (client *Client) EventRedeployInstanceWithContext(ctx context.Context, request *EventRedeployInstanceRequest, runtime *dara.RuntimeOptions) (_result *EventRedeployInstanceResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.OpsType) {
+		query["OpsType"] = request.OpsType
+	}
+
+	if !dara.IsNil(request.PlanTime) {
+		query["PlanTime"] = request.PlanTime
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EventRedeployInstance"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EventRedeployInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
