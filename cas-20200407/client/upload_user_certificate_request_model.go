@@ -70,6 +70,8 @@ type UploadUserCertificateRequest struct {
 	//
 	// >  The name must be unique within an Alibaba Cloud account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cert-1
