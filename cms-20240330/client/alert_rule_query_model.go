@@ -13,8 +13,12 @@ type iAlertRuleQuery interface {
 	GetCheckAfterDataComplete() *bool
 	SetDimensions(v []map[string]*string) *AlertRuleQuery
 	GetDimensions() []map[string]*string
+	SetDomain(v string) *AlertRuleQuery
+	GetDomain() *string
 	SetDuration(v int64) *AlertRuleQuery
 	GetDuration() *int64
+	SetEntityFilter(v *AlertRuleQueryEntityFilter) *AlertRuleQuery
+	GetEntityFilter() *AlertRuleQueryEntityFilter
 	SetExpr(v string) *AlertRuleQuery
 	GetExpr() *string
 	SetFirstJoin(v *AlertRuleSlsQueryJoin) *AlertRuleQuery
@@ -25,6 +29,10 @@ type iAlertRuleQuery interface {
 	GetGroupId() *string
 	SetGroupType(v string) *AlertRuleQuery
 	GetGroupType() *string
+	SetMetric(v string) *AlertRuleQuery
+	GetMetric() *string
+	SetMetricSet(v string) *AlertRuleQuery
+	GetMetricSet() *string
 	SetNamespace(v string) *AlertRuleQuery
 	GetNamespace() *string
 	SetQueries(v []*AlertRuleQueryQueries) *AlertRuleQuery
@@ -40,19 +48,23 @@ type iAlertRuleQuery interface {
 }
 
 type AlertRuleQuery struct {
-	CheckAfterDataComplete *bool                    `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
-	Dimensions             []map[string]*string     `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
-	Duration               *int64                   `json:"duration,omitempty" xml:"duration,omitempty"`
-	Expr                   *string                  `json:"expr,omitempty" xml:"expr,omitempty"`
-	FirstJoin              *AlertRuleSlsQueryJoin   `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
-	GroupFieldList         []*string                `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
-	GroupId                *string                  `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	GroupType              *string                  `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	Namespace              *string                  `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Queries                []*AlertRuleQueryQueries `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
-	RelationType           *string                  `json:"relationType,omitempty" xml:"relationType,omitempty"`
-	SecondJoin             *AlertRuleSlsQueryJoin   `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
-	ServiceIds             []*string                `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+	CheckAfterDataComplete *bool                       `json:"checkAfterDataComplete,omitempty" xml:"checkAfterDataComplete,omitempty"`
+	Dimensions             []map[string]*string        `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	Domain                 *string                     `json:"domain,omitempty" xml:"domain,omitempty"`
+	Duration               *int64                      `json:"duration,omitempty" xml:"duration,omitempty"`
+	EntityFilter           *AlertRuleQueryEntityFilter `json:"entityFilter,omitempty" xml:"entityFilter,omitempty" type:"Struct"`
+	Expr                   *string                     `json:"expr,omitempty" xml:"expr,omitempty"`
+	FirstJoin              *AlertRuleSlsQueryJoin      `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
+	GroupFieldList         []*string                   `json:"groupFieldList,omitempty" xml:"groupFieldList,omitempty" type:"Repeated"`
+	GroupId                *string                     `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	GroupType              *string                     `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	Metric                 *string                     `json:"metric,omitempty" xml:"metric,omitempty"`
+	MetricSet              *string                     `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
+	Namespace              *string                     `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Queries                []*AlertRuleQueryQueries    `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	RelationType           *string                     `json:"relationType,omitempty" xml:"relationType,omitempty"`
+	SecondJoin             *AlertRuleSlsQueryJoin      `json:"secondJoin,omitempty" xml:"secondJoin,omitempty"`
+	ServiceIds             []*string                   `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
 	// 查询类型
 	//
 	// This parameter is required.
@@ -75,8 +87,16 @@ func (s *AlertRuleQuery) GetDimensions() []map[string]*string {
 	return s.Dimensions
 }
 
+func (s *AlertRuleQuery) GetDomain() *string {
+	return s.Domain
+}
+
 func (s *AlertRuleQuery) GetDuration() *int64 {
 	return s.Duration
+}
+
+func (s *AlertRuleQuery) GetEntityFilter() *AlertRuleQueryEntityFilter {
+	return s.EntityFilter
 }
 
 func (s *AlertRuleQuery) GetExpr() *string {
@@ -97,6 +117,14 @@ func (s *AlertRuleQuery) GetGroupId() *string {
 
 func (s *AlertRuleQuery) GetGroupType() *string {
 	return s.GroupType
+}
+
+func (s *AlertRuleQuery) GetMetric() *string {
+	return s.Metric
+}
+
+func (s *AlertRuleQuery) GetMetricSet() *string {
+	return s.MetricSet
 }
 
 func (s *AlertRuleQuery) GetNamespace() *string {
@@ -133,8 +161,18 @@ func (s *AlertRuleQuery) SetDimensions(v []map[string]*string) *AlertRuleQuery {
 	return s
 }
 
+func (s *AlertRuleQuery) SetDomain(v string) *AlertRuleQuery {
+	s.Domain = &v
+	return s
+}
+
 func (s *AlertRuleQuery) SetDuration(v int64) *AlertRuleQuery {
 	s.Duration = &v
+	return s
+}
+
+func (s *AlertRuleQuery) SetEntityFilter(v *AlertRuleQueryEntityFilter) *AlertRuleQuery {
+	s.EntityFilter = v
 	return s
 }
 
@@ -160,6 +198,16 @@ func (s *AlertRuleQuery) SetGroupId(v string) *AlertRuleQuery {
 
 func (s *AlertRuleQuery) SetGroupType(v string) *AlertRuleQuery {
 	s.GroupType = &v
+	return s
+}
+
+func (s *AlertRuleQuery) SetMetric(v string) *AlertRuleQuery {
+	s.Metric = &v
+	return s
+}
+
+func (s *AlertRuleQuery) SetMetricSet(v string) *AlertRuleQuery {
+	s.MetricSet = &v
 	return s
 }
 
@@ -194,6 +242,96 @@ func (s *AlertRuleQuery) SetType(v string) *AlertRuleQuery {
 }
 
 func (s *AlertRuleQuery) Validate() error {
+	return dara.Validate(s)
+}
+
+type AlertRuleQueryEntityFilter struct {
+	Domain  *string                              `json:"domain,omitempty" xml:"domain,omitempty"`
+	Filters []*AlertRuleQueryEntityFilterFilters `json:"filters,omitempty" xml:"filters,omitempty" type:"Repeated"`
+	Type    *string                              `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s AlertRuleQueryEntityFilter) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleQueryEntityFilter) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleQueryEntityFilter) GetDomain() *string {
+	return s.Domain
+}
+
+func (s *AlertRuleQueryEntityFilter) GetFilters() []*AlertRuleQueryEntityFilterFilters {
+	return s.Filters
+}
+
+func (s *AlertRuleQueryEntityFilter) GetType() *string {
+	return s.Type
+}
+
+func (s *AlertRuleQueryEntityFilter) SetDomain(v string) *AlertRuleQueryEntityFilter {
+	s.Domain = &v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilter) SetFilters(v []*AlertRuleQueryEntityFilterFilters) *AlertRuleQueryEntityFilter {
+	s.Filters = v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilter) SetType(v string) *AlertRuleQueryEntityFilter {
+	s.Type = &v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilter) Validate() error {
+	return dara.Validate(s)
+}
+
+type AlertRuleQueryEntityFilterFilters struct {
+	Field    *string `json:"field,omitempty" xml:"field,omitempty"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s AlertRuleQueryEntityFilterFilters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleQueryEntityFilterFilters) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) GetField() *string {
+	return s.Field
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) GetValue() *string {
+	return s.Value
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) SetField(v string) *AlertRuleQueryEntityFilterFilters {
+	s.Field = &v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) SetOperator(v string) *AlertRuleQueryEntityFilterFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) SetValue(v string) *AlertRuleQueryEntityFilterFilters {
+	s.Value = &v
+	return s
+}
+
+func (s *AlertRuleQueryEntityFilterFilters) Validate() error {
 	return dara.Validate(s)
 }
 

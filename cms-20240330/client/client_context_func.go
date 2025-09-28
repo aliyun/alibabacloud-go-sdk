@@ -1729,6 +1729,105 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
+// 查询接入中心策略列表信息
+//
+// @param tmpReq - ListIntegrationPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPoliciesResponse
+func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tmpReq *ListIntegrationPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPoliciesResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListIntegrationPoliciesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.EntityGroupIds) {
+		query["entityGroupIds"] = request.EntityGroupIds
+	}
+
+	if !dara.IsNil(request.FilterRegionIds) {
+		query["filterRegionIds"] = request.FilterRegionIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["policyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.PolicyName) {
+		query["policyName"] = request.PolicyName
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		query["policyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.PrometheusInstanceId) {
+		query["prometheusInstanceId"] = request.PrometheusInstanceId
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicies"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
@@ -1772,6 +1871,55 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithContext(ctx c
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListIntegrationPolicyCustomScrapeJobRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略大盘列表
+//
+// @param request - ListIntegrationPolicyDashboardsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntegrationPolicyDashboardsResponse
+func (client *Client) ListIntegrationPolicyDashboardsWithContext(ctx context.Context, policyId *string, request *ListIntegrationPolicyDashboardsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyDashboardsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddonName) {
+		query["addonName"] = request.AddonName
+	}
+
+	if !dara.IsNil(request.Scene) {
+		query["scene"] = request.Scene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIntegrationPolicyDashboards"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/integration-policies/" + dara.PercentEncode(dara.StringValue(policyId)) + "/dashboards"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIntegrationPolicyDashboardsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
