@@ -2,58 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("central")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("dypnsapi"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -64,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckSmsVerifyCodeResponse
-func (client *Client) CheckSmsVerifyCodeWithOptions(request *CheckSmsVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *CheckSmsVerifyCodeResponse, _err error) {
+func (client *Client) CheckSmsVerifyCodeWithContext(ctx context.Context, request *CheckSmsVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *CheckSmsVerifyCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -121,29 +73,11 @@ func (client *Client) CheckSmsVerifyCodeWithOptions(request *CheckSmsVerifyCodeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckSmsVerifyCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies SMS verification codes.
-//
-// @param request - CheckSmsVerifyCodeRequest
-//
-// @return CheckSmsVerifyCodeResponse
-func (client *Client) CheckSmsVerifyCode(request *CheckSmsVerifyCodeRequest) (_result *CheckSmsVerifyCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckSmsVerifyCodeResponse{}
-	_body, _err := client.CheckSmsVerifyCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -156,7 +90,7 @@ func (client *Client) CheckSmsVerifyCode(request *CheckSmsVerifyCodeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSchemeConfigResponse
-func (client *Client) CreateSchemeConfigWithOptions(request *CreateSchemeConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateSchemeConfigResponse, _err error) {
+func (client *Client) CreateSchemeConfigWithContext(ctx context.Context, request *CreateSchemeConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateSchemeConfigResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -221,29 +155,11 @@ func (client *Client) CreateSchemeConfigWithOptions(request *CreateSchemeConfigR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateSchemeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a code for a converged communication authentication service.
-//
-// @param request - CreateSchemeConfigRequest
-//
-// @return CreateSchemeConfigResponse
-func (client *Client) CreateSchemeConfig(request *CreateSchemeConfigRequest) (_result *CreateSchemeConfigResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateSchemeConfigResponse{}
-	_body, _err := client.CreateSchemeConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -262,7 +178,7 @@ func (client *Client) CreateSchemeConfig(request *CreateSchemeConfigRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateVerifySchemeResponse
-func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *CreateVerifySchemeResponse, _err error) {
+func (client *Client) CreateVerifySchemeWithContext(ctx context.Context, request *CreateVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *CreateVerifySchemeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -371,35 +287,11 @@ func (client *Client) CreateVerifySchemeWithOptions(request *CreateVerifySchemeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVerifySchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a verification service.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CreateVerifySchemeRequest
-//
-// @return CreateVerifySchemeResponse
-func (client *Client) CreateVerifyScheme(request *CreateVerifySchemeRequest) (_result *CreateVerifySchemeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateVerifySchemeResponse{}
-	_body, _err := client.CreateVerifySchemeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -418,7 +310,7 @@ func (client *Client) CreateVerifyScheme(request *CreateVerifySchemeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVerifySchemeResponse
-func (client *Client) DeleteVerifySchemeWithOptions(request *DeleteVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *DeleteVerifySchemeResponse, _err error) {
+func (client *Client) DeleteVerifySchemeWithContext(ctx context.Context, request *DeleteVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *DeleteVerifySchemeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -459,35 +351,11 @@ func (client *Client) DeleteVerifySchemeWithOptions(request *DeleteVerifySchemeR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVerifySchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a verification service.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteVerifySchemeRequest
-//
-// @return DeleteVerifySchemeResponse
-func (client *Client) DeleteVerifyScheme(request *DeleteVerifySchemeRequest) (_result *DeleteVerifySchemeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteVerifySchemeResponse{}
-	_body, _err := client.DeleteVerifySchemeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -506,7 +374,7 @@ func (client *Client) DeleteVerifyScheme(request *DeleteVerifySchemeRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVerifySchemeResponse
-func (client *Client) DescribeVerifySchemeWithOptions(request *DescribeVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifySchemeResponse, _err error) {
+func (client *Client) DescribeVerifySchemeWithContext(ctx context.Context, request *DescribeVerifySchemeRequest, runtime *dara.RuntimeOptions) (_result *DescribeVerifySchemeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -547,35 +415,11 @@ func (client *Client) DescribeVerifySchemeWithOptions(request *DescribeVerifySch
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVerifySchemeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a verification service.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeVerifySchemeRequest
-//
-// @return DescribeVerifySchemeResponse
-func (client *Client) DescribeVerifyScheme(request *DescribeVerifySchemeRequest) (_result *DescribeVerifySchemeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeVerifySchemeResponse{}
-	_body, _err := client.DescribeVerifySchemeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -598,7 +442,7 @@ func (client *Client) DescribeVerifyScheme(request *DescribeVerifySchemeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAuthTokenResponse
-func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
+func (client *Client) GetAuthTokenWithContext(ctx context.Context, request *GetAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -663,39 +507,11 @@ func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAuthTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the authorization token used for the authentication of the phone number verification for HTML5 pages. You can obtain AccessToken and JwtToken after a successful call.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](https://help.aliyun.com/document_detail/169786.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetAuthTokenRequest
-//
-// @return GetAuthTokenResponse
-func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAuthTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAuthTokenResponse{}
-	_body, _err := client.GetAuthTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -718,7 +534,7 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAuthorizationUrlResponse
-func (client *Client) GetAuthorizationUrlWithOptions(request *GetAuthorizationUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationUrlResponse, _err error) {
+func (client *Client) GetAuthorizationUrlWithContext(ctx context.Context, request *GetAuthorizationUrlRequest, runtime *dara.RuntimeOptions) (_result *GetAuthorizationUrlResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -763,39 +579,11 @@ func (client *Client) GetAuthorizationUrlWithOptions(request *GetAuthorizationUr
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAuthorizationUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the URL for the Alipay account authorization.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](https://help.aliyun.com/document_detail/196922.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetAuthorizationUrlRequest
-//
-// @return GetAuthorizationUrlResponse
-func (client *Client) GetAuthorizationUrl(request *GetAuthorizationUrlRequest) (_result *GetAuthorizationUrlResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetAuthorizationUrlResponse{}
-	_body, _err := client.GetAuthorizationUrlWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -808,7 +596,7 @@ func (client *Client) GetAuthorizationUrl(request *GetAuthorizationUrlRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFusionAuthTokenResponse
-func (client *Client) GetFusionAuthTokenWithOptions(request *GetFusionAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetFusionAuthTokenResponse, _err error) {
+func (client *Client) GetFusionAuthTokenWithContext(ctx context.Context, request *GetFusionAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *GetFusionAuthTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,29 +653,11 @@ func (client *Client) GetFusionAuthTokenWithOptions(request *GetFusionAuthTokenR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFusionAuthTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the verification results by using the token that is obtained from the client SDKs.
-//
-// @param request - GetFusionAuthTokenRequest
-//
-// @return GetFusionAuthTokenResponse
-func (client *Client) GetFusionAuthToken(request *GetFusionAuthTokenRequest) (_result *GetFusionAuthTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetFusionAuthTokenResponse{}
-	_body, _err := client.GetFusionAuthTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -912,7 +682,7 @@ func (client *Client) GetFusionAuthToken(request *GetFusionAuthTokenRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMobileResponse
-func (client *Client) GetMobileWithOptions(request *GetMobileRequest, runtime *dara.RuntimeOptions) (_result *GetMobileResponse, _err error) {
+func (client *Client) GetMobileWithContext(ctx context.Context, request *GetMobileRequest, runtime *dara.RuntimeOptions) (_result *GetMobileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -953,41 +723,11 @@ func (client *Client) GetMobileWithOptions(request *GetMobileRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetMobileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a phone number for one-click logon.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/84541.html).
-//
-// >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetMobileRequest
-//
-// @return GetMobileResponse
-func (client *Client) GetMobile(request *GetMobileRequest) (_result *GetMobileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetMobileResponse{}
-	_body, _err := client.GetMobileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1012,7 +752,7 @@ func (client *Client) GetMobile(request *GetMobileRequest) (_result *GetMobileRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPhoneWithTokenResponse
-func (client *Client) GetPhoneWithTokenWithOptions(request *GetPhoneWithTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneWithTokenResponse, _err error) {
+func (client *Client) GetPhoneWithTokenWithContext(ctx context.Context, request *GetPhoneWithTokenRequest, runtime *dara.RuntimeOptions) (_result *GetPhoneWithTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1049,41 +789,11 @@ func (client *Client) GetPhoneWithTokenWithOptions(request *GetPhoneWithTokenReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPhoneWithTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains a phone number for one-click logon. This operation is exclusive to HTML5 pages.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/84541.html).
-//
-// >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetPhoneWithTokenRequest
-//
-// @return GetPhoneWithTokenResponse
-func (client *Client) GetPhoneWithToken(request *GetPhoneWithTokenRequest) (_result *GetPhoneWithTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetPhoneWithTokenResponse{}
-	_body, _err := client.GetPhoneWithTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1106,7 +816,7 @@ func (client *Client) GetPhoneWithToken(request *GetPhoneWithTokenRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSmsAuthTokensResponse
-func (client *Client) GetSmsAuthTokensWithOptions(request *GetSmsAuthTokensRequest, runtime *dara.RuntimeOptions) (_result *GetSmsAuthTokensResponse, _err error) {
+func (client *Client) GetSmsAuthTokensWithContext(ctx context.Context, request *GetSmsAuthTokensRequest, runtime *dara.RuntimeOptions) (_result *GetSmsAuthTokensResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1171,39 +881,11 @@ func (client *Client) GetSmsAuthTokensWithOptions(request *GetSmsAuthTokensReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSmsAuthTokensResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the authorization token for an SMS verification code.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](https://help.aliyun.com/document_detail/313209.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - GetSmsAuthTokensRequest
-//
-// @return GetSmsAuthTokensResponse
-func (client *Client) GetSmsAuthTokens(request *GetSmsAuthTokensRequest) (_result *GetSmsAuthTokensResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSmsAuthTokensResponse{}
-	_body, _err := client.GetSmsAuthTokensWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1222,7 +904,7 @@ func (client *Client) GetSmsAuthTokens(request *GetSmsAuthTokensRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryGateVerifyBillingPublicResponse
-func (client *Client) QueryGateVerifyBillingPublicWithOptions(request *QueryGateVerifyBillingPublicRequest, runtime *dara.RuntimeOptions) (_result *QueryGateVerifyBillingPublicResponse, _err error) {
+func (client *Client) QueryGateVerifyBillingPublicWithContext(ctx context.Context, request *QueryGateVerifyBillingPublicRequest, runtime *dara.RuntimeOptions) (_result *QueryGateVerifyBillingPublicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1259,35 +941,11 @@ func (client *Client) QueryGateVerifyBillingPublicWithOptions(request *QueryGate
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryGateVerifyBillingPublicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the fees generated by a verification service.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryGateVerifyBillingPublicRequest
-//
-// @return QueryGateVerifyBillingPublicResponse
-func (client *Client) QueryGateVerifyBillingPublic(request *QueryGateVerifyBillingPublicRequest) (_result *QueryGateVerifyBillingPublicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryGateVerifyBillingPublicResponse{}
-	_body, _err := client.QueryGateVerifyBillingPublicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1306,7 +964,7 @@ func (client *Client) QueryGateVerifyBillingPublic(request *QueryGateVerifyBilli
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryGateVerifyStatisticPublicResponse
-func (client *Client) QueryGateVerifyStatisticPublicWithOptions(request *QueryGateVerifyStatisticPublicRequest, runtime *dara.RuntimeOptions) (_result *QueryGateVerifyStatisticPublicResponse, _err error) {
+func (client *Client) QueryGateVerifyStatisticPublicWithContext(ctx context.Context, request *QueryGateVerifyStatisticPublicRequest, runtime *dara.RuntimeOptions) (_result *QueryGateVerifyStatisticPublicResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1355,35 +1013,11 @@ func (client *Client) QueryGateVerifyStatisticPublicWithOptions(request *QueryGa
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryGateVerifyStatisticPublicResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the calls of Phone Number Verification Service.
-//
-// Description:
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - QueryGateVerifyStatisticPublicRequest
-//
-// @return QueryGateVerifyStatisticPublicResponse
-func (client *Client) QueryGateVerifyStatisticPublic(request *QueryGateVerifyStatisticPublicRequest) (_result *QueryGateVerifyStatisticPublicResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryGateVerifyStatisticPublicResponse{}
-	_body, _err := client.QueryGateVerifyStatisticPublicWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1398,7 +1032,7 @@ func (client *Client) QueryGateVerifyStatisticPublic(request *QueryGateVerifySta
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QuerySendDetailsResponse
-func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
+func (client *Client) QuerySendDetailsWithContext(ctx context.Context, request *QuerySendDetailsRequest, runtime *dara.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1451,32 +1085,11 @@ func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QuerySendDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI QuerySendDetails is deprecated
-//
-// Summary:
-//
-// Queries the delivery status of the SMS verification code. You can query only the delivery status of the SMS verification code that is sent by calling corresponding API operations.
-//
-// @param request - QuerySendDetailsRequest
-//
-// @return QuerySendDetailsResponse
-// Deprecated
-func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_result *QuerySendDetailsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QuerySendDetailsResponse{}
-	_body, _err := client.QuerySendDetailsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1489,7 +1102,7 @@ func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SendSmsVerifyCodeResponse
-func (client *Client) SendSmsVerifyCodeWithOptions(request *SendSmsVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *SendSmsVerifyCodeResponse, _err error) {
+func (client *Client) SendSmsVerifyCodeWithContext(ctx context.Context, request *SendSmsVerifyCodeRequest, runtime *dara.RuntimeOptions) (_result *SendSmsVerifyCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1582,29 +1195,11 @@ func (client *Client) SendSmsVerifyCodeWithOptions(request *SendSmsVerifyCodeReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &SendSmsVerifyCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Sends SMS verification codes.
-//
-// @param request - SendSmsVerifyCodeRequest
-//
-// @return SendSmsVerifyCodeResponse
-func (client *Client) SendSmsVerifyCode(request *SendSmsVerifyCodeRequest) (_result *SendSmsVerifyCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &SendSmsVerifyCodeResponse{}
-	_body, _err := client.SendSmsVerifyCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1629,7 +1224,7 @@ func (client *Client) SendSmsVerifyCode(request *SendSmsVerifyCodeRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyMobileResponse
-func (client *Client) VerifyMobileWithOptions(request *VerifyMobileRequest, runtime *dara.RuntimeOptions) (_result *VerifyMobileResponse, _err error) {
+func (client *Client) VerifyMobileWithContext(ctx context.Context, request *VerifyMobileRequest, runtime *dara.RuntimeOptions) (_result *VerifyMobileResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1674,41 +1269,11 @@ func (client *Client) VerifyMobileWithOptions(request *VerifyMobileRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyMobileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies the phone number that you use.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/84541.html).
-//
-// >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](https://help.aliyun.com/document_detail/189865.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - VerifyMobileRequest
-//
-// @return VerifyMobileResponse
-func (client *Client) VerifyMobile(request *VerifyMobileRequest) (_result *VerifyMobileResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyMobileResponse{}
-	_body, _err := client.VerifyMobileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1731,7 +1296,7 @@ func (client *Client) VerifyMobile(request *VerifyMobileRequest) (_result *Verif
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyPhoneWithTokenResponse
-func (client *Client) VerifyPhoneWithTokenWithOptions(request *VerifyPhoneWithTokenRequest, runtime *dara.RuntimeOptions) (_result *VerifyPhoneWithTokenResponse, _err error) {
+func (client *Client) VerifyPhoneWithTokenWithContext(ctx context.Context, request *VerifyPhoneWithTokenRequest, runtime *dara.RuntimeOptions) (_result *VerifyPhoneWithTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1772,39 +1337,11 @@ func (client *Client) VerifyPhoneWithTokenWithOptions(request *VerifyPhoneWithTo
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyPhoneWithTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies the phone number used in HTML5 pages.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](https://help.aliyun.com/document_detail/169786.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - VerifyPhoneWithTokenRequest
-//
-// @return VerifyPhoneWithTokenResponse
-func (client *Client) VerifyPhoneWithToken(request *VerifyPhoneWithTokenRequest) (_result *VerifyPhoneWithTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyPhoneWithTokenResponse{}
-	_body, _err := client.VerifyPhoneWithTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1827,7 +1364,7 @@ func (client *Client) VerifyPhoneWithToken(request *VerifyPhoneWithTokenRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifySmsCodeResponse
-func (client *Client) VerifySmsCodeWithOptions(request *VerifySmsCodeRequest, runtime *dara.RuntimeOptions) (_result *VerifySmsCodeResponse, _err error) {
+func (client *Client) VerifySmsCodeWithContext(ctx context.Context, request *VerifySmsCodeRequest, runtime *dara.RuntimeOptions) (_result *VerifySmsCodeResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1860,39 +1397,11 @@ func (client *Client) VerifySmsCodeWithOptions(request *VerifySmsCodeRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifySmsCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Verifies SMS verification codes.
-//
-// Description:
-//
-// ### [](#)Preparations
-//
-// You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](https://help.aliyun.com/document_detail/313209.html).
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - VerifySmsCodeRequest
-//
-// @return VerifySmsCodeResponse
-func (client *Client) VerifySmsCode(request *VerifySmsCodeRequest) (_result *VerifySmsCodeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifySmsCodeResponse{}
-	_body, _err := client.VerifySmsCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1905,7 +1414,7 @@ func (client *Client) VerifySmsCode(request *VerifySmsCodeRequest) (_result *Ver
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return VerifyWithFusionAuthTokenResponse
-func (client *Client) VerifyWithFusionAuthTokenWithOptions(request *VerifyWithFusionAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *VerifyWithFusionAuthTokenResponse, _err error) {
+func (client *Client) VerifyWithFusionAuthTokenWithContext(ctx context.Context, request *VerifyWithFusionAuthTokenRequest, runtime *dara.RuntimeOptions) (_result *VerifyWithFusionAuthTokenResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -1942,28 +1451,10 @@ func (client *Client) VerifyWithFusionAuthTokenWithOptions(request *VerifyWithFu
 		BodyType:    dara.String("json"),
 	}
 	_result = &VerifyWithFusionAuthTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Obtains the verification results by using the verification token that is obtained by using the authentication token.
-//
-// @param request - VerifyWithFusionAuthTokenRequest
-//
-// @return VerifyWithFusionAuthTokenResponse
-func (client *Client) VerifyWithFusionAuthToken(request *VerifyWithFusionAuthTokenRequest) (_result *VerifyWithFusionAuthTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &VerifyWithFusionAuthTokenResponse{}
-	_body, _err := client.VerifyWithFusionAuthTokenWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
