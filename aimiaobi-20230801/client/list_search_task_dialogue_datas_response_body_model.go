@@ -11,6 +11,8 @@ type iListSearchTaskDialogueDatasResponseBody interface {
 	GoString() string
 	SetArticles(v []*ListSearchTaskDialogueDatasResponseBodyArticles) *ListSearchTaskDialogueDatasResponseBody
 	GetArticles() []*ListSearchTaskDialogueDatasResponseBodyArticles
+	SetAudios(v []*ListSearchTaskDialogueDatasResponseBodyAudios) *ListSearchTaskDialogueDatasResponseBody
+	GetAudios() []*ListSearchTaskDialogueDatasResponseBodyAudios
 	SetCode(v string) *ListSearchTaskDialogueDatasResponseBody
 	GetCode() *string
 	SetHttpStatusCode(v int32) *ListSearchTaskDialogueDatasResponseBody
@@ -39,6 +41,7 @@ type iListSearchTaskDialogueDatasResponseBody interface {
 
 type ListSearchTaskDialogueDatasResponseBody struct {
 	Articles []*ListSearchTaskDialogueDatasResponseBodyArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	Audios   []*ListSearchTaskDialogueDatasResponseBodyAudios   `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
 	// example:
 	//
 	// NoData
@@ -95,6 +98,10 @@ func (s *ListSearchTaskDialogueDatasResponseBody) GetArticles() []*ListSearchTas
 	return s.Articles
 }
 
+func (s *ListSearchTaskDialogueDatasResponseBody) GetAudios() []*ListSearchTaskDialogueDatasResponseBodyAudios {
+	return s.Audios
+}
+
 func (s *ListSearchTaskDialogueDatasResponseBody) GetCode() *string {
 	return s.Code
 }
@@ -145,6 +152,11 @@ func (s *ListSearchTaskDialogueDatasResponseBody) GetVideos() []*ListSearchTaskD
 
 func (s *ListSearchTaskDialogueDatasResponseBody) SetArticles(v []*ListSearchTaskDialogueDatasResponseBodyArticles) *ListSearchTaskDialogueDatasResponseBody {
 	s.Articles = v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBody) SetAudios(v []*ListSearchTaskDialogueDatasResponseBodyAudios) *ListSearchTaskDialogueDatasResponseBody {
+	s.Audios = v
 	return s
 }
 
@@ -470,6 +482,47 @@ func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) SetMed
 }
 
 func (s *ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListSearchTaskDialogueDatasResponseBodyAudios struct {
+	// example:
+	//
+	// http://xxx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xxxx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyAudios) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListSearchTaskDialogueDatasResponseBodyAudios) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyAudios) GetFileUrl() *string {
+	return s.FileUrl
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyAudios) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyAudios) SetFileUrl(v string) *ListSearchTaskDialogueDatasResponseBodyAudios {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyAudios) SetMediaId(v string) *ListSearchTaskDialogueDatasResponseBodyAudios {
+	s.MediaId = &v
+	return s
+}
+
+func (s *ListSearchTaskDialogueDatasResponseBodyAudios) Validate() error {
 	return dara.Validate(s)
 }
 

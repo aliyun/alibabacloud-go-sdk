@@ -13,6 +13,8 @@ type iRunSearchGenerationShrinkRequest interface {
 	GetAgentContextShrink() *string
 	SetChatConfigShrink(v string) *RunSearchGenerationShrinkRequest
 	GetChatConfigShrink() *string
+	SetFileUrl(v string) *RunSearchGenerationShrinkRequest
+	GetFileUrl() *string
 	SetModelId(v string) *RunSearchGenerationShrinkRequest
 	GetModelId() *string
 	SetOriginalSessionId(v string) *RunSearchGenerationShrinkRequest
@@ -31,6 +33,10 @@ type RunSearchGenerationShrinkRequest struct {
 	//
 	// xxx
 	ChatConfigShrink *string `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
+	// example:
+	//
+	// http://xxxx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
 	// qwen-max-latest
@@ -71,6 +77,10 @@ func (s *RunSearchGenerationShrinkRequest) GetChatConfigShrink() *string {
 	return s.ChatConfigShrink
 }
 
+func (s *RunSearchGenerationShrinkRequest) GetFileUrl() *string {
+	return s.FileUrl
+}
+
 func (s *RunSearchGenerationShrinkRequest) GetModelId() *string {
 	return s.ModelId
 }
@@ -98,6 +108,11 @@ func (s *RunSearchGenerationShrinkRequest) SetAgentContextShrink(v string) *RunS
 
 func (s *RunSearchGenerationShrinkRequest) SetChatConfigShrink(v string) *RunSearchGenerationShrinkRequest {
 	s.ChatConfigShrink = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetFileUrl(v string) *RunSearchGenerationShrinkRequest {
+	s.FileUrl = &v
 	return s
 }
 

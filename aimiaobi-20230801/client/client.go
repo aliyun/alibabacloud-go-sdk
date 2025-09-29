@@ -11324,6 +11324,10 @@ func (client *Client) RunSearchGenerationWithOptions(tmpReq *RunSearchGeneration
 		body["ChatConfig"] = request.ChatConfigShrink
 	}
 
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
+	}
+
 	if !dara.IsNil(request.ModelId) {
 		body["ModelId"] = request.ModelId
 	}
@@ -16375,6 +16379,10 @@ func (client *Client) runSearchGenerationWithSSE_opYieldFunc(_yield chan *RunSea
 
 	if !dara.IsNil(request.ChatConfigShrink) {
 		body["ChatConfig"] = request.ChatConfigShrink
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
 	}
 
 	if !dara.IsNil(request.ModelId) {

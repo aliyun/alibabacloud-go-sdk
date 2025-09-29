@@ -8336,6 +8336,10 @@ func (client *Client) RunSearchGenerationWithContext(ctx context.Context, tmpReq
 		body["ChatConfig"] = request.ChatConfigShrink
 	}
 
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
+	}
+
 	if !dara.IsNil(request.ModelId) {
 		body["ModelId"] = request.ModelId
 	}

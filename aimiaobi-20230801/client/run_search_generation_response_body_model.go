@@ -234,6 +234,7 @@ func (s *RunSearchGenerationResponseBodyPayload) Validate() error {
 
 type RunSearchGenerationResponseBodyPayloadOutput struct {
 	AgentContext *RunSearchGenerationResponseBodyPayloadOutputAgentContext `json:"AgentContext,omitempty" xml:"AgentContext,omitempty" type:"Struct"`
+	Messages     []*RunSearchGenerationResponseBodyPayloadOutputMessages   `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutput) String() string {
@@ -248,8 +249,17 @@ func (s *RunSearchGenerationResponseBodyPayloadOutput) GetAgentContext() *RunSea
 	return s.AgentContext
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutput) GetMessages() []*RunSearchGenerationResponseBodyPayloadOutputMessages {
+	return s.Messages
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutput) SetAgentContext(v *RunSearchGenerationResponseBodyPayloadOutputAgentContext) *RunSearchGenerationResponseBodyPayloadOutput {
 	s.AgentContext = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutput) SetMessages(v []*RunSearchGenerationResponseBodyPayloadOutputMessages) *RunSearchGenerationResponseBodyPayloadOutput {
+	s.Messages = v
 	return s
 }
 
@@ -433,6 +443,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Val
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent struct {
+	AudioSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult  `json:"AudioSearchResult,omitempty" xml:"AudioSearchResult,omitempty" type:"Struct"`
 	ClusterTopicResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult `json:"ClusterTopicResult,omitempty" xml:"ClusterTopicResult,omitempty" type:"Struct"`
 	ExcerptResult      *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult      `json:"ExcerptResult,omitempty" xml:"ExcerptResult,omitempty" type:"Struct"`
 	ImageSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult  `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
@@ -449,6 +460,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) GoString() string {
 	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) GetAudioSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult {
+	return s.AudioSearchResult
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) GetClusterTopicResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult {
@@ -481,6 +496,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) GetVideoSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult {
 	return s.VideoSearchResult
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetAudioSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.AudioSearchResult = v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetClusterTopicResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
@@ -524,6 +544,278 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult struct {
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) GetSearchResult() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	return s.SearchResult
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://xxx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xxx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *string `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GetArticle() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	return s.Article
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GetClipInfos() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	return s.ClipInfos
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GetFileUrl() *string {
+	return s.FileUrl
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) GetTraceabilityId() *string {
+	return s.TraceabilityId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) SetTraceabilityId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult {
+	s.TraceabilityId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xxx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetDocId() *string {
+	return s.DocId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetDocUuid() *string {
+	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetSearchSourceName() *string {
+	return s.SearchSourceName
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetSummary() *string {
+	return s.Summary
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetTitle() *string {
+	return s.Title
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) GetUrl() *string {
+	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 0.9
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 2
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GetFrom() *float64 {
+	return s.From
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GetText() *string {
+	return s.Text
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GetTo() *float64 {
+	return s.To
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) GetType() *string {
+	return s.Type
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultClipInfos) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -579,6 +871,7 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics struct {
+	AudioSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult `json:"AudioSearchResult,omitempty" xml:"AudioSearchResult,omitempty" type:"Struct"`
 	ImageSearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
 	TextSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResult  `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
 	// example:
@@ -596,6 +889,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) GetAudioSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult {
+	return s.AudioSearchResult
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) GetImageSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult {
 	return s.ImageSearchResult
 }
@@ -610,6 +907,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) GetVideoSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult {
 	return s.VideoSearchResult
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetAudioSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
+	s.AudioSearchResult = v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) SetImageSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics {
@@ -633,6 +935,304 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopics) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult struct {
+	// example:
+	//
+	// 1
+	Current      *int32                                                                                                                                          `json:"Current,omitempty" xml:"Current,omitempty"`
+	SearchResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) GetCurrent() *int32 {
+	return s.Current
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) GetSearchResult() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult {
+	return s.SearchResult
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) GetSize() *int32 {
+	return s.Size
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) GetTotal() *int32 {
+	return s.Total
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) SetSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult {
+	s.Total = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult struct {
+	Article   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle     `json:"Article,omitempty" xml:"Article,omitempty" type:"Struct"`
+	ClipInfos []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos `json:"ClipInfos,omitempty" xml:"ClipInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://xx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// xxx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) GetArticle() *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	return s.Article
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) GetClipInfos() []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	return s.ClipInfos
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) GetFileUrl() *string {
+	return s.FileUrl
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult {
+	s.Article = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) SetClipInfos(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult {
+	s.ClipInfos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) SetFileUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle struct {
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// xx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// http://xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetDocId() *string {
+	return s.DocId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetDocUuid() *string {
+	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSearchSourceName() *string {
+	return s.SearchSourceName
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetSummary() *string {
+	return s.Summary
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetTitle() *string {
+	return s.Title
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) GetUrl() *string {
+	return s.Url
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle {
+	s.Url = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos struct {
+	// example:
+	//
+	// 1
+	From *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 1
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 1
+	To *float64 `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// asr
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GetFrom() *float64 {
+	return s.From
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GetText() *string {
+	return s.Text
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GetTo() *float64 {
+	return s.To
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) GetType() *string {
+	return s.Type
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) SetFrom(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	s.From = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) SetScore(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	s.Score = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) SetText(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	s.Text = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) SetTo(v float64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	s.To = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos {
+	s.Type = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultClipInfos) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -2000,6 +2600,10 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *string `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) String() string {
@@ -2022,6 +2626,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.MediaId
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) GetTraceabilityId() *string {
+	return s.TraceabilityId
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
 	s.Article = v
 	return s
@@ -2034,6 +2642,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
 	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult) SetTraceabilityId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult {
+	s.TraceabilityId = &v
 	return s
 }
 
@@ -2750,6 +3363,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
 	// example:
 	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
 	// example:
@@ -2770,6 +3387,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) GetMediaType() *string {
+	return s.MediaType
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) GetX() *int32 {
 	return s.X
 }
@@ -2780,6 +3401,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) GetZ() *int32 {
 	return s.Z
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.MediaType = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate {
@@ -3660,6 +4286,10 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// example:
 	//
+	// 1
+	TraceabilityId *string `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
+	// example:
+	//
 	// xx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -3708,6 +4338,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.Title
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetTraceabilityId() *string {
+	return s.TraceabilityId
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GetUrl() *string {
 	return s.Url
 }
@@ -3754,6 +4388,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
 	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetTraceabilityId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.TraceabilityId = &v
 	return s
 }
 
@@ -3987,6 +4626,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate struct {
 	// example:
 	//
+	// image
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
 	// 1
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
 	// example:
@@ -4007,6 +4650,10 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenera
 	return s.String()
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) GetMediaType() *string {
+	return s.MediaType
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) GetX() *int32 {
 	return s.X
 }
@@ -4017,6 +4664,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) GetZ() *int32 {
 	return s.Z
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) SetMediaType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate {
+	s.MediaType = &v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate) SetX(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate {
@@ -4774,6 +5426,10 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	//
 	// xx
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// example:
+	//
+	// 1
+	TraceabilityId *string `json:"TraceabilityId,omitempty" xml:"TraceabilityId,omitempty"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) String() string {
@@ -4800,6 +5456,10 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 	return s.MediaId
 }
 
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) GetTraceabilityId() *string {
+	return s.TraceabilityId
+}
+
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetArticle(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
 	s.Article = v
 	return s
@@ -4817,6 +5477,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
 	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult) SetTraceabilityId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult {
+	s.TraceabilityId = &v
 	return s
 }
 
@@ -5059,6 +5724,293 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextToken
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessages struct {
+	Clarifications *bool `json:"Clarifications,omitempty" xml:"Clarifications,omitempty"`
+	// example:
+	//
+	// xx
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	GenerateFinished *bool   `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
+	// example:
+	//
+	// xx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// generateStartStatement
+	NodeCode      *string   `json:"NodeCode,omitempty" xml:"NodeCode,omitempty"`
+	SearchQueries []*string `json:"SearchQueries,omitempty" xml:"SearchQueries,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	SearchQuery  *string                                                             `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessages) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetClarifications() *bool {
+	return s.Clarifications
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetContent() *string {
+	return s.Content
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetGenerateFinished() *bool {
+	return s.GenerateFinished
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetId() *string {
+	return s.Id
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetNodeCode() *string {
+	return s.NodeCode
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetSearchQueries() []*string {
+	return s.SearchQueries
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetSearchQuery() *string {
+	return s.SearchQuery
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) GetSearchResult() []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	return s.SearchResult
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetClarifications(v bool) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.Clarifications = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetGenerateFinished(v bool) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.GenerateFinished = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetId(v string) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.Id = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetNodeCode(v string) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.NodeCode = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetSearchQueries(v []*string) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.SearchQueries = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetSearchQuery(v string) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) *RunSearchGenerationResponseBodyPayloadOutputMessages {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessages) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult struct {
+	Audios []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios `json:"Audios,omitempty" xml:"Audios,omitempty" type:"Repeated"`
+	Images []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xx
+	MultimodalSearchQuery *string                                                                   `json:"MultimodalSearchQuery,omitempty" xml:"MultimodalSearchQuery,omitempty"`
+	Texts                 []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts  `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	Videos                []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos `json:"Videos,omitempty" xml:"Videos,omitempty" type:"Repeated"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GetAudios() []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios {
+	return s.Audios
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GetImages() []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages {
+	return s.Images
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GetMultimodalSearchQuery() *string {
+	return s.MultimodalSearchQuery
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GetTexts() []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts {
+	return s.Texts
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) GetVideos() []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos {
+	return s.Videos
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetAudios(v []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	s.Audios = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetImages(v []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	s.Images = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetMultimodalSearchQuery(v string) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	s.MultimodalSearchQuery = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetTexts(v []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	s.Texts = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) SetVideos(v []*RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult {
+	s.Videos = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios struct {
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages struct {
+	// example:
+	//
+	// xx
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts struct {
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) GetDocUuid() *string {
+	return s.DocUuid
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos struct {
+	// example:
+	//
+	// 1
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) GetMediaId() *string {
+	return s.MediaId
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) SetMediaId(v string) *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos {
+	s.MediaId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos) Validate() error {
 	return dara.Validate(s)
 }
 

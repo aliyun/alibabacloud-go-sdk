@@ -13,6 +13,8 @@ type iRunSearchGenerationRequest interface {
 	GetAgentContext() *RunSearchGenerationRequestAgentContext
 	SetChatConfig(v *RunSearchGenerationRequestChatConfig) *RunSearchGenerationRequest
 	GetChatConfig() *RunSearchGenerationRequestChatConfig
+	SetFileUrl(v string) *RunSearchGenerationRequest
+	GetFileUrl() *string
 	SetModelId(v string) *RunSearchGenerationRequest
 	GetModelId() *string
 	SetOriginalSessionId(v string) *RunSearchGenerationRequest
@@ -31,6 +33,10 @@ type RunSearchGenerationRequest struct {
 	//
 	// xxx
 	ChatConfig *RunSearchGenerationRequestChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// http://xxxx
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
 	// qwen-max-latest
@@ -71,6 +77,10 @@ func (s *RunSearchGenerationRequest) GetChatConfig() *RunSearchGenerationRequest
 	return s.ChatConfig
 }
 
+func (s *RunSearchGenerationRequest) GetFileUrl() *string {
+	return s.FileUrl
+}
+
 func (s *RunSearchGenerationRequest) GetModelId() *string {
 	return s.ModelId
 }
@@ -98,6 +108,11 @@ func (s *RunSearchGenerationRequest) SetAgentContext(v *RunSearchGenerationReque
 
 func (s *RunSearchGenerationRequest) SetChatConfig(v *RunSearchGenerationRequestChatConfig) *RunSearchGenerationRequest {
 	s.ChatConfig = v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetFileUrl(v string) *RunSearchGenerationRequest {
+	s.FileUrl = &v
 	return s
 }
 
