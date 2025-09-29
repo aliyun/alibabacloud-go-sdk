@@ -690,6 +690,66 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 
 // Summary:
 //
+// 凭证识别查询
+//
+// @param request - CredentialGetResultIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialGetResultIntlResponse
+func (client *Client) CredentialGetResultIntlWithOptions(request *CredentialGetResultIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialGetResultIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TransactionId) {
+		query["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialGetResultIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialGetResultIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 凭证识别查询
+//
+// @param request - CredentialGetResultIntlRequest
+//
+// @return CredentialGetResultIntlResponse
+func (client *Client) CredentialGetResultIntl(request *CredentialGetResultIntlRequest) (_result *CredentialGetResultIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CredentialGetResultIntlResponse{}
+	_body, _err := client.CredentialGetResultIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Credential Recognition
 //
 // Description:
@@ -771,6 +831,96 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 	runtime := &dara.RuntimeOptions{}
 	_result = &CredentialRecognitionIntlResponse{}
 	_body, _err := client.CredentialRecognitionIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 凭证识别提交
+//
+// @param request - CredentialSubmitIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialSubmitIntlResponse
+func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitIntlRequest, runtime *dara.RuntimeOptions) (_result *CredentialSubmitIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FraudCheck) {
+		query["FraudCheck"] = request.FraudCheck
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.OcrArea) {
+		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialOcrPictureBase64) {
+		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.CredentialOcrPictureUrl) {
+		body["CredentialOcrPictureUrl"] = request.CredentialOcrPictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CredentialSubmitIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CredentialSubmitIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 凭证识别提交
+//
+// @param request - CredentialSubmitIntlRequest
+//
+// @return CredentialSubmitIntlResponse
+func (client *Client) CredentialSubmitIntl(request *CredentialSubmitIntlRequest) (_result *CredentialSubmitIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CredentialSubmitIntlResponse{}
+	_body, _err := client.CredentialSubmitIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1644,6 +1794,106 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 	runtime := &dara.RuntimeOptions{}
 	_result = &FaceCompareResponse{}
 	_body, _err := client.FaceCompareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸交叉比对
+//
+// @param request - FaceCrossCompareIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceCrossCompareIntlResponse
+func (client *Client) FaceCrossCompareIntlWithOptions(request *FaceCrossCompareIntlRequest, runtime *dara.RuntimeOptions) (_result *FaceCrossCompareIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompareModel) {
+		query["CompareModel"] = request.CompareModel
+	}
+
+	if !dara.IsNil(request.FaceVerifyThreshold) {
+		query["FaceVerifyThreshold"] = request.FaceVerifyThreshold
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	if !dara.IsNil(request.SourceAFacePicture) {
+		query["SourceAFacePicture"] = request.SourceAFacePicture
+	}
+
+	if !dara.IsNil(request.SourceAFacePictureUrl) {
+		query["SourceAFacePictureUrl"] = request.SourceAFacePictureUrl
+	}
+
+	if !dara.IsNil(request.SourceBFacePicture) {
+		query["SourceBFacePicture"] = request.SourceBFacePicture
+	}
+
+	if !dara.IsNil(request.SourceBFacePictureUrl) {
+		query["SourceBFacePictureUrl"] = request.SourceBFacePictureUrl
+	}
+
+	if !dara.IsNil(request.SourceCFacePicture) {
+		query["SourceCFacePicture"] = request.SourceCFacePicture
+	}
+
+	if !dara.IsNil(request.SourceCFacePictureUrl) {
+		query["SourceCFacePictureUrl"] = request.SourceCFacePictureUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FaceCrossCompareIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FaceCrossCompareIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸交叉比对
+//
+// @param request - FaceCrossCompareIntlRequest
+//
+// @return FaceCrossCompareIntlResponse
+func (client *Client) FaceCrossCompareIntl(request *FaceCrossCompareIntlRequest) (_result *FaceCrossCompareIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FaceCrossCompareIntlResponse{}
+	_body, _err := client.FaceCrossCompareIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2983,6 +3233,66 @@ func (client *Client) TempAccessTokenIntl(request *TempAccessTokenIntlRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &TempAccessTokenIntlResponse{}
 	_body, _err := client.TempAccessTokenIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件临时地址
+//
+// @param request - TempOssUrlIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TempOssUrlIntlResponse
+func (client *Client) TempOssUrlIntlWithOptions(request *TempOssUrlIntlRequest, runtime *dara.RuntimeOptions) (_result *TempOssUrlIntlResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ObjectName) {
+		body["ObjectName"] = request.ObjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TempOssUrlIntl"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TempOssUrlIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件临时地址
+//
+// @param request - TempOssUrlIntlRequest
+//
+// @return TempOssUrlIntlResponse
+func (client *Client) TempOssUrlIntl(request *TempOssUrlIntlRequest) (_result *TempOssUrlIntlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TempOssUrlIntlResponse{}
+	_body, _err := client.TempOssUrlIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
