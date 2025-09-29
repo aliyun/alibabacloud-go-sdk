@@ -23,6 +23,8 @@ type iQueryCollectionDataRequest interface {
 	GetHybridSearchArgs() map[string]map[string]interface{}
 	SetIncludeMetadataFields(v string) *QueryCollectionDataRequest
 	GetIncludeMetadataFields() *string
+	SetIncludeSparseValues(v bool) *QueryCollectionDataRequest
+	GetIncludeSparseValues() *bool
 	SetIncludeValues(v bool) *QueryCollectionDataRequest
 	GetIncludeValues() *bool
 	SetMetrics(v string) *QueryCollectionDataRequest
@@ -129,6 +131,7 @@ type QueryCollectionDataRequest struct {
 	//
 	// title,content
 	IncludeMetadataFields *string `json:"IncludeMetadataFields,omitempty" xml:"IncludeMetadataFields,omitempty"`
+	IncludeSparseValues   *bool   `json:"IncludeSparseValues,omitempty" xml:"IncludeSparseValues,omitempty"`
 	// Whether to return vector data. Value descriptions:
 	//
 	// - **true**: Return vector data.
@@ -267,6 +270,10 @@ func (s *QueryCollectionDataRequest) GetIncludeMetadataFields() *string {
 	return s.IncludeMetadataFields
 }
 
+func (s *QueryCollectionDataRequest) GetIncludeSparseValues() *bool {
+	return s.IncludeSparseValues
+}
+
 func (s *QueryCollectionDataRequest) GetIncludeValues() *bool {
 	return s.IncludeValues
 }
@@ -351,6 +358,11 @@ func (s *QueryCollectionDataRequest) SetHybridSearchArgs(v map[string]map[string
 
 func (s *QueryCollectionDataRequest) SetIncludeMetadataFields(v string) *QueryCollectionDataRequest {
 	s.IncludeMetadataFields = &v
+	return s
+}
+
+func (s *QueryCollectionDataRequest) SetIncludeSparseValues(v bool) *QueryCollectionDataRequest {
+	s.IncludeSparseValues = &v
 	return s
 }
 

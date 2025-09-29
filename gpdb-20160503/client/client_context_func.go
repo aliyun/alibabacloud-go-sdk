@@ -12324,6 +12324,10 @@ func (client *Client) QueryCollectionDataWithContext(ctx context.Context, tmpReq
 		query["IncludeMetadataFields"] = request.IncludeMetadataFields
 	}
 
+	if !dara.IsNil(request.IncludeSparseValues) {
+		query["IncludeSparseValues"] = request.IncludeSparseValues
+	}
+
 	if !dara.IsNil(request.IncludeValues) {
 		query["IncludeValues"] = request.IncludeValues
 	}

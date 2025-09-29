@@ -151,7 +151,8 @@ type QueryCollectionDataResponseBodyMatchesMatch struct {
 	// example:
 	//
 	// 0.12345
-	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Score        *float64                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SparseValues *QueryCollectionDataResponseBodyMatchesMatchSparseValues `json:"SparseValues,omitempty" xml:"SparseValues,omitempty" type:"Struct"`
 	// List of vector data.
 	Values *QueryCollectionDataResponseBodyMatchesMatchValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
 }
@@ -180,6 +181,10 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) GetScore() *float64 {
 	return s.Score
 }
 
+func (s *QueryCollectionDataResponseBodyMatchesMatch) GetSparseValues() *QueryCollectionDataResponseBodyMatchesMatchSparseValues {
+	return s.SparseValues
+}
+
 func (s *QueryCollectionDataResponseBodyMatchesMatch) GetValues() *QueryCollectionDataResponseBodyMatchesMatchValues {
 	return s.Values
 }
@@ -204,12 +209,102 @@ func (s *QueryCollectionDataResponseBodyMatchesMatch) SetScore(v float64) *Query
 	return s
 }
 
+func (s *QueryCollectionDataResponseBodyMatchesMatch) SetSparseValues(v *QueryCollectionDataResponseBodyMatchesMatchSparseValues) *QueryCollectionDataResponseBodyMatchesMatch {
+	s.SparseValues = v
+	return s
+}
+
 func (s *QueryCollectionDataResponseBodyMatchesMatch) SetValues(v *QueryCollectionDataResponseBodyMatchesMatchValues) *QueryCollectionDataResponseBodyMatchesMatch {
 	s.Values = v
 	return s
 }
 
 func (s *QueryCollectionDataResponseBodyMatchesMatch) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryCollectionDataResponseBodyMatchesMatchSparseValues struct {
+	Indices *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Struct"`
+	Values  *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues  `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) GetIndices() *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices {
+	return s.Indices
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) GetValues() *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues {
+	return s.Values
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) SetIndices(v *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) *QueryCollectionDataResponseBodyMatchesMatchSparseValues {
+	s.Indices = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) SetValues(v *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) *QueryCollectionDataResponseBodyMatchesMatchSparseValues {
+	s.Values = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValues) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices struct {
+	Indice []*int32 `json:"Indice,omitempty" xml:"Indice,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) GetIndice() []*int32 {
+	return s.Indice
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) SetIndice(v []*int32) *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices {
+	s.Indice = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesIndices) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues struct {
+	Value []*float32 `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) GetValue() []*float32 {
+	return s.Value
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) SetValue(v []*float32) *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues {
+	s.Value = v
+	return s
+}
+
+func (s *QueryCollectionDataResponseBodyMatchesMatchSparseValuesValues) Validate() error {
 	return dara.Validate(s)
 }
 
