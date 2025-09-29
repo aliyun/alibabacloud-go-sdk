@@ -463,6 +463,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The information about the enterprise resource groups.
 	ResourceGroups []*DescribeDesktopsResponseBodyDesktopsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
+	SerialNumber   *string                                               `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The type of the session.
 	//
 	// Valid values:
@@ -767,6 +768,10 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetProtocolType() *string {
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetResourceGroups() []*DescribeDesktopsResponseBodyDesktopsResourceGroups {
 	return s.ResourceGroups
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) GetSerialNumber() *string {
+	return s.SerialNumber
 }
 
 func (s *DescribeDesktopsResponseBodyDesktops) GetSessionType() *string {
@@ -1078,6 +1083,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetProtocolType(v string) *Descri
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetResourceGroups(v []*DescribeDesktopsResponseBodyDesktopsResourceGroups) *DescribeDesktopsResponseBodyDesktops {
 	s.ResourceGroups = v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetSerialNumber(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.SerialNumber = &v
 	return s
 }
 
