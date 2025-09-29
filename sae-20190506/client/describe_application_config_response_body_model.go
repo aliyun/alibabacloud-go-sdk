@@ -303,6 +303,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
+	DeploymentName         *string `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
 	// The disk size. Unit: GB.
 	//
 	// example:
@@ -1016,6 +1017,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetCustomImageNetworkType() 
 	return s.CustomImageNetworkType
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetDeploymentName() *string {
+	return s.DeploymentName
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetDiskSize() *int32 {
 	return s.DiskSize
 }
@@ -1398,6 +1403,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetCustomHostAlias(v string)
 
 func (s *DescribeApplicationConfigResponseBodyData) SetCustomImageNetworkType(v string) *DescribeApplicationConfigResponseBodyData {
 	s.CustomImageNetworkType = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetDeploymentName(v string) *DescribeApplicationConfigResponseBodyData {
+	s.DeploymentName = &v
 	return s
 }
 
