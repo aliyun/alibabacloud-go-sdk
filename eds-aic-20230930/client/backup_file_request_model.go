@@ -19,6 +19,8 @@ type iBackupFileRequest interface {
 	GetBackupFilePath() *string
 	SetDescription(v string) *BackupFileRequest
 	GetDescription() *string
+	SetExcludeSourceFilePathList(v []*string) *BackupFileRequest
+	GetExcludeSourceFilePathList() []*string
 	SetSourceAppList(v []*string) *BackupFileRequest
 	GetSourceAppList() []*string
 	SetSourceFilePathList(v []*string) *BackupFileRequest
@@ -57,7 +59,8 @@ type BackupFileRequest struct {
 	// example:
 	//
 	// This is a backup file description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description               *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeSourceFilePathList []*string `json:"ExcludeSourceFilePathList,omitempty" xml:"ExcludeSourceFilePathList,omitempty" type:"Repeated"`
 	// The names of the application packages that you want to back up.
 	SourceAppList []*string `json:"SourceAppList,omitempty" xml:"SourceAppList,omitempty" type:"Repeated"`
 	// The paths to the source files.
@@ -110,6 +113,10 @@ func (s *BackupFileRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *BackupFileRequest) GetExcludeSourceFilePathList() []*string {
+	return s.ExcludeSourceFilePathList
+}
+
 func (s *BackupFileRequest) GetSourceAppList() []*string {
 	return s.SourceAppList
 }
@@ -148,6 +155,11 @@ func (s *BackupFileRequest) SetBackupFilePath(v string) *BackupFileRequest {
 
 func (s *BackupFileRequest) SetDescription(v string) *BackupFileRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *BackupFileRequest) SetExcludeSourceFilePathList(v []*string) *BackupFileRequest {
+	s.ExcludeSourceFilePathList = v
 	return s
 }
 

@@ -154,6 +154,10 @@ func (client *Client) BackupFileWithContext(ctx context.Context, request *Backup
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.ExcludeSourceFilePathList) {
+		query["ExcludeSourceFilePathList"] = request.ExcludeSourceFilePathList
+	}
+
 	if !dara.IsNil(request.SourceAppList) {
 		query["SourceAppList"] = request.SourceAppList
 	}

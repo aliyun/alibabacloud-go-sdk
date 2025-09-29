@@ -161,7 +161,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// imgc-06zyt9m93zwax****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
 	// The list of installed applications.
 	//
 	// example:
@@ -348,6 +349,10 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetImageId
 	return s.ImageId
 }
 
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetImageVersion() *string {
+	return s.ImageVersion
+}
+
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) GetInstalledAppList() *string {
 	return s.InstalledAppList
 }
@@ -500,6 +505,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetGmtModi
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetImageId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetImageVersion(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.ImageVersion = &v
 	return s
 }
 
