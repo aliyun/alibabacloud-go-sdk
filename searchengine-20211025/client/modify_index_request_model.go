@@ -81,7 +81,32 @@ type ModifyIndexRequest struct {
 	// example:
 	//
 	// vpc_hz_domain_1
-	Domain *string                `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//         "vector":
+	//
+	//         [
+	//
+	//             "source_image_vector"
+	//
+	//         ],
+	//
+	//         "embeding":
+	//
+	//         [
+	//
+	//             "source_image"
+	//
+	//         ],
+	//
+	//         "description":
+	//
+	//         []
+	//
+	//     }
 	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The maximum number of full indexes that can be concurrently merged.
 	//
@@ -291,9 +316,15 @@ type ModifyIndexRequestDataSourceInfo struct {
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// /opensearch/oss.json
 	OssDataPath *string `json:"ossDataPath,omitempty" xml:"ossDataPath,omitempty"`
-	Partition   *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// example:
+	//
+	// ds=20230114
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 	// The maximum number of full indexes that can be concurrently processed.
 	//
 	// example:
@@ -463,8 +494,14 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	// example:
 	//
 	// test-bucket
-	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Catalog  *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// example:
+	//
+	// test-catalog
+	Catalog *string `json:"catalog,omitempty" xml:"catalog,omitempty"`
+	// example:
+	//
+	// test-database
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
 	// The endpoint of the MaxCompute data source.
 	//
@@ -472,7 +509,10 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
+	// example:
+	//
+	// ha3
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	//
 	// example:
@@ -508,9 +548,19 @@ type ModifyIndexRequestDataSourceInfoConfig struct {
 	// example:
 	//
 	// item
-	Table       *string `json:"table,omitempty" xml:"table,omitempty"`
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// example:
+	//
+	// paimon
+	//
+	// lance
+	//
+	// object
 	TableFormat *string `json:"tableFormat,omitempty" xml:"tableFormat,omitempty"`
-	Tag         *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// example:
+	//
+	// test-tag
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 }
 
 func (s ModifyIndexRequestDataSourceInfoConfig) String() string {

@@ -420,6 +420,7 @@ type ModifyTableRequestDataSourceConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The path of the Object Storage Service (OSS) object.
 	//
 	// example:
@@ -432,6 +433,7 @@ type ModifyTableRequestDataSourceConfig struct {
 	//
 	// ds=20231220
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	Path      *string `json:"path,omitempty" xml:"path,omitempty"`
 	// The name of the MaxCompute project that is used as the data source.
 	//
 	// example:
@@ -480,12 +482,20 @@ func (s *ModifyTableRequestDataSourceConfig) GetEndpoint() *string {
 	return s.Endpoint
 }
 
+func (s *ModifyTableRequestDataSourceConfig) GetFormat() *string {
+	return s.Format
+}
+
 func (s *ModifyTableRequestDataSourceConfig) GetOssPath() *string {
 	return s.OssPath
 }
 
 func (s *ModifyTableRequestDataSourceConfig) GetPartition() *string {
 	return s.Partition
+}
+
+func (s *ModifyTableRequestDataSourceConfig) GetPath() *string {
+	return s.Path
 }
 
 func (s *ModifyTableRequestDataSourceConfig) GetProject() *string {
@@ -534,6 +544,11 @@ func (s *ModifyTableRequestDataSourceConfig) SetEndpoint(v string) *ModifyTableR
 	return s
 }
 
+func (s *ModifyTableRequestDataSourceConfig) SetFormat(v string) *ModifyTableRequestDataSourceConfig {
+	s.Format = &v
+	return s
+}
+
 func (s *ModifyTableRequestDataSourceConfig) SetOssPath(v string) *ModifyTableRequestDataSourceConfig {
 	s.OssPath = &v
 	return s
@@ -541,6 +556,11 @@ func (s *ModifyTableRequestDataSourceConfig) SetOssPath(v string) *ModifyTableRe
 
 func (s *ModifyTableRequestDataSourceConfig) SetPartition(v string) *ModifyTableRequestDataSourceConfig {
 	s.Partition = &v
+	return s
+}
+
+func (s *ModifyTableRequestDataSourceConfig) SetPath(v string) *ModifyTableRequestDataSourceConfig {
+	s.Path = &v
 	return s
 }
 

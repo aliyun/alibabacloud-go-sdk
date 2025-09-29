@@ -73,7 +73,7 @@ type ConfigValueFiles struct {
 	//
 	// example:
 	//
-	// /intervene_dict/中文-通用分析器.dict
+	// /intervene_dict/example.dict
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// The configuration to be modified.
 	Config *ConfigValueFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`

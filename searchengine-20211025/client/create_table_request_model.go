@@ -481,6 +481,7 @@ type CreateTableRequestDataSourceConfig struct {
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	Format   *string `json:"format,omitempty" xml:"format,omitempty"`
 	// The Object Storage Service (OSS) path.
 	//
 	// example:
@@ -493,6 +494,7 @@ type CreateTableRequestDataSourceConfig struct {
 	//
 	// ds=20220713
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	Path      *string `json:"path,omitempty" xml:"path,omitempty"`
 	// The name of the MaxCompute project that is used as the data source.
 	//
 	// example:
@@ -541,12 +543,20 @@ func (s *CreateTableRequestDataSourceConfig) GetEndpoint() *string {
 	return s.Endpoint
 }
 
+func (s *CreateTableRequestDataSourceConfig) GetFormat() *string {
+	return s.Format
+}
+
 func (s *CreateTableRequestDataSourceConfig) GetOssPath() *string {
 	return s.OssPath
 }
 
 func (s *CreateTableRequestDataSourceConfig) GetPartition() *string {
 	return s.Partition
+}
+
+func (s *CreateTableRequestDataSourceConfig) GetPath() *string {
+	return s.Path
 }
 
 func (s *CreateTableRequestDataSourceConfig) GetProject() *string {
@@ -595,6 +605,11 @@ func (s *CreateTableRequestDataSourceConfig) SetEndpoint(v string) *CreateTableR
 	return s
 }
 
+func (s *CreateTableRequestDataSourceConfig) SetFormat(v string) *CreateTableRequestDataSourceConfig {
+	s.Format = &v
+	return s
+}
+
 func (s *CreateTableRequestDataSourceConfig) SetOssPath(v string) *CreateTableRequestDataSourceConfig {
 	s.OssPath = &v
 	return s
@@ -602,6 +617,11 @@ func (s *CreateTableRequestDataSourceConfig) SetOssPath(v string) *CreateTableRe
 
 func (s *CreateTableRequestDataSourceConfig) SetPartition(v string) *CreateTableRequestDataSourceConfig {
 	s.Partition = &v
+	return s
+}
+
+func (s *CreateTableRequestDataSourceConfig) SetPath(v string) *CreateTableRequestDataSourceConfig {
+	s.Path = &v
 	return s
 }
 
