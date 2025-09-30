@@ -415,6 +415,158 @@ func (client *Client) CancelUpsertCollectionDataJobWithContext(ctx context.Conte
 
 // Summary:
 //
+// 通过结合知识库和大模型，提供智能问答服务。
+//
+// Description:
+//
+// 通过结合知识库和大模型，提供智能问答服务。
+//
+// @param tmpReq - ChatWithKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatWithKnowledgeBaseResponse
+func (client *Client) ChatWithKnowledgeBaseWithContext(ctx context.Context, tmpReq *ChatWithKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *ChatWithKnowledgeBaseResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ChatWithKnowledgeBaseShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeParams) {
+		request.KnowledgeParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeParams, dara.String("KnowledgeParams"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModelParams) {
+		request.ModelParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelParams, dara.String("ModelParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IncludeKnowledgeBaseResults) {
+		query["IncludeKnowledgeBaseResults"] = request.IncludeKnowledgeBaseResults
+	}
+
+	if !dara.IsNil(request.KnowledgeParamsShrink) {
+		query["KnowledgeParams"] = request.KnowledgeParamsShrink
+	}
+
+	if !dara.IsNil(request.ModelParamsShrink) {
+		query["ModelParams"] = request.ModelParamsShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PromptParams) {
+		query["PromptParams"] = request.PromptParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatWithKnowledgeBase"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatWithKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过结合知识库和大模型，提供智能问答服务。
+//
+// Description:
+//
+// 通过结合知识库和大模型，提供智能问答服务。
+//
+// @param tmpReq - ChatWithKnowledgeBaseStreamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatWithKnowledgeBaseStreamResponse
+func (client *Client) ChatWithKnowledgeBaseStreamWithContext(ctx context.Context, tmpReq *ChatWithKnowledgeBaseStreamRequest, runtime *dara.RuntimeOptions) (_result *ChatWithKnowledgeBaseStreamResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ChatWithKnowledgeBaseStreamShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeParams) {
+		request.KnowledgeParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeParams, dara.String("KnowledgeParams"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ModelParams) {
+		request.ModelParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelParams, dara.String("ModelParams"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.IncludeKnowledgeBaseResults) {
+		query["IncludeKnowledgeBaseResults"] = request.IncludeKnowledgeBaseResults
+	}
+
+	if !dara.IsNil(request.KnowledgeParamsShrink) {
+		query["KnowledgeParams"] = request.KnowledgeParamsShrink
+	}
+
+	if !dara.IsNil(request.ModelParamsShrink) {
+		query["ModelParams"] = request.ModelParamsShrink
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PromptParams) {
+		query["PromptParams"] = request.PromptParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChatWithKnowledgeBaseStream"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChatWithKnowledgeBaseStreamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the configurations of a Hadoop data source.
 //
 // @param request - CheckHadoopDataSourceRequest
