@@ -3208,6 +3208,80 @@ func (client *Client) UpdateVideoAnalysisTask(workspaceId *string, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频理解-批量修改任务状态
+//
+// @param tmpReq - UpdateVideoAnalysisTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoAnalysisTasksResponse
+func (client *Client) UpdateVideoAnalysisTasksWithOptions(workspaceId *string, tmpReq *UpdateVideoAnalysisTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoAnalysisTasksResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateVideoAnalysisTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskIds) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, dara.String("taskIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIdsShrink) {
+		body["taskIds"] = request.TaskIdsShrink
+	}
+
+	if !dara.IsNil(request.TaskStatus) {
+		body["taskStatus"] = request.TaskStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVideoAnalysisTasks"),
+		Version:     dara.String("2024-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisTasks"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVideoAnalysisTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 视频理解-批量修改任务状态
+//
+// @param request - UpdateVideoAnalysisTasksRequest
+//
+// @return UpdateVideoAnalysisTasksResponse
+func (client *Client) UpdateVideoAnalysisTasks(workspaceId *string, request *UpdateVideoAnalysisTasksRequest) (_result *UpdateVideoAnalysisTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateVideoAnalysisTasksResponse{}
+	_body, _err := client.UpdateVideoAnalysisTasksWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) runEnterpriseVocAnalysisWithSSE_opYieldFunc(_yield chan *RunEnterpriseVocAnalysisResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunEnterpriseVocAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	_err := tmpReq.Validate()
 	if _err != nil {
