@@ -21,6 +21,8 @@ type iCreateWuyingServerRequest interface {
 	GetChargeType() *string
 	SetDataDisk(v []*CreateWuyingServerRequestDataDisk) *CreateWuyingServerRequest
 	GetDataDisk() []*CreateWuyingServerRequestDataDisk
+	SetIdempotenceToken(v string) *CreateWuyingServerRequest
+	GetIdempotenceToken() *string
 	SetImageId(v string) *CreateWuyingServerRequest
 	GetImageId() *string
 	SetOfficeSiteId(v string) *CreateWuyingServerRequest
@@ -71,6 +73,10 @@ type CreateWuyingServerRequest struct {
 	// PrePaid
 	ChargeType *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	DataDisk   []*CreateWuyingServerRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6a1b8c3d
+	IdempotenceToken *string `json:"IdempotenceToken,omitempty" xml:"IdempotenceToken,omitempty"`
 	// example:
 	//
 	// img-bp13mu****
@@ -149,6 +155,10 @@ func (s *CreateWuyingServerRequest) GetChargeType() *string {
 
 func (s *CreateWuyingServerRequest) GetDataDisk() []*CreateWuyingServerRequestDataDisk {
 	return s.DataDisk
+}
+
+func (s *CreateWuyingServerRequest) GetIdempotenceToken() *string {
+	return s.IdempotenceToken
 }
 
 func (s *CreateWuyingServerRequest) GetImageId() *string {
@@ -230,6 +240,11 @@ func (s *CreateWuyingServerRequest) SetChargeType(v string) *CreateWuyingServerR
 
 func (s *CreateWuyingServerRequest) SetDataDisk(v []*CreateWuyingServerRequestDataDisk) *CreateWuyingServerRequest {
 	s.DataDisk = v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetIdempotenceToken(v string) *CreateWuyingServerRequest {
+	s.IdempotenceToken = &v
 	return s
 }
 
