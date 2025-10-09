@@ -451,8 +451,10 @@ func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef) Validate
 }
 
 type GetNacosMcpServerResponseBodyDataToolSpec struct {
-	Tools     []*GetNacosMcpServerResponseBodyDataToolSpecTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	ToolsMeta map[string]*DataToolSpecToolsMetaValue            `json:"ToolsMeta,omitempty" xml:"ToolsMeta,omitempty"`
+	SecuritySchemes   interface{}                                       `json:"SecuritySchemes,omitempty" xml:"SecuritySchemes,omitempty"`
+	SpecificationType *string                                           `json:"SpecificationType,omitempty" xml:"SpecificationType,omitempty"`
+	Tools             []*GetNacosMcpServerResponseBodyDataToolSpecTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	ToolsMeta         map[string]*DataToolSpecToolsMetaValue            `json:"ToolsMeta,omitempty" xml:"ToolsMeta,omitempty"`
 }
 
 func (s GetNacosMcpServerResponseBodyDataToolSpec) String() string {
@@ -463,12 +465,30 @@ func (s GetNacosMcpServerResponseBodyDataToolSpec) GoString() string {
 	return s.String()
 }
 
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetSecuritySchemes() interface{} {
+	return s.SecuritySchemes
+}
+
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetSpecificationType() *string {
+	return s.SpecificationType
+}
+
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetTools() []*GetNacosMcpServerResponseBodyDataToolSpecTools {
 	return s.Tools
 }
 
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) GetToolsMeta() map[string]*DataToolSpecToolsMetaValue {
 	return s.ToolsMeta
+}
+
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetSecuritySchemes(v interface{}) *GetNacosMcpServerResponseBodyDataToolSpec {
+	s.SecuritySchemes = v
+	return s
+}
+
+func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetSpecificationType(v string) *GetNacosMcpServerResponseBodyDataToolSpec {
+	s.SpecificationType = &v
+	return s
 }
 
 func (s *GetNacosMcpServerResponseBodyDataToolSpec) SetTools(v []*GetNacosMcpServerResponseBodyDataToolSpecTools) *GetNacosMcpServerResponseBodyDataToolSpec {

@@ -2816,6 +2816,10 @@ func (client *Client) CreateNacosMcpServerWithContext(ctx context.Context, reque
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !dara.IsNil(request.EncryptToolSpec) {
+		query["EncryptToolSpec"] = request.EncryptToolSpec
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

@@ -11,6 +11,8 @@ type iCreateNacosMcpServerRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *CreateNacosMcpServerRequest
 	GetAcceptLanguage() *string
+	SetEncryptToolSpec(v bool) *CreateNacosMcpServerRequest
+	GetEncryptToolSpec() *bool
 	SetEndpointSpecification(v string) *CreateNacosMcpServerRequest
 	GetEndpointSpecification() *string
 	SetInstanceId(v string) *CreateNacosMcpServerRequest
@@ -31,7 +33,8 @@ type CreateNacosMcpServerRequest struct {
 	// example:
 	//
 	// zh
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	EncryptToolSpec *bool   `json:"EncryptToolSpec,omitempty" xml:"EncryptToolSpec,omitempty"`
 	// example:
 	//
 	// {"type":"REF","data":{"namespaceId":"public","groupName":"mcp-endpoints","serviceName":"mcp-demo"}}
@@ -96,6 +99,10 @@ func (s *CreateNacosMcpServerRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *CreateNacosMcpServerRequest) GetEncryptToolSpec() *bool {
+	return s.EncryptToolSpec
+}
+
 func (s *CreateNacosMcpServerRequest) GetEndpointSpecification() *string {
 	return s.EndpointSpecification
 }
@@ -126,6 +133,11 @@ func (s *CreateNacosMcpServerRequest) GetYamlConfig() *string {
 
 func (s *CreateNacosMcpServerRequest) SetAcceptLanguage(v string) *CreateNacosMcpServerRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateNacosMcpServerRequest) SetEncryptToolSpec(v bool) *CreateNacosMcpServerRequest {
+	s.EncryptToolSpec = &v
 	return s
 }
 
