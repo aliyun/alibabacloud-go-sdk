@@ -546,6 +546,10 @@ func (client *Client) GetSymbolicFiles(request *GetSymbolicFilesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// # RequestUploadToken
+//
 // @param request - RequestUploadTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -588,6 +592,10 @@ func (client *Client) RequestUploadTokenWithOptions(request *RequestUploadTokenR
 	return _result, _err
 }
 
+// Summary:
+//
+// # RequestUploadToken
+//
 // @param request - RequestUploadTokenRequest
 //
 // @return RequestUploadTokenResponse
@@ -602,6 +610,10 @@ func (client *Client) RequestUploadToken(request *RequestUploadTokenRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// # SubmitSymbolic
+//
 // @param request - SubmitSymbolicRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -668,6 +680,10 @@ func (client *Client) SubmitSymbolicWithOptions(request *SubmitSymbolicRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// # SubmitSymbolic
+//
 // @param request - SubmitSymbolicRequest
 //
 // @return SubmitSymbolicResponse

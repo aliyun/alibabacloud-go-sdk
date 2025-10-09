@@ -431,7 +431,9 @@ type GetErrorResponseBodyModel struct {
 	// example:
 	//
 	// -
-	IsBackTrace *int32 `json:"IsBackTrace,omitempty" xml:"IsBackTrace,omitempty"`
+	IsBackTrace  *int32 `json:"IsBackTrace,omitempty" xml:"IsBackTrace,omitempty"`
+	IsJailbroken *int32 `json:"IsJailbroken,omitempty" xml:"IsJailbroken,omitempty"`
+	IsSimulator  *int32 `json:"IsSimulator,omitempty" xml:"IsSimulator,omitempty"`
 	// example:
 	//
 	// 0
@@ -1015,6 +1017,14 @@ func (s *GetErrorResponseBodyModel) GetInstallSdCard() *int32 {
 
 func (s *GetErrorResponseBodyModel) GetIsBackTrace() *int32 {
 	return s.IsBackTrace
+}
+
+func (s *GetErrorResponseBodyModel) GetIsJailbroken() *int32 {
+	return s.IsJailbroken
+}
+
+func (s *GetErrorResponseBodyModel) GetIsSimulator() *int32 {
+	return s.IsSimulator
 }
 
 func (s *GetErrorResponseBodyModel) GetIsSpeedVersion() *int32 {
@@ -1660,6 +1670,16 @@ func (s *GetErrorResponseBodyModel) SetInstallSdCard(v int32) *GetErrorResponseB
 
 func (s *GetErrorResponseBodyModel) SetIsBackTrace(v int32) *GetErrorResponseBodyModel {
 	s.IsBackTrace = &v
+	return s
+}
+
+func (s *GetErrorResponseBodyModel) SetIsJailbroken(v int32) *GetErrorResponseBodyModel {
+	s.IsJailbroken = &v
+	return s
+}
+
+func (s *GetErrorResponseBodyModel) SetIsSimulator(v int32) *GetErrorResponseBodyModel {
+	s.IsSimulator = &v
 	return s
 }
 

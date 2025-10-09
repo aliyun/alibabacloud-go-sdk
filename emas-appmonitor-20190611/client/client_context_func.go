@@ -408,6 +408,10 @@ func (client *Client) GetSymbolicFilesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// # RequestUploadToken
+//
 // @param request - RequestUploadTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -450,6 +454,10 @@ func (client *Client) RequestUploadTokenWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// # SubmitSymbolic
+//
 // @param request - SubmitSymbolicRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
