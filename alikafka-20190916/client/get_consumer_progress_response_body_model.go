@@ -436,6 +436,7 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {
+	Accumulate *int64 `json:"Accumulate,omitempty" xml:"Accumulate,omitempty"`
 	// The latest offset in the partition of the topic.
 	//
 	// example:
@@ -488,6 +489,10 @@ func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetL
 	return s.String()
 }
 
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) GetAccumulate() *int64 {
+	return s.Accumulate
+}
+
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) GetBrokerOffset() *int64 {
 	return s.BrokerOffset
 }
@@ -514,6 +519,11 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) GetPartition() *int32 {
 	return s.Partition
+}
+
+func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetAccumulate(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {
+	s.Accumulate = &v
+	return s
 }
 
 func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) SetBrokerOffset(v int64) *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList {

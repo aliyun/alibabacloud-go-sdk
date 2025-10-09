@@ -1,3 +1,7 @@
+2025-10-09 Version: v3.14.1
+- Update API GetConsumerProgress: add response parameters Body.ConsumerProgress.TopicList.$.OffsetList.$.Accumulate.
+
+
 2025-08-18 Version: v3.14.0
 - Support API FailoverTest.
 
