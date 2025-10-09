@@ -52,7 +52,7 @@ type CreateWorkflowInstancesRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The runtime configuration.
 	DefaultRunProperties *CreateWorkflowInstancesRequestDefaultRunProperties `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty" type:"Struct"`
-	// The environment of the workspace. Valid values:
+	// The project environment.
 	//
 	// 	- Prod
 	//
@@ -79,9 +79,19 @@ type CreateWorkflowInstancesRequest struct {
 	// example:
 	//
 	// 100
-	ProjectId         *int64                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TagCreationPolicy *string                               `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
-	Tags              []*CreateWorkflowInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The tag creation policy. Valid values:
+	//
+	// 	- Append: New tags are added on top of the existing tags of the manual workflow.
+	//
+	// 	- Overwrite: Existing tags of the manual workflow are not inherited. New tags are created directly.
+	//
+	// example:
+	//
+	// Append
+	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
+	// The task tag list.
+	Tags []*CreateWorkflowInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
@@ -96,13 +106,13 @@ type CreateWorkflowInstancesRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+	// 	- SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
 	//
-	// 	- ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	// 	- ManualWorkflow: Manual workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
 	//
-	// 	- Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	// 	- Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
 	//
-	// 	- SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+	// 	- SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
 	//
 	// This parameter is required.
 	//
@@ -264,75 +274,75 @@ func (s *CreateWorkflowInstancesRequest) Validate() error {
 type CreateWorkflowInstancesRequestDefaultRunProperties struct {
 	// The alert settings.
 	Alert *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
-	// The configurations for analysis. If you set the Type parameter to SupplementData, this parameter is required.
+	// The analysis configuration. Required when Type is set to SupplementData.
 	Analysis *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	// The IDs of the projects that do not need to be run.
+	// The IDs of the projects not to run.
 	ExcludeProjectIds []*int64 `json:"ExcludeProjectIds,omitempty" xml:"ExcludeProjectIds,omitempty" type:"Repeated"`
-	// The IDs of the tasks that do not need to be run.
+	// The IDs of the tasks not to run.
 	ExcludeTaskIds []*int64 `json:"ExcludeTaskIds,omitempty" xml:"ExcludeTaskIds,omitempty" type:"Repeated"`
-	// The IDs of the projects that need to be run.
+	// The IDs of the projects to run.
 	IncludeProjectIds []*int64 `json:"IncludeProjectIds,omitempty" xml:"IncludeProjectIds,omitempty" type:"Repeated"`
-	// The IDs of the tasks that need to be run.
+	// The IDs of the tasks to run.
 	IncludeTaskIds []*int64 `json:"IncludeTaskIds,omitempty" xml:"IncludeTaskIds,omitempty" type:"Repeated"`
-	// The data backfill mode. Default value: ManualSelection. If you set the Type parameter to SupplementData, this parameter is required. Valid values:
+	// The data backfill mode. Default value: ManualSelection. Required when Type is set to SupplementData.
 	//
-	// 	- General: You can specify only `one root task ID`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
+	// 	- General: You can specify only one value for `RootTaskIds`. The `IncludeTaskIds` parameter is optional. If it\\"s not specified, it defaults to including `RootTaskIds`.
 	//
-	// 	- ManualSelection: You can specify `multiple root task IDs`. The `IncludeTaskIds` parameter is optional. If you do not configure the IncludeTaskIds parameter, the tasks that are specified by the `RootTaskIds` parameter are included by default.
+	// 	- ManualSelection: You can specify multiple values for `RootTaskIds`. The `IncludeTaskIds` parameter is optional. If it is not specified, it defaults to including `RootTaskIds`.
 	//
-	// 	- Chain: If you set the Mode parameter to Chain, you must leave the `RootTaskIds` parameter empty and set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
+	// 	- Chain: If you set the Mode parameter to Chain, leave the `RootTaskIds` parameter empty and set the `IncludeTaskIds` parameter to the start task ID and the end task ID.
 	//
-	// 	- AllDownstream: You can specify only one `root task ID`.
+	// 	- AllDownstream: Only one `RootTaskId` can be specified.
 	//
 	// example:
 	//
 	// ManualSelection
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The running order. Valid values:
+	// The execution order. Default value: Asc.
 	//
-	// 	- Asc (default): The tasks are sorted by data timestamp in ascending order.
+	// 	- Asc: ascending by business date.
 	//
-	// 	- Desc: The tasks are sorted by data timestamp in descending order.
+	// 	- Desc: descending by business date.
 	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of tasks that can be run in parallel. If you specify a value that ranges from 2 to 10, the value indicates the number of tasks that can be run in parallel. If you set the value to 1, the tasks are run one by one. If you set the Type parameter to SupplementData, this parameter is required.
+	// The task concurrency. Values from 2 to 10 indicate concurrency. A value of 1 indicates sequential execution. Required when Type = SupplementData.
 	//
 	// example:
 	//
 	// 2
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// The running priority. Valid values: 1 to 11. A larger value indicates a higher priority.
+	// The execution priority, range: 1–11. A higher value indicates higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The weight policy for the priority. Valid values:
+	// The priority weighting policy.
 	//
-	// 	- `Disable`: No weight policy for the priority is enabled. This is the default value.
+	// 	- `Disable` (default): Do not enable.
 	//
-	// 	- `Upstream`: The sum of the weights for the ancestor nodes of the current node is calculated. The more ancestor nodes, the higher the weight.
+	// 	- `Upstream`: The priority is based on the total weight of upstream nodes. The deeper the hierarchy, the higher the weight.
 	//
 	// example:
 	//
 	// Upstream
 	PriorityWeightStrategy *string `json:"PriorityWeightStrategy,omitempty" xml:"PriorityWeightStrategy,omitempty"`
-	// The root task IDs.
+	// The list of root task IDs.
 	//
-	// 	- If you set the Type parameter to SupplementData and the Mode parameter to a value other than Chain, the RootTaskIds parameter is required.
+	// 	- When Type is set to SupplementData, RootTaskIds is required unless Mode is set to Chain.
 	//
-	// 	- If you set the Type parameter to ManualWorkflow, the RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	// 	- When Type is set to ManualWorkflow, RootTaskIds is optional. If it is not specified, the default root nodes of the manual workflow are used.
 	//
-	// 	- If you set the Type parameter to Manual, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	// 	- When Type is set to Manual, RootTaskIds is required and specifies the list of manual tasks to run.
 	//
-	// 	- If you set the Type parameter to SmokeTest, the RootTaskIds parameter is required. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+	// 	- When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test tasks to run.
 	RootTaskIds []*int64 `json:"RootTaskIds,omitempty" xml:"RootTaskIds,omitempty" type:"Repeated"`
-	// The policy for running. If you leave this parameter empty, the task configuration is used.
+	// The run policy. If the parameter is left empty, the task configuration is used.
 	RunPolicy *CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy `json:"RunPolicy,omitempty" xml:"RunPolicy,omitempty" type:"Struct"`
-	// The identifier of the custom resource group for scheduling. If you leave this parameter empty, the runtime configuration is used.
+	// Custom scheduling resource group ID. If left empty, the task configuration is used.
 	//
 	// example:
 	//
@@ -481,11 +491,11 @@ func (s *CreateWorkflowInstancesRequestDefaultRunProperties) Validate() error {
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
 	// The alert notification method. Valid values:
 	//
-	// 	- Sms
+	// 	- Sms: SMS only.
 	//
-	// 	- Mail
+	// 	- Mail: mail only.
 	//
-	// 	- SmsMail
+	// 	- SmsMail: SMS and mail.
 	//
 	// example:
 	//
@@ -493,11 +503,11 @@ type CreateWorkflowInstancesRequestDefaultRunPropertiesAlert struct {
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
 	// The alerting policy. Valid values:
 	//
-	// 	- Success: An alert is reported when data backfill succeeds.
+	// 	- Success: Alerts on success.
 	//
-	// 	- Failure: An alert is reported when data backfill fails.
+	// 	- Failure: Alerts on failure.
 	//
-	// 	- SuccessFailure: An alert is reported regardless of whether data backfill succeeds or fails.
+	// 	- SuccessFailure: Alerts on both success and failure.
 	//
 	// example:
 	//
@@ -536,13 +546,13 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAlert) Validate() err
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis struct {
-	// Specifies whether to block running if the analysis fails. If you set the Type parameter to SupplementData, this parameter is required. Valid values: true and false.
+	// Specifies whether to block execution if the analysis fails. Required when Type is set to SupplementData.
 	//
 	// example:
 	//
 	// true
 	Blocked *bool `json:"Blocked,omitempty" xml:"Blocked,omitempty"`
-	// Specifies whether to enable the analysis feature. If you set the Type parameter to SupplementData, this parameter is required. Valid values: true and false.
+	// Specifies whether to enable the analysis feature. Required when Type is set to SupplementData.
 	//
 	// example:
 	//
@@ -581,25 +591,25 @@ func (s *CreateWorkflowInstancesRequestDefaultRunPropertiesAnalysis) Validate() 
 }
 
 type CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy struct {
-	// The end time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
+	// The end time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter.
 	//
 	// example:
 	//
 	// 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether the instances can be run immediately during the time period in the future. Valid values: true and false.
+	// Specifies whether a task whose scheduled run time is in the future can be run immediately. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Immediately *bool `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
-	// The start time of running. Configure this parameter in the `hh:mm:ss` format. The time must be in the 24-hour clock. This parameter is required if you configure the RunPolicy parameter.
+	// The start time of running. Configure this parameter in the `hh:mm:ss` format (24-hour clock). This parameter is required if you configure the RunPolicy parameter.
 	//
 	// example:
 	//
 	// 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the time period during which the data is backfilled. This parameter is required if you configure the RunPolicy parameter.
+	// The time period type. This parameter is required if you configure the RunPolicy parameter. Valid values:
 	//
 	// 	- Daily
 	//
@@ -771,7 +781,17 @@ func (s *CreateWorkflowInstancesRequestPeriodsBizDates) Validate() error {
 }
 
 type CreateWorkflowInstancesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

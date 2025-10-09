@@ -16,7 +16,14 @@ type iCreateDataQualityScanRunResponseBody interface {
 }
 
 type CreateDataQualityScanRunResponseBody struct {
+	// The RunId that was successfully triggered.
+	//
+	// example:
+	//
+	// 248840
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359

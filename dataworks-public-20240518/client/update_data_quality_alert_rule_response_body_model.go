@@ -16,10 +16,14 @@ type iUpdateDataQualityAlertRuleResponseBody interface {
 }
 
 type UpdateDataQualityAlertRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the alert rule was updated.
+	//
 	// example:
 	//
 	// True

@@ -14,6 +14,8 @@ type iDeleteDataQualityTemplateRequest interface {
 }
 
 type DeleteDataQualityTemplateRequest struct {
+	// The ID of the custom rule template.
+	//
 	// example:
 	//
 	// USER_DEFINED:2001

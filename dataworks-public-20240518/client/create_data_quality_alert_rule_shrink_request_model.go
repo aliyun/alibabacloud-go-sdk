@@ -20,20 +20,28 @@ type iCreateDataQualityAlertRuleShrinkRequest interface {
 }
 
 type CreateDataQualityAlertRuleShrinkRequest struct {
+	// The alert condition of the data quality monitoring rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"fail\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The list of alert channels.
+	//
 	// This parameter is required.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The monitored target of the data quality monitoring rule.
+	//
 	// This parameter is required.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }

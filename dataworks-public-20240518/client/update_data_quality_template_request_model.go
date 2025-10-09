@@ -20,19 +20,42 @@ type iUpdateDataQualityTemplateRequest interface {
 }
 
 type UpdateDataQualityTemplateRequest struct {
+	// The ID of the custom rule template.
+	//
 	// example:
 	//
 	// USER_DEFINED:2001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The account ID of the owner.
+	//
 	// example:
 	//
 	// 95279527****
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 100001
-	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Spec      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Detailed configuration Spec code of the rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+	//
+	// example:
+	//
+	// {
+	//
+	//     "assertion": "anomaly detection fro id_not_null_cnt",
+	//
+	//     "id_not_null_cnt": {
+	//
+	//         "query": "SELECT COUNT(*) AS cnt FROM ${tableName} WHERE dt = \\"$[yyyymmdd-1]\\";"
+	//
+	//     },
+	//
+	//     "identity": "819cf1f8-29be-4f94-a9d0-c5c06c0c3d2a"
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s UpdateDataQualityTemplateRequest) String() string {

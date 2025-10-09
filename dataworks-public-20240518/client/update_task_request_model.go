@@ -66,11 +66,11 @@ type UpdateTaskRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment.
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type UpdateTaskRequest struct {
 	Inputs *UpdateTaskRequestInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The instance generation mode. Valid values:
 	//
-	// 	- T+1
+	// 	- T+1: the next day
 	//
 	// 	- Immediately
 	//
@@ -96,7 +96,7 @@ type UpdateTaskRequest struct {
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name.
+	// Name.
 	//
 	// example:
 	//
@@ -118,11 +118,11 @@ type UpdateTaskRequest struct {
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
 	// The rerun mode. Valid values:
 	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// 	- AllDenied: The task cannot be rerun.
 	//
-	// 	- FailureAllowed: The task can be rerun only after it fails to run.
+	// 	- FailureAllowed: The task can be rerun only after it fails.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	// 	- AllAllowed: The task can always be rerun.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ type UpdateTaskRequest struct {
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// Runtime environment configurations, such as resource group information.
 	RuntimeResource *UpdateTaskRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The script information.
+	// The run script information.
 	Script *UpdateTaskRequestScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 	// The tags.
 	Tags []*UpdateTaskRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -146,7 +146,7 @@ type UpdateTaskRequest struct {
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method.
+	// The triggering method.
 	Trigger *UpdateTaskRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -366,13 +366,13 @@ func (s *UpdateTaskRequestDataSource) Validate() error {
 type UpdateTaskRequestDependencies struct {
 	// The dependency type. Valid values:
 	//
-	// 	- CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
+	// 	- CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
 	//
-	// 	- CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+	// 	- CrossCycleDependsOnSelf: Depends on itself across cycles.
 	//
-	// 	- CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+	// 	- CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// 	- Normal: Depends on nodes in the same cycle.
 	//
 	// This parameter is required.
 	//
@@ -380,13 +380,13 @@ type UpdateTaskRequestDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
+	// The output identifier of the upstream task. (This parameter is returned only if `Normal` is set and the node input is configured.)
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ancestor task ID. This parameter is returned only if `cross-cycle scheduling dependencies` or `same-cycle scheduling dependencies` and the node input are not configured.
+	// The ID of the upstream task. (This parameter is returned only if `Normal` or `CrossCycleDependsOnOtherNode` is set and the node input is not configured.)
 	//
 	// example:
 	//
@@ -468,13 +468,13 @@ type UpdateTaskRequestInputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant
+	// 	- Constant: constant.
 	//
-	// 	- PassThrough: node output
+	// 	- PassThrough: node output.
 	//
-	// 	- System: variable
+	// 	- System: variable.
 	//
-	// 	- NodeOutput: script output
+	// 	- NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -605,13 +605,13 @@ type UpdateTaskRequestOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- Constant: constant
+	// 	- Constant: constant.
 	//
-	// 	- PassThrough: node output
+	// 	- PassThrough: node output.
 	//
-	// 	- System: variable
+	// 	- System: variable.
 	//
-	// 	- NodeOutput: script output
+	// 	- NodeOutput: script output.
 	//
 	// This parameter is required.
 	//
@@ -673,13 +673,13 @@ type UpdateTaskRequestRuntimeResource struct {
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The image ID used in the task runtime configuration.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the scheduling resource group used in the task runtime configuration.
 	//
 	// example:
 	//
@@ -727,13 +727,15 @@ func (s *UpdateTaskRequestRuntimeResource) Validate() error {
 }
 
 type UpdateTaskRequestScript struct {
+	// Deprecated
+	//
 	// The script content.
 	//
 	// example:
 	//
 	// echo "helloWorld"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The script parameters.
+	// The script parameter list.
 	//
 	// example:
 	//
@@ -772,7 +774,7 @@ func (s *UpdateTaskRequestScript) Validate() error {
 }
 
 type UpdateTaskRequestTags struct {
-	// The tag key.
+	// The key of a tag.
 	//
 	// This parameter is required.
 	//
@@ -780,7 +782,7 @@ type UpdateTaskRequestTags struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of a tag.
 	//
 	// example:
 	//
@@ -819,13 +821,14 @@ func (s *UpdateTaskRequestTags) Validate() error {
 }
 
 type UpdateTaskRequestTrigger struct {
-	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The Cron expression. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
-	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+	Cron      *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -843,17 +846,17 @@ type UpdateTaskRequestTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+	// The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
 	// 1970-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The trigger type. Valid values:
+	// The triggering type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// 	- Scheduler: periodically triggered
 	//
-	// 	- Manual: manual trigger
+	// 	- Manual
 	//
 	// example:
 	//
@@ -871,6 +874,10 @@ func (s UpdateTaskRequestTrigger) GoString() string {
 
 func (s *UpdateTaskRequestTrigger) GetCron() *string {
 	return s.Cron
+}
+
+func (s *UpdateTaskRequestTrigger) GetCycleType() *string {
+	return s.CycleType
 }
 
 func (s *UpdateTaskRequestTrigger) GetEndTime() *string {
@@ -891,6 +898,11 @@ func (s *UpdateTaskRequestTrigger) GetType() *string {
 
 func (s *UpdateTaskRequestTrigger) SetCron(v string) *UpdateTaskRequestTrigger {
 	s.Cron = &v
+	return s
+}
+
+func (s *UpdateTaskRequestTrigger) SetCycleType(v string) *UpdateTaskRequestTrigger {
+	s.CycleType = &v
 	return s
 }
 

@@ -138,13 +138,13 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the resource group. Valid values:
 	//
-	// 	- CommonV2: serverless resource group
+	// 	- CommonV2: Serverless resource group.
 	//
-	// 	- ExclusiveDataIntegration: exclusive resource group for Data Integration
+	// 	- ExclusiveDataIntegration: Exclusive resource group for Data Integration.
 	//
-	// 	- ExclusiveScheduler: exclusive resource group for scheduling
+	// 	- ExclusiveScheduler: Exclusive resource group for scheduling.
 	//
-	// 	- ExclusiveDataService: exclusive resource group for DataService Studio
+	// 	- ExclusiveDataService: Exclusive resource group for DataService Studio.
 	//
 	// example:
 	//

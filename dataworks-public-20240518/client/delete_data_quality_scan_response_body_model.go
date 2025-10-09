@@ -22,6 +22,8 @@ type DeleteDataQualityScanResponseBody struct {
 	//
 	// 2197B9C4-39CE-55EA-8EEA-FDBAE52DXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
 	// example:
 	//
 	// true

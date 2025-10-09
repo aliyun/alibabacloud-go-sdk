@@ -16,7 +16,10 @@ type iListDataQualityScanRunsResponseBody interface {
 }
 
 type ListDataQualityScanRunsResponseBody struct {
+	// The page information.
 	PageInfo *ListDataQualityScanRunsResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
@@ -54,15 +57,22 @@ func (s *ListDataQualityScanRunsResponseBody) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfo struct {
+	// The list of data quality monitor run records.
 	DataQualityScanRuns []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns `json:"DataQualityScanRuns,omitempty" xml:"DataQualityScanRuns,omitempty" type:"Repeated"`
+	// The page number of the results. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records returned.
+	//
 	// example:
 	//
 	// 324
@@ -118,19 +128,38 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfo) Validate() error {
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns struct {
+	// The time when the data quality monitor starts running.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the data quality monitor stops.
+	//
 	// example:
 	//
 	// 1710239005403
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The ID of the data quality monitor running record.
+	//
 	// example:
 	//
 	// 3155
-	Id         *int64                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The parameters configured for the instance.
 	Parameters []*ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The status of the instance.
+	//
+	// 	- Pass
+	//
+	// 	- Running
+	//
+	// 	- Error
+	//
+	// 	- Warn
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Fail
@@ -195,10 +224,14 @@ func (s *ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns) Validat
 }
 
 type ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// dt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value. You can use a scheduling time expression.
+	//
 	// example:
 	//
 	// $[yyyy-mm-dd-1]

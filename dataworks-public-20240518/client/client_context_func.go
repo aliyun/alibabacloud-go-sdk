@@ -451,6 +451,56 @@ func (client *Client) CreateBusinessWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建组件
+//
+// @param request - CreateComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComponentResponse
+func (client *Client) CreateComponentWithContext(ctx context.Context, request *CreateComponentRequest, runtime *dara.RuntimeOptions) (_result *CreateComponentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComponent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComponentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an alert rule for a synchronization task.
 //
 // @param tmpReq - CreateDIAlarmRuleRequest
@@ -699,7 +749,11 @@ func (client *Client) CreateDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建数据质量告警规则
+// Creates a data quality monitoring alert rule in a project.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - CreateDataQualityAlertRuleRequest
 //
@@ -1095,7 +1149,11 @@ func (client *Client) CreateDataQualityRuleTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
-// 创建数据质量监控
+// Creates a data quality monitor.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - CreateDataQualityScanRequest
 //
@@ -1199,7 +1257,11 @@ func (client *Client) CreateDataQualityScanWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 创建数据质量监控运行实例
+// Triggers a data quality monitoring task and returns the run instance ID.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - CreateDataQualityScanRunRequest
 //
@@ -1263,7 +1325,11 @@ func (client *Client) CreateDataQualityScanRunWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 创建数据质量模板
+// Creates a data quality template.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - CreateDataQualityTemplateRequest
 //
@@ -2817,6 +2883,56 @@ func (client *Client) DeleteCertificateWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Deletes a component.
+//
+// Description:
+//
+// >  A UDF that is deployed cannot be deleted. If you want to delete such a UDF, you must first undeploy the UDF.
+//
+// @param request - DeleteComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComponentResponse
+func (client *Client) DeleteComponentWithContext(ctx context.Context, request *DeleteComponentRequest, runtime *dara.RuntimeOptions) (_result *DeleteComponentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentId) {
+		body["ComponentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComponent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComponentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an alert rule configured for a synchronization task.
 //
 // @param request - DeleteDIAlarmRuleRequest
@@ -2953,7 +3069,11 @@ func (client *Client) DeleteDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 删除数据质量告警规则
+// Deletes a data quality alert rule by ID.
+//
+// Description:
+//
+// Subscribe to DataWorks Basic Edition or a higher version to use this API.
 //
 // @param request - DeleteDataQualityAlertRuleRequest
 //
@@ -3133,7 +3253,11 @@ func (client *Client) DeleteDataQualityRuleTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
-// 删除数据质量监控
+// Deletes a data quality monitor.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - DeleteDataQualityScanRequest
 //
@@ -3179,7 +3303,17 @@ func (client *Client) DeleteDataQualityScanWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除数据质量模板
+// Deletes a data quality rule template by ID.
+//
+// Description:
+//
+// ## [](#)Request description
+//
+//   - **Id**: the unique identifier of the user-defined rule template, in the format `USER_DEFINED:<template_id>`.
+//
+//   - **ProjectId**: The ID of the DataWorks project to which the rule template belongs.
+//
+// This API is used to remove data quality rule templates that are no longer needed from the system. Make sure the provided `Id` and `ProjectId` are correct when calling this API operation; otherwise, the deletion may fail or lead to unexpected data loss. Use this function with caution and verify the exact information of the template before performing the operation.
 //
 // @param request - DeleteDataQualityTemplateRequest
 //
@@ -4587,6 +4721,52 @@ func (client *Client) GetColumnWithContext(ctx context.Context, request *GetColu
 
 // Summary:
 //
+// 获取组件信息
+//
+// @param request - GetComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComponentResponse
+func (client *Client) GetComponentWithContext(ctx context.Context, request *GetComponentRequest, runtime *dara.RuntimeOptions) (_result *GetComponentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentId) {
+		query["ComponentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComponent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComponentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the result of asynchronously creating a workflow instance.
 //
 // Description:
@@ -4713,7 +4893,11 @@ func (client *Client) GetDIJobLogWithContext(ctx context.Context, request *GetDI
 
 // Summary:
 //
-// 查询数据质量告警规则详情
+// Queries the details of a data quality monitoring and alerting rule by alert rule ID.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDataQualityAlertRuleRequest
 //
@@ -4915,7 +5099,11 @@ func (client *Client) GetDataQualityRuleTemplateWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取数据质量监控详情
+// Gets data quality monitoring details.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDataQualityScanRequest
 //
@@ -4957,7 +5145,11 @@ func (client *Client) GetDataQualityScanWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建数据质量监控运行实例
+// Creates a data quality monitoring run instance.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDataQualityScanRunRequest
 //
@@ -4999,7 +5191,11 @@ func (client *Client) GetDataQualityScanRunWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建数据质量监控运行实例
+// Queries the log of a specific task instance that monitors data quality.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDataQualityScanRunLogRequest
 //
@@ -5045,7 +5241,11 @@ func (client *Client) GetDataQualityScanRunLogWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询数据质量模板详情
+// Queries the details of a data quality rule template by ID.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - GetDataQualityTemplateRequest
 //
@@ -6785,6 +6985,60 @@ func (client *Client) ListColumnsWithContext(ctx context.Context, request *ListC
 
 // Summary:
 //
+// 获取组件列表
+//
+// @param request - ListComponentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListComponentsResponse
+func (client *Client) ListComponentsWithContext(ctx context.Context, request *ListComponentsRequest, runtime *dara.RuntimeOptions) (_result *ListComponentsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListComponents"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListComponentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Views alert rules configured for a synchronization task.
 //
 // @param request - ListDIAlarmRulesRequest
@@ -7091,7 +7345,11 @@ func (client *Client) ListDataAssetsWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// 查询数据质量告警规则列表
+// Queries the list of data quality alert rules in a project.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityAlertRulesRequest
 //
@@ -7351,7 +7609,11 @@ func (client *Client) ListDataQualityRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询数据质量监控运行实例列表
+// Queries the execution records of data quality scans in a project.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityScanRunsRequest
 //
@@ -7421,7 +7683,11 @@ func (client *Client) ListDataQualityScanRunsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取数据质量监控详情
+// Queries the list of data quality scan tasks in a project.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityScansRequest
 //
@@ -7483,7 +7749,11 @@ func (client *Client) ListDataQualityScansWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询数据质量模板详情
+// Queries the list of data quality rule templates in a project.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - ListDataQualityTemplatesRequest
 //
@@ -11257,6 +11527,62 @@ func (client *Client) UpdateColumnBusinessMetadataWithContext(ctx context.Contex
 
 // Summary:
 //
+// Updates components.
+//
+// Description:
+//
+// This operation is currently in beta. To join the beta testing, please submit a request. You can call this operation after we add you to the beta program.
+//
+// @param request - UpdateComponentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateComponentResponse
+func (client *Client) UpdateComponentWithContext(ctx context.Context, request *UpdateComponentRequest, runtime *dara.RuntimeOptions) (_result *UpdateComponentResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentId) {
+		body["ComponentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.Spec) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateComponent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateComponentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an alert rule configured for a synchronization task.
 //
 // @param tmpReq - UpdateDIAlarmRuleRequest
@@ -11467,7 +11793,11 @@ func (client *Client) UpdateDataAssetTagWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 更新数据质量告警规则
+// Updates a specified data quality monitoring alert rule.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - UpdateDataQualityAlertRuleRequest
 //
@@ -11811,7 +12141,11 @@ func (client *Client) UpdateDataQualityRuleTemplateWithContext(ctx context.Conte
 
 // Summary:
 //
-// 更新数据质量监控
+// Updates a data quality monitor.
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param tmpReq - UpdateDataQualityScanRequest
 //
@@ -11915,7 +12249,11 @@ func (client *Client) UpdateDataQualityScanWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 更新数据质量模板
+// # Updates a data quality rule template in a project
+//
+// Description:
+//
+// This API operation is available for all DataWorks editions.
 //
 // @param request - UpdateDataQualityTemplateRequest
 //
@@ -12741,7 +13079,7 @@ func (client *Client) UpdateTableBusinessMetadataWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates a specified task in full update mode.
+// Update a task. The changes are synchronized to Data Studio, which creates a new saved version.
 //
 // @param tmpReq - UpdateTaskRequest
 //

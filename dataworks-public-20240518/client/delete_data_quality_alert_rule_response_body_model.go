@@ -16,11 +16,18 @@ type iDeleteDataQualityAlertRuleResponseBody interface {
 }
 
 type DeleteDataQualityAlertRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the alert rule is deleted.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDataQualityAlertRuleResponseBody) String() string {

@@ -28,36 +28,66 @@ type iListDataQualityScanRunsRequest interface {
 }
 
 type ListDataQualityScanRunsRequest struct {
+	// The earliest time when the data quality monitor starts to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeFrom *int64 `json:"CreateTimeFrom,omitempty" xml:"CreateTimeFrom,omitempty"`
+	// The latest time when the data quality monitor starts to run.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTimeTo *int64 `json:"CreateTimeTo,omitempty" xml:"CreateTimeTo,omitempty"`
+	// The ID of the data quality monitor.
+	//
 	// example:
 	//
 	// 10001
 	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
+	// The page number of the results. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
+	//
+	// 	- CreateTime (Desc/Asc)
+	//
+	// 	- Id (Desc/Asc)
+	//
 	// example:
 	//
 	// CreateTime Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The status of the data quality check result.
+	//
+	// 	- Pass
+	//
+	// 	- Running
+	//
+	// 	- Error
+	//
+	// 	- Fail
+	//
+	// 	- Warn
+	//
 	// example:
 	//
 	// Fail

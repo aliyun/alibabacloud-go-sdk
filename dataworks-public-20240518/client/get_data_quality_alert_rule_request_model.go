@@ -14,6 +14,8 @@ type iGetDataQualityAlertRuleRequest interface {
 }
 
 type GetDataQualityAlertRuleRequest struct {
+	// The data quality monitoring alert rule ID.
+	//
 	// example:
 	//
 	// 113642

@@ -18,11 +18,16 @@ type iListLineageRelationshipsResponseBody interface {
 }
 
 type ListLineageRelationshipsResponseBody struct {
+	// The pagination result.
 	PagingInfo *ListLineageRelationshipsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID. Used for locating and troubleshooting issues.
+	//
 	// example:
 	//
 	// SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -69,15 +74,22 @@ func (s *ListLineageRelationshipsResponseBody) Validate() error {
 }
 
 type ListLineageRelationshipsResponseBodyPagingInfo struct {
+	// The list of data tables.
 	LineageRelationships []*LineageRelationship `json:"LineageRelationships,omitempty" xml:"LineageRelationships,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 123

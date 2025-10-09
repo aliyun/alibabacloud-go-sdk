@@ -16,7 +16,10 @@ type iListDataQualityTemplatesResponseBody interface {
 }
 
 type ListDataQualityTemplatesResponseBody struct {
+	// Paged query results of data quality rule templates.
 	PageInfo *ListDataQualityTemplatesResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The API request ID, which is generated as a UUID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
@@ -54,15 +57,22 @@ func (s *ListDataQualityTemplatesResponseBody) Validate() error {
 }
 
 type ListDataQualityTemplatesResponseBodyPageInfo struct {
+	// The list of rule templates.
 	DataQualityTemplates []*ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates `json:"DataQualityTemplates,omitempty" xml:"DataQualityTemplates,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of pages.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -118,34 +128,50 @@ func (s *ListDataQualityTemplatesResponseBodyPageInfo) Validate() error {
 }
 
 type ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates struct {
+	// The time when the data quality rule template was created.
+	//
 	// example:
 	//
 	// 1729816478147
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the data quality rule template.
+	//
 	// example:
 	//
 	// 7892346529452
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the data quality rule template.
+	//
 	// example:
 	//
 	// 819cf1f8-29be-4f94-a9d0-c5c06c0c3d2a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the data quality rule template was updated.
+	//
 	// example:
 	//
 	// 1729816478147
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The last updater of the data quality rule template.
+	//
 	// example:
 	//
 	// 205250754596036836
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The owner of the data quality rule template.
+	//
 	// example:
 	//
 	// 205250754596036836
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 7635
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Specific configurations of the data quality rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+	//
 	// example:
 	//
 	// {

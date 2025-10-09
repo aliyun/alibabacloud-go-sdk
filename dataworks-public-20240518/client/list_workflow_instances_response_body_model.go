@@ -217,7 +217,8 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	// example:
 	//
 	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Normal
@@ -285,6 +286,10 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetStarte
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetTags() []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags {
+	return s.Tags
 }
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) GetType() *string {
@@ -359,6 +364,11 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetStatus
 	return s
 }
 
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetTags(v []*ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
+	s.Tags = v
+	return s
+}
+
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetType(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances {
 	s.Type = &v
 	return s
@@ -375,5 +385,40 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) SetWorkfl
 }
 
 func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) SetKey(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) SetValue(v string) *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags) Validate() error {
 	return dara.Validate(s)
 }

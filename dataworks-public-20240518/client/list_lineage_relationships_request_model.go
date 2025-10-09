@@ -46,22 +46,36 @@ type ListLineageRelationshipsRequest struct {
 	//
 	// custom-table:table456
 	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
+	// The destination entity name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// dstName
 	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
+	// The order in which schemas are sorted. Default value: Asc. Valid values:
+	//
+	// 	- Asc: ascending.
+	//
+	// 	- Desc: descending.
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sort field. Default value: Name.
+	//
 	// example:
 	//
 	// Name
@@ -84,6 +98,8 @@ type ListLineageRelationshipsRequest struct {
 	//
 	// custom-table:table456
 	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
+	// The source entity name. Supports fuzzy matching.
+	//
 	// example:
 	//
 	// srcName

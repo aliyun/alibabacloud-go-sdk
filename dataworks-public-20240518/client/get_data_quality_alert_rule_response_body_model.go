@@ -16,7 +16,10 @@ type iGetDataQualityAlertRuleResponseBody interface {
 }
 
 type GetDataQualityAlertRuleResponseBody struct {
+	// Data quality monitoring alert rules.
 	DataQualityAlertRule *GetDataQualityAlertRuleResponseBodyDataQualityAlertRule `json:"DataQualityAlertRule,omitempty" xml:"DataQualityAlertRule,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115****159376359
@@ -54,20 +57,28 @@ func (s *GetDataQualityAlertRuleResponseBody) Validate() error {
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRule struct {
+	// Alert conditions of the data quality monitoring alert rule.
+	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"fail\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The ID of the data quality monitoring alert rule.
+	//
 	// example:
 	//
 	// 21045
-	Id           *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Alert notification settings.
 	Notification *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 90912
-	ProjectId *int64                                                         `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Target    *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The monitored target of the data quality monitoring alert rule.
+	Target *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 }
 
 func (s GetDataQualityAlertRuleResponseBodyDataQualityAlertRule) String() string {
@@ -128,7 +139,9 @@ func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRule) Validate() err
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification struct {
-	Channels  []*string                                                                       `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// In Channels, you can set both Email and Sms at the same time. In other cases, only one channel can be set.
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// The alert recipients.
 	Receivers []*GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
 }
 
@@ -163,14 +176,35 @@ func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification) Va
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers struct {
+	// Additional configurations required for the alert recipients. When ReceiverType is DingdingUrl, you can set `{"atAll":true}` to mention all members.
+	//
 	// example:
 	//
 	// {"atAll":true}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of alert recipients.
+	//
+	// 	- ShiftSchedule
+	//
+	// 	- WebhookUrl
+	//
+	// 	- FeishuUrl
+	//
+	// 	- TaskOwner
+	//
+	// 	- WeixinUrl
+	//
+	// 	- DingdingUrl
+	//
+	// 	- DataQualityScanOwner
+	//
+	// 	- AliUid
+	//
 	// example:
 	//
 	// TaskOwner
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The value of alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -214,7 +248,10 @@ func (s *GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationRece
 }
 
 type GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget struct {
+	// The list of monitored target IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the monitored target. Only `DataQualityScan` is supported.
+	//
 	// example:
 	//
 	// DataQualityScan

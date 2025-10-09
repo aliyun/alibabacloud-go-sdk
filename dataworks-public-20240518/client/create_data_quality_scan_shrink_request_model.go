@@ -34,31 +34,104 @@ type iCreateDataQualityScanShrinkRequest interface {
 }
 
 type CreateDataQualityScanShrinkRequest struct {
+	// The idempotency token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a-customized-uuid
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The compute engine used at runtime. If not specified, the data source defined in the Spec is used.
 	ComputeResourceShrink *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HooksShrink           *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The description of the data quality monitor.
+	//
+	// example:
+	//
+	// Daily data quality scanning of ods tables.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Hook configurations after the data quality monitoring run ends.
+	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The data quality monitoring name.
+	//
 	// example:
 	//
 	// data_quality_scan_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the user who owns of the data quality monitor.
+	//
 	// example:
 	//
 	// 95279527****
-	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The definition of execution parameters for the data quality monitoring.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
+	//
 	// example:
 	//
 	// 101
-	ProjectId             *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group used during execution of the data quality monitoring.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	Spec                  *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	TriggerShrink         *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// Spec code for the content of the data quality monitoring.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "datasets": [
+	//
+	//         {
+	//
+	//             "type": "Table",
+	//
+	//             "dataSource": {
+	//
+	//                 "name": "odps_first",
+	//
+	//                 "envType": "Prod"
+	//
+	//             },
+	//
+	//             "tables": [
+	//
+	//                 "ods_d_user_info"
+	//
+	//             ],
+	//
+	//             "filter": "pt = $[yyyymmdd-1]"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "rules": [
+	//
+	//         {
+	//
+	//             "assertion": "row_count > 0"
+	//
+	//         }, {
+	//
+	//             "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//             "pass": "when = 0",
+	//
+	//             "name": "The id cannot be empty.",
+	//
+	//             "severity": "High",
+	//
+	//              "identity": "a-customized-data-quality-rule-uuid"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The trigger configurations of the data quality monitoring task.
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
 func (s CreateDataQualityScanShrinkRequest) String() string {

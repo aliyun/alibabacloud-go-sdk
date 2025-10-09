@@ -16,7 +16,14 @@ type iDeleteDataQualityScanRequest interface {
 }
 
 type DeleteDataQualityScanRequest struct {
+	// The deprecated parameter. No configuration is required.
+	//
+	// example:
+	//
+	// null
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the data quality monitor.
+	//
 	// example:
 	//
 	// 123123

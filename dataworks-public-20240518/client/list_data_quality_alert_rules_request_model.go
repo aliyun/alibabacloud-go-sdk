@@ -22,28 +22,42 @@ type iListDataQualityAlertRulesRequest interface {
 }
 
 type ListDataQualityAlertRulesRequest struct {
+	// The ID of the data quality monitor that the alert rule targets.
+	//
 	// example:
 	//
 	// 10001
 	DataQualityScanId *int64 `json:"DataQualityScanId,omitempty" xml:"DataQualityScanId,omitempty"`
+	// The page number of the results.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records to return on each page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
+	//
+	// 	- CreateTime (Desc/Asc)
+	//
+	// 	- Id (Desc/Asc)
+	//
 	// example:
 	//
 	// CreateTime Desc

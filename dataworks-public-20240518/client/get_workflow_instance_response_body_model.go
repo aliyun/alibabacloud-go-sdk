@@ -148,7 +148,8 @@ type GetWorkflowInstanceResponseBodyWorkflowInstance struct {
 	// example:
 	//
 	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the workflow instance. Valid values:
 	//
 	// 	- Normal
@@ -230,6 +231,10 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetStatus() *string {
 	return s.Status
 }
 
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetTags() []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags {
+	return s.Tags
+}
+
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) GetType() *string {
 	return s.Type
 }
@@ -302,6 +307,11 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetStatus(v string) *G
 	return s
 }
 
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetTags(v []*GetWorkflowInstanceResponseBodyWorkflowInstanceTags) *GetWorkflowInstanceResponseBodyWorkflowInstance {
+	s.Tags = v
+	return s
+}
+
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetType(v string) *GetWorkflowInstanceResponseBodyWorkflowInstance {
 	s.Type = &v
 	return s
@@ -318,5 +328,40 @@ func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) SetWorkflowParameters(
 }
 
 func (s *GetWorkflowInstanceResponseBodyWorkflowInstance) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetWorkflowInstanceResponseBodyWorkflowInstanceTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetWorkflowInstanceResponseBodyWorkflowInstanceTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWorkflowInstanceResponseBodyWorkflowInstanceTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstanceTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstanceTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstanceTags) SetKey(v string) *GetWorkflowInstanceResponseBodyWorkflowInstanceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstanceTags) SetValue(v string) *GetWorkflowInstanceResponseBodyWorkflowInstanceTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetWorkflowInstanceResponseBodyWorkflowInstanceTags) Validate() error {
 	return dara.Validate(s)
 }

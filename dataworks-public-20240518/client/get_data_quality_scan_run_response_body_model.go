@@ -16,7 +16,10 @@ type iGetDataQualityScanRunResponseBody interface {
 }
 
 type GetDataQualityScanRunResponseBody struct {
+	// Data quality monitoring running records.
 	DataQualityScanRun *GetDataQualityScanRunResponseBodyDataQualityScanRun `json:"DataQualityScanRun,omitempty" xml:"DataQualityScanRun,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115****159376359
@@ -54,21 +57,42 @@ func (s *GetDataQualityScanRunResponseBody) Validate() error {
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRun struct {
+	// The time when the data quality monitor starts running.
+	//
 	// example:
 	//
 	// 1706247622000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the data quality monitor stops.
+	//
 	// example:
 	//
 	// 1706247622000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The running record ID.
+	//
 	// example:
 	//
 	// 1016440997
-	Id         *int64                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The parameter settings used during the actual running.
 	Parameters []*GetDataQualityScanRunResponseBodyDataQualityScanRunParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	Results    []*GetDataQualityScanRunResponseBodyDataQualityScanRunResults    `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	Scan       *GetDataQualityScanRunResponseBodyDataQualityScanRunScan         `json:"Scan,omitempty" xml:"Scan,omitempty" type:"Struct"`
+	// The validation results of each rule.
+	Results []*GetDataQualityScanRunResponseBodyDataQualityScanRunResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The snapshot of the data quality monitor configuration at the start of the validation.
+	Scan *GetDataQualityScanRunResponseBodyDataQualityScanRunScan `json:"Scan,omitempty" xml:"Scan,omitempty" type:"Struct"`
+	// The current running status.
+	//
+	// 	- Pass
+	//
+	// 	- Running
+	//
+	// 	- Error
+	//
+	// 	- Warn
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Fail
@@ -151,10 +175,14 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRun) Validate() error {
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// dt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// $[yyyy-mm-dd-1]
@@ -192,12 +220,34 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunParameters) Validate
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunResults struct {
+	// The time when the validation result is generated.
+	//
 	// example:
 	//
 	// 1725506795000
-	CreateTime *int64                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Details    []*GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	Rule       *string                                                              `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about the data quality check.
+	Details []*GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// The snapshot of the rule Spec at the start of the validation.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//     "pass": "when = 0",
+	//
+	//     "name": "The id cannot be empty.",
+	//
+	//     "severity": "High",
+	//
+	//     "identity": "a-customized-data-quality-rule-uuid"
+	//
+	// }
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The sample value used in the validation.
+	//
 	// example:
 	//
 	// {
@@ -206,6 +256,18 @@ type GetDataQualityScanRunResponseBodyDataQualityScanRunResults struct {
 	//
 	// }
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The validation result status.
+	//
+	// 	- Pass
+	//
+	// 	- Running
+	//
+	// 	- Error
+	//
+	// 	- Warn
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Fail
@@ -270,14 +332,28 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunResults) Validate() 
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails struct {
+	// The final value used for comparison with the threshold.
+	//
 	// example:
 	//
 	// 100.0
 	CheckValue *string `json:"CheckValue,omitempty" xml:"CheckValue,omitempty"`
+	// The reference sample used as the baseline for calculating the CheckedValue.
+	//
 	// example:
 	//
 	// 0.0
 	ReferenceValue *string `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty"`
+	// The final comparison result status.
+	//
+	// 	- Pass
+	//
+	// 	- Error
+	//
+	// 	- Warn
+	//
+	// 	- Fail
+	//
 	// example:
 	//
 	// Fail
@@ -324,45 +400,126 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails) Vali
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScan struct {
+	// The computing resource settings of the data quality monitor.
 	ComputeResource *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
+	// The creation time of the data quality monitor.
+	//
 	// example:
 	//
 	// 1706247622000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the data quality monitor.
+	//
 	// example:
 	//
 	// 7892346529452
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description of the data quality validation task. Maximum length: 65,535 characters.
+	//
 	// example:
 	//
 	// This is a hourly run data quality evaluation plan.
-	Description *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Hooks       []*GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hook configurations after the data quality monitor stops.
+	Hooks []*GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The data quality monitor ID.
+	//
 	// example:
 	//
 	// 21077
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The last update time of the data quality monitor.
+	//
 	// example:
 	//
 	// 1706247622000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The last updater of the data quality monitor.
+	//
 	// example:
 	//
 	// 7892346529452
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the data quality validation task. It can contain digits, letters, Chinese characters, and both half-width and full-width punctuation marks, with a maximum length of 255 characters.
+	//
+	// example:
+	//
+	// Hourly partition quality monitoring
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The owner of the data quality monitor.
+	//
 	// example:
 	//
 	// 7892346529452
-	Owner      *string                                                              `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The parameter settings of the data quality monitor.
 	Parameters []*GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 164024
-	ProjectId       *int64                                                                  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group used for running the data quality monitor.
 	RuntimeResource *GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	Spec            *string                                                                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Trigger         *GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger         `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The data quality monitor Spec. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
+	//
+	// example:
+	//
+	// {
+	//
+	//     "datasets": [
+	//
+	//         {
+	//
+	//             "type": "Table",
+	//
+	//             "dataSource": {
+	//
+	//                 "name": "odps_first",
+	//
+	//                 "envType": "Prod"
+	//
+	//             },
+	//
+	//             "tables": [
+	//
+	//                 "ods_d_user_info"
+	//
+	//             ],
+	//
+	//             "filter": "pt = $[yyyymmdd-1]"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "rules": [
+	//
+	//         {
+	//
+	//             "assertion": "row_count > 0"
+	//
+	//         }, {
+	//
+	//             "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//             "pass": "when = 0",
+	//
+	//             "name": "The id cannot be empty.",
+	//
+	//             "severity": "High",
+	//
+	//              "identity": "a-customized-data-quality-rule-uuid"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The trigger configurations of the data quality monitor.
+	Trigger *GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
 func (s GetDataQualityScanRunResponseBodyDataQualityScanRunScan) String() string {
@@ -513,14 +670,23 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScan) Validate() err
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource struct {
+	// The workspace environment to which the compute engine belongs.
+	//
+	// 	- Prod
+	//
+	// 	- Dev
+	//
 	// example:
 	//
 	// Dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the computing resource, which corresponds to the Name attribute in the ComputeResource data structure of the computing resource API.
+	//
 	// example:
 	//
 	// emr_cluster_001
-	Name    *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The additional runtime settings of the data quality monitor.
 	Runtime *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -564,14 +730,26 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource)
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime struct {
+	// The type of the compute engine. Only EMR compute engines support these settings.
+	//
+	// 	- Hive
+	//
+	// 	- Spark
+	//
+	// 	- Kyuubi
+	//
 	// example:
 	//
 	// Hive
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Additional parameters for the Hive engine. Currently, only mapreduce.job.queuename is supported to specify the queue.
+	//
 	// example:
 	//
 	// mapreduce.job.queuename=dq_queue
 	HiveConf map[string]interface{} `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// Additional parameters for the Spark engine. Currently, only spark.yarn.queue is supported to specify the queue.
+	//
 	// example:
 	//
 	// spark.yarn.queue=dq_queue
@@ -618,10 +796,18 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceR
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks struct {
+	// The hook trigger condition. Currently, only one type of expression syntax is supported:
+	//
+	// 	- Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
+	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"fail\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The type of the hook.
+	//
+	// 	- BlockTaskInstance
+	//
 	// example:
 	//
 	// BlockTaskInstance
@@ -659,10 +845,14 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks) Validate(
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// dt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// $[yyyy-mm-dd-1]
@@ -700,14 +890,20 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters) Vali
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource struct {
+	// Reserved CUs for the resource group.
+	//
 	// example:
 	//
 	// 1
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// 60597
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image ID of the run configuration.
+	//
 	// example:
 	//
 	// i-xxxx
@@ -754,7 +950,14 @@ func (s *GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource)
 }
 
 type GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger struct {
+	// If the trigger mode is set to BySchedule, the scheduling task ID must be specified.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The trigger method of the data quality monitor.
+	//
+	// 	- ByManual
+	//
+	// 	- BySchedule
+	//
 	// example:
 	//
 	// BySchedule

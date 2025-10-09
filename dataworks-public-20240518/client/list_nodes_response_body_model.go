@@ -57,7 +57,7 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfo struct {
-	// The nodes.
+	// The list of nodes in DataStudio.
 	Nodes []*ListNodesResponseBodyPagingInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -128,13 +128,13 @@ func (s *ListNodesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodes struct {
-	// The time when the node was created. This value is a UNIX timestamp.
+	// The timestamp when the node in DataStudio was created.
 	//
 	// example:
 	//
 	// 1722910655000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the data source.
+	// The data source.
 	DataSource *ListNodesResponseBodyPagingInfoNodesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description of the node.
 	//
@@ -148,9 +148,9 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The input of the node.
+	// The node input.
 	Inputs *ListNodesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The time when the node was last modified. This value is a UNIX timestamp.
+	// The timestamp when the node in DataStudio was last modified.
 	//
 	// example:
 	//
@@ -162,9 +162,9 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output of the node.
+	// The node output.
 	Outputs *ListNodesResponseBodyPagingInfoNodesOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	// The owner of the node.
+	// The owner of nodes in DataStudio.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ListNodesResponseBodyPagingInfoNodes struct {
 	Script *ListNodesResponseBodyPagingInfoNodesScript `json:"Script,omitempty" xml:"Script,omitempty" type:"Struct"`
 	// The scheduling policy.
 	Strategy *ListNodesResponseBodyPagingInfoNodesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
-	// The tags. This parameter is not in use.
+	// The tag information (not in use).
 	Tags []*ListNodesResponseBodyPagingInfoNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The scheduling task ID.
 	//
@@ -419,11 +419,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesDataSource) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputs struct {
-	// The node outputs.
+	// The node output list.
 	NodeOutputs []*ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The tables.
+	// The table list.
 	Tables []*ListNodesResponseBodyPagingInfoNodesInputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variables.
+	// The variable list.
 	Variables []*ListNodesResponseBodyPagingInfoNodesInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -577,7 +577,7 @@ type ListNodesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable value.
 	//
 	// example:
 	//
@@ -661,7 +661,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariables) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesInputsVariablesNode struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
@@ -691,11 +691,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsVariablesNode) Validate() err
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputs struct {
-	// The node outputs.
+	// The node output list.
 	NodeOutputs []*ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The tables.
+	// The table list.
 	Tables []*ListNodesResponseBodyPagingInfoNodesOutputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variables.
+	// The variable list.
 	Variables []*ListNodesResponseBodyPagingInfoNodesOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -819,7 +819,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node to which the variable belongs.
 	Node *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Struct"`
-	// The scope of the variable. Valid values:
+	// The variable scope. Valid values:
 	//
 	// 	- NodeParameter
 	//
@@ -833,7 +833,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// NodeParameter
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The type of the variable. Valid values:
+	// The variable type. Valid values:
 	//
 	// 	- NoKvVariableExpression
 	//
@@ -849,7 +849,7 @@ type ListNodesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable value.
 	//
 	// example:
 	//
@@ -933,7 +933,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariables) Validate() error 
 }
 
 type ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
-	// The output of the node.
+	// The node output.
 	//
 	// example:
 	//
@@ -963,6 +963,11 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode) Validate() er
 }
 
 type ListNodesResponseBodyPagingInfoNodesRuntimeResource struct {
+	// The identifier of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the identifier of the resource group.
+	//
+	// example:
+	//
+	// S_res_group_XXXX
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The resource group ID.
 	//
@@ -1123,7 +1128,7 @@ type ListNodesResponseBodyPagingInfoNodesStrategy struct {
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The timeout period.
+	// Timeout.
 	//
 	// example:
 	//
@@ -1195,7 +1200,7 @@ type ListNodesResponseBodyPagingInfoNodesTags struct {
 	//
 	// null
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value
+	// The tag value.
 	//
 	// example:
 	//
@@ -1234,7 +1239,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesTags) Validate() error {
 }
 
 type ListNodesResponseBodyPagingInfoNodesTrigger struct {
-	// The CRON expression for scheduling.
+	// The cron expression for scheduling
 	//
 	// example:
 	//
@@ -1264,15 +1269,15 @@ type ListNodesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The type of the trigger.
+	// The trigger type.
 	//
 	// Valid values:
 	//
-	// 	- Scheduler
+	// 	- Scheduler: periodic scheduling
 	//
-	// 	- Manual
+	// 	- Manual: manual trigger
 	//
-	// 	- Steaming
+	// 	- Streaming: streaming task
 	//
 	// example:
 	//

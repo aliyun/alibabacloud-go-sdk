@@ -57,7 +57,7 @@ func (s *ListNodeDependenciesResponseBody) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfo struct {
-	// The descendant nodes.
+	// The list of dependent nodes.
 	Nodes []*ListNodeDependenciesResponseBodyPagingInfoNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -128,13 +128,13 @@ func (s *ListNodeDependenciesResponseBodyPagingInfo) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
-	// The time when the node was created. This value is a UNIX timestamp.
+	// The timestamp when the node was created.
 	//
 	// example:
 	//
 	// 1724505917000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the data source.
+	// The data source.
 	DataSource *ListNodeDependenciesResponseBodyPagingInfoNodesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description of the node.
 	//
@@ -150,7 +150,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodes struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The input of the node.
 	Inputs *ListNodeDependenciesResponseBodyPagingInfoNodesInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The time when the node was last modified. This value is a UNIX timestamp.
+	// The timestamp when the node was last modified.
 	//
 	// example:
 	//
@@ -419,11 +419,11 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesDataSource) Validate() e
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesInputs struct {
-	// The node outputs.
+	// The list of node outputs.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The tables.
+	// The table list.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variables.
+	// The variable list.
 	Variables []*ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -539,7 +539,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// 543218872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -577,7 +577,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables struct {
 	//
 	// Constant
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -691,11 +691,11 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariablesNode) Val
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputs struct {
-	// The node outputs.
+	// The list of node outputs.
 	NodeOutputs []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs `json:"NodeOutputs,omitempty" xml:"NodeOutputs,omitempty" type:"Repeated"`
-	// The tables.
+	// The table list.
 	Tables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The variables.
+	// The variable list.
 	Variables []*ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
 }
 
@@ -739,7 +739,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputs) Validate() erro
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
-	// The node output.
+	// The output of the node.
 	//
 	// example:
 	//
@@ -811,7 +811,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables struct {
 	//
 	// 543217824470354XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -933,7 +933,7 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables) Valida
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariablesNode struct {
-	// The output of the node to which the variable belongs.
+	// The node output corresponding to the variable.
 	//
 	// example:
 	//
@@ -1089,7 +1089,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The rerun interval after a failure. Unit: milliseconds.
+	// The interval between retries after failure. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -1107,7 +1107,7 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesStrategy struct {
 	//
 	// Allowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of reruns after a failure.
+	// The number of retries after failure.
 	//
 	// example:
 	//
@@ -1224,25 +1224,25 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesTags) Validate() error {
 }
 
 type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
-	// The CRON expression for scheduling.
+	// The cron expression for scheduling.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the validity period of the scheduling. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The effective end time of the schedule, in the format yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The trigger ID.
+	// The unique identifier of the trigger.
 	//
 	// example:
 	//
 	// 543680677872062XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The start time of the validity period of the scheduling. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The effective start time of the schedule, in the format yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -1254,15 +1254,15 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesTrigger struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The type of the trigger.
+	// The trigger type.
 	//
 	// Valid values:
 	//
-	// 	- Scheduler
+	// 	- Scheduler: periodic scheduling.
 	//
-	// 	- Manual
+	// 	- Manual: manual scheduling.
 	//
-	// 	- Streaming
+	// 	- Streaming: streaming scheduler.
 	//
 	// example:
 	//

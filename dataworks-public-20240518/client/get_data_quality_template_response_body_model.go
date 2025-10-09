@@ -16,7 +16,10 @@ type iGetDataQualityTemplateResponseBody interface {
 }
 
 type GetDataQualityTemplateResponseBody struct {
+	// The data quality rule template.
 	DataQualityTemplate *GetDataQualityTemplateResponseBodyDataQualityTemplate `json:"DataQualityTemplate,omitempty" xml:"DataQualityTemplate,omitempty" type:"Struct"`
+	// The API request ID, which is generated as a UUID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
@@ -54,34 +57,50 @@ func (s *GetDataQualityTemplateResponseBody) Validate() error {
 }
 
 type GetDataQualityTemplateResponseBodyDataQualityTemplate struct {
+	// The time when the data quality rule template was created.
+	//
 	// example:
 	//
 	// 1606724043000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator of the data quality rule template.
+	//
 	// example:
 	//
 	// 238428342865
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the data quality rule template.
+	//
 	// example:
 	//
 	// 10001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The time when the data quality rule template was updated.
+	//
 	// example:
 	//
 	// 1606724043000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The last updater of the data quality rule template.
+	//
 	// example:
 	//
 	// 238428342865
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	// The owner of the data quality rule template.
+	//
 	// example:
 	//
 	// 238428342865
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 97535
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Specific configurations of the data quality rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+	//
 	// example:
 	//
 	// {

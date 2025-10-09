@@ -14,6 +14,11 @@ type iDeleteDataQualityAlertRuleRequest interface {
 }
 
 type DeleteDataQualityAlertRuleRequest struct {
+	// The ID of the data quality rule template.
+	//
+	// example:
+	//
+	// a7ef0634-20ec-4a7c-a214-54020f91XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 

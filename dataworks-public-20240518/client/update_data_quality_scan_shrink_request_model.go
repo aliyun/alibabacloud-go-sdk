@@ -34,29 +34,102 @@ type iUpdateDataQualityScanShrinkRequest interface {
 }
 
 type UpdateDataQualityScanShrinkRequest struct {
+	// The compute engine used during execution. If it\\"s not specified, the data source connection defined in the Spec will be used.
 	ComputeResourceShrink *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HooksShrink           *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// Description of the data quality monitor.
+	//
+	// example:
+	//
+	// Daily data quality scanning of ods tables.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hook configuration after the data quality monitor stops.
+	HooksShrink *string `json:"Hooks,omitempty" xml:"Hooks,omitempty"`
+	// The ID of the data quality monitor.
+	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the data quality monitor.
+	//
 	// example:
 	//
 	// data_quality_scan_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the owner of the data quality monitor.
+	//
 	// example:
 	//
 	// 231263586109857423
-	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The definition of execution parameters for the data quality monitor.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The ID of the DataWorks workspace where the data quality monitor resides. You can obtain the workspace ID by calling the [ListProjects](https://help.aliyun.com/document_detail/2852607.html) operation.
+	//
 	// example:
 	//
 	// 101
-	ProjectId             *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group used during the execution of the data quality monitor.
 	RuntimeResourceShrink *string `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty"`
-	Spec                  *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	TriggerShrink         *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
+	// The Spec code of the data quality monitoring content. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
+	//
+	// example:
+	//
+	// {
+	//
+	//     "datasets": [
+	//
+	//         {
+	//
+	//             "type": "Table",
+	//
+	//             "dataSource": {
+	//
+	//                 "name": "odps_first",
+	//
+	//                 "envType": "Prod"
+	//
+	//             },
+	//
+	//             "tables": [
+	//
+	//                 "ods_d_user_info"
+	//
+	//             ],
+	//
+	//             "filter": "pt = $[yyyymmdd-1]"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "rules": [
+	//
+	//         {
+	//
+	//             "assertion": "row_count > 0"
+	//
+	//         }, {
+	//
+	//             "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//             "pass": "when = 0",
+	//
+	//             "name": "The id cannot be empty.",
+	//
+	//             "severity": "High",
+	//
+	//              "identity": "a-customized-data-quality-rule-uuid"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// Trigger settings for the data quality monitor.
+	TriggerShrink *string `json:"Trigger,omitempty" xml:"Trigger,omitempty"`
 }
 
 func (s UpdateDataQualityScanShrinkRequest) String() string {

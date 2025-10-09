@@ -14,6 +14,8 @@ type iGetDataQualityScanRequest interface {
 }
 
 type GetDataQualityScanRequest struct {
+	// The ID of the monitor.
+	//
 	// example:
 	//
 	// 10001

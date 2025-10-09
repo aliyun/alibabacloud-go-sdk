@@ -52,7 +52,7 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The runtime configuration.
 	DefaultRunPropertiesShrink *string `json:"DefaultRunProperties,omitempty" xml:"DefaultRunProperties,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment.
 	//
 	// 	- Prod
 	//
@@ -79,9 +79,19 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	// example:
 	//
 	// 100
-	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The tag creation policy. Valid values:
+	//
+	// 	- Append: New tags are added on top of the existing tags of the manual workflow.
+	//
+	// 	- Overwrite: Existing tags of the manual workflow are not inherited. New tags are created directly.
+	//
+	// example:
+	//
+	// Append
 	TagCreationPolicy *string `json:"TagCreationPolicy,omitempty" xml:"TagCreationPolicy,omitempty"`
-	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The task tag list.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The task-specific parameters. The value is in the JSON format. The key specifies the task ID. You can call the GetTask operation to obtain the format of the value by querying the script parameters.
 	//
 	// example:
@@ -96,13 +106,13 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData: The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
+	// 	- SupplementData: Data backfill. The usage of RootTaskIds and IncludeTaskIds varies based on the backfill mode. See the description of the DefaultRunProperties.Mode parameter.
 	//
-	// 	- ManualWorkflow: If you set the Type parameter to ManualWorkflow, you must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not configure the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	// 	- ManualWorkflow: Manual workflow. WorkflowId is required for a manual workflow. RootTaskIds is optional. If not specified, the system uses the default root task list of the manual workflow.
 	//
-	// 	- Manual: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	// 	- Manual: Manual task. You only need to specify RootTaskIds. This is the list of manual tasks to run.
 	//
-	// 	- SmokeTest: You need to configure only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
+	// 	- SmokeTest: Smoke test. You only need to specify RootTaskIds. This is the list of test tasks to run.
 	//
 	// This parameter is required.
 	//

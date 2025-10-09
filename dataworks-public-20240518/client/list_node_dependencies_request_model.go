@@ -28,7 +28,7 @@ type ListNodeDependenciesRequest struct {
 	//
 	// 860438872620113XXXX
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//

@@ -33,15 +33,20 @@ type ListNodesRequest struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	ContainerId *int64  `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number.
+	ContainerId *int64 `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// The name of the node. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number of the data to retrieve, used for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
+	// The number of entries per page. Default is 10, and the maximum is 100.
 	//
 	// example:
 	//

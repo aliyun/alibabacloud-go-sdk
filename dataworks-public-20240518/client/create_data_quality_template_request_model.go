@@ -18,9 +18,36 @@ type iCreateDataQualityTemplateRequest interface {
 }
 
 type CreateDataQualityTemplateRequest struct {
-	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Spec      *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The owner ID.
+	//
+	// example:
+	//
+	// 1000000000001
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Detailed configuration Spec code of the rule template. For more information, see [Data quality Spec configuration description](~2963394~).
+	//
+	// example:
+	//
+	// {
+	//
+	//     "assertion": "anomaly detection fro id_not_null_cnt",
+	//
+	//     "id_not_null_cnt": {
+	//
+	//         "query": "SELECT COUNT(*) AS cnt FROM ${tableName} WHERE dt = \\"$[yyyymmdd-1]\\";"
+	//
+	//     },
+	//
+	//     "identity": "819cf1f8-29be-4f94-a9d0-c5c06c0c3d2a"
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s CreateDataQualityTemplateRequest) String() string {

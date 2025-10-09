@@ -16,10 +16,14 @@ type iCreateDataQualityTemplateResponseBody interface {
 }
 
 type CreateDataQualityTemplateResponseBody struct {
+	// The unique identifier of the newly created rule template.
+	//
 	// example:
 	//
 	// USER-DEFINED:2001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The API request ID, which is generated as a UUID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359

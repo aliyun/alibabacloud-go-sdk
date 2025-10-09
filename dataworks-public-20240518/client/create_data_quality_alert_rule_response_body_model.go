@@ -16,10 +16,14 @@ type iCreateDataQualityAlertRuleResponseBody interface {
 }
 
 type CreateDataQualityAlertRuleResponseBody struct {
+	// The user-defined rule ID returned after the monitoring rule is successfully created.
+	//
 	// example:
 	//
 	// 1010543619
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359

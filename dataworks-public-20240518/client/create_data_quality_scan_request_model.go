@@ -34,31 +34,104 @@ type iCreateDataQualityScanRequest interface {
 }
 
 type CreateDataQualityScanRequest struct {
+	// The idempotency token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a-customized-uuid
-	ClientToken     *string                                      `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The compute engine used at runtime. If not specified, the data source defined in the Spec is used.
 	ComputeResource *CreateDataQualityScanRequestComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	Description     *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Hooks           []*CreateDataQualityScanRequestHooks         `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The description of the data quality monitor.
+	//
+	// example:
+	//
+	// Daily data quality scanning of ods tables.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The Hook configurations after the data quality monitoring run ends.
+	Hooks []*CreateDataQualityScanRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The data quality monitoring name.
+	//
 	// example:
 	//
 	// data_quality_scan_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the user who owns of the data quality monitor.
+	//
 	// example:
 	//
 	// 95279527****
-	Owner      *string                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The definition of execution parameters for the data quality monitoring.
 	Parameters []*CreateDataQualityScanRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the workspace configuration page to obtain the workspace ID. This parameter is required to specify the target DataWorks workspace for this API operation.
+	//
 	// example:
 	//
 	// 101
-	ProjectId       *int64                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group used during execution of the data quality monitoring.
 	RuntimeResource *CreateDataQualityScanRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	Spec            *string                                      `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Trigger         *CreateDataQualityScanRequestTrigger         `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// Spec code for the content of the data quality monitoring.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "datasets": [
+	//
+	//         {
+	//
+	//             "type": "Table",
+	//
+	//             "dataSource": {
+	//
+	//                 "name": "odps_first",
+	//
+	//                 "envType": "Prod"
+	//
+	//             },
+	//
+	//             "tables": [
+	//
+	//                 "ods_d_user_info"
+	//
+	//             ],
+	//
+	//             "filter": "pt = $[yyyymmdd-1]"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "rules": [
+	//
+	//         {
+	//
+	//             "assertion": "row_count > 0"
+	//
+	//         }, {
+	//
+	//             "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//             "pass": "when = 0",
+	//
+	//             "name": "The id cannot be empty.",
+	//
+	//             "severity": "High",
+	//
+	//              "identity": "a-customized-data-quality-rule-uuid"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The trigger configurations of the data quality monitoring task.
+	Trigger *CreateDataQualityScanRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
 func (s CreateDataQualityScanRequest) String() string {
@@ -173,14 +246,25 @@ func (s *CreateDataQualityScanRequest) Validate() error {
 }
 
 type CreateDataQualityScanRequestComputeResource struct {
+	// The workspace environment to which the compute engine belongs.
+	//
+	// Valid values:
+	//
+	// 	- Prod: production environment .
+	//
+	// 	- Dev: development environment.
+	//
 	// example:
 	//
 	// Dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the compute engine, which is a unique identifier.
+	//
 	// example:
 	//
 	// emr_first
-	Name    *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// More settings for data quality monitoring at runtime.
 	Runtime *CreateDataQualityScanRequestComputeResourceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -224,14 +308,28 @@ func (s *CreateDataQualityScanRequestComputeResource) Validate() error {
 }
 
 type CreateDataQualityScanRequestComputeResourceRuntime struct {
+	// The type of the compute engine. Only EMR compute engines support these settings.
+	//
+	// Valid values:
+	//
+	// 	- Hive: Hive SQL
+	//
+	// 	- Spark: Spark SQL
+	//
+	// 	- Kyuubi
+	//
 	// example:
 	//
 	// Hive
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
+	//
 	// example:
 	//
 	// mapreduce.job.queuename=dq_queue
 	HiveConf map[string]interface{} `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported.
+	//
 	// example:
 	//
 	// spark.yarn.queue=dq_queue
@@ -278,10 +376,20 @@ func (s *CreateDataQualityScanRequestComputeResourceRuntime) Validate() error {
 }
 
 type CreateDataQualityScanRequestHooks struct {
+	// The Hook trigger condition. The hook will run if the condition is met. Currently, only one type of expression syntax is supported:
+	//
+	// You can specify multiple combinations of rule severity levels and validation statuses using an expression such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This expression means the condition is met if any executed rule has a result of Fail with severity Normal, Error with severity High, or Warn with severity High. In the condition expression, the values of severity and status are predefined enums. The values of severity must match those defined in the Spec, and the values of status must match those in DataQualityResult.
+	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The type of the Hook.
+	//
+	// Valid values:
+	//
+	// 	- BlockTaskInstance: Blocks the scheduling of the task instance.
+	//
 	// example:
 	//
 	// BlockTaskInstance
@@ -319,10 +427,14 @@ func (s *CreateDataQualityScanRequestHooks) Validate() error {
 }
 
 type CreateDataQualityScanRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// triggerTime
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values.
+	//
 	// example:
 	//
 	// $[yyyymmdd-1]
@@ -360,14 +472,20 @@ func (s *CreateDataQualityScanRequestParameters) Validate() error {
 }
 
 type CreateDataQualityScanRequestRuntimeResource struct {
+	// The default number of CUs configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// 0525242e-d0ee-4bda-bc73-765d82f6a34a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the image configured for task running.
+	//
 	// example:
 	//
 	// i-xxxxxx
@@ -414,7 +532,16 @@ func (s *CreateDataQualityScanRequestRuntimeResource) Validate() error {
 }
 
 type CreateDataQualityScanRequestTrigger struct {
+	// If the trigger mode is set to BySchedule, the scheduling task ID must be specified.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The trigger mode of the monitoring task.
+	//
+	// Valid values:
+	//
+	// 	- ByManual: Manual trigger. This is the default setting.
+	//
+	// 	- BySchedule: Triggered by a scheduled task instance.
+	//
 	// example:
 	//
 	// BySchedule

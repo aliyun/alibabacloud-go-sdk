@@ -22,19 +22,27 @@ type iUpdateDataQualityAlertRuleShrinkRequest interface {
 }
 
 type UpdateDataQualityAlertRuleShrinkRequest struct {
+	// The alert condition of the data quality monitoring rule.
+	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"fail\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The ID of the alert rule.
+	//
 	// example:
 	//
 	// 105412
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Alert notification configurations.
 	NotificationShrink *string `json:"Notification,omitempty" xml:"Notification,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 1000
-	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The monitored target of the data quality monitoring rule.
 	TargetShrink *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 

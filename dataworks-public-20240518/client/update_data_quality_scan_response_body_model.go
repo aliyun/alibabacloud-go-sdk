@@ -16,12 +16,14 @@ type iUpdateDataQualityScanResponseBody interface {
 }
 
 type UpdateDataQualityScanResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

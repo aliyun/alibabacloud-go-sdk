@@ -34,29 +34,102 @@ type iUpdateDataQualityScanRequest interface {
 }
 
 type UpdateDataQualityScanRequest struct {
+	// The compute engine used during execution. If it\\"s not specified, the data source connection defined in the Spec will be used.
 	ComputeResource *UpdateDataQualityScanRequestComputeResource `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty" type:"Struct"`
-	Description     *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	Hooks           []*UpdateDataQualityScanRequestHooks         `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// Description of the data quality monitor.
+	//
+	// example:
+	//
+	// Daily data quality scanning of ods tables.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hook configuration after the data quality monitor stops.
+	Hooks []*UpdateDataQualityScanRequestHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The ID of the data quality monitor.
+	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the data quality monitor.
+	//
 	// example:
 	//
 	// data_quality_scan_001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user ID of the owner of the data quality monitor.
+	//
 	// example:
 	//
 	// 231263586109857423
-	Owner      *string                                   `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The definition of execution parameters for the data quality monitor.
 	Parameters []*UpdateDataQualityScanRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The ID of the DataWorks workspace where the data quality monitor resides. You can obtain the workspace ID by calling the [ListProjects](https://help.aliyun.com/document_detail/2852607.html) operation.
+	//
 	// example:
 	//
 	// 101
-	ProjectId       *int64                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The resource group used during the execution of the data quality monitor.
 	RuntimeResource *UpdateDataQualityScanRequestRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	Spec            *string                                      `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Trigger         *UpdateDataQualityScanRequestTrigger         `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	// The Spec code of the data quality monitoring content. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
+	//
+	// example:
+	//
+	// {
+	//
+	//     "datasets": [
+	//
+	//         {
+	//
+	//             "type": "Table",
+	//
+	//             "dataSource": {
+	//
+	//                 "name": "odps_first",
+	//
+	//                 "envType": "Prod"
+	//
+	//             },
+	//
+	//             "tables": [
+	//
+	//                 "ods_d_user_info"
+	//
+	//             ],
+	//
+	//             "filter": "pt = $[yyyymmdd-1]"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "rules": [
+	//
+	//         {
+	//
+	//             "assertion": "row_count > 0"
+	//
+	//         }, {
+	//
+	//             "templateId": "SYSTEM:field:null_value:fixed",
+	//
+	//             "pass": "when = 0",
+	//
+	//             "name": "The id cannot be empty.",
+	//
+	//             "severity": "High",
+	//
+	//              "identity": "a-customized-data-quality-rule-uuid"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// Trigger settings for the data quality monitor.
+	Trigger *UpdateDataQualityScanRequestTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
 func (s UpdateDataQualityScanRequest) String() string {
@@ -171,14 +244,23 @@ func (s *UpdateDataQualityScanRequest) Validate() error {
 }
 
 type UpdateDataQualityScanRequestComputeResource struct {
+	// Workspace environment of the compute engine. Valid values:
+	//
+	// 	- Prod
+	//
+	// 	- Dev
+	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the compute engine, which is a unique identifier.
+	//
 	// example:
 	//
 	// auto_createAlertRule_Finished_1kUTk6
-	Name    *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Additional settings for the compute engine.
 	Runtime *UpdateDataQualityScanRequestComputeResourceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
 }
 
@@ -222,14 +304,26 @@ func (s *UpdateDataQualityScanRequestComputeResource) Validate() error {
 }
 
 type UpdateDataQualityScanRequestComputeResourceRuntime struct {
+	// The engine type. These settings are only supported for the EMR compute engine.This setting? Valid values:
+	//
+	// 	- Hive: Hive SQL
+	//
+	// 	- Spark: Spark SQL
+	//
+	// 	- Kyuubi
+	//
 	// example:
 	//
 	// Hive
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
+	//
 	// example:
 	//
 	// mapreduce.job.queuename=dq_queue
 	HiveConf map[string]interface{} `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
+	// Additional Spark engine parameters. Currently, only the spark.yarn.queue parameter is supported.
+	//
 	// example:
 	//
 	// spark.yarn.queue=dq_queue
@@ -276,10 +370,18 @@ func (s *UpdateDataQualityScanRequestComputeResourceRuntime) Validate() error {
 }
 
 type UpdateDataQualityScanRequestHooks struct {
+	// The hook trigger condition. When this condition is met, the hook is triggered. Valid expression format:
+	//
+	// Specifies multiple combinations of rule severity levels and rule validation statuses, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. The severity values must match those defined in the Spec. The status values must match those in DataQualityResult.
+	//
 	// example:
 	//
 	// results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The type of the hook. Valid values:
+	//
+	// 	- BlockTaskInstance: Block the scheduling of the task instance.
+	//
 	// example:
 	//
 	// BlockTaskInstance
@@ -317,10 +419,14 @@ func (s *UpdateDataQualityScanRequestHooks) Validate() error {
 }
 
 type UpdateDataQualityScanRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// temp_237669.zip_byBwm_1734661241752
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// smtp.qiye.aliyun.com
@@ -358,14 +464,20 @@ func (s *UpdateDataQualityScanRequestParameters) Validate() error {
 }
 
 type UpdateDataQualityScanRequestRuntimeResource struct {
+	// The default number of CUs configured for task running.
+	//
 	// example:
 	//
 	// 0.25
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// 20315
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The image ID of the task runtime configuration.
+	//
 	// example:
 	//
 	// i-xxxxxx
@@ -412,7 +524,14 @@ func (s *UpdateDataQualityScanRequestRuntimeResource) Validate() error {
 }
 
 type UpdateDataQualityScanRequestTrigger struct {
+	// If the trigger mode is BySchedule, the ID of the scheduling task that triggers the monitor must be configured.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The trigger mode of the data quality monitor. Valid values:
+	//
+	// 	- ByManual: Manually triggered. Default setting.
+	//
+	// 	- BySchedule: Triggered by a scheduled task instance.
+	//
 	// example:
 	//
 	// BySchedule

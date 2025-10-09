@@ -14,6 +14,8 @@ type iGetDataQualityTemplateRequest interface {
 }
 
 type GetDataQualityTemplateRequest struct {
+	// The data quality rule template ID.
+	//
 	// example:
 	//
 	// a7ef0634-20ec-4a7c-a214-54020f91XXXX

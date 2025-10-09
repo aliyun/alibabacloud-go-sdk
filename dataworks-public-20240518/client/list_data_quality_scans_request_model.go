@@ -24,29 +24,50 @@ type iListDataQualityScansRequest interface {
 }
 
 type ListDataQualityScansRequest struct {
+	// The data quality scan task name for fuzzy match.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
+	//
+	// 	- ModifyTime (Desc/Asc)
+	//
+	// 	- CreateTime (Desc/Asc)
+	//
+	// 	- Id (Desc/Asc)
+	//
 	// example:
 	//
 	// ModifyTime Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Fuzzy match for the monitored table name.
+	//
 	// example:
 	//
 	// video_album

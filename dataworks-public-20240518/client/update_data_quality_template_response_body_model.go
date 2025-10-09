@@ -16,10 +16,14 @@ type iUpdateDataQualityTemplateResponseBody interface {
 }
 
 type UpdateDataQualityTemplateResponseBody struct {
+	// The API request ID, which is generated as a UUID.
+	//
 	// example:
 	//
 	// 0bc14115***159376359
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the rule template is updated.
+	//
 	// example:
 	//
 	// true
