@@ -43,6 +43,8 @@ type iJobSettings interface {
 	GetJobReservedMinutes() *int32
 	SetJobReservedPolicy(v string) *JobSettings
 	GetJobReservedPolicy() *string
+	SetModelConfig(v *ModelConfig) *JobSettings
+	GetModelConfig() *ModelConfig
 	SetOversoldType(v string) *JobSettings
 	GetOversoldType() *string
 	SetPipelineId(v string) *JobSettings
@@ -109,7 +111,8 @@ type JobSettings struct {
 	// example:
 	//
 	// Always
-	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
+	JobReservedPolicy *string      `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
+	ModelConfig       *ModelConfig `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
 	// example:
 	//
 	// AcceptQuotaOverSold
@@ -199,6 +202,10 @@ func (s *JobSettings) GetJobReservedMinutes() *int32 {
 
 func (s *JobSettings) GetJobReservedPolicy() *string {
 	return s.JobReservedPolicy
+}
+
+func (s *JobSettings) GetModelConfig() *ModelConfig {
+	return s.ModelConfig
 }
 
 func (s *JobSettings) GetOversoldType() *string {
@@ -299,6 +306,11 @@ func (s *JobSettings) SetJobReservedMinutes(v int32) *JobSettings {
 
 func (s *JobSettings) SetJobReservedPolicy(v string) *JobSettings {
 	s.JobReservedPolicy = &v
+	return s
+}
+
+func (s *JobSettings) SetModelConfig(v *ModelConfig) *JobSettings {
+	s.ModelConfig = v
 	return s
 }
 

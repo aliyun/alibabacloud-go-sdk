@@ -23,6 +23,8 @@ type iPodItem interface {
 	GetNodeName() *string
 	SetPodId(v string) *PodItem
 	GetPodId() *string
+	SetPodIp(v string) *PodItem
+	GetPodIp() *string
 	SetPodUid(v string) *PodItem
 	GetPodUid() *string
 	SetStatus(v string) *PodItem
@@ -56,6 +58,7 @@ type PodItem struct {
 	//
 	// dlc-20210126170216-mtl37ge7gkvdz-worker-0
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodIp *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57591d
@@ -107,6 +110,10 @@ func (s *PodItem) GetPodId() *string {
 	return s.PodId
 }
 
+func (s *PodItem) GetPodIp() *string {
+	return s.PodIp
+}
+
 func (s *PodItem) GetPodUid() *string {
 	return s.PodUid
 }
@@ -155,6 +162,11 @@ func (s *PodItem) SetNodeName(v string) *PodItem {
 
 func (s *PodItem) SetPodId(v string) *PodItem {
 	s.PodId = &v
+	return s
+}
+
+func (s *PodItem) SetPodIp(v string) *PodItem {
+	s.PodIp = &v
 	return s
 }
 

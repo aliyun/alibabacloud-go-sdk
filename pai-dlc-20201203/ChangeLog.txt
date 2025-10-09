@@ -1,3 +1,6 @@
+2025-10-09 Version: v1.7.1
+- Generated golang 2020-12-03 for pai-dlc.
+
 2025-09-22 Version: v1.7.0
 - Support API GetDashboard.
 
