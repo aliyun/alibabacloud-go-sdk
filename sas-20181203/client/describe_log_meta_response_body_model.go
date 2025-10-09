@@ -78,8 +78,6 @@ type DescribeLogMetaResponseBodyLogMetaList struct {
 	//
 	// 	- **host**
 	//
-	// 	- **network**
-	//
 	// 	- **security**
 	//
 	// example:

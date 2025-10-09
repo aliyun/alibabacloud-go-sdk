@@ -25,6 +25,8 @@ type iDescribeNsasSuspEventTypeRequest interface {
 	GetRemark() *string
 	SetSourceIp(v string) *DescribeNsasSuspEventTypeRequest
 	GetSourceIp() *string
+	SetSupportOperateCodeList(v []*string) *DescribeNsasSuspEventTypeRequest
+	GetSupportOperateCodeList() []*string
 	SetUuids(v string) *DescribeNsasSuspEventTypeRequest
 	GetUuids() *string
 }
@@ -87,7 +89,8 @@ type DescribeNsasSuspEventTypeRequest struct {
 	// example:
 	//
 	// 180.212.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	SourceIp               *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
 	// The UUIDs of servers. Separate multiple UUIDs with commas (,).
 	//
 	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
@@ -138,6 +141,10 @@ func (s *DescribeNsasSuspEventTypeRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
 
+func (s *DescribeNsasSuspEventTypeRequest) GetSupportOperateCodeList() []*string {
+	return s.SupportOperateCodeList
+}
+
 func (s *DescribeNsasSuspEventTypeRequest) GetUuids() *string {
 	return s.Uuids
 }
@@ -179,6 +186,11 @@ func (s *DescribeNsasSuspEventTypeRequest) SetRemark(v string) *DescribeNsasSusp
 
 func (s *DescribeNsasSuspEventTypeRequest) SetSourceIp(v string) *DescribeNsasSuspEventTypeRequest {
 	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeNsasSuspEventTypeRequest) SetSupportOperateCodeList(v []*string) *DescribeNsasSuspEventTypeRequest {
+	s.SupportOperateCodeList = v
 	return s
 }
 

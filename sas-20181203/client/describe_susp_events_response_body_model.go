@@ -472,7 +472,8 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	// example:
 	//
 	// "["authority_maintenance"]"
-	Stages *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	Stages             *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
+	SupportOperateCode *string `json:"SupportOperateCode,omitempty" xml:"SupportOperateCode,omitempty"`
 	// The display name of the attack stage.
 	TacticItems []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
 	// The unique key of the alert.
@@ -705,6 +706,10 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) GetSourceAliUid() *int64 {
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) GetStages() *string {
 	return s.Stages
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) GetSupportOperateCode() *string {
+	return s.SupportOperateCode
 }
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) GetTacticItems() []*DescribeSuspEventsResponseBodySuspEventsTacticItems {
@@ -975,6 +980,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetSourceAliUid(v int64) *Des
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetStages(v string) *DescribeSuspEventsResponseBodySuspEvents {
 	s.Stages = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetSupportOperateCode(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.SupportOperateCode = &v
 	return s
 }
 

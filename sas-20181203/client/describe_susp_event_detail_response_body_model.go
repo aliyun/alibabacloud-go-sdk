@@ -9,6 +9,8 @@ type iDescribeSuspEventDetailResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlarmUniqueInfo(v string) *DescribeSuspEventDetailResponseBody
+	GetAlarmUniqueInfo() *string
 	SetCanBeDealOnLine(v bool) *DescribeSuspEventDetailResponseBody
 	GetCanBeDealOnLine() *bool
 	SetDataSource(v string) *DescribeSuspEventDetailResponseBody
@@ -48,6 +50,7 @@ type iDescribeSuspEventDetailResponseBody interface {
 }
 
 type DescribeSuspEventDetailResponseBody struct {
+	AlarmUniqueInfo *string `json:"AlarmUniqueInfo,omitempty" xml:"AlarmUniqueInfo,omitempty"`
 	// Indicates whether the online processing of exceptions is supported, such as blocking an exception, adding an exception to the whitelist, and ignoring an exception. Valid values:
 	//
 	// 	- **true**: The online processing of exceptions is supported.
@@ -192,6 +195,10 @@ func (s DescribeSuspEventDetailResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeSuspEventDetailResponseBody) GetAlarmUniqueInfo() *string {
+	return s.AlarmUniqueInfo
+}
+
 func (s *DescribeSuspEventDetailResponseBody) GetCanBeDealOnLine() *bool {
 	return s.CanBeDealOnLine
 }
@@ -262,6 +269,11 @@ func (s *DescribeSuspEventDetailResponseBody) GetSaleVersion() *string {
 
 func (s *DescribeSuspEventDetailResponseBody) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *DescribeSuspEventDetailResponseBody) SetAlarmUniqueInfo(v string) *DescribeSuspEventDetailResponseBody {
+	s.AlarmUniqueInfo = &v
+	return s
 }
 
 func (s *DescribeSuspEventDetailResponseBody) SetCanBeDealOnLine(v bool) *DescribeSuspEventDetailResponseBody {

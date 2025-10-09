@@ -67,6 +67,8 @@ type iDescribeSuspEventsRequest interface {
 	GetStatus() *string
 	SetStrictMode(v string) *DescribeSuspEventsRequest
 	GetStrictMode() *string
+	SetSupportOperateCodeList(v []*string) *DescribeSuspEventsRequest
+	GetSupportOperateCodeList() []*string
 	SetTacticId(v string) *DescribeSuspEventsRequest
 	GetTacticId() *string
 	SetTargetType(v string) *DescribeSuspEventsRequest
@@ -375,7 +377,8 @@ type DescribeSuspEventsRequest struct {
 	// example:
 	//
 	// Y
-	StrictMode *string `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	StrictMode             *string   `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+	SupportOperateCodeList []*string `json:"SupportOperateCodeList,omitempty" xml:"SupportOperateCodeList,omitempty" type:"Repeated"`
 	// The tactic ID of ATT\\&CK.
 	//
 	// example:
@@ -544,6 +547,10 @@ func (s *DescribeSuspEventsRequest) GetStrictMode() *string {
 	return s.StrictMode
 }
 
+func (s *DescribeSuspEventsRequest) GetSupportOperateCodeList() []*string {
+	return s.SupportOperateCodeList
+}
+
 func (s *DescribeSuspEventsRequest) GetTacticId() *string {
 	return s.TacticId
 }
@@ -710,6 +717,11 @@ func (s *DescribeSuspEventsRequest) SetStatus(v string) *DescribeSuspEventsReque
 
 func (s *DescribeSuspEventsRequest) SetStrictMode(v string) *DescribeSuspEventsRequest {
 	s.StrictMode = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetSupportOperateCodeList(v []*string) *DescribeSuspEventsRequest {
+	s.SupportOperateCodeList = v
 	return s
 }
 

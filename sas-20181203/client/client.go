@@ -23867,6 +23867,10 @@ func (client *Client) DescribeNsasSuspEventTypeWithOptions(request *DescribeNsas
 		query["SourceIp"] = request.SourceIp
 	}
 
+	if !dara.IsNil(request.SupportOperateCodeList) {
+		query["SupportOperateCodeList"] = request.SupportOperateCodeList
+	}
+
 	if !dara.IsNil(request.Uuids) {
 		query["Uuids"] = request.Uuids
 	}
@@ -29143,6 +29147,10 @@ func (client *Client) DescribeSuspEventsWithOptions(tmpReq *DescribeSuspEventsRe
 
 	if !dara.IsNil(request.StrictMode) {
 		query["StrictMode"] = request.StrictMode
+	}
+
+	if !dara.IsNil(request.SupportOperateCodeList) {
+		query["SupportOperateCodeList"] = request.SupportOperateCodeList
 	}
 
 	if !dara.IsNil(request.TargetType) {
