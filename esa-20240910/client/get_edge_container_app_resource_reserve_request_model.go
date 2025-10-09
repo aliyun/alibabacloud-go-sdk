@@ -14,6 +14,8 @@ type iGetEdgeContainerAppResourceReserveRequest interface {
 }
 
 type GetEdgeContainerAppResourceReserveRequest struct {
+	// The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+	//
 	// example:
 	//
 	// app-88068867578379****

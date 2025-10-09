@@ -16,10 +16,14 @@ type iCreateVideoProcessingResponseBody interface {
 }
 
 type CreateVideoProcessingResponseBody struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 352816**********
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE

@@ -638,7 +638,7 @@ func (s *WafRuleConfigManagedRulesetsManagedRules) Validate() error {
 }
 
 type WafRuleConfigRateLimit struct {
-	Characteristics *WafRuleMatch2                   `json:"Characteristics,omitempty" xml:"Characteristics,omitempty"`
+	Characteristics *WafRatelimitCharacteristics     `json:"Characteristics,omitempty" xml:"Characteristics,omitempty"`
 	Interval        *int32                           `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OnHit           *bool                            `json:"OnHit,omitempty" xml:"OnHit,omitempty"`
 	TTL             *int32                           `json:"TTL,omitempty" xml:"TTL,omitempty"`
@@ -653,7 +653,7 @@ func (s WafRuleConfigRateLimit) GoString() string {
 	return s.String()
 }
 
-func (s *WafRuleConfigRateLimit) GetCharacteristics() *WafRuleMatch2 {
+func (s *WafRuleConfigRateLimit) GetCharacteristics() *WafRatelimitCharacteristics {
 	return s.Characteristics
 }
 
@@ -673,7 +673,7 @@ func (s *WafRuleConfigRateLimit) GetThreshold() *WafRuleConfigRateLimitThreshold
 	return s.Threshold
 }
 
-func (s *WafRuleConfigRateLimit) SetCharacteristics(v *WafRuleMatch2) *WafRuleConfigRateLimit {
+func (s *WafRuleConfigRateLimit) SetCharacteristics(v *WafRatelimitCharacteristics) *WafRuleConfigRateLimit {
 	s.Characteristics = v
 	return s
 }

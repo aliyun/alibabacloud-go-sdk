@@ -26,14 +26,44 @@ type iListUserRoutinesResponseBody interface {
 }
 
 type ListUserRoutinesResponseBody struct {
-	PageNumber         *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The maximum number of functions supported by the billing plan.
+	//
+	// example:
+	//
+	// 20
 	QuotaRoutineNumber *int64 `json:"QuotaRoutineNumber,omitempty" xml:"QuotaRoutineNumber,omitempty"`
-	// Id of the request
-	RequestId         *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Routines          []*ListUserRoutinesResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
-	TotalCount        *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UsedRoutineNumber *int64                                  `json:"UsedRoutineNumber,omitempty" xml:"UsedRoutineNumber,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1234567890ABCDEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The functions.
+	Routines []*ListUserRoutinesResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
+	// The total count.
+	//
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of functions that were already created.
+	//
+	// example:
+	//
+	// 5
+	UsedRoutineNumber *int64 `json:"UsedRoutineNumber,omitempty" xml:"UsedRoutineNumber,omitempty"`
 }
 
 func (s ListUserRoutinesResponseBody) String() string {
@@ -112,11 +142,36 @@ func (s *ListUserRoutinesResponseBody) Validate() error {
 }
 
 type ListUserRoutinesResponseBodyRoutines struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the function was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:02.883361712Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The default record name to access.
+	//
+	// example:
+	//
+	// serverless-test-2.154edaf6.er.aliyun-esa.net
 	DefaultRelatedRecord *string `json:"DefaultRelatedRecord,omitempty" xml:"DefaultRelatedRecord,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HasAssets            *bool   `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
-	RoutineName          *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// The function description.
+	//
+	// example:
+	//
+	// ZWRpdCByb3V0aW5lIGNvbmZpZyBkZXNjcmlwdGlvbg==
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to include the Assets file tag.
+	//
+	// example:
+	//
+	// false
+	HasAssets *bool `json:"HasAssets,omitempty" xml:"HasAssets,omitempty"`
+	// The function name.
+	//
+	// example:
+	//
+	// hello
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
 }
 
 func (s ListUserRoutinesResponseBodyRoutines) String() string {

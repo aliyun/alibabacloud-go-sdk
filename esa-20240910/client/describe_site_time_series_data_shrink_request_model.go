@@ -26,6 +26,8 @@ type DescribeSiteTimeSeriesDataShrinkRequest struct {
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metric to query.
+	//
 	// This parameter is required.
 	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
 	// example:

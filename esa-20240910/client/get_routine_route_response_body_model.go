@@ -36,47 +36,94 @@ type iGetRoutineRouteResponseBody interface {
 }
 
 type GetRoutineRouteResponseBody struct {
+	// Bypass mode. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 352816******
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: queries rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
+	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The configuration mode. Valid values: Valid values:
+	//
+	// 	- simple
+	//
+	// 	- custom
+	//
 	// example:
 	//
 	// simple
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routing switch. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// The route name.
+	//
 	// example:
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The function name.
+	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website.
+	//
 	// example:
 	//
 	// 0

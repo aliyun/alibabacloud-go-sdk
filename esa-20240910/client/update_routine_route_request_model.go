@@ -30,37 +30,70 @@ type iUpdateRoutineRouteRequest interface {
 }
 
 type UpdateRoutineRouteRequest struct {
+	// Bypass mode. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// The ID of the configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
-	ConfigId *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The exception origin switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent to the origin. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
+	// example:
+	//
+	// on
 	Fallback *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The routing switch. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The name of the function.
+	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// The content of the rule.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

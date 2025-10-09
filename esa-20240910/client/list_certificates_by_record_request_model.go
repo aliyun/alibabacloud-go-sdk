@@ -20,16 +20,34 @@ type iListCertificatesByRecordRequest interface {
 }
 
 type ListCertificatesByRecordRequest struct {
+	// Specifies whether to return the certificate details. 0 indicates that the certificate details are not returned. 1 indicates that the certificate details are returned.
+	//
+	// example:
+	//
+	// 1
 	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The record name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234567890123
-	SiteId    *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	ValidOnly *bool  `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// Specifies whether to return only valid certificates. 0 indicates that all matched certificates are returned. 1 indicates that only valid certificates are returned.
+	//
+	// example:
+	//
+	// 1
+	ValidOnly *bool `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
 }
 
 func (s ListCertificatesByRecordRequest) String() string {

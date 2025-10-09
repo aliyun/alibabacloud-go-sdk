@@ -26,6 +26,8 @@ type DescribeSiteTimeSeriesDataRequest struct {
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metric to query.
+	//
 	// This parameter is required.
 	Fields []*DescribeSiteTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// example:
@@ -100,7 +102,12 @@ func (s *DescribeSiteTimeSeriesDataRequest) Validate() error {
 }
 
 type DescribeSiteTimeSeriesDataRequestFields struct {
+	// The dimensions at which you want to query the data.
 	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
+	// The metric to query.
+	//
+	// >  For more information, see [Data analysis field description](https://help.aliyun.com/document_detail/2878520.html).
+	//
 	// example:
 	//
 	// Traffic

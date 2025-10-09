@@ -20,14 +20,31 @@ type iListRoutineCodeVersionsRequest interface {
 }
 
 type ListRoutineCodeVersionsRequest struct {
+	// The function name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ListRoutineCodeVersions
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number of the returned page. Default value: 1. Valid values: 1 and 2.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword used for fuzzy search.
+	//
+	// example:
+	//
+	// hello
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
 }
 

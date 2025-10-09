@@ -40,58 +40,102 @@ type iGetVideoProcessingResponseBody interface {
 }
 
 type GetVideoProcessingResponseBody struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The custom end parameter for FLV files.
+	//
 	// example:
 	//
 	// end
 	FlvSeekEnd *string `json:"FlvSeekEnd,omitempty" xml:"FlvSeekEnd,omitempty"`
+	// The custom start parameter for FLV files.
+	//
 	// example:
 	//
 	// start
 	FlvSeekStart *string `json:"FlvSeekStart,omitempty" xml:"FlvSeekStart,omitempty"`
+	// FLV Seeking Valid values:
+	//
+	// 	- by_byte: Seek by byte.
+	//
+	// 	- by_time: Seek by time.
+	//
 	// example:
 	//
 	// by_byte
 	FlvVideoSeekMode *string `json:"FlvVideoSeekMode,omitempty" xml:"FlvVideoSeekMode,omitempty"`
+	// Customize the mp4 end parameter.
+	//
 	// example:
 	//
 	// end
 	Mp4SeekEnd *string `json:"Mp4SeekEnd,omitempty" xml:"Mp4SeekEnd,omitempty"`
+	// Customize the mp4 start parameter.
+	//
 	// example:
 	//
 	// start
 	Mp4SeekStart *string `json:"Mp4SeekStart,omitempty" xml:"Mp4SeekStart,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-A198-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The name of the scaling rule.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations.
+	//
 	// example:
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// Video seeking. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on

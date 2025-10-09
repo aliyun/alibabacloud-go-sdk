@@ -16,6 +16,8 @@ type iCreateUrlObservationResponseBody interface {
 }
 
 type CreateUrlObservationResponseBody struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****

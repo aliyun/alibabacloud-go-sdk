@@ -30,14 +30,49 @@ type iDescribeEdgeContainerAppStatsResponseBody interface {
 }
 
 type DescribeEdgeContainerAppStatsResponseBody struct {
-	CpuUsageSecondsQuotaRateAvg *float64                                           `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
-	CpuUsageSecondsTotalAvg     *float64                                           `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
-	FsReadsBytesAvgAvg          *float64                                           `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
-	FsWritesBytesAvgAvg         *float64                                           `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
-	MemoryRssAvg                *float64                                           `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
-	MemoryRssQuotaRateAvg       *float64                                           `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
-	PodReadyRateAvg             *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
-	Points                      []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	// Average CPU limit ratio
+	//
+	// example:
+	//
+	// 0.1
+	CpuUsageSecondsQuotaRateAvg *float64 `json:"CpuUsageSecondsQuotaRateAvg,omitempty" xml:"CpuUsageSecondsQuotaRateAvg,omitempty"`
+	// Average number of CPU cores
+	//
+	// example:
+	//
+	// 2
+	CpuUsageSecondsTotalAvg *float64 `json:"CpuUsageSecondsTotalAvg,omitempty" xml:"CpuUsageSecondsTotalAvg,omitempty"`
+	// Average read IO
+	//
+	// example:
+	//
+	// 0
+	FsReadsBytesAvgAvg *float64 `json:"FsReadsBytesAvgAvg,omitempty" xml:"FsReadsBytesAvgAvg,omitempty"`
+	// Average write IO
+	//
+	// example:
+	//
+	// 0
+	FsWritesBytesAvgAvg *float64 `json:"FsWritesBytesAvgAvg,omitempty" xml:"FsWritesBytesAvgAvg,omitempty"`
+	// Average memory usage
+	//
+	// example:
+	//
+	// 0.1
+	MemoryRssAvg *float64 `json:"MemoryRssAvg,omitempty" xml:"MemoryRssAvg,omitempty"`
+	// Average memory limit proportion
+	//
+	// example:
+	//
+	// 1
+	MemoryRssQuotaRateAvg *float64 `json:"MemoryRssQuotaRateAvg,omitempty" xml:"MemoryRssQuotaRateAvg,omitempty"`
+	// Average PodReady rate
+	//
+	// example:
+	//
+	// 100
+	PodReadyRateAvg *float64                                           `json:"PodReadyRateAvg,omitempty" xml:"PodReadyRateAvg,omitempty"`
+	Points          []*DescribeEdgeContainerAppStatsResponseBodyPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:

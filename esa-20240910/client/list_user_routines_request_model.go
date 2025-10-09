@@ -18,11 +18,23 @@ type iListUserRoutinesRequest interface {
 }
 
 type ListUserRoutinesRequest struct {
+	// The page number of the returned page. Default value: 1. Valid values: 1 to 10.
+	//
 	// example:
 	//
 	// ListUserRoutines
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword used for fuzzy search.
+	//
+	// example:
+	//
+	// hello
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
 }
 

@@ -16,7 +16,12 @@ type iListESAIPInfoResponseBody interface {
 }
 
 type ListESAIPInfoResponseBody struct {
+	// The objects that are returned.
 	Content []*ListESAIPInfoResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// Example D03F9502-6653-127C-8A5F-0647197\\*\\*\\*\\*\\*
+	//
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
@@ -54,10 +59,18 @@ func (s *ListESAIPInfoResponseBody) Validate() error {
 }
 
 type ListESAIPInfoResponseBodyContent struct {
+	// Whether the IP address in the parameter belongs to ESA POPs.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	CdnIp *string `json:"CdnIp,omitempty" xml:"CdnIp,omitempty"`
+	// The IP addresses.
+	//
 	// example:
 	//
 	// 27.129.167.239

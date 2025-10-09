@@ -24,23 +24,34 @@ type iListSiteRoutesResponseBody interface {
 }
 
 type ListSiteRoutesResponseBody struct {
+	// The returned configurations.
 	Configs []*ListSiteRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 16
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 10
@@ -114,43 +125,79 @@ func (s *ListSiteRoutesResponseBody) Validate() error {
 }
 
 type ListSiteRoutesResponseBodyConfigs struct {
+	// The bypass mode. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: queries rule configurations.
+	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	Fallback   *string `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
+	// The configuration mode. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	//
+	// 	- simple: Simple Mode
+	//
+	// 	- custom: Custom Mode
+	//
 	// example:
 	//
 	// simple
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The route switch. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// The route name.
+	//
 	// example:
 	//
 	// test_route
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The function name.
+	//
 	// example:
 	//
 	// test-routine1
 	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// The rule content.
+	//
 	// example:
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// The order in which the rule is executed.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website.
+	//
 	// example:
 	//
 	// 1

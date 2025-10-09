@@ -26,6 +26,7 @@ type iDescribeSiteTimeSeriesDataResponseBody interface {
 }
 
 type DescribeSiteTimeSeriesDataResponseBody struct {
+	// The returned data.
 	Data []*DescribeSiteTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -46,7 +47,8 @@ type DescribeSiteTimeSeriesDataResponseBody struct {
 	// example:
 	//
 	// 2023-04-08T16:00:00Z
-	StartTime      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The queried summary data.
 	SummarizedData []*DescribeSiteTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
 }
 

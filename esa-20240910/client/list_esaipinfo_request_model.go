@@ -14,6 +14,8 @@ type iListESAIPInfoRequest interface {
 }
 
 type ListESAIPInfoRequest struct {
+	// You can enter IPv4 or IPv6 addresses. Separate multiple IP addresses with commas (,). You can enter up to 20 IP addresses at a time.
+	//
 	// This parameter is required.
 	//
 	// example:

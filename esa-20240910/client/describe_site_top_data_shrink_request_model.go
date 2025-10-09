@@ -24,21 +24,44 @@ type iDescribeSiteTopDataShrinkRequest interface {
 }
 
 type DescribeSiteTopDataShrinkRequest struct {
+	// The end of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time.
+	//
 	// example:
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metrics to query.
+	//
 	// This parameter is required.
 	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds.
+	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Limit    *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The number of top-ranking data entries to query.
+	//
+	// example:
+	//
+	// 5
+	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
+	// If you do not specify this parameter, the system returns data by account.
+	//
 	// example:
 	//
 	// 1150376036*****
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2023-04-08T16:00:00Z

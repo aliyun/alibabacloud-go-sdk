@@ -16,12 +16,13 @@ type iDescribeSiteLogsResponseBody interface {
 }
 
 type DescribeSiteLogsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the website log files.
 	SiteLogDetails []*DescribeSiteLogsResponseBodySiteLogDetails `json:"SiteLogDetails,omitempty" xml:"SiteLogDetails,omitempty" type:"Repeated"`
 }
 
@@ -56,16 +57,24 @@ func (s *DescribeSiteLogsResponseBody) Validate() error {
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetails struct {
+	// The total number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 300
-	LogCount  *int32                                                `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	LogInfos  []*DescribeSiteLogsResponseBodySiteLogDetailsLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Repeated"`
-	PageInfos *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos  `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	LogCount *int32 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	// The details of the website log files.
+	LogInfos []*DescribeSiteLogsResponseBodySiteLogDetailsLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Repeated"`
+	// Pagination information.
+	PageInfos *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 123456***
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com
@@ -130,22 +139,34 @@ func (s *DescribeSiteLogsResponseBodySiteLogDetails) Validate() error {
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2022-11-06T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the log file.
+	//
 	// example:
 	//
 	// example.com_2022_11_07_000000_020000.gz.xxxxxx
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// The log path.
+	//
+	// >  Take note of the Expires field (expiration timestamp) in this parameter. If the log download URL expires, you must reobtain the URL.
+	//
 	// example:
 	//
 	// example.aliyundoc.com /v1.l1cache/105252530/example.com/2022_11_07/example.com_2022_11_07_000000_020000.gz.xxxxxx?Expires=1636963354&OSSAccessKeyId=LTAIviCc6zy8****&Signature=u0V6foRfZniHE8i%2BHUdxGOhZsK****
 	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	// The size of the log file. Unit: bytes.
+	//
 	// example:
 	//
 	// 438304768
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// The create time.
+	//
 	// example:
 	//
 	// 2022-11-06T16:00:00Z
@@ -210,14 +231,20 @@ func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) Validate() error {
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetailsPageInfos struct {
+	// The page number returned.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page. Default value: **300**. Valid values: **1 to 1000**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 47

@@ -22,11 +22,32 @@ type iListCertificatesByRecordResponseBody interface {
 }
 
 type ListCertificatesByRecordResponseBody struct {
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*ListCertificatesByRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	SiteId     *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	SiteName   *string                                       `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 65C66B7B-671A-8297-9187-2R5477247B76
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried certificates.
+	Result []*ListCertificatesByRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The website ID,
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// The total number of records that you specified.
+	//
+	// example:
+	//
+	// 12
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCertificatesByRecordResponseBody) String() string {
@@ -87,11 +108,32 @@ func (s *ListCertificatesByRecordResponseBody) Validate() error {
 }
 
 type ListCertificatesByRecordResponseBodyResult struct {
-	ApplylingCount *int64                                                    `json:"ApplylingCount,omitempty" xml:"ApplylingCount,omitempty"`
-	Certificates   []*ListCertificatesByRecordResponseBodyResultCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	Count          *int64                                                    `json:"Count,omitempty" xml:"Count,omitempty"`
-	RecordName     *string                                                   `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	Status         *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of certificates that are being requested.
+	//
+	// example:
+	//
+	// 1
+	ApplylingCount *int64 `json:"ApplylingCount,omitempty" xml:"ApplylingCount,omitempty"`
+	// The certificates that match the specified records.
+	Certificates []*ListCertificatesByRecordResponseBodyResultCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The number of certificates that match the specified records.
+	//
+	// example:
+	//
+	// 3
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The name of the record.
+	//
+	// example:
+	//
+	// www.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// Certificate configuration status. Possible values: none; configured; applying; failed.
+	//
+	// example:
+	//
+	// none
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCertificatesByRecordResponseBodyResult) String() string {
@@ -152,62 +194,110 @@ func (s *ListCertificatesByRecordResponseBodyResult) Validate() error {
 }
 
 type ListCertificatesByRecordResponseBodyResultCertificates struct {
+	// The certificate ID on Certificate Management Service.
+	//
 	// example:
 	//
 	// 30000137
 	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// The Common Name of the certificate.
+	//
 	// example:
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2023-02-28 06:17:11
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The SHA-256 fingerprint of the certificate.
+	//
 	// example:
 	//
 	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
 	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
-	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the certificate.
+	//
+	// example:
+	//
+	// babab022c5e9b27bf9c64d7f4b1667f4
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	//
 	// example:
 	//
 	// GlobalSign nv-sa
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The Common Name of the certificate issuer.
+	//
 	// example:
 	//
 	// GlobalSign Organization Validation CA - SHA256 - G3
 	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The certificate name.
+	//
+	// example:
+	//
+	// yourCertName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time when the certificate expires.
+	//
 	// example:
 	//
 	// 2024-02-28 06:17:11
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// The time when the certificate takes effect.
+	//
 	// example:
 	//
 	// 2023-02-28 06:17:11
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// The public key algorithm of the certificate.
+	//
 	// example:
 	//
 	// RSA
 	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
+	// The region where the certificate is stored.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The Subject Alternative Name (SAN) of the certificate.
+	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// The serial number of the certificate.
+	//
 	// example:
 	//
 	// baba39055622c008b90285a8838ed09a
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The signature algorithm of the certificate.
+	//
 	// example:
 	//
 	// SHA256-RSA
 	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
+	// The status of the certificate.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the SSL certificate. Valid values:
+	//
 	// example:
 	//
 	// free
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2023-02-28 06:17:11

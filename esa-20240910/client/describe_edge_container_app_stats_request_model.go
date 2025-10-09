@@ -54,6 +54,8 @@ type DescribeEdgeContainerAppStatsRequest struct {
 	//
 	// 2024-09-02T15:04:05Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// t-xxxx

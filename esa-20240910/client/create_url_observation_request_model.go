@@ -18,18 +18,28 @@ type iCreateUrlObservationRequest interface {
 }
 
 type CreateUrlObservationRequest struct {
+	// SDK integration. Supported
+	//
+	// 	- **automatic**
+	//
+	// 	- **manual**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// automatic
 	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The URL of the web page to monitor.
+	//
 	// This parameter is required.
 	//
 	// example:

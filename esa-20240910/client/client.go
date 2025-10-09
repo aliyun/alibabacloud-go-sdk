@@ -4390,7 +4390,7 @@ func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRe
 
 // Summary:
 //
-// 新增边缘函数路由配置
+// Adds edge function routing configurations.
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -4460,7 +4460,7 @@ func (client *Client) CreateRoutineRouteWithOptions(request *CreateRoutineRouteR
 
 // Summary:
 //
-// 新增边缘函数路由配置
+// Adds edge function routing configurations.
 //
 // @param request - CreateRoutineRouteRequest
 //
@@ -5165,7 +5165,7 @@ func (client *Client) CreateTransportLayerApplication(request *CreateTransportLa
 
 // Summary:
 //
-// 创建网页监测配置
+// Create a web page monitoring configuration.
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -5215,7 +5215,7 @@ func (client *Client) CreateUrlObservationWithOptions(request *CreateUrlObservat
 
 // Summary:
 //
-// 创建网页监测配置
+// Create a web page monitoring configuration.
 //
 // @param request - CreateUrlObservationRequest
 //
@@ -5403,7 +5403,7 @@ func (client *Client) CreateUserDeliveryTask(request *CreateUserDeliveryTaskRequ
 
 // Summary:
 //
-// 新增站点视频处理配置
+// Add video processing configurations for a website.
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -5489,7 +5489,7 @@ func (client *Client) CreateVideoProcessingWithOptions(request *CreateVideoProce
 
 // Summary:
 //
-// 新增站点视频处理配置
+// Add video processing configurations for a website.
 //
 // @param request - CreateVideoProcessingRequest
 //
@@ -8133,7 +8133,7 @@ func (client *Client) DeleteRoutineRelatedRecord(request *DeleteRoutineRelatedRe
 
 // Summary:
 //
-// 删除边缘函数路由配置
+// Deletes the route configuration of an edge function.
 //
 // @param request - DeleteRoutineRouteRequest
 //
@@ -8179,7 +8179,7 @@ func (client *Client) DeleteRoutineRouteWithOptions(request *DeleteRoutineRouteR
 
 // Summary:
 //
-// 删除边缘函数路由配置
+// Deletes the route configuration of an edge function.
 //
 // @param request - DeleteRoutineRouteRequest
 //
@@ -8569,7 +8569,7 @@ func (client *Client) DeleteTransportLayerApplication(request *DeleteTransportLa
 
 // Summary:
 //
-// 删除网页监测配置
+// Deletes page monitoring configurations.
 //
 // @param request - DeleteUrlObservationRequest
 //
@@ -8615,7 +8615,7 @@ func (client *Client) DeleteUrlObservationWithOptions(request *DeleteUrlObservat
 
 // Summary:
 //
-// 删除网页监测配置
+// Deletes page monitoring configurations.
 //
 // @param request - DeleteUrlObservationRequest
 //
@@ -8713,7 +8713,7 @@ func (client *Client) DeleteUserDeliveryTask(request *DeleteUserDeliveryTaskRequ
 
 // Summary:
 //
-// 删除站点视频处理配置
+// Deletes a video processing configuration.
 //
 // @param request - DeleteVideoProcessingRequest
 //
@@ -8759,7 +8759,7 @@ func (client *Client) DeleteVideoProcessingWithOptions(request *DeleteVideoProce
 
 // Summary:
 //
-// 删除站点视频处理配置
+// Deletes a video processing configuration.
 //
 // @param request - DeleteVideoProcessingRequest
 //
@@ -9389,7 +9389,7 @@ func (client *Client) DescribeDDoSL7QpsList(request *DescribeDDoSL7QpsListReques
 
 // Summary:
 //
-// 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+// Provides monitoring data for metrics of ESA edge containers.
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
 //
@@ -9427,7 +9427,7 @@ func (client *Client) DescribeEdgeContainerAppStatsWithOptions(request *Describe
 
 // Summary:
 //
-// 将天眼提供给XCDN边缘容器的监控OpenAPI适配成青蓝的OpenAPI
+// Provides monitoring data for metrics of ESA edge containers.
 //
 // @param request - DescribeEdgeContainerAppStatsRequest
 //
@@ -9792,7 +9792,17 @@ func (client *Client) DescribeRatePlanInstanceStatus(request *DescribeRatePlanIn
 
 // Summary:
 //
-// 查询站点离线日志
+// Queries the URLs from which you can download the raw access logs of a website.
+//
+// Description:
+//
+//	  If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+//
+//		- The log data is collected every hour.
+//
+//		- You can call this operation up to 50 times per second per account.
+//
+//		- You can query only logs in the last month. The time range cannot exceed 31 days.
 //
 // @param request - DescribeSiteLogsRequest
 //
@@ -9850,7 +9860,17 @@ func (client *Client) DescribeSiteLogsWithOptions(request *DescribeSiteLogsReque
 
 // Summary:
 //
-// 查询站点离线日志
+// Queries the URLs from which you can download the raw access logs of a website.
+//
+// Description:
+//
+//	  If you do not specify StartTime or EndTime, the log data generated in the last 24 hours is queried. If you specify StartTime and EndTime, the log data generated within the specified time range is queried.
+//
+//		- The log data is collected every hour.
+//
+//		- You can call this operation up to 50 times per second per account.
+//
+//		- You can query only logs in the last month. The time range cannot exceed 31 days.
 //
 // @param request - DescribeSiteLogsRequest
 //
@@ -9869,6 +9889,24 @@ func (client *Client) DescribeSiteLogs(request *DescribeSiteLogsRequest) (_resul
 // Summary:
 //
 // 获取时序数据
+//
+// Description:
+//
+//	  If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify StartTime and EndTime, the request returns the data collected within the specified time range.
+//
+//		- The time interval at which data is returned varies according to the span of StartTime and EndTime.
+//
+//	    	- If Time span ≤ 3 hours, the data is returned at a 1-minute interval.
+//
+//	    	- If 3 hours < Time span ≤ 12 hours, the data is returned at a 5-minute interval.
+//
+//	    	- If 12 hours < Time span ≤ 24 hours, the data is returned at a 15-minute interval.
+//
+//	    	- If 1 day < Time span ≤ 10 days, the data is returned at an hourly interval.
+//
+//	    	- If 10 days < Time span ≤ 31 days, the data is returned at a daily interval.
+//
+//		- Data analysis may be sampled due to a large number of visits during the query period.
 //
 // @param tmpReq - DescribeSiteTimeSeriesDataRequest
 //
@@ -9934,6 +9972,24 @@ func (client *Client) DescribeSiteTimeSeriesDataWithOptions(tmpReq *DescribeSite
 //
 // 获取时序数据
 //
+// Description:
+//
+//	  If you do not specify StartTime or EndTime, the request returns the data collected in the last 24 hours. If you specify StartTime and EndTime, the request returns the data collected within the specified time range.
+//
+//		- The time interval at which data is returned varies according to the span of StartTime and EndTime.
+//
+//	    	- If Time span ≤ 3 hours, the data is returned at a 1-minute interval.
+//
+//	    	- If 3 hours < Time span ≤ 12 hours, the data is returned at a 5-minute interval.
+//
+//	    	- If 12 hours < Time span ≤ 24 hours, the data is returned at a 15-minute interval.
+//
+//	    	- If 1 day < Time span ≤ 10 days, the data is returned at an hourly interval.
+//
+//	    	- If 10 days < Time span ≤ 31 days, the data is returned at a daily interval.
+//
+//		- Data analysis may be sampled due to a large number of visits during the query period.
+//
 // @param request - DescribeSiteTimeSeriesDataRequest
 //
 // @return DescribeSiteTimeSeriesDataResponse
@@ -9950,7 +10006,11 @@ func (client *Client) DescribeSiteTimeSeriesData(request *DescribeSiteTimeSeries
 
 // Summary:
 //
-// 获取Top数据
+// Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+//
+// Description:
+//
+//	If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
 //
 // @param tmpReq - DescribeSiteTopDataRequest
 //
@@ -10018,7 +10078,11 @@ func (client *Client) DescribeSiteTopDataWithOptions(tmpReq *DescribeSiteTopData
 
 // Summary:
 //
-// 获取Top数据
+// Queries the top-ranking records in a traffic analytics report by website or Alibaba Cloud account.
+//
+// Description:
+//
+//	If you do not specify the StartTime or EndTime parameter, the request returns the data collected in the previous 24 hours. If you specify both parameters, the request returns the data collected within the specified time range.
 //
 // @param request - DescribeSiteTopDataRequest
 //
@@ -10036,7 +10100,11 @@ func (client *Client) DescribeSiteTopData(request *DescribeSiteTopDataRequest) (
 
 // Summary:
 //
-// 查询网页观测质量数据
+// Queries the page monitoring data.
+//
+// Description:
+//
+// If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -10098,7 +10166,11 @@ func (client *Client) DescribeUrlObservationDataWithOptions(request *DescribeUrl
 
 // Summary:
 //
-// 查询网页观测质量数据
+// Queries the page monitoring data.
+//
+// Description:
+//
+// If you do not specify the StartTime or EndTime parameter, this operation returns the data collected within the last 24 hours. If you specify both parameters, this operation returns the data collected within the specified time range.
 //
 // @param request - DescribeUrlObservationDataRequest
 //
@@ -10919,7 +10991,7 @@ func (client *Client) GetCompressionRule(request *GetCompressionRuleRequest) (_r
 
 // Summary:
 //
-// 查询站点中国大陆网络接入优化配置
+// Queries the configuration of Chinese mainland access optimization.
 //
 // @param request - GetCrossBorderOptimizationRequest
 //
@@ -10957,7 +11029,7 @@ func (client *Client) GetCrossBorderOptimizationWithOptions(request *GetCrossBor
 
 // Summary:
 //
-// 查询站点中国大陆网络接入优化配置
+// Queries the configuration of Chinese mainland access optimization.
 //
 // @param request - GetCrossBorderOptimizationRequest
 //
@@ -11147,7 +11219,7 @@ func (client *Client) GetEdgeContainerAppLogRiver(request *GetEdgeContainerAppLo
 
 // Summary:
 //
-// 获取边缘容器资源预留配置
+// Obtain the resource reservation configuration of the edge container.
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -11189,7 +11261,7 @@ func (client *Client) GetEdgeContainerAppResourceReserveWithOptions(request *Get
 
 // Summary:
 //
-// 获取边缘容器资源预留配置
+// Obtain the resource reservation configuration of the edge container.
 //
 // @param request - GetEdgeContainerAppResourceReserveRequest
 //
@@ -11207,7 +11279,7 @@ func (client *Client) GetEdgeContainerAppResourceReserve(request *GetEdgeContain
 
 // Summary:
 //
-// 获取边缘容器应用资源分布
+// Obtains the distribution of edge container application resources.
 //
 // @param request - GetEdgeContainerAppResourceStatusRequest
 //
@@ -11249,7 +11321,7 @@ func (client *Client) GetEdgeContainerAppResourceStatusWithOptions(request *GetE
 
 // Summary:
 //
-// 获取边缘容器应用资源分布
+// Obtains the distribution of edge container application resources.
 //
 // @param request - GetEdgeContainerAppResourceStatusRequest
 //
@@ -13314,7 +13386,7 @@ func (client *Client) GetRoutineCodeVersion(request *GetRoutineCodeVersionReques
 
 // Summary:
 //
-// 查询单条边缘函数路由配置
+// Queries the route configurations of a single edge function.
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -13360,7 +13432,7 @@ func (client *Client) GetRoutineRouteWithOptions(request *GetRoutineRouteRequest
 
 // Summary:
 //
-// 查询单条边缘函数路由配置
+// Queries the route configurations of a single edge function.
 //
 // @param request - GetRoutineRouteRequest
 //
@@ -14528,7 +14600,7 @@ func (client *Client) GetUserLogDeliveryQuota(request *GetUserLogDeliveryQuotaRe
 
 // Summary:
 //
-// 查询站点视频处理配置详情
+// Queries the video processing configuration details of a site.
 //
 // @param request - GetVideoProcessingRequest
 //
@@ -14574,7 +14646,7 @@ func (client *Client) GetVideoProcessingWithOptions(request *GetVideoProcessingR
 
 // Summary:
 //
-// 查询站点视频处理配置详情
+// Queries the video processing configuration details of a site.
 //
 // @param request - GetVideoProcessingRequest
 //
@@ -15071,7 +15143,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// 查询匹配记录名的站点证书列表
+// Lists certificates that match specified records for a website. You can specify multiple records at a time.
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -15109,7 +15181,7 @@ func (client *Client) ListCertificatesByRecordWithOptions(request *ListCertifica
 
 // Summary:
 //
-// 查询匹配记录名的站点证书列表
+// Lists certificates that match specified records for a website. You can specify multiple records at a time.
 //
 // @param request - ListCertificatesByRecordRequest
 //
@@ -15351,7 +15423,11 @@ func (client *Client) ListCompressionRules(request *ListCompressionRulesRequest)
 
 // Summary:
 //
-// 批量查询IP是否为VIP
+// Batch query whether the IP address is included in the ESA resolution result.
+//
+// Description:
+//
+// This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
 //
 // @param request - ListESAIPInfoRequest
 //
@@ -15389,7 +15465,11 @@ func (client *Client) ListESAIPInfoWithOptions(request *ListESAIPInfoRequest, ru
 
 // Summary:
 //
-// 批量查询IP是否为VIP
+// Batch query whether the IP address is included in the ESA resolution result.
+//
+// Description:
+//
+// This interface is used to check whether the vs_addr parameter in the vipInfo collection is vip.
 //
 // @param request - ListESAIPInfoRequest
 //
@@ -17241,7 +17321,15 @@ func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasR
 
 // Summary:
 //
-// 查询Routine的代码版本列表
+// Queries the code versions of a function (routine) by page.
+//
+// Description:
+//
+// Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+//
+// Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+//
+// The response includes the number, description, and creation time of each code version.
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -17295,7 +17383,15 @@ func (client *Client) ListRoutineCodeVersionsWithOptions(request *ListRoutineCod
 
 // Summary:
 //
-// 查询Routine的代码版本列表
+// Queries the code versions of a function (routine) by page.
+//
+// Description:
+//
+// Call this operation to query the code versions of a specific function. Paged query and fuzzy search are supported. You can configure `Name` to specify the name of a function.
+//
+// Specify `PageNumber` and `PageSize` to control the number of entries returned in a request, and use `SearchKeyWord` to specify a keyword for fuzzy search.
+//
+// The response includes the number, description, and creation time of each code version.
 //
 // @param request - ListRoutineCodeVersionsRequest
 //
@@ -17313,7 +17409,11 @@ func (client *Client) ListRoutineCodeVersions(request *ListRoutineCodeVersionsRe
 
 // Summary:
 //
-// 查询函数关联域名列表
+// The records associated with the function.
+//
+// Description:
+//
+// You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
 //
 // @param request - ListRoutineRelatedRecordsRequest
 //
@@ -17367,7 +17467,11 @@ func (client *Client) ListRoutineRelatedRecordsWithOptions(request *ListRoutineR
 
 // Summary:
 //
-// 查询函数关联域名列表
+// The records associated with the function.
+//
+// Description:
+//
+// You can call this operation to query the routes associated with a function. You can specify paged query parameters to obtain the specified number of routes or specify a keyword for fuzzy search to filter specific routes.
 //
 // @param request - ListRoutineRelatedRecordsRequest
 //
@@ -17385,7 +17489,7 @@ func (client *Client) ListRoutineRelatedRecords(request *ListRoutineRelatedRecor
 
 // Summary:
 //
-// 查询边缘程序的函数路由列表
+// Queries the routes of an edge function.
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -17435,7 +17539,7 @@ func (client *Client) ListRoutineRoutesWithOptions(request *ListRoutineRoutesReq
 
 // Summary:
 //
-// 查询边缘程序的函数路由列表
+// Queries the routes of an edge function.
 //
 // @param request - ListRoutineRoutesRequest
 //
@@ -17621,7 +17725,7 @@ func (client *Client) ListSiteDeliveryTasks(request *ListSiteDeliveryTasksReques
 
 // Summary:
 //
-// 查询站点的函数路由列表
+// Queries the edge function routes for a website.
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -17683,7 +17787,7 @@ func (client *Client) ListSiteRoutesWithOptions(request *ListSiteRoutesRequest, 
 
 // Summary:
 //
-// 查询站点的函数路由列表
+// Queries the edge function routes for a website.
 //
 // @param request - ListSiteRoutesRequest
 //
@@ -17963,7 +18067,7 @@ func (client *Client) ListUploadTasks(request *ListUploadTasksRequest) (_result 
 
 // Summary:
 //
-// 查询网页观测配置列表
+// Queries the list of page monitoring configurations.
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -18017,7 +18121,7 @@ func (client *Client) ListUrlObservationsWithOptions(request *ListUrlObservation
 
 // Summary:
 //
-// 查询网页观测配置列表
+// Queries the list of page monitoring configurations.
 //
 // @param request - ListUrlObservationsRequest
 //
@@ -18147,7 +18251,11 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 
 // Summary:
 //
-// 查询用户的Routine列表
+// Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+//
+// Description:
+//
+// You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -18197,7 +18305,11 @@ func (client *Client) ListUserRoutinesWithOptions(request *ListUserRoutinesReque
 
 // Summary:
 //
-// 查询用户的Routine列表
+// Queries the functions created in your account and the maximum number of functions supported by your plan. You can call this operation to perform a paged query.
+//
+// Description:
+//
+// You can call this operation to perform a paged query to query all functions created in your account, the maximum number of functions supported by the billing plan that you use, and the number of functions already created. You can specify `PageNumber` and `PageSize` to control the number of entries to be returned in the response and specify `SearchKeyWord` to perform a fuzzy search to filter specific routine names.
 //
 // @param request - ListUserRoutinesRequest
 //
@@ -18215,7 +18327,7 @@ func (client *Client) ListUserRoutines(request *ListUserRoutinesRequest) (_resul
 
 // Summary:
 //
-// 查询站点视频处理配置列表
+// Queries the video processing configurations of a site.
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -18281,7 +18393,7 @@ func (client *Client) ListVideoProcessingsWithOptions(request *ListVideoProcessi
 
 // Summary:
 //
-// 查询站点视频处理配置列表
+// Queries the video processing configurations of a site.
 //
 // @param request - ListVideoProcessingsRequest
 //
@@ -21610,7 +21722,7 @@ func (client *Client) UpdateEdgeContainerAppLogRiver(request *UpdateEdgeContaine
 
 // Summary:
 //
-// 更新边缘容器资源预留配置
+// Updates the resource reservation configuration of an edge container.
 //
 // @param tmpReq - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -21674,7 +21786,7 @@ func (client *Client) UpdateEdgeContainerAppResourceReserveWithOptions(tmpReq *U
 
 // Summary:
 //
-// 更新边缘容器资源预留配置
+// Updates the resource reservation configuration of an edge container.
 //
 // @param request - UpdateEdgeContainerAppResourceReserveRequest
 //
@@ -23752,7 +23864,7 @@ func (client *Client) UpdateRoutineConfigDescription(request *UpdateRoutineConfi
 
 // Summary:
 //
-// 修改边缘函数路由配置
+// Modifies the route configuration of an edge function.
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -23826,7 +23938,7 @@ func (client *Client) UpdateRoutineRouteWithOptions(request *UpdateRoutineRouteR
 
 // Summary:
 //
-// 修改边缘函数路由配置
+// Modifies the route configuration of an edge function.
 //
 // @param request - UpdateRoutineRouteRequest
 //
@@ -23922,7 +24034,7 @@ func (client *Client) UpdateScheduledPreloadExecution(request *UpdateScheduledPr
 
 // Summary:
 //
-// 修改站点放行搜索引擎爬虫配置
+// Modifies the search engine crawler configuration for a website.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -23968,7 +24080,7 @@ func (client *Client) UpdateSeoBypassWithOptions(request *UpdateSeoBypassRequest
 
 // Summary:
 //
-// 修改站点放行搜索引擎爬虫配置
+// Modifies the search engine crawler configuration for a website.
 //
 // @param request - UpdateSeoBypassRequest
 //
@@ -24698,7 +24810,7 @@ func (client *Client) UpdateTransportLayerApplication(request *UpdateTransportLa
 
 // Summary:
 //
-// 更新网页监测配置
+// Updates the webpage monitoring configuration.
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -24748,7 +24860,7 @@ func (client *Client) UpdateUrlObservationWithOptions(request *UpdateUrlObservat
 
 // Summary:
 //
-// 更新网页监测配置
+// Updates the webpage monitoring configuration.
 //
 // @param request - UpdateUrlObservationRequest
 //
@@ -24914,7 +25026,7 @@ func (client *Client) UpdateUserDeliveryTaskStatus(request *UpdateUserDeliveryTa
 
 // Summary:
 //
-// 修改站点视频处理配置
+// Modifies the video processing configuration of the site.
 //
 // @param request - UpdateVideoProcessingRequest
 //
@@ -25000,7 +25112,7 @@ func (client *Client) UpdateVideoProcessingWithOptions(request *UpdateVideoProce
 
 // Summary:
 //
-// 修改站点视频处理配置
+// Modifies the video processing configuration of the site.
 //
 // @param request - UpdateVideoProcessingRequest
 //

@@ -22,19 +22,28 @@ type iListRoutineRelatedRecordsResponseBody interface {
 }
 
 type ListRoutineRelatedRecordsResponseBody struct {
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize       *int64                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of records associated with the edge function.
 	RelatedRecords []*ListRoutineRelatedRecordsResponseBodyRelatedRecords `json:"RelatedRecords,omitempty" xml:"RelatedRecords,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 16
@@ -99,18 +108,26 @@ func (s *ListRoutineRelatedRecordsResponseBody) Validate() error {
 }
 
 type ListRoutineRelatedRecordsResponseBodyRelatedRecords struct {
+	// The record ID of the domain name.
+	//
 	// example:
 	//
 	// 509348423011904
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The name of the record.
+	//
 	// example:
 	//
 	// test-record-1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// The website ID.
+	//
 	// example:
 	//
 	// 54362329990032
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The website name.
+	//
 	// example:
 	//
 	// example.com

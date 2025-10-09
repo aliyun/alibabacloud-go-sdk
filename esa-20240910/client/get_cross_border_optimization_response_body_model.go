@@ -16,10 +16,18 @@ type iGetCrossBorderOptimizationResponseBody interface {
 }
 
 type GetCrossBorderOptimizationResponseBody struct {
+	// Whether to enable Chinese mainland network access optimization. By default, it is disabled. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF521A24-633F-5350-A6A5-42AD503D0D20

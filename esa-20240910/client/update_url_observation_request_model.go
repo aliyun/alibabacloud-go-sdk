@@ -18,18 +18,28 @@ type iUpdateUrlObservationRequest interface {
 }
 
 type UpdateUrlObservationRequest struct {
+	// The ID of the configuration. You can call the [ListUrlObservations](~~ListUrlObservations~~) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// SDK integration. Valid values:
+	//
+	// 	- **automatic*	- (Recommended)
+	//
+	// 	- **manual**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// manual
 	SdkType *string `json:"SdkType,omitempty" xml:"SdkType,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

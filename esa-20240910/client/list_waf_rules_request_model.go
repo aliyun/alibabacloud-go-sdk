@@ -44,6 +44,8 @@ type ListWafRulesRequest struct {
 	//
 	// - http_bot: Bots
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// http_custom

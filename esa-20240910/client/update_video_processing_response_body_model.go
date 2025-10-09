@@ -14,6 +14,8 @@ type iUpdateVideoProcessingResponseBody interface {
 }
 
 type UpdateVideoProcessingResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3558df77-8a7a-4060-a900-2d7949403836

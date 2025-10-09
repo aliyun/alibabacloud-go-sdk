@@ -20,20 +20,28 @@ type iListRoutineRelatedRecordsRequest interface {
 }
 
 type ListRoutineRelatedRecordsRequest struct {
+	// The name of the function.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number of the returned page. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: an integer from 1 to 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword used for fuzzy search.
+	//
 	// example:
 	//
 	// hello

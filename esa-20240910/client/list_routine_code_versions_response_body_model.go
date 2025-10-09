@@ -22,12 +22,32 @@ type iListRoutineCodeVersionsResponseBody interface {
 }
 
 type ListRoutineCodeVersionsResponseBody struct {
+	// The code versions of the routine.
 	CodeVersions []*ListRoutineCodeVersionsResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
-	PageNumber   *int64                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of code versions returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRoutineCodeVersionsResponseBody) String() string {
@@ -88,13 +108,44 @@ func (s *ListRoutineCodeVersionsResponseBody) Validate() error {
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
-	BuildId         *int64                                                      `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
-	CodeDescription *string                                                     `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	CodeVersion     *string                                                     `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	ConfOptions     *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
-	CreateTime      *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExtraInfo       *string                                                     `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	Status          *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the code version build.
+	//
+	// example:
+	//
+	// 25801233
+	BuildId *int64 `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	// The description of the code version.
+	//
+	// example:
+	//
+	// test desc
+	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	// The version of the code.
+	//
+	// example:
+	//
+	// 1723599747213377175
+	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// Code version configuration items.
+	ConfOptions *ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions `json:"ConfOptions,omitempty" xml:"ConfOptions,omitempty" type:"Struct"`
+	// The time when the code version was created.
+	//
+	// example:
+	//
+	// 2024-04-16T09:42:47Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Additional information about the code version.
+	//
+	// example:
+	//
+	// {\\"approver\\":[\\"348678\\",\\"111133\\",\\"411544\\"]}
+	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The status of the code version.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListRoutineCodeVersionsResponseBodyCodeVersions) String() string {
@@ -173,6 +224,11 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) Validate() error {
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions struct {
+	// Code version configuration items NotFoundStrategy.
+	//
+	// example:
+	//
+	// SinglePageApplication
 	NotFoundStrategy *string `json:"NotFoundStrategy,omitempty" xml:"NotFoundStrategy,omitempty"`
 }
 
