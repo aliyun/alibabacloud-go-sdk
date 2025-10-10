@@ -37,6 +37,8 @@ type iScorePageItem interface {
 	GetPageMap() map[string]*string
 	SetPublishTime(v int64) *ScorePageItem
 	GetPublishTime() *int64
+	SetRichMainBody(v string) *ScorePageItem
+	GetRichMainBody() *string
 	SetScore(v float64) *ScorePageItem
 	GetScore() *float64
 	SetSiteLabel(v string) *ScorePageItem
@@ -113,7 +115,8 @@ type ScorePageItem struct {
 	// example:
 	//
 	// 1704426524000
-	PublishTime *int64 `json:"publishTime,omitempty" xml:"publishTime,omitempty"`
+	PublishTime  *int64  `json:"publishTime,omitempty" xml:"publishTime,omitempty"`
+	RichMainBody *string `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
 	// example:
 	//
 	// 0.234325235
@@ -197,6 +200,10 @@ func (s *ScorePageItem) GetPageMap() map[string]*string {
 
 func (s *ScorePageItem) GetPublishTime() *int64 {
 	return s.PublishTime
+}
+
+func (s *ScorePageItem) GetRichMainBody() *string {
+	return s.RichMainBody
 }
 
 func (s *ScorePageItem) GetScore() *float64 {
@@ -286,6 +293,11 @@ func (s *ScorePageItem) SetPageMap(v map[string]*string) *ScorePageItem {
 
 func (s *ScorePageItem) SetPublishTime(v int64) *ScorePageItem {
 	s.PublishTime = &v
+	return s
+}
+
+func (s *ScorePageItem) SetRichMainBody(v string) *ScorePageItem {
+	s.RichMainBody = &v
 	return s
 }
 
