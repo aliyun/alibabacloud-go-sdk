@@ -27,6 +27,8 @@ type iUnifiedPageItem interface {
 	GetPublishedTime() *string
 	SetRerankScore(v float64) *UnifiedPageItem
 	GetRerankScore() *float64
+	SetRichMainBody(v string) *UnifiedPageItem
+	GetRichMainBody() *string
 	SetSnippet(v string) *UnifiedPageItem
 	GetSnippet() *string
 	SetSummary(v string) *UnifiedPageItem
@@ -48,6 +50,7 @@ type UnifiedPageItem struct {
 	// 2025-04-07T10:15:30.123+08:00
 	PublishedTime *string  `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
 	RerankScore   *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	RichMainBody  *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
 	Snippet       *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`
 	Summary       *string  `json:"summary,omitempty" xml:"summary,omitempty"`
 	Title         *string  `json:"title,omitempty" xml:"title,omitempty"`
@@ -95,6 +98,10 @@ func (s *UnifiedPageItem) GetPublishedTime() *string {
 
 func (s *UnifiedPageItem) GetRerankScore() *float64 {
 	return s.RerankScore
+}
+
+func (s *UnifiedPageItem) GetRichMainBody() *string {
+	return s.RichMainBody
 }
 
 func (s *UnifiedPageItem) GetSnippet() *string {
@@ -151,6 +158,11 @@ func (s *UnifiedPageItem) SetPublishedTime(v string) *UnifiedPageItem {
 
 func (s *UnifiedPageItem) SetRerankScore(v float64) *UnifiedPageItem {
 	s.RerankScore = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetRichMainBody(v string) *UnifiedPageItem {
+	s.RichMainBody = &v
 	return s
 }
 
