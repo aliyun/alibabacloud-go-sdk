@@ -2,65 +2,17 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("mhub"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // @param request - CreateAppRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAppResponse
-func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+func (client *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -109,25 +61,11 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateAppRequest
-//
-// @return CreateAppResponse
-func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateAppResponse{}
-	_body, _err := client.CreateAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -136,7 +74,7 @@ func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateProductResponse
-func (client *Client) CreateProductWithOptions(request *CreateProductRequest, runtime *dara.RuntimeOptions) (_result *CreateProductResponse, _err error) {
+func (client *Client) CreateProductWithContext(ctx context.Context, request *CreateProductRequest, runtime *dara.RuntimeOptions) (_result *CreateProductResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -165,25 +103,11 @@ func (client *Client) CreateProductWithOptions(request *CreateProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - CreateProductRequest
-//
-// @return CreateProductResponse
-func (client *Client) CreateProduct(request *CreateProductRequest) (_result *CreateProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateProductResponse{}
-	_body, _err := client.CreateProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -192,7 +116,7 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAppResponse
-func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -217,25 +141,11 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteAppRequest
-//
-// @return DeleteAppResponse
-func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteAppResponse{}
-	_body, _err := client.DeleteAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -244,7 +154,7 @@ func (client *Client) DeleteApp(request *DeleteAppRequest) (_result *DeleteAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProductResponse
-func (client *Client) DeleteProductWithOptions(request *DeleteProductRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
+func (client *Client) DeleteProductWithContext(ctx context.Context, request *DeleteProductRequest, runtime *dara.RuntimeOptions) (_result *DeleteProductResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -269,25 +179,11 @@ func (client *Client) DeleteProductWithOptions(request *DeleteProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - DeleteProductRequest
-//
-// @return DeleteProductResponse
-func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *DeleteProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteProductResponse{}
-	_body, _err := client.DeleteProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -300,7 +196,7 @@ func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *Del
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDashboardResponse
-func (client *Client) DescribeDashboardWithOptions(request *DescribeDashboardRequest, runtime *dara.RuntimeOptions) (_result *DescribeDashboardResponse, _err error) {
+func (client *Client) DescribeDashboardWithContext(ctx context.Context, request *DescribeDashboardRequest, runtime *dara.RuntimeOptions) (_result *DescribeDashboardResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -353,29 +249,11 @@ func (client *Client) DescribeDashboardWithOptions(request *DescribeDashboardReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDashboardResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取emas dashboard
-//
-// @param request - DescribeDashboardRequest
-//
-// @return DescribeDashboardResponse
-func (client *Client) DescribeDashboard(request *DescribeDashboardRequest) (_result *DescribeDashboardResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDashboardResponse{}
-	_body, _err := client.DescribeDashboardWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -388,7 +266,7 @@ func (client *Client) DescribeDashboard(request *DescribeDashboardRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAppsResponse
-func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
+func (client *Client) ListAppsWithContext(ctx context.Context, request *ListAppsRequest, runtime *dara.RuntimeOptions) (_result *ListAppsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -425,29 +303,11 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 展示用户应用列表
-//
-// @param request - ListAppsRequest
-//
-// @return ListAppsResponse
-func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListAppsResponse{}
-	_body, _err := client.ListAppsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -460,7 +320,7 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListProductsResponse
-func (client *Client) ListProductsWithOptions(request *ListProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+func (client *Client) ListProductsWithContext(ctx context.Context, request *ListProductsRequest, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -509,29 +369,11 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 分页获取产品(在基座中表达为项目)列表
-//
-// @param request - ListProductsRequest
-//
-// @return ListProductsResponse
-func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListProductsResponse{}
-	_body, _err := client.ListProductsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -540,7 +382,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAppResponse
-func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
+func (client *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -585,25 +427,11 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *d
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyAppRequest
-//
-// @return ModifyAppResponse
-func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyAppResponse{}
-	_body, _err := client.ModifyAppWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -612,7 +440,7 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyProductResponse
-func (client *Client) ModifyProductWithOptions(request *ModifyProductRequest, runtime *dara.RuntimeOptions) (_result *ModifyProductResponse, _err error) {
+func (client *Client) ModifyProductWithContext(ctx context.Context, request *ModifyProductRequest, runtime *dara.RuntimeOptions) (_result *ModifyProductResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -645,25 +473,11 @@ func (client *Client) ModifyProductWithOptions(request *ModifyProductRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyProductResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - ModifyProductRequest
-//
-// @return ModifyProductResponse
-func (client *Client) ModifyProduct(request *ModifyProductRequest) (_result *ModifyProductResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyProductResponse{}
-	_body, _err := client.ModifyProductWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -672,7 +486,7 @@ func (client *Client) ModifyProduct(request *ModifyProductRequest) (_result *Mod
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenEmasServiceResponse
-func (client *Client) OpenEmasServiceWithOptions(request *OpenEmasServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenEmasServiceResponse, _err error) {
+func (client *Client) OpenEmasServiceWithContext(ctx context.Context, request *OpenEmasServiceRequest, runtime *dara.RuntimeOptions) (_result *OpenEmasServiceResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -697,25 +511,11 @@ func (client *Client) OpenEmasServiceWithOptions(request *OpenEmasServiceRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &OpenEmasServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - OpenEmasServiceRequest
-//
-// @return OpenEmasServiceResponse
-func (client *Client) OpenEmasService(request *OpenEmasServiceRequest) (_result *OpenEmasServiceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &OpenEmasServiceResponse{}
-	_body, _err := client.OpenEmasServiceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -724,7 +524,7 @@ func (client *Client) OpenEmasService(request *OpenEmasServiceRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAppInfoResponse
-func (client *Client) QueryAppInfoWithOptions(request *QueryAppInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAppInfoResponse, _err error) {
+func (client *Client) QueryAppInfoWithContext(ctx context.Context, request *QueryAppInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAppInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -749,25 +549,11 @@ func (client *Client) QueryAppInfoWithOptions(request *QueryAppInfoRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// @param request - QueryAppInfoRequest
-//
-// @return QueryAppInfoResponse
-func (client *Client) QueryAppInfo(request *QueryAppInfoRequest) (_result *QueryAppInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAppInfoResponse{}
-	_body, _err := client.QueryAppInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -780,7 +566,7 @@ func (client *Client) QueryAppInfo(request *QueryAppInfoRequest) (_result *Query
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryAppSecurityInfoResponse
-func (client *Client) QueryAppSecurityInfoWithOptions(request *QueryAppSecurityInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAppSecurityInfoResponse, _err error) {
+func (client *Client) QueryAppSecurityInfoWithContext(ctx context.Context, request *QueryAppSecurityInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryAppSecurityInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -805,29 +591,11 @@ func (client *Client) QueryAppSecurityInfoWithOptions(request *QueryAppSecurityI
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryAppSecurityInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询应用对应的安全字段
-//
-// @param request - QueryAppSecurityInfoRequest
-//
-// @return QueryAppSecurityInfoResponse
-func (client *Client) QueryAppSecurityInfo(request *QueryAppSecurityInfoRequest) (_result *QueryAppSecurityInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryAppSecurityInfoResponse{}
-	_body, _err := client.QueryAppSecurityInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -840,7 +608,7 @@ func (client *Client) QueryAppSecurityInfo(request *QueryAppSecurityInfoRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryProductInfoResponse
-func (client *Client) QueryProductInfoWithOptions(request *QueryProductInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryProductInfoResponse, _err error) {
+func (client *Client) QueryProductInfoWithContext(ctx context.Context, request *QueryProductInfoRequest, runtime *dara.RuntimeOptions) (_result *QueryProductInfoResponse, _err error) {
 	_err = request.Validate()
 	if _err != nil {
 		return _result, _err
@@ -865,28 +633,10 @@ func (client *Client) QueryProductInfoWithOptions(request *QueryProductInfoReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryProductInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询基座的Product信息
-//
-// @param request - QueryProductInfoRequest
-//
-// @return QueryProductInfoResponse
-func (client *Client) QueryProductInfo(request *QueryProductInfoRequest) (_result *QueryProductInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &QueryProductInfoResponse{}
-	_body, _err := client.QueryProductInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
