@@ -166,6 +166,10 @@ func (client *Client) GenericSearchWithContext(ctx context.Context, request *Gen
 		query["returnMarkdownText"] = request.ReturnMarkdownText
 	}
 
+	if !dara.IsNil(request.ReturnRichMainBody) {
+		query["returnRichMainBody"] = request.ReturnRichMainBody
+	}
+
 	if !dara.IsNil(request.ReturnSummary) {
 		query["returnSummary"] = request.ReturnSummary
 	}
@@ -300,6 +304,46 @@ func (client *Client) GlobalSearchWithContext(ctx context.Context, request *Glob
 		BodyType:    dara.String("json"),
 	}
 	_result = &GlobalSearchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 页面读取
+//
+// @param request - ReadPageBasicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadPageBasicResponse
+func (client *Client) ReadPageBasicWithContext(ctx context.Context, request *ReadPageBasicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReadPageBasicResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReadPageBasic"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReadPageBasicResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

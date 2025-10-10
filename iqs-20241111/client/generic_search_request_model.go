@@ -21,6 +21,8 @@ type iGenericSearchRequest interface {
 	GetReturnMainText() *bool
 	SetReturnMarkdownText(v bool) *GenericSearchRequest
 	GetReturnMarkdownText() *bool
+	SetReturnRichMainBody(v bool) *GenericSearchRequest
+	GetReturnRichMainBody() *bool
 	SetReturnSummary(v bool) *GenericSearchRequest
 	GetReturnSummary() *bool
 	SetSessionId(v string) *GenericSearchRequest
@@ -40,6 +42,7 @@ type GenericSearchRequest struct {
 	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
 	ReturnMainText     *bool   `json:"returnMainText,omitempty" xml:"returnMainText,omitempty"`
 	ReturnMarkdownText *bool   `json:"returnMarkdownText,omitempty" xml:"returnMarkdownText,omitempty"`
+	ReturnRichMainBody *bool   `json:"returnRichMainBody,omitempty" xml:"returnRichMainBody,omitempty"`
 	ReturnSummary      *bool   `json:"returnSummary,omitempty" xml:"returnSummary,omitempty"`
 	SessionId          *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 	// example:
@@ -78,6 +81,10 @@ func (s *GenericSearchRequest) GetReturnMainText() *bool {
 
 func (s *GenericSearchRequest) GetReturnMarkdownText() *bool {
 	return s.ReturnMarkdownText
+}
+
+func (s *GenericSearchRequest) GetReturnRichMainBody() *bool {
+	return s.ReturnRichMainBody
 }
 
 func (s *GenericSearchRequest) GetReturnSummary() *bool {
@@ -119,6 +126,11 @@ func (s *GenericSearchRequest) SetReturnMainText(v bool) *GenericSearchRequest {
 
 func (s *GenericSearchRequest) SetReturnMarkdownText(v bool) *GenericSearchRequest {
 	s.ReturnMarkdownText = &v
+	return s
+}
+
+func (s *GenericSearchRequest) SetReturnRichMainBody(v bool) *GenericSearchRequest {
+	s.ReturnRichMainBody = &v
 	return s
 }
 

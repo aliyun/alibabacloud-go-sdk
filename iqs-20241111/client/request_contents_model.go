@@ -15,6 +15,8 @@ type iRequestContents interface {
 	GetMarkdownText() *bool
 	SetRerankScore(v bool) *RequestContents
 	GetRerankScore() *bool
+	SetRichMainBody(v bool) *RequestContents
+	GetRichMainBody() *bool
 	SetSummary(v bool) *RequestContents
 	GetSummary() *bool
 }
@@ -23,6 +25,7 @@ type RequestContents struct {
 	MainText     *bool `json:"mainText,omitempty" xml:"mainText,omitempty"`
 	MarkdownText *bool `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
 	RerankScore  *bool `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	RichMainBody *bool `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
 	Summary      *bool `json:"summary,omitempty" xml:"summary,omitempty"`
 }
 
@@ -46,6 +49,10 @@ func (s *RequestContents) GetRerankScore() *bool {
 	return s.RerankScore
 }
 
+func (s *RequestContents) GetRichMainBody() *bool {
+	return s.RichMainBody
+}
+
 func (s *RequestContents) GetSummary() *bool {
 	return s.Summary
 }
@@ -62,6 +69,11 @@ func (s *RequestContents) SetMarkdownText(v bool) *RequestContents {
 
 func (s *RequestContents) SetRerankScore(v bool) *RequestContents {
 	s.RerankScore = &v
+	return s
+}
+
+func (s *RequestContents) SetRichMainBody(v bool) *RequestContents {
+	s.RichMainBody = &v
 	return s
 }
 

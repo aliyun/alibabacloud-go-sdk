@@ -269,6 +269,10 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 		query["returnMarkdownText"] = request.ReturnMarkdownText
 	}
 
+	if !dara.IsNil(request.ReturnRichMainBody) {
+		query["returnRichMainBody"] = request.ReturnRichMainBody
+	}
+
 	if !dara.IsNil(request.ReturnSummary) {
 		query["returnSummary"] = request.ReturnSummary
 	}
@@ -461,6 +465,65 @@ func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *Globa
 	headers := make(map[string]*string)
 	_result = &GlobalSearchResponse{}
 	_body, _err := client.GlobalSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 页面读取
+//
+// @param request - ReadPageBasicRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadPageBasicResponse
+func (client *Client) ReadPageBasicWithOptions(request *ReadPageBasicRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReadPageBasicResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReadPageBasic"),
+		Version:     dara.String("2024-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReadPageBasicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 页面读取
+//
+// @param request - ReadPageBasicRequest
+//
+// @return ReadPageBasicResponse
+func (client *Client) ReadPageBasic(request *ReadPageBasicRequest) (_result *ReadPageBasicResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReadPageBasicResponse{}
+	_body, _err := client.ReadPageBasicWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
