@@ -62,8 +62,9 @@ type GetModifyBEClusterInquiryResponseBodyData struct {
 	// example:
 	//
 	// CNY
-	Currency     *string            `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	PricingRules map[string]*string `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
+	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	OptionalPromotions []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
+	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
 	// The estimated refund amount when the subscription cluster of a subscription instance is changed to a pay-as-you-go cluster.
 	//
 	// example:
@@ -90,6 +91,10 @@ func (s *GetModifyBEClusterInquiryResponseBodyData) GetCurrency() *string {
 	return s.Currency
 }
 
+func (s *GetModifyBEClusterInquiryResponseBodyData) GetOptionalPromotions() []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	return s.OptionalPromotions
+}
+
 func (s *GetModifyBEClusterInquiryResponseBodyData) GetPricingRules() map[string]*string {
 	return s.PricingRules
 }
@@ -104,6 +109,11 @@ func (s *GetModifyBEClusterInquiryResponseBodyData) GetTradeAmount() *string {
 
 func (s *GetModifyBEClusterInquiryResponseBodyData) SetCurrency(v string) *GetModifyBEClusterInquiryResponseBodyData {
 	s.Currency = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyData) SetOptionalPromotions(v []*GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) *GetModifyBEClusterInquiryResponseBodyData {
+	s.OptionalPromotions = v
 	return s
 }
 
@@ -123,5 +133,85 @@ func (s *GetModifyBEClusterInquiryResponseBodyData) SetTradeAmount(v string) *Ge
 }
 
 func (s *GetModifyBEClusterInquiryResponseBodyData) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions struct {
+	// example:
+	//
+	// 100
+	CanPromFee *string `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	// example:
+	//
+	// 789asdf
+	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	// example:
+	//
+	// 通用优惠券可抵扣100
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// 通用优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 732211480132
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
+}
+
+func (s GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GoString() string {
+	return s.String()
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GetCanPromFee() *string {
+	return s.CanPromFee
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GetOptionCode() *string {
+	return s.OptionCode
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GetPromotionDesc() *string {
+	return s.PromotionDesc
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GetPromotionName() *string {
+	return s.PromotionName
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) SetCanPromFee(v string) *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	s.CanPromFee = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) SetOptionCode(v string) *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) SetPromotionDesc(v string) *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) SetPromotionName(v string) *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) SetPromotionOptionNo(v string) *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions {
+	s.PromotionOptionNo = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions) Validate() error {
 	return dara.Validate(s)
 }

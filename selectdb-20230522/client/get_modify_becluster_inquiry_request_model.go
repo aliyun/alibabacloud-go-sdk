@@ -29,6 +29,8 @@ type iGetModifyBEClusterInquiryRequest interface {
 	GetPreComputeSize() *int64
 	SetPricingCycle(v string) *GetModifyBEClusterInquiryRequest
 	GetPricingCycle() *string
+	SetPromotionOptionNo(v string) *GetModifyBEClusterInquiryRequest
+	GetPromotionOptionNo() *string
 	SetQuantity(v int64) *GetModifyBEClusterInquiryRequest
 	GetQuantity() *int64
 	SetRegionId(v string) *GetModifyBEClusterInquiryRequest
@@ -134,6 +136,10 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 123412345
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The number of clusters whose specifications are to be changed.
 	//
 	// This parameter is required.
@@ -201,6 +207,10 @@ func (s *GetModifyBEClusterInquiryRequest) GetPricingCycle() *string {
 	return s.PricingCycle
 }
 
+func (s *GetModifyBEClusterInquiryRequest) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
+}
+
 func (s *GetModifyBEClusterInquiryRequest) GetQuantity() *int64 {
 	return s.Quantity
 }
@@ -260,6 +270,11 @@ func (s *GetModifyBEClusterInquiryRequest) SetPreComputeSize(v int64) *GetModify
 
 func (s *GetModifyBEClusterInquiryRequest) SetPricingCycle(v string) *GetModifyBEClusterInquiryRequest {
 	s.PricingCycle = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryRequest) SetPromotionOptionNo(v string) *GetModifyBEClusterInquiryRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 

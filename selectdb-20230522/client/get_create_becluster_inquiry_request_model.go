@@ -25,6 +25,8 @@ type iGetCreateBEClusterInquiryRequest interface {
 	GetPreComputeSize() *int64
 	SetPricingCycle(v string) *GetCreateBEClusterInquiryRequest
 	GetPricingCycle() *string
+	SetPromotionOptionNo(v string) *GetCreateBEClusterInquiryRequest
+	GetPromotionOptionNo() *string
 	SetQuantity(v int64) *GetCreateBEClusterInquiryRequest
 	GetQuantity() *int64
 	SetRegionId(v string) *GetCreateBEClusterInquiryRequest
@@ -116,6 +118,10 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 2374923467
+	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
 	// The number of clusters to be created.
 	//
 	// This parameter is required.
@@ -175,6 +181,10 @@ func (s *GetCreateBEClusterInquiryRequest) GetPricingCycle() *string {
 	return s.PricingCycle
 }
 
+func (s *GetCreateBEClusterInquiryRequest) GetPromotionOptionNo() *string {
+	return s.PromotionOptionNo
+}
+
 func (s *GetCreateBEClusterInquiryRequest) GetQuantity() *int64 {
 	return s.Quantity
 }
@@ -224,6 +234,11 @@ func (s *GetCreateBEClusterInquiryRequest) SetPreComputeSize(v int64) *GetCreate
 
 func (s *GetCreateBEClusterInquiryRequest) SetPricingCycle(v string) *GetCreateBEClusterInquiryRequest {
 	s.PricingCycle = &v
+	return s
+}
+
+func (s *GetCreateBEClusterInquiryRequest) SetPromotionOptionNo(v string) *GetCreateBEClusterInquiryRequest {
+	s.PromotionOptionNo = &v
 	return s
 }
 

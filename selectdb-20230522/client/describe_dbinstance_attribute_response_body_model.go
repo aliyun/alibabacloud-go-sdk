@@ -53,6 +53,8 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetResourceCpu() *int64
 	SetResourceGroupId(v string) *DescribeDBInstanceAttributeResponseBody
 	GetResourceGroupId() *string
+	SetSecGroupConnValid(v string) *DescribeDBInstanceAttributeResponseBody
+	GetSecGroupConnValid() *string
 	SetServerless(v bool) *DescribeDBInstanceAttributeResponseBody
 	GetServerless() *bool
 	SetStatus(v string) *DescribeDBInstanceAttributeResponseBody
@@ -98,6 +100,9 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// multi_az
 	DeployScheme *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
 	// The description of the instance.
 	//
@@ -192,7 +197,14 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// rg-aekzbck4asz3dsa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Serverless      *bool   `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
+	// example:
+	//
+	// false
+	SecGroupConnValid *string `json:"SecGroupConnValid,omitempty" xml:"SecGroupConnValid,omitempty"`
+	// example:
+	//
+	// false
+	Serverless *bool `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
 	// The state of the instance. Valid values:
 	//
 	// 	- **CREATING**: The instance is being created.
@@ -224,8 +236,11 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// cn-beijing-h-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	// The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
-	Tags      []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	VSwitchId *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	Tags []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vsw-bp18iztwqrs8qj2nc6nyu
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -334,6 +349,10 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetResourceCpu() *int64 {
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetSecGroupConnValid() *string {
+	return s.SecGroupConnValid
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) GetServerless() *bool {
@@ -478,6 +497,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetResourceGroupId(v string) *
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetSecGroupConnValid(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.SecGroupConnValid = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetServerless(v bool) *DescribeDBInstanceAttributeResponseBody {
 	s.Serverless = &v
 	return s
@@ -544,7 +568,10 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// Prepaid
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// selectdb-cn-7213cjv****-be
 	ClusterBinding   *string `json:"ClusterBinding,omitempty" xml:"ClusterBinding,omitempty"`
 	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
 	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
@@ -615,10 +642,19 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// PL1
-	PerformanceLevel   *string  `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	ScaleMax           *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	ScaleMin           *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	ScalingRulesEnable *bool    `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 4
+	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
+	// example:
+	//
+	// 0.5
+	ScaleMin *float64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
+	// example:
+	//
+	// false
+	ScalingRulesEnable *bool `json:"ScalingRulesEnable,omitempty" xml:"ScalingRulesEnable,omitempty"`
 	// The time when the cluster started.
 	//
 	// example:
@@ -642,10 +678,19 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// ACTIVATION
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 预留参数，暂不返回。
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// example:
+	//
+	// vsw-t4n8x7jcc8rknon85tqoa
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-k
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBClusterList) String() string {
@@ -868,10 +913,19 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) Validate() error 
 }
 
 type DescribeDBInstanceAttributeResponseBodyMultiZone struct {
-	AvailableIpCount *int64    `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
-	Cidr             *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	ZoneId           *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 4096
+	AvailableIpCount *int64 `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
+	// example:
+	//
+	// 113.88.14.211/32
+	Cidr       *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou-k
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyMultiZone) String() string {
