@@ -17,6 +17,8 @@ type iDescribeManagedInstancesRequest interface {
 	GetInstanceIp() *string
 	SetInstanceName(v string) *DescribeManagedInstancesRequest
 	GetInstanceName() *string
+	SetMachineId(v string) *DescribeManagedInstancesRequest
+	GetMachineId() *string
 	SetMaxResults(v int32) *DescribeManagedInstancesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeManagedInstancesRequest
@@ -68,6 +70,7 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// my-webapp-server
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MachineId    *string `json:"MachineId,omitempty" xml:"MachineId,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 50.
@@ -156,6 +159,10 @@ func (s *DescribeManagedInstancesRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *DescribeManagedInstancesRequest) GetMachineId() *string {
+	return s.MachineId
+}
+
 func (s *DescribeManagedInstancesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -221,6 +228,11 @@ func (s *DescribeManagedInstancesRequest) SetInstanceIp(v string) *DescribeManag
 
 func (s *DescribeManagedInstancesRequest) SetInstanceName(v string) *DescribeManagedInstancesRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeManagedInstancesRequest) SetMachineId(v string) *DescribeManagedInstancesRequest {
+	s.MachineId = &v
 	return s
 }
 

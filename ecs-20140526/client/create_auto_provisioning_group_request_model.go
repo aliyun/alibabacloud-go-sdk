@@ -964,7 +964,8 @@ type CreateAutoProvisioningGroupRequestLaunchConfiguration struct {
 	// example:
 	//
 	// 1
-	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	AutoRenewPeriod *int32                                                           `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	CpuOptions      *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions `json:"CpuOptions,omitempty" xml:"CpuOptions,omitempty" type:"Struct"`
 	// The image options.
 	//
 	// When you specify this parameter, take note of the following items:
@@ -1164,6 +1165,10 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetAutoRenewPeri
 	return s.AutoRenewPeriod
 }
 
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetCpuOptions() *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions {
+	return s.CpuOptions
+}
+
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) GetImageOptions() *CreateAutoProvisioningGroupRequestLaunchConfigurationImageOptions {
 	return s.ImageOptions
 }
@@ -1350,6 +1355,11 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetAutoRenew(v b
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetAutoRenewPeriod(v int32) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
 	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfiguration) SetCpuOptions(v *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) *CreateAutoProvisioningGroupRequestLaunchConfiguration {
+	s.CpuOptions = v
 	return s
 }
 
@@ -1935,6 +1945,41 @@ func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationTag) SetValue(v st
 }
 
 func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationTag) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions struct {
+	Core           *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
+	ThreadsPerCore *int32 `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) GetCore() *int32 {
+	return s.Core
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) GetThreadsPerCore() *int32 {
+	return s.ThreadsPerCore
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) SetCore(v int32) *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions {
+	s.Core = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) SetThreadsPerCore(v int32) *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions {
+	s.ThreadsPerCore = &v
+	return s
+}
+
+func (s *CreateAutoProvisioningGroupRequestLaunchConfigurationCpuOptions) Validate() error {
 	return dara.Validate(s)
 }
 

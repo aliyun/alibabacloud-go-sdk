@@ -100,7 +100,7 @@ type ResizeDiskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The method that you want to use to resize the disk. Valid values:
+	// The method that you want to use to resize the disk. Specifies whether to check the image used by the instance supports hot migration. Valid values:
 	//
 	// 	- offline (default): resizes the disk offline. After you resize a disk offline, you must [restart the associated instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the resizing operation to take effect.
 	//

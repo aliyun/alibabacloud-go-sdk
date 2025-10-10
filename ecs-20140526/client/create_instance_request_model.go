@@ -571,7 +571,7 @@ type CreateInstanceRequest struct {
 	//
 	// true
 	UseAdditionalService *bool `json:"UseAdditionalService,omitempty" xml:"UseAdditionalService,omitempty"`
-	// The user data of the instance. The user data must be encoded in Base64. The maximum size of raw data is 16 KB.
+	// The user data of the instance. The user data must be encoded in Base64. The maximum size of raw data is 32 KB.
 	//
 	// example:
 	//
