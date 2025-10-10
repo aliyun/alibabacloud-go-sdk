@@ -857,6 +857,10 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 		query["LoadWhiteList"] = request.LoadWhiteList
 	}
 
+	if !dara.IsNil(request.LogSource) {
+		query["LogSource"] = request.LogSource
+	}
+
 	if !dara.IsNil(request.MemberAccount) {
 		query["MemberAccount"] = request.MemberAccount
 	}
@@ -883,6 +887,10 @@ func (client *Client) DescribeAuditLogsWithOptions(request *DescribeAuditLogsReq
 
 	if !dara.IsNil(request.ProductId) {
 		query["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.RuleAggQuery) {
+		query["RuleAggQuery"] = request.RuleAggQuery
 	}
 
 	if !dara.IsNil(request.RuleCategory) {

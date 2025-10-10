@@ -33,6 +33,8 @@ type iDescribeAuditLogsRequest interface {
 	GetLang() *string
 	SetLoadWhiteList(v bool) *DescribeAuditLogsRequest
 	GetLoadWhiteList() *bool
+	SetLogSource(v string) *DescribeAuditLogsRequest
+	GetLogSource() *string
 	SetMemberAccount(v string) *DescribeAuditLogsRequest
 	GetMemberAccount() *string
 	SetMessage(v string) *DescribeAuditLogsRequest
@@ -47,6 +49,8 @@ type iDescribeAuditLogsRequest interface {
 	GetProductCode() *string
 	SetProductId(v int64) *DescribeAuditLogsRequest
 	GetProductId() *int64
+	SetRuleAggQuery(v bool) *DescribeAuditLogsRequest
+	GetRuleAggQuery() *bool
 	SetRuleCategory(v string) *DescribeAuditLogsRequest
 	GetRuleCategory() *string
 	SetRuleID(v string) *DescribeAuditLogsRequest
@@ -112,6 +116,10 @@ type DescribeAuditLogsRequest struct {
 	LoadWhiteList *bool `json:"LoadWhiteList,omitempty" xml:"LoadWhiteList,omitempty"`
 	// example:
 	//
+	// SLOW_SQL
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// example:
+	//
 	// **********8103
 	MemberAccount *string `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	// example:
@@ -137,7 +145,8 @@ type DescribeAuditLogsRequest struct {
 	// example:
 	//
 	// 5
-	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId    *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RuleAggQuery *bool  `json:"RuleAggQuery,omitempty" xml:"RuleAggQuery,omitempty"`
 	// example:
 	//
 	// 10
@@ -217,6 +226,10 @@ func (s *DescribeAuditLogsRequest) GetLoadWhiteList() *bool {
 	return s.LoadWhiteList
 }
 
+func (s *DescribeAuditLogsRequest) GetLogSource() *string {
+	return s.LogSource
+}
+
 func (s *DescribeAuditLogsRequest) GetMemberAccount() *string {
 	return s.MemberAccount
 }
@@ -243,6 +256,10 @@ func (s *DescribeAuditLogsRequest) GetProductCode() *string {
 
 func (s *DescribeAuditLogsRequest) GetProductId() *int64 {
 	return s.ProductId
+}
+
+func (s *DescribeAuditLogsRequest) GetRuleAggQuery() *bool {
+	return s.RuleAggQuery
 }
 
 func (s *DescribeAuditLogsRequest) GetRuleCategory() *string {
@@ -329,6 +346,11 @@ func (s *DescribeAuditLogsRequest) SetLoadWhiteList(v bool) *DescribeAuditLogsRe
 	return s
 }
 
+func (s *DescribeAuditLogsRequest) SetLogSource(v string) *DescribeAuditLogsRequest {
+	s.LogSource = &v
+	return s
+}
+
 func (s *DescribeAuditLogsRequest) SetMemberAccount(v string) *DescribeAuditLogsRequest {
 	s.MemberAccount = &v
 	return s
@@ -361,6 +383,11 @@ func (s *DescribeAuditLogsRequest) SetProductCode(v string) *DescribeAuditLogsRe
 
 func (s *DescribeAuditLogsRequest) SetProductId(v int64) *DescribeAuditLogsRequest {
 	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeAuditLogsRequest) SetRuleAggQuery(v bool) *DescribeAuditLogsRequest {
+	s.RuleAggQuery = &v
 	return s
 }
 

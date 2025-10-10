@@ -644,6 +644,10 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 		query["LoadWhiteList"] = request.LoadWhiteList
 	}
 
+	if !dara.IsNil(request.LogSource) {
+		query["LogSource"] = request.LogSource
+	}
+
 	if !dara.IsNil(request.MemberAccount) {
 		query["MemberAccount"] = request.MemberAccount
 	}
@@ -670,6 +674,10 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ProductId) {
 		query["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.RuleAggQuery) {
+		query["RuleAggQuery"] = request.RuleAggQuery
 	}
 
 	if !dara.IsNil(request.RuleCategory) {

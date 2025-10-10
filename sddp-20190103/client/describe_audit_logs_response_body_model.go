@@ -142,10 +142,7 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// chngc_b2b_migration_sh
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// example:
-	//
-	// MySQL
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// example:
 	//
 	// 10
@@ -164,6 +161,10 @@ type DescribeAuditLogsResponseBodyItems struct {
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
 	// example:
 	//
+	// 2
+	InstanceAuditStatus *string `json:"InstanceAuditStatus,omitempty" xml:"InstanceAuditStatus,omitempty"`
+	// example:
+	//
 	// instance dscription
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
 	// example:
@@ -174,6 +175,10 @@ type DescribeAuditLogsResponseBodyItems struct {
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// example:
+	//
+	// SLOW_SQL
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
 	// example:
 	//
 	// 1751870592000
@@ -298,6 +303,10 @@ func (s *DescribeAuditLogsResponseBodyItems) GetInWhiteList() *bool {
 	return s.InWhiteList
 }
 
+func (s *DescribeAuditLogsResponseBodyItems) GetInstanceAuditStatus() *string {
+	return s.InstanceAuditStatus
+}
+
 func (s *DescribeAuditLogsResponseBodyItems) GetInstanceDescription() *string {
 	return s.InstanceDescription
 }
@@ -308,6 +317,10 @@ func (s *DescribeAuditLogsResponseBodyItems) GetInstanceName() *string {
 
 func (s *DescribeAuditLogsResponseBodyItems) GetIpType() *string {
 	return s.IpType
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) GetLogSource() *string {
+	return s.LogSource
 }
 
 func (s *DescribeAuditLogsResponseBodyItems) GetLogTime() *int64 {
@@ -442,6 +455,11 @@ func (s *DescribeAuditLogsResponseBodyItems) SetInWhiteList(v bool) *DescribeAud
 	return s
 }
 
+func (s *DescribeAuditLogsResponseBodyItems) SetInstanceAuditStatus(v string) *DescribeAuditLogsResponseBodyItems {
+	s.InstanceAuditStatus = &v
+	return s
+}
+
 func (s *DescribeAuditLogsResponseBodyItems) SetInstanceDescription(v string) *DescribeAuditLogsResponseBodyItems {
 	s.InstanceDescription = &v
 	return s
@@ -454,6 +472,11 @@ func (s *DescribeAuditLogsResponseBodyItems) SetInstanceName(v string) *Describe
 
 func (s *DescribeAuditLogsResponseBodyItems) SetIpType(v string) *DescribeAuditLogsResponseBodyItems {
 	s.IpType = &v
+	return s
+}
+
+func (s *DescribeAuditLogsResponseBodyItems) SetLogSource(v string) *DescribeAuditLogsResponseBodyItems {
+	s.LogSource = &v
 	return s
 }
 
