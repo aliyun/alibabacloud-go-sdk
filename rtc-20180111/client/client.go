@@ -199,8 +199,20 @@ func (client *Client) CreateAppAgentTemplateWithOptions(tmpReq *CreateAppAgentTe
 		request.AgentSilenceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentSilenceConfig, dara.String("AgentSilenceConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.AmbientSoundConfig) {
+		request.AmbientSoundConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AmbientSoundConfig, dara.String("AmbientSoundConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.AsrConfig) {
 		request.AsrConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AsrConfig, dara.String("AsrConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.BackChannelConfig) {
+		request.BackChannelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackChannelConfig, dara.String("BackChannelConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.InterruptConfig) {
+		request.InterruptConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InterruptConfig, dara.String("InterruptConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.LlmConfig) {
@@ -216,6 +228,10 @@ func (client *Client) CreateAppAgentTemplateWithOptions(tmpReq *CreateAppAgentTe
 		query["AgentSilenceConfig"] = request.AgentSilenceConfigShrink
 	}
 
+	if !dara.IsNil(request.AmbientSoundConfigShrink) {
+		query["AmbientSoundConfig"] = request.AmbientSoundConfigShrink
+	}
+
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
 	}
@@ -224,12 +240,20 @@ func (client *Client) CreateAppAgentTemplateWithOptions(tmpReq *CreateAppAgentTe
 		query["AsrConfig"] = request.AsrConfigShrink
 	}
 
+	if !dara.IsNil(request.BackChannelConfigShrink) {
+		query["BackChannelConfig"] = request.BackChannelConfigShrink
+	}
+
 	if !dara.IsNil(request.ChatMode) {
 		query["ChatMode"] = request.ChatMode
 	}
 
 	if !dara.IsNil(request.Greeting) {
 		query["Greeting"] = request.Greeting
+	}
+
+	if !dara.IsNil(request.InterruptConfigShrink) {
+		query["InterruptConfig"] = request.InterruptConfigShrink
 	}
 
 	if !dara.IsNil(request.InterruptMode) {
@@ -5916,8 +5940,20 @@ func (client *Client) ModifyAppAgentTemplateWithOptions(tmpReq *ModifyAppAgentTe
 		request.AgentSilenceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentSilenceConfig, dara.String("AgentSilenceConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.AmbientSoundConfig) {
+		request.AmbientSoundConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AmbientSoundConfig, dara.String("AmbientSoundConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.AsrConfig) {
 		request.AsrConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AsrConfig, dara.String("AsrConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.BackChannelConfig) {
+		request.BackChannelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackChannelConfig, dara.String("BackChannelConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.InterruptConfig) {
+		request.InterruptConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InterruptConfig, dara.String("InterruptConfig"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.LlmConfig) {
@@ -5933,12 +5969,20 @@ func (client *Client) ModifyAppAgentTemplateWithOptions(tmpReq *ModifyAppAgentTe
 		query["AgentSilenceConfig"] = request.AgentSilenceConfigShrink
 	}
 
+	if !dara.IsNil(request.AmbientSoundConfigShrink) {
+		query["AmbientSoundConfig"] = request.AmbientSoundConfigShrink
+	}
+
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
 	}
 
 	if !dara.IsNil(request.AsrConfigShrink) {
 		query["AsrConfig"] = request.AsrConfigShrink
+	}
+
+	if !dara.IsNil(request.BackChannelConfigShrink) {
+		query["BackChannelConfig"] = request.BackChannelConfigShrink
 	}
 
 	if !dara.IsNil(request.ChatMode) {
@@ -5951,6 +5995,10 @@ func (client *Client) ModifyAppAgentTemplateWithOptions(tmpReq *ModifyAppAgentTe
 
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.InterruptConfigShrink) {
+		query["InterruptConfig"] = request.InterruptConfigShrink
 	}
 
 	if !dara.IsNil(request.InterruptMode) {
@@ -6640,19 +6688,29 @@ func (client *Client) ModifyMPULayout(request *ModifyMPULayoutRequest) (_result 
 //
 // # NotifyAgent
 //
-// @param request - NotifyAgentRequest
+// @param tmpReq - NotifyAgentRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return NotifyAgentResponse
-func (client *Client) NotifyAgentWithOptions(request *NotifyAgentRequest, runtime *dara.RuntimeOptions) (_result *NotifyAgentResponse, _err error) {
-	_err = request.Validate()
+func (client *Client) NotifyAgentWithOptions(tmpReq *NotifyAgentRequest, runtime *dara.RuntimeOptions) (_result *NotifyAgentResponse, _err error) {
+	_err = tmpReq.Validate()
 	if _err != nil {
 		return _result, _err
 	}
+	request := &NotifyAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BackgroundMusic) {
+		request.BackgroundMusicShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BackgroundMusic, dara.String("BackgroundMusic"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.BackgroundMusicShrink) {
+		query["BackgroundMusic"] = request.BackgroundMusicShrink
 	}
 
 	if !dara.IsNil(request.ChannelId) {

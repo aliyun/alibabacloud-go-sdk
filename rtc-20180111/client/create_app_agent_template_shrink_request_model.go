@@ -11,14 +11,20 @@ type iCreateAppAgentTemplateShrinkRequest interface {
 	GoString() string
 	SetAgentSilenceConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
 	GetAgentSilenceConfigShrink() *string
+	SetAmbientSoundConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
+	GetAmbientSoundConfigShrink() *string
 	SetAppId(v string) *CreateAppAgentTemplateShrinkRequest
 	GetAppId() *string
 	SetAsrConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
 	GetAsrConfigShrink() *string
+	SetBackChannelConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
+	GetBackChannelConfigShrink() *string
 	SetChatMode(v int32) *CreateAppAgentTemplateShrinkRequest
 	GetChatMode() *int32
 	SetGreeting(v string) *CreateAppAgentTemplateShrinkRequest
 	GetGreeting() *string
+	SetInterruptConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
+	GetInterruptConfigShrink() *string
 	SetInterruptMode(v int32) *CreateAppAgentTemplateShrinkRequest
 	GetInterruptMode() *int32
 	SetLlmConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest
@@ -33,18 +39,21 @@ type iCreateAppAgentTemplateShrinkRequest interface {
 
 type CreateAppAgentTemplateShrinkRequest struct {
 	AgentSilenceConfigShrink *string `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty"`
+	AmbientSoundConfigShrink *string `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AsrConfigShrink *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfigShrink         *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	BackChannelConfigShrink *string `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty"`
 	// example:
 	//
 	// 2
-	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	ChatMode              *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting              *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfigShrink *string `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty"`
 	// example:
 	//
 	// 2
@@ -75,6 +84,10 @@ func (s *CreateAppAgentTemplateShrinkRequest) GetAgentSilenceConfigShrink() *str
 	return s.AgentSilenceConfigShrink
 }
 
+func (s *CreateAppAgentTemplateShrinkRequest) GetAmbientSoundConfigShrink() *string {
+	return s.AmbientSoundConfigShrink
+}
+
 func (s *CreateAppAgentTemplateShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -83,12 +96,20 @@ func (s *CreateAppAgentTemplateShrinkRequest) GetAsrConfigShrink() *string {
 	return s.AsrConfigShrink
 }
 
+func (s *CreateAppAgentTemplateShrinkRequest) GetBackChannelConfigShrink() *string {
+	return s.BackChannelConfigShrink
+}
+
 func (s *CreateAppAgentTemplateShrinkRequest) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
 func (s *CreateAppAgentTemplateShrinkRequest) GetGreeting() *string {
 	return s.Greeting
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) GetInterruptConfigShrink() *string {
+	return s.InterruptConfigShrink
 }
 
 func (s *CreateAppAgentTemplateShrinkRequest) GetInterruptMode() *int32 {
@@ -116,6 +137,11 @@ func (s *CreateAppAgentTemplateShrinkRequest) SetAgentSilenceConfigShrink(v stri
 	return s
 }
 
+func (s *CreateAppAgentTemplateShrinkRequest) SetAmbientSoundConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.AmbientSoundConfigShrink = &v
+	return s
+}
+
 func (s *CreateAppAgentTemplateShrinkRequest) SetAppId(v string) *CreateAppAgentTemplateShrinkRequest {
 	s.AppId = &v
 	return s
@@ -126,6 +152,11 @@ func (s *CreateAppAgentTemplateShrinkRequest) SetAsrConfigShrink(v string) *Crea
 	return s
 }
 
+func (s *CreateAppAgentTemplateShrinkRequest) SetBackChannelConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.BackChannelConfigShrink = &v
+	return s
+}
+
 func (s *CreateAppAgentTemplateShrinkRequest) SetChatMode(v int32) *CreateAppAgentTemplateShrinkRequest {
 	s.ChatMode = &v
 	return s
@@ -133,6 +164,11 @@ func (s *CreateAppAgentTemplateShrinkRequest) SetChatMode(v int32) *CreateAppAge
 
 func (s *CreateAppAgentTemplateShrinkRequest) SetGreeting(v string) *CreateAppAgentTemplateShrinkRequest {
 	s.Greeting = &v
+	return s
+}
+
+func (s *CreateAppAgentTemplateShrinkRequest) SetInterruptConfigShrink(v string) *CreateAppAgentTemplateShrinkRequest {
+	s.InterruptConfigShrink = &v
 	return s
 }
 

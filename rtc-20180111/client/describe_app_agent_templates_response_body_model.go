@@ -87,7 +87,9 @@ func (s *DescribeAppAgentTemplatesResponseBody) Validate() error {
 
 type DescribeAppAgentTemplatesResponseBodyTemplates struct {
 	AgentSilenceConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	AmbientSoundConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	AsrConfig          *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig          `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	BackChannelConfig  *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig  `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -103,7 +105,8 @@ type DescribeAppAgentTemplatesResponseBodyTemplates struct {
 	// example:
 	//
 	// wv7N****
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id              *string                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	InterruptConfig *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -132,8 +135,16 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetAgentSilenceConfig()
 	return s.AgentSilenceConfig
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetAmbientSoundConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig {
+	return s.AmbientSoundConfig
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetAsrConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig {
 	return s.AsrConfig
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetBackChannelConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig {
+	return s.BackChannelConfig
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetChatMode() *int32 {
@@ -150,6 +161,10 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetGreeting() *string {
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetId() *string {
 	return s.Id
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetInterruptConfig() *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig {
+	return s.InterruptConfig
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) GetInterruptMode() *int32 {
@@ -177,8 +192,18 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAgentSilenceConfig(v
 	return s
 }
 
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAmbientSoundConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.AmbientSoundConfig = v
+	return s
+}
+
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetAsrConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
 	s.AsrConfig = v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetBackChannelConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.BackChannelConfig = v
 	return s
 }
 
@@ -199,6 +224,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetGreeting(v string) *
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetId(v string) *DescribeAppAgentTemplatesResponseBodyTemplates {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplates) SetInterruptConfig(v *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) *DescribeAppAgentTemplatesResponseBodyTemplates {
+	s.InterruptConfig = v
 	return s
 }
 
@@ -283,6 +313,47 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) SetWe
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig struct {
+	// example:
+	//
+	// office
+	SoundId *string `json:"SoundId,omitempty" xml:"SoundId,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) GetSoundId() *string {
+	return s.SoundId
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) GetVolume() *int32 {
+	return s.Volume
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) SetSoundId(v string) *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig {
+	s.SoundId = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) SetVolume(v int32) *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -430,6 +501,56 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) Set
 }
 
 func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig struct {
+	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) GetUserTurnEnd() *bool {
+	return s.UserTurnEnd
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) SetUserTurnEnd(v bool) *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig {
+	s.UserTurnEnd = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig struct {
+	SemanticsInterrupt *bool `json:"SemanticsInterrupt,omitempty" xml:"SemanticsInterrupt,omitempty"`
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) GetSemanticsInterrupt() *bool {
+	return s.SemanticsInterrupt
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) SetSemanticsInterrupt(v bool) *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig {
+	s.SemanticsInterrupt = &v
+	return s
+}
+
+func (s *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) Validate() error {
 	return dara.Validate(s)
 }
 

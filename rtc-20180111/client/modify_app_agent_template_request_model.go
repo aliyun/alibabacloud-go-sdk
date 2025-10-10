@@ -11,16 +11,22 @@ type iModifyAppAgentTemplateRequest interface {
 	GoString() string
 	SetAgentSilenceConfig(v *ModifyAppAgentTemplateRequestAgentSilenceConfig) *ModifyAppAgentTemplateRequest
 	GetAgentSilenceConfig() *ModifyAppAgentTemplateRequestAgentSilenceConfig
+	SetAmbientSoundConfig(v *ModifyAppAgentTemplateRequestAmbientSoundConfig) *ModifyAppAgentTemplateRequest
+	GetAmbientSoundConfig() *ModifyAppAgentTemplateRequestAmbientSoundConfig
 	SetAppId(v string) *ModifyAppAgentTemplateRequest
 	GetAppId() *string
 	SetAsrConfig(v *ModifyAppAgentTemplateRequestAsrConfig) *ModifyAppAgentTemplateRequest
 	GetAsrConfig() *ModifyAppAgentTemplateRequestAsrConfig
+	SetBackChannelConfig(v *ModifyAppAgentTemplateRequestBackChannelConfig) *ModifyAppAgentTemplateRequest
+	GetBackChannelConfig() *ModifyAppAgentTemplateRequestBackChannelConfig
 	SetChatMode(v int32) *ModifyAppAgentTemplateRequest
 	GetChatMode() *int32
 	SetGreeting(v string) *ModifyAppAgentTemplateRequest
 	GetGreeting() *string
 	SetId(v string) *ModifyAppAgentTemplateRequest
 	GetId() *string
+	SetInterruptConfig(v *ModifyAppAgentTemplateRequestInterruptConfig) *ModifyAppAgentTemplateRequest
+	GetInterruptConfig() *ModifyAppAgentTemplateRequestInterruptConfig
 	SetInterruptMode(v int32) *ModifyAppAgentTemplateRequest
 	GetInterruptMode() *int32
 	SetLlmConfig(v *ModifyAppAgentTemplateRequestLlmConfig) *ModifyAppAgentTemplateRequest
@@ -35,13 +41,15 @@ type iModifyAppAgentTemplateRequest interface {
 
 type ModifyAppAgentTemplateRequest struct {
 	AgentSilenceConfig *ModifyAppAgentTemplateRequestAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	AmbientSoundConfig *ModifyAppAgentTemplateRequestAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
-	AppId     *string                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AsrConfig *ModifyAppAgentTemplateRequestAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	AppId             *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfig         *ModifyAppAgentTemplateRequestAsrConfig         `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	BackChannelConfig *ModifyAppAgentTemplateRequestBackChannelConfig `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2
@@ -52,7 +60,8 @@ type ModifyAppAgentTemplateRequest struct {
 	// example:
 	//
 	// 1231231312312131231
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id              *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	InterruptConfig *ModifyAppAgentTemplateRequestInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2
@@ -83,12 +92,20 @@ func (s *ModifyAppAgentTemplateRequest) GetAgentSilenceConfig() *ModifyAppAgentT
 	return s.AgentSilenceConfig
 }
 
+func (s *ModifyAppAgentTemplateRequest) GetAmbientSoundConfig() *ModifyAppAgentTemplateRequestAmbientSoundConfig {
+	return s.AmbientSoundConfig
+}
+
 func (s *ModifyAppAgentTemplateRequest) GetAppId() *string {
 	return s.AppId
 }
 
 func (s *ModifyAppAgentTemplateRequest) GetAsrConfig() *ModifyAppAgentTemplateRequestAsrConfig {
 	return s.AsrConfig
+}
+
+func (s *ModifyAppAgentTemplateRequest) GetBackChannelConfig() *ModifyAppAgentTemplateRequestBackChannelConfig {
+	return s.BackChannelConfig
 }
 
 func (s *ModifyAppAgentTemplateRequest) GetChatMode() *int32 {
@@ -101,6 +118,10 @@ func (s *ModifyAppAgentTemplateRequest) GetGreeting() *string {
 
 func (s *ModifyAppAgentTemplateRequest) GetId() *string {
 	return s.Id
+}
+
+func (s *ModifyAppAgentTemplateRequest) GetInterruptConfig() *ModifyAppAgentTemplateRequestInterruptConfig {
+	return s.InterruptConfig
 }
 
 func (s *ModifyAppAgentTemplateRequest) GetInterruptMode() *int32 {
@@ -128,6 +149,11 @@ func (s *ModifyAppAgentTemplateRequest) SetAgentSilenceConfig(v *ModifyAppAgentT
 	return s
 }
 
+func (s *ModifyAppAgentTemplateRequest) SetAmbientSoundConfig(v *ModifyAppAgentTemplateRequestAmbientSoundConfig) *ModifyAppAgentTemplateRequest {
+	s.AmbientSoundConfig = v
+	return s
+}
+
 func (s *ModifyAppAgentTemplateRequest) SetAppId(v string) *ModifyAppAgentTemplateRequest {
 	s.AppId = &v
 	return s
@@ -135,6 +161,11 @@ func (s *ModifyAppAgentTemplateRequest) SetAppId(v string) *ModifyAppAgentTempla
 
 func (s *ModifyAppAgentTemplateRequest) SetAsrConfig(v *ModifyAppAgentTemplateRequestAsrConfig) *ModifyAppAgentTemplateRequest {
 	s.AsrConfig = v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetBackChannelConfig(v *ModifyAppAgentTemplateRequestBackChannelConfig) *ModifyAppAgentTemplateRequest {
+	s.BackChannelConfig = v
 	return s
 }
 
@@ -150,6 +181,11 @@ func (s *ModifyAppAgentTemplateRequest) SetGreeting(v string) *ModifyAppAgentTem
 
 func (s *ModifyAppAgentTemplateRequest) SetId(v string) *ModifyAppAgentTemplateRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequest) SetInterruptConfig(v *ModifyAppAgentTemplateRequestInterruptConfig) *ModifyAppAgentTemplateRequest {
+	s.InterruptConfig = v
 	return s
 }
 
@@ -243,6 +279,47 @@ func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) SetWebhookTriggerTimeo
 }
 
 func (s *ModifyAppAgentTemplateRequestAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyAppAgentTemplateRequestAmbientSoundConfig struct {
+	// example:
+	//
+	// white_noise
+	SoundId *string `json:"SoundId,omitempty" xml:"SoundId,omitempty"`
+	// example:
+	//
+	// 100
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestAmbientSoundConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestAmbientSoundConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestAmbientSoundConfig) GetSoundId() *string {
+	return s.SoundId
+}
+
+func (s *ModifyAppAgentTemplateRequestAmbientSoundConfig) GetVolume() *int32 {
+	return s.Volume
+}
+
+func (s *ModifyAppAgentTemplateRequestAmbientSoundConfig) SetSoundId(v string) *ModifyAppAgentTemplateRequestAmbientSoundConfig {
+	s.SoundId = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAmbientSoundConfig) SetVolume(v int32) *ModifyAppAgentTemplateRequestAmbientSoundConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestAmbientSoundConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -405,6 +482,56 @@ func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) SetWord(v string) *M
 }
 
 func (s *ModifyAppAgentTemplateRequestAsrConfigWordWeights) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyAppAgentTemplateRequestBackChannelConfig struct {
+	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestBackChannelConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestBackChannelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestBackChannelConfig) GetUserTurnEnd() *bool {
+	return s.UserTurnEnd
+}
+
+func (s *ModifyAppAgentTemplateRequestBackChannelConfig) SetUserTurnEnd(v bool) *ModifyAppAgentTemplateRequestBackChannelConfig {
+	s.UserTurnEnd = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestBackChannelConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyAppAgentTemplateRequestInterruptConfig struct {
+	SemanticsInterrupt *bool `json:"SemanticsInterrupt,omitempty" xml:"SemanticsInterrupt,omitempty"`
+}
+
+func (s ModifyAppAgentTemplateRequestInterruptConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAppAgentTemplateRequestInterruptConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppAgentTemplateRequestInterruptConfig) GetSemanticsInterrupt() *bool {
+	return s.SemanticsInterrupt
+}
+
+func (s *ModifyAppAgentTemplateRequestInterruptConfig) SetSemanticsInterrupt(v bool) *ModifyAppAgentTemplateRequestInterruptConfig {
+	s.SemanticsInterrupt = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateRequestInterruptConfig) Validate() error {
 	return dara.Validate(s)
 }
 

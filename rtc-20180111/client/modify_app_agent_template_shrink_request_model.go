@@ -11,16 +11,22 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 	GoString() string
 	SetAgentSilenceConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetAgentSilenceConfigShrink() *string
+	SetAmbientSoundConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
+	GetAmbientSoundConfigShrink() *string
 	SetAppId(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetAppId() *string
 	SetAsrConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetAsrConfigShrink() *string
+	SetBackChannelConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
+	GetBackChannelConfigShrink() *string
 	SetChatMode(v int32) *ModifyAppAgentTemplateShrinkRequest
 	GetChatMode() *int32
 	SetGreeting(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetGreeting() *string
 	SetId(v string) *ModifyAppAgentTemplateShrinkRequest
 	GetId() *string
+	SetInterruptConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
+	GetInterruptConfigShrink() *string
 	SetInterruptMode(v int32) *ModifyAppAgentTemplateShrinkRequest
 	GetInterruptMode() *int32
 	SetLlmConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest
@@ -35,13 +41,15 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 
 type ModifyAppAgentTemplateShrinkRequest struct {
 	AgentSilenceConfigShrink *string `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty"`
+	AmbientSoundConfigShrink *string `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AsrConfigShrink *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AsrConfigShrink         *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	BackChannelConfigShrink *string `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty"`
 	// example:
 	//
 	// 2
@@ -52,7 +60,8 @@ type ModifyAppAgentTemplateShrinkRequest struct {
 	// example:
 	//
 	// 1231231312312131231
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	InterruptConfigShrink *string `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty"`
 	// example:
 	//
 	// 2
@@ -83,12 +92,20 @@ func (s *ModifyAppAgentTemplateShrinkRequest) GetAgentSilenceConfigShrink() *str
 	return s.AgentSilenceConfigShrink
 }
 
+func (s *ModifyAppAgentTemplateShrinkRequest) GetAmbientSoundConfigShrink() *string {
+	return s.AmbientSoundConfigShrink
+}
+
 func (s *ModifyAppAgentTemplateShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetAsrConfigShrink() *string {
 	return s.AsrConfigShrink
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) GetBackChannelConfigShrink() *string {
+	return s.BackChannelConfigShrink
 }
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetChatMode() *int32 {
@@ -101,6 +118,10 @@ func (s *ModifyAppAgentTemplateShrinkRequest) GetGreeting() *string {
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetId() *string {
 	return s.Id
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) GetInterruptConfigShrink() *string {
+	return s.InterruptConfigShrink
 }
 
 func (s *ModifyAppAgentTemplateShrinkRequest) GetInterruptMode() *int32 {
@@ -128,6 +149,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) SetAgentSilenceConfigShrink(v stri
 	return s
 }
 
+func (s *ModifyAppAgentTemplateShrinkRequest) SetAmbientSoundConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.AmbientSoundConfigShrink = &v
+	return s
+}
+
 func (s *ModifyAppAgentTemplateShrinkRequest) SetAppId(v string) *ModifyAppAgentTemplateShrinkRequest {
 	s.AppId = &v
 	return s
@@ -135,6 +161,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) SetAppId(v string) *ModifyAppAgent
 
 func (s *ModifyAppAgentTemplateShrinkRequest) SetAsrConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
 	s.AsrConfigShrink = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetBackChannelConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.BackChannelConfigShrink = &v
 	return s
 }
 
@@ -150,6 +181,11 @@ func (s *ModifyAppAgentTemplateShrinkRequest) SetGreeting(v string) *ModifyAppAg
 
 func (s *ModifyAppAgentTemplateShrinkRequest) SetId(v string) *ModifyAppAgentTemplateShrinkRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *ModifyAppAgentTemplateShrinkRequest) SetInterruptConfigShrink(v string) *ModifyAppAgentTemplateShrinkRequest {
+	s.InterruptConfigShrink = &v
 	return s
 }
 

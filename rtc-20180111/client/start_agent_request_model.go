@@ -172,11 +172,14 @@ func (s *StartAgentRequestRtcConfig) Validate() error {
 type StartAgentRequestVoiceChatConfig struct {
 	ASRConfig          *StartAgentRequestVoiceChatConfigASRConfig          `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
 	AgentSilenceConfig *StartAgentRequestVoiceChatConfigAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	AmbientSoundConfig *StartAgentRequestVoiceChatConfigAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
+	BackChannelConfig  *StartAgentRequestVoiceChatConfigBackChannelConfig  `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
-	ChatMode *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	ChatMode        *int32                                           `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	Greeting        *string                                          `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	InterruptConfig *StartAgentRequestVoiceChatConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -201,12 +204,24 @@ func (s *StartAgentRequestVoiceChatConfig) GetAgentSilenceConfig() *StartAgentRe
 	return s.AgentSilenceConfig
 }
 
+func (s *StartAgentRequestVoiceChatConfig) GetAmbientSoundConfig() *StartAgentRequestVoiceChatConfigAmbientSoundConfig {
+	return s.AmbientSoundConfig
+}
+
+func (s *StartAgentRequestVoiceChatConfig) GetBackChannelConfig() *StartAgentRequestVoiceChatConfigBackChannelConfig {
+	return s.BackChannelConfig
+}
+
 func (s *StartAgentRequestVoiceChatConfig) GetChatMode() *int32 {
 	return s.ChatMode
 }
 
 func (s *StartAgentRequestVoiceChatConfig) GetGreeting() *string {
 	return s.Greeting
+}
+
+func (s *StartAgentRequestVoiceChatConfig) GetInterruptConfig() *StartAgentRequestVoiceChatConfigInterruptConfig {
+	return s.InterruptConfig
 }
 
 func (s *StartAgentRequestVoiceChatConfig) GetInterruptMode() *int32 {
@@ -231,6 +246,16 @@ func (s *StartAgentRequestVoiceChatConfig) SetAgentSilenceConfig(v *StartAgentRe
 	return s
 }
 
+func (s *StartAgentRequestVoiceChatConfig) SetAmbientSoundConfig(v *StartAgentRequestVoiceChatConfigAmbientSoundConfig) *StartAgentRequestVoiceChatConfig {
+	s.AmbientSoundConfig = v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetBackChannelConfig(v *StartAgentRequestVoiceChatConfigBackChannelConfig) *StartAgentRequestVoiceChatConfig {
+	s.BackChannelConfig = v
+	return s
+}
+
 func (s *StartAgentRequestVoiceChatConfig) SetChatMode(v int32) *StartAgentRequestVoiceChatConfig {
 	s.ChatMode = &v
 	return s
@@ -238,6 +263,11 @@ func (s *StartAgentRequestVoiceChatConfig) SetChatMode(v int32) *StartAgentReque
 
 func (s *StartAgentRequestVoiceChatConfig) SetGreeting(v string) *StartAgentRequestVoiceChatConfig {
 	s.Greeting = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfig) SetInterruptConfig(v *StartAgentRequestVoiceChatConfigInterruptConfig) *StartAgentRequestVoiceChatConfig {
+	s.InterruptConfig = v
 	return s
 }
 
@@ -434,6 +464,97 @@ func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) SetWebhookTriggerTi
 }
 
 func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartAgentRequestVoiceChatConfigAmbientSoundConfig struct {
+	// example:
+	//
+	// office
+	SoundId *string `json:"SoundId,omitempty" xml:"SoundId,omitempty"`
+	// example:
+	//
+	// 100
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigAmbientSoundConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigAmbientSoundConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) GetSoundId() *string {
+	return s.SoundId
+}
+
+func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) GetVolume() *int32 {
+	return s.Volume
+}
+
+func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) SetSoundId(v string) *StartAgentRequestVoiceChatConfigAmbientSoundConfig {
+	s.SoundId = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) SetVolume(v int32) *StartAgentRequestVoiceChatConfigAmbientSoundConfig {
+	s.Volume = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartAgentRequestVoiceChatConfigBackChannelConfig struct {
+	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigBackChannelConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigBackChannelConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) GetUserTurnEnd() *bool {
+	return s.UserTurnEnd
+}
+
+func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) SetUserTurnEnd(v bool) *StartAgentRequestVoiceChatConfigBackChannelConfig {
+	s.UserTurnEnd = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type StartAgentRequestVoiceChatConfigInterruptConfig struct {
+	SemanticsInterrupt *bool `json:"SemanticsInterrupt,omitempty" xml:"SemanticsInterrupt,omitempty"`
+}
+
+func (s StartAgentRequestVoiceChatConfigInterruptConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s StartAgentRequestVoiceChatConfigInterruptConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartAgentRequestVoiceChatConfigInterruptConfig) GetSemanticsInterrupt() *bool {
+	return s.SemanticsInterrupt
+}
+
+func (s *StartAgentRequestVoiceChatConfigInterruptConfig) SetSemanticsInterrupt(v bool) *StartAgentRequestVoiceChatConfigInterruptConfig {
+	s.SemanticsInterrupt = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigInterruptConfig) Validate() error {
 	return dara.Validate(s)
 }
 

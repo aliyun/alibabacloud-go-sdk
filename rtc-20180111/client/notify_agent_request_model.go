@@ -11,6 +11,8 @@ type iNotifyAgentRequest interface {
 	GoString() string
 	SetAppId(v string) *NotifyAgentRequest
 	GetAppId() *string
+	SetBackgroundMusic(v *NotifyAgentRequestBackgroundMusic) *NotifyAgentRequest
+	GetBackgroundMusic() *NotifyAgentRequestBackgroundMusic
 	SetChannelId(v string) *NotifyAgentRequest
 	GetChannelId() *string
 	SetCustomAttribute(v string) *NotifyAgentRequest
@@ -29,7 +31,8 @@ type NotifyAgentRequest struct {
 	// example:
 	//
 	// aec****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId           *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	BackgroundMusic *NotifyAgentRequestBackgroundMusic `json:"BackgroundMusic,omitempty" xml:"BackgroundMusic,omitempty" type:"Struct"`
 	// example:
 	//
 	// yourChannelId
@@ -65,6 +68,10 @@ func (s *NotifyAgentRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *NotifyAgentRequest) GetBackgroundMusic() *NotifyAgentRequestBackgroundMusic {
+	return s.BackgroundMusic
+}
+
 func (s *NotifyAgentRequest) GetChannelId() *string {
 	return s.ChannelId
 }
@@ -91,6 +98,11 @@ func (s *NotifyAgentRequest) GetTaskId() *string {
 
 func (s *NotifyAgentRequest) SetAppId(v string) *NotifyAgentRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *NotifyAgentRequest) SetBackgroundMusic(v *NotifyAgentRequestBackgroundMusic) *NotifyAgentRequest {
+	s.BackgroundMusic = v
 	return s
 }
 
@@ -125,5 +137,43 @@ func (s *NotifyAgentRequest) SetTaskId(v string) *NotifyAgentRequest {
 }
 
 func (s *NotifyAgentRequest) Validate() error {
+	return dara.Validate(s)
+}
+
+type NotifyAgentRequestBackgroundMusic struct {
+	// example:
+	//
+	// wav
+	Format *string `json:"format,omitempty" xml:"format,omitempty"`
+	Url    *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s NotifyAgentRequestBackgroundMusic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NotifyAgentRequestBackgroundMusic) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyAgentRequestBackgroundMusic) GetFormat() *string {
+	return s.Format
+}
+
+func (s *NotifyAgentRequestBackgroundMusic) GetUrl() *string {
+	return s.Url
+}
+
+func (s *NotifyAgentRequestBackgroundMusic) SetFormat(v string) *NotifyAgentRequestBackgroundMusic {
+	s.Format = &v
+	return s
+}
+
+func (s *NotifyAgentRequestBackgroundMusic) SetUrl(v string) *NotifyAgentRequestBackgroundMusic {
+	s.Url = &v
+	return s
+}
+
+func (s *NotifyAgentRequestBackgroundMusic) Validate() error {
 	return dara.Validate(s)
 }
