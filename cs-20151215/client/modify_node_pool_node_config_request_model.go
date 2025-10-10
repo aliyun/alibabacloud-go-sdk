@@ -79,6 +79,7 @@ func (s *ModifyNodePoolNodeConfigRequest) Validate() error {
 }
 
 type ModifyNodePoolNodeConfigRequestOsConfig struct {
+	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
 	// The sysctl configuration.
 	Sysctl map[string]interface{} `json:"sysctl,omitempty" xml:"sysctl,omitempty"`
 }
@@ -91,8 +92,17 @@ func (s ModifyNodePoolNodeConfigRequestOsConfig) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyNodePoolNodeConfigRequestOsConfig) GetHugepage() *Hugepage {
+	return s.Hugepage
+}
+
 func (s *ModifyNodePoolNodeConfigRequestOsConfig) GetSysctl() map[string]interface{} {
 	return s.Sysctl
+}
+
+func (s *ModifyNodePoolNodeConfigRequestOsConfig) SetHugepage(v *Hugepage) *ModifyNodePoolNodeConfigRequestOsConfig {
+	s.Hugepage = v
+	return s
 }
 
 func (s *ModifyNodePoolNodeConfigRequestOsConfig) SetSysctl(v map[string]interface{}) *ModifyNodePoolNodeConfigRequestOsConfig {

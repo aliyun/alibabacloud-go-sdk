@@ -1005,7 +1005,8 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) Valid
 
 type DescribeClusterNodePoolDetailResponseBodyNodeConfig struct {
 	// The configurations of the kubelet.
-	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+	KubeletConfiguration *KubeletConfig                                                   `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+	NodeOsConfig         *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig `json:"node_os_config,omitempty" xml:"node_os_config,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterNodePoolDetailResponseBodyNodeConfig) String() string {
@@ -1020,12 +1021,46 @@ func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) GetKubeletConfigur
 	return s.KubeletConfiguration
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) GetNodeOsConfig() *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig {
+	return s.NodeOsConfig
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *DescribeClusterNodePoolDetailResponseBodyNodeConfig {
 	s.KubeletConfiguration = v
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) SetNodeOsConfig(v *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) *DescribeClusterNodePoolDetailResponseBodyNodeConfig {
+	s.NodeOsConfig = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig struct {
+	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) GetHugepage() *Hugepage {
+	return s.Hugepage
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) SetHugepage(v *Hugepage) *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig {
+	s.Hugepage = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyNodeConfigNodeOsConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1351,7 +1386,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
 	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RdsInstances        []*string                                                                 `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ResourcePoolOptions *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
 	// The ID of the scaling group.
 	//
 	// example:
@@ -1646,6 +1682,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetRdsInstances(
 	return s.RdsInstances
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetResourcePoolOptions() *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions {
+	return s.ResourcePoolOptions
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) GetScalingGroupId() *string {
 	return s.ScalingGroupId
 }
@@ -1870,6 +1910,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetRdsInstances(
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetResourcePoolOptions(v *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.ResourcePoolOptions = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetScalingGroupId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.ScalingGroupId = &v
 	return s
@@ -2027,6 +2072,44 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions
 }
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions struct {
+	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) GetPrivatePoolIds() []*string {
+	return s.PrivatePoolIds
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) GetStrategy() *string {
+	return s.Strategy
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) SetPrivatePoolIds(v []*string) *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions {
+	s.PrivatePoolIds = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) SetStrategy(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions {
+	s.Strategy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupResourcePoolOptions) Validate() error {
 	return dara.Validate(s)
 }
 

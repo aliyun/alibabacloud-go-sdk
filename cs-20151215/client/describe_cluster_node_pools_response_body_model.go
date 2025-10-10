@@ -1014,7 +1014,8 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig) V
 
 type DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig struct {
 	// The parameter settings of the kubelet.
-	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+	KubeletConfiguration *KubeletConfig                                                       `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+	NodeOsConfig         *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig `json:"node_os_config,omitempty" xml:"node_os_config,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) String() string {
@@ -1029,12 +1030,46 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) GetKubeletConf
 	return s.KubeletConfiguration
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) GetNodeOsConfig() *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig {
+	return s.NodeOsConfig
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig {
 	s.KubeletConfiguration = v
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) SetNodeOsConfig(v *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig {
+	s.NodeOsConfig = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig struct {
+	Hugepage *Hugepage `json:"hugepage,omitempty" xml:"hugepage,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) GetHugepage() *Hugepage {
+	return s.Hugepage
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) SetHugepage(v *Hugepage) *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig {
+	s.Hugepage = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfigNodeOsConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1409,7 +1444,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
 	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// The ApsaraDB RDS instances. If you specify the list of ApsaraDB RDS instances, ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RdsInstances        []*string                                                                     `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ResourcePoolOptions *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
 	// The scaling group ID.
 	//
 	// example:
@@ -1688,6 +1724,10 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetRdsInstan
 	return s.RdsInstances
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetResourcePoolOptions() *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions {
+	return s.ResourcePoolOptions
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) GetScalingGroupId() *string {
 	return s.ScalingGroupId
 }
@@ -1907,6 +1947,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetRdsInstan
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetResourcePoolOptions(v *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.ResourcePoolOptions = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetScalingGroupId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.ScalingGroupId = &v
 	return s
@@ -2064,6 +2109,44 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOpt
 }
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions struct {
+	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) GetPrivatePoolIds() []*string {
+	return s.PrivatePoolIds
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) GetStrategy() *string {
+	return s.Strategy
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) SetPrivatePoolIds(v []*string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions {
+	s.PrivatePoolIds = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) SetStrategy(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions {
+	s.Strategy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupResourcePoolOptions) Validate() error {
 	return dara.Validate(s)
 }
 

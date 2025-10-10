@@ -934,8 +934,9 @@ type NodepoolScalingGroup struct {
 	// example:
 	//
 	// example-role
-	RamRoleName  *string   `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RamRoleName         *string                                  `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
+	RdsInstances        []*string                                `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ResourcePoolOptions *NodepoolScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
 	// example:
 	//
 	// release
@@ -1099,6 +1100,10 @@ func (s *NodepoolScalingGroup) GetRamRoleName() *string {
 
 func (s *NodepoolScalingGroup) GetRdsInstances() []*string {
 	return s.RdsInstances
+}
+
+func (s *NodepoolScalingGroup) GetResourcePoolOptions() *NodepoolScalingGroupResourcePoolOptions {
+	return s.ResourcePoolOptions
 }
 
 func (s *NodepoolScalingGroup) GetScalingPolicy() *string {
@@ -1298,6 +1303,11 @@ func (s *NodepoolScalingGroup) SetRdsInstances(v []*string) *NodepoolScalingGrou
 	return s
 }
 
+func (s *NodepoolScalingGroup) SetResourcePoolOptions(v *NodepoolScalingGroupResourcePoolOptions) *NodepoolScalingGroup {
+	s.ResourcePoolOptions = v
+	return s
+}
+
 func (s *NodepoolScalingGroup) SetScalingPolicy(v string) *NodepoolScalingGroup {
 	s.ScalingPolicy = &v
 	return s
@@ -1424,6 +1434,44 @@ func (s *NodepoolScalingGroupPrivatePoolOptions) SetMatchCriteria(v string) *Nod
 }
 
 func (s *NodepoolScalingGroupPrivatePoolOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type NodepoolScalingGroupResourcePoolOptions struct {
+	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+}
+
+func (s NodepoolScalingGroupResourcePoolOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s NodepoolScalingGroupResourcePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolScalingGroupResourcePoolOptions) GetPrivatePoolIds() []*string {
+	return s.PrivatePoolIds
+}
+
+func (s *NodepoolScalingGroupResourcePoolOptions) GetStrategy() *string {
+	return s.Strategy
+}
+
+func (s *NodepoolScalingGroupResourcePoolOptions) SetPrivatePoolIds(v []*string) *NodepoolScalingGroupResourcePoolOptions {
+	s.PrivatePoolIds = v
+	return s
+}
+
+func (s *NodepoolScalingGroupResourcePoolOptions) SetStrategy(v string) *NodepoolScalingGroupResourcePoolOptions {
+	s.Strategy = &v
+	return s
+}
+
+func (s *NodepoolScalingGroupResourcePoolOptions) Validate() error {
 	return dara.Validate(s)
 }
 

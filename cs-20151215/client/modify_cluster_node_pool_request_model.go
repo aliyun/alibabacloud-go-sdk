@@ -1166,7 +1166,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// The configurations of the private node pool.
 	PrivatePoolOptions *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
 	// The IDs of ApsaraDB RDS instances.
-	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	RdsInstances        []*string                                                    `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ResourcePoolOptions *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions `json:"resource_pool_options,omitempty" xml:"resource_pool_options,omitempty" type:"Struct"`
 	// The scaling mode of the scaling group. Valid values:
 	//
 	// 	- `release`: the standard mode. ECS instances are created and released based on resource usage.
@@ -1410,6 +1411,10 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) GetRdsInstances() []*string {
 	return s.RdsInstances
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) GetResourcePoolOptions() *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions {
+	return s.ResourcePoolOptions
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) GetScalingPolicy() *string {
 	return s.ScalingPolicy
 }
@@ -1593,6 +1598,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetRdsInstances(v []*string) 
 	return s
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetResourcePoolOptions(v *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) *ModifyClusterNodePoolRequestScalingGroup {
+	s.ResourcePoolOptions = v
+	return s
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetScalingPolicy(v string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.ScalingPolicy = &v
 	return s
@@ -1730,6 +1740,44 @@ func (s *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) SetMatchCri
 }
 
 func (s *ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions struct {
+	PrivatePoolIds []*string `json:"private_pool_ids,omitempty" xml:"private_pool_ids,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) GetPrivatePoolIds() []*string {
+	return s.PrivatePoolIds
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) GetStrategy() *string {
+	return s.Strategy
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) SetPrivatePoolIds(v []*string) *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions {
+	s.PrivatePoolIds = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) SetStrategy(v string) *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions {
+	s.Strategy = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroupResourcePoolOptions) Validate() error {
 	return dara.Validate(s)
 }
 
