@@ -637,7 +637,8 @@ type CreateInstanceRequestProductInfo struct {
 	// example:
 	//
 	// true
-	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
 	// For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
@@ -653,7 +654,8 @@ type CreateInstanceRequestProductInfo struct {
 	// example:
 	//
 	// rmq.s2.2xlarge
-	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	MsgProcessSpec      *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	ProvisionedCapacity *int64  `json:"provisionedCapacity,omitempty" xml:"provisionedCapacity,omitempty"`
 	// The ratio of the message sending TPS to the messaging TPS of the instance.
 	//
 	// For example, if the maximum messaging TPS of an instance is 1,000 and the ratio of the message sending TPS to the messaging TPS of the instance is 0.8, the maximum message sending TPS of the instance is 800 and the maximum message receiving TPS is 200.
@@ -690,12 +692,20 @@ func (s *CreateInstanceRequestProductInfo) GetAutoScaling() *bool {
 	return s.AutoScaling
 }
 
+func (s *CreateInstanceRequestProductInfo) GetCapacityType() *string {
+	return s.CapacityType
+}
+
 func (s *CreateInstanceRequestProductInfo) GetMessageRetentionTime() *int32 {
 	return s.MessageRetentionTime
 }
 
 func (s *CreateInstanceRequestProductInfo) GetMsgProcessSpec() *string {
 	return s.MsgProcessSpec
+}
+
+func (s *CreateInstanceRequestProductInfo) GetProvisionedCapacity() *int64 {
+	return s.ProvisionedCapacity
 }
 
 func (s *CreateInstanceRequestProductInfo) GetSendReceiveRatio() *float32 {
@@ -715,6 +725,11 @@ func (s *CreateInstanceRequestProductInfo) SetAutoScaling(v bool) *CreateInstanc
 	return s
 }
 
+func (s *CreateInstanceRequestProductInfo) SetCapacityType(v string) *CreateInstanceRequestProductInfo {
+	s.CapacityType = &v
+	return s
+}
+
 func (s *CreateInstanceRequestProductInfo) SetMessageRetentionTime(v int32) *CreateInstanceRequestProductInfo {
 	s.MessageRetentionTime = &v
 	return s
@@ -722,6 +737,11 @@ func (s *CreateInstanceRequestProductInfo) SetMessageRetentionTime(v int32) *Cre
 
 func (s *CreateInstanceRequestProductInfo) SetMsgProcessSpec(v string) *CreateInstanceRequestProductInfo {
 	s.MsgProcessSpec = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetProvisionedCapacity(v int64) *CreateInstanceRequestProductInfo {
+	s.ProvisionedCapacity = &v
 	return s
 }
 

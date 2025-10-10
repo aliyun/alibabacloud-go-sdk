@@ -1319,7 +1319,8 @@ type GetInstanceResponseBodyDataProductInfo struct {
 	// example:
 	//
 	// true
-	AutoScaling *bool `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
+	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
 	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
@@ -1335,7 +1336,8 @@ type GetInstanceResponseBodyDataProductInfo struct {
 	// example:
 	//
 	// rmq.s2.2xlarge
-	MsgProcessSpec *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	MsgProcessSpec      *string `json:"msgProcessSpec,omitempty" xml:"msgProcessSpec,omitempty"`
+	ProvisionedCapacity *int64  `json:"provisionedCapacity,omitempty" xml:"provisionedCapacity,omitempty"`
 	// The ratio between sent messages and received messages in the instance.
 	//
 	// example:
@@ -1396,12 +1398,20 @@ func (s *GetInstanceResponseBodyDataProductInfo) GetAutoScaling() *bool {
 	return s.AutoScaling
 }
 
+func (s *GetInstanceResponseBodyDataProductInfo) GetCapacityType() *string {
+	return s.CapacityType
+}
+
 func (s *GetInstanceResponseBodyDataProductInfo) GetMessageRetentionTime() *int32 {
 	return s.MessageRetentionTime
 }
 
 func (s *GetInstanceResponseBodyDataProductInfo) GetMsgProcessSpec() *string {
 	return s.MsgProcessSpec
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) GetProvisionedCapacity() *int64 {
+	return s.ProvisionedCapacity
 }
 
 func (s *GetInstanceResponseBodyDataProductInfo) GetSendReceiveRatio() *float32 {
@@ -1429,6 +1439,11 @@ func (s *GetInstanceResponseBodyDataProductInfo) SetAutoScaling(v bool) *GetInst
 	return s
 }
 
+func (s *GetInstanceResponseBodyDataProductInfo) SetCapacityType(v string) *GetInstanceResponseBodyDataProductInfo {
+	s.CapacityType = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyDataProductInfo) SetMessageRetentionTime(v int32) *GetInstanceResponseBodyDataProductInfo {
 	s.MessageRetentionTime = &v
 	return s
@@ -1436,6 +1451,11 @@ func (s *GetInstanceResponseBodyDataProductInfo) SetMessageRetentionTime(v int32
 
 func (s *GetInstanceResponseBodyDataProductInfo) SetMsgProcessSpec(v string) *GetInstanceResponseBodyDataProductInfo {
 	s.MsgProcessSpec = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetProvisionedCapacity(v int64) *GetInstanceResponseBodyDataProductInfo {
+	s.ProvisionedCapacity = &v
 	return s
 }
 

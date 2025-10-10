@@ -584,6 +584,7 @@ func (s *ListInstancesResponseBodyDataList) Validate() error {
 }
 
 type ListInstancesResponseBodyDataListProductInfo struct {
+	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
 	// Indicates whether the message trace feature is enabled. Valid values:
 	//
 	// 	- true
@@ -606,8 +607,17 @@ func (s ListInstancesResponseBodyDataListProductInfo) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesResponseBodyDataListProductInfo) GetCapacityType() *string {
+	return s.CapacityType
+}
+
 func (s *ListInstancesResponseBodyDataListProductInfo) GetTraceOn() *bool {
 	return s.TraceOn
+}
+
+func (s *ListInstancesResponseBodyDataListProductInfo) SetCapacityType(v string) *ListInstancesResponseBodyDataListProductInfo {
+	s.CapacityType = &v
+	return s
 }
 
 func (s *ListInstancesResponseBodyDataListProductInfo) SetTraceOn(v bool) *ListInstancesResponseBodyDataListProductInfo {
