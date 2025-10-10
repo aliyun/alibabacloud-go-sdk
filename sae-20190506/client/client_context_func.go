@@ -103,6 +103,55 @@ func (client *Client) AbortChangeOrderWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 批量重启应用
+//
+// @param request - BatchRestartApplicationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRestartApplicationsResponse
+func (client *Client) BatchRestartApplicationsWithContext(ctx context.Context, request *BatchRestartApplicationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRestartApplicationsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppIds) {
+		query["AppIds"] = request.AppIds
+	}
+
+	if !dara.IsNil(request.NamespaceId) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchRestartApplications"),
+		Version:     dara.String("2019-05-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/v1/sam/app/batchRestartApplications"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchRestartApplicationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Starts multiple applications at a time.
 //
 // @param request - BatchStartApplicationsRequest
