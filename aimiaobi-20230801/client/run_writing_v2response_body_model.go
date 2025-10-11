@@ -235,19 +235,23 @@ func (s *RunWritingV2ResponseBodyPayload) Validate() error {
 }
 
 type RunWritingV2ResponseBodyPayloadOutput struct {
-	Articles []*RunWritingV2ResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	Articles             []*RunWritingV2ResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	GenerateTraceability *GenerateTraceability                            `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty"`
 	// example:
 	//
 	// 文章精排之后的片段
-	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	MiniDoc  []*string         `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	Outlines []*WritingOutline `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 大模型改变世界
-	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchQuery  *string              `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	SearchResult *OutlineSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty"`
 	// example:
 	//
 	// 文本生成结果
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Text  *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s RunWritingV2ResponseBodyPayloadOutput) String() string {
@@ -262,20 +266,41 @@ func (s *RunWritingV2ResponseBodyPayloadOutput) GetArticles() []*RunWritingV2Res
 	return s.Articles
 }
 
+func (s *RunWritingV2ResponseBodyPayloadOutput) GetGenerateTraceability() *GenerateTraceability {
+	return s.GenerateTraceability
+}
+
 func (s *RunWritingV2ResponseBodyPayloadOutput) GetMiniDoc() []*string {
 	return s.MiniDoc
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) GetOutlines() []*WritingOutline {
+	return s.Outlines
 }
 
 func (s *RunWritingV2ResponseBodyPayloadOutput) GetSearchQuery() *string {
 	return s.SearchQuery
 }
 
+func (s *RunWritingV2ResponseBodyPayloadOutput) GetSearchResult() *OutlineSearchResult {
+	return s.SearchResult
+}
+
 func (s *RunWritingV2ResponseBodyPayloadOutput) GetText() *string {
 	return s.Text
 }
 
+func (s *RunWritingV2ResponseBodyPayloadOutput) GetTitle() *string {
+	return s.Title
+}
+
 func (s *RunWritingV2ResponseBodyPayloadOutput) SetArticles(v []*RunWritingV2ResponseBodyPayloadOutputArticles) *RunWritingV2ResponseBodyPayloadOutput {
 	s.Articles = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetGenerateTraceability(v *GenerateTraceability) *RunWritingV2ResponseBodyPayloadOutput {
+	s.GenerateTraceability = v
 	return s
 }
 
@@ -284,13 +309,28 @@ func (s *RunWritingV2ResponseBodyPayloadOutput) SetMiniDoc(v []*string) *RunWrit
 	return s
 }
 
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetOutlines(v []*WritingOutline) *RunWritingV2ResponseBodyPayloadOutput {
+	s.Outlines = v
+	return s
+}
+
 func (s *RunWritingV2ResponseBodyPayloadOutput) SetSearchQuery(v string) *RunWritingV2ResponseBodyPayloadOutput {
 	s.SearchQuery = &v
 	return s
 }
 
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetSearchResult(v *OutlineSearchResult) *RunWritingV2ResponseBodyPayloadOutput {
+	s.SearchResult = v
+	return s
+}
+
 func (s *RunWritingV2ResponseBodyPayloadOutput) SetText(v string) *RunWritingV2ResponseBodyPayloadOutput {
 	s.Text = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetTitle(v string) *RunWritingV2ResponseBodyPayloadOutput {
+	s.Title = &v
 	return s
 }
 

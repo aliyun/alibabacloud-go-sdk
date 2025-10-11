@@ -23,6 +23,8 @@ type iRunWritingV2Request interface {
 	GetLanguage() *string
 	SetMiniDocs(v []*RunWritingV2RequestMiniDocs) *RunWritingV2Request
 	GetMiniDocs() []*RunWritingV2RequestMiniDocs
+	SetOutlineList(v []*WritingOutline) *RunWritingV2Request
+	GetOutlineList() []*WritingOutline
 	SetOutlines(v []*RunWritingV2RequestOutlines) *RunWritingV2Request
 	GetOutlines() []*RunWritingV2RequestOutlines
 	SetPrompt(v string) *RunWritingV2Request
@@ -33,6 +35,8 @@ type iRunWritingV2Request interface {
 	GetSearchSources() []*RunWritingV2RequestSearchSources
 	SetSessionId(v string) *RunWritingV2Request
 	GetSessionId() *string
+	SetSourceTraceMethod(v string) *RunWritingV2Request
+	GetSourceTraceMethod() *string
 	SetStep(v string) *RunWritingV2Request
 	GetStep() *string
 	SetSummarization(v []*RunWritingV2RequestSummarization) *RunWritingV2Request
@@ -66,10 +70,11 @@ type RunWritingV2Request struct {
 	// example:
 	//
 	// en
-	Language *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
-	MiniDocs []*RunWritingV2RequestMiniDocs `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty" type:"Repeated"`
-	Outlines []*RunWritingV2RequestOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
-	Prompt   *string                        `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Language    *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
+	MiniDocs    []*RunWritingV2RequestMiniDocs `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty" type:"Repeated"`
+	OutlineList []*WritingOutline              `json:"OutlineList,omitempty" xml:"OutlineList,omitempty" type:"Repeated"`
+	Outlines    []*RunWritingV2RequestOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	Prompt      *string                        `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// example:
 	//
 	// Template
@@ -78,7 +83,8 @@ type RunWritingV2Request struct {
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SourceTraceMethod *string `json:"SourceTraceMethod,omitempty" xml:"SourceTraceMethod,omitempty"`
 	// example:
 	//
 	// Writing
@@ -142,6 +148,10 @@ func (s *RunWritingV2Request) GetMiniDocs() []*RunWritingV2RequestMiniDocs {
 	return s.MiniDocs
 }
 
+func (s *RunWritingV2Request) GetOutlineList() []*WritingOutline {
+	return s.OutlineList
+}
+
 func (s *RunWritingV2Request) GetOutlines() []*RunWritingV2RequestOutlines {
 	return s.Outlines
 }
@@ -160,6 +170,10 @@ func (s *RunWritingV2Request) GetSearchSources() []*RunWritingV2RequestSearchSou
 
 func (s *RunWritingV2Request) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *RunWritingV2Request) GetSourceTraceMethod() *string {
+	return s.SourceTraceMethod
 }
 
 func (s *RunWritingV2Request) GetStep() *string {
@@ -229,6 +243,11 @@ func (s *RunWritingV2Request) SetMiniDocs(v []*RunWritingV2RequestMiniDocs) *Run
 	return s
 }
 
+func (s *RunWritingV2Request) SetOutlineList(v []*WritingOutline) *RunWritingV2Request {
+	s.OutlineList = v
+	return s
+}
+
 func (s *RunWritingV2Request) SetOutlines(v []*RunWritingV2RequestOutlines) *RunWritingV2Request {
 	s.Outlines = v
 	return s
@@ -251,6 +270,11 @@ func (s *RunWritingV2Request) SetSearchSources(v []*RunWritingV2RequestSearchSou
 
 func (s *RunWritingV2Request) SetSessionId(v string) *RunWritingV2Request {
 	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetSourceTraceMethod(v string) *RunWritingV2Request {
+	s.SourceTraceMethod = &v
 	return s
 }
 

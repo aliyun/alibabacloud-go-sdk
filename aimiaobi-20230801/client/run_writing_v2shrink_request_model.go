@@ -23,6 +23,8 @@ type iRunWritingV2ShrinkRequest interface {
 	GetLanguage() *string
 	SetMiniDocsShrink(v string) *RunWritingV2ShrinkRequest
 	GetMiniDocsShrink() *string
+	SetOutlineListShrink(v string) *RunWritingV2ShrinkRequest
+	GetOutlineListShrink() *string
 	SetOutlinesShrink(v string) *RunWritingV2ShrinkRequest
 	GetOutlinesShrink() *string
 	SetPrompt(v string) *RunWritingV2ShrinkRequest
@@ -33,6 +35,8 @@ type iRunWritingV2ShrinkRequest interface {
 	GetSearchSourcesShrink() *string
 	SetSessionId(v string) *RunWritingV2ShrinkRequest
 	GetSessionId() *string
+	SetSourceTraceMethod(v string) *RunWritingV2ShrinkRequest
+	GetSourceTraceMethod() *string
 	SetStep(v string) *RunWritingV2ShrinkRequest
 	GetStep() *string
 	SetSummarizationShrink(v string) *RunWritingV2ShrinkRequest
@@ -66,10 +70,11 @@ type RunWritingV2ShrinkRequest struct {
 	// example:
 	//
 	// en
-	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	MiniDocsShrink *string `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty"`
-	OutlinesShrink *string `json:"Outlines,omitempty" xml:"Outlines,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	MiniDocsShrink    *string `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty"`
+	OutlineListShrink *string `json:"OutlineList,omitempty" xml:"OutlineList,omitempty"`
+	OutlinesShrink    *string `json:"Outlines,omitempty" xml:"Outlines,omitempty"`
+	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// example:
 	//
 	// Template
@@ -78,7 +83,8 @@ type RunWritingV2ShrinkRequest struct {
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SourceTraceMethod *string `json:"SourceTraceMethod,omitempty" xml:"SourceTraceMethod,omitempty"`
 	// example:
 	//
 	// Writing
@@ -142,6 +148,10 @@ func (s *RunWritingV2ShrinkRequest) GetMiniDocsShrink() *string {
 	return s.MiniDocsShrink
 }
 
+func (s *RunWritingV2ShrinkRequest) GetOutlineListShrink() *string {
+	return s.OutlineListShrink
+}
+
 func (s *RunWritingV2ShrinkRequest) GetOutlinesShrink() *string {
 	return s.OutlinesShrink
 }
@@ -160,6 +170,10 @@ func (s *RunWritingV2ShrinkRequest) GetSearchSourcesShrink() *string {
 
 func (s *RunWritingV2ShrinkRequest) GetSessionId() *string {
 	return s.SessionId
+}
+
+func (s *RunWritingV2ShrinkRequest) GetSourceTraceMethod() *string {
+	return s.SourceTraceMethod
 }
 
 func (s *RunWritingV2ShrinkRequest) GetStep() *string {
@@ -229,6 +243,11 @@ func (s *RunWritingV2ShrinkRequest) SetMiniDocsShrink(v string) *RunWritingV2Shr
 	return s
 }
 
+func (s *RunWritingV2ShrinkRequest) SetOutlineListShrink(v string) *RunWritingV2ShrinkRequest {
+	s.OutlineListShrink = &v
+	return s
+}
+
 func (s *RunWritingV2ShrinkRequest) SetOutlinesShrink(v string) *RunWritingV2ShrinkRequest {
 	s.OutlinesShrink = &v
 	return s
@@ -251,6 +270,11 @@ func (s *RunWritingV2ShrinkRequest) SetSearchSourcesShrink(v string) *RunWriting
 
 func (s *RunWritingV2ShrinkRequest) SetSessionId(v string) *RunWritingV2ShrinkRequest {
 	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetSourceTraceMethod(v string) *RunWritingV2ShrinkRequest {
+	s.SourceTraceMethod = &v
 	return s
 }
 

@@ -12388,6 +12388,10 @@ func (client *Client) RunWritingV2WithOptions(tmpReq *RunWritingV2Request, runti
 		request.MiniDocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MiniDocs, dara.String("MiniDocs"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.OutlineList) {
+		request.OutlineListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutlineList, dara.String("OutlineList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Outlines) {
 		request.OutlinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outlines, dara.String("Outlines"), dara.String("json"))
 	}
@@ -12433,6 +12437,10 @@ func (client *Client) RunWritingV2WithOptions(tmpReq *RunWritingV2Request, runti
 		body["MiniDocs"] = request.MiniDocsShrink
 	}
 
+	if !dara.IsNil(request.OutlineListShrink) {
+		body["OutlineList"] = request.OutlineListShrink
+	}
+
 	if !dara.IsNil(request.OutlinesShrink) {
 		body["Outlines"] = request.OutlinesShrink
 	}
@@ -12451,6 +12459,10 @@ func (client *Client) RunWritingV2WithOptions(tmpReq *RunWritingV2Request, runti
 
 	if !dara.IsNil(request.SessionId) {
 		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SourceTraceMethod) {
+		body["SourceTraceMethod"] = request.SourceTraceMethod
 	}
 
 	if !dara.IsNil(request.Step) {
@@ -17104,6 +17116,10 @@ func (client *Client) runWritingV2WithSSE_opYieldFunc(_yield chan *RunWritingV2R
 		request.MiniDocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MiniDocs, dara.String("MiniDocs"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.OutlineList) {
+		request.OutlineListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutlineList, dara.String("OutlineList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Outlines) {
 		request.OutlinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outlines, dara.String("Outlines"), dara.String("json"))
 	}
@@ -17149,6 +17165,10 @@ func (client *Client) runWritingV2WithSSE_opYieldFunc(_yield chan *RunWritingV2R
 		body["MiniDocs"] = request.MiniDocsShrink
 	}
 
+	if !dara.IsNil(request.OutlineListShrink) {
+		body["OutlineList"] = request.OutlineListShrink
+	}
+
 	if !dara.IsNil(request.OutlinesShrink) {
 		body["Outlines"] = request.OutlinesShrink
 	}
@@ -17167,6 +17187,10 @@ func (client *Client) runWritingV2WithSSE_opYieldFunc(_yield chan *RunWritingV2R
 
 	if !dara.IsNil(request.SessionId) {
 		body["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.SourceTraceMethod) {
+		body["SourceTraceMethod"] = request.SourceTraceMethod
 	}
 
 	if !dara.IsNil(request.Step) {
