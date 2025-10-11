@@ -41,6 +41,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetModelName() *string
 	SetPayType(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetPayType() *string
+	SetPublicIp(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetPublicIp() *string
 	SetRegionId(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -119,7 +121,8 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -227,6 +230,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetModelName() *string {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetPublicIp() *string {
+	return s.PublicIp
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetRegionId() *string {
@@ -342,6 +349,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetModelName(v string) *Descr
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetPayType(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.PayType = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetPublicIp(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.PublicIp = &v
 	return s
 }
 

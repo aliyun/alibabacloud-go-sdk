@@ -435,6 +435,78 @@ func (client *Client) AddSQLRateLimitingRules(request *AddSQLRateLimitingRulesRe
 
 // Summary:
 //
+// 挂载PolarFS到PolarDB应用
+//
+// @param request - AttachApplicationPolarFSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachApplicationPolarFSResponse
+func (client *Client) AttachApplicationPolarFSWithOptions(request *AttachApplicationPolarFSRequest, runtime *dara.RuntimeOptions) (_result *AttachApplicationPolarFSResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PolarFSAccessKeyId) {
+		query["PolarFSAccessKeyId"] = request.PolarFSAccessKeyId
+	}
+
+	if !dara.IsNil(request.PolarFSAccessKeySecret) {
+		query["PolarFSAccessKeySecret"] = request.PolarFSAccessKeySecret
+	}
+
+	if !dara.IsNil(request.PolarFSInstanceId) {
+		query["PolarFSInstanceId"] = request.PolarFSInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachApplicationPolarFS"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachApplicationPolarFSResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 挂载PolarFS到PolarDB应用
+//
+// @param request - AttachApplicationPolarFSRequest
+//
+// @return AttachApplicationPolarFSResponse
+func (client *Client) AttachApplicationPolarFS(request *AttachApplicationPolarFSRequest) (_result *AttachApplicationPolarFSResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachApplicationPolarFSResponse{}
+	_body, _err := client.AttachApplicationPolarFSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels O\\&M events at a time.
 //
 // @param request - CancelActiveOperationTasksRequest
@@ -1538,6 +1610,204 @@ func (client *Client) CreateActivationCode(request *CreateActivationCodeRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateActivationCodeResponse{}
 	_body, _err := client.CreateActivationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarDB应用
+//
+// @param tmpReq - CreateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationResponse
+func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Components) {
+		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Endpoints) {
+		request.EndpointsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Endpoints, dara.String("Endpoints"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.Architecture) {
+		query["Architecture"] = request.Architecture
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.ComponentsShrink) {
+		query["Components"] = request.ComponentsShrink
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EndpointsShrink) {
+		query["Endpoints"] = request.EndpointsShrink
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PolarFSInstanceId) {
+		query["PolarFSInstanceId"] = request.PolarFSInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplication"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarDB应用
+//
+// @param request - CreateApplicationRequest
+//
+// @return CreateApplicationResponse
+func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CreateApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarDB应用终端节点地址
+//
+// @param request - CreateApplicationEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationEndpointAddressResponse
+func (client *Client) CreateApplicationEndpointAddressWithOptions(request *CreateApplicationEndpointAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationEndpointAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.EndpointId) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationEndpointAddress"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationEndpointAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarDB应用终端节点地址
+//
+// @param request - CreateApplicationEndpointAddressRequest
+//
+// @return CreateApplicationEndpointAddressResponse
+func (client *Client) CreateApplicationEndpointAddress(request *CreateApplicationEndpointAddressRequest) (_result *CreateApplicationEndpointAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationEndpointAddressResponse{}
+	_body, _err := client.CreateApplicationEndpointAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3627,6 +3897,66 @@ func (client *Client) CreateStoragePlan(request *CreateStoragePlanRequest) (_res
 
 // Summary:
 //
+// 删除AI集群实例
+//
+// @param request - DeleteAIDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAIDBClusterResponse
+func (client *Client) DeleteAIDBClusterWithOptions(request *DeleteAIDBClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteAIDBClusterResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAIDBCluster"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAIDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除AI集群实例
+//
+// @param request - DeleteAIDBClusterRequest
+//
+// @return DeleteAIDBClusterResponse
+func (client *Client) DeleteAIDBCluster(request *DeleteAIDBClusterRequest) (_result *DeleteAIDBClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAIDBClusterResponse{}
+	_body, _err := client.DeleteAIDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a database account for a PolarDB cluster.
 //
 // Description:
@@ -3766,6 +4096,74 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteApplicationResponse{}
 	_body, _err := client.DeleteApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarDB应用终端地址
+//
+// @param request - DeleteApplicationEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationEndpointAddressResponse
+func (client *Client) DeleteApplicationEndpointAddressWithOptions(request *DeleteApplicationEndpointAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationEndpointAddressResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.EndpointId) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationEndpointAddress"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationEndpointAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarDB应用终端地址
+//
+// @param request - DeleteApplicationEndpointAddressRequest
+//
+// @return DeleteApplicationEndpointAddressResponse
+func (client *Client) DeleteApplicationEndpointAddress(request *DeleteApplicationEndpointAddressRequest) (_result *DeleteApplicationEndpointAddressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationEndpointAddressResponse{}
+	_body, _err := client.DeleteApplicationEndpointAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6010,6 +6408,212 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeActiveOperationTasksResponse{}
 	_body, _err := client.DescribeActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用详情
+//
+// @param request - DescribeApplicationAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationAttributeResponse
+func (client *Client) DescribeApplicationAttributeWithOptions(request *DescribeApplicationAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationAttributeResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用详情
+//
+// @param request - DescribeApplicationAttributeRequest
+//
+// @return DescribeApplicationAttributeResponse
+func (client *Client) DescribeApplicationAttribute(request *DescribeApplicationAttributeRequest) (_result *DescribeApplicationAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationAttributeResponse{}
+	_body, _err := client.DescribeApplicationAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用组件参数
+//
+// @param tmpReq - DescribeApplicationParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationParametersResponse
+func (client *Client) DescribeApplicationParametersWithOptions(tmpReq *DescribeApplicationParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationParametersResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeApplicationParametersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ComponentIdList) {
+		request.ComponentIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComponentIdList, dara.String("ComponentIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ComponentIdListShrink) {
+		query["ComponentIdList"] = request.ComponentIdListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationParameters"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用组件参数
+//
+// @param request - DescribeApplicationParametersRequest
+//
+// @return DescribeApplicationParametersResponse
+func (client *Client) DescribeApplicationParameters(request *DescribeApplicationParametersRequest) (_result *DescribeApplicationParametersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationParametersResponse{}
+	_body, _err := client.DescribeApplicationParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前地域所有PolarDB实例的应用列表
+//
+// @param request - DescribeApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationsResponse
+func (client *Client) DescribeApplicationsWithOptions(request *DescribeApplicationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationsResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIds) {
+		query["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplications"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前地域所有PolarDB实例的应用列表
+//
+// @param request - DescribeApplicationsRequest
+//
+// @return DescribeApplicationsResponse
+func (client *Client) DescribeApplications(request *DescribeApplicationsRequest) (_result *DescribeApplicationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationsResponse{}
+	_body, _err := client.DescribeApplicationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15409,6 +16013,228 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyActiveOperationTasksResponse{}
 	_body, _err := client.ModifyActiveOperationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用描述
+//
+// @param request - ModifyApplicationDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationDescriptionResponse
+func (client *Client) ModifyApplicationDescriptionWithOptions(request *ModifyApplicationDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationDescriptionResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationDescription"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用描述
+//
+// @param request - ModifyApplicationDescriptionRequest
+//
+// @return ModifyApplicationDescriptionResponse
+func (client *Client) ModifyApplicationDescription(request *ModifyApplicationDescriptionRequest) (_result *ModifyApplicationDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyApplicationDescriptionResponse{}
+	_body, _err := client.ModifyApplicationDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改PolarDB应用参数
+//
+// @param tmpReq - ModifyApplicationParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationParameterResponse
+func (client *Client) ModifyApplicationParameterWithOptions(tmpReq *ModifyApplicationParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationParameterResponse, _err error) {
+	_err = tmpReq.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyApplicationParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ParameterName) {
+		query["ParameterName"] = request.ParameterName
+	}
+
+	if !dara.IsNil(request.ParameterValue) {
+		query["ParameterValue"] = request.ParameterValue
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationParameter"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改PolarDB应用参数
+//
+// @param request - ModifyApplicationParameterRequest
+//
+// @return ModifyApplicationParameterResponse
+func (client *Client) ModifyApplicationParameter(request *ModifyApplicationParameterRequest) (_result *ModifyApplicationParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyApplicationParameterResponse{}
+	_body, _err := client.ModifyApplicationParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用白名单
+//
+// @param request - ModifyApplicationWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationWhitelistResponse
+func (client *Client) ModifyApplicationWhitelistWithOptions(request *ModifyApplicationWhitelistRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationWhitelistResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ComponentId) {
+		query["ComponentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.SecurityGroups) {
+		query["SecurityGroups"] = request.SecurityGroups
+	}
+
+	if !dara.IsNil(request.SecurityIPArrayName) {
+		query["SecurityIPArrayName"] = request.SecurityIPArrayName
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationWhitelist"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationWhitelistResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用白名单
+//
+// @param request - ModifyApplicationWhitelistRequest
+//
+// @return ModifyApplicationWhitelistResponse
+func (client *Client) ModifyApplicationWhitelist(request *ModifyApplicationWhitelistRequest) (_result *ModifyApplicationWhitelistResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyApplicationWhitelistResponse{}
+	_body, _err := client.ModifyApplicationWhitelistWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
