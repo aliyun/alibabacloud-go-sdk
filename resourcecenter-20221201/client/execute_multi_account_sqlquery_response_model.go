@@ -1,0 +1,64 @@
+// This file is auto-generated, don't edit it. Thanks.
+package client
+
+import (
+  "github.com/alibabacloud-go/tea/dara"
+)
+
+type iExecuteMultiAccountSQLQueryResponse interface {
+  dara.Model
+  String() string
+  GoString() string
+  SetHeaders(v map[string]*string) *ExecuteMultiAccountSQLQueryResponse
+  GetHeaders() map[string]*string 
+  SetStatusCode(v int32) *ExecuteMultiAccountSQLQueryResponse
+  GetStatusCode() *int32 
+  SetBody(v *ExecuteMultiAccountSQLQueryResponseBody) *ExecuteMultiAccountSQLQueryResponse
+  GetBody() *ExecuteMultiAccountSQLQueryResponseBody 
+}
+
+type ExecuteMultiAccountSQLQueryResponse struct {
+  Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+  StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+  Body *ExecuteMultiAccountSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteMultiAccountSQLQueryResponse) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExecuteMultiAccountSQLQueryResponse) GoString() string {
+  return s.String()
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) GetHeaders() map[string]*string  {
+  return s.Headers
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) GetStatusCode() *int32  {
+  return s.StatusCode
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) GetBody() *ExecuteMultiAccountSQLQueryResponseBody  {
+  return s.Body
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetHeaders(v map[string]*string) *ExecuteMultiAccountSQLQueryResponse {
+  s.Headers = v
+  return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetStatusCode(v int32) *ExecuteMultiAccountSQLQueryResponse {
+  s.StatusCode = &v
+  return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetBody(v *ExecuteMultiAccountSQLQueryResponseBody) *ExecuteMultiAccountSQLQueryResponse {
+  s.Body = v
+  return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) Validate() error {
+  return dara.Validate(s)
+}
+
