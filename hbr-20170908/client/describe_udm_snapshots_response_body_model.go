@@ -147,6 +147,9 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// WEEKLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
+	ArchiveErrorMessage   *string `json:"ArchiveErrorMessage,omitempty" xml:"ArchiveErrorMessage,omitempty"`
+	ArchiveStatus         *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
+	ArchiveTriggerTime    *int64  `json:"ArchiveTriggerTime,omitempty" xml:"ArchiveTriggerTime,omitempty"`
 	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
 	//
 	// example:
@@ -366,6 +369,18 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) GetAdvancedRetentionType() *
 	return s.AdvancedRetentionType
 }
 
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) GetArchiveErrorMessage() *string {
+	return s.ArchiveErrorMessage
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) GetArchiveStatus() *string {
+	return s.ArchiveStatus
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) GetArchiveTriggerTime() *int64 {
+	return s.ArchiveTriggerTime
+}
+
 func (s *DescribeUdmSnapshotsResponseBodySnapshots) GetBackupType() *string {
 	return s.BackupType
 }
@@ -465,6 +480,21 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetActualBytes(v string) *De
 
 func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetAdvancedRetentionType(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
 	s.AdvancedRetentionType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetArchiveErrorMessage(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.ArchiveErrorMessage = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetArchiveStatus(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.ArchiveStatus = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetArchiveTriggerTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.ArchiveTriggerTime = &v
 	return s
 }
 
