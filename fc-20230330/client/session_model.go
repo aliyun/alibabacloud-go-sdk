@@ -17,6 +17,8 @@ type iSession interface {
 	GetFunctionName() *string
 	SetLastModifiedTime(v string) *Session
 	GetLastModifiedTime() *string
+	SetNasConfig(v *NASConfig) *Session
+	GetNasConfig() *NASConfig
 	SetQualifier(v string) *Session
 	GetQualifier() *string
 	SetSessionAffinityType(v string) *Session
@@ -47,7 +49,8 @@ type Session struct {
 	// example:
 	//
 	// 2025-04-01T18:15:27Z
-	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastModifiedTime *string    `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	NasConfig        *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// example:
 	//
 	// AliasName1
@@ -98,6 +101,10 @@ func (s *Session) GetLastModifiedTime() *string {
 	return s.LastModifiedTime
 }
 
+func (s *Session) GetNasConfig() *NASConfig {
+	return s.NasConfig
+}
+
 func (s *Session) GetQualifier() *string {
 	return s.Qualifier
 }
@@ -139,6 +146,11 @@ func (s *Session) SetFunctionName(v string) *Session {
 
 func (s *Session) SetLastModifiedTime(v string) *Session {
 	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *Session) SetNasConfig(v *NASConfig) *Session {
+	s.NasConfig = v
 	return s
 }
 

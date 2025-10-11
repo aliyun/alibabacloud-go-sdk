@@ -21,6 +21,8 @@ type iUpdateFunctionInput interface {
 	GetCustomRuntimeConfig() *CustomRuntimeConfig
 	SetDescription(v string) *UpdateFunctionInput
 	GetDescription() *string
+	SetDisableInjectCredentials(v string) *UpdateFunctionInput
+	GetDisableInjectCredentials() *string
 	SetDisableOndemand(v bool) *UpdateFunctionInput
 	GetDisableOndemand() *bool
 	SetDiskSize(v int32) *UpdateFunctionInput
@@ -53,6 +55,8 @@ type iUpdateFunctionInput interface {
 	GetNasConfig() *NASConfig
 	SetOssMountConfig(v *OSSMountConfig) *UpdateFunctionInput
 	GetOssMountConfig() *OSSMountConfig
+	SetPolarFsConfig(v *PolarFsConfig) *UpdateFunctionInput
+	GetPolarFsConfig() *PolarFsConfig
 	SetRole(v string) *UpdateFunctionInput
 	GetRole() *string
 	SetRuntime(v string) *UpdateFunctionInput
@@ -81,8 +85,10 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// my function
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisableOndemand *bool   `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
+	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableInjectCredentials *string `json:"disableInjectCredentials,omitempty" xml:"disableInjectCredentials,omitempty"`
+	// Deprecated
+	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
 	// example:
 	//
 	// 512
@@ -94,8 +100,11 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// index.handler
-	Handler     *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	IdleTimeout *int32  `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// example:
+	//
+	// 100
+	IdleTimeout *int32 `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
 	// example:
 	//
 	// 1
@@ -114,6 +123,7 @@ type UpdateFunctionInput struct {
 	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig  *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
@@ -162,6 +172,10 @@ func (s *UpdateFunctionInput) GetCustomRuntimeConfig() *CustomRuntimeConfig {
 
 func (s *UpdateFunctionInput) GetDescription() *string {
 	return s.Description
+}
+
+func (s *UpdateFunctionInput) GetDisableInjectCredentials() *string {
+	return s.DisableInjectCredentials
 }
 
 func (s *UpdateFunctionInput) GetDisableOndemand() *bool {
@@ -228,6 +242,10 @@ func (s *UpdateFunctionInput) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
 
+func (s *UpdateFunctionInput) GetPolarFsConfig() *PolarFsConfig {
+	return s.PolarFsConfig
+}
+
 func (s *UpdateFunctionInput) GetRole() *string {
 	return s.Role
 }
@@ -283,6 +301,11 @@ func (s *UpdateFunctionInput) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Up
 
 func (s *UpdateFunctionInput) SetDescription(v string) *UpdateFunctionInput {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetDisableInjectCredentials(v string) *UpdateFunctionInput {
+	s.DisableInjectCredentials = &v
 	return s
 }
 
@@ -363,6 +386,11 @@ func (s *UpdateFunctionInput) SetNasConfig(v *NASConfig) *UpdateFunctionInput {
 
 func (s *UpdateFunctionInput) SetOssMountConfig(v *OSSMountConfig) *UpdateFunctionInput {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetPolarFsConfig(v *PolarFsConfig) *UpdateFunctionInput {
+	s.PolarFsConfig = v
 	return s
 }
 

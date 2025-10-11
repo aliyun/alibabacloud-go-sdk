@@ -25,6 +25,8 @@ type iFunction interface {
 	GetCustomRuntimeConfig() *CustomRuntimeConfig
 	SetDescription(v string) *Function
 	GetDescription() *string
+	SetDisableInjectCredentials(v string) *Function
+	GetDisableInjectCredentials() *string
 	SetDisableOndemand(v bool) *Function
 	GetDisableOndemand() *bool
 	SetDiskSize(v int32) *Function
@@ -73,6 +75,8 @@ type iFunction interface {
 	GetNasConfig() *NASConfig
 	SetOssMountConfig(v *OSSMountConfig) *Function
 	GetOssMountConfig() *OSSMountConfig
+	SetPolarFsConfig(v *PolarFsConfig) *Function
+	GetPolarFsConfig() *PolarFsConfig
 	SetResourceGroupId(v string) *Function
 	GetResourceGroupId() *string
 	SetRole(v string) *Function
@@ -122,8 +126,10 @@ type Function struct {
 	// example:
 	//
 	// my function
-	Description     *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisableOndemand *bool   `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
+	Description              *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableInjectCredentials *string `json:"disableInjectCredentials,omitempty" xml:"disableInjectCredentials,omitempty"`
+	// Deprecated
+	DisableOndemand *bool `json:"disableOndemand,omitempty" xml:"disableOndemand,omitempty"`
 	// example:
 	//
 	// 512
@@ -147,8 +153,11 @@ type Function struct {
 	// example:
 	//
 	// index.handler
-	Handler     *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	IdleTimeout *int32  `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// example:
+	//
+	// 100
+	IdleTimeout *int32 `json:"idleTimeout,omitempty" xml:"idleTimeout,omitempty"`
 	// example:
 	//
 	// 1
@@ -184,6 +193,7 @@ type Function struct {
 	MemorySize      *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
 	NasConfig       *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	OssMountConfig  *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	PolarFsConfig   *PolarFsConfig  `json:"polarFsConfig,omitempty" xml:"polarFsConfig,omitempty"`
 	ResourceGroupId *string         `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// example:
 	//
@@ -257,6 +267,10 @@ func (s *Function) GetCustomRuntimeConfig() *CustomRuntimeConfig {
 
 func (s *Function) GetDescription() *string {
 	return s.Description
+}
+
+func (s *Function) GetDisableInjectCredentials() *string {
+	return s.DisableInjectCredentials
 }
 
 func (s *Function) GetDisableOndemand() *bool {
@@ -355,6 +369,10 @@ func (s *Function) GetOssMountConfig() *OSSMountConfig {
 	return s.OssMountConfig
 }
 
+func (s *Function) GetPolarFsConfig() *PolarFsConfig {
+	return s.PolarFsConfig
+}
+
 func (s *Function) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -440,6 +458,11 @@ func (s *Function) SetCustomRuntimeConfig(v *CustomRuntimeConfig) *Function {
 
 func (s *Function) SetDescription(v string) *Function {
 	s.Description = &v
+	return s
+}
+
+func (s *Function) SetDisableInjectCredentials(v string) *Function {
+	s.DisableInjectCredentials = &v
 	return s
 }
 
@@ -560,6 +583,11 @@ func (s *Function) SetNasConfig(v *NASConfig) *Function {
 
 func (s *Function) SetOssMountConfig(v *OSSMountConfig) *Function {
 	s.OssMountConfig = v
+	return s
+}
+
+func (s *Function) SetPolarFsConfig(v *PolarFsConfig) *Function {
+	s.PolarFsConfig = v
 	return s
 }
 

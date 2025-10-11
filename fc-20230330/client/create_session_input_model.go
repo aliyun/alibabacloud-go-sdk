@@ -9,6 +9,8 @@ type iCreateSessionInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNasConfig(v *NASConfig) *CreateSessionInput
+	GetNasConfig() *NASConfig
 	SetSessionIdleTimeoutInSeconds(v int64) *CreateSessionInput
 	GetSessionIdleTimeoutInSeconds() *int64
 	SetSessionTTLInSeconds(v int64) *CreateSessionInput
@@ -16,6 +18,7 @@ type iCreateSessionInput interface {
 }
 
 type CreateSessionInput struct {
+	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// example:
 	//
 	// 1800
@@ -34,12 +37,21 @@ func (s CreateSessionInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSessionInput) GetNasConfig() *NASConfig {
+	return s.NasConfig
+}
+
 func (s *CreateSessionInput) GetSessionIdleTimeoutInSeconds() *int64 {
 	return s.SessionIdleTimeoutInSeconds
 }
 
 func (s *CreateSessionInput) GetSessionTTLInSeconds() *int64 {
 	return s.SessionTTLInSeconds
+}
+
+func (s *CreateSessionInput) SetNasConfig(v *NASConfig) *CreateSessionInput {
+	s.NasConfig = v
+	return s
 }
 
 func (s *CreateSessionInput) SetSessionIdleTimeoutInSeconds(v int64) *CreateSessionInput {
