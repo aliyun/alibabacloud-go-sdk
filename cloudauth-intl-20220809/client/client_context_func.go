@@ -789,6 +789,72 @@ func (client *Client) DeepfakeDetectIntlWithContext(ctx context.Context, request
 
 // Summary:
 //
+// deepfake文件流api
+//
+// @param request - DeepfakeDetectIntlStreamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeepfakeDetectIntlStreamResponse
+func (client *Client) DeepfakeDetectIntlStreamWithContext(ctx context.Context, request *DeepfakeDetectIntlStreamRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FaceBase64) {
+		body["FaceBase64"] = request.FaceBase64
+	}
+
+	if !dara.IsNil(request.FaceFile) {
+		body["FaceFile"] = request.FaceFile
+	}
+
+	if !dara.IsNil(request.FaceInputType) {
+		body["FaceInputType"] = request.FaceInputType
+	}
+
+	if !dara.IsNil(request.FaceUrl) {
+		body["FaceUrl"] = request.FaceUrl
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeepfakeDetectIntlStream"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeepfakeDetectIntlStreamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Face Group
 //
 // @param request - DeleteFaceGroupRequest

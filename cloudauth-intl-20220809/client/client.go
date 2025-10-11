@@ -1213,6 +1213,197 @@ func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_r
 
 // Summary:
 //
+// deepfake文件流api
+//
+// @param request - DeepfakeDetectIntlStreamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeepfakeDetectIntlStreamResponse
+func (client *Client) DeepfakeDetectIntlStreamWithOptions(request *DeepfakeDetectIntlStreamRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FaceBase64) {
+		body["FaceBase64"] = request.FaceBase64
+	}
+
+	if !dara.IsNil(request.FaceFile) {
+		body["FaceFile"] = request.FaceFile
+	}
+
+	if !dara.IsNil(request.FaceInputType) {
+		body["FaceInputType"] = request.FaceInputType
+	}
+
+	if !dara.IsNil(request.FaceUrl) {
+		body["FaceUrl"] = request.FaceUrl
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.SceneCode) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeepfakeDetectIntlStream"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeepfakeDetectIntlStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// deepfake文件流api
+//
+// @param request - DeepfakeDetectIntlStreamRequest
+//
+// @return DeepfakeDetectIntlStreamResponse
+func (client *Client) DeepfakeDetectIntlStream(request *DeepfakeDetectIntlStreamRequest) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeepfakeDetectIntlStreamResponse{}
+	_body, _err := client.DeepfakeDetectIntlStreamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeepfakeDetectIntlStreamAdvance(request *DeepfakeDetectIntlStreamAdvanceRequest, runtime *dara.RuntimeOptions) (_result *DeepfakeDetectIntlStreamResponse, _err error) {
+	// Step 0: init client
+	if dara.IsNil(client.Credential) {
+		_err = &openapi.ClientError{
+			Code:    dara.String("InvalidCredentials"),
+			Message: dara.String("Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."),
+		}
+		return _result, _err
+	}
+
+	credentialModel, _err := client.Credential.GetCredential()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeyId := dara.StringValue(credentialModel.AccessKeyId)
+	accessKeySecret := dara.StringValue(credentialModel.AccessKeySecret)
+	securityToken := dara.StringValue(credentialModel.SecurityToken)
+	credentialType := dara.StringValue(credentialModel.Type)
+	openPlatformEndpoint := dara.StringValue(client.OpenPlatformEndpoint)
+	if dara.IsNil(dara.String(openPlatformEndpoint)) || openPlatformEndpoint == "" {
+		openPlatformEndpoint = "openplatform.aliyuncs.com"
+	}
+
+	if dara.IsNil(dara.String(credentialType)) {
+		credentialType = "access_key"
+	}
+
+	authConfig := &openapiutil.Config{
+		AccessKeyId:     dara.String(accessKeyId),
+		AccessKeySecret: dara.String(accessKeySecret),
+		SecurityToken:   dara.String(securityToken),
+		Type:            dara.String(credentialType),
+		Endpoint:        dara.String(openPlatformEndpoint),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openapi.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := map[string]*string{
+		"Product":  dara.String("Cloudauth-intl"),
+		"RegionId": client.RegionId,
+	}
+	authReq := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(authRequest),
+	}
+	authParams := &openapiutil.Params{
+		Action:      dara.String("AuthorizeFileUpload"),
+		Version:     dara.String("2019-12-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	authResponse := map[string]interface{}{}
+	fileObj := &dara.FileField{}
+	ossHeader := map[string]interface{}{}
+	tmpBody := map[string]interface{}{}
+	useAccelerate := false
+	authResponseBody := make(map[string]*string)
+	deepfakeDetectIntlStreamReq := &DeepfakeDetectIntlStreamRequest{}
+	openapiutil.Convert(request, deepfakeDetectIntlStreamReq)
+	if !dara.IsNil(request.FaceFileObject) {
+		authResponse, _err = authClient.CallApi(authParams, authReq, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		tmpBody = dara.ToMap(authResponse["body"])
+		useAccelerate = dara.ForceBoolean(tmpBody["UseAccelerate"])
+		authResponseBody = openapiutil.StringifyMapValue(tmpBody)
+		fileObj = &dara.FileField{
+			Filename:    authResponseBody["ObjectKey"],
+			Content:     request.FaceFileObject,
+			ContentType: dara.String(""),
+		}
+		ossHeader = map[string]interface{}{
+			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
+			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
+			"Signature":             dara.StringValue(authResponseBody["Signature"]),
+			"key":                   dara.StringValue(authResponseBody["ObjectKey"]),
+			"file":                  fileObj,
+			"success_action_status": "201",
+		}
+		_, _err = client._postOSSObject(authResponseBody["Bucket"], ossHeader)
+		if _err != nil {
+			return _result, _err
+		}
+		deepfakeDetectIntlStreamReq.FaceFile = dara.String("http://" + dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(authResponseBody["Endpoint"]) + "/" + dara.StringValue(authResponseBody["ObjectKey"]))
+	}
+
+	deepfakeDetectIntlStreamResp, _err := client.DeepfakeDetectIntlStreamWithOptions(deepfakeDetectIntlStreamReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = deepfakeDetectIntlStreamResp
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Face Group
 //
 // @param request - DeleteFaceGroupRequest
