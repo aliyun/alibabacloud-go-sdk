@@ -50,7 +50,12 @@ func (s *GetTrainingJobErrorInfoResponseBody) SetRequestId(v string) *GetTrainin
 }
 
 func (s *GetTrainingJobErrorInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorInfo != nil {
+		if err := s.ErrorInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrainingJobErrorInfoResponseBodyErrorInfo struct {

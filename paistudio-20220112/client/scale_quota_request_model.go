@@ -47,5 +47,10 @@ func (s *ScaleQuotaRequest) SetResourceGroupIds(v []*string) *ScaleQuotaRequest 
 }
 
 func (s *ScaleQuotaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Min != nil {
+		if err := s.Min.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

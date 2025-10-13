@@ -71,5 +71,25 @@ func (s *WorkloadDetails) SetSummary(v *QuotaJob) *WorkloadDetails {
 }
 
 func (s *WorkloadDetails) Validate() error {
-	return dara.Validate(s)
+	if s.DLC != nil {
+		if err := s.DLC.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DSW != nil {
+		if err := s.DSW.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EAS != nil {
+		if err := s.EAS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

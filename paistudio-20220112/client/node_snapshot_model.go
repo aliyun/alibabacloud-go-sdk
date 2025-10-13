@@ -131,7 +131,16 @@ func (s *NodeSnapshot) SetWorkloads(v []*NodeSnapshotWorkloads) *NodeSnapshot {
 }
 
 func (s *NodeSnapshot) Validate() error {
-	return dara.Validate(s)
+	if s.Workloads != nil {
+		for _, item := range s.Workloads {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NodeSnapshotWorkloads struct {

@@ -131,5 +131,14 @@ func (s *NodeGPUMetric) SetUsedMemory(v float32) *NodeGPUMetric {
 }
 
 func (s *NodeGPUMetric) Validate() error {
-	return dara.Validate(s)
+	if s.GPUMetrics != nil {
+		for _, item := range s.GPUMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

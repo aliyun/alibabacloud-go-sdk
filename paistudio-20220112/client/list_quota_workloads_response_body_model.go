@@ -67,5 +67,14 @@ func (s *ListQuotaWorkloadsResponseBody) SetWorkloads(v []*QueueInfo) *ListQuota
 }
 
 func (s *ListQuotaWorkloadsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workloads != nil {
+		for _, item := range s.Workloads {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

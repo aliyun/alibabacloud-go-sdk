@@ -107,5 +107,15 @@ func (s *QuotaTopo) SetWorkloadDetails(v *WorkloadDetails) *QuotaTopo {
 }
 
 func (s *QuotaTopo) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaDetails != nil {
+		if err := s.QuotaDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkloadDetails != nil {
+		if err := s.WorkloadDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

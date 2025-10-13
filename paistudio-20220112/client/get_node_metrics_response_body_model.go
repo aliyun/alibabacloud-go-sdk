@@ -65,5 +65,14 @@ func (s *GetNodeMetricsResponseBody) SetResourceGroupID(v string) *GetNodeMetric
 }
 
 func (s *GetNodeMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodesMetrics != nil {
+		for _, item := range s.NodesMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

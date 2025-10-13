@@ -455,5 +455,23 @@ func (s *Node) SetWorkloadNum(v int64) *Node {
 }
 
 func (s *Node) Validate() error {
-	return dara.Validate(s)
+	if s.BoundQuotas != nil {
+		for _, item := range s.BoundQuotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

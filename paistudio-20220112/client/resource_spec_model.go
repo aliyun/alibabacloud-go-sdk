@@ -35,5 +35,14 @@ func (s *ResourceSpec) SetNodeSpecs(v []*NodeSpec) *ResourceSpec {
 }
 
 func (s *ResourceSpec) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSpecs != nil {
+		for _, item := range s.NodeSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

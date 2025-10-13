@@ -521,7 +521,110 @@ func (s *GetTrainingJobResponseBody) SetWorkspaceId(v string) *GetTrainingJobRes
 }
 
 func (s *GetTrainingJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlgorithmSpec != nil {
+		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExperimentConfig != nil {
+		if err := s.ExperimentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperParameters != nil {
+		for _, item := range s.HyperParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputChannels != nil {
+		for _, item := range s.InputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LatestMetrics != nil {
+		for _, item := range s.LatestMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LatestProgress != nil {
+		if err := s.LatestProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OutputChannels != nil {
+		for _, item := range s.OutputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputModel != nil {
+		if err := s.OutputModel.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Scheduler != nil {
+		if err := s.Scheduler.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusTransitions != nil {
+		for _, item := range s.StatusTransitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrainingJobResponseBodyComputeResource struct {
@@ -631,7 +734,17 @@ func (s *GetTrainingJobResponseBodyComputeResource) SetUseSpotInstance(v bool) *
 }
 
 func (s *GetTrainingJobResponseBodyComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpec != nil {
+		if err := s.InstanceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotSpec != nil {
+		if err := s.SpotSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrainingJobResponseBodyComputeResourceInstanceSpec struct {
@@ -1092,7 +1205,17 @@ func (s *GetTrainingJobResponseBodyLatestProgress) SetRemainingTime(v *GetTraini
 }
 
 func (s *GetTrainingJobResponseBodyLatestProgress) Validate() error {
-	return dara.Validate(s)
+	if s.OverallProgress != nil {
+		if err := s.OverallProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemainingTime != nil {
+		if err := s.RemainingTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTrainingJobResponseBodyLatestProgressOverallProgress struct {

@@ -35,7 +35,16 @@ func (s *ListTrainingJobOutputModelsResponseBody) SetOutputModels(v []*ListTrain
 }
 
 func (s *ListTrainingJobOutputModelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OutputModels != nil {
+		for _, item := range s.OutputModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobOutputModelsResponseBodyOutputModels struct {
@@ -180,7 +189,16 @@ func (s *ListTrainingJobOutputModelsResponseBodyOutputModels) SetUri(v string) *
 }
 
 func (s *ListTrainingJobOutputModelsResponseBodyOutputModels) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobOutputModelsResponseBodyOutputModelsLabels struct {

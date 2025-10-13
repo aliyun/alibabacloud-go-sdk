@@ -194,7 +194,72 @@ func (s *AlgorithmSpec) SetSupportsDistributedTraining(v bool) *AlgorithmSpec {
 }
 
 func (s *AlgorithmSpec) Validate() error {
-	return dara.Validate(s)
+	if s.CodeDir != nil {
+		if err := s.CodeDir.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Customization != nil {
+		if err := s.Customization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperParameters != nil {
+		for _, item := range s.HyperParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputChannels != nil {
+		for _, item := range s.InputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricDefinitions != nil {
+		for _, item := range s.MetricDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputChannels != nil {
+		for _, item := range s.OutputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ProgressDefinitions != nil {
+		if err := s.ProgressDefinitions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceRequirements != nil {
+		for _, item := range s.ResourceRequirements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlgorithmSpecComputeResource struct {
@@ -220,7 +285,12 @@ func (s *AlgorithmSpecComputeResource) SetPolicy(v *AlgorithmSpecComputeResource
 }
 
 func (s *AlgorithmSpecComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AlgorithmSpecComputeResourcePolicy struct {
@@ -317,7 +387,17 @@ func (s *AlgorithmSpecProgressDefinitions) SetRemainingTime(v *AlgorithmSpecProg
 }
 
 func (s *AlgorithmSpecProgressDefinitions) Validate() error {
-	return dara.Validate(s)
+	if s.OverallProgress != nil {
+		if err := s.OverallProgress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemainingTime != nil {
+		if err := s.RemainingTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AlgorithmSpecProgressDefinitionsOverallProgress struct {

@@ -77,5 +77,19 @@ func (s *GetUserViewMetricsResponseBody) SetUserMetrics(v []*UserViewMetric) *Ge
 }
 
 func (s *GetUserViewMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserMetrics != nil {
+		for _, item := range s.UserMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

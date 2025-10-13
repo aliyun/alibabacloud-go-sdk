@@ -59,5 +59,14 @@ func (s *WorkspaceSpecs) SetWorkspaceId(v string) *WorkspaceSpecs {
 }
 
 func (s *WorkspaceSpecs) Validate() error {
-	return dara.Validate(s)
+	if s.Specs != nil {
+		for _, item := range s.Specs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

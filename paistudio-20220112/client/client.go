@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -85,9 +86,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CheckInstanceWebTerminalResponse
 func (client *Client) CheckInstanceWebTerminalWithOptions(TrainingJobId *string, InstanceId *string, request *CheckInstanceWebTerminalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckInstanceWebTerminalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CheckInfo) {
@@ -149,9 +152,11 @@ func (client *Client) CheckInstanceWebTerminal(TrainingJobId *string, InstanceId
 //
 // @return CreateAlgorithmResponse
 func (client *Client) CreateAlgorithmWithOptions(request *CreateAlgorithmRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlgorithmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlgorithmDescription) {
@@ -225,9 +230,11 @@ func (client *Client) CreateAlgorithm(request *CreateAlgorithmRequest) (_result 
 //
 // @return CreateAlgorithmVersionResponse
 func (client *Client) CreateAlgorithmVersionWithOptions(AlgorithmId *string, AlgorithmVersion *string, tmpReq *CreateAlgorithmVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlgorithmVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAlgorithmVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -345,9 +352,11 @@ func (client *Client) CreateInstanceWebTerminal(TrainingJobId *string, InstanceI
 //
 // @return CreateQuotaResponse
 func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AllocateStrategy) {
@@ -445,9 +454,11 @@ func (client *Client) CreateQuota(request *CreateQuotaRequest) (_result *CreateQ
 //
 // @return CreateResourceGroupResponse
 func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ComputingResourceProvider) {
@@ -533,9 +544,11 @@ func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (
 //
 // @return CreateTrainingJobResponse
 func (client *Client) CreateTrainingJobWithOptions(request *CreateTrainingJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTrainingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlgorithmName) {
@@ -1037,9 +1050,11 @@ func (client *Client) DeleteTrainingJob(TrainingJobId *string) (_result *DeleteT
 //
 // @return DeleteTrainingJobLabelsResponse
 func (client *Client) DeleteTrainingJobLabelsWithOptions(TrainingJobId *string, request *DeleteTrainingJobLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTrainingJobLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keys) {
@@ -1258,9 +1273,11 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 //
 // @return GetNodeMetricsResponse
 func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricType *string, request *GetNodeMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1341,9 +1358,11 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 //
 // @return GetQuotaResponse
 func (client *Client) GetQuotaWithOptions(QuotaId *string, request *GetQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Verbose) {
@@ -1405,9 +1424,11 @@ func (client *Client) GetQuota(QuotaId *string, request *GetQuotaRequest) (_resu
 //
 // @return GetResourceGroupResponse
 func (client *Client) GetResourceGroupWithOptions(ResourceGroupID *string, tmpReq *GetResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetResourceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1479,9 +1500,11 @@ func (client *Client) GetResourceGroup(ResourceGroupID *string, request *GetReso
 //
 // @return GetResourceGroupMachineGroupResponse
 func (client *Client) GetResourceGroupMachineGroupWithOptions(MachineGroupID *string, ResourceGroupID *string, tmpReq *GetResourceGroupMachineGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceGroupMachineGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetResourceGroupMachineGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1551,9 +1574,11 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 //
 // @return GetResourceGroupRequestResponse
 func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGroupRequestRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceGroupRequestResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PodStatus) {
@@ -1622,9 +1647,11 @@ func (client *Client) GetResourceGroupRequest(request *GetResourceGroupRequestRe
 //
 // @return GetResourceGroupTotalResponse
 func (client *Client) GetResourceGroupTotalWithOptions(request *GetResourceGroupTotalRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceGroupTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupID) {
@@ -1686,9 +1713,11 @@ func (client *Client) GetResourceGroupTotal(request *GetResourceGroupTotalReques
 //
 // @return GetSpotPriceHistoryResponse
 func (client *Client) GetSpotPriceHistoryWithOptions(InstanceType *string, request *GetSpotPriceHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSpotPriceHistoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -1774,9 +1803,11 @@ func (client *Client) GetSpotPriceHistory(InstanceType *string, request *GetSpot
 //
 // @return GetTokenResponse
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTime) {
@@ -1942,9 +1973,11 @@ func (client *Client) GetTrainingJobErrorInfo(TrainingJobId *string) (_result *G
 //
 // @return GetTrainingJobLatestMetricsResponse
 func (client *Client) GetTrainingJobLatestMetricsWithOptions(TrainingJobId *string, request *GetTrainingJobLatestMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTrainingJobLatestMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Names) {
@@ -2008,9 +2041,11 @@ func (client *Client) GetTrainingJobLatestMetrics(TrainingJobId *string, request
 //
 // @return GetUserViewMetricsResponse
 func (client *Client) GetUserViewMetricsWithOptions(ResourceGroupID *string, request *GetUserViewMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserViewMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -2099,9 +2134,11 @@ func (client *Client) GetUserViewMetrics(ResourceGroupID *string, request *GetUs
 //
 // @return ListAlgorithmVersionsResponse
 func (client *Client) ListAlgorithmVersionsWithOptions(AlgorithmId *string, request *ListAlgorithmVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlgorithmVersionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.PageNumber) {
@@ -2167,9 +2204,11 @@ func (client *Client) ListAlgorithmVersions(AlgorithmId *string, request *ListAl
 //
 // @return ListAlgorithmsResponse
 func (client *Client) ListAlgorithmsWithOptions(request *ListAlgorithmsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlgorithmsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlgorithmId) {
@@ -2251,9 +2290,11 @@ func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *L
 //
 // @return ListNodesResponse
 func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceleratorType) {
@@ -2262,6 +2303,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 
 	if !dara.IsNil(request.AvailabilityZone) {
 		query["AvailabilityZone"] = request.AvailabilityZone
+	}
+
+	if !dara.IsNil(request.CliqueID) {
+		query["CliqueID"] = request.CliqueID
 	}
 
 	if !dara.IsNil(request.FilterByQuotaId) {
@@ -2274,6 +2319,10 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, headers ma
 
 	if !dara.IsNil(request.GPUType) {
 		query["GPUType"] = request.GPUType
+	}
+
+	if !dara.IsNil(request.HyperNode) {
+		query["HyperNode"] = request.HyperNode
 	}
 
 	if !dara.IsNil(request.HyperZone) {
@@ -2395,9 +2444,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 //
 // @return ListQuotaWorkloadsResponse
 func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *ListQuotaWorkloadsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotaWorkloadsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeforeWorkloadId) {
@@ -2531,9 +2582,11 @@ func (client *Client) ListQuotaWorkloads(QuotaId *string, request *ListQuotaWork
 //
 // @return ListQuotasResponse
 func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.HasResource) {
@@ -2655,9 +2708,11 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 //
 // @return ListResourceGroupMachineGroupsResponse
 func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID *string, request *ListResourceGroupMachineGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceGroupMachineGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CreatorID) {
@@ -2767,9 +2822,11 @@ func (client *Client) ListResourceGroupMachineGroups(ResourceGroupID *string, re
 //
 // @return ListResourceGroupsResponse
 func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListResourceGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ComputingResourceProvider) {
@@ -2875,9 +2932,11 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 //
 // @return ListTrainingJobEventsResponse
 func (client *Client) ListTrainingJobEventsWithOptions(TrainingJobId *string, request *ListTrainingJobEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2951,9 +3010,11 @@ func (client *Client) ListTrainingJobEvents(TrainingJobId *string, request *List
 //
 // @return ListTrainingJobInstanceEventsResponse
 func (client *Client) ListTrainingJobInstanceEventsWithOptions(TrainingJobId *string, InstanceId *string, request *ListTrainingJobInstanceEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobInstanceEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3027,9 +3088,11 @@ func (client *Client) ListTrainingJobInstanceEvents(TrainingJobId *string, Insta
 //
 // @return ListTrainingJobInstanceMetricsResponse
 func (client *Client) ListTrainingJobInstanceMetricsWithOptions(TrainingJobId *string, request *ListTrainingJobInstanceMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobInstanceMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3107,9 +3170,11 @@ func (client *Client) ListTrainingJobInstanceMetrics(TrainingJobId *string, requ
 //
 // @return ListTrainingJobLogsResponse
 func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, request *ListTrainingJobLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3191,9 +3256,11 @@ func (client *Client) ListTrainingJobLogs(TrainingJobId *string, request *ListTr
 //
 // @return ListTrainingJobMetricsResponse
 func (client *Client) ListTrainingJobMetricsWithOptions(TrainingJobId *string, request *ListTrainingJobMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -3325,9 +3392,11 @@ func (client *Client) ListTrainingJobOutputModels(TrainingJobId *string) (_resul
 //
 // @return ListTrainingJobsResponse
 func (client *Client) ListTrainingJobsWithOptions(tmpReq *ListTrainingJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTrainingJobsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListTrainingJobsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3447,9 +3516,11 @@ func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_resul
 //
 // @return ScaleQuotaResponse
 func (client *Client) ScaleQuotaWithOptions(QuotaId *string, request *ScaleQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScaleQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Min) {
@@ -3565,9 +3636,11 @@ func (client *Client) StopTrainingJob(TrainingJobId *string) (_result *StopTrain
 //
 // @return UpdateAlgorithmResponse
 func (client *Client) UpdateAlgorithmWithOptions(AlgorithmId *string, request *UpdateAlgorithmRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlgorithmResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlgorithmDescription) {
@@ -3633,9 +3706,11 @@ func (client *Client) UpdateAlgorithm(AlgorithmId *string, request *UpdateAlgori
 //
 // @return UpdateAlgorithmVersionResponse
 func (client *Client) UpdateAlgorithmVersionWithOptions(AlgorithmId *string, AlgorithmVersion *string, tmpReq *UpdateAlgorithmVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlgorithmVersionResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateAlgorithmVersionShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3703,9 +3778,11 @@ func (client *Client) UpdateAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 //
 // @return UpdateQuotaResponse
 func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuotaRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3783,9 +3860,11 @@ func (client *Client) UpdateQuota(QuotaId *string, request *UpdateQuotaRequest) 
 //
 // @return UpdateResourceGroupResponse
 func (client *Client) UpdateResourceGroupWithOptions(ResourceGroupID *string, request *UpdateResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3859,9 +3938,11 @@ func (client *Client) UpdateResourceGroup(ResourceGroupID *string, request *Upda
 //
 // @return UpdateTrainingJobLabelsResponse
 func (client *Client) UpdateTrainingJobLabelsWithOptions(TrainingJobId *string, request *UpdateTrainingJobLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTrainingJobLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {

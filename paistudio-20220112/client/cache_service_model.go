@@ -143,5 +143,19 @@ func (s *CacheService) SetUserVpc(v *UserVpc) *CacheService {
 }
 
 func (s *CacheService) Validate() error {
-	return dara.Validate(s)
+	if s.CacheInfos != nil {
+		for _, item := range s.CacheInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetResourceGroupTotalResponse) SetBody(v *GetResourceGroupTotalResponse
 }
 
 func (s *GetResourceGroupTotalResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

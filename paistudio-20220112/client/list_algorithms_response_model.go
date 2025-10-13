@@ -59,5 +59,10 @@ func (s *ListAlgorithmsResponse) SetBody(v *ListAlgorithmsResponseBody) *ListAlg
 }
 
 func (s *ListAlgorithmsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

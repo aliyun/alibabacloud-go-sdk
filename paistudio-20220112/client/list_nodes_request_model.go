@@ -13,12 +13,16 @@ type iListNodesRequest interface {
 	GetAcceleratorType() *string
 	SetAvailabilityZone(v string) *ListNodesRequest
 	GetAvailabilityZone() *string
+	SetCliqueID(v string) *ListNodesRequest
+	GetCliqueID() *string
 	SetFilterByQuotaId(v string) *ListNodesRequest
 	GetFilterByQuotaId() *string
 	SetFilterByResourceGroupIds(v string) *ListNodesRequest
 	GetFilterByResourceGroupIds() *string
 	SetGPUType(v string) *ListNodesRequest
 	GetGPUType() *string
+	SetHyperNode(v string) *ListNodesRequest
+	GetHyperNode() *string
 	SetHyperZone(v string) *ListNodesRequest
 	GetHyperZone() *string
 	SetMachineGroupIds(v string) *ListNodesRequest
@@ -59,6 +63,7 @@ type ListNodesRequest struct {
 	// CPU
 	AcceleratorType  *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	CliqueID         *string `json:"CliqueID,omitempty" xml:"CliqueID,omitempty"`
 	// example:
 	//
 	// quotamtl37ge7gkvdz
@@ -71,6 +76,7 @@ type ListNodesRequest struct {
 	//
 	// T4
 	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	HyperNode       *string `json:"HyperNode,omitempty" xml:"HyperNode,omitempty"`
 	HyperZone       *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
 	MachineGroupIds *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
 	// example:
@@ -141,6 +147,10 @@ func (s *ListNodesRequest) GetAvailabilityZone() *string {
 	return s.AvailabilityZone
 }
 
+func (s *ListNodesRequest) GetCliqueID() *string {
+	return s.CliqueID
+}
+
 func (s *ListNodesRequest) GetFilterByQuotaId() *string {
 	return s.FilterByQuotaId
 }
@@ -151,6 +161,10 @@ func (s *ListNodesRequest) GetFilterByResourceGroupIds() *string {
 
 func (s *ListNodesRequest) GetGPUType() *string {
 	return s.GPUType
+}
+
+func (s *ListNodesRequest) GetHyperNode() *string {
+	return s.HyperNode
 }
 
 func (s *ListNodesRequest) GetHyperZone() *string {
@@ -227,6 +241,11 @@ func (s *ListNodesRequest) SetAvailabilityZone(v string) *ListNodesRequest {
 	return s
 }
 
+func (s *ListNodesRequest) SetCliqueID(v string) *ListNodesRequest {
+	s.CliqueID = &v
+	return s
+}
+
 func (s *ListNodesRequest) SetFilterByQuotaId(v string) *ListNodesRequest {
 	s.FilterByQuotaId = &v
 	return s
@@ -239,6 +258,11 @@ func (s *ListNodesRequest) SetFilterByResourceGroupIds(v string) *ListNodesReque
 
 func (s *ListNodesRequest) SetGPUType(v string) *ListNodesRequest {
 	s.GPUType = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetHyperNode(v string) *ListNodesRequest {
+	s.HyperNode = &v
 	return s
 }
 

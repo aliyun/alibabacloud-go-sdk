@@ -59,5 +59,10 @@ func (s *DeleteMachineGroupResponse) SetBody(v *DeleteMachineGroupResponseBody) 
 }
 
 func (s *DeleteMachineGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

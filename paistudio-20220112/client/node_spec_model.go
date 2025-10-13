@@ -65,5 +65,10 @@ func (s *NodeSpec) SetType(v string) *NodeSpec {
 }
 
 func (s *NodeSpec) Validate() error {
-	return dara.Validate(s)
+	if s.BindingPolicy != nil {
+		if err := s.BindingPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

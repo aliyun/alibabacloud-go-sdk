@@ -62,5 +62,14 @@ func (s *ListQuotasResponseBody) SetTotalCount(v int32) *ListQuotasResponseBody 
 }
 
 func (s *ListQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

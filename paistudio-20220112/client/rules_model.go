@@ -35,5 +35,10 @@ func (s *Rules) SetScheduling(v *SchedulingRule) *Rules {
 }
 
 func (s *Rules) Validate() error {
-	return dara.Validate(s)
+	if s.Scheduling != nil {
+		if err := s.Scheduling.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

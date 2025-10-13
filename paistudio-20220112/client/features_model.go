@@ -35,7 +35,12 @@ func (s *Features) SetQuota(v *FeaturesQuota) *Features {
 }
 
 func (s *Features) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FeaturesQuota struct {

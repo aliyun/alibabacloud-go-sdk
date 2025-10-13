@@ -35,5 +35,10 @@ func (s *CreateAlgorithmVersionRequest) SetAlgorithmSpec(v *AlgorithmSpec) *Crea
 }
 
 func (s *CreateAlgorithmVersionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlgorithmSpec != nil {
+		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

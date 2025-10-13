@@ -239,7 +239,21 @@ func (s *GetResourceGroupResponseBody) SetWorkspaceID(v string) *GetResourceGrou
 }
 
 func (s *GetResourceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceGroupResponseBodyTags struct {

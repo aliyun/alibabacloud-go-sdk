@@ -65,5 +65,14 @@ func (s *ResourceGroupMetric) SetResourceGroupID(v string) *ResourceGroupMetric 
 }
 
 func (s *ResourceGroupMetric) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

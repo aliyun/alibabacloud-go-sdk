@@ -107,5 +107,10 @@ func (s *UserVpc) SetVpcId(v string) *UserVpc {
 }
 
 func (s *UserVpc) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultForwardInfo != nil {
+		if err := s.DefaultForwardInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

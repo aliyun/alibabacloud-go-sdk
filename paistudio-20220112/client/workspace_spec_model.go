@@ -107,5 +107,10 @@ func (s *WorkspaceSpec) SetSpecName(v string) *WorkspaceSpec {
 }
 
 func (s *WorkspaceSpec) Validate() error {
-	return dara.Validate(s)
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

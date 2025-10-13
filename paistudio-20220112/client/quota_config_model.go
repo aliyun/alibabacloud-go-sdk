@@ -224,5 +224,49 @@ func (s *QuotaConfig) SetUserVpc(v *UserVpc) *QuotaConfig {
 }
 
 func (s *QuotaConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ACS != nil {
+		if err := s.ACS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EniCacheConfig != nil {
+		if err := s.EniCacheConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OversoldUsageInfo != nil {
+		if err := s.OversoldUsageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpecs != nil {
+		for _, item := range s.ResourceSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SandboxCacheConfig != nil {
+		if err := s.SandboxCacheConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelfQuotaPreemptionConfig != nil {
+		if err := s.SelfQuotaPreemptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotaPreemptionConfig != nil {
+		if err := s.SubQuotaPreemptionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

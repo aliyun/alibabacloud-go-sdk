@@ -35,5 +35,14 @@ func (s *AllocateStrategySpec) SetNodeSpecs(v []*NodeSpec) *AllocateStrategySpec
 }
 
 func (s *AllocateStrategySpec) Validate() error {
-	return dara.Validate(s)
+	if s.NodeSpecs != nil {
+		for _, item := range s.NodeSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

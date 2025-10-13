@@ -347,5 +347,10 @@ func (s *QueueInfo) SetWorkspaceName(v string) *QueueInfo {
 }
 
 func (s *QueueInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

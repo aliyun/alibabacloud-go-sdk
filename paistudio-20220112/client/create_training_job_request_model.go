@@ -300,7 +300,78 @@ func (s *CreateTrainingJobRequest) SetWorkspaceId(v string) *CreateTrainingJobRe
 }
 
 func (s *CreateTrainingJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlgorithmSpec != nil {
+		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CodeDir != nil {
+		if err := s.CodeDir.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExperimentConfig != nil {
+		if err := s.ExperimentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperParameters != nil {
+		for _, item := range s.HyperParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputChannels != nil {
+		for _, item := range s.InputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputChannels != nil {
+		for _, item := range s.OutputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Scheduler != nil {
+		if err := s.Scheduler.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTrainingJobRequestComputeResource struct {
@@ -400,7 +471,17 @@ func (s *CreateTrainingJobRequestComputeResource) SetUseSpotInstance(v bool) *Cr
 }
 
 func (s *CreateTrainingJobRequestComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpec != nil {
+		if err := s.InstanceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotSpec != nil {
+		if err := s.SpotSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateTrainingJobRequestComputeResourceInstanceSpec struct {

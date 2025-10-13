@@ -109,5 +109,10 @@ func (s *HyperParameterDefinition) SetType(v string) *HyperParameterDefinition {
 }
 
 func (s *HyperParameterDefinition) Validate() error {
-	return dara.Validate(s)
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

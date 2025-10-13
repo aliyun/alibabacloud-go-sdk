@@ -50,7 +50,16 @@ func (s *ListTrainingJobInstanceMetricsResponseBody) SetRequestId(v string) *Lis
 }
 
 func (s *ListTrainingJobInstanceMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceMetrics != nil {
+		for _, item := range s.InstanceMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics struct {
@@ -95,7 +104,16 @@ func (s *ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics) SetNodeName(
 }
 
 func (s *ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics struct {

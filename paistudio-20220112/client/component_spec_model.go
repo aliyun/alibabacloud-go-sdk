@@ -134,5 +134,55 @@ func (s *ComponentSpec) SetResourceRequirements(v []*ConditionExpression) *Compo
 }
 
 func (s *ComponentSpec) Validate() error {
-	return dara.Validate(s)
+	if s.CodeDir != nil {
+		if err := s.CodeDir.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperParameters != nil {
+		for _, item := range s.HyperParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputChannels != nil {
+		for _, item := range s.InputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricDefinitions != nil {
+		for _, item := range s.MetricDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputChannels != nil {
+		for _, item := range s.OutputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceRequirements != nil {
+		for _, item := range s.ResourceRequirements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

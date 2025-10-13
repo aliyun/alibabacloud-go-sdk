@@ -80,5 +80,10 @@ func (s *UpdateResourceGroupRequest) SetUserVpc(v *UserVpc) *UpdateResourceGroup
 }
 
 func (s *UpdateResourceGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

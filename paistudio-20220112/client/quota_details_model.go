@@ -155,5 +155,60 @@ func (s *QuotaDetails) SetUsedQuota(v *ResourceAmount) *QuotaDetails {
 }
 
 func (s *QuotaDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ActualMinQuota != nil {
+		if err := s.ActualMinQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AllocatableQuota != nil {
+		if err := s.AllocatableQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AllocatedQuota != nil {
+		if err := s.AllocatedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AncestorsAllocatedQuota != nil {
+		if err := s.AncestorsAllocatedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DescendantsAllocatedQuota != nil {
+		if err := s.DescendantsAllocatedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DesiredMinQuota != nil {
+		if err := s.DesiredMinQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestedQuota != nil {
+		if err := s.RequestedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelfAllocatedQuota != nil {
+		if err := s.SelfAllocatedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelfSubmittedQuota != nil {
+		if err := s.SelfSubmittedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemReservedQuota != nil {
+		if err := s.SystemReservedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsedQuota != nil {
+		if err := s.UsedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -88,5 +88,19 @@ func (s *UpdateQuotaRequest) SetQuotaName(v string) *UpdateQuotaRequest {
 }
 
 func (s *UpdateQuotaRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuotaConfig != nil {
+		if err := s.QuotaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

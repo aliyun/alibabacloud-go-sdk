@@ -59,5 +59,10 @@ func (s *ListTrainingJobsResponse) SetBody(v *ListTrainingJobsResponseBody) *Lis
 }
 
 func (s *ListTrainingJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

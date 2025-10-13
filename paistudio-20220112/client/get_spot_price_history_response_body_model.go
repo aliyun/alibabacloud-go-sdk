@@ -65,5 +65,14 @@ func (s *GetSpotPriceHistoryResponseBody) SetTotalCount(v int32) *GetSpotPriceHi
 }
 
 func (s *GetSpotPriceHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SpotPriceHistory != nil {
+		for _, item := range s.SpotPriceHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

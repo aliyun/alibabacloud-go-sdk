@@ -305,5 +305,47 @@ func (s *Quota) SetWorkspaces(v []*WorkspaceIdName) *Quota {
 }
 
 func (s *Quota) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Min != nil {
+		if err := s.Min.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaConfig != nil {
+		if err := s.QuotaConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuotaDetails != nil {
+		if err := s.QuotaDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubQuotas != nil {
+		for _, item := range s.SubQuotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Workspaces != nil {
+		for _, item := range s.Workspaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -65,7 +65,16 @@ func (s *ListAlgorithmVersionsResponseBody) SetTotalCount(v int64) *ListAlgorith
 }
 
 func (s *ListAlgorithmVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlgorithmVersions != nil {
+		for _, item := range s.AlgorithmVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlgorithmVersionsResponseBodyAlgorithmVersions struct {

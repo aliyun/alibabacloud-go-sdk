@@ -65,5 +65,14 @@ func (s *ListResourceGroupMachineGroupsResponseBody) SetTotalCount(v string) *Li
 }
 
 func (s *ListResourceGroupMachineGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MachineGroups != nil {
+		for _, item := range s.MachineGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

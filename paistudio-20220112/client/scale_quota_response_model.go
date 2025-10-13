@@ -59,5 +59,10 @@ func (s *ScaleQuotaResponse) SetBody(v *ScaleQuotaResponseBody) *ScaleQuotaRespo
 }
 
 func (s *ScaleQuotaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

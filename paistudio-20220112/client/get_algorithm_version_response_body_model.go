@@ -155,5 +155,10 @@ func (s *GetAlgorithmVersionResponseBody) SetUserId(v string) *GetAlgorithmVersi
 }
 
 func (s *GetAlgorithmVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlgorithmSpec != nil {
+		if err := s.AlgorithmSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

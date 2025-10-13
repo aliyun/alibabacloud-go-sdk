@@ -1,3 +1,8 @@
+2025-10-13 Version: v2.1.11
+- Update API ListNodes: add request parameters CliqueID.
+- Update API ListNodes: add request parameters HyperNode.
+
+
 2025-09-19 Version: v2.1.10
 - Update API CreateResourceGroup: add request parameters body.Version.
 - Update API GetQuota: add response parameters Body.HyperZones.

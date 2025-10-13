@@ -71,7 +71,12 @@ func (s *QuotaUser) SetWorkloadCount(v int32) *QuotaUser {
 }
 
 func (s *QuotaUser) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QuotaUserResources struct {
@@ -106,5 +111,15 @@ func (s *QuotaUserResources) SetUsed(v *ResourceAmount) *QuotaUserResources {
 }
 
 func (s *QuotaUserResources) Validate() error {
-	return dara.Validate(s)
+	if s.Submitted != nil {
+		if err := s.Submitted.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Used != nil {
+		if err := s.Used.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

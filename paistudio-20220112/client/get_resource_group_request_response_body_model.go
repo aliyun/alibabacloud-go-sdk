@@ -80,5 +80,14 @@ func (s *GetResourceGroupRequestResponseBody) SetRequestMemory(v int32) *GetReso
 }
 
 func (s *GetResourceGroupRequestResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RequestGPUInfos != nil {
+		for _, item := range s.RequestGPUInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

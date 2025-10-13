@@ -83,5 +83,15 @@ func (s *ResourceDiagnosisDetail) SetWorkloadIds(v []*string) *ResourceDiagnosis
 }
 
 func (s *ResourceDiagnosisDetail) Validate() error {
-	return dara.Validate(s)
+	if s.Limit != nil {
+		if err := s.Limit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Used != nil {
+		if err := s.Used.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

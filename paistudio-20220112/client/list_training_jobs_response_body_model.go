@@ -65,7 +65,16 @@ func (s *ListTrainingJobsResponseBody) SetTrainingJobs(v []*ListTrainingJobsResp
 }
 
 func (s *ListTrainingJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrainingJobs != nil {
+		for _, item := range s.TrainingJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobsResponseBodyTrainingJobs struct {
@@ -392,7 +401,72 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetWorkspaceId(v string) *Lis
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobs) Validate() error {
-	return dara.Validate(s)
+	if s.ComputeResource != nil {
+		if err := s.ComputeResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExperimentConfig != nil {
+		if err := s.ExperimentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HyperParameters != nil {
+		for _, item := range s.HyperParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InputChannels != nil {
+		for _, item := range s.InputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputChannels != nil {
+		for _, item := range s.OutputChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Scheduler != nil {
+		if err := s.Scheduler.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusTransitions != nil {
+		for _, item := range s.StatusTransitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResource struct {
@@ -479,7 +553,12 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetResourceNam
 }
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpec != nil {
+		if err := s.InstanceSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec struct {

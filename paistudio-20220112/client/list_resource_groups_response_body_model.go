@@ -70,5 +70,14 @@ func (s *ListResourceGroupsResponseBody) SetTotalCount(v int64) *ListResourceGro
 }
 
 func (s *ListResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceGroups != nil {
+		for _, item := range s.ResourceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

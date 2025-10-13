@@ -293,5 +293,25 @@ func (s *ListQuotaWorkloadsRequest) SetWorkspaceIds(v string) *ListQuotaWorkload
 }
 
 func (s *ListQuotaWorkloadsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GmtDequeuedTimeRange != nil {
+		if err := s.GmtDequeuedTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GmtEnqueuedTimeRange != nil {
+		if err := s.GmtEnqueuedTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GmtPositionModifiedTimeRange != nil {
+		if err := s.GmtPositionModifiedTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WorkloadCreatedTimeRange != nil {
+		if err := s.WorkloadCreatedTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

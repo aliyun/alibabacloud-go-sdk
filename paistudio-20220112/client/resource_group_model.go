@@ -140,5 +140,10 @@ func (s *ResourceGroup) SetWorkspaceID(v string) *ResourceGroup {
 }
 
 func (s *ResourceGroup) Validate() error {
-	return dara.Validate(s)
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
