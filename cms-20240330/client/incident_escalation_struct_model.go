@@ -119,5 +119,14 @@ func (s *IncidentEscalationStruct) SetWorkspace(v string) *IncidentEscalationStr
 }
 
 func (s *IncidentEscalationStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Stage != nil {
+		for _, item := range s.Stage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetAggTaskGroupResponse) SetBody(v *GetAggTaskGroupResponseBody) *GetAg
 }
 
 func (s *GetAggTaskGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

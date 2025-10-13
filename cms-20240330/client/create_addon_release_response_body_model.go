@@ -50,7 +50,12 @@ func (s *CreateAddonReleaseResponseBody) SetRequestId(v string) *CreateAddonRele
 }
 
 func (s *CreateAddonReleaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Release != nil {
+		if err := s.Release.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAddonReleaseResponseBodyRelease struct {
@@ -384,7 +389,21 @@ func (s *CreateAddonReleaseResponseBodyRelease) SetWorkspace(v string) *CreateAd
 }
 
 func (s *CreateAddonReleaseResponseBodyRelease) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAddonReleaseResponseBodyReleaseConditions struct {

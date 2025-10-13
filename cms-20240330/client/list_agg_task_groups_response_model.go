@@ -59,5 +59,10 @@ func (s *ListAggTaskGroupsResponse) SetBody(v *ListAggTaskGroupsResponseBody) *L
 }
 
 func (s *ListAggTaskGroupsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

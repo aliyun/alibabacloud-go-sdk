@@ -52,7 +52,12 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 }
 
 func (s *GetPrometheusInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstance != nil {
+		if err := s.PrometheusInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
@@ -538,7 +543,16 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetWorkspace(v str
 }
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstanceTags struct {

@@ -180,7 +180,17 @@ func (s *MaintainWindowForView) SetWorkspace(v string) *MaintainWindowForView {
 }
 
 func (s *MaintainWindowForView) Validate() error {
-	return dara.Validate(s)
+	if s.EffectTimeRange != nil {
+		if err := s.EffectTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MaintainWindowForViewEffectTimeRange struct {

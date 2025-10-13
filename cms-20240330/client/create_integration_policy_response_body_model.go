@@ -65,7 +65,12 @@ func (s *CreateIntegrationPolicyResponseBody) SetRequestId(v string) *CreateInte
 }
 
 func (s *CreateIntegrationPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIntegrationPolicyResponseBodyPolicy struct {

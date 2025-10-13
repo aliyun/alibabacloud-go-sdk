@@ -131,7 +131,12 @@ func (s *MergeRobot) SetWebhook(v string) *MergeRobot {
 }
 
 func (s *MergeRobot) Validate() error {
-	return dara.Validate(s)
+	if s.Extend != nil {
+		if err := s.Extend.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MergeRobotExtend struct {

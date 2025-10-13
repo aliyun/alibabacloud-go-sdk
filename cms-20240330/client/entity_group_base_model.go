@@ -119,7 +119,21 @@ func (s *EntityGroupBase) SetWorkspace(v string) *EntityGroupBase {
 }
 
 func (s *EntityGroupBase) Validate() error {
-  return dara.Validate(s)
+  if s.EntityQueries != nil {
+    for _, item := range s.EntityQueries {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.EntityRules != nil {
+    if err := s.EntityRules.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EntityGroupBaseEntityQueries struct {

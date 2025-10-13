@@ -131,7 +131,31 @@ func (s *IncidentMemberStruct) SetUserId(v int64) *IncidentMemberStruct {
 }
 
 func (s *IncidentMemberStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Acknowledge != nil {
+		if err := s.Acknowledge.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Escalation != nil {
+		if err := s.Escalation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScheduleGroup != nil {
+		if err := s.ScheduleGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IncidentMemberStructAcknowledge struct {

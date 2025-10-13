@@ -65,7 +65,16 @@ func (s *ListAddonReleasesResponseBody) SetTotal(v int64) *ListAddonReleasesResp
 }
 
 func (s *ListAddonReleasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Releases != nil {
+		for _, item := range s.Releases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAddonReleasesResponseBodyReleases struct {
@@ -431,7 +440,26 @@ func (s *ListAddonReleasesResponseBodyReleases) SetWorkspace(v string) *ListAddo
 }
 
 func (s *ListAddonReleasesResponseBodyReleases) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubAddonRelease != nil {
+		if err := s.SubAddonRelease.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAddonReleasesResponseBodyReleasesConditions struct {

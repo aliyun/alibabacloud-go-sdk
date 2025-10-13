@@ -99,7 +99,16 @@ func (s *AlertRuleDataSource) SetType(v string) *AlertRuleDataSource {
 }
 
 func (s *AlertRuleDataSource) Validate() error {
-	return dara.Validate(s)
+	if s.DsList != nil {
+		for _, item := range s.DsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleDataSourceDsList struct {

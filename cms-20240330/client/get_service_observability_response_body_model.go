@@ -143,7 +143,12 @@ func (s *GetServiceObservabilityResponseBody) SetWorkspace(v string) *GetService
 }
 
 func (s *GetServiceObservabilityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EntryPointInfo != nil {
+		if err := s.EntryPointInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceObservabilityResponseBodyEntryPointInfo struct {

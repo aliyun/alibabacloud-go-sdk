@@ -107,7 +107,12 @@ func (s *IncidentNoteStruct) SetType(v string) *IncidentNoteStruct {
 }
 
 func (s *IncidentNoteStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Operator != nil {
+		if err := s.Operator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type IncidentNoteStructOperator struct {

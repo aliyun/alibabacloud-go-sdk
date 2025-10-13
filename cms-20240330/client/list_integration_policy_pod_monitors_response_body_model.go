@@ -79,7 +79,16 @@ func (s *ListIntegrationPolicyPodMonitorsResponseBody) SetRequestId(v string) *L
 }
 
 func (s *ListIntegrationPolicyPodMonitorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PodMonitors != nil {
+		for _, item := range s.PodMonitors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors struct {
@@ -221,7 +230,16 @@ func (s *ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors) SetNamespace(v
 }
 
 func (s *ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints struct {

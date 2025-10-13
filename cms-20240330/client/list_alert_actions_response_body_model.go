@@ -95,7 +95,16 @@ func (s *ListAlertActionsResponseBody) SetTotal(v int32) *ListAlertActionsRespon
 }
 
 func (s *ListAlertActionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertActions != nil {
+		for _, item := range s.AlertActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertActionsResponseBodyAlertActions struct {
@@ -229,7 +238,47 @@ func (s *ListAlertActionsResponseBodyAlertActions) SetWebhookParam(v *ListAlertA
 }
 
 func (s *ListAlertActionsResponseBodyAlertActions) Validate() error {
-	return dara.Validate(s)
+	if s.EbParam != nil {
+		if err := s.EbParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EssParam != nil {
+		if err := s.EssParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Fc3Param != nil {
+		if err := s.Fc3Param.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FcParam != nil {
+		if err := s.FcParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MnsParam != nil {
+		if err := s.MnsParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PagerDutyParam != nil {
+		if err := s.PagerDutyParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsParam != nil {
+		if err := s.SlsParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebhookParam != nil {
+		if err := s.WebhookParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertActionsResponseBodyAlertActionsEbParam struct {

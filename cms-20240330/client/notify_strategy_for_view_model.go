@@ -170,7 +170,30 @@ func (s *NotifyStrategyForView) SetWorkspace(v string) *NotifyStrategyForView {
 }
 
 func (s *NotifyStrategyForView) Validate() error {
-	return dara.Validate(s)
+	if s.CustomTemplateEntries != nil {
+		for _, item := range s.CustomTemplateEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GroupingSetting != nil {
+		if err := s.GroupingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NotifyStrategyForViewCustomTemplateEntries struct {
@@ -317,7 +340,26 @@ func (s *NotifyStrategyForViewRoutes) SetSeverities(v []*string) *NotifyStrategy
 }
 
 func (s *NotifyStrategyForViewRoutes) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		for _, item := range s.Channels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EffectTimeRange != nil {
+		if err := s.EffectTimeRange.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type NotifyStrategyForViewRoutesChannels struct {

@@ -65,7 +65,12 @@ func (s *GetAggTaskGroupResponseBody) SetSuccess(v bool) *GetAggTaskGroupRespons
 }
 
 func (s *GetAggTaskGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AggTaskGroup != nil {
+		if err := s.AggTaskGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAggTaskGroupResponseBodyAggTaskGroup struct {
@@ -362,7 +367,16 @@ func (s *GetAggTaskGroupResponseBodyAggTaskGroup) SetUserId(v string) *GetAggTas
 }
 
 func (s *GetAggTaskGroupResponseBodyAggTaskGroup) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAggTaskGroupResponseBodyAggTaskGroupTags struct {

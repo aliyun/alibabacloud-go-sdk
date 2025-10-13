@@ -131,5 +131,10 @@ func (s *TransformAction) SetVariable(v string) *TransformAction {
 }
 
 func (s *TransformAction) Validate() error {
-	return dara.Validate(s)
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

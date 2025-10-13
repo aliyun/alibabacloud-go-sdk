@@ -84,7 +84,17 @@ func (s *SubscriptionForModify) SetSubscriptionName(v string) *SubscriptionForMo
 }
 
 func (s *SubscriptionForModify) Validate() error {
-	return dara.Validate(s)
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PushingSetting != nil {
+		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubscriptionForModifyPushingSetting struct {

@@ -104,7 +104,16 @@ func (s *GetUmodelDataResponseBody) SetTotalNodesCount(v int32) *GetUmodelDataRe
 }
 
 func (s *GetUmodelDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Errors != nil {
+		for _, item := range s.Errors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUmodelDataResponseBodyErrors struct {

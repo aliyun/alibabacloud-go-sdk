@@ -59,5 +59,10 @@ func (s *CreateUmodelResponse) SetBody(v *CreateUmodelResponseBody) *CreateUmode
 }
 
 func (s *CreateUmodelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

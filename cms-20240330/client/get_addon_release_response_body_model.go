@@ -65,7 +65,12 @@ func (s *GetAddonReleaseResponseBody) SetRequestId(v string) *GetAddonReleaseRes
 }
 
 func (s *GetAddonReleaseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Release != nil {
+		if err := s.Release.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAddonReleaseResponseBodyRelease struct {
@@ -401,7 +406,21 @@ func (s *GetAddonReleaseResponseBodyRelease) SetWorkspace(v string) *GetAddonRel
 }
 
 func (s *GetAddonReleaseResponseBodyRelease) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAddonReleaseResponseBodyReleaseConditions struct {

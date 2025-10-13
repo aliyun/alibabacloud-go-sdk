@@ -131,5 +131,10 @@ func (s *AlertRuleNotification) SetWxWebhooks(v []*string) *AlertRuleNotificatio
 }
 
 func (s *AlertRuleNotification) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyTime != nil {
+		if err := s.NotifyTime.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

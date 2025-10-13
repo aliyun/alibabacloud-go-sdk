@@ -71,5 +71,23 @@ func (s *AlertRuleAlertMetricInput) SetParamValues(v []*AlertRuleAlertMetricInpu
 }
 
 func (s *AlertRuleAlertMetricInput) Validate() error {
-	return dara.Validate(s)
+	if s.FilterValues != nil {
+		for _, item := range s.FilterValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ParamValues != nil {
+		for _, item := range s.ParamValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

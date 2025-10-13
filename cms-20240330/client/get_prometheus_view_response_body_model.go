@@ -52,7 +52,12 @@ func (s *GetPrometheusViewResponseBody) SetRequestId(v string) *GetPrometheusVie
 }
 
 func (s *GetPrometheusViewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusView != nil {
+		if err := s.PrometheusView.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPrometheusViewResponseBodyPrometheusView struct {
@@ -409,7 +414,25 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) SetWorkspace(v string) *Ge
 }
 
 func (s *GetPrometheusViewResponseBodyPrometheusView) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstances != nil {
+		for _, item := range s.PrometheusInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances struct {

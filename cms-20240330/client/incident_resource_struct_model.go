@@ -107,5 +107,10 @@ func (s *IncidentResourceStruct) SetUserId(v int64) *IncidentResourceStruct {
 }
 
 func (s *IncidentResourceStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

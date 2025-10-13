@@ -67,7 +67,16 @@ func (s *ListIntegrationPolicyDashboardsResponseBody) SetTotal(v int32) *ListInt
 }
 
 func (s *ListIntegrationPolicyDashboardsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Dashboards != nil {
+		for _, item := range s.Dashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {

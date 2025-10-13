@@ -191,5 +191,32 @@ func (s *IncidentPlanStruct) SetWorkspace(v string) *IncidentPlanStruct {
 }
 
 func (s *IncidentPlanStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Corporation != nil {
+		for _, item := range s.Corporation {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GroupBy != nil {
+		for _, item := range s.GroupBy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceFiled != nil {
+		for _, item := range s.ResourceFiled {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

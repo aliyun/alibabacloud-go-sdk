@@ -80,5 +80,10 @@ func (s *UpdateAddonReleaseRequest) SetValues(v string) *UpdateAddonReleaseReque
 }
 
 func (s *UpdateAddonReleaseRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

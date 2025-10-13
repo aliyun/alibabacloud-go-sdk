@@ -52,7 +52,16 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBody) SetStorageRequire
 }
 
 func (s *ListIntegrationPolicyStorageRequirementsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageRequirements != nil {
+		for _, item := range s.StorageRequirements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements struct {
@@ -133,7 +142,22 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 }
 
 func (s *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements) Validate() error {
-	return dara.Validate(s)
+	if s.Metadata != nil {
+		if err := s.Metadata.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Spec != nil {
+		if err := s.Spec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata struct {

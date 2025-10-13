@@ -191,7 +191,25 @@ func (s *AddonMeta) SetWeight(v int32) *AddonMeta {
 }
 
 func (s *AddonMeta) Validate() error {
-	return dara.Validate(s)
+	if s.Dashboards != nil {
+		for _, item := range s.Dashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Environments != nil {
+		for _, item := range s.Environments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddonMetaDashboards struct {
@@ -240,13 +258,14 @@ func (s *AddonMetaDashboards) Validate() error {
 }
 
 type AddonMetaEnvironments struct {
-	Dependencies *AddonMetaEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
-	Description  *string                            `json:"description,omitempty" xml:"description,omitempty"`
-	Enable       *bool                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	Label        *string                            `json:"label,omitempty" xml:"label,omitempty"`
-	Name         *string                            `json:"name,omitempty" xml:"name,omitempty"`
-	Policies     *AddonMetaEnvironmentsPolicies     `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	PolicyType   *string                            `json:"policyType,omitempty" xml:"policyType,omitempty"`
+	CommonSchemaRefs []*AddonMetaEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
+	Dependencies     *AddonMetaEnvironmentsDependencies       `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
+	Description      *string                                  `json:"description,omitempty" xml:"description,omitempty"`
+	Enable           *bool                                    `json:"enable,omitempty" xml:"enable,omitempty"`
+	Label            *string                                  `json:"label,omitempty" xml:"label,omitempty"`
+	Name             *string                                  `json:"name,omitempty" xml:"name,omitempty"`
+	Policies         *AddonMetaEnvironmentsPolicies           `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
+	PolicyType       *string                                  `json:"policyType,omitempty" xml:"policyType,omitempty"`
 }
 
 func (s AddonMetaEnvironments) String() string {
@@ -255,6 +274,10 @@ func (s AddonMetaEnvironments) String() string {
 
 func (s AddonMetaEnvironments) GoString() string {
 	return s.String()
+}
+
+func (s *AddonMetaEnvironments) GetCommonSchemaRefs() []*AddonMetaEnvironmentsCommonSchemaRefs {
+	return s.CommonSchemaRefs
 }
 
 func (s *AddonMetaEnvironments) GetDependencies() *AddonMetaEnvironmentsDependencies {
@@ -283,6 +306,11 @@ func (s *AddonMetaEnvironments) GetPolicies() *AddonMetaEnvironmentsPolicies {
 
 func (s *AddonMetaEnvironments) GetPolicyType() *string {
 	return s.PolicyType
+}
+
+func (s *AddonMetaEnvironments) SetCommonSchemaRefs(v []*AddonMetaEnvironmentsCommonSchemaRefs) *AddonMetaEnvironments {
+	s.CommonSchemaRefs = v
+	return s
 }
 
 func (s *AddonMetaEnvironments) SetDependencies(v *AddonMetaEnvironmentsDependencies) *AddonMetaEnvironments {
@@ -321,6 +349,60 @@ func (s *AddonMetaEnvironments) SetPolicyType(v string) *AddonMetaEnvironments {
 }
 
 func (s *AddonMetaEnvironments) Validate() error {
+	if s.CommonSchemaRefs != nil {
+		for _, item := range s.CommonSchemaRefs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Dependencies != nil {
+		if err := s.Dependencies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Policies != nil {
+		if err := s.Policies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AddonMetaEnvironmentsCommonSchemaRefs struct {
+	Group   *string `json:"group,omitempty" xml:"group,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s AddonMetaEnvironmentsCommonSchemaRefs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddonMetaEnvironmentsCommonSchemaRefs) GoString() string {
+	return s.String()
+}
+
+func (s *AddonMetaEnvironmentsCommonSchemaRefs) GetGroup() *string {
+	return s.Group
+}
+
+func (s *AddonMetaEnvironmentsCommonSchemaRefs) GetVersion() *string {
+	return s.Version
+}
+
+func (s *AddonMetaEnvironmentsCommonSchemaRefs) SetGroup(v string) *AddonMetaEnvironmentsCommonSchemaRefs {
+	s.Group = &v
+	return s
+}
+
+func (s *AddonMetaEnvironmentsCommonSchemaRefs) SetVersion(v string) *AddonMetaEnvironmentsCommonSchemaRefs {
+	s.Version = &v
+	return s
+}
+
+func (s *AddonMetaEnvironmentsCommonSchemaRefs) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -471,7 +553,26 @@ func (s *AddonMetaEnvironmentsPolicies) SetTargetAddonName(v string) *AddonMetaE
 }
 
 func (s *AddonMetaEnvironmentsPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.BindEntity != nil {
+		if err := s.BindEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetricCheckRule != nil {
+		if err := s.MetricCheckRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Protocols != nil {
+		for _, item := range s.Protocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddonMetaEnvironmentsPoliciesBindEntity struct {

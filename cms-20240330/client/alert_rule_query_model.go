@@ -242,7 +242,31 @@ func (s *AlertRuleQuery) SetType(v string) *AlertRuleQuery {
 }
 
 func (s *AlertRuleQuery) Validate() error {
-	return dara.Validate(s)
+	if s.EntityFilter != nil {
+		if err := s.EntityFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FirstJoin != nil {
+		if err := s.FirstJoin.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Queries != nil {
+		for _, item := range s.Queries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecondJoin != nil {
+		if err := s.SecondJoin.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AlertRuleQueryEntityFilter struct {
@@ -287,7 +311,16 @@ func (s *AlertRuleQueryEntityFilter) SetType(v string) *AlertRuleQueryEntityFilt
 }
 
 func (s *AlertRuleQueryEntityFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleQueryEntityFilterFilters struct {
@@ -442,7 +475,16 @@ func (s *AlertRuleQueryQueries) SetWindow(v int64) *AlertRuleQueryQueries {
 }
 
 func (s *AlertRuleQueryQueries) Validate() error {
-	return dara.Validate(s)
+	if s.ApmFilters != nil {
+		for _, item := range s.ApmFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleQueryQueriesApmFilters struct {

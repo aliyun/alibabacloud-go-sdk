@@ -67,7 +67,16 @@ func (s *ListPrometheusDashboardsResponseBody) SetTotalCount(v int32) *ListProme
 }
 
 func (s *ListPrometheusDashboardsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusDashboards != nil {
+		for _, item := range s.PrometheusDashboards {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusDashboardsResponseBodyPrometheusDashboards struct {

@@ -131,7 +131,52 @@ func (s *EntityDiscoverRule) SetTags(v []*EntityDiscoverRuleTags) *EntityDiscove
 }
 
 func (s *EntityDiscoverRule) Validate() error {
-  return dara.Validate(s)
+  if s.Annotations != nil {
+    for _, item := range s.Annotations {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.FieldRules != nil {
+    for _, item := range s.FieldRules {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.IpMatchRule != nil {
+    for _, item := range s.IpMatchRule {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Labels != nil {
+    for _, item := range s.Labels {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  if s.Tags != nil {
+    for _, item := range s.Tags {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EntityDiscoverRuleAnnotations struct {

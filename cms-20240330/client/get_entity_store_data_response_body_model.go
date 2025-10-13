@@ -74,7 +74,12 @@ func (s *GetEntityStoreDataResponseBody) SetResponseStatus(v *GetEntityStoreData
 }
 
 func (s *GetEntityStoreDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseStatus != nil {
+		if err := s.ResponseStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEntityStoreDataResponseBodyResponseStatus struct {
@@ -139,7 +144,16 @@ func (s *GetEntityStoreDataResponseBodyResponseStatus) SetStatusItem(v []*GetEnt
 }
 
 func (s *GetEntityStoreDataResponseBodyResponseStatus) Validate() error {
-	return dara.Validate(s)
+	if s.StatusItem != nil {
+		for _, item := range s.StatusItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEntityStoreDataResponseBodyResponseStatusStatusItem struct {

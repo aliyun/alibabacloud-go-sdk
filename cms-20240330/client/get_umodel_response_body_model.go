@@ -95,7 +95,16 @@ func (s *GetUmodelResponseBody) SetWorkspace(v string) *GetUmodelResponseBody {
 }
 
 func (s *GetUmodelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommonSchemaRef != nil {
+		for _, item := range s.CommonSchemaRef {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUmodelResponseBodyCommonSchemaRef struct {

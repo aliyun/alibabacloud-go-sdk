@@ -119,7 +119,16 @@ func (s *AlertRuleAlertMetricFilterDef) SetSupportedOpts(v []*AlertRuleAlertMetr
 }
 
 func (s *AlertRuleAlertMetricFilterDef) Validate() error {
-	return dara.Validate(s)
+	if s.SupportedOpts != nil {
+		for _, item := range s.SupportedOpts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleAlertMetricFilterDefSupportedOpts struct {

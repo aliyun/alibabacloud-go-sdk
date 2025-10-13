@@ -143,5 +143,24 @@ func (s *IncidentStruct) SetUserId(v string) *IncidentStruct {
 }
 
 func (s *IncidentStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		for _, item := range s.Escalations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IncidentPlan != nil {
+		if err := s.IncidentPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

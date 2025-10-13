@@ -172,7 +172,25 @@ func (s *CreatePrometheusViewRequest) SetWorkspace(v string) *CreatePrometheusVi
 }
 
 func (s *CreatePrometheusViewRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstances != nil {
+		for _, item := range s.PrometheusInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePrometheusViewRequestPrometheusInstances struct {

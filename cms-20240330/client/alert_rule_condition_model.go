@@ -197,7 +197,40 @@ func (s *AlertRuleCondition) SetValue(v float64) *AlertRuleCondition {
 }
 
 func (s *AlertRuleCondition) Validate() error {
-	return dara.Validate(s)
+	if s.CaseList != nil {
+		for _, item := range s.CaseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CompareList != nil {
+		for _, item := range s.CompareList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CompositeEscalation != nil {
+		if err := s.CompositeEscalation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExpressEscalation != nil {
+		if err := s.ExpressEscalation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SimpleEscalation != nil {
+		if err := s.SimpleEscalation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AlertRuleConditionCaseList struct {
@@ -327,7 +360,16 @@ func (s *AlertRuleConditionCompareList) SetYoyTimeValue(v int32) *AlertRuleCondi
 }
 
 func (s *AlertRuleConditionCompareList) Validate() error {
-	return dara.Validate(s)
+	if s.ValueLevelList != nil {
+		for _, item := range s.ValueLevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleConditionCompareListValueLevelList struct {
@@ -417,7 +459,16 @@ func (s *AlertRuleConditionCompositeEscalation) SetTimes(v int32) *AlertRuleCond
 }
 
 func (s *AlertRuleConditionCompositeEscalation) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		for _, item := range s.Escalations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleConditionCompositeEscalationEscalations struct {
@@ -572,7 +623,16 @@ func (s *AlertRuleConditionSimpleEscalation) SetPeriod(v int64) *AlertRuleCondit
 }
 
 func (s *AlertRuleConditionSimpleEscalation) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		for _, item := range s.Escalations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AlertRuleConditionSimpleEscalationEscalations struct {

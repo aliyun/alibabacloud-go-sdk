@@ -59,5 +59,15 @@ func (s *AlertRuleSend) SetSendToArms(v bool) *AlertRuleSend {
 }
 
 func (s *AlertRuleSend) Validate() error {
-	return dara.Validate(s)
+	if s.Action != nil {
+		if err := s.Action.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Notification != nil {
+		if err := s.Notification.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

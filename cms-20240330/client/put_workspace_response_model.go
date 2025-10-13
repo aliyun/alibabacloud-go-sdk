@@ -59,5 +59,10 @@ func (s *PutWorkspaceResponse) SetBody(v *PutWorkspaceResponseBody) *PutWorkspac
 }
 
 func (s *PutWorkspaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -52,7 +52,12 @@ func (s *GetIntegrationPolicyResponseBody) SetRequestId(v string) *GetIntegratio
 }
 
 func (s *GetIntegrationPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIntegrationPolicyResponseBodyPolicy struct {
@@ -198,7 +203,31 @@ func (s *GetIntegrationPolicyResponseBodyPolicy) SetWorkspace(v string) *GetInte
 }
 
 func (s *GetIntegrationPolicyResponseBodyPolicy) Validate() error {
-	return dara.Validate(s)
+	if s.BindResource != nil {
+		if err := s.BindResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EntityGroup != nil {
+		if err := s.EntityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManagedInfo != nil {
+		if err := s.ManagedInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIntegrationPolicyResponseBodyPolicyBindResource struct {
@@ -381,7 +410,12 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroup) SetWorkspace(v strin
 }
 
 func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroup) Validate() error {
-	return dara.Validate(s)
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules struct {
@@ -489,7 +523,48 @@ func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) SetTags(v
 }
 
 func (s *GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FieldRules != nil {
+		for _, item := range s.FieldRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IpMatchRule != nil {
+		if err := s.IpMatchRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations struct {

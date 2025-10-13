@@ -109,7 +109,21 @@ func (s *CreateIntegrationPolicyRequest) SetWorkspace(v string) *CreateIntegrati
 }
 
 func (s *CreateIntegrationPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EntityGroup != nil {
+		if err := s.EntityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateIntegrationPolicyRequestEntityGroup struct {
@@ -120,7 +134,8 @@ type CreateIntegrationPolicyRequestEntityGroup struct {
 	// example:
 	//
 	// na61prod3-na61cloudhdfsssd
-	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	ClusterId          *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	DisablePolicyShare *bool   `json:"disablePolicyShare,omitempty" xml:"disablePolicyShare,omitempty"`
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
@@ -147,6 +162,10 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *CreateIntegrationPolicyRequestEntityGroup) GetDisablePolicyShare() *bool {
+	return s.DisablePolicyShare
+}
+
 func (s *CreateIntegrationPolicyRequestEntityGroup) GetEntityGroupId() *string {
 	return s.EntityGroupId
 }
@@ -162,6 +181,11 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) SetClusterEntityType(v strin
 
 func (s *CreateIntegrationPolicyRequestEntityGroup) SetClusterId(v string) *CreateIntegrationPolicyRequestEntityGroup {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateIntegrationPolicyRequestEntityGroup) SetDisablePolicyShare(v bool) *CreateIntegrationPolicyRequestEntityGroup {
+	s.DisablePolicyShare = &v
 	return s
 }
 

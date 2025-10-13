@@ -50,7 +50,12 @@ func (s *GetServiceResponseBody) SetService(v *GetServiceResponseBodyService) *G
 }
 
 func (s *GetServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Service != nil {
+		if err := s.Service.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetServiceResponseBodyService struct {

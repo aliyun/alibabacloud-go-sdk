@@ -95,7 +95,16 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 func (s *ListWorkspacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Workspaces != nil {
+		for _, item := range s.Workspaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {

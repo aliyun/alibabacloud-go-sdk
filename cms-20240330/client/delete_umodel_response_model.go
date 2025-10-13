@@ -59,5 +59,10 @@ func (s *DeleteUmodelResponse) SetBody(v *DeleteUmodelResponseBody) *DeleteUmode
 }
 
 func (s *DeleteUmodelResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

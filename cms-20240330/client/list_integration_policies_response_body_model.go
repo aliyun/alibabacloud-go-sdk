@@ -97,7 +97,16 @@ func (s *ListIntegrationPoliciesResponseBody) SetTotalCount(v int32) *ListIntegr
 }
 
 func (s *ListIntegrationPoliciesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policies != nil {
+		for _, item := range s.Policies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPoliciesResponseBodyPolicies struct {
@@ -253,7 +262,36 @@ func (s *ListIntegrationPoliciesResponseBodyPolicies) SetWorkspace(v string) *Li
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.BindResource != nil {
+		if err := s.BindResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EntityGroup != nil {
+		if err := s.EntityGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManagedInfo != nil {
+		if err := s.ManagedInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubAddonRelease != nil {
+		if err := s.SubAddonRelease.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesBindResource struct {
@@ -433,7 +471,12 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroup) SetWorkspace(v 
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroup) Validate() error {
-	return dara.Validate(s)
+	if s.EntityRules != nil {
+		if err := s.EntityRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules struct {
@@ -541,7 +584,48 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules) SetT
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FieldRules != nil {
+		for _, item := range s.FieldRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IpMatchRule != nil {
+		if err := s.IpMatchRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotations struct {

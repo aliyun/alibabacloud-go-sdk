@@ -95,7 +95,16 @@ func (s *ListAggTaskGroupsResponseBody) SetTotalCount(v int32) *ListAggTaskGroup
 }
 
 func (s *ListAggTaskGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AggTaskGroups != nil {
+		for _, item := range s.AggTaskGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
@@ -354,7 +363,16 @@ func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) SetUpdateTime(v string) *Li
 }
 
 func (s *ListAggTaskGroupsResponseBodyAggTaskGroups) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAggTaskGroupsResponseBodyAggTaskGroupsTags struct {

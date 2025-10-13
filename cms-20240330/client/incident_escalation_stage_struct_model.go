@@ -131,5 +131,14 @@ func (s *IncidentEscalationStageStruct) SetWaitToNextStageTime(v int32) *Inciden
 }
 
 func (s *IncidentEscalationStageStruct) Validate() error {
-	return dara.Validate(s)
+	if s.Contact != nil {
+		for _, item := range s.Contact {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

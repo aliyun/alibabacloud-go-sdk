@@ -52,7 +52,12 @@ func (s *CreatePrometheusVirtualInstanceResponseBody) SetRequestId(v string) *Cr
 }
 
 func (s *CreatePrometheusVirtualInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreatePrometheusVirtualInstanceResponseBodyInstance struct {

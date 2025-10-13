@@ -125,7 +125,16 @@ func (s *UpdatePrometheusViewRequest) SetWorkspace(v string) *UpdatePrometheusVi
 }
 
 func (s *UpdatePrometheusViewRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstances != nil {
+		for _, item := range s.PrometheusInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdatePrometheusViewRequestPrometheusInstances struct {

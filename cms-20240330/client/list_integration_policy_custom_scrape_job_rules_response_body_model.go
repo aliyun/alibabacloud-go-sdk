@@ -82,7 +82,16 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) SetRequestId(v s
 }
 
 func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomScrapeJobRules != nil {
+		for _, item := range s.CustomScrapeJobRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules struct {
@@ -239,7 +248,16 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRul
 }
 
 func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules) Validate() error {
-	return dara.Validate(s)
+	if s.ScrapeConfigs != nil {
+		for _, item := range s.ScrapeConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs struct {

@@ -100,7 +100,16 @@ func (s *ListPrometheusInstancesResponseBody) SetTotalCount(v int32) *ListPromet
 }
 
 func (s *ListPrometheusInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrometheusInstances != nil {
+		for _, item := range s.PrometheusInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
@@ -317,7 +326,16 @@ func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) SetWorkspace(v 
 }
 
 func (s *ListPrometheusInstancesResponseBodyPrometheusInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstancesTags struct {

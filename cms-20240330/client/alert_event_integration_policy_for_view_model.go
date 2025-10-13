@@ -180,5 +180,19 @@ func (s *AlertEventIntegrationPolicyForView) SetWorkspace(v string) *AlertEventI
 }
 
 func (s *AlertEventIntegrationPolicyForView) Validate() error {
-	return dara.Validate(s)
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TransformerSetting != nil {
+		for _, item := range s.TransformerSetting {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
