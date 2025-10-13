@@ -154,7 +154,12 @@ func (s *ListNamespacedConfigMapsResponseBody) SetTraceId(v string) *ListNamespa
 }
 
 func (s *ListNamespacedConfigMapsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNamespacedConfigMapsResponseBodyData struct {
@@ -180,7 +185,16 @@ func (s *ListNamespacedConfigMapsResponseBodyData) SetConfigMaps(v []*ListNamesp
 }
 
 func (s *ListNamespacedConfigMapsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigMaps != nil {
+		for _, item := range s.ConfigMaps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
@@ -315,7 +329,16 @@ func (s *ListNamespacedConfigMapsResponseBodyDataConfigMaps) SetUpdateTime(v int
 }
 
 func (s *ListNamespacedConfigMapsResponseBodyDataConfigMaps) Validate() error {
-	return dara.Validate(s)
+	if s.RelateApps != nil {
+		for _, item := range s.RelateApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps struct {

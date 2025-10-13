@@ -122,7 +122,12 @@ func (s *BatchRestartApplicationsResponseBody) SetTraceId(v string) *BatchRestar
 }
 
 func (s *BatchRestartApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchRestartApplicationsResponseBodyData struct {

@@ -59,5 +59,14 @@ func (s *ListCustomDomainOutput) SetRequestId(v string) *ListCustomDomainOutput 
 }
 
 func (s *ListCustomDomainOutput) Validate() error {
-	return dara.Validate(s)
+	if s.CustomDomains != nil {
+		for _, item := range s.CustomDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetWebshellTokenResponse) SetBody(v *GetWebshellTokenResponseBody) *Get
 }
 
 func (s *GetWebshellTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

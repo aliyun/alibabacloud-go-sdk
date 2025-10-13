@@ -154,7 +154,12 @@ func (s *UpdateNamespaceResponseBody) SetTraceId(v string) *UpdateNamespaceRespo
 }
 
 func (s *UpdateNamespaceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateNamespaceResponseBodyData struct {

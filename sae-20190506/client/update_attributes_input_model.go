@@ -59,5 +59,10 @@ func (s *UpdateAttributesInput) SetVersionID(v string) *UpdateAttributesInput {
 }
 
 func (s *UpdateAttributesInput) Validate() error {
-	return dara.Validate(s)
+	if s.HttpTriggerConfig != nil {
+		if err := s.HttpTriggerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

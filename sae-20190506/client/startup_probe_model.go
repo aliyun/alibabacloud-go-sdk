@@ -83,5 +83,10 @@ func (s *StartupProbe) SetTimeoutSeconds(v int32) *StartupProbe {
 }
 
 func (s *StartupProbe) Validate() error {
-	return dara.Validate(s)
+	if s.ProbeHandler != nil {
+		if err := s.ProbeHandler.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

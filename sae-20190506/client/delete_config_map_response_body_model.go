@@ -154,7 +154,12 @@ func (s *DeleteConfigMapResponseBody) SetTraceId(v string) *DeleteConfigMapRespo
 }
 
 func (s *DeleteConfigMapResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteConfigMapResponseBodyData struct {

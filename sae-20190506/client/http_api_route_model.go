@@ -275,7 +275,35 @@ func (s *HttpApiRoute) SetSourceType(v string) *HttpApiRoute {
 }
 
 func (s *HttpApiRoute) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Policies != nil {
+		if err := s.Policies.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Predicates != nil {
+		if err := s.Predicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Services != nil {
+		for _, item := range s.Services {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiRouteDomains struct {
@@ -355,7 +383,22 @@ func (s *HttpApiRoutePolicies) SetTimeout(v *HttpApiRoutePoliciesTimeout) *HttpA
 }
 
 func (s *HttpApiRoutePolicies) Validate() error {
-	return dara.Validate(s)
+	if s.Fallback != nil {
+		if err := s.Fallback.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Retry != nil {
+		if err := s.Retry.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timeout != nil {
+		if err := s.Timeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HttpApiRoutePoliciesFallback struct {
@@ -390,7 +433,16 @@ func (s *HttpApiRoutePoliciesFallback) SetEnable(v bool) *HttpApiRoutePoliciesFa
 }
 
 func (s *HttpApiRoutePoliciesFallback) Validate() error {
-	return dara.Validate(s)
+	if s.Destinations != nil {
+		for _, item := range s.Destinations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiRoutePoliciesFallbackDestinations struct {
@@ -626,7 +678,30 @@ func (s *HttpApiRoutePredicates) SetQueryPredicates(v []*HttpApiRoutePredicatesQ
 }
 
 func (s *HttpApiRoutePredicates) Validate() error {
-	return dara.Validate(s)
+	if s.HeaderPredicates != nil {
+		for _, item := range s.HeaderPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathPredicates != nil {
+		if err := s.PathPredicates.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryPredicates != nil {
+		for _, item := range s.QueryPredicates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HttpApiRoutePredicatesHeaderPredicates struct {

@@ -150,7 +150,12 @@ func (s *BindSlbResponseBody) SetTraceId(v string) *BindSlbResponseBody {
 }
 
 func (s *BindSlbResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BindSlbResponseBodyData struct {

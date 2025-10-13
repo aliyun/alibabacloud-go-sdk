@@ -39,5 +39,14 @@ func (s *AclConfig) SetAclEntries(v []*AclEntryConfig) *AclConfig {
 }
 
 func (s *AclConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AclEntries != nil {
+		for _, item := range s.AclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DeleteWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *DeleteW
 }
 
 func (s *DeleteWebCustomDomainResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

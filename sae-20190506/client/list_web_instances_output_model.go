@@ -59,5 +59,14 @@ func (s *ListWebInstancesOutput) SetWebVersionStatus(v map[string]*WebVersionSta
 }
 
 func (s *ListWebInstancesOutput) Validate() error {
-	return dara.Validate(s)
+	if s.WebInstances != nil {
+		for _, item := range s.WebInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

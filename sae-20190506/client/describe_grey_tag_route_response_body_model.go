@@ -150,7 +150,12 @@ func (s *DescribeGreyTagRouteResponseBody) SetTraceId(v string) *DescribeGreyTag
 }
 
 func (s *DescribeGreyTagRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGreyTagRouteResponseBodyData struct {
@@ -287,7 +292,34 @@ func (s *DescribeGreyTagRouteResponseBodyData) SetUpdateTime(v int64) *DescribeG
 }
 
 func (s *DescribeGreyTagRouteResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlbRules != nil {
+		for _, item := range s.AlbRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DubboRules != nil {
+		for _, item := range s.DubboRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScRules != nil {
+		for _, item := range s.ScRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGreyTagRouteResponseBodyDataAlbRules struct {
@@ -357,7 +389,16 @@ func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) SetServiceId(v string) *D
 }
 
 func (s *DescribeGreyTagRouteResponseBodyDataAlbRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGreyTagRouteResponseBodyDataAlbRulesItems struct {
@@ -588,7 +629,16 @@ func (s *DescribeGreyTagRouteResponseBodyDataDubboRules) SetVersion(v string) *D
 }
 
 func (s *DescribeGreyTagRouteResponseBodyDataDubboRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGreyTagRouteResponseBodyDataDubboRulesItems struct {
@@ -788,7 +838,16 @@ func (s *DescribeGreyTagRouteResponseBodyDataScRules) SetPath(v string) *Describ
 }
 
 func (s *DescribeGreyTagRouteResponseBodyDataScRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGreyTagRouteResponseBodyDataScRulesItems struct {

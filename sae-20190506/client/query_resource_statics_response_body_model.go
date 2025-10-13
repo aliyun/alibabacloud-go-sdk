@@ -158,7 +158,12 @@ func (s *QueryResourceStaticsResponseBody) SetTraceId(v string) *QueryResourceSt
 }
 
 func (s *QueryResourceStaticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryResourceStaticsResponseBodyData struct {
@@ -195,7 +200,17 @@ func (s *QueryResourceStaticsResponseBodyData) SetSummary(v *QueryResourceStatic
 }
 
 func (s *QueryResourceStaticsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RealTimeRes != nil {
+		if err := s.RealTimeRes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryResourceStaticsResponseBodyDataRealTimeRes struct {

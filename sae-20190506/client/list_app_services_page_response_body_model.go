@@ -150,7 +150,16 @@ func (s *ListAppServicesPageResponseBody) SetTraceId(v string) *ListAppServicesP
 }
 
 func (s *ListAppServicesPageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppServicesPageResponseBodyData struct {
@@ -236,7 +245,16 @@ func (s *ListAppServicesPageResponseBodyData) SetTotalSize(v string) *ListAppSer
 }
 
 func (s *ListAppServicesPageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppServicesPageResponseBodyDataResult struct {

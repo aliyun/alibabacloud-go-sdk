@@ -35,5 +35,10 @@ func (s *InstanceExecAuthorizationInput) SetOptions(v *InstanceExecAuthorization
 }
 
 func (s *InstanceExecAuthorizationInput) Validate() error {
-	return dara.Validate(s)
+	if s.Options != nil {
+		if err := s.Options.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

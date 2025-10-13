@@ -122,7 +122,16 @@ func (s *ListAllSwimmingLanesResponseBody) SetTraceId(v string) *ListAllSwimming
 }
 
 func (s *ListAllSwimmingLanesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyData struct {
@@ -245,7 +254,26 @@ func (s *ListAllSwimmingLanesResponseBodyData) SetMseGatewayEntryRule(v *ListAll
 }
 
 func (s *ListAllSwimmingLanesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppEntryRule != nil {
+		if err := s.AppEntryRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MseGatewayEntryRule != nil {
+		if err := s.MseGatewayEntryRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyDataAppEntryRule struct {
@@ -329,7 +357,16 @@ func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetPercentageByPath(v
 }
 
 func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions struct {
@@ -580,7 +617,25 @@ func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetRoutes(v []
 }
 
 func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions struct {
@@ -698,7 +753,12 @@ func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) SetRoute
 }
 
 func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePredicate != nil {
+		if err := s.RoutePredicate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate struct {
@@ -723,7 +783,12 @@ func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredi
 }
 
 func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) Validate() error {
-	return dara.Validate(s)
+	if s.PathPredicate != nil {
+		if err := s.PathPredicate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate struct {

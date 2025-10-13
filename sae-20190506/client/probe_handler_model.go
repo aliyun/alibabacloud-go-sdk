@@ -47,5 +47,15 @@ func (s *ProbeHandler) SetTcpSocket(v *TCPSocketAction) *ProbeHandler {
 }
 
 func (s *ProbeHandler) Validate() error {
-	return dara.Validate(s)
+	if s.HttpGet != nil {
+		if err := s.HttpGet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TcpSocket != nil {
+		if err := s.TcpSocket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -89,7 +89,34 @@ func (s *PriceEstimateOutput) SetTotalPrice(v float32) *PriceEstimateOutput {
 }
 
 func (s *PriceEstimateOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PostPayItems != nil {
+		for _, item := range s.PostPayItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PriceEstimateOutputApps struct {
@@ -137,7 +164,21 @@ func (s *PriceEstimateOutputApps) SetUsages(v []*PriceEstimateOutputAppsUsages) 
 }
 
 func (s *PriceEstimateOutputApps) Validate() error {
-	return dara.Validate(s)
+	if s.Feature != nil {
+		if err := s.Feature.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usages != nil {
+		for _, item := range s.Usages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PriceEstimateOutputAppsUsages struct {
@@ -294,7 +335,16 @@ func (s *PriceEstimateOutputItems) SetUnit(v string) *PriceEstimateOutputItems {
 }
 
 func (s *PriceEstimateOutputItems) Validate() error {
-	return dara.Validate(s)
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PriceEstimateOutputItemsSteps struct {
@@ -474,7 +524,16 @@ func (s *PriceEstimateOutputPostPayItems) SetUnit(v string) *PriceEstimateOutput
 }
 
 func (s *PriceEstimateOutputPostPayItems) Validate() error {
-	return dara.Validate(s)
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PriceEstimateOutputPostPayItemsSteps struct {

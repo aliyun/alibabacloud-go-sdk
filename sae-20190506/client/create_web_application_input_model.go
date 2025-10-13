@@ -104,5 +104,25 @@ func (s *CreateWebApplicationInput) SetWebTrafficConfig(v *WebTrafficConfig) *Cr
 }
 
 func (s *CreateWebApplicationInput) Validate() error {
-	return dara.Validate(s)
+	if s.RevisionConfig != nil {
+		if err := s.RevisionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebNetworkConfig != nil {
+		if err := s.WebNetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebScalingConfig != nil {
+		if err := s.WebScalingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebTrafficConfig != nil {
+		if err := s.WebTrafficConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

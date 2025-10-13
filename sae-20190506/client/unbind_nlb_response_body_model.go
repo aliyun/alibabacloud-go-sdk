@@ -154,7 +154,12 @@ func (s *UnbindNlbResponseBody) SetTraceId(v string) *UnbindNlbResponseBody {
 }
 
 func (s *UnbindNlbResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnbindNlbResponseBodyData struct {

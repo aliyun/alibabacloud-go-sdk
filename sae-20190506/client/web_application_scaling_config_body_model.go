@@ -83,5 +83,10 @@ func (s *WebApplicationScalingConfigBody) SetSuccess(v bool) *WebApplicationScal
 }
 
 func (s *WebApplicationScalingConfigBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

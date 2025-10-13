@@ -107,5 +107,10 @@ func (s *TrafficConfig) SetVersionId(v string) *TrafficConfig {
 }
 
 func (s *TrafficConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePolicy != nil {
+		if err := s.RoutePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

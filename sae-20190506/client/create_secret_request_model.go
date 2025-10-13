@@ -91,7 +91,12 @@ func (s *CreateSecretRequest) SetSecretType(v string) *CreateSecretRequest {
 }
 
 func (s *CreateSecretRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SecretData != nil {
+		if err := s.SecretData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSecretRequestSecretData struct {

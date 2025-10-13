@@ -47,5 +47,10 @@ func (s *WebApplicationStatus) SetWebScalingConfig(v *WebScalingConfig) *WebAppl
 }
 
 func (s *WebApplicationStatus) Validate() error {
-	return dara.Validate(s)
+	if s.WebScalingConfig != nil {
+		if err := s.WebScalingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

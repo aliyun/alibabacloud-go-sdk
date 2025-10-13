@@ -59,5 +59,10 @@ func (s *BatchStopApplicationsResponse) SetBody(v *BatchStopApplicationsResponse
 }
 
 func (s *BatchStopApplicationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

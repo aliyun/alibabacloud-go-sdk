@@ -136,7 +136,37 @@ func (s *BuildPipeline) SetTriggerConfig(v *BuildPipelineTriggerConfig) *BuildPi
 }
 
 func (s *BuildPipeline) Validate() error {
-	return dara.Validate(s)
+	if s.BuildConfig != nil {
+		if err := s.BuildConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CodeConfig != nil {
+		if err := s.CodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfig != nil {
+		if err := s.DeployConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageConfig != nil {
+		if err := s.ImageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PackageConfig != nil {
+		if err := s.PackageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerConfig != nil {
+		if err := s.TriggerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BuildPipelineBuildConfig struct {
@@ -248,7 +278,12 @@ func (s *BuildPipelineBuildConfig) SetWorkingDir(v string) *BuildPipelineBuildCo
 }
 
 func (s *BuildPipelineBuildConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TomcatConfig != nil {
+		if err := s.TomcatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BuildPipelineCodeConfig struct {

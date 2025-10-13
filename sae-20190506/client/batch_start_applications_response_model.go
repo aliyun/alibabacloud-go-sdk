@@ -59,5 +59,10 @@ func (s *BatchStartApplicationsResponse) SetBody(v *BatchStartApplicationsRespon
 }
 
 func (s *BatchStartApplicationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

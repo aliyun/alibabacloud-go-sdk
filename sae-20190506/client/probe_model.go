@@ -83,7 +83,12 @@ func (s *Probe) SetTimeoutSeconds(v int32) *Probe {
 }
 
 func (s *Probe) Validate() error {
-	return dara.Validate(s)
+	if s.ProbeHandler != nil {
+		if err := s.ProbeHandler.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ProbeProbeHandler struct {
@@ -118,7 +123,17 @@ func (s *ProbeProbeHandler) SetTcpSocket(v *ProbeProbeHandlerTcpSocket) *ProbePr
 }
 
 func (s *ProbeProbeHandler) Validate() error {
-	return dara.Validate(s)
+	if s.HttpGet != nil {
+		if err := s.HttpGet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TcpSocket != nil {
+		if err := s.TcpSocket.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ProbeProbeHandlerHttpGet struct {
@@ -163,7 +178,16 @@ func (s *ProbeProbeHandlerHttpGet) SetPort(v int32) *ProbeProbeHandlerHttpGet {
 }
 
 func (s *ProbeProbeHandlerHttpGet) Validate() error {
-	return dara.Validate(s)
+	if s.HttpHeaders != nil {
+		for _, item := range s.HttpHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ProbeProbeHandlerHttpGetHttpHeaders struct {

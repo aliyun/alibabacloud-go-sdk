@@ -71,7 +71,25 @@ func (s *Submenu) SetSubmenus(v []*Submenu) *Submenu {
 }
 
 func (s *Submenu) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Submenus != nil {
+		for _, item := range s.Submenus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmenuItems struct {

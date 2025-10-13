@@ -57,5 +57,10 @@ func (s *CreateWebCustomDomainRequest) SetBody(v *CreateWebCustomDomainInput) *C
 }
 
 func (s *CreateWebCustomDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

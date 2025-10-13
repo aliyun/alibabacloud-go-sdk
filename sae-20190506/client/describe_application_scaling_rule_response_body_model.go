@@ -127,7 +127,12 @@ func (s *DescribeApplicationScalingRuleResponseBody) SetTraceId(v string) *Descr
 }
 
 func (s *DescribeApplicationScalingRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationScalingRuleResponseBodyData struct {
@@ -321,7 +326,17 @@ func (s *DescribeApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) 
 }
 
 func (s *DescribeApplicationScalingRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metric != nil {
+		if err := s.Metric.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timer != nil {
+		if err := s.Timer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetric struct {
@@ -410,7 +425,31 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) SetScaleUpRules(v
 }
 
 func (s *DescribeApplicationScalingRuleResponseBodyDataMetric) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MetricsStatus != nil {
+		if err := s.MetricsStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleDownRules != nil {
+		if err := s.ScaleDownRules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleUpRules != nil {
+		if err := s.ScaleUpRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
@@ -624,7 +663,25 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) SetN
 }
 
 func (s *DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatus) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentMetrics != nil {
+		for _, item := range s.CurrentMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NextScaleMetrics != nil {
+		for _, item := range s.NextScaleMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataMetricMetricsStatusCurrentMetrics struct {
@@ -1001,7 +1058,16 @@ func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*
 }
 
 func (s *DescribeApplicationScalingRuleResponseBodyDataTimer) Validate() error {
-	return dara.Validate(s)
+	if s.Schedules != nil {
+		for _, item := range s.Schedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationScalingRuleResponseBodyDataTimerSchedules struct {

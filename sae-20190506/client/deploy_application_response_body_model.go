@@ -158,7 +158,12 @@ func (s *DeployApplicationResponseBody) SetTraceId(v string) *DeployApplicationR
 }
 
 func (s *DeployApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeployApplicationResponseBodyData struct {

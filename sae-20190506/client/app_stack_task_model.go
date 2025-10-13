@@ -140,7 +140,16 @@ func (s *AppStackTask) SetTaskId(v string) *AppStackTask {
 }
 
 func (s *AppStackTask) Validate() error {
-	return dara.Validate(s)
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AppStackTaskSteps struct {

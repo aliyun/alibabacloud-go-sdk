@@ -83,5 +83,10 @@ func (s *HTTPTriggerConfig) SetSafeMode(v bool) *HTTPTriggerConfig {
 }
 
 func (s *HTTPTriggerConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

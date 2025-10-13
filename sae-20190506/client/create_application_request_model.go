@@ -1686,5 +1686,23 @@ func (s *CreateApplicationRequest) SetWebContainer(v string) *CreateApplicationR
 }
 
 func (s *CreateApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InitContainersConfig != nil {
+		for _, item := range s.InitContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SidecarContainersConfig != nil {
+		for _, item := range s.SidecarContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

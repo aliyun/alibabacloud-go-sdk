@@ -47,5 +47,10 @@ func (s *ApplicationStatus) SetScaleConfig(v *ScaleConfig) *ApplicationStatus {
 }
 
 func (s *ApplicationStatus) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleConfig != nil {
+		if err := s.ScaleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

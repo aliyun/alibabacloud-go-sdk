@@ -158,7 +158,12 @@ func (s *DescribeJobHistoryResponseBody) SetTraceId(v string) *DescribeJobHistor
 }
 
 func (s *DescribeJobHistoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeJobHistoryResponseBodyData struct {
@@ -229,7 +234,16 @@ func (s *DescribeJobHistoryResponseBodyData) SetTotalSize(v int64) *DescribeJobH
 }
 
 func (s *DescribeJobHistoryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Jobs != nil {
+		for _, item := range s.Jobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeJobHistoryResponseBodyDataJobs struct {

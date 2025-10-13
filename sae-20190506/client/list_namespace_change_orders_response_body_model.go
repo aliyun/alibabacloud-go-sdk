@@ -150,7 +150,12 @@ func (s *ListNamespaceChangeOrdersResponseBody) SetTraceId(v string) *ListNamesp
 }
 
 func (s *ListNamespaceChangeOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNamespaceChangeOrdersResponseBodyData struct {
@@ -221,7 +226,16 @@ func (s *ListNamespaceChangeOrdersResponseBodyData) SetTotalSize(v int32) *ListN
 }
 
 func (s *ListNamespaceChangeOrdersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeOrderList != nil {
+		for _, item := range s.ChangeOrderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {

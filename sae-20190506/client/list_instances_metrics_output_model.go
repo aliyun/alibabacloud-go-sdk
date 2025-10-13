@@ -92,5 +92,14 @@ func (s *ListInstancesMetricsOutput) SetTotalCount(v int32) *ListInstancesMetric
 }
 
 func (s *ListInstancesMetricsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.MetricsList != nil {
+		for _, item := range s.MetricsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

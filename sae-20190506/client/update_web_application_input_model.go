@@ -50,5 +50,10 @@ func (s *UpdateWebApplicationInput) SetWebNetworkConfig(v *WebNetworkConfig) *Up
 }
 
 func (s *UpdateWebApplicationInput) Validate() error {
-	return dara.Validate(s)
+	if s.WebNetworkConfig != nil {
+		if err := s.WebNetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

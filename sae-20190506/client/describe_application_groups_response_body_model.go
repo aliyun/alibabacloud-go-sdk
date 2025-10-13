@@ -150,7 +150,16 @@ func (s *DescribeApplicationGroupsResponseBody) SetTraceId(v string) *DescribeAp
 }
 
 func (s *DescribeApplicationGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationGroupsResponseBodyData struct {

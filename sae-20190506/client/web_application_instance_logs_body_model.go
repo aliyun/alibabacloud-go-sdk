@@ -83,5 +83,10 @@ func (s *WebApplicationInstanceLogsBody) SetSuccess(v bool) *WebApplicationInsta
 }
 
 func (s *WebApplicationInstanceLogsBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -154,7 +154,12 @@ func (s *DescribeConfigMapResponseBody) SetTraceId(v string) *DescribeConfigMapR
 }
 
 func (s *DescribeConfigMapResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeConfigMapResponseBodyData struct {
@@ -289,7 +294,16 @@ func (s *DescribeConfigMapResponseBodyData) SetUpdateTime(v int64) *DescribeConf
 }
 
 func (s *DescribeConfigMapResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RelateApps != nil {
+		for _, item := range s.RelateApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConfigMapResponseBodyDataRelateApps struct {

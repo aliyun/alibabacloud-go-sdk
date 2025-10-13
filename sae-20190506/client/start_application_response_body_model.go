@@ -158,7 +158,12 @@ func (s *StartApplicationResponseBody) SetTraceId(v string) *StartApplicationRes
 }
 
 func (s *StartApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StartApplicationResponseBodyData struct {

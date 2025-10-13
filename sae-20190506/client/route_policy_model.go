@@ -47,5 +47,14 @@ func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
 }
 
 func (s *RoutePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyItems != nil {
+		for _, item := range s.PolicyItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -119,7 +119,12 @@ func (s *DowngradeApplicationApmServiceResponseBody) SetTraceId(v string) *Downg
 }
 
 func (s *DowngradeApplicationApmServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DowngradeApplicationApmServiceResponseBodyData struct {

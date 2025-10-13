@@ -154,7 +154,12 @@ func (s *DescribeNamespacesResponseBody) SetTraceId(v string) *DescribeNamespace
 }
 
 func (s *DescribeNamespacesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNamespacesResponseBodyData struct {
@@ -225,7 +230,16 @@ func (s *DescribeNamespacesResponseBodyData) SetTotalSize(v int32) *DescribeName
 }
 
 func (s *DescribeNamespacesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Namespaces != nil {
+		for _, item := range s.Namespaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNamespacesResponseBodyDataNamespaces struct {

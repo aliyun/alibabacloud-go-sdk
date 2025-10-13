@@ -154,7 +154,12 @@ func (s *ListIngressesResponseBody) SetTraceId(v string) *ListIngressesResponseB
 }
 
 func (s *ListIngressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListIngressesResponseBodyData struct {
@@ -210,7 +215,16 @@ func (s *ListIngressesResponseBodyData) SetTotalSize(v int32) *ListIngressesResp
 }
 
 func (s *ListIngressesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.IngressList != nil {
+		for _, item := range s.IngressList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIngressesResponseBodyDataIngressList struct {
@@ -513,7 +527,26 @@ func (s *ListIngressesResponseBodyDataIngressList) SetSlbType(v string) *ListIng
 }
 
 func (s *ListIngressesResponseBodyDataIngressList) Validate() error {
-	return dara.Validate(s)
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DefaultRule != nil {
+		if err := s.DefaultRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIngressesResponseBodyDataIngressListCorsConfig struct {
@@ -748,7 +781,16 @@ func (s *ListIngressesResponseBodyDataIngressListRules) SetRuleActions(v []*List
 }
 
 func (s *ListIngressesResponseBodyDataIngressListRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleActions != nil {
+		for _, item := range s.RuleActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIngressesResponseBodyDataIngressListRulesRuleActions struct {

@@ -188,7 +188,12 @@ func (s *ListJobsResponseBody) SetTotalSize(v int32) *ListJobsResponseBody {
 }
 
 func (s *ListJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyData struct {
@@ -259,7 +264,16 @@ func (s *ListJobsResponseBodyData) SetTotalSize(v int32) *ListJobsResponseBodyDa
 }
 
 func (s *ListJobsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataApplications struct {
@@ -591,7 +605,16 @@ func (s *ListJobsResponseBodyDataApplications) SetTriggerConfig(v string) *ListJ
 }
 
 func (s *ListJobsResponseBodyDataApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListJobsResponseBodyDataApplicationsTags struct {

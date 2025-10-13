@@ -158,7 +158,12 @@ func (s *UpdateJobResponseBody) SetTraceId(v string) *UpdateJobResponseBody {
 }
 
 func (s *UpdateJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateJobResponseBodyData struct {

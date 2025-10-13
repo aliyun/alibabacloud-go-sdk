@@ -133,7 +133,12 @@ func (s *ListAppEventsResponseBody) SetSuccess(v bool) *ListAppEventsResponseBod
 }
 
 func (s *ListAppEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppEventsResponseBodyData struct {
@@ -204,7 +209,16 @@ func (s *ListAppEventsResponseBodyData) SetTotalSize(v int32) *ListAppEventsResp
 }
 
 func (s *ListAppEventsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AppEventEntity != nil {
+		for _, item := range s.AppEventEntity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppEventsResponseBodyDataAppEventEntity struct {

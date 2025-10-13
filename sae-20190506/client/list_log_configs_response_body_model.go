@@ -148,7 +148,12 @@ func (s *ListLogConfigsResponseBody) SetTraceId(v string) *ListLogConfigsRespons
 }
 
 func (s *ListLogConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLogConfigsResponseBodyData struct {
@@ -223,7 +228,16 @@ func (s *ListLogConfigsResponseBodyData) SetTotalSize(v int32) *ListLogConfigsRe
 }
 
 func (s *ListLogConfigsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.LogConfigs != nil {
+		for _, item := range s.LogConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLogConfigsResponseBodyDataLogConfigs struct {

@@ -59,5 +59,10 @@ func (s *ListNamespaceChangeOrdersResponse) SetBody(v *ListNamespaceChangeOrders
 }
 
 func (s *ListNamespaceChangeOrdersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

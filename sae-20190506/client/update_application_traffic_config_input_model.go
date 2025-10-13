@@ -71,5 +71,10 @@ func (s *UpdateApplicationTrafficConfigInput) SetVersionId(v string) *UpdateAppl
 }
 
 func (s *UpdateApplicationTrafficConfigInput) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePolicy != nil {
+		if err := s.RoutePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

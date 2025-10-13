@@ -35,5 +35,14 @@ func (s *CustomHostAlias) SetHostAliases(v []*HostAlias) *CustomHostAlias {
 }
 
 func (s *CustomHostAlias) Validate() error {
-	return dara.Validate(s)
+	if s.HostAliases != nil {
+		for _, item := range s.HostAliases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

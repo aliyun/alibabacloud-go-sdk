@@ -158,7 +158,12 @@ func (s *DeleteSecretResponseBody) SetTraceId(v string) *DeleteSecretResponseBod
 }
 
 func (s *DeleteSecretResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSecretResponseBodyData struct {

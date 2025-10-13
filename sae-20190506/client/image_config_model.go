@@ -71,5 +71,10 @@ func (s *ImageConfig) SetRegistryConfig(v *RegistryConfig) *ImageConfig {
 }
 
 func (s *ImageConfig) Validate() error {
-	return dara.Validate(s)
+	if s.RegistryConfig != nil {
+		if err := s.RegistryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

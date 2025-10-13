@@ -150,7 +150,12 @@ func (s *DeleteIngressResponseBody) SetTraceId(v string) *DeleteIngressResponseB
 }
 
 func (s *DeleteIngressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteIngressResponseBodyData struct {

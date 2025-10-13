@@ -47,5 +47,15 @@ func (s *ImageRegistryConfig) SetCertConfig(v *RegistryCertificateConfig) *Image
 }
 
 func (s *ImageRegistryConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConfig != nil {
+		if err := s.AuthConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CertConfig != nil {
+		if err := s.CertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

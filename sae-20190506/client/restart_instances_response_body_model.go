@@ -158,7 +158,12 @@ func (s *RestartInstancesResponseBody) SetTraceId(v string) *RestartInstancesRes
 }
 
 func (s *RestartInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RestartInstancesResponseBodyData struct {

@@ -83,5 +83,14 @@ func (s *HTTPGetAction) SetScheme(v string) *HTTPGetAction {
 }
 
 func (s *HTTPGetAction) Validate() error {
-	return dara.Validate(s)
+	if s.HttpHeaders != nil {
+		for _, item := range s.HttpHeaders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

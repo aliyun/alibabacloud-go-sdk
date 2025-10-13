@@ -154,7 +154,12 @@ func (s *DescribePipelineResponseBody) SetTraceId(v string) *DescribePipelineRes
 }
 
 func (s *DescribePipelineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePipelineResponseBodyData struct {
@@ -301,7 +306,16 @@ func (s *DescribePipelineResponseBodyData) SetStageList(v []*DescribePipelineRes
 }
 
 func (s *DescribePipelineResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.StageList != nil {
+		for _, item := range s.StageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePipelineResponseBodyDataStageList struct {
@@ -401,7 +415,16 @@ func (s *DescribePipelineResponseBodyDataStageList) SetTaskList(v []*DescribePip
 }
 
 func (s *DescribePipelineResponseBodyDataStageList) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePipelineResponseBodyDataStageListTaskList struct {

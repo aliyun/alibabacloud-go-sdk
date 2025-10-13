@@ -59,5 +59,10 @@ func (s *SuspendJobResponse) SetBody(v *SuspendJobResponseBody) *SuspendJobRespo
 }
 
 func (s *SuspendJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

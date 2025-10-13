@@ -212,5 +212,40 @@ func (s *Container) SetWebOSSConfig(v *WebOSSConfig) *Container {
 }
 
 func (s *Container) Validate() error {
-	return dara.Validate(s)
+	if s.ImageRegistryConfig != nil {
+		if err := s.ImageRegistryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MetricsCollectConfig != nil {
+		if err := s.MetricsCollectConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SLSCollectConfigs != nil {
+		if err := s.SLSCollectConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartupProbe != nil {
+		if err := s.StartupProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebNASConfig != nil {
+		if err := s.WebNASConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebOSSConfig != nil {
+		if err := s.WebOSSConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

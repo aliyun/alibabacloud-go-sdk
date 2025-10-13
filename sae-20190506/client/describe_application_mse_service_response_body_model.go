@@ -122,7 +122,12 @@ func (s *DescribeApplicationMseServiceResponseBody) SetTraceId(v string) *Descri
 }
 
 func (s *DescribeApplicationMseServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationMseServiceResponseBodyData struct {

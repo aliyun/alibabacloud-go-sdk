@@ -59,5 +59,10 @@ func (s *TracingConfig) SetType(v string) *TracingConfig {
 }
 
 func (s *TracingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.JaegerConfig != nil {
+		if err := s.JaegerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

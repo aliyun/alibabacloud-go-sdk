@@ -188,7 +188,12 @@ func (s *ListApplicationsResponseBody) SetTotalSize(v int32) *ListApplicationsRe
 }
 
 func (s *ListApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyData struct {
@@ -259,7 +264,16 @@ func (s *ListApplicationsResponseBodyData) SetTotalSize(v int32) *ListApplicatio
 }
 
 func (s *ListApplicationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyDataApplications struct {
@@ -678,7 +692,25 @@ func (s *ListApplicationsResponseBodyDataApplications) SetVpcId(v string) *ListA
 }
 
 func (s *ListApplicationsResponseBodyDataApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyDataApplicationsChildren struct {
@@ -990,7 +1022,16 @@ func (s *ListApplicationsResponseBodyDataApplicationsChildren) SetTags(v []*List
 }
 
 func (s *ListApplicationsResponseBodyDataApplicationsChildren) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyDataApplicationsChildrenTags struct {

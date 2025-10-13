@@ -35,5 +35,14 @@ func (s *DescribeInstanceLogsOutput) SetWebLogEntrys(v []*WebLogEntry) *Describe
 }
 
 func (s *DescribeInstanceLogsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.WebLogEntrys != nil {
+		for _, item := range s.WebLogEntrys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

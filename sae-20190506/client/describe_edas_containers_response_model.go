@@ -59,5 +59,10 @@ func (s *DescribeEdasContainersResponse) SetBody(v *DescribeEdasContainersRespon
 }
 
 func (s *DescribeEdasContainersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

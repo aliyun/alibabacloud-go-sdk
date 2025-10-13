@@ -74,7 +74,12 @@ func (s *UpdateSecretRequest) SetSecretId(v int64) *UpdateSecretRequest {
 }
 
 func (s *UpdateSecretRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SecretData != nil {
+		if err := s.SecretData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateSecretRequestSecretData struct {

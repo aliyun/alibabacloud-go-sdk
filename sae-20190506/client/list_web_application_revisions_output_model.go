@@ -47,5 +47,14 @@ func (s *ListWebApplicationRevisionsOutput) SetRevisions(v []*Revision) *ListWeb
 }
 
 func (s *ListWebApplicationRevisionsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Revisions != nil {
+		for _, item := range s.Revisions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

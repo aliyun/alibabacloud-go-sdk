@@ -59,5 +59,10 @@ func (s *ListLogConfigsResponse) SetBody(v *ListLogConfigsResponseBody) *ListLog
 }
 
 func (s *ListLogConfigsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

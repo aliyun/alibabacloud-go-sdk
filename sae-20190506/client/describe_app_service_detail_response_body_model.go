@@ -150,7 +150,12 @@ func (s *DescribeAppServiceDetailResponseBody) SetTraceId(v string) *DescribeApp
 }
 
 func (s *DescribeAppServiceDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAppServiceDetailResponseBodyData struct {
@@ -337,7 +342,16 @@ func (s *DescribeAppServiceDetailResponseBodyData) SetVersion(v string) *Describ
 }
 
 func (s *DescribeAppServiceDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Methods != nil {
+		for _, item := range s.Methods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppServiceDetailResponseBodyDataMethods struct {
@@ -488,7 +502,16 @@ func (s *DescribeAppServiceDetailResponseBodyDataMethods) SetReturnType(v string
 }
 
 func (s *DescribeAppServiceDetailResponseBodyDataMethods) Validate() error {
-	return dara.Validate(s)
+	if s.ParameterDefinitions != nil {
+		for _, item := range s.ParameterDefinitions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions struct {

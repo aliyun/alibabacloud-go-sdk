@@ -47,5 +47,15 @@ func (s *ApplicationWithStatus) SetStatus(v *ApplicationStatus) *ApplicationWith
 }
 
 func (s *ApplicationWithStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		if err := s.Application.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

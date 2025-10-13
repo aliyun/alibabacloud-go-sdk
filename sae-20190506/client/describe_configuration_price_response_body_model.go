@@ -154,7 +154,12 @@ func (s *DescribeConfigurationPriceResponseBody) SetTraceId(v string) *DescribeC
 }
 
 func (s *DescribeConfigurationPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeConfigurationPriceResponseBodyData struct {
@@ -235,7 +240,41 @@ func (s *DescribeConfigurationPriceResponseBodyData) SetTrafficPrice(v *Describe
 }
 
 func (s *DescribeConfigurationPriceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BagUsage != nil {
+		if err := s.BagUsage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CpuMemPrice != nil {
+		if err := s.CpuMemPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestPrice != nil {
+		if err := s.RequestPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TrafficPrice != nil {
+		if err := s.TrafficPrice.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
@@ -327,7 +366,21 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) SetRules(v []*De
 }
 
 func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder struct {
@@ -547,7 +600,21 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) SetRules(v []*D
 }
 
 func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceOrder struct {
@@ -737,7 +804,21 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) SetRules(v []*D
 }
 
 func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Order != nil {
+		if err := s.Order.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {

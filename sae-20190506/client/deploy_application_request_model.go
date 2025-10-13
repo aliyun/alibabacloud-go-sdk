@@ -13,6 +13,8 @@ type iDeployApplicationRequest interface {
 	GetAcrAssumeRoleArn() *string
 	SetAcrInstanceId(v string) *DeployApplicationRequest
 	GetAcrInstanceId() *string
+	SetAlbIngressReadinessGate(v string) *DeployApplicationRequest
+	GetAlbIngressReadinessGate() *string
 	SetAppId(v string) *DeployApplicationRequest
 	GetAppId() *string
 	SetAssociateEip(v bool) *DeployApplicationRequest
@@ -177,7 +179,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// cri-xxxxxx
-	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
 	// The ID of the application.
 	//
 	// This parameter is required.
@@ -1018,6 +1021,10 @@ func (s *DeployApplicationRequest) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *DeployApplicationRequest) GetAlbIngressReadinessGate() *string {
+	return s.AlbIngressReadinessGate
+}
+
 func (s *DeployApplicationRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -1325,6 +1332,11 @@ func (s *DeployApplicationRequest) SetAcrAssumeRoleArn(v string) *DeployApplicat
 
 func (s *DeployApplicationRequest) SetAcrInstanceId(v string) *DeployApplicationRequest {
 	s.AcrInstanceId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetAlbIngressReadinessGate(v string) *DeployApplicationRequest {
+	s.AlbIngressReadinessGate = &v
 	return s
 }
 
@@ -1704,5 +1716,23 @@ func (s *DeployApplicationRequest) SetWebContainer(v string) *DeployApplicationR
 }
 
 func (s *DeployApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.InitContainersConfig != nil {
+		for _, item := range s.InitContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SidecarContainersConfig != nil {
+		for _, item := range s.SidecarContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

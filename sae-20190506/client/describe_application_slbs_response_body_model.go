@@ -148,7 +148,12 @@ func (s *DescribeApplicationSlbsResponseBody) SetTraceId(v string) *DescribeAppl
 }
 
 func (s *DescribeApplicationSlbsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
@@ -331,7 +336,25 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 }
 
 func (s *DescribeApplicationSlbsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Internet != nil {
+		for _, item := range s.Internet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Intranet != nil {
+		for _, item := range s.Intranet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {

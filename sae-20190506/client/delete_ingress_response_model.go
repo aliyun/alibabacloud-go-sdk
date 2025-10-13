@@ -59,5 +59,10 @@ func (s *DeleteIngressResponse) SetBody(v *DeleteIngressResponseBody) *DeleteIng
 }
 
 func (s *DeleteIngressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

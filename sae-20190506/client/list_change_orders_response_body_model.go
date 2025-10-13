@@ -144,7 +144,12 @@ func (s *ListChangeOrdersResponseBody) SetTraceId(v string) *ListChangeOrdersRes
 }
 
 func (s *ListChangeOrdersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListChangeOrdersResponseBodyData struct {
@@ -219,7 +224,16 @@ func (s *ListChangeOrdersResponseBodyData) SetTotalSize(v int32) *ListChangeOrde
 }
 
 func (s *ListChangeOrdersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChangeOrderList != nil {
+		for _, item := range s.ChangeOrderList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListChangeOrdersResponseBodyDataChangeOrderList struct {

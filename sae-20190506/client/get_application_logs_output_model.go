@@ -59,5 +59,14 @@ func (s *GetApplicationLogsOutput) SetRequestId(v string) *GetApplicationLogsOut
 }
 
 func (s *GetApplicationLogsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.LogEntrys != nil {
+		for _, item := range s.LogEntrys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -47,5 +47,15 @@ func (s *WebApplicationWithStatus) SetWebApplication(v *WebApplication) *WebAppl
 }
 
 func (s *WebApplicationWithStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebApplication != nil {
+		if err := s.WebApplication.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

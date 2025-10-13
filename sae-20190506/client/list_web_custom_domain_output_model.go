@@ -47,5 +47,14 @@ func (s *ListWebCustomDomainOutput) SetWebCustomDomains(v []*WebCustomDomain) *L
 }
 
 func (s *ListWebCustomDomainOutput) Validate() error {
-	return dara.Validate(s)
+	if s.WebCustomDomains != nil {
+		for _, item := range s.WebCustomDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

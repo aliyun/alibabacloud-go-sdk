@@ -122,7 +122,16 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetTraceId(v string) *ListSw
 }
 
 func (s *ListSwimmingLaneGatewayRoutesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyData struct {
@@ -173,7 +182,12 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) SetRoutePredicate(v *Lis
 }
 
 func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RoutePredicate != nil {
+		if err := s.RoutePredicate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate struct {
@@ -198,7 +212,12 @@ func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) SetPathPre
 }
 
 func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) Validate() error {
-	return dara.Validate(s)
+	if s.PathPredicate != nil {
+		if err := s.PathPredicate.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate struct {

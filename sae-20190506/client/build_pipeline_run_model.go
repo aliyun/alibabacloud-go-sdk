@@ -227,7 +227,46 @@ func (s *BuildPipelineRun) SetWaitDuration(v int64) *BuildPipelineRun {
 }
 
 func (s *BuildPipelineRun) Validate() error {
-	return dara.Validate(s)
+	if s.BuildConfig != nil {
+		if err := s.BuildConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CodeConfig != nil {
+		if err := s.CodeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DeployConfig != nil {
+		if err := s.DeployConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageConfig != nil {
+		if err := s.ImageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PackageConfig != nil {
+		if err := s.PackageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TriggerConfig != nil {
+		if err := s.TriggerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BuildPipelineRunBuildConfig struct {
@@ -350,7 +389,17 @@ func (s *BuildPipelineRunBuildConfig) SetWorkingDir(v string) *BuildPipelineRunB
 }
 
 func (s *BuildPipelineRunBuildConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TomcatConfig != nil {
+		if err := s.TomcatConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Trigger != nil {
+		if err := s.Trigger.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BuildPipelineRunBuildConfigTrigger struct {

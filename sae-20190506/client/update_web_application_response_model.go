@@ -59,5 +59,10 @@ func (s *UpdateWebApplicationResponse) SetBody(v *WebApplicationBody) *UpdateWeb
 }
 
 func (s *UpdateWebApplicationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

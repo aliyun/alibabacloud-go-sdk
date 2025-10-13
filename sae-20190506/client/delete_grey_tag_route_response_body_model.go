@@ -154,7 +154,12 @@ func (s *DeleteGreyTagRouteResponseBody) SetTraceId(v string) *DeleteGreyTagRout
 }
 
 func (s *DeleteGreyTagRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteGreyTagRouteResponseBodyData struct {

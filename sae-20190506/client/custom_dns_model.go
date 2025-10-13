@@ -59,5 +59,14 @@ func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
 }
 
 func (s *CustomDNS) Validate() error {
-	return dara.Validate(s)
+	if s.DnsOptions != nil {
+		for _, item := range s.DnsOptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

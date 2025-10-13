@@ -152,7 +152,17 @@ func (s *CreateOrUpdateSwimmingLaneRequest) SetNamespaceId(v string) *CreateOrUp
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AppEntryRule != nil {
+		if err := s.AppEntryRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MseGatewayEntryRule != nil {
+		if err := s.MseGatewayEntryRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRule struct {
@@ -236,7 +246,16 @@ func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetPercentageByPath(v ma
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions struct {
@@ -387,7 +406,16 @@ func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetRouteIds(v []*
 }
 
 func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions struct {

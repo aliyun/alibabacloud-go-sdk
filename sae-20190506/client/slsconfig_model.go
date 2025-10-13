@@ -35,7 +35,16 @@ func (s *SLSConfig) SetCollectConfigs(v []*SLSConfigCollectConfigs) *SLSConfig {
 }
 
 func (s *SLSConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CollectConfigs != nil {
+		for _, item := range s.CollectConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SLSConfigCollectConfigs struct {

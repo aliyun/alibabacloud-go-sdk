@@ -154,7 +154,12 @@ func (s *DescribeIngressResponseBody) SetTraceId(v string) *DescribeIngressRespo
 }
 
 func (s *DescribeIngressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIngressResponseBodyData struct {
@@ -479,7 +484,26 @@ func (s *DescribeIngressResponseBodyData) SetSlbType(v string) *DescribeIngressR
 }
 
 func (s *DescribeIngressResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CorsConfig != nil {
+		if err := s.CorsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DefaultRule != nil {
+		if err := s.DefaultRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIngressResponseBodyDataCorsConfig struct {
@@ -785,7 +809,16 @@ func (s *DescribeIngressResponseBodyDataRules) SetRuleActions(v []*DescribeIngre
 }
 
 func (s *DescribeIngressResponseBodyDataRules) Validate() error {
-	return dara.Validate(s)
+	if s.RuleActions != nil {
+		for _, item := range s.RuleActions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIngressResponseBodyDataRulesRuleActions struct {

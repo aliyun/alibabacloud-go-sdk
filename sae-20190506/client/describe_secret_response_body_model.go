@@ -158,7 +158,12 @@ func (s *DescribeSecretResponseBody) SetTraceId(v string) *DescribeSecretRespons
 }
 
 func (s *DescribeSecretResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSecretResponseBodyData struct {
@@ -285,7 +290,16 @@ func (s *DescribeSecretResponseBodyData) SetUpdateTime(v int64) *DescribeSecretR
 }
 
 func (s *DescribeSecretResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RelateApps != nil {
+		for _, item := range s.RelateApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecretResponseBodyDataRelateApps struct {

@@ -137,7 +137,25 @@ func (s *AppStackInstance) SetUpdateTime(v int64) *AppStackInstance {
 }
 
 func (s *AppStackInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AppStackInstanceEndpoints struct {

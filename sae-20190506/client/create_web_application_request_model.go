@@ -57,5 +57,10 @@ func (s *CreateWebApplicationRequest) SetBody(v *CreateWebApplicationInput) *Cre
 }
 
 func (s *CreateWebApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

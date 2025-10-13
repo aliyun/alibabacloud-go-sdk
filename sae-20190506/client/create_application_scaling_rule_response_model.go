@@ -59,5 +59,10 @@ func (s *CreateApplicationScalingRuleResponse) SetBody(v *CreateApplicationScali
 }
 
 func (s *CreateApplicationScalingRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

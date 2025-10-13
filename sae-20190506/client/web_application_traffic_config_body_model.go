@@ -83,5 +83,10 @@ func (s *WebApplicationTrafficConfigBody) SetSuccess(v bool) *WebApplicationTraf
 }
 
 func (s *WebApplicationTrafficConfigBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

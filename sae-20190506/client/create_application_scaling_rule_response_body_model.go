@@ -122,7 +122,12 @@ func (s *CreateApplicationScalingRuleResponseBody) SetTraceId(v string) *CreateA
 }
 
 func (s *CreateApplicationScalingRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApplicationScalingRuleResponseBodyData struct {
@@ -258,7 +263,17 @@ func (s *CreateApplicationScalingRuleResponseBodyData) SetUpdateTime(v int64) *C
 }
 
 func (s *CreateApplicationScalingRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Metric != nil {
+		if err := s.Metric.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timer != nil {
+		if err := s.Timer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateApplicationScalingRuleResponseBodyDataMetric struct {
@@ -309,7 +324,16 @@ func (s *CreateApplicationScalingRuleResponseBodyDataMetric) SetMinReplicas(v in
 }
 
 func (s *CreateApplicationScalingRuleResponseBodyDataMetric) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
@@ -466,7 +490,16 @@ func (s *CreateApplicationScalingRuleResponseBodyDataTimer) SetSchedules(v []*Cr
 }
 
 func (s *CreateApplicationScalingRuleResponseBodyDataTimer) Validate() error {
-	return dara.Validate(s)
+	if s.Schedules != nil {
+		for _, item := range s.Schedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateApplicationScalingRuleResponseBodyDataTimerSchedules struct {

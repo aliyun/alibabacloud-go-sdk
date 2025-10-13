@@ -59,5 +59,10 @@ func (s *UnbindNlbResponse) SetBody(v *UnbindNlbResponseBody) *UnbindNlbResponse
 }
 
 func (s *UnbindNlbResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

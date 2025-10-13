@@ -158,7 +158,12 @@ func (s *ListSecretsResponseBody) SetTraceId(v string) *ListSecretsResponseBody 
 }
 
 func (s *ListSecretsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodyData struct {
@@ -184,7 +189,16 @@ func (s *ListSecretsResponseBodyData) SetSecrets(v []*ListSecretsResponseBodyDat
 }
 
 func (s *ListSecretsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Secrets != nil {
+		for _, item := range s.Secrets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodyDataSecrets struct {
@@ -302,7 +316,16 @@ func (s *ListSecretsResponseBodyDataSecrets) SetUpdateTime(v int64) *ListSecrets
 }
 
 func (s *ListSecretsResponseBodyDataSecrets) Validate() error {
-	return dara.Validate(s)
+	if s.RelateApps != nil {
+		for _, item := range s.RelateApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSecretsResponseBodyDataSecretsRelateApps struct {

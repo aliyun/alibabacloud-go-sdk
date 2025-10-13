@@ -154,7 +154,12 @@ func (s *DescribeApplicationConfigResponseBody) SetTraceId(v string) *DescribeAp
 }
 
 func (s *DescribeApplicationConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationConfigResponseBodyData struct {
@@ -169,7 +174,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// cri-xxxxxx
-	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
 	// The description of the application.
 	//
 	// example:
@@ -957,6 +963,10 @@ func (s *DescribeApplicationConfigResponseBodyData) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) GetAlbIngressReadinessGate() *string {
+	return s.AlbIngressReadinessGate
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) GetAppDescription() *string {
 	return s.AppDescription
 }
@@ -1328,6 +1338,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetAcrAssumeRoleArn(v string
 
 func (s *DescribeApplicationConfigResponseBodyData) SetAcrInstanceId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.AcrInstanceId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetAlbIngressReadinessGate(v string) *DescribeApplicationConfigResponseBodyData {
+	s.AlbIngressReadinessGate = &v
 	return s
 }
 
@@ -1787,7 +1802,79 @@ func (s *DescribeApplicationConfigResponseBodyData) SetWebContainer(v string) *D
 }
 
 func (s *DescribeApplicationConfigResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigMapMountDesc != nil {
+		for _, item := range s.ConfigMapMountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EmptyDirDesc != nil {
+		for _, item := range s.EmptyDirDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InitContainersConfig != nil {
+		for _, item := range s.InitContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MountDesc != nil {
+		for _, item := range s.MountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OssMountDescs != nil {
+		for _, item := range s.OssMountDescs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SecretMountDesc != nil {
+		for _, item := range s.SecretMountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SidecarContainersConfig != nil {
+		for _, item := range s.SidecarContainersConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationConfigResponseBodyDataConfigMapMountDesc struct {
@@ -2040,7 +2127,25 @@ func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetName(
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigMapMountDesc != nil {
+		for _, item := range s.ConfigMapMountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EmptyDirDesc != nil {
+		for _, item := range s.EmptyDirDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc struct {
@@ -2546,7 +2651,25 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetNa
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigMapMountDesc != nil {
+		for _, item := range s.ConfigMapMountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EmptyDirDesc != nil {
+		for _, item := range s.EmptyDirDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapMountDesc struct {

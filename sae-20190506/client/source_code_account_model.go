@@ -71,7 +71,16 @@ func (s *SourceCodeAccount) SetOrganizations(v []*SourceCodeAccountOrganizations
 }
 
 func (s *SourceCodeAccount) Validate() error {
-	return dara.Validate(s)
+	if s.Organizations != nil {
+		for _, item := range s.Organizations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SourceCodeAccountOrganizations struct {

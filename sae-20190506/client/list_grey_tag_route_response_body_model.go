@@ -154,7 +154,12 @@ func (s *ListGreyTagRouteResponseBody) SetTraceId(v string) *ListGreyTagRouteRes
 }
 
 func (s *ListGreyTagRouteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyData struct {
@@ -225,7 +230,16 @@ func (s *ListGreyTagRouteResponseBodyData) SetTotalSize(v int64) *ListGreyTagRou
 }
 
 func (s *ListGreyTagRouteResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyDataResult struct {
@@ -347,7 +361,34 @@ func (s *ListGreyTagRouteResponseBodyDataResult) SetUpdateTime(v int64) *ListGre
 }
 
 func (s *ListGreyTagRouteResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.AlbRules != nil {
+		for _, item := range s.AlbRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DubboRules != nil {
+		for _, item := range s.DubboRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScRules != nil {
+		for _, item := range s.ScRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyDataResultAlbRules struct {
@@ -411,7 +452,16 @@ func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) SetServiceName(v string
 }
 
 func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyDataResultAlbRulesItems struct {
@@ -622,7 +672,16 @@ func (s *ListGreyTagRouteResponseBodyDataResultDubboRules) SetVersion(v string) 
 }
 
 func (s *ListGreyTagRouteResponseBodyDataResultDubboRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyDataResultDubboRulesItems struct {
@@ -822,7 +881,16 @@ func (s *ListGreyTagRouteResponseBodyDataResultScRules) SetPath(v string) *ListG
 }
 
 func (s *ListGreyTagRouteResponseBodyDataResultScRules) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGreyTagRouteResponseBodyDataResultScRulesItems struct {

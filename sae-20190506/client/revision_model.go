@@ -83,5 +83,10 @@ func (s *Revision) SetWeight(v float32) *Revision {
 }
 
 func (s *Revision) Validate() error {
-	return dara.Validate(s)
+	if s.RevisionConfig != nil {
+		if err := s.RevisionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

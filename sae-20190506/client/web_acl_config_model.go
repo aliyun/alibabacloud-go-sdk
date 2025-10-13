@@ -39,5 +39,14 @@ func (s *WebAclConfig) SetWebAclEntries(v []*WebAclEntryConfig) *WebAclConfig {
 }
 
 func (s *WebAclConfig) Validate() error {
-	return dara.Validate(s)
+	if s.WebAclEntries != nil {
+		for _, item := range s.WebAclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

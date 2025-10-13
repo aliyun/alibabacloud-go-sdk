@@ -59,5 +59,10 @@ func (s *DescribeChangeOrderResponse) SetBody(v *DescribeChangeOrderResponseBody
 }
 
 func (s *DescribeChangeOrderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

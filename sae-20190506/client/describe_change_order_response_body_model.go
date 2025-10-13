@@ -150,7 +150,12 @@ func (s *DescribeChangeOrderResponseBody) SetTraceId(v string) *DescribeChangeOr
 }
 
 func (s *DescribeChangeOrderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeChangeOrderResponseBodyData struct {
@@ -523,7 +528,16 @@ func (s *DescribeChangeOrderResponseBodyData) SetSupportRollback(v bool) *Descri
 }
 
 func (s *DescribeChangeOrderResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Pipelines != nil {
+		for _, item := range s.Pipelines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeChangeOrderResponseBodyDataPipelines struct {

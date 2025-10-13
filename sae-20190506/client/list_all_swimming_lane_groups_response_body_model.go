@@ -122,7 +122,16 @@ func (s *ListAllSwimmingLaneGroupsResponseBody) SetTraceId(v string) *ListAllSwi
 }
 
 func (s *ListAllSwimmingLaneGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLaneGroupsResponseBodyData struct {
@@ -271,7 +280,21 @@ func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetSwimVersion(v string) *Li
 }
 
 func (s *ListAllSwimmingLaneGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EntryApp != nil {
+		if err := s.EntryApp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAllSwimmingLaneGroupsResponseBodyDataApps struct {

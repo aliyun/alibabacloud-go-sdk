@@ -59,5 +59,14 @@ func (s *ListStaticsQueryResponse) SetStatics(v []*StaticsInfo) *ListStaticsQuer
 }
 
 func (s *ListStaticsQueryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Statics != nil {
+		for _, item := range s.Statics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

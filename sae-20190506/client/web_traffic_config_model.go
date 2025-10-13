@@ -74,5 +74,10 @@ func (s *WebTrafficConfig) SetWebAclConfig(v *WebAclConfig) *WebTrafficConfig {
 }
 
 func (s *WebTrafficConfig) Validate() error {
-	return dara.Validate(s)
+	if s.WebAclConfig != nil {
+		if err := s.WebAclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

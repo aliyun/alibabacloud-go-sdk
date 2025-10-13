@@ -154,7 +154,12 @@ func (s *DescribeJobResponseBody) SetTraceId(v string) *DescribeJobResponseBody 
 }
 
 func (s *DescribeJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeJobResponseBodyData struct {
@@ -1195,7 +1200,43 @@ func (s *DescribeJobResponseBodyData) SetWebContainer(v string) *DescribeJobResp
 }
 
 func (s *DescribeJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigMapMountDesc != nil {
+		for _, item := range s.ConfigMapMountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MountDesc != nil {
+		for _, item := range s.MountDesc {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OssMountDescs != nil {
+		for _, item := range s.OssMountDescs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeJobResponseBodyDataConfigMapMountDesc struct {

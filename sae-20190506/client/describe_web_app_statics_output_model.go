@@ -47,5 +47,14 @@ func (s *DescribeWebAppStaticsOutput) SetWebAppStatics(v []*WebStaticsInfo) *Des
 }
 
 func (s *DescribeWebAppStaticsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.WebAppStatics != nil {
+		for _, item := range s.WebAppStatics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

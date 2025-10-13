@@ -173,5 +173,25 @@ func (s *WebCustomDomain) SetAccountId(v string) *WebCustomDomain {
 }
 
 func (s *WebCustomDomain) Validate() error {
-	return dara.Validate(s)
+	if s.RouteConfig != nil {
+		if err := s.RouteConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebCertConfig != nil {
+		if err := s.WebCertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebTLSConfig != nil {
+		if err := s.WebTLSConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebWAFConfig != nil {
+		if err := s.WebWAFConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

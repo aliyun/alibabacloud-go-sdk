@@ -83,5 +83,10 @@ func (s *ListWebApplicationsBody) SetSuccess(v bool) *ListWebApplicationsBody {
 }
 
 func (s *ListWebApplicationsBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

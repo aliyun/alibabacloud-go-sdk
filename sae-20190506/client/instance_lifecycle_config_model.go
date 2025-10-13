@@ -47,5 +47,15 @@ func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycl
 }
 
 func (s *InstanceLifecycleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PreFreeze != nil {
+		if err := s.PreFreeze.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PreStop != nil {
+		if err := s.PreStop.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

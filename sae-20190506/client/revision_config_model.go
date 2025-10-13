@@ -60,5 +60,19 @@ func (s *RevisionConfig) SetWebNetworkConfig(v *WebNetworkConfig) *RevisionConfi
 }
 
 func (s *RevisionConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WebNetworkConfig != nil {
+		if err := s.WebNetworkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

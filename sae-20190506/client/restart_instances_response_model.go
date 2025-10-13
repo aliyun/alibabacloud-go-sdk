@@ -59,5 +59,10 @@ func (s *RestartInstancesResponse) SetBody(v *RestartInstancesResponseBody) *Res
 }
 
 func (s *RestartInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

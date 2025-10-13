@@ -503,5 +503,90 @@ func (s *CreateApplicationInput) SetVpcConfig(v *VPCConfig) *CreateApplicationIn
 }
 
 func (s *CreateApplicationInput) Validate() error {
-	return dara.Validate(s)
+	if s.Code != nil {
+		if err := s.Code.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomDNS != nil {
+		if err := s.CustomDNS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomHealthCheckConfig != nil {
+		if err := s.CustomHealthCheckConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomHostAlias != nil {
+		if err := s.CustomHostAlias.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomRuntimeConfig != nil {
+		if err := s.CustomRuntimeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HttpTriggerConfig != nil {
+		if err := s.HttpTriggerConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ImageConfig != nil {
+		if err := s.ImageConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceLifecycleConfig != nil {
+		if err := s.InstanceLifecycleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LivenessProbe != nil {
+		if err := s.LivenessProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogConfig != nil {
+		if err := s.LogConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NasConfig != nil {
+		if err := s.NasConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssMountConfig != nil {
+		if err := s.OssMountConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScaleConfig != nil {
+		if err := s.ScaleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsConfig != nil {
+		if err := s.SlsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StartupProbe != nil {
+		if err := s.StartupProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TracingConfig != nil {
+		if err := s.TracingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -13,6 +13,8 @@ type iDeployApplicationShrinkRequest interface {
 	GetAcrAssumeRoleArn() *string
 	SetAcrInstanceId(v string) *DeployApplicationShrinkRequest
 	GetAcrInstanceId() *string
+	SetAlbIngressReadinessGate(v string) *DeployApplicationShrinkRequest
+	GetAlbIngressReadinessGate() *string
 	SetAppId(v string) *DeployApplicationShrinkRequest
 	GetAppId() *string
 	SetAssociateEip(v bool) *DeployApplicationShrinkRequest
@@ -177,7 +179,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// cri-xxxxxx
-	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AcrInstanceId           *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
+	AlbIngressReadinessGate *string `json:"AlbIngressReadinessGate,omitempty" xml:"AlbIngressReadinessGate,omitempty"`
 	// The ID of the application.
 	//
 	// This parameter is required.
@@ -1018,6 +1021,10 @@ func (s *DeployApplicationShrinkRequest) GetAcrInstanceId() *string {
 	return s.AcrInstanceId
 }
 
+func (s *DeployApplicationShrinkRequest) GetAlbIngressReadinessGate() *string {
+	return s.AlbIngressReadinessGate
+}
+
 func (s *DeployApplicationShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
@@ -1325,6 +1332,11 @@ func (s *DeployApplicationShrinkRequest) SetAcrAssumeRoleArn(v string) *DeployAp
 
 func (s *DeployApplicationShrinkRequest) SetAcrInstanceId(v string) *DeployApplicationShrinkRequest {
 	s.AcrInstanceId = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetAlbIngressReadinessGate(v string) *DeployApplicationShrinkRequest {
+	s.AlbIngressReadinessGate = &v
 	return s
 }
 

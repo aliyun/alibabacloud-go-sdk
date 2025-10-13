@@ -150,7 +150,12 @@ func (s *DescribeApplicationInstancesResponseBody) SetTraceId(v string) *Describ
 }
 
 func (s *DescribeApplicationInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationInstancesResponseBodyData struct {
@@ -221,7 +226,16 @@ func (s *DescribeApplicationInstancesResponseBodyData) SetTotalSize(v int32) *De
 }
 
 func (s *DescribeApplicationInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationInstancesResponseBodyDataInstances struct {
@@ -523,7 +537,16 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetVSwitchId(v s
 }
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) Validate() error {
-	return dara.Validate(s)
+	if s.SidecarContainersStatus != nil {
+		for _, item := range s.SidecarContainersStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus struct {
