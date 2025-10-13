@@ -27,12 +27,14 @@ type iService interface {
 	GetHealthCheck() *ServiceHealthCheck
 	SetHealthStatus(v string) *Service
 	GetHealthStatus() *string
-	SetLabelDetails(v *LabelDetail) *Service
-	GetLabelDetails() *LabelDetail
+	SetLabelDetails(v []*LabelDetail) *Service
+	GetLabelDetails() []*LabelDetail
 	SetName(v string) *Service
 	GetName() *string
 	SetNamespace(v string) *Service
 	GetNamespace() *string
+	SetOutlierEndpoints(v []*string) *Service
+	GetOutlierEndpoints() []*string
 	SetPorts(v []*ServicePorts) *Service
 	GetPorts() []*ServicePorts
 	SetProtocol(v string) *Service
@@ -67,13 +69,14 @@ type Service struct {
 	// example:
 	//
 	// publich
-	GroupName    *string             `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	HealthCheck  *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	HealthStatus *string             `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
-	LabelDetails *LabelDetail        `json:"labelDetails,omitempty" xml:"labelDetails,omitempty"`
-	Name         *string             `json:"name,omitempty" xml:"name,omitempty"`
-	Namespace    *string             `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Ports        []*ServicePorts     `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+	GroupName        *string             `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	HealthCheck      *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
+	HealthStatus     *string             `json:"healthStatus,omitempty" xml:"healthStatus,omitempty"`
+	LabelDetails     []*LabelDetail      `json:"labelDetails,omitempty" xml:"labelDetails,omitempty" type:"Repeated"`
+	Name             *string             `json:"name,omitempty" xml:"name,omitempty"`
+	Namespace        *string             `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OutlierEndpoints []*string           `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
+	Ports            []*ServicePorts     `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 	// example:
 	//
 	// HTTP
@@ -136,7 +139,7 @@ func (s *Service) GetHealthStatus() *string {
 	return s.HealthStatus
 }
 
-func (s *Service) GetLabelDetails() *LabelDetail {
+func (s *Service) GetLabelDetails() []*LabelDetail {
 	return s.LabelDetails
 }
 
@@ -146,6 +149,10 @@ func (s *Service) GetName() *string {
 
 func (s *Service) GetNamespace() *string {
 	return s.Namespace
+}
+
+func (s *Service) GetOutlierEndpoints() []*string {
+	return s.OutlierEndpoints
 }
 
 func (s *Service) GetPorts() []*ServicePorts {
@@ -225,7 +232,7 @@ func (s *Service) SetHealthStatus(v string) *Service {
 	return s
 }
 
-func (s *Service) SetLabelDetails(v *LabelDetail) *Service {
+func (s *Service) SetLabelDetails(v []*LabelDetail) *Service {
 	s.LabelDetails = v
 	return s
 }
@@ -237,6 +244,11 @@ func (s *Service) SetName(v string) *Service {
 
 func (s *Service) SetNamespace(v string) *Service {
 	s.Namespace = &v
+	return s
+}
+
+func (s *Service) SetOutlierEndpoints(v []*string) *Service {
+	s.OutlierEndpoints = v
 	return s
 }
 

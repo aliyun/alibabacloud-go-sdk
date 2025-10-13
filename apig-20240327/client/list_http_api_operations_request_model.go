@@ -11,6 +11,8 @@ type iListHttpApiOperationsRequest interface {
 	GoString() string
 	SetConsumerAuthorizationRuleId(v string) *ListHttpApiOperationsRequest
 	GetConsumerAuthorizationRuleId() *string
+	SetEnableAuth(v bool) *ListHttpApiOperationsRequest
+	GetEnableAuth() *bool
 	SetForDeploy(v bool) *ListHttpApiOperationsRequest
 	GetForDeploy() *bool
 	SetGatewayId(v string) *ListHttpApiOperationsRequest
@@ -42,6 +44,7 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	EnableAuth                  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	ForDeploy                   *bool   `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
 	GatewayId                   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// List interfaces by Method.
@@ -112,6 +115,10 @@ func (s *ListHttpApiOperationsRequest) GetConsumerAuthorizationRuleId() *string 
 	return s.ConsumerAuthorizationRuleId
 }
 
+func (s *ListHttpApiOperationsRequest) GetEnableAuth() *bool {
+	return s.EnableAuth
+}
+
 func (s *ListHttpApiOperationsRequest) GetForDeploy() *bool {
 	return s.ForDeploy
 }
@@ -158,6 +165,11 @@ func (s *ListHttpApiOperationsRequest) GetWithPluginAttachmentByPluginId() *stri
 
 func (s *ListHttpApiOperationsRequest) SetConsumerAuthorizationRuleId(v string) *ListHttpApiOperationsRequest {
 	s.ConsumerAuthorizationRuleId = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetEnableAuth(v bool) *ListHttpApiOperationsRequest {
+	s.EnableAuth = &v
 	return s
 }
 

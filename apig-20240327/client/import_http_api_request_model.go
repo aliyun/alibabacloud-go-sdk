@@ -9,12 +9,14 @@ type iImportHttpApiRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetDeployConfigs(v *HttpApiDeployConfig) *ImportHttpApiRequest
-	GetDeployConfigs() *HttpApiDeployConfig
+	SetDeployConfigs(v []*HttpApiDeployConfig) *ImportHttpApiRequest
+	GetDeployConfigs() []*HttpApiDeployConfig
 	SetDescription(v string) *ImportHttpApiRequest
 	GetDescription() *string
 	SetDryRun(v bool) *ImportHttpApiRequest
 	GetDryRun() *bool
+	SetGatewayId(v string) *ImportHttpApiRequest
+	GetGatewayId() *string
 	SetMcpRouteId(v string) *ImportHttpApiRequest
 	GetMcpRouteId() *string
 	SetName(v string) *ImportHttpApiRequest
@@ -37,7 +39,7 @@ type iImportHttpApiRequest interface {
 
 type ImportHttpApiRequest struct {
 	// The deployment configuration.
-	DeployConfigs *HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
 	//
 	// example:
@@ -49,7 +51,8 @@ type ImportHttpApiRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun    *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// The MCP route ID.
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
 	// The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
@@ -108,7 +111,7 @@ func (s ImportHttpApiRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImportHttpApiRequest) GetDeployConfigs() *HttpApiDeployConfig {
+func (s *ImportHttpApiRequest) GetDeployConfigs() []*HttpApiDeployConfig {
 	return s.DeployConfigs
 }
 
@@ -118,6 +121,10 @@ func (s *ImportHttpApiRequest) GetDescription() *string {
 
 func (s *ImportHttpApiRequest) GetDryRun() *bool {
 	return s.DryRun
+}
+
+func (s *ImportHttpApiRequest) GetGatewayId() *string {
+	return s.GatewayId
 }
 
 func (s *ImportHttpApiRequest) GetMcpRouteId() *string {
@@ -156,7 +163,7 @@ func (s *ImportHttpApiRequest) GetVersionConfig() *HttpApiVersionConfig {
 	return s.VersionConfig
 }
 
-func (s *ImportHttpApiRequest) SetDeployConfigs(v *HttpApiDeployConfig) *ImportHttpApiRequest {
+func (s *ImportHttpApiRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *ImportHttpApiRequest {
 	s.DeployConfigs = v
 	return s
 }
@@ -168,6 +175,11 @@ func (s *ImportHttpApiRequest) SetDescription(v string) *ImportHttpApiRequest {
 
 func (s *ImportHttpApiRequest) SetDryRun(v bool) *ImportHttpApiRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetGatewayId(v string) *ImportHttpApiRequest {
+	s.GatewayId = &v
 	return s
 }
 

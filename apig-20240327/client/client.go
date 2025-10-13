@@ -825,6 +825,10 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 		body["chargeType"] = request.ChargeType
 	}
 
+	if !dara.IsNil(request.GatewayEdition) {
+		body["gatewayEdition"] = request.GatewayEdition
+	}
+
 	if !dara.IsNil(request.GatewayType) {
 		body["gatewayType"] = request.GatewayType
 	}
@@ -947,6 +951,10 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 
 	if !dara.IsNil(request.EnableAuth) {
 		body["enableAuth"] = request.EnableAuth
+	}
+
+	if !dara.IsNil(request.FirstByteTimeout) {
+		body["firstByteTimeout"] = request.FirstByteTimeout
 	}
 
 	if !dara.IsNil(request.IngressConfig) {
@@ -1173,6 +1181,110 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 	headers := make(map[string]*string)
 	_result = &CreateHttpApiRouteResponse{}
 	_body, _err := client.CreateHttpApiRouteWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建MCP server
+//
+// @param request - CreateMcpServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMcpServerResponse
+func (client *Client) CreateMcpServerWithOptions(request *CreateMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMcpServerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssembledSources) {
+		body["assembledSources"] = request.AssembledSources
+	}
+
+	if !dara.IsNil(request.BackendConfig) {
+		body["backendConfig"] = request.BackendConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DomainIds) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !dara.IsNil(request.ExposedUriPath) {
+		body["exposedUriPath"] = request.ExposedUriPath
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Match) {
+		body["match"] = request.Match
+	}
+
+	if !dara.IsNil(request.McpStatisticsEnable) {
+		body["mcpStatisticsEnable"] = request.McpStatisticsEnable
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建MCP server
+//
+// @param request - CreateMcpServerRequest
+//
+// @return CreateMcpServerResponse
+func (client *Client) CreateMcpServer(request *CreateMcpServerRequest) (_result *CreateMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMcpServerResponse{}
+	_body, _err := client.CreateMcpServerWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1979,6 +2091,56 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 
 // Summary:
 //
+// 删除MCP server
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMcpServerResponse
+func (client *Client) DeleteMcpServerWithOptions(mcpServerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMcpServerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除MCP server
+//
+// @return DeleteMcpServerResponse
+func (client *Client) DeleteMcpServer(mcpServerId *string) (_result *DeleteMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMcpServerResponse{}
+	_body, _err := client.DeleteMcpServerWithOptions(mcpServerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除挂载规则API
 //
 // @param headers - map
@@ -2242,6 +2404,56 @@ func (client *Client) DeployHttpApi(httpApiId *string, request *DeployHttpApiReq
 	headers := make(map[string]*string)
 	_result = &DeployHttpApiResponse{}
 	_body, _err := client.DeployHttpApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布MCP server
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployMcpServerResponse
+func (client *Client) DeployMcpServerWithOptions(mcpServerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeployMcpServerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeployMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId)) + "/deploy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeployMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布MCP server
+//
+// @return DeployMcpServerResponse
+func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeployMcpServerResponse{}
+	_body, _err := client.DeployMcpServerWithOptions(mcpServerId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2840,6 +3052,56 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 
 // Summary:
 //
+// 获取MCP server
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMcpServerResponse
+func (client *Client) GetMcpServerWithOptions(mcpServerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMcpServerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取MCP server
+//
+// @return GetMcpServerResponse
+func (client *Client) GetMcpServer(mcpServerId *string) (_result *GetMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMcpServerResponse{}
+	_body, _err := client.GetMcpServerWithOptions(mcpServerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // GetPluginAttachment。
 //
 // @param headers - map
@@ -3195,6 +3457,10 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 		body["dryRun"] = request.DryRun
 	}
 
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
 	if !dara.IsNil(request.McpRouteId) {
 		body["mcpRouteId"] = request.McpRouteId
 	}
@@ -3267,6 +3533,74 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 	headers := make(map[string]*string)
 	_result = &ImportHttpApiResponse{}
 	_body, _err := client.ImportHttpApiWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # InstallPlugin
+//
+// @param request - InstallPluginRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallPluginResponse
+func (client *Client) InstallPluginWithOptions(request *InstallPluginRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InstallPluginResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayIds) {
+		body["gatewayIds"] = request.GatewayIds
+	}
+
+	if !dara.IsNil(request.PluginClassId) {
+		body["pluginClassId"] = request.PluginClassId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallPlugin"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugins/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # InstallPlugin
+//
+// @param request - InstallPluginRequest
+//
+// @return InstallPluginResponse
+func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *InstallPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &InstallPluginResponse{}
+	_body, _err := client.InstallPluginWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3650,6 +3984,10 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		query["consumerAuthorizationRuleId"] = request.ConsumerAuthorizationRuleId
 	}
 
+	if !dara.IsNil(request.EnableAuth) {
+		query["enableAuth"] = request.EnableAuth
+	}
+
 	if !dara.IsNil(request.ForDeploy) {
 		query["forDeploy"] = request.ForDeploy
 	}
@@ -3974,6 +4312,94 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 	headers := make(map[string]*string)
 	_result = &ListHttpApisResponse{}
 	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取MCP server列表
+//
+// @param request - ListMcpServersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMcpServersResponse
+func (client *Client) ListMcpServersWithOptions(request *ListMcpServersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMcpServersResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreateFromTypes) {
+		query["createFromTypes"] = request.CreateFromTypes
+	}
+
+	if !dara.IsNil(request.DeployStatuses) {
+		query["deployStatuses"] = request.DeployStatuses
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMcpServers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMcpServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取MCP server列表
+//
+// @param request - ListMcpServersRequest
+//
+// @return ListMcpServersResponse
+func (client *Client) ListMcpServers(request *ListMcpServersRequest) (_result *ListMcpServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMcpServersResponse{}
+	_body, _err := client.ListMcpServersWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4769,6 +5195,56 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
+// 取消发布MCP server
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnDeployMcpServerResponse
+func (client *Client) UnDeployMcpServerWithOptions(mcpServerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UnDeployMcpServerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnDeployMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId)) + "/undeploy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnDeployMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消发布MCP server
+//
+// @return UnDeployMcpServerResponse
+func (client *Client) UnDeployMcpServer(mcpServerId *string) (_result *UnDeployMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnDeployMcpServerResponse{}
+	_body, _err := client.UnDeployMcpServerWithOptions(mcpServerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unpublishes an HTTP API.
 //
 // @param request - UndeployHttpApiRequest
@@ -4836,6 +5312,56 @@ func (client *Client) UndeployHttpApi(httpApiId *string, request *UndeployHttpAp
 	headers := make(map[string]*string)
 	_result = &UndeployHttpApiResponse{}
 	_body, _err := client.UndeployHttpApiWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # UninstallPlugin
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallPluginResponse
+func (client *Client) UninstallPluginWithOptions(pluginId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UninstallPluginResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallPlugin"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugins/" + dara.PercentEncode(dara.StringValue(pluginId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # UninstallPlugin
+//
+// @return UninstallPluginResponse
+func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UninstallPluginResponse{}
+	_body, _err := client.UninstallPluginWithOptions(pluginId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5429,6 +5955,10 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		body["enableAuth"] = request.EnableAuth
 	}
 
+	if !dara.IsNil(request.FirstByteTimeout) {
+		body["firstByteTimeout"] = request.FirstByteTimeout
+	}
+
 	if !dara.IsNil(request.IngressConfig) {
 		body["ingressConfig"] = request.IngressConfig
 	}
@@ -5641,6 +6171,102 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 	headers := make(map[string]*string)
 	_result = &UpdateHttpApiRouteResponse{}
 	_body, _err := client.UpdateHttpApiRouteWithOptions(httpApiId, routeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新MCP server
+//
+// @param request - UpdateMcpServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMcpServerResponse
+func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *UpdateMcpServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMcpServerResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AssembledSources) {
+		body["assembledSources"] = request.AssembledSources
+	}
+
+	if !dara.IsNil(request.BackendConfig) {
+		body["backendConfig"] = request.BackendConfig
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DomainIds) {
+		body["domainIds"] = request.DomainIds
+	}
+
+	if !dara.IsNil(request.ExposedUriPath) {
+		body["exposedUriPath"] = request.ExposedUriPath
+	}
+
+	if !dara.IsNil(request.Match) {
+		body["match"] = request.Match
+	}
+
+	if !dara.IsNil(request.McpStatisticsEnable) {
+		body["mcpStatisticsEnable"] = request.McpStatisticsEnable
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMcpServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/" + dara.PercentEncode(dara.StringValue(mcpServerId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMcpServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新MCP server
+//
+// @param request - UpdateMcpServerRequest
+//
+// @return UpdateMcpServerResponse
+func (client *Client) UpdateMcpServer(mcpServerId *string, request *UpdateMcpServerRequest) (_result *UpdateMcpServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMcpServerResponse{}
+	_body, _err := client.UpdateMcpServerWithOptions(mcpServerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

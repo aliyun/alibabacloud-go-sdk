@@ -123,6 +123,10 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// example:
+	//
+	// Serverless
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -141,7 +145,8 @@ type GetGatewayResponseBodyData struct {
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	Isp         *string `json:"isp,omitempty" xml:"isp,omitempty"`
 	// The ingress addresses of the instance.
-	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
+	LoadBalancers     []*GetGatewayResponseBodyDataLoadBalancers   `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
+	MaintenancePeriod *GetGatewayResponseBodyDataMaintenancePeriod `json:"maintenancePeriod,omitempty" xml:"maintenancePeriod,omitempty" type:"Struct"`
 	// The instance name.
 	//
 	// example:
@@ -250,6 +255,10 @@ func (s *GetGatewayResponseBodyData) GetExpireTimestamp() *int64 {
 	return s.ExpireTimestamp
 }
 
+func (s *GetGatewayResponseBodyData) GetGatewayEdition() *string {
+	return s.GatewayEdition
+}
+
 func (s *GetGatewayResponseBodyData) GetGatewayId() *string {
 	return s.GatewayId
 }
@@ -264,6 +273,10 @@ func (s *GetGatewayResponseBodyData) GetIsp() *string {
 
 func (s *GetGatewayResponseBodyData) GetLoadBalancers() []*GetGatewayResponseBodyDataLoadBalancers {
 	return s.LoadBalancers
+}
+
+func (s *GetGatewayResponseBodyData) GetMaintenancePeriod() *GetGatewayResponseBodyDataMaintenancePeriod {
+	return s.MaintenancePeriod
 }
 
 func (s *GetGatewayResponseBodyData) GetName() *string {
@@ -343,6 +356,11 @@ func (s *GetGatewayResponseBodyData) SetExpireTimestamp(v int64) *GetGatewayResp
 	return s
 }
 
+func (s *GetGatewayResponseBodyData) SetGatewayEdition(v string) *GetGatewayResponseBodyData {
+	s.GatewayEdition = &v
+	return s
+}
+
 func (s *GetGatewayResponseBodyData) SetGatewayId(v string) *GetGatewayResponseBodyData {
 	s.GatewayId = &v
 	return s
@@ -360,6 +378,11 @@ func (s *GetGatewayResponseBodyData) SetIsp(v string) *GetGatewayResponseBodyDat
 
 func (s *GetGatewayResponseBodyData) SetLoadBalancers(v []*GetGatewayResponseBodyDataLoadBalancers) *GetGatewayResponseBodyData {
 	s.LoadBalancers = v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetMaintenancePeriod(v *GetGatewayResponseBodyDataMaintenancePeriod) *GetGatewayResponseBodyData {
+	s.MaintenancePeriod = v
 	return s
 }
 
@@ -702,6 +725,47 @@ func (s *GetGatewayResponseBodyDataLoadBalancersPorts) SetProtocol(v string) *Ge
 }
 
 func (s *GetGatewayResponseBodyDataLoadBalancersPorts) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetGatewayResponseBodyDataMaintenancePeriod struct {
+	// example:
+	//
+	// 06:00
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 02:00
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s GetGatewayResponseBodyDataMaintenancePeriod) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayResponseBodyDataMaintenancePeriod) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayResponseBodyDataMaintenancePeriod) GetEndTime() *string {
+	return s.EndTime
+}
+
+func (s *GetGatewayResponseBodyDataMaintenancePeriod) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *GetGatewayResponseBodyDataMaintenancePeriod) SetEndTime(v string) *GetGatewayResponseBodyDataMaintenancePeriod {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataMaintenancePeriod) SetStartTime(v string) *GetGatewayResponseBodyDataMaintenancePeriod {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataMaintenancePeriod) Validate() error {
 	return dara.Validate(s)
 }
 

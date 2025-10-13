@@ -11,6 +11,8 @@ type iCreateGatewayRequest interface {
 	GoString() string
 	SetChargeType(v string) *CreateGatewayRequest
 	GetChargeType() *string
+	SetGatewayEdition(v string) *CreateGatewayRequest
+	GetGatewayEdition() *string
 	SetGatewayType(v string) *CreateGatewayRequest
 	GetGatewayType() *string
 	SetLogConfig(v *CreateGatewayRequestLogConfig) *CreateGatewayRequest
@@ -36,6 +38,10 @@ type CreateGatewayRequest struct {
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
+	// example:
+	//
+	// Professional
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
 	// example:
 	//
 	// API
@@ -72,6 +78,10 @@ func (s CreateGatewayRequest) GoString() string {
 
 func (s *CreateGatewayRequest) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *CreateGatewayRequest) GetGatewayEdition() *string {
+	return s.GatewayEdition
 }
 
 func (s *CreateGatewayRequest) GetGatewayType() *string {
@@ -112,6 +122,11 @@ func (s *CreateGatewayRequest) GetZoneConfig() *CreateGatewayRequestZoneConfig {
 
 func (s *CreateGatewayRequest) SetChargeType(v string) *CreateGatewayRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetGatewayEdition(v string) *CreateGatewayRequest {
+	s.GatewayEdition = &v
 	return s
 }
 

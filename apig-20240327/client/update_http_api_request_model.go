@@ -23,6 +23,8 @@ type iUpdateHttpApiRequest interface {
 	GetDescription() *string
 	SetEnableAuth(v bool) *UpdateHttpApiRequest
 	GetEnableAuth() *bool
+	SetFirstByteTimeout(v int32) *UpdateHttpApiRequest
+	GetFirstByteTimeout() *int32
 	SetIngressConfig(v *UpdateHttpApiRequestIngressConfig) *UpdateHttpApiRequest
 	GetIngressConfig() *UpdateHttpApiRequestIngressConfig
 	SetOnlyChangeConfig(v bool) *UpdateHttpApiRequest
@@ -58,7 +60,8 @@ type UpdateHttpApiRequest struct {
 	// API for testing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
-	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	EnableAuth       *bool  `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
 	// The HTTP Ingress API configurations.
 	IngressConfig    *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
 	OnlyChangeConfig *bool                              `json:"onlyChangeConfig,omitempty" xml:"onlyChangeConfig,omitempty"`
@@ -103,6 +106,10 @@ func (s *UpdateHttpApiRequest) GetDescription() *string {
 
 func (s *UpdateHttpApiRequest) GetEnableAuth() *bool {
 	return s.EnableAuth
+}
+
+func (s *UpdateHttpApiRequest) GetFirstByteTimeout() *int32 {
+	return s.FirstByteTimeout
 }
 
 func (s *UpdateHttpApiRequest) GetIngressConfig() *UpdateHttpApiRequestIngressConfig {
@@ -157,6 +164,11 @@ func (s *UpdateHttpApiRequest) SetDescription(v string) *UpdateHttpApiRequest {
 
 func (s *UpdateHttpApiRequest) SetEnableAuth(v bool) *UpdateHttpApiRequest {
 	s.EnableAuth = &v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetFirstByteTimeout(v int32) *UpdateHttpApiRequest {
+	s.FirstByteTimeout = &v
 	return s
 }
 

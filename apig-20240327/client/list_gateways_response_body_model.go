@@ -192,6 +192,10 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// example:
+	//
+	// Serverless
+	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -308,6 +312,10 @@ func (s *ListGatewaysResponseBodyDataItems) GetExpireTimestamp() *int64 {
 	return s.ExpireTimestamp
 }
 
+func (s *ListGatewaysResponseBodyDataItems) GetGatewayEdition() *string {
+	return s.GatewayEdition
+}
+
 func (s *ListGatewaysResponseBodyDataItems) GetGatewayId() *string {
 	return s.GatewayId
 }
@@ -397,6 +405,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetCreateTimestamp(v int64) *ListGat
 
 func (s *ListGatewaysResponseBodyDataItems) SetExpireTimestamp(v int64) *ListGatewaysResponseBodyDataItems {
 	s.ExpireTimestamp = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetGatewayEdition(v string) *ListGatewaysResponseBodyDataItems {
+	s.GatewayEdition = &v
 	return s
 }
 

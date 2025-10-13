@@ -294,7 +294,7 @@ func (s *HttpApiDeployConfigPolicyConfigs) Validate() error {
 }
 
 type HttpApiDeployConfigPolicyConfigsAiFallbackConfig struct {
-	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
+	ServiceConfigs []*HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfig) String() string {
@@ -305,16 +305,51 @@ func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfig) GoString() string {
 	return s.String()
 }
 
-func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) GetServiceIds() []*string {
-	return s.ServiceIds
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) GetServiceConfigs() []*HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs {
+	return s.ServiceConfigs
 }
 
-func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) SetServiceIds(v []*string) *HttpApiDeployConfigPolicyConfigsAiFallbackConfig {
-	s.ServiceIds = v
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) SetServiceConfigs(v []*HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) *HttpApiDeployConfigPolicyConfigsAiFallbackConfig {
+	s.ServiceConfigs = v
 	return s
 }
 
 func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs struct {
+	ServiceId       *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	TargetModelName *string `json:"targetModelName,omitempty" xml:"targetModelName,omitempty"`
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) GetServiceId() *string {
+	return s.ServiceId
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) GetTargetModelName() *string {
+	return s.TargetModelName
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) SetServiceId(v string) *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) SetTargetModelName(v string) *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs {
+	s.TargetModelName = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs) Validate() error {
 	return dara.Validate(s)
 }
 
