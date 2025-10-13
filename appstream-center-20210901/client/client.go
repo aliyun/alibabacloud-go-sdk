@@ -527,6 +527,10 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 		body["AutoRenew"] = request.AutoRenew
 	}
 
+	if !dara.IsNil(request.Bandwidth) {
+		body["Bandwidth"] = request.Bandwidth
+	}
+
 	if !dara.IsNil(request.BizRegionId) {
 		body["BizRegionId"] = request.BizRegionId
 	}
@@ -546,6 +550,10 @@ func (client *Client) CreateWuyingServerWithOptions(request *CreateWuyingServerR
 
 	if !dara.IsNil(request.ImageId) {
 		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.NetworkStrategyType) {
+		body["NetworkStrategyType"] = request.NetworkStrategyType
 	}
 
 	if !dara.IsNil(request.OfficeSiteId) {
@@ -840,6 +848,70 @@ func (client *Client) DeleteWuyingServer(request *DeleteWuyingServerRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteWuyingServerResponse{}
 	_body, _err := client.DeleteWuyingServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询无影工作站EIP信息
+//
+// @param request - DescribeWuyingServerEipInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWuyingServerEipInfoResponse
+func (client *Client) DescribeWuyingServerEipInfoWithOptions(request *DescribeWuyingServerEipInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeWuyingServerEipInfoResponse, _err error) {
+	_err = request.Validate()
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Isp) {
+		body["Isp"] = request.Isp
+	}
+
+	if !dara.IsNil(request.WuyingServerId) {
+		body["WuyingServerId"] = request.WuyingServerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeWuyingServerEipInfo"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeWuyingServerEipInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询无影工作站EIP信息
+//
+// @param request - DescribeWuyingServerEipInfoRequest
+//
+// @return DescribeWuyingServerEipInfoResponse
+func (client *Client) DescribeWuyingServerEipInfo(request *DescribeWuyingServerEipInfoRequest) (_result *DescribeWuyingServerEipInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeWuyingServerEipInfoResponse{}
+	_body, _err := client.DescribeWuyingServerEipInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

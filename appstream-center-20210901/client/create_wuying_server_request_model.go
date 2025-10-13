@@ -15,6 +15,8 @@ type iCreateWuyingServerRequest interface {
 	GetAutoPay() *bool
 	SetAutoRenew(v bool) *CreateWuyingServerRequest
 	GetAutoRenew() *bool
+	SetBandwidth(v int32) *CreateWuyingServerRequest
+	GetBandwidth() *int32
 	SetBizRegionId(v string) *CreateWuyingServerRequest
 	GetBizRegionId() *string
 	SetChargeType(v string) *CreateWuyingServerRequest
@@ -25,6 +27,8 @@ type iCreateWuyingServerRequest interface {
 	GetIdempotenceToken() *string
 	SetImageId(v string) *CreateWuyingServerRequest
 	GetImageId() *string
+	SetNetworkStrategyType(v string) *CreateWuyingServerRequest
+	GetNetworkStrategyType() *string
 	SetOfficeSiteId(v string) *CreateWuyingServerRequest
 	GetOfficeSiteId() *string
 	SetPassword(v string) *CreateWuyingServerRequest
@@ -63,7 +67,8 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool  `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -80,7 +85,8 @@ type CreateWuyingServerRequest struct {
 	// example:
 	//
 	// img-bp13mu****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId             *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	NetworkStrategyType *string `json:"NetworkStrategyType,omitempty" xml:"NetworkStrategyType,omitempty"`
 	// example:
 	//
 	// cn-hangzhou+dir-643067****
@@ -145,6 +151,10 @@ func (s *CreateWuyingServerRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
 }
 
+func (s *CreateWuyingServerRequest) GetBandwidth() *int32 {
+	return s.Bandwidth
+}
+
 func (s *CreateWuyingServerRequest) GetBizRegionId() *string {
 	return s.BizRegionId
 }
@@ -163,6 +173,10 @@ func (s *CreateWuyingServerRequest) GetIdempotenceToken() *string {
 
 func (s *CreateWuyingServerRequest) GetImageId() *string {
 	return s.ImageId
+}
+
+func (s *CreateWuyingServerRequest) GetNetworkStrategyType() *string {
+	return s.NetworkStrategyType
 }
 
 func (s *CreateWuyingServerRequest) GetOfficeSiteId() *string {
@@ -228,6 +242,11 @@ func (s *CreateWuyingServerRequest) SetAutoRenew(v bool) *CreateWuyingServerRequ
 	return s
 }
 
+func (s *CreateWuyingServerRequest) SetBandwidth(v int32) *CreateWuyingServerRequest {
+	s.Bandwidth = &v
+	return s
+}
+
 func (s *CreateWuyingServerRequest) SetBizRegionId(v string) *CreateWuyingServerRequest {
 	s.BizRegionId = &v
 	return s
@@ -250,6 +269,11 @@ func (s *CreateWuyingServerRequest) SetIdempotenceToken(v string) *CreateWuyingS
 
 func (s *CreateWuyingServerRequest) SetImageId(v string) *CreateWuyingServerRequest {
 	s.ImageId = &v
+	return s
+}
+
+func (s *CreateWuyingServerRequest) SetNetworkStrategyType(v string) *CreateWuyingServerRequest {
+	s.NetworkStrategyType = &v
 	return s
 }
 
