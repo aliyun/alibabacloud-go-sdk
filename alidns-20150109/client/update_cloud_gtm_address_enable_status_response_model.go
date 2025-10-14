@@ -59,5 +59,10 @@ func (s *UpdateCloudGtmAddressEnableStatusResponse) SetBody(v *UpdateCloudGtmAdd
 }
 
 func (s *UpdateCloudGtmAddressEnableStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

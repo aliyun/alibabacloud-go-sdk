@@ -114,7 +114,16 @@ func (s *UpdateDnsGtmAddressPoolRequest) SetName(v string) *UpdateDnsGtmAddressP
 }
 
 func (s *UpdateDnsGtmAddressPoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Addr != nil {
+		for _, item := range s.Addr {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDnsGtmAddressPoolRequestAddr struct {

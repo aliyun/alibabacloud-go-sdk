@@ -221,7 +221,16 @@ func (s *UpdateDnsGtmMonitorRequest) SetTimeout(v int32) *UpdateDnsGtmMonitorReq
 }
 
 func (s *UpdateDnsGtmMonitorRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDnsGtmMonitorRequestIspCityNode struct {

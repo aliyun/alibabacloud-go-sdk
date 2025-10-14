@@ -59,5 +59,10 @@ func (s *DescribeIspFlushCacheTaskResponse) SetBody(v *DescribeIspFlushCacheTask
 }
 
 func (s *DescribeIspFlushCacheTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

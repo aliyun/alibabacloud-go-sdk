@@ -190,7 +190,16 @@ func (s *AddDnsCacheDomainRequest) SetSourceProtocol(v string) *AddDnsCacheDomai
 }
 
 func (s *AddDnsCacheDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceDnsServer != nil {
+		for _, item := range s.SourceDnsServer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddDnsCacheDomainRequestSourceDnsServer struct {

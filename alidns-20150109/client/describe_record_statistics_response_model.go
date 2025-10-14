@@ -59,5 +59,10 @@ func (s *DescribeRecordStatisticsResponse) SetBody(v *DescribeRecordStatisticsRe
 }
 
 func (s *DescribeRecordStatisticsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

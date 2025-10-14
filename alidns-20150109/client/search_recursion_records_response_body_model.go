@@ -140,7 +140,12 @@ func (s *SearchRecursionRecordsResponseBody) SetTotalPages(v int32) *SearchRecur
 }
 
 func (s *SearchRecursionRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		if err := s.Records.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchRecursionRecordsResponseBodyRecords struct {
@@ -165,7 +170,16 @@ func (s *SearchRecursionRecordsResponseBodyRecords) SetRecord(v []*SearchRecursi
 }
 
 func (s *SearchRecursionRecordsResponseBodyRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Record != nil {
+		for _, item := range s.Record {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchRecursionRecordsResponseBodyRecordsRecord struct {

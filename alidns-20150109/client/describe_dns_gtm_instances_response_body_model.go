@@ -121,7 +121,16 @@ func (s *DescribeDnsGtmInstancesResponseBody) SetTotalPages(v int32) *DescribeDn
 }
 
 func (s *DescribeDnsGtmInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GtmInstances != nil {
+		for _, item := range s.GtmInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstances struct {
@@ -310,7 +319,17 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstances) SetVersionCode(v strin
 }
 
 func (s *DescribeDnsGtmInstancesResponseBodyGtmInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsedQuota != nil {
+		if err := s.UsedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig struct {
@@ -481,7 +500,16 @@ func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) SetTtl(v int32) 
 }
 
 func (s *DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig struct {

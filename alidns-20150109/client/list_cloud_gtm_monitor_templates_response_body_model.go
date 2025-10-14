@@ -121,7 +121,12 @@ func (s *ListCloudGtmMonitorTemplatesResponseBody) SetTotalPages(v int32) *ListC
 }
 
 func (s *ListCloudGtmMonitorTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		if err := s.Templates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplates struct {
@@ -146,7 +151,16 @@ func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplates) SetTemplate(v []*Lis
 }
 
 func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		for _, item := range s.Template {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
@@ -442,7 +456,12 @@ func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateTim
 }
 
 func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		if err := s.IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes struct {
@@ -467,7 +486,16 @@ func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) 
 }
 
 func (s *ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {

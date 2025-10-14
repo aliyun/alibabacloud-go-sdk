@@ -121,7 +121,12 @@ func (s *PreviewGtmRecoveryPlanResponseBody) SetTotalPages(v int32) *PreviewGtmR
 }
 
 func (s *PreviewGtmRecoveryPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Previews != nil {
+		if err := s.Previews.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviews struct {
@@ -146,7 +151,16 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviews) SetPreview(v []*PreviewGtmR
 }
 
 func (s *PreviewGtmRecoveryPlanResponseBodyPreviews) Validate() error {
-	return dara.Validate(s)
+	if s.Preview != nil {
+		for _, item := range s.Preview {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreview struct {
@@ -217,7 +231,12 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreview) SetUserDomainName(v 
 }
 
 func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreview) Validate() error {
-	return dara.Validate(s)
+	if s.SwitchInfos != nil {
+		if err := s.SwitchInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos struct {
@@ -242,7 +261,16 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos) SetSwitch
 }
 
 func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos) Validate() error {
-	return dara.Validate(s)
+	if s.SwitchInfo != nil {
+		for _, item := range s.SwitchInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfosSwitchInfo struct {

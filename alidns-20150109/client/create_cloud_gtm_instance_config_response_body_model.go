@@ -11,6 +11,8 @@ type iCreateCloudGtmInstanceConfigResponseBody interface {
 	GoString() string
 	SetConfigId(v bool) *CreateCloudGtmInstanceConfigResponseBody
 	GetConfigId() *bool
+	SetInstanceId(v string) *CreateCloudGtmInstanceConfigResponseBody
+	GetInstanceId() *string
 	SetRequestId(v string) *CreateCloudGtmInstanceConfigResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *CreateCloudGtmInstanceConfigResponseBody
@@ -24,6 +26,10 @@ type CreateCloudGtmInstanceConfigResponseBody struct {
 	//
 	// config-000**1
 	ConfigId *bool `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// gtm-cn-xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s *CreateCloudGtmInstanceConfigResponseBody) GetConfigId() *bool {
 	return s.ConfigId
 }
 
+func (s *CreateCloudGtmInstanceConfigResponseBody) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *CreateCloudGtmInstanceConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -64,6 +74,11 @@ func (s *CreateCloudGtmInstanceConfigResponseBody) GetSuccess() *bool {
 
 func (s *CreateCloudGtmInstanceConfigResponseBody) SetConfigId(v bool) *CreateCloudGtmInstanceConfigResponseBody {
 	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigResponseBody) SetInstanceId(v string) *CreateCloudGtmInstanceConfigResponseBody {
+	s.InstanceId = &v
 	return s
 }
 

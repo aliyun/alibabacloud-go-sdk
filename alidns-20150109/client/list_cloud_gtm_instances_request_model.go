@@ -11,6 +11,8 @@ type iListCloudGtmInstancesRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *ListCloudGtmInstancesRequest
 	GetAcceptLanguage() *string
+	SetChargeType(v string) *ListCloudGtmInstancesRequest
+	GetChargeType() *string
 	SetClientToken(v string) *ListCloudGtmInstancesRequest
 	GetClientToken() *string
 	SetInstanceId(v string) *ListCloudGtmInstancesRequest
@@ -34,6 +36,10 @@ type ListCloudGtmInstancesRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// postpay/prepay
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -78,6 +84,10 @@ func (s *ListCloudGtmInstancesRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *ListCloudGtmInstancesRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *ListCloudGtmInstancesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -100,6 +110,11 @@ func (s *ListCloudGtmInstancesRequest) GetPageSize() *int32 {
 
 func (s *ListCloudGtmInstancesRequest) SetAcceptLanguage(v string) *ListCloudGtmInstancesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmInstancesRequest) SetChargeType(v string) *ListCloudGtmInstancesRequest {
+	s.ChargeType = &v
 	return s
 }
 

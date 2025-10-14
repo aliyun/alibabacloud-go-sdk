@@ -365,7 +365,12 @@ func (s *DescribeCloudGtmAddressResponseBody) SetUpdateTimestamp(v int64) *Descr
 }
 
 func (s *DescribeCloudGtmAddressResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTasks != nil {
+		if err := s.HealthTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressResponseBodyHealthTasks struct {
@@ -390,7 +395,16 @@ func (s *DescribeCloudGtmAddressResponseBodyHealthTasks) SetHealthTask(v []*Desc
 }
 
 func (s *DescribeCloudGtmAddressResponseBodyHealthTasks) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTask != nil {
+		for _, item := range s.HealthTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -71,9 +72,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddCustomLineResponse
 func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, runtime *dara.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -149,9 +152,11 @@ func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *Add
 //
 // @return AddDnsCacheDomainResponse
 func (client *Client) AddDnsCacheDomainWithOptions(request *AddDnsCacheDomainRequest, runtime *dara.RuntimeOptions) (_result *AddDnsCacheDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheTtlMax) {
@@ -241,9 +246,11 @@ func (client *Client) AddDnsCacheDomain(request *AddDnsCacheDomainRequest) (_res
 //
 // @return AddDnsGtmAccessStrategyResponse
 func (client *Client) AddDnsGtmAccessStrategyWithOptions(request *AddDnsGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *AddDnsGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DefaultAddrPool) {
@@ -365,9 +372,11 @@ func (client *Client) AddDnsGtmAccessStrategy(request *AddDnsGtmAccessStrategyRe
 //
 // @return AddDnsGtmAddressPoolResponse
 func (client *Client) AddDnsGtmAddressPoolWithOptions(request *AddDnsGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *AddDnsGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Addr) {
@@ -477,9 +486,11 @@ func (client *Client) AddDnsGtmAddressPool(request *AddDnsGtmAddressPoolRequest)
 //
 // @return AddDnsGtmMonitorResponse
 func (client *Client) AddDnsGtmMonitorWithOptions(request *AddDnsGtmMonitorRequest, runtime *dara.RuntimeOptions) (_result *AddDnsGtmMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -575,9 +586,11 @@ func (client *Client) AddDnsGtmMonitor(request *AddDnsGtmMonitorRequest) (_resul
 //
 // @return AddDomainResponse
 func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *dara.RuntimeOptions) (_result *AddDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -653,9 +666,11 @@ func (client *Client) AddDomain(request *AddDomainRequest) (_result *AddDomainRe
 //
 // @return AddDomainBackupResponse
 func (client *Client) AddDomainBackupWithOptions(request *AddDomainBackupRequest, runtime *dara.RuntimeOptions) (_result *AddDomainBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -721,9 +736,11 @@ func (client *Client) AddDomainBackup(request *AddDomainBackupRequest) (_result 
 //
 // @return AddDomainGroupResponse
 func (client *Client) AddDomainGroupWithOptions(request *AddDomainGroupRequest, runtime *dara.RuntimeOptions) (_result *AddDomainGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupName) {
@@ -785,9 +802,11 @@ func (client *Client) AddDomainGroup(request *AddDomainGroupRequest) (_result *A
 //
 // @return AddDomainRecordResponse
 func (client *Client) AddDomainRecordWithOptions(request *AddDomainRecordRequest, runtime *dara.RuntimeOptions) (_result *AddDomainRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -873,9 +892,11 @@ func (client *Client) AddDomainRecord(request *AddDomainRecordRequest) (_result 
 //
 // @return AddGtmAccessStrategyResponse
 func (client *Client) AddGtmAccessStrategyWithOptions(request *AddGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *AddGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessLines) {
@@ -949,9 +970,11 @@ func (client *Client) AddGtmAccessStrategy(request *AddGtmAccessStrategyRequest)
 //
 // @return AddGtmAddressPoolResponse
 func (client *Client) AddGtmAddressPoolWithOptions(request *AddGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *AddGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Addr) {
@@ -1057,9 +1080,11 @@ func (client *Client) AddGtmAddressPool(request *AddGtmAddressPoolRequest) (_res
 //
 // @return AddGtmMonitorResponse
 func (client *Client) AddGtmMonitorWithOptions(request *AddGtmMonitorRequest, runtime *dara.RuntimeOptions) (_result *AddGtmMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -1145,9 +1170,11 @@ func (client *Client) AddGtmMonitor(request *AddGtmMonitorRequest) (_result *Add
 //
 // @return AddGtmRecoveryPlanResponse
 func (client *Client) AddGtmRecoveryPlanWithOptions(request *AddGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *AddGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaultAddrPool) {
@@ -1217,9 +1244,11 @@ func (client *Client) AddGtmRecoveryPlan(request *AddGtmRecoveryPlanRequest) (_r
 //
 // @return AddRecursionRecordResponse
 func (client *Client) AddRecursionRecordWithOptions(request *AddRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *AddRecursionRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1313,9 +1342,11 @@ func (client *Client) AddRecursionRecord(request *AddRecursionRecordRequest) (_r
 //
 // @return AddRecursionZoneResponse
 func (client *Client) AddRecursionZoneWithOptions(request *AddRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *AddRecursionZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1387,9 +1418,11 @@ func (client *Client) AddRecursionZone(request *AddRecursionZoneRequest) (_resul
 //
 // @return BindInstanceDomainsResponse
 func (client *Client) BindInstanceDomainsWithOptions(request *BindInstanceDomainsRequest, runtime *dara.RuntimeOptions) (_result *BindInstanceDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -1465,9 +1498,11 @@ func (client *Client) BindInstanceDomains(request *BindInstanceDomainsRequest) (
 //
 // @return ChangeDomainGroupResponse
 func (client *Client) ChangeDomainGroupWithOptions(request *ChangeDomainGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeDomainGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -1543,9 +1578,11 @@ func (client *Client) ChangeDomainGroup(request *ChangeDomainGroupRequest) (_res
 //
 // @return ChangeDomainOfDnsProductResponse
 func (client *Client) ChangeDomainOfDnsProductWithOptions(request *ChangeDomainOfDnsProductRequest, runtime *dara.RuntimeOptions) (_result *ChangeDomainOfDnsProductResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Force) {
@@ -1625,9 +1662,11 @@ func (client *Client) ChangeDomainOfDnsProduct(request *ChangeDomainOfDnsProduct
 //
 // @return CopyGtmConfigResponse
 func (client *Client) CopyGtmConfigWithOptions(request *CopyGtmConfigRequest, runtime *dara.RuntimeOptions) (_result *CopyGtmConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CopyType) {
@@ -1697,9 +1736,11 @@ func (client *Client) CopyGtmConfig(request *CopyGtmConfigRequest) (_result *Cop
 //
 // @return CreateCloudGtmAddressResponse
 func (client *Client) CreateCloudGtmAddressWithOptions(tmpReq *CreateCloudGtmAddressRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudGtmAddressResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCloudGtmAddressShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1807,9 +1848,11 @@ func (client *Client) CreateCloudGtmAddress(request *CreateCloudGtmAddressReques
 //
 // @return CreateCloudGtmAddressPoolResponse
 func (client *Client) CreateCloudGtmAddressPoolWithOptions(request *CreateCloudGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -1881,19 +1924,29 @@ func (client *Client) CreateCloudGtmAddressPool(request *CreateCloudGtmAddressPo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建gtm实例配置
+//
 // @param request - CreateCloudGtmInstanceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCloudGtmInstanceConfigResponse
 func (client *Client) CreateCloudGtmInstanceConfigWithOptions(request *CreateCloudGtmInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudGtmInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
 	}
 
 	if !dara.IsNil(request.ClientToken) {
@@ -1955,6 +2008,10 @@ func (client *Client) CreateCloudGtmInstanceConfigWithOptions(request *CreateClo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建gtm实例配置
+//
 // @param request - CreateCloudGtmInstanceConfigRequest
 //
 // @return CreateCloudGtmInstanceConfigResponse
@@ -1979,9 +2036,11 @@ func (client *Client) CreateCloudGtmInstanceConfig(request *CreateCloudGtmInstan
 //
 // @return CreateCloudGtmMonitorTemplateResponse
 func (client *Client) CreateCloudGtmMonitorTemplateWithOptions(tmpReq *CreateCloudGtmMonitorTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudGtmMonitorTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateCloudGtmMonitorTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2085,9 +2144,11 @@ func (client *Client) CreateCloudGtmMonitorTemplate(request *CreateCloudGtmMonit
 //
 // @return CreatePdnsAppKeyResponse
 func (client *Client) CreatePdnsAppKeyWithOptions(request *CreatePdnsAppKeyRequest, runtime *dara.RuntimeOptions) (_result *CreatePdnsAppKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2149,9 +2210,11 @@ func (client *Client) CreatePdnsAppKey(request *CreatePdnsAppKeyRequest) (_resul
 //
 // @return CreatePdnsUdpIpSegmentResponse
 func (client *Client) CreatePdnsUdpIpSegmentWithOptions(request *CreatePdnsUdpIpSegmentRequest, runtime *dara.RuntimeOptions) (_result *CreatePdnsUdpIpSegmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ip) {
@@ -2221,9 +2284,11 @@ func (client *Client) CreatePdnsUdpIpSegment(request *CreatePdnsUdpIpSegmentRequ
 //
 // @return DeleteCloudGtmAddressResponse
 func (client *Client) DeleteCloudGtmAddressWithOptions(request *DeleteCloudGtmAddressRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudGtmAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2289,9 +2354,11 @@ func (client *Client) DeleteCloudGtmAddress(request *DeleteCloudGtmAddressReques
 //
 // @return DeleteCloudGtmAddressPoolResponse
 func (client *Client) DeleteCloudGtmAddressPoolWithOptions(request *DeleteCloudGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2357,9 +2424,11 @@ func (client *Client) DeleteCloudGtmAddressPool(request *DeleteCloudGtmAddressPo
 //
 // @return DeleteCloudGtmInstanceConfigResponse
 func (client *Client) DeleteCloudGtmInstanceConfigWithOptions(request *DeleteCloudGtmInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudGtmInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2429,9 +2498,11 @@ func (client *Client) DeleteCloudGtmInstanceConfig(request *DeleteCloudGtmInstan
 //
 // @return DeleteCloudGtmMonitorTemplateResponse
 func (client *Client) DeleteCloudGtmMonitorTemplateWithOptions(request *DeleteCloudGtmMonitorTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudGtmMonitorTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -2497,9 +2568,11 @@ func (client *Client) DeleteCloudGtmMonitorTemplate(request *DeleteCloudGtmMonit
 //
 // @return DeleteCustomLinesResponse
 func (client *Client) DeleteCustomLinesWithOptions(request *DeleteCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomLinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2561,9 +2634,11 @@ func (client *Client) DeleteCustomLines(request *DeleteCustomLinesRequest) (_res
 //
 // @return DeleteDnsCacheDomainResponse
 func (client *Client) DeleteDnsCacheDomainWithOptions(request *DeleteDnsCacheDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDnsCacheDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2621,9 +2696,11 @@ func (client *Client) DeleteDnsCacheDomain(request *DeleteDnsCacheDomainRequest)
 //
 // @return DeleteDnsGtmAccessStrategyResponse
 func (client *Client) DeleteDnsGtmAccessStrategyWithOptions(request *DeleteDnsGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteDnsGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2677,9 +2754,11 @@ func (client *Client) DeleteDnsGtmAccessStrategy(request *DeleteDnsGtmAccessStra
 //
 // @return DeleteDnsGtmAddressPoolResponse
 func (client *Client) DeleteDnsGtmAddressPoolWithOptions(request *DeleteDnsGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteDnsGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -2737,9 +2816,11 @@ func (client *Client) DeleteDnsGtmAddressPool(request *DeleteDnsGtmAddressPoolRe
 //
 // @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -2805,9 +2886,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 //
 // @return DeleteDomainGroupResponse
 func (client *Client) DeleteDomainGroupWithOptions(request *DeleteDomainGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -2873,9 +2956,11 @@ func (client *Client) DeleteDomainGroup(request *DeleteDomainGroupRequest) (_res
 //
 // @return DeleteDomainRecordResponse
 func (client *Client) DeleteDomainRecordWithOptions(request *DeleteDomainRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2937,9 +3022,11 @@ func (client *Client) DeleteDomainRecord(request *DeleteDomainRecordRequest) (_r
 //
 // @return DeleteGtmAccessStrategyResponse
 func (client *Client) DeleteGtmAccessStrategyWithOptions(request *DeleteGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2993,9 +3080,11 @@ func (client *Client) DeleteGtmAccessStrategy(request *DeleteGtmAccessStrategyRe
 //
 // @return DeleteGtmAddressPoolResponse
 func (client *Client) DeleteGtmAddressPoolWithOptions(request *DeleteGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DeleteGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -3049,9 +3138,11 @@ func (client *Client) DeleteGtmAddressPool(request *DeleteGtmAddressPoolRequest)
 //
 // @return DeleteGtmRecoveryPlanResponse
 func (client *Client) DeleteGtmRecoveryPlanWithOptions(request *DeleteGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *DeleteGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3109,9 +3200,11 @@ func (client *Client) DeleteGtmRecoveryPlan(request *DeleteGtmRecoveryPlanReques
 //
 // @return DeleteRecursionRecordResponse
 func (client *Client) DeleteRecursionRecordWithOptions(request *DeleteRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecursionRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3173,9 +3266,11 @@ func (client *Client) DeleteRecursionRecord(request *DeleteRecursionRecordReques
 //
 // @return DeleteRecursionZoneResponse
 func (client *Client) DeleteRecursionZoneWithOptions(request *DeleteRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteRecursionZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3241,9 +3336,11 @@ func (client *Client) DeleteRecursionZone(request *DeleteRecursionZoneRequest) (
 //
 // @return DeleteSubDomainRecordsResponse
 func (client *Client) DeleteSubDomainRecordsWithOptions(request *DeleteSubDomainRecordsRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubDomainRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -3321,9 +3418,11 @@ func (client *Client) DeleteSubDomainRecords(request *DeleteSubDomainRecordsRequ
 //
 // @return DescribeBatchResultCountResponse
 func (client *Client) DescribeBatchResultCountWithOptions(request *DescribeBatchResultCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchResultCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchType) {
@@ -3393,9 +3492,11 @@ func (client *Client) DescribeBatchResultCount(request *DescribeBatchResultCount
 //
 // @return DescribeBatchResultDetailResponse
 func (client *Client) DescribeBatchResultDetailWithOptions(request *DescribeBatchResultDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchResultDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BatchType) {
@@ -3477,9 +3578,11 @@ func (client *Client) DescribeBatchResultDetail(request *DescribeBatchResultDeta
 //
 // @return DescribeCloudGtmAddressResponse
 func (client *Client) DescribeCloudGtmAddressWithOptions(request *DescribeCloudGtmAddressRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmAddressResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3545,9 +3648,11 @@ func (client *Client) DescribeCloudGtmAddress(request *DescribeCloudGtmAddressRe
 //
 // @return DescribeCloudGtmAddressPoolResponse
 func (client *Client) DescribeCloudGtmAddressPoolWithOptions(request *DescribeCloudGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3613,9 +3718,11 @@ func (client *Client) DescribeCloudGtmAddressPool(request *DescribeCloudGtmAddre
 //
 // @return DescribeCloudGtmAddressPoolReferenceResponse
 func (client *Client) DescribeCloudGtmAddressPoolReferenceWithOptions(request *DescribeCloudGtmAddressPoolReferenceRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmAddressPoolReferenceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3681,9 +3788,11 @@ func (client *Client) DescribeCloudGtmAddressPoolReference(request *DescribeClou
 //
 // @return DescribeCloudGtmAddressReferenceResponse
 func (client *Client) DescribeCloudGtmAddressReferenceWithOptions(request *DescribeCloudGtmAddressReferenceRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmAddressReferenceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3745,9 +3854,11 @@ func (client *Client) DescribeCloudGtmAddressReference(request *DescribeCloudGtm
 //
 // @return DescribeCloudGtmGlobalAlertResponse
 func (client *Client) DescribeCloudGtmGlobalAlertWithOptions(request *DescribeCloudGtmGlobalAlertRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmGlobalAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3801,9 +3912,11 @@ func (client *Client) DescribeCloudGtmGlobalAlert(request *DescribeCloudGtmGloba
 //
 // @return DescribeCloudGtmInstanceConfigAlertResponse
 func (client *Client) DescribeCloudGtmInstanceConfigAlertWithOptions(request *DescribeCloudGtmInstanceConfigAlertRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmInstanceConfigAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3869,9 +3982,11 @@ func (client *Client) DescribeCloudGtmInstanceConfigAlert(request *DescribeCloud
 //
 // @return DescribeCloudGtmInstanceConfigFullInfoResponse
 func (client *Client) DescribeCloudGtmInstanceConfigFullInfoWithOptions(request *DescribeCloudGtmInstanceConfigFullInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmInstanceConfigFullInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -3941,9 +4056,11 @@ func (client *Client) DescribeCloudGtmInstanceConfigFullInfo(request *DescribeCl
 //
 // @return DescribeCloudGtmMonitorTemplateResponse
 func (client *Client) DescribeCloudGtmMonitorTemplateWithOptions(request *DescribeCloudGtmMonitorTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmMonitorTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -4001,9 +4118,11 @@ func (client *Client) DescribeCloudGtmMonitorTemplate(request *DescribeCloudGtmM
 //
 // @return DescribeCloudGtmSummaryResponse
 func (client *Client) DescribeCloudGtmSummaryWithOptions(request *DescribeCloudGtmSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCloudGtmSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -4096,9 +4215,11 @@ func (client *Client) DescribeCloudGtmSystemLines() (_result *DescribeCloudGtmSy
 //
 // @return DescribeCustomLineResponse
 func (client *Client) DescribeCustomLineWithOptions(request *DescribeCustomLineRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4160,9 +4281,11 @@ func (client *Client) DescribeCustomLine(request *DescribeCustomLineRequest) (_r
 //
 // @return DescribeCustomLinesResponse
 func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomLinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4232,9 +4355,11 @@ func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (
 //
 // @return DescribeDNSSLBSubDomainsResponse
 func (client *Client) DescribeDNSSLBSubDomainsWithOptions(request *DescribeDNSSLBSubDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDNSSLBSubDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -4312,9 +4437,11 @@ func (client *Client) DescribeDNSSLBSubDomains(request *DescribeDNSSLBSubDomains
 //
 // @return DescribeDnsCacheDomainsResponse
 func (client *Client) DescribeDnsCacheDomainsWithOptions(request *DescribeDnsCacheDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsCacheDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -4384,9 +4511,11 @@ func (client *Client) DescribeDnsCacheDomains(request *DescribeDnsCacheDomainsRe
 //
 // @return DescribeDnsGtmAccessStrategiesResponse
 func (client *Client) DescribeDnsGtmAccessStrategiesWithOptions(request *DescribeDnsGtmAccessStrategiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAccessStrategiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4460,9 +4589,11 @@ func (client *Client) DescribeDnsGtmAccessStrategies(request *DescribeDnsGtmAcce
 //
 // @return DescribeDnsGtmAccessStrategyResponse
 func (client *Client) DescribeDnsGtmAccessStrategyWithOptions(request *DescribeDnsGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4524,9 +4655,11 @@ func (client *Client) DescribeDnsGtmAccessStrategy(request *DescribeDnsGtmAccess
 //
 // @return DescribeDnsGtmAccessStrategyAvailableConfigResponse
 func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfigWithOptions(request *DescribeDnsGtmAccessStrategyAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAccessStrategyAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4592,9 +4725,11 @@ func (client *Client) DescribeDnsGtmAccessStrategyAvailableConfig(request *Descr
 //
 // @return DescribeDnsGtmAddrAttributeInfoResponse
 func (client *Client) DescribeDnsGtmAddrAttributeInfoWithOptions(request *DescribeDnsGtmAddrAttributeInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAddrAttributeInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Addrs) {
@@ -4660,9 +4795,11 @@ func (client *Client) DescribeDnsGtmAddrAttributeInfo(request *DescribeDnsGtmAdd
 //
 // @return DescribeDnsGtmAddressPoolAvailableConfigResponse
 func (client *Client) DescribeDnsGtmAddressPoolAvailableConfigWithOptions(request *DescribeDnsGtmAddressPoolAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAddressPoolAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4720,9 +4857,11 @@ func (client *Client) DescribeDnsGtmAddressPoolAvailableConfig(request *Describe
 //
 // @return DescribeDnsGtmAvailableAlertGroupResponse
 func (client *Client) DescribeDnsGtmAvailableAlertGroupWithOptions(request *DescribeDnsGtmAvailableAlertGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmAvailableAlertGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4776,9 +4915,11 @@ func (client *Client) DescribeDnsGtmAvailableAlertGroup(request *DescribeDnsGtmA
 //
 // @return DescribeDnsGtmInstanceResponse
 func (client *Client) DescribeDnsGtmInstanceWithOptions(request *DescribeDnsGtmInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4840,9 +4981,11 @@ func (client *Client) DescribeDnsGtmInstance(request *DescribeDnsGtmInstanceRequ
 //
 // @return DescribeDnsGtmInstanceAddressPoolResponse
 func (client *Client) DescribeDnsGtmInstanceAddressPoolWithOptions(request *DescribeDnsGtmInstanceAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstanceAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -4904,9 +5047,11 @@ func (client *Client) DescribeDnsGtmInstanceAddressPool(request *DescribeDnsGtmI
 //
 // @return DescribeDnsGtmInstanceAddressPoolsResponse
 func (client *Client) DescribeDnsGtmInstanceAddressPoolsWithOptions(request *DescribeDnsGtmInstanceAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstanceAddressPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4976,9 +5121,11 @@ func (client *Client) DescribeDnsGtmInstanceAddressPools(request *DescribeDnsGtm
 //
 // @return DescribeDnsGtmInstanceStatusResponse
 func (client *Client) DescribeDnsGtmInstanceStatusWithOptions(request *DescribeDnsGtmInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstanceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5040,9 +5187,11 @@ func (client *Client) DescribeDnsGtmInstanceStatus(request *DescribeDnsGtmInstan
 //
 // @return DescribeDnsGtmInstanceSystemCnameResponse
 func (client *Client) DescribeDnsGtmInstanceSystemCnameWithOptions(request *DescribeDnsGtmInstanceSystemCnameRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstanceSystemCnameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5104,9 +5253,11 @@ func (client *Client) DescribeDnsGtmInstanceSystemCname(request *DescribeDnsGtmI
 //
 // @return DescribeDnsGtmInstancesResponse
 func (client *Client) DescribeDnsGtmInstancesWithOptions(request *DescribeDnsGtmInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -5180,9 +5331,11 @@ func (client *Client) DescribeDnsGtmInstances(request *DescribeDnsGtmInstancesRe
 //
 // @return DescribeDnsGtmLogsResponse
 func (client *Client) DescribeDnsGtmLogsWithOptions(request *DescribeDnsGtmLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimestamp) {
@@ -5264,9 +5417,11 @@ func (client *Client) DescribeDnsGtmLogs(request *DescribeDnsGtmLogsRequest) (_r
 //
 // @return DescribeDnsGtmMonitorAvailableConfigResponse
 func (client *Client) DescribeDnsGtmMonitorAvailableConfigWithOptions(request *DescribeDnsGtmMonitorAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmMonitorAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5324,9 +5479,11 @@ func (client *Client) DescribeDnsGtmMonitorAvailableConfig(request *DescribeDnsG
 //
 // @return DescribeDnsGtmMonitorConfigResponse
 func (client *Client) DescribeDnsGtmMonitorConfigWithOptions(request *DescribeDnsGtmMonitorConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsGtmMonitorConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5388,9 +5545,11 @@ func (client *Client) DescribeDnsGtmMonitorConfig(request *DescribeDnsGtmMonitor
 //
 // @return DescribeDnsProductInstanceResponse
 func (client *Client) DescribeDnsProductInstanceWithOptions(request *DescribeDnsProductInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsProductInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5460,9 +5619,11 @@ func (client *Client) DescribeDnsProductInstance(request *DescribeDnsProductInst
 //
 // @return DescribeDnsProductInstancesResponse
 func (client *Client) DescribeDnsProductInstancesWithOptions(request *DescribeDnsProductInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsProductInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -5548,9 +5709,11 @@ func (client *Client) DescribeDnsProductInstances(request *DescribeDnsProductIns
 //
 // @return DescribeDohAccountStatisticsResponse
 func (client *Client) DescribeDohAccountStatisticsWithOptions(request *DescribeDohAccountStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohAccountStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -5612,9 +5775,11 @@ func (client *Client) DescribeDohAccountStatistics(request *DescribeDohAccountSt
 //
 // @return DescribeDohDomainStatisticsResponse
 func (client *Client) DescribeDohDomainStatisticsWithOptions(request *DescribeDohDomainStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohDomainStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5680,9 +5845,11 @@ func (client *Client) DescribeDohDomainStatistics(request *DescribeDohDomainStat
 //
 // @return DescribeDohDomainStatisticsSummaryResponse
 func (client *Client) DescribeDohDomainStatisticsSummaryWithOptions(request *DescribeDohDomainStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohDomainStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5752,9 +5919,11 @@ func (client *Client) DescribeDohDomainStatisticsSummary(request *DescribeDohDom
 //
 // @return DescribeDohSubDomainStatisticsResponse
 func (client *Client) DescribeDohSubDomainStatisticsWithOptions(request *DescribeDohSubDomainStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohSubDomainStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -5816,9 +5985,11 @@ func (client *Client) DescribeDohSubDomainStatistics(request *DescribeDohSubDoma
 //
 // @return DescribeDohSubDomainStatisticsSummaryResponse
 func (client *Client) DescribeDohSubDomainStatisticsSummaryWithOptions(request *DescribeDohSubDomainStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohSubDomainStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -5896,9 +6067,11 @@ func (client *Client) DescribeDohSubDomainStatisticsSummary(request *DescribeDoh
 //
 // @return DescribeDohUserInfoResponse
 func (client *Client) DescribeDohUserInfoWithOptions(request *DescribeDohUserInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDohUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -5964,9 +6137,11 @@ func (client *Client) DescribeDohUserInfo(request *DescribeDohUserInfoRequest) (
 //
 // @return DescribeDomainDnssecInfoResponse
 func (client *Client) DescribeDomainDnssecInfoWithOptions(request *DescribeDomainDnssecInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainDnssecInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6028,9 +6203,11 @@ func (client *Client) DescribeDomainDnssecInfo(request *DescribeDomainDnssecInfo
 //
 // @return DescribeDomainGroupsResponse
 func (client *Client) DescribeDomainGroupsWithOptions(request *DescribeDomainGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyWord) {
@@ -6104,9 +6281,11 @@ func (client *Client) DescribeDomainGroups(request *DescribeDomainGroupsRequest)
 //
 // @return DescribeDomainInfoResponse
 func (client *Client) DescribeDomainInfoWithOptions(request *DescribeDomainInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6176,9 +6355,11 @@ func (client *Client) DescribeDomainInfo(request *DescribeDomainInfoRequest) (_r
 //
 // @return DescribeDomainLogsResponse
 func (client *Client) DescribeDomainLogsWithOptions(request *DescribeDomainLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -6268,9 +6449,11 @@ func (client *Client) DescribeDomainLogs(request *DescribeDomainLogsRequest) (_r
 //
 // @return DescribeDomainNsResponse
 func (client *Client) DescribeDomainNsWithOptions(request *DescribeDomainNsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainNsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6342,9 +6525,11 @@ func (client *Client) DescribeDomainNs(request *DescribeDomainNsRequest) (_resul
 //
 // @return DescribeDomainRecordInfoResponse
 func (client *Client) DescribeDomainRecordInfoWithOptions(request *DescribeDomainRecordInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRecordInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -6426,9 +6611,11 @@ func (client *Client) DescribeDomainRecordInfo(request *DescribeDomainRecordInfo
 //
 // @return DescribeDomainRecordsResponse
 func (client *Client) DescribeDomainRecordsWithOptions(request *DescribeDomainRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -6552,9 +6739,11 @@ func (client *Client) DescribeDomainRecords(request *DescribeDomainRecordsReques
 //
 // @return DescribeDomainResolveStatisticsSummaryResponse
 func (client *Client) DescribeDomainResolveStatisticsSummaryWithOptions(request *DescribeDomainResolveStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainResolveStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -6648,9 +6837,11 @@ func (client *Client) DescribeDomainResolveStatisticsSummary(request *DescribeDo
 //
 // @return DescribeDomainStatisticsResponse
 func (client *Client) DescribeDomainStatisticsWithOptions(request *DescribeDomainStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -6728,9 +6919,11 @@ func (client *Client) DescribeDomainStatistics(request *DescribeDomainStatistics
 //
 // @return DescribeDomainStatisticsSummaryResponse
 func (client *Client) DescribeDomainStatisticsSummaryWithOptions(request *DescribeDomainStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -6826,9 +7019,11 @@ func (client *Client) DescribeDomainStatisticsSummary(request *DescribeDomainSta
 //
 // @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -6924,9 +7119,11 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 //
 // @return DescribeGtmAccessStrategiesResponse
 func (client *Client) DescribeGtmAccessStrategiesWithOptions(request *DescribeGtmAccessStrategiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmAccessStrategiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6996,9 +7193,11 @@ func (client *Client) DescribeGtmAccessStrategies(request *DescribeGtmAccessStra
 //
 // @return DescribeGtmAccessStrategyResponse
 func (client *Client) DescribeGtmAccessStrategyWithOptions(request *DescribeGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7060,9 +7259,11 @@ func (client *Client) DescribeGtmAccessStrategy(request *DescribeGtmAccessStrate
 //
 // @return DescribeGtmAccessStrategyAvailableConfigResponse
 func (client *Client) DescribeGtmAccessStrategyAvailableConfigWithOptions(request *DescribeGtmAccessStrategyAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmAccessStrategyAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7120,9 +7321,11 @@ func (client *Client) DescribeGtmAccessStrategyAvailableConfig(request *Describe
 //
 // @return DescribeGtmAvailableAlertGroupResponse
 func (client *Client) DescribeGtmAvailableAlertGroupWithOptions(request *DescribeGtmAvailableAlertGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmAvailableAlertGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7176,9 +7379,11 @@ func (client *Client) DescribeGtmAvailableAlertGroup(request *DescribeGtmAvailab
 //
 // @return DescribeGtmInstanceResponse
 func (client *Client) DescribeGtmInstanceWithOptions(request *DescribeGtmInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7244,9 +7449,11 @@ func (client *Client) DescribeGtmInstance(request *DescribeGtmInstanceRequest) (
 //
 // @return DescribeGtmInstanceAddressPoolResponse
 func (client *Client) DescribeGtmInstanceAddressPoolWithOptions(request *DescribeGtmInstanceAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstanceAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddrPoolId) {
@@ -7308,9 +7515,11 @@ func (client *Client) DescribeGtmInstanceAddressPool(request *DescribeGtmInstanc
 //
 // @return DescribeGtmInstanceAddressPoolsResponse
 func (client *Client) DescribeGtmInstanceAddressPoolsWithOptions(request *DescribeGtmInstanceAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstanceAddressPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7380,9 +7589,11 @@ func (client *Client) DescribeGtmInstanceAddressPools(request *DescribeGtmInstan
 //
 // @return DescribeGtmInstanceStatusResponse
 func (client *Client) DescribeGtmInstanceStatusWithOptions(request *DescribeGtmInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstanceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7440,9 +7651,11 @@ func (client *Client) DescribeGtmInstanceStatus(request *DescribeGtmInstanceStat
 //
 // @return DescribeGtmInstanceSystemCnameResponse
 func (client *Client) DescribeGtmInstanceSystemCnameWithOptions(request *DescribeGtmInstanceSystemCnameRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstanceSystemCnameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7500,9 +7713,11 @@ func (client *Client) DescribeGtmInstanceSystemCname(request *DescribeGtmInstanc
 //
 // @return DescribeGtmInstancesResponse
 func (client *Client) DescribeGtmInstancesWithOptions(request *DescribeGtmInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -7580,9 +7795,11 @@ func (client *Client) DescribeGtmInstances(request *DescribeGtmInstancesRequest)
 //
 // @return DescribeGtmLogsResponse
 func (client *Client) DescribeGtmLogsWithOptions(request *DescribeGtmLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimestamp) {
@@ -7664,9 +7881,11 @@ func (client *Client) DescribeGtmLogs(request *DescribeGtmLogsRequest) (_result 
 //
 // @return DescribeGtmMonitorAvailableConfigResponse
 func (client *Client) DescribeGtmMonitorAvailableConfigWithOptions(request *DescribeGtmMonitorAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmMonitorAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7724,9 +7943,11 @@ func (client *Client) DescribeGtmMonitorAvailableConfig(request *DescribeGtmMoni
 //
 // @return DescribeGtmMonitorConfigResponse
 func (client *Client) DescribeGtmMonitorConfigWithOptions(request *DescribeGtmMonitorConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmMonitorConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7788,9 +8009,11 @@ func (client *Client) DescribeGtmMonitorConfig(request *DescribeGtmMonitorConfig
 //
 // @return DescribeGtmRecoveryPlanResponse
 func (client *Client) DescribeGtmRecoveryPlanWithOptions(request *DescribeGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7852,9 +8075,11 @@ func (client *Client) DescribeGtmRecoveryPlan(request *DescribeGtmRecoveryPlanRe
 //
 // @return DescribeGtmRecoveryPlanAvailableConfigResponse
 func (client *Client) DescribeGtmRecoveryPlanAvailableConfigWithOptions(request *DescribeGtmRecoveryPlanAvailableConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmRecoveryPlanAvailableConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7912,9 +8137,11 @@ func (client *Client) DescribeGtmRecoveryPlanAvailableConfig(request *DescribeGt
 //
 // @return DescribeGtmRecoveryPlansResponse
 func (client *Client) DescribeGtmRecoveryPlansWithOptions(request *DescribeGtmRecoveryPlansRequest, runtime *dara.RuntimeOptions) (_result *DescribeGtmRecoveryPlansResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Keyword) {
@@ -7984,9 +8211,11 @@ func (client *Client) DescribeGtmRecoveryPlans(request *DescribeGtmRecoveryPlans
 //
 // @return DescribeInstanceDomainsResponse
 func (client *Client) DescribeInstanceDomainsWithOptions(request *DescribeInstanceDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8056,9 +8285,11 @@ func (client *Client) DescribeInstanceDomains(request *DescribeInstanceDomainsRe
 //
 // @return DescribeInternetDnsLogsResponse
 func (client *Client) DescribeInternetDnsLogsWithOptions(request *DescribeInternetDnsLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetDnsLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -8152,9 +8383,11 @@ func (client *Client) DescribeInternetDnsLogs(request *DescribeInternetDnsLogsRe
 //
 // @return DescribeIspFlushCacheInstancesResponse
 func (client *Client) DescribeIspFlushCacheInstancesWithOptions(request *DescribeIspFlushCacheInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeIspFlushCacheInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -8240,9 +8473,11 @@ func (client *Client) DescribeIspFlushCacheInstances(request *DescribeIspFlushCa
 //
 // @return DescribeIspFlushCacheRemainQuotaResponse
 func (client *Client) DescribeIspFlushCacheRemainQuotaWithOptions(request *DescribeIspFlushCacheRemainQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribeIspFlushCacheRemainQuotaResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8300,9 +8535,11 @@ func (client *Client) DescribeIspFlushCacheRemainQuota(request *DescribeIspFlush
 //
 // @return DescribeIspFlushCacheTaskResponse
 func (client *Client) DescribeIspFlushCacheTaskWithOptions(request *DescribeIspFlushCacheTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeIspFlushCacheTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8364,9 +8601,11 @@ func (client *Client) DescribeIspFlushCacheTask(request *DescribeIspFlushCacheTa
 //
 // @return DescribeIspFlushCacheTasksResponse
 func (client *Client) DescribeIspFlushCacheTasksWithOptions(request *DescribeIspFlushCacheTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeIspFlushCacheTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -8452,9 +8691,11 @@ func (client *Client) DescribeIspFlushCacheTasks(request *DescribeIspFlushCacheT
 //
 // @return DescribePdnsAccountSummaryResponse
 func (client *Client) DescribePdnsAccountSummaryWithOptions(request *DescribePdnsAccountSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsAccountSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -8520,9 +8761,11 @@ func (client *Client) DescribePdnsAccountSummary(request *DescribePdnsAccountSum
 //
 // @return DescribePdnsAppKeyResponse
 func (client *Client) DescribePdnsAppKeyWithOptions(request *DescribePdnsAppKeyRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsAppKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKeyId) {
@@ -8588,9 +8831,11 @@ func (client *Client) DescribePdnsAppKey(request *DescribePdnsAppKeyRequest) (_r
 //
 // @return DescribePdnsAppKeysResponse
 func (client *Client) DescribePdnsAppKeysWithOptions(request *DescribePdnsAppKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsAppKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8648,9 +8893,11 @@ func (client *Client) DescribePdnsAppKeys(request *DescribePdnsAppKeysRequest) (
 //
 // @return DescribePdnsOperateLogsResponse
 func (client *Client) DescribePdnsOperateLogsWithOptions(request *DescribePdnsOperateLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsOperateLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -8736,9 +8983,11 @@ func (client *Client) DescribePdnsOperateLogs(request *DescribePdnsOperateLogsRe
 //
 // @return DescribePdnsRequestStatisticResponse
 func (client *Client) DescribePdnsRequestStatisticWithOptions(request *DescribePdnsRequestStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsRequestStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8816,9 +9065,11 @@ func (client *Client) DescribePdnsRequestStatistic(request *DescribePdnsRequestS
 //
 // @return DescribePdnsRequestStatisticsResponse
 func (client *Client) DescribePdnsRequestStatisticsWithOptions(request *DescribePdnsRequestStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsRequestStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -8904,9 +9155,11 @@ func (client *Client) DescribePdnsRequestStatistics(request *DescribePdnsRequest
 //
 // @return DescribePdnsThreatLogsResponse
 func (client *Client) DescribePdnsThreatLogsWithOptions(request *DescribePdnsThreatLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsThreatLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -8996,9 +9249,11 @@ func (client *Client) DescribePdnsThreatLogs(request *DescribePdnsThreatLogsRequ
 //
 // @return DescribePdnsThreatStatisticResponse
 func (client *Client) DescribePdnsThreatStatisticWithOptions(request *DescribePdnsThreatStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsThreatStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndDate) {
@@ -9068,9 +9323,11 @@ func (client *Client) DescribePdnsThreatStatistic(request *DescribePdnsThreatSta
 //
 // @return DescribePdnsThreatStatisticsResponse
 func (client *Client) DescribePdnsThreatStatisticsWithOptions(request *DescribePdnsThreatStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsThreatStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -9176,9 +9433,11 @@ func (client *Client) DescribePdnsThreatStatistics(request *DescribePdnsThreatSt
 //
 // @return DescribePdnsUdpIpSegmentsResponse
 func (client *Client) DescribePdnsUdpIpSegmentsWithOptions(request *DescribePdnsUdpIpSegmentsRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsUdpIpSegmentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -9244,9 +9503,11 @@ func (client *Client) DescribePdnsUdpIpSegments(request *DescribePdnsUdpIpSegmen
 //
 // @return DescribePdnsUserInfoResponse
 func (client *Client) DescribePdnsUserInfoWithOptions(request *DescribePdnsUserInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribePdnsUserInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -9304,9 +9565,11 @@ func (client *Client) DescribePdnsUserInfo(request *DescribePdnsUserInfoRequest)
 //
 // @return DescribeRecordLogsResponse
 func (client *Client) DescribeRecordLogsWithOptions(request *DescribeRecordLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecordLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9392,9 +9655,11 @@ func (client *Client) DescribeRecordLogs(request *DescribeRecordLogsRequest) (_r
 //
 // @return DescribeRecordResolveStatisticsSummaryResponse
 func (client *Client) DescribeRecordResolveStatisticsSummaryWithOptions(request *DescribeRecordResolveStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecordResolveStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -9496,9 +9761,11 @@ func (client *Client) DescribeRecordResolveStatisticsSummary(request *DescribeRe
 //
 // @return DescribeRecordStatisticsResponse
 func (client *Client) DescribeRecordStatisticsWithOptions(request *DescribeRecordStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecordStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9580,9 +9847,11 @@ func (client *Client) DescribeRecordStatistics(request *DescribeRecordStatistics
 //
 // @return DescribeRecordStatisticsSummaryResponse
 func (client *Client) DescribeRecordStatisticsSummaryWithOptions(request *DescribeRecordStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecordStatisticsSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9676,9 +9945,11 @@ func (client *Client) DescribeRecordStatisticsSummary(request *DescribeRecordSta
 //
 // @return DescribeRecursionRecordResponse
 func (client *Client) DescribeRecursionRecordWithOptions(request *DescribeRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecursionRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RecordId) {
@@ -9736,9 +10007,11 @@ func (client *Client) DescribeRecursionRecord(request *DescribeRecursionRecordRe
 //
 // @return DescribeRecursionZoneResponse
 func (client *Client) DescribeRecursionZoneWithOptions(request *DescribeRecursionZoneRequest, runtime *dara.RuntimeOptions) (_result *DescribeRecursionZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ZoneId) {
@@ -9796,9 +10069,11 @@ func (client *Client) DescribeRecursionZone(request *DescribeRecursionZoneReques
 //
 // @return DescribeSubDomainRecordsResponse
 func (client *Client) DescribeSubDomainRecordsWithOptions(request *DescribeSubDomainRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubDomainRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9884,9 +10159,11 @@ func (client *Client) DescribeSubDomainRecords(request *DescribeSubDomainRecords
 //
 // @return DescribeSupportLinesResponse
 func (client *Client) DescribeSupportLinesWithOptions(request *DescribeSupportLinesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSupportLinesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -9952,9 +10229,11 @@ func (client *Client) DescribeSupportLines(request *DescribeSupportLinesRequest)
 //
 // @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -10024,9 +10303,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 //
 // @return DescribeTransferDomainsResponse
 func (client *Client) DescribeTransferDomainsWithOptions(request *DescribeTransferDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransferDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -10108,9 +10389,11 @@ func (client *Client) DescribeTransferDomains(request *DescribeTransferDomainsRe
 //
 // @return ExecuteGtmRecoveryPlanResponse
 func (client *Client) ExecuteGtmRecoveryPlanWithOptions(request *ExecuteGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *ExecuteGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -10178,9 +10461,11 @@ func (client *Client) ExecuteGtmRecoveryPlan(request *ExecuteGtmRecoveryPlanRequ
 //
 // @return GetMainDomainNameResponse
 func (client *Client) GetMainDomainNameWithOptions(request *GetMainDomainNameRequest, runtime *dara.RuntimeOptions) (_result *GetMainDomainNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InputString) {
@@ -10248,9 +10533,11 @@ func (client *Client) GetMainDomainName(request *GetMainDomainNameRequest) (_res
 //
 // @return GetTxtRecordForVerifyResponse
 func (client *Client) GetTxtRecordForVerifyWithOptions(request *GetTxtRecordForVerifyRequest, runtime *dara.RuntimeOptions) (_result *GetTxtRecordForVerifyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -10316,9 +10603,11 @@ func (client *Client) GetTxtRecordForVerify(request *GetTxtRecordForVerifyReques
 //
 // @return ListCloudGtmAddressPoolsResponse
 func (client *Client) ListCloudGtmAddressPoolsWithOptions(request *ListCloudGtmAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmAddressPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10404,9 +10693,11 @@ func (client *Client) ListCloudGtmAddressPools(request *ListCloudGtmAddressPools
 //
 // @return ListCloudGtmAddressesResponse
 func (client *Client) ListCloudGtmAddressesWithOptions(request *ListCloudGtmAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmAddressesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10500,9 +10791,11 @@ func (client *Client) ListCloudGtmAddresses(request *ListCloudGtmAddressesReques
 //
 // @return ListCloudGtmAlertLogsResponse
 func (client *Client) ListCloudGtmAlertLogsWithOptions(request *ListCloudGtmAlertLogsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmAlertLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ActionType) {
@@ -10580,9 +10873,11 @@ func (client *Client) ListCloudGtmAlertLogs(request *ListCloudGtmAlertLogsReques
 //
 // @return ListCloudGtmAvailableAlertGroupsResponse
 func (client *Client) ListCloudGtmAvailableAlertGroupsWithOptions(request *ListCloudGtmAvailableAlertGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmAvailableAlertGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10636,9 +10931,11 @@ func (client *Client) ListCloudGtmAvailableAlertGroups(request *ListCloudGtmAvai
 //
 // @return ListCloudGtmInstanceConfigsResponse
 func (client *Client) ListCloudGtmInstanceConfigsWithOptions(request *ListCloudGtmInstanceConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmInstanceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10728,13 +11025,19 @@ func (client *Client) ListCloudGtmInstanceConfigs(request *ListCloudGtmInstanceC
 //
 // @return ListCloudGtmInstancesResponse
 func (client *Client) ListCloudGtmInstancesWithOptions(request *ListCloudGtmInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
 	}
 
 	if !dara.IsNil(request.ClientToken) {
@@ -10808,9 +11111,11 @@ func (client *Client) ListCloudGtmInstances(request *ListCloudGtmInstancesReques
 //
 // @return ListCloudGtmMonitorNodesResponse
 func (client *Client) ListCloudGtmMonitorNodesWithOptions(request *ListCloudGtmMonitorNodesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmMonitorNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10868,9 +11173,11 @@ func (client *Client) ListCloudGtmMonitorNodes(request *ListCloudGtmMonitorNodes
 //
 // @return ListCloudGtmMonitorTemplatesResponse
 func (client *Client) ListCloudGtmMonitorTemplatesWithOptions(request *ListCloudGtmMonitorTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudGtmMonitorTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -10948,9 +11255,11 @@ func (client *Client) ListCloudGtmMonitorTemplates(request *ListCloudGtmMonitorT
 //
 // @return ListRecursionRecordsResponse
 func (client *Client) ListRecursionRecordsWithOptions(request *ListRecursionRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListRecursionRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Enable) {
@@ -11052,9 +11361,11 @@ func (client *Client) ListRecursionRecords(request *ListRecursionRecordsRequest)
 //
 // @return ListRecursionZonesResponse
 func (client *Client) ListRecursionZonesWithOptions(request *ListRecursionZonesRequest, runtime *dara.RuntimeOptions) (_result *ListRecursionZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -11142,9 +11453,11 @@ func (client *Client) ListRecursionZones(request *ListRecursionZonesRequest) (_r
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11234,9 +11547,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ModifyHichinaDomainDNSResponse
 func (client *Client) ModifyHichinaDomainDNSWithOptions(request *ModifyHichinaDomainDNSRequest, runtime *dara.RuntimeOptions) (_result *ModifyHichinaDomainDNSResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -11308,9 +11623,11 @@ func (client *Client) ModifyHichinaDomainDNS(request *ModifyHichinaDomainDNSRequ
 //
 // @return MoveDomainResourceGroupResponse
 func (client *Client) MoveDomainResourceGroupWithOptions(request *MoveDomainResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveDomainResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11372,9 +11689,11 @@ func (client *Client) MoveDomainResourceGroup(request *MoveDomainResourceGroupRe
 //
 // @return MoveGtmResourceGroupResponse
 func (client *Client) MoveGtmResourceGroupWithOptions(request *MoveGtmResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveGtmResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11440,9 +11759,11 @@ func (client *Client) MoveGtmResourceGroup(request *MoveGtmResourceGroupRequest)
 //
 // @return OperateBatchDomainResponse
 func (client *Client) OperateBatchDomainWithOptions(request *OperateBatchDomainRequest, runtime *dara.RuntimeOptions) (_result *OperateBatchDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainRecordInfo) {
@@ -11512,9 +11833,11 @@ func (client *Client) OperateBatchDomain(request *OperateBatchDomainRequest) (_r
 //
 // @return PausePdnsServiceResponse
 func (client *Client) PausePdnsServiceWithOptions(request *PausePdnsServiceRequest, runtime *dara.RuntimeOptions) (_result *PausePdnsServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11576,9 +11899,11 @@ func (client *Client) PausePdnsService(request *PausePdnsServiceRequest) (_resul
 //
 // @return PreviewGtmRecoveryPlanResponse
 func (client *Client) PreviewGtmRecoveryPlanWithOptions(request *PreviewGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *PreviewGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -11648,9 +11973,11 @@ func (client *Client) PreviewGtmRecoveryPlan(request *PreviewGtmRecoveryPlanRequ
 //
 // @return RemovePdnsAppKeyResponse
 func (client *Client) RemovePdnsAppKeyWithOptions(request *RemovePdnsAppKeyRequest, runtime *dara.RuntimeOptions) (_result *RemovePdnsAppKeyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKeyId) {
@@ -11712,9 +12039,11 @@ func (client *Client) RemovePdnsAppKey(request *RemovePdnsAppKeyRequest) (_resul
 //
 // @return RemovePdnsUdpIpSegmentResponse
 func (client *Client) RemovePdnsUdpIpSegmentWithOptions(request *RemovePdnsUdpIpSegmentRequest, runtime *dara.RuntimeOptions) (_result *RemovePdnsUdpIpSegmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ip) {
@@ -11776,9 +12105,11 @@ func (client *Client) RemovePdnsUdpIpSegment(request *RemovePdnsUdpIpSegmentRequ
 //
 // @return ReplaceCloudGtmAddressPoolAddressResponse
 func (client *Client) ReplaceCloudGtmAddressPoolAddressWithOptions(tmpReq *ReplaceCloudGtmAddressPoolAddressRequest, runtime *dara.RuntimeOptions) (_result *ReplaceCloudGtmAddressPoolAddressResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReplaceCloudGtmAddressPoolAddressShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11854,9 +12185,11 @@ func (client *Client) ReplaceCloudGtmAddressPoolAddress(request *ReplaceCloudGtm
 //
 // @return ReplaceCloudGtmInstanceConfigAddressPoolResponse
 func (client *Client) ReplaceCloudGtmInstanceConfigAddressPoolWithOptions(tmpReq *ReplaceCloudGtmInstanceConfigAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *ReplaceCloudGtmInstanceConfigAddressPoolResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -11936,9 +12269,11 @@ func (client *Client) ReplaceCloudGtmInstanceConfigAddressPool(request *ReplaceC
 //
 // @return ResumePdnsServiceResponse
 func (client *Client) ResumePdnsServiceWithOptions(request *ResumePdnsServiceRequest, runtime *dara.RuntimeOptions) (_result *ResumePdnsServiceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -12004,9 +12339,11 @@ func (client *Client) ResumePdnsService(request *ResumePdnsServiceRequest) (_res
 //
 // @return RetrieveDomainResponse
 func (client *Client) RetrieveDomainWithOptions(request *RetrieveDomainRequest, runtime *dara.RuntimeOptions) (_result *RetrieveDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -12072,9 +12409,11 @@ func (client *Client) RetrieveDomain(request *RetrieveDomainRequest) (_result *R
 //
 // @return RollbackGtmRecoveryPlanResponse
 func (client *Client) RollbackGtmRecoveryPlanWithOptions(request *RollbackGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *RollbackGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -12136,9 +12475,11 @@ func (client *Client) RollbackGtmRecoveryPlan(request *RollbackGtmRecoveryPlanRe
 //
 // @return SearchCloudGtmAddressPoolsResponse
 func (client *Client) SearchCloudGtmAddressPoolsWithOptions(request *SearchCloudGtmAddressPoolsRequest, runtime *dara.RuntimeOptions) (_result *SearchCloudGtmAddressPoolsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -12232,9 +12573,11 @@ func (client *Client) SearchCloudGtmAddressPools(request *SearchCloudGtmAddressP
 //
 // @return SearchCloudGtmAddressesResponse
 func (client *Client) SearchCloudGtmAddressesWithOptions(request *SearchCloudGtmAddressesRequest, runtime *dara.RuntimeOptions) (_result *SearchCloudGtmAddressesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -12344,9 +12687,11 @@ func (client *Client) SearchCloudGtmAddresses(request *SearchCloudGtmAddressesRe
 //
 // @return SearchCloudGtmInstanceConfigsResponse
 func (client *Client) SearchCloudGtmInstanceConfigsWithOptions(request *SearchCloudGtmInstanceConfigsRequest, runtime *dara.RuntimeOptions) (_result *SearchCloudGtmInstanceConfigsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -12444,13 +12789,19 @@ func (client *Client) SearchCloudGtmInstanceConfigs(request *SearchCloudGtmInsta
 //
 // @return SearchCloudGtmInstancesResponse
 func (client *Client) SearchCloudGtmInstancesWithOptions(request *SearchCloudGtmInstancesRequest, runtime *dara.RuntimeOptions) (_result *SearchCloudGtmInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
 	}
 
 	if !dara.IsNil(request.ClientToken) {
@@ -12524,9 +12875,11 @@ func (client *Client) SearchCloudGtmInstances(request *SearchCloudGtmInstancesRe
 //
 // @return SearchCloudGtmMonitorTemplatesResponse
 func (client *Client) SearchCloudGtmMonitorTemplatesWithOptions(request *SearchCloudGtmMonitorTemplatesRequest, runtime *dara.RuntimeOptions) (_result *SearchCloudGtmMonitorTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -12604,9 +12957,11 @@ func (client *Client) SearchCloudGtmMonitorTemplates(request *SearchCloudGtmMoni
 //
 // @return SearchRecursionRecordsResponse
 func (client *Client) SearchRecursionRecordsWithOptions(request *SearchRecursionRecordsRequest, runtime *dara.RuntimeOptions) (_result *SearchRecursionRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -12720,9 +13075,11 @@ func (client *Client) SearchRecursionRecords(request *SearchRecursionRecordsRequ
 //
 // @return SearchRecursionZonesResponse
 func (client *Client) SearchRecursionZonesWithOptions(tmpReq *SearchRecursionZonesRequest, runtime *dara.RuntimeOptions) (_result *SearchRecursionZonesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchRecursionZonesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -12818,9 +13175,11 @@ func (client *Client) SearchRecursionZones(request *SearchRecursionZonesRequest)
 //
 // @return SetDNSSLBStatusResponse
 func (client *Client) SetDNSSLBStatusWithOptions(request *SetDNSSLBStatusRequest, runtime *dara.RuntimeOptions) (_result *SetDNSSLBStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -12906,9 +13265,11 @@ func (client *Client) SetDNSSLBStatus(request *SetDNSSLBStatusRequest) (_result 
 //
 // @return SetDnsGtmAccessModeResponse
 func (client *Client) SetDnsGtmAccessModeWithOptions(request *SetDnsGtmAccessModeRequest, runtime *dara.RuntimeOptions) (_result *SetDnsGtmAccessModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessMode) {
@@ -12978,9 +13339,11 @@ func (client *Client) SetDnsGtmAccessMode(request *SetDnsGtmAccessModeRequest) (
 //
 // @return SetDnsGtmMonitorStatusResponse
 func (client *Client) SetDnsGtmMonitorStatusWithOptions(request *SetDnsGtmMonitorStatusRequest, runtime *dara.RuntimeOptions) (_result *SetDnsGtmMonitorStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -13046,9 +13409,11 @@ func (client *Client) SetDnsGtmMonitorStatus(request *SetDnsGtmMonitorStatusRequ
 //
 // @return SetDomainDnssecStatusResponse
 func (client *Client) SetDomainDnssecStatusWithOptions(request *SetDomainDnssecStatusRequest, runtime *dara.RuntimeOptions) (_result *SetDomainDnssecStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -13114,9 +13479,11 @@ func (client *Client) SetDomainDnssecStatus(request *SetDomainDnssecStatusReques
 //
 // @return SetDomainRecordStatusResponse
 func (client *Client) SetDomainRecordStatusWithOptions(request *SetDomainRecordStatusRequest, runtime *dara.RuntimeOptions) (_result *SetDomainRecordStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -13186,9 +13553,11 @@ func (client *Client) SetDomainRecordStatus(request *SetDomainRecordStatusReques
 //
 // @return SetGtmAccessModeResponse
 func (client *Client) SetGtmAccessModeWithOptions(request *SetGtmAccessModeRequest, runtime *dara.RuntimeOptions) (_result *SetGtmAccessModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessMode) {
@@ -13250,9 +13619,11 @@ func (client *Client) SetGtmAccessMode(request *SetGtmAccessModeRequest) (_resul
 //
 // @return SetGtmMonitorStatusResponse
 func (client *Client) SetGtmMonitorStatusWithOptions(request *SetGtmMonitorStatusRequest, runtime *dara.RuntimeOptions) (_result *SetGtmMonitorStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -13314,9 +13685,11 @@ func (client *Client) SetGtmMonitorStatus(request *SetGtmMonitorStatusRequest) (
 //
 // @return SubmitIspFlushCacheTaskResponse
 func (client *Client) SubmitIspFlushCacheTaskWithOptions(request *SubmitIspFlushCacheTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitIspFlushCacheTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -13386,9 +13759,11 @@ func (client *Client) SubmitIspFlushCacheTask(request *SubmitIspFlushCacheTaskRe
 //
 // @return SwitchDnsGtmInstanceStrategyModeResponse
 func (client *Client) SwitchDnsGtmInstanceStrategyModeWithOptions(request *SwitchDnsGtmInstanceStrategyModeRequest, runtime *dara.RuntimeOptions) (_result *SwitchDnsGtmInstanceStrategyModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -13454,9 +13829,11 @@ func (client *Client) SwitchDnsGtmInstanceStrategyMode(request *SwitchDnsGtmInst
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -13526,9 +13903,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return TransferDomainResponse
 func (client *Client) TransferDomainWithOptions(request *TransferDomainRequest, runtime *dara.RuntimeOptions) (_result *TransferDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -13604,9 +13983,11 @@ func (client *Client) TransferDomain(request *TransferDomainRequest) (_result *T
 //
 // @return UnbindInstanceDomainsResponse
 func (client *Client) UnbindInstanceDomainsWithOptions(request *UnbindInstanceDomainsRequest, runtime *dara.RuntimeOptions) (_result *UnbindInstanceDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
@@ -13678,9 +14059,11 @@ func (client *Client) UnbindInstanceDomains(request *UnbindInstanceDomainsReques
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -13754,9 +14137,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpdateAppKeyStateResponse
 func (client *Client) UpdateAppKeyStateWithOptions(request *UpdateAppKeyStateRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppKeyStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppKeyId) {
@@ -13822,9 +14207,11 @@ func (client *Client) UpdateAppKeyState(request *UpdateAppKeyStateRequest) (_res
 //
 // @return UpdateCloudGtmAddressResponse
 func (client *Client) UpdateCloudGtmAddressWithOptions(tmpReq *UpdateCloudGtmAddressRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateCloudGtmAddressShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -13922,9 +14309,11 @@ func (client *Client) UpdateCloudGtmAddress(request *UpdateCloudGtmAddressReques
 //
 // @return UpdateCloudGtmAddressEnableStatusResponse
 func (client *Client) UpdateCloudGtmAddressEnableStatusWithOptions(request *UpdateCloudGtmAddressEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14000,9 +14389,11 @@ func (client *Client) UpdateCloudGtmAddressEnableStatus(request *UpdateCloudGtmA
 //
 // @return UpdateCloudGtmAddressManualAvailableStatusResponse
 func (client *Client) UpdateCloudGtmAddressManualAvailableStatusWithOptions(request *UpdateCloudGtmAddressManualAvailableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressManualAvailableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14076,9 +14467,11 @@ func (client *Client) UpdateCloudGtmAddressManualAvailableStatus(request *Update
 //
 // @return UpdateCloudGtmAddressPoolBasicConfigResponse
 func (client *Client) UpdateCloudGtmAddressPoolBasicConfigWithOptions(request *UpdateCloudGtmAddressPoolBasicConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolBasicConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14158,9 +14551,11 @@ func (client *Client) UpdateCloudGtmAddressPoolBasicConfig(request *UpdateCloudG
 //
 // @return UpdateCloudGtmAddressPoolEnableStatusResponse
 func (client *Client) UpdateCloudGtmAddressPoolEnableStatusWithOptions(request *UpdateCloudGtmAddressPoolEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14236,9 +14631,11 @@ func (client *Client) UpdateCloudGtmAddressPoolEnableStatus(request *UpdateCloud
 //
 // @return UpdateCloudGtmAddressPoolLbStrategyResponse
 func (client *Client) UpdateCloudGtmAddressPoolLbStrategyWithOptions(request *UpdateCloudGtmAddressPoolLbStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolLbStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14312,9 +14709,11 @@ func (client *Client) UpdateCloudGtmAddressPoolLbStrategy(request *UpdateCloudGt
 //
 // @return UpdateCloudGtmAddressPoolRemarkResponse
 func (client *Client) UpdateCloudGtmAddressPoolRemarkWithOptions(request *UpdateCloudGtmAddressPoolRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressPoolRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14384,9 +14783,11 @@ func (client *Client) UpdateCloudGtmAddressPoolRemark(request *UpdateCloudGtmAdd
 //
 // @return UpdateCloudGtmAddressRemarkResponse
 func (client *Client) UpdateCloudGtmAddressRemarkWithOptions(request *UpdateCloudGtmAddressRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmAddressRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14452,9 +14853,11 @@ func (client *Client) UpdateCloudGtmAddressRemark(request *UpdateCloudGtmAddress
 //
 // @return UpdateCloudGtmGlobalAlertResponse
 func (client *Client) UpdateCloudGtmGlobalAlertWithOptions(tmpReq *UpdateCloudGtmGlobalAlertRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmGlobalAlertResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateCloudGtmGlobalAlertShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14526,9 +14929,11 @@ func (client *Client) UpdateCloudGtmGlobalAlert(request *UpdateCloudGtmGlobalAle
 //
 // @return UpdateCloudGtmInstanceConfigAlertResponse
 func (client *Client) UpdateCloudGtmInstanceConfigAlertWithOptions(tmpReq *UpdateCloudGtmInstanceConfigAlertRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigAlertResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateCloudGtmInstanceConfigAlertShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -14616,9 +15021,11 @@ func (client *Client) UpdateCloudGtmInstanceConfigAlert(request *UpdateCloudGtmI
 //
 // @return UpdateCloudGtmInstanceConfigBasicResponse
 func (client *Client) UpdateCloudGtmInstanceConfigBasicWithOptions(request *UpdateCloudGtmInstanceConfigBasicRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigBasicResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14706,9 +15113,11 @@ func (client *Client) UpdateCloudGtmInstanceConfigBasic(request *UpdateCloudGtmI
 //
 // @return UpdateCloudGtmInstanceConfigEnableStatusResponse
 func (client *Client) UpdateCloudGtmInstanceConfigEnableStatusWithOptions(request *UpdateCloudGtmInstanceConfigEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14788,9 +15197,11 @@ func (client *Client) UpdateCloudGtmInstanceConfigEnableStatus(request *UpdateCl
 //
 // @return UpdateCloudGtmInstanceConfigLbStrategyResponse
 func (client *Client) UpdateCloudGtmInstanceConfigLbStrategyWithOptions(request *UpdateCloudGtmInstanceConfigLbStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigLbStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14868,9 +15279,11 @@ func (client *Client) UpdateCloudGtmInstanceConfigLbStrategy(request *UpdateClou
 //
 // @return UpdateCloudGtmInstanceConfigRemarkResponse
 func (client *Client) UpdateCloudGtmInstanceConfigRemarkWithOptions(request *UpdateCloudGtmInstanceConfigRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceConfigRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -14940,9 +15353,11 @@ func (client *Client) UpdateCloudGtmInstanceConfigRemark(request *UpdateCloudGtm
 //
 // @return UpdateCloudGtmInstanceNameResponse
 func (client *Client) UpdateCloudGtmInstanceNameWithOptions(request *UpdateCloudGtmInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -15008,9 +15423,11 @@ func (client *Client) UpdateCloudGtmInstanceName(request *UpdateCloudGtmInstance
 //
 // @return UpdateCloudGtmMonitorTemplateResponse
 func (client *Client) UpdateCloudGtmMonitorTemplateWithOptions(tmpReq *UpdateCloudGtmMonitorTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmMonitorTemplateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateCloudGtmMonitorTemplateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -15106,9 +15523,11 @@ func (client *Client) UpdateCloudGtmMonitorTemplate(request *UpdateCloudGtmMonit
 //
 // @return UpdateCloudGtmMonitorTemplateRemarkResponse
 func (client *Client) UpdateCloudGtmMonitorTemplateRemarkWithOptions(request *UpdateCloudGtmMonitorTemplateRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudGtmMonitorTemplateRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceptLanguage) {
@@ -15180,9 +15599,11 @@ func (client *Client) UpdateCloudGtmMonitorTemplateRemark(request *UpdateCloudGt
 //
 // @return UpdateCustomLineResponse
 func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineRequest, runtime *dara.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpSegment) {
@@ -15258,9 +15679,11 @@ func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_resul
 //
 // @return UpdateDNSSLBWeightResponse
 func (client *Client) UpdateDNSSLBWeightWithOptions(request *UpdateDNSSLBWeightRequest, runtime *dara.RuntimeOptions) (_result *UpdateDNSSLBWeightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -15330,9 +15753,11 @@ func (client *Client) UpdateDNSSLBWeight(request *UpdateDNSSLBWeightRequest) (_r
 //
 // @return UpdateDnsCacheDomainResponse
 func (client *Client) UpdateDnsCacheDomainWithOptions(request *UpdateDnsCacheDomainRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsCacheDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CacheTtlMax) {
@@ -15418,9 +15843,11 @@ func (client *Client) UpdateDnsCacheDomain(request *UpdateDnsCacheDomainRequest)
 //
 // @return UpdateDnsCacheDomainRemarkResponse
 func (client *Client) UpdateDnsCacheDomainRemarkWithOptions(request *UpdateDnsCacheDomainRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsCacheDomainRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -15486,9 +15913,11 @@ func (client *Client) UpdateDnsCacheDomainRemark(request *UpdateDnsCacheDomainRe
 //
 // @return UpdateDnsGtmAccessStrategyResponse
 func (client *Client) UpdateDnsGtmAccessStrategyWithOptions(request *UpdateDnsGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessMode) {
@@ -15610,9 +16039,11 @@ func (client *Client) UpdateDnsGtmAccessStrategy(request *UpdateDnsGtmAccessStra
 //
 // @return UpdateDnsGtmAddressPoolResponse
 func (client *Client) UpdateDnsGtmAddressPoolWithOptions(request *UpdateDnsGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Addr) {
@@ -15686,9 +16117,11 @@ func (client *Client) UpdateDnsGtmAddressPool(request *UpdateDnsGtmAddressPoolRe
 //
 // @return UpdateDnsGtmInstanceGlobalConfigResponse
 func (client *Client) UpdateDnsGtmInstanceGlobalConfigWithOptions(request *UpdateDnsGtmInstanceGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsGtmInstanceGlobalConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertConfig) {
@@ -15790,9 +16223,11 @@ func (client *Client) UpdateDnsGtmInstanceGlobalConfig(request *UpdateDnsGtmInst
 //
 // @return UpdateDnsGtmMonitorResponse
 func (client *Client) UpdateDnsGtmMonitorWithOptions(request *UpdateDnsGtmMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateDnsGtmMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EvaluationCount) {
@@ -15882,9 +16317,11 @@ func (client *Client) UpdateDnsGtmMonitor(request *UpdateDnsGtmMonitorRequest) (
 //
 // @return UpdateDomainGroupResponse
 func (client *Client) UpdateDomainGroupWithOptions(request *UpdateDomainGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -15954,9 +16391,11 @@ func (client *Client) UpdateDomainGroup(request *UpdateDomainGroupRequest) (_res
 //
 // @return UpdateDomainRecordResponse
 func (client *Client) UpdateDomainRecordWithOptions(request *UpdateDomainRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -16046,9 +16485,11 @@ func (client *Client) UpdateDomainRecord(request *UpdateDomainRecordRequest) (_r
 //
 // @return UpdateDomainRecordRemarkResponse
 func (client *Client) UpdateDomainRecordRemarkWithOptions(request *UpdateDomainRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainRecordRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -16118,9 +16559,11 @@ func (client *Client) UpdateDomainRecordRemark(request *UpdateDomainRecordRemark
 //
 // @return UpdateDomainRemarkResponse
 func (client *Client) UpdateDomainRemarkWithOptions(request *UpdateDomainRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
@@ -16182,9 +16625,11 @@ func (client *Client) UpdateDomainRemark(request *UpdateDomainRemarkRequest) (_r
 //
 // @return UpdateGtmAccessStrategyResponse
 func (client *Client) UpdateGtmAccessStrategyWithOptions(request *UpdateGtmAccessStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateGtmAccessStrategyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessLines) {
@@ -16254,9 +16699,11 @@ func (client *Client) UpdateGtmAccessStrategy(request *UpdateGtmAccessStrategyRe
 //
 // @return UpdateGtmAddressPoolResponse
 func (client *Client) UpdateGtmAddressPoolWithOptions(request *UpdateGtmAddressPoolRequest, runtime *dara.RuntimeOptions) (_result *UpdateGtmAddressPoolResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Addr) {
@@ -16330,9 +16777,11 @@ func (client *Client) UpdateGtmAddressPool(request *UpdateGtmAddressPoolRequest)
 //
 // @return UpdateGtmInstanceGlobalConfigResponse
 func (client *Client) UpdateGtmInstanceGlobalConfigWithOptions(request *UpdateGtmInstanceGlobalConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateGtmInstanceGlobalConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AlertGroup) {
@@ -16422,9 +16871,11 @@ func (client *Client) UpdateGtmInstanceGlobalConfig(request *UpdateGtmInstanceGl
 //
 // @return UpdateGtmMonitorResponse
 func (client *Client) UpdateGtmMonitorWithOptions(request *UpdateGtmMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateGtmMonitorResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EvaluationCount) {
@@ -16510,9 +16961,11 @@ func (client *Client) UpdateGtmMonitor(request *UpdateGtmMonitorRequest) (_resul
 //
 // @return UpdateGtmRecoveryPlanResponse
 func (client *Client) UpdateGtmRecoveryPlanWithOptions(request *UpdateGtmRecoveryPlanRequest, runtime *dara.RuntimeOptions) (_result *UpdateGtmRecoveryPlanResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FaultAddrPool) {
@@ -16586,9 +17039,11 @@ func (client *Client) UpdateGtmRecoveryPlan(request *UpdateGtmRecoveryPlanReques
 //
 // @return UpdateIspFlushCacheInstanceConfigResponse
 func (client *Client) UpdateIspFlushCacheInstanceConfigWithOptions(request *UpdateIspFlushCacheInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateIspFlushCacheInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -16654,9 +17109,11 @@ func (client *Client) UpdateIspFlushCacheInstanceConfig(request *UpdateIspFlushC
 //
 // @return UpdateRecursionRecordResponse
 func (client *Client) UpdateRecursionRecordWithOptions(request *UpdateRecursionRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16746,9 +17203,11 @@ func (client *Client) UpdateRecursionRecord(request *UpdateRecursionRecordReques
 //
 // @return UpdateRecursionRecordEnableStatusResponse
 func (client *Client) UpdateRecursionRecordEnableStatusWithOptions(request *UpdateRecursionRecordEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16814,9 +17273,11 @@ func (client *Client) UpdateRecursionRecordEnableStatus(request *UpdateRecursion
 //
 // @return UpdateRecursionRecordRemarkResponse
 func (client *Client) UpdateRecursionRecordRemarkWithOptions(request *UpdateRecursionRecordRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16882,9 +17343,11 @@ func (client *Client) UpdateRecursionRecordRemark(request *UpdateRecursionRecord
 //
 // @return UpdateRecursionRecordWeightResponse
 func (client *Client) UpdateRecursionRecordWeightWithOptions(request *UpdateRecursionRecordWeightRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordWeightResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -16950,9 +17413,11 @@ func (client *Client) UpdateRecursionRecordWeight(request *UpdateRecursionRecord
 //
 // @return UpdateRecursionRecordWeightEnableStatusResponse
 func (client *Client) UpdateRecursionRecordWeightEnableStatusWithOptions(request *UpdateRecursionRecordWeightEnableStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionRecordWeightEnableStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17030,9 +17495,11 @@ func (client *Client) UpdateRecursionRecordWeightEnableStatus(request *UpdateRec
 //
 // @return UpdateRecursionZoneEffectiveScopeResponse
 func (client *Client) UpdateRecursionZoneEffectiveScopeWithOptions(tmpReq *UpdateRecursionZoneEffectiveScopeRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneEffectiveScopeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateRecursionZoneEffectiveScopeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -17104,9 +17571,11 @@ func (client *Client) UpdateRecursionZoneEffectiveScope(request *UpdateRecursion
 //
 // @return UpdateRecursionZoneProxyPatternResponse
 func (client *Client) UpdateRecursionZoneProxyPatternWithOptions(request *UpdateRecursionZoneProxyPatternRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneProxyPatternResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17172,9 +17641,11 @@ func (client *Client) UpdateRecursionZoneProxyPattern(request *UpdateRecursionZo
 //
 // @return UpdateRecursionZoneRemarkResponse
 func (client *Client) UpdateRecursionZoneRemarkWithOptions(request *UpdateRecursionZoneRemarkRequest, runtime *dara.RuntimeOptions) (_result *UpdateRecursionZoneRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -17240,9 +17711,11 @@ func (client *Client) UpdateRecursionZoneRemark(request *UpdateRecursionZoneRema
 //
 // @return ValidateDnsGtmCnameRrCanUseResponse
 func (client *Client) ValidateDnsGtmCnameRrCanUseWithOptions(request *ValidateDnsGtmCnameRrCanUseRequest, runtime *dara.RuntimeOptions) (_result *ValidateDnsGtmCnameRrCanUseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CnameMode) {
@@ -17320,9 +17793,11 @@ func (client *Client) ValidateDnsGtmCnameRrCanUse(request *ValidateDnsGtmCnameRr
 //
 // @return ValidatePdnsUdpIpSegmentResponse
 func (client *Client) ValidatePdnsUdpIpSegmentWithOptions(request *ValidatePdnsUdpIpSegmentRequest, runtime *dara.RuntimeOptions) (_result *ValidatePdnsUdpIpSegmentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ip) {

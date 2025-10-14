@@ -88,7 +88,16 @@ func (s *OperateBatchDomainRequest) SetType(v string) *OperateBatchDomainRequest
 }
 
 func (s *OperateBatchDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DomainRecordInfo != nil {
+		for _, item := range s.DomainRecordInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type OperateBatchDomainRequestDomainRecordInfo struct {

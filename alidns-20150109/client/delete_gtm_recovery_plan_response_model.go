@@ -59,5 +59,10 @@ func (s *DeleteGtmRecoveryPlanResponse) SetBody(v *DeleteGtmRecoveryPlanResponse
 }
 
 func (s *DeleteGtmRecoveryPlanResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

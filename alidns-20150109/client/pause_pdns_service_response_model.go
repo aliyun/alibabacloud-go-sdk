@@ -59,5 +59,10 @@ func (s *PausePdnsServiceResponse) SetBody(v *PausePdnsServiceResponseBody) *Pau
 }
 
 func (s *PausePdnsServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

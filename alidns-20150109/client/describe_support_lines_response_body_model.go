@@ -51,7 +51,12 @@ func (s *DescribeSupportLinesResponseBody) SetRequestId(v string) *DescribeSuppo
 }
 
 func (s *DescribeSupportLinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordLines != nil {
+		if err := s.RecordLines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSupportLinesResponseBodyRecordLines struct {
@@ -76,7 +81,16 @@ func (s *DescribeSupportLinesResponseBodyRecordLines) SetRecordLine(v []*Describ
 }
 
 func (s *DescribeSupportLinesResponseBodyRecordLines) Validate() error {
-	return dara.Validate(s)
+	if s.RecordLine != nil {
+		for _, item := range s.RecordLine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSupportLinesResponseBodyRecordLinesRecordLine struct {

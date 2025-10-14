@@ -121,7 +121,12 @@ func (s *ListCloudGtmAddressesResponseBody) SetTotalPages(v int32) *ListCloudGtm
 }
 
 func (s *ListCloudGtmAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		if err := s.Addresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressesResponseBodyAddresses struct {
@@ -146,7 +151,16 @@ func (s *ListCloudGtmAddressesResponseBodyAddresses) SetAddress(v []*ListCloudGt
 }
 
 func (s *ListCloudGtmAddressesResponseBodyAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		for _, item := range s.Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddress struct {
@@ -452,7 +466,12 @@ func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) SetUpdateTimestamp(v
 }
 
 func (s *ListCloudGtmAddressesResponseBodyAddressesAddress) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTasks != nil {
+		if err := s.HealthTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks struct {
@@ -477,7 +496,16 @@ func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) SetHealth
 }
 
 func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTask != nil {
+		for _, item := range s.HealthTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {

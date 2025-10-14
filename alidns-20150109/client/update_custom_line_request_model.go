@@ -89,7 +89,16 @@ func (s *UpdateCustomLineRequest) SetLineName(v string) *UpdateCustomLineRequest
 }
 
 func (s *UpdateCustomLineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IpSegment != nil {
+		for _, item := range s.IpSegment {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCustomLineRequestIpSegment struct {

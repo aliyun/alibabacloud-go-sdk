@@ -121,7 +121,12 @@ func (s *DescribeGtmInstancesResponseBody) SetTotalPages(v int32) *DescribeGtmIn
 }
 
 func (s *DescribeGtmInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GtmInstances != nil {
+		if err := s.GtmInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstancesResponseBodyGtmInstances struct {
@@ -146,7 +151,16 @@ func (s *DescribeGtmInstancesResponseBodyGtmInstances) SetGtmInstance(v []*Descr
 }
 
 func (s *DescribeGtmInstancesResponseBodyGtmInstances) Validate() error {
-	return dara.Validate(s)
+	if s.GtmInstance != nil {
+		for _, item := range s.GtmInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance struct {

@@ -111,7 +111,12 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBody) SetTotalPages(v int32) *Sea
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		if err := s.Templates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplates struct {
@@ -136,7 +141,16 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplates) SetTemplate(v []*S
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		for _, item := range s.Template {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
@@ -382,7 +396,12 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetUpdateT
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		if err := s.IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes struct {
@@ -407,7 +426,16 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {

@@ -121,7 +121,16 @@ func (s *DescribeCustomLinesResponseBody) SetTotalPages(v int32) *DescribeCustom
 }
 
 func (s *DescribeCustomLinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomLines != nil {
+		for _, item := range s.CustomLines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomLinesResponseBodyCustomLines struct {
@@ -191,7 +200,16 @@ func (s *DescribeCustomLinesResponseBodyCustomLines) SetName(v string) *Describe
 }
 
 func (s *DescribeCustomLinesResponseBodyCustomLines) Validate() error {
-	return dara.Validate(s)
+	if s.IpSegmentList != nil {
+		for _, item := range s.IpSegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomLinesResponseBodyCustomLinesIpSegmentList struct {

@@ -104,7 +104,12 @@ func (s *DescribeBatchResultDetailResponseBody) SetTotalCount(v int64) *Describe
 }
 
 func (s *DescribeBatchResultDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BatchResultDetails != nil {
+		if err := s.BatchResultDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeBatchResultDetailResponseBodyBatchResultDetails struct {
@@ -129,7 +134,16 @@ func (s *DescribeBatchResultDetailResponseBodyBatchResultDetails) SetBatchResult
 }
 
 func (s *DescribeBatchResultDetailResponseBodyBatchResultDetails) Validate() error {
-	return dara.Validate(s)
+	if s.BatchResultDetail != nil {
+		for _, item := range s.BatchResultDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail struct {

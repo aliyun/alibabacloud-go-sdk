@@ -121,7 +121,12 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBody) SetTotalPages(v int32) *Des
 }
 
 func (s *DescribeDnsGtmAccessStrategiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategies != nil {
+		if err := s.Strategies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategies struct {
@@ -146,7 +151,16 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategies) SetStrategy(v []*
 }
 
 func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategies) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		for _, item := range s.Strategy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
@@ -302,7 +316,17 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy) SetStrate
 }
 
 func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveAddrPools != nil {
+		if err := s.EffectiveAddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools struct {
@@ -327,7 +351,16 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAd
 }
 
 func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveAddrPool != nil {
+		for _, item := range s.EffectiveAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPoolsEffectiveAddrPool struct {
@@ -427,7 +460,16 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines) SetL
 }
 
 func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {

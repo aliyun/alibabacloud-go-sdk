@@ -125,7 +125,12 @@ func (s *DescribeDnsProductInstancesResponseBody) SetTotalCount(v int64) *Descri
 }
 
 func (s *DescribeDnsProductInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DnsProducts != nil {
+		if err := s.DnsProducts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsProductInstancesResponseBodyDnsProducts struct {
@@ -150,7 +155,16 @@ func (s *DescribeDnsProductInstancesResponseBodyDnsProducts) SetDnsProduct(v []*
 }
 
 func (s *DescribeDnsProductInstancesResponseBodyDnsProducts) Validate() error {
-	return dara.Validate(s)
+	if s.DnsProduct != nil {
+		for _, item := range s.DnsProduct {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {

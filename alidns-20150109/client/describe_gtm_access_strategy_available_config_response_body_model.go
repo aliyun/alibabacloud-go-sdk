@@ -83,7 +83,17 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBody) SetSuggestSetDefa
 }
 
 func (s *DescribeGtmAccessStrategyAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPools != nil {
+		if err := s.AddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools struct {
@@ -108,7 +118,16 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools) SetAddrP
 }
 
 func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPool != nil {
+		for _, item := range s.AddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool struct {
@@ -178,7 +197,16 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines) SetLine(v []
 }
 
 func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {

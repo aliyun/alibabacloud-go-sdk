@@ -265,7 +265,12 @@ func (s *DescribeGtmInstanceAddressPoolResponseBody) SetUpdateTimestamp(v int64)
 }
 
 func (s *DescribeGtmInstanceAddressPoolResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addrs != nil {
+		if err := s.Addrs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstanceAddressPoolResponseBodyAddrs struct {
@@ -290,7 +295,16 @@ func (s *DescribeGtmInstanceAddressPoolResponseBodyAddrs) SetAddr(v []*DescribeG
 }
 
 func (s *DescribeGtmInstanceAddressPoolResponseBodyAddrs) Validate() error {
-	return dara.Validate(s)
+	if s.Addr != nil {
+		for _, item := range s.Addr {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr struct {

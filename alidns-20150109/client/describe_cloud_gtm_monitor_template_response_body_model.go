@@ -355,7 +355,12 @@ func (s *DescribeCloudGtmMonitorTemplateResponseBody) SetUpdateTimestamp(v int64
 }
 
 func (s *DescribeCloudGtmMonitorTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		if err := s.IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes struct {
@@ -380,7 +385,16 @@ func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) SetIspCityNode
 }
 
 func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode struct {

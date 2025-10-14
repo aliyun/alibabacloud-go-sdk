@@ -59,5 +59,10 @@ func (s *DescribeTransferDomainsResponse) SetBody(v *DescribeTransferDomainsResp
 }
 
 func (s *DescribeTransferDomainsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

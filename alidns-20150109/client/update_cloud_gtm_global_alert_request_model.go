@@ -87,7 +87,16 @@ func (s *UpdateCloudGtmGlobalAlertRequest) SetClientToken(v string) *UpdateCloud
 }
 
 func (s *UpdateCloudGtmGlobalAlertRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {

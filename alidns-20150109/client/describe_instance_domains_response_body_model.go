@@ -121,7 +121,16 @@ func (s *DescribeInstanceDomainsResponseBody) SetTotalPages(v int32) *DescribeIn
 }
 
 func (s *DescribeInstanceDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDomains != nil {
+		for _, item := range s.InstanceDomains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDomainsResponseBodyInstanceDomains struct {

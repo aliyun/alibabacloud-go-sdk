@@ -70,7 +70,12 @@ func (s *DescribeCloudGtmSystemLinesResponseBody) SetSystemLinesTree(v string) *
 }
 
 func (s *DescribeCloudGtmSystemLinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemLines != nil {
+		if err := s.SystemLines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmSystemLinesResponseBodySystemLines struct {
@@ -95,7 +100,16 @@ func (s *DescribeCloudGtmSystemLinesResponseBodySystemLines) SetSystemLine(v []*
 }
 
 func (s *DescribeCloudGtmSystemLinesResponseBodySystemLines) Validate() error {
-	return dara.Validate(s)
+	if s.SystemLine != nil {
+		for _, item := range s.SystemLine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine struct {

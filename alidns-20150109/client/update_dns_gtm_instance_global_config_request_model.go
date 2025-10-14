@@ -236,7 +236,16 @@ func (s *UpdateDnsGtmInstanceGlobalConfigRequest) SetTtl(v int32) *UpdateDnsGtmI
 }
 
 func (s *UpdateDnsGtmInstanceGlobalConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig struct {

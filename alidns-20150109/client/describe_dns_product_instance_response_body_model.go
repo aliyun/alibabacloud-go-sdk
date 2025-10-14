@@ -671,7 +671,12 @@ func (s *DescribeDnsProductInstanceResponseBody) SetVersionName(v string) *Descr
 }
 
 func (s *DescribeDnsProductInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DnsServers != nil {
+		if err := s.DnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsProductInstanceResponseBodyDnsServers struct {

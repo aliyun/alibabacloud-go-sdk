@@ -333,7 +333,12 @@ func (s *DescribeCloudGtmAddressPoolResponseBody) SetUpdateTimestamp(v int64) *D
 }
 
 func (s *DescribeCloudGtmAddressPoolResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		if err := s.Addresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddresses struct {
@@ -358,7 +363,16 @@ func (s *DescribeCloudGtmAddressPoolResponseBodyAddresses) SetAddress(v []*Descr
 }
 
 func (s *DescribeCloudGtmAddressPoolResponseBodyAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		for _, item := range s.Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddressesAddress struct {
@@ -720,7 +734,17 @@ func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) SetWeightValue
 }
 
 func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddress) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTasks != nil {
+		if err := s.HealthTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks struct {
@@ -745,7 +769,16 @@ func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) Set
 }
 
 func (s *DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasks) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTask != nil {
+		for _, item := range s.HealthTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolResponseBodyAddressesAddressHealthTasksHealthTask struct {

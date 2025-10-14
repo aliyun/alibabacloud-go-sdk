@@ -121,7 +121,12 @@ func (s *ListCloudGtmInstanceConfigsResponseBody) SetTotalPages(v int32) *ListCl
 }
 
 func (s *ListCloudGtmInstanceConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfigs != nil {
+		if err := s.InstanceConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs struct {
@@ -146,7 +151,16 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceConf
 }
 
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfig != nil {
+		for _, item := range s.InstanceConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
@@ -516,7 +530,12 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) S
 }
 
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPools != nil {
+		if err := s.AddressPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools struct {
@@ -541,7 +560,16 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAdd
 }
 
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPool != nil {
+		for _, item := range s.AddressPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
@@ -849,7 +877,12 @@ func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAdd
 }
 
 func (s *ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) Validate() error {
-	return dara.Validate(s)
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource struct {

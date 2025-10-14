@@ -95,7 +95,16 @@ func (s *DescribePdnsUdpIpSegmentsResponseBody) SetTotalPages(v string) *Describ
 }
 
 func (s *DescribePdnsUdpIpSegmentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpSegments != nil {
+		for _, item := range s.IpSegments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePdnsUdpIpSegmentsResponseBodyIpSegments struct {

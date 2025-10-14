@@ -245,7 +245,12 @@ func (s *DescribeRecursionZoneResponseBody) SetZoneName(v string) *DescribeRecur
 }
 
 func (s *DescribeRecursionZoneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScopes != nil {
+		if err := s.EffectiveScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecursionZoneResponseBodyEffectiveScopes struct {
@@ -270,7 +275,16 @@ func (s *DescribeRecursionZoneResponseBodyEffectiveScopes) SetEffectiveScope(v [
 }
 
 func (s *DescribeRecursionZoneResponseBodyEffectiveScopes) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScope != nil {
+		for _, item := range s.EffectiveScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope struct {
@@ -311,7 +325,12 @@ func (s *DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope) SetScop
 }
 
 func (s *DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope) Validate() error {
-	return dara.Validate(s)
+	if s.Scopes != nil {
+		if err := s.Scopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes struct {

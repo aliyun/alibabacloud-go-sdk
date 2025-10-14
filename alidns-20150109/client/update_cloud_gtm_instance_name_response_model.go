@@ -59,5 +59,10 @@ func (s *UpdateCloudGtmInstanceNameResponse) SetBody(v *UpdateCloudGtmInstanceNa
 }
 
 func (s *UpdateCloudGtmInstanceNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

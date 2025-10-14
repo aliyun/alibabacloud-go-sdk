@@ -59,5 +59,10 @@ func (s *CreateCloudGtmAddressResponse) SetBody(v *CreateCloudGtmAddressResponse
 }
 
 func (s *CreateCloudGtmAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

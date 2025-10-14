@@ -66,7 +66,17 @@ func (s *ListCloudGtmMonitorNodesResponseBody) SetRequestId(v string) *ListCloud
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4IspCityNodes != nil {
+		if err := s.Ipv4IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6IspCityNodes != nil {
+		if err := s.Ipv6IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes struct {
@@ -91,7 +101,16 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) SetIpv4IspCityNod
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4IspCityNode != nil {
+		for _, item := range s.Ipv4IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
@@ -277,7 +296,12 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) Se
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps struct {
@@ -327,7 +351,16 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) SetIpv6IspCityNod
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6IspCityNode != nil {
+		for _, item := range s.Ipv6IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
@@ -513,7 +546,12 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) Se
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps struct {

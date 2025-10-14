@@ -59,5 +59,10 @@ func (s *DescribeGtmInstanceStatusResponse) SetBody(v *DescribeGtmInstanceStatus
 }
 
 func (s *DescribeGtmInstanceStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

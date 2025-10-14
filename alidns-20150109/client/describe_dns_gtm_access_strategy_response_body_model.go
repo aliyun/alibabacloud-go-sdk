@@ -503,7 +503,22 @@ func (s *DescribeDnsGtmAccessStrategyResponseBody) SetStrategyName(v string) *De
 }
 
 func (s *DescribeDnsGtmAccessStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultAddrPools != nil {
+		if err := s.DefaultAddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailoverAddrPools != nil {
+		if err := s.FailoverAddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools struct {
@@ -528,7 +543,16 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools) SetDefaultAdd
 }
 
 func (s *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultAddrPool != nil {
+		for _, item := range s.DefaultAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool struct {
@@ -628,7 +652,16 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools) SetFailoverA
 }
 
 func (s *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.FailoverAddrPool != nil {
+		for _, item := range s.FailoverAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool struct {
@@ -728,7 +761,16 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyLines) SetLine(v []*DescribeDns
 }
 
 func (s *DescribeDnsGtmAccessStrategyResponseBodyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyLinesLine struct {

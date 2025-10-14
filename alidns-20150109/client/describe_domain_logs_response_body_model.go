@@ -104,7 +104,12 @@ func (s *DescribeDomainLogsResponseBody) SetTotalCount(v int64) *DescribeDomainL
 }
 
 func (s *DescribeDomainLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLogs != nil {
+		if err := s.DomainLogs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainLogsResponseBodyDomainLogs struct {
@@ -129,7 +134,16 @@ func (s *DescribeDomainLogsResponseBodyDomainLogs) SetDomainLog(v []*DescribeDom
 }
 
 func (s *DescribeDomainLogsResponseBodyDomainLogs) Validate() error {
-	return dara.Validate(s)
+	if s.DomainLog != nil {
+		for _, item := range s.DomainLog {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainLogsResponseBodyDomainLogsDomainLog struct {

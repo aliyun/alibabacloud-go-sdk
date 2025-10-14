@@ -121,7 +121,12 @@ func (s *ListCloudGtmInstancesResponseBody) SetTotalPages(v int32) *ListCloudGtm
 }
 
 func (s *ListCloudGtmInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstancesResponseBodyInstances struct {
@@ -146,10 +151,23 @@ func (s *ListCloudGtmInstancesResponseBodyInstances) SetInstance(v []*ListCloudG
 }
 
 func (s *ListCloudGtmInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmInstancesResponseBodyInstancesInstance struct {
+	// example:
+	//
+	// postpay / prepay
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The commodity code. Valid values:
 	//
 	// 	- dns_gtm_public_cn: commodity code on the China site (aliyun.com)
@@ -264,6 +282,10 @@ func (s ListCloudGtmInstancesResponseBodyInstancesInstance) GoString() string {
 	return s.String()
 }
 
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) GetCommodityCode() *string {
 	return s.CommodityCode
 }
@@ -326,6 +348,11 @@ func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) GetUpdateTimestamp(
 
 func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) GetVersionCode() *string {
 	return s.VersionCode
+}
+
+func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetChargeType(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *ListCloudGtmInstancesResponseBodyInstancesInstance) SetCommodityCode(v string) *ListCloudGtmInstancesResponseBodyInstancesInstance {

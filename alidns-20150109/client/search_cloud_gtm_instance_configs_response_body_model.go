@@ -121,7 +121,12 @@ func (s *SearchCloudGtmInstanceConfigsResponseBody) SetTotalPages(v int32) *Sear
 }
 
 func (s *SearchCloudGtmInstanceConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfigs != nil {
+		if err := s.InstanceConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs struct {
@@ -146,7 +151,16 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) SetInstanceCo
 }
 
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfig != nil {
+		for _, item := range s.InstanceConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
@@ -516,7 +530,12 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig)
 }
 
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPools != nil {
+		if err := s.AddressPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools struct {
@@ -541,7 +560,16 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigA
 }
 
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPool != nil {
+		for _, item := range s.AddressPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
@@ -853,7 +881,12 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigA
 }
 
 func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) Validate() error {
-	return dara.Validate(s)
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource struct {

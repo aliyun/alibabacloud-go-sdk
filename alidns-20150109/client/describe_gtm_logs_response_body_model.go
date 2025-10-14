@@ -121,7 +121,12 @@ func (s *DescribeGtmLogsResponseBody) SetTotalPages(v int32) *DescribeGtmLogsRes
 }
 
 func (s *DescribeGtmLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		if err := s.Logs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmLogsResponseBodyLogs struct {
@@ -146,7 +151,16 @@ func (s *DescribeGtmLogsResponseBodyLogs) SetLog(v []*DescribeGtmLogsResponseBod
 }
 
 func (s *DescribeGtmLogsResponseBodyLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		for _, item := range s.Log {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmLogsResponseBodyLogsLog struct {

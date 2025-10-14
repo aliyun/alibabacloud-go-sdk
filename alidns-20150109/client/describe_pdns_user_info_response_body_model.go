@@ -53,7 +53,12 @@ func (s *DescribePdnsUserInfoResponseBody) SetUserInfo(v *DescribePdnsUserInfoRe
 }
 
 func (s *DescribePdnsUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePdnsUserInfoResponseBodyUserInfo struct {

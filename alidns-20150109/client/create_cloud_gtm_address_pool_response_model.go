@@ -59,5 +59,10 @@ func (s *CreateCloudGtmAddressPoolResponse) SetBody(v *CreateCloudGtmAddressPool
 }
 
 func (s *CreateCloudGtmAddressPoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

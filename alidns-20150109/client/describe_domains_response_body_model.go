@@ -104,7 +104,12 @@ func (s *DescribeDomainsResponseBody) SetTotalCount(v int64) *DescribeDomainsRes
 }
 
 func (s *DescribeDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		if err := s.Domains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeDomainsResponseBodyDomains) SetDomain(v []*DescribeDomainsRespo
 }
 
 func (s *DescribeDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Domain != nil {
+		for _, item := range s.Domain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
@@ -461,7 +475,17 @@ func (s *DescribeDomainsResponseBodyDomainsDomain) SetVersionName(v string) *Des
 }
 
 func (s *DescribeDomainsResponseBodyDomainsDomain) Validate() error {
-	return dara.Validate(s)
+	if s.DnsServers != nil {
+		if err := s.DnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsDomainDnsServers struct {
@@ -511,7 +535,16 @@ func (s *DescribeDomainsResponseBodyDomainsDomainTags) SetTag(v []*DescribeDomai
 }
 
 func (s *DescribeDomainsResponseBodyDomainsDomainTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsDomainTagsTag struct {

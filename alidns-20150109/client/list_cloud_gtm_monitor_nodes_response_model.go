@@ -59,5 +59,10 @@ func (s *ListCloudGtmMonitorNodesResponse) SetBody(v *ListCloudGtmMonitorNodesRe
 }
 
 func (s *ListCloudGtmMonitorNodesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

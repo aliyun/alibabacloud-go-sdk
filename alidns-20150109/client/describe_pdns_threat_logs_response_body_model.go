@@ -83,7 +83,16 @@ func (s *DescribePdnsThreatLogsResponseBody) SetTotalCount(v int64) *DescribePdn
 }
 
 func (s *DescribePdnsThreatLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePdnsThreatLogsResponseBodyLogs struct {

@@ -138,7 +138,12 @@ func (s *AddDomainResponseBody) SetRequestId(v string) *AddDomainResponseBody {
 }
 
 func (s *AddDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DnsServers != nil {
+		if err := s.DnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddDomainResponseBodyDnsServers struct {

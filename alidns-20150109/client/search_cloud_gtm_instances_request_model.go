@@ -11,6 +11,8 @@ type iSearchCloudGtmInstancesRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *SearchCloudGtmInstancesRequest
 	GetAcceptLanguage() *string
+	SetChargeType(v string) *SearchCloudGtmInstancesRequest
+	GetChargeType() *string
 	SetClientToken(v string) *SearchCloudGtmInstancesRequest
 	GetClientToken() *string
 	SetInstanceId(v string) *SearchCloudGtmInstancesRequest
@@ -34,6 +36,10 @@ type SearchCloudGtmInstancesRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// prepay / postpay
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
@@ -78,6 +84,10 @@ func (s *SearchCloudGtmInstancesRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *SearchCloudGtmInstancesRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *SearchCloudGtmInstancesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -100,6 +110,11 @@ func (s *SearchCloudGtmInstancesRequest) GetPageSize() *int32 {
 
 func (s *SearchCloudGtmInstancesRequest) SetAcceptLanguage(v string) *SearchCloudGtmInstancesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *SearchCloudGtmInstancesRequest) SetChargeType(v string) *SearchCloudGtmInstancesRequest {
+	s.ChargeType = &v
 	return s
 }
 

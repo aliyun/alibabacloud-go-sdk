@@ -110,7 +110,16 @@ func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) SetInstanceId(v string
 }
 
 func (s *ReplaceCloudGtmInstanceConfigAddressPoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPools != nil {
+		for _, item := range s.AddressPools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools struct {

@@ -59,5 +59,10 @@ func (s *DescribeDnsProductInstanceResponse) SetBody(v *DescribeDnsProductInstan
 }
 
 func (s *DescribeDnsProductInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -143,7 +143,16 @@ func (s *DescribeIspFlushCacheTaskResponseBody) SetTaskStatus(v string) *Describ
 }
 
 func (s *DescribeIspFlushCacheTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FlushCacheResults != nil {
+		for _, item := range s.FlushCacheResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheTaskResponseBodyFlushCacheResults struct {
@@ -178,7 +187,16 @@ func (s *DescribeIspFlushCacheTaskResponseBodyFlushCacheResults) SetProvince(v s
 }
 
 func (s *DescribeIspFlushCacheTaskResponseBodyFlushCacheResults) Validate() error {
-	return dara.Validate(s)
+	if s.DnsNodes != nil {
+		for _, item := range s.DnsNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheTaskResponseBodyFlushCacheResultsDnsNodes struct {
@@ -233,7 +251,16 @@ func (s *DescribeIspFlushCacheTaskResponseBodyFlushCacheResultsDnsNodes) SetStat
 }
 
 func (s *DescribeIspFlushCacheTaskResponseBodyFlushCacheResultsDnsNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Answers != nil {
+		for _, item := range s.Answers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheTaskResponseBodyFlushCacheResultsDnsNodesAnswers struct {

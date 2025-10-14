@@ -66,7 +66,17 @@ func (s *ModifyHichinaDomainDNSResponseBody) SetRequestId(v string) *ModifyHichi
 }
 
 func (s *ModifyHichinaDomainDNSResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NewDnsServers != nil {
+		if err := s.NewDnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginalDnsServers != nil {
+		if err := s.OriginalDnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyHichinaDomainDNSResponseBodyNewDnsServers struct {

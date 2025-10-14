@@ -274,7 +274,12 @@ func (s *DescribeGtmRecoveryPlanResponseBody) SetUpdateTimestamp(v int64) *Descr
 }
 
 func (s *DescribeGtmRecoveryPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FaultAddrPools != nil {
+		if err := s.FaultAddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPools struct {
@@ -299,7 +304,16 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools) SetFaultAddrPool(v [
 }
 
 func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.FaultAddrPool != nil {
+		for _, item := range s.FaultAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool struct {
@@ -365,7 +379,12 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool) SetInst
 }
 
 func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool) Validate() error {
-	return dara.Validate(s)
+	if s.Addrs != nil {
+		if err := s.Addrs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs struct {
@@ -390,7 +409,16 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs) Se
 }
 
 func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs) Validate() error {
-	return dara.Validate(s)
+	if s.Addr != nil {
+		for _, item := range s.Addr {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr struct {

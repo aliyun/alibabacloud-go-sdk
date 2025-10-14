@@ -59,5 +59,10 @@ func (s *DescribePdnsAppKeyResponse) SetBody(v *DescribePdnsAppKeyResponseBody) 
 }
 
 func (s *DescribePdnsAppKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

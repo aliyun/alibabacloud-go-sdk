@@ -53,7 +53,12 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBody) SetRequestId(v string) *De
 }
 
 func (s *DescribeDnsGtmAddrAttributeInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Addr != nil {
+		if err := s.Addr.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddr struct {
@@ -78,7 +83,16 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr) SetAddr(v []*DescribeD
 }
 
 func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr) Validate() error {
-	return dara.Validate(s)
+	if s.Addr != nil {
+		for _, item := range s.Addr {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr struct {
@@ -119,7 +133,12 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr) SetAttributeInfo(v
 }
 
 func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeInfo != nil {
+		if err := s.AttributeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo struct {

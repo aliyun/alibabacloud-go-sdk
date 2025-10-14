@@ -53,7 +53,12 @@ func (s *ListCloudGtmAvailableAlertGroupsResponseBody) SetRequestId(v string) *L
 }
 
 func (s *ListCloudGtmAvailableAlertGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertGroups != nil {
+		if err := s.AlertGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups struct {
@@ -78,7 +83,16 @@ func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) SetAlertGroup(
 }
 
 func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AlertGroup != nil {
+		for _, item := range s.AlertGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup struct {

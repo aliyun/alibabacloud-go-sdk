@@ -59,5 +59,10 @@ func (s *DeleteCloudGtmAddressPoolResponse) SetBody(v *DeleteCloudGtmAddressPool
 }
 
 func (s *DeleteCloudGtmAddressPoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

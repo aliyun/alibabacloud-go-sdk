@@ -283,7 +283,12 @@ func (s *DescribeGtmAccessStrategyResponseBody) SetStrategyName(v string) *Descr
 }
 
 func (s *DescribeGtmAccessStrategyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategyResponseBodyLines struct {
@@ -308,7 +313,16 @@ func (s *DescribeGtmAccessStrategyResponseBodyLines) SetLine(v []*DescribeGtmAcc
 }
 
 func (s *DescribeGtmAccessStrategyResponseBodyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategyResponseBodyLinesLine struct {

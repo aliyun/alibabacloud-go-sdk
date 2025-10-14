@@ -121,7 +121,12 @@ func (s *ListCloudGtmAddressPoolsResponseBody) SetTotalPages(v int32) *ListCloud
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPools != nil {
+		if err := s.AddressPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPools struct {
@@ -146,7 +151,16 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPools) SetAddressPool(v []*L
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBodyAddressPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPool != nil {
+		for _, item := range s.AddressPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
@@ -424,7 +438,12 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) SetUpdateT
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		if err := s.Addresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses struct {
@@ -449,7 +468,16 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) S
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		for _, item := range s.Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
@@ -815,7 +843,17 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAdd
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTasks != nil {
+		if err := s.HealthTasks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks struct {
@@ -840,7 +878,16 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAdd
 }
 
 func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTask != nil {
+		for _, item := range s.HealthTask {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {

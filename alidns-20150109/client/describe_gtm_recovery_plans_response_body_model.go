@@ -121,7 +121,12 @@ func (s *DescribeGtmRecoveryPlansResponseBody) SetTotalPages(v int32) *DescribeG
 }
 
 func (s *DescribeGtmRecoveryPlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecoveryPlans != nil {
+		if err := s.RecoveryPlans.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlansResponseBodyRecoveryPlans struct {
@@ -146,7 +151,16 @@ func (s *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans) SetRecoveryPlan(v []
 }
 
 func (s *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans) Validate() error {
-	return dara.Validate(s)
+	if s.RecoveryPlan != nil {
+		for _, item := range s.RecoveryPlan {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan struct {

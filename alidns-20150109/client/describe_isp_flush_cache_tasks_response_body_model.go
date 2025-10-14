@@ -95,7 +95,16 @@ func (s *DescribeIspFlushCacheTasksResponseBody) SetTotalPages(v int32) *Describ
 }
 
 func (s *DescribeIspFlushCacheTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspFlushCacheTasks != nil {
+		for _, item := range s.IspFlushCacheTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheTasksResponseBodyIspFlushCacheTasks struct {

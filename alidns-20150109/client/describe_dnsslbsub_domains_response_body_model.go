@@ -104,7 +104,12 @@ func (s *DescribeDNSSLBSubDomainsResponseBody) SetTotalCount(v int64) *DescribeD
 }
 
 func (s *DescribeDNSSLBSubDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlbSubDomains != nil {
+		if err := s.SlbSubDomains.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomains struct {
@@ -129,7 +134,16 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) SetSlbSubDomain(v []
 }
 
 func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) Validate() error {
-	return dara.Validate(s)
+	if s.SlbSubDomain != nil {
+		for _, item := range s.SlbSubDomain {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain struct {
@@ -215,7 +229,12 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) SetType(
 }
 
 func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) Validate() error {
-	return dara.Validate(s)
+	if s.LineAlgorithms != nil {
+		if err := s.LineAlgorithms.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms struct {
@@ -240,7 +259,16 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgori
 }
 
 func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms) Validate() error {
-	return dara.Validate(s)
+	if s.LineAlgorithm != nil {
+		for _, item := range s.LineAlgorithm {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm struct {

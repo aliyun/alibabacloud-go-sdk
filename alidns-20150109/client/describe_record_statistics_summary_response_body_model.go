@@ -121,7 +121,12 @@ func (s *DescribeRecordStatisticsSummaryResponseBody) SetTotalPages(v int32) *De
 }
 
 func (s *DescribeRecordStatisticsSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Statistics != nil {
+		if err := s.Statistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecordStatisticsSummaryResponseBodyStatistics struct {
@@ -146,7 +151,16 @@ func (s *DescribeRecordStatisticsSummaryResponseBodyStatistics) SetStatistic(v [
 }
 
 func (s *DescribeRecordStatisticsSummaryResponseBodyStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Statistic != nil {
+		for _, item := range s.Statistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecordStatisticsSummaryResponseBodyStatisticsStatistic struct {

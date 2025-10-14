@@ -59,5 +59,10 @@ func (s *UpdateAppKeyStateResponse) SetBody(v *UpdateAppKeyStateResponseBody) *U
 }
 
 func (s *UpdateAppKeyStateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

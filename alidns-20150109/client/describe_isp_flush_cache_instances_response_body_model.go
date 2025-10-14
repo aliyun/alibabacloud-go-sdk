@@ -95,7 +95,16 @@ func (s *DescribeIspFlushCacheInstancesResponseBody) SetTotalPages(v int32) *Des
 }
 
 func (s *DescribeIspFlushCacheInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspFlushCacheInstances != nil {
+		for _, item := range s.IspFlushCacheInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheInstancesResponseBodyIspFlushCacheInstances struct {
@@ -190,7 +199,12 @@ func (s *DescribeIspFlushCacheInstancesResponseBodyIspFlushCacheInstances) SetVe
 }
 
 func (s *DescribeIspFlushCacheInstancesResponseBodyIspFlushCacheInstances) Validate() error {
-	return dara.Validate(s)
+	if s.QuotaInfo != nil {
+		if err := s.QuotaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeIspFlushCacheInstancesResponseBodyIspFlushCacheInstancesQuotaInfo struct {

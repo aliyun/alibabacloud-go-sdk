@@ -249,7 +249,12 @@ func (s *DescribeGtmMonitorConfigResponseBody) SetUpdateTimestamp(v int64) *Desc
 }
 
 func (s *DescribeGtmMonitorConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		if err := s.IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmMonitorConfigResponseBodyIspCityNodes struct {
@@ -274,7 +279,16 @@ func (s *DescribeGtmMonitorConfigResponseBodyIspCityNodes) SetIspCityNode(v []*D
 }
 
 func (s *DescribeGtmMonitorConfigResponseBodyIspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {

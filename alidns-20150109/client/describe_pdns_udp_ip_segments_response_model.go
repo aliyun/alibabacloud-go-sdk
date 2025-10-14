@@ -59,5 +59,10 @@ func (s *DescribePdnsUdpIpSegmentsResponse) SetBody(v *DescribePdnsUdpIpSegments
 }
 
 func (s *DescribePdnsUdpIpSegmentsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,12 @@ func (s *DescribeGtmInstanceAddressPoolsResponseBody) SetTotalPages(v int32) *De
 }
 
 func (s *DescribeGtmInstanceAddressPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPools != nil {
+		if err := s.AddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBodyAddrPools struct {
@@ -146,7 +151,16 @@ func (s *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools) SetAddrPool(v []*
 }
 
 func (s *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPool != nil {
+		for _, item := range s.AddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool struct {

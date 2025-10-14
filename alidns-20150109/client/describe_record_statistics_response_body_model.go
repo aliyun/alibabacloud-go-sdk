@@ -53,7 +53,12 @@ func (s *DescribeRecordStatisticsResponseBody) SetStatistics(v *DescribeRecordSt
 }
 
 func (s *DescribeRecordStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Statistics != nil {
+		if err := s.Statistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRecordStatisticsResponseBodyStatistics struct {
@@ -78,7 +83,16 @@ func (s *DescribeRecordStatisticsResponseBodyStatistics) SetStatistic(v []*Descr
 }
 
 func (s *DescribeRecordStatisticsResponseBodyStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Statistic != nil {
+		for _, item := range s.Statistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecordStatisticsResponseBodyStatisticsStatistic struct {

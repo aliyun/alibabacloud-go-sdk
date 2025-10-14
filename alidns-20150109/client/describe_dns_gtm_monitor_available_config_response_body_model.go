@@ -92,7 +92,27 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBody) SetRequestId(v string
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainIpv4IspCityNodes != nil {
+		if err := s.DomainIpv4IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainIpv6IspCityNodes != nil {
+		if err := s.DomainIpv6IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv4IspCityNodes != nil {
+		if err := s.Ipv4IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6IspCityNodes != nil {
+		if err := s.Ipv6IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes struct {
@@ -117,7 +137,16 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes)
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DomainIpv4IspCityNode != nil {
+		for _, item := range s.DomainIpv4IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode struct {
@@ -254,7 +283,12 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesD
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps struct {
@@ -304,7 +338,16 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes)
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.DomainIpv6IspCityNode != nil {
+		for _, item := range s.DomainIpv6IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode struct {
@@ -441,7 +484,12 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesD
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps struct {
@@ -491,7 +539,16 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes) SetIp
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4IspCityNode != nil {
+		for _, item := range s.Ipv4IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
@@ -628,7 +685,12 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4Isp
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps struct {
@@ -678,7 +740,16 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes) SetIp
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6IspCityNode != nil {
+		for _, item := range s.Ipv6IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
@@ -815,7 +886,12 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6Isp
 }
 
 func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode) Validate() error {
-	return dara.Validate(s)
+	if s.Ips != nil {
+		if err := s.Ips.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps struct {

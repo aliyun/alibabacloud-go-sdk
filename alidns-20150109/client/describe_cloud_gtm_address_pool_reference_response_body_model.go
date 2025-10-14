@@ -87,7 +87,12 @@ func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) SetRequestId(v string
 }
 
 func (s *DescribeCloudGtmAddressPoolReferenceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfigs != nil {
+		if err := s.InstanceConfigs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs struct {
@@ -112,7 +117,16 @@ func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) SetIns
 }
 
 func (s *DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConfig != nil {
+		for _, item := range s.InstanceConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig struct {

@@ -47,7 +47,12 @@ func (s *DescribePdnsAppKeyResponseBody) SetRequestId(v string) *DescribePdnsApp
 }
 
 func (s *DescribePdnsAppKeyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppKey != nil {
+		if err := s.AppKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePdnsAppKeyResponseBodyAppKey struct {

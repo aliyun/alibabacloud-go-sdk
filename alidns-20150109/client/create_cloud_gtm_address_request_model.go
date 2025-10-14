@@ -267,7 +267,16 @@ func (s *CreateCloudGtmAddressRequest) SetType(v string) *CreateCloudGtmAddressR
 }
 
 func (s *CreateCloudGtmAddressRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HealthTasks != nil {
+		for _, item := range s.HealthTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudGtmAddressRequestHealthTasks struct {

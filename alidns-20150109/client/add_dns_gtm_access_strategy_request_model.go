@@ -348,7 +348,25 @@ func (s *AddDnsGtmAccessStrategyRequest) SetStrategyName(v string) *AddDnsGtmAcc
 }
 
 func (s *AddDnsGtmAccessStrategyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultAddrPool != nil {
+		for _, item := range s.DefaultAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FailoverAddrPool != nil {
+		for _, item := range s.FailoverAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddDnsGtmAccessStrategyRequestDefaultAddrPool struct {

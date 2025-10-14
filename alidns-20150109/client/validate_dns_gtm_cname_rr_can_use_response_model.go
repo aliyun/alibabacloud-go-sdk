@@ -59,5 +59,10 @@ func (s *ValidateDnsGtmCnameRrCanUseResponse) SetBody(v *ValidateDnsGtmCnameRrCa
 }
 
 func (s *ValidateDnsGtmCnameRrCanUseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

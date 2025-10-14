@@ -104,7 +104,12 @@ func (s *DescribeDomainGroupsResponseBody) SetTotalCount(v int64) *DescribeDomai
 }
 
 func (s *DescribeDomainGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainGroups != nil {
+		if err := s.DomainGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainGroupsResponseBodyDomainGroups struct {
@@ -129,7 +134,16 @@ func (s *DescribeDomainGroupsResponseBodyDomainGroups) SetDomainGroup(v []*Descr
 }
 
 func (s *DescribeDomainGroupsResponseBodyDomainGroups) Validate() error {
-	return dara.Validate(s)
+	if s.DomainGroup != nil {
+		for _, item := range s.DomainGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup struct {

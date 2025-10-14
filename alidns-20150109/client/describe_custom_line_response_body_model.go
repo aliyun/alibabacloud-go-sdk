@@ -117,7 +117,16 @@ func (s *DescribeCustomLineResponseBody) SetRequestId(v string) *DescribeCustomL
 }
 
 func (s *DescribeCustomLineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpSegmentList != nil {
+		for _, item := range s.IpSegmentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomLineResponseBodyIpSegmentList struct {

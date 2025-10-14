@@ -138,7 +138,12 @@ func (s *DescribeInternetDnsLogsResponseBody) SetTotalSize(v int32) *DescribeInt
 }
 
 func (s *DescribeInternetDnsLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		if err := s.Logs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInternetDnsLogsResponseBodyLogs struct {
@@ -163,7 +168,16 @@ func (s *DescribeInternetDnsLogsResponseBodyLogs) SetLog(v []*DescribeInternetDn
 }
 
 func (s *DescribeInternetDnsLogsResponseBodyLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		for _, item := range s.Log {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInternetDnsLogsResponseBodyLogsLog struct {
@@ -364,7 +378,12 @@ func (s *DescribeInternetDnsLogsResponseBodyLogsLog) SetZoneName(v string) *Desc
 }
 
 func (s *DescribeInternetDnsLogsResponseBodyLogsLog) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInternetDnsLogsResponseBodyLogsLogValue struct {

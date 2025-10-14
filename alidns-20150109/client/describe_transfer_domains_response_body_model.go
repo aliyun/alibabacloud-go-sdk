@@ -104,7 +104,12 @@ func (s *DescribeTransferDomainsResponseBody) SetTotalCount(v int64) *DescribeTr
 }
 
 func (s *DescribeTransferDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTransfers != nil {
+		if err := s.DomainTransfers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTransferDomainsResponseBodyDomainTransfers struct {
@@ -129,7 +134,16 @@ func (s *DescribeTransferDomainsResponseBodyDomainTransfers) SetDomainTransfer(v
 }
 
 func (s *DescribeTransferDomainsResponseBodyDomainTransfers) Validate() error {
-	return dara.Validate(s)
+	if s.DomainTransfer != nil {
+		for _, item := range s.DomainTransfer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer struct {

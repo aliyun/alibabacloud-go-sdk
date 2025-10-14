@@ -104,7 +104,16 @@ func (s *DescribeDnsCacheDomainsResponseBody) SetTotalCount(v int64) *DescribeDn
 }
 
 func (s *DescribeDnsCacheDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsCacheDomainsResponseBodyDomains struct {
@@ -355,7 +364,16 @@ func (s *DescribeDnsCacheDomainsResponseBodyDomains) SetVersionCode(v string) *D
 }
 
 func (s *DescribeDnsCacheDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.SourceDnsServers != nil {
+		for _, item := range s.SourceDnsServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers struct {

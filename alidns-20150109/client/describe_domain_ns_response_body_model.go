@@ -117,7 +117,17 @@ func (s *DescribeDomainNsResponseBody) SetRequestId(v string) *DescribeDomainNsR
 }
 
 func (s *DescribeDomainNsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DnsServers != nil {
+		if err := s.DnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExpectDnsServers != nil {
+		if err := s.ExpectDnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainNsResponseBodyDnsServers struct {

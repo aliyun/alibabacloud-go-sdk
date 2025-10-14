@@ -104,7 +104,12 @@ func (s *DescribeSubDomainRecordsResponseBody) SetTotalCount(v int64) *DescribeS
 }
 
 func (s *DescribeSubDomainRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainRecords != nil {
+		if err := s.DomainRecords.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSubDomainRecordsResponseBodyDomainRecords struct {
@@ -129,7 +134,16 @@ func (s *DescribeSubDomainRecordsResponseBodyDomainRecords) SetRecord(v []*Descr
 }
 
 func (s *DescribeSubDomainRecordsResponseBodyDomainRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Record != nil {
+		for _, item := range s.Record {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {

@@ -65,7 +65,16 @@ func (s *UpdateRecursionZoneEffectiveScopeRequest) SetZoneId(v string) *UpdateRe
 }
 
 func (s *UpdateRecursionZoneEffectiveScopeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScopes != nil {
+		for _, item := range s.EffectiveScopes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes struct {

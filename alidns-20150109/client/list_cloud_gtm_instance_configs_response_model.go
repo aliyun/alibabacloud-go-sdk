@@ -59,5 +59,10 @@ func (s *ListCloudGtmInstanceConfigsResponse) SetBody(v *ListCloudGtmInstanceCon
 }
 
 func (s *ListCloudGtmInstanceConfigsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeDohDomainStatisticsSummaryResponse) SetBody(v *DescribeDohDomai
 }
 
 func (s *DescribeDohDomainStatisticsSummaryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

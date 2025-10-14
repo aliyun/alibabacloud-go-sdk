@@ -121,7 +121,12 @@ func (s *DescribeGtmAccessStrategiesResponseBody) SetTotalPages(v int32) *Descri
 }
 
 func (s *DescribeGtmAccessStrategiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Strategies != nil {
+		if err := s.Strategies.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategies struct {
@@ -146,7 +151,16 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategies) SetStrategy(v []*Des
 }
 
 func (s *DescribeGtmAccessStrategiesResponseBodyStrategies) Validate() error {
-	return dara.Validate(s)
+	if s.Strategy != nil {
+		for _, item := range s.Strategy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
@@ -418,7 +432,12 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy) SetStrategyN
 }
 
 func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines struct {
@@ -443,7 +462,16 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines) SetLine
 }
 
 func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {

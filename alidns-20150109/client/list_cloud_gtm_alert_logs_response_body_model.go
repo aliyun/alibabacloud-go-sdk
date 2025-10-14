@@ -121,7 +121,12 @@ func (s *ListCloudGtmAlertLogsResponseBody) SetTotalPages(v int32) *ListCloudGtm
 }
 
 func (s *ListCloudGtmAlertLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		if err := s.Logs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAlertLogsResponseBodyLogs struct {
@@ -146,7 +151,16 @@ func (s *ListCloudGtmAlertLogsResponseBodyLogs) SetLog(v []*ListCloudGtmAlertLog
 }
 
 func (s *ListCloudGtmAlertLogsResponseBodyLogs) Validate() error {
-	return dara.Validate(s)
+	if s.Log != nil {
+		for _, item := range s.Log {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCloudGtmAlertLogsResponseBodyLogsLog struct {

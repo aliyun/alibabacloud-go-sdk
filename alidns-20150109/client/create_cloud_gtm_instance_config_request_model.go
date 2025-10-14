@@ -11,6 +11,8 @@ type iCreateCloudGtmInstanceConfigRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *CreateCloudGtmInstanceConfigRequest
 	GetAcceptLanguage() *string
+	SetChargeType(v string) *CreateCloudGtmInstanceConfigRequest
+	GetChargeType() *string
 	SetClientToken(v string) *CreateCloudGtmInstanceConfigRequest
 	GetClientToken() *string
 	SetEnableStatus(v string) *CreateCloudGtmInstanceConfigRequest
@@ -42,6 +44,10 @@ type CreateCloudGtmInstanceConfigRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// postpay/prepay
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -124,6 +130,10 @@ func (s *CreateCloudGtmInstanceConfigRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *CreateCloudGtmInstanceConfigRequest) GetChargeType() *string {
+	return s.ChargeType
+}
+
 func (s *CreateCloudGtmInstanceConfigRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -162,6 +172,11 @@ func (s *CreateCloudGtmInstanceConfigRequest) GetTtl() *int32 {
 
 func (s *CreateCloudGtmInstanceConfigRequest) SetAcceptLanguage(v string) *CreateCloudGtmInstanceConfigRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateCloudGtmInstanceConfigRequest) SetChargeType(v string) *CreateCloudGtmInstanceConfigRequest {
+	s.ChargeType = &v
 	return s
 }
 

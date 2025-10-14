@@ -140,7 +140,12 @@ func (s *SearchRecursionZonesResponseBody) SetZones(v *SearchRecursionZonesRespo
 }
 
 func (s *SearchRecursionZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchRecursionZonesResponseBodyZones struct {
@@ -165,7 +170,16 @@ func (s *SearchRecursionZonesResponseBodyZones) SetZone(v []*SearchRecursionZone
 }
 
 func (s *SearchRecursionZonesResponseBodyZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchRecursionZonesResponseBodyZonesZone struct {
@@ -346,7 +360,12 @@ func (s *SearchRecursionZonesResponseBodyZonesZone) SetZoneName(v string) *Searc
 }
 
 func (s *SearchRecursionZonesResponseBodyZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScopes != nil {
+		if err := s.EffectiveScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes struct {
@@ -371,7 +390,16 @@ func (s *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes) SetEffectiveS
 }
 
 func (s *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScope != nil {
+		for _, item := range s.EffectiveScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope struct {
@@ -412,7 +440,12 @@ func (s *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope)
 }
 
 func (s *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope) Validate() error {
-	return dara.Validate(s)
+	if s.Scopes != nil {
+		if err := s.Scopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes struct {

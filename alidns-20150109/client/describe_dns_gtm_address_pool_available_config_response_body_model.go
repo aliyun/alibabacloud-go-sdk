@@ -53,7 +53,12 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBody) SetRequestId(v st
 }
 
 func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeInfos != nil {
+		if err := s.AttributeInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos struct {
@@ -78,7 +83,16 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos) Set
 }
 
 func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeInfo != nil {
+		for _, item := range s.AttributeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttributeInfo struct {

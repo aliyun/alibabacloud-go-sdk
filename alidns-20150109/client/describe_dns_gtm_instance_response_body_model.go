@@ -238,7 +238,17 @@ func (s *DescribeDnsGtmInstanceResponseBody) SetVersionCode(v string) *DescribeD
 }
 
 func (s *DescribeDnsGtmInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UsedQuota != nil {
+		if err := s.UsedQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstanceResponseBodyConfig struct {
@@ -409,7 +419,12 @@ func (s *DescribeDnsGtmInstanceResponseBodyConfig) SetTtl(v int32) *DescribeDnsG
 }
 
 func (s *DescribeDnsGtmInstanceResponseBodyConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		if err := s.AlertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstanceResponseBodyConfigAlertConfig struct {
@@ -434,7 +449,16 @@ func (s *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig) SetAlertConfig(v [
 }
 
 func (s *DescribeDnsGtmInstanceResponseBodyConfigAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmInstanceResponseBodyConfigAlertConfigAlertConfig struct {

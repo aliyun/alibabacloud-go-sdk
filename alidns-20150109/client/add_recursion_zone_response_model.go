@@ -59,5 +59,10 @@ func (s *AddRecursionZoneResponse) SetBody(v *AddRecursionZoneResponseBody) *Add
 }
 
 func (s *AddRecursionZoneResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

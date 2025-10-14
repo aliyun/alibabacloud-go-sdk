@@ -121,7 +121,16 @@ func (s *DescribeDohSubDomainStatisticsSummaryResponseBody) SetTotalPages(v int3
 }
 
 func (s *DescribeDohSubDomainStatisticsSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Statistics != nil {
+		for _, item := range s.Statistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics struct {

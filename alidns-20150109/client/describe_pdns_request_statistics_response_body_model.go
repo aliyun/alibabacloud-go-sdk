@@ -104,7 +104,16 @@ func (s *DescribePdnsRequestStatisticsResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribePdnsRequestStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePdnsRequestStatisticsResponseBodyData struct {
@@ -370,7 +379,16 @@ func (s *DescribePdnsRequestStatisticsResponseBodyData) SetV6HttpsCount(v int64)
 }
 
 func (s *DescribePdnsRequestStatisticsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ThreatInfo != nil {
+		for _, item := range s.ThreatInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePdnsRequestStatisticsResponseBodyDataThreatInfo struct {

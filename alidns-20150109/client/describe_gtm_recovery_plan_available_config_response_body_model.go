@@ -53,7 +53,12 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBody) SetRequestId(v stri
 }
 
 func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances struct {
@@ -78,7 +83,16 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances) SetInstanc
 }
 
 func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance struct {
@@ -134,7 +148,12 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance) Se
 }
 
 func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPools != nil {
+		if err := s.AddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools struct {
@@ -159,7 +178,16 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddr
 }
 
 func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddrPool != nil {
+		for _, item := range s.AddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool struct {

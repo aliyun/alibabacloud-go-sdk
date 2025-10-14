@@ -145,7 +145,42 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) SetSuggestSetD
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainAddrPools != nil {
+		if err := s.DomainAddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv4AddrPools != nil {
+		if err := s.Ipv4AddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv6AddrPools != nil {
+		if err := s.Ipv6AddrPools.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Lines != nil {
+		if err := s.Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelectedDomainLines != nil {
+		if err := s.SelectedDomainLines.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelectedIpv4Lines != nil {
+		if err := s.SelectedIpv4Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SelectedIpv6Lines != nil {
+		if err := s.SelectedIpv6Lines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools struct {
@@ -170,7 +205,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools)
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.DomainAddrPool != nil {
+		for _, item := range s.DomainAddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool struct {
@@ -255,7 +299,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools) S
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv4AddrPool != nil {
+		for _, item := range s.Ipv4AddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4AddrPool struct {
@@ -340,7 +393,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools) S
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6AddrPool != nil {
+		for _, item := range s.Ipv6AddrPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool struct {
@@ -425,7 +487,16 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines) SetLine(v
 }
 
 func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines) Validate() error {
-	return dara.Validate(s)
+	if s.Line != nil {
+		for _, item := range s.Line {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {

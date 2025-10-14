@@ -250,7 +250,16 @@ func (s *CreateCloudGtmMonitorTemplateRequest) SetTimeout(v int32) *CreateCloudG
 }
 
 func (s *CreateCloudGtmMonitorTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		for _, item := range s.IspCityNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudGtmMonitorTemplateRequestIspCityNodes struct {

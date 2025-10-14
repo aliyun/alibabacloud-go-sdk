@@ -140,7 +140,12 @@ func (s *ListRecursionZonesResponseBody) SetZones(v *ListRecursionZonesResponseB
 }
 
 func (s *ListRecursionZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecursionZonesResponseBodyZones struct {
@@ -165,7 +170,16 @@ func (s *ListRecursionZonesResponseBodyZones) SetZone(v []*ListRecursionZonesRes
 }
 
 func (s *ListRecursionZonesResponseBodyZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecursionZonesResponseBodyZonesZone struct {
@@ -346,7 +360,12 @@ func (s *ListRecursionZonesResponseBodyZonesZone) SetZoneName(v string) *ListRec
 }
 
 func (s *ListRecursionZonesResponseBodyZonesZone) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScopes != nil {
+		if err := s.EffectiveScopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecursionZonesResponseBodyZonesZoneEffectiveScopes struct {
@@ -371,7 +390,16 @@ func (s *ListRecursionZonesResponseBodyZonesZoneEffectiveScopes) SetEffectiveSco
 }
 
 func (s *ListRecursionZonesResponseBodyZonesZoneEffectiveScopes) Validate() error {
-	return dara.Validate(s)
+	if s.EffectiveScope != nil {
+		for _, item := range s.EffectiveScope {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope struct {
@@ -409,7 +437,12 @@ func (s *ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope) S
 }
 
 func (s *ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope) Validate() error {
-	return dara.Validate(s)
+	if s.Scopes != nil {
+		if err := s.Scopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes struct {

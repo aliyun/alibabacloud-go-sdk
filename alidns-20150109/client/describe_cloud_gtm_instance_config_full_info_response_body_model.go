@@ -488,7 +488,12 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) SetVersionCode(v st
 }
 
 func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPools != nil {
+		if err := s.AddressPools.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools struct {
@@ -513,7 +518,16 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) SetAddr
 }
 
 func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools) Validate() error {
-	return dara.Validate(s)
+	if s.AddressPool != nil {
+		for _, item := range s.AddressPool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool struct {
@@ -836,7 +850,17 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPo
 }
 
 func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool) Validate() error {
-	return dara.Validate(s)
+	if s.Addresses != nil {
+		if err := s.Addresses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses struct {
@@ -861,7 +885,16 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPo
 }
 
 func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.Address != nil {
+		for _, item := range s.Address {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
@@ -1216,7 +1249,12 @@ func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPo
 }
 
 func (s *DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress) Validate() error {
-	return dara.Validate(s)
+	if s.RequestSource != nil {
+		if err := s.RequestSource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource struct {

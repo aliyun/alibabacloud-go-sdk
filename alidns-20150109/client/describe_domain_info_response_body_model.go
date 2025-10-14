@@ -432,7 +432,22 @@ func (s *DescribeDomainInfoResponseBody) SetVersionName(v string) *DescribeDomai
 }
 
 func (s *DescribeDomainInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableTtls != nil {
+		if err := s.AvailableTtls.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DnsServers != nil {
+		if err := s.DnsServers.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecordLines != nil {
+		if err := s.RecordLines.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainInfoResponseBodyAvailableTtls struct {
@@ -507,7 +522,16 @@ func (s *DescribeDomainInfoResponseBodyRecordLines) SetRecordLine(v []*DescribeD
 }
 
 func (s *DescribeDomainInfoResponseBodyRecordLines) Validate() error {
-	return dara.Validate(s)
+	if s.RecordLine != nil {
+		for _, item := range s.RecordLine {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainInfoResponseBodyRecordLinesRecordLine struct {

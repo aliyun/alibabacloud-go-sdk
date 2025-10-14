@@ -59,5 +59,10 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponse) SetBody(v *DescribeGt
 }
 
 func (s *DescribeGtmAccessStrategyAvailableConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

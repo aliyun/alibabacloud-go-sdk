@@ -53,7 +53,16 @@ func (s *DescribeDohAccountStatisticsResponseBody) SetStatistics(v []*DescribeDo
 }
 
 func (s *DescribeDohAccountStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Statistics != nil {
+		for _, item := range s.Statistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDohAccountStatisticsResponseBodyStatistics struct {

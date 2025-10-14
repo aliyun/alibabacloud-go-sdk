@@ -53,7 +53,12 @@ func (s *DescribeGtmMonitorAvailableConfigResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeGtmMonitorAvailableConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNodes != nil {
+		if err := s.IspCityNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes struct {
@@ -78,7 +83,16 @@ func (s *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes) SetIspCityNo
 }
 
 func (s *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode struct {

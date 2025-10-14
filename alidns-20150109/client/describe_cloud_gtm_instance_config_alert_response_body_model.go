@@ -121,7 +121,17 @@ func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeCloudGtmInstanceConfigAlertResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		if err := s.AlertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertGroup != nil {
+		if err := s.AlertGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig struct {
@@ -146,7 +156,16 @@ func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) SetAlertCon
 }
 
 func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig struct {

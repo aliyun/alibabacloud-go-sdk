@@ -203,7 +203,16 @@ func (s *AddGtmMonitorRequest) SetTimeout(v int32) *AddGtmMonitorRequest {
 }
 
 func (s *AddGtmMonitorRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityNode != nil {
+		for _, item := range s.IspCityNode {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddGtmMonitorRequestIspCityNode struct {
