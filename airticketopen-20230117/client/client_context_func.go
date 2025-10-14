@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("airticketopen"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -67,7 +18,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AccountFlowListResponse
-func (client *Client) AccountFlowListWithOptions(request *AccountFlowListRequest, headers *AccountFlowListHeaders, runtime *dara.RuntimeOptions) (_result *AccountFlowListResponse, _err error) {
+func (client *Client) AccountFlowListWithContext(ctx context.Context, request *AccountFlowListRequest, headers *AccountFlowListHeaders, runtime *dara.RuntimeOptions) (_result *AccountFlowListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -120,30 +71,11 @@ func (client *Client) AccountFlowListWithOptions(request *AccountFlowListRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &AccountFlowListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 账号资金流水
-//
-// @param request - AccountFlowListRequest
-//
-// @return AccountFlowListResponse
-func (client *Client) AccountFlowList(request *AccountFlowListRequest) (_result *AccountFlowListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &AccountFlowListHeaders{}
-	_result = &AccountFlowListResponse{}
-	_body, _err := client.AccountFlowListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -162,7 +94,7 @@ func (client *Client) AccountFlowList(request *AccountFlowListRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AncillarySuggestResponse
-func (client *Client) AncillarySuggestWithOptions(request *AncillarySuggestRequest, headers *AncillarySuggestHeaders, runtime *dara.RuntimeOptions) (_result *AncillarySuggestResponse, _err error) {
+func (client *Client) AncillarySuggestWithContext(ctx context.Context, request *AncillarySuggestRequest, headers *AncillarySuggestHeaders, runtime *dara.RuntimeOptions) (_result *AncillarySuggestResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -203,34 +135,11 @@ func (client *Client) AncillarySuggestWithOptions(request *AncillarySuggestReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &AncillarySuggestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Ancillary - Suggestion
-//
-// Description:
-//
-// search ancillary for selected solution, you should enter the solution_id returned by enrich.
-//
-// @param request - AncillarySuggestRequest
-//
-// @return AncillarySuggestResponse
-func (client *Client) AncillarySuggest(request *AncillarySuggestRequest) (_result *AncillarySuggestResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &AncillarySuggestHeaders{}
-	_result = &AncillarySuggestResponse{}
-	_body, _err := client.AncillarySuggestWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -255,7 +164,7 @@ func (client *Client) AncillarySuggest(request *AncillarySuggestRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BookResponse
-func (client *Client) BookWithOptions(tmpReq *BookRequest, headers *BookHeaders, runtime *dara.RuntimeOptions) (_result *BookResponse, _err error) {
+func (client *Client) BookWithContext(ctx context.Context, tmpReq *BookRequest, headers *BookHeaders, runtime *dara.RuntimeOptions) (_result *BookResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -326,40 +235,11 @@ func (client *Client) BookWithOptions(tmpReq *BookRequest, headers *BookHeaders,
 		BodyType:    dara.String("json"),
 	}
 	_result = &BookResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Transaction-Reservation
-//
-// Description:
-//
-// Enter solution_id returned by enrich, ancillary_id returned by ancillarySuggest(optional), passengers information and contact information, the book interface will create an order wait for pay.
-//
-// There are two issues should be noticed:
-//
-// 1. the solution_id must be processed by pricing.
-//
-// 2. the order created by book interface should be pay within 30 minutes, otherwise the order will be closed.
-//
-// @param request - BookRequest
-//
-// @return BookResponse
-func (client *Client) Book(request *BookRequest) (_result *BookResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &BookHeaders{}
-	_result = &BookResponse{}
-	_body, _err := client.BookWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -378,7 +258,7 @@ func (client *Client) Book(request *BookRequest) (_result *BookResponse, _err er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelResponse
-func (client *Client) CancelWithOptions(request *CancelRequest, headers *CancelHeaders, runtime *dara.RuntimeOptions) (_result *CancelResponse, _err error) {
+func (client *Client) CancelWithContext(ctx context.Context, request *CancelRequest, headers *CancelHeaders, runtime *dara.RuntimeOptions) (_result *CancelResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -419,34 +299,11 @@ func (client *Client) CancelWithOptions(request *CancelRequest, headers *CancelH
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Transaction - Unpaid Cancellation
-//
-// Description:
-//
-// close an unpaid order
-//
-// @param request - CancelRequest
-//
-// @return CancelResponse
-func (client *Client) Cancel(request *CancelRequest) (_result *CancelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &CancelHeaders{}
-	_result = &CancelResponse{}
-	_body, _err := client.CancelWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -461,7 +318,7 @@ func (client *Client) Cancel(request *CancelRequest) (_result *CancelResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeApplyResponse
-func (client *Client) ChangeApplyWithOptions(tmpReq *ChangeApplyRequest, headers *ChangeApplyHeaders, runtime *dara.RuntimeOptions) (_result *ChangeApplyResponse, _err error) {
+func (client *Client) ChangeApplyWithContext(ctx context.Context, tmpReq *ChangeApplyRequest, headers *ChangeApplyHeaders, runtime *dara.RuntimeOptions) (_result *ChangeApplyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -536,30 +393,11 @@ func (client *Client) ChangeApplyWithOptions(tmpReq *ChangeApplyRequest, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeApplyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签-Apply
-//
-// @param request - ChangeApplyRequest
-//
-// @return ChangeApplyResponse
-func (client *Client) ChangeApply(request *ChangeApplyRequest) (_result *ChangeApplyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeApplyHeaders{}
-	_result = &ChangeApplyResponse{}
-	_body, _err := client.ChangeApplyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -574,7 +412,7 @@ func (client *Client) ChangeApply(request *ChangeApplyRequest) (_result *ChangeA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeCancelResponse
-func (client *Client) ChangeCancelWithOptions(request *ChangeCancelRequest, headers *ChangeCancelHeaders, runtime *dara.RuntimeOptions) (_result *ChangeCancelResponse, _err error) {
+func (client *Client) ChangeCancelWithContext(ctx context.Context, request *ChangeCancelRequest, headers *ChangeCancelHeaders, runtime *dara.RuntimeOptions) (_result *ChangeCancelResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -615,30 +453,11 @@ func (client *Client) ChangeCancelWithOptions(request *ChangeCancelRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeCancelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签-取消
-//
-// @param request - ChangeCancelRequest
-//
-// @return ChangeCancelResponse
-func (client *Client) ChangeCancel(request *ChangeCancelRequest) (_result *ChangeCancelResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeCancelHeaders{}
-	_result = &ChangeCancelResponse{}
-	_body, _err := client.ChangeCancelWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -653,7 +472,7 @@ func (client *Client) ChangeCancel(request *ChangeCancelRequest) (_result *Chang
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeConfirmResponse
-func (client *Client) ChangeConfirmWithOptions(request *ChangeConfirmRequest, headers *ChangeConfirmHeaders, runtime *dara.RuntimeOptions) (_result *ChangeConfirmResponse, _err error) {
+func (client *Client) ChangeConfirmWithContext(ctx context.Context, request *ChangeConfirmRequest, headers *ChangeConfirmHeaders, runtime *dara.RuntimeOptions) (_result *ChangeConfirmResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -694,30 +513,11 @@ func (client *Client) ChangeConfirmWithOptions(request *ChangeConfirmRequest, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeConfirmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签-确认
-//
-// @param request - ChangeConfirmRequest
-//
-// @return ChangeConfirmResponse
-func (client *Client) ChangeConfirm(request *ChangeConfirmRequest) (_result *ChangeConfirmResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeConfirmHeaders{}
-	_result = &ChangeConfirmResponse{}
-	_body, _err := client.ChangeConfirmWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -732,7 +532,7 @@ func (client *Client) ChangeConfirm(request *ChangeConfirmRequest) (_result *Cha
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeDetailResponse
-func (client *Client) ChangeDetailWithOptions(request *ChangeDetailRequest, headers *ChangeDetailHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailResponse, _err error) {
+func (client *Client) ChangeDetailWithContext(ctx context.Context, request *ChangeDetailRequest, headers *ChangeDetailHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -773,30 +573,11 @@ func (client *Client) ChangeDetailWithOptions(request *ChangeDetailRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签-Detail
-//
-// @param request - ChangeDetailRequest
-//
-// @return ChangeDetailResponse
-func (client *Client) ChangeDetail(request *ChangeDetailRequest) (_result *ChangeDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeDetailHeaders{}
-	_result = &ChangeDetailResponse{}
-	_body, _err := client.ChangeDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -811,7 +592,7 @@ func (client *Client) ChangeDetail(request *ChangeDetailRequest) (_result *Chang
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeDetailListOfBuyerResponse
-func (client *Client) ChangeDetailListOfBuyerWithOptions(request *ChangeDetailListOfBuyerRequest, headers *ChangeDetailListOfBuyerHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailListOfBuyerResponse, _err error) {
+func (client *Client) ChangeDetailListOfBuyerWithContext(ctx context.Context, request *ChangeDetailListOfBuyerRequest, headers *ChangeDetailListOfBuyerHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailListOfBuyerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -864,30 +645,11 @@ func (client *Client) ChangeDetailListOfBuyerWithOptions(request *ChangeDetailLi
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeDetailListOfBuyerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签单列表-关于买家账号
-//
-// @param request - ChangeDetailListOfBuyerRequest
-//
-// @return ChangeDetailListOfBuyerResponse
-func (client *Client) ChangeDetailListOfBuyer(request *ChangeDetailListOfBuyerRequest) (_result *ChangeDetailListOfBuyerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeDetailListOfBuyerHeaders{}
-	_result = &ChangeDetailListOfBuyerResponse{}
-	_body, _err := client.ChangeDetailListOfBuyerWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -902,7 +664,7 @@ func (client *Client) ChangeDetailListOfBuyer(request *ChangeDetailListOfBuyerRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ChangeDetailListOfOrderNumResponse
-func (client *Client) ChangeDetailListOfOrderNumWithOptions(request *ChangeDetailListOfOrderNumRequest, headers *ChangeDetailListOfOrderNumHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailListOfOrderNumResponse, _err error) {
+func (client *Client) ChangeDetailListOfOrderNumWithContext(ctx context.Context, request *ChangeDetailListOfOrderNumRequest, headers *ChangeDetailListOfOrderNumHeaders, runtime *dara.RuntimeOptions) (_result *ChangeDetailListOfOrderNumResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -951,30 +713,11 @@ func (client *Client) ChangeDetailListOfOrderNumWithOptions(request *ChangeDetai
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeDetailListOfOrderNumResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 改签单列表-关于正向订单
-//
-// @param request - ChangeDetailListOfOrderNumRequest
-//
-// @return ChangeDetailListOfOrderNumResponse
-func (client *Client) ChangeDetailListOfOrderNum(request *ChangeDetailListOfOrderNumRequest) (_result *ChangeDetailListOfOrderNumResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &ChangeDetailListOfOrderNumHeaders{}
-	_result = &ChangeDetailListOfOrderNumResponse{}
-	_body, _err := client.ChangeDetailListOfOrderNumWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -989,7 +732,7 @@ func (client *Client) ChangeDetailListOfOrderNum(request *ChangeDetailListOfOrde
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CollectFlightLowestPriceResponse
-func (client *Client) CollectFlightLowestPriceWithOptions(tmpReq *CollectFlightLowestPriceRequest, headers *CollectFlightLowestPriceHeaders, runtime *dara.RuntimeOptions) (_result *CollectFlightLowestPriceResponse, _err error) {
+func (client *Client) CollectFlightLowestPriceWithContext(ctx context.Context, tmpReq *CollectFlightLowestPriceRequest, headers *CollectFlightLowestPriceHeaders, runtime *dara.RuntimeOptions) (_result *CollectFlightLowestPriceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1036,30 +779,11 @@ func (client *Client) CollectFlightLowestPriceWithOptions(tmpReq *CollectFlightL
 		BodyType:    dara.String("json"),
 	}
 	_result = &CollectFlightLowestPriceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 数据收集-低价航班信息
-//
-// @param request - CollectFlightLowestPriceRequest
-//
-// @return CollectFlightLowestPriceResponse
-func (client *Client) CollectFlightLowestPrice(request *CollectFlightLowestPriceRequest) (_result *CollectFlightLowestPriceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &CollectFlightLowestPriceHeaders{}
-	_result = &CollectFlightLowestPriceResponse{}
-	_body, _err := client.CollectFlightLowestPriceWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1084,7 +808,7 @@ func (client *Client) CollectFlightLowestPrice(request *CollectFlightLowestPrice
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnrichResponse
-func (client *Client) EnrichWithOptions(tmpReq *EnrichRequest, headers *EnrichHeaders, runtime *dara.RuntimeOptions) (_result *EnrichResponse, _err error) {
+func (client *Client) EnrichWithContext(ctx context.Context, tmpReq *EnrichRequest, headers *EnrichHeaders, runtime *dara.RuntimeOptions) (_result *EnrichResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1151,40 +875,11 @@ func (client *Client) EnrichWithOptions(tmpReq *EnrichRequest, headers *EnrichHe
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnrichResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Search-Enrich
-//
-// Description:
-//
-// Enrich supports two modes:
-//
-// 1. mode1: enter solution_id returned by Search.
-//
-// 2. mode2: enter journeyParamList.
-//
-// If you already confirm which flight to fly with, then you can use mode2, otherwise, use mode1(search first, then chose one solution_ID and Enrich).
-//
-// @param request - EnrichRequest
-//
-// @return EnrichResponse
-func (client *Client) Enrich(request *EnrichRequest) (_result *EnrichResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &EnrichHeaders{}
-	_result = &EnrichResponse{}
-	_body, _err := client.EnrichWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1199,7 +894,7 @@ func (client *Client) Enrich(request *EnrichRequest) (_result *EnrichResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FileUploadResponse
-func (client *Client) FileUploadWithOptions(request *FileUploadRequest, headers *FileUploadHeaders, runtime *dara.RuntimeOptions) (_result *FileUploadResponse, _err error) {
+func (client *Client) FileUploadWithContext(ctx context.Context, request *FileUploadRequest, headers *FileUploadHeaders, runtime *dara.RuntimeOptions) (_result *FileUploadResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1244,30 +939,11 @@ func (client *Client) FileUploadWithOptions(request *FileUploadRequest, headers 
 		BodyType:    dara.String("json"),
 	}
 	_result = &FileUploadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 附件上传
-//
-// @param request - FileUploadRequest
-//
-// @return FileUploadResponse
-func (client *Client) FileUpload(request *FileUploadRequest) (_result *FileUploadResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &FileUploadHeaders{}
-	_result = &FileUploadResponse{}
-	_body, _err := client.FileUploadWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1282,7 +958,7 @@ func (client *Client) FileUpload(request *FileUploadRequest) (_result *FileUploa
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return FlightChangeOfOrderResponse
-func (client *Client) FlightChangeOfOrderWithOptions(request *FlightChangeOfOrderRequest, headers *FlightChangeOfOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightChangeOfOrderResponse, _err error) {
+func (client *Client) FlightChangeOfOrderWithContext(ctx context.Context, request *FlightChangeOfOrderRequest, headers *FlightChangeOfOrderHeaders, runtime *dara.RuntimeOptions) (_result *FlightChangeOfOrderResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1323,30 +999,11 @@ func (client *Client) FlightChangeOfOrderWithOptions(request *FlightChangeOfOrde
 		BodyType:    dara.String("json"),
 	}
 	_result = &FlightChangeOfOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 航变信息-关于订单
-//
-// @param request - FlightChangeOfOrderRequest
-//
-// @return FlightChangeOfOrderResponse
-func (client *Client) FlightChangeOfOrder(request *FlightChangeOfOrderRequest) (_result *FlightChangeOfOrderResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &FlightChangeOfOrderHeaders{}
-	_result = &FlightChangeOfOrderResponse{}
-	_body, _err := client.FlightChangeOfOrderWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1361,7 +1018,7 @@ func (client *Client) FlightChangeOfOrder(request *FlightChangeOfOrderRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTokenResponse
-func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
+func (client *Client) GetTokenWithContext(ctx context.Context, request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1393,30 +1050,11 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTokenResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Get Token
-//
-// @param request - GetTokenRequest
-//
-// @return GetTokenResponse
-func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetTokenResponse{}
-	_body, _err := client.GetTokenWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1431,7 +1069,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return LuggageDirectResponse
-func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, headers *LuggageDirectHeaders, runtime *dara.RuntimeOptions) (_result *LuggageDirectResponse, _err error) {
+func (client *Client) LuggageDirectWithContext(ctx context.Context, tmpReq *LuggageDirectRequest, headers *LuggageDirectHeaders, runtime *dara.RuntimeOptions) (_result *LuggageDirectResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1478,30 +1116,11 @@ func (client *Client) LuggageDirectWithOptions(tmpReq *LuggageDirectRequest, hea
 		BodyType:    dara.String("json"),
 	}
 	_result = &LuggageDirectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 航程行李直挂
-//
-// @param request - LuggageDirectRequest
-//
-// @return LuggageDirectResponse
-func (client *Client) LuggageDirect(request *LuggageDirectRequest) (_result *LuggageDirectResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &LuggageDirectHeaders{}
-	_result = &LuggageDirectResponse{}
-	_body, _err := client.LuggageDirectWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1520,7 +1139,7 @@ func (client *Client) LuggageDirect(request *LuggageDirectRequest) (_result *Lug
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OrderDetailResponse
-func (client *Client) OrderDetailWithOptions(request *OrderDetailRequest, headers *OrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *OrderDetailResponse, _err error) {
+func (client *Client) OrderDetailWithContext(ctx context.Context, request *OrderDetailRequest, headers *OrderDetailHeaders, runtime *dara.RuntimeOptions) (_result *OrderDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1565,34 +1184,11 @@ func (client *Client) OrderDetailWithOptions(request *OrderDetailRequest, header
 		BodyType:    dara.String("json"),
 	}
 	_result = &OrderDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Trade-Order Details
-//
-// Description:
-//
-// query order detail
-//
-// @param request - OrderDetailRequest
-//
-// @return OrderDetailResponse
-func (client *Client) OrderDetail(request *OrderDetailRequest) (_result *OrderDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &OrderDetailHeaders{}
-	_result = &OrderDetailResponse{}
-	_body, _err := client.OrderDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1611,7 +1207,7 @@ func (client *Client) OrderDetail(request *OrderDetailRequest) (_result *OrderDe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OrderListResponse
-func (client *Client) OrderListWithOptions(request *OrderListRequest, headers *OrderListHeaders, runtime *dara.RuntimeOptions) (_result *OrderListResponse, _err error) {
+func (client *Client) OrderListWithContext(ctx context.Context, request *OrderListRequest, headers *OrderListHeaders, runtime *dara.RuntimeOptions) (_result *OrderListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1668,34 +1264,11 @@ func (client *Client) OrderListWithOptions(request *OrderListRequest, headers *O
 		BodyType:    dara.String("json"),
 	}
 	_result = &OrderListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Trade - Order List
-//
-// Description:
-//
-// query order list
-//
-// @param request - OrderListRequest
-//
-// @return OrderListResponse
-func (client *Client) OrderList(request *OrderListRequest) (_result *OrderListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &OrderListHeaders{}
-	_result = &OrderListResponse{}
-	_body, _err := client.OrderListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1714,7 +1287,7 @@ func (client *Client) OrderList(request *OrderListRequest) (_result *OrderListRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PricingResponse
-func (client *Client) PricingWithOptions(request *PricingRequest, headers *PricingHeaders, runtime *dara.RuntimeOptions) (_result *PricingResponse, _err error) {
+func (client *Client) PricingWithContext(ctx context.Context, request *PricingRequest, headers *PricingHeaders, runtime *dara.RuntimeOptions) (_result *PricingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1755,34 +1328,11 @@ func (client *Client) PricingWithOptions(request *PricingRequest, headers *Prici
 		BodyType:    dara.String("json"),
 	}
 	_result = &PricingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Trade - Seat and Price Verification
-//
-// Description:
-//
-// Check is price and remaining seats of solution you selected has changed. You should enter the solution_id returned by enrich.
-//
-// @param request - PricingRequest
-//
-// @return PricingResponse
-func (client *Client) Pricing(request *PricingRequest) (_result *PricingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &PricingHeaders{}
-	_result = &PricingResponse{}
-	_body, _err := client.PricingWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1801,7 +1351,7 @@ func (client *Client) Pricing(request *PricingRequest) (_result *PricingResponse
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefundApplyResponse
-func (client *Client) RefundApplyWithOptions(tmpReq *RefundApplyRequest, headers *RefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *RefundApplyResponse, _err error) {
+func (client *Client) RefundApplyWithContext(ctx context.Context, tmpReq *RefundApplyRequest, headers *RefundApplyHeaders, runtime *dara.RuntimeOptions) (_result *RefundApplyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1868,34 +1418,11 @@ func (client *Client) RefundApplyWithOptions(tmpReq *RefundApplyRequest, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefundApplyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 退票-申请
-//
-// Description:
-//
-// Apply for a refund and generate a refund order.
-//
-// @param request - RefundApplyRequest
-//
-// @return RefundApplyResponse
-func (client *Client) RefundApply(request *RefundApplyRequest) (_result *RefundApplyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &RefundApplyHeaders{}
-	_result = &RefundApplyResponse{}
-	_body, _err := client.RefundApplyWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1914,7 +1441,7 @@ func (client *Client) RefundApply(request *RefundApplyRequest) (_result *RefundA
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefundDetailResponse
-func (client *Client) RefundDetailWithOptions(request *RefundDetailRequest, headers *RefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *RefundDetailResponse, _err error) {
+func (client *Client) RefundDetailWithContext(ctx context.Context, request *RefundDetailRequest, headers *RefundDetailHeaders, runtime *dara.RuntimeOptions) (_result *RefundDetailResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1955,34 +1482,11 @@ func (client *Client) RefundDetailWithOptions(request *RefundDetailRequest, head
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefundDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Refund - Detail
-//
-// Description:
-//
-// Query refund order detail.
-//
-// @param request - RefundDetailRequest
-//
-// @return RefundDetailResponse
-func (client *Client) RefundDetail(request *RefundDetailRequest) (_result *RefundDetailResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &RefundDetailHeaders{}
-	_result = &RefundDetailResponse{}
-	_body, _err := client.RefundDetailWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2001,7 +1505,7 @@ func (client *Client) RefundDetail(request *RefundDetailRequest) (_result *Refun
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefundDetailListResponse
-func (client *Client) RefundDetailListWithOptions(request *RefundDetailListRequest, headers *RefundDetailListHeaders, runtime *dara.RuntimeOptions) (_result *RefundDetailListResponse, _err error) {
+func (client *Client) RefundDetailListWithContext(ctx context.Context, request *RefundDetailListRequest, headers *RefundDetailListHeaders, runtime *dara.RuntimeOptions) (_result *RefundDetailListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2058,34 +1562,11 @@ func (client *Client) RefundDetailListWithOptions(request *RefundDetailListReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefundDetailListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Refund - Detail List
-//
-// Description:
-//
-// Query refund order detail.
-//
-// @param request - RefundDetailListRequest
-//
-// @return RefundDetailListResponse
-func (client *Client) RefundDetailList(request *RefundDetailListRequest) (_result *RefundDetailListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &RefundDetailListHeaders{}
-	_result = &RefundDetailListResponse{}
-	_body, _err := client.RefundDetailListWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2104,7 +1585,7 @@ func (client *Client) RefundDetailList(request *RefundDetailListRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SearchResponse
-func (client *Client) SearchWithOptions(tmpReq *SearchRequest, headers *SearchHeaders, runtime *dara.RuntimeOptions) (_result *SearchResponse, _err error) {
+func (client *Client) SearchWithContext(ctx context.Context, tmpReq *SearchRequest, headers *SearchHeaders, runtime *dara.RuntimeOptions) (_result *SearchResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2175,34 +1656,11 @@ func (client *Client) SearchWithOptions(tmpReq *SearchRequest, headers *SearchHe
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// search
-//
-// Description:
-//
-// Enter the information of departure, arrival, departure date, passenger number and cabin, return the lowest price for each flight.
-//
-// @param request - SearchRequest
-//
-// @return SearchResponse
-func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &SearchHeaders{}
-	_result = &SearchResponse{}
-	_body, _err := client.SearchWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2217,7 +1675,7 @@ func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TicketingResponse
-func (client *Client) TicketingWithOptions(request *TicketingRequest, headers *TicketingHeaders, runtime *dara.RuntimeOptions) (_result *TicketingResponse, _err error) {
+func (client *Client) TicketingWithContext(ctx context.Context, request *TicketingRequest, headers *TicketingHeaders, runtime *dara.RuntimeOptions) (_result *TicketingResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2258,30 +1716,11 @@ func (client *Client) TicketingWithOptions(request *TicketingRequest, headers *T
 		BodyType:    dara.String("json"),
 	}
 	_result = &TicketingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Transaction - Payment and Ticket Issuance
-//
-// @param request - TicketingRequest
-//
-// @return TicketingResponse
-func (client *Client) Ticketing(request *TicketingRequest) (_result *TicketingResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &TicketingHeaders{}
-	_result = &TicketingResponse{}
-	_body, _err := client.TicketingWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2300,7 +1739,7 @@ func (client *Client) Ticketing(request *TicketingRequest) (_result *TicketingRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TicketingCheckResponse
-func (client *Client) TicketingCheckWithOptions(request *TicketingCheckRequest, headers *TicketingCheckHeaders, runtime *dara.RuntimeOptions) (_result *TicketingCheckResponse, _err error) {
+func (client *Client) TicketingCheckWithContext(ctx context.Context, request *TicketingCheckRequest, headers *TicketingCheckHeaders, runtime *dara.RuntimeOptions) (_result *TicketingCheckResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2341,34 +1780,11 @@ func (client *Client) TicketingCheckWithOptions(request *TicketingCheckRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &TicketingCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # Transaction - Pre-payment verification
-//
-// Description:
-//
-// Pre-check for Ticketing, this interface is optional to use.
-//
-// @param request - TicketingCheckRequest
-//
-// @return TicketingCheckResponse
-func (client *Client) TicketingCheck(request *TicketingCheckRequest) (_result *TicketingCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &TicketingCheckHeaders{}
-	_result = &TicketingCheckResponse{}
-	_body, _err := client.TicketingCheckWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2383,7 +1799,7 @@ func (client *Client) TicketingCheck(request *TicketingCheckRequest) (_result *T
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TransitVisaResponse
-func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers *TransitVisaHeaders, runtime *dara.RuntimeOptions) (_result *TransitVisaResponse, _err error) {
+func (client *Client) TransitVisaWithContext(ctx context.Context, tmpReq *TransitVisaRequest, headers *TransitVisaHeaders, runtime *dara.RuntimeOptions) (_result *TransitVisaResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2430,29 +1846,10 @@ func (client *Client) TransitVisaWithOptions(tmpReq *TransitVisaRequest, headers
 		BodyType:    dara.String("json"),
 	}
 	_result = &TransitVisaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 航程过境签
-//
-// @param request - TransitVisaRequest
-//
-// @return TransitVisaResponse
-func (client *Client) TransitVisa(request *TransitVisaRequest) (_result *TransitVisaResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	headers := &TransitVisaHeaders{}
-	_result = &TransitVisaResponse{}
-	_body, _err := client.TransitVisaWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
