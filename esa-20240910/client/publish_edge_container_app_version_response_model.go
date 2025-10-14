@@ -59,5 +59,10 @@ func (s *PublishEdgeContainerAppVersionResponse) SetBody(v *PublishEdgeContainer
 }
 
 func (s *PublishEdgeContainerAppVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

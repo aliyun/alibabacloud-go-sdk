@@ -89,7 +89,16 @@ func (s *DescribeUrlObservationDataResponseBody) SetUrlDetailData(v []*DescribeU
 }
 
 func (s *DescribeUrlObservationDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UrlDetailData != nil {
+		for _, item := range s.UrlDetailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUrlObservationDataResponseBodyUrlDetailData struct {

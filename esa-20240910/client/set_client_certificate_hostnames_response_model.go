@@ -59,5 +59,10 @@ func (s *SetClientCertificateHostnamesResponse) SetBody(v *SetClientCertificateH
 }
 
 func (s *SetClientCertificateHostnamesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

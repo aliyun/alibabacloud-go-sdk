@@ -53,7 +53,16 @@ func (s *ListWaitingRoomEventsResponseBody) SetWaitingRoomEvents(v []*ListWaitin
 }
 
 func (s *ListWaitingRoomEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WaitingRoomEvents != nil {
+		for _, item := range s.WaitingRoomEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {

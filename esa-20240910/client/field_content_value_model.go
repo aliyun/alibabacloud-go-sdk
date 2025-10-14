@@ -53,7 +53,16 @@ func (s *FieldContentValue) SetFieldList(v []*FieldContentValueFieldList) *Field
 }
 
 func (s *FieldContentValue) Validate() error {
-	return dara.Validate(s)
+	if s.FieldList != nil {
+		for _, item := range s.FieldList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type FieldContentValueFieldList struct {

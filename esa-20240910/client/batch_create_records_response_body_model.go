@@ -53,7 +53,12 @@ func (s *BatchCreateRecordsResponseBody) SetRequestId(v string) *BatchCreateReco
 }
 
 func (s *BatchCreateRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordResultList != nil {
+		if err := s.RecordResultList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsResponseBodyRecordResultList struct {
@@ -105,7 +110,25 @@ func (s *BatchCreateRecordsResponseBodyRecordResultList) SetTotalCount(v int32) 
 }
 
 func (s *BatchCreateRecordsResponseBodyRecordResultList) Validate() error {
-	return dara.Validate(s)
+	if s.Failed != nil {
+		for _, item := range s.Failed {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Success != nil {
+		for _, item := range s.Success {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListFailed struct {
@@ -271,7 +294,12 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListFailed) SetTtl(v int32) *
 }
 
 func (s *BatchCreateRecordsResponseBodyRecordResultListFailed) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListFailedData struct {
@@ -682,7 +710,12 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListSuccess) SetTtl(v int32) 
 }
 
 func (s *BatchCreateRecordsResponseBodyRecordResultListSuccess) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListSuccessData struct {

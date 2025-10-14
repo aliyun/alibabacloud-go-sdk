@@ -113,7 +113,25 @@ func (s *CreateScheduledPreloadExecutionsResponseBody) SetTotalCount(v int32) *C
 }
 
 func (s *CreateScheduledPreloadExecutionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedExecutions != nil {
+		for _, item := range s.FailedExecutions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SuccessExecutions != nil {
+		for _, item := range s.SuccessExecutions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateScheduledPreloadExecutionsResponseBodyFailedExecutions struct {

@@ -59,5 +59,10 @@ func (s *GetOriginRuleResponse) SetBody(v *GetOriginRuleResponseBody) *GetOrigin
 }
 
 func (s *GetOriginRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

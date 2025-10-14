@@ -70,6 +70,11 @@ func (s *EditSiteWafSettingsRequest) SetSiteVersion(v int32) *EditSiteWafSetting
 }
 
 func (s *EditSiteWafSettingsRequest) Validate() error {
-  return dara.Validate(s)
+  if s.Settings != nil {
+    if err := s.Settings.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

@@ -53,7 +53,16 @@ func (s *ListLoadBalancerOriginStatusResponseBody) SetRequestId(v string) *ListL
 }
 
 func (s *ListLoadBalancerOriginStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OriginStatus != nil {
+		for _, item := range s.OriginStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLoadBalancerOriginStatusResponseBodyOriginStatus struct {

@@ -104,7 +104,16 @@ func (s *ListTransportLayerApplicationsResponseBody) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListTransportLayerApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransportLayerApplicationsResponseBodyApplications struct {
@@ -298,7 +307,25 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) SetStatus(v str
 }
 
 func (s *ListTransportLayerApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StaticIpV4List != nil {
+		for _, item := range s.StaticIpV4List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTransportLayerApplicationsResponseBodyApplicationsRules struct {

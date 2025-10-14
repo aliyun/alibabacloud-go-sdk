@@ -53,7 +53,16 @@ func (s *ListWaitingRoomRulesResponseBody) SetWaitingRoomRules(v []*ListWaitingR
 }
 
 func (s *ListWaitingRoomRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WaitingRoomRules != nil {
+		for _, item := range s.WaitingRoomRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingRoomRulesResponseBodyWaitingRoomRules struct {

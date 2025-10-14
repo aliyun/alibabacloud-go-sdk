@@ -104,7 +104,16 @@ func (s *GetEdgeContainerAppResourceReserveResponseBody) SetReserveSet(v []*GetE
 }
 
 func (s *GetEdgeContainerAppResourceReserveResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ReserveSet != nil {
+		for _, item := range s.ReserveSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppResourceReserveResponseBodyReserveSet struct {

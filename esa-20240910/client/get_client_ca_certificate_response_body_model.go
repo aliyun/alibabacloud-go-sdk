@@ -121,7 +121,12 @@ func (s *GetClientCaCertificateResponseBody) SetStatus(v string) *GetClientCaCer
 }
 
 func (s *GetClientCaCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetClientCaCertificateResponseBodyResult struct {

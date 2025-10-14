@@ -16,10 +16,14 @@ type iUpdateRoutineConfigDescriptionRequest interface {
 }
 
 type UpdateRoutineConfigDescriptionRequest struct {
+	// The routine description.
+	//
 	// example:
 	//
 	// description of this routine
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The routine name.
+	//
 	// This parameter is required.
 	//
 	// example:

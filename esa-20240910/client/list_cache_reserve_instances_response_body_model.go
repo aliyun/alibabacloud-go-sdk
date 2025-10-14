@@ -121,7 +121,16 @@ func (s *ListCacheReserveInstancesResponseBody) SetTotalPage(v int32) *ListCache
 }
 
 func (s *ListCacheReserveInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceInfo != nil {
+		for _, item := range s.InstanceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCacheReserveInstancesResponseBodyInstanceInfo struct {

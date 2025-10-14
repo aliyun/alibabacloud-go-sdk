@@ -107,5 +107,14 @@ func (s *WafRuleMatch) SetNegate(v bool) *WafRuleMatch {
 }
 
 func (s *WafRuleMatch) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

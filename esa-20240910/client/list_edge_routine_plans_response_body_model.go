@@ -121,7 +121,16 @@ func (s *ListEdgeRoutinePlansResponseBody) SetTotalPage(v int32) *ListEdgeRoutin
 }
 
 func (s *ListEdgeRoutinePlansResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PlanInfo != nil {
+		for _, item := range s.PlanInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeRoutinePlansResponseBodyPlanInfo struct {

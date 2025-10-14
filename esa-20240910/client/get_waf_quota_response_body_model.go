@@ -53,7 +53,12 @@ func (s *GetWafQuotaResponseBody) SetRequestId(v string) *GetWafQuotaResponseBod
 }
 
 func (s *GetWafQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quota != nil {
+		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafQuotaResponseBodyQuota struct {
@@ -112,7 +117,27 @@ func (s *GetWafQuotaResponseBodyQuota) SetScenePolicy(v *GetWafQuotaResponseBody
 }
 
 func (s *GetWafQuotaResponseBodyQuota) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		if err := s.List.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManagedRulesGroup != nil {
+		if err := s.ManagedRulesGroup.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Page != nil {
+		if err := s.Page.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScenePolicy != nil {
+		if err := s.ScenePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafQuotaResponseBodyQuotaList struct {
@@ -182,7 +207,22 @@ func (s *GetWafQuotaResponseBodyQuotaList) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 func (s *GetWafQuotaResponseBodyQuotaList) Validate() error {
-	return dara.Validate(s)
+	if s.NumberItemsPerList != nil {
+		if err := s.NumberItemsPerList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NumberItemsTotal != nil {
+		if err := s.NumberItemsTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafQuotaResponseBodyQuotaManagedRulesGroup struct {
@@ -219,7 +259,12 @@ func (s *GetWafQuotaResponseBodyQuotaManagedRulesGroup) SetNumberTotal(v *WafQuo
 }
 
 func (s *GetWafQuotaResponseBodyQuotaManagedRulesGroup) Validate() error {
-	return dara.Validate(s)
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafQuotaResponseBodyQuotaPage struct {
@@ -267,7 +312,12 @@ func (s *GetWafQuotaResponseBodyQuotaPage) SetNumberTotal(v *WafQuotaInteger) *G
 }
 
 func (s *GetWafQuotaResponseBodyQuotaPage) Validate() error {
-	return dara.Validate(s)
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafQuotaResponseBodyQuotaScenePolicy struct {
@@ -304,5 +354,10 @@ func (s *GetWafQuotaResponseBodyQuotaScenePolicy) SetNumberTotal(v *WafQuotaInte
 }
 
 func (s *GetWafQuotaResponseBodyQuotaScenePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

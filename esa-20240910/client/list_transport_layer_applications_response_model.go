@@ -59,5 +59,10 @@ func (s *ListTransportLayerApplicationsResponse) SetBody(v *ListTransportLayerAp
 }
 
 func (s *ListTransportLayerApplicationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -57,7 +57,16 @@ func (s *BatchCreateRecordsRequest) SetSiteId(v int64) *BatchCreateRecordsReques
 }
 
 func (s *BatchCreateRecordsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RecordList != nil {
+		for _, item := range s.RecordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsRequestRecordList struct {
@@ -223,7 +232,17 @@ func (s *BatchCreateRecordsRequestRecordList) SetType(v string) *BatchCreateReco
 }
 
 func (s *BatchCreateRecordsRequestRecordList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchCreateRecordsRequestRecordListAuthConf struct {

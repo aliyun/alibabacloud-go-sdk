@@ -121,7 +121,16 @@ func (s *ListOriginPoolsResponseBody) SetTotalPage(v int32) *ListOriginPoolsResp
 }
 
 func (s *ListOriginPoolsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OriginPools != nil {
+		for _, item := range s.OriginPools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOriginPoolsResponseBodyOriginPools struct {
@@ -252,7 +261,21 @@ func (s *ListOriginPoolsResponseBodyOriginPools) SetSiteId(v int64) *ListOriginP
 }
 
 func (s *ListOriginPoolsResponseBodyOriginPools) Validate() error {
-	return dara.Validate(s)
+	if s.Origins != nil {
+		for _, item := range s.Origins {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.References != nil {
+		if err := s.References.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
@@ -401,7 +424,12 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) SetWeight(v int32) *List
 }
 
 func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
@@ -547,7 +575,34 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) SetLoadBalancers(v []
 }
 
 func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) Validate() error {
-	return dara.Validate(s)
+	if s.DnsRecords != nil {
+		for _, item := range s.DnsRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IPARecords != nil {
+		for _, item := range s.IPARecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LoadBalancers != nil {
+		for _, item := range s.LoadBalancers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords struct {

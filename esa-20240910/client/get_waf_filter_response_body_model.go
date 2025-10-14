@@ -53,7 +53,12 @@ func (s *GetWafFilterResponseBody) SetRequestId(v string) *GetWafFilterResponseB
 }
 
 func (s *GetWafFilterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilter struct {
@@ -124,7 +129,16 @@ func (s *GetWafFilterResponseBodyFilter) SetType(v string) *GetWafFilterResponse
 }
 
 func (s *GetWafFilterResponseBodyFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Fields != nil {
+		for _, item := range s.Fields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilterFields struct {
@@ -241,7 +255,21 @@ func (s *GetWafFilterResponseBodyFilterFields) SetSubTip(v string) *GetWafFilter
 }
 
 func (s *GetWafFilterResponseBodyFilterFields) Validate() error {
-	return dara.Validate(s)
+	if s.Logics != nil {
+		for _, item := range s.Logics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Selector != nil {
+		if err := s.Selector.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogics struct {
@@ -404,7 +432,12 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogics) SetValidator(v *GetWafFilte
 }
 
 func (s *GetWafFilterResponseBodyFilterFieldsLogics) Validate() error {
-	return dara.Validate(s)
+	if s.Validator != nil {
+		if err := s.Validator.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilterFieldsLogicsValidator struct {
@@ -471,7 +504,17 @@ func (s *GetWafFilterResponseBodyFilterFieldsLogicsValidator) SetRange(v *WafQuo
 }
 
 func (s *GetWafFilterResponseBodyFilterFieldsLogicsValidator) Validate() error {
-	return dara.Validate(s)
+	if s.Length != nil {
+		if err := s.Length.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Range != nil {
+		if err := s.Range.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelector struct {
@@ -512,7 +555,16 @@ func (s *GetWafFilterResponseBodyFilterFieldsSelector) SetKind(v string) *GetWaf
 }
 
 func (s *GetWafFilterResponseBodyFilterFieldsSelector) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWafFilterResponseBodyFilterFieldsSelectorData struct {

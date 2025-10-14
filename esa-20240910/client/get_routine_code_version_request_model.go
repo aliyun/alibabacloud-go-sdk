@@ -16,8 +16,16 @@ type iGetRoutineCodeVersionRequest interface {
 }
 
 type GetRoutineCodeVersionRequest struct {
+	// The code version.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1710120201067203242
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	// The routine name.
+	//
 	// This parameter is required.
 	//
 	// example:

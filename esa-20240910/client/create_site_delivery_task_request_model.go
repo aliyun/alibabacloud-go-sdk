@@ -253,7 +253,32 @@ func (s *CreateSiteDeliveryTaskRequest) SetTaskName(v string) *CreateSiteDeliver
 }
 
 func (s *CreateSiteDeliveryTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDelivery != nil {
+		if err := s.HttpDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KafkaDelivery != nil {
+		if err := s.KafkaDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssDelivery != nil {
+		if err := s.OssDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.S3Delivery != nil {
+		if err := s.S3Delivery.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsDelivery != nil {
+		if err := s.SlsDelivery.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSiteDeliveryTaskRequestHttpDelivery struct {
@@ -466,7 +491,12 @@ func (s *CreateSiteDeliveryTaskRequestHttpDelivery) SetTransformTimeout(v int64)
 }
 
 func (s *CreateSiteDeliveryTaskRequestHttpDelivery) Validate() error {
-	return dara.Validate(s)
+	if s.StandardAuthParam != nil {
+		if err := s.StandardAuthParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSiteDeliveryTaskRequestHttpDeliveryStandardAuthParam struct {

@@ -53,7 +53,12 @@ func (s *GetEdgeContainerAppStatusResponseBody) SetRequestId(v string) *GetEdgeC
 }
 
 func (s *GetEdgeContainerAppStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppStatus != nil {
+		if err := s.AppStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppStatusResponseBodyAppStatus struct {
@@ -315,7 +320,12 @@ func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) SetUnDeployTime(v strin
 }
 
 func (s *GetEdgeContainerAppStatusResponseBodyAppStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppStatusResponseBodyAppStatusRegions struct {

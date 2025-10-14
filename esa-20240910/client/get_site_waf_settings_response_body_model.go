@@ -53,5 +53,10 @@ func (s *GetSiteWafSettingsResponseBody) SetSettings(v *WafSiteSettings) *GetSit
 }
 
 func (s *GetSiteWafSettingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Settings != nil {
+		if err := s.Settings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

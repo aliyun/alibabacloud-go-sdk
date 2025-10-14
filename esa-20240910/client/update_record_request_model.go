@@ -218,7 +218,17 @@ func (s *UpdateRecordRequest) SetType(v string) *UpdateRecordRequest {
 }
 
 func (s *UpdateRecordRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateRecordRequestAuthConf struct {

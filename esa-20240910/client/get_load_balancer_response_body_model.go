@@ -335,7 +335,31 @@ func (s *GetLoadBalancerResponseBody) SetTtl(v int32) *GetLoadBalancerResponseBo
 }
 
 func (s *GetLoadBalancerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdaptiveRouting != nil {
+		if err := s.AdaptiveRouting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Monitor != nil {
+		if err := s.Monitor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RandomSteering != nil {
+		if err := s.RandomSteering.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLoadBalancerResponseBodyAdaptiveRouting struct {
@@ -840,7 +864,12 @@ func (s *GetLoadBalancerResponseBodyRules) SetTerminates(v bool) *GetLoadBalance
 }
 
 func (s *GetLoadBalancerResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.FixedResponse != nil {
+		if err := s.FixedResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLoadBalancerResponseBodyRulesFixedResponse struct {

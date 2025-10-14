@@ -155,5 +155,19 @@ func (s *GetWafRulesetResponseBody) SetUpdateTime(v string) *GetWafRulesetRespon
 }
 
 func (s *GetWafRulesetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Shared != nil {
+		if err := s.Shared.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

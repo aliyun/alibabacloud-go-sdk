@@ -59,5 +59,10 @@ func (s *UpdateOriginPoolResponse) SetBody(v *UpdateOriginPoolResponseBody) *Upd
 }
 
 func (s *UpdateOriginPoolResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

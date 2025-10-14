@@ -366,7 +366,16 @@ func (s *CreateWaitingRoomRequest) SetWaitingRoomType(v string) *CreateWaitingRo
 }
 
 func (s *CreateWaitingRoomRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HostNameAndPath != nil {
+		for _, item := range s.HostNameAndPath {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateWaitingRoomRequestHostNameAndPath struct {

@@ -9,6 +9,10 @@ type iListWafUsageOfRulesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBatchConfigUsage(v int64) *ListWafUsageOfRulesResponseBody
+	GetBatchConfigUsage() *int64
+	SetInstanceUsage(v int64) *ListWafUsageOfRulesResponseBody
+	GetInstanceUsage() *int64
 	SetRequestId(v string) *ListWafUsageOfRulesResponseBody
 	GetRequestId() *string
 	SetSites(v []*ListWafUsageOfRulesResponseBodySites) *ListWafUsageOfRulesResponseBody
@@ -16,6 +20,8 @@ type iListWafUsageOfRulesResponseBody interface {
 }
 
 type ListWafUsageOfRulesResponseBody struct {
+	BatchConfigUsage *int64 `json:"BatchConfigUsage,omitempty" xml:"BatchConfigUsage,omitempty"`
+	InstanceUsage    *int64 `json:"InstanceUsage,omitempty" xml:"InstanceUsage,omitempty"`
 	// Request ID.
 	//
 	// example:
@@ -34,12 +40,30 @@ func (s ListWafUsageOfRulesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListWafUsageOfRulesResponseBody) GetBatchConfigUsage() *int64 {
+	return s.BatchConfigUsage
+}
+
+func (s *ListWafUsageOfRulesResponseBody) GetInstanceUsage() *int64 {
+	return s.InstanceUsage
+}
+
 func (s *ListWafUsageOfRulesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *ListWafUsageOfRulesResponseBody) GetSites() []*ListWafUsageOfRulesResponseBodySites {
 	return s.Sites
+}
+
+func (s *ListWafUsageOfRulesResponseBody) SetBatchConfigUsage(v int64) *ListWafUsageOfRulesResponseBody {
+	s.BatchConfigUsage = &v
+	return s
+}
+
+func (s *ListWafUsageOfRulesResponseBody) SetInstanceUsage(v int64) *ListWafUsageOfRulesResponseBody {
+	s.InstanceUsage = &v
+	return s
 }
 
 func (s *ListWafUsageOfRulesResponseBody) SetRequestId(v string) *ListWafUsageOfRulesResponseBody {
@@ -53,7 +77,16 @@ func (s *ListWafUsageOfRulesResponseBody) SetSites(v []*ListWafUsageOfRulesRespo
 }
 
 func (s *ListWafUsageOfRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Sites != nil {
+		for _, item := range s.Sites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafUsageOfRulesResponseBodySites struct {

@@ -95,7 +95,16 @@ func (s *CreateOriginPoolRequest) SetSiteId(v int64) *CreateOriginPoolRequest {
 }
 
 func (s *CreateOriginPoolRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Origins != nil {
+		for _, item := range s.Origins {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateOriginPoolRequestOrigins struct {
@@ -229,7 +238,12 @@ func (s *CreateOriginPoolRequestOrigins) SetWeight(v int32) *CreateOriginPoolReq
 }
 
 func (s *CreateOriginPoolRequestOrigins) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateOriginPoolRequestOriginsAuthConf struct {

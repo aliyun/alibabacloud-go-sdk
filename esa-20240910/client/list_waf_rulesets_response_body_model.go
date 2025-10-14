@@ -138,7 +138,16 @@ func (s *ListWafRulesetsResponseBody) SetTotalCount(v int64) *ListWafRulesetsRes
 }
 
 func (s *ListWafRulesetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rulesets != nil {
+		for _, item := range s.Rulesets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafRulesetsResponseBodyRulesets struct {

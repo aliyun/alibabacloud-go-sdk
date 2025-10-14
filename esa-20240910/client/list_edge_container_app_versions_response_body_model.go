@@ -104,7 +104,16 @@ func (s *ListEdgeContainerAppVersionsResponseBody) SetVersions(v []*ListEdgeCont
 }
 
 func (s *ListEdgeContainerAppVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Versions != nil {
+		for _, item := range s.Versions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersions struct {
@@ -271,7 +280,16 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersions) SetVersionId(v string
 }
 
 func (s *ListEdgeContainerAppVersionsResponseBodyVersions) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainers struct {
@@ -434,7 +452,12 @@ func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) SetSpec(v s
 }
 
 func (s *ListEdgeContainerAppVersionsResponseBodyVersionsContainers) Validate() error {
-	return dara.Validate(s)
+	if s.ProbeContent != nil {
+		if err := s.ProbeContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEdgeContainerAppVersionsResponseBodyVersionsContainersProbeContent struct {

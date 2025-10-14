@@ -53,7 +53,16 @@ func (s *ListWaitingRoomsResponseBody) SetWaitingRooms(v []*ListWaitingRoomsResp
 }
 
 func (s *ListWaitingRoomsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WaitingRooms != nil {
+		for _, item := range s.WaitingRooms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingRoomsResponseBodyWaitingRooms struct {
@@ -347,7 +356,16 @@ func (s *ListWaitingRoomsResponseBodyWaitingRooms) SetWaitingRoomType(v string) 
 }
 
 func (s *ListWaitingRoomsResponseBodyWaitingRooms) Validate() error {
-	return dara.Validate(s)
+	if s.HostNameAndPath != nil {
+		for _, item := range s.HostNameAndPath {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWaitingRoomsResponseBodyWaitingRoomsHostNameAndPath struct {

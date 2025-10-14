@@ -93,7 +93,16 @@ func (s *ListInstanceQuotasResponseBody) SetStatus(v string) *ListInstanceQuotas
 }
 
 func (s *ListInstanceQuotasResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceQuotasResponseBodyQuotas struct {

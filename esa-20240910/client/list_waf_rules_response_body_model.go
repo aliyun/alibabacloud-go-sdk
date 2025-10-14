@@ -138,7 +138,16 @@ func (s *ListWafRulesResponseBody) SetTotalCount(v int64) *ListWafRulesResponseB
 }
 
 func (s *ListWafRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafRulesResponseBodyRules struct {
@@ -358,5 +367,15 @@ func (s *ListWafRulesResponseBodyRules) SetUpdateTime(v string) *ListWafRulesRes
 }
 
 func (s *ListWafRulesResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timer != nil {
+		if err := s.Timer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -108,7 +108,16 @@ func (s *DescribeDDoSBpsListResponseBody) SetStartTime(v string) *DescribeDDoSBp
 }
 
 func (s *DescribeDDoSBpsListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataModule != nil {
+		for _, item := range s.DataModule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDoSBpsListResponseBodyDataModule struct {

@@ -104,7 +104,16 @@ func (s *ListRoutineCodeVersionsResponseBody) SetTotalCount(v int64) *ListRoutin
 }
 
 func (s *ListRoutineCodeVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CodeVersions != nil {
+		for _, item := range s.CodeVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
@@ -220,7 +229,12 @@ func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetStatus(v string) *L
 }
 
 func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) Validate() error {
-	return dara.Validate(s)
+	if s.ConfOptions != nil {
+		if err := s.ConfOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions struct {

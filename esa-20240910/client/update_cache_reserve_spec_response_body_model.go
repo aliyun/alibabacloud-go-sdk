@@ -18,14 +18,20 @@ type iUpdateCacheReserveSpecResponseBody interface {
 }
 
 type UpdateCacheReserveSpecResponseBody struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// esa-cr-9tuv*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Order ID.
+	//
 	// example:
 	//
 	// 2223332122***
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 40423A7F-A83D-1E24-B80E-86DD25790759

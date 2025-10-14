@@ -121,7 +121,16 @@ func (s *ListHttpResponseHeaderModificationRulesResponseBody) SetTotalPage(v int
 }
 
 func (s *ListHttpResponseHeaderModificationRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBodyConfigs struct {
@@ -264,7 +273,16 @@ func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) SetSiteVers
 }
 
 func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaderModification != nil {
+		for _, item := range s.ResponseHeaderModification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification struct {

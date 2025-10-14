@@ -53,7 +53,16 @@ func (s *ListWafTemplateRulesResponseBody) SetRules(v []*ListWafTemplateRulesRes
 }
 
 func (s *ListWafTemplateRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafTemplateRulesResponseBodyRules struct {
@@ -139,5 +148,10 @@ func (s *ListWafTemplateRulesResponseBodyRules) SetType(v string) *ListWafTempla
 }
 
 func (s *ListWafTemplateRulesResponseBodyRules) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

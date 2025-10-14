@@ -138,7 +138,16 @@ func (s *ListUserRoutinesResponseBody) SetUsedRoutineNumber(v int64) *ListUserRo
 }
 
 func (s *ListUserRoutinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Routines != nil {
+		for _, item := range s.Routines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserRoutinesResponseBodyRoutines struct {

@@ -59,5 +59,10 @@ func (s *ListRoutineRoutesResponse) SetBody(v *ListRoutineRoutesResponseBody) *L
 }
 
 func (s *ListRoutineRoutesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

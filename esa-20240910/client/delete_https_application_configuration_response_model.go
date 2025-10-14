@@ -59,5 +59,10 @@ func (s *DeleteHttpsApplicationConfigurationResponse) SetBody(v *DeleteHttpsAppl
 }
 
 func (s *DeleteHttpsApplicationConfigurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

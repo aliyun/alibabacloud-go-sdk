@@ -53,7 +53,16 @@ func (s *ListUploadTasksResponseBody) SetTasks(v []*ListUploadTasksResponseBodyT
 }
 
 func (s *ListUploadTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUploadTasksResponseBodyTasks struct {

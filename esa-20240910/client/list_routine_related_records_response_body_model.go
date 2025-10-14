@@ -104,7 +104,16 @@ func (s *ListRoutineRelatedRecordsResponseBody) SetTotalCount(v int64) *ListRout
 }
 
 func (s *ListRoutineRelatedRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedRecords != nil {
+		for _, item := range s.RelatedRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRoutineRelatedRecordsResponseBodyRelatedRecords struct {

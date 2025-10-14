@@ -59,5 +59,10 @@ func (s *DeleteNetworkOptimizationResponse) SetBody(v *DeleteNetworkOptimization
 }
 
 func (s *DeleteNetworkOptimizationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

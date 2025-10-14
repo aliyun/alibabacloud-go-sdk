@@ -49,5 +49,10 @@ func (s *QuotaListItemsValue) SetValue(v *WafQuotaString) *QuotaListItemsValue {
 }
 
 func (s *QuotaListItemsValue) Validate() error {
-	return dara.Validate(s)
+	if s.Value != nil {
+		if err := s.Value.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

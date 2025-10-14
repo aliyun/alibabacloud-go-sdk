@@ -59,7 +59,16 @@ func (s *WafRatelimitCharacteristics) SetMatchType(v string) *WafRatelimitCharac
 }
 
 func (s *WafRatelimitCharacteristics) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRatelimitCharacteristicsCriteria struct {
@@ -104,7 +113,16 @@ func (s *WafRatelimitCharacteristicsCriteria) SetMatchType(v string) *WafRatelim
 }
 
 func (s *WafRatelimitCharacteristicsCriteria) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteria struct {
@@ -149,7 +167,16 @@ func (s *WafRatelimitCharacteristicsCriteriaCriteria) SetMatchType(v string) *Wa
 }
 
 func (s *WafRatelimitCharacteristicsCriteriaCriteria) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteriaCriteria struct {

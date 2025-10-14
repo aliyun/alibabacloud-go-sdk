@@ -74,7 +74,12 @@ func (s *ListListsRequest) SetQueryArgs(v *ListListsRequestQueryArgs) *ListLists
 }
 
 func (s *ListListsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QueryArgs != nil {
+		if err := s.QueryArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListListsRequestQueryArgs struct {

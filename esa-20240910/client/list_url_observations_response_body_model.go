@@ -121,7 +121,16 @@ func (s *ListUrlObservationsResponseBody) SetTotalPage(v int32) *ListUrlObservat
 }
 
 func (s *ListUrlObservationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUrlObservationsResponseBodyConfigs struct {

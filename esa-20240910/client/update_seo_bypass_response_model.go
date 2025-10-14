@@ -59,5 +59,10 @@ func (s *UpdateSeoBypassResponse) SetBody(v *UpdateSeoBypassResponseBody) *Updat
 }
 
 func (s *UpdateSeoBypassResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetHttpRequestHeaderModificationRuleResponse) SetBody(v *GetHttpRequest
 }
 
 func (s *GetHttpRequestHeaderModificationRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

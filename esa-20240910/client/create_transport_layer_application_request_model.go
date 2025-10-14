@@ -147,7 +147,16 @@ func (s *CreateTransportLayerApplicationRequest) SetStaticIp(v string) *CreateTr
 }
 
 func (s *CreateTransportLayerApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTransportLayerApplicationRequestRules struct {

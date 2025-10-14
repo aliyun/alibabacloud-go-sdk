@@ -121,7 +121,16 @@ func (s *ListImageTransformsResponseBody) SetTotalPage(v int32) *ListImageTransf
 }
 
 func (s *ListImageTransformsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListImageTransformsResponseBodyConfigs struct {

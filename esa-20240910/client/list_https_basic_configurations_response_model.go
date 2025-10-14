@@ -59,5 +59,10 @@ func (s *ListHttpsBasicConfigurationsResponse) SetBody(v *ListHttpsBasicConfigur
 }
 
 func (s *ListHttpsBasicConfigurationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

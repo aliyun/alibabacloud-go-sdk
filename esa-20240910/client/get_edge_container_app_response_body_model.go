@@ -53,7 +53,12 @@ func (s *GetEdgeContainerAppResponseBody) SetRequestId(v string) *GetEdgeContain
 }
 
 func (s *GetEdgeContainerAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.App != nil {
+		if err := s.App.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppResponseBodyApp struct {
@@ -269,7 +274,12 @@ func (s *GetEdgeContainerAppResponseBodyApp) SetVersionCount(v int32) *GetEdgeCo
 }
 
 func (s *GetEdgeContainerAppResponseBodyApp) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppResponseBodyAppHealthCheck struct {

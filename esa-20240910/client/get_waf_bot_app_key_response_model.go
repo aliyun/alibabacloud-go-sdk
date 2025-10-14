@@ -59,5 +59,10 @@ func (s *GetWafBotAppKeyResponse) SetBody(v *GetWafBotAppKeyResponseBody) *GetWa
 }
 
 func (s *GetWafBotAppKeyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

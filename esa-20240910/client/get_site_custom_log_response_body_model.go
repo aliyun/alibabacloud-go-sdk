@@ -104,7 +104,12 @@ func (s *GetSiteCustomLogResponseBody) SetSiteId(v int64) *GetSiteCustomLogRespo
 }
 
 func (s *GetSiteCustomLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogCustomField != nil {
+		if err := s.LogCustomField.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSiteCustomLogResponseBodyLogCustomField struct {

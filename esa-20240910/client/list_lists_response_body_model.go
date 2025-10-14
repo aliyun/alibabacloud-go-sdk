@@ -121,7 +121,16 @@ func (s *ListListsResponseBody) SetUsage(v int64) *ListListsResponseBody {
 }
 
 func (s *ListListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Lists != nil {
+		for _, item := range s.Lists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListListsResponseBodyLists struct {

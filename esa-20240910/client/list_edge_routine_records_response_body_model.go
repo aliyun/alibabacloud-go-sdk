@@ -104,7 +104,16 @@ func (s *ListEdgeRoutineRecordsResponseBody) SetTotalCount(v int32) *ListEdgeRou
 }
 
 func (s *ListEdgeRoutineRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeRoutineRecordsResponseBodyRecords struct {

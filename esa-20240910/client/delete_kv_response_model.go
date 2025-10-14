@@ -59,5 +59,10 @@ func (s *DeleteKvResponse) SetBody(v *DeleteKvResponseBody) *DeleteKvResponse {
 }
 
 func (s *DeleteKvResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

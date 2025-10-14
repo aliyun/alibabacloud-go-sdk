@@ -59,5 +59,10 @@ func (s *GetPurgeQuotaResponse) SetBody(v *GetPurgeQuotaResponseBody) *GetPurgeQ
 }
 
 func (s *GetPurgeQuotaResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

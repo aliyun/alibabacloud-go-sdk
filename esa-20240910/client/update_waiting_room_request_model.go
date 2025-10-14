@@ -361,7 +361,16 @@ func (s *UpdateWaitingRoomRequest) SetWaitingRoomType(v string) *UpdateWaitingRo
 }
 
 func (s *UpdateWaitingRoomRequest) Validate() error {
-	return dara.Validate(s)
+	if s.HostNameAndPath != nil {
+		for _, item := range s.HostNameAndPath {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateWaitingRoomRequestHostNameAndPath struct {

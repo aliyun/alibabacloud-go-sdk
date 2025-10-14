@@ -145,7 +145,16 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequest) SetSiteId(v int64) *Upd
 }
 
 func (s *UpdateHttpRequestHeaderModificationRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.RequestHeaderModification != nil {
+		for _, item := range s.RequestHeaderModification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification struct {

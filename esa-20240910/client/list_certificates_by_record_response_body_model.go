@@ -104,7 +104,16 @@ func (s *ListCertificatesByRecordResponseBody) SetTotalCount(v int64) *ListCerti
 }
 
 func (s *ListCertificatesByRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCertificatesByRecordResponseBodyResult struct {
@@ -190,7 +199,16 @@ func (s *ListCertificatesByRecordResponseBodyResult) SetStatus(v string) *ListCe
 }
 
 func (s *ListCertificatesByRecordResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCertificatesByRecordResponseBodyResultCertificates struct {

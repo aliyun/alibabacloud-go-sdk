@@ -59,5 +59,10 @@ func (s *StartScheduledPreloadExecutionResponse) SetBody(v *StartScheduledPreloa
 }
 
 func (s *StartScheduledPreloadExecutionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -253,7 +253,16 @@ func (s *ListSitesRequest) SetTagFilter(v []*ListSitesRequestTagFilter) *ListSit
 }
 
 func (s *ListSitesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.TagFilter != nil {
+		for _, item := range s.TagFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSitesRequestTagFilter struct {

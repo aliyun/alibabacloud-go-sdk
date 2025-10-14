@@ -26,32 +26,50 @@ type iListHttpIncomingRequestHeaderModificationRulesRequest interface {
 }
 
 type ListHttpIncomingRequestHeaderModificationRulesRequest struct {
+	// The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+	//
 	// example:
 	//
 	// 424371770570752
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type to query. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: rule configurations.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 500. Default value: 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 608665779308176
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
 	// example:
 	//
 	// 0

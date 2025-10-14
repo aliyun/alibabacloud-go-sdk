@@ -71,7 +71,12 @@ func (s *CreateRoutineWithAssetsCodeVersionResponseBody) SetStatus(v string) *Cr
 }
 
 func (s *CreateRoutineWithAssetsCodeVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OssPostConfig != nil {
+		if err := s.OssPostConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRoutineWithAssetsCodeVersionResponseBodyOssPostConfig struct {

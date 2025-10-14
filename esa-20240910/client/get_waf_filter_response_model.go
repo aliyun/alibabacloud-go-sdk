@@ -59,5 +59,10 @@ func (s *GetWafFilterResponse) SetBody(v *GetWafFilterResponseBody) *GetWafFilte
 }
 
 func (s *GetWafFilterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,16 @@ func (s *ListVideoProcessingsResponseBody) SetTotalPage(v int32) *ListVideoProce
 }
 
 func (s *ListVideoProcessingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListVideoProcessingsResponseBodyConfigs struct {

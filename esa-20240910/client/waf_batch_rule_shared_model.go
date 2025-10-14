@@ -119,7 +119,17 @@ func (s *WafBatchRuleShared) SetTarget(v string) *WafBatchRuleShared {
 }
 
 func (s *WafBatchRuleShared) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		if err := s.Actions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafBatchRuleSharedActions struct {
@@ -144,7 +154,12 @@ func (s *WafBatchRuleSharedActions) SetResponse(v *WafBatchRuleSharedActionsResp
 }
 
 func (s *WafBatchRuleSharedActions) Validate() error {
-	return dara.Validate(s)
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafBatchRuleSharedActionsResponse struct {

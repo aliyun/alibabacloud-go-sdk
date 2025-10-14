@@ -49,5 +49,10 @@ func (s *QuotaPageContentTypesValue) SetContentLength(v *WafQuotaInteger) *Quota
 }
 
 func (s *QuotaPageContentTypesValue) Validate() error {
-	return dara.Validate(s)
+	if s.ContentLength != nil {
+		if err := s.ContentLength.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

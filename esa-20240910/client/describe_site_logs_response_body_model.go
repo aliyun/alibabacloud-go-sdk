@@ -53,7 +53,16 @@ func (s *DescribeSiteLogsResponseBody) SetSiteLogDetails(v []*DescribeSiteLogsRe
 }
 
 func (s *DescribeSiteLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SiteLogDetails != nil {
+		for _, item := range s.SiteLogDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetails struct {
@@ -135,7 +144,21 @@ func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetSiteName(v string) *Desc
 }
 
 func (s *DescribeSiteLogsResponseBodySiteLogDetails) Validate() error {
-	return dara.Validate(s)
+	if s.LogInfos != nil {
+		for _, item := range s.LogInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfos != nil {
+		if err := s.PageInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {

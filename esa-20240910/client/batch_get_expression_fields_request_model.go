@@ -11,8 +11,14 @@ type iBatchGetExpressionFieldsRequest interface {
 	GoString() string
 	SetExpressions(v []*BatchGetExpressionFieldsRequestExpressions) *BatchGetExpressionFieldsRequest
 	GetExpressions() []*BatchGetExpressionFieldsRequestExpressions
+	SetInstanceId(v string) *BatchGetExpressionFieldsRequest
+	GetInstanceId() *string
+	SetKind(v string) *BatchGetExpressionFieldsRequest
+	GetKind() *string
 	SetPhase(v string) *BatchGetExpressionFieldsRequest
 	GetPhase() *string
+	SetPlanNameEn(v string) *BatchGetExpressionFieldsRequest
+	GetPlanNameEn() *string
 	SetSiteId(v int64) *BatchGetExpressionFieldsRequest
 	GetSiteId() *int64
 }
@@ -24,12 +30,15 @@ type BatchGetExpressionFieldsRequest struct {
 	//
 	// http_bot
 	Expressions []*BatchGetExpressionFieldsRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	InstanceId  *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Kind        *string                                       `json:"Kind,omitempty" xml:"Kind,omitempty"`
 	// WAF Phase
 	//
 	// example:
 	//
 	// http_bot
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	Phase      *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	PlanNameEn *string `json:"PlanNameEn,omitempty" xml:"PlanNameEn,omitempty"`
 	// Site ID
 	//
 	// example:
@@ -50,8 +59,20 @@ func (s *BatchGetExpressionFieldsRequest) GetExpressions() []*BatchGetExpression
 	return s.Expressions
 }
 
+func (s *BatchGetExpressionFieldsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *BatchGetExpressionFieldsRequest) GetKind() *string {
+	return s.Kind
+}
+
 func (s *BatchGetExpressionFieldsRequest) GetPhase() *string {
 	return s.Phase
+}
+
+func (s *BatchGetExpressionFieldsRequest) GetPlanNameEn() *string {
+	return s.PlanNameEn
 }
 
 func (s *BatchGetExpressionFieldsRequest) GetSiteId() *int64 {
@@ -63,8 +84,23 @@ func (s *BatchGetExpressionFieldsRequest) SetExpressions(v []*BatchGetExpression
 	return s
 }
 
+func (s *BatchGetExpressionFieldsRequest) SetInstanceId(v string) *BatchGetExpressionFieldsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BatchGetExpressionFieldsRequest) SetKind(v string) *BatchGetExpressionFieldsRequest {
+	s.Kind = &v
+	return s
+}
+
 func (s *BatchGetExpressionFieldsRequest) SetPhase(v string) *BatchGetExpressionFieldsRequest {
 	s.Phase = &v
+	return s
+}
+
+func (s *BatchGetExpressionFieldsRequest) SetPlanNameEn(v string) *BatchGetExpressionFieldsRequest {
+	s.PlanNameEn = &v
 	return s
 }
 
@@ -74,7 +110,16 @@ func (s *BatchGetExpressionFieldsRequest) SetSiteId(v int64) *BatchGetExpression
 }
 
 func (s *BatchGetExpressionFieldsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Expressions != nil {
+		for _, item := range s.Expressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchGetExpressionFieldsRequestExpressions struct {

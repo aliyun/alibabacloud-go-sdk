@@ -104,7 +104,16 @@ func (s *ListUserDeliveryTasksResponseBody) SetTotalCount(v int32) *ListUserDeli
 }
 
 func (s *ListUserDeliveryTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserDeliveryTasksResponseBodyTasks struct {

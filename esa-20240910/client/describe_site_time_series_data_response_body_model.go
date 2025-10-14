@@ -26,29 +26,43 @@ type iDescribeSiteTimeSeriesDataResponseBody interface {
 }
 
 type DescribeSiteTimeSeriesDataResponseBody struct {
-	// The returned data.
+	// Returned data.
 	Data []*DescribeSiteTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The end time for fetching the data.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-04-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The granularity of the data, in seconds.
+	//
 	// example:
 	//
 	// 300
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The sampling rate, in %.
+	//
 	// example:
 	//
 	// 100
 	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// The start time for fetching the data.
+	//
+	// The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-04-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The queried summary data.
+	// Aggregated query data.
 	SummarizedData []*DescribeSiteTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
 }
 
@@ -124,19 +138,44 @@ func (s *DescribeSiteTimeSeriesDataResponseBody) SetSummarizedData(v []*Describe
 }
 
 func (s *DescribeSiteTimeSeriesDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SummarizedData != nil {
+		for _, item := range s.SummarizedData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyData struct {
+	// Returned data.
 	DetailData []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
+	// Query dimension.
+	//
 	// example:
 	//
 	// ALL
 	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// Query dimension value.
+	//
 	// example:
 	//
 	// ALL
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// Query metric value.
+	//
 	// example:
 	//
 	// Traffic
@@ -188,14 +227,27 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyData) SetFieldName(v string) *Des
 }
 
 func (s *DescribeSiteTimeSeriesDataResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DetailData != nil {
+		for _, item := range s.DetailData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteTimeSeriesDataResponseBodyDataDetailData struct {
+	// Start timestamp of the time slice.
+	//
 	// example:
 	//
 	// 2023-04-08T16:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// Value.
+	//
 	// example:
 	//
 	// 123
@@ -233,22 +285,32 @@ func (s *DescribeSiteTimeSeriesDataResponseBodyDataDetailData) Validate() error 
 }
 
 type DescribeSiteTimeSeriesDataResponseBodySummarizedData struct {
+	// The aggregation method used.
+	//
 	// example:
 	//
 	// sum
 	AggMethod *string `json:"AggMethod,omitempty" xml:"AggMethod,omitempty"`
+	// The dimension of the aggregated data being queried.
+	//
 	// example:
 	//
 	// ALL
 	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// The value of the aggregated dimension being queried.
+	//
 	// example:
 	//
 	// ALL
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// The value of the aggregated metric being queried.
+	//
 	// example:
 	//
 	// Traffic
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The aggregated value.
+	//
 	// example:
 	//
 	// 12345

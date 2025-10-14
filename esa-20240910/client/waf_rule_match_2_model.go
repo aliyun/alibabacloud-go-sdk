@@ -107,7 +107,16 @@ func (s *WafRuleMatch2) SetNegate(v bool) *WafRuleMatch2 {
 }
 
 func (s *WafRuleMatch2) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRuleMatch2Criteria struct {
@@ -192,7 +201,16 @@ func (s *WafRuleMatch2Criteria) SetNegate(v bool) *WafRuleMatch2Criteria {
 }
 
 func (s *WafRuleMatch2Criteria) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRuleMatch2CriteriaCriteria struct {
@@ -277,7 +295,16 @@ func (s *WafRuleMatch2CriteriaCriteria) SetNegate(v bool) *WafRuleMatch2Criteria
 }
 
 func (s *WafRuleMatch2CriteriaCriteria) Validate() error {
-	return dara.Validate(s)
+	if s.Criteria != nil {
+		for _, item := range s.Criteria {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRuleMatch2CriteriaCriteriaCriteria struct {

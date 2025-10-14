@@ -59,5 +59,10 @@ func (s *ListRedirectRulesResponse) SetBody(v *ListRedirectRulesResponseBody) *L
 }
 
 func (s *ListRedirectRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

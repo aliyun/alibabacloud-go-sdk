@@ -71,7 +71,25 @@ func (s *WafTimer) SetZone(v int32) *WafTimer {
 }
 
 func (s *WafTimer) Validate() error {
-	return dara.Validate(s)
+	if s.Periods != nil {
+		for _, item := range s.Periods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WeeklyPeriods != nil {
+		for _, item := range s.WeeklyPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafTimerPeriods struct {
@@ -141,7 +159,16 @@ func (s *WafTimerWeeklyPeriods) SetDays(v string) *WafTimerWeeklyPeriods {
 }
 
 func (s *WafTimerWeeklyPeriods) Validate() error {
-	return dara.Validate(s)
+	if s.DailyPeriods != nil {
+		for _, item := range s.DailyPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafTimerWeeklyPeriodsDailyPeriods struct {

@@ -121,7 +121,16 @@ func (s *ListOriginRulesResponseBody) SetTotalPage(v int32) *ListOriginRulesResp
 }
 
 func (s *ListOriginRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOriginRulesResponseBodyConfigs struct {

@@ -145,7 +145,16 @@ func (s *UpdateTransportLayerApplicationRequest) SetStaticIp(v string) *UpdateTr
 }
 
 func (s *UpdateTransportLayerApplicationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTransportLayerApplicationRequestRules struct {

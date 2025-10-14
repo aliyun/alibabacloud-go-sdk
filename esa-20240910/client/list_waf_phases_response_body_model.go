@@ -53,7 +53,16 @@ func (s *ListWafPhasesResponseBody) SetRequestId(v string) *ListWafPhasesRespons
 }
 
 func (s *ListWafPhasesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Phases != nil {
+		for _, item := range s.Phases {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafPhasesResponseBodyPhases struct {
@@ -94,7 +103,16 @@ func (s *ListWafPhasesResponseBodyPhases) SetRulesets(v []*ListWafPhasesResponse
 }
 
 func (s *ListWafPhasesResponseBodyPhases) Validate() error {
-	return dara.Validate(s)
+	if s.Rulesets != nil {
+		for _, item := range s.Rulesets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWafPhasesResponseBodyPhasesRulesets struct {
@@ -161,5 +179,19 @@ func (s *ListWafPhasesResponseBodyPhasesRulesets) SetShared(v *WafBatchRuleShare
 }
 
 func (s *ListWafPhasesResponseBodyPhasesRulesets) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Shared != nil {
+		if err := s.Shared.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

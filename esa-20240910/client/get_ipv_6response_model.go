@@ -59,5 +59,10 @@ func (s *GetIPv6Response) SetBody(v *GetIPv6ResponseBody) *GetIPv6Response {
 }
 
 func (s *GetIPv6Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

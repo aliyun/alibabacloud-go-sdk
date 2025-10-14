@@ -190,7 +190,12 @@ func (s *GetEdgeContainerStagingDeployStatusResponseBody) SetVIPs(v []*string) *
 }
 
 func (s *GetEdgeContainerStagingDeployStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PodRestartState != nil {
+		if err := s.PodRestartState.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerStagingDeployStatusResponseBodyPodRestartState struct {

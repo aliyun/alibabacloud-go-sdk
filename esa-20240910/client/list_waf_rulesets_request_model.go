@@ -125,7 +125,12 @@ func (s *ListWafRulesetsRequest) SetSiteVersion(v int32) *ListWafRulesetsRequest
 }
 
 func (s *ListWafRulesetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QueryArgs != nil {
+		if err := s.QueryArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWafRulesetsRequestQueryArgs struct {

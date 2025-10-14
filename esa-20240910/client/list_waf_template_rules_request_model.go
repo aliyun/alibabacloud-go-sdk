@@ -9,6 +9,8 @@ type iListWafTemplateRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *ListWafTemplateRulesRequest
+	GetInstanceId() *string
 	SetPhase(v string) *ListWafTemplateRulesRequest
 	GetPhase() *string
 	SetQueryArgs(v *ListWafTemplateRulesRequestQueryArgs) *ListWafTemplateRulesRequest
@@ -18,6 +20,7 @@ type iListWafTemplateRulesRequest interface {
 }
 
 type ListWafTemplateRulesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// WAF operation phase, used to filter template rules for a specific phase.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s ListWafTemplateRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListWafTemplateRulesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *ListWafTemplateRulesRequest) GetPhase() *string {
 	return s.Phase
 }
@@ -56,6 +63,11 @@ func (s *ListWafTemplateRulesRequest) GetQueryArgs() *ListWafTemplateRulesReques
 
 func (s *ListWafTemplateRulesRequest) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *ListWafTemplateRulesRequest) SetInstanceId(v string) *ListWafTemplateRulesRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *ListWafTemplateRulesRequest) SetPhase(v string) *ListWafTemplateRulesRequest {
@@ -74,7 +86,12 @@ func (s *ListWafTemplateRulesRequest) SetSiteId(v int64) *ListWafTemplateRulesRe
 }
 
 func (s *ListWafTemplateRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QueryArgs != nil {
+		if err := s.QueryArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWafTemplateRulesRequestQueryArgs struct {

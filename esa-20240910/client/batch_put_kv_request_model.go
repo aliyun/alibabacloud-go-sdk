@@ -57,7 +57,16 @@ func (s *BatchPutKvRequest) SetNamespace(v string) *BatchPutKvRequest {
 }
 
 func (s *BatchPutKvRequest) Validate() error {
-	return dara.Validate(s)
+	if s.KvList != nil {
+		for _, item := range s.KvList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchPutKvRequestKvList struct {

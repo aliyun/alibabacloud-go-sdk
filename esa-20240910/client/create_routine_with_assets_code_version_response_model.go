@@ -59,5 +59,10 @@ func (s *CreateRoutineWithAssetsCodeVersionResponse) SetBody(v *CreateRoutineWit
 }
 
 func (s *CreateRoutineWithAssetsCodeVersionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

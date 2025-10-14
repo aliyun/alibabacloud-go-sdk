@@ -24,23 +24,34 @@ type iListHttpIncomingResponseHeaderModificationRulesResponseBody interface {
 }
 
 type ListHttpIncomingResponseHeaderModificationRulesResponseBody struct {
+	// The list of incoming response header modification rules.
 	Configs []*ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The number of the returned page. Default value: 1
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 500. Valid values: 1 to 500.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF02C6F6-DB59-5438-8C05-3CE42DFCB0AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 1
@@ -110,35 +121,71 @@ func (s *ListHttpIncomingResponseHeaderModificationRulesResponseBody) SetTotalPa
 }
 
 func (s *ListHttpIncomingResponseHeaderModificationRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 430559776208896
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The type of the configuration. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	//
+	// 	- global: global configuration.
+	//
+	// 	- rule: rule configuration.
+	//
 	// example:
 	//
 	// rule
-	ConfigType                 *string                                                                                         `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The configurations of modifying response headers. You can add, delete, or modify a response header.
 	ResponseHeaderModification []*ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	//
+	// 	- true: Match all incoming requests.
+	//
+	// 	- Set the value to a custom expression, for example:(http.host eq "video.example.com"): Match the specified request.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name. You do not need to set this parameter when you add global configuration.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
 	// example:
 	//
 	// 0
@@ -226,22 +273,49 @@ func (s *ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs) Set
 }
 
 func (s *ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaderModification != nil {
+		for _, item := range s.ResponseHeaderModification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification struct {
+	// The name of the response header.
+	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	//
+	// 	- add: adds a response header.
+	//
+	// 	- del: deletes a response header.
+	//
+	// 	- modify: modifies a response header.
+	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The type of the header. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
 	// example:
 	//
 	// static
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the response header.
+	//
 	// example:
 	//
 	// headerValue

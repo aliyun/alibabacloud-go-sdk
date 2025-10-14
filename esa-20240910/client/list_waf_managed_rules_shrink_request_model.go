@@ -13,8 +13,12 @@ type iListWafManagedRulesShrinkRequest interface {
 	GetAttackType() *int32
 	SetId(v int64) *ListWafManagedRulesShrinkRequest
 	GetId() *int64
+	SetInstanceId(v string) *ListWafManagedRulesShrinkRequest
+	GetInstanceId() *string
 	SetLanguage(v string) *ListWafManagedRulesShrinkRequest
 	GetLanguage() *string
+	SetManagedRulesetShrink(v string) *ListWafManagedRulesShrinkRequest
+	GetManagedRulesetShrink() *string
 	SetPageNumber(v int32) *ListWafManagedRulesShrinkRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListWafManagedRulesShrinkRequest
@@ -58,12 +62,11 @@ type ListWafManagedRulesShrinkRequest struct {
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
 	// ID of the WAF rule.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 10000001
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Language type, which will be used to return the response. Value range:
 	//
 	// - **en**: English.
@@ -73,7 +76,8 @@ type ListWafManagedRulesShrinkRequest struct {
 	// example:
 	//
 	// zh
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ManagedRulesetShrink *string `json:"ManagedRuleset,omitempty" xml:"ManagedRuleset,omitempty"`
 	// Query page number.
 	//
 	// example:
@@ -90,8 +94,6 @@ type ListWafManagedRulesShrinkRequest struct {
 	// Query conditions.
 	QueryArgsShrink *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -115,8 +117,16 @@ func (s *ListWafManagedRulesShrinkRequest) GetId() *int64 {
 	return s.Id
 }
 
+func (s *ListWafManagedRulesShrinkRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *ListWafManagedRulesShrinkRequest) GetLanguage() *string {
 	return s.Language
+}
+
+func (s *ListWafManagedRulesShrinkRequest) GetManagedRulesetShrink() *string {
+	return s.ManagedRulesetShrink
 }
 
 func (s *ListWafManagedRulesShrinkRequest) GetPageNumber() *int32 {
@@ -149,8 +159,18 @@ func (s *ListWafManagedRulesShrinkRequest) SetId(v int64) *ListWafManagedRulesSh
 	return s
 }
 
+func (s *ListWafManagedRulesShrinkRequest) SetInstanceId(v string) *ListWafManagedRulesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListWafManagedRulesShrinkRequest) SetLanguage(v string) *ListWafManagedRulesShrinkRequest {
 	s.Language = &v
+	return s
+}
+
+func (s *ListWafManagedRulesShrinkRequest) SetManagedRulesetShrink(v string) *ListWafManagedRulesShrinkRequest {
+	s.ManagedRulesetShrink = &v
 	return s
 }
 

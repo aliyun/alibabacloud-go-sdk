@@ -59,5 +59,10 @@ func (s *UpdateSiteCoverageResponse) SetBody(v *UpdateSiteCoverageResponseBody) 
 }
 
 func (s *UpdateSiteCoverageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

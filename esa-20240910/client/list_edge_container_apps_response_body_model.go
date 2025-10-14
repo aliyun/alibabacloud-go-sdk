@@ -104,7 +104,16 @@ func (s *ListEdgeContainerAppsResponseBody) SetTotalCount(v int32) *ListEdgeCont
 }
 
 func (s *ListEdgeContainerAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEdgeContainerAppsResponseBodyApps struct {
@@ -335,7 +344,12 @@ func (s *ListEdgeContainerAppsResponseBodyApps) SetVersionCount(v int32) *ListEd
 }
 
 func (s *ListEdgeContainerAppsResponseBodyApps) Validate() error {
-	return dara.Validate(s)
+	if s.HealthCheck != nil {
+		if err := s.HealthCheck.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEdgeContainerAppsResponseBodyAppsHealthCheck struct {

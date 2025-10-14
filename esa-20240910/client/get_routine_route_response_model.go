@@ -59,5 +59,10 @@ func (s *GetRoutineRouteResponse) SetBody(v *GetRoutineRouteResponseBody) *GetRo
 }
 
 func (s *GetRoutineRouteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,12 @@ func (s *GetOriginCaCertificateResponseBody) SetStatus(v string) *GetOriginCaCer
 }
 
 func (s *GetOriginCaCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOriginCaCertificateResponseBodyResult struct {

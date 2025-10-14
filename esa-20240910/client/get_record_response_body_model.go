@@ -53,7 +53,12 @@ func (s *GetRecordResponseBody) SetRequestId(v string) *GetRecordResponseBody {
 }
 
 func (s *GetRecordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RecordModel != nil {
+		if err := s.RecordModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRecordResponseBodyRecordModel struct {
@@ -330,7 +335,17 @@ func (s *GetRecordResponseBodyRecordModel) SetUpdateTime(v string) *GetRecordRes
 }
 
 func (s *GetRecordResponseBodyRecordModel) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRecordResponseBodyRecordModelAuthConf struct {

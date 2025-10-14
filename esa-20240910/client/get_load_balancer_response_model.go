@@ -59,5 +59,10 @@ func (s *GetLoadBalancerResponse) SetBody(v *GetLoadBalancerResponseBody) *GetLo
 }
 
 func (s *GetLoadBalancerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

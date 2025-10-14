@@ -55,7 +55,16 @@ func (s *ListESAIPInfoResponseBody) SetRequestId(v string) *ListESAIPInfoRespons
 }
 
 func (s *ListESAIPInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		for _, item := range s.Content {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListESAIPInfoResponseBodyContent struct {

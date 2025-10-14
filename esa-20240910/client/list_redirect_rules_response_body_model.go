@@ -121,7 +121,16 @@ func (s *ListRedirectRulesResponseBody) SetTotalPage(v int32) *ListRedirectRules
 }
 
 func (s *ListRedirectRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRedirectRulesResponseBodyConfigs struct {

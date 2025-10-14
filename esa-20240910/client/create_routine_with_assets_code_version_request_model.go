@@ -84,7 +84,12 @@ func (s *CreateRoutineWithAssetsCodeVersionRequest) SetName(v string) *CreateRou
 }
 
 func (s *CreateRoutineWithAssetsCodeVersionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfOptions != nil {
+		if err := s.ConfOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateRoutineWithAssetsCodeVersionRequestConfOptions struct {

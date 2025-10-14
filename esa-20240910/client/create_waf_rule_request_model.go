@@ -108,5 +108,10 @@ func (s *CreateWafRuleRequest) SetSiteVersion(v int32) *CreateWafRuleRequest {
 }
 
 func (s *CreateWafRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

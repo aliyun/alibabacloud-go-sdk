@@ -53,7 +53,12 @@ func (s *GetSiteResponseBody) SetSiteModel(v *GetSiteResponseBodySiteModel) *Get
 }
 
 func (s *GetSiteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SiteModel != nil {
+		if err := s.SiteModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSiteResponseBodySiteModel struct {

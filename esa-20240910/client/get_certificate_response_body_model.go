@@ -121,7 +121,12 @@ func (s *GetCertificateResponseBody) SetStatus(v string) *GetCertificateResponse
 }
 
 func (s *GetCertificateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCertificateResponseBodyResult struct {
@@ -447,7 +452,16 @@ func (s *GetCertificateResponseBodyResult) SetUpdateTime(v string) *GetCertifica
 }
 
 func (s *GetCertificateResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.DCV != nil {
+		for _, item := range s.DCV {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCertificateResponseBodyResultDCV struct {

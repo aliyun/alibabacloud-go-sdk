@@ -59,5 +59,10 @@ func (s *CreateWafRulesetResponse) SetBody(v *CreateWafRulesetResponseBody) *Cre
 }
 
 func (s *CreateWafRulesetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

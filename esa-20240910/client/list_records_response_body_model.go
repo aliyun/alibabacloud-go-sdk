@@ -104,7 +104,16 @@ func (s *ListRecordsResponseBody) SetTotalCount(v int32) *ListRecordsResponseBod
 }
 
 func (s *ListRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRecordsResponseBodyRecords struct {
@@ -381,7 +390,17 @@ func (s *ListRecordsResponseBodyRecords) SetUpdateTime(v string) *ListRecordsRes
 }
 
 func (s *ListRecordsResponseBodyRecords) Validate() error {
-	return dara.Validate(s)
+	if s.AuthConf != nil {
+		if err := s.AuthConf.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRecordsResponseBodyRecordsAuthConf struct {

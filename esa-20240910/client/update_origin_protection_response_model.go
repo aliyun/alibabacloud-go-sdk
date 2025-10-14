@@ -59,5 +59,10 @@ func (s *UpdateOriginProtectionResponse) SetBody(v *UpdateOriginProtectionRespon
 }
 
 func (s *UpdateOriginProtectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

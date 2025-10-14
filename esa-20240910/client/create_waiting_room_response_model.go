@@ -59,5 +59,10 @@ func (s *CreateWaitingRoomResponse) SetBody(v *CreateWaitingRoomResponseBody) *C
 }
 
 func (s *CreateWaitingRoomResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

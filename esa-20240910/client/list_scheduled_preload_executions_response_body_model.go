@@ -70,7 +70,16 @@ func (s *ListScheduledPreloadExecutionsResponseBody) SetTotalCount(v int32) *Lis
 }
 
 func (s *ListScheduledPreloadExecutionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Executions != nil {
+		for _, item := range s.Executions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListScheduledPreloadExecutionsResponseBodyExecutions struct {

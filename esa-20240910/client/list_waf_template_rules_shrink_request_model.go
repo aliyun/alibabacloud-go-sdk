@@ -9,6 +9,8 @@ type iListWafTemplateRulesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *ListWafTemplateRulesShrinkRequest
+	GetInstanceId() *string
 	SetPhase(v string) *ListWafTemplateRulesShrinkRequest
 	GetPhase() *string
 	SetQueryArgsShrink(v string) *ListWafTemplateRulesShrinkRequest
@@ -18,6 +20,7 @@ type iListWafTemplateRulesShrinkRequest interface {
 }
 
 type ListWafTemplateRulesShrinkRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// WAF operation phase, used to filter template rules for a specific phase.
 	//
 	// example:
@@ -46,6 +49,10 @@ func (s ListWafTemplateRulesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListWafTemplateRulesShrinkRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *ListWafTemplateRulesShrinkRequest) GetPhase() *string {
 	return s.Phase
 }
@@ -56,6 +63,11 @@ func (s *ListWafTemplateRulesShrinkRequest) GetQueryArgsShrink() *string {
 
 func (s *ListWafTemplateRulesShrinkRequest) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *ListWafTemplateRulesShrinkRequest) SetInstanceId(v string) *ListWafTemplateRulesShrinkRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *ListWafTemplateRulesShrinkRequest) SetPhase(v string) *ListWafTemplateRulesShrinkRequest {

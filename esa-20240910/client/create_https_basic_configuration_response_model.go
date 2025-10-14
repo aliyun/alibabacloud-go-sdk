@@ -59,5 +59,10 @@ func (s *CreateHttpsBasicConfigurationResponse) SetBody(v *CreateHttpsBasicConfi
 }
 
 func (s *CreateHttpsBasicConfigurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

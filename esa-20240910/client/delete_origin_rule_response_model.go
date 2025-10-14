@@ -59,5 +59,10 @@ func (s *DeleteOriginRuleResponse) SetBody(v *DeleteOriginRuleResponseBody) *Del
 }
 
 func (s *DeleteOriginRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

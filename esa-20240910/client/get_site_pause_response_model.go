@@ -59,5 +59,10 @@ func (s *GetSitePauseResponse) SetBody(v *GetSitePauseResponseBody) *GetSitePaus
 }
 
 func (s *GetSitePauseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

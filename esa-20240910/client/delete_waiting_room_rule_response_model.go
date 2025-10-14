@@ -59,5 +59,10 @@ func (s *DeleteWaitingRoomRuleResponse) SetBody(v *DeleteWaitingRoomRuleResponse
 }
 
 func (s *DeleteWaitingRoomRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *GetClientCertificateResponse) SetBody(v *GetClientCertificateResponseBo
 }
 
 func (s *GetClientCertificateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

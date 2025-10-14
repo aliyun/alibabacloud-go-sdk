@@ -121,7 +121,16 @@ func (s *GetCertificateQuotaResponseBody) SetType(v string) *GetCertificateQuota
 }
 
 func (s *GetCertificateQuotaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SiteUsage != nil {
+		for _, item := range s.SiteUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetCertificateQuotaResponseBodySiteUsage struct {

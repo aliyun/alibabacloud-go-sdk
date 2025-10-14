@@ -59,5 +59,10 @@ func (s *GetSiteCurrentNSResponse) SetBody(v *GetSiteCurrentNSResponseBody) *Get
 }
 
 func (s *GetSiteCurrentNSResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

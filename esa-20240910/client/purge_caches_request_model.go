@@ -130,7 +130,12 @@ func (s *PurgeCachesRequest) SetType(v string) *PurgeCachesRequest {
 }
 
 func (s *PurgeCachesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PurgeCachesRequestContent struct {
@@ -226,7 +231,16 @@ func (s *PurgeCachesRequestContent) SetPurgeAll(v bool) *PurgeCachesRequestConte
 }
 
 func (s *PurgeCachesRequestContent) Validate() error {
-	return dara.Validate(s)
+	if s.CacheKeys != nil {
+		for _, item := range s.CacheKeys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PurgeCachesRequestContentCacheKeys struct {

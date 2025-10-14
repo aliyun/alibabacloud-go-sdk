@@ -121,7 +121,16 @@ func (s *ListUserRatePlanInstancesResponseBody) SetTotalPage(v int32) *ListUserR
 }
 
 func (s *ListUserRatePlanInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceInfo != nil {
+		for _, item := range s.InstanceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
@@ -457,7 +466,16 @@ func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) SetSubscribeType(v s
 }
 
 func (s *ListUserRatePlanInstancesResponseBodyInstanceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Sites != nil {
+		for _, item := range s.Sites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {

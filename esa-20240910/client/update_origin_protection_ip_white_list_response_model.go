@@ -59,5 +59,10 @@ func (s *UpdateOriginProtectionIpWhiteListResponse) SetBody(v *UpdateOriginProte
 }
 
 func (s *UpdateOriginProtectionIpWhiteListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

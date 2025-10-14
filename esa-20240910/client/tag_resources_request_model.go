@@ -25,7 +25,11 @@ type iTagResourcesRequest interface {
 
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
+	// The region ID. Valid values:
+	//
+	// 	- China site (aliyun.com): cn-hangzhou
+	//
+	// 	- International site (alibabacloud.com): ap-southeast-1
 	//
 	// This parameter is required.
 	//
@@ -33,11 +37,15 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of resource. Valid values of N: **1*	- to **50**.
+	// The resource ID. Enter a website ID or DNS record ID.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type, which can only be **site**.
+	// The type of the resource. Valid values:
+	//
+	// 	- Site: **site**
+	//
+	// 	- DNS records: **record**
 	//
 	// This parameter is required.
 	//
@@ -115,7 +123,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 func (s *TagResourcesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TagResourcesRequestTag struct {

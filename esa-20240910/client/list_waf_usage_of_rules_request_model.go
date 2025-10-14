@@ -9,6 +9,8 @@ type iListWafUsageOfRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetInstanceId(v string) *ListWafUsageOfRulesRequest
+	GetInstanceId() *string
 	SetPhase(v string) *ListWafUsageOfRulesRequest
 	GetPhase() *string
 	SetSiteId(v int64) *ListWafUsageOfRulesRequest
@@ -16,6 +18,7 @@ type iListWafUsageOfRulesRequest interface {
 }
 
 type ListWafUsageOfRulesRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Name of the WAF operation phase.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s ListWafUsageOfRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListWafUsageOfRulesRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *ListWafUsageOfRulesRequest) GetPhase() *string {
 	return s.Phase
 }
 
 func (s *ListWafUsageOfRulesRequest) GetSiteId() *int64 {
 	return s.SiteId
+}
+
+func (s *ListWafUsageOfRulesRequest) SetInstanceId(v string) *ListWafUsageOfRulesRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *ListWafUsageOfRulesRequest) SetPhase(v string) *ListWafUsageOfRulesRequest {

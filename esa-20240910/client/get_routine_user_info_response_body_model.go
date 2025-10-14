@@ -66,7 +66,16 @@ func (s *GetRoutineUserInfoResponseBody) SetSubdomains(v []*string) *GetRoutineU
 }
 
 func (s *GetRoutineUserInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Routines != nil {
+		for _, item := range s.Routines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRoutineUserInfoResponseBodyRoutines struct {

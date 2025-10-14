@@ -59,5 +59,10 @@ func (s *ListOriginRulesResponse) SetBody(v *ListOriginRulesResponseBody) *ListO
 }
 
 func (s *ListOriginRulesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -20,10 +20,29 @@ type iGetRoutineCodeVersionResponseBody interface {
 }
 
 type GetRoutineCodeVersionResponseBody struct {
+	// The description of the code version.
+	//
+	// example:
+	//
+	// test ver code desc
 	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the version was created.
+	//
+	// example:
+	//
+	// 2024-03-11T01:23:21Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code content.
+	//
+	// example:
+	//
+	// PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPEVycm9yPgogIDxDb2RlPk5vU3VjaEtleTwvQ29kZT4KICA8TWVzc2FnZT5UaGUgc3BlY2lmaWVkIGtleSBkb2VzIG5vdCBleGlzdC48L01lc3NhZ2U
 	RoutineCode *string `json:"RoutineCode,omitempty" xml:"RoutineCode,omitempty"`
 }
 

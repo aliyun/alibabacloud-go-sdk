@@ -53,7 +53,12 @@ func (s *GetEdgeContainerAppVersionResponseBody) SetVersion(v *GetEdgeContainerA
 }
 
 func (s *GetEdgeContainerAppVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Version != nil {
+		if err := s.Version.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersion struct {
@@ -220,7 +225,16 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersion) SetVersionId(v string) *
 }
 
 func (s *GetEdgeContainerAppVersionResponseBodyVersion) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainers struct {
@@ -418,7 +432,17 @@ func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) SetStorage(v s
 }
 
 func (s *GetEdgeContainerAppVersionResponseBodyVersionContainers) Validate() error {
-	return dara.Validate(s)
+	if s.ACRImageInfo != nil {
+		if err := s.ACRImageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProbeContent != nil {
+		if err := s.ProbeContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetEdgeContainerAppVersionResponseBodyVersionContainersACRImageInfo struct {

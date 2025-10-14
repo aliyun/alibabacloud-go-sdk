@@ -93,7 +93,16 @@ func (s *ListInstanceQuotasWithUsageResponseBody) SetStatus(v string) *ListInsta
 }
 
 func (s *ListInstanceQuotasWithUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Quotas != nil {
+		for _, item := range s.Quotas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotas struct {
@@ -164,7 +173,16 @@ func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) SetUsage(v string) *List
 }
 
 func (s *ListInstanceQuotasWithUsageResponseBodyQuotas) Validate() error {
-	return dara.Validate(s)
+	if s.SiteUsage != nil {
+		for _, item := range s.SiteUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceQuotasWithUsageResponseBodyQuotasSiteUsage struct {

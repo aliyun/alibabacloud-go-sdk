@@ -184,7 +184,16 @@ func (s *GetHttpRequestHeaderModificationRuleResponseBody) SetSiteVersion(v int3
 }
 
 func (s *GetHttpRequestHeaderModificationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RequestHeaderModification != nil {
+		for _, item := range s.RequestHeaderModification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification struct {

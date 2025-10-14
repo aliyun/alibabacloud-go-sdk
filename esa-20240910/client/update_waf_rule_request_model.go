@@ -125,5 +125,10 @@ func (s *UpdateWafRuleRequest) SetStatus(v string) *UpdateWafRuleRequest {
 }
 
 func (s *UpdateWafRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

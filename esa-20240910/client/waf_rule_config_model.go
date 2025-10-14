@@ -239,7 +239,46 @@ func (s *WafRuleConfig) SetValue(v string) *WafRuleConfig {
 }
 
 func (s *WafRuleConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Actions != nil {
+		if err := s.Actions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AppPackage != nil {
+		if err := s.AppPackage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AppSdk != nil {
+		if err := s.AppSdk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ManagedRulesets != nil {
+		for _, item := range s.ManagedRulesets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RateLimit != nil {
+		if err := s.RateLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityLevel != nil {
+		if err := s.SecurityLevel.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Timer != nil {
+		if err := s.Timer.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigActions struct {
@@ -274,7 +313,17 @@ func (s *WafRuleConfigActions) SetResponse(v *WafRuleConfigActionsResponse) *Waf
 }
 
 func (s *WafRuleConfigActions) Validate() error {
-	return dara.Validate(s)
+	if s.Bypass != nil {
+		if err := s.Bypass.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigActionsBypass struct {
@@ -399,7 +448,16 @@ func (s *WafRuleConfigAppPackage) SetPackageSigns(v []*WafRuleConfigAppPackagePa
 }
 
 func (s *WafRuleConfigAppPackage) Validate() error {
-	return dara.Validate(s)
+	if s.PackageSigns != nil {
+		for _, item := range s.PackageSigns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigAppPackagePackageSigns struct {
@@ -479,7 +537,12 @@ func (s *WafRuleConfigAppSdk) SetFeatureAbnormal(v []*string) *WafRuleConfigAppS
 }
 
 func (s *WafRuleConfigAppSdk) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSign != nil {
+		if err := s.CustomSign.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigAppSdkCustomSign struct {
@@ -589,7 +652,16 @@ func (s *WafRuleConfigManagedRulesets) SetProtectionLevel(v int32) *WafRuleConfi
 }
 
 func (s *WafRuleConfigManagedRulesets) Validate() error {
-	return dara.Validate(s)
+	if s.ManagedRules != nil {
+		for _, item := range s.ManagedRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigManagedRulesetsManagedRules struct {
@@ -699,7 +771,17 @@ func (s *WafRuleConfigRateLimit) SetThreshold(v *WafRuleConfigRateLimitThreshold
 }
 
 func (s *WafRuleConfigRateLimit) Validate() error {
-	return dara.Validate(s)
+	if s.Characteristics != nil {
+		if err := s.Characteristics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Threshold != nil {
+		if err := s.Threshold.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigRateLimitThreshold struct {
@@ -764,7 +846,12 @@ func (s *WafRuleConfigRateLimitThreshold) SetTraffic(v string) *WafRuleConfigRat
 }
 
 func (s *WafRuleConfigRateLimitThreshold) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseStatus != nil {
+		if err := s.ResponseStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafRuleConfigRateLimitThresholdResponseStatus struct {

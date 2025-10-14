@@ -159,7 +159,22 @@ func (s *GetOriginProtectionResponseBody) SetSiteId(v int64) *GetOriginProtectio
 }
 
 func (s *GetOriginProtectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CurrentIPWhitelist != nil {
+		if err := s.CurrentIPWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DiffIPWhitelist != nil {
+		if err := s.DiffIPWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LatestIPWhitelist != nil {
+		if err := s.LatestIPWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOriginProtectionResponseBodyCurrentIPWhitelist struct {
@@ -244,7 +259,22 @@ func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) SetRemovedIPWhitelist(v
 }
 
 func (s *GetOriginProtectionResponseBodyDiffIPWhitelist) Validate() error {
-	return dara.Validate(s)
+	if s.AddedIPWhitelist != nil {
+		if err := s.AddedIPWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NoChangeIpWhitelist != nil {
+		if err := s.NoChangeIpWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RemovedIPWhitelist != nil {
+		if err := s.RemovedIPWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOriginProtectionResponseBodyDiffIPWhitelistAddedIPWhitelist struct {

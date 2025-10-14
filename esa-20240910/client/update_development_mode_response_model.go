@@ -59,5 +59,10 @@ func (s *UpdateDevelopmentModeResponse) SetBody(v *UpdateDevelopmentModeResponse
 }
 
 func (s *UpdateDevelopmentModeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

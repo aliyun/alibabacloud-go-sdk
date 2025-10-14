@@ -59,5 +59,10 @@ func (s *DescribeHttpDDoSAttackProtectionResponse) SetBody(v *DescribeHttpDDoSAt
 }
 
 func (s *DescribeHttpDDoSAttackProtectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

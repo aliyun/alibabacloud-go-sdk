@@ -104,7 +104,16 @@ func (s *ListManagedRulesGroupsResponseBody) SetTotalCount(v int32) *ListManaged
 }
 
 func (s *ListManagedRulesGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ManagedRulesGroups != nil {
+		for _, item := range s.ManagedRulesGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListManagedRulesGroupsResponseBodyManagedRulesGroups struct {

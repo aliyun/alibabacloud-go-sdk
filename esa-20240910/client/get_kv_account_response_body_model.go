@@ -176,7 +176,16 @@ func (s *GetKvAccountResponseBody) SetStatus(v string) *GetKvAccountResponseBody
 }
 
 func (s *GetKvAccountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceList != nil {
+		for _, item := range s.NamespaceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetKvAccountResponseBodyNamespaceList struct {

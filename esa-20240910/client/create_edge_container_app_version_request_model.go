@@ -133,7 +133,16 @@ func (s *CreateEdgeContainerAppVersionRequest) SetRemarks(v string) *CreateEdgeC
 }
 
 func (s *CreateEdgeContainerAppVersionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Containers != nil {
+		for _, item := range s.Containers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEdgeContainerAppVersionRequestContainers struct {
@@ -355,7 +364,17 @@ func (s *CreateEdgeContainerAppVersionRequestContainers) SetStorage(v string) *C
 }
 
 func (s *CreateEdgeContainerAppVersionRequestContainers) Validate() error {
-	return dara.Validate(s)
+	if s.ACRImageInfo != nil {
+		if err := s.ACRImageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProbeContent != nil {
+		if err := s.ProbeContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {

@@ -107,7 +107,42 @@ func (s *WafSiteSettings) SetSecurityLevel(v *WafSiteSettingsSecurityLevel) *Waf
 }
 
 func (s *WafSiteSettings) Validate() error {
-	return dara.Validate(s)
+	if s.AddBotProtectionHeaders != nil {
+		if err := s.AddBotProtectionHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AddSecurityHeaders != nil {
+		if err := s.AddSecurityHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BandwidthAbuseProtection != nil {
+		if err := s.BandwidthAbuseProtection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BotManagement != nil {
+		if err := s.BotManagement.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ClientIpIdentifier != nil {
+		if err := s.ClientIpIdentifier.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DisableSecurityModule != nil {
+		if err := s.DisableSecurityModule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityLevel != nil {
+		if err := s.SecurityLevel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafSiteSettingsAddBotProtectionHeaders struct {
@@ -267,7 +302,32 @@ func (s *WafSiteSettingsBotManagement) SetVerifiedBots(v *WafSiteSettingsBotMana
 }
 
 func (s *WafSiteSettingsBotManagement) Validate() error {
-	return dara.Validate(s)
+	if s.DefiniteBots != nil {
+		if err := s.DefiniteBots.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EffectOnStatic != nil {
+		if err := s.EffectOnStatic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.JSDetection != nil {
+		if err := s.JSDetection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LikelyBots != nil {
+		if err := s.LikelyBots.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VerifiedBots != nil {
+		if err := s.VerifiedBots.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type WafSiteSettingsBotManagementDefiniteBots struct {

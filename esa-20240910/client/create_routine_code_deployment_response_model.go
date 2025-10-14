@@ -59,5 +59,10 @@ func (s *CreateRoutineCodeDeploymentResponse) SetBody(v *CreateRoutineCodeDeploy
 }
 
 func (s *CreateRoutineCodeDeploymentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

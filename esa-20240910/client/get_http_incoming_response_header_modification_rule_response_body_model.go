@@ -30,35 +30,64 @@ type iGetHttpIncomingResponseHeaderModificationRuleResponseBody interface {
 }
 
 type GetHttpIncomingResponseHeaderModificationRuleResponseBody struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// 432637955352576
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- global: global configurations.
+	//
+	// 	- rule: rule configurations.
+	//
 	// example:
 	//
 	// rule
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId                  *string                                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of modifying response headers. You can add, delete, or modify a response header.
 	ResponseHeaderModification []*GetHttpIncomingResponseHeaderModificationRuleResponseBodyResponseHeaderModification `json:"ResponseHeaderModification,omitempty" xml:"ResponseHeaderModification,omitempty" type:"Repeated"`
+	// The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
+	//
+	// 	- true: Match all incoming requests.
+	//
+	// 	- Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+	//
 	// example:
 	//
 	// (http.host eq "video.example.com")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+	//
+	// 	- on
+	//
+	// 	- off
+	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
+	// The rule name. You do not need to set this parameter when you add global configuration.
+	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The order in which the rule is executed. A smaller value gives priority to the rule.
+	//
 	// example:
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// The version number of the configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+	//
 	// example:
 	//
 	// 0
@@ -155,22 +184,49 @@ func (s *GetHttpIncomingResponseHeaderModificationRuleResponseBody) SetSiteVersi
 }
 
 func (s *GetHttpIncomingResponseHeaderModificationRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResponseHeaderModification != nil {
+		for _, item := range s.ResponseHeaderModification {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHttpIncomingResponseHeaderModificationRuleResponseBodyResponseHeaderModification struct {
+	// The name of the response header.
+	//
 	// example:
 	//
 	// headerName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The action. Valid values:
+	//
+	// 	- add: adds a response header.
+	//
+	// 	- del: deletes a response header.
+	//
+	// 	- modify: modifies a response header.
+	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// The value type. Valid values:
+	//
+	// 	- static
+	//
+	// 	- dynamic
+	//
 	// example:
 	//
 	// static
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the response header.
+	//
 	// example:
 	//
 	// headerValue

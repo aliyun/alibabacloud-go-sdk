@@ -116,7 +116,16 @@ func (s *GetRoutineResponseBody) SetRequestId(v string) *GetRoutineResponseBody 
 }
 
 func (s *GetRoutineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRoutineResponseBodyEnvs struct {
@@ -156,7 +165,12 @@ func (s *GetRoutineResponseBodyEnvs) SetEnv(v string) *GetRoutineResponseBodyEnv
 }
 
 func (s *GetRoutineResponseBodyEnvs) Validate() error {
-	return dara.Validate(s)
+	if s.CodeDeploy != nil {
+		if err := s.CodeDeploy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRoutineResponseBodyEnvsCodeDeploy struct {
@@ -211,7 +225,16 @@ func (s *GetRoutineResponseBodyEnvsCodeDeploy) SetStrategy(v string) *GetRoutine
 }
 
 func (s *GetRoutineResponseBodyEnvsCodeDeploy) Validate() error {
-	return dara.Validate(s)
+	if s.CodeVersions != nil {
+		for _, item := range s.CodeVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRoutineResponseBodyEnvsCodeDeployCodeVersions struct {
