@@ -125,7 +125,16 @@ func (s *ListInstanceSnapshotResponseBody) SetTotalCount(v int64) *ListInstanceS
 }
 
 func (s *ListInstanceSnapshotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Snapshots != nil {
+		for _, item := range s.Snapshots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceSnapshotResponseBodySnapshots struct {
@@ -296,7 +305,16 @@ func (s *ListInstanceSnapshotResponseBodySnapshots) SetStatus(v string) *ListIns
 }
 
 func (s *ListInstanceSnapshotResponseBodySnapshots) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstanceSnapshotResponseBodySnapshotsLabels struct {

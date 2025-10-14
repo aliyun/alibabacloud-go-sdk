@@ -19,9 +19,11 @@ import (
 //
 // @return CreateIdleInstanceCullerResponse
 func (client *Client) CreateIdleInstanceCullerWithContext(ctx context.Context, InstanceId *string, request *CreateIdleInstanceCullerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateIdleInstanceCullerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CpuPercentThreshold) {
@@ -72,9 +74,11 @@ func (client *Client) CreateIdleInstanceCullerWithContext(ctx context.Context, I
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -217,9 +221,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return CreateInstanceShutdownTimerResponse
 func (client *Client) CreateInstanceShutdownTimerWithContext(ctx context.Context, InstanceId *string, request *CreateInstanceShutdownTimerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceShutdownTimerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DueTime) {
@@ -266,9 +272,11 @@ func (client *Client) CreateInstanceShutdownTimerWithContext(ctx context.Context
 //
 // @return CreateInstanceSnapshotResponse
 func (client *Client) CreateInstanceSnapshotWithContext(ctx context.Context, InstanceId *string, request *CreateInstanceSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceSnapshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExcludePaths) {
@@ -397,9 +405,11 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, InstanceId 
 //
 // @return DeleteInstanceLabelsResponse
 func (client *Client) DeleteInstanceLabelsWithContext(ctx context.Context, InstanceId *string, request *DeleteInstanceLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LabelKeys) {
@@ -498,6 +508,53 @@ func (client *Client) DeleteInstanceSnapshotWithContext(ctx context.Context, Ins
 
 // Summary:
 //
+// 批量删除实例
+//
+// @param request - DeleteInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstancesResponse
+func (client *Client) DeleteInstancesWithContext(ctx context.Context, request *DeleteInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstances"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/batch/instances/delete"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an auto stop policy for a specific idle instance.
 //
 // @param headers - map
@@ -541,9 +598,11 @@ func (client *Client) GetIdleInstanceCullerWithContext(ctx context.Context, Inst
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *string, request *GetInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Fields) {
@@ -590,9 +649,11 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *st
 //
 // @return GetInstanceEventsResponse
 func (client *Client) GetInstanceEventsWithContext(ctx context.Context, InstanceId *string, request *GetInstanceEventsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -651,9 +712,11 @@ func (client *Client) GetInstanceEventsWithContext(ctx context.Context, Instance
 //
 // @return GetInstanceMetricsResponse
 func (client *Client) GetInstanceMetricsWithContext(ctx context.Context, InstanceId *string, request *GetInstanceMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -778,9 +841,11 @@ func (client *Client) GetInstanceSnapshotWithContext(ctx context.Context, Instan
 //
 // @return GetLifecycleResponse
 func (client *Client) GetLifecycleWithContext(ctx context.Context, InstanceId *string, request *GetLifecycleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLifecycleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -843,9 +908,11 @@ func (client *Client) GetLifecycleWithContext(ctx context.Context, InstanceId *s
 //
 // @return GetMetricsResponse
 func (client *Client) GetMetricsWithContext(ctx context.Context, InstanceId *string, request *GetMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMetricsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Dimensions) {
@@ -912,9 +979,11 @@ func (client *Client) GetMetricsWithContext(ctx context.Context, InstanceId *str
 //
 // @return GetResourceGroupStatisticsResponse
 func (client *Client) GetResourceGroupStatisticsWithContext(ctx context.Context, request *GetResourceGroupStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetResourceGroupStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -969,9 +1038,11 @@ func (client *Client) GetResourceGroupStatisticsWithContext(ctx context.Context,
 //
 // @return GetTokenResponse
 func (client *Client) GetTokenWithContext(ctx context.Context, request *GetTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExpireTime) {
@@ -1018,9 +1089,11 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 //
 // @return GetUserCommandResponse
 func (client *Client) GetUserCommandWithContext(ctx context.Context, UserCommandId *string, request *GetUserCommandRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserCommandResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1100,9 +1173,11 @@ func (client *Client) GetUserConfigWithContext(ctx context.Context, headers map[
 //
 // @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *ListEcsSpecsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcceleratorType) {
@@ -1165,9 +1240,11 @@ func (client *Client) ListEcsSpecsWithContext(ctx context.Context, request *List
 //
 // @return ListInstanceSnapshotResponse
 func (client *Client) ListInstanceSnapshotWithContext(ctx context.Context, InstanceId *string, request *ListInstanceSnapshotRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceSnapshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Order) {
@@ -1222,9 +1299,11 @@ func (client *Client) ListInstanceSnapshotWithContext(ctx context.Context, Insta
 //
 // @return ListInstanceStatisticsResponse
 func (client *Client) ListInstanceStatisticsWithContext(ctx context.Context, request *ListInstanceStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstanceStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.WorkspaceIds) {
@@ -1267,9 +1346,11 @@ func (client *Client) ListInstanceStatisticsWithContext(ctx context.Context, req
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListInstancesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1426,9 +1507,11 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 //
 // @return ListSystemLogsResponse
 func (client *Client) ListSystemLogsWithContext(ctx context.Context, request *ListSystemLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSystemLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GmtEndTime) {
@@ -1544,9 +1627,11 @@ func (client *Client) StartInstanceWithContext(ctx context.Context, InstanceId *
 //
 // @return StopInstanceResponse
 func (client *Client) StopInstanceWithContext(ctx context.Context, InstanceId *string, request *StopInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SaveImage) {
@@ -1579,6 +1664,53 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
+// 批量停止实例
+//
+// @param request - StopInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopInstancesResponse
+func (client *Client) StopInstancesWithContext(ctx context.Context, request *StopInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopInstances"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/batch/instances/stop"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the properties of a DSW instance.
 //
 // @param request - UpdateInstanceRequest
@@ -1589,9 +1721,11 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, InstanceId *s
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
@@ -1702,6 +1836,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 		body["SpotSpec"] = request.SpotSpec
 	}
 
+	if !dara.IsNil(request.StartInstance) {
+		body["StartInstance"] = request.StartInstance
+	}
+
 	if !dara.IsNil(request.UserCommand) {
 		body["UserCommand"] = request.UserCommand
 	}
@@ -1754,9 +1892,11 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 //
 // @return UpdateInstanceLabelsResponse
 func (client *Client) UpdateInstanceLabelsWithContext(ctx context.Context, InstanceId *string, request *UpdateInstanceLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceLabelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Labels) {

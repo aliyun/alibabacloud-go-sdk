@@ -47,5 +47,14 @@ func (s *DynamicMount) SetMountPoints(v []*DynamicMountPoint) *DynamicMount {
 }
 
 func (s *DynamicMount) Validate() error {
-	return dara.Validate(s)
+	if s.MountPoints != nil {
+		for _, item := range s.MountPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

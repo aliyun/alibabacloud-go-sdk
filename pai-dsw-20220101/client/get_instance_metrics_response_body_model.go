@@ -150,7 +150,16 @@ func (s *GetInstanceMetricsResponseBody) SetSuccess(v bool) *GetInstanceMetricsR
 }
 
 func (s *GetInstanceMetricsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PodMetrics != nil {
+		for _, item := range s.PodMetrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceMetricsResponseBodyPodMetrics struct {
@@ -191,7 +200,16 @@ func (s *GetInstanceMetricsResponseBodyPodMetrics) SetPodId(v string) *GetInstan
 }
 
 func (s *GetInstanceMetricsResponseBodyPodMetrics) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceMetricsResponseBodyPodMetricsMetrics struct {

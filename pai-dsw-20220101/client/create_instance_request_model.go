@@ -451,7 +451,83 @@ func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequ
 }
 
 func (s *CreateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Affinity != nil {
+		if err := s.Affinity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CloudDisks != nil {
+		for _, item := range s.CloudDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Datasets != nil {
+		for _, item := range s.Datasets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DynamicMount != nil {
+		if err := s.DynamicMount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RequestedResource != nil {
+		if err := s.RequestedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotSpec != nil {
+		if err := s.SpotSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserCommand != nil {
+		if err := s.UserCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestAffinity struct {
@@ -477,7 +553,12 @@ func (s *CreateInstanceRequestAffinity) SetCPU(v *CreateInstanceRequestAffinityC
 }
 
 func (s *CreateInstanceRequestAffinity) Validate() error {
-	return dara.Validate(s)
+	if s.CPU != nil {
+		if err := s.CPU.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestAffinityCPU struct {
@@ -654,7 +735,12 @@ func (s *CreateInstanceRequestCloudDisks) SetSubType(v string) *CreateInstanceRe
 }
 
 func (s *CreateInstanceRequestCloudDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Status != nil {
+		if err := s.Status.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestCloudDisksStatus struct {
@@ -1163,7 +1249,12 @@ func (s *CreateInstanceRequestUserCommand) SetOnStart(v *CreateInstanceRequestUs
 }
 
 func (s *CreateInstanceRequestUserCommand) Validate() error {
-	return dara.Validate(s)
+	if s.OnStart != nil {
+		if err := s.OnStart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateInstanceRequestUserCommandOnStart struct {
@@ -1307,5 +1398,19 @@ func (s *CreateInstanceRequestUserVpc) SetVpcId(v string) *CreateInstanceRequest
 }
 
 func (s *CreateInstanceRequestUserVpc) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthLimit != nil {
+		if err := s.BandwidthLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardInfos != nil {
+		for _, item := range s.ForwardInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -150,7 +150,16 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstances struct {
@@ -814,7 +823,92 @@ func (s *ListInstancesResponseBodyInstances) SetWorkspaceSource(v string) *ListI
 }
 
 func (s *ListInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Affinity != nil {
+		if err := s.Affinity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CloudDisks != nil {
+		for _, item := range s.CloudDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Datasets != nil {
+		for _, item := range s.Datasets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DynamicMount != nil {
+		if err := s.DynamicMount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IdleInstanceCuller != nil {
+		if err := s.IdleInstanceCuller.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceShutdownTimer != nil {
+		if err := s.InstanceShutdownTimer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceSnapshotList != nil {
+		for _, item := range s.InstanceSnapshotList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LatestSnapshot != nil {
+		if err := s.LatestSnapshot.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestedResource != nil {
+		if err := s.RequestedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesAffinity struct {
@@ -840,7 +934,12 @@ func (s *ListInstancesResponseBodyInstancesAffinity) SetCPU(v *ListInstancesResp
 }
 
 func (s *ListInstancesResponseBodyInstancesAffinity) Validate() error {
-	return dara.Validate(s)
+	if s.CPU != nil {
+		if err := s.CPU.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesAffinityCPU struct {
@@ -1861,5 +1960,19 @@ func (s *ListInstancesResponseBodyInstancesUserVpc) SetVpcId(v string) *ListInst
 }
 
 func (s *ListInstancesResponseBodyInstancesUserVpc) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthLimit != nil {
+		if err := s.BandwidthLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardInfos != nil {
+		for _, item := range s.ForwardInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

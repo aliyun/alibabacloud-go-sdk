@@ -63,6 +63,8 @@ type iUpdateInstanceRequest interface {
 	GetRequestedResource() *UpdateInstanceRequestRequestedResource
 	SetSpotSpec(v *UpdateInstanceRequestSpotSpec) *UpdateInstanceRequest
 	GetSpotSpec() *UpdateInstanceRequestSpotSpec
+	SetStartInstance(v bool) *UpdateInstanceRequest
+	GetStartInstance() *bool
 	SetUserCommand(v *UpdateInstanceRequestUserCommand) *UpdateInstanceRequest
 	GetUserCommand() *UpdateInstanceRequestUserCommand
 	SetUserId(v string) *UpdateInstanceRequest
@@ -198,6 +200,7 @@ type UpdateInstanceRequest struct {
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	SpotSpec          *UpdateInstanceRequestSpotSpec          `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty" type:"Struct"`
+	StartInstance     *bool                                   `json:"StartInstance,omitempty" xml:"StartInstance,omitempty"`
 	UserCommand       *UpdateInstanceRequestUserCommand       `json:"UserCommand,omitempty" xml:"UserCommand,omitempty" type:"Struct"`
 	// the User ID of the instance.
 	//
@@ -345,6 +348,10 @@ func (s *UpdateInstanceRequest) GetRequestedResource() *UpdateInstanceRequestReq
 
 func (s *UpdateInstanceRequest) GetSpotSpec() *UpdateInstanceRequestSpotSpec {
 	return s.SpotSpec
+}
+
+func (s *UpdateInstanceRequest) GetStartInstance() *bool {
+	return s.StartInstance
 }
 
 func (s *UpdateInstanceRequest) GetUserCommand() *UpdateInstanceRequestUserCommand {
@@ -498,6 +505,11 @@ func (s *UpdateInstanceRequest) SetSpotSpec(v *UpdateInstanceRequestSpotSpec) *U
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetStartInstance(v bool) *UpdateInstanceRequest {
+	s.StartInstance = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetUserCommand(v *UpdateInstanceRequestUserCommand) *UpdateInstanceRequest {
 	s.UserCommand = v
 	return s
@@ -519,7 +531,65 @@ func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequ
 }
 
 func (s *UpdateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Affinity != nil {
+		if err := s.Affinity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AssignNodeSpec != nil {
+		if err := s.AssignNodeSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CloudDisks != nil {
+		for _, item := range s.CloudDisks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CredentialConfig != nil {
+		if err := s.CredentialConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Datasets != nil {
+		for _, item := range s.Datasets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DynamicMount != nil {
+		if err := s.DynamicMount.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RequestedResource != nil {
+		if err := s.RequestedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SpotSpec != nil {
+		if err := s.SpotSpec.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserCommand != nil {
+		if err := s.UserCommand.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserVpc != nil {
+		if err := s.UserVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceRequestAffinity struct {
@@ -545,7 +615,12 @@ func (s *UpdateInstanceRequestAffinity) SetCPU(v *UpdateInstanceRequestAffinityC
 }
 
 func (s *UpdateInstanceRequestAffinity) Validate() error {
-	return dara.Validate(s)
+	if s.CPU != nil {
+		if err := s.CPU.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceRequestAffinityCPU struct {
@@ -1030,7 +1105,12 @@ func (s *UpdateInstanceRequestUserCommand) SetOnStart(v *UpdateInstanceRequestUs
 }
 
 func (s *UpdateInstanceRequestUserCommand) Validate() error {
-	return dara.Validate(s)
+	if s.OnStart != nil {
+		if err := s.OnStart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateInstanceRequestUserCommandOnStart struct {
@@ -1174,5 +1254,19 @@ func (s *UpdateInstanceRequestUserVpc) SetVpcId(v string) *UpdateInstanceRequest
 }
 
 func (s *UpdateInstanceRequestUserVpc) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthLimit != nil {
+		if err := s.BandwidthLimit.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ForwardInfos != nil {
+		for _, item := range s.ForwardInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

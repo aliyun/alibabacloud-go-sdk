@@ -150,7 +150,16 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 func (s *ListEcsSpecsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EcsSpecs != nil {
+		for _, item := range s.EcsSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsSpecsResponseBodyEcsSpecs struct {
@@ -375,7 +384,16 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetSystemDiskCapacity(v int64) *ListE
 }
 
 func (s *ListEcsSpecsResponseBodyEcsSpecs) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEcsSpecsResponseBodyEcsSpecsLabels struct {

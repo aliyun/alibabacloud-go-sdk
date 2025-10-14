@@ -47,7 +47,16 @@ func (s *ListSystemLogsResponseBody) SetSystemLogs(v []*ListSystemLogsResponseBo
 }
 
 func (s *ListSystemLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemLogs != nil {
+		for _, item := range s.SystemLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSystemLogsResponseBodySystemLogs struct {

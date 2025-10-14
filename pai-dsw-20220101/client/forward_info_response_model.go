@@ -164,7 +164,12 @@ func (s *ForwardInfoResponse) SetSSHPublicKey(v string) *ForwardInfoResponse {
 }
 
 func (s *ForwardInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectInfo != nil {
+		if err := s.ConnectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ForwardInfoResponseConnectInfo struct {
@@ -225,7 +230,17 @@ func (s *ForwardInfoResponseConnectInfo) SetPhase(v string) *ForwardInfoResponse
 }
 
 func (s *ForwardInfoResponseConnectInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Internet != nil {
+		if err := s.Internet.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Intranet != nil {
+		if err := s.Intranet.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ForwardInfoResponseConnectInfoInternet struct {

@@ -59,5 +59,10 @@ func (s *GetLifecycleResponse) SetBody(v *GetLifecycleResponseBody) *GetLifecycl
 }
 
 func (s *GetLifecycleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

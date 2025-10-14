@@ -141,7 +141,12 @@ func (s *GetUserCommandResponseBody) SetAccessDeniedDetail(v map[string]interfac
 }
 
 func (s *GetUserCommandResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OnStart != nil {
+		if err := s.OnStart.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserCommandResponseBodyOnStart struct {

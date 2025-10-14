@@ -65,7 +65,16 @@ func (s *CredentialConfig) SetEnable(v bool) *CredentialConfig {
 }
 
 func (s *CredentialConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Configs != nil {
+		for _, item := range s.Configs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CredentialConfigConfigs struct {
@@ -120,7 +129,16 @@ func (s *CredentialConfigConfigs) SetType(v string) *CredentialConfigConfigs {
 }
 
 func (s *CredentialConfigConfigs) Validate() error {
-	return dara.Validate(s)
+	if s.Roles != nil {
+		for _, item := range s.Roles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CredentialConfigConfigsRoles struct {
@@ -201,7 +219,12 @@ func (s *CredentialConfigConfigsRoles) SetUserInfo(v *CredentialConfigConfigsRol
 }
 
 func (s *CredentialConfigConfigsRoles) Validate() error {
-	return dara.Validate(s)
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CredentialConfigConfigsRolesUserInfo struct {

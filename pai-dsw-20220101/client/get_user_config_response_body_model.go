@@ -155,7 +155,12 @@ func (s *GetUserConfigResponseBody) SetSuccess(v bool) *GetUserConfigResponseBod
 }
 
 func (s *GetUserConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FreeTier != nil {
+		if err := s.FreeTier.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserConfigResponseBodyFreeTier struct {
