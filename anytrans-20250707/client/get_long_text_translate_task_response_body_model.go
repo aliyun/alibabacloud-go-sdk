@@ -110,7 +110,12 @@ func (s *GetLongTextTranslateTaskResponseBody) SetSuccess(v bool) *GetLongTextTr
 }
 
 func (s *GetLongTextTranslateTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLongTextTranslateTaskResponseBodyData struct {
@@ -148,7 +153,12 @@ func (s *GetLongTextTranslateTaskResponseBodyData) SetUsage(v *GetLongTextTransl
 }
 
 func (s *GetLongTextTranslateTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLongTextTranslateTaskResponseBodyDataUsage struct {

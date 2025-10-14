@@ -124,7 +124,12 @@ func (s *SubmitLongTextTranslateTaskRequest) SetWorkspaceId(v string) *SubmitLon
 }
 
 func (s *SubmitLongTextTranslateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitLongTextTranslateTaskRequestExt struct {
@@ -202,7 +207,35 @@ func (s *SubmitLongTextTranslateTaskRequestExt) SetTextTransform(v *SubmitLongTe
 }
 
 func (s *SubmitLongTextTranslateTaskRequestExt) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Examples != nil {
+		for _, item := range s.Examples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Terminologies != nil {
+		for _, item := range s.Terminologies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextTransform != nil {
+		if err := s.TextTransform.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitLongTextTranslateTaskRequestExtConfig struct {

@@ -59,5 +59,10 @@ func (s *GetHtmlTranslateTaskResponse) SetBody(v *GetHtmlTranslateTaskResponseBo
 }
 
 func (s *GetHtmlTranslateTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

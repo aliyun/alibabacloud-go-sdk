@@ -110,7 +110,12 @@ func (s *TermEditResponseBody) SetSuccess(v bool) *TermEditResponseBody {
 }
 
 func (s *TermEditResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TermEditResponseBodyData struct {
@@ -148,7 +153,16 @@ func (s *TermEditResponseBodyData) SetTerms(v []*TermEditResponseBodyDataTerms) 
 }
 
 func (s *TermEditResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Terms != nil {
+		for _, item := range s.Terms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TermEditResponseBodyDataTerms struct {

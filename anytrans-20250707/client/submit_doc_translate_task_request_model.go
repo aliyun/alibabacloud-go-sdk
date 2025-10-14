@@ -133,10 +133,16 @@ func (s *SubmitDocTranslateTaskRequest) SetWorkspaceId(v string) *SubmitDocTrans
 }
 
 func (s *SubmitDocTranslateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDocTranslateTaskRequestExt struct {
+	Config *SubmitDocTranslateTaskRequestExtConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// example:
 	//
 	// This text comes from a rigorous academic paper. Please provide a translation that complies with academic standards.
@@ -152,12 +158,21 @@ func (s SubmitDocTranslateTaskRequestExt) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitDocTranslateTaskRequestExt) GetConfig() *SubmitDocTranslateTaskRequestExtConfig {
+	return s.Config
+}
+
 func (s *SubmitDocTranslateTaskRequestExt) GetDomainHint() *string {
 	return s.DomainHint
 }
 
 func (s *SubmitDocTranslateTaskRequestExt) GetTerminologies() []*SubmitDocTranslateTaskRequestExtTerminologies {
 	return s.Terminologies
+}
+
+func (s *SubmitDocTranslateTaskRequestExt) SetConfig(v *SubmitDocTranslateTaskRequestExtConfig) *SubmitDocTranslateTaskRequestExt {
+	s.Config = v
+	return s
 }
 
 func (s *SubmitDocTranslateTaskRequestExt) SetDomainHint(v string) *SubmitDocTranslateTaskRequestExt {
@@ -171,6 +186,45 @@ func (s *SubmitDocTranslateTaskRequestExt) SetTerminologies(v []*SubmitDocTransl
 }
 
 func (s *SubmitDocTranslateTaskRequestExt) Validate() error {
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Terminologies != nil {
+		for _, item := range s.Terminologies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SubmitDocTranslateTaskRequestExtConfig struct {
+	SkipImgTrans *bool `json:"skipImgTrans,omitempty" xml:"skipImgTrans,omitempty"`
+}
+
+func (s SubmitDocTranslateTaskRequestExtConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitDocTranslateTaskRequestExtConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocTranslateTaskRequestExtConfig) GetSkipImgTrans() *bool {
+	return s.SkipImgTrans
+}
+
+func (s *SubmitDocTranslateTaskRequestExtConfig) SetSkipImgTrans(v bool) *SubmitDocTranslateTaskRequestExtConfig {
+	s.SkipImgTrans = &v
+	return s
+}
+
+func (s *SubmitDocTranslateTaskRequestExtConfig) Validate() error {
 	return dara.Validate(s)
 }
 

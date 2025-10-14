@@ -121,7 +121,12 @@ func (s *TermEditRequest) SetWorkspaceId(v string) *TermEditRequest {
 }
 
 func (s *TermEditRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TermEditRequestExt struct {
@@ -147,7 +152,16 @@ func (s *TermEditRequestExt) SetTerms(v []*TermEditRequestExtTerms) *TermEditReq
 }
 
 func (s *TermEditRequestExt) Validate() error {
-	return dara.Validate(s)
+	if s.Terms != nil {
+		for _, item := range s.Terms {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TermEditRequestExtTerms struct {

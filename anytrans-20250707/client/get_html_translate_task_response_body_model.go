@@ -110,7 +110,12 @@ func (s *GetHtmlTranslateTaskResponseBody) SetSuccess(v bool) *GetHtmlTranslateT
 }
 
 func (s *GetHtmlTranslateTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHtmlTranslateTaskResponseBodyData struct {
@@ -174,7 +179,12 @@ func (s *GetHtmlTranslateTaskResponseBodyData) SetUsage(v *GetHtmlTranslateTaskR
 }
 
 func (s *GetHtmlTranslateTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHtmlTranslateTaskResponseBodyDataUsage struct {

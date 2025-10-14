@@ -127,7 +127,12 @@ func (s *SubmitImageTranslateTaskRequest) SetWorkspaceId(v string) *SubmitImageT
 }
 
 func (s *SubmitImageTranslateTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Ext != nil {
+		if err := s.Ext.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitImageTranslateTaskRequestExt struct {
@@ -195,7 +200,30 @@ func (s *SubmitImageTranslateTaskRequestExt) SetTextTransform(v *SubmitImageTran
 }
 
 func (s *SubmitImageTranslateTaskRequestExt) Validate() error {
-	return dara.Validate(s)
+	if s.Examples != nil {
+		for _, item := range s.Examples {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Terminologies != nil {
+		for _, item := range s.Terminologies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextTransform != nil {
+		if err := s.TextTransform.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitImageTranslateTaskRequestExtExamples struct {

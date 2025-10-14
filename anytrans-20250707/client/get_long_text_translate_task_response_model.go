@@ -59,5 +59,10 @@ func (s *GetLongTextTranslateTaskResponse) SetBody(v *GetLongTextTranslateTaskRe
 }
 
 func (s *GetLongTextTranslateTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

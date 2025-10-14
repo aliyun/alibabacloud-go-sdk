@@ -110,7 +110,12 @@ func (s *BatchTranslateResponseBody) SetSuccess(v bool) *BatchTranslateResponseB
 }
 
 func (s *BatchTranslateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchTranslateResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *BatchTranslateResponseBodyData) SetTranslationList(v []*BatchTranslateR
 }
 
 func (s *BatchTranslateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TranslationList != nil {
+		for _, item := range s.TranslationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchTranslateResponseBodyDataTranslationList struct {
@@ -212,7 +226,12 @@ func (s *BatchTranslateResponseBodyDataTranslationList) SetUsage(v *BatchTransla
 }
 
 func (s *BatchTranslateResponseBodyDataTranslationList) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type BatchTranslateResponseBodyDataTranslationListUsage struct {

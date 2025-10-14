@@ -112,7 +112,12 @@ func (s *TextTranslateResponseBody) SetSuccess(v bool) *TextTranslateResponseBod
 }
 
 func (s *TextTranslateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TextTranslateResponseBodyData struct {
@@ -150,7 +155,12 @@ func (s *TextTranslateResponseBodyData) SetUsage(v *TextTranslateResponseBodyDat
 }
 
 func (s *TextTranslateResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TextTranslateResponseBodyDataUsage struct {

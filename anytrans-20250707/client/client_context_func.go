@@ -19,9 +19,11 @@ import (
 //
 // @return BatchTranslateResponse
 func (client *Client) BatchTranslateWithContext(ctx context.Context, tmpReq *BatchTranslateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchTranslateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &BatchTranslateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -102,9 +104,11 @@ func (client *Client) BatchTranslateWithContext(ctx context.Context, tmpReq *Bat
 //
 // @return GetDocTranslateTaskResponse
 func (client *Client) GetDocTranslateTaskWithContext(ctx context.Context, request *GetDocTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -151,9 +155,11 @@ func (client *Client) GetDocTranslateTaskWithContext(ctx context.Context, reques
 //
 // @return GetHtmlTranslateTaskResponse
 func (client *Client) GetHtmlTranslateTaskWithContext(ctx context.Context, request *GetHtmlTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHtmlTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -200,9 +206,11 @@ func (client *Client) GetHtmlTranslateTaskWithContext(ctx context.Context, reque
 //
 // @return GetImageTranslateTaskResponse
 func (client *Client) GetImageTranslateTaskWithContext(ctx context.Context, request *GetImageTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetImageTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -249,9 +257,11 @@ func (client *Client) GetImageTranslateTaskWithContext(ctx context.Context, requ
 //
 // @return GetLongTextTranslateTaskResponse
 func (client *Client) GetLongTextTranslateTaskWithContext(ctx context.Context, request *GetLongTextTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLongTextTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -298,9 +308,11 @@ func (client *Client) GetLongTextTranslateTaskWithContext(ctx context.Context, r
 //
 // @return SubmitDocTranslateTaskResponse
 func (client *Client) SubmitDocTranslateTaskWithContext(ctx context.Context, tmpReq *SubmitDocTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitDocTranslateTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitDocTranslateTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -373,9 +385,11 @@ func (client *Client) SubmitDocTranslateTaskWithContext(ctx context.Context, tmp
 //
 // @return SubmitHtmlTranslateTaskResponse
 func (client *Client) SubmitHtmlTranslateTaskWithContext(ctx context.Context, tmpReq *SubmitHtmlTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitHtmlTranslateTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitHtmlTranslateTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -448,9 +462,11 @@ func (client *Client) SubmitHtmlTranslateTaskWithContext(ctx context.Context, tm
 //
 // @return SubmitImageTranslateTaskResponse
 func (client *Client) SubmitImageTranslateTaskWithContext(ctx context.Context, tmpReq *SubmitImageTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitImageTranslateTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitImageTranslateTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -527,9 +543,11 @@ func (client *Client) SubmitImageTranslateTaskWithContext(ctx context.Context, t
 //
 // @return SubmitLongTextTranslateTaskResponse
 func (client *Client) SubmitLongTextTranslateTaskWithContext(ctx context.Context, tmpReq *SubmitLongTextTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitLongTextTranslateTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitLongTextTranslateTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -602,9 +620,11 @@ func (client *Client) SubmitLongTextTranslateTaskWithContext(ctx context.Context
 //
 // @return TermEditResponse
 func (client *Client) TermEditWithContext(ctx context.Context, tmpReq *TermEditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermEditResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TermEditShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -673,9 +693,11 @@ func (client *Client) TermEditWithContext(ctx context.Context, tmpReq *TermEditR
 //
 // @return TermQueryResponse
 func (client *Client) TermQueryWithContext(ctx context.Context, request *TermQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TermQueryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Scene) {
@@ -734,9 +756,11 @@ func (client *Client) TermQueryWithContext(ctx context.Context, request *TermQue
 //
 // @return TextTranslateResponse
 func (client *Client) TextTranslateWithContext(ctx context.Context, tmpReq *TextTranslateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TextTranslateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &TextTranslateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

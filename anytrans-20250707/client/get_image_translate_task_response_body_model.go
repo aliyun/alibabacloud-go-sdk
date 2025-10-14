@@ -125,7 +125,12 @@ func (s *GetImageTranslateTaskResponseBody) SetSynchro(v bool) *GetImageTranslat
 }
 
 func (s *GetImageTranslateTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyData struct {
@@ -163,7 +168,12 @@ func (s *GetImageTranslateTaskResponseBodyData) SetTranslation(v *GetImageTransl
 }
 
 func (s *GetImageTranslateTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Translation != nil {
+		if err := s.Translation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslation struct {
@@ -276,7 +286,25 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslation) SetWidth(v int64) *Ge
 }
 
 func (s *GetImageTranslateTaskResponseBodyDataTranslation) Validate() error {
-	return dara.Validate(s)
+	if s.BoundingBoxes != nil {
+		for _, item := range s.BoundingBoxes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableInfos != nil {
+		for _, item := range s.TableInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes struct {
@@ -410,7 +438,27 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes) SetUpRig
 }
 
 func (s *GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes) Validate() error {
-	return dara.Validate(s)
+	if s.DownLeft != nil {
+		if err := s.DownLeft.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DownRight != nil {
+		if err := s.DownRight.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpLeft != nil {
+		if err := s.UpLeft.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UpRight != nil {
+		if err := s.UpRight.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft struct {
@@ -638,7 +686,16 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfos) SetYCellSiz
 }
 
 func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfos) Validate() error {
-	return dara.Validate(s)
+	if s.CellInfos != nil {
+		for _, item := range s.CellInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos struct {
@@ -738,7 +795,16 @@ func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos) Se
 }
 
 func (s *GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos struct {
