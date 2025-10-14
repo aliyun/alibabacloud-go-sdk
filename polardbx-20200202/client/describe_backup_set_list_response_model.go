@@ -59,5 +59,10 @@ func (s *DescribeBackupSetListResponse) SetBody(v *DescribeBackupSetListResponse
 }
 
 func (s *DescribeBackupSetListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

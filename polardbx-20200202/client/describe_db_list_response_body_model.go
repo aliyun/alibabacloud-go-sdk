@@ -80,7 +80,16 @@ func (s *DescribeDbListResponseBody) SetSuccess(v bool) *DescribeDbListResponseB
 }
 
 func (s *DescribeDbListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDbListResponseBodyData struct {
@@ -157,7 +166,16 @@ func (s *DescribeDbListResponseBodyData) SetDBName(v string) *DescribeDbListResp
 }
 
 func (s *DescribeDbListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDbListResponseBodyDataAccounts struct {

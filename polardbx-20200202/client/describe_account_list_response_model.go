@@ -59,5 +59,10 @@ func (s *DescribeAccountListResponse) SetBody(v *DescribeAccountListResponseBody
 }
 
 func (s *DescribeAccountListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

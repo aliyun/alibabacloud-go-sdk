@@ -47,7 +47,12 @@ func (s *DescribeColdDataBasicInfoResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeColdDataBasicInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeColdDataBasicInfoResponseBodyData struct {

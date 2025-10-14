@@ -80,7 +80,12 @@ func (s *DescribeDistributeTableListResponseBody) SetSuccess(v bool) *DescribeDi
 }
 
 func (s *DescribeDistributeTableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDistributeTableListResponseBodyData struct {
@@ -105,7 +110,16 @@ func (s *DescribeDistributeTableListResponseBodyData) SetTables(v []*DescribeDis
 }
 
 func (s *DescribeDistributeTableListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDistributeTableListResponseBodyDataTables struct {

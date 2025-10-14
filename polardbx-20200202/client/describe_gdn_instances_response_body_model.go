@@ -80,7 +80,12 @@ func (s *DescribeGdnInstancesResponseBody) SetSuccess(v bool) *DescribeGdnInstan
 }
 
 func (s *DescribeGdnInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGdnInstancesResponseBodyData struct {
@@ -144,7 +149,16 @@ func (s *DescribeGdnInstancesResponseBodyData) SetTotalNumber(v string) *Describ
 }
 
 func (s *DescribeGdnInstancesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.GdnInstanceList != nil {
+		for _, item := range s.GdnInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
@@ -156,6 +170,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// gdn-***
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
+	GdnMode         *string `json:"GdnMode,omitempty" xml:"GdnMode,omitempty"`
 	// example:
 	//
 	// 2025-01-02T13:11:10.000+0000
@@ -164,7 +179,10 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	// example:
 	//
 	// 5.7
-	MysqlVersion *string `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	MysqlVersion        *string `json:"MysqlVersion,omitempty" xml:"MysqlVersion,omitempty"`
+	RplConflictStrategy *string `json:"RplConflictStrategy,omitempty" xml:"RplConflictStrategy,omitempty"`
+	RplDmlStrategy      *string `json:"RplDmlStrategy,omitempty" xml:"RplDmlStrategy,omitempty"`
+	RplSyncDdl          *bool   `json:"RplSyncDdl,omitempty" xml:"RplSyncDdl,omitempty"`
 	// example:
 	//
 	// Creating
@@ -191,6 +209,10 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetGdnInstanceName
 	return s.GdnInstanceName
 }
 
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetGdnMode() *string {
+	return s.GdnMode
+}
+
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetGmtCreated() *string {
 	return s.GmtCreated
 }
@@ -201,6 +223,18 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetMemberList() []
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetMysqlVersion() *string {
 	return s.MysqlVersion
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetRplConflictStrategy() *string {
+	return s.RplConflictStrategy
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetRplDmlStrategy() *string {
+	return s.RplDmlStrategy
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetRplSyncDdl() *bool {
+	return s.RplSyncDdl
 }
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) GetStatus() *string {
@@ -221,6 +255,11 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetGdnInstanceName
 	return s
 }
 
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetGdnMode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.GdnMode = &v
+	return s
+}
+
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetGmtCreated(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
 	s.GmtCreated = &v
 	return s
@@ -236,6 +275,21 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetMysqlVersion(v 
 	return s
 }
 
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetRplConflictStrategy(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.RplConflictStrategy = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetRplDmlStrategy(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.RplDmlStrategy = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetRplSyncDdl(v bool) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
+	s.RplSyncDdl = &v
+	return s
+}
+
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetStatus(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceList {
 	s.Status = &v
 	return s
@@ -247,7 +301,16 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) SetSwitchHistory(v
 }
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.MemberList != nil {
+		for _, item := range s.MemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
@@ -266,7 +329,8 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// example:
 	//
 	// drds_polarxpre_public_cn
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityCode  *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	DataSyncStatus *string `json:"DataSyncStatus,omitempty" xml:"DataSyncStatus,omitempty"`
 	// example:
 	//
 	// mysql.n4.medium.25
@@ -294,7 +358,8 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// example:
 	//
 	// cn-zhangjiakou-a
-	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	PrimaryZone     *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	ReadWriteStatus *string `json:"ReadWriteStatus,omitempty" xml:"ReadWriteStatus,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -352,6 +417,10 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetCommo
 	return s.CommodityCode
 }
 
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetDataSyncStatus() *string {
+	return s.DataSyncStatus
+}
+
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetDnNodeClassCode() *string {
 	return s.DnNodeClassCode
 }
@@ -378,6 +447,10 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetPayTy
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetPrimaryZone() *string {
 	return s.PrimaryZone
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetReadWriteStatus() *string {
+	return s.ReadWriteStatus
 }
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) GetRegionId() *string {
@@ -432,6 +505,11 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetCommo
 	return s
 }
 
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetDataSyncStatus(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.DataSyncStatus = &v
+	return s
+}
+
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetDnNodeClassCode(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
 	s.DnNodeClassCode = &v
 	return s
@@ -464,6 +542,11 @@ func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetPayTy
 
 func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetPrimaryZone(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
 	s.PrimaryZone = &v
+	return s
+}
+
+func (s *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList) SetReadWriteStatus(v string) *DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList {
+	s.ReadWriteStatus = &v
 	return s
 }
 

@@ -50,7 +50,12 @@ func (s *DescribeDBInstanceViaEndpointResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeDBInstanceViaEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		if err := s.DBInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
@@ -599,7 +604,34 @@ func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstance) SetZoneId(v string
 }
 
 func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ConnAddrs != nil {
+		for _, item := range s.ConnAddrs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DBNodes != nil {
+		for _, item := range s.DBNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagSet != nil {
+		for _, item := range s.TagSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs struct {

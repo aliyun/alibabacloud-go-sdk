@@ -95,7 +95,16 @@ func (s *DescribeDBInstancesResponseBody) SetTotalNumber(v int32) *DescribeDBIns
 }
 
 func (s *DescribeDBInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstances != nil {
+		for _, item := range s.DBInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstances struct {
@@ -674,7 +683,25 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetIsInGdn(v bool) *Describ
 }
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagSet != nil {
+		for _, item := range s.TagSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesNodes struct {

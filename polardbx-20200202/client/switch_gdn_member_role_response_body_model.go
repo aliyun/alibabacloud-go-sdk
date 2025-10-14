@@ -82,7 +82,12 @@ func (s *SwitchGdnMemberRoleResponseBody) SetSuccess(v bool) *SwitchGdnMemberRol
 }
 
 func (s *SwitchGdnMemberRoleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SwitchGdnMemberRoleResponseBodyData struct {

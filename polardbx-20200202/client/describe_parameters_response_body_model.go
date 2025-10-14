@@ -50,7 +50,12 @@ func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParamet
 }
 
 func (s *DescribeParametersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeParametersResponseBodyData struct {
@@ -121,7 +126,25 @@ func (s *DescribeParametersResponseBodyData) SetRunningParameters(v []*DescribeP
 }
 
 func (s *DescribeParametersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigParameters != nil {
+		for _, item := range s.ConfigParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RunningParameters != nil {
+		for _, item := range s.RunningParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeParametersResponseBodyDataConfigParameters struct {

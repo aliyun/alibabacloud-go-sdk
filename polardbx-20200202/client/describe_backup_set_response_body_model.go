@@ -80,7 +80,16 @@ func (s *DescribeBackupSetResponseBody) SetSuccess(v bool) *DescribeBackupSetRes
 }
 
 func (s *DescribeBackupSetResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupSetResponseBodyData struct {
@@ -196,7 +205,16 @@ func (s *DescribeBackupSetResponseBodyData) SetStatus(v int32) *DescribeBackupSe
 }
 
 func (s *DescribeBackupSetResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.OSSList != nil {
+		for _, item := range s.OSSList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBackupSetResponseBodyDataOSSList struct {

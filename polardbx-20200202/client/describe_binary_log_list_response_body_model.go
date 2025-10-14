@@ -95,7 +95,16 @@ func (s *DescribeBinaryLogListResponseBody) SetTotalNumber(v int32) *DescribeBin
 }
 
 func (s *DescribeBinaryLogListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogList != nil {
+		for _, item := range s.LogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBinaryLogListResponseBodyLogList struct {

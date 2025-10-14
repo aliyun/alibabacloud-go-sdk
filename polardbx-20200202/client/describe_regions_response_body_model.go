@@ -110,7 +110,12 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		if err := s.Regions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegions struct {
@@ -135,7 +140,16 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 func (s *DescribeRegionsResponseBodyRegions) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		for _, item := range s.Region {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
@@ -199,7 +213,12 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetZones(v *DescribeRegionsRe
 }
 
 func (s *DescribeRegionsResponseBodyRegionsRegion) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		if err := s.Zones.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZones struct {
@@ -224,7 +243,16 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 }
 
 func (s *DescribeRegionsResponseBodyRegionsRegionZones) Validate() error {
-	return dara.Validate(s)
+	if s.Zone != nil {
+		for _, item := range s.Zone {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {

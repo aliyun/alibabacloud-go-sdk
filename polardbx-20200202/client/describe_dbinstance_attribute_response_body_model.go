@@ -50,7 +50,12 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeDBInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DBInstance != nil {
+		if err := s.DBInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
@@ -755,7 +760,43 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetZoneId(v string) 
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) Validate() error {
-	return dara.Validate(s)
+	if s.ConnAddrs != nil {
+		for _, item := range s.ConnAddrs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DBNodes != nil {
+		for _, item := range s.DBNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GdnMemberList != nil {
+		for _, item := range s.GdnMemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagSet != nil {
+		for _, item := range s.TagSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {

@@ -47,7 +47,12 @@ func (s *DescribeArchiveTableListResponseBody) SetRequestId(v string) *DescribeA
 }
 
 func (s *DescribeArchiveTableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeArchiveTableListResponseBodyData struct {
@@ -142,7 +147,16 @@ func (s *DescribeArchiveTableListResponseBodyData) SetTotal(v int64) *DescribeAr
 }
 
 func (s *DescribeArchiveTableListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tables != nil {
+		for _, item := range s.Tables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeArchiveTableListResponseBodyDataTables struct {

@@ -86,7 +86,12 @@ func (s *DescribeCdcInfoResponseBody) SetSuccess(v bool) *DescribeCdcInfoRespons
 }
 
 func (s *DescribeCdcInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCdcInfoResponseBodyData struct {
@@ -210,7 +215,16 @@ func (s *DescribeCdcInfoResponseBodyData) SetVersionSupportMultiCdc(v bool) *Des
 }
 
 func (s *DescribeCdcInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTopologyList != nil {
+		for _, item := range s.InstanceTopologyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
@@ -313,7 +327,16 @@ func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) SetStreamNum(v int
 }
 
 func (s *DescribeCdcInfoResponseBodyDataInstanceTopologyList) Validate() error {
-	return dara.Validate(s)
+	if s.PhysicalNodes != nil {
+		for _, item := range s.PhysicalNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {

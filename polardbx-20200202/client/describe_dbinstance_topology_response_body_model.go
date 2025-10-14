@@ -50,7 +50,12 @@ func (s *DescribeDBInstanceTopologyResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeDBInstanceTopologyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceTopologyResponseBodyData struct {
@@ -75,7 +80,12 @@ func (s *DescribeDBInstanceTopologyResponseBodyData) SetLogicInstanceTopology(v 
 }
 
 func (s *DescribeDBInstanceTopologyResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.LogicInstanceTopology != nil {
+		if err := s.LogicInstanceTopology.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
@@ -289,7 +299,25 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) SetMai
 }
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) Validate() error {
-	return dara.Validate(s)
+	if s.HistoryItems != nil {
+		for _, item := range s.HistoryItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Items != nil {
+		for _, item := range s.Items {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems struct {
@@ -730,7 +758,25 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) S
 }
 
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) Validate() error {
-	return dara.Validate(s)
+	if s.AzoneRoleList != nil {
+		for _, item := range s.AzoneRoleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConnectionIp != nil {
+		for _, item := range s.ConnectionIp {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {

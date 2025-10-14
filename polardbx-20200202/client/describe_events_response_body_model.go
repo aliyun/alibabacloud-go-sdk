@@ -95,7 +95,16 @@ func (s *DescribeEventsResponseBody) SetTotalRecordCount(v int64) *DescribeEvent
 }
 
 func (s *DescribeEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventItems != nil {
+		for _, item := range s.EventItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventsResponseBodyEventItems struct {

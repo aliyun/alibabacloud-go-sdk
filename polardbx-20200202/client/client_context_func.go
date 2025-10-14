@@ -13,9 +13,11 @@ import (
 //
 // @return AlignStoragePrimaryAzoneResponse
 func (client *Client) AlignStoragePrimaryAzoneWithContext(ctx context.Context, request *AlignStoragePrimaryAzoneRequest, runtime *dara.RuntimeOptions) (_result *AlignStoragePrimaryAzoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -71,9 +73,11 @@ func (client *Client) AlignStoragePrimaryAzoneWithContext(ctx context.Context, r
 //
 // @return AllocateColdDataVolumeResponse
 func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, request *AllocateColdDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *AllocateColdDataVolumeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -113,9 +117,11 @@ func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, req
 //
 // @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Context, request *AllocateInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionStringPrefix) {
@@ -173,6 +179,50 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 	return _result, _err
 }
 
+// @param request - AttachColumnarInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachColumnarInstanceResponse
+func (client *Client) AttachColumnarInstanceWithContext(ctx context.Context, request *AttachColumnarInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachColumnarInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachColumnarInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachColumnarInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 取消主动运维任务
@@ -183,9 +233,11 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 //
 // @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context, request *CancelActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -221,9 +273,11 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NewResourceGroupId) {
@@ -271,9 +325,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CheckCloudResourceAuthorizedResponse
 func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Context, request *CheckCloudResourceAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *CheckCloudResourceAuthorizedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -311,15 +367,161 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// @param request - CheckSqlAuditSlsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSqlAuditSlsStatusResponse
+func (client *Client) CheckSqlAuditSlsStatusWithContext(ctx context.Context, request *CheckSqlAuditSlsStatusRequest, runtime *dara.RuntimeOptions) (_result *CheckSqlAuditSlsStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckSqlAuditSlsStatus"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckSqlAuditSlsStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消实例迁移
+//
+// @param request - CloseEngineMigrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseEngineMigrationResponse
+func (client *Client) CloseEngineMigrationWithContext(ctx context.Context, request *CloseEngineMigrationRequest, runtime *dara.RuntimeOptions) (_result *CloseEngineMigrationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContinueEnableBinlog) {
+		query["ContinueEnableBinlog"] = request.ContinueEnableBinlog
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloseEngineMigration"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloseEngineMigrationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚切换时确认无连接
+//
+// @param request - ConfirmNoConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmNoConnectionResponse
+func (client *Client) ConfirmNoConnectionWithContext(ctx context.Context, request *ConfirmNoConnectionRequest, runtime *dara.RuntimeOptions) (_result *ConfirmNoConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmNoConnection"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmNoConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - CreateAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAccountResponse
 func (client *Client) CreateAccountWithContext(ctx context.Context, request *CreateAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -387,9 +589,11 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, request *Cre
 //
 // @return CreateBackupResponse
 func (client *Client) CreateBackupWithContext(ctx context.Context, request *CreateBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupType) {
@@ -427,15 +631,89 @@ func (client *Client) CreateBackupWithContext(ctx context.Context, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义endpoint
+//
+// @param request - CreateCustomEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomEndpointResponse
+func (client *Client) CreateCustomEndpointWithContext(ctx context.Context, request *CreateCustomEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateCustomEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NodeAutoEnter) {
+		query["NodeAutoEnter"] = request.NodeAutoEnter
+	}
+
+	if !dara.IsNil(request.NodeIds) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !dara.IsNil(request.NodeRole) {
+		query["NodeRole"] = request.NodeRole
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCustomEndpoint"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCustomEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - CreateDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDBResponse
 func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDBRequest, runtime *dara.RuntimeOptions) (_result *CreateDBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -515,9 +793,11 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 //
 // @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *CreateDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDBInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -661,15 +941,451 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建评估升级的数据迁移任务
+//
+// @param request - CreateDataImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataImportTaskResponse
+func (client *Client) CreateDataImportTaskWithContext(ctx context.Context, request *CreateDataImportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateDataImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.DstDb) {
+		query["DstDb"] = request.DstDb
+	}
+
+	if !dara.IsNil(request.DstPassword) {
+		query["DstPassword"] = request.DstPassword
+	}
+
+	if !dara.IsNil(request.DstResId) {
+		query["DstResId"] = request.DstResId
+	}
+
+	if !dara.IsNil(request.DstUserName) {
+		query["DstUserName"] = request.DstUserName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SrcDb) {
+		query["SrcDb"] = request.SrcDb
+	}
+
+	if !dara.IsNil(request.SrcPassword) {
+		query["SrcPassword"] = request.SrcPassword
+	}
+
+	if !dara.IsNil(request.SrcResId) {
+		query["SrcResId"] = request.SrcResId
+	}
+
+	if !dara.IsNil(request.SrcUserName) {
+		query["SrcUserName"] = request.SrcUserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建GDN实例
+//
+// @param request - CreateGdnInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGdnInstanceResponse
+func (client *Client) CreateGdnInstanceWithContext(ctx context.Context, request *CreateGdnInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateGdnInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GdnMode) {
+		query["GdnMode"] = request.GdnMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RplConflictStrategy) {
+		query["RplConflictStrategy"] = request.RplConflictStrategy
+	}
+
+	if !dara.IsNil(request.RplDmlStrategy) {
+		query["RplDmlStrategy"] = request.RplDmlStrategy
+	}
+
+	if !dara.IsNil(request.RplSyncDdl) {
+		query["RplSyncDdl"] = request.RplSyncDdl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGdnInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGdnInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建评估预检任务
+//
+// @param request - CreateRplInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRplInspectionTaskResponse
+func (client *Client) CreateRplInspectionTaskWithContext(ctx context.Context, request *CreateRplInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRplInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DstDb) {
+		query["DstDb"] = request.DstDb
+	}
+
+	if !dara.IsNil(request.DstPassword) {
+		query["DstPassword"] = request.DstPassword
+	}
+
+	if !dara.IsNil(request.DstResId) {
+		query["DstResId"] = request.DstResId
+	}
+
+	if !dara.IsNil(request.DstUserName) {
+		query["DstUserName"] = request.DstUserName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SrcPassword) {
+		query["SrcPassword"] = request.SrcPassword
+	}
+
+	if !dara.IsNil(request.SrcUserName) {
+		query["SrcUserName"] = request.SrcUserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRplInspectionTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRplInspectionTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建评估升级的兼容性评估任务
+//
+// @param request - CreateSQLEvaluateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSQLEvaluateTaskResponse
+func (client *Client) CreateSQLEvaluateTaskWithContext(ctx context.Context, request *CreateSQLEvaluateTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSQLEvaluateTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.DstDb) {
+		query["DstDb"] = request.DstDb
+	}
+
+	if !dara.IsNil(request.DstPassword) {
+		query["DstPassword"] = request.DstPassword
+	}
+
+	if !dara.IsNil(request.DstResId) {
+		query["DstResId"] = request.DstResId
+	}
+
+	if !dara.IsNil(request.DstUserName) {
+		query["DstUserName"] = request.DstUserName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskDesc) {
+		query["SlinkTaskDesc"] = request.SlinkTaskDesc
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SrcDb) {
+		query["SrcDb"] = request.SrcDb
+	}
+
+	if !dara.IsNil(request.SrcPassword) {
+		query["SrcPassword"] = request.SrcPassword
+	}
+
+	if !dara.IsNil(request.SrcResId) {
+		query["SrcResId"] = request.SrcResId
+	}
+
+	if !dara.IsNil(request.SrcResType) {
+		query["SrcResType"] = request.SrcResType
+	}
+
+	if !dara.IsNil(request.SrcUserName) {
+		query["SrcUserName"] = request.SrcUserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSQLEvaluateTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSQLEvaluateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建 PolarDB-X 存储资源池
+//
+// @param request - CreateStoragePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStoragePoolResponse
+func (client *Client) CreateStoragePoolWithContext(ctx context.Context, request *CreateStoragePoolRequest, runtime *dara.RuntimeOptions) (_result *CreateStoragePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.StoragePoolDNList) {
+		query["StoragePoolDNList"] = request.StoragePoolDNList
+	}
+
+	if !dara.IsNil(request.StoragePoolName) {
+		query["StoragePoolName"] = request.StoragePoolName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStoragePool"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStoragePoolResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建评估升级的结构迁移任务
+//
+// @param request - CreateStructureImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStructureImportTaskResponse
+func (client *Client) CreateStructureImportTaskWithContext(ctx context.Context, request *CreateStructureImportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateStructureImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateStructureImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateStructureImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - CreateSuperAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateSuperAccountResponse
 func (client *Client) CreateSuperAccountWithContext(ctx context.Context, request *CreateSuperAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateSuperAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -715,15 +1431,69 @@ func (client *Client) CreateSuperAccountWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建标准版迁移到企业版的操作任务
+//
+// @param request - CreateTransformOperationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTransformOperationResponse
+func (client *Client) CreateTransformOperationWithContext(ctx context.Context, request *CreateTransformOperationRequest, runtime *dara.RuntimeOptions) (_result *CreateTransformOperationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTransformOperation"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTransformOperationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DeleteAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -769,15 +1539,69 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除自定义endpoint
+//
+// @param request - DeleteCustomEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomEndpointResponse
+func (client *Client) DeleteCustomEndpointWithContext(ctx context.Context, request *DeleteCustomEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteCustomEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomEndpointId) {
+		query["CustomEndpointId"] = request.CustomEndpointId
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCustomEndpoint"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCustomEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DeleteDBRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDBResponse
 func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDBRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -821,9 +1645,11 @@ func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDB
 //
 // @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *DeleteDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -857,15 +1683,113 @@ func (client *Client) DeleteDBInstanceWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除评估导入任务
+//
+// @param request - DeleteEvaluateAndImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEvaluateAndImportTaskResponse
+func (client *Client) DeleteEvaluateAndImportTaskWithContext(ctx context.Context, request *DeleteEvaluateAndImportTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteEvaluateAndImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEvaluateAndImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEvaluateAndImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除GDN实例
+//
+// @param request - DeleteGdnInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGdnInstanceResponse
+func (client *Client) DeleteGdnInstanceWithContext(ctx context.Context, request *DeleteGdnInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteGdnInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GdnInstanceName) {
+		query["GdnInstanceName"] = request.GdnInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGdnInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGdnInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeAccountListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAccountListResponse
 func (client *Client) DescribeAccountListWithContext(ctx context.Context, request *DescribeAccountListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccountListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -917,9 +1841,11 @@ func (client *Client) DescribeAccountListWithContext(ctx context.Context, reques
 //
 // @return DescribeActiveOperationMaintainConfResponse
 func (client *Client) DescribeActiveOperationMaintainConfWithContext(ctx context.Context, request *DescribeActiveOperationMaintainConfRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -959,9 +1885,11 @@ func (client *Client) DescribeActiveOperationMaintainConfWithContext(ctx context
 //
 // @return DescribeActiveOperationTaskCountResponse
 func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Context, request *DescribeActiveOperationTaskCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -997,9 +1925,11 @@ func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Co
 //
 // @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Context, request *DescribeActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1035,9 +1965,11 @@ func (client *Client) DescribeActiveOperationTasksWithContext(ctx context.Contex
 //
 // @return DescribeArchiveTableListResponse
 func (client *Client) DescribeArchiveTableListWithContext(ctx context.Context, request *DescribeArchiveTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeArchiveTableListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1091,15 +2023,65 @@ func (client *Client) DescribeArchiveTableListWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已开启跨地域备份的地域
+//
+// @param request - DescribeAvailableCrossRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableCrossRegionsResponse
+func (client *Client) DescribeAvailableCrossRegionsWithContext(ctx context.Context, request *DescribeAvailableCrossRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAvailableCrossRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAvailableCrossRegions"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAvailableCrossRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeBackupPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, request *DescribeBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1143,9 +2125,11 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 //
 // @return DescribeBackupSetResponse
 func (client *Client) DescribeBackupSetWithContext(ctx context.Context, request *DescribeBackupSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupSetId) {
@@ -1193,9 +2177,11 @@ func (client *Client) DescribeBackupSetWithContext(ctx context.Context, request 
 //
 // @return DescribeBackupSetListResponse
 func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, request *DescribeBackupSetListRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackupSetListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1227,9 +2213,11 @@ func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, requ
 //
 // @return DescribeBinaryLogListResponse
 func (client *Client) DescribeBinaryLogListWithContext(ctx context.Context, request *DescribeBinaryLogListRequest, runtime *dara.RuntimeOptions) (_result *DescribeBinaryLogListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1285,6 +2273,58 @@ func (client *Client) DescribeBinaryLogListWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 查询多流规格列表
+//
+// @param request - DescribeCdcClassListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdcClassListResponse
+func (client *Client) DescribeCdcClassListWithContext(ctx context.Context, request *DescribeCdcClassListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdcClassListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCdcClassList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCdcClassListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询CDC信息
 //
 // @param request - DescribeCdcInfoRequest
@@ -1293,9 +2333,11 @@ func (client *Client) DescribeBinaryLogListWithContext(ctx context.Context, requ
 //
 // @return DescribeCdcInfoResponse
 func (client *Client) DescribeCdcInfoWithContext(ctx context.Context, request *DescribeCdcInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdcInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1329,15 +2371,65 @@ func (client *Client) DescribeCdcInfoWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取CDC版本列表
+//
+// @param request - DescribeCdcVersionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCdcVersionListResponse
+func (client *Client) DescribeCdcVersionListWithContext(ctx context.Context, request *DescribeCdcVersionListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCdcVersionListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCdcVersionList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCdcVersionListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeCharacterSetRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCharacterSetResponse
 func (client *Client) DescribeCharacterSetWithContext(ctx context.Context, request *DescribeCharacterSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeCharacterSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1381,9 +2473,11 @@ func (client *Client) DescribeCharacterSetWithContext(ctx context.Context, reque
 //
 // @return DescribeColdDataBasicInfoResponse
 func (client *Client) DescribeColdDataBasicInfoWithContext(ctx context.Context, request *DescribeColdDataBasicInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeColdDataBasicInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -1411,6 +2505,262 @@ func (client *Client) DescribeColdDataBasicInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 查询列存规格列表
+//
+// @param request - DescribeColumnarClassListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeColumnarClassListResponse
+func (client *Client) DescribeColumnarClassListWithContext(ctx context.Context, request *DescribeColumnarClassListRequest, runtime *dara.RuntimeOptions) (_result *DescribeColumnarClassListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeColumnarClassList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeColumnarClassListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Columnar信息
+//
+// @param request - DescribeColumnarInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeColumnarInfoResponse
+func (client *Client) DescribeColumnarInfoWithContext(ctx context.Context, request *DescribeColumnarInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeColumnarInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeColumnarInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeColumnarInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Columnar版本列表
+//
+// @param request - DescribeColumnarVersionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeColumnarVersionListResponse
+func (client *Client) DescribeColumnarVersionListWithContext(ctx context.Context, request *DescribeColumnarVersionListRequest, runtime *dara.RuntimeOptions) (_result *DescribeColumnarVersionListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeColumnarVersionList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeColumnarVersionListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarDB-X 实例指定组件的属性列表
+//
+// @param request - DescribeComponentPropetiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeComponentPropetiesResponse
+func (client *Client) DescribeComponentPropetiesWithContext(ctx context.Context, request *DescribeComponentPropetiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeComponentPropetiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommodityCode) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !dara.IsNil(request.ComponentName) {
+		query["ComponentName"] = request.ComponentName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeComponentPropeties"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeComponentPropetiesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义连接信息
+//
+// @param request - DescribeCustomEndpointListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomEndpointListResponse
+func (client *Client) DescribeCustomEndpointListWithContext(ctx context.Context, request *DescribeCustomEndpointListRequest, runtime *dara.RuntimeOptions) (_result *DescribeCustomEndpointListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CheckDeleteCN) {
+		query["CheckDeleteCN"] = request.CheckDeleteCN
+	}
+
+	if !dara.IsNil(request.CustomEndpointIds) {
+		query["CustomEndpointIds"] = request.CustomEndpointIds
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCustomEndpointList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCustomEndpointListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例详情
 //
 // @param request - DescribeDBInstanceAttributeRequest
@@ -1419,9 +2769,11 @@ func (client *Client) DescribeColdDataBasicInfoWithContext(ctx context.Context, 
 //
 // @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context, request *DescribeDBInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1469,9 +2821,11 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 //
 // @return DescribeDBInstanceConfigResponse
 func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, request *DescribeDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigName) {
@@ -1519,9 +2873,11 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 //
 // @return DescribeDBInstanceHAResponse
 func (client *Client) DescribeDBInstanceHAWithContext(ctx context.Context, request *DescribeDBInstanceHARequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceHAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1561,9 +2917,11 @@ func (client *Client) DescribeDBInstanceHAWithContext(ctx context.Context, reque
 //
 // @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, request *DescribeDBInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1603,9 +2961,11 @@ func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, requ
 //
 // @return DescribeDBInstanceTDEResponse
 func (client *Client) DescribeDBInstanceTDEWithContext(ctx context.Context, request *DescribeDBInstanceTDERequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceTDEResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1649,9 +3009,11 @@ func (client *Client) DescribeDBInstanceTDEWithContext(ctx context.Context, requ
 //
 // @return DescribeDBInstanceTopologyResponse
 func (client *Client) DescribeDBInstanceTopologyWithContext(ctx context.Context, request *DescribeDBInstanceTopologyRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceTopologyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1707,9 +3069,11 @@ func (client *Client) DescribeDBInstanceTopologyWithContext(ctx context.Context,
 //
 // @return DescribeDBInstanceViaEndpointResponse
 func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Context, request *DescribeDBInstanceViaEndpointRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceViaEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Endpoint) {
@@ -1753,9 +3117,11 @@ func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Conte
 //
 // @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, request *DescribeDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbVersion) {
@@ -1827,9 +3193,11 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 //
 // @return DescribeDBNodePerformanceResponse
 func (client *Client) DescribeDBNodePerformanceWithContext(ctx context.Context, request *DescribeDBNodePerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBNodePerformanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CharacterType) {
@@ -1887,15 +3255,81 @@ func (client *Client) DescribeDBNodePerformanceWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入任务详情
+//
+// @param request - DescribeDataImportTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataImportTaskInfoResponse
+func (client *Client) DescribeDataImportTaskInfoWithContext(ctx context.Context, request *DescribeDataImportTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataImportTaskInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FailPageNumber) {
+		query["FailPageNumber"] = request.FailPageNumber
+	}
+
+	if !dara.IsNil(request.FailPageSize) {
+		query["FailPageSize"] = request.FailPageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SuccessPageNumber) {
+		query["SuccessPageNumber"] = request.SuccessPageNumber
+	}
+
+	if !dara.IsNil(request.SuccessPageSize) {
+		query["SuccessPageSize"] = request.SuccessPageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataImportTaskInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataImportTaskInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeDbListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDbListResponse
 func (client *Client) DescribeDbListWithContext(ctx context.Context, request *DescribeDbListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDbListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1939,9 +3373,11 @@ func (client *Client) DescribeDbListWithContext(ctx context.Context, request *De
 //
 // @return DescribeDistributeTableListResponse
 func (client *Client) DescribeDistributeTableListWithContext(ctx context.Context, request *DescribeDistributeTableListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDistributeTableListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -1981,6 +3417,154 @@ func (client *Client) DescribeDistributeTableListWithContext(ctx context.Context
 
 // Summary:
 //
+// 获取已开启跨地域备份的地域
+//
+// @param request - DescribeEnabledCrossRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEnabledCrossRegionsResponse
+func (client *Client) DescribeEnabledCrossRegionsWithContext(ctx context.Context, request *DescribeEnabledCrossRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEnabledCrossRegionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEnabledCrossRegions"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEnabledCrossRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个评估迁移任务详情
+//
+// @param request - DescribeEvaluateAndImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEvaluateAndImportTaskResponse
+func (client *Client) DescribeEvaluateAndImportTaskWithContext(ctx context.Context, request *DescribeEvaluateAndImportTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeEvaluateAndImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEvaluateAndImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEvaluateAndImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 请求评估导入任务列表
+//
+// @param request - DescribeEvaluateAndImportTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEvaluateAndImportTasksResponse
+func (client *Client) DescribeEvaluateAndImportTasksWithContext(ctx context.Context, request *DescribeEvaluateAndImportTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeEvaluateAndImportTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEvaluateAndImportTasks"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEvaluateAndImportTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 历史事件
 //
 // @param request - DescribeEventsRequest
@@ -1989,9 +3573,11 @@ func (client *Client) DescribeDistributeTableListWithContext(ctx context.Context
 //
 // @return DescribeEventsResponse
 func (client *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2027,9 +3613,11 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 //
 // @return DescribeGdnInstancesResponse
 func (client *Client) DescribeGdnInstancesWithContext(ctx context.Context, request *DescribeGdnInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGdnInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FilterType) {
@@ -2089,9 +3677,11 @@ func (client *Client) DescribeGdnInstancesWithContext(ctx context.Context, reque
 //
 // @return DescribeOpenBackupSetResponse
 func (client *Client) DescribeOpenBackupSetWithContext(ctx context.Context, request *DescribeOpenBackupSetRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenBackupSetResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2129,15 +3719,57 @@ func (client *Client) DescribeOpenBackupSetWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询参数模版列表
+//
+// @param request - DescribeParameterGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupsResponse
+func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, request *DescribeParameterGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeParameterGroups"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeParameterTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context, request *DescribeParameterTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2185,9 +3817,11 @@ func (client *Client) DescribeParameterTemplatesWithContext(ctx context.Context,
 //
 // @return DescribeParametersResponse
 func (client *Client) DescribeParametersWithContext(ctx context.Context, request *DescribeParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2225,15 +3859,237 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询数据节点列表
+//
+// @param request - DescribePolarxDataNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarxDataNodesResponse
+func (client *Client) DescribePolarxDataNodesWithContext(ctx context.Context, request *DescribePolarxDataNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarxDataNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NodeType) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarxDataNodes"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarxDataNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeRdsVpcsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsVpcsResponse
+func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *DescribeRdsVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdsVpcsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRdsVpcs"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRdsVpcsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Vswitch信息
+//
+// @param request - DescribeRdsVswitchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRdsVswitchesResponse
+func (client *Client) DescribeRdsVswitchesWithContext(ctx context.Context, request *DescribeRdsVswitchesRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdsVswitchesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRdsVswitches"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRdsVswitchesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预检任务结果
+//
+// @param request - DescribeRplInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRplInspectionTaskResponse
+func (client *Client) DescribeRplInspectionTaskWithContext(ctx context.Context, request *DescribeRplInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeRplInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FailPageNumber) {
+		query["FailPageNumber"] = request.FailPageNumber
+	}
+
+	if !dara.IsNil(request.FailPageSize) {
+		query["FailPageSize"] = request.FailPageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SuccessPageNumber) {
+		query["SuccessPageNumber"] = request.SuccessPageNumber
+	}
+
+	if !dara.IsNil(request.SuccessPageSize) {
+		query["SuccessPageSize"] = request.SuccessPageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRplInspectionTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRplInspectionTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeScaleOutMigrateTaskListResponse
 func (client *Client) DescribeScaleOutMigrateTaskListWithContext(ctx context.Context, request *DescribeScaleOutMigrateTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeScaleOutMigrateTaskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2289,9 +4145,11 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithContext(ctx context.Con
 //
 // @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, request *DescribeSecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2327,6 +4185,58 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 查询 PolarDB-X 存储节点信息
+//
+// @param request - DescribeShowStorageInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeShowStorageInfoResponse
+func (client *Client) DescribeShowStorageInfoWithContext(ctx context.Context, request *DescribeShowStorageInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeShowStorageInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeShowStorageInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeShowStorageInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 慢SQL明细
 //
 // @param request - DescribeSlowLogRecordsRequest
@@ -2335,9 +4245,11 @@ func (client *Client) DescribeSecurityIpsWithContext(ctx context.Context, reques
 //
 // @return DescribeSlowLogRecordsResponse
 func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, request *DescribeSlowLogRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CharacterType) {
@@ -2399,6 +4311,206 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// @param request - DescribeSqlAuditInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlAuditInfoResponse
+func (client *Client) DescribeSqlAuditInfoWithContext(ctx context.Context, request *DescribeSqlAuditInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeSqlAuditInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditAccountName) {
+		query["AuditAccountName"] = request.AuditAccountName
+	}
+
+	if !dara.IsNil(request.AuditAccountPassword) {
+		query["AuditAccountPassword"] = request.AuditAccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSqlAuditInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSqlAuditInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # SQL闪回任务列表查询
+//
+// @param request - DescribeSqlFlashbackTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSqlFlashbackTaskListResponse
+func (client *Client) DescribeSqlFlashbackTaskListWithContext(ctx context.Context, request *DescribeSqlFlashbackTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSqlFlashbackTaskListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PolardbxInstanceId) {
+		query["PolardbxInstanceId"] = request.PolardbxInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSqlFlashbackTaskList"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSqlFlashbackTaskListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 PolarDB-X 存储资源池信息
+//
+// @param request - DescribeStoragePoolInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStoragePoolInfoResponse
+func (client *Client) DescribeStoragePoolInfoWithContext(ctx context.Context, request *DescribeStoragePoolInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeStoragePoolInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeStoragePoolInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeStoragePoolInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询结构迁移任务结果
+//
+// @param request - DescribeStructureImportTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStructureImportTaskInfoResponse
+func (client *Client) DescribeStructureImportTaskInfoWithContext(ctx context.Context, request *DescribeStructureImportTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeStructureImportTaskInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeStructureImportTaskInfo"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeStructureImportTaskInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 标签列表查询
@@ -2409,9 +4521,11 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 //
 // @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithContext(ctx context.Context, request *DescribeTagsRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2455,9 +4569,11 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 //
 // @return DescribeTasksResponse
 func (client *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceId) {
@@ -2523,15 +4639,69 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询标准版迁移到企业版的任务状态
+//
+// @param request - DescribeTransformStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTransformStatusResponse
+func (client *Client) DescribeTransformStatusWithContext(ctx context.Context, request *DescribeTransformStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeTransformStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.QueryReport) {
+		query["QueryReport"] = request.QueryReport
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTransformStatus"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTransformStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DescribeUserEncryptionKeyListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Context, request *DescribeUserEncryptionKeyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2571,9 +4741,11 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 //
 // @return DisableRightsSeparationResponse
 func (client *Client) DisableRightsSeparationWithContext(ctx context.Context, request *DisableRightsSeparationRequest, runtime *dara.RuntimeOptions) (_result *DisableRightsSeparationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -2615,6 +4787,58 @@ func (client *Client) DisableRightsSeparationWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// @param request - DisableSqlAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSqlAuditResponse
+func (client *Client) DisableSqlAuditWithContext(ctx context.Context, request *DisableSqlAuditRequest, runtime *dara.RuntimeOptions) (_result *DisableSqlAuditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditAccountName) {
+		query["AuditAccountName"] = request.AuditAccountName
+	}
+
+	if !dara.IsNil(request.AuditAccountPassword) {
+		query["AuditAccountPassword"] = request.AuditAccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableSqlAudit"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableSqlAuditResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 开启三权分立
@@ -2625,9 +4849,11 @@ func (client *Client) DisableRightsSeparationWithContext(ctx context.Context, re
 //
 // @return EnableRightsSeparationResponse
 func (client *Client) EnableRightsSeparationWithContext(ctx context.Context, request *EnableRightsSeparationRequest, runtime *dara.RuntimeOptions) (_result *EnableRightsSeparationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuditAccountDescription) {
@@ -2685,6 +4911,62 @@ func (client *Client) EnableRightsSeparationWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// @param request - EnableSqlAuditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSqlAuditResponse
+func (client *Client) EnableSqlAuditWithContext(ctx context.Context, request *EnableSqlAuditRequest, runtime *dara.RuntimeOptions) (_result *EnableSqlAuditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuditAccountName) {
+		query["AuditAccountName"] = request.AuditAccountName
+	}
+
+	if !dara.IsNil(request.AuditAccountPassword) {
+		query["AuditAccountPassword"] = request.AuditAccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.ExpireAfterDays) {
+		query["ExpireAfterDays"] = request.ExpireAfterDays
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableSqlAudit"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableSqlAuditResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 查标签接口
@@ -2695,9 +4977,11 @@ func (client *Client) EnableRightsSeparationWithContext(ctx context.Context, req
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -2743,15 +5027,89 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// @param request - MigrateDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MigrateDBInstanceResponse
+func (client *Client) MigrateDBInstanceWithContext(ctx context.Context, request *MigrateDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *MigrateDBInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.PrimaryZoneId) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecondaryZoneId) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	if !dara.IsNil(request.TertiaryZoneId) {
+		query["TertiaryZoneId"] = request.TertiaryZoneId
+	}
+
+	if !dara.IsNil(request.TopologyType) {
+		query["TopologyType"] = request.TopologyType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VswitchId) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MigrateDBInstance"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MigrateDBInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ModifyAccountDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, request *ModifyAccountDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountDescription) {
@@ -2799,9 +5157,11 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 //
 // @return ModifyAccountPrivilegeResponse
 func (client *Client) ModifyAccountPrivilegeWithContext(ctx context.Context, request *ModifyAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccountPrivilegeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -2865,9 +5225,11 @@ func (client *Client) ModifyAccountPrivilegeWithContext(ctx context.Context, req
 //
 // @return ModifyActiveOperationMaintainConfResponse
 func (client *Client) ModifyActiveOperationMaintainConfWithContext(ctx context.Context, request *ModifyActiveOperationMaintainConfRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -2903,9 +5265,11 @@ func (client *Client) ModifyActiveOperationMaintainConfWithContext(ctx context.C
 //
 // @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context, request *ModifyActiveOperationTasksRequest, runtime *dara.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Ids) {
@@ -2947,15 +5311,281 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// # CDC变配
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyCdcClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCdcClassResponse
+func (client *Client) ModifyCdcClassWithContext(ctx context.Context, request *ModifyCdcClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyCdcClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CDCNodeCount) {
+		query["CDCNodeCount"] = request.CDCNodeCount
+	}
+
+	if !dara.IsNil(request.CdcClass) {
+		query["CdcClass"] = request.CdcClass
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCdcClass"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCdcClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Columnar变配
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyColumnarClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyColumnarClassResponse
+func (client *Client) ModifyColumnarClassWithContext(ctx context.Context, request *ModifyColumnarClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyColumnarClassResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ColumnarClass) {
+		query["ColumnarClass"] = request.ColumnarClass
+	}
+
+	if !dara.IsNil(request.ColumnarNodeCount) {
+		query["ColumnarNodeCount"] = request.ColumnarNodeCount
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyColumnarClass"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyColumnarClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修复自定连接基本信息
+//
+// @param request - ModifyCustomEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCustomEndpointResponse
+func (client *Client) ModifyCustomEndpointWithContext(ctx context.Context, request *ModifyCustomEndpointRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomEndpointId) {
+		query["CustomEndpointId"] = request.CustomEndpointId
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NodeAutoEnter) {
+		query["NodeAutoEnter"] = request.NodeAutoEnter
+	}
+
+	if !dara.IsNil(request.NodeIds) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !dara.IsNil(request.NodeRole) {
+		query["NodeRole"] = request.NodeRole
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCustomEndpoint"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCustomEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修复自定连接的网络信息
+//
+// @param request - ModifyCustomEndpointNetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCustomEndpointNetResponse
+func (client *Client) ModifyCustomEndpointNetWithContext(ctx context.Context, request *ModifyCustomEndpointNetRequest, runtime *dara.RuntimeOptions) (_result *ModifyCustomEndpointNetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnPrefix) {
+		query["ConnPrefix"] = request.ConnPrefix
+	}
+
+	if !dara.IsNil(request.CustomEndpointId) {
+		query["CustomEndpointId"] = request.CustomEndpointId
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCustomEndpointNet"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCustomEndpointNetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ModifyDBInstanceClassRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDBInstanceClassResponse
 func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, request *ModifyDBInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3035,9 +5665,11 @@ func (client *Client) ModifyDBInstanceClassWithContext(ctx context.Context, requ
 //
 // @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, request *ModifyDBInstanceConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigName) {
@@ -3089,9 +5721,11 @@ func (client *Client) ModifyDBInstanceConfigWithContext(ctx context.Context, req
 //
 // @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Context, request *ModifyDBInstanceConnectionStringRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectionString) {
@@ -3143,9 +5777,11 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 //
 // @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescriptionWithContext(ctx context.Context, request *ModifyDBInstanceDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceDescription) {
@@ -3183,15 +5819,125 @@ func (client *Client) ModifyDBInstanceDescriptionWithContext(ctx context.Context
 	return _result, _err
 }
 
+// @param request - ModifyDBInstanceMaintainTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceMaintainTimeResponse
+func (client *Client) ModifyDBInstanceMaintainTimeWithContext(ctx context.Context, request *ModifyDBInstanceMaintainTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceMaintainTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MaintainTime) {
+		query["MaintainTime"] = request.MaintainTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBInstanceMaintainTime"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBInstanceMaintainTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// ***
+//
+// @param request - ModifyDBInstanceVipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceVipResponse
+func (client *Client) ModifyDBInstanceVipWithContext(ctx context.Context, request *ModifyDBInstanceVipRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBInstanceVipResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBInstanceVip"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBInstanceVipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ModifyDatabaseDescriptionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDatabaseDescriptionResponse
 func (client *Client) ModifyDatabaseDescriptionWithContext(ctx context.Context, request *ModifyDatabaseDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDatabaseDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3233,15 +5979,85 @@ func (client *Client) ModifyDatabaseDescriptionWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// # ModifyEngineMigration
+//
+// Description:
+//
+// ***
+//
+// @param request - ModifyEngineMigrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEngineMigrationResponse
+func (client *Client) ModifyEngineMigrationWithContext(ctx context.Context, request *ModifyEngineMigrationRequest, runtime *dara.RuntimeOptions) (_result *ModifyEngineMigrationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectionStrings) {
+		query["ConnectionStrings"] = request.ConnectionStrings
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.NewMasterDBInstanceName) {
+		query["NewMasterDBInstanceName"] = request.NewMasterDBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceDBInstanceName) {
+		query["SourceDBInstanceName"] = request.SourceDBInstanceName
+	}
+
+	if !dara.IsNil(request.SwapConnectionString) {
+		query["SwapConnectionString"] = request.SwapConnectionString
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyEngineMigration"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyEngineMigrationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ModifyParameterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyParameterResponse
 func (client *Client) ModifyParameterWithContext(ctx context.Context, request *ModifyParameterRequest, runtime *dara.RuntimeOptions) (_result *ModifyParameterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -3297,9 +6113,11 @@ func (client *Client) ModifyParameterWithContext(ctx context.Context, request *M
 //
 // @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request *ModifySecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3347,6 +6165,118 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// # SQL闪回任务预检
+//
+// @param request - PreCheckSqlFlashbackTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreCheckSqlFlashbackTaskResponse
+func (client *Client) PreCheckSqlFlashbackTaskWithContext(ctx context.Context, request *PreCheckSqlFlashbackTaskRequest, runtime *dara.RuntimeOptions) (_result *PreCheckSqlFlashbackTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbName) {
+		query["DbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PolardbxInstanceId) {
+		query["PolardbxInstanceId"] = request.PolardbxInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreCheckSqlFlashbackTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreCheckSqlFlashbackTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 刷新评估升级任务的导入元数据
+//
+// @param request - RefreshImportMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshImportMetaResponse
+func (client *Client) RefreshImportMetaWithContext(ctx context.Context, request *RefreshImportMetaRequest, runtime *dara.RuntimeOptions) (_result *RefreshImportMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshImportMeta"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshImportMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭冷存储
 //
 // @param request - ReleaseColdDataVolumeRequest
@@ -3355,9 +6285,11 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 //
 // @return ReleaseColdDataVolumeResponse
 func (client *Client) ReleaseColdDataVolumeWithContext(ctx context.Context, request *ReleaseColdDataVolumeRequest, runtime *dara.RuntimeOptions) (_result *ReleaseColdDataVolumeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3397,9 +6329,11 @@ func (client *Client) ReleaseColdDataVolumeWithContext(ctx context.Context, requ
 //
 // @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Context, request *ReleaseInstancePublicConnectionRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentConnectionString) {
@@ -3443,9 +6377,11 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 //
 // @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, request *ResetAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
@@ -3495,15 +6431,81 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Description:
+//
+// ***
+//
+// @param request - ResetAccountPasswordRestrictRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAccountPasswordRestrictResponse
+func (client *Client) ResetAccountPasswordRestrictWithContext(ctx context.Context, request *ResetAccountPasswordRestrictRequest, runtime *dara.RuntimeOptions) (_result *ResetAccountPasswordRestrictResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.AccountPassword) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityAccountName) {
+		query["SecurityAccountName"] = request.SecurityAccountName
+	}
+
+	if !dara.IsNil(request.SecurityAccountPassword) {
+		query["SecurityAccountPassword"] = request.SecurityAccountPassword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetAccountPasswordRestrict"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetAccountPasswordRestrictResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - RestartDBInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstanceWithContext(ctx context.Context, request *RestartDBInstanceRequest, runtime *dara.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3537,15 +6539,337 @@ func (client *Client) RestartDBInstanceWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启数据导入任务
+//
+// @param request - RestartDataImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDataImportTaskResponse
+func (client *Client) RestartDataImportTaskWithContext(ctx context.Context, request *RestartDataImportTaskRequest, runtime *dara.RuntimeOptions) (_result *RestartDataImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartDataImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartDataImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 跳过评估迁移的当前步骤
+//
+// @param request - SkipCurrentStepRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SkipCurrentStepResponse
+func (client *Client) SkipCurrentStepWithContext(ctx context.Context, request *SkipCurrentStepRequest, runtime *dara.RuntimeOptions) (_result *SkipCurrentStepResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentStep) {
+		query["CurrentStep"] = request.CurrentStep
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SkipCurrentStep"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SkipCurrentStepResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开始评估迁移切换
+//
+// @param request - StartSwitchDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartSwitchDatabaseResponse
+func (client *Client) StartSwitchDatabaseWithContext(ctx context.Context, request *StartSwitchDatabaseRequest, runtime *dara.RuntimeOptions) (_result *StartSwitchDatabaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.DstMainConnectString) {
+		query["DstMainConnectString"] = request.DstMainConnectString
+	}
+
+	if !dara.IsNil(request.DstMainPort) {
+		query["DstMainPort"] = request.DstMainPort
+	}
+
+	if !dara.IsNil(request.IsModifyEndpoint) {
+		query["IsModifyEndpoint"] = request.IsModifyEndpoint
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	if !dara.IsNil(request.SrcMainConnectString) {
+		query["SrcMainConnectString"] = request.SrcMainConnectString
+	}
+
+	if !dara.IsNil(request.SrcMainPort) {
+		query["SrcMainPort"] = request.SrcMainPort
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartSwitchDatabase"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartSwitchDatabaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停数据导入任务
+//
+// @param request - StopDataImportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDataImportTaskResponse
+func (client *Client) StopDataImportTaskWithContext(ctx context.Context, request *StopDataImportTaskRequest, runtime *dara.RuntimeOptions) (_result *StopDataImportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SlinkTaskId) {
+		query["SlinkTaskId"] = request.SlinkTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopDataImportTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopDataImportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交SQL闪回任务
+//
+// @param request - SubmitSqlFlashbackTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSqlFlashbackTaskResponse
+func (client *Client) SubmitSqlFlashbackTaskWithContext(ctx context.Context, request *SubmitSqlFlashbackTaskRequest, runtime *dara.RuntimeOptions) (_result *SubmitSqlFlashbackTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbName) {
+		query["DbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PolardbxInstanceId) {
+		query["PolardbxInstanceId"] = request.PolardbxInstanceId
+	}
+
+	if !dara.IsNil(request.RecallRestoreType) {
+		query["RecallRestoreType"] = request.RecallRestoreType
+	}
+
+	if !dara.IsNil(request.RecallType) {
+		query["RecallType"] = request.RecallType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SqlPk) {
+		query["SqlPk"] = request.SqlPk
+	}
+
+	if !dara.IsNil(request.SqlType) {
+		query["SqlType"] = request.SqlType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.TraceId) {
+		query["TraceId"] = request.TraceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitSqlFlashbackTask"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitSqlFlashbackTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - SwitchDBInstanceHARequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SwitchDBInstanceHAResponse
 func (client *Client) SwitchDBInstanceHAWithContext(ctx context.Context, request *SwitchDBInstanceHARequest, runtime *dara.RuntimeOptions) (_result *SwitchDBInstanceHAResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3605,9 +6929,11 @@ func (client *Client) SwitchDBInstanceHAWithContext(ctx context.Context, request
 //
 // @return SwitchGdnMemberRoleResponse
 func (client *Client) SwitchGdnMemberRoleWithContext(ctx context.Context, request *SwitchGdnMemberRoleRequest, runtime *dara.RuntimeOptions) (_result *SwitchGdnMemberRoleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3659,9 +6985,11 @@ func (client *Client) SwitchGdnMemberRoleWithContext(ctx context.Context, reques
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3713,9 +7041,11 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -3767,9 +7097,11 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 //
 // @return UpdateBackupPolicyResponse
 func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request *UpdateBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateBackupPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupPeriod) {
@@ -3881,9 +7213,11 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 //
 // @return UpdateDBInstanceSSLResponse
 func (client *Client) UpdateDBInstanceSSLWithContext(ctx context.Context, request *UpdateDBInstanceSSLRequest, runtime *dara.RuntimeOptions) (_result *UpdateDBInstanceSSLResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertCommonName) {
@@ -3931,9 +7265,11 @@ func (client *Client) UpdateDBInstanceSSLWithContext(ctx context.Context, reques
 //
 // @return UpdateDBInstanceTDEResponse
 func (client *Client) UpdateDBInstanceTDEWithContext(ctx context.Context, request *UpdateDBInstanceTDERequest, runtime *dara.RuntimeOptions) (_result *UpdateDBInstanceTDEResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
@@ -3989,9 +7325,11 @@ func (client *Client) UpdateDBInstanceTDEWithContext(ctx context.Context, reques
 //
 // @return UpdatePolarDBXInstanceNodeResponse
 func (client *Client) UpdatePolarDBXInstanceNodeWithContext(ctx context.Context, request *UpdatePolarDBXInstanceNodeRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolarDBXInstanceNodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddDNSpec) {
@@ -4053,15 +7391,141 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级CDC版本
+//
+// @param request - UpgradeCDCVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeCDCVersionResponse
+func (client *Client) UpgradeCDCVersionWithContext(ctx context.Context, request *UpgradeCDCVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeCDCVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CdcDbVersion) {
+		query["CdcDbVersion"] = request.CdcDbVersion
+	}
+
+	if !dara.IsNil(request.CdcMinorVersion) {
+		query["CdcMinorVersion"] = request.CdcMinorVersion
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeCDCVersion"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeCDCVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级Columnar版本
+//
+// @param request - UpgradeColumnarVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeColumnarVersionResponse
+func (client *Client) UpgradeColumnarVersionWithContext(ctx context.Context, request *UpgradeColumnarVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeColumnarVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ColumnarVersion) {
+		query["ColumnarVersion"] = request.ColumnarVersion
+	}
+
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SwitchMode) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeColumnarVersion"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeColumnarVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - UpgradeDBInstanceKernelVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpgradeDBInstanceKernelVersionResponse
 func (client *Client) UpgradeDBInstanceKernelVersionWithContext(ctx context.Context, request *UpgradeDBInstanceKernelVersionRequest, runtime *dara.RuntimeOptions) (_result *UpgradeDBInstanceKernelVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBInstanceName) {
