@@ -110,7 +110,12 @@ func (s *DescribeSystemEventMetaListResponseBody) SetSuccess(v bool) *DescribeSy
 }
 
 func (s *DescribeSystemEventMetaListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventMetaListResponseBodyData struct {
@@ -135,7 +140,16 @@ func (s *DescribeSystemEventMetaListResponseBodyData) SetResource(v []*DescribeS
 }
 
 func (s *DescribeSystemEventMetaListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventMetaListResponseBodyDataResource struct {

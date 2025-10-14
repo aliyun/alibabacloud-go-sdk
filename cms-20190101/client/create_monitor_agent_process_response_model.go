@@ -59,5 +59,10 @@ func (s *CreateMonitorAgentProcessResponse) SetBody(v *CreateMonitorAgentProcess
 }
 
 func (s *CreateMonitorAgentProcessResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

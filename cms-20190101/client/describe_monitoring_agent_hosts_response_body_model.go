@@ -178,7 +178,12 @@ func (s *DescribeMonitoringAgentHostsResponseBody) SetTotal(v int32) *DescribeMo
 }
 
 func (s *DescribeMonitoringAgentHostsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Hosts != nil {
+		if err := s.Hosts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentHostsResponseBodyHosts struct {
@@ -203,7 +208,16 @@ func (s *DescribeMonitoringAgentHostsResponseBodyHosts) SetHost(v []*DescribeMon
 }
 
 func (s *DescribeMonitoringAgentHostsResponseBodyHosts) Validate() error {
-	return dara.Validate(s)
+	if s.Host != nil {
+		for _, item := range s.Host {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentHostsResponseBodyHostsHost struct {

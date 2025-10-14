@@ -123,7 +123,17 @@ func (s *DescribeActiveMetricRuleListResponseBody) SetSuccess(v bool) *DescribeA
 }
 
 func (s *DescribeActiveMetricRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertList != nil {
+		if err := s.AlertList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Datapoints != nil {
+		if err := s.Datapoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertList struct {
@@ -148,7 +158,16 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertList) SetAlert(v []*Descri
 }
 
 func (s *DescribeActiveMetricRuleListResponseBodyAlertList) Validate() error {
-	return dara.Validate(s)
+	if s.Alert != nil {
+		for _, item := range s.Alert {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlert struct {
@@ -413,7 +432,12 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlert) SetWebhook(v st
 }
 
 func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlert) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations struct {
@@ -461,7 +485,22 @@ func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations) SetW
 }
 
 func (s *DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeActiveMetricRuleListResponseBodyAlertListAlertEscalationsCritical struct {
@@ -781,7 +820,16 @@ func (s *DescribeActiveMetricRuleListResponseBodyDatapoints) SetAlarm(v []*Descr
 }
 
 func (s *DescribeActiveMetricRuleListResponseBodyDatapoints) Validate() error {
-	return dara.Validate(s)
+	if s.Alarm != nil {
+		for _, item := range s.Alarm {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeActiveMetricRuleListResponseBodyDatapointsAlarm struct {

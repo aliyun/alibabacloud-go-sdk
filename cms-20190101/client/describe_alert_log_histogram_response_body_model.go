@@ -110,7 +110,16 @@ func (s *DescribeAlertLogHistogramResponseBody) SetSuccess(v bool) *DescribeAler
 }
 
 func (s *DescribeAlertLogHistogramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertLogHistogramList != nil {
+		for _, item := range s.AlertLogHistogramList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertLogHistogramResponseBodyAlertLogHistogramList struct {

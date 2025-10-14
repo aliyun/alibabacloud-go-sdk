@@ -127,7 +127,12 @@ func (s *DescribeMetricMetaListResponseBody) SetTotalCount(v string) *DescribeMe
 }
 
 func (s *DescribeMetricMetaListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricMetaListResponseBodyResources struct {
@@ -152,7 +157,16 @@ func (s *DescribeMetricMetaListResponseBodyResources) SetResource(v []*DescribeM
 }
 
 func (s *DescribeMetricMetaListResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricMetaListResponseBodyResourcesResource struct {

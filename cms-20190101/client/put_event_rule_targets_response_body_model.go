@@ -149,7 +149,22 @@ func (s *PutEventRuleTargetsResponseBody) SetSuccess(v bool) *PutEventRuleTarget
 }
 
 func (s *PutEventRuleTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedContactParameters != nil {
+		if err := s.FailedContactParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailedFcParameters != nil {
+		if err := s.FailedFcParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FailedMnsParameters != nil {
+		if err := s.FailedMnsParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutEventRuleTargetsResponseBodyFailedContactParameters struct {
@@ -174,7 +189,16 @@ func (s *PutEventRuleTargetsResponseBodyFailedContactParameters) SetContactParam
 }
 
 func (s *PutEventRuleTargetsResponseBodyFailedContactParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ContactParameter != nil {
+		for _, item := range s.ContactParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutEventRuleTargetsResponseBodyFailedContactParametersContactParameter struct {
@@ -257,7 +281,16 @@ func (s *PutEventRuleTargetsResponseBodyFailedFcParameters) SetFcParameter(v []*
 }
 
 func (s *PutEventRuleTargetsResponseBodyFailedFcParameters) Validate() error {
-	return dara.Validate(s)
+	if s.FcParameter != nil {
+		for _, item := range s.FcParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutEventRuleTargetsResponseBodyFailedFcParametersFcParameter struct {
@@ -357,7 +390,16 @@ func (s *PutEventRuleTargetsResponseBodyFailedMnsParameters) SetMnsParameter(v [
 }
 
 func (s *PutEventRuleTargetsResponseBodyFailedMnsParameters) Validate() error {
-	return dara.Validate(s)
+	if s.MnsParameter != nil {
+		for _, item := range s.MnsParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter struct {

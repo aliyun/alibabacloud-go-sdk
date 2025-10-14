@@ -110,7 +110,12 @@ func (s *DescribeSiteMonitorISPCityListResponseBody) SetSuccess(v string) *Descr
 }
 
 func (s *DescribeSiteMonitorISPCityListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityList != nil {
+		if err := s.IspCityList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorISPCityListResponseBodyIspCityList struct {
@@ -135,7 +140,16 @@ func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityList) SetIspCity(v []*
 }
 
 func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityList) Validate() error {
-	return dara.Validate(s)
+	if s.IspCity != nil {
+		for _, item := range s.IspCity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity struct {
@@ -353,7 +367,12 @@ func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity) SetRegion
 }
 
 func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCity) Validate() error {
-	return dara.Validate(s)
+	if s.IPPool != nil {
+		if err := s.IPPool.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool struct {

@@ -96,7 +96,12 @@ func (s *PutContactRequest) SetLang(v string) *PutContactRequest {
 }
 
 func (s *PutContactRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutContactRequestChannels struct {

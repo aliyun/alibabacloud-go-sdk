@@ -59,5 +59,10 @@ func (s *DescribeHostAvailabilityListResponse) SetBody(v *DescribeHostAvailabili
 }
 
 func (s *DescribeHostAvailabilityListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

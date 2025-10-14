@@ -86,7 +86,16 @@ func (s *ModifyHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *ModifyHy
 }
 
 func (s *ModifyHybridMonitorSLSGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SLSGroupConfig != nil {
+		for _, item := range s.SLSGroupConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyHybridMonitorSLSGroupRequestSLSGroupConfig struct {

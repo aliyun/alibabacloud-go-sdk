@@ -161,7 +161,12 @@ func (s *DescribeDynamicTagRuleListResponseBody) SetTotal(v int32) *DescribeDyna
 }
 
 func (s *DescribeDynamicTagRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagGroupList != nil {
+		if err := s.TagGroupList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupList struct {
@@ -186,7 +191,16 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupList) SetTagGroup(v []*De
 }
 
 func (s *DescribeDynamicTagRuleListResponseBodyTagGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.TagGroup != nil {
+		for _, item := range s.TagGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup struct {
@@ -329,7 +343,27 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup) SetTemplate
 }
 
 func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroup) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroupList != nil {
+		if err := s.ContactGroupList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchExpress != nil {
+		if err := s.MatchExpress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagValueBlacklist != nil {
+		if err := s.TagValueBlacklist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateIdList != nil {
+		if err := s.TemplateIdList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupContactGroupList struct {
@@ -379,7 +413,16 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress)
 }
 
 func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpress) Validate() error {
-	return dara.Validate(s)
+	if s.MatchExpress != nil {
+		for _, item := range s.MatchExpress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupMatchExpressMatchExpress struct {

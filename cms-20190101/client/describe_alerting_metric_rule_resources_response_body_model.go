@@ -127,7 +127,12 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBody) SetTotal(v int32) *Des
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResources struct {
@@ -152,7 +157,16 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResources) SetResource(v
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource struct {
@@ -449,7 +463,12 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) SetTh
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResource) Validate() error {
-	return dara.Validate(s)
+	if s.Escalation != nil {
+		if err := s.Escalation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation struct {
@@ -474,7 +493,16 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalat
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalation) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource struct {
@@ -685,7 +713,12 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalat
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResource) Validate() error {
-	return dara.Validate(s)
+	if s.ExpressionList != nil {
+		if err := s.ExpressionList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList struct {
@@ -710,7 +743,16 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalat
 }
 
 func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionList) Validate() error {
-	return dara.Validate(s)
+	if s.ExpressionList != nil {
+		for _, item := range s.ExpressionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalationResourceExpressionListExpressionList struct {

@@ -110,7 +110,12 @@ func (s *DescribeMonitoringAgentProcessesResponseBody) SetSuccess(v bool) *Descr
 }
 
 func (s *DescribeMonitoringAgentProcessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeProcesses != nil {
+		if err := s.NodeProcesses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentProcessesResponseBodyNodeProcesses struct {
@@ -135,7 +140,16 @@ func (s *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses) SetNodeProce
 }
 
 func (s *DescribeMonitoringAgentProcessesResponseBodyNodeProcesses) Validate() error {
-	return dara.Validate(s)
+	if s.NodeProcess != nil {
+		for _, item := range s.NodeProcess {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess struct {

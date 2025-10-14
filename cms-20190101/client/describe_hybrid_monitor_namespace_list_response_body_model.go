@@ -159,7 +159,16 @@ func (s *DescribeHybridMonitorNamespaceListResponseBody) SetTotal(v int32) *Desc
 }
 
 func (s *DescribeHybridMonitorNamespaceListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeHybridMonitorNamespace != nil {
+		for _, item := range s.DescribeHybridMonitorNamespace {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace struct {
@@ -326,7 +335,21 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) Validate() error {
-	return dara.Validate(s)
+	if s.AliyunProductMetricList != nil {
+		for _, item := range s.AliyunProductMetricList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList struct {
@@ -388,7 +411,16 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) Validate() error {
-	return dara.Validate(s)
+	if s.NamespaceList != nil {
+		for _, item := range s.NamespaceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList struct {
@@ -429,7 +461,16 @@ func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorName
 }
 
 func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) Validate() error {
-	return dara.Validate(s)
+	if s.MetricList != nil {
+		for _, item := range s.MetricList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList struct {

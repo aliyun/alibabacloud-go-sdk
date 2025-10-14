@@ -110,7 +110,12 @@ func (s *PutMetricRuleTargetsResponseBody) SetSuccess(v bool) *PutMetricRuleTarg
 }
 
 func (s *PutMetricRuleTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailData != nil {
+		if err := s.FailData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutMetricRuleTargetsResponseBodyFailData struct {
@@ -136,7 +141,12 @@ func (s *PutMetricRuleTargetsResponseBodyFailData) SetTargets(v *PutMetricRuleTa
 }
 
 func (s *PutMetricRuleTargetsResponseBodyFailData) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		if err := s.Targets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutMetricRuleTargetsResponseBodyFailDataTargets struct {
@@ -161,7 +171,16 @@ func (s *PutMetricRuleTargetsResponseBodyFailDataTargets) SetTarget(v []*PutMetr
 }
 
 func (s *PutMetricRuleTargetsResponseBodyFailDataTargets) Validate() error {
-	return dara.Validate(s)
+	if s.Target != nil {
+		for _, item := range s.Target {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutMetricRuleTargetsResponseBodyFailDataTargetsTarget struct {

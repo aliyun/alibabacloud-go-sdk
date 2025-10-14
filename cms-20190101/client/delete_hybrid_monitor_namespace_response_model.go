@@ -59,5 +59,10 @@ func (s *DeleteHybridMonitorNamespaceResponse) SetBody(v *DeleteHybridMonitorNam
 }
 
 func (s *DeleteHybridMonitorNamespaceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

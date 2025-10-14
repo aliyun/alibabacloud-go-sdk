@@ -154,7 +154,37 @@ func (s *DescribeEventRuleTargetListResponseBody) SetWebhookParameters(v *Descri
 }
 
 func (s *DescribeEventRuleTargetListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContactParameters != nil {
+		if err := s.ContactParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FcParameters != nil {
+		if err := s.FcParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MnsParameters != nil {
+		if err := s.MnsParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OpenApiParameters != nil {
+		if err := s.OpenApiParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SlsParameters != nil {
+		if err := s.SlsParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WebhookParameters != nil {
+		if err := s.WebhookParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyContactParameters struct {
@@ -179,7 +209,16 @@ func (s *DescribeEventRuleTargetListResponseBodyContactParameters) SetContactPar
 }
 
 func (s *DescribeEventRuleTargetListResponseBodyContactParameters) Validate() error {
-	return dara.Validate(s)
+	if s.ContactParameter != nil {
+		for _, item := range s.ContactParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyContactParametersContactParameter struct {
@@ -262,7 +301,16 @@ func (s *DescribeEventRuleTargetListResponseBodyFcParameters) SetFCParameter(v [
 }
 
 func (s *DescribeEventRuleTargetListResponseBodyFcParameters) Validate() error {
-	return dara.Validate(s)
+	if s.FCParameter != nil {
+		for _, item := range s.FCParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyFcParametersFCParameter struct {
@@ -385,7 +433,16 @@ func (s *DescribeEventRuleTargetListResponseBodyMnsParameters) SetMnsParameter(v
 }
 
 func (s *DescribeEventRuleTargetListResponseBodyMnsParameters) Validate() error {
-	return dara.Validate(s)
+	if s.MnsParameter != nil {
+		for _, item := range s.MnsParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter struct {
@@ -508,7 +565,16 @@ func (s *DescribeEventRuleTargetListResponseBodyOpenApiParameters) SetOpenApiPar
 }
 
 func (s *DescribeEventRuleTargetListResponseBodyOpenApiParameters) Validate() error {
-	return dara.Validate(s)
+	if s.OpenApiParameters != nil {
+		for _, item := range s.OpenApiParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyOpenApiParametersOpenApiParameters struct {
@@ -673,7 +739,16 @@ func (s *DescribeEventRuleTargetListResponseBodySlsParameters) SetSlsParameter(v
 }
 
 func (s *DescribeEventRuleTargetListResponseBodySlsParameters) Validate() error {
-	return dara.Validate(s)
+	if s.SlsParameter != nil {
+		for _, item := range s.SlsParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodySlsParametersSlsParameter struct {
@@ -796,7 +871,16 @@ func (s *DescribeEventRuleTargetListResponseBodyWebhookParameters) SetWebhookPar
 }
 
 func (s *DescribeEventRuleTargetListResponseBodyWebhookParameters) Validate() error {
-	return dara.Validate(s)
+	if s.WebhookParameter != nil {
+		for _, item := range s.WebhookParameter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParameter struct {

@@ -110,7 +110,12 @@ func (s *ApplyMetricRuleTemplateResponseBody) SetSuccess(v bool) *ApplyMetricRul
 }
 
 func (s *ApplyMetricRuleTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ApplyMetricRuleTemplateResponseBodyResource struct {
@@ -151,7 +156,16 @@ func (s *ApplyMetricRuleTemplateResponseBodyResource) SetGroupId(v int64) *Apply
 }
 
 func (s *ApplyMetricRuleTemplateResponseBodyResource) Validate() error {
-	return dara.Validate(s)
+	if s.AlertResults != nil {
+		for _, item := range s.AlertResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {

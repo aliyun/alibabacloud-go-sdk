@@ -110,7 +110,12 @@ func (s *DescribeEventRuleAttributeResponseBody) SetSuccess(v bool) *DescribeEve
 }
 
 func (s *DescribeEventRuleAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleAttributeResponseBodyResult struct {
@@ -219,7 +224,12 @@ func (s *DescribeEventRuleAttributeResponseBodyResult) SetState(v string) *Descr
 }
 
 func (s *DescribeEventRuleAttributeResponseBodyResult) Validate() error {
-	return dara.Validate(s)
+	if s.EventPattern != nil {
+		if err := s.EventPattern.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleAttributeResponseBodyResultEventPattern struct {
@@ -316,7 +326,32 @@ func (s *DescribeEventRuleAttributeResponseBodyResultEventPattern) SetStatusList
 }
 
 func (s *DescribeEventRuleAttributeResponseBodyResultEventPattern) Validate() error {
-	return dara.Validate(s)
+	if s.EventTypeList != nil {
+		if err := s.EventTypeList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeywordFilterObj != nil {
+		if err := s.KeywordFilterObj.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LevelList != nil {
+		if err := s.LevelList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NameList != nil {
+		if err := s.NameList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StatusList != nil {
+		if err := s.StatusList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleAttributeResponseBodyResultEventPatternEventTypeList struct {
@@ -386,7 +421,12 @@ func (s *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterOb
 }
 
 func (s *DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj) Validate() error {
-	return dara.Validate(s)
+	if s.Keywords != nil {
+		if err := s.Keywords.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObjKeywords struct {

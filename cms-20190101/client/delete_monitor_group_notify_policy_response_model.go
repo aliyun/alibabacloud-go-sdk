@@ -59,5 +59,10 @@ func (s *DeleteMonitorGroupNotifyPolicyResponse) SetBody(v *DeleteMonitorGroupNo
 }
 
 func (s *DeleteMonitorGroupNotifyPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

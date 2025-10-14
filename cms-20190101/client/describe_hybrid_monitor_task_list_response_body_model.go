@@ -165,7 +165,16 @@ func (s *DescribeHybridMonitorTaskListResponseBody) SetTotal(v int32) *DescribeH
 }
 
 func (s *DescribeHybridMonitorTaskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
@@ -609,7 +618,30 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetYARMConfig(v stri
 }
 
 func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) Validate() error {
-	return dara.Validate(s)
+	if s.AttachLabels != nil {
+		for _, item := range s.AttachLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MatchExpress != nil {
+		for _, item := range s.MatchExpress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SLSProcessConfig != nil {
+		if err := s.SLSProcessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels struct {
@@ -785,7 +817,39 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) SetS
 }
 
 func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Express != nil {
+		for _, item := range s.Express {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GroupBy != nil {
+		for _, item := range s.GroupBy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Statistics != nil {
+		for _, item := range s.Statistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress struct {
@@ -875,7 +939,16 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter
 }
 
 func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters struct {

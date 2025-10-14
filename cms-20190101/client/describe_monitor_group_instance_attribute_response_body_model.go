@@ -161,7 +161,12 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBody) SetTotal(v int32) *D
 }
 
 func (s *DescribeMonitorGroupInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResources struct {
@@ -186,7 +191,16 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResources) SetResource
 }
 
 func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource struct {
@@ -324,7 +338,22 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource) Set
 }
 
 func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResource) Validate() error {
-	return dara.Validate(s)
+	if s.Region != nil {
+		if err := s.Region.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Vpc != nil {
+		if err := s.Vpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceRegion struct {
@@ -394,7 +423,16 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags)
 }
 
 func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceTagsTag struct {

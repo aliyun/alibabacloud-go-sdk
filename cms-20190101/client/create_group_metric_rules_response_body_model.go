@@ -110,7 +110,12 @@ func (s *CreateGroupMetricRulesResponseBody) SetSuccess(v bool) *CreateGroupMetr
 }
 
 func (s *CreateGroupMetricRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGroupMetricRulesResponseBodyResources struct {
@@ -135,7 +140,16 @@ func (s *CreateGroupMetricRulesResponseBodyResources) SetAlertResult(v []*Create
 }
 
 func (s *CreateGroupMetricRulesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.AlertResult != nil {
+		for _, item := range s.AlertResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGroupMetricRulesResponseBodyResourcesAlertResult struct {

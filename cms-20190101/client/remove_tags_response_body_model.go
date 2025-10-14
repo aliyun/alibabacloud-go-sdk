@@ -110,7 +110,12 @@ func (s *RemoveTagsResponseBody) SetTag(v *RemoveTagsResponseBodyTag) *RemoveTag
 }
 
 func (s *RemoveTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		if err := s.Tag.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveTagsResponseBodyTag struct {

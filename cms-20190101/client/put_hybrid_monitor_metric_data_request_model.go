@@ -73,7 +73,16 @@ func (s *PutHybridMonitorMetricDataRequest) SetRegionId(v string) *PutHybridMoni
 }
 
 func (s *PutHybridMonitorMetricDataRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MetricList != nil {
+		for _, item := range s.MetricList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutHybridMonitorMetricDataRequestMetricList struct {
@@ -166,7 +175,16 @@ func (s *PutHybridMonitorMetricDataRequestMetricList) SetValue(v string) *PutHyb
 }
 
 func (s *PutHybridMonitorMetricDataRequestMetricList) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutHybridMonitorMetricDataRequestMetricListLabels struct {

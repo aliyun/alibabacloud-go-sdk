@@ -109,7 +109,12 @@ func (s *DescribeTagKeyListResponseBody) SetTagKeys(v *DescribeTagKeyListRespons
 }
 
 func (s *DescribeTagKeyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagKeys != nil {
+		if err := s.TagKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagKeyListResponseBodyTagKeys struct {

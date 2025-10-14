@@ -110,7 +110,12 @@ func (s *DescribeLogMonitorAttributeResponseBody) SetSuccess(v bool) *DescribeLo
 }
 
 func (s *DescribeLogMonitorAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogMonitor != nil {
+		if err := s.LogMonitor.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitor struct {
@@ -312,7 +317,25 @@ func (s *DescribeLogMonitorAttributeResponseBodyLogMonitor) SetValueFilterRelati
 }
 
 func (s *DescribeLogMonitorAttributeResponseBodyLogMonitor) Validate() error {
-	return dara.Validate(s)
+	if s.Aggregates != nil {
+		for _, item := range s.Aggregates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ValueFilter != nil {
+		for _, item := range s.ValueFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogMonitorAttributeResponseBodyLogMonitorAggregates struct {

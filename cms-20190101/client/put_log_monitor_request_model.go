@@ -272,7 +272,34 @@ func (s *PutLogMonitorRequest) SetValueFilterRelation(v string) *PutLogMonitorRe
 }
 
 func (s *PutLogMonitorRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Aggregates != nil {
+		for _, item := range s.Aggregates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Groupbys != nil {
+		for _, item := range s.Groupbys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ValueFilter != nil {
+		for _, item := range s.ValueFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutLogMonitorRequestAggregates struct {

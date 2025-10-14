@@ -111,7 +111,16 @@ func (s *ModifyGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Modify
 }
 
 func (s *ModifyGroupMonitoringAgentProcessRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfig struct {
@@ -316,7 +325,16 @@ func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) SetWebhook(v strin
 }
 
 func (s *ModifyGroupMonitoringAgentProcessRequestAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {

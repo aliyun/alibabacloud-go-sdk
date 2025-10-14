@@ -119,5 +119,14 @@ func (s *MetricStat) SetTimestamp(v int64) *MetricStat {
 }
 
 func (s *MetricStat) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

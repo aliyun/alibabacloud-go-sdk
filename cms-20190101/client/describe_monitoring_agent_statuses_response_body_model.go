@@ -110,7 +110,12 @@ func (s *DescribeMonitoringAgentStatusesResponseBody) SetSuccess(v bool) *Descri
 }
 
 func (s *DescribeMonitoringAgentStatusesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeStatusList != nil {
+		if err := s.NodeStatusList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentStatusesResponseBodyNodeStatusList struct {
@@ -135,7 +140,16 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList) SetNodeStatu
 }
 
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeStatus != nil {
+		for _, item := range s.NodeStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct {

@@ -161,7 +161,12 @@ func (s *DescribeSiteMonitorListResponseBody) SetTotalCount(v int32) *DescribeSi
 }
 
 func (s *DescribeSiteMonitorListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SiteMonitors != nil {
+		if err := s.SiteMonitors.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitors struct {
@@ -186,7 +191,16 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitors) SetSiteMonitor(v []*De
 }
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitors) Validate() error {
-	return dara.Validate(s)
+	if s.SiteMonitor != nil {
+		for _, item := range s.SiteMonitor {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor struct {
@@ -351,7 +365,12 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor) SetUpdateTi
 }
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor) Validate() error {
-	return dara.Validate(s)
+	if s.OptionsJson != nil {
+		if err := s.OptionsJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson struct {
@@ -896,7 +915,12 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 }
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) Validate() error {
-	return dara.Validate(s)
+	if s.Assertions != nil {
+		if err := s.Assertions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions struct {
@@ -921,7 +945,16 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAs
 }
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertions) Validate() error {
-	return dara.Validate(s)
+	if s.Assertions != nil {
+		for _, item := range s.Assertions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAssertionsAssertions struct {

@@ -132,7 +132,61 @@ func (s *PutEventRuleTargetsRequest) SetWebhookParameters(v []*PutEventRuleTarge
 }
 
 func (s *PutEventRuleTargetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ContactParameters != nil {
+		for _, item := range s.ContactParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FcParameters != nil {
+		for _, item := range s.FcParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MnsParameters != nil {
+		for _, item := range s.MnsParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OpenApiParameters != nil {
+		for _, item := range s.OpenApiParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SlsParameters != nil {
+		for _, item := range s.SlsParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WebhookParameters != nil {
+		for _, item := range s.WebhookParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutEventRuleTargetsRequestContactParameters struct {

@@ -144,7 +144,12 @@ func (s *DescribeExporterRuleListResponseBody) SetTotal(v int32) *DescribeExport
 }
 
 func (s *DescribeExporterRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Datapoints != nil {
+		if err := s.Datapoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExporterRuleListResponseBodyDatapoints struct {
@@ -169,7 +174,16 @@ func (s *DescribeExporterRuleListResponseBodyDatapoints) SetDatapoint(v []*Descr
 }
 
 func (s *DescribeExporterRuleListResponseBodyDatapoints) Validate() error {
-	return dara.Validate(s)
+	if s.Datapoint != nil {
+		for _, item := range s.Datapoint {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExporterRuleListResponseBodyDatapointsDatapoint struct {
@@ -322,7 +336,12 @@ func (s *DescribeExporterRuleListResponseBodyDatapointsDatapoint) SetTargetWindo
 }
 
 func (s *DescribeExporterRuleListResponseBodyDatapointsDatapoint) Validate() error {
-	return dara.Validate(s)
+	if s.DstName != nil {
+		if err := s.DstName.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExporterRuleListResponseBodyDatapointsDatapointDstName struct {

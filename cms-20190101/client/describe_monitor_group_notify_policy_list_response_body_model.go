@@ -127,7 +127,12 @@ func (s *DescribeMonitorGroupNotifyPolicyListResponseBody) SetTotal(v int32) *De
 }
 
 func (s *DescribeMonitorGroupNotifyPolicyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyPolicyList != nil {
+		if err := s.NotifyPolicyList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList struct {
@@ -152,7 +157,16 @@ func (s *DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList) SetNo
 }
 
 func (s *DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyList) Validate() error {
-	return dara.Validate(s)
+	if s.NotifyPolicy != nil {
+		for _, item := range s.NotifyPolicy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyPolicy struct {

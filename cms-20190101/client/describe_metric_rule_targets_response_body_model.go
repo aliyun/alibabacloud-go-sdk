@@ -110,7 +110,12 @@ func (s *DescribeMetricRuleTargetsResponseBody) SetTargets(v *DescribeMetricRule
 }
 
 func (s *DescribeMetricRuleTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		if err := s.Targets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTargetsResponseBodyTargets struct {
@@ -135,7 +140,16 @@ func (s *DescribeMetricRuleTargetsResponseBodyTargets) SetTarget(v []*DescribeMe
 }
 
 func (s *DescribeMetricRuleTargetsResponseBodyTargets) Validate() error {
-	return dara.Validate(s)
+	if s.Target != nil {
+		for _, item := range s.Target {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTargetsResponseBodyTargetsTarget struct {

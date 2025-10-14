@@ -112,7 +112,12 @@ func (s *DescribeSystemEventCountResponseBody) SetSystemEventCounts(v *DescribeS
 }
 
 func (s *DescribeSystemEventCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEventCounts != nil {
+		if err := s.SystemEventCounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventCountResponseBodySystemEventCounts struct {
@@ -137,7 +142,16 @@ func (s *DescribeSystemEventCountResponseBodySystemEventCounts) SetSystemEventCo
 }
 
 func (s *DescribeSystemEventCountResponseBodySystemEventCounts) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEventCount != nil {
+		for _, item := range s.SystemEventCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount struct {

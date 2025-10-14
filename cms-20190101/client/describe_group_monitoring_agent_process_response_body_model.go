@@ -157,7 +157,12 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBody) SetTotal(v string) *De
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Processes != nil {
+		if err := s.Processes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcesses struct {
@@ -182,7 +187,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcesses) SetProcess(v 
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcesses) Validate() error {
-	return dara.Validate(s)
+	if s.Process != nil {
+		for _, item := range s.Process {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess struct {
@@ -287,7 +301,17 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess) SetPro
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		if err := s.AlertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MatchExpress != nil {
+		if err := s.MatchExpress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig struct {
@@ -312,7 +336,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig struct {
@@ -505,7 +538,12 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		if err := s.TargetList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList struct {
@@ -530,7 +568,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList) Validate() error {
-	return dara.Validate(s)
+	if s.Target != nil {
+		for _, item := range s.Target {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget struct {
@@ -654,7 +701,16 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExp
 }
 
 func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress) Validate() error {
-	return dara.Validate(s)
+	if s.MatchExpress != nil {
+		for _, item := range s.MatchExpress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpressMatchExpress struct {

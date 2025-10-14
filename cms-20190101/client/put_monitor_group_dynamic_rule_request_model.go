@@ -90,7 +90,16 @@ func (s *PutMonitorGroupDynamicRuleRequest) SetRegionId(v string) *PutMonitorGro
 }
 
 func (s *PutMonitorGroupDynamicRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GroupRules != nil {
+		for _, item := range s.GroupRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRules struct {
@@ -162,7 +171,16 @@ func (s *PutMonitorGroupDynamicRuleRequestGroupRules) SetFilters(v []*PutMonitor
 }
 
 func (s *PutMonitorGroupDynamicRuleRequestGroupRules) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {

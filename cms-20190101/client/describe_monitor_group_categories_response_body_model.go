@@ -110,7 +110,12 @@ func (s *DescribeMonitorGroupCategoriesResponseBody) SetSuccess(v bool) *Describ
 }
 
 func (s *DescribeMonitorGroupCategoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorGroupCategories != nil {
+		if err := s.MonitorGroupCategories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories struct {
@@ -151,7 +156,12 @@ func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories) SetMo
 }
 
 func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorGroupCategory != nil {
+		if err := s.MonitorGroupCategory.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGroupCategory struct {
@@ -176,7 +186,16 @@ func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitor
 }
 
 func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGroupCategory) Validate() error {
-	return dara.Validate(s)
+	if s.CategoryItem != nil {
+		for _, item := range s.CategoryItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGroupCategoryCategoryItem struct {

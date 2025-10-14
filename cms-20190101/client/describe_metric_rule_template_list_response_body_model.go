@@ -127,7 +127,12 @@ func (s *DescribeMetricRuleTemplateListResponseBody) SetTotal(v int64) *Describe
 }
 
 func (s *DescribeMetricRuleTemplateListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Templates != nil {
+		if err := s.Templates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplates struct {
@@ -152,7 +157,16 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplates) SetTemplate(v []*D
 }
 
 func (s *DescribeMetricRuleTemplateListResponseBodyTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Template != nil {
+		for _, item := range s.Template {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate struct {
@@ -270,7 +284,12 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate) SetTemplat
 }
 
 func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyHistories != nil {
+		if err := s.ApplyHistories.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistories struct {
@@ -295,7 +314,16 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistori
 }
 
 func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistories) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyHistory != nil {
+		for _, item := range s.ApplyHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistoriesApplyHistory struct {

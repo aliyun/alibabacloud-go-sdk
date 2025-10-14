@@ -109,7 +109,12 @@ func (s *DescribeTagValueListResponseBody) SetTagValues(v *DescribeTagValueListR
 }
 
 func (s *DescribeTagValueListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagValues != nil {
+		if err := s.TagValues.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTagValueListResponseBodyTagValues struct {

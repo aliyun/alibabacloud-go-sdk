@@ -144,7 +144,16 @@ func (s *DescribeAlertLogListResponseBody) SetSuccess(v bool) *DescribeAlertLogL
 }
 
 func (s *DescribeAlertLogListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlertLogList != nil {
+		for _, item := range s.AlertLogList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertLogListResponseBodyAlertLogList struct {
@@ -602,7 +611,53 @@ func (s *DescribeAlertLogListResponseBodyAlertLogList) SetWebhookList(v []*Descr
 }
 
 func (s *DescribeAlertLogListResponseBodyAlertLogList) Validate() error {
-	return dara.Validate(s)
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Escalation != nil {
+		if err := s.Escalation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExtendedInfo != nil {
+		for _, item := range s.ExtendedInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SendDetail != nil {
+		if err := s.SendDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SendResultList != nil {
+		for _, item := range s.SendResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WebhookList != nil {
+		for _, item := range s.WebhookList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListDimensions struct {
@@ -803,7 +858,16 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetail) SetResultCode(v
 }
 
 func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ChannelResultList != nil {
+		for _, item := range s.ChannelResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList struct {
@@ -858,7 +922,16 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList
 }
 
 func (s *DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList) Validate() error {
-	return dara.Validate(s)
+	if s.ResultList != nil {
+		for _, item := range s.ResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList struct {

@@ -106,7 +106,12 @@ func (s *DeleteMetricRuleTemplateResponseBody) SetSuccess(v bool) *DeleteMetricR
 }
 
 func (s *DeleteMetricRuleTemplateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMetricRuleTemplateResponseBodyResource struct {

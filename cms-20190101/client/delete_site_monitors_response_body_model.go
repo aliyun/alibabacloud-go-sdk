@@ -106,7 +106,12 @@ func (s *DeleteSiteMonitorsResponseBody) SetSuccess(v string) *DeleteSiteMonitor
 }
 
 func (s *DeleteSiteMonitorsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSiteMonitorsResponseBodyData struct {

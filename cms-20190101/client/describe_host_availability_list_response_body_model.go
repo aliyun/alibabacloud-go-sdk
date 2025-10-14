@@ -127,7 +127,12 @@ func (s *DescribeHostAvailabilityListResponseBody) SetTotal(v int32) *DescribeHo
 }
 
 func (s *DescribeHostAvailabilityListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		if err := s.TaskList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskList struct {
@@ -152,7 +157,16 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskList) SetNodeTaskConfig(v [
 }
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTaskConfig != nil {
+		for _, item := range s.NodeTaskConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig struct {
@@ -319,7 +333,22 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig) SetTask
 }
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		if err := s.AlertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskOption != nil {
+		if err := s.TaskOption.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig struct {
@@ -447,7 +476,17 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.EscalationList != nil {
+		if err := s.EscalationList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TargetList != nil {
+		if err := s.TargetList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationList struct {
@@ -472,7 +511,16 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationList) Validate() error {
-	return dara.Validate(s)
+	if s.EscalationList != nil {
+		for _, item := range s.EscalationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigEscalationListEscalationList struct {
@@ -617,7 +665,16 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConf
 }
 
 func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetList) Validate() error {
-	return dara.Validate(s)
+	if s.Target != nil {
+		for _, item := range s.Target {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigAlertConfigTargetListTarget struct {

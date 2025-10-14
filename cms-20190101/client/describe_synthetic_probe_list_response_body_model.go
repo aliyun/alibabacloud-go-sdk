@@ -96,7 +96,16 @@ func (s *DescribeSyntheticProbeListResponseBody) SetSuccess(v string) *DescribeS
 }
 
 func (s *DescribeSyntheticProbeListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IspCityList != nil {
+		for _, item := range s.IspCityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSyntheticProbeListResponseBodyIspCityList struct {

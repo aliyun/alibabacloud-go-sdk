@@ -59,5 +59,10 @@ func (s *CreateInstantSiteMonitorResponse) SetBody(v *CreateInstantSiteMonitorRe
 }
 
 func (s *CreateInstantSiteMonitorResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

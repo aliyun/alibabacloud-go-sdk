@@ -127,7 +127,12 @@ func (s *DescribeMetricRuleListResponseBody) SetTotal(v string) *DescribeMetricR
 }
 
 func (s *DescribeMetricRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Alarms != nil {
+		if err := s.Alarms.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarms struct {
@@ -152,7 +157,16 @@ func (s *DescribeMetricRuleListResponseBodyAlarms) SetAlarm(v []*DescribeMetricR
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarms) Validate() error {
-	return dara.Validate(s)
+	if s.Alarm != nil {
+		for _, item := range s.Alarm {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarm struct {
@@ -550,7 +564,27 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetWebhook(v string) *De
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) Validate() error {
-	return dara.Validate(s)
+	if s.CompositeExpression != nil {
+		if err := s.CompositeExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		if err := s.Labels.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Prometheus != nil {
+		if err := s.Prometheus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression struct {
@@ -652,7 +686,12 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetTi
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) Validate() error {
-	return dara.Validate(s)
+	if s.ExpressionList != nil {
+		if err := s.ExpressionList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList struct {
@@ -677,7 +716,16 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpress
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList) Validate() error {
-	return dara.Validate(s)
+	if s.ExpressionList != nil {
+		for _, item := range s.ExpressionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList struct {
@@ -849,7 +897,22 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmEscalations) SetWarn(v *De
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmEscalationsCritical struct {
@@ -1222,7 +1285,16 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmLabels) SetLabels(v []*Des
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmLabels) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmLabelsLabels struct {
@@ -1348,7 +1420,12 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) SetTimes(v int
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		if err := s.Annotations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations struct {
@@ -1373,7 +1450,16 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) Set
 }
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations struct {

@@ -130,7 +130,25 @@ func (s *CreateGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Create
 }
 
 func (s *CreateGroupMonitoringAgentProcessRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		for _, item := range s.AlertConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MatchExpress != nil {
+		for _, item := range s.MatchExpress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
@@ -351,7 +369,16 @@ func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) SetWebhook(v strin
 }
 
 func (s *CreateGroupMonitoringAgentProcessRequestAlertConfig) Validate() error {
-	return dara.Validate(s)
+	if s.TargetList != nil {
+		for _, item := range s.TargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGroupMonitoringAgentProcessRequestAlertConfigTargetList struct {

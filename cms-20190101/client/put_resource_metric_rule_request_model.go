@@ -352,7 +352,31 @@ func (s *PutResourceMetricRuleRequest) SetWebhook(v string) *PutResourceMetricRu
 }
 
 func (s *PutResourceMetricRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CompositeExpression != nil {
+		if err := s.CompositeExpression.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Prometheus != nil {
+		if err := s.Prometheus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRuleRequestEscalations struct {
@@ -397,7 +421,22 @@ func (s *PutResourceMetricRuleRequestEscalations) SetWarn(v *PutResourceMetricRu
 }
 
 func (s *PutResourceMetricRuleRequestEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRuleRequestEscalationsCritical struct {
@@ -826,7 +865,16 @@ func (s *PutResourceMetricRuleRequestCompositeExpression) SetTimes(v int32) *Put
 }
 
 func (s *PutResourceMetricRuleRequestCompositeExpression) Validate() error {
-	return dara.Validate(s)
+	if s.ExpressionList != nil {
+		for _, item := range s.ExpressionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRuleRequestCompositeExpressionExpressionList struct {
@@ -1080,7 +1128,16 @@ func (s *PutResourceMetricRuleRequestPrometheus) SetTimes(v int32) *PutResourceM
 }
 
 func (s *PutResourceMetricRuleRequestPrometheus) Validate() error {
-	return dara.Validate(s)
+	if s.Annotations != nil {
+		for _, item := range s.Annotations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRuleRequestPrometheusAnnotations struct {

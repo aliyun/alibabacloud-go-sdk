@@ -124,7 +124,12 @@ func (s *DescribeProductResourceTagKeyListResponseBody) SetTagKeys(v *DescribePr
 }
 
 func (s *DescribeProductResourceTagKeyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TagKeys != nil {
+		if err := s.TagKeys.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductResourceTagKeyListResponseBodyTagKeys struct {

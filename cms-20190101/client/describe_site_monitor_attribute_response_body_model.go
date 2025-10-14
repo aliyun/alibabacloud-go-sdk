@@ -123,7 +123,17 @@ func (s *DescribeSiteMonitorAttributeResponseBody) SetSuccess(v bool) *DescribeS
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricRules != nil {
+		if err := s.MetricRules.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitors != nil {
+		if err := s.SiteMonitors.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodyMetricRules struct {
@@ -148,7 +158,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRules) SetMetricRule(v []
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodyMetricRules) Validate() error {
-	return dara.Validate(s)
+	if s.MetricRule != nil {
+		for _, item := range s.MetricRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule struct {
@@ -627,7 +646,27 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) SetVpcConfig(v *D
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) Validate() error {
-	return dara.Validate(s)
+	if s.CustomSchedule != nil {
+		if err := s.CustomSchedule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IspCities != nil {
+		if err := s.IspCities.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OptionJson != nil {
+		if err := s.OptionJson.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcConfig != nil {
+		if err := s.VpcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule struct {
@@ -698,7 +737,12 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) Set
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule) Validate() error {
-	return dara.Validate(s)
+	if s.Days != nil {
+		if err := s.Days.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays struct {
@@ -748,7 +792,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities) SetIspCi
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCities) Validate() error {
-	return dara.Validate(s)
+	if s.IspCity != nil {
+		for _, item := range s.IspCity {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity struct {
@@ -1126,6 +1179,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 0
 	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	SafeLink   *int32 `json:"safe_link,omitempty" xml:"safe_link,omitempty"`
 	// Indicates whether page screenshot is enabled.
 	//
 	// example:
@@ -1363,6 +1417,10 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetResp
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetRetryDelay() *int32 {
 	return s.RetryDelay
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetSafeLink() *int32 {
+	return s.SafeLink
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) GetScreenShot() *bool {
@@ -1638,6 +1696,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetRetr
 	return s
 }
 
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetSafeLink(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.SafeLink = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetScreenShot(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.ScreenShot = &v
 	return s
@@ -1699,7 +1762,72 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetWait
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) Validate() error {
-	return dara.Validate(s)
+	if s.Assertions != nil {
+		if err := s.Assertions.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AuthInfo != nil {
+		if err := s.AuthInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BlockedUrlList != nil {
+		if err := s.BlockedUrlList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BrowserHeaders != nil {
+		if err := s.BrowserHeaders.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BrowserHosts != nil {
+		if err := s.BrowserHosts.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BrowserInfo != nil {
+		if err := s.BrowserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConfigVariables != nil {
+		if err := s.ConfigVariables.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExpectExistString != nil {
+		if err := s.ExpectExistString.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExpectNonExistString != nil {
+		if err := s.ExpectNonExistString.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QuicTarget != nil {
+		if err := s.QuicTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Steps != nil {
+		if err := s.Steps.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficHijackElementBlacklist != nil {
+		if err := s.TrafficHijackElementBlacklist.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TrafficHijackElementWhitelist != nil {
+		if err := s.TrafficHijackElementWhitelist.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions struct {
@@ -1724,7 +1852,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertion
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertions) Validate() error {
-	return dara.Validate(s)
+	if s.Assertions != nil {
+		for _, item := range s.Assertions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertionsAssertions struct {
@@ -2026,7 +2163,12 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo)
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Scopes != nil {
+		if err := s.Scopes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfoScopes struct {
@@ -2151,7 +2293,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserIn
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo) Validate() error {
-	return dara.Validate(s)
+	if s.BrowserInfo != nil {
+		for _, item := range s.BrowserInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfoBrowserInfo struct {
@@ -2221,7 +2372,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonConfigVar
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonConfigVariables) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigVariables != nil {
+		for _, item := range s.ConfigVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonConfigVariablesConfigVariables struct {
@@ -2366,7 +2526,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps) Se
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps) Validate() error {
-	return dara.Validate(s)
+	if s.Steps != nil {
+		for _, item := range s.Steps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsSteps struct {
@@ -2492,7 +2661,12 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStep
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsSteps) Validate() error {
-	return dara.Validate(s)
+	if s.ExtractedVariables != nil {
+		if err := s.ExtractedVariables.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStepsExtractedVariables struct {
@@ -2517,7 +2691,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStep
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStepsExtractedVariables) Validate() error {
-	return dara.Validate(s)
+	if s.ExtractedVariables != nil {
+		for _, item := range s.ExtractedVariables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStepsExtractedVariablesExtractedVariables struct {
@@ -2572,7 +2755,12 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStep
 }
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStepsExtractedVariablesExtractedVariables) Validate() error {
-	return dara.Validate(s)
+	if s.Parser != nil {
+		if err := s.Parser.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonStepsStepsExtractedVariablesExtractedVariablesParser struct {

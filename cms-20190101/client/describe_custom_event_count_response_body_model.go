@@ -106,7 +106,12 @@ func (s *DescribeCustomEventCountResponseBody) SetSuccess(v bool) *DescribeCusto
 }
 
 func (s *DescribeCustomEventCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomEventCounts != nil {
+		if err := s.CustomEventCounts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventCountResponseBodyCustomEventCounts struct {
@@ -131,7 +136,16 @@ func (s *DescribeCustomEventCountResponseBodyCustomEventCounts) SetCustomEventCo
 }
 
 func (s *DescribeCustomEventCountResponseBodyCustomEventCounts) Validate() error {
-	return dara.Validate(s)
+	if s.CustomEventCount != nil {
+		for _, item := range s.CustomEventCount {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount struct {

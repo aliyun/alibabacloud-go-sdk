@@ -168,7 +168,32 @@ func (s *NotificationStrategy) SetUuid(v string) *NotificationStrategy {
 }
 
 func (s *NotificationStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.EscalationSetting != nil {
+		if err := s.EscalationSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.FilterSetting != nil {
+		if err := s.FilterSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GroupingSetting != nil {
+		if err := s.GroupingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PushingSetting != nil {
+		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteSetting != nil {
+		if err := s.RouteSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type NotificationStrategyEscalationSetting struct {
@@ -243,7 +268,16 @@ func (s *NotificationStrategyEscalationSetting) SetRetriggerMin(v int64) *Notifi
 }
 
 func (s *NotificationStrategyEscalationSetting) Validate() error {
-	return dara.Validate(s)
+	if s.CustomChannels != nil {
+		for _, item := range s.CustomChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NotificationStrategyEscalationSettingCustomChannels struct {
@@ -485,7 +519,16 @@ func (s *NotificationStrategyGroupingSetting) SetTimes(v int32) *NotificationStr
 }
 
 func (s *NotificationStrategyGroupingSetting) Validate() error {
-	return dara.Validate(s)
+	if s.GroupingItems != nil {
+		for _, item := range s.GroupingItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NotificationStrategyGroupingSettingGroupingItems struct {
@@ -600,7 +643,16 @@ func (s *NotificationStrategyRouteSetting) SetRoutes(v []*NotificationStrategyRo
 }
 
 func (s *NotificationStrategyRouteSetting) Validate() error {
-	return dara.Validate(s)
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NotificationStrategyRouteSettingRoutes struct {
@@ -635,7 +687,16 @@ func (s *NotificationStrategyRouteSettingRoutes) SetEscalationUuid(v string) *No
 }
 
 func (s *NotificationStrategyRouteSettingRoutes) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NotificationStrategyRouteSettingRoutesConditions struct {

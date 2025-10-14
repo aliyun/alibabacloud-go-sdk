@@ -161,7 +161,16 @@ func (s *DescribeLogMonitorListResponseBody) SetTotal(v int64) *DescribeLogMonit
 }
 
 func (s *DescribeLogMonitorListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LogMonitorList != nil {
+		for _, item := range s.LogMonitorList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogMonitorListResponseBodyLogMonitorList struct {
@@ -313,7 +322,16 @@ func (s *DescribeLogMonitorListResponseBodyLogMonitorList) SetValueFilterRelatio
 }
 
 func (s *DescribeLogMonitorListResponseBodyLogMonitorList) Validate() error {
-	return dara.Validate(s)
+	if s.ValueFilter != nil {
+		for _, item := range s.ValueFilter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLogMonitorListResponseBodyLogMonitorListValueFilter struct {

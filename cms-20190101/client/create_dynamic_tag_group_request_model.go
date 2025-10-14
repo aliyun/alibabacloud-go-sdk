@@ -183,7 +183,16 @@ func (s *CreateDynamicTagGroupRequest) SetTemplateIdList(v []*string) *CreateDyn
 }
 
 func (s *CreateDynamicTagGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MatchExpress != nil {
+		for _, item := range s.MatchExpress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDynamicTagGroupRequestMatchExpress struct {

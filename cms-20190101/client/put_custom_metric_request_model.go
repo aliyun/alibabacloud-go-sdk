@@ -50,7 +50,16 @@ func (s *PutCustomMetricRequest) SetRegionId(v string) *PutCustomMetricRequest {
 }
 
 func (s *PutCustomMetricRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MetricList != nil {
+		for _, item := range s.MetricList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutCustomMetricRequestMetricList struct {

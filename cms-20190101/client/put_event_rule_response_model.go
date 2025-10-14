@@ -59,5 +59,10 @@ func (s *PutEventRuleResponse) SetBody(v *PutEventRuleResponseBody) *PutEventRul
 }
 
 func (s *PutEventRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

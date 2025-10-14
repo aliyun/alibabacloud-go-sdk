@@ -110,7 +110,12 @@ func (s *PutResourceMetricRulesResponseBody) SetSuccess(v bool) *PutResourceMetr
 }
 
 func (s *PutResourceMetricRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedListResult != nil {
+		if err := s.FailedListResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResult struct {
@@ -135,7 +140,16 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResult) SetTarget(v []*PutR
 }
 
 func (s *PutResourceMetricRulesResponseBodyFailedListResult) Validate() error {
-	return dara.Validate(s)
+	if s.Target != nil {
+		for _, item := range s.Target {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTarget struct {
@@ -176,7 +190,12 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResultTarget) SetRuleId(v s
 }
 
 func (s *PutResourceMetricRulesResponseBodyFailedListResultTarget) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesResponseBodyFailedListResultTargetResult struct {

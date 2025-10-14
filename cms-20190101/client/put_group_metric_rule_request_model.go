@@ -393,7 +393,21 @@ func (s *PutGroupMetricRuleRequest) SetWebhook(v string) *PutGroupMetricRuleRequ
 }
 
 func (s *PutGroupMetricRuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutGroupMetricRuleRequestEscalations struct {
@@ -438,7 +452,22 @@ func (s *PutGroupMetricRuleRequestEscalations) SetWarn(v *PutGroupMetricRuleRequ
 }
 
 func (s *PutGroupMetricRuleRequestEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutGroupMetricRuleRequestEscalationsCritical struct {

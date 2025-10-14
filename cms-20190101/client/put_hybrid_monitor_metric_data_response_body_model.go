@@ -74,7 +74,16 @@ func (s *PutHybridMonitorMetricDataResponseBody) SetRequestId(v string) *PutHybr
 }
 
 func (s *PutHybridMonitorMetricDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorDetail != nil {
+		for _, item := range s.ErrorDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutHybridMonitorMetricDataResponseBodyErrorDetail struct {

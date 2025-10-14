@@ -157,7 +157,16 @@ func (s *DescribeHybridMonitorSLSGroupResponseBody) SetTotal(v int64) *DescribeH
 }
 
 func (s *DescribeHybridMonitorSLSGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.List != nil {
+		for _, item := range s.List {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorSLSGroupResponseBodyList struct {
@@ -243,7 +252,16 @@ func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetUpdateTime(v string) 
 }
 
 func (s *DescribeHybridMonitorSLSGroupResponseBodyList) Validate() error {
-	return dara.Validate(s)
+	if s.SLSGroupConfig != nil {
+		for _, item := range s.SLSGroupConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig struct {

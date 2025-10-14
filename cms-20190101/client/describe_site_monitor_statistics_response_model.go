@@ -59,5 +59,10 @@ func (s *DescribeSiteMonitorStatisticsResponse) SetBody(v *DescribeSiteMonitorSt
 }
 
 func (s *DescribeSiteMonitorStatisticsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

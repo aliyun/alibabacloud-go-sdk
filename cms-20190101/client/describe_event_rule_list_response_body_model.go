@@ -127,7 +127,12 @@ func (s *DescribeEventRuleListResponseBody) SetTotal(v int32) *DescribeEventRule
 }
 
 func (s *DescribeEventRuleListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventRules != nil {
+		if err := s.EventRules.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRules struct {
@@ -152,7 +157,16 @@ func (s *DescribeEventRuleListResponseBodyEventRules) SetEventRule(v []*Describe
 }
 
 func (s *DescribeEventRuleListResponseBodyEventRules) Validate() error {
-	return dara.Validate(s)
+	if s.EventRule != nil {
+		for _, item := range s.EventRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRule struct {
@@ -276,7 +290,12 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRule) SetState(v string
 }
 
 func (s *DescribeEventRuleListResponseBodyEventRulesEventRule) Validate() error {
-	return dara.Validate(s)
+	if s.EventPattern != nil {
+		if err := s.EventPattern.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern struct {
@@ -301,7 +320,16 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern) SetEv
 }
 
 func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPattern) Validate() error {
-	return dara.Validate(s)
+	if s.EventPattern != nil {
+		for _, item := range s.EventPattern {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPattern struct {
@@ -405,7 +433,27 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPa
 }
 
 func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPattern) Validate() error {
-	return dara.Validate(s)
+	if s.EventTypeList != nil {
+		if err := s.EventTypeList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.KeywordFilter != nil {
+		if err := s.KeywordFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LevelList != nil {
+		if err := s.LevelList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NameList != nil {
+		if err := s.NameList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternEventTypeList struct {
@@ -475,7 +523,12 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPa
 }
 
 func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Keywords != nil {
+		if err := s.Keywords.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatternKeywordFilterKeywords struct {

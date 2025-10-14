@@ -106,7 +106,12 @@ func (s *DescribeSystemEventHistogramResponseBody) SetSystemEventHistograms(v *D
 }
 
 func (s *DescribeSystemEventHistogramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEventHistograms != nil {
+		if err := s.SystemEventHistograms.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventHistogramResponseBodySystemEventHistograms struct {
@@ -131,7 +136,16 @@ func (s *DescribeSystemEventHistogramResponseBodySystemEventHistograms) SetSyste
 }
 
 func (s *DescribeSystemEventHistogramResponseBodySystemEventHistograms) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEventHistogram != nil {
+		for _, item := range s.SystemEventHistogram {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventHistogramResponseBodySystemEventHistogramsSystemEventHistogram struct {

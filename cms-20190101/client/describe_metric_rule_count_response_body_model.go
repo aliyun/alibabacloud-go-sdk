@@ -110,7 +110,12 @@ func (s *DescribeMetricRuleCountResponseBody) SetSuccess(v bool) *DescribeMetric
 }
 
 func (s *DescribeMetricRuleCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MetricRuleCount != nil {
+		if err := s.MetricRuleCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleCountResponseBodyMetricRuleCount struct {

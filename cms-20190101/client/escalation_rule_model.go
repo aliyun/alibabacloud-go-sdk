@@ -109,7 +109,16 @@ func (s *EscalationRule) SetUuid(v string) *EscalationRule {
 }
 
 func (s *EscalationRule) Validate() error {
-  return dara.Validate(s)
+  if s.Escalations != nil {
+    for _, item := range s.Escalations {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type EscalationRuleEscalations struct {
@@ -164,7 +173,12 @@ func (s *EscalationRuleEscalations) SetEscalateMin(v int64) *EscalationRuleEscal
 }
 
 func (s *EscalationRuleEscalations) Validate() error {
-  return dara.Validate(s)
+  if s.ContactGroupsByLevel != nil {
+    if err := s.ContactGroupsByLevel.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type EscalationRuleEscalationsContactGroupsByLevel struct {

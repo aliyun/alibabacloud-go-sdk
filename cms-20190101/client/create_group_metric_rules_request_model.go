@@ -68,7 +68,16 @@ func (s *CreateGroupMetricRulesRequest) SetRegionId(v string) *CreateGroupMetric
 }
 
 func (s *CreateGroupMetricRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GroupMetricRules != nil {
+		for _, item := range s.GroupMetricRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRules struct {
@@ -629,7 +638,21 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRules) SetWebhook(v string) *Cr
 }
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRules) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalations struct {
@@ -674,7 +697,22 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) SetWarn(v *Cr
 }
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {

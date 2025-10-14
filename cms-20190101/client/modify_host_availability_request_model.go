@@ -184,7 +184,35 @@ func (s *ModifyHostAvailabilityRequest) SetTaskScope(v string) *ModifyHostAvaila
 }
 
 func (s *ModifyHostAvailabilityRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertConfig != nil {
+		if err := s.AlertConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskOption != nil {
+		if err := s.TaskOption.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AlertConfigEscalationList != nil {
+		for _, item := range s.AlertConfigEscalationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AlertConfigTargetList != nil {
+		for _, item := range s.AlertConfigTargetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyHostAvailabilityRequestAlertConfig struct {

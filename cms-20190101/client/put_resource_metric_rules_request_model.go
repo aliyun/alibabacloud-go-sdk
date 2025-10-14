@@ -40,7 +40,16 @@ func (s *PutResourceMetricRulesRequest) SetRules(v []*PutResourceMetricRulesRequ
 }
 
 func (s *PutResourceMetricRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesRequestRules struct {
@@ -354,7 +363,21 @@ func (s *PutResourceMetricRulesRequestRules) SetWebhook(v string) *PutResourceMe
 }
 
 func (s *PutResourceMetricRulesRequestRules) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesRequestRulesEscalations struct {
@@ -399,7 +422,22 @@ func (s *PutResourceMetricRulesRequestRulesEscalations) SetWarn(v *PutResourceMe
 }
 
 func (s *PutResourceMetricRulesRequestRulesEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsCritical struct {

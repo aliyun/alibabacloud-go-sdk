@@ -127,7 +127,12 @@ func (s *DescribeAlertHistoryListResponseBody) SetTotal(v string) *DescribeAlert
 }
 
 func (s *DescribeAlertHistoryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmHistoryList != nil {
+		if err := s.AlarmHistoryList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertHistoryListResponseBodyAlarmHistoryList struct {
@@ -152,7 +157,16 @@ func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryList) SetAlarmHistory(v
 }
 
 func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryList) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmHistory != nil {
+		for _, item := range s.AlarmHistory {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory struct {
@@ -480,7 +494,32 @@ func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory) SetWe
 }
 
 func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistory) Validate() error {
-	return dara.Validate(s)
+	if s.ContactALIIMs != nil {
+		if err := s.ContactALIIMs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContactGroups != nil {
+		if err := s.ContactGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContactMails != nil {
+		if err := s.ContactMails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContactSmses != nil {
+		if err := s.ContactSmses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Contacts != nil {
+		if err := s.Contacts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContactALIIMs struct {

@@ -110,7 +110,12 @@ func (s *PutGroupMetricRuleResponseBody) SetSuccess(v bool) *PutGroupMetricRuleR
 }
 
 func (s *PutGroupMetricRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PutGroupMetricRuleResponseBodyResult struct {

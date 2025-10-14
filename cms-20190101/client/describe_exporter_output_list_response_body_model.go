@@ -144,7 +144,12 @@ func (s *DescribeExporterOutputListResponseBody) SetTotal(v int32) *DescribeExpo
 }
 
 func (s *DescribeExporterOutputListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Datapoints != nil {
+		if err := s.Datapoints.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExporterOutputListResponseBodyDatapoints struct {
@@ -169,7 +174,16 @@ func (s *DescribeExporterOutputListResponseBodyDatapoints) SetDatapoint(v []*Des
 }
 
 func (s *DescribeExporterOutputListResponseBodyDatapoints) Validate() error {
-	return dara.Validate(s)
+	if s.Datapoint != nil {
+		for _, item := range s.Datapoint {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExporterOutputListResponseBodyDatapointsDatapoint struct {
@@ -242,7 +256,12 @@ func (s *DescribeExporterOutputListResponseBodyDatapointsDatapoint) SetDestType(
 }
 
 func (s *DescribeExporterOutputListResponseBodyDatapointsDatapoint) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigJson != nil {
+		if err := s.ConfigJson.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson struct {

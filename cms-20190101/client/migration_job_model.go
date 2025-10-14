@@ -119,7 +119,21 @@ func (s *MigrationJob) SetUuid(v string) *MigrationJob {
 }
 
 func (s *MigrationJob) Validate() error {
-	return dara.Validate(s)
+	if s.Plan != nil {
+		if err := s.Plan.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Source != nil {
+		for _, item := range s.Source {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlan struct {
@@ -204,7 +218,61 @@ func (s *MigrationJobPlan) SetTargets(v []*MigrationJobPlanTargets) *MigrationJo
 }
 
 func (s *MigrationJobPlan) Validate() error {
-	return dara.Validate(s)
+	if s.Contacts != nil {
+		for _, item := range s.Contacts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Escalations != nil {
+		for _, item := range s.Escalations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Strategies != nil {
+		for _, item := range s.Strategies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Subscriptions != nil {
+		for _, item := range s.Subscriptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanContacts struct {
@@ -239,7 +307,16 @@ func (s *MigrationJobPlanContacts) SetName(v string) *MigrationJobPlanContacts {
 }
 
 func (s *MigrationJobPlanContacts) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		for _, item := range s.Channels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanContactsChannels struct {
@@ -329,7 +406,16 @@ func (s *MigrationJobPlanEscalations) SetUuid(v string) *MigrationJobPlanEscalat
 }
 
 func (s *MigrationJobPlanEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		for _, item := range s.Escalations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanEscalationsEscalations struct {
@@ -364,7 +450,12 @@ func (s *MigrationJobPlanEscalationsEscalations) SetLevelGroups(v *MigrationJobP
 }
 
 func (s *MigrationJobPlanEscalationsEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.LevelGroups != nil {
+		if err := s.LevelGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanEscalationsEscalationsLevelGroups struct {
@@ -499,7 +590,17 @@ func (s *MigrationJobPlanStrategies) SetPushingSetting(v *MigrationJobPlanStrate
 }
 
 func (s *MigrationJobPlanStrategies) Validate() error {
-	return dara.Validate(s)
+	if s.EscalationSetting != nil {
+		if err := s.EscalationSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PushingSetting != nil {
+		if err := s.PushingSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanStrategiesEscalationSetting struct {
@@ -594,7 +695,16 @@ func (s *MigrationJobPlanSubscriptions) SetStrategyUuid(v string) *MigrationJobP
 }
 
 func (s *MigrationJobPlanSubscriptions) Validate() error {
-	return dara.Validate(s)
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanSubscriptionsConditions struct {
@@ -704,7 +814,12 @@ func (s *MigrationJobPlanTargets) SetUuid(v string) *MigrationJobPlanTargets {
 }
 
 func (s *MigrationJobPlanTargets) Validate() error {
-	return dara.Validate(s)
+	if s.HttpRequestTarget != nil {
+		if err := s.HttpRequestTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MigrationJobPlanTargetsHttpRequestTarget struct {
@@ -784,7 +899,21 @@ func (s *MigrationJobSource) SetTargets(v []*MigrationJobSourceTargets) *Migrati
 }
 
 func (s *MigrationJobSource) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		if err := s.Rule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobSourceRule struct {
@@ -829,7 +958,21 @@ func (s *MigrationJobSourceRule) SetPrimaryFilters(v []*MigrationJobSourceRulePr
 }
 
 func (s *MigrationJobSourceRule) Validate() error {
-	return dara.Validate(s)
+	if s.KeywordFilter != nil {
+		if err := s.KeywordFilter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrimaryFilters != nil {
+		for _, item := range s.PrimaryFilters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type MigrationJobSourceRuleKeywordFilter struct {
@@ -944,7 +1087,12 @@ func (s *MigrationJobSourceTargets) SetType(v string) *MigrationJobSourceTargets
 }
 
 func (s *MigrationJobSourceTargets) Validate() error {
-	return dara.Validate(s)
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MigrationJobSourceTargetsContent struct {

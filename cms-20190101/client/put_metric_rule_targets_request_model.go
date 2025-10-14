@@ -71,7 +71,16 @@ func (s *PutMetricRuleTargetsRequest) SetTargets(v []*PutMetricRuleTargetsReques
 }
 
 func (s *PutMetricRuleTargetsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutMetricRuleTargetsRequestTargets struct {

@@ -59,5 +59,10 @@ func (s *DescribeSystemEventCountResponse) SetBody(v *DescribeSystemEventCountRe
 }
 
 func (s *DescribeSystemEventCountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

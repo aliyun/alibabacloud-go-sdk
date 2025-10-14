@@ -151,5 +151,14 @@ func (s *CursorRequest) SetStartTime(v string) *CursorRequest {
 }
 
 func (s *CursorRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Matchers != nil {
+		for _, item := range s.Matchers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

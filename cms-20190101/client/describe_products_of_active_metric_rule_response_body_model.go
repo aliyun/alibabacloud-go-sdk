@@ -149,7 +149,12 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBody) SetSuccess(v bool) *Des
 }
 
 func (s *DescribeProductsOfActiveMetricRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllProductInitMetricRuleList != nil {
+		if err := s.AllProductInitMetricRuleList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList struct {
@@ -174,7 +179,16 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList) Validate() error {
-	return dara.Validate(s)
+	if s.AllProductInitMetricRule != nil {
+		for _, item := range s.AllProductInitMetricRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule struct {
@@ -215,7 +229,12 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule) Validate() error {
-	return dara.Validate(s)
+	if s.AlertInitConfigList != nil {
+		if err := s.AlertInitConfigList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigList struct {
@@ -240,7 +259,16 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigList) Validate() error {
-	return dara.Validate(s)
+	if s.AlertInitConfig != nil {
+		for _, item := range s.AlertInitConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigListAlertInitConfig struct {

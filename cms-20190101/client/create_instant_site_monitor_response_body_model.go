@@ -110,7 +110,16 @@ func (s *CreateInstantSiteMonitorResponseBody) SetSuccess(v string) *CreateInsta
 }
 
 func (s *CreateInstantSiteMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResultList != nil {
+		for _, item := range s.CreateResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateInstantSiteMonitorResponseBodyCreateResultList struct {

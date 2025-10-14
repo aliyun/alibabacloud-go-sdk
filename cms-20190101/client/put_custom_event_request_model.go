@@ -50,7 +50,16 @@ func (s *PutCustomEventRequest) SetRegionId(v string) *PutCustomEventRequest {
 }
 
 func (s *PutCustomEventRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventInfo != nil {
+		for _, item := range s.EventInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutCustomEventRequestEventInfo struct {

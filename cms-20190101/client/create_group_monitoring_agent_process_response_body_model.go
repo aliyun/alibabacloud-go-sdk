@@ -110,7 +110,12 @@ func (s *CreateGroupMonitoringAgentProcessResponseBody) SetSuccess(v bool) *Crea
 }
 
 func (s *CreateGroupMonitoringAgentProcessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateGroupMonitoringAgentProcessResponseBodyResource struct {

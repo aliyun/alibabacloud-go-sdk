@@ -110,7 +110,12 @@ func (s *DescribeUnhealthyHostAvailabilityResponseBody) SetUnhealthyList(v *Desc
 }
 
 func (s *DescribeUnhealthyHostAvailabilityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UnhealthyList != nil {
+		if err := s.UnhealthyList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList struct {
@@ -135,7 +140,16 @@ func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList) SetNodeTask
 }
 
 func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTaskInstance != nil {
+		for _, item := range s.NodeTaskInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance struct {
@@ -175,7 +189,12 @@ func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInsta
 }
 
 func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstance) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		if err := s.InstanceList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInstanceInstanceList struct {

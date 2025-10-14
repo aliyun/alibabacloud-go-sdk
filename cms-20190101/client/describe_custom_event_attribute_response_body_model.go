@@ -110,7 +110,12 @@ func (s *DescribeCustomEventAttributeResponseBody) SetSuccess(v string) *Describ
 }
 
 func (s *DescribeCustomEventAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CustomEvents != nil {
+		if err := s.CustomEvents.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventAttributeResponseBodyCustomEvents struct {
@@ -135,7 +140,16 @@ func (s *DescribeCustomEventAttributeResponseBodyCustomEvents) SetCustomEvent(v 
 }
 
 func (s *DescribeCustomEventAttributeResponseBodyCustomEvents) Validate() error {
-	return dara.Validate(s)
+	if s.CustomEvent != nil {
+		for _, item := range s.CustomEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventAttributeResponseBodyCustomEventsCustomEvent struct {

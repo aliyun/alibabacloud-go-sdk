@@ -110,7 +110,12 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBody) SetSuccess(v bool) *Descr
 }
 
 func (s *DescribeMonitorGroupDynamicRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResource struct {
@@ -135,7 +140,16 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResource) SetResource(v []*
 }
 
 func (s *DescribeMonitorGroupDynamicRulesResponseBodyResource) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResourceResource struct {
@@ -201,7 +215,12 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResource) SetFilter
 }
 
 func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResource) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		if err := s.Filters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters struct {
@@ -226,7 +245,16 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters) Se
 }
 
 func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFilters) Validate() error {
-	return dara.Validate(s)
+	if s.Filter != nil {
+		for _, item := range s.Filter {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilter struct {

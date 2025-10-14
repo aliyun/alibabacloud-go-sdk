@@ -89,7 +89,12 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBody) SetResourceQuota(v *
 }
 
 func (s *DescribeMonitorResourceQuotaAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceQuota != nil {
+		if err := s.ResourceQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota struct {
@@ -287,7 +292,67 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) SetSuit
 }
 
 func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota) Validate() error {
-	return dara.Validate(s)
+	if s.Api != nil {
+		if err := s.Api.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomMonitor != nil {
+		if err := s.CustomMonitor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnterpriseQuota != nil {
+		if err := s.EnterpriseQuota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EventMonitor != nil {
+		if err := s.EventMonitor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogMonitor != nil {
+		if err := s.LogMonitor.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Phone != nil {
+		if err := s.Phone.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SMS != nil {
+		if err := s.SMS.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitorBrowser != nil {
+		if err := s.SiteMonitorBrowser.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitorEcsProbe != nil {
+		if err := s.SiteMonitorEcsProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitorMobile != nil {
+		if err := s.SiteMonitorMobile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitorOperatorProbe != nil {
+		if err := s.SiteMonitorOperatorProbe.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SiteMonitorTask != nil {
+		if err := s.SiteMonitorTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaApi struct {

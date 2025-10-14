@@ -59,5 +59,10 @@ func (s *DeleteMetricRuleBlackListResponse) SetBody(v *DeleteMetricRuleBlackList
 }
 
 func (s *DeleteMetricRuleBlackListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

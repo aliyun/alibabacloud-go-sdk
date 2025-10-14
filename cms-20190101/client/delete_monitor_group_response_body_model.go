@@ -106,7 +106,12 @@ func (s *DeleteMonitorGroupResponseBody) SetSuccess(v bool) *DeleteMonitorGroupR
 }
 
 func (s *DeleteMonitorGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMonitorGroupResponseBodyGroup struct {
@@ -147,7 +152,12 @@ func (s *DeleteMonitorGroupResponseBodyGroup) SetGroupName(v string) *DeleteMoni
 }
 
 func (s *DeleteMonitorGroupResponseBodyGroup) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroups != nil {
+		if err := s.ContactGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMonitorGroupResponseBodyGroupContactGroups struct {
@@ -172,7 +182,16 @@ func (s *DeleteMonitorGroupResponseBodyGroupContactGroups) SetContactGroup(v []*
 }
 
 func (s *DeleteMonitorGroupResponseBodyGroupContactGroups) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroup != nil {
+		for _, item := range s.ContactGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup struct {

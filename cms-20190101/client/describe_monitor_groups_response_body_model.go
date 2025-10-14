@@ -161,7 +161,12 @@ func (s *DescribeMonitorGroupsResponseBody) SetTotal(v int32) *DescribeMonitorGr
 }
 
 func (s *DescribeMonitorGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResources struct {
@@ -186,7 +191,16 @@ func (s *DescribeMonitorGroupsResponseBodyResources) SetResource(v []*DescribeMo
 }
 
 func (s *DescribeMonitorGroupsResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResource struct {
@@ -415,7 +429,27 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResource) SetType(v string) *
 }
 
 func (s *DescribeMonitorGroupsResponseBodyResourcesResource) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroups != nil {
+		if err := s.ContactGroups.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateIds != nil {
+		if err := s.TemplateIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TemplateInfos != nil {
+		if err := s.TemplateInfos.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups struct {
@@ -440,7 +474,16 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups) SetCon
 }
 
 func (s *DescribeMonitorGroupsResponseBodyResourcesResourceContactGroups) Validate() error {
-	return dara.Validate(s)
+	if s.ContactGroup != nil {
+		for _, item := range s.ContactGroup {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceContactGroupsContactGroup struct {
@@ -495,7 +538,16 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTags) SetTag(v []*Des
 }
 
 func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceTagsTag struct {
@@ -590,7 +642,16 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfos) SetTem
 }
 
 func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfos) Validate() error {
-	return dara.Validate(s)
+	if s.TemplateInfo != nil {
+		for _, item := range s.TemplateInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupsResponseBodyResourcesResourceTemplateInfosTemplateInfo struct {

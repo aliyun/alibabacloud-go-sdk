@@ -59,5 +59,10 @@ func (s *PutContactGroupResponse) SetBody(v *PutContactGroupResponseBody) *PutCo
 }
 
 func (s *PutContactGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -110,7 +110,12 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBody) SetSuccess(v bool) *De
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		if err := s.Resource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResource struct {
@@ -192,7 +197,12 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResource) SetTemplateId(
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBodyResource) Validate() error {
-	return dara.Validate(s)
+	if s.AlertTemplates != nil {
+		if err := s.AlertTemplates.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates struct {
@@ -217,7 +227,16 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates) 
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.AlertTemplate != nil {
+		for _, item := range s.AlertTemplate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplate struct {
@@ -375,7 +394,17 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplate) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Labels != nil {
+		if err := s.Labels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations struct {
@@ -423,7 +452,22 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateEscalationsCritical struct {
@@ -745,7 +789,16 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabels) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlertTemplateLabelsLabels struct {

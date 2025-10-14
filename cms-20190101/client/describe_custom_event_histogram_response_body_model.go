@@ -106,7 +106,12 @@ func (s *DescribeCustomEventHistogramResponseBody) SetSuccess(v string) *Describ
 }
 
 func (s *DescribeCustomEventHistogramResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EventHistograms != nil {
+		if err := s.EventHistograms.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventHistogramResponseBodyEventHistograms struct {
@@ -131,7 +136,16 @@ func (s *DescribeCustomEventHistogramResponseBodyEventHistograms) SetEventHistog
 }
 
 func (s *DescribeCustomEventHistogramResponseBodyEventHistograms) Validate() error {
-	return dara.Validate(s)
+	if s.EventHistogram != nil {
+		for _, item := range s.EventHistogram {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram struct {

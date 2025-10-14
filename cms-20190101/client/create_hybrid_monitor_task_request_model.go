@@ -323,7 +323,21 @@ func (s *CreateHybridMonitorTaskRequest) SetYARMConfig(v string) *CreateHybridMo
 }
 
 func (s *CreateHybridMonitorTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AttachLabels != nil {
+		for _, item := range s.AttachLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SLSProcessConfig != nil {
+		if err := s.SLSProcessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHybridMonitorTaskRequestAttachLabels struct {
@@ -427,7 +441,39 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetStatistics(v []*Crea
 }
 
 func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Express != nil {
+		for _, item := range s.Express {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Filter != nil {
+		if err := s.Filter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GroupBy != nil {
+		for _, item := range s.GroupBy {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Statistics != nil {
+		for _, item := range s.Statistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigExpress struct {
@@ -517,7 +563,16 @@ func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) SetRelation(v str
 }
 
 func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters struct {

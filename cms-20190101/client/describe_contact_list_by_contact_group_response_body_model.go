@@ -110,7 +110,12 @@ func (s *DescribeContactListByContactGroupResponseBody) SetSuccess(v bool) *Desc
 }
 
 func (s *DescribeContactListByContactGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Contacts != nil {
+		if err := s.Contacts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContactListByContactGroupResponseBodyContacts struct {
@@ -135,7 +140,16 @@ func (s *DescribeContactListByContactGroupResponseBodyContacts) SetContact(v []*
 }
 
 func (s *DescribeContactListByContactGroupResponseBodyContacts) Validate() error {
-	return dara.Validate(s)
+	if s.Contact != nil {
+		for _, item := range s.Contact {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContact struct {
@@ -225,7 +239,12 @@ func (s *DescribeContactListByContactGroupResponseBodyContactsContact) SetUpdate
 }
 
 func (s *DescribeContactListByContactGroupResponseBodyContactsContact) Validate() error {
-	return dara.Validate(s)
+	if s.Channels != nil {
+		if err := s.Channels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeContactListByContactGroupResponseBodyContactsContactChannels struct {

@@ -125,7 +125,16 @@ func (s *DescribeMetricRuleBlackListResponseBody) SetTotal(v int32) *DescribeMet
 }
 
 func (s *DescribeMetricRuleBlackListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeMetricRuleBlackList != nil {
+		for _, item := range s.DescribeMetricRuleBlackList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList struct {
@@ -354,7 +363,16 @@ func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) Set
 }
 
 func (s *DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList) Validate() error {
-	return dara.Validate(s)
+	if s.Metrics != nil {
+		for _, item := range s.Metrics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics struct {

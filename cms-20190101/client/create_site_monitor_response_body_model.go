@@ -125,7 +125,17 @@ func (s *CreateSiteMonitorResponseBody) SetSuccess(v string) *CreateSiteMonitorR
 }
 
 func (s *CreateSiteMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResultList != nil {
+		if err := s.CreateResultList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSiteMonitorResponseBodyCreateResultList struct {
@@ -150,7 +160,16 @@ func (s *CreateSiteMonitorResponseBodyCreateResultList) SetCreateResultList(v []
 }
 
 func (s *CreateSiteMonitorResponseBodyCreateResultList) Validate() error {
-	return dara.Validate(s)
+	if s.CreateResultList != nil {
+		for _, item := range s.CreateResultList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateSiteMonitorResponseBodyCreateResultListCreateResultList struct {
@@ -221,7 +240,12 @@ func (s *CreateSiteMonitorResponseBodyData) SetAttachAlertResult(v *CreateSiteMo
 }
 
 func (s *CreateSiteMonitorResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AttachAlertResult != nil {
+		if err := s.AttachAlertResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSiteMonitorResponseBodyDataAttachAlertResult struct {
@@ -246,7 +270,16 @@ func (s *CreateSiteMonitorResponseBodyDataAttachAlertResult) SetContact(v []*Cre
 }
 
 func (s *CreateSiteMonitorResponseBodyDataAttachAlertResult) Validate() error {
-	return dara.Validate(s)
+	if s.Contact != nil {
+		for _, item := range s.Contact {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateSiteMonitorResponseBodyDataAttachAlertResultContact struct {

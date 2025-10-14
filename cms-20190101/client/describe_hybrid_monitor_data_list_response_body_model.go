@@ -110,7 +110,16 @@ func (s *DescribeHybridMonitorDataListResponseBody) SetTimeSeries(v []*DescribeH
 }
 
 func (s *DescribeHybridMonitorDataListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TimeSeries != nil {
+		for _, item := range s.TimeSeries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorDataListResponseBodyTimeSeries struct {
@@ -162,7 +171,25 @@ func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) SetValues(v []*Des
 }
 
 func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) Validate() error {
-	return dara.Validate(s)
+	if s.Labels != nil {
+		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Values != nil {
+		for _, item := range s.Values {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels struct {

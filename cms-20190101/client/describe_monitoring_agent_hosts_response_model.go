@@ -59,5 +59,10 @@ func (s *DescribeMonitoringAgentHostsResponse) SetBody(v *DescribeMonitoringAgen
 }
 
 func (s *DescribeMonitoringAgentHostsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

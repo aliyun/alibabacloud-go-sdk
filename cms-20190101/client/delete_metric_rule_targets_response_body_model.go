@@ -112,7 +112,12 @@ func (s *DeleteMetricRuleTargetsResponseBody) SetSuccess(v bool) *DeleteMetricRu
 }
 
 func (s *DeleteMetricRuleTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailIds != nil {
+		if err := s.FailIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMetricRuleTargetsResponseBodyFailIds struct {
@@ -138,7 +143,12 @@ func (s *DeleteMetricRuleTargetsResponseBodyFailIds) SetTargetIds(v *DeleteMetri
 }
 
 func (s *DeleteMetricRuleTargetsResponseBodyFailIds) Validate() error {
-	return dara.Validate(s)
+	if s.TargetIds != nil {
+		if err := s.TargetIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteMetricRuleTargetsResponseBodyFailIdsTargetIds struct {

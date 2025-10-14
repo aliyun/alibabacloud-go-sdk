@@ -106,7 +106,12 @@ func (s *DescribeSystemEventAttributeResponseBody) SetSystemEvents(v *DescribeSy
 }
 
 func (s *DescribeSystemEventAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEvents != nil {
+		if err := s.SystemEvents.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventAttributeResponseBodySystemEvents struct {
@@ -131,7 +136,16 @@ func (s *DescribeSystemEventAttributeResponseBodySystemEvents) SetSystemEvent(v 
 }
 
 func (s *DescribeSystemEventAttributeResponseBodySystemEvents) Validate() error {
-	return dara.Validate(s)
+	if s.SystemEvent != nil {
+		for _, item := range s.SystemEvent {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent struct {

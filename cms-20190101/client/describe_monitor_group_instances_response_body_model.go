@@ -157,7 +157,12 @@ func (s *DescribeMonitorGroupInstancesResponseBody) SetTotal(v int32) *DescribeM
 }
 
 func (s *DescribeMonitorGroupInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		if err := s.Resources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstancesResponseBodyResources struct {
@@ -182,7 +187,16 @@ func (s *DescribeMonitorGroupInstancesResponseBodyResources) SetResource(v []*De
 }
 
 func (s *DescribeMonitorGroupInstancesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMonitorGroupInstancesResponseBodyResourcesResource struct {

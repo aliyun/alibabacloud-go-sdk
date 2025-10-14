@@ -84,7 +84,16 @@ func (s *CreateMetricRuleTemplateRequest) SetRegionId(v string) *CreateMetricRul
 }
 
 func (s *CreateMetricRuleTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertTemplates != nil {
+		for _, item := range s.AlertTemplates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateMetricRuleTemplateRequestAlertTemplates struct {
@@ -250,7 +259,12 @@ func (s *CreateMetricRuleTemplateRequestAlertTemplates) SetWebhook(v string) *Cr
 }
 
 func (s *CreateMetricRuleTemplateRequestAlertTemplates) Validate() error {
-	return dara.Validate(s)
+	if s.Escalations != nil {
+		if err := s.Escalations.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMetricRuleTemplateRequestAlertTemplatesEscalations struct {
@@ -295,7 +309,22 @@ func (s *CreateMetricRuleTemplateRequestAlertTemplatesEscalations) SetWarn(v *Cr
 }
 
 func (s *CreateMetricRuleTemplateRequestAlertTemplatesEscalations) Validate() error {
-	return dara.Validate(s)
+	if s.Critical != nil {
+		if err := s.Critical.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Warn != nil {
+		if err := s.Warn.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateMetricRuleTemplateRequestAlertTemplatesEscalationsCritical struct {

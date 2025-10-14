@@ -59,5 +59,10 @@ func (s *PutExporterRuleResponse) SetBody(v *PutExporterRuleResponseBody) *PutEx
 }
 
 func (s *PutExporterRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
