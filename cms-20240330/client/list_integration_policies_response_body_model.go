@@ -876,6 +876,10 @@ func (s *ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags) 
 type ListIntegrationPoliciesResponseBodyPoliciesManagedInfo struct {
 	// example:
 	//
+	// eni-12345678
+	EniId *string `json:"eniId,omitempty" xml:"eniId,omitempty"`
+	// example:
+	//
 	// sg-xxxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// example:
@@ -892,12 +896,21 @@ func (s ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) GoString() strin
 	return s.String()
 }
 
+func (s *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) GetEniId() *string {
+	return s.EniId
+}
+
 func (s *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) GetVswitchId() *string {
 	return s.VswitchId
+}
+
+func (s *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) SetEniId(v string) *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo {
+	s.EniId = &v
+	return s
 }
 
 func (s *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo) SetSecurityGroupId(v string) *ListIntegrationPoliciesResponseBodyPoliciesManagedInfo {
