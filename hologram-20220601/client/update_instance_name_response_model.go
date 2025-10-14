@@ -59,5 +59,10 @@ func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) 
 }
 
 func (s *UpdateInstanceNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

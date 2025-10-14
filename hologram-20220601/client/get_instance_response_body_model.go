@@ -121,7 +121,12 @@ func (s *GetInstanceResponseBody) SetSuccess(v bool) *GetInstanceResponseBody {
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstance struct {
@@ -854,7 +859,25 @@ func (s *GetInstanceResponseBodyInstance) SetZoneId(v string) *GetInstanceRespon
 }
 
 func (s *GetInstanceResponseBodyInstance) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstanceEndpoints struct {

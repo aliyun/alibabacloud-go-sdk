@@ -121,7 +121,16 @@ func (s *ListInstancesResponseBody) SetSuccess(v string) *ListInstancesResponseB
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceList != nil {
+		for _, item := range s.InstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstanceList struct {
@@ -501,7 +510,25 @@ func (s *ListInstancesResponseBodyInstanceList) SetZoneId(v string) *ListInstanc
 }
 
 func (s *ListInstancesResponseBodyInstanceList) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoints != nil {
+		for _, item := range s.Endpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstanceListEndpoints struct {

@@ -19,9 +19,11 @@ import (
 //
 // @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -68,11 +70,17 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 //
 // @return CreateHoloWarehouseResponse
 func (client *Client) CreateHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *CreateHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterCount) {
+		body["clusterCount"] = request.ClusterCount
+	}
+
 	if !dara.IsNil(request.Cpu) {
 		body["cpu"] = request.Cpu
 	}
@@ -157,9 +165,11 @@ func (client *Client) CreateHoloWarehouseWithContext(ctx context.Context, instan
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -278,9 +288,11 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 //
 // @return DeleteHoloWarehouseResponse
 func (client *Client) DeleteHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *DeleteHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -331,9 +343,11 @@ func (client *Client) DeleteHoloWarehouseWithContext(ctx context.Context, instan
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithContext(ctx context.Context, instanceId *string, request *DeleteInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -376,9 +390,11 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, instanceId 
 //
 // @return DisableHiveAccessResponse
 func (client *Client) DisableHiveAccessWithContext(ctx context.Context, instanceId *string, request *DisableHiveAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DisableHiveAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -454,9 +470,11 @@ func (client *Client) DisableSSLWithContext(ctx context.Context, instanceId *str
 //
 // @return EnableHiveAccessResponse
 func (client *Client) EnableHiveAccessWithContext(ctx context.Context, instanceId *string, request *EnableHiveAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableHiveAccessResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -664,9 +682,11 @@ func (client *Client) GetWarehouseDetailWithContext(ctx context.Context, instanc
 //
 // @return ListBackupDataResponse
 func (client *Client) ListBackupDataWithContext(ctx context.Context, request *ListBackupDataRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBackupDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BackupType) {
@@ -713,9 +733,11 @@ func (client *Client) ListBackupDataWithContext(ctx context.Context, request *Li
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithContext(ctx context.Context, request *ListInstancesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CmsInstanceType) {
@@ -799,9 +821,11 @@ func (client *Client) ListWarehousesWithContext(ctx context.Context, instanceId 
 //
 // @return RebalanceHoloWarehouseResponse
 func (client *Client) RebalanceHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *RebalanceHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RebalanceHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -844,9 +868,11 @@ func (client *Client) RebalanceHoloWarehouseWithContext(ctx context.Context, ins
 //
 // @return RenameHoloWarehouseResponse
 func (client *Client) RenameHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *RenameHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenameHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -903,9 +929,11 @@ func (client *Client) RenameHoloWarehouseWithContext(ctx context.Context, instan
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithContext(ctx context.Context, instanceId *string, request *RenewInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoRenew) {
@@ -985,9 +1013,11 @@ func (client *Client) RenewSSLCertificateWithContext(ctx context.Context, instan
 //
 // @return RestartHoloWarehouseResponse
 func (client *Client) RestartHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *RestartHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1063,9 +1093,11 @@ func (client *Client) RestartInstanceWithContext(ctx context.Context, instanceId
 //
 // @return ResumeHoloWarehouseResponse
 func (client *Client) ResumeHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *ResumeHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1141,11 +1173,17 @@ func (client *Client) ResumeInstanceWithContext(ctx context.Context, instanceId 
 //
 // @return ScaleHoloWarehouseResponse
 func (client *Client) ScaleHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *ScaleHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScaleHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterCount) {
+		body["clusterCount"] = request.ClusterCount
+	}
+
 	if !dara.IsNil(request.Cpu) {
 		body["cpu"] = request.Cpu
 	}
@@ -1198,9 +1236,11 @@ func (client *Client) ScaleHoloWarehouseWithContext(ctx context.Context, instanc
 //
 // @return ScaleInstanceResponse
 func (client *Client) ScaleInstanceWithContext(ctx context.Context, instanceId *string, request *ScaleInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScaleInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ColdStorageSize) {
@@ -1296,9 +1336,11 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, instanceId *s
 //
 // @return SuspendHoloWarehouseResponse
 func (client *Client) SuspendHoloWarehouseWithContext(ctx context.Context, instanceId *string, request *SuspendHoloWarehouseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SuspendHoloWarehouseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Name) {
@@ -1341,9 +1383,11 @@ func (client *Client) SuspendHoloWarehouseWithContext(ctx context.Context, insta
 //
 // @return UpdateInstanceNameResponse
 func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, instanceId *string, request *UpdateInstanceNameRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceName) {
@@ -1386,9 +1430,11 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, instanc
 //
 // @return UpdateInstanceNetworkTypeResponse
 func (client *Client) UpdateInstanceNetworkTypeWithContext(ctx context.Context, instanceId *string, request *UpdateInstanceNetworkTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInstanceNetworkTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnyTunnelToSingleTunnel) {

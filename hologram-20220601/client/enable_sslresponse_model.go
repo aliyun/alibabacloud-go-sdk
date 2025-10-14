@@ -59,6 +59,11 @@ func (s *EnableSSLResponse) SetBody(v *EnableSSLResponseBody) *EnableSSLResponse
 }
 
 func (s *EnableSSLResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

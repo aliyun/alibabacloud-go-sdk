@@ -59,5 +59,10 @@ func (s *ScaleHoloWarehouseResponse) SetBody(v *ScaleHoloWarehouseResponseBody) 
 }
 
 func (s *ScaleHoloWarehouseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

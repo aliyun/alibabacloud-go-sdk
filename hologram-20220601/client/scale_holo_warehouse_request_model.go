@@ -9,6 +9,8 @@ type iScaleHoloWarehouseRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClusterCount(v int64) *ScaleHoloWarehouseRequest
+	GetClusterCount() *int64
 	SetCpu(v int64) *ScaleHoloWarehouseRequest
 	GetCpu() *int64
 	SetName(v string) *ScaleHoloWarehouseRequest
@@ -16,6 +18,10 @@ type iScaleHoloWarehouseRequest interface {
 }
 
 type ScaleHoloWarehouseRequest struct {
+	// example:
+	//
+	// 2
+	ClusterCount *int64 `json:"clusterCount,omitempty" xml:"clusterCount,omitempty"`
 	// The specifications of the virtual warehouse. The number of vCPUs must be an integer multiple of 16.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s ScaleHoloWarehouseRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ScaleHoloWarehouseRequest) GetClusterCount() *int64 {
+	return s.ClusterCount
+}
+
 func (s *ScaleHoloWarehouseRequest) GetCpu() *int64 {
 	return s.Cpu
 }
 
 func (s *ScaleHoloWarehouseRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ScaleHoloWarehouseRequest) SetClusterCount(v int64) *ScaleHoloWarehouseRequest {
+	s.ClusterCount = &v
+	return s
 }
 
 func (s *ScaleHoloWarehouseRequest) SetCpu(v int64) *ScaleHoloWarehouseRequest {

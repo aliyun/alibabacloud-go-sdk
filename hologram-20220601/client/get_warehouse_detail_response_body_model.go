@@ -53,10 +53,16 @@ func (s *GetWarehouseDetailResponseBody) SetWarehouseDetail(v *GetWarehouseDetai
 }
 
 func (s *GetWarehouseDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WarehouseDetail != nil {
+		if err := s.WarehouseDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetail struct {
+	AutoElasticCpu *string `json:"AutoElasticCpu,omitempty" xml:"AutoElasticCpu,omitempty"`
 	// The remaining unallocated computing resources of the virtual warehouse instance.
 	//
 	// example:
@@ -82,6 +88,10 @@ func (s GetWarehouseDetailResponseBodyWarehouseDetail) GoString() string {
 	return s.String()
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetail) GetAutoElasticCpu() *string {
+	return s.AutoElasticCpu
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetail) GetRemainingCpu() *string {
 	return s.RemainingCpu
 }
@@ -96,6 +106,11 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetail) GetTimedElasticCpu() *st
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetail) GetWarehouseList() []*GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
 	return s.WarehouseList
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetAutoElasticCpu(v string) *GetWarehouseDetailResponseBodyWarehouseDetail {
+	s.AutoElasticCpu = &v
+	return s
 }
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetRemainingCpu(v string) *GetWarehouseDetailResponseBodyWarehouseDetail {
@@ -119,10 +134,31 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetail) SetWarehouseList(v []*Ge
 }
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetail) Validate() error {
-	return dara.Validate(s)
+	if s.WarehouseList != nil {
+		for _, item := range s.WarehouseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList struct {
+	// example:
+	//
+	// Standard
+	AutoScaleType *string `json:"AutoScaleType,omitempty" xml:"AutoScaleType,omitempty"`
+	// example:
+	//
+	// 2
+	ClusterCount *string `json:"ClusterCount,omitempty" xml:"ClusterCount,omitempty"`
+	// example:
+	//
+	// 32
+	ClusterCpu *string `json:"ClusterCpu,omitempty" xml:"ClusterCpu,omitempty"`
 	// The number of CPU cores.
 	//
 	// example:
@@ -131,12 +167,24 @@ type GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList struct {
 	Cpu              *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	DefaultWarehouse *bool  `json:"DefaultWarehouse,omitempty" xml:"DefaultWarehouse,omitempty"`
 	ElasticCpu       *int64 `json:"ElasticCpu,omitempty" xml:"ElasticCpu,omitempty"`
+	// example:
+	//
+	// auto
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
 	// The ID.
 	//
 	// example:
 	//
 	// 2
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 2
+	InitClusterCount *string `json:"InitClusterCount,omitempty" xml:"InitClusterCount,omitempty"`
+	// example:
+	//
+	// 4
+	MaxClusterCount *string `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The memory capacity.
 	//
 	// example:
@@ -214,6 +262,18 @@ func (s GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GoString() s
 	return s.String()
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetAutoScaleType() *string {
+	return s.AutoScaleType
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetClusterCount() *string {
+	return s.ClusterCount
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetClusterCpu() *string {
+	return s.ClusterCpu
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetCpu() *int64 {
 	return s.Cpu
 }
@@ -226,8 +286,20 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetElasticC
 	return s.ElasticCpu
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetElasticType() *string {
+	return s.ElasticType
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetId() *int64 {
 	return s.Id
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetInitClusterCount() *string {
+	return s.InitClusterCount
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetMaxClusterCount() *string {
+	return s.MaxClusterCount
 }
 
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetMem() *int64 {
@@ -250,6 +322,21 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) GetStatus()
 	return s.Status
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetAutoScaleType(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.AutoScaleType = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetClusterCount(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.ClusterCount = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetClusterCpu(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.ClusterCpu = &v
+	return s
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetCpu(v int64) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
 	s.Cpu = &v
 	return s
@@ -265,8 +352,23 @@ func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetElasticC
 	return s
 }
 
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetElasticType(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.ElasticType = &v
+	return s
+}
+
 func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetId(v int64) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
 	s.Id = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetInitClusterCount(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.InitClusterCount = &v
+	return s
+}
+
+func (s *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList) SetMaxClusterCount(v string) *GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList {
+	s.MaxClusterCount = &v
 	return s
 }
 

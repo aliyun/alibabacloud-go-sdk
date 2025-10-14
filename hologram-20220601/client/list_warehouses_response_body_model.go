@@ -53,7 +53,16 @@ func (s *ListWarehousesResponseBody) SetRequestId(v string) *ListWarehousesRespo
 }
 
 func (s *ListWarehousesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WarehouseList != nil {
+		for _, item := range s.WarehouseList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWarehousesResponseBodyWarehouseList struct {

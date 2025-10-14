@@ -110,7 +110,12 @@ func (s *GetCertificateAttributeResponseBody) SetRequestId(v string) *GetCertifi
 }
 
 func (s *GetCertificateAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertificateAttributeDto != nil {
+		if err := s.CertificateAttributeDto.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCertificateAttributeResponseBodyCertificateAttributeDto struct {

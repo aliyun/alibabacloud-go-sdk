@@ -53,7 +53,16 @@ func (s *ListBackupDataResponseBody) SetRequestId(v string) *ListBackupDataRespo
 }
 
 func (s *ListBackupDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackupDataList != nil {
+		for _, item := range s.BackupDataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBackupDataResponseBodyBackupDataList struct {
