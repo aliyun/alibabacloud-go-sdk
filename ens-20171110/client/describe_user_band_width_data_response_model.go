@@ -59,5 +59,10 @@ func (s *DescribeUserBandWidthDataResponse) SetBody(v *DescribeUserBandWidthData
 }
 
 func (s *DescribeUserBandWidthDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

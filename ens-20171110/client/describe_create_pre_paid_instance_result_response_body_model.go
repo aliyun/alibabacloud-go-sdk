@@ -53,7 +53,12 @@ func (s *DescribeCreatePrePaidInstanceResultResponseBody) SetRequestId(v string)
 }
 
 func (s *DescribeCreatePrePaidInstanceResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCreateResult != nil {
+		if err := s.InstanceCreateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult struct {

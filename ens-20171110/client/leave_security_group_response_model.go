@@ -59,5 +59,10 @@ func (s *LeaveSecurityGroupResponse) SetBody(v *LeaveSecurityGroupResponseBody) 
 }
 
 func (s *LeaveSecurityGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

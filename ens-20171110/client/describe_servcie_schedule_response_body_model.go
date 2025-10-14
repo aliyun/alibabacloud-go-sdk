@@ -155,7 +155,12 @@ func (s *DescribeServcieScheduleResponseBody) SetTcpPorts(v string) *DescribeSer
 }
 
 func (s *DescribeServcieScheduleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PodAbstractInfo != nil {
+		if err := s.PodAbstractInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfo struct {
@@ -256,7 +261,12 @@ func (s *DescribeServcieScheduleResponseBodyPodAbstractInfo) SetStatus(v bool) *
 }
 
 func (s *DescribeServcieScheduleResponseBodyPodAbstractInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerStatuses != nil {
+		if err := s.ContainerStatuses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses struct {
@@ -281,7 +291,16 @@ func (s *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses) Se
 }
 
 func (s *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerStatus != nil {
+		for _, item := range s.ContainerStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContainerStatus struct {

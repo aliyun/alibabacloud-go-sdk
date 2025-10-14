@@ -59,5 +59,10 @@ func (s *DeleteNetworkAclEntryResponse) SetBody(v *DeleteNetworkAclEntryResponse
 }
 
 func (s *DeleteNetworkAclEntryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeEnsRegionIdIpv6InfoResponseBody) SetSupportIpv6Info(v *Describe
 }
 
 func (s *DescribeEnsRegionIdIpv6InfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportIpv6Info != nil {
+		if err := s.SupportIpv6Info.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info struct {

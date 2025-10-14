@@ -16,6 +16,7 @@ type iRemoveSDGsResponseBody interface {
 }
 
 type RemoveSDGsResponseBody struct {
+	// The returned data.
 	Data *RemoveSDGsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -52,15 +53,29 @@ func (s *RemoveSDGsResponseBody) SetRequestId(v string) *RemoveSDGsResponseBody 
 }
 
 func (s *RemoveSDGsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveSDGsResponseBodyData struct {
+	// The response message. Success is returned for a successful request.
+	//
 	// example:
 	//
 	// success
-	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Result  *RemoveSDGsResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution result of the synchronization request.
+	Result *RemoveSDGsResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// Indicates whether all tasks are successful. Valid values:
+	//
+	// 	- **true**: All tasks are successful.
+	//
+	// 	- **false**: Failed tasks exist.
+	//
 	// example:
 	//
 	// true
@@ -103,15 +118,25 @@ func (s *RemoveSDGsResponseBodyData) SetSuccess(v bool) *RemoveSDGsResponseBodyD
 }
 
 func (s *RemoveSDGsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveSDGsResponseBodyDataResult struct {
+	// The number of failed tasks.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int64                                         `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// Details about failed tasks.
 	FailedItems []*RemoveSDGsResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// The number of successful tasks.
+	//
 	// example:
 	//
 	// 1
@@ -154,14 +179,27 @@ func (s *RemoveSDGsResponseBodyDataResult) SetSuccessCount(v int64) *RemoveSDGsR
 }
 
 func (s *RemoveSDGsResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveSDGsResponseBodyDataResultFailedItems struct {
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// aic-xxxxx-0

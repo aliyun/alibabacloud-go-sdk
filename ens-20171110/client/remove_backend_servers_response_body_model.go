@@ -53,7 +53,12 @@ func (s *RemoveBackendServersResponseBody) SetRequestId(v string) *RemoveBackend
 }
 
 func (s *RemoveBackendServersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServers != nil {
+		if err := s.BackendServers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveBackendServersResponseBodyBackendServers struct {
@@ -78,7 +83,16 @@ func (s *RemoveBackendServersResponseBodyBackendServers) SetBackendServer(v []*R
 }
 
 func (s *RemoveBackendServersResponseBodyBackendServers) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServer != nil {
+		for _, item := range s.BackendServer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveBackendServersResponseBodyBackendServersBackendServer struct {

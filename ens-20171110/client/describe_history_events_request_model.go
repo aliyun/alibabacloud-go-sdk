@@ -24,14 +24,22 @@ type iDescribeHistoryEventsRequest interface {
 }
 
 type DescribeHistoryEventsRequest struct {
+	// The levels of the event-triggered alerts.
 	EventLevels []*string `json:"EventLevels,omitempty" xml:"EventLevels,omitempty" type:"Repeated"`
+	// Event status list.
 	EventStatus []*string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty" type:"Repeated"`
+	// The list of event types.
+	//
 	// This parameter is required.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

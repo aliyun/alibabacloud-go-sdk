@@ -104,7 +104,16 @@ func (s *DescribeSecondaryPublicIpAddressesResponseBody) SetTotalCount(v int32) 
 }
 
 func (s *DescribeSecondaryPublicIpAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SecondaryPublicIpAddresses != nil {
+		for _, item := range s.SecondaryPublicIpAddresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses struct {

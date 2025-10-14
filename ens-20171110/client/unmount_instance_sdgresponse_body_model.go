@@ -53,7 +53,12 @@ func (s *UnmountInstanceSDGResponseBody) SetRequestId(v string) *UnmountInstance
 }
 
 func (s *UnmountInstanceSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnmountInstanceSDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *UnmountInstanceSDGResponseBodyData) SetSuccess(v bool) *UnmountInstance
 }
 
 func (s *UnmountInstanceSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnmountInstanceSDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *UnmountInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Unm
 }
 
 func (s *UnmountInstanceSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnmountInstanceSDGResponseBodyDataResultFailedItems struct {

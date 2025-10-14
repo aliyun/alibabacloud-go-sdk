@@ -104,7 +104,12 @@ func (s *ListApplicationsResponseBody) SetTotalCount(v int32) *ListApplicationsR
 }
 
 func (s *ListApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		if err := s.Applications.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplications struct {
@@ -129,7 +134,16 @@ func (s *ListApplicationsResponseBodyApplications) SetApplication(v []*ListAppli
 }
 
 func (s *ListApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		for _, item := range s.Application {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplication struct {
@@ -170,7 +184,12 @@ func (s *ListApplicationsResponseBodyApplicationsApplication) SetClusterName(v s
 }
 
 func (s *ListApplicationsResponseBodyApplicationsApplication) Validate() error {
-	return dara.Validate(s)
+	if s.AppList != nil {
+		if err := s.AppList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationAppList struct {
@@ -195,7 +214,16 @@ func (s *ListApplicationsResponseBodyApplicationsApplicationAppList) SetApp(v []
 }
 
 func (s *ListApplicationsResponseBodyApplicationsApplicationAppList) Validate() error {
-	return dara.Validate(s)
+	if s.App != nil {
+		for _, item := range s.App {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationAppListApp struct {

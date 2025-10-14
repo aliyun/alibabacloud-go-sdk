@@ -16,9 +16,12 @@ type iRemoveSDGsShrinkRequest interface {
 }
 
 type RemoveSDGsShrinkRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	SdgIdsShrink      *string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty"`
+	// The IDs of SDG.
+	SdgIdsShrink *string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty"`
 }
 
 func (s RemoveSDGsShrinkRequest) String() string {

@@ -104,7 +104,12 @@ func (s *DescribeDataPushResultResponseBody) SetTotalCount(v int32) *DescribeDat
 }
 
 func (s *DescribeDataPushResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushResults != nil {
+		if err := s.PushResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResults struct {
@@ -129,7 +134,16 @@ func (s *DescribeDataPushResultResponseBodyPushResults) SetPushResult(v []*Descr
 }
 
 func (s *DescribeDataPushResultResponseBodyPushResults) Validate() error {
-	return dara.Validate(s)
+	if s.PushResult != nil {
+		for _, item := range s.PushResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResult struct {
@@ -185,7 +199,12 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResult) SetVersion(v s
 }
 
 func (s *DescribeDataPushResultResponseBodyPushResultsPushResult) Validate() error {
-	return dara.Validate(s)
+	if s.StatusStatS != nil {
+		if err := s.StatusStatS.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS struct {
@@ -210,7 +229,16 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS) Set
 }
 
 func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS) Validate() error {
-	return dara.Validate(s)
+	if s.StatusStat != nil {
+		for _, item := range s.StatusStat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat struct {
@@ -266,7 +294,12 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatu
 }
 
 func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat) Validate() error {
-	return dara.Validate(s)
+	if s.RegionIds != nil {
+		if err := s.RegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds struct {
@@ -291,7 +324,16 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatu
 }
 
 func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds) Validate() error {
-	return dara.Validate(s)
+	if s.RegionId != nil {
+		for _, item := range s.RegionId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIdsRegionId struct {

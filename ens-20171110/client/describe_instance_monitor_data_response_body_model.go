@@ -70,7 +70,12 @@ func (s *DescribeInstanceMonitorDataResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeInstanceMonitorDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMonitorDataResponseBodyMonitorData struct {
@@ -95,7 +100,16 @@ func (s *DescribeInstanceMonitorDataResponseBodyMonitorData) SetInstanceMonitorD
 }
 
 func (s *DescribeInstanceMonitorDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceMonitorData != nil {
+		for _, item := range s.InstanceMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData struct {

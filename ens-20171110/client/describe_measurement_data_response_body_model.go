@@ -53,7 +53,12 @@ func (s *DescribeMeasurementDataResponseBody) SetRequestId(v string) *DescribeMe
 }
 
 func (s *DescribeMeasurementDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MeasurementDatas != nil {
+		if err := s.MeasurementDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatas struct {
@@ -78,7 +83,16 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatas) SetMeasurementData
 }
 
 func (s *DescribeMeasurementDataResponseBodyMeasurementDatas) Validate() error {
-	return dara.Validate(s)
+	if s.MeasurementData != nil {
+		for _, item := range s.MeasurementData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData struct {
@@ -190,7 +204,22 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData) Set
 }
 
 func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthFeeDatas != nil {
+		if err := s.BandWidthFeeDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceFeeData != nil {
+		if err := s.ResourceFeeData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceFeeDataDetails != nil {
+		if err := s.ResourceFeeDataDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas struct {
@@ -215,7 +244,16 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
 }
 
 func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthFeeData != nil {
+		for _, item := range s.BandWidthFeeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData struct {
@@ -360,7 +398,16 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResou
 }
 
 func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceFeeDataDetail != nil {
+		for _, item := range s.ResourceFeeDataDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetailsResourceFeeDataDetail struct {

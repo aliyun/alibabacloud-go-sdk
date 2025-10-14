@@ -59,5 +59,10 @@ func (s *DescribeImagesResponse) SetBody(v *DescribeImagesResponseBody) *Describ
 }
 
 func (s *DescribeImagesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

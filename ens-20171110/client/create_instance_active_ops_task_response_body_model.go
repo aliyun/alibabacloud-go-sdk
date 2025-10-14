@@ -47,5 +47,10 @@ func (s *CreateInstanceActiveOpsTaskResponseBody) SetRequestId(v string) *Create
 }
 
 func (s *CreateInstanceActiveOpsTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceActiveOpsTask != nil {
+		if err := s.InstanceActiveOpsTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

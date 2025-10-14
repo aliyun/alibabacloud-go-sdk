@@ -20,16 +20,24 @@ type iCreateNetworkInterfaceShrinkRequest interface {
 }
 
 type CreateNetworkInterfaceShrinkRequest struct {
+	// Description of the ENI.
+	//
 	// example:
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ENI name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Security group ID.
+	//
 	// This parameter is required.
 	SecurityGroupIdsShrink *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
+	// vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-5****

@@ -53,7 +53,12 @@ func (s *DescribeEpnBandWidthDataResponseBody) SetRequestId(v string) *DescribeE
 }
 
 func (s *DescribeEpnBandWidthDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEpnBandWidthDataResponseBodyMonitorData struct {
@@ -109,7 +114,16 @@ func (s *DescribeEpnBandWidthDataResponseBodyMonitorData) SetMaxUpBandWidth(v in
 }
 
 func (s *DescribeEpnBandWidthDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthMonitorData != nil {
+		for _, item := range s.BandWidthMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEpnBandWidthDataResponseBodyMonitorDataBandWidthMonitorData struct {

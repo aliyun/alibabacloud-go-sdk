@@ -59,5 +59,10 @@ func (s *UnloadRegionSDGResponse) SetBody(v *UnloadRegionSDGResponseBody) *Unloa
 }
 
 func (s *UnloadRegionSDGResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

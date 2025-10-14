@@ -233,7 +233,32 @@ func (s *DescribeVSwitchAttributesResponseBody) SetVSwitchName(v string) *Descri
 }
 
 func (s *DescribeVSwitchAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HaVipIds != nil {
+		if err := s.HaVipIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerIds != nil {
+		if err := s.LoadBalancerIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NatGatewayIds != nil {
+		if err := s.NatGatewayIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaceIds != nil {
+		if err := s.NetworkInterfaceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVSwitchAttributesResponseBodyHaVipIds struct {

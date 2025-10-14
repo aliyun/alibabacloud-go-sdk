@@ -99,7 +99,16 @@ func (s *CreateFileSystemResponseBody) SetUnAllocationId(v []*string) *CreateFil
 }
 
 func (s *CreateFileSystemResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllocationIds != nil {
+		for _, item := range s.AllocationIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFileSystemResponseBodyAllocationIds struct {

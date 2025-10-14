@@ -104,7 +104,16 @@ func (s *DescribeARMServerInstancesResponseBody) SetTotalCount(v int32) *Describ
 }
 
 func (s *DescribeARMServerInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Servers != nil {
+		for _, item := range s.Servers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeARMServerInstancesResponseBodyServers struct {
@@ -325,7 +334,25 @@ func (s *DescribeARMServerInstancesResponseBodyServers) SetTags(v []*DescribeARM
 }
 
 func (s *DescribeARMServerInstancesResponseBodyServers) Validate() error {
-	return dara.Validate(s)
+	if s.AICInstances != nil {
+		for _, item := range s.AICInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
@@ -515,7 +542,17 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetStatus(v 
 }
 
 func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAttributes != nil {
+		if err := s.NetworkAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SdgDeployInfo != nil {
+		if err := s.SdgDeployInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes struct {

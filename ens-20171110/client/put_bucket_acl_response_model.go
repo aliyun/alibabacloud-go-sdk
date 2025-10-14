@@ -59,5 +59,10 @@ func (s *PutBucketAclResponse) SetBody(v *PutBucketAclResponseBody) *PutBucketAc
 }
 
 func (s *PutBucketAclResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

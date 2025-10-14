@@ -59,5 +59,10 @@ func (s *GetBucketLifecycleResponse) SetBody(v *GetBucketLifecycleResponseBody) 
 }
 
 func (s *GetBucketLifecycleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

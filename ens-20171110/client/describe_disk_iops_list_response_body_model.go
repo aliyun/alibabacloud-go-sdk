@@ -53,7 +53,16 @@ func (s *DescribeDiskIopsListResponseBody) SetRequestId(v string) *DescribeDiskI
 }
 
 func (s *DescribeDiskIopsListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiskIopsList != nil {
+		for _, item := range s.DiskIopsList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDiskIopsListResponseBodyDiskIopsList struct {

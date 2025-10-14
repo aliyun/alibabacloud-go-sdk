@@ -59,6 +59,11 @@ func (s *ExportBillDetailDataResponse) SetBody(v *ExportBillDetailDataResponseBo
 }
 
 func (s *ExportBillDetailDataResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

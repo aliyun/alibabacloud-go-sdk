@@ -14,6 +14,8 @@ type iDeleteEipResponseBody interface {
 }
 
 type DeleteEipResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9341CDC2-D6AC-5992-86C8-D5774CFCC708

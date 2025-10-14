@@ -87,7 +87,12 @@ func (s *DescribeDataDownloadURLResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 func (s *DescribeDataDownloadURLResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataDownloadURLResponseBodyData struct {
@@ -143,7 +148,16 @@ func (s *DescribeDataDownloadURLResponseBodyData) SetUrl(v string) *DescribeData
 }
 
 func (s *DescribeDataDownloadURLResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ServerList != nil {
+		for _, item := range s.ServerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataDownloadURLResponseBodyDataServerList struct {

@@ -59,5 +59,10 @@ func (s *BatchEventRebootInstanceResponse) SetBody(v *BatchEventRebootInstanceRe
 }
 
 func (s *BatchEventRebootInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

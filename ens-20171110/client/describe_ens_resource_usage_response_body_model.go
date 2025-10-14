@@ -53,7 +53,16 @@ func (s *DescribeEnsResourceUsageResponseBody) SetRequestId(v string) *DescribeE
 }
 
 func (s *DescribeEnsResourceUsageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EnsResourceUsage != nil {
+		for _, item := range s.EnsResourceUsage {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsResourceUsageResponseBodyEnsResourceUsage struct {

@@ -104,7 +104,12 @@ func (s *DescribeEnsRegionIdResourceResponseBody) SetTotalCount(v int32) *Descri
 }
 
 func (s *DescribeEnsRegionIdResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EnsRegionIdResources != nil {
+		if err := s.EnsRegionIdResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResources struct {
@@ -129,7 +134,16 @@ func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResources) SetEnsRegi
 }
 
 func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResources) Validate() error {
-	return dara.Validate(s)
+	if s.EnsRegionIdResource != nil {
+		for _, item := range s.EnsRegionIdResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource struct {

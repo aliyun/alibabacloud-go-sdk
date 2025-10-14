@@ -104,7 +104,12 @@ func (s *DescribeEpnInstancesResponseBody) SetTotalCount(v int32) *DescribeEpnIn
 }
 
 func (s *DescribeEpnInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EPNInstances != nil {
+		if err := s.EPNInstances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEpnInstancesResponseBodyEPNInstances struct {
@@ -129,7 +134,16 @@ func (s *DescribeEpnInstancesResponseBodyEPNInstances) SetEPNInstance(v []*Descr
 }
 
 func (s *DescribeEpnInstancesResponseBodyEPNInstances) Validate() error {
-	return dara.Validate(s)
+	if s.EPNInstance != nil {
+		for _, item := range s.EPNInstance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEpnInstancesResponseBodyEPNInstancesEPNInstance struct {

@@ -53,7 +53,16 @@ func (s *GetBucketLifecycleResponseBody) SetRule(v []*GetBucketLifecycleResponse
 }
 
 func (s *GetBucketLifecycleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Rule != nil {
+		for _, item := range s.Rule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBucketLifecycleResponseBodyRule struct {
@@ -128,7 +137,12 @@ func (s *GetBucketLifecycleResponseBodyRule) SetStatus(v string) *GetBucketLifec
 }
 
 func (s *GetBucketLifecycleResponseBodyRule) Validate() error {
-	return dara.Validate(s)
+	if s.Expiration != nil {
+		if err := s.Expiration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBucketLifecycleResponseBodyRuleExpiration struct {

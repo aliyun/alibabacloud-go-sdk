@@ -53,7 +53,16 @@ func (s *DescribeElbAvailableResourceInfoResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeElbAvailableResourceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ElbAvailableResourceInfo != nil {
+		for _, item := range s.ElbAvailableResourceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct {

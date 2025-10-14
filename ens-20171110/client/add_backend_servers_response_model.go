@@ -59,5 +59,10 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 }
 
 func (s *AddBackendServersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

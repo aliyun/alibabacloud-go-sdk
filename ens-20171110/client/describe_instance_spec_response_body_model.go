@@ -138,7 +138,12 @@ func (s *DescribeInstanceSpecResponseBody) SetSystemDiskMaxSize(v int32) *Descri
 }
 
 func (s *DescribeInstanceSpecResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpecs != nil {
+		if err := s.InstanceSpecs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSpecResponseBodyInstanceSpecs struct {
@@ -163,7 +168,16 @@ func (s *DescribeInstanceSpecResponseBodyInstanceSpecs) SetInstanceSpec(v []*Des
 }
 
 func (s *DescribeInstanceSpecResponseBodyInstanceSpecs) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceSpec != nil {
+		for _, item := range s.InstanceSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec struct {

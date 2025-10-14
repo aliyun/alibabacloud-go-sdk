@@ -38,7 +38,16 @@ func (s *CreateStorageGatewayRequest) SetOrderDetails(v []*CreateStorageGatewayR
 }
 
 func (s *CreateStorageGatewayRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OrderDetails != nil {
+		for _, item := range s.OrderDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateStorageGatewayRequestOrderDetails struct {

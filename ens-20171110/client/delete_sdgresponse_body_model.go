@@ -53,7 +53,12 @@ func (s *DeleteSDGResponseBody) SetRequestId(v string) *DeleteSDGResponseBody {
 }
 
 func (s *DeleteSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *DeleteSDGResponseBodyData) SetSuccess(v bool) *DeleteSDGResponseBodyDat
 }
 
 func (s *DeleteSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *DeleteSDGResponseBodyDataResult) SetSuccessCount(v int64) *DeleteSDGRes
 }
 
 func (s *DeleteSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteSDGResponseBodyDataResultFailedItems struct {
@@ -210,7 +229,12 @@ func (s *DeleteSDGResponseBodyDataResultFailedItems) SetItem(v *DeleteSDGRespons
 }
 
 func (s *DeleteSDGResponseBodyDataResultFailedItems) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		if err := s.Item.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteSDGResponseBodyDataResultFailedItemsItem struct {

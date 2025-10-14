@@ -73,7 +73,16 @@ func (s *CreateEnsSaleControlRequest) SetSaleControls(v []*CreateEnsSaleControlR
 }
 
 func (s *CreateEnsSaleControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControls != nil {
+		for _, item := range s.SaleControls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEnsSaleControlRequestSaleControls struct {
@@ -152,7 +161,21 @@ func (s *CreateEnsSaleControlRequestSaleControls) SetOrderType(v string) *Create
 }
 
 func (s *CreateEnsSaleControlRequestSaleControls) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionControls != nil {
+		for _, item := range s.ConditionControls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ModuleValue != nil {
+		if err := s.ModuleValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateEnsSaleControlRequestSaleControlsConditionControls struct {

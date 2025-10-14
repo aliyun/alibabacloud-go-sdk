@@ -104,7 +104,16 @@ func (s *DescribeStorageVolumeResponseBody) SetTotalCount(v string) *DescribeSto
 }
 
 func (s *DescribeStorageVolumeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageVolumes != nil {
+		for _, item := range s.StorageVolumes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageVolumeResponseBodyStorageVolumes struct {

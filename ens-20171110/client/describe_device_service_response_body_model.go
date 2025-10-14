@@ -92,7 +92,35 @@ func (s *DescribeDeviceServiceResponseBody) SetResourceInfos(v []*DescribeDevice
 }
 
 func (s *DescribeDeviceServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppMetaData != nil {
+		if err := s.AppMetaData.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AppStatus != nil {
+		if err := s.AppStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceDetailInfos != nil {
+		for _, item := range s.ResourceDetailInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceInfos != nil {
+		for _, item := range s.ResourceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceServiceResponseBodyAppMetaData struct {
@@ -642,7 +670,34 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfos) SetRegionName(v string)
 }
 
 func (s *DescribeDeviceServiceResponseBodyResourceInfos) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfos != nil {
+		for _, item := range s.DeviceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InternalIps != nil {
+		for _, item := range s.InternalIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PublicIps != nil {
+		for _, item := range s.PublicIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos struct {
@@ -698,7 +753,16 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos) SetStatus(v 
 }
 
 func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		for _, item := range s.Network {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork struct {

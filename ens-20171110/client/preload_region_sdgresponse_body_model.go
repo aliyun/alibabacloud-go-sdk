@@ -53,7 +53,12 @@ func (s *PreloadRegionSDGResponseBody) SetRequestId(v string) *PreloadRegionSDGR
 }
 
 func (s *PreloadRegionSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreloadRegionSDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *PreloadRegionSDGResponseBodyData) SetSuccess(v bool) *PreloadRegionSDGR
 }
 
 func (s *PreloadRegionSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreloadRegionSDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *PreloadRegionSDGResponseBodyDataResult) SetSuccessCount(v int64) *Prelo
 }
 
 func (s *PreloadRegionSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PreloadRegionSDGResponseBodyDataResultFailedItems struct {

@@ -53,7 +53,12 @@ func (s *GetBucketInfoResponseBody) SetRequestId(v string) *GetBucketInfoRespons
 }
 
 func (s *GetBucketInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BucketInfo != nil {
+		if err := s.BucketInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBucketInfoResponseBodyBucketInfo struct {

@@ -83,7 +83,21 @@ func (s *DescribeRegionResourceResponseBody) SetRequestId(v string) *DescribeReg
 }
 
 func (s *DescribeRegionResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Pager != nil {
+		if err := s.Pager.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRegionResourceResponseBodyData struct {
@@ -398,7 +412,85 @@ func (s *DescribeRegionResourceResponseBodyData) SetVirtual(v string) *DescribeR
 }
 
 func (s *DescribeRegionResourceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ArmCard != nil {
+		if err := s.ArmCard.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Bandwidth != nil {
+		if err := s.Bandwidth.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BlockStorage != nil {
+		if err := s.BlockStorage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Cpu != nil {
+		if err := s.Cpu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Gpu != nil {
+		if err := s.Gpu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hdd != nil {
+		if err := s.Hdd.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ipv4s != nil {
+		for _, item := range s.Ipv4s {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Ipv6s != nil {
+		for _, item := range s.Ipv6s {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Memory != nil {
+		if err := s.Memory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Nvme != nil {
+		if err := s.Nvme.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OssStorage != nil {
+		if err := s.OssStorage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pangu != nil {
+		if err := s.Pangu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PcfarmNum != nil {
+		if err := s.PcfarmNum.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ssd != nil {
+		if err := s.Ssd.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRegionResourceResponseBodyDataArmCard struct {

@@ -83,7 +83,16 @@ func (s *RescaleDeviceServiceResponseBody) SetResourceDetailInfos(v []*RescaleDe
 }
 
 func (s *RescaleDeviceServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceDetailInfos != nil {
+		for _, item := range s.ResourceDetailInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RescaleDeviceServiceResponseBodyResourceDetailInfos struct {

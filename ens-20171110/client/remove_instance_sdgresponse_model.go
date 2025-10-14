@@ -59,5 +59,10 @@ func (s *RemoveInstanceSDGResponse) SetBody(v *RemoveInstanceSDGResponseBody) *R
 }
 
 func (s *RemoveInstanceSDGResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

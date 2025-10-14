@@ -30,7 +30,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned instance information. It is an array that consists of InstanceAttributesType data.
+	// The information about the instance is returned in an array of InstanceAttributesType.
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -121,7 +121,12 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstance
 }
 
 func (s *DescribeInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstances struct {
@@ -146,7 +151,16 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 func (s *DescribeInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
@@ -632,7 +646,57 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetTags(v *DescribeInst
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		if err := s.DataDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InnerIpAddress != nil {
+		if err := s.InnerIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkAttributes != nil {
+		if err := s.NetworkAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaces != nil {
+		if err := s.NetworkInterfaces.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpAddresses != nil {
+		if err := s.PrivateIpAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicIpAddress != nil {
+		if err := s.PublicIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PublicIpAddresses != nil {
+		if err := s.PublicIpAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityGroupIds != nil {
+		if err := s.SecurityGroupIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDisk != nil {
+		if err := s.SystemDisk.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceDataDisk struct {
@@ -657,7 +721,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceDataDisk) SetDataDisk(v [
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceDataDisk) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
@@ -947,7 +1020,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes) SetVSw
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpAddress != nil {
+		if err := s.PrivateIpAddress.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress struct {
@@ -997,7 +1075,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) SetNet
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkInterfaces != nil {
+		for _, item := range s.NetworkInterfaces {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces struct {
@@ -1098,7 +1185,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Sets != nil {
+		if err := s.Ipv6Sets.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateIpSets != nil {
+		if err := s.PrivateIpSets.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets struct {
@@ -1123,7 +1220,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Set != nil {
+		for _, item := range s.Ipv6Set {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set struct {
@@ -1178,7 +1284,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpSet != nil {
+		for _, item := range s.PrivateIpSet {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet struct {
@@ -1254,7 +1369,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses) SetPr
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.PrivateIpAddress != nil {
+		for _, item := range s.PrivateIpAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpAddress struct {
@@ -1364,7 +1488,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses) SetPub
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.PublicIpAddress != nil {
+		for _, item := range s.PublicIpAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAddress struct {
@@ -1640,7 +1773,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) SetTags(v []*Descri
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTags struct {

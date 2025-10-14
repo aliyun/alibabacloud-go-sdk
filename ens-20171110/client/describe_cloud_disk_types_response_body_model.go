@@ -53,7 +53,12 @@ func (s *DescribeCloudDiskTypesResponseBody) SetSupportResources(v *DescribeClou
 }
 
 func (s *DescribeCloudDiskTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResources != nil {
+		if err := s.SupportResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDiskTypesResponseBodySupportResources struct {
@@ -78,7 +83,16 @@ func (s *DescribeCloudDiskTypesResponseBodySupportResources) SetSupportResource(
 }
 
 func (s *DescribeCloudDiskTypesResponseBodySupportResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResource != nil {
+		for _, item := range s.SupportResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDiskTypesResponseBodySupportResourcesSupportResource struct {

@@ -93,7 +93,12 @@ func (s *AttachInstanceSDGRequest) SetSDGId(v string) *AttachInstanceSDGRequest 
 }
 
 func (s *AttachInstanceSDGRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LoadOpt != nil {
+		if err := s.LoadOpt.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachInstanceSDGRequestLoadOpt struct {

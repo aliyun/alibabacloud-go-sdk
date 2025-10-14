@@ -70,7 +70,12 @@ func (s *RemoveInstanceSDGResponseBody) SetRequestId(v string) *RemoveInstanceSD
 }
 
 func (s *RemoveInstanceSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveInstanceSDGResponseBodyData struct {
@@ -130,7 +135,12 @@ func (s *RemoveInstanceSDGResponseBodyData) SetSuccess(v bool) *RemoveInstanceSD
 }
 
 func (s *RemoveInstanceSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveInstanceSDGResponseBodyDataResult struct {
@@ -186,7 +196,16 @@ func (s *RemoveInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Remo
 }
 
 func (s *RemoveInstanceSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveInstanceSDGResponseBodyDataResultFailedItems struct {

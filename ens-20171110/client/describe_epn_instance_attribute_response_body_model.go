@@ -136,7 +136,34 @@ func (s *DescribeEpnInstanceAttributeResponseBody) SetVSwitches(v []*DescribeEpn
 }
 
 func (s *DescribeEpnInstanceAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConfVersions != nil {
+		for _, item := range s.ConfVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VSwitches != nil {
+		for _, item := range s.VSwitches {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEpnInstanceAttributeResponseBodyConfVersions struct {

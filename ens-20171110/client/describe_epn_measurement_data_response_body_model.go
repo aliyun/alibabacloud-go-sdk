@@ -53,7 +53,12 @@ func (s *DescribeEpnMeasurementDataResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeEpnMeasurementDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MeasurementDatas != nil {
+		if err := s.MeasurementDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatas struct {
@@ -78,7 +83,16 @@ func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatas) SetMeasurementD
 }
 
 func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatas) Validate() error {
-	return dara.Validate(s)
+	if s.MeasurementData != nil {
+		for _, item := range s.MeasurementData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData struct {
@@ -168,7 +182,12 @@ func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData) 
 }
 
 func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthFeeDatas != nil {
+		if err := s.BandWidthFeeDatas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas struct {
@@ -193,7 +212,16 @@ func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBa
 }
 
 func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthFeeData != nil {
+		for _, item := range s.BandWidthFeeData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData struct {

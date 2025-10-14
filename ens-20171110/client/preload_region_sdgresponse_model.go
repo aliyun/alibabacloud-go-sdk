@@ -59,5 +59,10 @@ func (s *PreloadRegionSDGResponse) SetBody(v *PreloadRegionSDGResponseBody) *Pre
 }
 
 func (s *PreloadRegionSDGResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

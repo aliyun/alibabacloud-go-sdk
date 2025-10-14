@@ -47,7 +47,16 @@ func (s *DescribeEnsCommodityCodeResponseBody) SetRequestId(v string) *DescribeE
 }
 
 func (s *DescribeEnsCommodityCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommodityCodeInfo != nil {
+		for _, item := range s.CommodityCodeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsCommodityCodeResponseBodyCommodityCodeInfo struct {

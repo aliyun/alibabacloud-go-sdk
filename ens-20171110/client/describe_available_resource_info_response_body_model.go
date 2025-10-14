@@ -66,7 +66,17 @@ func (s *DescribeAvailableResourceInfoResponseBody) SetSupportResources(v *Descr
 }
 
 func (s *DescribeAvailableResourceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		if err := s.Images.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportResources != nil {
+		if err := s.SupportResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceInfoResponseBodyImages struct {
@@ -91,7 +101,16 @@ func (s *DescribeAvailableResourceInfoResponseBodyImages) SetImage(v []*Describe
 }
 
 func (s *DescribeAvailableResourceInfoResponseBodyImages) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		for _, item := range s.Image {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceInfoResponseBodyImagesImage struct {
@@ -176,7 +195,16 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResources) SetSupportRe
 }
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResource != nil {
+		for _, item := range s.SupportResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
@@ -305,7 +333,32 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 }
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource) Validate() error {
-	return dara.Validate(s)
+	if s.BandwidthTypes != nil {
+		if err := s.BandwidthTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnsRegionIds != nil {
+		if err := s.EnsRegionIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EnsRegionIdsExtends != nil {
+		if err := s.EnsRegionIdsExtends.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceSpeces != nil {
+		if err := s.InstanceSpeces.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Isp != nil {
+		if err := s.Isp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceBandwidthTypes struct {
@@ -380,7 +433,16 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 }
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtends) Validate() error {
-	return dara.Validate(s)
+	if s.EnsRegionId != nil {
+		for _, item := range s.EnsRegionId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId struct {

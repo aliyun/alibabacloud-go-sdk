@@ -97,7 +97,16 @@ func (s *DescribeInstanceBandwidthDetailResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeInstanceBandwidthDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Bandwidths != nil {
+		for _, item := range s.Bandwidths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceBandwidthDetailResponseBodyBandwidths struct {

@@ -59,5 +59,10 @@ func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInsta
 }
 
 func (s *StopInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

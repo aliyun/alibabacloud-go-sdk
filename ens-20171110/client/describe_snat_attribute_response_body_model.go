@@ -319,7 +319,16 @@ func (s *DescribeSnatAttributeResponseBody) SetType(v string) *DescribeSnatAttri
 }
 
 func (s *DescribeSnatAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnatIps != nil {
+		for _, item := range s.SnatIps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnatAttributeResponseBodySnatIps struct {

@@ -53,7 +53,16 @@ func (s *GetOssUsageDataResponseBody) SetUsageList(v []*GetOssUsageDataResponseB
 }
 
 func (s *GetOssUsageDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UsageList != nil {
+		for _, item := range s.UsageList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOssUsageDataResponseBodyUsageList struct {

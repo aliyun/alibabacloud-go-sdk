@@ -70,7 +70,12 @@ func (s *DescribeImageInfosResponseBody) SetRequestId(v string) *DescribeImageIn
 }
 
 func (s *DescribeImageInfosResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		if err := s.Images.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageInfosResponseBodyImages struct {
@@ -95,7 +100,16 @@ func (s *DescribeImageInfosResponseBodyImages) SetImage(v []*DescribeImageInfosR
 }
 
 func (s *DescribeImageInfosResponseBodyImages) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		for _, item := range s.Image {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageInfosResponseBodyImagesImage struct {
@@ -249,7 +263,12 @@ func (s *DescribeImageInfosResponseBodyImagesImage) SetRegionId(v string) *Descr
 }
 
 func (s *DescribeImageInfosResponseBodyImagesImage) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMappings != nil {
+		if err := s.DiskDeviceMappings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings struct {
@@ -274,7 +293,16 @@ func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) SetDiskDev
 }
 
 func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) Validate() error {
-	return dara.Validate(s)
+	if s.DiskDeviceMapping != nil {
+		for _, item := range s.DiskDeviceMapping {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {

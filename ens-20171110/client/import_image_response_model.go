@@ -59,5 +59,10 @@ func (s *ImportImageResponse) SetBody(v *ImportImageResponseBody) *ImportImageRe
 }
 
 func (s *ImportImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -108,7 +108,12 @@ func (s *DescribeEnsEipAddressesResponseBody) SetTotalCount(v int32) *DescribeEn
 }
 
 func (s *DescribeEnsEipAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipAddresses != nil {
+		if err := s.EipAddresses.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddresses struct {
@@ -133,7 +138,16 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Des
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddresses) Validate() error {
-	return dara.Validate(s)
+	if s.EipAddress != nil {
+		for _, item := range s.EipAddress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
@@ -143,6 +157,7 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
 	ChargeType         *string                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Description        *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
 	EnsRegionId        *string                                                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	IcmpReplyEnabled   *bool                                                          `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	InstanceId         *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType       *string                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InternetChargeType *string                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
@@ -185,6 +200,10 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetDescripti
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetEnsRegionId() *string {
 	return s.EnsRegionId
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetIcmpReplyEnabled() *bool {
+	return s.IcmpReplyEnabled
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetInstanceId() *string {
@@ -257,6 +276,11 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetEnsRegion
 	return s
 }
 
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetIcmpReplyEnabled(v bool) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.IcmpReplyEnabled = &v
+	return s
+}
+
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetInstanceId(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.InstanceId = &v
 	return s
@@ -308,7 +332,12 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetTags(v *D
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags struct {
@@ -333,7 +362,16 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {

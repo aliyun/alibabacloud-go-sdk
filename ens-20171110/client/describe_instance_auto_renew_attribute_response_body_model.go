@@ -70,7 +70,12 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBody) SetRequestId(v string) 
 }
 
 func (s *DescribeInstanceAutoRenewAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRenewAttributes != nil {
+		if err := s.InstanceRenewAttributes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes struct {
@@ -95,7 +100,16 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes) 
 }
 
 func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceRenewAttribute != nil {
+		for _, item := range s.InstanceRenewAttribute {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute struct {

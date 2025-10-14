@@ -104,7 +104,12 @@ func (s *DescribeDataDistResultResponseBody) SetTotalCount(v int32) *DescribeDat
 }
 
 func (s *DescribeDataDistResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DistResults != nil {
+		if err := s.DistResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResults struct {
@@ -129,7 +134,16 @@ func (s *DescribeDataDistResultResponseBodyDistResults) SetDistResult(v []*Descr
 }
 
 func (s *DescribeDataDistResultResponseBodyDistResults) Validate() error {
-	return dara.Validate(s)
+	if s.DistResult != nil {
+		for _, item := range s.DistResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResult struct {
@@ -185,7 +199,12 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResult) SetVersion(v s
 }
 
 func (s *DescribeDataDistResultResponseBodyDistResultsDistResult) Validate() error {
-	return dara.Validate(s)
+	if s.StatusStats != nil {
+		if err := s.StatusStats.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats struct {
@@ -210,7 +229,16 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats) Set
 }
 
 func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats) Validate() error {
-	return dara.Validate(s)
+	if s.StatusStat != nil {
+		for _, item := range s.StatusStat {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat struct {
@@ -276,7 +304,12 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatu
 }
 
 func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances struct {
@@ -301,7 +334,16 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatu
 }
 
 func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		for _, item := range s.Instance {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstancesInstance struct {

@@ -47,7 +47,16 @@ func (s *DescribeEnsCommodityModuleCodeResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeEnsCommodityModuleCodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommodityCodesInfo != nil {
+		for _, item := range s.CommodityCodesInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo struct {
@@ -82,7 +91,16 @@ func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) SetModule
 }
 
 func (s *DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfo) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleCodesInfo != nil {
+		for _, item := range s.ModuleCodesInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsCommodityModuleCodeResponseBodyCommodityCodesInfoModuleCodesInfo struct {

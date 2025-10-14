@@ -53,7 +53,12 @@ func (s *DescribeInstanceBootConfigurationResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeInstanceBootConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceBootConfigurationResponseBodyInstances struct {

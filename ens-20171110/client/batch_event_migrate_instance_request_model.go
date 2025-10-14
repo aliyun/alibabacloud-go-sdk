@@ -35,7 +35,16 @@ func (s *BatchEventMigrateInstanceRequest) SetEventInfos(v []*BatchEventMigrateI
 }
 
 func (s *BatchEventMigrateInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventInfos != nil {
+		for _, item := range s.EventInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchEventMigrateInstanceRequestEventInfos struct {

@@ -59,5 +59,10 @@ func (s *DescribeInstanceSDGStatusResponse) SetBody(v *DescribeInstanceSDGStatus
 }
 
 func (s *DescribeInstanceSDGStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

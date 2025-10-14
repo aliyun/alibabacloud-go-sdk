@@ -73,7 +73,16 @@ func (s *DeleteEnsSaleControlRequest) SetSaleControls(v []*DeleteEnsSaleControlR
 }
 
 func (s *DeleteEnsSaleControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControls != nil {
+		for _, item := range s.SaleControls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteEnsSaleControlRequestSaleControls struct {

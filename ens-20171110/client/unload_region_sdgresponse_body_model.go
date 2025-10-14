@@ -53,7 +53,12 @@ func (s *UnloadRegionSDGResponseBody) SetRequestId(v string) *UnloadRegionSDGRes
 }
 
 func (s *UnloadRegionSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnloadRegionSDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *UnloadRegionSDGResponseBodyData) SetSuccess(v bool) *UnloadRegionSDGRes
 }
 
 func (s *UnloadRegionSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UnloadRegionSDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *UnloadRegionSDGResponseBodyDataResult) SetSuccessCount(v int64) *Unload
 }
 
 func (s *UnloadRegionSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnloadRegionSDGResponseBodyDataResultFailedItems struct {

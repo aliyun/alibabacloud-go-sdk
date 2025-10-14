@@ -59,6 +59,11 @@ func (s *ExportMeasurementDataResponse) SetBody(v *ExportMeasurementDataResponse
 }
 
 func (s *ExportMeasurementDataResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

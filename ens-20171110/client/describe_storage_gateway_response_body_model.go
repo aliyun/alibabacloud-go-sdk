@@ -106,7 +106,16 @@ func (s *DescribeStorageGatewayResponseBody) SetTotalCount(v int32) *DescribeSto
 }
 
 func (s *DescribeStorageGatewayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StorageGateways != nil {
+		for _, item := range s.StorageGateways {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeStorageGatewayResponseBodyStorageGateways struct {

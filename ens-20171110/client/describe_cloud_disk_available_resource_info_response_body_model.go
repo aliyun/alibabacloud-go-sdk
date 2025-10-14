@@ -53,7 +53,12 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBody) SetSupportResources
 }
 
 func (s *DescribeCloudDiskAvailableResourceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResources != nil {
+		if err := s.SupportResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources struct {
@@ -78,7 +83,16 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources) Set
 }
 
 func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResource != nil {
+		for _, item := range s.SupportResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
@@ -217,7 +231,12 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSuppo
 }
 
 func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) Validate() error {
-	return dara.Validate(s)
+	if s.Ability != nil {
+		if err := s.Ability.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility struct {

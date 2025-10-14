@@ -23,6 +23,8 @@ type iDescribeEnsEipAddressesRequest interface {
 	GetEnsRegionId() *string
 	SetEnsRegionIds(v []*string) *DescribeEnsEipAddressesRequest
 	GetEnsRegionIds() []*string
+	SetIcmpReplyEnabled(v bool) *DescribeEnsEipAddressesRequest
+	GetIcmpReplyEnabled() *bool
 	SetPageNumber(v int32) *DescribeEnsEipAddressesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeEnsEipAddressesRequest
@@ -73,7 +75,8 @@ type DescribeEnsEipAddressesRequest struct {
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// The IDs of edge nodes. You can specify 1 to 100 IDs.
-	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	EnsRegionIds     []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	IcmpReplyEnabled *bool     `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -134,6 +137,10 @@ func (s *DescribeEnsEipAddressesRequest) GetEnsRegionIds() []*string {
 	return s.EnsRegionIds
 }
 
+func (s *DescribeEnsEipAddressesRequest) GetIcmpReplyEnabled() *bool {
+	return s.IcmpReplyEnabled
+}
+
 func (s *DescribeEnsEipAddressesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -178,6 +185,11 @@ func (s *DescribeEnsEipAddressesRequest) SetEnsRegionId(v string) *DescribeEnsEi
 
 func (s *DescribeEnsEipAddressesRequest) SetEnsRegionIds(v []*string) *DescribeEnsEipAddressesRequest {
 	s.EnsRegionIds = v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetIcmpReplyEnabled(v bool) *DescribeEnsEipAddressesRequest {
+	s.IcmpReplyEnabled = &v
 	return s
 }
 

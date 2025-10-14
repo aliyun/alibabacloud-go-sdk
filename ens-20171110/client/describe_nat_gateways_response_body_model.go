@@ -104,7 +104,16 @@ func (s *DescribeNatGatewaysResponseBody) SetTotalCount(v int32) *DescribeNatGat
 }
 
 func (s *DescribeNatGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateways != nil {
+		for _, item := range s.NatGateways {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGateways struct {
@@ -266,7 +275,25 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVSwitchId(v string) *Des
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
-	return dara.Validate(s)
+	if s.IpLists != nil {
+		for _, item := range s.IpLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {

@@ -70,7 +70,12 @@ func (s *DescribeUserBandWidthDataResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeUserBandWidthDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorData != nil {
+		if err := s.MonitorData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserBandWidthDataResponseBodyMonitorData struct {
@@ -126,7 +131,16 @@ func (s *DescribeUserBandWidthDataResponseBodyMonitorData) SetMaxUpBandWidth(v s
 }
 
 func (s *DescribeUserBandWidthDataResponseBodyMonitorData) Validate() error {
-	return dara.Validate(s)
+	if s.BandWidthMonitorData != nil {
+		for _, item := range s.BandWidthMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData struct {

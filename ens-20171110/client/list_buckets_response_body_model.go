@@ -70,7 +70,16 @@ func (s *ListBucketsResponseBody) SetTotalCount(v int64) *ListBucketsResponseBod
 }
 
 func (s *ListBucketsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BucketInfos != nil {
+		for _, item := range s.BucketInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBucketsResponseBodyBucketInfos struct {

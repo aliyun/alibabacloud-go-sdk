@@ -14,6 +14,8 @@ type iDeleteEipRequest interface {
 }
 
 type DeleteEipRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

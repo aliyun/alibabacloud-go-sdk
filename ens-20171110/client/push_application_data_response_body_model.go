@@ -53,7 +53,12 @@ func (s *PushApplicationDataResponseBody) SetRequestId(v string) *PushApplicatio
 }
 
 func (s *PushApplicationDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PushResults != nil {
+		if err := s.PushResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PushApplicationDataResponseBodyPushResults struct {
@@ -78,7 +83,16 @@ func (s *PushApplicationDataResponseBodyPushResults) SetPushResult(v []*PushAppl
 }
 
 func (s *PushApplicationDataResponseBodyPushResults) Validate() error {
-	return dara.Validate(s)
+	if s.PushResult != nil {
+		for _, item := range s.PushResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PushApplicationDataResponseBodyPushResultsPushResult struct {

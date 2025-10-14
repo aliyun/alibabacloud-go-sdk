@@ -53,7 +53,16 @@ func (s *GetOssStorageAndAccByBucketsResponseBody) SetRequestId(v string) *GetOs
 }
 
 func (s *GetOssStorageAndAccByBucketsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BucketList != nil {
+		for _, item := range s.BucketList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetOssStorageAndAccByBucketsResponseBodyBucketList struct {

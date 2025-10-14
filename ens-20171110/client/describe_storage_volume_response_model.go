@@ -59,5 +59,10 @@ func (s *DescribeStorageVolumeResponse) SetBody(v *DescribeStorageVolumeResponse
 }
 
 func (s *DescribeStorageVolumeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

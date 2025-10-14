@@ -59,5 +59,10 @@ func (s *SetLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *SetLoadBalanc
 }
 
 func (s *SetLoadBalancerHTTPSListenerAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

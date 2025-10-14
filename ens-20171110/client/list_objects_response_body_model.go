@@ -257,7 +257,16 @@ func (s *ListObjectsResponseBody) SetRequestId(v string) *ListObjectsResponseBod
 }
 
 func (s *ListObjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Contents != nil {
+		for _, item := range s.Contents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListObjectsResponseBodyContents struct {

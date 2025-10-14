@@ -104,7 +104,16 @@ func (s *DescribeNetworkAclsResponseBody) SetTotalCount(v string) *DescribeNetwo
 }
 
 func (s *DescribeNetworkAclsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAcls != nil {
+		for _, item := range s.NetworkAcls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAcls struct {
@@ -231,7 +240,34 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetStatus(v string) *Descri
 }
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAcls) Validate() error {
-	return dara.Validate(s)
+	if s.EgressAclEntries != nil {
+		for _, item := range s.EgressAclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IngressAclEntries != nil {
+		for _, item := range s.IngressAclEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {

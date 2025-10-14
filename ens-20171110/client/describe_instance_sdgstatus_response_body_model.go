@@ -104,7 +104,16 @@ func (s *DescribeInstanceSDGStatusResponseBody) SetTotalCount(v string) *Describ
 }
 
 func (s *DescribeInstanceSDGStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeploymentStatus != nil {
+		for _, item := range s.DeploymentStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceSDGStatusResponseBodyDeploymentStatus struct {

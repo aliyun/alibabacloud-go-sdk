@@ -59,5 +59,10 @@ func (s *CleanDistDataResponse) SetBody(v *CleanDistDataResponseBody) *CleanDist
 }
 
 func (s *CleanDistDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

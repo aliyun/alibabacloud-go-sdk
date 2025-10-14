@@ -53,7 +53,16 @@ func (s *DescribeLoadBalancerListenMonitorResponseBody) SetRequestId(v string) *
 }
 
 func (s *DescribeLoadBalancerListenMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerMonitorListenData != nil {
+		for _, item := range s.LoadBalancerMonitorListenData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData struct {

@@ -59,5 +59,10 @@ func (s *RescaleDeviceServiceResponse) SetBody(v *RescaleDeviceServiceResponseBo
 }
 
 func (s *RescaleDeviceServiceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

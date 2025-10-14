@@ -16,7 +16,10 @@ type iCreateNetworkInterfaceResponseBody interface {
 }
 
 type CreateNetworkInterfaceResponseBody struct {
+	// A list of ENI IDs.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F3B261DD-3858-4D3C-877D-303ADF374600

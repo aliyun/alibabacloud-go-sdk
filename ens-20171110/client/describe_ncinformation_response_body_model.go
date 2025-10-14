@@ -107,7 +107,21 @@ func (s *DescribeNCInformationResponseBody) SetTotalCount(v int32) *DescribeNCIn
 }
 
 func (s *DescribeNCInformationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Pager != nil {
+		if err := s.Pager.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNCInformationResponseBodyData struct {
@@ -222,7 +236,42 @@ func (s *DescribeNCInformationResponseBodyData) SetVirtual(v string) *DescribeNC
 }
 
 func (s *DescribeNCInformationResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Cpu != nil {
+		if err := s.Cpu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Gpu != nil {
+		if err := s.Gpu.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Hdd != nil {
+		if err := s.Hdd.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Info != nil {
+		if err := s.Info.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Memory != nil {
+		if err := s.Memory.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Nvme != nil {
+		if err := s.Nvme.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Ssd != nil {
+		if err := s.Ssd.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNCInformationResponseBodyDataCpu struct {

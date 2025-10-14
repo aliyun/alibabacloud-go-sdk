@@ -70,7 +70,12 @@ func (s *DescribeEnsNetLevelResponseBody) SetRequestId(v string) *DescribeEnsNet
 }
 
 func (s *DescribeEnsNetLevelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EnsNetLevels != nil {
+		if err := s.EnsNetLevels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsNetLevelResponseBodyEnsNetLevels struct {
@@ -95,7 +100,16 @@ func (s *DescribeEnsNetLevelResponseBodyEnsNetLevels) SetEnsNetLevel(v []*Descri
 }
 
 func (s *DescribeEnsNetLevelResponseBodyEnsNetLevels) Validate() error {
-	return dara.Validate(s)
+	if s.EnsNetLevel != nil {
+		for _, item := range s.EnsNetLevel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsNetLevelResponseBodyEnsNetLevelsEnsNetLevel struct {

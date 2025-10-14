@@ -20,15 +20,22 @@ type iDescribeNASAvailableResourceInfoResponseBody interface {
 }
 
 type DescribeNASAvailableResourceInfoResponseBody struct {
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// you are not authorized to this workspace, or workspace not exists.
-	Message                  *string                                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information of available NAS resources.
 	NasAvailableResourceInfo []*DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo `json:"NasAvailableResourceInfo,omitempty" xml:"NasAvailableResourceInfo,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// AAE90880-4970-4D81-A534-A6C0F3631F74
@@ -80,33 +87,55 @@ func (s *DescribeNASAvailableResourceInfoResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeNASAvailableResourceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NasAvailableResourceInfo != nil {
+		for _, item := range s.NasAvailableResourceInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo struct {
+	// The product supported by the edge node.
 	Ability []*string `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
+	// The region to which the ENS node belongs.
+	//
 	// example:
 	//
 	// SouthWestChina
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The English name.
+	//
 	// example:
 	//
 	// cn-chenzhou-telecom_unicom_cmcc
 	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The ID of the ENS node.
+	//
 	// example:
 	//
 	// cn-chenzhou-telecom_unicom_cmcc
-	EnsRegionId   *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the ENS node.
 	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
+	// the number of available NAS resources.
+	//
 	// example:
 	//
 	// 1
 	NasAvailableAmount *int32 `json:"NasAvailableAmount,omitempty" xml:"NasAvailableAmount,omitempty"`
+	// The types of available NAS resources.
+	//
 	// example:
 	//
 	// capacity
 	NasAvailableStorgeType *string `json:"NasAvailableStorgeType,omitempty" xml:"NasAvailableStorgeType,omitempty"`
-	Province               *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The province to which the ENS node belongs.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo) String() string {

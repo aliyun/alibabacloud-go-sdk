@@ -59,6 +59,11 @@ func (s *EventRedeployInstanceResponse) SetBody(v *EventRedeployInstanceResponse
 }
 
 func (s *EventRedeployInstanceResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

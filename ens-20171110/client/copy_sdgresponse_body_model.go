@@ -53,7 +53,12 @@ func (s *CopySDGResponseBody) SetRequestId(v string) *CopySDGResponseBody {
 }
 
 func (s *CopySDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopySDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *CopySDGResponseBodyData) SetSuccess(v bool) *CopySDGResponseBodyData {
 }
 
 func (s *CopySDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopySDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *CopySDGResponseBodyDataResult) SetSuccessCount(v int64) *CopySDGRespons
 }
 
 func (s *CopySDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CopySDGResponseBodyDataResultFailedItems struct {

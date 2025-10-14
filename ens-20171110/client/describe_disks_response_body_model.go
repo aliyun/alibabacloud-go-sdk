@@ -121,7 +121,12 @@ func (s *DescribeDisksResponseBody) SetTotalCount(v int32) *DescribeDisksRespons
 }
 
 func (s *DescribeDisksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		if err := s.Disks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisks struct {
@@ -146,7 +151,16 @@ func (s *DescribeDisksResponseBodyDisks) SetDisks(v []*DescribeDisksResponseBody
 }
 
 func (s *DescribeDisksResponseBodyDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDisks struct {
@@ -489,7 +503,12 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetType(v string) *DescribeDisksRe
 }
 
 func (s *DescribeDisksResponseBodyDisksDisks) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDisksTags struct {
@@ -514,7 +533,16 @@ func (s *DescribeDisksResponseBodyDisksDisksTags) SetTags(v []*DescribeDisksResp
 }
 
 func (s *DescribeDisksResponseBodyDisksDisksTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDisksResponseBodyDisksDisksTagsTags struct {

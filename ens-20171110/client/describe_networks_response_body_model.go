@@ -104,7 +104,12 @@ func (s *DescribeNetworksResponseBody) SetTotalCount(v int32) *DescribeNetworksR
 }
 
 func (s *DescribeNetworksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Networks != nil {
+		if err := s.Networks.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworksResponseBodyNetworks struct {
@@ -129,7 +134,16 @@ func (s *DescribeNetworksResponseBodyNetworks) SetNetwork(v []*DescribeNetworksR
 }
 
 func (s *DescribeNetworksResponseBodyNetworks) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		for _, item := range s.Network {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworksResponseBodyNetworksNetwork struct {
@@ -355,7 +369,27 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetVSwitchIds(v *DescribeN
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTableIds != nil {
+		if err := s.RouteTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecondaryCidrBlocks != nil {
+		if err := s.SecondaryCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkRouteTableIds struct {
@@ -430,7 +464,16 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkTags) SetTag(v []*DescribeNe
 }
 
 func (s *DescribeNetworksResponseBodyNetworksNetworkTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {

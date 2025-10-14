@@ -83,7 +83,17 @@ func (s *DescribeReservedResourceResponseBody) SetSupportResources(v *DescribeRe
 }
 
 func (s *DescribeReservedResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		if err := s.Images.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportResources != nil {
+		if err := s.SupportResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReservedResourceResponseBodyImages struct {
@@ -108,7 +118,16 @@ func (s *DescribeReservedResourceResponseBodyImages) SetImage(v []*DescribeReser
 }
 
 func (s *DescribeReservedResourceResponseBodyImages) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		for _, item := range s.Image {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedResourceResponseBodyImagesImage struct {
@@ -178,7 +197,16 @@ func (s *DescribeReservedResourceResponseBodySupportResources) SetSupportResourc
 }
 
 func (s *DescribeReservedResourceResponseBodySupportResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResource != nil {
+		for _, item := range s.SupportResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeReservedResourceResponseBodySupportResourcesSupportResource struct {
@@ -260,7 +288,17 @@ func (s *DescribeReservedResourceResponseBodySupportResourcesSupportResource) Se
 }
 
 func (s *DescribeReservedResourceResponseBodySupportResourcesSupportResource) Validate() error {
-	return dara.Validate(s)
+	if s.DataDiskSizes != nil {
+		if err := s.DataDiskSizes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SystemDiskSizes != nil {
+		if err := s.SystemDiskSizes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeReservedResourceResponseBodySupportResourcesSupportResourceDataDiskSizes struct {

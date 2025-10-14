@@ -53,7 +53,16 @@ func (s *DescribeSDGsResponseBody) SetSDGs(v []*DescribeSDGsResponseBodySDGs) *D
 }
 
 func (s *DescribeSDGsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SDGs != nil {
+		for _, item := range s.SDGs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSDGsResponseBodySDGs struct {
@@ -266,7 +275,25 @@ func (s *DescribeSDGsResponseBodySDGs) SetUpdateTime(v string) *DescribeSDGsResp
 }
 
 func (s *DescribeSDGsResponseBodySDGs) Validate() error {
-	return dara.Validate(s)
+	if s.AvaliableRegionIds != nil {
+		for _, item := range s.AvaliableRegionIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeployedInstanceIds != nil {
+		for _, item := range s.DeployedInstanceIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSDGsResponseBodySDGsAvaliableRegionIds struct {

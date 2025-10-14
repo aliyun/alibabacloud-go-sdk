@@ -347,7 +347,52 @@ func (s *DescribeNetworkAttributeResponseBody) SetVSwitchIds(v *DescribeNetworkA
 }
 
 func (s *DescribeNetworkAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudResources != nil {
+		if err := s.CloudResources.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HaVipIds != nil {
+		if err := s.HaVipIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InstanceIds != nil {
+		if err := s.InstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LoadBalancerIds != nil {
+		if err := s.LoadBalancerIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NatGatewayIds != nil {
+		if err := s.NatGatewayIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkInterfaceIds != nil {
+		if err := s.NetworkInterfaceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RouteTableIds != nil {
+		if err := s.RouteTableIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecondaryCidrBlocks != nil {
+		if err := s.SecondaryCidrBlocks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VSwitchIds != nil {
+		if err := s.VSwitchIds.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAttributeResponseBodyCloudResources struct {
@@ -372,7 +417,16 @@ func (s *DescribeNetworkAttributeResponseBodyCloudResources) SetCloudResourceSet
 }
 
 func (s *DescribeNetworkAttributeResponseBodyCloudResources) Validate() error {
-	return dara.Validate(s)
+	if s.CloudResourceSetType != nil {
+		for _, item := range s.CloudResourceSetType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType struct {

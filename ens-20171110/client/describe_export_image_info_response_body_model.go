@@ -104,7 +104,12 @@ func (s *DescribeExportImageInfoResponseBody) SetTotalCount(v int32) *DescribeEx
 }
 
 func (s *DescribeExportImageInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		if err := s.Images.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeExportImageInfoResponseBodyImages struct {
@@ -129,7 +134,16 @@ func (s *DescribeExportImageInfoResponseBodyImages) SetImage(v []*DescribeExport
 }
 
 func (s *DescribeExportImageInfoResponseBodyImages) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		for _, item := range s.Image {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeExportImageInfoResponseBodyImagesImage struct {

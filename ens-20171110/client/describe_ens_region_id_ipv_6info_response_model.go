@@ -59,5 +59,10 @@ func (s *DescribeEnsRegionIdIpv6InfoResponse) SetBody(v *DescribeEnsRegionIdIpv6
 }
 
 func (s *DescribeEnsRegionIdIpv6InfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

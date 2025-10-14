@@ -53,7 +53,12 @@ func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceRespons
 }
 
 func (s *DescribePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
@@ -79,7 +84,12 @@ func (s *DescribePriceResponseBodyPriceInfo) SetPrice(v *DescribePriceResponseBo
 }
 
 func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {

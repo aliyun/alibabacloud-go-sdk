@@ -57,7 +57,16 @@ func (s *AccosicateNetworkAclRequest) SetResource(v []*AccosicateNetworkAclReque
 }
 
 func (s *AccosicateNetworkAclRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Resource != nil {
+		for _, item := range s.Resource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AccosicateNetworkAclRequestResource struct {

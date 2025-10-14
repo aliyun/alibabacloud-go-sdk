@@ -107,7 +107,43 @@ func (s *DescribeResourceTimelineResponseBody) SetReserveEvents(v []*DescribeRes
 }
 
 func (s *DescribeResourceTimelineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableEvents != nil {
+		for _, item := range s.AvailableEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BizEvents != nil {
+		for _, item := range s.BizEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InventoryEvents != nil {
+		for _, item := range s.InventoryEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ReserveEvents != nil {
+		for _, item := range s.ReserveEvents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceTimelineResponseBodyAvailableEvents struct {

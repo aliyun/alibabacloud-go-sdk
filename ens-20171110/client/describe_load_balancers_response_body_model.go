@@ -104,7 +104,12 @@ func (s *DescribeLoadBalancersResponseBody) SetTotalCount(v int32) *DescribeLoad
 }
 
 func (s *DescribeLoadBalancersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancers != nil {
+		if err := s.LoadBalancers.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancers struct {
@@ -129,7 +134,16 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancer(v []*De
 }
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancers) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancer != nil {
+		for _, item := range s.LoadBalancer {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {

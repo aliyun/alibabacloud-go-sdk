@@ -59,7 +59,16 @@ func (s *AddBackendServersRequest) SetLoadBalancerId(v string) *AddBackendServer
 }
 
 func (s *AddBackendServersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServers != nil {
+		for _, item := range s.BackendServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddBackendServersRequestBackendServers struct {

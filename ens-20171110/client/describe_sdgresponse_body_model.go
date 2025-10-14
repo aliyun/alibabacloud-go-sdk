@@ -104,7 +104,16 @@ func (s *DescribeSDGResponseBody) SetTotalCount(v int32) *DescribeSDGResponseBod
 }
 
 func (s *DescribeSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SDGs != nil {
+		for _, item := range s.SDGs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSDGResponseBodySDGs struct {
@@ -314,7 +323,25 @@ func (s *DescribeSDGResponseBodySDGs) SetUpdateTime(v string) *DescribeSDGRespon
 }
 
 func (s *DescribeSDGResponseBodySDGs) Validate() error {
-	return dara.Validate(s)
+	if s.AvaliableRegionIds != nil {
+		for _, item := range s.AvaliableRegionIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PreloadInfos != nil {
+		for _, item := range s.PreloadInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSDGResponseBodySDGsAvaliableRegionIds struct {

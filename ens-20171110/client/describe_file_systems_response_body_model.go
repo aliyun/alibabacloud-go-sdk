@@ -104,7 +104,16 @@ func (s *DescribeFileSystemsResponseBody) SetTotalCount(v int32) *DescribeFileSy
 }
 
 func (s *DescribeFileSystemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileSystems != nil {
+		for _, item := range s.FileSystems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFileSystemsResponseBodyFileSystems struct {
@@ -310,7 +319,16 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) SetStorageType(v string) *D
 }
 
 func (s *DescribeFileSystemsResponseBodyFileSystems) Validate() error {
-	return dara.Validate(s)
+	if s.MountTargets != nil {
+		for _, item := range s.MountTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsMountTargets struct {

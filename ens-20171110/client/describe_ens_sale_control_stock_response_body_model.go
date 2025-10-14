@@ -47,7 +47,16 @@ func (s *DescribeEnsSaleControlStockResponseBody) SetSaleControl(v []*DescribeEn
 }
 
 func (s *DescribeEnsSaleControlStockResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControl != nil {
+		for _, item := range s.SaleControl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControl struct {
@@ -92,7 +101,16 @@ func (s *DescribeEnsSaleControlStockResponseBodySaleControl) SetSaleControlItems
 }
 
 func (s *DescribeEnsSaleControlStockResponseBodySaleControl) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControlItems != nil {
+		for _, item := range s.SaleControlItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems struct {
@@ -127,7 +145,12 @@ func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) Set
 }
 
 func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItems) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControlItem != nil {
+		if err := s.SaleControlItem.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem struct {
@@ -162,7 +185,21 @@ func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleC
 }
 
 func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItem) Validate() error {
-	return dara.Validate(s)
+	if s.BasicSaleControl != nil {
+		if err := s.BasicSaleControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ConditionSaleControl != nil {
+		for _, item := range s.ConditionSaleControl {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl struct {
@@ -197,7 +234,12 @@ func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleC
 }
 
 func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControl) Validate() error {
-	return dara.Validate(s)
+	if s.ModuleValue != nil {
+		if err := s.ModuleValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemBasicSaleControlModuleValue struct {
@@ -277,7 +319,17 @@ func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleC
 }
 
 func (s *DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControl) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionControl != nil {
+		if err := s.ConditionControl.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModuleValue != nil {
+		if err := s.ModuleValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlStockResponseBodySaleControlSaleControlItemsSaleControlItemConditionSaleControlConditionControl struct {

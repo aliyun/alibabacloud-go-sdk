@@ -38,7 +38,16 @@ func (s *CreateFileSystemRequest) SetOrderDetails(v []*CreateFileSystemRequestOr
 }
 
 func (s *CreateFileSystemRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OrderDetails != nil {
+		for _, item := range s.OrderDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateFileSystemRequestOrderDetails struct {

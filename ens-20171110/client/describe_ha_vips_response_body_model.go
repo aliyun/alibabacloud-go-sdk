@@ -104,7 +104,16 @@ func (s *DescribeHaVipsResponseBody) SetTotalCount(v string) *DescribeHaVipsResp
 }
 
 func (s *DescribeHaVipsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.HaVips != nil {
+		for _, item := range s.HaVips {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVips struct {
@@ -284,7 +293,25 @@ func (s *DescribeHaVipsResponseBodyHaVips) SetVSwitchId(v string) *DescribeHaVip
 }
 
 func (s *DescribeHaVipsResponseBodyHaVips) Validate() error {
-	return dara.Validate(s)
+	if s.AssociatedEipAddresses != nil {
+		for _, item := range s.AssociatedEipAddresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AssociatedInstances != nil {
+		for _, item := range s.AssociatedInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses struct {

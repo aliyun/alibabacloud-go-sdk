@@ -104,7 +104,16 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 func (s *DescribeEnsRouteEntryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntrys != nil {
+		for _, item := range s.RouteEntrys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
@@ -265,7 +274,16 @@ func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetType(v string) *De
 }
 
 func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) Validate() error {
-	return dara.Validate(s)
+	if s.NextHops != nil {
+		for _, item := range s.NextHops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {

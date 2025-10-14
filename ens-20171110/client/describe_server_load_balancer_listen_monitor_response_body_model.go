@@ -53,7 +53,16 @@ func (s *DescribeServerLoadBalancerListenMonitorResponseBody) SetServerLoadBalan
 }
 
 func (s *DescribeServerLoadBalancerListenMonitorResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServerLoadBalancerMonitorData != nil {
+		for _, item := range s.ServerLoadBalancerMonitorData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeServerLoadBalancerListenMonitorResponseBodyServerLoadBalancerMonitorData struct {

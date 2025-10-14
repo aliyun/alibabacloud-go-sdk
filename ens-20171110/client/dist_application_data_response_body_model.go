@@ -83,7 +83,17 @@ func (s *DistApplicationDataResponseBody) SetRequestId(v string) *DistApplicatio
 }
 
 func (s *DistApplicationDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DistInstanceIds != nil {
+		if err := s.DistInstanceIds.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DistResults != nil {
+		if err := s.DistResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DistApplicationDataResponseBodyDistInstanceIds struct {
@@ -133,7 +143,16 @@ func (s *DistApplicationDataResponseBodyDistResults) SetDistResult(v []*DistAppl
 }
 
 func (s *DistApplicationDataResponseBodyDistResults) Validate() error {
-	return dara.Validate(s)
+	if s.DistResult != nil {
+		for _, item := range s.DistResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DistApplicationDataResponseBodyDistResultsDistResult struct {

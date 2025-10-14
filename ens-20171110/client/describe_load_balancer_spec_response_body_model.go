@@ -104,7 +104,16 @@ func (s *DescribeLoadBalancerSpecResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 func (s *DescribeLoadBalancerSpecResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LoadBalancerSpecs != nil {
+		for _, item := range s.LoadBalancerSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs struct {

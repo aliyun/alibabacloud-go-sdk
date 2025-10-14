@@ -59,5 +59,10 @@ func (s *CreateSDGResponse) SetBody(v *CreateSDGResponseBody) *CreateSDGResponse
 }
 
 func (s *CreateSDGResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

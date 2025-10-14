@@ -47,7 +47,16 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBody) SetSaleControlAvai
 }
 
 func (s *DescribeEnsSaleControlAvailableResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControlAvailableResource != nil {
+		for _, item := range s.SaleControlAvailableResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource struct {
@@ -122,7 +131,39 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailable
 }
 
 func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResource) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableDiskType != nil {
+		for _, item := range s.AvailableDiskType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AvailableRegion != nil {
+		for _, item := range s.AvailableRegion {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AvailableSpec != nil {
+		for _, item := range s.AvailableSpec {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AvailableStorageType != nil {
+		if err := s.AvailableStorageType.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableDiskType struct {
@@ -332,7 +373,16 @@ func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailable
 }
 
 func (s *DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageType) Validate() error {
-	return dara.Validate(s)
+	if s.AvailableDefaultStorageType != nil {
+		for _, item := range s.AvailableDefaultStorageType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsSaleControlAvailableResourceResponseBodySaleControlAvailableResourceAvailableStorageTypeAvailableDefaultStorageType struct {

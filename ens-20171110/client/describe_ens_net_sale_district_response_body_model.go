@@ -70,7 +70,12 @@ func (s *DescribeEnsNetSaleDistrictResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeEnsNetSaleDistrictResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EnsNetDistricts != nil {
+		if err := s.EnsNetDistricts.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts struct {
@@ -95,7 +100,16 @@ func (s *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts) SetEnsNetDistric
 }
 
 func (s *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts) Validate() error {
-	return dara.Validate(s)
+	if s.EnsNetDistrict != nil {
+		for _, item := range s.EnsNetDistrict {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsNetSaleDistrictResponseBodyEnsNetDistrictsEnsNetDistrict struct {

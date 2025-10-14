@@ -16,9 +16,12 @@ type iRemoveSDGsRequest interface {
 }
 
 type RemoveSDGsRequest struct {
+	// The IDs of the instances.
+	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	SdgIds      []*string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty" type:"Repeated"`
+	// The IDs of SDG.
+	SdgIds []*string `json:"SdgIds,omitempty" xml:"SdgIds,omitempty" type:"Repeated"`
 }
 
 func (s RemoveSDGsRequest) String() string {

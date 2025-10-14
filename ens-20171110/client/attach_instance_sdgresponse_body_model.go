@@ -53,7 +53,12 @@ func (s *AttachInstanceSDGResponseBody) SetRequestId(v string) *AttachInstanceSD
 }
 
 func (s *AttachInstanceSDGResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachInstanceSDGResponseBodyData struct {
@@ -113,7 +118,12 @@ func (s *AttachInstanceSDGResponseBodyData) SetSuccess(v bool) *AttachInstanceSD
 }
 
 func (s *AttachInstanceSDGResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AttachInstanceSDGResponseBodyDataResult struct {
@@ -169,7 +179,16 @@ func (s *AttachInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *Atta
 }
 
 func (s *AttachInstanceSDGResponseBodyDataResult) Validate() error {
-	return dara.Validate(s)
+	if s.FailedItems != nil {
+		for _, item := range s.FailedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AttachInstanceSDGResponseBodyDataResultFailedItems struct {

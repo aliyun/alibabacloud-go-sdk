@@ -332,7 +332,25 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetVSwitchId(v string) *Desc
 }
 
 func (s *DescribeLoadBalancerAttributeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BackendServers != nil {
+		for _, item := range s.BackendServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ListenerPortsAndProtocols != nil {
+		for _, item := range s.ListenerPortsAndProtocols {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancerAttributeResponseBodyBackendServers struct {

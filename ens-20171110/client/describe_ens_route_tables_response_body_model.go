@@ -104,7 +104,16 @@ func (s *DescribeEnsRouteTablesResponseBody) SetTotalCount(v int32) *DescribeEns
 }
 
 func (s *DescribeEnsRouteTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTables != nil {
+		for _, item := range s.RouteTables {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {

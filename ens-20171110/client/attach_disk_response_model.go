@@ -59,5 +59,10 @@ func (s *AttachDiskResponse) SetBody(v *AttachDiskResponseBody) *AttachDiskRespo
 }
 
 func (s *AttachDiskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

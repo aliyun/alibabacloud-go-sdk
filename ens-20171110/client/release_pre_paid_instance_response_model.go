@@ -59,5 +59,10 @@ func (s *ReleasePrePaidInstanceResponse) SetBody(v *ReleasePrePaidInstanceRespon
 }
 
 func (s *ReleasePrePaidInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

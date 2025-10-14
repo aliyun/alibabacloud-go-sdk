@@ -59,5 +59,10 @@ func (s *DescribeNetworkAclsResponse) SetBody(v *DescribeNetworkAclsResponseBody
 }
 
 func (s *DescribeNetworkAclsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

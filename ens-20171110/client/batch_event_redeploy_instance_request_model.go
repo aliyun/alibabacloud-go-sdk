@@ -35,7 +35,16 @@ func (s *BatchEventRedeployInstanceRequest) SetEventInfos(v []*BatchEventRedeplo
 }
 
 func (s *BatchEventRedeployInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EventInfos != nil {
+		for _, item := range s.EventInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type BatchEventRedeployInstanceRequestEventInfos struct {

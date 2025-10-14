@@ -70,7 +70,12 @@ func (s *DescribeInstanceTypesResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 func (s *DescribeInstanceTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceTypes != nil {
+		if err := s.InstanceTypes.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypes struct {
@@ -95,7 +100,16 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) SetInstanceType(v []*De
 }
 
 func (s *DescribeInstanceTypesResponseBodyInstanceTypes) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceType != nil {
+		for _, item := range s.InstanceType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {

@@ -87,7 +87,25 @@ func (s *CopySnapshotResponseBody) SetUnAllocationId(v []*CopySnapshotResponseBo
 }
 
 func (s *CopySnapshotResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AllocationId != nil {
+		for _, item := range s.AllocationId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UnAllocationId != nil {
+		for _, item := range s.UnAllocationId {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CopySnapshotResponseBodyAllocationId struct {

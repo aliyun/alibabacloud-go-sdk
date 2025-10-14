@@ -104,7 +104,12 @@ func (s *DescribeLoadBalancerListenersResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeLoadBalancerListenersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		if err := s.Listeners.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancerListenersResponseBodyListeners struct {
@@ -129,7 +134,16 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListener(v []*De
 }
 
 func (s *DescribeLoadBalancerListenersResponseBodyListeners) Validate() error {
-	return dara.Validate(s)
+	if s.Listener != nil {
+		for _, item := range s.Listener {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersListener struct {

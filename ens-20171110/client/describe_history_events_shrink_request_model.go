@@ -24,14 +24,22 @@ type iDescribeHistoryEventsShrinkRequest interface {
 }
 
 type DescribeHistoryEventsShrinkRequest struct {
+	// The levels of the event-triggered alerts.
 	EventLevelsShrink *string `json:"EventLevels,omitempty" xml:"EventLevels,omitempty"`
+	// Event status list.
 	EventStatusShrink *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The list of event types.
+	//
 	// This parameter is required.
 	EventTypesShrink *string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10

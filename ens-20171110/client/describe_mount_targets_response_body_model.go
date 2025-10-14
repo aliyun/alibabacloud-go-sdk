@@ -104,7 +104,16 @@ func (s *DescribeMountTargetsResponseBody) SetTotalCount(v int32) *DescribeMount
 }
 
 func (s *DescribeMountTargetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MountTargets != nil {
+		for _, item := range s.MountTargets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMountTargetsResponseBodyMountTargets struct {

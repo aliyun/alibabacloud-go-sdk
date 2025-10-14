@@ -73,7 +73,16 @@ func (s *DeleteEnsSaleConditionControlRequest) SetSaleControls(v []*DeleteEnsSal
 }
 
 func (s *DeleteEnsSaleConditionControlRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SaleControls != nil {
+		for _, item := range s.SaleControls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteEnsSaleConditionControlRequestSaleControls struct {
@@ -121,7 +130,16 @@ func (s *DeleteEnsSaleConditionControlRequestSaleControls) SetOrderType(v string
 }
 
 func (s *DeleteEnsSaleConditionControlRequestSaleControls) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionControls != nil {
+		for _, item := range s.ConditionControls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteEnsSaleConditionControlRequestSaleControlsConditionControls struct {

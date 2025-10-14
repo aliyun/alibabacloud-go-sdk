@@ -59,5 +59,10 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponse) SetBody(v *DescribeClou
 }
 
 func (s *DescribeCloudDiskAvailableResourceInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

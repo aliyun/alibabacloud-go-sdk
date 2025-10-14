@@ -155,7 +155,12 @@ func (s *RunServiceScheduleResponseBody) SetTcpPorts(v bool) *RunServiceSchedule
 }
 
 func (s *RunServiceScheduleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CommandResults != nil {
+		if err := s.CommandResults.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunServiceScheduleResponseBodyCommandResults struct {
@@ -180,7 +185,16 @@ func (s *RunServiceScheduleResponseBodyCommandResults) SetCommandResult(v []*Run
 }
 
 func (s *RunServiceScheduleResponseBodyCommandResults) Validate() error {
-	return dara.Validate(s)
+	if s.CommandResult != nil {
+		for _, item := range s.CommandResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunServiceScheduleResponseBodyCommandResultsCommandResult struct {

@@ -83,7 +83,17 @@ func (s *DescribeAvailableResourceResponseBody) SetSupportResources(v *DescribeA
 }
 
 func (s *DescribeAvailableResourceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		if err := s.Images.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SupportResources != nil {
+		if err := s.SupportResources.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyImages struct {
@@ -108,7 +118,16 @@ func (s *DescribeAvailableResourceResponseBodyImages) SetImage(v []*DescribeAvai
 }
 
 func (s *DescribeAvailableResourceResponseBodyImages) Validate() error {
-	return dara.Validate(s)
+	if s.Image != nil {
+		for _, item := range s.Image {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodyImagesImage struct {
@@ -178,7 +197,16 @@ func (s *DescribeAvailableResourceResponseBodySupportResources) SetSupportResour
 }
 
 func (s *DescribeAvailableResourceResponseBodySupportResources) Validate() error {
-	return dara.Validate(s)
+	if s.SupportResource != nil {
+		for _, item := range s.SupportResource {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAvailableResourceResponseBodySupportResourcesSupportResource struct {

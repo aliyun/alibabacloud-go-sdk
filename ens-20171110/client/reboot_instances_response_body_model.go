@@ -47,5 +47,14 @@ func (s *RebootInstancesResponseBody) SetRequestId(v string) *RebootInstancesRes
 }
 
 func (s *RebootInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceResponses != nil {
+		for _, item := range s.InstanceResponses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
