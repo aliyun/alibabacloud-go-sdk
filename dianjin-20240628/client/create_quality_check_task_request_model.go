@@ -111,7 +111,12 @@ func (s *CreateQualityCheckTaskRequest) SetType(v string) *CreateQualityCheckTas
 }
 
 func (s *CreateQualityCheckTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationList != nil {
+		if err := s.ConversationList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateQualityCheckTaskRequestConversationList struct {
@@ -209,7 +214,16 @@ func (s *CreateQualityCheckTaskRequestConversationList) SetGmtService(v string) 
 }
 
 func (s *CreateQualityCheckTaskRequestConversationList) Validate() error {
-	return dara.Validate(s)
+	if s.DialogueList != nil {
+		for _, item := range s.DialogueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateQualityCheckTaskRequestConversationListDialogueList struct {

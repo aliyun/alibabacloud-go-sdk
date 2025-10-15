@@ -105,7 +105,16 @@ func (s *CreateDialogAnalysisTaskRequest) SetRequestId(v string) *CreateDialogAn
 }
 
 func (s *CreateDialogAnalysisTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationList != nil {
+		for _, item := range s.ConversationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDialogAnalysisTaskRequestConversationList struct {
@@ -131,7 +140,16 @@ func (s *CreateDialogAnalysisTaskRequestConversationList) SetDialogueList(v []*C
 }
 
 func (s *CreateDialogAnalysisTaskRequestConversationList) Validate() error {
-	return dara.Validate(s)
+	if s.DialogueList != nil {
+		for _, item := range s.DialogueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDialogAnalysisTaskRequestConversationListDialogueList struct {

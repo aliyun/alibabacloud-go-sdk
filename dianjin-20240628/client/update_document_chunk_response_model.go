@@ -59,5 +59,10 @@ func (s *UpdateDocumentChunkResponse) SetBody(v *UpdateDocumentChunkResponseBody
 }
 
 func (s *UpdateDocumentChunkResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

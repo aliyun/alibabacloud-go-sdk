@@ -110,7 +110,25 @@ func (s *RunChatResultGenerationRequest) SetTools(v []*RunChatResultGenerationRe
 }
 
 func (s *RunChatResultGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tools != nil {
+		for _, item := range s.Tools {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunChatResultGenerationRequestMessages struct {
@@ -186,7 +204,12 @@ func (s *RunChatResultGenerationRequestTools) SetType(v string) *RunChatResultGe
 }
 
 func (s *RunChatResultGenerationRequestTools) Validate() error {
-	return dara.Validate(s)
+	if s.Function != nil {
+		if err := s.Function.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunChatResultGenerationRequestToolsFunction struct {
@@ -244,7 +267,12 @@ func (s *RunChatResultGenerationRequestToolsFunction) SetRequired(v []*string) *
 }
 
 func (s *RunChatResultGenerationRequestToolsFunction) Validate() error {
-	return dara.Validate(s)
+	if s.Parameters != nil {
+		if err := s.Parameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunChatResultGenerationRequestToolsFunctionParameters struct {

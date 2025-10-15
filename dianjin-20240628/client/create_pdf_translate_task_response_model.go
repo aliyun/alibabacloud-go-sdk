@@ -59,5 +59,10 @@ func (s *CreatePdfTranslateTaskResponse) SetBody(v *CreatePdfTranslateTaskRespon
 }
 
 func (s *CreatePdfTranslateTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -61,7 +61,12 @@ func (s *CreateLibraryRequest) SetLibraryName(v string) *CreateLibraryRequest {
 }
 
 func (s *CreateLibraryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IndexSetting != nil {
+		if err := s.IndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLibraryRequestIndexSetting struct {
@@ -146,7 +151,37 @@ func (s *CreateLibraryRequestIndexSetting) SetVectorIndexSetting(v *CreateLibrar
 }
 
 func (s *CreateLibraryRequestIndexSetting) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkStrategy != nil {
+		if err := s.ChunkStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryEnhancer != nil {
+		if err := s.QueryEnhancer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecallStrategy != nil {
+		if err := s.RecallStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextIndexSetting != nil {
+		if err := s.TextIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorIndexSetting != nil {
+		if err := s.VectorIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLibraryRequestIndexSettingChunkStrategy struct {

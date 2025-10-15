@@ -140,7 +140,12 @@ func (s *GetAppConfigResponseBody) SetTime(v string) *GetAppConfigResponseBody {
 }
 
 func (s *GetAppConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppConfigResponseBodyData struct {

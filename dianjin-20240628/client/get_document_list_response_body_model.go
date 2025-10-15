@@ -140,7 +140,12 @@ func (s *GetDocumentListResponseBody) SetTime(v string) *GetDocumentListResponse
 }
 
 func (s *GetDocumentListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocumentListResponseBodyData struct {
@@ -217,7 +222,16 @@ func (s *GetDocumentListResponseBodyData) SetTotalRecords(v int64) *GetDocumentL
 }
 
 func (s *GetDocumentListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocumentListResponseBodyDataRecords struct {

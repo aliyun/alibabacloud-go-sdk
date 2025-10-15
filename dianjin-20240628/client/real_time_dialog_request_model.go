@@ -179,7 +179,16 @@ func (s *RealTimeDialogRequest) SetUserVad(v bool) *RealTimeDialogRequest {
 }
 
 func (s *RealTimeDialogRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationModel != nil {
+		for _, item := range s.ConversationModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RealTimeDialogRequestConversationModel struct {

@@ -95,7 +95,16 @@ func (s *RealTimeDialogResponseBody) SetSuccess(v bool) *RealTimeDialogResponseB
 }
 
 func (s *RealTimeDialogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RealTimeDialogResponseBodyChoices struct {
@@ -156,7 +165,17 @@ func (s *RealTimeDialogResponseBodyChoices) SetMessage(v *RealTimeDialogResponse
 }
 
 func (s *RealTimeDialogResponseBodyChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Delta != nil {
+		if err := s.Delta.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RealTimeDialogResponseBodyChoicesDelta struct {

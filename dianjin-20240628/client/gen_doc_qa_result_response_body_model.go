@@ -140,7 +140,12 @@ func (s *GenDocQaResultResponseBody) SetTime(v string) *GenDocQaResultResponseBo
 }
 
 func (s *GenDocQaResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenDocQaResultResponseBodyData struct {
@@ -204,7 +209,16 @@ func (s *GenDocQaResultResponseBodyData) SetParseQaResults(v []*GenDocQaResultRe
 }
 
 func (s *GenDocQaResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ParseQaResults != nil {
+		for _, item := range s.ParseQaResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenDocQaResultResponseBodyDataParseQaResults struct {

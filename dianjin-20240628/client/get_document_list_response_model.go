@@ -59,5 +59,10 @@ func (s *GetDocumentListResponse) SetBody(v *GetDocumentListResponseBody) *GetDo
 }
 
 func (s *GetDocumentListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

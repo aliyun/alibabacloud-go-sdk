@@ -140,7 +140,12 @@ func (s *GetChatQuestionRespResponseBody) SetTime(v string) *GetChatQuestionResp
 }
 
 func (s *GetChatQuestionRespResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetChatQuestionRespResponseBodyData struct {
@@ -178,7 +183,16 @@ func (s *GetChatQuestionRespResponseBodyData) SetQuestionList(v []*GetChatQuesti
 }
 
 func (s *GetChatQuestionRespResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.QuestionList != nil {
+		for _, item := range s.QuestionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetChatQuestionRespResponseBodyDataQuestionList struct {

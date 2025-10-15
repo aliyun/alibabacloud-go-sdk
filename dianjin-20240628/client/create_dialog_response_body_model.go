@@ -140,7 +140,12 @@ func (s *CreateDialogResponseBody) SetTime(v string) *CreateDialogResponseBody {
 }
 
 func (s *CreateDialogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDialogResponseBodyData struct {

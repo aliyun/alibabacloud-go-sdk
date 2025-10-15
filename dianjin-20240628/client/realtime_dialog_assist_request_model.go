@@ -145,7 +145,16 @@ func (s *RealtimeDialogAssistRequest) SetSessionId(v string) *RealtimeDialogAssi
 }
 
 func (s *RealtimeDialogAssistRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationModel != nil {
+		for _, item := range s.ConversationModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RealtimeDialogAssistRequestConversationModel struct {

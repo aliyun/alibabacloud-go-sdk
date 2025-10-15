@@ -140,7 +140,12 @@ func (s *GetLibraryResponseBody) SetTime(v string) *GetLibraryResponseBody {
 }
 
 func (s *GetLibraryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryResponseBodyData struct {
@@ -237,7 +242,12 @@ func (s *GetLibraryResponseBodyData) SetLibraryName(v string) *GetLibraryRespons
 }
 
 func (s *GetLibraryResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.IndexSetting != nil {
+		if err := s.IndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryResponseBodyDataIndexSetting struct {
@@ -322,7 +332,37 @@ func (s *GetLibraryResponseBodyDataIndexSetting) SetVectorIndexSetting(v *GetLib
 }
 
 func (s *GetLibraryResponseBodyDataIndexSetting) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkStrategy != nil {
+		if err := s.ChunkStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryEnhancer != nil {
+		if err := s.QueryEnhancer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecallStrategy != nil {
+		if err := s.RecallStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextIndexSetting != nil {
+		if err := s.TextIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorIndexSetting != nil {
+		if err := s.VectorIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryResponseBodyDataIndexSettingChunkStrategy struct {

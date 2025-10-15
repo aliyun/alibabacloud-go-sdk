@@ -80,7 +80,16 @@ func (s *CreatePredefinedDocumentRequest) SetTitle(v string) *CreatePredefinedDo
 }
 
 func (s *CreatePredefinedDocumentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Chunks != nil {
+		for _, item := range s.Chunks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePredefinedDocumentRequestChunks struct {

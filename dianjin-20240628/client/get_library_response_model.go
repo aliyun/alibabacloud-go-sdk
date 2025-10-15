@@ -59,5 +59,10 @@ func (s *GetLibraryResponse) SetBody(v *GetLibraryResponseBody) *GetLibraryRespo
 }
 
 func (s *GetLibraryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

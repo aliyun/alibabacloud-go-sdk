@@ -59,5 +59,10 @@ func (s *CreateAnnualDocSummaryTaskResponse) SetBody(v *CreateAnnualDocSummaryTa
 }
 
 func (s *CreateAnnualDocSummaryTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

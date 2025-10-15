@@ -68,7 +68,16 @@ func (s *UpdateQaLibraryRequest) SetRequestId(v string) *UpdateQaLibraryRequest 
 }
 
 func (s *UpdateQaLibraryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ParseQaResults != nil {
+		for _, item := range s.ParseQaResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateQaLibraryRequestParseQaResults struct {

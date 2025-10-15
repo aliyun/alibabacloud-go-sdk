@@ -146,7 +146,34 @@ func (s *RecognizeIntentionRequest) SetRecommend(v bool) *RecognizeIntentionRequ
 }
 
 func (s *RecognizeIntentionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalIntentionList != nil {
+		for _, item := range s.GlobalIntentionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HierarchicalIntentionList != nil {
+		for _, item := range s.HierarchicalIntentionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IntentionList != nil {
+		for _, item := range s.IntentionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecognizeIntentionRequestGlobalIntentionList struct {

@@ -140,7 +140,12 @@ func (s *GetQualityCheckTaskResultResponseBody) SetTime(v string) *GetQualityChe
 }
 
 func (s *GetQualityCheckTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckTaskResultResponseBodyData struct {
@@ -240,7 +245,21 @@ func (s *GetQualityCheckTaskResultResponseBodyData) SetTaskId(v string) *GetQual
 }
 
 func (s *GetQualityCheckTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConversationList != nil {
+		if err := s.ConversationList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QualityCheckList != nil {
+		for _, item := range s.QualityCheckList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationList struct {
@@ -337,7 +356,16 @@ func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) SetGmtServic
 }
 
 func (s *GetQualityCheckTaskResultResponseBodyDataConversationList) Validate() error {
-	return dara.Validate(s)
+	if s.DialogueList != nil {
+		for _, item := range s.DialogueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckTaskResultResponseBodyDataConversationListDialogueList struct {
@@ -652,7 +680,16 @@ func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) SetSubNodeCo
 }
 
 func (s *GetQualityCheckTaskResultResponseBodyDataQualityCheckList) Validate() error {
-	return dara.Validate(s)
+	if s.OriginDialogue != nil {
+		for _, item := range s.OriginDialogue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetQualityCheckTaskResultResponseBodyDataQualityCheckListOriginDialogue struct {

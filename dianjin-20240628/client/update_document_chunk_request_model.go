@@ -53,7 +53,16 @@ func (s *UpdateDocumentChunkRequest) SetLibraryId(v string) *UpdateDocumentChunk
 }
 
 func (s *UpdateDocumentChunkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Chunks != nil {
+		for _, item := range s.Chunks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDocumentChunkRequestChunks struct {

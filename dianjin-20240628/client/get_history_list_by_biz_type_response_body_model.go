@@ -140,7 +140,12 @@ func (s *GetHistoryListByBizTypeResponseBody) SetTime(v string) *GetHistoryListB
 }
 
 func (s *GetHistoryListByBizTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetHistoryListByBizTypeResponseBodyData struct {
@@ -217,7 +222,16 @@ func (s *GetHistoryListByBizTypeResponseBodyData) SetTotalRecords(v int64) *GetH
 }
 
 func (s *GetHistoryListByBizTypeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetHistoryListByBizTypeResponseBodyDataRecords struct {

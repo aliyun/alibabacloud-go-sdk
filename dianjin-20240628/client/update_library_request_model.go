@@ -76,7 +76,12 @@ func (s *UpdateLibraryRequest) SetLibraryName(v string) *UpdateLibraryRequest {
 }
 
 func (s *UpdateLibraryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IndexSetting != nil {
+		if err := s.IndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLibraryRequestIndexSetting struct {
@@ -161,7 +166,37 @@ func (s *UpdateLibraryRequestIndexSetting) SetVectorIndexSetting(v *UpdateLibrar
 }
 
 func (s *UpdateLibraryRequestIndexSetting) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkStrategy != nil {
+		if err := s.ChunkStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryEnhancer != nil {
+		if err := s.QueryEnhancer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecallStrategy != nil {
+		if err := s.RecallStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextIndexSetting != nil {
+		if err := s.TextIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorIndexSetting != nil {
+		if err := s.VectorIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLibraryRequestIndexSettingChunkStrategy struct {

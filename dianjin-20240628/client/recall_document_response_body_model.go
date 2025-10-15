@@ -140,7 +140,12 @@ func (s *RecallDocumentResponseBody) SetTime(v string) *RecallDocumentResponseBo
 }
 
 func (s *RecallDocumentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyData struct {
@@ -267,7 +272,52 @@ func (s *RecallDocumentResponseBodyData) SetVectorSearchElapsedMs(v int64) *Reca
 }
 
 func (s *RecallDocumentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkList != nil {
+		for _, item := range s.ChunkList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ChunkPartList != nil {
+		for _, item := range s.ChunkPartList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Documents != nil {
+		for _, item := range s.Documents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TextChunkList != nil {
+		for _, item := range s.TextChunkList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VectorChunkList != nil {
+		for _, item := range s.VectorChunkList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyDataChunkList struct {
@@ -455,7 +505,16 @@ func (s *RecallDocumentResponseBodyDataChunkList) SetTitle(v string) *RecallDocu
 }
 
 func (s *RecallDocumentResponseBodyDataChunkList) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyDataChunkListPos struct {
@@ -688,7 +747,16 @@ func (s *RecallDocumentResponseBodyDataChunkPartList) SetTitle(v string) *Recall
 }
 
 func (s *RecallDocumentResponseBodyDataChunkPartList) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyDataChunkPartListPos struct {
@@ -1027,7 +1095,16 @@ func (s *RecallDocumentResponseBodyDataTextChunkList) SetTitle(v string) *Recall
 }
 
 func (s *RecallDocumentResponseBodyDataTextChunkList) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyDataTextChunkListPos struct {
@@ -1263,7 +1340,16 @@ func (s *RecallDocumentResponseBodyDataVectorChunkList) SetTitle(v string) *Reca
 }
 
 func (s *RecallDocumentResponseBodyDataVectorChunkList) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentResponseBodyDataVectorChunkListPos struct {

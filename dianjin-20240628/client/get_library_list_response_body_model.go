@@ -140,7 +140,12 @@ func (s *GetLibraryListResponseBody) SetTime(v string) *GetLibraryListResponseBo
 }
 
 func (s *GetLibraryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryListResponseBodyData struct {
@@ -217,7 +222,16 @@ func (s *GetLibraryListResponseBodyData) SetTotalRecords(v int64) *GetLibraryLis
 }
 
 func (s *GetLibraryListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetLibraryListResponseBodyDataRecords struct {
@@ -314,7 +328,12 @@ func (s *GetLibraryListResponseBodyDataRecords) SetLibraryName(v string) *GetLib
 }
 
 func (s *GetLibraryListResponseBodyDataRecords) Validate() error {
-	return dara.Validate(s)
+	if s.IndexSetting != nil {
+		if err := s.IndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSetting struct {
@@ -399,7 +418,37 @@ func (s *GetLibraryListResponseBodyDataRecordsIndexSetting) SetVectorIndexSettin
 }
 
 func (s *GetLibraryListResponseBodyDataRecordsIndexSetting) Validate() error {
-	return dara.Validate(s)
+	if s.ChunkStrategy != nil {
+		if err := s.ChunkStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ModelConfig != nil {
+		if err := s.ModelConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.QueryEnhancer != nil {
+		if err := s.QueryEnhancer.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RecallStrategy != nil {
+		if err := s.RecallStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextIndexSetting != nil {
+		if err := s.TextIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorIndexSetting != nil {
+		if err := s.VectorIndexSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy struct {

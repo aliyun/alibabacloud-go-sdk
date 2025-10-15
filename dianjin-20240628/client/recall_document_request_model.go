@@ -78,7 +78,16 @@ func (s *RecallDocumentRequest) SetTopK(v int32) *RecallDocumentRequest {
 }
 
 func (s *RecallDocumentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filters != nil {
+		for _, item := range s.Filters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentRequestFilters struct {
@@ -161,7 +170,25 @@ func (s *RecallDocumentRequestFilters) SetStatus(v []*string) *RecallDocumentReq
 }
 
 func (s *RecallDocumentRequestFilters) Validate() error {
-	return dara.Validate(s)
+	if s.And != nil {
+		for _, item := range s.And {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Or != nil {
+		for _, item := range s.Or {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RecallDocumentRequestFiltersAnd struct {

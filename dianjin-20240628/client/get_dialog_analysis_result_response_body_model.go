@@ -140,7 +140,12 @@ func (s *GetDialogAnalysisResultResponseBody) SetTime(v string) *GetDialogAnalys
 }
 
 func (s *GetDialogAnalysisResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDialogAnalysisResultResponseBodyData struct {
@@ -165,7 +170,16 @@ func (s *GetDialogAnalysisResultResponseBodyData) SetDialogAnalysisRespList(v []
 }
 
 func (s *GetDialogAnalysisResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DialogAnalysisRespList != nil {
+		for _, item := range s.DialogAnalysisRespList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList struct {
@@ -242,7 +256,12 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList) SetStatu
 }
 
 func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList) Validate() error {
-	return dara.Validate(s)
+	if s.AnalysisResp != nil {
+		if err := s.AnalysisResp.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp struct {
@@ -317,7 +336,16 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRe
 }
 
 func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) Validate() error {
-	return dara.Validate(s)
+	if s.DialogLabels != nil {
+		for _, item := range s.DialogLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels struct {

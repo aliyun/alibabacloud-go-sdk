@@ -140,7 +140,12 @@ func (s *GetDocumentChunkListResponseBody) SetTime(v string) *GetDocumentChunkLi
 }
 
 func (s *GetDocumentChunkListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDocumentChunkListResponseBodyData struct {
@@ -217,7 +222,16 @@ func (s *GetDocumentChunkListResponseBodyData) SetTotalRecords(v int64) *GetDocu
 }
 
 func (s *GetDocumentChunkListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Records != nil {
+		for _, item := range s.Records {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocumentChunkListResponseBodyDataRecords struct {
@@ -405,7 +419,16 @@ func (s *GetDocumentChunkListResponseBodyDataRecords) SetTitle(v string) *GetDoc
 }
 
 func (s *GetDocumentChunkListResponseBodyDataRecords) Validate() error {
-	return dara.Validate(s)
+	if s.Pos != nil {
+		for _, item := range s.Pos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDocumentChunkListResponseBodyDataRecordsPos struct {

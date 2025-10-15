@@ -59,5 +59,10 @@ func (s *InvokePluginResponse) SetBody(v *InvokePluginResponseBody) *InvokePlugi
 }
 
 func (s *InvokePluginResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

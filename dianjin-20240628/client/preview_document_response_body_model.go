@@ -140,7 +140,12 @@ func (s *PreviewDocumentResponseBody) SetTime(v string) *PreviewDocumentResponse
 }
 
 func (s *PreviewDocumentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type PreviewDocumentResponseBodyData struct {

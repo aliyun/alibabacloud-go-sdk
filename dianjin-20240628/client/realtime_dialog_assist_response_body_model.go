@@ -140,7 +140,12 @@ func (s *RealtimeDialogAssistResponseBody) SetTime(v string) *RealtimeDialogAssi
 }
 
 func (s *RealtimeDialogAssistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RealtimeDialogAssistResponseBodyData struct {
@@ -221,7 +226,34 @@ func (s *RealtimeDialogAssistResponseBodyData) SetSessionId(v string) *RealtimeD
 }
 
 func (s *RealtimeDialogAssistResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AssistScripts != nil {
+		for _, item := range s.AssistScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AssistSop != nil {
+		for _, item := range s.AssistSop {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConversationModel != nil {
+		for _, item := range s.ConversationModel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RealtimeDialogAssistResponseBodyDataAssistScripts struct {

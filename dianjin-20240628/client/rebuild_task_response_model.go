@@ -59,5 +59,10 @@ func (s *RebuildTaskResponse) SetBody(v *RebuildTaskResponseBody) *RebuildTaskRe
 }
 
 func (s *RebuildTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

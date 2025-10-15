@@ -93,7 +93,16 @@ func (s *CreateAnnualDocSummaryTaskRequest) SetModelId(v string) *CreateAnnualDo
 }
 
 func (s *CreateAnnualDocSummaryTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DocInfos != nil {
+		for _, item := range s.DocInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAnnualDocSummaryTaskRequestDocInfos struct {

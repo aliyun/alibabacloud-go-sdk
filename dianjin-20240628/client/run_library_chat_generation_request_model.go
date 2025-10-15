@@ -282,7 +282,22 @@ func (s *RunLibraryChatGenerationRequest) SetWithDocumentReference(v bool) *RunL
 }
 
 func (s *RunLibraryChatGenerationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QueryCriteria != nil {
+		if err := s.QueryCriteria.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextSearchParameter != nil {
+		if err := s.TextSearchParameter.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorSearchParameter != nil {
+		if err := s.VectorSearchParameter.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunLibraryChatGenerationRequestQueryCriteria struct {
@@ -317,7 +332,25 @@ func (s *RunLibraryChatGenerationRequestQueryCriteria) SetOr(v []*RunLibraryChat
 }
 
 func (s *RunLibraryChatGenerationRequestQueryCriteria) Validate() error {
-	return dara.Validate(s)
+	if s.And != nil {
+		for _, item := range s.And {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Or != nil {
+		for _, item := range s.Or {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunLibraryChatGenerationRequestQueryCriteriaAnd struct {

@@ -140,7 +140,12 @@ func (s *GetDialogDetailResponseBody) SetTime(v string) *GetDialogDetailResponse
 }
 
 func (s *GetDialogDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDialogDetailResponseBodyData struct {
@@ -217,7 +222,16 @@ func (s *GetDialogDetailResponseBodyData) SetValidDialogTurns(v int32) *GetDialo
 }
 
 func (s *GetDialogDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DialogueList != nil {
+		for _, item := range s.DialogueList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDialogDetailResponseBodyDataDialogueList struct {

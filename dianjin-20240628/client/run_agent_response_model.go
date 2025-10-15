@@ -59,5 +59,10 @@ func (s *RunAgentResponse) SetBody(v *RunAgentResponseBody) *RunAgentResponse {
 }
 
 func (s *RunAgentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

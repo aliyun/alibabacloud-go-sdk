@@ -115,7 +115,16 @@ func (s *SubmitChatQuestionRequest) SetSessionId(v string) *SubmitChatQuestionRe
 }
 
 func (s *SubmitChatQuestionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.QuestionList != nil {
+		for _, item := range s.QuestionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitChatQuestionRequestQuestionList struct {

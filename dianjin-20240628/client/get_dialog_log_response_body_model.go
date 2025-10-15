@@ -140,7 +140,12 @@ func (s *GetDialogLogResponseBody) SetTime(v string) *GetDialogLogResponseBody {
 }
 
 func (s *GetDialogLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDialogLogResponseBodyData struct {
@@ -218,7 +223,25 @@ func (s *GetDialogLogResponseBodyData) SetRecallList(v string) *GetDialogLogResp
 }
 
 func (s *GetDialogLogResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HitIntentionList != nil {
+		for _, item := range s.HitIntentionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IntentionList != nil {
+		for _, item := range s.IntentionList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDialogLogResponseBodyDataHitIntentionList struct {

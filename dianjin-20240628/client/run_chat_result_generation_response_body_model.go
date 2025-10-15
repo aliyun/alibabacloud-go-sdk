@@ -137,7 +137,21 @@ func (s *RunChatResultGenerationResponseBody) SetUsage(v *RunChatResultGeneratio
 }
 
 func (s *RunChatResultGenerationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunChatResultGenerationResponseBodyChoices struct {
@@ -188,7 +202,12 @@ func (s *RunChatResultGenerationResponseBodyChoices) SetMessage(v *RunChatResult
 }
 
 func (s *RunChatResultGenerationResponseBodyChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunChatResultGenerationResponseBodyChoicesMessage struct {

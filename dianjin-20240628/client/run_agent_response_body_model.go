@@ -140,7 +140,12 @@ func (s *RunAgentResponseBody) SetTime(v string) *RunAgentResponseBody {
 }
 
 func (s *RunAgentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunAgentResponseBodyData struct {
@@ -240,7 +245,21 @@ func (s *RunAgentResponseBodyData) SetVersionId(v string) *RunAgentResponseBodyD
 }
 
 func (s *RunAgentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FunctionCallResponses != nil {
+		for _, item := range s.FunctionCallResponses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Response != nil {
+		if err := s.Response.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunAgentResponseBodyDataFunctionCallResponses struct {
@@ -401,7 +420,16 @@ func (s *RunAgentResponseBodyDataResponse) SetTime(v string) *RunAgentResponseBo
 }
 
 func (s *RunAgentResponseBodyDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunAgentResponseBodyDataResponseChoices struct {
@@ -452,7 +480,12 @@ func (s *RunAgentResponseBodyDataResponseChoices) SetMessage(v *RunAgentResponse
 }
 
 func (s *RunAgentResponseBodyDataResponseChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunAgentResponseBodyDataResponseChoicesMessage struct {

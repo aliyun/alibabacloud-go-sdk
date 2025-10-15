@@ -118,7 +118,25 @@ func (s *GetFilterDocumentListRequest) SetStatus(v []*string) *GetFilterDocument
 }
 
 func (s *GetFilterDocumentListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.And != nil {
+		for _, item := range s.And {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Or != nil {
+		for _, item := range s.Or {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFilterDocumentListRequestAnd struct {

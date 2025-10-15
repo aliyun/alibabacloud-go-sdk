@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -93,9 +94,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CreateAnnualDocSummaryTaskResponse
 func (client *Client) CreateAnnualDocSummaryTaskWithOptions(workspaceId *string, request *CreateAnnualDocSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAnnualDocSummaryTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnaYears) {
@@ -173,9 +176,11 @@ func (client *Client) CreateAnnualDocSummaryTask(workspaceId *string, request *C
 //
 // @return CreateDialogResponse
 func (client *Client) CreateDialogWithOptions(workspaceId *string, request *CreateDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Channel) {
@@ -261,9 +266,11 @@ func (client *Client) CreateDialog(workspaceId *string, request *CreateDialogReq
 //
 // @return CreateDialogAnalysisTaskResponse
 func (client *Client) CreateDialogAnalysisTaskWithOptions(workspaceId *string, request *CreateDialogAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDialogAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AnalysisNodes) {
@@ -341,9 +348,11 @@ func (client *Client) CreateDialogAnalysisTask(workspaceId *string, request *Cre
 //
 // @return CreateDocsSummaryTaskResponse
 func (client *Client) CreateDocsSummaryTaskWithOptions(workspaceId *string, request *CreateDocsSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDocsSummaryTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocInfos) {
@@ -417,9 +426,11 @@ func (client *Client) CreateDocsSummaryTask(workspaceId *string, request *Create
 //
 // @return CreateFinReportSummaryTaskResponse
 func (client *Client) CreateFinReportSummaryTaskWithOptions(workspaceId *string, request *CreateFinReportSummaryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFinReportSummaryTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocId) {
@@ -509,9 +520,11 @@ func (client *Client) CreateFinReportSummaryTask(workspaceId *string, request *C
 //
 // @return CreateLibraryResponse
 func (client *Client) CreateLibraryWithOptions(workspaceId *string, request *CreateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -581,9 +594,11 @@ func (client *Client) CreateLibrary(workspaceId *string, request *CreateLibraryR
 //
 // @return CreatePdfTranslateTaskResponse
 func (client *Client) CreatePdfTranslateTaskWithOptions(workspaceId *string, request *CreatePdfTranslateTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePdfTranslateTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocId) {
@@ -661,9 +676,11 @@ func (client *Client) CreatePdfTranslateTask(workspaceId *string, request *Creat
 //
 // @return CreatePredefinedDocumentResponse
 func (client *Client) CreatePredefinedDocumentWithOptions(workspaceId *string, request *CreatePredefinedDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePredefinedDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Chunks) {
@@ -737,9 +754,11 @@ func (client *Client) CreatePredefinedDocument(workspaceId *string, request *Cre
 //
 // @return CreateQualityCheckTaskResponse
 func (client *Client) CreateQualityCheckTaskWithOptions(workspaceId *string, request *CreateQualityCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateQualityCheckTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConversationList) {
@@ -821,9 +840,11 @@ func (client *Client) CreateQualityCheckTask(workspaceId *string, request *Creat
 //
 // @return DeleteDocumentResponse
 func (client *Client) DeleteDocumentWithOptions(workspaceId *string, request *DeleteDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocIds) {
@@ -889,9 +910,11 @@ func (client *Client) DeleteDocument(workspaceId *string, request *DeleteDocumen
 //
 // @return DeleteLibraryResponse
 func (client *Client) DeleteLibraryWithOptions(workspaceId *string, request *DeleteLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibraryId) {
@@ -953,9 +976,11 @@ func (client *Client) DeleteLibrary(workspaceId *string, request *DeleteLibraryR
 //
 // @return EvictTaskResponse
 func (client *Client) EvictTaskWithOptions(workspaceId *string, request *EvictTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EvictTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -1017,9 +1042,11 @@ func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) 
 //
 // @return GenDocQaResultResponse
 func (client *Client) GenDocQaResultWithOptions(workspaceId *string, request *GenDocQaResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenDocQaResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocId) {
@@ -1139,9 +1166,11 @@ func (client *Client) GetAppConfig(workspaceId *string) (_result *GetAppConfigRe
 //
 // @return GetChatQuestionRespResponse
 func (client *Client) GetChatQuestionRespWithOptions(workspaceId *string, request *GetChatQuestionRespRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetChatQuestionRespResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BatchId) {
@@ -1207,9 +1236,11 @@ func (client *Client) GetChatQuestionResp(workspaceId *string, request *GetChatQ
 //
 // @return GetDialogAnalysisResultResponse
 func (client *Client) GetDialogAnalysisResultWithOptions(workspaceId *string, request *GetDialogAnalysisResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogAnalysisResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Asc) {
@@ -1287,9 +1318,11 @@ func (client *Client) GetDialogAnalysisResult(workspaceId *string, request *GetD
 //
 // @return GetDialogDetailResponse
 func (client *Client) GetDialogDetailWithOptions(workspaceId *string, request *GetDialogDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.SessionId) {
@@ -1351,9 +1384,11 @@ func (client *Client) GetDialogDetail(workspaceId *string, request *GetDialogDet
 //
 // @return GetDialogLogResponse
 func (client *Client) GetDialogLogWithOptions(workspaceId *string, request *GetDialogLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDialogLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -1419,9 +1454,11 @@ func (client *Client) GetDialogLog(workspaceId *string, request *GetDialogLogReq
 //
 // @return GetDocumentChunkListResponse
 func (client *Client) GetDocumentChunkListWithOptions(workspaceId *string, request *GetDocumentChunkListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentChunkListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ChunkIdList) {
@@ -1511,9 +1548,11 @@ func (client *Client) GetDocumentChunkList(workspaceId *string, request *GetDocu
 //
 // @return GetDocumentListResponse
 func (client *Client) GetDocumentListWithOptions(workspaceId *string, request *GetDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibraryId) {
@@ -1587,9 +1626,11 @@ func (client *Client) GetDocumentList(workspaceId *string, request *GetDocumentL
 //
 // @return GetDocumentUrlResponse
 func (client *Client) GetDocumentUrlWithOptions(workspaceId *string, request *GetDocumentUrlRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDocumentUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentId) {
@@ -1651,9 +1692,11 @@ func (client *Client) GetDocumentUrl(workspaceId *string, request *GetDocumentUr
 //
 // @return GetFilterDocumentListResponse
 func (client *Client) GetFilterDocumentListWithOptions(workspaceId *string, request *GetFilterDocumentListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFilterDocumentListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.And) {
@@ -1739,9 +1782,11 @@ func (client *Client) GetFilterDocumentList(workspaceId *string, request *GetFil
 //
 // @return GetHistoryListByBizTypeResponse
 func (client *Client) GetHistoryListByBizTypeWithOptions(workspaceId *string, request *GetHistoryListByBizTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetHistoryListByBizTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -1815,9 +1860,11 @@ func (client *Client) GetHistoryListByBizType(workspaceId *string, request *GetH
 //
 // @return GetLibraryResponse
 func (client *Client) GetLibraryWithOptions(workspaceId *string, request *GetLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.LibraryId) {
@@ -1879,9 +1926,11 @@ func (client *Client) GetLibrary(workspaceId *string, request *GetLibraryRequest
 //
 // @return GetLibraryListResponse
 func (client *Client) GetLibraryListWithOptions(workspaceId *string, request *GetLibraryListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLibraryListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Page) {
@@ -1951,9 +2000,11 @@ func (client *Client) GetLibraryList(workspaceId *string, request *GetLibraryLis
 //
 // @return GetParseResultResponse
 func (client *Client) GetParseResultWithOptions(workspaceId *string, request *GetParseResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParseResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocId) {
@@ -2023,9 +2074,11 @@ func (client *Client) GetParseResult(workspaceId *string, request *GetParseResul
 //
 // @return GetQualityCheckTaskResultResponse
 func (client *Client) GetQualityCheckTaskResultWithOptions(workspaceId *string, request *GetQualityCheckTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetQualityCheckTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2087,9 +2140,11 @@ func (client *Client) GetQualityCheckTaskResult(workspaceId *string, request *Ge
 //
 // @return GetSummaryTaskResultResponse
 func (client *Client) GetSummaryTaskResultWithOptions(workspaceId *string, request *GetSummaryTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetSummaryTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2151,9 +2206,11 @@ func (client *Client) GetSummaryTaskResult(workspaceId *string, request *GetSumm
 //
 // @return GetTaskResultResponse
 func (client *Client) GetTaskResultWithOptions(workspaceId *string, request *GetTaskResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2215,9 +2272,11 @@ func (client *Client) GetTaskResult(workspaceId *string, request *GetTaskResultR
 //
 // @return GetTaskStatusResponse
 func (client *Client) GetTaskStatusWithOptions(workspaceId *string, request *GetTaskStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2279,9 +2338,11 @@ func (client *Client) GetTaskStatus(workspaceId *string, request *GetTaskStatusR
 //
 // @return InvokePluginResponse
 func (client *Client) InvokePluginWithOptions(workspaceId *string, request *InvokePluginRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokePluginResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Params) {
@@ -2347,9 +2408,11 @@ func (client *Client) InvokePlugin(workspaceId *string, request *InvokePluginReq
 //
 // @return PreviewDocumentResponse
 func (client *Client) PreviewDocumentWithOptions(workspaceId *string, request *PreviewDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PreviewDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentId) {
@@ -2411,9 +2474,11 @@ func (client *Client) PreviewDocument(workspaceId *string, request *PreviewDocum
 //
 // @return ReIndexResponse
 func (client *Client) ReIndexWithOptions(workspaceId *string, request *ReIndexRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReIndexResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentId) {
@@ -2492,9 +2557,11 @@ func (client *Client) RealTimeDialogWithSSE(workspaceId *string, request *RealTi
 //
 // @return RealTimeDialogResponse
 func (client *Client) RealTimeDialogWithOptions(workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealTimeDialogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Analysis) {
@@ -2596,9 +2663,11 @@ func (client *Client) RealTimeDialog(workspaceId *string, request *RealTimeDialo
 //
 // @return RealtimeDialogAssistResponse
 func (client *Client) RealtimeDialogAssistWithOptions(workspaceId *string, request *RealtimeDialogAssistRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RealtimeDialogAssistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Analysis) {
@@ -2688,9 +2757,11 @@ func (client *Client) RealtimeDialogAssist(workspaceId *string, request *Realtim
 //
 // @return RebuildTaskResponse
 func (client *Client) RebuildTaskWithOptions(workspaceId *string, request *RebuildTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RebuildTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskIds) {
@@ -2752,9 +2823,11 @@ func (client *Client) RebuildTask(workspaceId *string, request *RebuildTaskReque
 //
 // @return RecallDocumentResponse
 func (client *Client) RecallDocumentWithOptions(workspaceId *string, request *RecallDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecallDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Filters) {
@@ -2828,9 +2901,11 @@ func (client *Client) RecallDocument(workspaceId *string, request *RecallDocumen
 //
 // @return RecognizeIntentionResponse
 func (client *Client) RecognizeIntentionWithOptions(workspaceId *string, request *RecognizeIntentionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecognizeIntentionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Analysis) {
@@ -2941,9 +3016,11 @@ func (client *Client) RunAgentWithSSE(workspaceId *string, request *RunAgentRequ
 //
 // @return RunAgentResponse
 func (client *Client) RunAgentWithOptions(workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BotId) {
@@ -3050,9 +3127,11 @@ func (client *Client) RunChatResultGenerationWithSSE(workspaceId *string, reques
 //
 // @return RunChatResultGenerationResponse
 func (client *Client) RunChatResultGenerationWithOptions(workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunChatResultGenerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InferenceParameters) {
@@ -3124,6 +3203,89 @@ func (client *Client) RunChatResultGeneration(workspaceId *string, request *RunC
 
 // Summary:
 //
+// 流式获取外呼会话分析结果
+//
+// @param request - RunDialogAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDialogAnalysisResponse
+func (client *Client) RunDialogAnalysisWithSSE(workspaceId *string, request *RunDialogAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunDialogAnalysisResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.runDialogAnalysisWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 流式获取外呼会话分析结果
+//
+// @param request - RunDialogAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunDialogAnalysisResponse
+func (client *Client) RunDialogAnalysisWithOptions(workspaceId *string, request *RunDialogAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunDialogAnalysisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDialogAnalysis"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/virtualHuman/dialog/stream/analysis"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunDialogAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 流式获取外呼会话分析结果
+//
+// @param request - RunDialogAnalysisRequest
+//
+// @return RunDialogAnalysisResponse
+func (client *Client) RunDialogAnalysis(workspaceId *string, request *RunDialogAnalysisRequest) (_result *RunDialogAnalysisResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunDialogAnalysisResponse{}
+	_body, _err := client.RunDialogAnalysisWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取生成式对话结果
 //
 // @param request - RunLibraryChatGenerationRequest
@@ -3151,9 +3313,11 @@ func (client *Client) RunLibraryChatGenerationWithSSE(workspaceId *string, reque
 //
 // @return RunLibraryChatGenerationResponse
 func (client *Client) RunLibraryChatGenerationWithOptions(workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunLibraryChatGenerationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocIdList) {
@@ -3283,9 +3447,11 @@ func (client *Client) RunLibraryChatGeneration(workspaceId *string, request *Run
 //
 // @return SubmitChatQuestionResponse
 func (client *Client) SubmitChatQuestionWithOptions(workspaceId *string, request *SubmitChatQuestionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitChatQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GmtService) {
@@ -3367,9 +3533,11 @@ func (client *Client) SubmitChatQuestion(workspaceId *string, request *SubmitCha
 //
 // @return UpdateDocumentResponse
 func (client *Client) UpdateDocumentWithOptions(workspaceId *string, request *UpdateDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocId) {
@@ -3443,9 +3611,11 @@ func (client *Client) UpdateDocument(workspaceId *string, request *UpdateDocumen
 //
 // @return UpdateDocumentChunkResponse
 func (client *Client) UpdateDocumentChunkWithOptions(workspaceId *string, request *UpdateDocumentChunkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDocumentChunkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Chunks) {
@@ -3511,9 +3681,11 @@ func (client *Client) UpdateDocumentChunk(workspaceId *string, request *UpdateDo
 //
 // @return UpdateLibraryResponse
 func (client *Client) UpdateLibraryWithOptions(workspaceId *string, request *UpdateLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -3587,9 +3759,11 @@ func (client *Client) UpdateLibrary(workspaceId *string, request *UpdateLibraryR
 //
 // @return UpdateQaLibraryResponse
 func (client *Client) UpdateQaLibraryWithOptions(workspaceId *string, request *UpdateQaLibraryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateQaLibraryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ParseQaResults) {
@@ -3659,9 +3833,11 @@ func (client *Client) UpdateQaLibrary(workspaceId *string, request *UpdateQaLibr
 //
 // @return UploadDocumentResponse
 func (client *Client) UploadDocumentWithOptions(workspaceId *string, request *UploadDocumentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UploadDocumentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Data) {
@@ -3860,10 +4036,12 @@ func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]int
 }
 
 func (client *Client) realTimeDialogWithSSE_opYieldFunc(_yield chan *RealTimeDialogResponse, _yieldErr chan error, workspaceId *string, request *RealTimeDialogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Analysis) {
@@ -3945,10 +4123,12 @@ func (client *Client) realTimeDialogWithSSE_opYieldFunc(_yield chan *RealTimeDia
 }
 
 func (client *Client) runAgentWithSSE_opYieldFunc(_yield chan *RunAgentResponse, _yieldErr chan error, workspaceId *string, request *RunAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BotId) {
@@ -4018,10 +4198,12 @@ func (client *Client) runAgentWithSSE_opYieldFunc(_yield chan *RunAgentResponse,
 }
 
 func (client *Client) runChatResultGenerationWithSSE_opYieldFunc(_yield chan *RunChatResultGenerationResponse, _yieldErr chan error, workspaceId *string, request *RunChatResultGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.InferenceParameters) {
@@ -4082,11 +4264,60 @@ func (client *Client) runChatResultGenerationWithSSE_opYieldFunc(_yield chan *Ru
 	}
 }
 
+func (client *Client) runDialogAnalysisWithSSE_opYieldFunc(_yield chan *RunDialogAnalysisResponse, _yieldErr chan error, workspaceId *string, request *RunDialogAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunDialogAnalysis"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/virtualHuman/dialog/stream/analysis"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+		_err := dara.ConvertChan(map[string]interface{}{
+			"statusCode": dara.IntValue(resp.StatusCode),
+			"headers":    resp.Headers,
+			"body": dara.ToMap(map[string]interface{}{
+				"RequestId": dara.StringValue(resp.Event.Id),
+				"Message":   dara.StringValue(resp.Event.Event),
+			}, data),
+		}, _yield)
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+}
+
 func (client *Client) runLibraryChatGenerationWithSSE_opYieldFunc(_yield chan *RunLibraryChatGenerationResponse, _yieldErr chan error, workspaceId *string, request *RunLibraryChatGenerationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocIdList) {

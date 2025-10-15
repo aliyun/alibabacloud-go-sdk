@@ -140,7 +140,12 @@ func (s *GetSummaryTaskResultResponseBody) SetTime(v string) *GetSummaryTaskResu
 }
 
 func (s *GetSummaryTaskResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSummaryTaskResultResponseBodyData struct {
@@ -253,7 +258,21 @@ func (s *GetSummaryTaskResultResponseBodyData) SetUsage(v *GetSummaryTaskResultR
 }
 
 func (s *GetSummaryTaskResultResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Choices != nil {
+		for _, item := range s.Choices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSummaryTaskResultResponseBodyDataChoices struct {
@@ -304,7 +323,12 @@ func (s *GetSummaryTaskResultResponseBodyDataChoices) SetMessage(v *GetSummaryTa
 }
 
 func (s *GetSummaryTaskResultResponseBodyDataChoices) Validate() error {
-	return dara.Validate(s)
+	if s.Message != nil {
+		if err := s.Message.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetSummaryTaskResultResponseBodyDataChoicesMessage struct {
