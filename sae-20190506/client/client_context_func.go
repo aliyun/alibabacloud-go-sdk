@@ -7352,6 +7352,14 @@ func (client *Client) RescaleApplicationVerticallyWithContext(ctx context.Contex
 		query["Memory"] = request.Memory
 	}
 
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	if !dara.IsNil(request.AutoEnableApplicationScalingRule) {
 		query["autoEnableApplicationScalingRule"] = request.AutoEnableApplicationScalingRule
 	}

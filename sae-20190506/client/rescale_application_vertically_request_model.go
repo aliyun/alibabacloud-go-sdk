@@ -17,6 +17,10 @@ type iRescaleApplicationVerticallyRequest interface {
 	GetDiskSize() *string
 	SetMemory(v string) *RescaleApplicationVerticallyRequest
 	GetMemory() *string
+	SetResourceType(v string) *RescaleApplicationVerticallyRequest
+	GetResourceType() *string
+	SetVSwitchId(v string) *RescaleApplicationVerticallyRequest
+	GetVSwitchId() *string
 	SetAutoEnableApplicationScalingRule(v bool) *RescaleApplicationVerticallyRequest
 	GetAutoEnableApplicationScalingRule() *bool
 	SetMinReadyInstanceRatio(v int32) *RescaleApplicationVerticallyRequest
@@ -55,7 +59,9 @@ type RescaleApplicationVerticallyRequest struct {
 	// example:
 	//
 	// 2048
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Enable application scale rules automatically.
 	//
 	// example:
@@ -100,6 +106,14 @@ func (s *RescaleApplicationVerticallyRequest) GetMemory() *string {
 	return s.Memory
 }
 
+func (s *RescaleApplicationVerticallyRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *RescaleApplicationVerticallyRequest) GetVSwitchId() *string {
+	return s.VSwitchId
+}
+
 func (s *RescaleApplicationVerticallyRequest) GetAutoEnableApplicationScalingRule() *bool {
 	return s.AutoEnableApplicationScalingRule
 }
@@ -129,6 +143,16 @@ func (s *RescaleApplicationVerticallyRequest) SetDiskSize(v string) *RescaleAppl
 
 func (s *RescaleApplicationVerticallyRequest) SetMemory(v string) *RescaleApplicationVerticallyRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetResourceType(v string) *RescaleApplicationVerticallyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetVSwitchId(v string) *RescaleApplicationVerticallyRequest {
+	s.VSwitchId = &v
 	return s
 }
 
