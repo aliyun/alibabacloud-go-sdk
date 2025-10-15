@@ -74,7 +74,16 @@ func (s *SetPasswordComplexityConfigurationRequest) SetPasswordMinLength(v int32
 }
 
 func (s *SetPasswordComplexityConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordComplexityRules != nil {
+		for _, item := range s.PasswordComplexityRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetPasswordComplexityConfigurationRequestPasswordComplexityRules struct {

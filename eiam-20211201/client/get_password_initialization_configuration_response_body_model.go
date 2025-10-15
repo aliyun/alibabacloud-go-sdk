@@ -53,7 +53,12 @@ func (s *GetPasswordInitializationConfigurationResponseBody) SetRequestId(v stri
 }
 
 func (s *GetPasswordInitializationConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordInitializationConfiguration != nil {
+		if err := s.PasswordInitializationConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration struct {

@@ -59,5 +59,10 @@ func (s *CreateIdentityProviderResponse) SetBody(v *CreateIdentityProviderRespon
 }
 
 func (s *CreateIdentityProviderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

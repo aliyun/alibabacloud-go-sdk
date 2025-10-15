@@ -53,7 +53,12 @@ func (s *GetApplicationGrantScopeResponseBody) SetRequestId(v string) *GetApplic
 }
 
 func (s *GetApplicationGrantScopeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationGrantScope != nil {
+		if err := s.ApplicationGrantScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationGrantScopeResponseBodyApplicationGrantScope struct {

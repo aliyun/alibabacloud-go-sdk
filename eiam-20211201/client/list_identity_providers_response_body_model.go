@@ -70,7 +70,16 @@ func (s *ListIdentityProvidersResponseBody) SetTotalCount(v int64) *ListIdentity
 }
 
 func (s *ListIdentityProvidersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IdentityProviders != nil {
+		for _, item := range s.IdentityProviders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIdentityProvidersResponseBodyIdentityProviders struct {

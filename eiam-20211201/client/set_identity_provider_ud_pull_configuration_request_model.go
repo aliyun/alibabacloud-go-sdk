@@ -166,7 +166,27 @@ func (s *SetIdentityProviderUdPullConfigurationRequest) SetUdSyncScopeConfig(v *
 }
 
 func (s *SetIdentityProviderUdPullConfigurationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LdapUdPullConfig != nil {
+		if err := s.LdapUdPullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeriodicSyncConfig != nil {
+		if err := s.PeriodicSyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PullProtectedRule != nil {
+		if err := s.PullProtectedRule.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdSyncScopeConfig != nil {
+		if err := s.UdSyncScopeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig struct {

@@ -290,7 +290,62 @@ func (s *CreateIdentityProviderRequest) SetWeComConfig(v *CreateIdentityProvider
 }
 
 func (s *CreateIdentityProviderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnConfig != nil {
+		if err := s.AuthnConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoCreateUserConfig != nil {
+		if err := s.AutoCreateUserConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AutoUpdateUserConfig != nil {
+		if err := s.AutoUpdateUserConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BindingConfig != nil {
+		if err := s.BindingConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingtalkAppConfig != nil {
+		if err := s.DingtalkAppConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LarkConfig != nil {
+		if err := s.LarkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LdapConfig != nil {
+		if err := s.LdapConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OidcConfig != nil {
+		if err := s.OidcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdPullConfig != nil {
+		if err := s.UdPullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdPushConfig != nil {
+		if err := s.UdPushConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WeComConfig != nil {
+		if err := s.WeComConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIdentityProviderRequestAuthnConfig struct {
@@ -486,7 +541,16 @@ func (s *CreateIdentityProviderRequestBindingConfig) SetMappingBindingStatus(v s
 }
 
 func (s *CreateIdentityProviderRequestBindingConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AutoMatchUserProfileExpressions != nil {
+		for _, item := range s.AutoMatchUserProfileExpressions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateIdentityProviderRequestBindingConfigAutoMatchUserProfileExpressions struct {
@@ -1109,7 +1173,17 @@ func (s *CreateIdentityProviderRequestOidcConfig) SetPkceRequired(v bool) *Creat
 }
 
 func (s *CreateIdentityProviderRequestOidcConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnParam != nil {
+		if err := s.AuthnParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointConfig != nil {
+		if err := s.EndpointConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIdentityProviderRequestOidcConfigAuthnParam struct {
@@ -1357,7 +1431,17 @@ func (s *CreateIdentityProviderRequestUdPullConfig) SetUdSyncScopeConfig(v *Crea
 }
 
 func (s *CreateIdentityProviderRequestUdPullConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PeriodicSyncConfig != nil {
+		if err := s.PeriodicSyncConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdSyncScopeConfig != nil {
+		if err := s.UdSyncScopeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIdentityProviderRequestUdPullConfigPeriodicSyncConfig struct {
@@ -1510,7 +1594,16 @@ func (s *CreateIdentityProviderRequestUdPushConfig) SetUdSyncScopeConfigs(v []*C
 }
 
 func (s *CreateIdentityProviderRequestUdPushConfig) Validate() error {
-	return dara.Validate(s)
+	if s.UdSyncScopeConfigs != nil {
+		for _, item := range s.UdSyncScopeConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateIdentityProviderRequestUdPushConfigUdSyncScopeConfigs struct {

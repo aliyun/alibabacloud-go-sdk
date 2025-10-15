@@ -142,7 +142,17 @@ func (s *SetApplicationSsoConfigRequest) SetSamlSsoConfig(v *SetApplicationSsoCo
 }
 
 func (s *SetApplicationSsoConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OidcSsoConfig != nil {
+		if err := s.OidcSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamlSsoConfig != nil {
+		if err := s.SamlSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetApplicationSsoConfigRequestOidcSsoConfig struct {
@@ -380,7 +390,16 @@ func (s *SetApplicationSsoConfigRequestOidcSsoConfig) SetSubjectIdExpression(v s
 }
 
 func (s *SetApplicationSsoConfigRequestOidcSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomClaims != nil {
+		for _, item := range s.CustomClaims {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims struct {
@@ -627,7 +646,25 @@ func (s *SetApplicationSsoConfigRequestSamlSsoConfig) SetSpSsoAcsUrl(v string) *
 }
 
 func (s *SetApplicationSsoConfigRequestSamlSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeStatements != nil {
+		for _, item := range s.AttributeStatements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OptionalRelayStates != nil {
+		for _, item := range s.OptionalRelayStates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetApplicationSsoConfigRequestSamlSsoConfigAttributeStatements struct {

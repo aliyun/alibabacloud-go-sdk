@@ -59,5 +59,10 @@ func (s *GetApplicationGrantScopeResponse) SetBody(v *GetApplicationGrantScopeRe
 }
 
 func (s *GetApplicationGrantScopeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

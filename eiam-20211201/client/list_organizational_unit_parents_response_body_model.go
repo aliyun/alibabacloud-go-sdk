@@ -53,7 +53,16 @@ func (s *ListOrganizationalUnitParentsResponseBody) SetRequestId(v string) *List
 }
 
 func (s *ListOrganizationalUnitParentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Parents != nil {
+		for _, item := range s.Parents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOrganizationalUnitParentsResponseBodyParents struct {

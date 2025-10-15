@@ -144,7 +144,12 @@ func (s *RunSynchronizationJobRequest) SetUserIdentityTypes(v []*string) *RunSyn
 }
 
 func (s *RunSynchronizationJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronizationScopeConfig != nil {
+		if err := s.SynchronizationScopeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunSynchronizationJobRequestSynchronizationScopeConfig struct {

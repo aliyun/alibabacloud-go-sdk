@@ -70,7 +70,16 @@ func (s *ListApplicationsForOrganizationalUnitResponseBody) SetTotalCount(v int6
 }
 
 func (s *ListApplicationsForOrganizationalUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplications struct {

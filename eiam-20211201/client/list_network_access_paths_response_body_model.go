@@ -53,7 +53,16 @@ func (s *ListNetworkAccessPathsResponseBody) SetRequestId(v string) *ListNetwork
 }
 
 func (s *ListNetworkAccessPathsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAccessPaths != nil {
+		for _, item := range s.NetworkAccessPaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkAccessPathsResponseBodyNetworkAccessPaths struct {

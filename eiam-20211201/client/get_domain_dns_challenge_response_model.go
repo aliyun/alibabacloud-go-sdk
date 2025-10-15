@@ -59,5 +59,10 @@ func (s *GetDomainDnsChallengeResponse) SetBody(v *GetDomainDnsChallengeResponse
 }
 
 func (s *GetDomainDnsChallengeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,16 @@ func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBody) SetRequestId(v
 }
 
 func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionalAccessPolicies != nil {
+		for _, item := range s.ConditionalAccessPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies struct {
@@ -255,7 +264,17 @@ func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAcces
 }
 
 func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPolicies) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionsConfig != nil {
+		if err := s.ConditionsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DecisionConfig != nil {
+		if err := s.DecisionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig struct {
@@ -303,7 +322,22 @@ func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAcces
 }
 
 func (s *ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		if err := s.Applications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkZones != nil {
+		if err := s.NetworkZones.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Users != nil {
+		if err := s.Users.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConditionalAccessPoliciesForNetworkZoneResponseBodyConditionalAccessPoliciesConditionsConfigApplications struct {

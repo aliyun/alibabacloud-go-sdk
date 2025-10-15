@@ -9,11 +9,14 @@ type iListDomainsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBrandId(v string) *ListDomainsRequest
+	GetBrandId() *string
 	SetInstanceId(v string) *ListDomainsRequest
 	GetInstanceId() *string
 }
 
 type ListDomainsRequest struct {
+	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
 	// The instance ID.
 	//
 	// This parameter is required.
@@ -32,8 +35,17 @@ func (s ListDomainsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDomainsRequest) GetBrandId() *string {
+	return s.BrandId
+}
+
 func (s *ListDomainsRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListDomainsRequest) SetBrandId(v string) *ListDomainsRequest {
+	s.BrandId = &v
+	return s
 }
 
 func (s *ListDomainsRequest) SetInstanceId(v string) *ListDomainsRequest {

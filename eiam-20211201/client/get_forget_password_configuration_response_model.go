@@ -59,5 +59,10 @@ func (s *GetForgetPasswordConfigurationResponse) SetBody(v *GetForgetPasswordCon
 }
 
 func (s *GetForgetPasswordConfigurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

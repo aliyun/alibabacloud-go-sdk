@@ -53,10 +53,20 @@ func (s *ListDomainsResponseBody) SetRequestId(v string) *ListDomainsResponseBod
 }
 
 func (s *ListDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDomainsResponseBodyDomains struct {
+	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
 	// The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
@@ -125,6 +135,10 @@ func (s ListDomainsResponseBodyDomains) GoString() string {
 	return s.String()
 }
 
+func (s *ListDomainsResponseBodyDomains) GetBrandId() *string {
+	return s.BrandId
+}
+
 func (s *ListDomainsResponseBodyDomains) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -159,6 +173,11 @@ func (s *ListDomainsResponseBodyDomains) GetLockMode() *string {
 
 func (s *ListDomainsResponseBodyDomains) GetUpdateTime() *int64 {
 	return s.UpdateTime
+}
+
+func (s *ListDomainsResponseBodyDomains) SetBrandId(v string) *ListDomainsResponseBodyDomains {
+	s.BrandId = &v
+	return s
 }
 
 func (s *ListDomainsResponseBodyDomains) SetCreateTime(v int64) *ListDomainsResponseBodyDomains {
@@ -207,7 +226,12 @@ func (s *ListDomainsResponseBodyDomains) SetUpdateTime(v int64) *ListDomainsResp
 }
 
 func (s *ListDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.Filing != nil {
+		if err := s.Filing.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDomainsResponseBodyDomainsFiling struct {

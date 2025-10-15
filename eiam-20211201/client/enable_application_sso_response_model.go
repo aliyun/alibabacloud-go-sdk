@@ -59,6 +59,11 @@ func (s *EnableApplicationSsoResponse) SetBody(v *EnableApplicationSsoResponseBo
 }
 
 func (s *EnableApplicationSsoResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

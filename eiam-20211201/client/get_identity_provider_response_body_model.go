@@ -53,7 +53,12 @@ func (s *GetIdentityProviderResponseBody) SetRequestId(v string) *GetIdentityPro
 }
 
 func (s *GetIdentityProviderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IdentityProviderDetail != nil {
+		if err := s.IdentityProviderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
@@ -456,7 +461,47 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetWeComConfig(v
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.DingtalkAppConfig != nil {
+		if err := s.DingtalkAppConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DingtalkProvisioningConfig != nil {
+		if err := s.DingtalkProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LarkConfig != nil {
+		if err := s.LarkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LdapConfig != nil {
+		if err := s.LdapConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OidcConfig != nil {
+		if err := s.OidcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdPullConfig != nil {
+		if err := s.UdPullConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UdPushConfig != nil {
+		if err := s.UdPushConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WeComConfig != nil {
+		if err := s.WeComConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig struct {
@@ -628,7 +673,25 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioni
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthedDepartmentIds != nil {
+		for _, item := range s.AuthedDepartmentIds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuthedUsers != nil {
+		for _, item := range s.AuthedUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedDepartmentIds struct {
@@ -1036,7 +1099,17 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) SetPkc
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnParam != nil {
+		if err := s.AuthnParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointConfig != nil {
+		if err := s.EndpointConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam struct {
@@ -1246,7 +1319,12 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) SetU
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) Validate() error {
-	return dara.Validate(s)
+	if s.UdSyncScopeConfig != nil {
+		if err := s.UdSyncScopeConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig struct {
@@ -1328,7 +1406,16 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) SetU
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) Validate() error {
-	return dara.Validate(s)
+	if s.UdSyncScopeConfigs != nil {
+		for _, item := range s.UdSyncScopeConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs struct {

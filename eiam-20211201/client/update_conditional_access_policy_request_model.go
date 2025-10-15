@@ -159,7 +159,17 @@ func (s *UpdateConditionalAccessPolicyRequest) SetPriority(v int32) *UpdateCondi
 }
 
 func (s *UpdateConditionalAccessPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionsConfig != nil {
+		if err := s.ConditionsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DecisionConfig != nil {
+		if err := s.DecisionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConditionalAccessPolicyRequestConditionsConfig struct {
@@ -207,7 +217,22 @@ func (s *UpdateConditionalAccessPolicyRequestConditionsConfig) SetUsers(v *Updat
 }
 
 func (s *UpdateConditionalAccessPolicyRequestConditionsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		if err := s.Applications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkZones != nil {
+		if err := s.NetworkZones.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Users != nil {
+		if err := s.Users.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateConditionalAccessPolicyRequestConditionsConfigApplications struct {

@@ -53,7 +53,12 @@ func (s *ObtainApplicationClientSecretResponseBody) SetRequestId(v string) *Obta
 }
 
 func (s *ObtainApplicationClientSecretResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationClientSecret != nil {
+		if err := s.ApplicationClientSecret.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ObtainApplicationClientSecretResponseBodyApplicationClientSecret struct {

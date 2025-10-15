@@ -59,5 +59,10 @@ func (s *DisableDomainProxyTokenResponse) SetBody(v *DisableDomainProxyTokenResp
 }
 
 func (s *DisableDomainProxyTokenResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

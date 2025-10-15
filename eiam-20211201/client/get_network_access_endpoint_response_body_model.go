@@ -53,7 +53,12 @@ func (s *GetNetworkAccessEndpointResponseBody) SetRequestId(v string) *GetNetwor
 }
 
 func (s *GetNetworkAccessEndpointResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAccessEndpoint != nil {
+		if err := s.NetworkAccessEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint struct {

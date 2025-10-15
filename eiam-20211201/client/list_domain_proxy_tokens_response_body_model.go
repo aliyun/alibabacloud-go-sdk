@@ -53,7 +53,16 @@ func (s *ListDomainProxyTokensResponseBody) SetRequestId(v string) *ListDomainPr
 }
 
 func (s *ListDomainProxyTokensResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainProxyTokens != nil {
+		for _, item := range s.DomainProxyTokens {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {

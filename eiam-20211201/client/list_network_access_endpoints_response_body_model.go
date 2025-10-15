@@ -82,7 +82,16 @@ func (s *ListNetworkAccessEndpointsResponseBody) SetTotalCount(v int64) *ListNet
 }
 
 func (s *ListNetworkAccessEndpointsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkAccessEndpoints != nil {
+		for _, item := range s.NetworkAccessEndpoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints struct {

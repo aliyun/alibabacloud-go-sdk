@@ -53,7 +53,12 @@ func (s *ObtainDomainProxyTokenResponseBody) SetRequestId(v string) *ObtainDomai
 }
 
 func (s *ObtainDomainProxyTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainProxyToken != nil {
+		if err := s.DomainProxyToken.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ObtainDomainProxyTokenResponseBodyDomainProxyToken struct {

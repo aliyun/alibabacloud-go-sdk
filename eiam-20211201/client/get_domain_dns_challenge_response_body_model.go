@@ -53,7 +53,12 @@ func (s *GetDomainDnsChallengeResponseBody) SetRequestId(v string) *GetDomainDns
 }
 
 func (s *GetDomainDnsChallengeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainDnsChallenge != nil {
+		if err := s.DomainDnsChallenge.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainDnsChallengeResponseBodyDomainDnsChallenge struct {

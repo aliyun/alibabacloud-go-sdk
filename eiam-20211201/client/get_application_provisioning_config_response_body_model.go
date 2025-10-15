@@ -53,7 +53,12 @@ func (s *GetApplicationProvisioningConfigResponseBody) SetRequestId(v string) *G
 }
 
 func (s *GetApplicationProvisioningConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationProvisioningConfig != nil {
+		if err := s.ApplicationProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig struct {
@@ -221,7 +226,17 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CallbackProvisioningConfig != nil {
+		if err := s.CallbackProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScimProvisioningConfig != nil {
+		if err := s.ScimProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig struct {
@@ -367,7 +382,12 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnConfiguration != nil {
+		if err := s.AuthnConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration struct {
@@ -433,7 +453,12 @@ func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConf
 }
 
 func (s *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnParam != nil {
+		if err := s.AuthnParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigScimProvisioningConfigAuthnConfigurationAuthnParam struct {

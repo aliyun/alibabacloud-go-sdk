@@ -53,7 +53,12 @@ func (s *GetPasswordHistoryConfigurationResponseBody) SetRequestId(v string) *Ge
 }
 
 func (s *GetPasswordHistoryConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordHistoryConfiguration != nil {
+		if err := s.PasswordHistoryConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration struct {

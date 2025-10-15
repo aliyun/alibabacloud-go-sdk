@@ -53,7 +53,12 @@ func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBod
 }
 
 func (s *GetInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instance != nil {
+		if err := s.Instance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstance struct {
@@ -165,7 +170,17 @@ func (s *GetInstanceResponseBodyInstance) SetStatus(v string) *GetInstanceRespon
 }
 
 func (s *GetInstanceResponseBodyInstance) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultEndpoint != nil {
+		if err := s.DefaultEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DomainConfig != nil {
+		if err := s.DomainConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceResponseBodyInstanceDefaultEndpoint struct {

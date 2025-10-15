@@ -59,5 +59,10 @@ func (s *DeleteIdentityProviderResponse) SetBody(v *DeleteIdentityProviderRespon
 }
 
 func (s *DeleteIdentityProviderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

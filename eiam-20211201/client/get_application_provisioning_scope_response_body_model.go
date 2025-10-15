@@ -53,7 +53,12 @@ func (s *GetApplicationProvisioningScopeResponseBody) SetRequestId(v string) *Ge
 }
 
 func (s *GetApplicationProvisioningScopeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationProvisioningScope != nil {
+		if err := s.ApplicationProvisioningScope.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope struct {

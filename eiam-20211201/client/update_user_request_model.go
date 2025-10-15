@@ -193,7 +193,16 @@ func (s *UpdateUserRequest) SetUsername(v string) *UpdateUserRequest {
 }
 
 func (s *UpdateUserRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateUserRequestCustomFields struct {

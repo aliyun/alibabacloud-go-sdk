@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -57,6 +58,80 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 在当前应用下给指定员工添加一个应用账号
+//
+// @param request - AddApplicationAccountToUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddApplicationAccountToUserResponse
+func (client *Client) AddApplicationAccountToUserWithOptions(request *AddApplicationAccountToUserRequest, runtime *dara.RuntimeOptions) (_result *AddApplicationAccountToUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationUsername) {
+		query["ApplicationUsername"] = request.ApplicationUsername
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddApplicationAccountToUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddApplicationAccountToUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在当前应用下给指定员工添加一个应用账号
+//
+// @param request - AddApplicationAccountToUserRequest
+//
+// @return AddApplicationAccountToUserResponse
+func (client *Client) AddApplicationAccountToUser(request *AddApplicationAccountToUserRequest) (_result *AddApplicationAccountToUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddApplicationAccountToUserResponse{}
+	_body, _err := client.AddApplicationAccountToUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an Employee Identity and Access Management (EIAM) account to multiple EIAM organizations of Identity as a Service (IDaaS). If the account already exists in the organizational unit, the system directly returns a success response.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
@@ -65,9 +140,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return AddUserToOrganizationalUnitsResponse
 func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserToOrganizationalUnitsRequest, runtime *dara.RuntimeOptions) (_result *AddUserToOrganizationalUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -133,9 +210,11 @@ func (client *Client) AddUserToOrganizationalUnits(request *AddUserToOrganizatio
 //
 // @return AddUsersToGroupResponse
 func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest, runtime *dara.RuntimeOptions) (_result *AddUsersToGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -201,9 +280,11 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 //
 // @return AuthorizeApplicationToGroupsResponse
 func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *AuthorizeApplicationToGroupsRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeApplicationToGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -269,9 +350,11 @@ func (client *Client) AuthorizeApplicationToGroups(request *AuthorizeApplication
 //
 // @return AuthorizeApplicationToOrganizationalUnitsResponse
 func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(request *AuthorizeApplicationToOrganizationalUnitsRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeApplicationToOrganizationalUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -337,9 +420,11 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *Authori
 //
 // @return AuthorizeApplicationToUsersResponse
 func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeApplicationToUsersRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeApplicationToUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -409,9 +494,11 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 //
 // @return CreateApplicationResponse
 func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationName) {
@@ -497,9 +584,11 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 //
 // @return CreateApplicationClientSecretResponse
 func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateApplicationClientSecretRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationClientSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -557,6 +646,170 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 
 // Summary:
 //
+// 创建应用联邦凭证
+//
+// @param request - CreateApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationFederatedCredentialResponse
+func (client *Client) CreateApplicationFederatedCredentialWithOptions(request *CreateApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialName) {
+		query["ApplicationFederatedCredentialName"] = request.ApplicationFederatedCredentialName
+	}
+
+	if !dara.IsNil(request.ApplicationFederatedCredentialType) {
+		query["ApplicationFederatedCredentialType"] = request.ApplicationFederatedCredentialType
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AttributeMappings) {
+		query["AttributeMappings"] = request.AttributeMappings
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.VerificationCondition) {
+		query["VerificationCondition"] = request.VerificationCondition
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用联邦凭证
+//
+// @param request - CreateApplicationFederatedCredentialRequest
+//
+// @return CreateApplicationFederatedCredentialResponse
+func (client *Client) CreateApplicationFederatedCredential(request *CreateApplicationFederatedCredentialRequest) (_result *CreateApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationFederatedCredentialResponse{}
+	_body, _err := client.CreateApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用Token
+//
+// @param request - CreateApplicationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationTokenResponse
+func (client *Client) CreateApplicationTokenWithOptions(request *CreateApplicationTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenType) {
+		query["ApplicationTokenType"] = request.ApplicationTokenType
+	}
+
+	if !dara.IsNil(request.ExpirationTime) {
+		query["ExpirationTime"] = request.ExpirationTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用Token
+//
+// @param request - CreateApplicationTokenRequest
+//
+// @return CreateApplicationTokenResponse
+func (client *Client) CreateApplicationToken(request *CreateApplicationTokenRequest) (_result *CreateApplicationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationTokenResponse{}
+	_body, _err := client.CreateApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create Conditional Access Policy
 //
 // Description:
@@ -569,9 +822,11 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 //
 // @return CreateConditionalAccessPolicyResponse
 func (client *Client) CreateConditionalAccessPolicyWithOptions(request *CreateConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -669,9 +924,11 @@ func (client *Client) CreateConditionalAccessPolicy(request *CreateConditionalAc
 //
 // @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *dara.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -737,9 +994,11 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 //
 // @return CreateDomainProxyTokenResponse
 func (client *Client) CreateDomainProxyTokenWithOptions(request *CreateDomainProxyTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateDomainProxyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -793,6 +1052,96 @@ func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequ
 
 // Summary:
 //
+// 创建联邦凭证提供方
+//
+// @param request - CreateFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFederatedCredentialProviderResponse
+func (client *Client) CreateFederatedCredentialProviderWithOptions(request *CreateFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *CreateFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderName) {
+		query["FederatedCredentialProviderName"] = request.FederatedCredentialProviderName
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderType) {
+		query["FederatedCredentialProviderType"] = request.FederatedCredentialProviderType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !dara.IsNil(request.OidcProviderConfig) {
+		query["OidcProviderConfig"] = request.OidcProviderConfig
+	}
+
+	if !dara.IsNil(request.Pkcs7ProviderConfig) {
+		query["Pkcs7ProviderConfig"] = request.Pkcs7ProviderConfig
+	}
+
+	if !dara.IsNil(request.PrivateCaProviderConfig) {
+		query["PrivateCaProviderConfig"] = request.PrivateCaProviderConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建联邦凭证提供方
+//
+// @param request - CreateFederatedCredentialProviderRequest
+//
+// @return CreateFederatedCredentialProviderResponse
+func (client *Client) CreateFederatedCredentialProvider(request *CreateFederatedCredentialProviderRequest) (_result *CreateFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateFederatedCredentialProviderResponse{}
+	_body, _err := client.CreateFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - CreateGroupRequest
@@ -801,9 +1150,11 @@ func (client *Client) CreateDomainProxyToken(request *CreateDomainProxyTokenRequ
 //
 // @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -873,9 +1224,11 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 //
 // @return CreateIdentityProviderResponse
 func (client *Client) CreateIdentityProviderWithOptions(request *CreateIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *CreateIdentityProviderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthnConfig) {
@@ -997,9 +1350,11 @@ func (client *Client) CreateIdentityProvider(request *CreateIdentityProviderRequ
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1057,9 +1412,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 //
 // @return CreateNetworkAccessEndpointResponse
 func (client *Client) CreateNetworkAccessEndpointWithOptions(request *CreateNetworkAccessEndpointRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkAccessEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1129,6 +1486,96 @@ func (client *Client) CreateNetworkAccessEndpoint(request *CreateNetworkAccessEn
 
 // Summary:
 //
+// 创建网络区域对象
+//
+// @param request - CreateNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNetworkZoneResponse
+func (client *Client) CreateNetworkZoneWithOptions(request *CreateNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *CreateNetworkZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Ipv4Cidrs) {
+		query["Ipv4Cidrs"] = request.Ipv4Cidrs
+	}
+
+	if !dara.IsNil(request.Ipv6Cidrs) {
+		query["Ipv6Cidrs"] = request.Ipv6Cidrs
+	}
+
+	if !dara.IsNil(request.NetworkZoneName) {
+		query["NetworkZoneName"] = request.NetworkZoneName
+	}
+
+	if !dara.IsNil(request.NetworkZoneType) {
+		query["NetworkZoneType"] = request.NetworkZoneType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNetworkZone"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNetworkZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网络区域对象
+//
+// @param request - CreateNetworkZoneRequest
+//
+// @return CreateNetworkZoneResponse
+func (client *Client) CreateNetworkZone(request *CreateNetworkZoneRequest) (_result *CreateNetworkZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateNetworkZoneResponse{}
+	_body, _err := client.CreateNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - CreateOrganizationalUnitRequest
@@ -1137,9 +1584,11 @@ func (client *Client) CreateNetworkAccessEndpoint(request *CreateNetworkAccessEn
 //
 // @return CreateOrganizationalUnitResponse
 func (client *Client) CreateOrganizationalUnitWithOptions(request *CreateOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *CreateOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -1213,9 +1662,11 @@ func (client *Client) CreateOrganizationalUnit(request *CreateOrganizationalUnit
 //
 // @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *dara.RuntimeOptions) (_result *CreateUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -1337,9 +1788,11 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 //
 // @return DeleteApplicationResponse
 func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -1405,9 +1858,11 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 //
 // @return DeleteApplicationClientSecretResponse
 func (client *Client) DeleteApplicationClientSecretWithOptions(request *DeleteApplicationClientSecretRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationClientSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -1465,6 +1920,146 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 
 // Summary:
 //
+// 删除应用联邦凭证
+//
+// @param request - DeleteApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationFederatedCredentialResponse
+func (client *Client) DeleteApplicationFederatedCredentialWithOptions(request *DeleteApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用联邦凭证
+//
+// @param request - DeleteApplicationFederatedCredentialRequest
+//
+// @return DeleteApplicationFederatedCredentialResponse
+func (client *Client) DeleteApplicationFederatedCredential(request *DeleteApplicationFederatedCredentialRequest) (_result *DeleteApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationFederatedCredentialResponse{}
+	_body, _err := client.DeleteApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ApplicationToken
+//
+// @param request - DeleteApplicationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationTokenResponse
+func (client *Client) DeleteApplicationTokenWithOptions(request *DeleteApplicationTokenRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenId) {
+		query["ApplicationTokenId"] = request.ApplicationTokenId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ApplicationToken
+//
+// @param request - DeleteApplicationTokenRequest
+//
+// @return DeleteApplicationTokenResponse
+func (client *Client) DeleteApplicationToken(request *DeleteApplicationTokenRequest) (_result *DeleteApplicationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationTokenResponse{}
+	_body, _err := client.DeleteApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Conditional Access Policy
 //
 // Description:
@@ -1477,9 +2072,11 @@ func (client *Client) DeleteApplicationClientSecret(request *DeleteApplicationCl
 //
 // @return DeleteConditionalAccessPolicyResponse
 func (client *Client) DeleteConditionalAccessPolicyWithOptions(request *DeleteConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConditionalAccessPolicyId) {
@@ -1545,9 +2142,11 @@ func (client *Client) DeleteConditionalAccessPolicy(request *DeleteConditionalAc
 //
 // @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -1609,9 +2208,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 //
 // @return DeleteDomainProxyTokenResponse
 func (client *Client) DeleteDomainProxyTokenWithOptions(request *DeleteDomainProxyTokenRequest, runtime *dara.RuntimeOptions) (_result *DeleteDomainProxyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -1669,6 +2270,72 @@ func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequ
 
 // Summary:
 //
+// 删除联邦凭证提供方
+//
+// @param request - DeleteFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFederatedCredentialProviderResponse
+func (client *Client) DeleteFederatedCredentialProviderWithOptions(request *DeleteFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *DeleteFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除联邦凭证提供方
+//
+// @param request - DeleteFederatedCredentialProviderRequest
+//
+// @return DeleteFederatedCredentialProviderResponse
+func (client *Client) DeleteFederatedCredentialProvider(request *DeleteFederatedCredentialProviderRequest) (_result *DeleteFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteFederatedCredentialProviderResponse{}
+	_body, _err := client.DeleteFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes the information of an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - DeleteGroupRequest
@@ -1677,9 +2344,11 @@ func (client *Client) DeleteDomainProxyToken(request *DeleteDomainProxyTokenRequ
 //
 // @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -1741,9 +2410,11 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 //
 // @return DeleteIdentityProviderResponse
 func (client *Client) DeleteIdentityProviderWithOptions(request *DeleteIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *DeleteIdentityProviderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityProviderId) {
@@ -1809,9 +2480,11 @@ func (client *Client) DeleteIdentityProvider(request *DeleteIdentityProviderRequ
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1873,9 +2546,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // @return DeleteNetworkAccessEndpointResponse
 func (client *Client) DeleteNetworkAccessEndpointWithOptions(request *DeleteNetworkAccessEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkAccessEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1929,6 +2604,72 @@ func (client *Client) DeleteNetworkAccessEndpoint(request *DeleteNetworkAccessEn
 
 // Summary:
 //
+// 删除网络区域对象
+//
+// @param request - DeleteNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkZoneResponse
+func (client *Client) DeleteNetworkZoneWithOptions(request *DeleteNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkZoneId) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNetworkZone"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNetworkZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网络区域对象
+//
+// @param request - DeleteNetworkZoneRequest
+//
+// @return DeleteNetworkZoneResponse
+func (client *Client) DeleteNetworkZone(request *DeleteNetworkZoneRequest) (_result *DeleteNetworkZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNetworkZoneResponse{}
+	_body, _err := client.DeleteNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an organization in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the organization has EIAM accounts or child organizations, the delete operation fails.
 //
 // @param request - DeleteOrganizationalUnitRequest
@@ -1937,9 +2678,11 @@ func (client *Client) DeleteNetworkAccessEndpoint(request *DeleteNetworkAccessEn
 //
 // @return DeleteOrganizationalUnitResponse
 func (client *Client) DeleteOrganizationalUnitWithOptions(request *DeleteOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2001,9 +2744,11 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 //
 // @return DeleteOrganizationalUnitChildrenResponse
 func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *DeleteOrganizationalUnitChildrenRequest, runtime *dara.RuntimeOptions) (_result *DeleteOrganizationalUnitChildrenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2065,9 +2810,11 @@ func (client *Client) DeleteOrganizationalUnitChildren(request *DeleteOrganizati
 //
 // @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2133,9 +2880,11 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 //
 // @return DisableApplicationResponse
 func (client *Client) DisableApplicationWithOptions(request *DisableApplicationRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2201,9 +2950,11 @@ func (client *Client) DisableApplication(request *DisableApplicationRequest) (_r
 //
 // @return DisableApplicationApiInvokeResponse
 func (client *Client) DisableApplicationApiInvokeWithOptions(request *DisableApplicationApiInvokeRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationApiInvokeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2265,9 +3016,11 @@ func (client *Client) DisableApplicationApiInvoke(request *DisableApplicationApi
 //
 // @return DisableApplicationClientSecretResponse
 func (client *Client) DisableApplicationClientSecretWithOptions(request *DisableApplicationClientSecretRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationClientSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2325,6 +3078,76 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 
 // Summary:
 //
+// 禁用应用联邦凭证
+//
+// @param request - DisableApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationFederatedCredentialResponse
+func (client *Client) DisableApplicationFederatedCredentialWithOptions(request *DisableApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用应用联邦凭证
+//
+// @param request - DisableApplicationFederatedCredentialRequest
+//
+// @return DisableApplicationFederatedCredentialResponse
+func (client *Client) DisableApplicationFederatedCredential(request *DisableApplicationFederatedCredentialRequest) (_result *DisableApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableApplicationFederatedCredentialResponse{}
+	_body, _err := client.DisableApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - DisableApplicationProvisioningRequest
@@ -2333,9 +3156,11 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 //
 // @return DisableApplicationProvisioningResponse
 func (client *Client) DisableApplicationProvisioningWithOptions(request *DisableApplicationProvisioningRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationProvisioningResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2397,9 +3222,11 @@ func (client *Client) DisableApplicationProvisioning(request *DisableApplication
 //
 // @return DisableApplicationSsoResponse
 func (client *Client) DisableApplicationSsoWithOptions(request *DisableApplicationSsoRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationSsoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2453,6 +3280,76 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 
 // Summary:
 //
+// 禁用应用Token
+//
+// @param request - DisableApplicationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApplicationTokenResponse
+func (client *Client) DisableApplicationTokenWithOptions(request *DisableApplicationTokenRequest, runtime *dara.RuntimeOptions) (_result *DisableApplicationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenId) {
+		query["ApplicationTokenId"] = request.ApplicationTokenId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableApplicationToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableApplicationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用应用Token
+//
+// @param request - DisableApplicationTokenRequest
+//
+// @return DisableApplicationTokenResponse
+func (client *Client) DisableApplicationToken(request *DisableApplicationTokenRequest) (_result *DisableApplicationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableApplicationTokenResponse{}
+	_body, _err := client.DisableApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Disable Conditional Access Policy
 //
 // Description:
@@ -2465,9 +3362,11 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 //
 // @return DisableConditionalAccessPolicyResponse
 func (client *Client) DisableConditionalAccessPolicyWithOptions(request *DisableConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *DisableConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConditionalAccessPolicyId) {
@@ -2533,9 +3432,11 @@ func (client *Client) DisableConditionalAccessPolicy(request *DisableConditional
 //
 // @return DisableDomainProxyTokenResponse
 func (client *Client) DisableDomainProxyTokenWithOptions(request *DisableDomainProxyTokenRequest, runtime *dara.RuntimeOptions) (_result *DisableDomainProxyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -2593,6 +3494,138 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 
 // Summary:
 //
+// 禁用联邦凭证提供方
+//
+// @param request - DisableFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableFederatedCredentialProviderResponse
+func (client *Client) DisableFederatedCredentialProviderWithOptions(request *DisableFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *DisableFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用联邦凭证提供方
+//
+// @param request - DisableFederatedCredentialProviderRequest
+//
+// @return DisableFederatedCredentialProviderResponse
+func (client *Client) DisableFederatedCredentialProvider(request *DisableFederatedCredentialProviderRequest) (_result *DisableFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableFederatedCredentialProviderResponse{}
+	_body, _err := client.DisableFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用认证
+//
+// @param request - DisableIdentityProviderAuthnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableIdentityProviderAuthnResponse
+func (client *Client) DisableIdentityProviderAuthnWithOptions(request *DisableIdentityProviderAuthnRequest, runtime *dara.RuntimeOptions) (_result *DisableIdentityProviderAuthnResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableIdentityProviderAuthn"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableIdentityProviderAuthnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用认证
+//
+// @param request - DisableIdentityProviderAuthnRequest
+//
+// @return DisableIdentityProviderAuthnResponse
+func (client *Client) DisableIdentityProviderAuthn(request *DisableIdentityProviderAuthnRequest) (_result *DisableIdentityProviderAuthnResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableIdentityProviderAuthnResponse{}
+	_body, _err := client.DisableIdentityProviderAuthnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Disable identity provider synchronization
 //
 // @param request - DisableIdentityProviderUdPullRequest
@@ -2601,9 +3634,11 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 //
 // @return DisableIdentityProviderUdPullResponse
 func (client *Client) DisableIdentityProviderUdPullWithOptions(request *DisableIdentityProviderUdPullRequest, runtime *dara.RuntimeOptions) (_result *DisableIdentityProviderUdPullResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityProviderId) {
@@ -2665,9 +3700,11 @@ func (client *Client) DisableIdentityProviderUdPull(request *DisableIdentityProv
 //
 // @return DisableInitDomainAutoRedirectResponse
 func (client *Client) DisableInitDomainAutoRedirectWithOptions(request *DisableInitDomainAutoRedirectRequest, runtime *dara.RuntimeOptions) (_result *DisableInitDomainAutoRedirectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2725,9 +3762,11 @@ func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAu
 //
 // @return DisableUserResponse
 func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtime *dara.RuntimeOptions) (_result *DisableUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -2789,9 +3828,11 @@ func (client *Client) DisableUser(request *DisableUserRequest) (_result *Disable
 //
 // @return EnableApplicationResponse
 func (client *Client) EnableApplicationWithOptions(request *EnableApplicationRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2853,9 +3894,11 @@ func (client *Client) EnableApplication(request *EnableApplicationRequest) (_res
 //
 // @return EnableApplicationApiInvokeResponse
 func (client *Client) EnableApplicationApiInvokeWithOptions(request *EnableApplicationApiInvokeRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationApiInvokeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2917,9 +3960,11 @@ func (client *Client) EnableApplicationApiInvoke(request *EnableApplicationApiIn
 //
 // @return EnableApplicationClientSecretResponse
 func (client *Client) EnableApplicationClientSecretWithOptions(request *EnableApplicationClientSecretRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationClientSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -2977,6 +4022,76 @@ func (client *Client) EnableApplicationClientSecret(request *EnableApplicationCl
 
 // Summary:
 //
+// 启用应用联邦凭证
+//
+// @param request - EnableApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationFederatedCredentialResponse
+func (client *Client) EnableApplicationFederatedCredentialWithOptions(request *EnableApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用应用联邦凭证
+//
+// @param request - EnableApplicationFederatedCredentialRequest
+//
+// @return EnableApplicationFederatedCredentialResponse
+func (client *Client) EnableApplicationFederatedCredential(request *EnableApplicationFederatedCredentialRequest) (_result *EnableApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableApplicationFederatedCredentialResponse{}
+	_body, _err := client.EnableApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - EnableApplicationProvisioningRequest
@@ -2985,9 +4100,11 @@ func (client *Client) EnableApplicationClientSecret(request *EnableApplicationCl
 //
 // @return EnableApplicationProvisioningResponse
 func (client *Client) EnableApplicationProvisioningWithOptions(request *EnableApplicationProvisioningRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationProvisioningResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3049,9 +4166,11 @@ func (client *Client) EnableApplicationProvisioning(request *EnableApplicationPr
 //
 // @return EnableApplicationSsoResponse
 func (client *Client) EnableApplicationSsoWithOptions(request *EnableApplicationSsoRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationSsoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3105,6 +4224,76 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 
 // Summary:
 //
+// 启用应用Token
+//
+// @param request - EnableApplicationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApplicationTokenResponse
+func (client *Client) EnableApplicationTokenWithOptions(request *EnableApplicationTokenRequest, runtime *dara.RuntimeOptions) (_result *EnableApplicationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenId) {
+		query["ApplicationTokenId"] = request.ApplicationTokenId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableApplicationToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableApplicationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用应用Token
+//
+// @param request - EnableApplicationTokenRequest
+//
+// @return EnableApplicationTokenResponse
+func (client *Client) EnableApplicationToken(request *EnableApplicationTokenRequest) (_result *EnableApplicationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableApplicationTokenResponse{}
+	_body, _err := client.EnableApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Enable Conditional Access Policy
 //
 // Description:
@@ -3117,9 +4306,11 @@ func (client *Client) EnableApplicationSso(request *EnableApplicationSsoRequest)
 //
 // @return EnableConditionalAccessPolicyResponse
 func (client *Client) EnableConditionalAccessPolicyWithOptions(request *EnableConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *EnableConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConditionalAccessPolicyId) {
@@ -3185,9 +4376,11 @@ func (client *Client) EnableConditionalAccessPolicy(request *EnableConditionalAc
 //
 // @return EnableDomainProxyTokenResponse
 func (client *Client) EnableDomainProxyTokenWithOptions(request *EnableDomainProxyTokenRequest, runtime *dara.RuntimeOptions) (_result *EnableDomainProxyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -3245,6 +4438,138 @@ func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequ
 
 // Summary:
 //
+// 启用联邦凭证提供方
+//
+// @param request - EnableFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableFederatedCredentialProviderResponse
+func (client *Client) EnableFederatedCredentialProviderWithOptions(request *EnableFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *EnableFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用联邦凭证提供方
+//
+// @param request - EnableFederatedCredentialProviderRequest
+//
+// @return EnableFederatedCredentialProviderResponse
+func (client *Client) EnableFederatedCredentialProvider(request *EnableFederatedCredentialProviderRequest) (_result *EnableFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableFederatedCredentialProviderResponse{}
+	_body, _err := client.EnableFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用认证
+//
+// @param request - EnableIdentityProviderAuthnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableIdentityProviderAuthnResponse
+func (client *Client) EnableIdentityProviderAuthnWithOptions(request *EnableIdentityProviderAuthnRequest, runtime *dara.RuntimeOptions) (_result *EnableIdentityProviderAuthnResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdentityProviderId) {
+		query["IdentityProviderId"] = request.IdentityProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableIdentityProviderAuthn"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableIdentityProviderAuthnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用认证
+//
+// @param request - EnableIdentityProviderAuthnRequest
+//
+// @return EnableIdentityProviderAuthnResponse
+func (client *Client) EnableIdentityProviderAuthn(request *EnableIdentityProviderAuthnRequest) (_result *EnableIdentityProviderAuthnResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableIdentityProviderAuthnResponse{}
+	_body, _err := client.EnableIdentityProviderAuthnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enable identity provider synchronization.
 //
 // @param request - EnableIdentityProviderUdPullRequest
@@ -3253,9 +4578,11 @@ func (client *Client) EnableDomainProxyToken(request *EnableDomainProxyTokenRequ
 //
 // @return EnableIdentityProviderUdPullResponse
 func (client *Client) EnableIdentityProviderUdPullWithOptions(request *EnableIdentityProviderUdPullRequest, runtime *dara.RuntimeOptions) (_result *EnableIdentityProviderUdPullResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityProviderId) {
@@ -3317,9 +4644,11 @@ func (client *Client) EnableIdentityProviderUdPull(request *EnableIdentityProvid
 //
 // @return EnableInitDomainAutoRedirectResponse
 func (client *Client) EnableInitDomainAutoRedirectWithOptions(request *EnableInitDomainAutoRedirectRequest, runtime *dara.RuntimeOptions) (_result *EnableInitDomainAutoRedirectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3377,9 +4706,11 @@ func (client *Client) EnableInitDomainAutoRedirect(request *EnableInitDomainAuto
 //
 // @return EnableUserResponse
 func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime *dara.RuntimeOptions) (_result *EnableUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3441,9 +4772,11 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 //
 // @return GetApplicationResponse
 func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3497,6 +4830,76 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
+// 获取应用联邦凭证
+//
+// @param request - GetApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationFederatedCredentialResponse
+func (client *Client) GetApplicationFederatedCredentialWithOptions(request *GetApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用联邦凭证
+//
+// @param request - GetApplicationFederatedCredentialRequest
+//
+// @return GetApplicationFederatedCredentialResponse
+func (client *Client) GetApplicationFederatedCredential(request *GetApplicationFederatedCredentialRequest) (_result *GetApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetApplicationFederatedCredentialResponse{}
+	_body, _err := client.GetApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the permissions of the Developer API feature for an Employee Identity and Access Management (EIAM) application.
 //
 // @param request - GetApplicationGrantScopeRequest
@@ -3505,9 +4908,11 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 //
 // @return GetApplicationGrantScopeResponse
 func (client *Client) GetApplicationGrantScopeWithOptions(request *GetApplicationGrantScopeRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationGrantScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3569,9 +4974,11 @@ func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScope
 //
 // @return GetApplicationProvisioningConfigResponse
 func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetApplicationProvisioningConfigRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationProvisioningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3633,9 +5040,11 @@ func (client *Client) GetApplicationProvisioningConfig(request *GetApplicationPr
 //
 // @return GetApplicationProvisioningScopeResponse
 func (client *Client) GetApplicationProvisioningScopeWithOptions(request *GetApplicationProvisioningScopeRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3697,9 +5106,11 @@ func (client *Client) GetApplicationProvisioningScope(request *GetApplicationPro
 //
 // @return GetApplicationSsoConfigResponse
 func (client *Client) GetApplicationSsoConfigWithOptions(request *GetApplicationSsoConfigRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationSsoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -3753,6 +5164,68 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 
 // Summary:
 //
+// 获取应用模板信息
+//
+// @param request - GetApplicationTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationTemplateResponse
+func (client *Client) GetApplicationTemplateWithOptions(request *GetApplicationTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetApplicationTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationTemplateId) {
+		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApplicationTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApplicationTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用模板信息
+//
+// @param request - GetApplicationTemplateRequest
+//
+// @return GetApplicationTemplateResponse
+func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequest) (_result *GetApplicationTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetApplicationTemplateResponse{}
+	_body, _err := client.GetApplicationTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Conditional Access Policy
 //
 // Description:
@@ -3765,9 +5238,11 @@ func (client *Client) GetApplicationSsoConfig(request *GetApplicationSsoConfigRe
 //
 // @return GetConditionalAccessPolicyResponse
 func (client *Client) GetConditionalAccessPolicyWithOptions(request *GetConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *GetConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConditionalAccessPolicyId) {
@@ -3833,9 +5308,11 @@ func (client *Client) GetConditionalAccessPolicy(request *GetConditionalAccessPo
 //
 // @return GetDomainResponse
 func (client *Client) GetDomainWithOptions(request *GetDomainRequest, runtime *dara.RuntimeOptions) (_result *GetDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -3897,9 +5374,11 @@ func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainRe
 //
 // @return GetDomainDnsChallengeResponse
 func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChallengeRequest, runtime *dara.RuntimeOptions) (_result *GetDomainDnsChallengeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -3953,6 +5432,72 @@ func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeReques
 
 // Summary:
 //
+// 获取联邦凭证提供方
+//
+// @param request - GetFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFederatedCredentialProviderResponse
+func (client *Client) GetFederatedCredentialProviderWithOptions(request *GetFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *GetFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取联邦凭证提供方
+//
+// @param request - GetFederatedCredentialProviderRequest
+//
+// @return GetFederatedCredentialProviderResponse
+func (client *Client) GetFederatedCredentialProvider(request *GetFederatedCredentialProviderRequest) (_result *GetFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetFederatedCredentialProviderResponse{}
+	_body, _err := client.GetFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the forgot password configurations of an Employee Identity and Access Management (EIAM) instance of Identity as a Service (IDaaS).
 //
 // @param request - GetForgetPasswordConfigurationRequest
@@ -3961,9 +5506,11 @@ func (client *Client) GetDomainDnsChallenge(request *GetDomainDnsChallengeReques
 //
 // @return GetForgetPasswordConfigurationResponse
 func (client *Client) GetForgetPasswordConfigurationWithOptions(request *GetForgetPasswordConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetForgetPasswordConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4021,9 +5568,11 @@ func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordC
 //
 // @return GetGroupResponse
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -4085,9 +5634,11 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 //
 // @return GetIdentityProviderResponse
 func (client *Client) GetIdentityProviderWithOptions(request *GetIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityProviderId) {
@@ -4149,9 +5700,11 @@ func (client *Client) GetIdentityProvider(request *GetIdentityProviderRequest) (
 //
 // @return GetIdentityProviderUdPullConfigurationResponse
 func (client *Client) GetIdentityProviderUdPullConfigurationWithOptions(request *GetIdentityProviderUdPullConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetIdentityProviderUdPullConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IdentityProviderId) {
@@ -4213,9 +5766,11 @@ func (client *Client) GetIdentityProviderUdPullConfiguration(request *GetIdentit
 //
 // @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4277,9 +5832,11 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 //
 // @return GetInstanceLicenseResponse
 func (client *Client) GetInstanceLicenseWithOptions(request *GetInstanceLicenseRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceLicenseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4341,9 +5898,11 @@ func (client *Client) GetInstanceLicense(request *GetInstanceLicenseRequest) (_r
 //
 // @return GetNetworkAccessEndpointResponse
 func (client *Client) GetNetworkAccessEndpointWithOptions(request *GetNetworkAccessEndpointRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkAccessEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4397,6 +5956,72 @@ func (client *Client) GetNetworkAccessEndpoint(request *GetNetworkAccessEndpoint
 
 // Summary:
 //
+// 获取网络区域对象
+//
+// @param request - GetNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNetworkZoneResponse
+func (client *Client) GetNetworkZoneWithOptions(request *GetNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *GetNetworkZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkZoneId) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNetworkZone"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNetworkZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络区域对象
+//
+// @param request - GetNetworkZoneRequest
+//
+// @return GetNetworkZoneResponse
+func (client *Client) GetNetworkZone(request *GetNetworkZoneRequest) (_result *GetNetworkZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetNetworkZoneResponse{}
+	_body, _err := client.GetNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about an organizational unit in Identity as a Service (IDaaS) Employee IAM (EIAM).
 //
 // @param request - GetOrganizationalUnitRequest
@@ -4405,9 +6030,11 @@ func (client *Client) GetNetworkAccessEndpoint(request *GetNetworkAccessEndpoint
 //
 // @return GetOrganizationalUnitResponse
 func (client *Client) GetOrganizationalUnitWithOptions(request *GetOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4469,9 +6096,11 @@ func (client *Client) GetOrganizationalUnit(request *GetOrganizationalUnitReques
 //
 // @return GetPasswordComplexityConfigurationResponse
 func (client *Client) GetPasswordComplexityConfigurationWithOptions(request *GetPasswordComplexityConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetPasswordComplexityConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4529,9 +6158,11 @@ func (client *Client) GetPasswordComplexityConfiguration(request *GetPasswordCom
 //
 // @return GetPasswordExpirationConfigurationResponse
 func (client *Client) GetPasswordExpirationConfigurationWithOptions(request *GetPasswordExpirationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetPasswordExpirationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4589,9 +6220,11 @@ func (client *Client) GetPasswordExpirationConfiguration(request *GetPasswordExp
 //
 // @return GetPasswordHistoryConfigurationResponse
 func (client *Client) GetPasswordHistoryConfigurationWithOptions(request *GetPasswordHistoryConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetPasswordHistoryConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4649,9 +6282,11 @@ func (client *Client) GetPasswordHistoryConfiguration(request *GetPasswordHistor
 //
 // @return GetPasswordInitializationConfigurationResponse
 func (client *Client) GetPasswordInitializationConfigurationWithOptions(request *GetPasswordInitializationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetPasswordInitializationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4709,9 +6344,11 @@ func (client *Client) GetPasswordInitializationConfiguration(request *GetPasswor
 //
 // @return GetRootOrganizationalUnitResponse
 func (client *Client) GetRootOrganizationalUnitWithOptions(request *GetRootOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *GetRootOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4769,9 +6406,11 @@ func (client *Client) GetRootOrganizationalUnit(request *GetRootOrganizationalUn
 //
 // @return GetSynchronizationJobResponse
 func (client *Client) GetSynchronizationJobWithOptions(request *GetSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *GetSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4833,9 +6472,11 @@ func (client *Client) GetSynchronizationJob(request *GetSynchronizationJobReques
 //
 // @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -4889,6 +6530,150 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
+// 分页查询应用下的应用账户列表
+//
+// @param request - ListApplicationAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationAccountsResponse
+func (client *Client) ListApplicationAccountsWithOptions(request *ListApplicationAccountsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationAccountsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationAccounts"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询应用下的应用账户列表
+//
+// @param request - ListApplicationAccountsRequest
+//
+// @return ListApplicationAccountsResponse
+func (client *Client) ListApplicationAccounts(request *ListApplicationAccountsRequest) (_result *ListApplicationAccountsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationAccountsResponse{}
+	_body, _err := client.ListApplicationAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前应用下指定用户的所有账号
+//
+// @param request - ListApplicationAccountsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationAccountsForUserResponse
+func (client *Client) ListApplicationAccountsForUserWithOptions(request *ListApplicationAccountsForUserRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationAccountsForUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationAccountsForUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationAccountsForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前应用下指定用户的所有账号
+//
+// @param request - ListApplicationAccountsForUserRequest
+//
+// @return ListApplicationAccountsForUserResponse
+func (client *Client) ListApplicationAccountsForUser(request *ListApplicationAccountsForUserRequest) (_result *ListApplicationAccountsForUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationAccountsForUserResponse{}
+	_body, _err := client.ListApplicationAccountsForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all client keys of an Employee Identity and Access Management (EIAM) application. The returned key secret is not masked. If you want to query the key secret that is masked, call the ObtainApplicationClientSecret operation.
 //
 // @param request - ListApplicationClientSecretsRequest
@@ -4897,9 +6682,11 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 //
 // @return ListApplicationClientSecretsResponse
 func (client *Client) ListApplicationClientSecretsWithOptions(request *ListApplicationClientSecretsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationClientSecretsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -4953,6 +6740,302 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 
 // Summary:
 //
+// 查询应用联邦凭证列表
+//
+// @param request - ListApplicationFederatedCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationFederatedCredentialsResponse
+func (client *Client) ListApplicationFederatedCredentialsWithOptions(request *ListApplicationFederatedCredentialsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationFederatedCredentialsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialType) {
+		query["ApplicationFederatedCredentialType"] = request.ApplicationFederatedCredentialType
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationFederatedCredentials"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationFederatedCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用联邦凭证列表
+//
+// @param request - ListApplicationFederatedCredentialsRequest
+//
+// @return ListApplicationFederatedCredentialsResponse
+func (client *Client) ListApplicationFederatedCredentials(request *ListApplicationFederatedCredentialsRequest) (_result *ListApplicationFederatedCredentialsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationFederatedCredentialsResponse{}
+	_body, _err := client.ListApplicationFederatedCredentialsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据联邦凭证提供方查询应用联邦凭证列表
+//
+// @param request - ListApplicationFederatedCredentialsForProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationFederatedCredentialsForProviderResponse
+func (client *Client) ListApplicationFederatedCredentialsForProviderWithOptions(request *ListApplicationFederatedCredentialsForProviderRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationFederatedCredentialsForProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationFederatedCredentialsForProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationFederatedCredentialsForProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据联邦凭证提供方查询应用联邦凭证列表
+//
+// @param request - ListApplicationFederatedCredentialsForProviderRequest
+//
+// @return ListApplicationFederatedCredentialsForProviderResponse
+func (client *Client) ListApplicationFederatedCredentialsForProvider(request *ListApplicationFederatedCredentialsForProviderRequest) (_result *ListApplicationFederatedCredentialsForProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationFederatedCredentialsForProviderResponse{}
+	_body, _err := client.ListApplicationFederatedCredentialsForProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用支持账户同步类型列表
+//
+// @param request - ListApplicationSupportedProvisionProtocolTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationSupportedProvisionProtocolTypesResponse
+func (client *Client) ListApplicationSupportedProvisionProtocolTypesWithOptions(request *ListApplicationSupportedProvisionProtocolTypesRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationSupportedProvisionProtocolTypesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationSupportedProvisionProtocolTypes"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationSupportedProvisionProtocolTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用支持账户同步类型列表
+//
+// @param request - ListApplicationSupportedProvisionProtocolTypesRequest
+//
+// @return ListApplicationSupportedProvisionProtocolTypesResponse
+func (client *Client) ListApplicationSupportedProvisionProtocolTypes(request *ListApplicationSupportedProvisionProtocolTypesRequest) (_result *ListApplicationSupportedProvisionProtocolTypesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationSupportedProvisionProtocolTypesResponse{}
+	_body, _err := client.ListApplicationSupportedProvisionProtocolTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用Token
+//
+// @param request - ListApplicationTokensRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationTokensResponse
+func (client *Client) ListApplicationTokensWithOptions(request *ListApplicationTokensRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationTokensResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenType) {
+		query["ApplicationTokenType"] = request.ApplicationTokenType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationTokens"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationTokensResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用Token
+//
+// @param request - ListApplicationTokensRequest
+//
+// @return ListApplicationTokensResponse
+func (client *Client) ListApplicationTokens(request *ListApplicationTokensRequest) (_result *ListApplicationTokensResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationTokensResponse{}
+	_body, _err := client.ListApplicationTokensWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about one or multiple Employee Identity and Access Management (EIAM) applications by page.
 //
 // @param request - ListApplicationsRequest
@@ -4961,9 +7044,11 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 //
 // @return ListApplicationsResponse
 func (client *Client) ListApplicationsWithOptions(request *ListApplicationsRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationIds) {
@@ -5049,6 +7134,236 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
+// 查询一个EIAM组可访问的应用列表
+//
+// @param request - ListApplicationsForGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForGroupResponse
+func (client *Client) ListApplicationsForGroupWithOptions(request *ListApplicationsForGroupRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationIds) {
+		query["ApplicationIds"] = request.ApplicationIds
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationsForGroup"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationsForGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一个EIAM组可访问的应用列表
+//
+// @param request - ListApplicationsForGroupRequest
+//
+// @return ListApplicationsForGroupResponse
+func (client *Client) ListApplicationsForGroup(request *ListApplicationsForGroupRequest) (_result *ListApplicationsForGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationsForGroupResponse{}
+	_body, _err := client.ListApplicationsForGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络访问端点下的App信息。
+//
+// @param request - ListApplicationsForNetworkAccessEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForNetworkAccessEndpointResponse
+func (client *Client) ListApplicationsForNetworkAccessEndpointWithOptions(request *ListApplicationsForNetworkAccessEndpointRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForNetworkAccessEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationsForNetworkAccessEndpoint"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationsForNetworkAccessEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络访问端点下的App信息。
+//
+// @param request - ListApplicationsForNetworkAccessEndpointRequest
+//
+// @return ListApplicationsForNetworkAccessEndpointResponse
+func (client *Client) ListApplicationsForNetworkAccessEndpoint(request *ListApplicationsForNetworkAccessEndpointRequest) (_result *ListApplicationsForNetworkAccessEndpointResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationsForNetworkAccessEndpointResponse{}
+	_body, _err := client.ListApplicationsForNetworkAccessEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取NetworkZone关联的应用列表
+//
+// @param request - ListApplicationsForNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForNetworkZoneResponse
+func (client *Client) ListApplicationsForNetworkZoneWithOptions(request *ListApplicationsForNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForNetworkZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NetworkZoneId) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApplicationsForNetworkZone"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApplicationsForNetworkZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取NetworkZone关联的应用列表
+//
+// @param request - ListApplicationsForNetworkZoneRequest
+//
+// @return ListApplicationsForNetworkZoneResponse
+func (client *Client) ListApplicationsForNetworkZone(request *ListApplicationsForNetworkZoneRequest) (_result *ListApplicationsForNetworkZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApplicationsForNetworkZoneResponse{}
+	_body, _err := client.ListApplicationsForNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the applications that an Employee Identity and Access Management (EIAM) organization can access. The return result includes the IDs of the applications. If you want to obtain the details of the applications, call the GetApplication operation.
 //
 // Description:
@@ -5061,9 +7376,11 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 //
 // @return ListApplicationsForOrganizationalUnitResponse
 func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *ListApplicationsForOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationIds) {
@@ -5141,9 +7458,11 @@ func (client *Client) ListApplicationsForOrganizationalUnit(request *ListApplica
 //
 // @return ListApplicationsForUserResponse
 func (client *Client) ListApplicationsForUserWithOptions(request *ListApplicationsForUserRequest, runtime *dara.RuntimeOptions) (_result *ListApplicationsForUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationIds) {
@@ -5225,9 +7544,11 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 //
 // @return ListConditionalAccessPoliciesResponse
 func (client *Client) ListConditionalAccessPoliciesWithOptions(request *ListConditionalAccessPoliciesRequest, runtime *dara.RuntimeOptions) (_result *ListConditionalAccessPoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5293,6 +7614,72 @@ func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAcce
 
 // Summary:
 //
+// 获取应用关联的条件访问策略列表
+//
+// @param request - ListConditionalAccessPoliciesForApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConditionalAccessPoliciesForApplicationResponse
+func (client *Client) ListConditionalAccessPoliciesForApplicationWithOptions(request *ListConditionalAccessPoliciesForApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListConditionalAccessPoliciesForApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConditionalAccessPoliciesForApplication"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConditionalAccessPoliciesForApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用关联的条件访问策略列表
+//
+// @param request - ListConditionalAccessPoliciesForApplicationRequest
+//
+// @return ListConditionalAccessPoliciesForApplicationResponse
+func (client *Client) ListConditionalAccessPoliciesForApplication(request *ListConditionalAccessPoliciesForApplicationRequest) (_result *ListConditionalAccessPoliciesForApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListConditionalAccessPoliciesForApplicationResponse{}
+	_body, _err := client.ListConditionalAccessPoliciesForApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # List Conditional Access Policies Associated with Network Areas
 //
 // Description:
@@ -5305,9 +7692,11 @@ func (client *Client) ListConditionalAccessPolicies(request *ListConditionalAcce
 //
 // @return ListConditionalAccessPoliciesForNetworkZoneResponse
 func (client *Client) ListConditionalAccessPoliciesForNetworkZoneWithOptions(request *ListConditionalAccessPoliciesForNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *ListConditionalAccessPoliciesForNetworkZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5365,6 +7754,72 @@ func (client *Client) ListConditionalAccessPoliciesForNetworkZone(request *ListC
 
 // Summary:
 //
+// 获取用户关联的条件访问策略列表
+//
+// @param request - ListConditionalAccessPoliciesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConditionalAccessPoliciesForUserResponse
+func (client *Client) ListConditionalAccessPoliciesForUserWithOptions(request *ListConditionalAccessPoliciesForUserRequest, runtime *dara.RuntimeOptions) (_result *ListConditionalAccessPoliciesForUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConditionalAccessPoliciesForUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConditionalAccessPoliciesForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户关联的条件访问策略列表
+//
+// @param request - ListConditionalAccessPoliciesForUserRequest
+//
+// @return ListConditionalAccessPoliciesForUserResponse
+func (client *Client) ListConditionalAccessPoliciesForUser(request *ListConditionalAccessPoliciesForUserRequest) (_result *ListConditionalAccessPoliciesForUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListConditionalAccessPoliciesForUserResponse{}
+	_body, _err := client.ListConditionalAccessPoliciesForUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the proxy tokens of a domain name of an Employee Identity and Access Management (EIAM) instance.
 //
 // @param request - ListDomainProxyTokensRequest
@@ -5373,9 +7828,11 @@ func (client *Client) ListConditionalAccessPoliciesForNetworkZone(request *ListC
 //
 // @return ListDomainProxyTokensResponse
 func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyTokensRequest, runtime *dara.RuntimeOptions) (_result *ListDomainProxyTokensResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -5437,11 +7894,17 @@ func (client *Client) ListDomainProxyTokens(request *ListDomainProxyTokensReques
 //
 // @return ListDomainsResponse
 func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtime *dara.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrandId) {
+		query["BrandId"] = request.BrandId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -5497,9 +7960,11 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 //
 // @return ListEiamInstancesResponse
 func (client *Client) ListEiamInstancesWithOptions(request *ListEiamInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListEiamInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -5600,6 +8065,88 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 
 // Summary:
 //
+// 查询联邦凭证提供方列表
+//
+// @param request - ListFederatedCredentialProvidersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFederatedCredentialProvidersResponse
+func (client *Client) ListFederatedCredentialProvidersWithOptions(request *ListFederatedCredentialProvidersRequest, runtime *dara.RuntimeOptions) (_result *ListFederatedCredentialProvidersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderName) {
+		query["FederatedCredentialProviderName"] = request.FederatedCredentialProviderName
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderType) {
+		query["FederatedCredentialProviderType"] = request.FederatedCredentialProviderType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFederatedCredentialProviders"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFederatedCredentialProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询联邦凭证提供方列表
+//
+// @param request - ListFederatedCredentialProvidersRequest
+//
+// @return ListFederatedCredentialProvidersResponse
+func (client *Client) ListFederatedCredentialProviders(request *ListFederatedCredentialProvidersRequest) (_result *ListFederatedCredentialProvidersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListFederatedCredentialProvidersResponse{}
+	_body, _err := client.ListFederatedCredentialProvidersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of account groups in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - ListGroupsRequest
@@ -5608,9 +8155,11 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 //
 // @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupExternalId) {
@@ -5692,9 +8241,11 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 //
 // @return ListGroupsForApplicationResponse
 func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsForApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsForApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -5768,9 +8319,11 @@ func (client *Client) ListGroupsForApplication(request *ListGroupsForApplication
 //
 // @return ListGroupsForUserResponse
 func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserRequest, runtime *dara.RuntimeOptions) (_result *ListGroupsForUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5840,9 +8393,11 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 //
 // @return ListIdentityProvidersResponse
 func (client *Client) ListIdentityProvidersWithOptions(request *ListIdentityProvidersRequest, runtime *dara.RuntimeOptions) (_result *ListIdentityProvidersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5900,6 +8455,80 @@ func (client *Client) ListIdentityProviders(request *ListIdentityProvidersReques
 
 // Summary:
 //
+// 获取网络端点下的IdP信息。
+//
+// @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdentityProvidersForNetworkAccessEndpointResponse
+func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithOptions(request *ListIdentityProvidersForNetworkAccessEndpointRequest, runtime *dara.RuntimeOptions) (_result *ListIdentityProvidersForNetworkAccessEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIdentityProvidersForNetworkAccessEndpoint"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIdentityProvidersForNetworkAccessEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络端点下的IdP信息。
+//
+// @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
+//
+// @return ListIdentityProvidersForNetworkAccessEndpointResponse
+func (client *Client) ListIdentityProvidersForNetworkAccessEndpoint(request *ListIdentityProvidersForNetworkAccessEndpointRequest) (_result *ListIdentityProvidersForNetworkAccessEndpointResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListIdentityProvidersForNetworkAccessEndpointResponse{}
+	_body, _err := client.ListIdentityProvidersForNetworkAccessEndpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information of one or more Enterprise Identity and Access Management (EIAM) instances of Identity as a Service (IDaaS).
 //
 // @param request - ListInstancesRequest
@@ -5908,9 +8537,11 @@ func (client *Client) ListIdentityProviders(request *ListIdentityProvidersReques
 //
 // @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -6027,9 +8658,11 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *List
 //
 // @return ListNetworkAccessEndpointAvailableZonesResponse
 func (client *Client) ListNetworkAccessEndpointAvailableZonesWithOptions(request *ListNetworkAccessEndpointAvailableZonesRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkAccessEndpointAvailableZonesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NaeRegionId) {
@@ -6087,9 +8720,11 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 //
 // @return ListNetworkAccessEndpointsResponse
 func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetworkAccessEndpointsRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkAccessEndpointsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6171,9 +8806,11 @@ func (client *Client) ListNetworkAccessEndpoints(request *ListNetworkAccessEndpo
 //
 // @return ListNetworkAccessPathsResponse
 func (client *Client) ListNetworkAccessPathsWithOptions(request *ListNetworkAccessPathsRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkAccessPathsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6227,6 +8864,84 @@ func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequ
 
 // Summary:
 //
+// 网络区域对象列表
+//
+// @param request - ListNetworkZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkZonesResponse
+func (client *Client) ListNetworkZonesWithOptions(request *ListNetworkZonesRequest, runtime *dara.RuntimeOptions) (_result *ListNetworkZonesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NetworkZoneIds) {
+		query["NetworkZoneIds"] = request.NetworkZoneIds
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PreviousToken) {
+		query["PreviousToken"] = request.PreviousToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNetworkZones"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNetworkZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 网络区域对象列表
+//
+// @param request - ListNetworkZonesRequest
+//
+// @return ListNetworkZonesResponse
+func (client *Client) ListNetworkZones(request *ListNetworkZonesRequest) (_result *ListNetworkZonesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListNetworkZonesResponse{}
+	_body, _err := client.ListNetworkZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all parent organizations of an Employee Identity and Access Management (EIAM) organization.
 //
 // @param request - ListOrganizationalUnitParentsRequest
@@ -6235,9 +8950,11 @@ func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequ
 //
 // @return ListOrganizationalUnitParentsResponse
 func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrganizationalUnitParentsRequest, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitParentsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6299,9 +9016,11 @@ func (client *Client) ListOrganizationalUnitParents(request *ListOrganizationalU
 //
 // @return ListOrganizationalUnitsResponse
 func (client *Client) ListOrganizationalUnitsWithOptions(request *ListOrganizationalUnitsRequest, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6383,9 +9102,11 @@ func (client *Client) ListOrganizationalUnits(request *ListOrganizationalUnitsRe
 //
 // @return ListOrganizationalUnitsForApplicationResponse
 func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *ListOrganizationalUnitsForApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitsForApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -6506,9 +9227,11 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 //
 // @return ListSynchronizationJobsResponse
 func (client *Client) ListSynchronizationJobsWithOptions(request *ListSynchronizationJobsRequest, runtime *dara.RuntimeOptions) (_result *ListSynchronizationJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -6610,9 +9333,11 @@ func (client *Client) ListSynchronizationJobs(request *ListSynchronizationJobsRe
 //
 // @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DisplayNameStartsWith) {
@@ -6722,9 +9447,11 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 //
 // @return ListUsersForApplicationResponse
 func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForApplicationRequest, runtime *dara.RuntimeOptions) (_result *ListUsersForApplicationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -6798,9 +9525,11 @@ func (client *Client) ListUsersForApplication(request *ListUsersForApplicationRe
 //
 // @return ListUsersForGroupResponse
 func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupRequest, runtime *dara.RuntimeOptions) (_result *ListUsersForGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -6874,9 +9603,11 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 //
 // @return ObtainApplicationClientSecretResponse
 func (client *Client) ObtainApplicationClientSecretWithOptions(request *ObtainApplicationClientSecretRequest, runtime *dara.RuntimeOptions) (_result *ObtainApplicationClientSecretResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -6934,6 +9665,76 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 
 // Summary:
 //
+// 查询指定应用Token
+//
+// @param request - ObtainApplicationTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainApplicationTokenResponse
+func (client *Client) ObtainApplicationTokenWithOptions(request *ObtainApplicationTokenRequest, runtime *dara.RuntimeOptions) (_result *ObtainApplicationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenId) {
+		query["ApplicationTokenId"] = request.ApplicationTokenId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainApplicationToken"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainApplicationTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定应用Token
+//
+// @param request - ObtainApplicationTokenRequest
+//
+// @return ObtainApplicationTokenResponse
+func (client *Client) ObtainApplicationToken(request *ObtainApplicationTokenRequest) (_result *ObtainApplicationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ObtainApplicationTokenResponse{}
+	_body, _err := client.ObtainApplicationTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a proxy token of a domain name of an Employee Identity and Access Management (EIAM) instance.
 //
 // @param request - ObtainDomainProxyTokenRequest
@@ -6942,9 +9743,11 @@ func (client *Client) ObtainApplicationClientSecret(request *ObtainApplicationCl
 //
 // @return ObtainDomainProxyTokenResponse
 func (client *Client) ObtainDomainProxyTokenWithOptions(request *ObtainDomainProxyTokenRequest, runtime *dara.RuntimeOptions) (_result *ObtainDomainProxyTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -7002,6 +9805,80 @@ func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequ
 
 // Summary:
 //
+// 删除一个当前应用下的指定员工的应用账号
+//
+// @param request - RemoveApplicationAccountFromUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveApplicationAccountFromUserResponse
+func (client *Client) RemoveApplicationAccountFromUserWithOptions(request *RemoveApplicationAccountFromUserRequest, runtime *dara.RuntimeOptions) (_result *RemoveApplicationAccountFromUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationAccountId) {
+		query["ApplicationAccountId"] = request.ApplicationAccountId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveApplicationAccountFromUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveApplicationAccountFromUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一个当前应用下的指定员工的应用账号
+//
+// @param request - RemoveApplicationAccountFromUserRequest
+//
+// @return RemoveApplicationAccountFromUserResponse
+func (client *Client) RemoveApplicationAccountFromUser(request *RemoveApplicationAccountFromUserRequest) (_result *RemoveApplicationAccountFromUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveApplicationAccountFromUserResponse{}
+	_body, _err := client.RemoveApplicationAccountFromUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Removes an Employee Identity and Access Management (EIAM) account from multiple EIAM organizations of Identity as a Service (IDaaS). You cannot remove an account from a primary organization.
 //
 // @param request - RemoveUserFromOrganizationalUnitsRequest
@@ -7010,9 +9887,11 @@ func (client *Client) ObtainDomainProxyToken(request *ObtainDomainProxyTokenRequ
 //
 // @return RemoveUserFromOrganizationalUnitsResponse
 func (client *Client) RemoveUserFromOrganizationalUnitsWithOptions(request *RemoveUserFromOrganizationalUnitsRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserFromOrganizationalUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7078,9 +9957,11 @@ func (client *Client) RemoveUserFromOrganizationalUnits(request *RemoveUserFromO
 //
 // @return RemoveUsersFromGroupResponse
 func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGroupRequest, runtime *dara.RuntimeOptions) (_result *RemoveUsersFromGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupId) {
@@ -7146,9 +10027,11 @@ func (client *Client) RemoveUsersFromGroup(request *RemoveUsersFromGroupRequest)
 //
 // @return RevokeApplicationFromGroupsResponse
 func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeApplicationFromGroupsRequest, runtime *dara.RuntimeOptions) (_result *RevokeApplicationFromGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7214,9 +10097,11 @@ func (client *Client) RevokeApplicationFromGroups(request *RevokeApplicationFrom
 //
 // @return RevokeApplicationFromOrganizationalUnitsResponse
 func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(request *RevokeApplicationFromOrganizationalUnitsRequest, runtime *dara.RuntimeOptions) (_result *RevokeApplicationFromOrganizationalUnitsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7282,9 +10167,11 @@ func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeAp
 //
 // @return RevokeApplicationFromUsersResponse
 func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeApplicationFromUsersRequest, runtime *dara.RuntimeOptions) (_result *RevokeApplicationFromUsersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7350,9 +10237,11 @@ func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromU
 //
 // @return RunSynchronizationJobResponse
 func (client *Client) RunSynchronizationJobWithOptions(request *RunSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *RunSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -7434,9 +10323,11 @@ func (client *Client) RunSynchronizationJob(request *RunSynchronizationJobReques
 //
 // @return SetApplicationGrantScopeResponse
 func (client *Client) SetApplicationGrantScopeWithOptions(request *SetApplicationGrantScopeRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationGrantScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7502,9 +10393,11 @@ func (client *Client) SetApplicationGrantScope(request *SetApplicationGrantScope
 //
 // @return SetApplicationProvisioningConfigResponse
 func (client *Client) SetApplicationProvisioningConfigWithOptions(request *SetApplicationProvisioningConfigRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationProvisioningConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7586,9 +10479,11 @@ func (client *Client) SetApplicationProvisioningConfig(request *SetApplicationPr
 //
 // @return SetApplicationProvisioningScopeResponse
 func (client *Client) SetApplicationProvisioningScopeWithOptions(request *SetApplicationProvisioningScopeRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationProvisioningScopeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7662,9 +10557,11 @@ func (client *Client) SetApplicationProvisioningScope(request *SetApplicationPro
 //
 // @return SetApplicationSsoConfigResponse
 func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplicationSsoConfigRequest, runtime *dara.RuntimeOptions) (_result *SetApplicationSsoConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -7750,9 +10647,11 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 //
 // @return SetDefaultDomainResponse
 func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainRequest, runtime *dara.RuntimeOptions) (_result *SetDefaultDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainId) {
@@ -7814,9 +10713,11 @@ func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_resul
 //
 // @return SetForgetPasswordConfigurationResponse
 func (client *Client) SetForgetPasswordConfigurationWithOptions(request *SetForgetPasswordConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetForgetPasswordConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthenticationChannels) {
@@ -7882,9 +10783,11 @@ func (client *Client) SetForgetPasswordConfiguration(request *SetForgetPasswordC
 //
 // @return SetIdentityProviderUdPullConfigurationResponse
 func (client *Client) SetIdentityProviderUdPullConfigurationWithOptions(request *SetIdentityProviderUdPullConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetIdentityProviderUdPullConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupSyncStatus) {
@@ -7974,9 +10877,11 @@ func (client *Client) SetIdentityProviderUdPullConfiguration(request *SetIdentit
 //
 // @return SetPasswordComplexityConfigurationResponse
 func (client *Client) SetPasswordComplexityConfigurationWithOptions(request *SetPasswordComplexityConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetPasswordComplexityConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8042,9 +10947,11 @@ func (client *Client) SetPasswordComplexityConfiguration(request *SetPasswordCom
 //
 // @return SetPasswordExpirationConfigurationResponse
 func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *SetPasswordExpirationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetPasswordExpirationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EffectiveAuthenticationSourceIds) {
@@ -8134,9 +11041,11 @@ func (client *Client) SetPasswordExpirationConfiguration(request *SetPasswordExp
 //
 // @return SetPasswordHistoryConfigurationResponse
 func (client *Client) SetPasswordHistoryConfigurationWithOptions(request *SetPasswordHistoryConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetPasswordHistoryConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8202,9 +11111,11 @@ func (client *Client) SetPasswordHistoryConfiguration(request *SetPasswordHistor
 //
 // @return SetPasswordInitializationConfigurationResponse
 func (client *Client) SetPasswordInitializationConfigurationWithOptions(request *SetPasswordInitializationConfigurationRequest, runtime *dara.RuntimeOptions) (_result *SetPasswordInitializationConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8278,9 +11189,11 @@ func (client *Client) SetPasswordInitializationConfiguration(request *SetPasswor
 //
 // @return SetUserPrimaryOrganizationalUnitResponse
 func (client *Client) SetUserPrimaryOrganizationalUnitWithOptions(request *SetUserPrimaryOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *SetUserPrimaryOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8346,9 +11259,11 @@ func (client *Client) SetUserPrimaryOrganizationalUnit(request *SetUserPrimaryOr
 //
 // @return UnlockUserResponse
 func (client *Client) UnlockUserWithOptions(request *UnlockUserRequest, runtime *dara.RuntimeOptions) (_result *UnlockUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8410,9 +11325,11 @@ func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUse
 //
 // @return UpdateApplicationAuthorizationTypeResponse
 func (client *Client) UpdateApplicationAuthorizationTypeWithOptions(request *UpdateApplicationAuthorizationTypeRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationAuthorizationTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -8478,9 +11395,11 @@ func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicat
 //
 // @return UpdateApplicationClientSecretExpirationTimeResponse
 func (client *Client) UpdateApplicationClientSecretExpirationTimeWithOptions(request *UpdateApplicationClientSecretExpirationTimeRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationClientSecretExpirationTimeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -8550,9 +11469,11 @@ func (client *Client) UpdateApplicationClientSecretExpirationTime(request *Updat
 //
 // @return UpdateApplicationDescriptionResponse
 func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApplicationDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
@@ -8610,6 +11531,314 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 
 // Summary:
 //
+// 更新应用联邦凭证
+//
+// @param request - UpdateApplicationFederatedCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationFederatedCredentialResponse
+func (client *Client) UpdateApplicationFederatedCredentialWithOptions(request *UpdateApplicationFederatedCredentialRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationFederatedCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.AttributeMappings) {
+		query["AttributeMappings"] = request.AttributeMappings
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.VerificationCondition) {
+		query["VerificationCondition"] = request.VerificationCondition
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationFederatedCredential"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationFederatedCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用联邦凭证
+//
+// @param request - UpdateApplicationFederatedCredentialRequest
+//
+// @return UpdateApplicationFederatedCredentialResponse
+func (client *Client) UpdateApplicationFederatedCredential(request *UpdateApplicationFederatedCredentialRequest) (_result *UpdateApplicationFederatedCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationFederatedCredentialResponse{}
+	_body, _err := client.UpdateApplicationFederatedCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用联邦凭证描述
+//
+// @param request - UpdateApplicationFederatedCredentialDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationFederatedCredentialDescriptionResponse
+func (client *Client) UpdateApplicationFederatedCredentialDescriptionWithOptions(request *UpdateApplicationFederatedCredentialDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationFederatedCredentialDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationFederatedCredentialId) {
+		query["ApplicationFederatedCredentialId"] = request.ApplicationFederatedCredentialId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationFederatedCredentialDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationFederatedCredentialDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用联邦凭证描述
+//
+// @param request - UpdateApplicationFederatedCredentialDescriptionRequest
+//
+// @return UpdateApplicationFederatedCredentialDescriptionResponse
+func (client *Client) UpdateApplicationFederatedCredentialDescription(request *UpdateApplicationFederatedCredentialDescriptionRequest) (_result *UpdateApplicationFederatedCredentialDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationFederatedCredentialDescriptionResponse{}
+	_body, _err := client.UpdateApplicationFederatedCredentialDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用基本信息
+//
+// @param request - UpdateApplicationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationInfoResponse
+func (client *Client) UpdateApplicationInfoWithOptions(request *UpdateApplicationInfoRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.ApplicationVisibility) {
+		query["ApplicationVisibility"] = request.ApplicationVisibility
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LogoUrl) {
+		query["LogoUrl"] = request.LogoUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationInfo"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用基本信息
+//
+// @param request - UpdateApplicationInfoRequest
+//
+// @return UpdateApplicationInfoResponse
+func (client *Client) UpdateApplicationInfo(request *UpdateApplicationInfoRequest) (_result *UpdateApplicationInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationInfoResponse{}
+	_body, _err := client.UpdateApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新ApplicationToken过期时间
+//
+// @param request - UpdateApplicationTokenExpirationTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationTokenExpirationTimeResponse
+func (client *Client) UpdateApplicationTokenExpirationTimeWithOptions(request *UpdateApplicationTokenExpirationTimeRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationTokenExpirationTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationTokenId) {
+		query["ApplicationTokenId"] = request.ApplicationTokenId
+	}
+
+	if !dara.IsNil(request.ExpirationTime) {
+		query["ExpirationTime"] = request.ExpirationTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationTokenExpirationTime"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationTokenExpirationTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新ApplicationToken过期时间
+//
+// @param request - UpdateApplicationTokenExpirationTimeRequest
+//
+// @return UpdateApplicationTokenExpirationTimeResponse
+func (client *Client) UpdateApplicationTokenExpirationTime(request *UpdateApplicationTokenExpirationTimeRequest) (_result *UpdateApplicationTokenExpirationTimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationTokenExpirationTimeResponse{}
+	_body, _err := client.UpdateApplicationTokenExpirationTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Conditional Access Policy
 //
 // Description:
@@ -8622,9 +11851,11 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 //
 // @return UpdateConditionalAccessPolicyResponse
 func (client *Client) UpdateConditionalAccessPolicyWithOptions(request *UpdateConditionalAccessPolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateConditionalAccessPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8718,9 +11949,11 @@ func (client *Client) UpdateConditionalAccessPolicy(request *UpdateConditionalAc
 //
 // @return UpdateConditionalAccessPolicyDescriptionResponse
 func (client *Client) UpdateConditionalAccessPolicyDescriptionWithOptions(request *UpdateConditionalAccessPolicyDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateConditionalAccessPolicyDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -8786,6 +12019,232 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 
 // Summary:
 //
+// 更新域名备案号。
+//
+// @param request - UpdateDomainIcpNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDomainIcpNumberResponse
+func (client *Client) UpdateDomainIcpNumberWithOptions(request *UpdateDomainIcpNumberRequest, runtime *dara.RuntimeOptions) (_result *UpdateDomainIcpNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainId) {
+		query["DomainId"] = request.DomainId
+	}
+
+	if !dara.IsNil(request.IcpNumber) {
+		query["IcpNumber"] = request.IcpNumber
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDomainIcpNumber"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDomainIcpNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新域名备案号。
+//
+// @param request - UpdateDomainIcpNumberRequest
+//
+// @return UpdateDomainIcpNumberResponse
+func (client *Client) UpdateDomainIcpNumber(request *UpdateDomainIcpNumberRequest) (_result *UpdateDomainIcpNumberResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDomainIcpNumberResponse{}
+	_body, _err := client.UpdateDomainIcpNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新联邦凭证提供方
+//
+// @param request - UpdateFederatedCredentialProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFederatedCredentialProviderResponse
+func (client *Client) UpdateFederatedCredentialProviderWithOptions(request *UpdateFederatedCredentialProviderRequest, runtime *dara.RuntimeOptions) (_result *UpdateFederatedCredentialProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderName) {
+		query["FederatedCredentialProviderName"] = request.FederatedCredentialProviderName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkAccessEndpointId) {
+		query["NetworkAccessEndpointId"] = request.NetworkAccessEndpointId
+	}
+
+	if !dara.IsNil(request.OidcProviderConfig) {
+		query["OidcProviderConfig"] = request.OidcProviderConfig
+	}
+
+	if !dara.IsNil(request.Pkcs7ProviderConfig) {
+		query["Pkcs7ProviderConfig"] = request.Pkcs7ProviderConfig
+	}
+
+	if !dara.IsNil(request.PrivateCaProviderConfig) {
+		query["PrivateCaProviderConfig"] = request.PrivateCaProviderConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFederatedCredentialProvider"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFederatedCredentialProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新联邦凭证提供方
+//
+// @param request - UpdateFederatedCredentialProviderRequest
+//
+// @return UpdateFederatedCredentialProviderResponse
+func (client *Client) UpdateFederatedCredentialProvider(request *UpdateFederatedCredentialProviderRequest) (_result *UpdateFederatedCredentialProviderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFederatedCredentialProviderResponse{}
+	_body, _err := client.UpdateFederatedCredentialProviderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新联邦凭证提供方描述
+//
+// @param request - UpdateFederatedCredentialProviderDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFederatedCredentialProviderDescriptionResponse
+func (client *Client) UpdateFederatedCredentialProviderDescriptionWithOptions(request *UpdateFederatedCredentialProviderDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateFederatedCredentialProviderDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FederatedCredentialProviderId) {
+		query["FederatedCredentialProviderId"] = request.FederatedCredentialProviderId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFederatedCredentialProviderDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFederatedCredentialProviderDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新联邦凭证提供方描述
+//
+// @param request - UpdateFederatedCredentialProviderDescriptionRequest
+//
+// @return UpdateFederatedCredentialProviderDescriptionResponse
+func (client *Client) UpdateFederatedCredentialProviderDescription(request *UpdateFederatedCredentialProviderDescriptionRequest) (_result *UpdateFederatedCredentialProviderDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateFederatedCredentialProviderDescriptionResponse{}
+	_body, _err := client.UpdateFederatedCredentialProviderDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the information about an account group in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM). If the information is empty, the information is not updated by default.
 //
 // @param request - UpdateGroupRequest
@@ -8794,9 +12253,11 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 //
 // @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupExternalId) {
@@ -8866,9 +12327,11 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 //
 // @return UpdateGroupDescriptionResponse
 func (client *Client) UpdateGroupDescriptionWithOptions(request *UpdateGroupDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateGroupDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -8934,9 +12397,11 @@ func (client *Client) UpdateGroupDescription(request *UpdateGroupDescriptionRequ
 //
 // @return UpdateIdentityProviderResponse
 func (client *Client) UpdateIdentityProviderWithOptions(request *UpdateIdentityProviderRequest, runtime *dara.RuntimeOptions) (_result *UpdateIdentityProviderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
@@ -9034,9 +12499,11 @@ func (client *Client) UpdateIdentityProvider(request *UpdateIdentityProviderRequ
 //
 // @return UpdateInstanceDescriptionResponse
 func (client *Client) UpdateInstanceDescriptionWithOptions(request *UpdateInstanceDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -9098,9 +12565,11 @@ func (client *Client) UpdateInstanceDescription(request *UpdateInstanceDescripti
 //
 // @return UpdateNetworkAccessEndpointNameResponse
 func (client *Client) UpdateNetworkAccessEndpointNameWithOptions(request *UpdateNetworkAccessEndpointNameRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkAccessEndpointNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9158,6 +12627,166 @@ func (client *Client) UpdateNetworkAccessEndpointName(request *UpdateNetworkAcce
 
 // Summary:
 //
+// 更新网络区域对象
+//
+// @param request - UpdateNetworkZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNetworkZoneResponse
+func (client *Client) UpdateNetworkZoneWithOptions(request *UpdateNetworkZoneRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Ipv4Cidrs) {
+		query["Ipv4Cidrs"] = request.Ipv4Cidrs
+	}
+
+	if !dara.IsNil(request.Ipv6Cidrs) {
+		query["Ipv6Cidrs"] = request.Ipv6Cidrs
+	}
+
+	if !dara.IsNil(request.NetworkZoneId) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	if !dara.IsNil(request.NetworkZoneName) {
+		query["NetworkZoneName"] = request.NetworkZoneName
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNetworkZone"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNetworkZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网络区域对象
+//
+// @param request - UpdateNetworkZoneRequest
+//
+// @return UpdateNetworkZoneResponse
+func (client *Client) UpdateNetworkZone(request *UpdateNetworkZoneRequest) (_result *UpdateNetworkZoneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNetworkZoneResponse{}
+	_body, _err := client.UpdateNetworkZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网络区域对象描述
+//
+// @param request - UpdateNetworkZoneDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNetworkZoneDescriptionResponse
+func (client *Client) UpdateNetworkZoneDescriptionWithOptions(request *UpdateNetworkZoneDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateNetworkZoneDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NetworkZoneId) {
+		query["NetworkZoneId"] = request.NetworkZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNetworkZoneDescription"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNetworkZoneDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网络区域对象描述
+//
+// @param request - UpdateNetworkZoneDescriptionRequest
+//
+// @return UpdateNetworkZoneDescriptionResponse
+func (client *Client) UpdateNetworkZoneDescription(request *UpdateNetworkZoneDescriptionRequest) (_result *UpdateNetworkZoneDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNetworkZoneDescriptionResponse{}
+	_body, _err := client.UpdateNetworkZoneDescriptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the basic information about an Employee Identity and Access Management (EIAM) organization. The basic information about the organization is not updated by default if no parameter is specified.
 //
 // @param request - UpdateOrganizationalUnitRequest
@@ -9166,9 +12795,11 @@ func (client *Client) UpdateNetworkAccessEndpointName(request *UpdateNetworkAcce
 //
 // @return UpdateOrganizationalUnitResponse
 func (client *Client) UpdateOrganizationalUnitWithOptions(request *UpdateOrganizationalUnitRequest, runtime *dara.RuntimeOptions) (_result *UpdateOrganizationalUnitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9234,9 +12865,11 @@ func (client *Client) UpdateOrganizationalUnit(request *UpdateOrganizationalUnit
 //
 // @return UpdateOrganizationalUnitDescriptionResponse
 func (client *Client) UpdateOrganizationalUnitDescriptionWithOptions(request *UpdateOrganizationalUnitDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateOrganizationalUnitDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -9302,9 +12935,11 @@ func (client *Client) UpdateOrganizationalUnitDescription(request *UpdateOrganiz
 //
 // @return UpdateOrganizationalUnitParentIdResponse
 func (client *Client) UpdateOrganizationalUnitParentIdWithOptions(request *UpdateOrganizationalUnitParentIdRequest, runtime *dara.RuntimeOptions) (_result *UpdateOrganizationalUnitParentIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9370,9 +13005,11 @@ func (client *Client) UpdateOrganizationalUnitParentId(request *UpdateOrganizati
 //
 // @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomFields) {
@@ -9466,9 +13103,11 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 //
 // @return UpdateUserDescriptionResponse
 func (client *Client) UpdateUserDescriptionWithOptions(request *UpdateUserDescriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
@@ -9534,9 +13173,11 @@ func (client *Client) UpdateUserDescription(request *UpdateUserDescriptionReques
 //
 // @return UpdateUserPasswordResponse
 func (client *Client) UpdateUserPasswordWithOptions(request *UpdateUserPasswordRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {

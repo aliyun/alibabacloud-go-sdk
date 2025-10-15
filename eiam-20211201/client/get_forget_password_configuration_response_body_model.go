@@ -53,7 +53,12 @@ func (s *GetForgetPasswordConfigurationResponseBody) SetRequestId(v string) *Get
 }
 
 func (s *GetForgetPasswordConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OpenForgetPasswordConfiguration != nil {
+		if err := s.OpenForgetPasswordConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration struct {

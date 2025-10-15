@@ -70,7 +70,16 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 func (s *ListInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstances struct {
@@ -156,7 +165,12 @@ func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesR
 }
 
 func (s *ListInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DefaultEndpoint != nil {
+		if err := s.DefaultEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInstancesResponseBodyInstancesDefaultEndpoint struct {

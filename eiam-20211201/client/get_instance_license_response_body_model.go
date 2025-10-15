@@ -53,7 +53,12 @@ func (s *GetInstanceLicenseResponseBody) SetRequestId(v string) *GetInstanceLice
 }
 
 func (s *GetInstanceLicenseResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.License != nil {
+		if err := s.License.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceLicenseResponseBodyLicense struct {

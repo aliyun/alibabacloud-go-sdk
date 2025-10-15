@@ -143,7 +143,17 @@ func (s *SetApplicationProvisioningConfigRequest) SetScimProvisioningConfig(v *S
 }
 
 func (s *SetApplicationProvisioningConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CallbackProvisioningConfig != nil {
+		if err := s.CallbackProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScimProvisioningConfig != nil {
+		if err := s.ScimProvisioningConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetApplicationProvisioningConfigRequestCallbackProvisioningConfig struct {
@@ -289,7 +299,12 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfig) SetScimB
 }
 
 func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnConfiguration != nil {
+		if err := s.AuthnConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration struct {
@@ -355,7 +370,12 @@ func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfi
 }
 
 func (s *SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnParam != nil {
+		if err := s.AuthnParam.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam struct {

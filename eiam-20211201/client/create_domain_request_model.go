@@ -74,7 +74,12 @@ func (s *CreateDomainRequest) SetInstanceId(v string) *CreateDomainRequest {
 }
 
 func (s *CreateDomainRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Filing != nil {
+		if err := s.Filing.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDomainRequestFiling struct {

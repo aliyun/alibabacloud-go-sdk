@@ -59,5 +59,10 @@ func (s *ListSynchronizationJobsResponse) SetBody(v *ListSynchronizationJobsResp
 }
 
 func (s *ListSynchronizationJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -295,7 +295,21 @@ func (s *CreateUserRequest) SetUsername(v string) *CreateUserRequest {
 }
 
 func (s *CreateUserRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PasswordInitializationConfig != nil {
+		if err := s.PasswordInitializationConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateUserRequestCustomFields struct {

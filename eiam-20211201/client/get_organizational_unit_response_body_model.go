@@ -53,7 +53,12 @@ func (s *GetOrganizationalUnitResponseBody) SetRequestId(v string) *GetOrganizat
 }
 
 func (s *GetOrganizationalUnitResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OrganizationalUnit != nil {
+		if err := s.OrganizationalUnit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetOrganizationalUnitResponseBodyOrganizationalUnit struct {

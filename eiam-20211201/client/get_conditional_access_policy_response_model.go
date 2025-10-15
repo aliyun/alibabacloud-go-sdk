@@ -59,5 +59,10 @@ func (s *GetConditionalAccessPolicyResponse) SetBody(v *GetConditionalAccessPoli
 }
 
 func (s *GetConditionalAccessPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

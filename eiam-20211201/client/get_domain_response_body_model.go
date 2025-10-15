@@ -53,10 +53,16 @@ func (s *GetDomainResponseBody) SetRequestId(v string) *GetDomainResponseBody {
 }
 
 func (s *GetDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domain != nil {
+		if err := s.Domain.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainResponseBodyDomain struct {
+	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
 	// The start time when the change order was created.
 	//
 	// example:
@@ -125,6 +131,10 @@ func (s GetDomainResponseBodyDomain) GoString() string {
 	return s.String()
 }
 
+func (s *GetDomainResponseBodyDomain) GetBrandId() *string {
+	return s.BrandId
+}
+
 func (s *GetDomainResponseBodyDomain) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -159,6 +169,11 @@ func (s *GetDomainResponseBodyDomain) GetLockMode() *string {
 
 func (s *GetDomainResponseBodyDomain) GetUpdateTime() *int64 {
 	return s.UpdateTime
+}
+
+func (s *GetDomainResponseBodyDomain) SetBrandId(v string) *GetDomainResponseBodyDomain {
+	s.BrandId = &v
+	return s
 }
 
 func (s *GetDomainResponseBodyDomain) SetCreateTime(v int64) *GetDomainResponseBodyDomain {
@@ -207,7 +222,12 @@ func (s *GetDomainResponseBodyDomain) SetUpdateTime(v int64) *GetDomainResponseB
 }
 
 func (s *GetDomainResponseBodyDomain) Validate() error {
-	return dara.Validate(s)
+	if s.Filing != nil {
+		if err := s.Filing.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDomainResponseBodyDomainFiling struct {

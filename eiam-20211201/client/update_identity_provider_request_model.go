@@ -184,7 +184,32 @@ func (s *UpdateIdentityProviderRequest) SetWeComConfig(v *UpdateIdentityProvider
 }
 
 func (s *UpdateIdentityProviderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DingtalkAppConfig != nil {
+		if err := s.DingtalkAppConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LarkConfig != nil {
+		if err := s.LarkConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LdapConfig != nil {
+		if err := s.LdapConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OidcConfig != nil {
+		if err := s.OidcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WeComConfig != nil {
+		if err := s.WeComConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateIdentityProviderRequestDingtalkAppConfig struct {
@@ -538,7 +563,17 @@ func (s *UpdateIdentityProviderRequestOidcConfig) SetPkceRequired(v bool) *Updat
 }
 
 func (s *UpdateIdentityProviderRequestOidcConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AuthnParam != nil {
+		if err := s.AuthnParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EndpointConfig != nil {
+		if err := s.EndpointConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateIdentityProviderRequestOidcConfigAuthnParam struct {

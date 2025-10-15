@@ -53,7 +53,12 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 func (s *GetApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Application != nil {
+		if err := s.Application.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationResponseBodyApplication struct {

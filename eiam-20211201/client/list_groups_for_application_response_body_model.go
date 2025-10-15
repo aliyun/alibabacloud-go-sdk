@@ -70,7 +70,16 @@ func (s *ListGroupsForApplicationResponseBody) SetTotalCount(v int64) *ListGroup
 }
 
 func (s *ListGroupsForApplicationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListGroupsForApplicationResponseBodyGroups struct {

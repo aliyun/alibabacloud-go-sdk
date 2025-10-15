@@ -53,7 +53,12 @@ func (s *GetPasswordExpirationConfigurationResponseBody) SetRequestId(v string) 
 }
 
 func (s *GetPasswordExpirationConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordExpirationConfiguration != nil {
+		if err := s.PasswordExpirationConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration struct {

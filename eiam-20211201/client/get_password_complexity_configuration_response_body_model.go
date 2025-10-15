@@ -53,7 +53,12 @@ func (s *GetPasswordComplexityConfigurationResponseBody) SetRequestId(v string) 
 }
 
 func (s *GetPasswordComplexityConfigurationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordComplexityConfiguration != nil {
+		if err := s.PasswordComplexityConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration struct {
@@ -94,7 +99,16 @@ func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigu
 }
 
 func (s *GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordComplexityRules != nil {
+		for _, item := range s.PasswordComplexityRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules struct {

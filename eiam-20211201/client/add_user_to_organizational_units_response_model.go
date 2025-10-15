@@ -59,5 +59,10 @@ func (s *AddUserToOrganizationalUnitsResponse) SetBody(v *AddUserToOrganizationa
 }
 
 func (s *AddUserToOrganizationalUnitsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

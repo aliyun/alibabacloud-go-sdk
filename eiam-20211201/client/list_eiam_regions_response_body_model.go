@@ -53,7 +53,16 @@ func (s *ListEiamRegionsResponseBody) SetRequestId(v string) *ListEiamRegionsRes
 }
 
 func (s *ListEiamRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Regions != nil {
+		for _, item := range s.Regions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEiamRegionsResponseBodyRegions struct {

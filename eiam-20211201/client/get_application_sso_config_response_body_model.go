@@ -53,7 +53,12 @@ func (s *GetApplicationSsoConfigResponseBody) SetRequestId(v string) *GetApplica
 }
 
 func (s *GetApplicationSsoConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplicationSsoConfig != nil {
+		if err := s.ApplicationSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfig struct {
@@ -154,7 +159,22 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfig) SetSsoStatus(v
 }
 
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.OidcSsoConfig != nil {
+		if err := s.OidcSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProtocolEndpointDomain != nil {
+		if err := s.ProtocolEndpointDomain.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamlSsoConfig != nil {
+		if err := s.SamlSsoConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig struct {
@@ -392,7 +412,16 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig) S
 }
 
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomClaims != nil {
+		for _, item := range s.CustomClaims {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims struct {
@@ -790,7 +819,25 @@ func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) S
 }
 
 func (s *GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AttributeStatements != nil {
+		for _, item := range s.AttributeStatements {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OptionalRelayStates != nil {
+		for _, item := range s.OptionalRelayStates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttributeStatements struct {

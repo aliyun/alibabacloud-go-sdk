@@ -53,7 +53,12 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 func (s *GetUserResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.User != nil {
+		if err := s.User.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUser struct {
@@ -468,7 +473,34 @@ func (s *GetUserResponseBodyUser) SetUsername(v string) *GetUserResponseBodyUser
 }
 
 func (s *GetUserResponseBodyUser) Validate() error {
-	return dara.Validate(s)
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OrganizationalUnits != nil {
+		for _, item := range s.OrganizationalUnits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetUserResponseBodyUserCustomFields struct {

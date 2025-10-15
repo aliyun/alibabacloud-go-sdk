@@ -59,5 +59,10 @@ func (s *UpdateOrganizationalUnitParentIdResponse) SetBody(v *UpdateOrganization
 }
 
 func (s *UpdateOrganizationalUnitParentIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

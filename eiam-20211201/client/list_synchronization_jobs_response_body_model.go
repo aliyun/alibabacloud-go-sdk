@@ -82,7 +82,16 @@ func (s *ListSynchronizationJobsResponseBody) SetTotalCount(v int64) *ListSynchr
 }
 
 func (s *ListSynchronizationJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronizationJobs != nil {
+		for _, item := range s.SynchronizationJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
@@ -241,7 +250,12 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetTriggerType(
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) Validate() error {
-	return dara.Validate(s)
+	if s.Result != nil {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResult struct {
@@ -326,7 +340,27 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetUserSt
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) Validate() error {
-	return dara.Validate(s)
+	if s.GroupMemberStatistics != nil {
+		if err := s.GroupMemberStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GroupStatistics != nil {
+		if err := s.GroupStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OrganizationalUnitStatistics != nil {
+		if err := s.OrganizationalUnitStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserStatistics != nil {
+		if err := s.UserStatistics.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics struct {
@@ -407,7 +441,37 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMember
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Binded != nil {
+		if err := s.Binded.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Created != nil {
+		if err := s.Created.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deleted != nil {
+		if err := s.Deleted.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pushed != nil {
+		if err := s.Pushed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Same != nil {
+		if err := s.Same.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updated != nil {
+		if err := s.Updated.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded struct {
@@ -938,7 +1002,37 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatis
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Binded != nil {
+		if err := s.Binded.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Created != nil {
+		if err := s.Created.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deleted != nil {
+		if err := s.Deleted.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pushed != nil {
+		if err := s.Pushed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Same != nil {
+		if err := s.Same.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updated != nil {
+		if err := s.Updated.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded struct {
@@ -1469,7 +1563,37 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizatio
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Binded != nil {
+		if err := s.Binded.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Created != nil {
+		if err := s.Created.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deleted != nil {
+		if err := s.Deleted.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pushed != nil {
+		if err := s.Pushed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Same != nil {
+		if err := s.Same.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updated != nil {
+		if err := s.Updated.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded struct {
@@ -2010,7 +2134,42 @@ func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatist
 }
 
 func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) Validate() error {
-	return dara.Validate(s)
+	if s.Binded != nil {
+		if err := s.Binded.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Created != nil {
+		if err := s.Created.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Deleted != nil {
+		if err := s.Deleted.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Exported != nil {
+		if err := s.Exported.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Pushed != nil {
+		if err := s.Pushed.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Same != nil {
+		if err := s.Same.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Updated != nil {
+		if err := s.Updated.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded struct {

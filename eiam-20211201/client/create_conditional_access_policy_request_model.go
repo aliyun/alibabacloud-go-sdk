@@ -205,7 +205,17 @@ func (s *CreateConditionalAccessPolicyRequest) SetPriority(v int32) *CreateCondi
 }
 
 func (s *CreateConditionalAccessPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConditionsConfig != nil {
+		if err := s.ConditionsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DecisionConfig != nil {
+		if err := s.DecisionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfig struct {
@@ -253,7 +263,22 @@ func (s *CreateConditionalAccessPolicyRequestConditionsConfig) SetUsers(v *Creat
 }
 
 func (s *CreateConditionalAccessPolicyRequestConditionsConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		if err := s.Applications.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkZones != nil {
+		if err := s.NetworkZones.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Users != nil {
+		if err := s.Users.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateConditionalAccessPolicyRequestConditionsConfigApplications struct {

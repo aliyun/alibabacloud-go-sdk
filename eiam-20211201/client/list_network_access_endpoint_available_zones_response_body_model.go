@@ -50,7 +50,16 @@ func (s *ListNetworkAccessEndpointAvailableZonesResponseBody) SetZones(v []*List
 }
 
 func (s *ListNetworkAccessEndpointAvailableZonesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNetworkAccessEndpointAvailableZonesResponseBodyZones struct {
