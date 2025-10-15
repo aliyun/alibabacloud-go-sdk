@@ -1794,6 +1794,10 @@ func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tm
 		query["addonName"] = request.AddonName
 	}
 
+	if !dara.IsNil(request.BindResourceId) {
+		query["bindResourceId"] = request.BindResourceId
+	}
+
 	if !dara.IsNil(request.EntityGroupIds) {
 		query["entityGroupIds"] = request.EntityGroupIds
 	}

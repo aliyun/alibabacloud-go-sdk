@@ -81,6 +81,7 @@ func (s *ListIntegrationPolicyDashboardsResponseBody) Validate() error {
 
 type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {
 	FolderUid *string   `json:"folderUid,omitempty" xml:"folderUid,omitempty"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
 	Region    *string   `json:"region,omitempty" xml:"region,omitempty"`
 	Tags      []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	Title     *string   `json:"title,omitempty" xml:"title,omitempty"`
@@ -98,6 +99,10 @@ func (s ListIntegrationPolicyDashboardsResponseBodyDashboards) GoString() string
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetFolderUid() *string {
 	return s.FolderUid
+}
+
+func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetName() *string {
+	return s.Name
 }
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetRegion() *string {
@@ -122,6 +127,11 @@ func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) GetUrl() *string
 
 func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) SetFolderUid(v string) *ListIntegrationPolicyDashboardsResponseBodyDashboards {
 	s.FolderUid = &v
+	return s
+}
+
+func (s *ListIntegrationPolicyDashboardsResponseBodyDashboards) SetName(v string) *ListIntegrationPolicyDashboardsResponseBodyDashboards {
+	s.Name = &v
 	return s
 }
 

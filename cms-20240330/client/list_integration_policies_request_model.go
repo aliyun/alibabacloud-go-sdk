@@ -11,6 +11,8 @@ type iListIntegrationPoliciesRequest interface {
 	GoString() string
 	SetAddonName(v string) *ListIntegrationPoliciesRequest
 	GetAddonName() *string
+	SetBindResourceId(v string) *ListIntegrationPoliciesRequest
+	GetBindResourceId() *string
 	SetEntityGroupIds(v string) *ListIntegrationPoliciesRequest
 	GetEntityGroupIds() *string
 	SetFilterRegionIds(v string) *ListIntegrationPoliciesRequest
@@ -41,7 +43,8 @@ type ListIntegrationPoliciesRequest struct {
 	// example:
 	//
 	// cs-default
-	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	AddonName      *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
+	BindResourceId *string `json:"bindResourceId,omitempty" xml:"bindResourceId,omitempty"`
 	// example:
 	//
 	// eg-1,eg-2,eg-3
@@ -98,6 +101,10 @@ func (s *ListIntegrationPoliciesRequest) GetAddonName() *string {
 	return s.AddonName
 }
 
+func (s *ListIntegrationPoliciesRequest) GetBindResourceId() *string {
+	return s.BindResourceId
+}
+
 func (s *ListIntegrationPoliciesRequest) GetEntityGroupIds() *string {
 	return s.EntityGroupIds
 }
@@ -148,6 +155,11 @@ func (s *ListIntegrationPoliciesRequest) GetWorkspace() *string {
 
 func (s *ListIntegrationPoliciesRequest) SetAddonName(v string) *ListIntegrationPoliciesRequest {
 	s.AddonName = &v
+	return s
+}
+
+func (s *ListIntegrationPoliciesRequest) SetBindResourceId(v string) *ListIntegrationPoliciesRequest {
+	s.BindResourceId = &v
 	return s
 }
 
