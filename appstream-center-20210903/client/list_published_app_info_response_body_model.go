@@ -68,7 +68,16 @@ func (s *ListPublishedAppInfoResponseBody) SetRequestId(v string) *ListPublished
 }
 
 func (s *ListPublishedAppInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppModels != nil {
+		for _, item := range s.AppModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPublishedAppInfoResponseBodyAppModels struct {

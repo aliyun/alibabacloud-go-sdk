@@ -59,5 +59,10 @@ func (s *StartAppResourcesResponse) SetBody(v *StartAppResourcesResponseBody) *S
 }
 
 func (s *StartAppResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

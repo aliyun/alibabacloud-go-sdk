@@ -52,7 +52,16 @@ func (s *ListRunningAppsResponseBody) SetRunningCloudApps(v []*ListRunningAppsRe
 }
 
 func (s *ListRunningAppsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RunningCloudApps != nil {
+		for _, item := range s.RunningCloudApps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRunningAppsResponseBodyRunningCloudApps struct {

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessType) {
@@ -221,9 +224,11 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 //
 // @return ListPublishedAppInfoResponse
 func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppInfoRequest, runtime *dara.RuntimeOptions) (_result *ListPublishedAppInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -337,9 +342,11 @@ func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest)
 //
 // @return ListRunningAppsResponse
 func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRunningAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
@@ -441,9 +448,11 @@ func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result 
 //
 // @return ResetAppResourcesResponse
 func (client *Client) ResetAppResourcesWithOptions(request *ResetAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ResetAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -549,9 +558,11 @@ func (client *Client) ResetAppResources(request *ResetAppResourcesRequest) (_res
 //
 // @return RestartAppResourcesResponse
 func (client *Client) RestartAppResourcesWithOptions(request *RestartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *RestartAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -657,9 +668,11 @@ func (client *Client) RestartAppResources(request *RestartAppResourcesRequest) (
 //
 // @return StartAppResourcesResponse
 func (client *Client) StartAppResourcesWithOptions(request *StartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StartAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -765,9 +778,11 @@ func (client *Client) StartAppResources(request *StartAppResourcesRequest) (_res
 //
 // @return StopAppResponse
 func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *dara.RuntimeOptions) (_result *StopAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -905,9 +920,11 @@ func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse
 //
 // @return StopAppResourcesResponse
 func (client *Client) StopAppResourcesWithOptions(request *StopAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StopAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1013,9 +1030,11 @@ func (client *Client) StopAppResources(request *StopAppResourcesRequest) (_resul
 //
 // @return UnbindResponse
 func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {

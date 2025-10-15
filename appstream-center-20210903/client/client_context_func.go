@@ -17,9 +17,11 @@ import (
 //
 // @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithContext(ctx context.Context, request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessType) {
@@ -155,9 +157,11 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 //
 // @return ListPublishedAppInfoResponse
 func (client *Client) ListPublishedAppInfoWithContext(ctx context.Context, request *ListPublishedAppInfoRequest, runtime *dara.RuntimeOptions) (_result *ListPublishedAppInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppName) {
@@ -253,9 +257,11 @@ func (client *Client) ListPublishedAppInfoWithContext(ctx context.Context, reque
 //
 // @return ListRunningAppsResponse
 func (client *Client) ListRunningAppsWithContext(ctx context.Context, request *ListRunningAppsRequest, runtime *dara.RuntimeOptions) (_result *ListRunningAppsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
@@ -339,9 +345,11 @@ func (client *Client) ListRunningAppsWithContext(ctx context.Context, request *L
 //
 // @return ResetAppResourcesResponse
 func (client *Client) ResetAppResourcesWithContext(ctx context.Context, request *ResetAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *ResetAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -429,9 +437,11 @@ func (client *Client) ResetAppResourcesWithContext(ctx context.Context, request 
 //
 // @return RestartAppResourcesResponse
 func (client *Client) RestartAppResourcesWithContext(ctx context.Context, request *RestartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *RestartAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -519,9 +529,11 @@ func (client *Client) RestartAppResourcesWithContext(ctx context.Context, reques
 //
 // @return StartAppResourcesResponse
 func (client *Client) StartAppResourcesWithContext(ctx context.Context, request *StartAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StartAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -609,9 +621,11 @@ func (client *Client) StartAppResourcesWithContext(ctx context.Context, request 
 //
 // @return StopAppResponse
 func (client *Client) StopAppWithContext(ctx context.Context, request *StopAppRequest, runtime *dara.RuntimeOptions) (_result *StopAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -731,9 +745,11 @@ func (client *Client) StopAppWithContext(ctx context.Context, request *StopAppRe
 //
 // @return StopAppResourcesResponse
 func (client *Client) StopAppResourcesWithContext(ctx context.Context, request *StopAppResourcesRequest, runtime *dara.RuntimeOptions) (_result *StopAppResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -821,9 +837,11 @@ func (client *Client) StopAppResourcesWithContext(ctx context.Context, request *
 //
 // @return UnbindResponse
 func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {

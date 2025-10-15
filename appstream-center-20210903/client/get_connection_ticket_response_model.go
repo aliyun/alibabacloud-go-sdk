@@ -59,5 +59,10 @@ func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody
 }
 
 func (s *GetConnectionTicketResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -15,6 +15,8 @@ type iGetConnectionTicketResponseBody interface {
 	GetAppInstanceId() *string
 	SetAppInstancePersistentId(v string) *GetConnectionTicketResponseBody
 	GetAppInstancePersistentId() *string
+	SetAvatarId(v string) *GetConnectionTicketResponseBody
+	GetAvatarId() *string
 	SetBindQueueInfo(v *GetConnectionTicketResponseBodyBindQueueInfo) *GetConnectionTicketResponseBody
 	GetBindQueueInfo() *GetConnectionTicketResponseBodyBindQueueInfo
 	SetCode(v string) *GetConnectionTicketResponseBody
@@ -23,6 +25,8 @@ type iGetConnectionTicketResponseBody interface {
 	GetLoginToken() *string
 	SetMessage(v string) *GetConnectionTicketResponseBody
 	GetMessage() *string
+	SetNextPollIntervalMs(v int32) *GetConnectionTicketResponseBody
+	GetNextPollIntervalMs() *int32
 	SetOsType(v string) *GetConnectionTicketResponseBody
 	GetOsType() *string
 	SetPolicy(v *GetConnectionTicketResponseBodyPolicy) *GetConnectionTicketResponseBody
@@ -51,9 +55,13 @@ type GetConnectionTicketResponseBody struct {
 	// example:
 	//
 	// ai-gc1gemx6vpa6vlync
-	AppInstanceId           *string                                       `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppInstancePersistentId *string                                       `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	BindQueueInfo           *GetConnectionTicketResponseBodyBindQueueInfo `json:"BindQueueInfo,omitempty" xml:"BindQueueInfo,omitempty" type:"Struct"`
+	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// example:
+	//
+	// abc
+	AvatarId      *string                                       `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	BindQueueInfo *GetConnectionTicketResponseBodyBindQueueInfo `json:"BindQueueInfo,omitempty" xml:"BindQueueInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// InternalError.TicketGenInternalError
@@ -66,6 +74,13 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// reenter app instance failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 500
+	NextPollIntervalMs *int32 `json:"NextPollIntervalMs,omitempty" xml:"NextPollIntervalMs,omitempty"`
 	// example:
 	//
 	// Windows
@@ -120,6 +135,10 @@ func (s *GetConnectionTicketResponseBody) GetAppInstancePersistentId() *string {
 	return s.AppInstancePersistentId
 }
 
+func (s *GetConnectionTicketResponseBody) GetAvatarId() *string {
+	return s.AvatarId
+}
+
 func (s *GetConnectionTicketResponseBody) GetBindQueueInfo() *GetConnectionTicketResponseBodyBindQueueInfo {
 	return s.BindQueueInfo
 }
@@ -134,6 +153,10 @@ func (s *GetConnectionTicketResponseBody) GetLoginToken() *string {
 
 func (s *GetConnectionTicketResponseBody) GetMessage() *string {
 	return s.Message
+}
+
+func (s *GetConnectionTicketResponseBody) GetNextPollIntervalMs() *int32 {
+	return s.NextPollIntervalMs
 }
 
 func (s *GetConnectionTicketResponseBody) GetOsType() *string {
@@ -187,6 +210,11 @@ func (s *GetConnectionTicketResponseBody) SetAppInstancePersistentId(v string) *
 	return s
 }
 
+func (s *GetConnectionTicketResponseBody) SetAvatarId(v string) *GetConnectionTicketResponseBody {
+	s.AvatarId = &v
+	return s
+}
+
 func (s *GetConnectionTicketResponseBody) SetBindQueueInfo(v *GetConnectionTicketResponseBodyBindQueueInfo) *GetConnectionTicketResponseBody {
 	s.BindQueueInfo = v
 	return s
@@ -204,6 +232,11 @@ func (s *GetConnectionTicketResponseBody) SetLoginToken(v string) *GetConnection
 
 func (s *GetConnectionTicketResponseBody) SetMessage(v string) *GetConnectionTicketResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetConnectionTicketResponseBody) SetNextPollIntervalMs(v int32) *GetConnectionTicketResponseBody {
+	s.NextPollIntervalMs = &v
 	return s
 }
 
@@ -253,7 +286,17 @@ func (s *GetConnectionTicketResponseBody) SetTicket(v string) *GetConnectionTick
 }
 
 func (s *GetConnectionTicketResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BindQueueInfo != nil {
+		if err := s.BindQueueInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Policy != nil {
+		if err := s.Policy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetConnectionTicketResponseBodyBindQueueInfo struct {
