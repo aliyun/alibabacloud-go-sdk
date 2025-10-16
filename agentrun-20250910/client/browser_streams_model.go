@@ -47,5 +47,15 @@ func (s *BrowserStreams) SetLiveViewStream(v *BrowserLiveViewStream) *BrowserStr
 }
 
 func (s *BrowserStreams) Validate() error {
-	return dara.Validate(s)
+	if s.AutomationStream != nil {
+		if err := s.AutomationStream.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LiveViewStream != nil {
+		if err := s.LiveViewStream.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

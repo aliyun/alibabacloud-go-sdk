@@ -95,5 +95,23 @@ func (s *LLMDeployConfig) SetServiceConfigs(v []*TargetServiceConfig) *LLMDeploy
 }
 
 func (s *LLMDeployConfig) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyConfigs != nil {
+		for _, item := range s.PolicyConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServiceConfigs != nil {
+		for _, item := range s.ServiceConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

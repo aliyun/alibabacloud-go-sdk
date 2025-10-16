@@ -35,5 +35,10 @@ func (s *MCPMatch) SetPath(v *MCPPathMatch) *MCPMatch {
 }
 
 func (s *MCPMatch) Validate() error {
-	return dara.Validate(s)
+	if s.Path != nil {
+		if err := s.Path.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *CreateGatewayTargetInput) SetTargetConfiguration(v *TargetConfiguration
 }
 
 func (s *CreateGatewayTargetInput) Validate() error {
-	return dara.Validate(s)
+	if s.TargetConfiguration != nil {
+		if err := s.TargetConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

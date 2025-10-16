@@ -256,5 +256,35 @@ func (s *CreateAgentRuntimeInput) SetSessionIdleTimeoutSeconds(v int32) *CreateA
 }
 
 func (s *CreateAgentRuntimeInput) Validate() error {
-	return dara.Validate(s)
+	if s.CodeConfiguration != nil {
+		if err := s.CodeConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ContainerConfiguration != nil {
+		if err := s.ContainerConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.HealthCheckConfiguration != nil {
+		if err := s.HealthCheckConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LogConfiguration != nil {
+		if err := s.LogConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProtocolConfiguration != nil {
+		if err := s.ProtocolConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

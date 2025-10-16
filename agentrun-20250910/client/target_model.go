@@ -59,5 +59,15 @@ func (s *Target) SetTargetType(v string) *Target {
 }
 
 func (s *Target) Validate() error {
-	return dara.Validate(s)
+	if s.LlmConfig != nil {
+		if err := s.LlmConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.McpAPI != nil {
+		if err := s.McpAPI.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

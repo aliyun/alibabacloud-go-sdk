@@ -71,5 +71,10 @@ func (s *ListGatewaysOutput) SetTotal(v int32) *ListGatewaysOutput {
 }
 
 func (s *ListGatewaysOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

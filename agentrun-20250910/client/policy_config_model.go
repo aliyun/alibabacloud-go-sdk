@@ -59,5 +59,10 @@ func (s *PolicyConfig) SetType(v string) *PolicyConfig {
 }
 
 func (s *PolicyConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AiFallbackConfig != nil {
+		if err := s.AiFallbackConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

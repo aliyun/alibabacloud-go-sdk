@@ -131,5 +131,10 @@ func (s *ToolInfo) SetUpdatedAt(v string) *ToolInfo {
 }
 
 func (s *ToolInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CAPConfig != nil {
+		if err := s.CAPConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

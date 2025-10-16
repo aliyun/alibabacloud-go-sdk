@@ -71,5 +71,10 @@ func (s *CreateGatewayInput) SetType(v string) *CreateGatewayInput {
 }
 
 func (s *CreateGatewayInput) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

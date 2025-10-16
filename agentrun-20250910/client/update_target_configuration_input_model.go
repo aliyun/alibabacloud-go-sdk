@@ -47,5 +47,10 @@ func (s *UpdateTargetConfigurationInput) SetTargetConfiguration(v *TargetConfigu
 }
 
 func (s *UpdateTargetConfigurationInput) Validate() error {
-	return dara.Validate(s)
+	if s.TargetConfiguration != nil {
+		if err := s.TargetConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

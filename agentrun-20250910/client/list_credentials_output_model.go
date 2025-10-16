@@ -71,5 +71,10 @@ func (s *ListCredentialsOutput) SetTotal(v string) *ListCredentialsOutput {
 }
 
 func (s *ListCredentialsOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Items != nil {
+		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

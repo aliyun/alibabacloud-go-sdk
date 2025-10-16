@@ -47,5 +47,10 @@ func (s *BrowserRecordingConfiguration) SetOssLocation(v *BrowserOssLocation) *B
 }
 
 func (s *BrowserRecordingConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.OssLocation != nil {
+		if err := s.OssLocation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

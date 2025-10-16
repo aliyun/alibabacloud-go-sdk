@@ -47,5 +47,10 @@ func (s *ServiceConfig) SetName(v string) *ServiceConfig {
 }
 
 func (s *ServiceConfig) Validate() error {
-	return dara.Validate(s)
+	if s.AiServiceConfig != nil {
+		if err := s.AiServiceConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

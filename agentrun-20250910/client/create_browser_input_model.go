@@ -128,5 +128,10 @@ func (s *CreateBrowserInput) SetSessionIdleTimeoutSeconds(v int32) *CreateBrowse
 }
 
 func (s *CreateBrowserInput) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

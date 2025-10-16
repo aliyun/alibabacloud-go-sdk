@@ -95,5 +95,14 @@ func (s *CredentialListItem) SetUpdatedAt(v string) *CredentialListItem {
 }
 
 func (s *CredentialListItem) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedWorloads != nil {
+		for _, item := range s.RelatedWorloads {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

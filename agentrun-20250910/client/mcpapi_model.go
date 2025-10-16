@@ -119,5 +119,15 @@ func (s *MCPAPI) SetToolsConfig(v string) *MCPAPI {
 }
 
 func (s *MCPAPI) Validate() error {
-	return dara.Validate(s)
+	if s.BackendConfig != nil {
+		if err := s.BackendConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Match != nil {
+		if err := s.Match.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

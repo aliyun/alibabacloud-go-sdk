@@ -134,5 +134,10 @@ func (s *CreateCodeInterpreterInput) SetSessionIdleTimeoutSeconds(v int32) *Crea
 }
 
 func (s *CreateCodeInterpreterInput) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

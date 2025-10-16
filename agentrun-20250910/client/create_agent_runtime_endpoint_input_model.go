@@ -73,5 +73,10 @@ func (s *CreateAgentRuntimeEndpointInput) SetTargetVersion(v string) *CreateAgen
 }
 
 func (s *CreateAgentRuntimeEndpointInput) Validate() error {
-	return dara.Validate(s)
+	if s.RoutingConfiguration != nil {
+		if err := s.RoutingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -36,5 +36,14 @@ func (s *RoutingConfiguration) SetVersionWeights(v []*VersionWeight) *RoutingCon
 }
 
 func (s *RoutingConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.VersionWeights != nil {
+		for _, item := range s.VersionWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

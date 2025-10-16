@@ -60,5 +60,10 @@ func (s *ListCodeInterpreterSessionResult) SetRequestId(v string) *ListCodeInter
 }
 
 func (s *ListCodeInterpreterSessionResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

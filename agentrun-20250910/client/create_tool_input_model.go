@@ -99,5 +99,10 @@ func (s *CreateToolInput) SetToolType(v string) *CreateToolInput {
 }
 
 func (s *CreateToolInput) Validate() error {
-	return dara.Validate(s)
+	if s.CAPConfig != nil {
+		if err := s.CAPConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

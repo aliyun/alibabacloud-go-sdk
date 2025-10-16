@@ -177,5 +177,10 @@ func (s *CodeInterpreter) SetTenantId(v string) *CodeInterpreter {
 }
 
 func (s *CodeInterpreter) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

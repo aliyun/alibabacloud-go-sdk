@@ -107,5 +107,23 @@ func (s *LLMAPIConfiguration) SetType(v string) *LLMAPIConfiguration {
 }
 
 func (s *LLMAPIConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.AttachPolicyConfigs != nil {
+		for _, item := range s.AttachPolicyConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeployConfigs != nil {
+		for _, item := range s.DeployConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

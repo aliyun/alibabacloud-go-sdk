@@ -193,5 +193,15 @@ func (s *Browser) SetTenantId(v string) *Browser {
 }
 
 func (s *Browser) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkConfiguration != nil {
+		if err := s.NetworkConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Recording != nil {
+		if err := s.Recording.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

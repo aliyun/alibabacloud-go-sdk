@@ -38,5 +38,10 @@ func (s *UpdateAgentRuntimeRequest) SetBody(v *UpdateAgentRuntimeInput) *UpdateA
 }
 
 func (s *UpdateAgentRuntimeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

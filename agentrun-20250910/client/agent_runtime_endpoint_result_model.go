@@ -62,5 +62,10 @@ func (s *AgentRuntimeEndpointResult) SetRequestId(v string) *AgentRuntimeEndpoin
 }
 
 func (s *AgentRuntimeEndpointResult) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

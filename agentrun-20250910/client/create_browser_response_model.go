@@ -59,5 +59,10 @@ func (s *CreateBrowserResponse) SetBody(v *BrowserResult) *CreateBrowserResponse
 }
 
 func (s *CreateBrowserResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
