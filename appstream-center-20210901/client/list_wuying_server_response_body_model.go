@@ -95,7 +95,16 @@ func (s *ListWuyingServerResponseBody) SetWuyingServerList(v []*ListWuyingServer
 }
 
 func (s *ListWuyingServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.WuyingServerList != nil {
+		for _, item := range s.WuyingServerList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
@@ -388,7 +397,30 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) SetWuyingServerName(v str
 }
 
 func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.InstanceInfoList != nil {
+		for _, item := range s.InstanceInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ServerInstanceTypeInfo != nil {
+		if err := s.ServerInstanceTypeInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {

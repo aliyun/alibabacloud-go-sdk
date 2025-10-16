@@ -104,7 +104,16 @@ func (s *ListAppInstanceGroupResponseBody) SetTotalCount(v int32) *ListAppInstan
 }
 
 func (s *ListAppInstanceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstanceGroupModels != nil {
+		for _, item := range s.AppInstanceGroupModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
@@ -682,7 +691,48 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetTags(v []*Li
 }
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodePool != nil {
+		for _, item := range s.NodePool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OtaInfo != nil {
+		if err := s.OtaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceTags != nil {
+		for _, item := range s.ResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
@@ -1076,7 +1126,16 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetWarm
 }
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceSchedules != nil {
+		for _, item := range s.RecurrenceSchedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
@@ -1132,7 +1191,16 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenc
 }
 
 func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules) Validate() error {
-	return dara.Validate(s)
+	if s.TimerPeriods != nil {
+		for _, item := range s.TimerPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods struct {

@@ -104,7 +104,16 @@ func (s *ListNodeInstanceTypeResponseBody) SetTotalCount(v int32) *ListNodeInsta
 }
 
 func (s *ListNodeInstanceTypeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeInstanceTypeModels != nil {
+		for _, item := range s.NodeInstanceTypeModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {

@@ -51,7 +51,12 @@ func (s *GetAppInstanceGroupResponseBody) SetRequestId(v string) *GetAppInstance
 }
 
 func (s *GetAppInstanceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstanceGroupModels != nil {
+		if err := s.AppInstanceGroupModels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
@@ -510,7 +515,39 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetTags(v []*Get
 }
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) Validate() error {
-	return dara.Validate(s)
+	if s.Apps != nil {
+		for _, item := range s.Apps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NodePool != nil {
+		for _, item := range s.NodePool {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OtaInfo != nil {
+		if err := s.OtaInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
@@ -831,7 +868,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetWarmU
 }
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceSchedules != nil {
+		for _, item := range s.RecurrenceSchedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
@@ -879,7 +925,16 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrence
 }
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules) Validate() error {
-	return dara.Validate(s)
+	if s.TimerPeriods != nil {
+		for _, item := range s.TimerPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods struct {

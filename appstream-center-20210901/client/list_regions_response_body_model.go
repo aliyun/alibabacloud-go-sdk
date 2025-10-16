@@ -53,7 +53,16 @@ func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBod
 }
 
 func (s *ListRegionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RegionModels != nil {
+		for _, item := range s.RegionModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRegionsResponseBodyRegionModels struct {

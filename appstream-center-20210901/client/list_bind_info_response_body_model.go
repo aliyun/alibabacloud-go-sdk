@@ -95,7 +95,16 @@ func (s *ListBindInfoResponseBody) SetTotalCount(v int32) *ListBindInfoResponseB
 }
 
 func (s *ListBindInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.BindInfoModels != nil {
+		for _, item := range s.BindInfoModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBindInfoResponseBodyBindInfoModels struct {

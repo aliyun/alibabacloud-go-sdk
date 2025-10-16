@@ -95,7 +95,16 @@ func (s *ListPersistentAppInstancesResponseBody) SetTotalCount(v int32) *ListPer
 }
 
 func (s *ListPersistentAppInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PersistentAppInstanceModels != nil {
+		for _, item := range s.PersistentAppInstanceModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels struct {

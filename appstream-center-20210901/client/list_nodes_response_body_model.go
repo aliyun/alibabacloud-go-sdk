@@ -104,7 +104,16 @@ func (s *ListNodesResponseBody) SetToPage(v int32) *ListNodesResponseBody {
 }
 
 func (s *ListNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeModels != nil {
+		for _, item := range s.NodeModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyNodeModels struct {

@@ -59,5 +59,10 @@ func (s *CreateAppInstanceGroupResponse) SetBody(v *CreateAppInstanceGroupRespon
 }
 
 func (s *CreateAppInstanceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

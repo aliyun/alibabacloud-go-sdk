@@ -59,5 +59,10 @@ func (s *GetDebugAppInstanceResponse) SetBody(v *GetDebugAppInstanceResponseBody
 }
 
 func (s *GetDebugAppInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -401,7 +401,47 @@ func (s *CreateAppInstanceGroupRequest) SetVideoPolicy(v *CreateAppInstanceGroup
 }
 
 func (s *CreateAppInstanceGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodePool != nil {
+		if err := s.NodePool.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RuntimePolicy != nil {
+		if err := s.RuntimePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityPolicy != nil {
+		if err := s.SecurityPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoragePolicy != nil {
+		if err := s.StoragePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserDefinePolicy != nil {
+		if err := s.UserDefinePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoPolicy != nil {
+		if err := s.VideoPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupRequestNetwork struct {
@@ -482,7 +522,25 @@ func (s *CreateAppInstanceGroupRequestNetwork) SetVSwitchIds(v []*string) *Creat
 }
 
 func (s *CreateAppInstanceGroupRequestNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.DomainRules != nil {
+		for _, item := range s.DomainRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupRequestNetworkDomainRules struct {
@@ -733,7 +791,16 @@ func (s *CreateAppInstanceGroupRequestNodePool) SetWarmUp(v bool) *CreateAppInst
 }
 
 func (s *CreateAppInstanceGroupRequestNodePool) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceSchedules != nil {
+		for _, item := range s.RecurrenceSchedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules struct {
@@ -781,7 +848,16 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules) SetTimerPerio
 }
 
 func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules) Validate() error {
-	return dara.Validate(s)
+	if s.TimerPeriods != nil {
+		for _, item := range s.TimerPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods struct {
@@ -997,7 +1073,12 @@ func (s *CreateAppInstanceGroupRequestStoragePolicy) SetUserProfile(v *CreateApp
 }
 
 func (s *CreateAppInstanceGroupRequestStoragePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.UserProfile != nil {
+		if err := s.UserProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupRequestStoragePolicyUserProfile struct {

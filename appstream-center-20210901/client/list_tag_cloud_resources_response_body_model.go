@@ -87,7 +87,16 @@ func (s *ListTagCloudResourcesResponseBody) SetTotalCount(v int32) *ListTagCloud
 }
 
 func (s *ListTagCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceTags != nil {
+		for _, item := range s.ResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagCloudResourcesResponseBodyResourceTags struct {
@@ -153,7 +162,16 @@ func (s *ListTagCloudResourcesResponseBodyResourceTags) SetTags(v []*ListTagClou
 }
 
 func (s *ListTagCloudResourcesResponseBodyResourceTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTagCloudResourcesResponseBodyResourceTagsTags struct {

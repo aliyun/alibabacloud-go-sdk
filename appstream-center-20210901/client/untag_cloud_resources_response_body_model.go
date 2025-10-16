@@ -53,7 +53,16 @@ func (s *UntagCloudResourcesResponseBody) SetRequestId(v string) *UntagCloudReso
 }
 
 func (s *UntagCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResources != nil {
+		for _, item := range s.FailedResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UntagCloudResourcesResponseBodyFailedResources struct {
@@ -149,7 +158,16 @@ func (s *UntagCloudResourcesResponseBodyFailedResources) SetTags(v []*UntagCloud
 }
 
 func (s *UntagCloudResourcesResponseBodyFailedResources) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UntagCloudResourcesResponseBodyFailedResourcesTags struct {

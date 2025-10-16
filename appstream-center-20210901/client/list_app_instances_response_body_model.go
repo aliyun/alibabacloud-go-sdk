@@ -104,7 +104,16 @@ func (s *ListAppInstancesResponseBody) SetTotalCount(v int32) *ListAppInstancesR
 }
 
 func (s *ListAppInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstanceModels != nil {
+		for _, item := range s.AppInstanceModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAppInstancesResponseBodyAppInstanceModels struct {
@@ -289,7 +298,12 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetStatus(v string) *Lis
 }
 
 func (s *ListAppInstancesResponseBodyAppInstanceModels) Validate() error {
-	return dara.Validate(s)
+	if s.BindInfo != nil {
+		if err := s.BindInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {

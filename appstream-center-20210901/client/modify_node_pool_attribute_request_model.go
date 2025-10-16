@@ -110,7 +110,12 @@ func (s *ModifyNodePoolAttributeRequest) SetProductType(v string) *ModifyNodePoo
 }
 
 func (s *ModifyNodePoolAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodePoolStrategy != nil {
+		if err := s.NodePoolStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategy struct {
@@ -312,7 +317,16 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetWarmUp(v bool) *Modi
 }
 
 func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceSchedules != nil {
+		for _, item := range s.RecurrenceSchedules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules struct {
@@ -378,7 +392,16 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetT
 }
 
 func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) Validate() error {
-	return dara.Validate(s)
+	if s.TimerPeriods != nil {
+		for _, item := range s.TimerPeriods {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods struct {

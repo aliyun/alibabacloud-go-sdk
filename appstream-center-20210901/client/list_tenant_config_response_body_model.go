@@ -53,7 +53,12 @@ func (s *ListTenantConfigResponseBody) SetTenantConfigModel(v *ListTenantConfigR
 }
 
 func (s *ListTenantConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TenantConfigModel != nil {
+		if err := s.TenantConfigModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {

@@ -53,7 +53,12 @@ func (s *GetResourceRenewPriceResponseBody) SetRequestId(v string) *GetResourceR
 }
 
 func (s *GetResourceRenewPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourceRenewPriceResponseBodyData struct {
@@ -90,7 +95,21 @@ func (s *GetResourceRenewPriceResponseBodyData) SetRules(v []*GetResourceRenewPr
 }
 
 func (s *GetResourceRenewPriceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourceRenewPriceResponseBodyDataPrice struct {
@@ -176,7 +195,16 @@ func (s *GetResourceRenewPriceResponseBodyDataPrice) SetTradePrice(v string) *Ge
 }
 
 func (s *GetResourceRenewPriceResponseBodyDataPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourceRenewPriceResponseBodyDataPricePromotions struct {

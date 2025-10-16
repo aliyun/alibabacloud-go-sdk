@@ -69,7 +69,12 @@ func (s *ModifyAppPolicyRequest) SetVideoPolicy(v *ModifyAppPolicyRequestVideoPo
 }
 
 func (s *ModifyAppPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.VideoPolicy != nil {
+		if err := s.VideoPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppPolicyRequestVideoPolicy struct {

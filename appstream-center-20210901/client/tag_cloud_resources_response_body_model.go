@@ -50,7 +50,16 @@ func (s *TagCloudResourcesResponseBody) SetRequestId(v string) *TagCloudResource
 }
 
 func (s *TagCloudResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FailedResources != nil {
+		for _, item := range s.FailedResources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TagCloudResourcesResponseBodyFailedResources struct {
@@ -127,7 +136,16 @@ func (s *TagCloudResourcesResponseBodyFailedResources) SetTags(v []*TagCloudReso
 }
 
 func (s *TagCloudResourcesResponseBodyFailedResources) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TagCloudResourcesResponseBodyFailedResourcesTags struct {

@@ -156,7 +156,12 @@ func (s *AuthorizeInstanceGroupRequest) SetUserMeta(v *AuthorizeInstanceGroupReq
 }
 
 func (s *AuthorizeInstanceGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserMeta != nil {
+		if err := s.UserMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AuthorizeInstanceGroupRequestUserMeta struct {

@@ -53,7 +53,16 @@ func (s *DeleteAppInstancesResponseBody) SetRequestId(v string) *DeleteAppInstan
 }
 
 func (s *DeleteAppInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DeleteAppInstanceModels != nil {
+		for _, item := range s.DeleteAppInstanceModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DeleteAppInstancesResponseBodyDeleteAppInstanceModels struct {

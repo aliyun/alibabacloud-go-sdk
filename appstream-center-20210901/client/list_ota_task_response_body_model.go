@@ -104,7 +104,16 @@ func (s *ListOtaTaskResponseBody) SetTotalCount(v int32) *ListOtaTaskResponseBod
 }
 
 func (s *ListOtaTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		for _, item := range s.TaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOtaTaskResponseBodyTaskList struct {

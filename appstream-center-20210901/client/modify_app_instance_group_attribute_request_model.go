@@ -214,7 +214,27 @@ func (s *ModifyAppInstanceGroupAttributeRequest) SetStoragePolicy(v *ModifyAppIn
 }
 
 func (s *ModifyAppInstanceGroupAttributeRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Network != nil {
+		if err := s.Network.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NodePool != nil {
+		if err := s.NodePool.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SecurityPolicy != nil {
+		if err := s.SecurityPolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StoragePolicy != nil {
+		if err := s.StoragePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppInstanceGroupAttributeRequestNetwork struct {
@@ -240,7 +260,16 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetwork) SetDomainRules(v []*Modi
 }
 
 func (s *ModifyAppInstanceGroupAttributeRequestNetwork) Validate() error {
-	return dara.Validate(s)
+	if s.DomainRules != nil {
+		for _, item := range s.DomainRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyAppInstanceGroupAttributeRequestNetworkDomainRules struct {
@@ -450,7 +479,17 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetUserProfileFoll
 }
 
 func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) Validate() error {
-	return dara.Validate(s)
+	if s.UserProfile != nil {
+		if err := s.UserProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserProfileFollow != nil {
+		if err := s.UserProfileFollow.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile struct {

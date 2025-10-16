@@ -17,9 +17,11 @@ import (
 //
 // @return ApproveOtaTaskResponse
 func (client *Client) ApproveOtaTaskWithContext(ctx context.Context, request *ApproveOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ApproveOtaTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -75,9 +77,11 @@ func (client *Client) ApproveOtaTaskWithContext(ctx context.Context, request *Ap
 //
 // @return AuthorizeInstanceGroupResponse
 func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmpReq *AuthorizeInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AuthorizeInstanceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -158,9 +162,11 @@ func (client *Client) AuthorizeInstanceGroupWithContext(ctx context.Context, tmp
 //
 // @return CreateAppInstanceGroupResponse
 func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmpReq *CreateAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateAppInstanceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateAppInstanceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -332,6 +338,82 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// 通过实例创建镜像
+//
+// @param request - CreateImageByInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageByInstanceResponse
+func (client *Client) CreateImageByInstanceWithContext(ctx context.Context, request *CreateImageByInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateImageByInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoCleanUserdata) {
+		body["AutoCleanUserdata"] = request.AutoCleanUserdata
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DiskType) {
+		body["DiskType"] = request.DiskType
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceType) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.SubInstanceId) {
+		body["SubInstanceId"] = request.SubInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImageByInstance"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImageByInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a new image by debugging the delivery group.
 //
 // @param request - CreateImageFromAppInstanceGroupRequest
@@ -340,9 +422,11 @@ func (client *Client) CreateAppInstanceGroupWithContext(ctx context.Context, tmp
 //
 // @return CreateImageFromAppInstanceGroupResponse
 func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Context, request *CreateImageFromAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppCenterImageName) {
@@ -390,9 +474,11 @@ func (client *Client) CreateImageFromAppInstanceGroupWithContext(ctx context.Con
 //
 // @return CreateWuyingServerResponse
 func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request *CreateWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *CreateWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
@@ -523,9 +609,11 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 //
 // @return DeleteAppInstanceGroupResponse
 func (client *Client) DeleteAppInstanceGroupWithContext(ctx context.Context, request *DeleteAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -573,9 +661,11 @@ func (client *Client) DeleteAppInstanceGroupWithContext(ctx context.Context, req
 //
 // @return DeleteAppInstancesResponse
 func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request *DeleteAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -623,9 +713,11 @@ func (client *Client) DeleteAppInstancesWithContext(ctx context.Context, request
 //
 // @return DeleteWuyingServerResponse
 func (client *Client) DeleteWuyingServerWithContext(ctx context.Context, request *DeleteWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.WuyingServerId) {
@@ -665,9 +757,11 @@ func (client *Client) DeleteWuyingServerWithContext(ctx context.Context, request
 //
 // @return DescribeWuyingServerEipInfoResponse
 func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context, request *DescribeWuyingServerEipInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeWuyingServerEipInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Isp) {
@@ -711,9 +805,11 @@ func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context
 //
 // @return GetAppInstanceGroupResponse
 func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, request *GetAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *GetAppInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -765,9 +861,11 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 //
 // @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithContext(ctx context.Context, request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AccessType) {
@@ -851,9 +949,11 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 //
 // @return GetDebugAppInstanceResponse
 func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, request *GetDebugAppInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetDebugAppInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -897,9 +997,11 @@ func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, reques
 //
 // @return GetOtaTaskByTaskIdResponse
 func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request *GetOtaTaskByTaskIdRequest, runtime *dara.RuntimeOptions) (_result *GetOtaTaskByTaskIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -939,9 +1041,11 @@ func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request
 //
 // @return GetResourcePriceResponse
 func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *GetResourcePriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourcePriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
@@ -1009,9 +1113,11 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 //
 // @return GetResourceRenewPriceResponse
 func (client *Client) GetResourceRenewPriceWithContext(ctx context.Context, request *GetResourceRenewPriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourceRenewPriceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1063,9 +1169,11 @@ func (client *Client) GetResourceRenewPriceWithContext(ctx context.Context, requ
 //
 // @return ListAppInstanceGroupResponse
 func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, request *ListAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppCenterImageId) {
@@ -1151,9 +1259,11 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 //
 // @return ListAppInstancesResponse
 func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *ListAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1223,9 +1333,11 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, request *
 //
 // @return ListAuthorizedUserGroupsResponse
 func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, request *ListAuthorizedUserGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListAuthorizedUserGroupsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1285,9 +1397,11 @@ func (client *Client) ListAuthorizedUserGroupsWithContext(ctx context.Context, r
 //
 // @return ListBindInfoResponse
 func (client *Client) ListBindInfoWithContext(ctx context.Context, request *ListBindInfoRequest, runtime *dara.RuntimeOptions) (_result *ListBindInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppIdList) {
@@ -1343,6 +1457,132 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// 列表显示镜像
+//
+// @param request - ListImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageResponse
+func (client *Client) ListImageWithContext(ctx context.Context, request *ListImageRequest, runtime *dara.RuntimeOptions) (_result *ListImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TagList) {
+		query["TagList"] = request.TagList
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionIdList) {
+		body["BizRegionIdList"] = request.BizRegionIdList
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BizTypeList) {
+		body["BizTypeList"] = request.BizTypeList
+	}
+
+	if !dara.IsNil(request.FeatureList) {
+		body["FeatureList"] = request.FeatureList
+	}
+
+	if !dara.IsNil(request.FotaVersion) {
+		body["FotaVersion"] = request.FotaVersion
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.ImageType) {
+		body["ImageType"] = request.ImageType
+	}
+
+	if !dara.IsNil(request.LanguageType) {
+		body["LanguageType"] = request.LanguageType
+	}
+
+	if !dara.IsNil(request.OsType) {
+		body["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.PackageType) {
+		body["PackageType"] = request.PackageType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PlatformName) {
+		body["PlatformName"] = request.PlatformName
+	}
+
+	if !dara.IsNil(request.PlatformNameList) {
+		body["PlatformNameList"] = request.PlatformNameList
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ProductTypeList) {
+		body["ProductTypeList"] = request.ProductTypeList
+	}
+
+	if !dara.IsNil(request.ProtocolType) {
+		body["ProtocolType"] = request.ProtocolType
+	}
+
+	if !dara.IsNil(request.ResourceInstanceType) {
+		body["ResourceInstanceType"] = request.ResourceInstanceType
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the resource types that are available for purchase when you create a delivery group.
 //
 // @param request - ListNodeInstanceTypeRequest
@@ -1351,9 +1591,11 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 //
 // @return ListNodeInstanceTypeResponse
 func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, request *ListNodeInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *ListNodeInstanceTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizRegionId) {
@@ -1445,9 +1687,11 @@ func (client *Client) ListNodeInstanceTypeWithContext(ctx context.Context, reque
 //
 // @return ListNodesResponse
 func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNodesRequest, runtime *dara.RuntimeOptions) (_result *ListNodesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1499,9 +1743,11 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 //
 // @return ListOtaTaskResponse
 func (client *Client) ListOtaTaskWithContext(ctx context.Context, request *ListOtaTaskRequest, runtime *dara.RuntimeOptions) (_result *ListOtaTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1553,9 +1799,11 @@ func (client *Client) ListOtaTaskWithContext(ctx context.Context, request *ListO
 //
 // @return ListPersistentAppInstancesResponse
 func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context, request *ListPersistentAppInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListPersistentAppInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1615,9 +1863,11 @@ func (client *Client) ListPersistentAppInstancesWithContext(ctx context.Context,
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListRegionsRequest, runtime *dara.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizSource) {
@@ -1661,9 +1911,11 @@ func (client *Client) ListRegionsWithContext(ctx context.Context, request *ListR
 //
 // @return ListTagCloudResourcesResponse
 func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, request *ListTagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagCloudResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -1719,9 +1971,11 @@ func (client *Client) ListTagCloudResourcesWithContext(ctx context.Context, requ
 //
 // @return ListWuyingServerResponse
 func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *ListWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *ListWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -1812,9 +2066,11 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 //
 // @return LogOffAllSessionsInAppInstanceGroupResponse
 func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context.Context, request *LogOffAllSessionsInAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -1858,9 +2114,11 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithContext(ctx context
 //
 // @return ModifyAppInstanceGroupAttributeResponse
 func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Context, tmpReq *ModifyAppInstanceGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyAppInstanceGroupAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1960,9 +2218,11 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 //
 // @return ModifyAppPolicyResponse
 func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *ModifyAppPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppPolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyAppPolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2016,9 +2276,11 @@ func (client *Client) ModifyAppPolicyWithContext(ctx context.Context, tmpReq *Mo
 //
 // @return ModifyNodePoolAmountResponse
 func (client *Client) ModifyNodePoolAmountWithContext(ctx context.Context, tmpReq *ModifyNodePoolAmountRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAmountResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyNodePoolAmountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2084,9 +2346,11 @@ func (client *Client) ModifyNodePoolAmountWithContext(ctx context.Context, tmpRe
 //
 // @return ModifyNodePoolAttributeResponse
 func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tmpReq *ModifyNodePoolAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyNodePoolAttributeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyNodePoolAttributeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2148,9 +2412,11 @@ func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tm
 //
 // @return ModifyTenantConfigResponse
 func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request *ModifyTenantConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyTenantConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupExpireRemind) {
@@ -2190,9 +2456,11 @@ func (client *Client) ModifyTenantConfigWithContext(ctx context.Context, request
 //
 // @return ModifyWuyingServerAttributeResponse
 func (client *Client) ModifyWuyingServerAttributeWithContext(ctx context.Context, request *ModifyWuyingServerAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyWuyingServerAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Password) {
@@ -2240,9 +2508,11 @@ func (client *Client) ModifyWuyingServerAttributeWithContext(ctx context.Context
 //
 // @return PageListAppInstanceGroupUserResponse
 func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Context, request *PageListAppInstanceGroupUserRequest, runtime *dara.RuntimeOptions) (_result *PageListAppInstanceGroupUserResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -2298,9 +2568,11 @@ func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Contex
 //
 // @return RenewAppInstanceGroupResponse
 func (client *Client) RenewAppInstanceGroupWithContext(ctx context.Context, tmpReq *RenewAppInstanceGroupRequest, runtime *dara.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RenewAppInstanceGroupShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2378,9 +2650,11 @@ func (client *Client) RenewAppInstanceGroupWithContext(ctx context.Context, tmpR
 //
 // @return RenewWuyingServerResponse
 func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request *RenewWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RenewWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -2436,9 +2710,11 @@ func (client *Client) RenewWuyingServerWithContext(ctx context.Context, request 
 //
 // @return RestartWuyingServerResponse
 func (client *Client) RestartWuyingServerWithContext(ctx context.Context, request *RestartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *RestartWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -2481,9 +2757,11 @@ func (client *Client) RestartWuyingServerWithContext(ctx context.Context, reques
 //
 // @return StartWuyingServerResponse
 func (client *Client) StartWuyingServerWithContext(ctx context.Context, request *StartWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StartWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
@@ -2526,9 +2804,11 @@ func (client *Client) StartWuyingServerWithContext(ctx context.Context, request 
 //
 // @return StopWuyingServerResponse
 func (client *Client) StopWuyingServerWithContext(ctx context.Context, request *StopWuyingServerRequest, runtime *dara.RuntimeOptions) (_result *StopWuyingServerResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Force) {
@@ -2575,9 +2855,11 @@ func (client *Client) StopWuyingServerWithContext(ctx context.Context, request *
 //
 // @return TagCloudResourcesResponse
 func (client *Client) TagCloudResourcesWithContext(ctx context.Context, request *TagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagCloudResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceIds) {
@@ -2625,9 +2907,11 @@ func (client *Client) TagCloudResourcesWithContext(ctx context.Context, request 
 //
 // @return UnbindResponse
 func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequest, runtime *dara.RuntimeOptions) (_result *UnbindResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AppInstanceGroupId) {
@@ -2683,9 +2967,11 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 //
 // @return UntagCloudResourcesResponse
 func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, request *UntagCloudResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagCloudResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceIds) {
@@ -2741,9 +3027,11 @@ func (client *Client) UntagCloudResourcesWithContext(ctx context.Context, reques
 //
 // @return UpdateAppInstanceGroupImageResponse
 func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context, request *UpdateAppInstanceGroupImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppCenterImageId) {

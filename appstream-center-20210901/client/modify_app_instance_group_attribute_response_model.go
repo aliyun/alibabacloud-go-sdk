@@ -59,5 +59,10 @@ func (s *ModifyAppInstanceGroupAttributeResponse) SetBody(v *ModifyAppInstanceGr
 }
 
 func (s *ModifyAppInstanceGroupAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -95,7 +95,16 @@ func (s *ListAuthorizedUserGroupsResponseBody) SetUserGroups(v []*ListAuthorized
 }
 
 func (s *ListAuthorizedUserGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAuthorizedUserGroupsResponseBodyUserGroups struct {

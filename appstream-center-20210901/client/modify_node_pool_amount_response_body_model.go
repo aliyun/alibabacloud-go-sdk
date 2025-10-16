@@ -53,7 +53,12 @@ func (s *ModifyNodePoolAmountResponseBody) SetRequestId(v string) *ModifyNodePoo
 }
 
 func (s *ModifyNodePoolAmountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolAmountResponseBodyData struct {

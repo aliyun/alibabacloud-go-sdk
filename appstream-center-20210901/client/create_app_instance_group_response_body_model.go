@@ -47,7 +47,12 @@ func (s *CreateAppInstanceGroupResponseBody) SetRequestId(v string) *CreateAppIn
 }
 
 func (s *CreateAppInstanceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstanceGroupModel != nil {
+		if err := s.AppInstanceGroupModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateAppInstanceGroupResponseBodyAppInstanceGroupModel struct {

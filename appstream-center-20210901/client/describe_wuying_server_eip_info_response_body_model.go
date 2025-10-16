@@ -52,7 +52,12 @@ func (s *DescribeWuyingServerEipInfoResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeWuyingServerEipInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EipInfoModel != nil {
+		if err := s.EipInfoModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeWuyingServerEipInfoResponseBodyEipInfoModel struct {

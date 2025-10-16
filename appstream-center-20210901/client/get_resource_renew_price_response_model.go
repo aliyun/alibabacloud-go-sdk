@@ -59,5 +59,10 @@ func (s *GetResourceRenewPriceResponse) SetBody(v *GetResourceRenewPriceResponse
 }
 
 func (s *GetResourceRenewPriceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

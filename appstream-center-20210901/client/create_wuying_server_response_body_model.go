@@ -50,7 +50,12 @@ func (s *CreateWuyingServerResponseBody) SetRequestId(v string) *CreateWuyingSer
 }
 
 func (s *CreateWuyingServerResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateWuyingServerResponseBodyData struct {

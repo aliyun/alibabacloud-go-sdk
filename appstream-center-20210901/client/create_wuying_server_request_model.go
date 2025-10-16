@@ -338,7 +338,16 @@ func (s *CreateWuyingServerRequest) SetWuyingServerName(v string) *CreateWuyingS
 }
 
 func (s *CreateWuyingServerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataDisk != nil {
+		for _, item := range s.DataDisk {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateWuyingServerRequestDataDisk struct {

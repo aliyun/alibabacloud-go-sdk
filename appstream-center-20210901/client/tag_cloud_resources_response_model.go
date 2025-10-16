@@ -59,5 +59,10 @@ func (s *TagCloudResourcesResponse) SetBody(v *TagCloudResourcesResponseBody) *T
 }
 
 func (s *TagCloudResourcesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

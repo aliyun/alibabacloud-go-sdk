@@ -80,7 +80,12 @@ func (s *ModifyNodePoolAmountRequest) SetProductType(v string) *ModifyNodePoolAm
 }
 
 func (s *ModifyNodePoolAmountRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NodePool != nil {
+		if err := s.NodePool.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ModifyNodePoolAmountRequestNodePool struct {

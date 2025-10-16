@@ -104,7 +104,21 @@ func (s *GetResourcePriceResponseBody) SetRequestId(v string) *GetResourcePriceR
 }
 
 func (s *GetResourcePriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceList != nil {
+		for _, item := range s.PriceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PriceModel != nil {
+		if err := s.PriceModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetResourcePriceResponseBodyPriceList struct {
@@ -162,7 +176,21 @@ func (s *GetResourcePriceResponseBodyPriceList) SetRules(v []*GetResourcePriceRe
 }
 
 func (s *GetResourcePriceResponseBodyPriceList) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcePriceResponseBodyPriceListPrice struct {
@@ -248,7 +276,16 @@ func (s *GetResourcePriceResponseBodyPriceListPrice) SetTradePrice(v string) *Ge
 }
 
 func (s *GetResourcePriceResponseBodyPriceListPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcePriceResponseBodyPriceListPricePromotions struct {
@@ -414,7 +451,21 @@ func (s *GetResourcePriceResponseBodyPriceModel) SetRules(v []*GetResourcePriceR
 }
 
 func (s *GetResourcePriceResponseBodyPriceModel) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcePriceResponseBodyPriceModelPrice struct {
@@ -500,7 +551,16 @@ func (s *GetResourcePriceResponseBodyPriceModelPrice) SetTradePrice(v string) *G
 }
 
 func (s *GetResourcePriceResponseBodyPriceModelPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetResourcePriceResponseBodyPriceModelPricePromotions struct {
