@@ -122,7 +122,12 @@ func (s *CopyCdsFileResponseBody) SetSuccess(v string) *CopyCdsFileResponseBody 
 }
 
 func (s *CopyCdsFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CopyCdsFileModel != nil {
+		if err := s.CopyCdsFileModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CopyCdsFileResponseBodyCopyCdsFileModel struct {

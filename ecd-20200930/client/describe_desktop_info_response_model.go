@@ -59,5 +59,10 @@ func (s *DescribeDesktopInfoResponse) SetBody(v *DescribeDesktopInfoResponseBody
 }
 
 func (s *DescribeDesktopInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

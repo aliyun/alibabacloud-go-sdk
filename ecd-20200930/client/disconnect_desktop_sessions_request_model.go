@@ -74,7 +74,16 @@ func (s *DisconnectDesktopSessionsRequest) SetSessions(v []*DisconnectDesktopSes
 }
 
 func (s *DisconnectDesktopSessionsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DisconnectDesktopSessionsRequestSessions struct {

@@ -87,7 +87,16 @@ func (s *DescribeDesktopGroupSessionsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeDesktopGroupSessionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessions struct {
@@ -425,7 +434,12 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) SetTotalConnectionDur
 }
 
 func (s *DescribeDesktopGroupSessionsResponseBodySessions) Validate() error {
-	return dara.Validate(s)
+	if s.TerminalInfo != nil {
+		if err := s.TerminalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo struct {

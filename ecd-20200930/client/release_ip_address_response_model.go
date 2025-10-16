@@ -59,5 +59,10 @@ func (s *ReleaseIpAddressResponse) SetBody(v *ReleaseIpAddressResponseBody) *Rel
 }
 
 func (s *ReleaseIpAddressResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

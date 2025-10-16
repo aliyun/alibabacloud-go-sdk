@@ -74,7 +74,16 @@ func (s *SetDesktopGroupScaleTimerRequest) SetScaleTimerInfos(v []*SetDesktopGro
 }
 
 func (s *SetDesktopGroupScaleTimerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleTimerInfos != nil {
+		for _, item := range s.ScaleTimerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetDesktopGroupScaleTimerRequestScaleTimerInfos struct {

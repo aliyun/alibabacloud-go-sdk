@@ -59,5 +59,10 @@ func (s *ModifyTimerGroupResponse) SetBody(v *ModifyTimerGroupResponseBody) *Mod
 }
 
 func (s *ModifyTimerGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

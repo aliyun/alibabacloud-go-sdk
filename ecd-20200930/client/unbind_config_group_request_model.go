@@ -78,7 +78,16 @@ func (s *UnbindConfigGroupRequest) SetType(v string) *UnbindConfigGroupRequest {
 }
 
 func (s *UnbindConfigGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceInfos != nil {
+		for _, item := range s.ResourceInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UnbindConfigGroupRequestResourceInfos struct {

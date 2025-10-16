@@ -71,7 +71,16 @@ func (s *DescribeIpAddressesResponseBody) SetRequestId(v string) *DescribeIpAddr
 }
 
 func (s *DescribeIpAddressesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpAddresses != nil {
+		for _, item := range s.IpAddresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpAddressesResponseBodyIpAddresses struct {

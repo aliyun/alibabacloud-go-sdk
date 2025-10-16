@@ -70,7 +70,16 @@ func (s *DescribeNetworkPackagesResponseBody) SetRequestId(v string) *DescribeNe
 }
 
 func (s *DescribeNetworkPackagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NetworkPackages != nil {
+		for _, item := range s.NetworkPackages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNetworkPackagesResponseBodyNetworkPackages struct {

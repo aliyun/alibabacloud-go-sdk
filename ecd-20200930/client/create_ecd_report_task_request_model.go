@@ -96,7 +96,16 @@ func (s *CreateEcdReportTaskRequest) SetTaskType(v string) *CreateEcdReportTaskR
 }
 
 func (s *CreateEcdReportTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterList != nil {
+		for _, item := range s.FilterList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateEcdReportTaskRequestFilterList struct {

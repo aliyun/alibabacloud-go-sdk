@@ -71,7 +71,16 @@ func (s *DescribeForwardTableEntriesResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeForwardTableEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ForwardTableEntries != nil {
+		for _, item := range s.ForwardTableEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {

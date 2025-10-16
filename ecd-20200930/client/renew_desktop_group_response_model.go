@@ -59,5 +59,10 @@ func (s *RenewDesktopGroupResponse) SetBody(v *RenewDesktopGroupResponseBody) *R
 }
 
 func (s *RenewDesktopGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

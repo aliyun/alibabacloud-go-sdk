@@ -128,7 +128,16 @@ func (s *DescribeUsersInGroupResponseBody) SetUsersCount(v int32) *DescribeUsers
 }
 
 func (s *DescribeUsersInGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EndUsers != nil {
+		for _, item := range s.EndUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersInGroupResponseBodyEndUsers struct {
@@ -362,7 +371,21 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetUserSetPropertiesModels(v 
 }
 
 func (s *DescribeUsersInGroupResponseBodyEndUsers) Validate() error {
-	return dara.Validate(s)
+	if s.ExternalInfo != nil {
+		if err := s.ExternalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserSetPropertiesModels != nil {
+		for _, item := range s.UserSetPropertiesModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersInGroupResponseBodyEndUsersExternalInfo struct {
@@ -514,7 +537,16 @@ func (s *DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels) SetUse
 }
 
 func (s *DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels) Validate() error {
-	return dara.Validate(s)
+	if s.PropertyValues != nil {
+		for _, item := range s.PropertyValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModelsPropertyValues struct {

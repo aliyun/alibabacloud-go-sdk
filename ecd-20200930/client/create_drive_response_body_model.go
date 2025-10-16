@@ -95,7 +95,12 @@ func (s *CreateDriveResponseBody) SetSuccess(v bool) *CreateDriveResponseBody {
 }
 
 func (s *CreateDriveResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Drive != nil {
+		if err := s.Drive.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateDriveResponseBodyDrive struct {

@@ -52,7 +52,12 @@ func (s *CreateCdsFileResponseBody) SetRequestId(v string) *CreateCdsFileRespons
 }
 
 func (s *CreateCdsFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileModel != nil {
+		if err := s.FileModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCdsFileResponseBodyFileModel struct {

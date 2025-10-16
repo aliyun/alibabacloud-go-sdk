@@ -59,5 +59,10 @@ func (s *CreateADConnectorDirectoryResponse) SetBody(v *CreateADConnectorDirecto
 }
 
 func (s *CreateADConnectorDirectoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

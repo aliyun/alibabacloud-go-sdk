@@ -59,5 +59,10 @@ func (s *ApproveFotaUpdateResponse) SetBody(v *ApproveFotaUpdateResponseBody) *A
 }
 
 func (s *ApproveFotaUpdateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

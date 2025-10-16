@@ -70,7 +70,16 @@ func (s *DescribeVirtualMFADevicesResponseBody) SetVirtualMFADevices(v []*Descri
 }
 
 func (s *DescribeVirtualMFADevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VirtualMFADevices != nil {
+		for _, item := range s.VirtualMFADevices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
@@ -241,7 +250,12 @@ func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) SetStatus(v str
 }
 
 func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) Validate() error {
-	return dara.Validate(s)
+	if s.AdUser != nil {
+		if err := s.AdUser.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser struct {

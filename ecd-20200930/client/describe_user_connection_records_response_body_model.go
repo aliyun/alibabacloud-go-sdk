@@ -70,7 +70,16 @@ func (s *DescribeUserConnectionRecordsResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeUserConnectionRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConnectionRecords != nil {
+		for _, item := range s.ConnectionRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {

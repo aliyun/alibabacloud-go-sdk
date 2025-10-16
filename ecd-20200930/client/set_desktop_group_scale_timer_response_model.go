@@ -59,5 +59,10 @@ func (s *SetDesktopGroupScaleTimerResponse) SetBody(v *SetDesktopGroupScaleTimer
 }
 
 func (s *SetDesktopGroupScaleTimerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

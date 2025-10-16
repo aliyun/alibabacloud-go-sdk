@@ -70,7 +70,16 @@ func (s *DescribeBundlesResponseBody) SetRequestId(v string) *DescribeBundlesRes
 }
 
 func (s *DescribeBundlesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Bundles != nil {
+		for _, item := range s.Bundles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBundlesResponseBodyBundles struct {
@@ -539,7 +548,21 @@ func (s *DescribeBundlesResponseBodyBundles) SetVolumeEncryptionKey(v string) *D
 }
 
 func (s *DescribeBundlesResponseBodyBundles) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopTypeAttribute != nil {
+		if err := s.DesktopTypeAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBundlesResponseBodyBundlesDesktopTypeAttribute struct {

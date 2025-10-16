@@ -122,5 +122,10 @@ func (s *ModifyCdsFileShareLinkResponseBody) SetSuccess(v bool) *ModifyCdsFileSh
 }
 
 func (s *ModifyCdsFileShareLinkResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

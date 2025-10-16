@@ -50,7 +50,16 @@ func (s *DescribeCloudDrivePermissionsResponseBody) SetRequestId(v string) *Desc
 }
 
 func (s *DescribeCloudDrivePermissionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudDrivePermissionModels != nil {
+		for _, item := range s.CloudDrivePermissionModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDrivePermissionsResponseBodyCloudDrivePermissionModels struct {

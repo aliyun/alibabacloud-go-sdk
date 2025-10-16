@@ -59,5 +59,10 @@ func (s *SetIdpMetadataResponse) SetBody(v *SetIdpMetadataResponseBody) *SetIdpM
 }
 
 func (s *SetIdpMetadataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

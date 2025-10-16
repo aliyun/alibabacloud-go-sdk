@@ -104,7 +104,16 @@ func (s *DescribeFotaTasksResponseBody) SetRequestId(v string) *DescribeFotaTask
 }
 
 func (s *DescribeFotaTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FotaTasks != nil {
+		for _, item := range s.FotaTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFotaTasksResponseBodyFotaTasks struct {

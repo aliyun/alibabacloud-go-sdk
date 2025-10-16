@@ -87,7 +87,16 @@ func (s *ModifyDesktopTimerRequest) SetUseDesktopTimers(v bool) *ModifyDesktopTi
 }
 
 func (s *ModifyDesktopTimerRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopTimers != nil {
+		for _, item := range s.DesktopTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDesktopTimerRequestDesktopTimers struct {

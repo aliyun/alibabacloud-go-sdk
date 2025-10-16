@@ -70,7 +70,16 @@ func (s *DescribeFlowStatisticResponseBody) SetRequestId(v string) *DescribeFlow
 }
 
 func (s *DescribeFlowStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopFlowStatistic != nil {
+		for _, item := range s.DesktopFlowStatistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFlowStatisticResponseBodyDesktopFlowStatistic struct {

@@ -53,7 +53,16 @@ func (s *ApplyCoordinationForMonitoringResponseBody) SetRequestId(v string) *App
 }
 
 func (s *ApplyCoordinationForMonitoringResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CoordinateFlowModels != nil {
+		for _, item := range s.CoordinateFlowModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {

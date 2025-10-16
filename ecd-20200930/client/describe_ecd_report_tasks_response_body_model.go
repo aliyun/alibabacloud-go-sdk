@@ -65,7 +65,16 @@ func (s *DescribeEcdReportTasksResponseBody) SetTotalCount(v int64) *DescribeEcd
 }
 
 func (s *DescribeEcdReportTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ExportTaskList != nil {
+		for _, item := range s.ExportTaskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEcdReportTasksResponseBodyExportTaskList struct {

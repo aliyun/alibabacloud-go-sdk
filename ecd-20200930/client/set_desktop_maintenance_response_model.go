@@ -59,5 +59,10 @@ func (s *SetDesktopMaintenanceResponse) SetBody(v *SetDesktopMaintenanceResponse
 }
 
 func (s *SetDesktopMaintenanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

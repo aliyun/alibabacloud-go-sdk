@@ -104,7 +104,16 @@ func (s *DescribeCloudDriveGroupsResponseBody) SetSuccess(v bool) *DescribeCloud
 }
 
 func (s *DescribeCloudDriveGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CloudDriveGroups != nil {
+		for _, item := range s.CloudDriveGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
@@ -285,7 +294,16 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetUsedSize(v str
 }
 
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AdminUserInfos != nil {
+		for _, item := range s.AdminUserInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {

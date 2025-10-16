@@ -53,7 +53,12 @@ func (s *DescribeTimerGroupResponseBody) SetRequestId(v string) *DescribeTimerGr
 }
 
 func (s *DescribeTimerGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTimerGroupResponseBodyData struct {
@@ -205,7 +210,16 @@ func (s *DescribeTimerGroupResponseBodyData) SetType(v string) *DescribeTimerGro
 }
 
 func (s *DescribeTimerGroupResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigTimers != nil {
+		for _, item := range s.ConfigTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTimerGroupResponseBodyDataConfigTimers struct {
@@ -411,7 +425,16 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetTriggerType(v string
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimers) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentTimers != nil {
+		for _, item := range s.SegmentTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {

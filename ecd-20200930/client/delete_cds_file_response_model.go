@@ -59,5 +59,10 @@ func (s *DeleteCdsFileResponse) SetBody(v *DeleteCdsFileResponseBody) *DeleteCds
 }
 
 func (s *DeleteCdsFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

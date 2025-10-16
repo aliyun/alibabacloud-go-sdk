@@ -71,7 +71,16 @@ func (s *DescribeNatGatewaysResponseBody) SetRequestId(v string) *DescribeNatGat
 }
 
 func (s *DescribeNatGatewaysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatGateways != nil {
+		for _, item := range s.NatGateways {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGateways struct {
@@ -156,7 +165,16 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVpcId(v string) *Describ
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
-	return dara.Validate(s)
+	if s.IpLists != nil {
+		for _, item := range s.IpLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {

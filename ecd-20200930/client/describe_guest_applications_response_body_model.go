@@ -53,7 +53,16 @@ func (s *DescribeGuestApplicationsResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeGuestApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGuestApplicationsResponseBodyApplications struct {
@@ -235,7 +244,16 @@ func (s *DescribeGuestApplicationsResponseBodyApplications) SetStatus(v string) 
 }
 
 func (s *DescribeGuestApplicationsResponseBodyApplications) Validate() error {
-	return dara.Validate(s)
+	if s.ProcessData != nil {
+		for _, item := range s.ProcessData {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGuestApplicationsResponseBodyApplicationsProcessData struct {

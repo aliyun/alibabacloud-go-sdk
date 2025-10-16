@@ -69,6 +69,8 @@ type iCreateDesktopsRequest interface {
 	GetSavingPlanId() *string
 	SetSnapshotPolicyId(v string) *CreateDesktopsRequest
 	GetSnapshotPolicyId() *string
+	SetSubnetId(v string) *CreateDesktopsRequest
+	GetSubnetId() *string
 	SetTag(v []*CreateDesktopsRequestTag) *CreateDesktopsRequest
 	GetTag() []*CreateDesktopsRequestTag
 	SetTimerGroupId(v string) *CreateDesktopsRequest
@@ -313,6 +315,7 @@ type CreateDesktopsRequest struct {
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	SubnetId         *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
 	Tag []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the timer group.
@@ -505,6 +508,10 @@ func (s *CreateDesktopsRequest) GetSnapshotPolicyId() *string {
 	return s.SnapshotPolicyId
 }
 
+func (s *CreateDesktopsRequest) GetSubnetId() *string {
+	return s.SubnetId
+}
+
 func (s *CreateDesktopsRequest) GetTag() []*CreateDesktopsRequestTag {
 	return s.Tag
 }
@@ -687,6 +694,11 @@ func (s *CreateDesktopsRequest) SetSnapshotPolicyId(v string) *CreateDesktopsReq
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetSubnetId(v string) *CreateDesktopsRequest {
+	s.SubnetId = &v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetTag(v []*CreateDesktopsRequestTag) *CreateDesktopsRequest {
 	s.Tag = v
 	return s
@@ -728,7 +740,53 @@ func (s *CreateDesktopsRequest) SetVpcId(v string) *CreateDesktopsRequest {
 }
 
 func (s *CreateDesktopsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BundleModels != nil {
+		for _, item := range s.BundleModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopAttachment != nil {
+		if err := s.DesktopAttachment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DesktopTimers != nil {
+		for _, item := range s.DesktopTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MonthDesktopSetting != nil {
+		if err := s.MonthDesktopSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserCommands != nil {
+		for _, item := range s.UserCommands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDesktopsRequestBundleModels struct {

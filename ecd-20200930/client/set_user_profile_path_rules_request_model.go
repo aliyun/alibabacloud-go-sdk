@@ -115,7 +115,16 @@ func (s *SetUserProfilePathRulesRequest) SetUserProfileRuleType(v string) *SetUs
 }
 
 func (s *SetUserProfilePathRulesRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserProfilePathRule != nil {
+		for _, item := range s.UserProfilePathRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetUserProfilePathRulesRequestUserProfilePathRule struct {
@@ -152,7 +161,21 @@ func (s *SetUserProfilePathRulesRequestUserProfilePathRule) SetWhitePaths(v []*S
 }
 
 func (s *SetUserProfilePathRulesRequestUserProfilePathRule) Validate() error {
-	return dara.Validate(s)
+	if s.BlackPath != nil {
+		if err := s.BlackPath.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WhitePaths != nil {
+		for _, item := range s.WhitePaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath struct {

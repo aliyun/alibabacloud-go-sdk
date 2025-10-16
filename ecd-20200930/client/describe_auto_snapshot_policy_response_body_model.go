@@ -70,7 +70,16 @@ func (s *DescribeAutoSnapshotPolicyResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeAutoSnapshotPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AutoSnapshotPolicies != nil {
+		for _, item := range s.AutoSnapshotPolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {

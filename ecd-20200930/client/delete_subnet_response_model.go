@@ -59,5 +59,10 @@ func (s *DeleteSubnetResponse) SetBody(v *DeleteSubnetResponseBody) *DeleteSubne
 }
 
 func (s *DeleteSubnetResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -71,7 +71,16 @@ func (s *DescribeRouteTableListResponseBody) SetRouteTableList(v []*DescribeRout
 }
 
 func (s *DescribeRouteTableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteTableList != nil {
+		for _, item := range s.RouteTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteTableListResponseBodyRouteTableList struct {

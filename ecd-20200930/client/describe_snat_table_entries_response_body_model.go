@@ -71,7 +71,16 @@ func (s *DescribeSnatTableEntriesResponseBody) SetSnatTableEntries(v []*Describe
 }
 
 func (s *DescribeSnatTableEntriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SnatTableEntries != nil {
+		for _, item := range s.SnatTableEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {

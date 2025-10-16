@@ -122,7 +122,12 @@ func (s *MoveCdsFileResponseBody) SetSuccess(v bool) *MoveCdsFileResponseBody {
 }
 
 func (s *MoveCdsFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MoveCdsFileModel != nil {
+		if err := s.MoveCdsFileModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type MoveCdsFileResponseBodyMoveCdsFileModel struct {

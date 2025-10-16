@@ -156,7 +156,16 @@ func (s *ListCdsFilesResponseBody) SetSuccess(v bool) *ListCdsFilesResponseBody 
 }
 
 func (s *ListCdsFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileModels != nil {
+		for _, item := range s.FileModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCdsFilesResponseBodyFileModels struct {

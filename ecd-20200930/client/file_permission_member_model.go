@@ -73,7 +73,12 @@ func (s *FilePermissionMember) SetRoleId(v string) *FilePermissionMember {
 }
 
 func (s *FilePermissionMember) Validate() error {
-	return dara.Validate(s)
+	if s.CdsIdentity != nil {
+		if err := s.CdsIdentity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type FilePermissionMemberCdsIdentity struct {

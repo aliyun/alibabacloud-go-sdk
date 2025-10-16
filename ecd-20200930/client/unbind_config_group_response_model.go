@@ -59,5 +59,10 @@ func (s *UnbindConfigGroupResponse) SetBody(v *UnbindConfigGroupResponseBody) *U
 }
 
 func (s *UnbindConfigGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

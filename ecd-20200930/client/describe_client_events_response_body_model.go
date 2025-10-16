@@ -70,7 +70,16 @@ func (s *DescribeClientEventsResponseBody) SetRequestId(v string) *DescribeClien
 }
 
 func (s *DescribeClientEventsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Events != nil {
+		for _, item := range s.Events {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClientEventsResponseBodyEvents struct {
@@ -462,7 +471,12 @@ func (s *DescribeClientEventsResponseBodyEvents) SetTerminalInfo(v *DescribeClie
 }
 
 func (s *DescribeClientEventsResponseBodyEvents) Validate() error {
-	return dara.Validate(s)
+	if s.TerminalInfo != nil {
+		if err := s.TerminalInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeClientEventsResponseBodyEventsTerminalInfo struct {

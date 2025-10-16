@@ -53,7 +53,12 @@ func (s *DescribeUserProfilePathRulesResponseBody) SetUserProfilePathRule(v *Des
 }
 
 func (s *DescribeUserProfilePathRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserProfilePathRule != nil {
+		if err := s.UserProfilePathRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRule struct {
@@ -127,7 +132,16 @@ func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRule) SetUserPro
 }
 
 func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRule) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules struct {
@@ -164,7 +178,21 @@ func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules) SetWh
 }
 
 func (s *DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRules) Validate() error {
-	return dara.Validate(s)
+	if s.BlackPath != nil {
+		if err := s.BlackPath.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WhitePaths != nil {
+		for _, item := range s.WhitePaths {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserProfilePathRulesResponseBodyUserProfilePathRuleRulesBlackPath struct {

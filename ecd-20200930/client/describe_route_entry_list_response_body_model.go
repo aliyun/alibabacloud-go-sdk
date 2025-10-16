@@ -71,7 +71,16 @@ func (s *DescribeRouteEntryListResponseBody) SetRouteEntries(v []*DescribeRouteE
 }
 
 func (s *DescribeRouteEntryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntries != nil {
+		for _, item := range s.RouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntries struct {
@@ -176,7 +185,16 @@ func (s *DescribeRouteEntryListResponseBodyRouteEntries) SetType(v string) *Desc
 }
 
 func (s *DescribeRouteEntryListResponseBodyRouteEntries) Validate() error {
-	return dara.Validate(s)
+	if s.NextHops != nil {
+		for _, item := range s.NextHops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRouteEntryListResponseBodyRouteEntriesNextHops struct {

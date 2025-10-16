@@ -149,7 +149,16 @@ func (s *ApplyCoordinationForMonitoringRequest) SetUuid(v string) *ApplyCoordina
 }
 
 func (s *ApplyCoordinationForMonitoringRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceCandidates != nil {
+		for _, item := range s.ResourceCandidates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ApplyCoordinationForMonitoringRequestResourceCandidates struct {

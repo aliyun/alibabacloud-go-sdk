@@ -53,7 +53,16 @@ func (s *DescribeUsersPasswordResponseBody) SetRequestId(v string) *DescribeUser
 }
 
 func (s *DescribeUsersPasswordResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopUsers != nil {
+		for _, item := range s.DesktopUsers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUsersPasswordResponseBodyDesktopUsers struct {

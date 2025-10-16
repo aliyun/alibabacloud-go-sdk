@@ -59,5 +59,10 @@ func (s *DeleteCenterPolicyResponse) SetBody(v *DeleteCenterPolicyResponseBody) 
 }
 
 func (s *DeleteCenterPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -82,7 +82,16 @@ func (s *ModifyCustomizedListHeadersRequest) SetRegionId(v string) *ModifyCustom
 }
 
 func (s *ModifyCustomizedListHeadersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Headers != nil {
+		for _, item := range s.Headers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyCustomizedListHeadersRequestHeaders struct {

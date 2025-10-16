@@ -53,7 +53,16 @@ func (s *DisconnectDesktopSessionsResponseBody) SetRequestId(v string) *Disconne
 }
 
 func (s *DisconnectDesktopSessionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InvalidSessions != nil {
+		for _, item := range s.InvalidSessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DisconnectDesktopSessionsResponseBodyInvalidSessions struct {

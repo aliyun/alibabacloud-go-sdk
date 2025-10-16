@@ -197,7 +197,12 @@ func (s *CreateCloudDriveServiceResponseBody) SetRequestId(v string) *CreateClou
 }
 
 func (s *CreateCloudDriveServiceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConflictCdsAndOrder != nil {
+		if err := s.ConflictCdsAndOrder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrder struct {
@@ -234,7 +239,25 @@ func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder) SetConflictOrde
 }
 
 func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder) Validate() error {
-	return dara.Validate(s)
+	if s.ConflictCds != nil {
+		for _, item := range s.ConflictCds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ConflictOrder != nil {
+		for _, item := range s.ConflictOrder {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds struct {

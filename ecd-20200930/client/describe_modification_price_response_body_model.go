@@ -53,7 +53,12 @@ func (s *DescribeModificationPriceResponseBody) SetRequestId(v string) *Describe
 }
 
 func (s *DescribeModificationPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeModificationPriceResponseBodyPriceInfo struct {
@@ -90,7 +95,21 @@ func (s *DescribeModificationPriceResponseBodyPriceInfo) SetRules(v []*DescribeM
 }
 
 func (s *DescribeModificationPriceResponseBodyPriceInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Price != nil {
+		if err := s.Price.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPrice struct {
@@ -187,7 +206,16 @@ func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) SetTradePrice(v fl
 }
 
 func (s *DescribeModificationPriceResponseBodyPriceInfoPrice) Validate() error {
-	return dara.Validate(s)
+	if s.Promotions != nil {
+		for _, item := range s.Promotions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {

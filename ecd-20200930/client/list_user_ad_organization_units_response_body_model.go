@@ -70,7 +70,16 @@ func (s *ListUserAdOrganizationUnitsResponseBody) SetRequestId(v string) *ListUs
 }
 
 func (s *ListUserAdOrganizationUnitsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OUNames != nil {
+		for _, item := range s.OUNames {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserAdOrganizationUnitsResponseBodyOUNames struct {

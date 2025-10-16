@@ -87,7 +87,12 @@ func (s *DownloadCdsFileResponseBody) SetSuccess(v bool) *DownloadCdsFileRespons
 }
 
 func (s *DownloadCdsFileResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DownloadFileModel != nil {
+		if err := s.DownloadFileModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DownloadCdsFileResponseBodyDownloadFileModel struct {

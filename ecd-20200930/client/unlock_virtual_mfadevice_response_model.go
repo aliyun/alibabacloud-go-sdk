@@ -59,5 +59,10 @@ func (s *UnlockVirtualMFADeviceResponse) SetBody(v *UnlockVirtualMFADeviceRespon
 }
 
 func (s *UnlockVirtualMFADeviceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DescribeCdsFileShareLinksResponse) SetBody(v *DescribeCdsFileShareLinks
 }
 
 func (s *DescribeCdsFileShareLinksResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

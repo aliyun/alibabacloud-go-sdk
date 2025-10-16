@@ -121,7 +121,16 @@ func (s *DescribeDesktopsResponseBody) SetTotalCount(v int32) *DescribeDesktopsR
 }
 
 func (s *DescribeDesktopsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Desktops != nil {
+		for _, item := range s.Desktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopsResponseBodyDesktops struct {
@@ -1157,7 +1166,62 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetZoneType(v string) *DescribeDe
 }
 
 func (s *DescribeDesktopsResponseBodyDesktops) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopDurationList != nil {
+		for _, item := range s.DesktopDurationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FotaUpdate != nil {
+		if err := s.FotaUpdate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OsUpdate != nil {
+		if err := s.OsUpdate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceGroups != nil {
+		for _, item := range s.ResourceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopsResponseBodyDesktopsDesktopDurationList struct {
@@ -1568,7 +1632,16 @@ func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) SetPackages(v []*Describe
 }
 
 func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) Validate() error {
-	return dara.Validate(s)
+	if s.Packages != nil {
+		for _, item := range s.Packages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopsResponseBodyDesktopsOsUpdatePackages struct {

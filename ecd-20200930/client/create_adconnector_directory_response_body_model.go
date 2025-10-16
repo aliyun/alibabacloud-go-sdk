@@ -87,7 +87,16 @@ func (s *CreateADConnectorDirectoryResponseBody) SetTrustPassword(v string) *Cre
 }
 
 func (s *CreateADConnectorDirectoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AdConnectors != nil {
+		for _, item := range s.AdConnectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateADConnectorDirectoryResponseBodyAdConnectors struct {

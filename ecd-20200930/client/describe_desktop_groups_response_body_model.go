@@ -70,7 +70,16 @@ func (s *DescribeDesktopGroupsResponseBody) SetRequestId(v string) *DescribeDesk
 }
 
 func (s *DescribeDesktopGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopGroups != nil {
+		for _, item := range s.DesktopGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
@@ -980,7 +989,25 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetVolumeEncryptionKey(
 }
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) Validate() error {
-	return dara.Validate(s)
+	if s.CountPerStatus != nil {
+		for _, item := range s.CountPerStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus struct {

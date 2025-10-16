@@ -53,7 +53,16 @@ func (s *RebuildDesktopsResponseBody) SetRequestId(v string) *RebuildDesktopsRes
 }
 
 func (s *RebuildDesktopsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RebuildResults != nil {
+		for _, item := range s.RebuildResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RebuildDesktopsResponseBodyRebuildResults struct {

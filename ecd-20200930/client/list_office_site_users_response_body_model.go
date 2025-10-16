@@ -72,7 +72,16 @@ func (s *ListOfficeSiteUsersResponseBody) SetUsers(v []*ListOfficeSiteUsersRespo
 }
 
 func (s *ListOfficeSiteUsersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Users != nil {
+		for _, item := range s.Users {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOfficeSiteUsersResponseBodyUsers struct {

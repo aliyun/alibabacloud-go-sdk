@@ -53,7 +53,16 @@ func (s *DescribeDevicesResponseBody) SetRequestId(v string) *DescribeDevicesRes
 }
 
 func (s *DescribeDevicesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Devices != nil {
+		for _, item := range s.Devices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDevicesResponseBodyDevices struct {
@@ -94,7 +103,16 @@ func (s *DescribeDevicesResponseBodyDevices) SetEndUserList(v []*DescribeDevices
 }
 
 func (s *DescribeDevicesResponseBodyDevices) Validate() error {
-	return dara.Validate(s)
+	if s.EndUserList != nil {
+		for _, item := range s.EndUserList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDevicesResponseBodyDevicesEndUserList struct {

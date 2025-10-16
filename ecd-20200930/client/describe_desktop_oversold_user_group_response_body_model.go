@@ -71,7 +71,16 @@ func (s *DescribeDesktopOversoldUserGroupResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribeDesktopOversoldUserGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopOversoldUserGroupResponseBodyData struct {

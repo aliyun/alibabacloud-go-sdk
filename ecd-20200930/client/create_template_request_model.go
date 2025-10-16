@@ -315,7 +315,43 @@ func (s *CreateTemplateRequest) SetUserDuration(v int32) *CreateTemplateRequest 
 }
 
 func (s *CreateTemplateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DataDiskList != nil {
+		for _, item := range s.DataDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionConfigList != nil {
+		for _, item := range s.RegionConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceTagList != nil {
+		for _, item := range s.ResourceTagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SiteConfigList != nil {
+		for _, item := range s.SiteConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTemplateRequestDataDiskList struct {

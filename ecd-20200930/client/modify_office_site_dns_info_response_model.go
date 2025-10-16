@@ -59,5 +59,10 @@ func (s *ModifyOfficeSiteDnsInfoResponse) SetBody(v *ModifyOfficeSiteDnsInfoResp
 }
 
 func (s *ModifyOfficeSiteDnsInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

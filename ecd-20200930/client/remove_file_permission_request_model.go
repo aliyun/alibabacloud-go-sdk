@@ -125,7 +125,16 @@ func (s *RemoveFilePermissionRequest) SetRegionId(v string) *RemoveFilePermissio
 }
 
 func (s *RemoveFilePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MemberList != nil {
+		for _, item := range s.MemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RemoveFilePermissionRequestMemberList struct {
@@ -328,7 +337,12 @@ func (s *RemoveFilePermissionRequestMemberList) SetRoleId(v string) *RemoveFileP
 }
 
 func (s *RemoveFilePermissionRequestMemberList) Validate() error {
-	return dara.Validate(s)
+	if s.CdsIdentity != nil {
+		if err := s.CdsIdentity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RemoveFilePermissionRequestMemberListCdsIdentity struct {

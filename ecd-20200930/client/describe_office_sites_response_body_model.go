@@ -87,7 +87,16 @@ func (s *DescribeOfficeSitesResponseBody) SetTotalCount(v int32) *DescribeOffice
 }
 
 func (s *DescribeOfficeSitesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OfficeSites != nil {
+		for _, item := range s.OfficeSites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSites struct {
@@ -1022,7 +1031,34 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetVpcType(v string) *Descr
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) Validate() error {
-	return dara.Validate(s)
+	if s.ADConnectors != nil {
+		for _, item := range s.ADConnectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceAmounts != nil {
+		for _, item := range s.ResourceAmounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {

@@ -53,7 +53,16 @@ func (s *ModifyResourceCenterPolicyResponseBody) SetRequestId(v string) *ModifyR
 }
 
 func (s *ModifyResourceCenterPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyResults != nil {
+		for _, item := range s.ModifyResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyResourceCenterPolicyResponseBodyModifyResults struct {

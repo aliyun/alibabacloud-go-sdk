@@ -70,7 +70,16 @@ func (s *DescribeNASFileSystemsResponseBody) SetRequestId(v string) *DescribeNAS
 }
 
 func (s *DescribeNASFileSystemsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FileSystems != nil {
+		for _, item := range s.FileSystems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
@@ -450,7 +459,34 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetZoneId(v string) *Des
 }
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) Validate() error {
-	return dara.Validate(s)
+	if s.AppInstanceGroups != nil {
+		for _, item := range s.AppInstanceGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopGroups != nil {
+		for _, item := range s.DesktopGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OfficeSites != nil {
+		for _, item := range s.OfficeSites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups struct {

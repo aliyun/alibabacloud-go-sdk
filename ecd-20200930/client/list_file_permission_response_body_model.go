@@ -53,5 +53,14 @@ func (s *ListFilePermissionResponseBody) SetRequestId(v string) *ListFilePermiss
 }
 
 func (s *ListFilePermissionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FilePermissions != nil {
+		for _, item := range s.FilePermissions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

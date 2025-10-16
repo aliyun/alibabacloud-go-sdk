@@ -70,7 +70,16 @@ func (s *DescribeSessionStatisticResponseBody) SetTotalCount(v string) *Describe
 }
 
 func (s *DescribeSessionStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Statistic != nil {
+		for _, item := range s.Statistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSessionStatisticResponseBodyStatistic struct {

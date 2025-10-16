@@ -155,7 +155,16 @@ func (s *DescribeTemplatesResponseBody) SetTotalCount(v int32) *DescribeTemplate
 }
 
 func (s *DescribeTemplatesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTemplatesResponseBodyData struct {
@@ -482,7 +491,43 @@ func (s *DescribeTemplatesResponseBodyData) SetUserDuration(v string) *DescribeT
 }
 
 func (s *DescribeTemplatesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataDiskList != nil {
+		for _, item := range s.DataDiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegionConfigList != nil {
+		for _, item := range s.RegionConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourceTagList != nil {
+		for _, item := range s.ResourceTagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SiteConfigList != nil {
+		for _, item := range s.SiteConfigList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTemplatesResponseBodyDataDataDiskList struct {

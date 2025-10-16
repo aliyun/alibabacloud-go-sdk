@@ -267,7 +267,16 @@ func (s *ModifyDesktopSpecRequest) SetUserDiskSizeGib(v int32) *ModifyDesktopSpe
 }
 
 func (s *ModifyDesktopSpecRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceSpecs != nil {
+		for _, item := range s.ResourceSpecs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDesktopSpecRequestResourceSpecs struct {

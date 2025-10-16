@@ -125,7 +125,16 @@ func (s *DescribeDrivesResponseBody) SetSuccess(v bool) *DescribeDrivesResponseB
 }
 
 func (s *DescribeDrivesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Drives != nil {
+		for _, item := range s.Drives {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDrivesResponseBodyDrives struct {
@@ -397,7 +406,16 @@ func (s *DescribeDrivesResponseBodyDrives) SetUserId(v string) *DescribeDrivesRe
 }
 
 func (s *DescribeDrivesResponseBodyDrives) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopGroups != nil {
+		for _, item := range s.DesktopGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDrivesResponseBodyDrivesDesktopGroups struct {

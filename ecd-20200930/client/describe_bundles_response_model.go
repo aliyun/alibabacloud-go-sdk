@@ -59,5 +59,10 @@ func (s *DescribeBundlesResponse) SetBody(v *DescribeBundlesResponseBody) *Descr
 }
 
 func (s *DescribeBundlesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -70,7 +70,16 @@ func (s *ListOfficeSiteOverviewResponseBody) SetRequestId(v string) *ListOfficeS
 }
 
 func (s *ListOfficeSiteOverviewResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OfficeSiteOverviewResults != nil {
+		for _, item := range s.OfficeSiteOverviewResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults struct {

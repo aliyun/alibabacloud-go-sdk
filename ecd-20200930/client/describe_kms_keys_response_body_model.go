@@ -87,7 +87,16 @@ func (s *DescribeKmsKeysResponseBody) SetRequestId(v string) *DescribeKmsKeysRes
 }
 
 func (s *DescribeKmsKeysResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Keys != nil {
+		for _, item := range s.Keys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeKmsKeysResponseBodyKeys struct {

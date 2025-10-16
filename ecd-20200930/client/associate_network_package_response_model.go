@@ -59,5 +59,10 @@ func (s *AssociateNetworkPackageResponse) SetBody(v *AssociateNetworkPackageResp
 }
 
 func (s *AssociateNetworkPackageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

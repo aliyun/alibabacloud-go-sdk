@@ -87,7 +87,16 @@ func (s *DescribeImageModifiedRecordsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 func (s *DescribeImageModifiedRecordsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ImageModifiedRecords != nil {
+		for _, item := range s.ImageModifiedRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeImageModifiedRecordsResponseBodyImageModifiedRecords struct {

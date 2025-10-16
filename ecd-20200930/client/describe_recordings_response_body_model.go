@@ -70,7 +70,16 @@ func (s *DescribeRecordingsResponseBody) SetRequestId(v string) *DescribeRecordi
 }
 
 func (s *DescribeRecordingsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Recordings != nil {
+		for _, item := range s.Recordings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRecordingsResponseBodyRecordings struct {

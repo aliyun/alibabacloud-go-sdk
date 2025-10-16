@@ -70,7 +70,16 @@ func (s *DescribeInvocationsResponseBody) SetRequestId(v string) *DescribeInvoca
 }
 
 func (s *DescribeInvocationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Invocations != nil {
+		for _, item := range s.Invocations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocations struct {
@@ -244,7 +253,16 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetInvokeId(v string) *Desc
 }
 
 func (s *DescribeInvocationsResponseBodyInvocations) Validate() error {
-	return dara.Validate(s)
+	if s.InvokeDesktops != nil {
+		for _, item := range s.InvokeDesktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {

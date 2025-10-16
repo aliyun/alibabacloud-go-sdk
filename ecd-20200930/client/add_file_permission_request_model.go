@@ -129,7 +129,16 @@ func (s *AddFilePermissionRequest) SetRegionId(v string) *AddFilePermissionReque
 }
 
 func (s *AddFilePermissionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MemberList != nil {
+		for _, item := range s.MemberList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AddFilePermissionRequestMemberList struct {
@@ -232,7 +241,12 @@ func (s *AddFilePermissionRequestMemberList) SetRoleId(v string) *AddFilePermiss
 }
 
 func (s *AddFilePermissionRequestMemberList) Validate() error {
-	return dara.Validate(s)
+	if s.CdsIdentity != nil {
+		if err := s.CdsIdentity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type AddFilePermissionRequestMemberListCdsIdentity struct {

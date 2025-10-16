@@ -204,7 +204,25 @@ func (s *DescribeDesktopsInGroupResponseBody) SetStoppedPrePaidDesktopsCount(v i
 }
 
 func (s *DescribeDesktopsInGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PaidDesktops != nil {
+		for _, item := range s.PaidDesktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PostPaidDesktops != nil {
+		for _, item := range s.PostPaidDesktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {

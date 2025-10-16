@@ -53,7 +53,16 @@ func (s *ModifyDesktopsPolicyGroupResponseBody) SetRequestId(v string) *ModifyDe
 }
 
 func (s *ModifyDesktopsPolicyGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ModifyResults != nil {
+		for _, item := range s.ModifyResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ModifyDesktopsPolicyGroupResponseBodyModifyResults struct {

@@ -53,7 +53,16 @@ func (s *DescribeDesktopTypesResponseBody) SetRequestId(v string) *DescribeDeskt
 }
 
 func (s *DescribeDesktopTypesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DesktopTypes != nil {
+		for _, item := range s.DesktopTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDesktopTypesResponseBodyDesktopTypes struct {

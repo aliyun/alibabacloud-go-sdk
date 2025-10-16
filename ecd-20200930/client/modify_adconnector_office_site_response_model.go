@@ -59,5 +59,10 @@ func (s *ModifyADConnectorOfficeSiteResponse) SetBody(v *ModifyADConnectorOffice
 }
 
 func (s *ModifyADConnectorOfficeSiteResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

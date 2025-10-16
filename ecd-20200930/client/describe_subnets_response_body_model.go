@@ -59,7 +59,16 @@ func (s *DescribeSubnetsResponseBody) SetSubnets(v []*DescribeSubnetsResponseBod
 }
 
 func (s *DescribeSubnetsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Subnets != nil {
+		for _, item := range s.Subnets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSubnetsResponseBodySubnets struct {

@@ -87,7 +87,16 @@ func (s *DescribeDirectoriesResponseBody) SetRequestId(v string) *DescribeDirect
 }
 
 func (s *DescribeDirectoriesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Directories != nil {
+		for _, item := range s.Directories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {
@@ -609,7 +618,25 @@ func (s *DescribeDirectoriesResponseBodyDirectories) SetVpcId(v string) *Describ
 }
 
 func (s *DescribeDirectoriesResponseBodyDirectories) Validate() error {
-	return dara.Validate(s)
+	if s.ADConnectors != nil {
+		for _, item := range s.ADConnectors {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDirectoriesResponseBodyDirectoriesADConnectors struct {

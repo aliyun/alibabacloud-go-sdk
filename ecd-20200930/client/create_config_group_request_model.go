@@ -135,7 +135,16 @@ func (s *CreateConfigGroupRequest) SetType(v string) *CreateConfigGroupRequest {
 }
 
 func (s *CreateConfigGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigTimers != nil {
+		for _, item := range s.ConfigTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateConfigGroupRequestConfigTimers struct {
@@ -345,7 +354,16 @@ func (s *CreateConfigGroupRequestConfigTimers) SetTriggerType(v string) *CreateC
 }
 
 func (s *CreateConfigGroupRequestConfigTimers) Validate() error {
-	return dara.Validate(s)
+	if s.SegmentTimers != nil {
+		for _, item := range s.SegmentTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateConfigGroupRequestConfigTimersSegmentTimers struct {

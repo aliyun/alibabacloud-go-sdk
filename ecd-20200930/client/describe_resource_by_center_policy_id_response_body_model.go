@@ -87,7 +87,16 @@ func (s *DescribeResourceByCenterPolicyIdResponseBody) SetResourceModelList(v []
 }
 
 func (s *DescribeResourceByCenterPolicyIdResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResourceModelList != nil {
+		for _, item := range s.ResourceModelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
@@ -364,7 +373,16 @@ func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetStatu
 }
 
 func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) Validate() error {
-	return dara.Validate(s)
+	if s.AppModelList != nil {
+		for _, item := range s.AppModelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList struct {

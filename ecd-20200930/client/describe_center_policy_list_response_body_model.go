@@ -70,7 +70,16 @@ func (s *DescribeCenterPolicyListResponseBody) SetTotalCount(v int32) *DescribeC
 }
 
 func (s *DescribeCenterPolicyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DescribePolicyGroups != nil {
+		for _, item := range s.DescribePolicyGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
@@ -1609,7 +1618,79 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetWyAssistan
 }
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizeAccessPolicyRules != nil {
+		for _, item := range s.AuthorizeAccessPolicyRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuthorizeSecurityPolicyRules != nil {
+		for _, item := range s.AuthorizeSecurityPolicyRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClientTypes != nil {
+		for _, item := range s.ClientTypes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRedirects != nil {
+		for _, item := range s.DeviceRedirects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRules != nil {
+		for _, item := range s.DeviceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DomainResolveRule != nil {
+		for _, item := range s.DomainResolveRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetRedirectRule != nil {
+		for _, item := range s.NetRedirectRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UsbSupplyRedirectRule != nil {
+		for _, item := range s.UsbSupplyRedirectRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules struct {

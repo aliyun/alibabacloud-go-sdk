@@ -59,5 +59,10 @@ func (s *CopyImageResponse) SetBody(v *CopyImageResponseBody) *CopyImageResponse
 }
 
 func (s *CopyImageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

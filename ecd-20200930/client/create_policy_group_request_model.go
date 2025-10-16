@@ -1366,7 +1366,70 @@ func (s *CreatePolicyGroupRequest) SetWyAssistant(v string) *CreatePolicyGroupRe
 }
 
 func (s *CreatePolicyGroupRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizeAccessPolicyRule != nil {
+		for _, item := range s.AuthorizeAccessPolicyRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuthorizeSecurityPolicyRule != nil {
+		for _, item := range s.AuthorizeSecurityPolicyRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClientType != nil {
+		for _, item := range s.ClientType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRedirects != nil {
+		for _, item := range s.DeviceRedirects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRules != nil {
+		for _, item := range s.DeviceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DomainResolveRule != nil {
+		for _, item := range s.DomainResolveRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UsbSupplyRedirectRule != nil {
+		for _, item := range s.UsbSupplyRedirectRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePolicyGroupRequestAuthorizeAccessPolicyRule struct {

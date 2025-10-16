@@ -59,5 +59,10 @@ func (s *ModifyDesktopSpecResponse) SetBody(v *ModifyDesktopSpecResponseBody) *M
 }
 
 func (s *ModifyDesktopSpecResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

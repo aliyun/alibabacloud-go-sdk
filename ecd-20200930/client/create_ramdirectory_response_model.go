@@ -59,5 +59,10 @@ func (s *CreateRAMDirectoryResponse) SetBody(v *CreateRAMDirectoryResponseBody) 
 }
 
 func (s *CreateRAMDirectoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

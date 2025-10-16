@@ -2219,7 +2219,97 @@ func (s *CreateCenterPolicyRequest) SetWyAssistant(v string) *CreateCenterPolicy
 }
 
 func (s *CreateCenterPolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizeAccessPolicyRule != nil {
+		for _, item := range s.AuthorizeAccessPolicyRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.AuthorizeSecurityPolicyRule != nil {
+		for _, item := range s.AuthorizeSecurityPolicyRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClientType != nil {
+		for _, item := range s.ClientType {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ClipboardGraineds != nil {
+		for _, item := range s.ClipboardGraineds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRedirects != nil {
+		for _, item := range s.DeviceRedirects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DeviceRules != nil {
+		for _, item := range s.DeviceRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DomainResolveRule != nil {
+		for _, item := range s.DomainResolveRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetRedirectRule != nil {
+		for _, item := range s.NetRedirectRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RecordEventLevels != nil {
+		for _, item := range s.RecordEventLevels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UsbSupplyRedirectRule != nil {
+		for _, item := range s.UsbSupplyRedirectRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateCenterPolicyRequestAuthorizeAccessPolicyRule struct {

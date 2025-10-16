@@ -104,7 +104,16 @@ func (s *DescribeFotaPendingDesktopsResponseBody) SetRequestId(v string) *Descri
 }
 
 func (s *DescribeFotaPendingDesktopsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FotaPendingDesktops != nil {
+		for _, item := range s.FotaPendingDesktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
@@ -238,7 +247,16 @@ func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) SetStatus(v
 }
 
 func (s *DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops) Validate() error {
-	return dara.Validate(s)
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions struct {

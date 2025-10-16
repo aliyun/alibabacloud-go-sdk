@@ -53,7 +53,12 @@ func (s *GetDesktopGroupDetailResponseBody) SetRequestId(v string) *GetDesktopGr
 }
 
 func (s *GetDesktopGroupDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Desktops != nil {
+		if err := s.Desktops.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDesktopGroupDetailResponseBodyDesktops struct {
@@ -900,7 +905,25 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetVersion(v int64) *GetDesk
 }
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) Validate() error {
-	return dara.Validate(s)
+	if s.ScaleTimerInfos != nil {
+		for _, item := range s.ScaleTimerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TimerInfos != nil {
+		for _, item := range s.TimerInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDesktopGroupDetailResponseBodyDesktopsScaleTimerInfos struct {

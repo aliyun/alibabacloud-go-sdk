@@ -97,7 +97,16 @@ func (s *VerifyCenResponseBody) SetStatus(v string) *VerifyCenResponseBody {
 }
 
 func (s *VerifyCenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntries != nil {
+		for _, item := range s.RouteEntries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type VerifyCenResponseBodyRouteEntries struct {

@@ -69,6 +69,8 @@ type iCreateDesktopsShrinkRequest interface {
 	GetSavingPlanId() *string
 	SetSnapshotPolicyId(v string) *CreateDesktopsShrinkRequest
 	GetSnapshotPolicyId() *string
+	SetSubnetId(v string) *CreateDesktopsShrinkRequest
+	GetSubnetId() *string
 	SetTag(v []*CreateDesktopsShrinkRequestTag) *CreateDesktopsShrinkRequest
 	GetTag() []*CreateDesktopsShrinkRequestTag
 	SetTimerGroupId(v string) *CreateDesktopsShrinkRequest
@@ -313,6 +315,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	SubnetId         *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
 	Tag []*CreateDesktopsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the timer group.
@@ -505,6 +508,10 @@ func (s *CreateDesktopsShrinkRequest) GetSnapshotPolicyId() *string {
 	return s.SnapshotPolicyId
 }
 
+func (s *CreateDesktopsShrinkRequest) GetSubnetId() *string {
+	return s.SubnetId
+}
+
 func (s *CreateDesktopsShrinkRequest) GetTag() []*CreateDesktopsShrinkRequestTag {
 	return s.Tag
 }
@@ -687,6 +694,11 @@ func (s *CreateDesktopsShrinkRequest) SetSnapshotPolicyId(v string) *CreateDeskt
 	return s
 }
 
+func (s *CreateDesktopsShrinkRequest) SetSubnetId(v string) *CreateDesktopsShrinkRequest {
+	s.SubnetId = &v
+	return s
+}
+
 func (s *CreateDesktopsShrinkRequest) SetTag(v []*CreateDesktopsShrinkRequestTag) *CreateDesktopsShrinkRequest {
 	s.Tag = v
 	return s
@@ -728,7 +740,48 @@ func (s *CreateDesktopsShrinkRequest) SetVpcId(v string) *CreateDesktopsShrinkRe
 }
 
 func (s *CreateDesktopsShrinkRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BundleModels != nil {
+		for _, item := range s.BundleModels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopTimers != nil {
+		for _, item := range s.DesktopTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MonthDesktopSetting != nil {
+		if err := s.MonthDesktopSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserCommands != nil {
+		for _, item := range s.UserCommands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDesktopsShrinkRequestBundleModels struct {

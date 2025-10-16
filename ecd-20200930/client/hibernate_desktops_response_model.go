@@ -59,5 +59,10 @@ func (s *HibernateDesktopsResponse) SetBody(v *HibernateDesktopsResponseBody) *H
 }
 
 func (s *HibernateDesktopsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *DescribeRefundPriceResponseBody) SetRequestId(v string) *DescribeRefund
 }
 
 func (s *DescribeRefundPriceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PriceInfo != nil {
+		if err := s.PriceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRefundPriceResponseBodyPriceInfo struct {
