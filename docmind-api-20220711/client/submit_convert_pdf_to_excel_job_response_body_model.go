@@ -80,7 +80,12 @@ func (s *SubmitConvertPdfToExcelJobResponseBody) SetRequestId(v string) *SubmitC
 }
 
 func (s *SubmitConvertPdfToExcelJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitConvertPdfToExcelJobResponseBodyData struct {

@@ -17,9 +17,11 @@ import (
 //
 // @return AyncTradeDocumentPackageExtractSmartAppResponse
 func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithContext(ctx context.Context, tmpReq *AyncTradeDocumentPackageExtractSmartAppRequest, runtime *dara.RuntimeOptions) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AyncTradeDocumentPackageExtractSmartAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -81,9 +83,11 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithContext(ctx con
 //
 // @return GetDocParserResultResponse
 func (client *Client) GetDocParserResultWithContext(ctx context.Context, request *GetDocParserResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocParserResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -131,9 +135,11 @@ func (client *Client) GetDocParserResultWithContext(ctx context.Context, request
 //
 // @return GetDocStructureResultResponse
 func (client *Client) GetDocStructureResultWithContext(ctx context.Context, request *GetDocStructureResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocStructureResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -185,9 +191,11 @@ func (client *Client) GetDocStructureResultWithContext(ctx context.Context, requ
 //
 // @return GetDocumentCompareResultResponse
 func (client *Client) GetDocumentCompareResultWithContext(ctx context.Context, request *GetDocumentCompareResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentCompareResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -227,9 +235,11 @@ func (client *Client) GetDocumentCompareResultWithContext(ctx context.Context, r
 //
 // @return GetDocumentConvertResultResponse
 func (client *Client) GetDocumentConvertResultWithContext(ctx context.Context, request *GetDocumentConvertResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentConvertResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -269,9 +279,11 @@ func (client *Client) GetDocumentConvertResultWithContext(ctx context.Context, r
 //
 // @return GetDocumentExtractResultResponse
 func (client *Client) GetDocumentExtractResultWithContext(ctx context.Context, request *GetDocumentExtractResultRequest, runtime *dara.RuntimeOptions) (_result *GetDocumentExtractResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -311,9 +323,11 @@ func (client *Client) GetDocumentExtractResultWithContext(ctx context.Context, r
 //
 // @return GetPageNumResponse
 func (client *Client) GetPageNumWithContext(ctx context.Context, request *GetPageNumRequest, runtime *dara.RuntimeOptions) (_result *GetPageNumResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizId) {
@@ -353,9 +367,11 @@ func (client *Client) GetPageNumWithContext(ctx context.Context, request *GetPag
 //
 // @return GetTableUnderstandingResultResponse
 func (client *Client) GetTableUnderstandingResultWithContext(ctx context.Context, request *GetTableUnderstandingResultRequest, runtime *dara.RuntimeOptions) (_result *GetTableUnderstandingResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -395,9 +411,11 @@ func (client *Client) GetTableUnderstandingResultWithContext(ctx context.Context
 //
 // @return QueryDocParserStatusResponse
 func (client *Client) QueryDocParserStatusWithContext(ctx context.Context, request *QueryDocParserStatusRequest, runtime *dara.RuntimeOptions) (_result *QueryDocParserStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
@@ -437,9 +455,11 @@ func (client *Client) QueryDocParserStatusWithContext(ctx context.Context, reque
 //
 // @return SubmitConvertImageToExcelJobResponse
 func (client *Client) SubmitConvertImageToExcelJobWithContext(ctx context.Context, tmpReq *SubmitConvertImageToExcelJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitConvertImageToExcelJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -509,9 +529,11 @@ func (client *Client) SubmitConvertImageToExcelJobWithContext(ctx context.Contex
 //
 // @return SubmitConvertImageToMarkdownJobResponse
 func (client *Client) SubmitConvertImageToMarkdownJobWithContext(ctx context.Context, tmpReq *SubmitConvertImageToMarkdownJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitConvertImageToMarkdownJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -577,9 +599,11 @@ func (client *Client) SubmitConvertImageToMarkdownJobWithContext(ctx context.Con
 //
 // @return SubmitConvertImageToPdfJobResponse
 func (client *Client) SubmitConvertImageToPdfJobWithContext(ctx context.Context, tmpReq *SubmitConvertImageToPdfJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitConvertImageToPdfJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -645,9 +669,11 @@ func (client *Client) SubmitConvertImageToPdfJobWithContext(ctx context.Context,
 //
 // @return SubmitConvertImageToWordJobResponse
 func (client *Client) SubmitConvertImageToWordJobWithContext(ctx context.Context, tmpReq *SubmitConvertImageToWordJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertImageToWordJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitConvertImageToWordJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -713,9 +739,11 @@ func (client *Client) SubmitConvertImageToWordJobWithContext(ctx context.Context
 //
 // @return SubmitConvertPdfToExcelJobResponse
 func (client *Client) SubmitConvertPdfToExcelJobWithContext(ctx context.Context, request *SubmitConvertPdfToExcelJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -775,9 +803,11 @@ func (client *Client) SubmitConvertPdfToExcelJobWithContext(ctx context.Context,
 //
 // @return SubmitConvertPdfToImageJobResponse
 func (client *Client) SubmitConvertPdfToImageJobWithContext(ctx context.Context, request *SubmitConvertPdfToImageJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -829,9 +859,11 @@ func (client *Client) SubmitConvertPdfToImageJobWithContext(ctx context.Context,
 //
 // @return SubmitConvertPdfToMarkdownJobResponse
 func (client *Client) SubmitConvertPdfToMarkdownJobWithContext(ctx context.Context, request *SubmitConvertPdfToMarkdownJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -883,9 +915,11 @@ func (client *Client) SubmitConvertPdfToMarkdownJobWithContext(ctx context.Conte
 //
 // @return SubmitConvertPdfToWordJobResponse
 func (client *Client) SubmitConvertPdfToWordJobWithContext(ctx context.Context, request *SubmitConvertPdfToWordJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -949,9 +983,11 @@ func (client *Client) SubmitConvertPdfToWordJobWithContext(ctx context.Context, 
 //
 // @return SubmitDigitalDocStructureJobResponse
 func (client *Client) SubmitDigitalDocStructureJobWithContext(ctx context.Context, request *SubmitDigitalDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -1019,9 +1055,11 @@ func (client *Client) SubmitDigitalDocStructureJobWithContext(ctx context.Contex
 //
 // @return SubmitDocParserJobResponse
 func (client *Client) SubmitDocParserJobWithContext(ctx context.Context, tmpReq *SubmitDocParserJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocParserJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitDocParserJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1072,6 +1110,10 @@ func (client *Client) SubmitDocParserJobWithContext(ctx context.Context, tmpReq 
 
 	if !dara.IsNil(request.MultimediaParametersShrink) {
 		query["MultimediaParameters"] = request.MultimediaParametersShrink
+	}
+
+	if !dara.IsNil(request.NeedHeaderFooter) {
+		query["NeedHeaderFooter"] = request.NeedHeaderFooter
 	}
 
 	if !dara.IsNil(request.Option) {
@@ -1127,9 +1169,11 @@ func (client *Client) SubmitDocParserJobWithContext(ctx context.Context, tmpReq 
 //
 // @return SubmitDocStructureJobResponse
 func (client *Client) SubmitDocStructureJobWithContext(ctx context.Context, request *SubmitDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowPptFormat) {
@@ -1201,9 +1245,11 @@ func (client *Client) SubmitDocStructureJobWithContext(ctx context.Context, requ
 //
 // @return SubmitDocumentExtractJobResponse
 func (client *Client) SubmitDocumentExtractJobWithContext(ctx context.Context, request *SubmitDocumentExtractJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -1259,9 +1305,11 @@ func (client *Client) SubmitDocumentExtractJobWithContext(ctx context.Context, r
 //
 // @return SubmitTableUnderstandingJobResponse
 func (client *Client) SubmitTableUnderstandingJobWithContext(ctx context.Context, request *SubmitTableUnderstandingJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {

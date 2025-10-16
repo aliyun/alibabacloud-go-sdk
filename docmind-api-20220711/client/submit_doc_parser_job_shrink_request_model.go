@@ -27,6 +27,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 	GetLlmEnhancement() *bool
 	SetMultimediaParametersShrink(v string) *SubmitDocParserJobShrinkRequest
 	GetMultimediaParametersShrink() *string
+	SetNeedHeaderFooter(v bool) *SubmitDocParserJobShrinkRequest
+	GetNeedHeaderFooter() *bool
 	SetOption(v string) *SubmitDocParserJobShrinkRequest
 	GetOption() *string
 	SetOssBucket(v string) *SubmitDocParserJobShrinkRequest
@@ -58,6 +60,7 @@ type SubmitDocParserJobShrinkRequest struct {
 	LLMParamShrink             *string `json:"LLMParam,omitempty" xml:"LLMParam,omitempty"`
 	LlmEnhancement             *bool   `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
 	MultimediaParametersShrink *string `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty"`
+	NeedHeaderFooter           *bool   `json:"NeedHeaderFooter,omitempty" xml:"NeedHeaderFooter,omitempty"`
 	Option                     *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket                  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint                *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
@@ -107,6 +110,10 @@ func (s *SubmitDocParserJobShrinkRequest) GetLlmEnhancement() *bool {
 
 func (s *SubmitDocParserJobShrinkRequest) GetMultimediaParametersShrink() *string {
 	return s.MultimediaParametersShrink
+}
+
+func (s *SubmitDocParserJobShrinkRequest) GetNeedHeaderFooter() *bool {
+	return s.NeedHeaderFooter
 }
 
 func (s *SubmitDocParserJobShrinkRequest) GetOption() *string {
@@ -171,6 +178,11 @@ func (s *SubmitDocParserJobShrinkRequest) SetLlmEnhancement(v bool) *SubmitDocPa
 
 func (s *SubmitDocParserJobShrinkRequest) SetMultimediaParametersShrink(v string) *SubmitDocParserJobShrinkRequest {
 	s.MultimediaParametersShrink = &v
+	return s
+}
+
+func (s *SubmitDocParserJobShrinkRequest) SetNeedHeaderFooter(v bool) *SubmitDocParserJobShrinkRequest {
+	s.NeedHeaderFooter = &v
 	return s
 }
 

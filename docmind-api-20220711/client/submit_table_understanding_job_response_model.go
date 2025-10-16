@@ -59,5 +59,10 @@ func (s *SubmitTableUnderstandingJobResponse) SetBody(v *SubmitTableUnderstandin
 }
 
 func (s *SubmitTableUnderstandingJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

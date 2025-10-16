@@ -80,7 +80,12 @@ func (s *SubmitDocStructureJobResponseBody) SetRequestId(v string) *SubmitDocStr
 }
 
 func (s *SubmitDocStructureJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDocStructureJobResponseBodyData struct {

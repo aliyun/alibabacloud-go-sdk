@@ -80,7 +80,12 @@ func (s *SubmitConvertImageToMarkdownJobResponseBody) SetRequestId(v string) *Su
 }
 
 func (s *SubmitConvertImageToMarkdownJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitConvertImageToMarkdownJobResponseBodyData struct {

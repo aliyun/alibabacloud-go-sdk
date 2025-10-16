@@ -27,6 +27,8 @@ type iSubmitDocParserJobRequest interface {
 	GetLlmEnhancement() *bool
 	SetMultimediaParameters(v *SubmitDocParserJobRequestMultimediaParameters) *SubmitDocParserJobRequest
 	GetMultimediaParameters() *SubmitDocParserJobRequestMultimediaParameters
+	SetNeedHeaderFooter(v bool) *SubmitDocParserJobRequest
+	GetNeedHeaderFooter() *bool
 	SetOption(v string) *SubmitDocParserJobRequest
 	GetOption() *string
 	SetOssBucket(v string) *SubmitDocParserJobRequest
@@ -58,6 +60,7 @@ type SubmitDocParserJobRequest struct {
 	LLMParam             *SubmitDocParserJobRequestLLMParam             `json:"LLMParam,omitempty" xml:"LLMParam,omitempty" type:"Struct"`
 	LlmEnhancement       *bool                                          `json:"LlmEnhancement,omitempty" xml:"LlmEnhancement,omitempty"`
 	MultimediaParameters *SubmitDocParserJobRequestMultimediaParameters `json:"MultimediaParameters,omitempty" xml:"MultimediaParameters,omitempty" type:"Struct"`
+	NeedHeaderFooter     *bool                                          `json:"NeedHeaderFooter,omitempty" xml:"NeedHeaderFooter,omitempty"`
 	Option               *string                                        `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket            *string                                        `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint          *string                                        `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
@@ -107,6 +110,10 @@ func (s *SubmitDocParserJobRequest) GetLlmEnhancement() *bool {
 
 func (s *SubmitDocParserJobRequest) GetMultimediaParameters() *SubmitDocParserJobRequestMultimediaParameters {
 	return s.MultimediaParameters
+}
+
+func (s *SubmitDocParserJobRequest) GetNeedHeaderFooter() *bool {
+	return s.NeedHeaderFooter
 }
 
 func (s *SubmitDocParserJobRequest) GetOption() *string {
@@ -174,6 +181,11 @@ func (s *SubmitDocParserJobRequest) SetMultimediaParameters(v *SubmitDocParserJo
 	return s
 }
 
+func (s *SubmitDocParserJobRequest) SetNeedHeaderFooter(v bool) *SubmitDocParserJobRequest {
+	s.NeedHeaderFooter = &v
+	return s
+}
+
 func (s *SubmitDocParserJobRequest) SetOption(v string) *SubmitDocParserJobRequest {
 	s.Option = &v
 	return s
@@ -200,7 +212,22 @@ func (s *SubmitDocParserJobRequest) SetPageIndex(v string) *SubmitDocParserJobRe
 }
 
 func (s *SubmitDocParserJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CustomOssConfig != nil {
+		if err := s.CustomOssConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LLMParam != nil {
+		if err := s.LLMParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultimediaParameters != nil {
+		if err := s.MultimediaParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitDocParserJobRequestCustomOssConfig struct {
