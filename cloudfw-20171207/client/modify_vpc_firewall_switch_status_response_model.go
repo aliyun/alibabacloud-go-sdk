@@ -59,5 +59,10 @@ func (s *ModifyVpcFirewallSwitchStatusResponse) SetBody(v *ModifyVpcFirewallSwit
 }
 
 func (s *ModifyVpcFirewallSwitchStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

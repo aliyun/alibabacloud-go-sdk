@@ -176,7 +176,17 @@ func (s *DescribeVpcFirewallDetailResponseBody) SetVpcFirewallName(v string) *De
 }
 
 func (s *DescribeVpcFirewallDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LocalVpc != nil {
+		if err := s.LocalVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeerVpc != nil {
+		if err := s.PeerVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallDetailResponseBodyLocalVpc struct {
@@ -292,7 +302,16 @@ func (s *DescribeVpcFirewallDetailResponseBodyLocalVpc) SetVpcName(v string) *De
 }
 
 func (s *DescribeVpcFirewallDetailResponseBodyLocalVpc) Validate() error {
-	return dara.Validate(s)
+	if s.VpcCidrTableList != nil {
+		for _, item := range s.VpcCidrTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList struct {
@@ -333,7 +352,16 @@ func (s *DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList) SetRoute
 }
 
 func (s *DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntryList != nil {
+		for _, item := range s.RouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList struct {
@@ -494,7 +522,16 @@ func (s *DescribeVpcFirewallDetailResponseBodyPeerVpc) SetVpcName(v string) *Des
 }
 
 func (s *DescribeVpcFirewallDetailResponseBodyPeerVpc) Validate() error {
-	return dara.Validate(s)
+	if s.VpcCidrTableList != nil {
+		for _, item := range s.VpcCidrTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList struct {
@@ -535,7 +572,16 @@ func (s *DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList) SetRouteT
 }
 
 func (s *DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntryList != nil {
+		for _, item := range s.RouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryList struct {

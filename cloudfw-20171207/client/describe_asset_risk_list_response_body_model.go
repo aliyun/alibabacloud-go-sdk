@@ -70,7 +70,16 @@ func (s *DescribeAssetRiskListResponseBody) SetTotalCount(v int64) *DescribeAsse
 }
 
 func (s *DescribeAssetRiskListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AssetList != nil {
+		for _, item := range s.AssetList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAssetRiskListResponseBodyAssetList struct {

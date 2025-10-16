@@ -70,7 +70,16 @@ func (s *DescribeNatFirewallControlPolicyResponseBody) SetTotalCount(v string) *
 }
 
 func (s *DescribeNatFirewallControlPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policys != nil {
+		for _, item := range s.Policys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {

@@ -104,10 +104,29 @@ func (s *DescribeAddressBookResponseBody) SetTotalCount(v string) *DescribeAddre
 }
 
 func (s *DescribeAddressBookResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Acls != nil {
+		for _, item := range s.Acls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeAddressBookResponseBodyAcls struct {
+	// example:
+	//
+	// ac-7c1bad6c3cc84c33baab1
+	AckClusterConnectorId *string `json:"AckClusterConnectorId,omitempty" xml:"AckClusterConnectorId,omitempty"`
+	// example:
+	//
+	// ACK集群连接器
+	AckClusterConnectorName *string                                         `json:"AckClusterConnectorName,omitempty" xml:"AckClusterConnectorName,omitempty"`
+	AckLabels               []*DescribeAddressBookResponseBodyAclsAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	AckNamespaces           []*string                                       `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
 	// The addresses in the address book.
 	AddressList []*string `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
 	// The number of addresses in the address book.
@@ -170,6 +189,10 @@ type DescribeAddressBookResponseBodyAcls struct {
 	//
 	// 3
 	ReferenceCount *int32 `json:"ReferenceCount,omitempty" xml:"ReferenceCount,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The details about the ECS tags that can be automatically added to the address book.
 	TagList []*DescribeAddressBookResponseBodyAclsTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 	// The logical relationship among ECS tags. Valid values:
@@ -190,6 +213,22 @@ func (s DescribeAddressBookResponseBodyAcls) String() string {
 
 func (s DescribeAddressBookResponseBodyAcls) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) GetAckClusterConnectorId() *string {
+	return s.AckClusterConnectorId
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) GetAckClusterConnectorName() *string {
+	return s.AckClusterConnectorName
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) GetAckLabels() []*DescribeAddressBookResponseBodyAclsAckLabels {
+	return s.AckLabels
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) GetAckNamespaces() []*string {
+	return s.AckNamespaces
 }
 
 func (s *DescribeAddressBookResponseBodyAcls) GetAddressList() []*string {
@@ -228,12 +267,36 @@ func (s *DescribeAddressBookResponseBodyAcls) GetReferenceCount() *int32 {
 	return s.ReferenceCount
 }
 
+func (s *DescribeAddressBookResponseBodyAcls) GetRegionNo() *string {
+	return s.RegionNo
+}
+
 func (s *DescribeAddressBookResponseBodyAcls) GetTagList() []*DescribeAddressBookResponseBodyAclsTagList {
 	return s.TagList
 }
 
 func (s *DescribeAddressBookResponseBodyAcls) GetTagRelation() *string {
 	return s.TagRelation
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) SetAckClusterConnectorId(v string) *DescribeAddressBookResponseBodyAcls {
+	s.AckClusterConnectorId = &v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) SetAckClusterConnectorName(v string) *DescribeAddressBookResponseBodyAcls {
+	s.AckClusterConnectorName = &v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) SetAckLabels(v []*DescribeAddressBookResponseBodyAclsAckLabels) *DescribeAddressBookResponseBodyAcls {
+	s.AckLabels = v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAcls) SetAckNamespaces(v []*string) *DescribeAddressBookResponseBodyAcls {
+	s.AckNamespaces = v
+	return s
 }
 
 func (s *DescribeAddressBookResponseBodyAcls) SetAddressList(v []*string) *DescribeAddressBookResponseBodyAcls {
@@ -281,6 +344,11 @@ func (s *DescribeAddressBookResponseBodyAcls) SetReferenceCount(v int32) *Descri
 	return s
 }
 
+func (s *DescribeAddressBookResponseBodyAcls) SetRegionNo(v string) *DescribeAddressBookResponseBodyAcls {
+	s.RegionNo = &v
+	return s
+}
+
 func (s *DescribeAddressBookResponseBodyAcls) SetTagList(v []*DescribeAddressBookResponseBodyAclsTagList) *DescribeAddressBookResponseBodyAcls {
 	s.TagList = v
 	return s
@@ -292,6 +360,74 @@ func (s *DescribeAddressBookResponseBodyAcls) SetTagRelation(v string) *Describe
 }
 
 func (s *DescribeAddressBookResponseBodyAcls) Validate() error {
+	if s.AckLabels != nil {
+		for _, item := range s.AckLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Addresses != nil {
+		for _, item := range s.Addresses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAddressBookResponseBodyAclsAckLabels struct {
+	// example:
+	//
+	// app
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// storage-operator
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeAddressBookResponseBodyAclsAckLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAddressBookResponseBodyAclsAckLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAckLabels) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAckLabels) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAckLabels) SetKey(v string) *DescribeAddressBookResponseBodyAclsAckLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAckLabels) SetValue(v string) *DescribeAddressBookResponseBodyAclsAckLabels {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAddressBookResponseBodyAclsAckLabels) Validate() error {
 	return dara.Validate(s)
 }
 

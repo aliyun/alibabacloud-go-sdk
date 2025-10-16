@@ -59,5 +59,10 @@ func (s *AddInstanceMembersResponse) SetBody(v *AddInstanceMembersResponseBody) 
 }
 
 func (s *AddInstanceMembersResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

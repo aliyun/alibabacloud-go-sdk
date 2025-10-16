@@ -59,5 +59,10 @@ func (s *DescribePrivateDnsEndpointListResponse) SetBody(v *DescribePrivateDnsEn
 }
 
 func (s *DescribePrivateDnsEndpointListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

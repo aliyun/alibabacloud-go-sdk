@@ -25,11 +25,25 @@ import (
 //
 // @return AddAddressBookResponse
 func (client *Client) AddAddressBookWithContext(ctx context.Context, request *AddAddressBookRequest, runtime *dara.RuntimeOptions) (_result *AddAddressBookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AckClusterConnectorId) {
+		query["AckClusterConnectorId"] = request.AckClusterConnectorId
+	}
+
+	if !dara.IsNil(request.AckLabels) {
+		query["AckLabels"] = request.AckLabels
+	}
+
+	if !dara.IsNil(request.AckNamespaces) {
+		query["AckNamespaces"] = request.AckNamespaces
+	}
+
 	if !dara.IsNil(request.AddressList) {
 		query["AddressList"] = request.AddressList
 	}
@@ -107,9 +121,11 @@ func (client *Client) AddAddressBookWithContext(ctx context.Context, request *Ad
 //
 // @return AddControlPolicyResponse
 func (client *Client) AddControlPolicyWithContext(ctx context.Context, request *AddControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *AddControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -245,9 +261,11 @@ func (client *Client) AddControlPolicyWithContext(ctx context.Context, request *
 //
 // @return AddDnsFirewallPolicyResponse
 func (client *Client) AddDnsFirewallPolicyWithContext(ctx context.Context, request *AddDnsFirewallPolicyRequest, runtime *dara.RuntimeOptions) (_result *AddDnsFirewallPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -339,9 +357,11 @@ func (client *Client) AddDnsFirewallPolicyWithContext(ctx context.Context, reque
 //
 // @return AddInstanceMembersResponse
 func (client *Client) AddInstanceMembersWithContext(ctx context.Context, request *AddInstanceMembersRequest, runtime *dara.RuntimeOptions) (_result *AddInstanceMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Members) {
@@ -381,9 +401,11 @@ func (client *Client) AddInstanceMembersWithContext(ctx context.Context, request
 //
 // @return AddPrivateDnsDomainNameResponse
 func (client *Client) AddPrivateDnsDomainNameWithContext(ctx context.Context, request *AddPrivateDnsDomainNameRequest, runtime *dara.RuntimeOptions) (_result *AddPrivateDnsDomainNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessInstanceId) {
@@ -445,9 +467,11 @@ func (client *Client) AddPrivateDnsDomainNameWithContext(ctx context.Context, re
 //
 // @return BatchCopyVpcFirewallControlPolicyResponse
 func (client *Client) BatchCopyVpcFirewallControlPolicyWithContext(ctx context.Context, request *BatchCopyVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *BatchCopyVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -499,9 +523,11 @@ func (client *Client) BatchCopyVpcFirewallControlPolicyWithContext(ctx context.C
 //
 // @return BatchDeleteVpcFirewallControlPolicyResponse
 func (client *Client) BatchDeleteVpcFirewallControlPolicyWithContext(ctx context.Context, request *BatchDeleteVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *BatchDeleteVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuidList) {
@@ -537,6 +563,134 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicyWithContext(ctx context
 
 // Summary:
 //
+// 创建ACK集群连接器
+//
+// @param request - CreateAckClusterConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAckClusterConnectorResponse
+func (client *Client) CreateAckClusterConnectorWithContext(ctx context.Context, request *CreateAckClusterConnectorRequest, runtime *dara.RuntimeOptions) (_result *CreateAckClusterConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectorName) {
+		query["ConnectorName"] = request.ConnectorName
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PrimaryVswitchId) {
+		query["PrimaryVswitchId"] = request.PrimaryVswitchId
+	}
+
+	if !dara.IsNil(request.PrimaryVswitchIp) {
+		query["PrimaryVswitchIp"] = request.PrimaryVswitchIp
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.StandbyVswitchId) {
+		query["StandbyVswitchId"] = request.StandbyVswitchId
+	}
+
+	if !dara.IsNil(request.StandbyVswitchIp) {
+		query["StandbyVswitchIp"] = request.StandbyVswitchIp
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAckClusterConnector"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAckClusterConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建ACL检查
+//
+// @param request - CreateAclCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAclCheckResponse
+func (client *Client) CreateAclCheckWithContext(ctx context.Context, request *CreateAclCheckRequest, runtime *dara.RuntimeOptions) (_result *CreateAclCheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclType) {
+		query["AclType"] = request.AclType
+	}
+
+	if !dara.IsNil(request.CheckNames) {
+		query["CheckNames"] = request.CheckNames
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAclCheck"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAclCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a file download task.
 //
 // @param request - CreateDownloadTaskRequest
@@ -545,9 +699,11 @@ func (client *Client) BatchDeleteVpcFirewallControlPolicyWithContext(ctx context
 //
 // @return CreateDownloadTaskResponse
 func (client *Client) CreateDownloadTaskWithContext(ctx context.Context, request *CreateDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateDownloadTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -603,9 +759,11 @@ func (client *Client) CreateDownloadTaskWithContext(ctx context.Context, request
 //
 // @return CreateNatFirewallControlPolicyResponse
 func (client *Client) CreateNatFirewallControlPolicyWithContext(ctx context.Context, request *CreateNatFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateNatFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -729,6 +887,64 @@ func (client *Client) CreateNatFirewallControlPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
+// 创建NAT防火墙预检查
+//
+// @param request - CreateNatFirewallPreCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNatFirewallPreCheckResponse
+func (client *Client) CreateNatFirewallPreCheckWithContext(ctx context.Context, request *CreateNatFirewallPreCheckRequest, runtime *dara.RuntimeOptions) (_result *CreateNatFirewallPreCheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NatGatewayId) {
+		body["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		body["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateNatFirewallPreCheck"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateNatFirewallPreCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a NAT firewall.
 //
 // @param request - CreateSecurityProxyRequest
@@ -737,9 +953,11 @@ func (client *Client) CreateNatFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return CreateSecurityProxyResponse
 func (client *Client) CreateSecurityProxyWithContext(ctx context.Context, request *CreateSecurityProxyRequest, runtime *dara.RuntimeOptions) (_result *CreateSecurityProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallSwitch) {
@@ -819,9 +1037,11 @@ func (client *Client) CreateSecurityProxyWithContext(ctx context.Context, reques
 //
 // @return CreateSlsLogDispatchResponse
 func (client *Client) CreateSlsLogDispatchWithContext(ctx context.Context, request *CreateSlsLogDispatchRequest, runtime *dara.RuntimeOptions) (_result *CreateSlsLogDispatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SlsRegionId) {
@@ -865,9 +1085,11 @@ func (client *Client) CreateSlsLogDispatchWithContext(ctx context.Context, reque
 //
 // @return CreateTrFirewallV2Response
 func (client *Client) CreateTrFirewallV2WithContext(ctx context.Context, request *CreateTrFirewallV2Request, runtime *dara.RuntimeOptions) (_result *CreateTrFirewallV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -963,9 +1185,11 @@ func (client *Client) CreateTrFirewallV2WithContext(ctx context.Context, request
 //
 // @return CreateTrFirewallV2RoutePolicyResponse
 func (client *Client) CreateTrFirewallV2RoutePolicyWithContext(ctx context.Context, tmpReq *CreateTrFirewallV2RoutePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateTrFirewallV2RoutePolicyResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateTrFirewallV2RoutePolicyShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1047,9 +1271,11 @@ func (client *Client) CreateTrFirewallV2RoutePolicyWithContext(ctx context.Conte
 //
 // @return CreateVpcFirewallCenConfigureResponse
 func (client *Client) CreateVpcFirewallCenConfigureWithContext(ctx context.Context, request *CreateVpcFirewallCenConfigureRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallCenConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -1133,9 +1359,11 @@ func (client *Client) CreateVpcFirewallCenConfigureWithContext(ctx context.Conte
 //
 // @return CreateVpcFirewallCenManualConfigureResponse
 func (client *Client) CreateVpcFirewallCenManualConfigureWithContext(ctx context.Context, request *CreateVpcFirewallCenManualConfigureRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallCenManualConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -1203,9 +1431,11 @@ func (client *Client) CreateVpcFirewallCenManualConfigureWithContext(ctx context
 //
 // @return CreateVpcFirewallConfigureResponse
 func (client *Client) CreateVpcFirewallConfigureWithContext(ctx context.Context, request *CreateVpcFirewallConfigureRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallSwitch) {
@@ -1289,9 +1519,11 @@ func (client *Client) CreateVpcFirewallConfigureWithContext(ctx context.Context,
 //
 // @return CreateVpcFirewallControlPolicyResponse
 func (client *Client) CreateVpcFirewallControlPolicyWithContext(ctx context.Context, request *CreateVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -1415,6 +1647,226 @@ func (client *Client) CreateVpcFirewallControlPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
+// 创建VPC防火墙开墙前置任务
+//
+// @param request - CreateVpcFirewallPrecheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcFirewallPrecheckResponse
+func (client *Client) CreateVpcFirewallPrecheckWithContext(ctx context.Context, request *CreateVpcFirewallPrecheckRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallPrecheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.NetworkInstanceType) {
+		query["NetworkInstanceType"] = request.NetworkInstanceType
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.TransitRouterId) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVpcFirewallPrecheck"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVpcFirewallPrecheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建VPC防火墙资产同步任务
+//
+// @param request - CreateVpcFirewallTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcFirewallTaskResponse
+func (client *Client) CreateVpcFirewallTaskWithContext(ctx context.Context, request *CreateVpcFirewallTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateVpcFirewallTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.TaskAction) {
+		query["TaskAction"] = request.TaskAction
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVpcFirewallTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVpcFirewallTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ACK集群连接器
+//
+// @param request - DeleteAckClusterConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAckClusterConnectorResponse
+func (client *Client) DeleteAckClusterConnectorWithContext(ctx context.Context, request *DeleteAckClusterConnectorRequest, runtime *dara.RuntimeOptions) (_result *DeleteAckClusterConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAckClusterConnector"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAckClusterConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ACL备份
+//
+// @param request - DeleteAclBackupDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAclBackupDataResponse
+func (client *Client) DeleteAclBackupDataWithContext(ctx context.Context, request *DeleteAclBackupDataRequest, runtime *dara.RuntimeOptions) (_result *DeleteAclBackupDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackUpTime) {
+		query["BackUpTime"] = request.BackUpTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAclBackupData"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAclBackupDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an address book for access control.
 //
 // Description:
@@ -1431,9 +1883,11 @@ func (client *Client) CreateVpcFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return DeleteAddressBookResponse
 func (client *Client) DeleteAddressBookWithContext(ctx context.Context, request *DeleteAddressBookRequest, runtime *dara.RuntimeOptions) (_result *DeleteAddressBookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.GroupUuid) {
@@ -1489,9 +1943,11 @@ func (client *Client) DeleteAddressBookWithContext(ctx context.Context, request 
 //
 // @return DeleteControlPolicyResponse
 func (client *Client) DeleteControlPolicyWithContext(ctx context.Context, request *DeleteControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -1543,9 +1999,11 @@ func (client *Client) DeleteControlPolicyWithContext(ctx context.Context, reques
 //
 // @return DeleteControlPolicyTemplateResponse
 func (client *Client) DeleteControlPolicyTemplateWithContext(ctx context.Context, request *DeleteControlPolicyTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteControlPolicyTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1597,9 +2055,11 @@ func (client *Client) DeleteControlPolicyTemplateWithContext(ctx context.Context
 //
 // @return DeleteDnsFirewallPolicyResponse
 func (client *Client) DeleteDnsFirewallPolicyWithContext(ctx context.Context, request *DeleteDnsFirewallPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteDnsFirewallPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -1655,9 +2115,11 @@ func (client *Client) DeleteDnsFirewallPolicyWithContext(ctx context.Context, re
 //
 // @return DeleteDownloadTaskResponse
 func (client *Client) DeleteDownloadTaskWithContext(ctx context.Context, request *DeleteDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteDownloadTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1701,9 +2163,11 @@ func (client *Client) DeleteDownloadTaskWithContext(ctx context.Context, request
 //
 // @return DeleteFirewallV2RoutePoliciesResponse
 func (client *Client) DeleteFirewallV2RoutePoliciesWithContext(ctx context.Context, request *DeleteFirewallV2RoutePoliciesRequest, runtime *dara.RuntimeOptions) (_result *DeleteFirewallV2RoutePoliciesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallId) {
@@ -1759,9 +2223,11 @@ func (client *Client) DeleteFirewallV2RoutePoliciesWithContext(ctx context.Conte
 //
 // @return DeleteInstanceMembersResponse
 func (client *Client) DeleteInstanceMembersWithContext(ctx context.Context, request *DeleteInstanceMembersRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberUids) {
@@ -1793,6 +2259,54 @@ func (client *Client) DeleteInstanceMembersWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 创建IPS私网关联信息
+//
+// @param request - DeleteIpsPrivateAssocRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIpsPrivateAssocResponse
+func (client *Client) DeleteIpsPrivateAssocWithContext(ctx context.Context, request *DeleteIpsPrivateAssocRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpsPrivateAssocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteIpsPrivateAssoc"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteIpsPrivateAssocResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an access control policy that is created for a NAT firewall.
 //
 // Description:
@@ -1805,9 +2319,11 @@ func (client *Client) DeleteInstanceMembersWithContext(ctx context.Context, requ
 //
 // @return DeleteNatFirewallControlPolicyResponse
 func (client *Client) DeleteNatFirewallControlPolicyWithContext(ctx context.Context, request *DeleteNatFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -1859,9 +2375,11 @@ func (client *Client) DeleteNatFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return DeleteNatFirewallControlPolicyBatchResponse
 func (client *Client) DeleteNatFirewallControlPolicyBatchWithContext(ctx context.Context, request *DeleteNatFirewallControlPolicyBatchRequest, runtime *dara.RuntimeOptions) (_result *DeleteNatFirewallControlPolicyBatchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuidList) {
@@ -1913,9 +2431,11 @@ func (client *Client) DeleteNatFirewallControlPolicyBatchWithContext(ctx context
 //
 // @return DeletePrivateDnsAllDomainNameResponse
 func (client *Client) DeletePrivateDnsAllDomainNameWithContext(ctx context.Context, request *DeletePrivateDnsAllDomainNameRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateDnsAllDomainNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessInstanceId) {
@@ -1959,9 +2479,11 @@ func (client *Client) DeletePrivateDnsAllDomainNameWithContext(ctx context.Conte
 //
 // @return DeletePrivateDnsDomainNameResponse
 func (client *Client) DeletePrivateDnsDomainNameWithContext(ctx context.Context, request *DeletePrivateDnsDomainNameRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateDnsDomainNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessInstanceId) {
@@ -2009,9 +2531,11 @@ func (client *Client) DeletePrivateDnsDomainNameWithContext(ctx context.Context,
 //
 // @return DeletePrivateDnsEndpointResponse
 func (client *Client) DeletePrivateDnsEndpointWithContext(ctx context.Context, request *DeletePrivateDnsEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeletePrivateDnsEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessInstanceId) {
@@ -2055,9 +2579,11 @@ func (client *Client) DeletePrivateDnsEndpointWithContext(ctx context.Context, r
 //
 // @return DeleteSecurityProxyResponse
 func (client *Client) DeleteSecurityProxyWithContext(ctx context.Context, request *DeleteSecurityProxyRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2101,9 +2627,11 @@ func (client *Client) DeleteSecurityProxyWithContext(ctx context.Context, reques
 //
 // @return DeleteTrFirewallV2Response
 func (client *Client) DeleteTrFirewallV2WithContext(ctx context.Context, request *DeleteTrFirewallV2Request, runtime *dara.RuntimeOptions) (_result *DeleteTrFirewallV2Response, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallId) {
@@ -2155,9 +2683,11 @@ func (client *Client) DeleteTrFirewallV2WithContext(ctx context.Context, request
 //
 // @return DeleteVpcFirewallCenConfigureResponse
 func (client *Client) DeleteVpcFirewallCenConfigureWithContext(ctx context.Context, request *DeleteVpcFirewallCenConfigureRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcFirewallCenConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2213,9 +2743,11 @@ func (client *Client) DeleteVpcFirewallCenConfigureWithContext(ctx context.Conte
 //
 // @return DeleteVpcFirewallConfigureResponse
 func (client *Client) DeleteVpcFirewallConfigureWithContext(ctx context.Context, request *DeleteVpcFirewallConfigureRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcFirewallConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2271,9 +2803,11 @@ func (client *Client) DeleteVpcFirewallConfigureWithContext(ctx context.Context,
 //
 // @return DeleteVpcFirewallControlPolicyResponse
 func (client *Client) DeleteVpcFirewallControlPolicyWithContext(ctx context.Context, request *DeleteVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -2321,9 +2855,11 @@ func (client *Client) DeleteVpcFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return DescribeACLProtectTrendResponse
 func (client *Client) DescribeACLProtectTrendWithContext(ctx context.Context, request *DescribeACLProtectTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeACLProtectTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2371,6 +2907,742 @@ func (client *Client) DescribeACLProtectTrendWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 查询接入实例地域列表
+//
+// @param request - DescribeAccessInstanceRegionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessInstanceRegionListResponse
+func (client *Client) DescribeAccessInstanceRegionListWithContext(ctx context.Context, request *DescribeAccessInstanceRegionListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessInstanceRegionListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessInstanceRegionList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessInstanceRegionListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入实例任务
+//
+// @param request - DescribeAccessInstanceTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessInstanceTaskResponse
+func (client *Client) DescribeAccessInstanceTaskWithContext(ctx context.Context, request *DescribeAccessInstanceTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessInstanceTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessInstanceTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessInstanceTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入实例的交换机列表
+//
+// @param request - DescribeAccessInstanceVSwitchListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessInstanceVSwitchListResponse
+func (client *Client) DescribeAccessInstanceVSwitchListWithContext(ctx context.Context, request *DescribeAccessInstanceVSwitchListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessInstanceVSwitchListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessInstanceVSwitchList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessInstanceVSwitchListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入实例VPC列表
+//
+// @param request - DescribeAccessInstanceVpcListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessInstanceVpcListResponse
+func (client *Client) DescribeAccessInstanceVpcListWithContext(ctx context.Context, request *DescribeAccessInstanceVpcListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessInstanceVpcListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessInstanceVpcList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessInstanceVpcListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询接入实例支持的可用区列表
+//
+// @param request - DescribeAccessInstanceZoneListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessInstanceZoneListResponse
+func (client *Client) DescribeAccessInstanceZoneListWithContext(ctx context.Context, request *DescribeAccessInstanceZoneListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessInstanceZoneListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessInstanceZoneList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessInstanceZoneListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定ACK集群连接器
+//
+// @param request - DescribeAckClusterConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAckClusterConnectorResponse
+func (client *Client) DescribeAckClusterConnectorWithContext(ctx context.Context, request *DescribeAckClusterConnectorRequest, runtime *dara.RuntimeOptions) (_result *DescribeAckClusterConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAckClusterConnector"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAckClusterConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询ACK集群连接器列表
+//
+// @param request - DescribeAckClusterConnectorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAckClusterConnectorsResponse
+func (client *Client) DescribeAckClusterConnectorsWithContext(ctx context.Context, request *DescribeAckClusterConnectorsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAckClusterConnectorsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectorName) {
+		query["ConnectorName"] = request.ConnectorName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAckClusterConnectors"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAckClusterConnectorsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询阿里云K8S容器服务（ACK）集群命名空间
+//
+// @param request - DescribeAckClusterNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAckClusterNamespacesResponse
+func (client *Client) DescribeAckClusterNamespacesWithContext(ctx context.Context, request *DescribeAckClusterNamespacesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAckClusterNamespacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAckClusterNamespaces"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAckClusterNamespacesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询阿里云K8S容器服务（ACK）集群标签
+//
+// @param request - DescribeAckClusterPodLabelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAckClusterPodLabelsResponse
+func (client *Client) DescribeAckClusterPodLabelsWithContext(ctx context.Context, request *DescribeAckClusterPodLabelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAckClusterPodLabelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAckClusterPodLabels"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAckClusterPodLabelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询阿里云K8S容器服务（ACK）集群，查询符合条件的ACK集群（例如指定集群类型、集群规格）列表信息
+//
+// @param request - DescribeAckClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAckClustersResponse
+func (client *Client) DescribeAckClustersWithContext(ctx context.Context, request *DescribeAckClustersRequest, runtime *dara.RuntimeOptions) (_result *DescribeAckClustersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ClusterName) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !dara.IsNil(request.ClusterSpec) {
+		query["ClusterSpec"] = request.ClusterSpec
+	}
+
+	if !dara.IsNil(request.ConnectorStatus) {
+		query["ConnectorStatus"] = request.ConnectorStatus
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAckClusters"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAckClustersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询访问控制应用
+//
+// @param request - DescribeAclAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclAppsResponse
+func (client *Client) DescribeAclAppsWithContext(ctx context.Context, request *DescribeAclAppsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclAppsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclApps"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclAppsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询ACL检查详情
+//
+// @param request - DescribeAclCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclCheckResponse
+func (client *Client) DescribeAclCheckWithContext(ctx context.Context, request *DescribeAclCheckRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclCheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclCheck"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询NAT防火墙预检查结果
+//
+// @param request - DescribeAclCheckQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclCheckQuotaResponse
+func (client *Client) DescribeAclCheckQuotaWithContext(ctx context.Context, request *DescribeAclCheckQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclCheckQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclCheckQuota"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclCheckQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询ACL检查条目
+//
+// @param request - DescribeAclChecksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclChecksResponse
+func (client *Client) DescribeAclChecksWithContext(ctx context.Context, request *DescribeAclChecksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclChecksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclChecks"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclChecksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取总ACL配置数
+//
+// @param request - DescribeAclRuleCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclRuleCountResponse
+func (client *Client) DescribeAclRuleCountWithContext(ctx context.Context, request *DescribeAclRuleCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclRuleCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclRuleCount"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclRuleCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取ACL白名单
+//
+// @param request - DescribeAclWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAclWhitelistResponse
+func (client *Client) DescribeAclWhitelistWithContext(ctx context.Context, request *DescribeAclWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DescribeAclWhitelistResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAclWhitelist"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAclWhitelistResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details about an address book for an access control policy.
 //
 // Description:
@@ -2387,9 +3659,11 @@ func (client *Client) DescribeACLProtectTrendWithContext(ctx context.Context, re
 //
 // @return DescribeAddressBookResponse
 func (client *Client) DescribeAddressBookWithContext(ctx context.Context, request *DescribeAddressBookRequest, runtime *dara.RuntimeOptions) (_result *DescribeAddressBookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ContainPort) {
@@ -2457,9 +3731,11 @@ func (client *Client) DescribeAddressBookWithContext(ctx context.Context, reques
 //
 // @return DescribeAssetListResponse
 func (client *Client) DescribeAssetListWithContext(ctx context.Context, request *DescribeAssetListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -2555,9 +3831,11 @@ func (client *Client) DescribeAssetListWithContext(ctx context.Context, request 
 //
 // @return DescribeAssetRiskListResponse
 func (client *Client) DescribeAssetRiskListWithContext(ctx context.Context, request *DescribeAssetRiskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetRiskListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpAddrList) {
@@ -2609,9 +3887,11 @@ func (client *Client) DescribeAssetRiskListWithContext(ctx context.Context, requ
 //
 // @return DescribeAssetStatisticResponse
 func (client *Client) DescribeAssetStatisticWithContext(ctx context.Context, request *DescribeAssetStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetStatisticResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2659,9 +3939,11 @@ func (client *Client) DescribeAssetStatisticWithContext(ctx context.Context, req
 //
 // @return DescribeCfwRiskLevelSummaryResponse
 func (client *Client) DescribeCfwRiskLevelSummaryWithContext(ctx context.Context, request *DescribeCfwRiskLevelSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCfwRiskLevelSummaryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceType) {
@@ -2717,9 +3999,11 @@ func (client *Client) DescribeCfwRiskLevelSummaryWithContext(ctx context.Context
 //
 // @return DescribeControlPolicyResponse
 func (client *Client) DescribeControlPolicyWithContext(ctx context.Context, request *DescribeControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -2811,9 +4095,11 @@ func (client *Client) DescribeControlPolicyWithContext(ctx context.Context, requ
 //
 // @return DescribeDefaultIPSConfigResponse
 func (client *Client) DescribeDefaultIPSConfigWithContext(ctx context.Context, request *DescribeDefaultIPSConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefaultIPSConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2853,9 +4139,11 @@ func (client *Client) DescribeDefaultIPSConfigWithContext(ctx context.Context, r
 //
 // @return DescribeDnsFirewallPolicyResponse
 func (client *Client) DescribeDnsFirewallPolicyWithContext(ctx context.Context, request *DescribeDnsFirewallPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeDnsFirewallPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -2949,9 +4237,11 @@ func (client *Client) DescribeDnsFirewallPolicyWithContext(ctx context.Context, 
 //
 // @return DescribeDomainResolveResponse
 func (client *Client) DescribeDomainResolveWithContext(ctx context.Context, request *DescribeDomainResolveRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainResolveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -3007,9 +4297,11 @@ func (client *Client) DescribeDomainResolveWithContext(ctx context.Context, requ
 //
 // @return DescribeDownloadTaskResponse
 func (client *Client) DescribeDownloadTaskWithContext(ctx context.Context, request *DescribeDownloadTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3061,9 +4353,11 @@ func (client *Client) DescribeDownloadTaskWithContext(ctx context.Context, reque
 //
 // @return DescribeDownloadTaskTypeResponse
 func (client *Client) DescribeDownloadTaskTypeWithContext(ctx context.Context, request *DescribeDownloadTaskTypeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDownloadTaskTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3107,6 +4401,142 @@ func (client *Client) DescribeDownloadTaskTypeWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 获取防火墙任务
+//
+// @param request - DescribeFirewallTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirewallTaskResponse
+func (client *Client) DescribeFirewallTaskWithContext(ctx context.Context, request *DescribeFirewallTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChildInstanceId) {
+		query["ChildInstanceId"] = request.ChildInstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallTask"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFirewallTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取防火墙创建的交换机
+//
+// @param request - DescribeFirewallVSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFirewallVSwitchResponse
+func (client *Client) DescribeFirewallVSwitchWithContext(ctx context.Context, request *DescribeFirewallVSwitchRequest, runtime *dara.RuntimeOptions) (_result *DescribeFirewallVSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FirewallId) {
+		query["FirewallId"] = request.FirewallId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionNo) {
+		query["RegionNo"] = request.RegionNo
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VswitchId) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFirewallVSwitch"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFirewallVSwitchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about members in Cloud Firewall.
 //
 // Description:
@@ -3123,9 +4553,11 @@ func (client *Client) DescribeDownloadTaskTypeWithContext(ctx context.Context, r
 //
 // @return DescribeInstanceMembersResponse
 func (client *Client) DescribeInstanceMembersWithContext(ctx context.Context, request *DescribeInstanceMembersRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMembersResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3181,9 +4613,11 @@ func (client *Client) DescribeInstanceMembersWithContext(ctx context.Context, re
 //
 // @return DescribeInstanceRiskLevelsResponse
 func (client *Client) DescribeInstanceRiskLevelsWithContext(ctx context.Context, request *DescribeInstanceRiskLevelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceRiskLevelsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Instances) {
@@ -3219,6 +4653,74 @@ func (client *Client) DescribeInstanceRiskLevelsWithContext(ctx context.Context,
 
 // Summary:
 //
+// 获取互联网方向删除会话趋势图
+//
+// @param request - DescribeInternetDropTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetDropTrafficTrendResponse
+func (client *Client) DescribeInternetDropTrafficTrendWithContext(ctx context.Context, request *DescribeInternetDropTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetDropTrafficTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetDropTrafficTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetDropTrafficTrendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the IP addresses that are open to the Internet.
 //
 // @param request - DescribeInternetOpenIpRequest
@@ -3227,9 +4729,11 @@ func (client *Client) DescribeInstanceRiskLevelsWithContext(ctx context.Context,
 //
 // @return DescribeInternetOpenIpResponse
 func (client *Client) DescribeInternetOpenIpWithContext(ctx context.Context, request *DescribeInternetOpenIpRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetOpenIpResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetsInstanceId) {
@@ -3309,6 +4813,182 @@ func (client *Client) DescribeInternetOpenIpWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 获取互联网开放端口
+//
+// @param request - DescribeInternetOpenPortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetOpenPortResponse
+func (client *Client) DescribeInternetOpenPortWithContext(ctx context.Context, request *DescribeInternetOpenPortRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetOpenPortResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.ServiceNameFuzzy) {
+		query["ServiceNameFuzzy"] = request.ServiceNameFuzzy
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SuggestLevel) {
+		query["SuggestLevel"] = request.SuggestLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetOpenPort"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetOpenPortResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取互联网开放服务
+//
+// @param request - DescribeInternetOpenServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInternetOpenServiceResponse
+func (client *Client) DescribeInternetOpenServiceWithContext(ctx context.Context, request *DescribeInternetOpenServiceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetOpenServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.ServiceNameFuzzy) {
+		query["ServiceNameFuzzy"] = request.ServiceNameFuzzy
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SuggestLevel) {
+		query["SuggestLevel"] = request.SuggestLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInternetOpenService"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInternetOpenServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the trends of Internet traffic.
 //
 // @param request - DescribeInternetTrafficTrendRequest
@@ -3317,9 +4997,11 @@ func (client *Client) DescribeInternetOpenIpWithContext(ctx context.Context, req
 //
 // @return DescribeInternetTrafficTrendResponse
 func (client *Client) DescribeInternetTrafficTrendWithContext(ctx context.Context, request *DescribeInternetTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeInternetTrafficTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -3395,9 +5077,11 @@ func (client *Client) DescribeInternetTrafficTrendWithContext(ctx context.Contex
 //
 // @return DescribeInvadeEventListResponse
 func (client *Client) DescribeInvadeEventListWithContext(ctx context.Context, request *DescribeInvadeEventListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEventListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AssetsIP) {
@@ -3489,6 +5173,126 @@ func (client *Client) DescribeInvadeEventListWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 获取漏洞名称列表
+//
+// @param request - DescribeInvadeEventNameListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvadeEventNameListResponse
+func (client *Client) DescribeInvadeEventNameListWithContext(ctx context.Context, request *DescribeInvadeEventNameListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEventNameListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvadeEventNameList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInvadeEventNameListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取漏洞事件统计
+//
+// @param request - DescribeInvadeEventStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInvadeEventStatisticResponse
+func (client *Client) DescribeInvadeEventStatisticWithContext(ctx context.Context, request *DescribeInvadeEventStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeInvadeEventStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInvadeEventStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInvadeEventStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the pagination status of NAT firewalls.
 //
 // @param request - DescribeNatAclPageStatusRequest
@@ -3497,9 +5301,11 @@ func (client *Client) DescribeInvadeEventListWithContext(ctx context.Context, re
 //
 // @return DescribeNatAclPageStatusResponse
 func (client *Client) DescribeNatAclPageStatusWithContext(ctx context.Context, request *DescribeNatAclPageStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatAclPageStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3543,9 +5349,11 @@ func (client *Client) DescribeNatAclPageStatusWithContext(ctx context.Context, r
 //
 // @return DescribeNatFirewallControlPolicyResponse
 func (client *Client) DescribeNatFirewallControlPolicyWithContext(ctx context.Context, request *DescribeNatFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -3625,6 +5433,46 @@ func (client *Client) DescribeNatFirewallControlPolicyWithContext(ctx context.Co
 
 // Summary:
 //
+// 概览页-nat防火墙拦截趋势
+//
+// @param request - DescribeNatFirewallDropTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallDropTrafficTrendResponse
+func (client *Client) DescribeNatFirewallDropTrafficTrendWithContext(ctx context.Context, request *DescribeNatFirewallDropTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallDropTrafficTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatFirewallDropTrafficTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatFirewallDropTrafficTrendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries details of NAT firewalls.
 //
 // @param request - DescribeNatFirewallListRequest
@@ -3633,9 +5481,11 @@ func (client *Client) DescribeNatFirewallControlPolicyWithContext(ctx context.Co
 //
 // @return DescribeNatFirewallListResponse
 func (client *Client) DescribeNatFirewallListWithContext(ctx context.Context, request *DescribeNatFirewallListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3719,9 +5569,11 @@ func (client *Client) DescribeNatFirewallListWithContext(ctx context.Context, re
 //
 // @return DescribeNatFirewallPolicyPriorUsedResponse
 func (client *Client) DescribeNatFirewallPolicyPriorUsedWithContext(ctx context.Context, request *DescribeNatFirewallPolicyPriorUsedRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallPolicyPriorUsedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -3765,6 +5617,46 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsedWithContext(ctx context.
 
 // Summary:
 //
+// 获取NAT防火墙配额
+//
+// @param request - DescribeNatFirewallQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallQuotaResponse
+func (client *Client) DescribeNatFirewallQuotaWithContext(ctx context.Context, request *DescribeNatFirewallQuotaRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNatFirewallQuota"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNatFirewallQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 概览页-NAT流量趋势
 //
 // @param request - DescribeNatFirewallTrafficTrendRequest
@@ -3773,9 +5665,11 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsedWithContext(ctx context.
 //
 // @return DescribeNatFirewallTrafficTrendResponse
 func (client *Client) DescribeNatFirewallTrafficTrendWithContext(ctx context.Context, request *DescribeNatFirewallTrafficTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeNatFirewallTrafficTrendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -3803,6 +5697,402 @@ func (client *Client) DescribeNatFirewallTrafficTrendWithContext(ctx context.Con
 
 // Summary:
 //
+// 获取网络实例列表
+//
+// @param request - DescribeNetworkInstanceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkInstanceListResponse
+func (client *Client) DescribeNetworkInstanceListWithContext(ctx context.Context, request *DescribeNetworkInstanceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInstanceListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.ConnectType) {
+		query["ConnectType"] = request.ConnectType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNetworkInstanceList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNetworkInstanceListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络实例关系列表
+//
+// @param request - DescribeNetworkInstanceRelationListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkInstanceRelationListResponse
+func (client *Client) DescribeNetworkInstanceRelationListWithContext(ctx context.Context, request *DescribeNetworkInstanceRelationListRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkInstanceRelationListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectType) {
+		query["ConnectType"] = request.ConnectType
+	}
+
+	if !dara.IsNil(request.FirewallConfigureStatus) {
+		query["FirewallConfigureStatus"] = request.FirewallConfigureStatus
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNetworkInstanceRelationList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNetworkInstanceRelationListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网络流量TOP环比
+//
+// @param request - DescribeNetworkTrafficTopRatioRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkTrafficTopRatioResponse
+func (client *Client) DescribeNetworkTrafficTopRatioWithContext(ctx context.Context, request *DescribeNetworkTrafficTopRatioRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkTrafficTopRatioResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AssetIP) {
+		query["AssetIP"] = request.AssetIP
+	}
+
+	if !dara.IsNil(request.AssetRegion) {
+		query["AssetRegion"] = request.AssetRegion
+	}
+
+	if !dara.IsNil(request.DataType) {
+		query["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.DstIP) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !dara.IsNil(request.DstPort) {
+		query["DstPort"] = request.DstPort
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IpProperty) {
+		query["IpProperty"] = request.IpProperty
+	}
+
+	if !dara.IsNil(request.Isp) {
+		query["Isp"] = request.Isp
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Location) {
+		query["Location"] = request.Location
+	}
+
+	if !dara.IsNil(request.RuleResult) {
+		query["RuleResult"] = request.RuleResult
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.SrcIP) {
+		query["SrcIP"] = request.SrcIP
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNetworkTrafficTopRatio"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNetworkTrafficTopRatioResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取公网IP通过的源状态
+//
+// @param request - DescribeOpenIpAccessSrcStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOpenIpAccessSrcStatResponse
+func (client *Client) DescribeOpenIpAccessSrcStatWithContext(ctx context.Context, request *DescribeOpenIpAccessSrcStatRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpenIpAccessSrcStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DstIp) {
+		query["DstIp"] = request.DstIp
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOpenIpAccessSrcStat"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOpenIpAccessSrcStatResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联资产列表
+//
+// @param request - DescribeOutgoingAssetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingAssetListResponse
+func (client *Client) DescribeOutgoingAssetListWithContext(ctx context.Context, request *DescribeOutgoingAssetListRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingAssetListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetsRegion) {
+		query["AssetsRegion"] = request.AssetsRegion
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.IPType) {
+		query["IPType"] = request.IPType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.NatGatewayName) {
+		query["NatGatewayName"] = request.NatGatewayName
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.SecurityRisk) {
+		query["SecurityRisk"] = request.SecurityRisk
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingAssetList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingAssetListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get details of outgoing destination IPs
 //
 // @param request - DescribeOutgoingDestinationIPRequest
@@ -3811,9 +6101,11 @@ func (client *Client) DescribeNatFirewallTrafficTrendWithContext(ctx context.Con
 //
 // @return DescribeOutgoingDestinationIPResponse
 func (client *Client) DescribeOutgoingDestinationIPWithContext(ctx context.Context, request *DescribeOutgoingDestinationIPRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDestinationIPResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationName) {
@@ -3905,9 +6197,11 @@ func (client *Client) DescribeOutgoingDestinationIPWithContext(ctx context.Conte
 //
 // @return DescribeOutgoingDomainResponse
 func (client *Client) DescribeOutgoingDomainWithContext(ctx context.Context, request *DescribeOutgoingDomainRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDomainResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CategoryId) {
@@ -3987,6 +6281,306 @@ func (client *Client) DescribeOutgoingDomainWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 获取外联域名详情
+//
+// @param request - DescribeOutgoingDomainDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingDomainDetailResponse
+func (client *Client) DescribeOutgoingDomainDetailWithContext(ctx context.Context, request *DescribeOutgoingDomainDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingDomainDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclCoverage) {
+		query["AclCoverage"] = request.AclCoverage
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.DomainList) {
+		query["DomainList"] = request.DomainList
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IPType) {
+		query["IPType"] = request.IPType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NatGatewayId) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PrivateIP) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !dara.IsNil(request.PublicIP) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagId) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingDomainDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingDomainDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联统计
+//
+// @param request - DescribeOutgoingStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingStatisticResponse
+func (client *Client) DescribeOutgoingStatisticWithContext(ctx context.Context, request *DescribeOutgoingStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingStatistic"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取外联标签
+//
+// @param request - DescribeOutgoingTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOutgoingTagResponse
+func (client *Client) DescribeOutgoingTagWithContext(ctx context.Context, request *DescribeOutgoingTagRequest, runtime *dara.RuntimeOptions) (_result *DescribeOutgoingTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DstType) {
+		query["DstType"] = request.DstType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TagId) {
+		query["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOutgoingTag"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOutgoingTagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档
+//
+// @param request - DescribePageDocumentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePageDocumentsResponse
+func (client *Client) DescribePageDocumentsWithContext(ctx context.Context, request *DescribePageDocumentsRequest, runtime *dara.RuntimeOptions) (_result *DescribePageDocumentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageName) {
+		query["PageName"] = request.PageName
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.TabName) {
+		query["TabName"] = request.TabName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePageDocuments"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePageDocumentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether the strict mode is enabled for an access control policy.
 //
 // Description:
@@ -4003,9 +6597,11 @@ func (client *Client) DescribeOutgoingDomainWithContext(ctx context.Context, req
 //
 // @return DescribePolicyAdvancedConfigResponse
 func (client *Client) DescribePolicyAdvancedConfigWithContext(ctx context.Context, request *DescribePolicyAdvancedConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribePolicyAdvancedConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4061,9 +6657,11 @@ func (client *Client) DescribePolicyAdvancedConfigWithContext(ctx context.Contex
 //
 // @return DescribePolicyPriorUsedResponse
 func (client *Client) DescribePolicyPriorUsedWithContext(ctx context.Context, request *DescribePolicyPriorUsedRequest, runtime *dara.RuntimeOptions) (_result *DescribePolicyPriorUsedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -4119,9 +6717,11 @@ func (client *Client) DescribePolicyPriorUsedWithContext(ctx context.Context, re
 //
 // @return DescribePostpayTrafficDetailResponse
 func (client *Client) DescribePostpayTrafficDetailWithContext(ctx context.Context, request *DescribePostpayTrafficDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayTrafficDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -4197,9 +6797,11 @@ func (client *Client) DescribePostpayTrafficDetailWithContext(ctx context.Contex
 //
 // @return DescribePostpayTrafficTotalResponse
 func (client *Client) DescribePostpayTrafficTotalWithContext(ctx context.Context, request *DescribePostpayTrafficTotalRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayTrafficTotalResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -4231,6 +6833,86 @@ func (client *Client) DescribePostpayTrafficTotalWithContext(ctx context.Context
 
 // Summary:
 //
+// Queries the status of the Internet Firewall feature in Cloud Firewall that uses the pay-as-you-go billing method.
+//
+// @param request - DescribePostpayUserInternetStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePostpayUserInternetStatusResponse
+func (client *Client) DescribePostpayUserInternetStatusWithContext(ctx context.Context, request *DescribePostpayUserInternetStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayUserInternetStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePostpayUserInternetStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePostpayUserInternetStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status of the NAT Firewall feature in Cloud Firewall that use the pay-as-you-go billing method.
+//
+// @param request - DescribePostpayUserNatStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePostpayUserNatStatusResponse
+func (client *Client) DescribePostpayUserNatStatusWithContext(ctx context.Context, request *DescribePostpayUserNatStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribePostpayUserNatStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePostpayUserNatStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePostpayUserNatStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries prefix lists.
 //
 // @param request - DescribePrefixListsRequest
@@ -4239,9 +6921,11 @@ func (client *Client) DescribePostpayTrafficTotalWithContext(ctx context.Context
 //
 // @return DescribePrefixListsResponse
 func (client *Client) DescribePrefixListsWithContext(ctx context.Context, request *DescribePrefixListsRequest, runtime *dara.RuntimeOptions) (_result *DescribePrefixListsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4277,9 +6961,11 @@ func (client *Client) DescribePrefixListsWithContext(ctx context.Context, reques
 //
 // @return DescribePrivateDnsDomainNameListResponse
 func (client *Client) DescribePrivateDnsDomainNameListWithContext(ctx context.Context, request *DescribePrivateDnsDomainNameListRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateDnsDomainNameListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4315,9 +7001,11 @@ func (client *Client) DescribePrivateDnsDomainNameListWithContext(ctx context.Co
 //
 // @return DescribePrivateDnsEndpointDetailResponse
 func (client *Client) DescribePrivateDnsEndpointDetailWithContext(ctx context.Context, request *DescribePrivateDnsEndpointDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateDnsEndpointDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4353,9 +7041,11 @@ func (client *Client) DescribePrivateDnsEndpointDetailWithContext(ctx context.Co
 //
 // @return DescribePrivateDnsEndpointListResponse
 func (client *Client) DescribePrivateDnsEndpointListWithContext(ctx context.Context, request *DescribePrivateDnsEndpointListRequest, runtime *dara.RuntimeOptions) (_result *DescribePrivateDnsEndpointListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4383,6 +7073,106 @@ func (client *Client) DescribePrivateDnsEndpointListWithContext(ctx context.Cont
 
 // Summary:
 //
+// 获取地域信息
+//
+// @param request - DescribeRegionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionInfoResponse
+func (client *Client) DescribeRegionInfoWithContext(ctx context.Context, request *DescribeRegionInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceCode) {
+		query["SourceCode"] = request.SourceCode
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegionInfo"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产类型默认引流
+//
+// @param request - DescribeResourceTypeAutoEnableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceTypeAutoEnableResponse
+func (client *Client) DescribeResourceTypeAutoEnableWithContext(ctx context.Context, request *DescribeResourceTypeAutoEnableRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceTypeAutoEnableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeResourceTypeAutoEnable"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeResourceTypeAutoEnableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of intrusion events.
 //
 // Description:
@@ -4399,9 +7189,11 @@ func (client *Client) DescribePrivateDnsEndpointListWithContext(ctx context.Cont
 //
 // @return DescribeRiskEventGroupResponse
 func (client *Client) DescribeRiskEventGroupWithContext(ctx context.Context, request *DescribeRiskEventGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackApp) {
@@ -4537,9 +7329,11 @@ func (client *Client) DescribeRiskEventGroupWithContext(ctx context.Context, req
 //
 // @return DescribeRiskEventPayloadResponse
 func (client *Client) DescribeRiskEventPayloadWithContext(ctx context.Context, request *DescribeRiskEventPayloadRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventPayloadResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DstIP) {
@@ -4603,6 +7397,246 @@ func (client *Client) DescribeRiskEventPayloadWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 获取Top风险事件资产
+//
+// @param request - DescribeRiskEventTopAttackAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRiskEventTopAttackAssetResponse
+func (client *Client) DescribeRiskEventTopAttackAssetWithContext(ctx context.Context, request *DescribeRiskEventTopAttackAssetRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskEventTopAttackAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttackApp) {
+		query["AttackApp"] = request.AttackApp
+	}
+
+	if !dara.IsNil(request.AttackType) {
+		query["AttackType"] = request.AttackType
+	}
+
+	if !dara.IsNil(request.BuyVersion) {
+		query["BuyVersion"] = request.BuyVersion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRiskEventTopAttackAsset"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRiskEventTopAttackAssetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取风险安全组详情
+//
+// @param request - DescribeRiskSecurityGroupDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRiskSecurityGroupDetailResponse
+func (client *Client) DescribeRiskSecurityGroupDetailWithContext(ctx context.Context, request *DescribeRiskSecurityGroupDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeRiskSecurityGroupDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RuleUuid) {
+		query["RuleUuid"] = request.RuleUuid
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRiskSecurityGroupDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRiskSecurityGroupDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取安全模式
+//
+// @param request - DescribeSecurityModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityModeResponse
+func (client *Client) DescribeSecurityModeWithContext(ctx context.Context, request *DescribeSecurityModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeSecurityModeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSecurityMode"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSecurityModeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取SLS开启状态
+//
+// @param request - DescribeSlsAnalyzeOpenStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsAnalyzeOpenStatusResponse
+func (client *Client) DescribeSlsAnalyzeOpenStatusWithContext(ctx context.Context, request *DescribeSlsAnalyzeOpenStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlsAnalyzeOpenStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSlsAnalyzeOpenStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSlsAnalyzeOpenStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the transit routers that are associated with a virtual private cloud (VPC) firewall created for a transit router.
 //
 // @param tmpReq - DescribeTrFirewallPolicyBackUpAssociationListRequest
@@ -4611,9 +7645,11 @@ func (client *Client) DescribeRiskEventPayloadWithContext(ctx context.Context, r
 //
 // @return DescribeTrFirewallPolicyBackUpAssociationListResponse
 func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithContext(ctx context.Context, tmpReq *DescribeTrFirewallPolicyBackUpAssociationListRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrFirewallPolicyBackUpAssociationListResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4671,9 +7707,11 @@ func (client *Client) DescribeTrFirewallPolicyBackUpAssociationListWithContext(c
 //
 // @return DescribeTrFirewallV2RoutePolicyListResponse
 func (client *Client) DescribeTrFirewallV2RoutePolicyListWithContext(ctx context.Context, request *DescribeTrFirewallV2RoutePolicyListRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrFirewallV2RoutePolicyListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -4729,9 +7767,11 @@ func (client *Client) DescribeTrFirewallV2RoutePolicyListWithContext(ctx context
 //
 // @return DescribeTrFirewallsV2DetailResponse
 func (client *Client) DescribeTrFirewallsV2DetailWithContext(ctx context.Context, request *DescribeTrFirewallsV2DetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrFirewallsV2DetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallId) {
@@ -4775,9 +7815,11 @@ func (client *Client) DescribeTrFirewallsV2DetailWithContext(ctx context.Context
 //
 // @return DescribeTrFirewallsV2ListResponse
 func (client *Client) DescribeTrFirewallsV2ListWithContext(ctx context.Context, request *DescribeTrFirewallsV2ListRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrFirewallsV2ListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -4857,9 +7899,11 @@ func (client *Client) DescribeTrFirewallsV2ListWithContext(ctx context.Context, 
 //
 // @return DescribeTrFirewallsV2RouteListResponse
 func (client *Client) DescribeTrFirewallsV2RouteListWithContext(ctx context.Context, request *DescribeTrFirewallsV2RouteListRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrFirewallsV2RouteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -4907,6 +7951,118 @@ func (client *Client) DescribeTrFirewallsV2RouteListWithContext(ctx context.Cont
 
 // Summary:
 //
+// 获取未保护漏洞趋势
+//
+// @param request - DescribeUnprotectedVulnTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUnprotectedVulnTrendResponse
+func (client *Client) DescribeUnprotectedVulnTrendWithContext(ctx context.Context, request *DescribeUnprotectedVulnTrendRequest, runtime *dara.RuntimeOptions) (_result *DescribeUnprotectedVulnTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUnprotectedVulnTrend"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUnprotectedVulnTrendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户告警配置
+//
+// @param request - DescribeUserAlarmConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserAlarmConfigResponse
+func (client *Client) DescribeUserAlarmConfigWithContext(ctx context.Context, request *DescribeUserAlarmConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserAlarmConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserAlarmConfig"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserAlarmConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the traffic of a specified asset that belongs to your Alibaba Cloud account.
 //
 // @param request - DescribeUserAssetIPTrafficInfoRequest
@@ -4915,9 +8071,11 @@ func (client *Client) DescribeTrFirewallsV2RouteListWithContext(ctx context.Cont
 //
 // @return DescribeUserAssetIPTrafficInfoResponse
 func (client *Client) DescribeUserAssetIPTrafficInfoWithContext(ctx context.Context, request *DescribeUserAssetIPTrafficInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserAssetIPTrafficInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
@@ -4961,9 +8119,11 @@ func (client *Client) DescribeUserAssetIPTrafficInfoWithContext(ctx context.Cont
 //
 // @return DescribeUserBuyVersionResponse
 func (client *Client) DescribeUserBuyVersionWithContext(ctx context.Context, request *DescribeUserBuyVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserBuyVersionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -5003,9 +8163,11 @@ func (client *Client) DescribeUserBuyVersionWithContext(ctx context.Context, req
 //
 // @return DescribeUserIPSWhitelistResponse
 func (client *Client) DescribeUserIPSWhitelistWithContext(ctx context.Context, request *DescribeUserIPSWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserIPSWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5045,6 +8207,118 @@ func (client *Client) DescribeUserIPSWhitelistWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 获取VPC防火墙通过详情
+//
+// @param request - DescribeVpcFirewallAccessDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallAccessDetailResponse
+func (client *Client) DescribeVpcFirewallAccessDetailWithContext(ctx context.Context, request *DescribeVpcFirewallAccessDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallAccessDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetIP) {
+		query["AssetIP"] = request.AssetIP
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.IPProtocol) {
+		query["IPProtocol"] = request.IPProtocol
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PeerAssetIP) {
+		query["PeerAssetIP"] = request.PeerAssetIP
+	}
+
+	if !dara.IsNil(request.PeerAssetInstanceId) {
+		query["PeerAssetInstanceId"] = request.PeerAssetInstanceId
+	}
+
+	if !dara.IsNil(request.PeerAssetInstanceName) {
+		query["PeerAssetInstanceName"] = request.PeerAssetInstanceName
+	}
+
+	if !dara.IsNil(request.PeerVpcId) {
+		query["PeerVpcId"] = request.PeerVpcId
+	}
+
+	if !dara.IsNil(request.Port) {
+		query["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.Sort) {
+		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallAccessDetail"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallAccessDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about all policy groups of access control policies that are created for virtual private cloud (VPC) firewalls.
 //
 // Description:
@@ -5061,9 +8335,11 @@ func (client *Client) DescribeUserIPSWhitelistWithContext(ctx context.Context, r
 //
 // @return DescribeVpcFirewallAclGroupListResponse
 func (client *Client) DescribeVpcFirewallAclGroupListWithContext(ctx context.Context, request *DescribeVpcFirewallAclGroupListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallAclGroupListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -5127,9 +8403,11 @@ func (client *Client) DescribeVpcFirewallAclGroupListWithContext(ctx context.Con
 //
 // @return DescribeVpcFirewallCenDetailResponse
 func (client *Client) DescribeVpcFirewallCenDetailWithContext(ctx context.Context, request *DescribeVpcFirewallCenDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallCenDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5189,9 +8467,11 @@ func (client *Client) DescribeVpcFirewallCenDetailWithContext(ctx context.Contex
 //
 // @return DescribeVpcFirewallCenListResponse
 func (client *Client) DescribeVpcFirewallCenListWithContext(ctx context.Context, request *DescribeVpcFirewallCenListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallCenListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CenId) {
@@ -5275,6 +8555,70 @@ func (client *Client) DescribeVpcFirewallCenListWithContext(ctx context.Context,
 
 // Summary:
 //
+// 获取VPC的CEN列表
+//
+// @param request - DescribeVpcFirewallCenSummaryListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallCenSummaryListResponse
+func (client *Client) DescribeVpcFirewallCenSummaryListWithContext(ctx context.Context, request *DescribeVpcFirewallCenSummaryListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallCenSummaryListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TransitRouterType) {
+		query["TransitRouterType"] = request.TransitRouterType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallCenSummaryList"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallCenSummaryListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the access control policies for a specified virtual private cloud (VPC) firewall.
 //
 // Description:
@@ -5291,9 +8635,11 @@ func (client *Client) DescribeVpcFirewallCenListWithContext(ctx context.Context,
 //
 // @return DescribeVpcFirewallControlPolicyResponse
 func (client *Client) DescribeVpcFirewallControlPolicyWithContext(ctx context.Context, request *DescribeVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -5389,9 +8735,11 @@ func (client *Client) DescribeVpcFirewallControlPolicyWithContext(ctx context.Co
 //
 // @return DescribeVpcFirewallDefaultIPSConfigResponse
 func (client *Client) DescribeVpcFirewallDefaultIPSConfigWithContext(ctx context.Context, request *DescribeVpcFirewallDefaultIPSConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallDefaultIPSConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MemberUid) {
@@ -5445,9 +8793,11 @@ func (client *Client) DescribeVpcFirewallDefaultIPSConfigWithContext(ctx context
 //
 // @return DescribeVpcFirewallDetailResponse
 func (client *Client) DescribeVpcFirewallDetailWithContext(ctx context.Context, request *DescribeVpcFirewallDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5503,9 +8853,11 @@ func (client *Client) DescribeVpcFirewallDetailWithContext(ctx context.Context, 
 //
 // @return DescribeVpcFirewallIPSWhitelistResponse
 func (client *Client) DescribeVpcFirewallIPSWhitelistWithContext(ctx context.Context, request *DescribeVpcFirewallIPSWhitelistRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallIPSWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5561,9 +8913,11 @@ func (client *Client) DescribeVpcFirewallIPSWhitelistWithContext(ctx context.Con
 //
 // @return DescribeVpcFirewallListResponse
 func (client *Client) DescribeVpcFirewallListWithContext(ctx context.Context, request *DescribeVpcFirewallListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConnectSubType) {
@@ -5655,9 +9009,11 @@ func (client *Client) DescribeVpcFirewallListWithContext(ctx context.Context, re
 //
 // @return DescribeVpcFirewallPolicyPriorUsedResponse
 func (client *Client) DescribeVpcFirewallPolicyPriorUsedWithContext(ctx context.Context, request *DescribeVpcFirewallPolicyPriorUsedRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallPolicyPriorUsedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5693,6 +9049,58 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsedWithContext(ctx context.
 
 // Summary:
 //
+// 获取VPC防火墙总结信息
+//
+// @param request - DescribeVpcFirewallSummaryInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcFirewallSummaryInfoResponse
+func (client *Client) DescribeVpcFirewallSummaryInfoWithContext(ctx context.Context, request *DescribeVpcFirewallSummaryInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcFirewallSummaryInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.UserType) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcFirewallSummaryInfo"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcFirewallSummaryInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries virtual private clouds (VPCs).
 //
 // @param request - DescribeVpcListLiteRequest
@@ -5701,9 +9109,11 @@ func (client *Client) DescribeVpcFirewallPolicyPriorUsedWithContext(ctx context.
 //
 // @return DescribeVpcListLiteResponse
 func (client *Client) DescribeVpcListLiteWithContext(ctx context.Context, request *DescribeVpcListLiteRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcListLiteResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -5759,9 +9169,11 @@ func (client *Client) DescribeVpcListLiteWithContext(ctx context.Context, reques
 //
 // @return DescribeVpcZoneResponse
 func (client *Client) DescribeVpcZoneWithContext(ctx context.Context, request *DescribeVpcZoneRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcZoneResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Environment) {
@@ -5813,9 +9225,11 @@ func (client *Client) DescribeVpcZoneWithContext(ctx context.Context, request *D
 //
 // @return DescribeVulnerabilityProtectedListResponse
 func (client *Client) DescribeVulnerabilityProtectedListWithContext(ctx context.Context, request *DescribeVulnerabilityProtectedListRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulnerabilityProtectedListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AttackType) {
@@ -5915,6 +9329,54 @@ func (client *Client) DescribeVulnerabilityProtectedListWithContext(ctx context.
 
 // Summary:
 //
+// 开启资产数据泄露保护
+//
+// @param request - EnableSdlProtectedAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableSdlProtectedAssetResponse
+func (client *Client) EnableSdlProtectedAssetWithContext(ctx context.Context, request *EnableSdlProtectedAssetRequest, runtime *dara.RuntimeOptions) (_result *EnableSdlProtectedAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IpList) {
+		query["IpList"] = request.IpList
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableSdlProtectedAsset"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableSdlProtectedAssetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the address book that is specified in an access control policy.
 //
 // Description:
@@ -5931,11 +9393,21 @@ func (client *Client) DescribeVulnerabilityProtectedListWithContext(ctx context.
 //
 // @return ModifyAddressBookResponse
 func (client *Client) ModifyAddressBookWithContext(ctx context.Context, request *ModifyAddressBookRequest, runtime *dara.RuntimeOptions) (_result *ModifyAddressBookResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AckLabels) {
+		query["AckLabels"] = request.AckLabels
+	}
+
+	if !dara.IsNil(request.AckNamespaces) {
+		query["AckNamespaces"] = request.AckNamespaces
+	}
+
 	if !dara.IsNil(request.AddressList) {
 		query["AddressList"] = request.AddressList
 	}
@@ -6017,9 +9489,11 @@ func (client *Client) ModifyAddressBookWithContext(ctx context.Context, request 
 //
 // @return ModifyControlPolicyResponse
 func (client *Client) ModifyControlPolicyWithContext(ctx context.Context, request *ModifyControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -6155,9 +9629,11 @@ func (client *Client) ModifyControlPolicyWithContext(ctx context.Context, reques
 //
 // @return ModifyControlPolicyPositionResponse
 func (client *Client) ModifyControlPolicyPositionWithContext(ctx context.Context, request *ModifyControlPolicyPositionRequest, runtime *dara.RuntimeOptions) (_result *ModifyControlPolicyPositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -6213,9 +9689,11 @@ func (client *Client) ModifyControlPolicyPositionWithContext(ctx context.Context
 //
 // @return ModifyControlPolicyPriorityResponse
 func (client *Client) ModifyControlPolicyPriorityWithContext(ctx context.Context, request *ModifyControlPolicyPriorityRequest, runtime *dara.RuntimeOptions) (_result *ModifyControlPolicyPriorityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -6259,9 +9737,11 @@ func (client *Client) ModifyControlPolicyPriorityWithContext(ctx context.Context
 //
 // @return ModifyDefaultIPSConfigResponse
 func (client *Client) ModifyDefaultIPSConfigWithContext(ctx context.Context, request *ModifyDefaultIPSConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefaultIPSConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BasicRules) {
@@ -6325,9 +9805,11 @@ func (client *Client) ModifyDefaultIPSConfigWithContext(ctx context.Context, req
 //
 // @return ModifyDnsFirewallPolicyResponse
 func (client *Client) ModifyDnsFirewallPolicyWithContext(ctx context.Context, request *ModifyDnsFirewallPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyDnsFirewallPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -6407,9 +9889,11 @@ func (client *Client) ModifyDnsFirewallPolicyWithContext(ctx context.Context, re
 //
 // @return ModifyFirewallV2RoutePolicySwitchResponse
 func (client *Client) ModifyFirewallV2RoutePolicySwitchWithContext(ctx context.Context, request *ModifyFirewallV2RoutePolicySwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyFirewallV2RoutePolicySwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallId) {
@@ -6473,9 +9957,11 @@ func (client *Client) ModifyFirewallV2RoutePolicySwitchWithContext(ctx context.C
 //
 // @return ModifyInstanceMemberAttributesResponse
 func (client *Client) ModifyInstanceMemberAttributesWithContext(ctx context.Context, request *ModifyInstanceMemberAttributesRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceMemberAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Members) {
@@ -6507,6 +9993,74 @@ func (client *Client) ModifyInstanceMemberAttributesWithContext(ctx context.Cont
 
 // Summary:
 //
+// 修改IPS规则为默认
+//
+// @param request - ModifyIpsRulesToDefaultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyIpsRulesToDefaultResponse
+func (client *Client) ModifyIpsRulesToDefaultWithContext(ctx context.Context, request *ModifyIpsRulesToDefaultRequest, runtime *dara.RuntimeOptions) (_result *ModifyIpsRulesToDefaultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttackApp) {
+		query["AttackApp"] = request.AttackApp
+	}
+
+	if !dara.IsNil(request.FirewallType) {
+		query["FirewallType"] = request.FirewallType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RuleType) {
+		query["RuleType"] = request.RuleType
+	}
+
+	if !dara.IsNil(request.Rules) {
+		query["Rules"] = request.Rules
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyIpsRulesToDefault"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyIpsRulesToDefaultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of an access control policy that is created for a NAT firewall.
 //
 // Description:
@@ -6519,9 +10073,11 @@ func (client *Client) ModifyInstanceMemberAttributesWithContext(ctx context.Cont
 //
 // @return ModifyNatFirewallControlPolicyResponse
 func (client *Client) ModifyNatFirewallControlPolicyWithContext(ctx context.Context, request *ModifyNatFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -6649,9 +10205,11 @@ func (client *Client) ModifyNatFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return ModifyNatFirewallControlPolicyPositionResponse
 func (client *Client) ModifyNatFirewallControlPolicyPositionWithContext(ctx context.Context, request *ModifyNatFirewallControlPolicyPositionRequest, runtime *dara.RuntimeOptions) (_result *ModifyNatFirewallControlPolicyPositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -6707,9 +10265,11 @@ func (client *Client) ModifyNatFirewallControlPolicyPositionWithContext(ctx cont
 //
 // @return ModifyObjectGroupOperationResponse
 func (client *Client) ModifyObjectGroupOperationWithContext(ctx context.Context, request *ModifyObjectGroupOperationRequest, runtime *dara.RuntimeOptions) (_result *ModifyObjectGroupOperationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Comment) {
@@ -6781,9 +10341,11 @@ func (client *Client) ModifyObjectGroupOperationWithContext(ctx context.Context,
 //
 // @return ModifyPolicyAdvancedConfigResponse
 func (client *Client) ModifyPolicyAdvancedConfigWithContext(ctx context.Context, request *ModifyPolicyAdvancedConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyAdvancedConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Eips) {
@@ -6835,9 +10397,11 @@ func (client *Client) ModifyPolicyAdvancedConfigWithContext(ctx context.Context,
 //
 // @return ModifyPrivateDnsEndpointResponse
 func (client *Client) ModifyPrivateDnsEndpointWithContext(ctx context.Context, request *ModifyPrivateDnsEndpointRequest, runtime *dara.RuntimeOptions) (_result *ModifyPrivateDnsEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessInstanceId) {
@@ -6889,6 +10453,158 @@ func (client *Client) ModifyPrivateDnsEndpointWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 修改敏感数据开关
+//
+// @param request - ModifySensitiveSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySensitiveSwitchResponse
+func (client *Client) ModifySensitiveSwitchWithContext(ctx context.Context, request *ModifySensitiveSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifySensitiveSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SensitiveCategory) {
+		query["SensitiveCategory"] = request.SensitiveCategory
+	}
+
+	if !dara.IsNil(request.SwitchStatus) {
+		query["SwitchStatus"] = request.SwitchStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySensitiveSwitch"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySensitiveSwitchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改SLS投递
+//
+// @param request - ModifySlsDispatchStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySlsDispatchStatusResponse
+func (client *Client) ModifySlsDispatchStatusWithContext(ctx context.Context, request *ModifySlsDispatchStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifySlsDispatchStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DispatchValue) {
+		query["DispatchValue"] = request.DispatchValue
+	}
+
+	if !dara.IsNil(request.EnableStatus) {
+		query["EnableStatus"] = request.EnableStatus
+	}
+
+	if !dara.IsNil(request.FilterKeys) {
+		query["FilterKeys"] = request.FilterKeys
+	}
+
+	if !dara.IsNil(request.NewRegionId) {
+		query["NewRegionId"] = request.NewRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySlsDispatchStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySlsDispatchStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改威胁情报配置的信息
+//
+// @param request - ModifyThreatIntelligenceSwitchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyThreatIntelligenceSwitchResponse
+func (client *Client) ModifyThreatIntelligenceSwitchWithContext(ctx context.Context, request *ModifyThreatIntelligenceSwitchRequest, runtime *dara.RuntimeOptions) (_result *ModifyThreatIntelligenceSwitchResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CategoryList) {
+		query["CategoryList"] = request.CategoryList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyThreatIntelligenceSwitch"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyThreatIntelligenceSwitchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
 //
 // @param request - ModifyTrFirewallV2ConfigurationRequest
@@ -6897,9 +10613,11 @@ func (client *Client) ModifyPrivateDnsEndpointWithContext(ctx context.Context, r
 //
 // @return ModifyTrFirewallV2ConfigurationResponse
 func (client *Client) ModifyTrFirewallV2ConfigurationWithContext(ctx context.Context, request *ModifyTrFirewallV2ConfigurationRequest, runtime *dara.RuntimeOptions) (_result *ModifyTrFirewallV2ConfigurationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallId) {
@@ -6947,9 +10665,11 @@ func (client *Client) ModifyTrFirewallV2ConfigurationWithContext(ctx context.Con
 //
 // @return ModifyTrFirewallV2RoutePolicyScopeResponse
 func (client *Client) ModifyTrFirewallV2RoutePolicyScopeWithContext(ctx context.Context, tmpReq *ModifyTrFirewallV2RoutePolicyScopeRequest, runtime *dara.RuntimeOptions) (_result *ModifyTrFirewallV2RoutePolicyScopeResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyTrFirewallV2RoutePolicyScopeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -7019,9 +10739,11 @@ func (client *Client) ModifyTrFirewallV2RoutePolicyScopeWithContext(ctx context.
 //
 // @return ModifyUserIPSWhitelistResponse
 func (client *Client) ModifyUserIPSWhitelistWithContext(ctx context.Context, request *ModifyUserIPSWhitelistRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserIPSWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -7081,6 +10803,106 @@ func (client *Client) ModifyUserIPSWhitelistWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 修改用户日志存储时间
+//
+// @param request - ModifyUserSlsLogStorageTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserSlsLogStorageTimeResponse
+func (client *Client) ModifyUserSlsLogStorageTimeWithContext(ctx context.Context, request *ModifyUserSlsLogStorageTimeRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserSlsLogStorageTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.StorageTime) {
+		query["StorageTime"] = request.StorageTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserSlsLogStorageTime"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserSlsLogStorageTimeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改VPC防火墙ACL引擎模式
+//
+// @param request - ModifyVpcFirewallAclEngineModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVpcFirewallAclEngineModeResponse
+func (client *Client) ModifyVpcFirewallAclEngineModeWithContext(ctx context.Context, request *ModifyVpcFirewallAclEngineModeRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallAclEngineModeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MemberUid) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !dara.IsNil(request.StrictMode) {
+		query["StrictMode"] = request.StrictMode
+	}
+
+	if !dara.IsNil(request.VpcFirewallId) {
+		query["VpcFirewallId"] = request.VpcFirewallId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyVpcFirewallAclEngineMode"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyVpcFirewallAclEngineModeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a virtual private cloud (VPC) firewall. The VPC firewall protects mutual access traffic between a VPC and a specified network instance that is attached to a Cloud Enterprise Network (CEN) instance.
 //
 // Description:
@@ -7097,9 +10919,11 @@ func (client *Client) ModifyUserIPSWhitelistWithContext(ctx context.Context, req
 //
 // @return ModifyVpcFirewallCenConfigureResponse
 func (client *Client) ModifyVpcFirewallCenConfigureWithContext(ctx context.Context, request *ModifyVpcFirewallCenConfigureRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallCenConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7161,9 +10985,11 @@ func (client *Client) ModifyVpcFirewallCenConfigureWithContext(ctx context.Conte
 //
 // @return ModifyVpcFirewallCenSwitchStatusResponse
 func (client *Client) ModifyVpcFirewallCenSwitchStatusWithContext(ctx context.Context, request *ModifyVpcFirewallCenSwitchStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallCenSwitchStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallSwitch) {
@@ -7223,9 +11049,11 @@ func (client *Client) ModifyVpcFirewallCenSwitchStatusWithContext(ctx context.Co
 //
 // @return ModifyVpcFirewallConfigureResponse
 func (client *Client) ModifyVpcFirewallConfigureWithContext(ctx context.Context, request *ModifyVpcFirewallConfigureRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallConfigureResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7293,9 +11121,11 @@ func (client *Client) ModifyVpcFirewallConfigureWithContext(ctx context.Context,
 //
 // @return ModifyVpcFirewallControlPolicyResponse
 func (client *Client) ModifyVpcFirewallControlPolicyWithContext(ctx context.Context, request *ModifyVpcFirewallControlPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallControlPolicyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclAction) {
@@ -7431,9 +11261,11 @@ func (client *Client) ModifyVpcFirewallControlPolicyWithContext(ctx context.Cont
 //
 // @return ModifyVpcFirewallControlPolicyPositionResponse
 func (client *Client) ModifyVpcFirewallControlPolicyPositionWithContext(ctx context.Context, request *ModifyVpcFirewallControlPolicyPositionRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallControlPolicyPositionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -7497,9 +11329,11 @@ func (client *Client) ModifyVpcFirewallControlPolicyPositionWithContext(ctx cont
 //
 // @return ModifyVpcFirewallDefaultIPSConfigResponse
 func (client *Client) ModifyVpcFirewallDefaultIPSConfigWithContext(ctx context.Context, request *ModifyVpcFirewallDefaultIPSConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallDefaultIPSConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BasicRules) {
@@ -7567,9 +11401,11 @@ func (client *Client) ModifyVpcFirewallDefaultIPSConfigWithContext(ctx context.C
 //
 // @return ModifyVpcFirewallIPSWhitelistResponse
 func (client *Client) ModifyVpcFirewallIPSWhitelistWithContext(ctx context.Context, request *ModifyVpcFirewallIPSWhitelistRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallIPSWhitelistResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -7639,9 +11475,11 @@ func (client *Client) ModifyVpcFirewallIPSWhitelistWithContext(ctx context.Conte
 //
 // @return ModifyVpcFirewallSwitchStatusResponse
 func (client *Client) ModifyVpcFirewallSwitchStatusWithContext(ctx context.Context, request *ModifyVpcFirewallSwitchStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcFirewallSwitchStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FirewallSwitch) {
@@ -7701,9 +11539,11 @@ func (client *Client) ModifyVpcFirewallSwitchStatusWithContext(ctx context.Conte
 //
 // @return PutDisableAllFwSwitchResponse
 func (client *Client) PutDisableAllFwSwitchWithContext(ctx context.Context, request *PutDisableAllFwSwitchRequest, runtime *dara.RuntimeOptions) (_result *PutDisableAllFwSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7759,9 +11599,11 @@ func (client *Client) PutDisableAllFwSwitchWithContext(ctx context.Context, requ
 //
 // @return PutDisableFwSwitchResponse
 func (client *Client) PutDisableFwSwitchWithContext(ctx context.Context, request *PutDisableFwSwitchRequest, runtime *dara.RuntimeOptions) (_result *PutDisableFwSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpaddrList) {
@@ -7825,9 +11667,11 @@ func (client *Client) PutDisableFwSwitchWithContext(ctx context.Context, request
 //
 // @return PutEnableAllFwSwitchResponse
 func (client *Client) PutEnableAllFwSwitchWithContext(ctx context.Context, request *PutEnableAllFwSwitchRequest, runtime *dara.RuntimeOptions) (_result *PutEnableAllFwSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7883,9 +11727,11 @@ func (client *Client) PutEnableAllFwSwitchWithContext(ctx context.Context, reque
 //
 // @return PutEnableFwSwitchResponse
 func (client *Client) PutEnableFwSwitchWithContext(ctx context.Context, request *PutEnableFwSwitchRequest, runtime *dara.RuntimeOptions) (_result *PutEnableFwSwitchResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpaddrList) {
@@ -7941,9 +11787,11 @@ func (client *Client) PutEnableFwSwitchWithContext(ctx context.Context, request 
 //
 // @return ReleaseExpiredInstanceResponse
 func (client *Client) ReleaseExpiredInstanceWithContext(ctx context.Context, request *ReleaseExpiredInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseExpiredInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7983,9 +11831,11 @@ func (client *Client) ReleaseExpiredInstanceWithContext(ctx context.Context, req
 //
 // @return ReleasePostInstanceResponse
 func (client *Client) ReleasePostInstanceWithContext(ctx context.Context, request *ReleasePostInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleasePostInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -8025,9 +11875,11 @@ func (client *Client) ReleasePostInstanceWithContext(ctx context.Context, reques
 //
 // @return ResetNatFirewallRuleHitCountResponse
 func (client *Client) ResetNatFirewallRuleHitCountWithContext(ctx context.Context, request *ResetNatFirewallRuleHitCountRequest, runtime *dara.RuntimeOptions) (_result *ResetNatFirewallRuleHitCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -8067,6 +11919,58 @@ func (client *Client) ResetNatFirewallRuleHitCountWithContext(ctx context.Contex
 
 // Summary:
 //
+// 重置规则命中数
+//
+// @param request - ResetRuleHitCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetRuleHitCountResponse
+func (client *Client) ResetRuleHitCountWithContext(ctx context.Context, request *ResetRuleHitCountRequest, runtime *dara.RuntimeOptions) (_result *ResetRuleHitCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AclUuid) {
+		query["AclUuid"] = request.AclUuid
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceIp) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetRuleHitCount"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetRuleHitCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Clears the count on hits of an access control policy that is created for a virtual private cloud (VPC) firewall in a specific policy group.
 //
 // Description:
@@ -8083,9 +11987,11 @@ func (client *Client) ResetNatFirewallRuleHitCountWithContext(ctx context.Contex
 //
 // @return ResetVpcFirewallRuleHitCountResponse
 func (client *Client) ResetVpcFirewallRuleHitCountWithContext(ctx context.Context, request *ResetVpcFirewallRuleHitCountRequest, runtime *dara.RuntimeOptions) (_result *ResetVpcFirewallRuleHitCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AclUuid) {
@@ -8129,9 +12035,11 @@ func (client *Client) ResetVpcFirewallRuleHitCountWithContext(ctx context.Contex
 //
 // @return SwitchSecurityProxyResponse
 func (client *Client) SwitchSecurityProxyWithContext(ctx context.Context, request *SwitchSecurityProxyRequest, runtime *dara.RuntimeOptions) (_result *SwitchSecurityProxyResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -8179,9 +12087,11 @@ func (client *Client) SwitchSecurityProxyWithContext(ctx context.Context, reques
 //
 // @return UpdateAITrafficAnalysisStatusResponse
 func (client *Client) UpdateAITrafficAnalysisStatusWithContext(ctx context.Context, request *UpdateAITrafficAnalysisStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAITrafficAnalysisStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Status) {
@@ -8203,6 +12113,222 @@ func (client *Client) UpdateAITrafficAnalysisStatusWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAITrafficAnalysisStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改ACK集群连接器
+//
+// @param request - UpdateAckClusterConnectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAckClusterConnectorResponse
+func (client *Client) UpdateAckClusterConnectorWithContext(ctx context.Context, request *UpdateAckClusterConnectorRequest, runtime *dara.RuntimeOptions) (_result *UpdateAckClusterConnectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		query["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.ConnectorName) {
+		query["ConnectorName"] = request.ConnectorName
+	}
+
+	if !dara.IsNil(request.Ttl) {
+		query["Ttl"] = request.Ttl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAckClusterConnector"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAckClusterConnectorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改ACL检查状态
+//
+// @param request - UpdateAclCheckDetailStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAclCheckDetailStatusResponse
+func (client *Client) UpdateAclCheckDetailStatusWithContext(ctx context.Context, request *UpdateAclCheckDetailStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateAclCheckDetailStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAclCheckDetailStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAclCheckDetailStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the status of the NAT firewall feature for Cloud Firewall that uses the pay-as-you-go billing method.
+//
+// @param request - UpdatePostpayUserInternetStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePostpayUserInternetStatusResponse
+func (client *Client) UpdatePostpayUserInternetStatusWithContext(ctx context.Context, request *UpdatePostpayUserInternetStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdatePostpayUserInternetStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Operate) {
+		query["Operate"] = request.Operate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePostpayUserInternetStatus"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePostpayUserInternetStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新安全正向代理
+//
+// @param request - UpdateSecurityProxyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityProxyResponse
+func (client *Client) UpdateSecurityProxyWithContext(ctx context.Context, request *UpdateSecurityProxyRequest, runtime *dara.RuntimeOptions) (_result *UpdateSecurityProxyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ProxyId) {
+		query["ProxyId"] = request.ProxyId
+	}
+
+	if !dara.IsNil(request.ProxyName) {
+		query["ProxyName"] = request.ProxyName
+	}
+
+	if !dara.IsNil(request.StrictMode) {
+		query["StrictMode"] = request.StrictMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSecurityProxy"),
+		Version:     dara.String("2017-12-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSecurityProxyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

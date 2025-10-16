@@ -59,5 +59,10 @@ func (s *DescribePostpayTrafficDetailResponse) SetBody(v *DescribePostpayTraffic
 }
 
 func (s *DescribePostpayTrafficDetailResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

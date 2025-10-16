@@ -59,5 +59,10 @@ func (s *DeleteTrFirewallV2Response) SetBody(v *DeleteTrFirewallV2ResponseBody) 
 }
 
 func (s *DeleteTrFirewallV2Response) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

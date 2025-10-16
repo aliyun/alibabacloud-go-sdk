@@ -70,7 +70,16 @@ func (s *DescribeOutgoingDomainResponseBody) SetTotalCount(v int32) *DescribeOut
 }
 
 func (s *DescribeOutgoingDomainResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainList != nil {
+		for _, item := range s.DomainList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOutgoingDomainResponseBodyDomainList struct {
@@ -522,7 +531,16 @@ func (s *DescribeOutgoingDomainResponseBodyDomainList) SetTotalBytes(v string) *
 }
 
 func (s *DescribeOutgoingDomainResponseBodyDomainList) Validate() error {
-	return dara.Validate(s)
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOutgoingDomainResponseBodyDomainListTagList struct {

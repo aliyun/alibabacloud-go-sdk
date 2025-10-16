@@ -53,7 +53,16 @@ func (s *DescribeVpcFirewallIPSWhitelistResponseBody) SetWhitelists(v []*Describ
 }
 
 func (s *DescribeVpcFirewallIPSWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Whitelists != nil {
+		for _, item := range s.Whitelists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists struct {

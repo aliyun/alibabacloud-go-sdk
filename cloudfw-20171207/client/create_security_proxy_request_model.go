@@ -234,7 +234,16 @@ func (s *CreateSecurityProxyRequest) SetVswitchId(v string) *CreateSecurityProxy
 }
 
 func (s *CreateSecurityProxyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.NatRouteEntryList != nil {
+		for _, item := range s.NatRouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateSecurityProxyRequestNatRouteEntryList struct {

@@ -138,7 +138,16 @@ func (s *DescribeACLProtectTrendResponseBody) SetTrendList(v []*DescribeACLProte
 }
 
 func (s *DescribeACLProtectTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrendList != nil {
+		for _, item := range s.TrendList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeACLProtectTrendResponseBodyTrendList struct {

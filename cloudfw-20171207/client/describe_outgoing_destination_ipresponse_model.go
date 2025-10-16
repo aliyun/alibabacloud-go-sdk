@@ -59,5 +59,10 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 func (s *DescribeOutgoingDestinationIPResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

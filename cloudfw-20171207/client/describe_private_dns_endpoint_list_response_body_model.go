@@ -95,7 +95,16 @@ func (s *DescribePrivateDnsEndpointListResponseBody) SetTotalCount(v int64) *Des
 }
 
 func (s *DescribePrivateDnsEndpointListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AccessInstanceList != nil {
+		for _, item := range s.AccessInstanceList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrivateDnsEndpointListResponseBodyAccessInstanceList struct {

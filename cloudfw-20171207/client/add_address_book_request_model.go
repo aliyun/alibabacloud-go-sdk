@@ -9,6 +9,12 @@ type iAddAddressBookRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAckClusterConnectorId(v string) *AddAddressBookRequest
+	GetAckClusterConnectorId() *string
+	SetAckLabels(v []*AddAddressBookRequestAckLabels) *AddAddressBookRequest
+	GetAckLabels() []*AddAddressBookRequestAckLabels
+	SetAckNamespaces(v []*string) *AddAddressBookRequest
+	GetAckNamespaces() []*string
 	SetAddressList(v string) *AddAddressBookRequest
 	GetAddressList() *string
 	SetAutoAddTagEcs(v string) *AddAddressBookRequest
@@ -30,6 +36,12 @@ type iAddAddressBookRequest interface {
 }
 
 type AddAddressBookRequest struct {
+	// example:
+	//
+	// ac-7c1bad6c3cc84c33baab1
+	AckClusterConnectorId *string                           `json:"AckClusterConnectorId,omitempty" xml:"AckClusterConnectorId,omitempty"`
+	AckLabels             []*AddAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	AckNamespaces         []*string                         `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
 	// The addresses that you want to add to the address book. Separate multiple addresses with commas (,).
 	//
 	// >  If you set GroupType to `ip`, `port` or `domain`, you must specify AddressList.
@@ -126,6 +138,18 @@ func (s AddAddressBookRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddAddressBookRequest) GetAckClusterConnectorId() *string {
+	return s.AckClusterConnectorId
+}
+
+func (s *AddAddressBookRequest) GetAckLabels() []*AddAddressBookRequestAckLabels {
+	return s.AckLabels
+}
+
+func (s *AddAddressBookRequest) GetAckNamespaces() []*string {
+	return s.AckNamespaces
+}
+
 func (s *AddAddressBookRequest) GetAddressList() *string {
 	return s.AddressList
 }
@@ -160,6 +184,21 @@ func (s *AddAddressBookRequest) GetTagList() []*AddAddressBookRequestTagList {
 
 func (s *AddAddressBookRequest) GetTagRelation() *string {
 	return s.TagRelation
+}
+
+func (s *AddAddressBookRequest) SetAckClusterConnectorId(v string) *AddAddressBookRequest {
+	s.AckClusterConnectorId = &v
+	return s
+}
+
+func (s *AddAddressBookRequest) SetAckLabels(v []*AddAddressBookRequestAckLabels) *AddAddressBookRequest {
+	s.AckLabels = v
+	return s
+}
+
+func (s *AddAddressBookRequest) SetAckNamespaces(v []*string) *AddAddressBookRequest {
+	s.AckNamespaces = v
+	return s
 }
 
 func (s *AddAddressBookRequest) SetAddressList(v string) *AddAddressBookRequest {
@@ -208,6 +247,65 @@ func (s *AddAddressBookRequest) SetTagRelation(v string) *AddAddressBookRequest 
 }
 
 func (s *AddAddressBookRequest) Validate() error {
+	if s.AckLabels != nil {
+		for _, item := range s.AckLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AddAddressBookRequestAckLabels struct {
+	// example:
+	//
+	// app
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// storage-operator
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddAddressBookRequestAckLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AddAddressBookRequestAckLabels) GoString() string {
+	return s.String()
+}
+
+func (s *AddAddressBookRequestAckLabels) GetKey() *string {
+	return s.Key
+}
+
+func (s *AddAddressBookRequestAckLabels) GetValue() *string {
+	return s.Value
+}
+
+func (s *AddAddressBookRequestAckLabels) SetKey(v string) *AddAddressBookRequestAckLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAckLabels) SetValue(v string) *AddAddressBookRequestAckLabels {
+	s.Value = &v
+	return s
+}
+
+func (s *AddAddressBookRequestAckLabels) Validate() error {
 	return dara.Validate(s)
 }
 

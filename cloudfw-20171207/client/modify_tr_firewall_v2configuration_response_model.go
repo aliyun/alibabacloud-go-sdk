@@ -59,5 +59,10 @@ func (s *ModifyTrFirewallV2ConfigurationResponse) SetBody(v *ModifyTrFirewallV2C
 }
 
 func (s *ModifyTrFirewallV2ConfigurationResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

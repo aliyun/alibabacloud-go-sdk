@@ -70,7 +70,16 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetTrFirewallRoutePoli
 }
 
 func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TrFirewallRoutePolicies != nil {
+		for _, item := range s.TrFirewallRoutePolicies {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies struct {
@@ -200,7 +209,25 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies)
 }
 
 func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) Validate() error {
-	return dara.Validate(s)
+	if s.DestCandidateList != nil {
+		for _, item := range s.DestCandidateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SrcCandidateList != nil {
+		for _, item := range s.SrcCandidateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList struct {

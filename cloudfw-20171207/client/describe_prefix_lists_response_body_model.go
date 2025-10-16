@@ -53,7 +53,16 @@ func (s *DescribePrefixListsResponseBody) SetRequestId(v string) *DescribePrefix
 }
 
 func (s *DescribePrefixListsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PrefixList != nil {
+		for _, item := range s.PrefixList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePrefixListsResponseBodyPrefixList struct {

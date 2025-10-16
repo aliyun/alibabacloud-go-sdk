@@ -70,7 +70,16 @@ func (s *DescribeOutgoingDestinationIPResponseBody) SetTotalCount(v int32) *Desc
 }
 
 func (s *DescribeOutgoingDestinationIPResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DstIPList != nil {
+		for _, item := range s.DstIPList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
@@ -490,7 +499,34 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTotalBytes(v str
 }
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) Validate() error {
-	return dara.Validate(s)
+	if s.AddressGroupList != nil {
+		for _, item := range s.AddressGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ApplicationPortList != nil {
+		for _, item := range s.ApplicationPortList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOutgoingDestinationIPResponseBodyDstIPListAddressGroupList struct {

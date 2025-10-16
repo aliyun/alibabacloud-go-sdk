@@ -70,7 +70,16 @@ func (s *DescribeVpcFirewallCenListResponseBody) SetVpcFirewalls(v []*DescribeVp
 }
 
 func (s *DescribeVpcFirewallCenListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcFirewalls != nil {
+		for _, item := range s.VpcFirewalls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
@@ -294,7 +303,22 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetVpcFirewallName(
 }
 
 func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsConfig != nil {
+		if err := s.IpsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocalVpc != nil {
+		if err := s.LocalVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig struct {
@@ -656,7 +680,16 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc) SetVpcName(
 }
 
 func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpc) Validate() error {
-	return dara.Validate(s)
+	if s.VpcCidrTableList != nil {
+		for _, item := range s.VpcCidrTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList struct {
@@ -697,7 +730,16 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableL
 }
 
 func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntryList != nil {
+		for _, item := range s.RouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList struct {

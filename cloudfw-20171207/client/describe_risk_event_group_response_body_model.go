@@ -70,7 +70,16 @@ func (s *DescribeRiskEventGroupResponseBody) SetTotalCount(v int32) *DescribeRis
 }
 
 func (s *DescribeRiskEventGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeRiskEventGroupResponseBodyDataList struct {
@@ -229,7 +238,8 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	// example:
 	//
 	// WAF Back-to-origin Address
-	SrcIPTag *string `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
+	SrcIPTag  *string   `json:"SrcIPTag,omitempty" xml:"SrcIPTag,omitempty"`
+	SrcIPTags []*string `json:"SrcIPTags,omitempty" xml:"SrcIPTags,omitempty" type:"Repeated"`
 	// An array that consists of the source private IP addresses in the intrusion event.
 	SrcPrivateIPList []*string `json:"SrcPrivateIPList,omitempty" xml:"SrcPrivateIPList,omitempty" type:"Repeated"`
 	// The tag added to the threat intelligence that is provided for major events.
@@ -338,6 +348,10 @@ func (s *DescribeRiskEventGroupResponseBodyDataList) GetSrcIP() *string {
 
 func (s *DescribeRiskEventGroupResponseBodyDataList) GetSrcIPTag() *string {
 	return s.SrcIPTag
+}
+
+func (s *DescribeRiskEventGroupResponseBodyDataList) GetSrcIPTags() []*string {
+	return s.SrcIPTags
 }
 
 func (s *DescribeRiskEventGroupResponseBodyDataList) GetSrcPrivateIPList() []*string {
@@ -450,6 +464,11 @@ func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcIPTag(v string) *Desc
 	return s
 }
 
+func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcIPTags(v []*string) *DescribeRiskEventGroupResponseBodyDataList {
+	s.SrcIPTags = v
+	return s
+}
+
 func (s *DescribeRiskEventGroupResponseBodyDataList) SetSrcPrivateIPList(v []*string) *DescribeRiskEventGroupResponseBodyDataList {
 	s.SrcPrivateIPList = v
 	return s
@@ -476,7 +495,31 @@ func (s *DescribeRiskEventGroupResponseBodyDataList) SetVulLevel(v int32) *Descr
 }
 
 func (s *DescribeRiskEventGroupResponseBodyDataList) Validate() error {
-	return dara.Validate(s)
+	if s.IPLocationInfo != nil {
+		if err := s.IPLocationInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourcePrivateIPList != nil {
+		for _, item := range s.ResourcePrivateIPList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VpcDstInfo != nil {
+		if err := s.VpcDstInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VpcSrcInfo != nil {
+		if err := s.VpcSrcInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeRiskEventGroupResponseBodyDataListIPLocationInfo struct {

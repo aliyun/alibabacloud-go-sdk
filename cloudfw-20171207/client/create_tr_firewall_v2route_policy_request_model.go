@@ -144,7 +144,25 @@ func (s *CreateTrFirewallV2RoutePolicyRequest) SetSrcCandidateList(v []*CreateTr
 }
 
 func (s *CreateTrFirewallV2RoutePolicyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DestCandidateList != nil {
+		for _, item := range s.DestCandidateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SrcCandidateList != nil {
+		for _, item := range s.SrcCandidateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateTrFirewallV2RoutePolicyRequestDestCandidateList struct {

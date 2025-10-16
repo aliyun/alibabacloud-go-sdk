@@ -66,7 +66,21 @@ func (s *DescribeInternetOpenIpResponseBody) SetRequestId(v string) *DescribeInt
 }
 
 func (s *DescribeInternetOpenIpResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInternetOpenIpResponseBodyDataList struct {

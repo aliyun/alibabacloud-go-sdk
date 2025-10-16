@@ -59,5 +59,10 @@ func (s *BatchCopyVpcFirewallControlPolicyResponse) SetBody(v *BatchCopyVpcFirew
 }
 
 func (s *BatchCopyVpcFirewallControlPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

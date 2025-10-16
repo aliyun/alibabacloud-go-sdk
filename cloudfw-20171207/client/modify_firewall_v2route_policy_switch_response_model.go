@@ -59,5 +59,10 @@ func (s *ModifyFirewallV2RoutePolicySwitchResponse) SetBody(v *ModifyFirewallV2R
 }
 
 func (s *ModifyFirewallV2RoutePolicySwitchResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

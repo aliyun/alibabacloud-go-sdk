@@ -70,7 +70,16 @@ func (s *DescribeTrFirewallsV2ListResponseBody) SetVpcTrFirewalls(v []*DescribeT
 }
 
 func (s *DescribeTrFirewallsV2ListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcTrFirewalls != nil {
+		for _, item := range s.VpcTrFirewalls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
@@ -362,7 +371,27 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetVpcFirewallName
 }
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsConfig != nil {
+		if err := s.IpsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProtectedResource != nil {
+		if err := s.ProtectedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UnprotectedResource != nil {
+		if err := s.UnprotectedResource.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig struct {

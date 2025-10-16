@@ -53,7 +53,16 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) SetRequestId
 }
 
 func (s *DescribeTrFirewallPolicyBackUpAssociationListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PolicyAssociationBackupConfigs != nil {
+		for _, item := range s.PolicyAssociationBackupConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs struct {

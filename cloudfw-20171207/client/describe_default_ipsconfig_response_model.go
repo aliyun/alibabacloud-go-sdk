@@ -59,5 +59,10 @@ func (s *DescribeDefaultIPSConfigResponse) SetBody(v *DescribeDefaultIPSConfigRe
 }
 
 func (s *DescribeDefaultIPSConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

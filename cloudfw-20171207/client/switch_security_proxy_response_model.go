@@ -59,5 +59,10 @@ func (s *SwitchSecurityProxyResponse) SetBody(v *SwitchSecurityProxyResponseBody
 }
 
 func (s *SwitchSecurityProxyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

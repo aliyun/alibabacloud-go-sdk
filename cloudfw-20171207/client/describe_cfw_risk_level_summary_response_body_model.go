@@ -53,7 +53,16 @@ func (s *DescribeCfwRiskLevelSummaryResponseBody) SetRiskList(v []*DescribeCfwRi
 }
 
 func (s *DescribeCfwRiskLevelSummaryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RiskList != nil {
+		for _, item := range s.RiskList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCfwRiskLevelSummaryResponseBodyRiskList struct {

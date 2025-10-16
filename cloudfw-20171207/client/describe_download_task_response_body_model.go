@@ -70,7 +70,16 @@ func (s *DescribeDownloadTaskResponseBody) SetTotalCount(v int32) *DescribeDownl
 }
 
 func (s *DescribeDownloadTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Tasks != nil {
+		for _, item := range s.Tasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDownloadTaskResponseBodyTasks struct {

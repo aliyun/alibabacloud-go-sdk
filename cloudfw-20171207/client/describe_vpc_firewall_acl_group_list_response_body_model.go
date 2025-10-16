@@ -70,7 +70,16 @@ func (s *DescribeVpcFirewallAclGroupListResponseBody) SetTotalCount(v int32) *De
 }
 
 func (s *DescribeVpcFirewallAclGroupListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AclGroupList != nil {
+		for _, item := range s.AclGroupList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
@@ -189,7 +198,12 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetMemberUid(v
 }
 
 func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig struct {

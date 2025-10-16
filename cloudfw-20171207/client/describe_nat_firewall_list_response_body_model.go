@@ -70,7 +70,16 @@ func (s *DescribeNatFirewallListResponseBody) SetTotalCount(v int32) *DescribeNa
 }
 
 func (s *DescribeNatFirewallListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NatFirewallList != nil {
+		for _, item := range s.NatFirewallList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatFirewallListResponseBodyNatFirewallList struct {
@@ -294,7 +303,16 @@ func (s *DescribeNatFirewallListResponseBodyNatFirewallList) SetVpcName(v string
 }
 
 func (s *DescribeNatFirewallListResponseBodyNatFirewallList) Validate() error {
-	return dara.Validate(s)
+	if s.NatRouteEntryList != nil {
+		for _, item := range s.NatRouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList struct {

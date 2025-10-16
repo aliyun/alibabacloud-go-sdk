@@ -59,5 +59,10 @@ func (s *DescribeAssetStatisticResponse) SetBody(v *DescribeAssetStatisticRespon
 }
 
 func (s *DescribeAssetStatisticResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

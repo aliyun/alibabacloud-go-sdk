@@ -59,7 +59,25 @@ func (s *DescribeUserIPSWhitelistResponseBody) SetWhitelists(v []*DescribeUserIP
 }
 
 func (s *DescribeUserIPSWhitelistResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Ipv6Whitelists != nil {
+		for _, item := range s.Ipv6Whitelists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Whitelists != nil {
+		for _, item := range s.Whitelists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserIPSWhitelistResponseBodyIpv6Whitelists struct {

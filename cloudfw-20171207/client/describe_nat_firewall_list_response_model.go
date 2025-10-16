@@ -59,5 +59,10 @@ func (s *DescribeNatFirewallListResponse) SetBody(v *DescribeNatFirewallListResp
 }
 
 func (s *DescribeNatFirewallListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

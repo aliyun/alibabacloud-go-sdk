@@ -70,7 +70,16 @@ func (s *DescribeVpcFirewallListResponseBody) SetVpcFirewalls(v []*DescribeVpcFi
 }
 
 func (s *DescribeVpcFirewallListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcFirewalls != nil {
+		for _, item := range s.VpcFirewalls {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
@@ -284,7 +293,27 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetVpcFirewallName(v s
 }
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) Validate() error {
-	return dara.Validate(s)
+	if s.AclConfig != nil {
+		if err := s.AclConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IpsConfig != nil {
+		if err := s.IpsConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LocalVpc != nil {
+		if err := s.LocalVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PeerVpc != nil {
+		if err := s.PeerVpc.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig struct {
@@ -514,7 +543,16 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc) SetVpcName(v s
 }
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc) Validate() error {
-	return dara.Validate(s)
+	if s.VpcCidrTableList != nil {
+		for _, item := range s.VpcCidrTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList struct {
@@ -555,7 +593,16 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList
 }
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntryList != nil {
+		for _, item := range s.RouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList struct {
@@ -701,7 +748,16 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc) SetVpcName(v st
 }
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc) Validate() error {
-	return dara.Validate(s)
+	if s.VpcCidrTableList != nil {
+		for _, item := range s.VpcCidrTableList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList struct {
@@ -742,7 +798,16 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList)
 }
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList) Validate() error {
-	return dara.Validate(s)
+	if s.RouteEntryList != nil {
+		for _, item := range s.RouteEntryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRouteEntryList struct {

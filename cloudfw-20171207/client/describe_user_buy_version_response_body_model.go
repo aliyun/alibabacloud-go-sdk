@@ -9,10 +9,18 @@ type iDescribeUserBuyVersionResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAckClusterConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody
+	GetAckClusterConnectorQuota() *int64
 	SetAliUid(v int64) *DescribeUserBuyVersionResponseBody
 	GetAliUid() *int64
+	SetDefaultBandwidth(v int64) *DescribeUserBuyVersionResponseBody
+	GetDefaultBandwidth() *int64
 	SetExpire(v int64) *DescribeUserBuyVersionResponseBody
 	GetExpire() *int64
+	SetExtensionBandwidth(v int64) *DescribeUserBuyVersionResponseBody
+	GetExtensionBandwidth() *int64
+	SetGeneralInstance(v int64) *DescribeUserBuyVersionResponseBody
+	GetGeneralInstance() *int64
 	SetInstanceId(v string) *DescribeUserBuyVersionResponseBody
 	GetInstanceId() *string
 	SetInstanceStatus(v string) *DescribeUserBuyVersionResponseBody
@@ -25,14 +33,24 @@ type iDescribeUserBuyVersionResponseBody interface {
 	GetLogStatus() *bool
 	SetLogStorage(v int64) *DescribeUserBuyVersionResponseBody
 	GetLogStorage() *int64
+	SetMajorVersion(v int64) *DescribeUserBuyVersionResponseBody
+	GetMajorVersion() *int64
 	SetMaxOverflow(v int64) *DescribeUserBuyVersionResponseBody
 	GetMaxOverflow() *int64
 	SetNatBandwidth(v int64) *DescribeUserBuyVersionResponseBody
 	GetNatBandwidth() *int64
+	SetPrivateDnsConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody
+	GetPrivateDnsConnectorQuota() *int64
 	SetRequestId(v string) *DescribeUserBuyVersionResponseBody
 	GetRequestId() *string
+	SetSdl(v int64) *DescribeUserBuyVersionResponseBody
+	GetSdl() *int64
 	SetStartTime(v int64) *DescribeUserBuyVersionResponseBody
 	GetStartTime() *int64
+	SetTemporaryBandwidth(v int64) *DescribeUserBuyVersionResponseBody
+	GetTemporaryBandwidth() *int64
+	SetThreatIntelligence(v int64) *DescribeUserBuyVersionResponseBody
+	GetThreatIntelligence() *int64
 	SetUserStatus(v bool) *DescribeUserBuyVersionResponseBody
 	GetUserStatus() *bool
 	SetVersion(v int32) *DescribeUserBuyVersionResponseBody
@@ -44,12 +62,20 @@ type iDescribeUserBuyVersionResponseBody interface {
 }
 
 type DescribeUserBuyVersionResponseBody struct {
+	// example:
+	//
+	// 5
+	AckClusterConnectorQuota *int64 `json:"AckClusterConnectorQuota,omitempty" xml:"AckClusterConnectorQuota,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to purchase Cloud Firewall.
 	//
 	// example:
 	//
 	// 119898001566xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 1000
+	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
 	// The time when Cloud Firewall expires.
 	//
 	// >  The value is a timestamp in milliseconds.
@@ -60,6 +86,14 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1726934400000
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// 1000
+	ExtensionBandwidth *int64 `json:"ExtensionBandwidth,omitempty" xml:"ExtensionBandwidth,omitempty"`
+	// example:
+	//
+	// 10
+	GeneralInstance *int64 `json:"GeneralInstance,omitempty" xml:"GeneralInstance,omitempty"`
 	// The instance ID of Cloud Firewall.
 	//
 	// >  If you use a trial of Cloud Firewall, ignore this parameter.
@@ -116,6 +150,10 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 3000
 	LogStorage *int64 `json:"LogStorage,omitempty" xml:"LogStorage,omitempty"`
+	// example:
+	//
+	// 1
+	MajorVersion *int64 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	// The status of the burstable protected traffic feature. Valid values:
 	//
 	// 	- **1000000**: enabled.
@@ -134,12 +172,20 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 3000
 	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
+	// example:
+	//
+	// 5
+	PrivateDnsConnectorQuota *int64 `json:"PrivateDnsConnectorQuota,omitempty" xml:"PrivateDnsConnectorQuota,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// F71B03EE-xxxxx-91D79CC6AA1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
 	// The time when Cloud Firewall was activated.
 	//
 	// >  The value is a timestamp in milliseconds.
@@ -148,6 +194,14 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1692504764000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1000
+	TemporaryBandwidth *int64 `json:"TemporaryBandwidth,omitempty" xml:"TemporaryBandwidth,omitempty"`
+	// example:
+	//
+	// 1
+	ThreatIntelligence *int64 `json:"ThreatIntelligence,omitempty" xml:"ThreatIntelligence,omitempty"`
 	// Indicates whether Cloud Firewall is valid. Valid values:
 	//
 	// 	- **true**
@@ -196,12 +250,28 @@ func (s DescribeUserBuyVersionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeUserBuyVersionResponseBody) GetAckClusterConnectorQuota() *int64 {
+	return s.AckClusterConnectorQuota
+}
+
 func (s *DescribeUserBuyVersionResponseBody) GetAliUid() *int64 {
 	return s.AliUid
 }
 
+func (s *DescribeUserBuyVersionResponseBody) GetDefaultBandwidth() *int64 {
+	return s.DefaultBandwidth
+}
+
 func (s *DescribeUserBuyVersionResponseBody) GetExpire() *int64 {
 	return s.Expire
+}
+
+func (s *DescribeUserBuyVersionResponseBody) GetExtensionBandwidth() *int64 {
+	return s.ExtensionBandwidth
+}
+
+func (s *DescribeUserBuyVersionResponseBody) GetGeneralInstance() *int64 {
+	return s.GeneralInstance
 }
 
 func (s *DescribeUserBuyVersionResponseBody) GetInstanceId() *string {
@@ -228,6 +298,10 @@ func (s *DescribeUserBuyVersionResponseBody) GetLogStorage() *int64 {
 	return s.LogStorage
 }
 
+func (s *DescribeUserBuyVersionResponseBody) GetMajorVersion() *int64 {
+	return s.MajorVersion
+}
+
 func (s *DescribeUserBuyVersionResponseBody) GetMaxOverflow() *int64 {
 	return s.MaxOverflow
 }
@@ -236,12 +310,28 @@ func (s *DescribeUserBuyVersionResponseBody) GetNatBandwidth() *int64 {
 	return s.NatBandwidth
 }
 
+func (s *DescribeUserBuyVersionResponseBody) GetPrivateDnsConnectorQuota() *int64 {
+	return s.PrivateDnsConnectorQuota
+}
+
 func (s *DescribeUserBuyVersionResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeUserBuyVersionResponseBody) GetSdl() *int64 {
+	return s.Sdl
+}
+
 func (s *DescribeUserBuyVersionResponseBody) GetStartTime() *int64 {
 	return s.StartTime
+}
+
+func (s *DescribeUserBuyVersionResponseBody) GetTemporaryBandwidth() *int64 {
+	return s.TemporaryBandwidth
+}
+
+func (s *DescribeUserBuyVersionResponseBody) GetThreatIntelligence() *int64 {
+	return s.ThreatIntelligence
 }
 
 func (s *DescribeUserBuyVersionResponseBody) GetUserStatus() *bool {
@@ -260,13 +350,33 @@ func (s *DescribeUserBuyVersionResponseBody) GetVpcNumber() *int64 {
 	return s.VpcNumber
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetAckClusterConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody {
+	s.AckClusterConnectorQuota = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetAliUid(v int64) *DescribeUserBuyVersionResponseBody {
 	s.AliUid = &v
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetDefaultBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.DefaultBandwidth = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetExpire(v int64) *DescribeUserBuyVersionResponseBody {
 	s.Expire = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetExtensionBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.ExtensionBandwidth = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetGeneralInstance(v int64) *DescribeUserBuyVersionResponseBody {
+	s.GeneralInstance = &v
 	return s
 }
 
@@ -300,6 +410,11 @@ func (s *DescribeUserBuyVersionResponseBody) SetLogStorage(v int64) *DescribeUse
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetMajorVersion(v int64) *DescribeUserBuyVersionResponseBody {
+	s.MajorVersion = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetMaxOverflow(v int64) *DescribeUserBuyVersionResponseBody {
 	s.MaxOverflow = &v
 	return s
@@ -310,13 +425,33 @@ func (s *DescribeUserBuyVersionResponseBody) SetNatBandwidth(v int64) *DescribeU
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetPrivateDnsConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody {
+	s.PrivateDnsConnectorQuota = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetRequestId(v string) *DescribeUserBuyVersionResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeUserBuyVersionResponseBody) SetSdl(v int64) *DescribeUserBuyVersionResponseBody {
+	s.Sdl = &v
+	return s
+}
+
 func (s *DescribeUserBuyVersionResponseBody) SetStartTime(v int64) *DescribeUserBuyVersionResponseBody {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetTemporaryBandwidth(v int64) *DescribeUserBuyVersionResponseBody {
+	s.TemporaryBandwidth = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetThreatIntelligence(v int64) *DescribeUserBuyVersionResponseBody {
+	s.ThreatIntelligence = &v
 	return s
 }
 

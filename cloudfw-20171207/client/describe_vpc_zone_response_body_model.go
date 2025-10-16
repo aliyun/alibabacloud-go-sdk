@@ -53,7 +53,16 @@ func (s *DescribeVpcZoneResponseBody) SetZoneList(v []*DescribeVpcZoneResponseBo
 }
 
 func (s *DescribeVpcZoneResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ZoneList != nil {
+		for _, item := range s.ZoneList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcZoneResponseBodyZoneList struct {

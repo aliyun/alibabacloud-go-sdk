@@ -66,7 +66,21 @@ func (s *DescribeInstanceMembersResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 func (s *DescribeInstanceMembersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Members != nil {
+		for _, item := range s.Members {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PageInfo != nil {
+		if err := s.PageInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceMembersResponseBodyMembers struct {

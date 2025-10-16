@@ -70,7 +70,16 @@ func (s *DescribeSignatureLibVersionResponseBody) SetVersion(v []*DescribeSignat
 }
 
 func (s *DescribeSignatureLibVersionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Version != nil {
+		for _, item := range s.Version {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSignatureLibVersionResponseBodyVersion struct {

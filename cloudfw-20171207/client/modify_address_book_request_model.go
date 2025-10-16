@@ -9,6 +9,10 @@ type iModifyAddressBookRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAckLabels(v []*ModifyAddressBookRequestAckLabels) *ModifyAddressBookRequest
+	GetAckLabels() []*ModifyAddressBookRequestAckLabels
+	SetAckNamespaces(v []*string) *ModifyAddressBookRequest
+	GetAckNamespaces() []*string
 	SetAddressList(v string) *ModifyAddressBookRequest
 	GetAddressList() *string
 	SetAutoAddTagEcs(v string) *ModifyAddressBookRequest
@@ -32,6 +36,8 @@ type iModifyAddressBookRequest interface {
 }
 
 type ModifyAddressBookRequest struct {
+	AckLabels     []*ModifyAddressBookRequestAckLabels `json:"AckLabels,omitempty" xml:"AckLabels,omitempty" type:"Repeated"`
+	AckNamespaces []*string                            `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
 	// The addresses in the address book. Separate multiple addresses with commas (,). If you set GroupType to **ip**, **port**, or **domain**, you must specify this parameter.
 	//
 	// 	- If you set GroupType to **ip**, you must specify IP addresses for the address book. Example: 1.2.XX.XX/32,1.2.XX.XX/24.
@@ -136,6 +142,14 @@ func (s ModifyAddressBookRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyAddressBookRequest) GetAckLabels() []*ModifyAddressBookRequestAckLabels {
+	return s.AckLabels
+}
+
+func (s *ModifyAddressBookRequest) GetAckNamespaces() []*string {
+	return s.AckNamespaces
+}
+
 func (s *ModifyAddressBookRequest) GetAddressList() *string {
 	return s.AddressList
 }
@@ -174,6 +188,16 @@ func (s *ModifyAddressBookRequest) GetTagList() []*ModifyAddressBookRequestTagLi
 
 func (s *ModifyAddressBookRequest) GetTagRelation() *string {
 	return s.TagRelation
+}
+
+func (s *ModifyAddressBookRequest) SetAckLabels(v []*ModifyAddressBookRequestAckLabels) *ModifyAddressBookRequest {
+	s.AckLabels = v
+	return s
+}
+
+func (s *ModifyAddressBookRequest) SetAckNamespaces(v []*string) *ModifyAddressBookRequest {
+	s.AckNamespaces = v
+	return s
 }
 
 func (s *ModifyAddressBookRequest) SetAddressList(v string) *ModifyAddressBookRequest {
@@ -227,6 +251,65 @@ func (s *ModifyAddressBookRequest) SetTagRelation(v string) *ModifyAddressBookRe
 }
 
 func (s *ModifyAddressBookRequest) Validate() error {
+	if s.AckLabels != nil {
+		for _, item := range s.AckLabels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ModifyAddressBookRequestAckLabels struct {
+	// example:
+	//
+	// app
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// storage-operator
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyAddressBookRequestAckLabels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyAddressBookRequestAckLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAddressBookRequestAckLabels) GetKey() *string {
+	return s.Key
+}
+
+func (s *ModifyAddressBookRequestAckLabels) GetValue() *string {
+	return s.Value
+}
+
+func (s *ModifyAddressBookRequestAckLabels) SetKey(v string) *ModifyAddressBookRequestAckLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyAddressBookRequestAckLabels) SetValue(v string) *ModifyAddressBookRequestAckLabels {
+	s.Value = &v
+	return s
+}
+
+func (s *ModifyAddressBookRequestAckLabels) Validate() error {
 	return dara.Validate(s)
 }
 

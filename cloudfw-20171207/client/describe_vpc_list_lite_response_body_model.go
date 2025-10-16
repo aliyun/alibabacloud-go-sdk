@@ -53,7 +53,16 @@ func (s *DescribeVpcListLiteResponseBody) SetVpcList(v []*DescribeVpcListLiteRes
 }
 
 func (s *DescribeVpcListLiteResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.VpcList != nil {
+		for _, item := range s.VpcList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeVpcListLiteResponseBodyVpcList struct {

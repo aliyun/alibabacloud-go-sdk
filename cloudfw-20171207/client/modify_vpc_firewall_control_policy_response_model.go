@@ -59,5 +59,10 @@ func (s *ModifyVpcFirewallControlPolicyResponse) SetBody(v *ModifyVpcFirewallCon
 }
 
 func (s *ModifyVpcFirewallControlPolicyResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

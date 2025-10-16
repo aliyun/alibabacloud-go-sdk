@@ -9,6 +9,8 @@ type iDescribeAssetStatisticResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetGeneralInstanceSpecStatistic(v *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) *DescribeAssetStatisticResponseBody
+	GetGeneralInstanceSpecStatistic() *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic
 	SetRequestId(v string) *DescribeAssetStatisticResponseBody
 	GetRequestId() *string
 	SetResourceSpecStatistic(v *DescribeAssetStatisticResponseBodyResourceSpecStatistic) *DescribeAssetStatisticResponseBody
@@ -16,6 +18,7 @@ type iDescribeAssetStatisticResponseBody interface {
 }
 
 type DescribeAssetStatisticResponseBody struct {
+	GeneralInstanceSpecStatistic *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic `json:"GeneralInstanceSpecStatistic,omitempty" xml:"GeneralInstanceSpecStatistic,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -34,12 +37,21 @@ func (s DescribeAssetStatisticResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAssetStatisticResponseBody) GetGeneralInstanceSpecStatistic() *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	return s.GeneralInstanceSpecStatistic
+}
+
 func (s *DescribeAssetStatisticResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *DescribeAssetStatisticResponseBody) GetResourceSpecStatistic() *DescribeAssetStatisticResponseBodyResourceSpecStatistic {
 	return s.ResourceSpecStatistic
+}
+
+func (s *DescribeAssetStatisticResponseBody) SetGeneralInstanceSpecStatistic(v *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) *DescribeAssetStatisticResponseBody {
+	s.GeneralInstanceSpecStatistic = v
+	return s
 }
 
 func (s *DescribeAssetStatisticResponseBody) SetRequestId(v string) *DescribeAssetStatisticResponseBody {
@@ -53,6 +65,166 @@ func (s *DescribeAssetStatisticResponseBody) SetResourceSpecStatistic(v *Describ
 }
 
 func (s *DescribeAssetStatisticResponseBody) Validate() error {
+	if s.GeneralInstanceSpecStatistic != nil {
+		if err := s.GeneralInstanceSpecStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSpecStatistic != nil {
+		if err := s.ResourceSpecStatistic.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic struct {
+	CfwGeneralInstanceRegionStatistic []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic `json:"CfwGeneralInstanceRegionStatistic,omitempty" xml:"CfwGeneralInstanceRegionStatistic,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCfwGeneralInstanceCnt *int32 `json:"TotalCfwGeneralInstanceCnt,omitempty" xml:"TotalCfwGeneralInstanceCnt,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCfwGeneralInstanceUsedCnt *int32 `json:"TotalCfwGeneralInstanceUsedCnt,omitempty" xml:"TotalCfwGeneralInstanceUsedCnt,omitempty"`
+	// example:
+	//
+	// 1
+	TotalGeneralInstanceUsedCnt *int32 `json:"TotalGeneralInstanceUsedCnt,omitempty" xml:"TotalGeneralInstanceUsedCnt,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNatGeneralInstanceCnt *int32 `json:"TotalNatGeneralInstanceCnt,omitempty" xml:"TotalNatGeneralInstanceCnt,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNatGeneralInstanceUsedCnt *int32 `json:"TotalNatGeneralInstanceUsedCnt,omitempty" xml:"TotalNatGeneralInstanceUsedCnt,omitempty"`
+	// example:
+	//
+	// 1
+	TotalVfwGeneralInstanceUsedCnt *int32 `json:"TotalVfwGeneralInstanceUsedCnt,omitempty" xml:"TotalVfwGeneralInstanceUsedCnt,omitempty"`
+}
+
+func (s DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetCfwGeneralInstanceRegionStatistic() []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic {
+	return s.CfwGeneralInstanceRegionStatistic
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalCfwGeneralInstanceCnt() *int32 {
+	return s.TotalCfwGeneralInstanceCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalCfwGeneralInstanceUsedCnt() *int32 {
+	return s.TotalCfwGeneralInstanceUsedCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalGeneralInstanceUsedCnt() *int32 {
+	return s.TotalGeneralInstanceUsedCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalNatGeneralInstanceCnt() *int32 {
+	return s.TotalNatGeneralInstanceCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalNatGeneralInstanceUsedCnt() *int32 {
+	return s.TotalNatGeneralInstanceUsedCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) GetTotalVfwGeneralInstanceUsedCnt() *int32 {
+	return s.TotalVfwGeneralInstanceUsedCnt
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetCfwGeneralInstanceRegionStatistic(v []*DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.CfwGeneralInstanceRegionStatistic = v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalCfwGeneralInstanceCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalCfwGeneralInstanceCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalCfwGeneralInstanceUsedCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalCfwGeneralInstanceUsedCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalGeneralInstanceUsedCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalGeneralInstanceUsedCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalNatGeneralInstanceCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalNatGeneralInstanceCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalNatGeneralInstanceUsedCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalNatGeneralInstanceUsedCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) SetTotalVfwGeneralInstanceUsedCnt(v int32) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic {
+	s.TotalVfwGeneralInstanceUsedCnt = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic) Validate() error {
+	if s.CfwGeneralInstanceRegionStatistic != nil {
+		for _, item := range s.CfwGeneralInstanceRegionStatistic {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic struct {
+	MemberList []*string `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+}
+
+func (s DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) GetMemberList() []*string {
+	return s.MemberList
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) GetRegionNo() *string {
+	return s.RegionNo
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) SetMemberList(v []*string) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic {
+	s.MemberList = v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) SetRegionNo(v string) *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic) Validate() error {
 	return dara.Validate(s)
 }
 

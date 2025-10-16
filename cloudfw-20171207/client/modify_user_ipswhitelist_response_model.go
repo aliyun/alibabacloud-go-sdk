@@ -59,5 +59,10 @@ func (s *ModifyUserIPSWhitelistResponse) SetBody(v *ModifyUserIPSWhitelistRespon
 }
 
 func (s *ModifyUserIPSWhitelistResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

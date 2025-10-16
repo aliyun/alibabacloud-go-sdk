@@ -59,5 +59,10 @@ func (s *DeleteVpcFirewallCenConfigureResponse) SetBody(v *DeleteVpcFirewallCenC
 }
 
 func (s *DeleteVpcFirewallCenConfigureResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

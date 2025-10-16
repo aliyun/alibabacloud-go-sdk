@@ -53,7 +53,12 @@ func (s *DescribeDomainResolveResponseBody) SetResolveResult(v *DescribeDomainRe
 }
 
 func (s *DescribeDomainResolveResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ResolveResult != nil {
+		if err := s.ResolveResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDomainResolveResponseBodyResolveResult struct {

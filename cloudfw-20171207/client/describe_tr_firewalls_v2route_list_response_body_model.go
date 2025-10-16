@@ -53,7 +53,16 @@ func (s *DescribeTrFirewallsV2RouteListResponseBody) SetRequestId(v string) *Des
 }
 
 func (s *DescribeTrFirewallsV2RouteListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FirewallRouteDetailList != nil {
+		for _, item := range s.FirewallRouteDetailList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList struct {

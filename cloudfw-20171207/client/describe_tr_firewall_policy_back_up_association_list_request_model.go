@@ -91,7 +91,16 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) SetTrFirewallRout
 }
 
 func (s *DescribeTrFirewallPolicyBackUpAssociationListRequest) Validate() error {
-	return dara.Validate(s)
+	if s.CandidateList != nil {
+		for _, item := range s.CandidateList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeTrFirewallPolicyBackUpAssociationListRequestCandidateList struct {

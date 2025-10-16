@@ -59,5 +59,10 @@ func (s *DescribeInternetOpenIpResponse) SetBody(v *DescribeInternetOpenIpRespon
 }
 
 func (s *DescribeInternetOpenIpResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -104,7 +104,16 @@ func (s *DescribeControlPolicyResponseBody) SetTotalCount(v string) *DescribeCon
 }
 
 func (s *DescribeControlPolicyResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Policys != nil {
+		for _, item := range s.Policys {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeControlPolicyResponseBodyPolicys struct {

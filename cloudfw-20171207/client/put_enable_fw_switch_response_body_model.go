@@ -53,7 +53,16 @@ func (s *PutEnableFwSwitchResponseBody) SetRequestId(v string) *PutEnableFwSwitc
 }
 
 func (s *PutEnableFwSwitchResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AbnormalResourceStatusList != nil {
+		for _, item := range s.AbnormalResourceStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type PutEnableFwSwitchResponseBodyAbnormalResourceStatusList struct {

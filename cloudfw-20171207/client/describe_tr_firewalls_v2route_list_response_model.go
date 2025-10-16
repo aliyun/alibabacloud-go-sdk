@@ -59,5 +59,10 @@ func (s *DescribeTrFirewallsV2RouteListResponse) SetBody(v *DescribeTrFirewallsV
 }
 
 func (s *DescribeTrFirewallsV2RouteListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
