@@ -185,7 +185,16 @@ func (s *DescribeInstanceResponseBody) SetTimeZone(v string) *DescribeInstanceRe
 }
 
 func (s *DescribeInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Categories != nil {
+		for _, item := range s.Categories {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceResponseBodyCategories struct {

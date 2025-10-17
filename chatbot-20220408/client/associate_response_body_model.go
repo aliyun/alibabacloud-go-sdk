@@ -80,7 +80,16 @@ func (s *AssociateResponseBody) SetSessionId(v string) *AssociateResponseBody {
 }
 
 func (s *AssociateResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Associate != nil {
+		for _, item := range s.Associate {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type AssociateResponseBodyAssociate struct {

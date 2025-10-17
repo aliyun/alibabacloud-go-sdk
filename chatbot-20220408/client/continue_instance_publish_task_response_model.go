@@ -59,5 +59,10 @@ func (s *ContinueInstancePublishTaskResponse) SetBody(v *ContinueInstancePublish
 }
 
 func (s *ContinueInstancePublishTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

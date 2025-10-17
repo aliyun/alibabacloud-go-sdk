@@ -59,5 +59,10 @@ func (s *DeleteIntentResponse) SetBody(v *DeleteIntentResponseBody) *DeleteInten
 }
 
 func (s *DeleteIntentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

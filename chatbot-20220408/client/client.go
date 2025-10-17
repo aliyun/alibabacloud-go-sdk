@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ApplyForStreamAccessTokenResponse
 func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStreamAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *ApplyForStreamAccessTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -125,9 +128,11 @@ func (client *Client) ApplyForStreamAccessToken(request *ApplyForStreamAccessTok
 //
 // @return AssociateResponse
 func (client *Client) AssociateWithOptions(tmpReq *AssociateRequest, runtime *dara.RuntimeOptions) (_result *AssociateResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AssociateShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -211,21 +216,33 @@ func (client *Client) Associate(request *AssociateRequest) (_result *AssociateRe
 //
 // @return BeginSessionResponse
 func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runtime *dara.RuntimeOptions) (_result *BeginSessionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
 		query["AgentKey"] = request.AgentKey
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
-		query["InstanceId"] = request.InstanceId
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SandBox) {
+		body["SandBox"] = request.SandBox
+	}
+
+	if !dara.IsNil(request.VendorParam) {
+		body["VendorParam"] = request.VendorParam
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("BeginSession"),
@@ -275,9 +292,11 @@ func (client *Client) BeginSession(request *BeginSessionRequest) (_result *Begin
 //
 // @return CancelInstancePublishTaskResponse
 func (client *Client) CancelInstancePublishTaskWithOptions(request *CancelInstancePublishTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelInstancePublishTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -343,9 +362,11 @@ func (client *Client) CancelInstancePublishTask(request *CancelInstancePublishTa
 //
 // @return CancelPublishTaskResponse
 func (client *Client) CancelPublishTaskWithOptions(request *CancelPublishTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelPublishTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -407,9 +428,11 @@ func (client *Client) CancelPublishTask(request *CancelPublishTaskRequest) (_res
 //
 // @return ChatResponse
 func (client *Client) ChatWithOptions(tmpReq *ChatRequest, runtime *dara.RuntimeOptions) (_result *ChatResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ChatShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -513,9 +536,11 @@ func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err er
 //
 // @return ContinueInstancePublishTaskResponse
 func (client *Client) ContinueInstancePublishTaskWithOptions(request *ContinueInstancePublishTaskRequest, runtime *dara.RuntimeOptions) (_result *ContinueInstancePublishTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -581,9 +606,11 @@ func (client *Client) ContinueInstancePublishTask(request *ContinueInstancePubli
 //
 // @return CreateCategoryResponse
 func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, runtime *dara.RuntimeOptions) (_result *CreateCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -659,9 +686,11 @@ func (client *Client) CreateCategory(request *CreateCategoryRequest) (_result *C
 //
 // @return CreateConnQuestionResponse
 func (client *Client) CreateConnQuestionWithOptions(request *CreateConnQuestionRequest, runtime *dara.RuntimeOptions) (_result *CreateConnQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -729,9 +758,11 @@ func (client *Client) CreateConnQuestion(request *CreateConnQuestionRequest) (_r
 //
 // @return CreateDSEntityResponse
 func (client *Client) CreateDSEntityWithOptions(request *CreateDSEntityRequest, runtime *dara.RuntimeOptions) (_result *CreateDSEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -801,9 +832,11 @@ func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *C
 //
 // @return CreateDSEntityValueResponse
 func (client *Client) CreateDSEntityValueWithOptions(tmpReq *CreateDSEntityValueRequest, runtime *dara.RuntimeOptions) (_result *CreateDSEntityValueResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDSEntityValueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -885,9 +918,11 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 //
 // @return CreateDocResponse
 func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *dara.RuntimeOptions) (_result *CreateDocResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -995,9 +1030,11 @@ func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocRe
 //
 // @return CreateFaqResponse
 func (client *Client) CreateFaqWithOptions(request *CreateFaqRequest, runtime *dara.RuntimeOptions) (_result *CreateFaqResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1081,9 +1118,11 @@ func (client *Client) CreateFaq(request *CreateFaqRequest) (_result *CreateFaqRe
 //
 // @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1157,9 +1196,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 //
 // @return CreateInstancePublishTaskResponse
 func (client *Client) CreateInstancePublishTaskWithOptions(request *CreateInstancePublishTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateInstancePublishTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1221,9 +1262,11 @@ func (client *Client) CreateInstancePublishTask(request *CreateInstancePublishTa
 //
 // @return CreateIntentResponse
 func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runtime *dara.RuntimeOptions) (_result *CreateIntentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1295,9 +1338,11 @@ func (client *Client) CreateIntent(request *CreateIntentRequest) (_result *Creat
 //
 // @return CreateLgfResponse
 func (client *Client) CreateLgfWithOptions(tmpReq *CreateLgfRequest, runtime *dara.RuntimeOptions) (_result *CreateLgfResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLgfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1369,9 +1414,11 @@ func (client *Client) CreateLgf(request *CreateLgfRequest) (_result *CreateLgfRe
 //
 // @return CreatePerspectiveResponse
 func (client *Client) CreatePerspectiveWithOptions(request *CreatePerspectiveRequest, runtime *dara.RuntimeOptions) (_result *CreatePerspectiveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1437,9 +1484,11 @@ func (client *Client) CreatePerspective(request *CreatePerspectiveRequest) (_res
 //
 // @return CreatePublishTaskResponse
 func (client *Client) CreatePublishTaskWithOptions(tmpReq *CreatePublishTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatePublishTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreatePublishTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1511,9 +1560,11 @@ func (client *Client) CreatePublishTask(request *CreatePublishTaskRequest) (_res
 //
 // @return CreateSimQuestionResponse
 func (client *Client) CreateSimQuestionWithOptions(request *CreateSimQuestionRequest, runtime *dara.RuntimeOptions) (_result *CreateSimQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1581,9 +1632,11 @@ func (client *Client) CreateSimQuestion(request *CreateSimQuestionRequest) (_res
 //
 // @return CreateSolutionResponse
 func (client *Client) CreateSolutionWithOptions(request *CreateSolutionRequest, runtime *dara.RuntimeOptions) (_result *CreateSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1657,9 +1710,11 @@ func (client *Client) CreateSolution(request *CreateSolutionRequest) (_result *C
 //
 // @return CreateUserSayResponse
 func (client *Client) CreateUserSayWithOptions(tmpReq *CreateUserSayRequest, runtime *dara.RuntimeOptions) (_result *CreateUserSayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateUserSayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1731,9 +1786,11 @@ func (client *Client) CreateUserSay(request *CreateUserSayRequest) (_result *Cre
 //
 // @return DeleteCategoryResponse
 func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1797,9 +1854,11 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 //
 // @return DeleteConnQuestionResponse
 func (client *Client) DeleteConnQuestionWithOptions(request *DeleteConnQuestionRequest, runtime *dara.RuntimeOptions) (_result *DeleteConnQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1863,9 +1922,11 @@ func (client *Client) DeleteConnQuestion(request *DeleteConnQuestionRequest) (_r
 //
 // @return DeleteDSEntityResponse
 func (client *Client) DeleteDSEntityWithOptions(request *DeleteDSEntityRequest, runtime *dara.RuntimeOptions) (_result *DeleteDSEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -1931,9 +1992,11 @@ func (client *Client) DeleteDSEntity(request *DeleteDSEntityRequest) (_result *D
 //
 // @return DeleteDSEntityValueResponse
 func (client *Client) DeleteDSEntityValueWithOptions(request *DeleteDSEntityValueRequest, runtime *dara.RuntimeOptions) (_result *DeleteDSEntityValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2003,9 +2066,11 @@ func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (
 //
 // @return DeleteDocResponse
 func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *dara.RuntimeOptions) (_result *DeleteDocResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2067,9 +2132,11 @@ func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocRe
 //
 // @return DeleteFaqResponse
 func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *dara.RuntimeOptions) (_result *DeleteFaqResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2133,9 +2200,11 @@ func (client *Client) DeleteFaq(request *DeleteFaqRequest) (_result *DeleteFaqRe
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2197,9 +2266,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // @return DeleteIntentResponse
 func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runtime *dara.RuntimeOptions) (_result *DeleteIntentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2265,9 +2336,11 @@ func (client *Client) DeleteIntent(request *DeleteIntentRequest) (_result *Delet
 //
 // @return DeleteLgfResponse
 func (client *Client) DeleteLgfWithOptions(request *DeleteLgfRequest, runtime *dara.RuntimeOptions) (_result *DeleteLgfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2337,9 +2410,11 @@ func (client *Client) DeleteLgf(request *DeleteLgfRequest) (_result *DeleteLgfRe
 //
 // @return DeletePerspectiveResponse
 func (client *Client) DeletePerspectiveWithOptions(request *DeletePerspectiveRequest, runtime *dara.RuntimeOptions) (_result *DeletePerspectiveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2401,9 +2476,11 @@ func (client *Client) DeletePerspective(request *DeletePerspectiveRequest) (_res
 //
 // @return DeleteSimQuestionResponse
 func (client *Client) DeleteSimQuestionWithOptions(request *DeleteSimQuestionRequest, runtime *dara.RuntimeOptions) (_result *DeleteSimQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2467,9 +2544,11 @@ func (client *Client) DeleteSimQuestion(request *DeleteSimQuestionRequest) (_res
 //
 // @return DeleteSolutionResponse
 func (client *Client) DeleteSolutionWithOptions(request *DeleteSolutionRequest, runtime *dara.RuntimeOptions) (_result *DeleteSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2533,9 +2612,11 @@ func (client *Client) DeleteSolution(request *DeleteSolutionRequest) (_result *D
 //
 // @return DeleteUserSayResponse
 func (client *Client) DeleteUserSayWithOptions(request *DeleteUserSayRequest, runtime *dara.RuntimeOptions) (_result *DeleteUserSayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2605,9 +2686,11 @@ func (client *Client) DeleteUserSay(request *DeleteUserSayRequest) (_result *Del
 //
 // @return DescribeCategoryResponse
 func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2671,9 +2754,11 @@ func (client *Client) DescribeCategory(request *DescribeCategoryRequest) (_resul
 //
 // @return DescribeDSEntityResponse
 func (client *Client) DescribeDSEntityWithOptions(request *DescribeDSEntityRequest, runtime *dara.RuntimeOptions) (_result *DescribeDSEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2739,9 +2824,11 @@ func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_resul
 //
 // @return DescribeDocResponse
 func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2807,9 +2894,11 @@ func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *Describ
 //
 // @return DescribeFaqResponse
 func (client *Client) DescribeFaqWithOptions(request *DescribeFaqRequest, runtime *dara.RuntimeOptions) (_result *DescribeFaqResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2873,9 +2962,11 @@ func (client *Client) DescribeFaq(request *DescribeFaqRequest) (_result *Describ
 //
 // @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -2937,9 +3028,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 //
 // @return DescribeIntentResponse
 func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, runtime *dara.RuntimeOptions) (_result *DescribeIntentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3007,9 +3100,11 @@ func (client *Client) DescribeIntent(request *DescribeIntentRequest) (_result *D
 //
 // @return DescribePerspectiveResponse
 func (client *Client) DescribePerspectiveWithOptions(request *DescribePerspectiveRequest, runtime *dara.RuntimeOptions) (_result *DescribePerspectiveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3071,9 +3166,11 @@ func (client *Client) DescribePerspective(request *DescribePerspectiveRequest) (
 //
 // @return FeedbackResponse
 func (client *Client) FeedbackWithOptions(request *FeedbackRequest, runtime *dara.RuntimeOptions) (_result *FeedbackResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3151,9 +3248,11 @@ func (client *Client) Feedback(request *FeedbackRequest) (_result *FeedbackRespo
 //
 // @return GenerateUserAccessTokenResponse
 func (client *Client) GenerateUserAccessTokenWithOptions(request *GenerateUserAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *GenerateUserAccessTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3235,9 +3334,11 @@ func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRe
 //
 // @return GetAgentInfoResponse
 func (client *Client) GetAgentInfoWithOptions(request *GetAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *GetAgentInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3295,9 +3396,11 @@ func (client *Client) GetAgentInfo(request *GetAgentInfoRequest) (_result *GetAg
 //
 // @return GetAsyncResultResponse
 func (client *Client) GetAsyncResultWithOptions(request *GetAsyncResultRequest, runtime *dara.RuntimeOptions) (_result *GetAsyncResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3359,9 +3462,11 @@ func (client *Client) GetAsyncResult(request *GetAsyncResultRequest) (_result *G
 //
 // @return GetBotSessionDataResponse
 func (client *Client) GetBotSessionDataWithOptions(request *GetBotSessionDataRequest, runtime *dara.RuntimeOptions) (_result *GetBotSessionDataResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3431,9 +3536,11 @@ func (client *Client) GetBotSessionData(request *GetBotSessionDataRequest) (_res
 //
 // @return GetInstancePublishTaskStateResponse
 func (client *Client) GetInstancePublishTaskStateWithOptions(request *GetInstancePublishTaskStateRequest, runtime *dara.RuntimeOptions) (_result *GetInstancePublishTaskStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3499,9 +3606,11 @@ func (client *Client) GetInstancePublishTaskState(request *GetInstancePublishTas
 //
 // @return GetPublishTaskStateResponse
 func (client *Client) GetPublishTaskStateWithOptions(request *GetPublishTaskStateRequest, runtime *dara.RuntimeOptions) (_result *GetPublishTaskStateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3563,9 +3672,11 @@ func (client *Client) GetPublishTaskState(request *GetPublishTaskStateRequest) (
 //
 // @return InitIMConnectResponse
 func (client *Client) InitIMConnectWithOptions(request *InitIMConnectRequest, runtime *dara.RuntimeOptions) (_result *InitIMConnectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3631,9 +3742,11 @@ func (client *Client) InitIMConnect(request *InitIMConnectRequest) (_result *Ini
 //
 // @return LinkInstanceCategoryResponse
 func (client *Client) LinkInstanceCategoryWithOptions(request *LinkInstanceCategoryRequest, runtime *dara.RuntimeOptions) (_result *LinkInstanceCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AbilityType) {
@@ -3705,9 +3818,11 @@ func (client *Client) LinkInstanceCategory(request *LinkInstanceCategoryRequest)
 //
 // @return ListAgentResponse
 func (client *Client) ListAgentWithOptions(request *ListAgentRequest, runtime *dara.RuntimeOptions) (_result *ListAgentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentName) {
@@ -3777,9 +3892,11 @@ func (client *Client) ListAgent(request *ListAgentRequest) (_result *ListAgentRe
 //
 // @return ListCategoryResponse
 func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runtime *dara.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3847,9 +3964,11 @@ func (client *Client) ListCategory(request *ListCategoryRequest) (_result *ListC
 //
 // @return ListConnQuestionResponse
 func (client *Client) ListConnQuestionWithOptions(request *ListConnQuestionRequest, runtime *dara.RuntimeOptions) (_result *ListConnQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3913,9 +4032,11 @@ func (client *Client) ListConnQuestion(request *ListConnQuestionRequest) (_resul
 //
 // @return ListDSEntityResponse
 func (client *Client) ListDSEntityWithOptions(request *ListDSEntityRequest, runtime *dara.RuntimeOptions) (_result *ListDSEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -3993,9 +4114,11 @@ func (client *Client) ListDSEntity(request *ListDSEntityRequest) (_result *ListD
 //
 // @return ListDSEntityValueResponse
 func (client *Client) ListDSEntityValueWithOptions(request *ListDSEntityValueRequest, runtime *dara.RuntimeOptions) (_result *ListDSEntityValueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4079,9 +4202,11 @@ func (client *Client) ListDSEntityValue(request *ListDSEntityValueRequest) (_res
 //
 // @return ListInstanceResponse
 func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4155,9 +4280,11 @@ func (client *Client) ListInstance(request *ListInstanceRequest) (_result *ListI
 //
 // @return ListIntentResponse
 func (client *Client) ListIntentWithOptions(request *ListIntentRequest, runtime *dara.RuntimeOptions) (_result *ListIntentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4231,9 +4358,11 @@ func (client *Client) ListIntent(request *ListIntentRequest) (_result *ListInten
 //
 // @return ListLgfResponse
 func (client *Client) ListLgfWithOptions(request *ListLgfRequest, runtime *dara.RuntimeOptions) (_result *ListLgfResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4311,9 +4440,11 @@ func (client *Client) ListLgf(request *ListLgfRequest) (_result *ListLgfResponse
 //
 // @return ListSaasInfoResponse
 func (client *Client) ListSaasInfoWithOptions(request *ListSaasInfoRequest, runtime *dara.RuntimeOptions) (_result *ListSaasInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4379,9 +4510,11 @@ func (client *Client) ListSaasInfo(request *ListSaasInfoRequest) (_result *ListS
 //
 // @return ListSaasPermissionGroupInfosResponse
 func (client *Client) ListSaasPermissionGroupInfosWithOptions(request *ListSaasPermissionGroupInfosRequest, runtime *dara.RuntimeOptions) (_result *ListSaasPermissionGroupInfosResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4439,9 +4572,11 @@ func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGr
 //
 // @return ListSimQuestionResponse
 func (client *Client) ListSimQuestionWithOptions(request *ListSimQuestionRequest, runtime *dara.RuntimeOptions) (_result *ListSimQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4505,9 +4640,11 @@ func (client *Client) ListSimQuestion(request *ListSimQuestionRequest) (_result 
 //
 // @return ListSolutionResponse
 func (client *Client) ListSolutionWithOptions(request *ListSolutionRequest, runtime *dara.RuntimeOptions) (_result *ListSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4571,9 +4708,11 @@ func (client *Client) ListSolution(request *ListSolutionRequest) (_result *ListS
 //
 // @return ListTongyiChatHistorysResponse
 func (client *Client) ListTongyiChatHistorysWithOptions(request *ListTongyiChatHistorysRequest, runtime *dara.RuntimeOptions) (_result *ListTongyiChatHistorysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4647,9 +4786,11 @@ func (client *Client) ListTongyiChatHistorys(request *ListTongyiChatHistorysRequ
 //
 // @return ListTongyiConversationLogsResponse
 func (client *Client) ListTongyiConversationLogsWithOptions(request *ListTongyiConversationLogsRequest, runtime *dara.RuntimeOptions) (_result *ListTongyiConversationLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4715,9 +4856,11 @@ func (client *Client) ListTongyiConversationLogs(request *ListTongyiConversation
 //
 // @return ListUserSayResponse
 func (client *Client) ListUserSayWithOptions(request *ListUserSayRequest, runtime *dara.RuntimeOptions) (_result *ListUserSayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4795,9 +4938,11 @@ func (client *Client) ListUserSay(request *ListUserSayRequest) (_result *ListUse
 //
 // @return NluResponse
 func (client *Client) NluWithOptions(request *NluRequest, runtime *dara.RuntimeOptions) (_result *NluResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4863,9 +5008,11 @@ func (client *Client) Nlu(request *NluRequest) (_result *NluResponse, _err error
 //
 // @return QueryPerspectivesResponse
 func (client *Client) QueryPerspectivesWithOptions(request *QueryPerspectivesRequest, runtime *dara.RuntimeOptions) (_result *QueryPerspectivesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4923,9 +5070,11 @@ func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_res
 //
 // @return RetryDocResponse
 func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *dara.RuntimeOptions) (_result *RetryDocResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -4987,9 +5136,11 @@ func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocRespo
 //
 // @return SearchDocResponse
 func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *dara.RuntimeOptions) (_result *SearchDocResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5129,9 +5280,11 @@ func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocRe
 //
 // @return SearchFaqResponse
 func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *dara.RuntimeOptions) (_result *SearchFaqResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SearchFaqShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5261,9 +5414,11 @@ func (client *Client) SearchFaq(request *SearchFaqRequest) (_result *SearchFaqRe
 //
 // @return TongyiChatDebugInfoResponse
 func (client *Client) TongyiChatDebugInfoWithOptions(request *TongyiChatDebugInfoRequest, runtime *dara.RuntimeOptions) (_result *TongyiChatDebugInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5329,9 +5484,11 @@ func (client *Client) TongyiChatDebugInfo(request *TongyiChatDebugInfoRequest) (
 //
 // @return UpdateCategoryResponse
 func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateCategoryResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5403,9 +5560,11 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 //
 // @return UpdateConnQuestionResponse
 func (client *Client) UpdateConnQuestionWithOptions(request *UpdateConnQuestionRequest, runtime *dara.RuntimeOptions) (_result *UpdateConnQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5473,9 +5632,11 @@ func (client *Client) UpdateConnQuestion(request *UpdateConnQuestionRequest) (_r
 //
 // @return UpdateDSEntityResponse
 func (client *Client) UpdateDSEntityWithOptions(request *UpdateDSEntityRequest, runtime *dara.RuntimeOptions) (_result *UpdateDSEntityResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5549,9 +5710,11 @@ func (client *Client) UpdateDSEntity(request *UpdateDSEntityRequest) (_result *U
 //
 // @return UpdateDSEntityValueResponse
 func (client *Client) UpdateDSEntityValueWithOptions(tmpReq *UpdateDSEntityValueRequest, runtime *dara.RuntimeOptions) (_result *UpdateDSEntityValueResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDSEntityValueShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5637,9 +5800,11 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 //
 // @return UpdateDocResponse
 func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *dara.RuntimeOptions) (_result *UpdateDocResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateDocShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5751,9 +5916,11 @@ func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocRe
 //
 // @return UpdateFaqResponse
 func (client *Client) UpdateFaqWithOptions(request *UpdateFaqRequest, runtime *dara.RuntimeOptions) (_result *UpdateFaqResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5833,9 +6000,11 @@ func (client *Client) UpdateFaq(request *UpdateFaqRequest) (_result *UpdateFaqRe
 //
 // @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -5905,9 +6074,11 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 //
 // @return UpdateIntentResponse
 func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runtime *dara.RuntimeOptions) (_result *UpdateIntentResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -5983,9 +6154,11 @@ func (client *Client) UpdateIntent(request *UpdateIntentRequest) (_result *Updat
 //
 // @return UpdateLgfResponse
 func (client *Client) UpdateLgfWithOptions(tmpReq *UpdateLgfRequest, runtime *dara.RuntimeOptions) (_result *UpdateLgfResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateLgfShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6061,9 +6234,11 @@ func (client *Client) UpdateLgf(request *UpdateLgfRequest) (_result *UpdateLgfRe
 //
 // @return UpdatePerspectiveResponse
 func (client *Client) UpdatePerspectiveWithOptions(request *UpdatePerspectiveRequest, runtime *dara.RuntimeOptions) (_result *UpdatePerspectiveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -6129,9 +6304,11 @@ func (client *Client) UpdatePerspective(request *UpdatePerspectiveRequest) (_res
 //
 // @return UpdateSimQuestionResponse
 func (client *Client) UpdateSimQuestionWithOptions(request *UpdateSimQuestionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSimQuestionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -6199,9 +6376,11 @@ func (client *Client) UpdateSimQuestion(request *UpdateSimQuestionRequest) (_res
 //
 // @return UpdateSolutionResponse
 func (client *Client) UpdateSolutionWithOptions(request *UpdateSolutionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSolutionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentKey) {
@@ -6277,9 +6456,11 @@ func (client *Client) UpdateSolution(request *UpdateSolutionRequest) (_result *U
 //
 // @return UpdateUserSayResponse
 func (client *Client) UpdateUserSayWithOptions(tmpReq *UpdateUserSayRequest, runtime *dara.RuntimeOptions) (_result *UpdateUserSayResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateUserSayShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)

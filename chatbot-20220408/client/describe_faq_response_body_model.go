@@ -236,7 +236,34 @@ func (s *DescribeFaqResponseBody) SetTitle(v string) *DescribeFaqResponseBody {
 }
 
 func (s *DescribeFaqResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Outlines != nil {
+		for _, item := range s.Outlines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SimQuestions != nil {
+		for _, item := range s.SimQuestions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Solutions != nil {
+		for _, item := range s.Solutions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFaqResponseBodyOutlines struct {

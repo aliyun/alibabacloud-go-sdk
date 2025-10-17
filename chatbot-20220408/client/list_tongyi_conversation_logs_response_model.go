@@ -59,5 +59,10 @@ func (s *ListTongyiConversationLogsResponse) SetBody(v *ListTongyiConversationLo
 }
 
 func (s *ListTongyiConversationLogsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,16 @@ func (s *QueryPerspectivesResponseBody) SetRequestId(v string) *QueryPerspective
 }
 
 func (s *QueryPerspectivesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Perspectives != nil {
+		for _, item := range s.Perspectives {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type QueryPerspectivesResponseBodyPerspectives struct {

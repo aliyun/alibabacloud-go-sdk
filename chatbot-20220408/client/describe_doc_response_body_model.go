@@ -373,7 +373,30 @@ func (s *DescribeDocResponseBody) SetUrl(v string) *DescribeDocResponseBody {
 }
 
 func (s *DescribeDocResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DocInfo != nil {
+		if err := s.DocInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DocMetadata != nil {
+		for _, item := range s.DocMetadata {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DocTags != nil {
+		for _, item := range s.DocTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDocResponseBodyDocInfo struct {
@@ -398,7 +421,16 @@ func (s *DescribeDocResponseBodyDocInfo) SetDocParas(v []*DescribeDocResponseBod
 }
 
 func (s *DescribeDocResponseBodyDocInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DocParas != nil {
+		for _, item := range s.DocParas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDocResponseBodyDocInfoDocParas struct {
@@ -507,7 +539,16 @@ func (s *DescribeDocResponseBodyDocMetadata) SetMetaCellInfoDTOList(v []*Describ
 }
 
 func (s *DescribeDocResponseBodyDocMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCellInfoDTOList != nil {
+		for _, item := range s.MetaCellInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDocResponseBodyDocMetadataMetaCellInfoDTOList struct {

@@ -65,7 +65,16 @@ func (s *NluResponseBody) SetRequestId(v string) *NluResponseBody {
 }
 
 func (s *NluResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NluResponseBodyMessages struct {
@@ -100,7 +109,17 @@ func (s *NluResponseBodyMessages) SetDsNluInfo(v *NluResponseBodyMessagesDsNluIn
 }
 
 func (s *NluResponseBodyMessages) Validate() error {
-	return dara.Validate(s)
+	if s.DialogHubNluInfo != nil {
+		if err := s.DialogHubNluInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DsNluInfo != nil {
+		if err := s.DsNluInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type NluResponseBodyMessagesDialogHubNluInfo struct {
@@ -135,7 +154,25 @@ func (s *NluResponseBodyMessagesDialogHubNluInfo) SetGlobalSensitiveWordList(v [
 }
 
 func (s *NluResponseBodyMessagesDialogHubNluInfo) Validate() error {
-	return dara.Validate(s)
+	if s.GlobalDictList != nil {
+		for _, item := range s.GlobalDictList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.GlobalSensitiveWordList != nil {
+		for _, item := range s.GlobalSensitiveWordList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NluResponseBodyMessagesDialogHubNluInfoGlobalDictList struct {
@@ -252,7 +289,25 @@ func (s *NluResponseBodyMessagesDsNluInfo) SetIntentList(v []*NluResponseBodyMes
 }
 
 func (s *NluResponseBodyMessagesDsNluInfo) Validate() error {
-	return dara.Validate(s)
+	if s.EntityList != nil {
+		for _, item := range s.EntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.IntentList != nil {
+		for _, item := range s.IntentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NluResponseBodyMessagesDsNluInfoEntityList struct {
@@ -409,7 +464,16 @@ func (s *NluResponseBodyMessagesDsNluInfoIntentList) SetSlotList(v []*NluRespons
 }
 
 func (s *NluResponseBodyMessagesDsNluInfoIntentList) Validate() error {
-	return dara.Validate(s)
+	if s.SlotList != nil {
+		for _, item := range s.SlotList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type NluResponseBodyMessagesDsNluInfoIntentListSlotList struct {

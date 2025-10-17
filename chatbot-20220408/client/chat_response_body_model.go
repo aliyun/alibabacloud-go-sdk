@@ -92,7 +92,16 @@ func (s *ChatResponseBody) SetSessionId(v string) *ChatResponseBody {
 }
 
 func (s *ChatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatResponseBodyMessages struct {
@@ -183,7 +192,26 @@ func (s *ChatResponseBodyMessages) SetVoiceTitle(v string) *ChatResponseBodyMess
 }
 
 func (s *ChatResponseBodyMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Knowledge != nil {
+		if err := s.Knowledge.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Recommends != nil {
+		for _, item := range s.Recommends {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Text != nil {
+		if err := s.Text.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ChatResponseBodyMessagesKnowledge struct {
@@ -310,7 +338,16 @@ func (s *ChatResponseBodyMessagesKnowledge) SetTitle(v string) *ChatResponseBody
 }
 
 func (s *ChatResponseBodyMessagesKnowledge) Validate() error {
-	return dara.Validate(s)
+	if s.RelatedKnowledges != nil {
+		for _, item := range s.RelatedKnowledges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatResponseBodyMessagesKnowledgeRelatedKnowledges struct {
@@ -619,7 +656,16 @@ func (s *ChatResponseBodyMessagesText) SetUserDefinedChatTitle(v string) *ChatRe
 }
 
 func (s *ChatResponseBodyMessagesText) Validate() error {
-	return dara.Validate(s)
+	if s.Slots != nil {
+		for _, item := range s.Slots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ChatResponseBodyMessagesTextSlots struct {

@@ -95,7 +95,16 @@ func (s *SearchFaqResponseBody) SetTotalCount(v int32) *SearchFaqResponseBody {
 }
 
 func (s *SearchFaqResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FaqHits != nil {
+		for _, item := range s.FaqHits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchFaqResponseBodyFaqHits struct {

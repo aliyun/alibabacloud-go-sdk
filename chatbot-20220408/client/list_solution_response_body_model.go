@@ -50,7 +50,16 @@ func (s *ListSolutionResponseBody) SetSolutions(v []*ListSolutionResponseBodySol
 }
 
 func (s *ListSolutionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Solutions != nil {
+		for _, item := range s.Solutions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSolutionResponseBodySolutions struct {

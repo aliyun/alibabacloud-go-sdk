@@ -95,7 +95,16 @@ func (s *ListDSEntityResponseBody) SetTotalCount(v int32) *ListDSEntityResponseB
 }
 
 func (s *ListDSEntityResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Entities != nil {
+		for _, item := range s.Entities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDSEntityResponseBodyEntities struct {

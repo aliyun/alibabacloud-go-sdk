@@ -67,7 +67,12 @@ func (s *CreateLgfRequest) SetLgfDefinition(v *CreateLgfRequestLgfDefinition) *C
 }
 
 func (s *CreateLgfRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LgfDefinition != nil {
+		if err := s.LgfDefinition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLgfRequestLgfDefinition struct {

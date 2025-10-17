@@ -59,5 +59,10 @@ func (s *InitIMConnectResponse) SetBody(v *InitIMConnectResponseBody) *InitIMCon
 }
 
 func (s *InitIMConnectResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

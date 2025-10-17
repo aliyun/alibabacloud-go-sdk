@@ -190,7 +190,16 @@ func (s *UpdateDocRequest) SetTitle(v string) *UpdateDocRequest {
 }
 
 func (s *UpdateDocRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DocMetadata != nil {
+		for _, item := range s.DocMetadata {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDocRequestDocMetadata struct {
@@ -235,7 +244,16 @@ func (s *UpdateDocRequestDocMetadata) SetMetaCellInfoDTOList(v []*UpdateDocReque
 }
 
 func (s *UpdateDocRequestDocMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCellInfoDTOList != nil {
+		for _, item := range s.MetaCellInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateDocRequestDocMetadataMetaCellInfoDTOList struct {

@@ -59,5 +59,10 @@ func (s *CreateDSEntityResponse) SetBody(v *CreateDSEntityResponseBody) *CreateD
 }
 
 func (s *CreateDSEntityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

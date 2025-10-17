@@ -179,7 +179,16 @@ func (s *CreateDocRequest) SetUrl(v string) *CreateDocRequest {
 }
 
 func (s *CreateDocRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DocMetadata != nil {
+		for _, item := range s.DocMetadata {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDocRequestDocMetadata struct {
@@ -224,7 +233,16 @@ func (s *CreateDocRequestDocMetadata) SetMetaCellInfoDTOList(v []*CreateDocReque
 }
 
 func (s *CreateDocRequestDocMetadata) Validate() error {
-	return dara.Validate(s)
+	if s.MetaCellInfoDTOList != nil {
+		for _, item := range s.MetaCellInfoDTOList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateDocRequestDocMetadataMetaCellInfoDTOList struct {

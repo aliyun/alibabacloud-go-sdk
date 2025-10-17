@@ -179,7 +179,16 @@ func (s *DescribeIntentResponseBody) SetSlotInfos(v []*DescribeIntentResponseBod
 }
 
 func (s *DescribeIntentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlotInfos != nil {
+		for _, item := range s.SlotInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIntentResponseBodySlotInfos struct {

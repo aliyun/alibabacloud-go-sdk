@@ -50,7 +50,12 @@ func (s *DescribeCategoryResponseBody) SetRequestId(v string) *DescribeCategoryR
 }
 
 func (s *DescribeCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Category != nil {
+		if err := s.Category.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeCategoryResponseBodyCategory struct {

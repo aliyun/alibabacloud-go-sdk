@@ -84,7 +84,12 @@ func (s *UpdateUserSayRequest) SetUserSayId(v int64) *UpdateUserSayRequest {
 }
 
 func (s *UpdateUserSayRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserSayDefinition != nil {
+		if err := s.UserSayDefinition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateUserSayRequestUserSayDefinition struct {
@@ -135,7 +140,16 @@ func (s *UpdateUserSayRequestUserSayDefinition) SetSlotInfos(v []*UpdateUserSayR
 }
 
 func (s *UpdateUserSayRequestUserSayDefinition) Validate() error {
-	return dara.Validate(s)
+	if s.SlotInfos != nil {
+		for _, item := range s.SlotInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateUserSayRequestUserSayDefinitionSlotInfos struct {

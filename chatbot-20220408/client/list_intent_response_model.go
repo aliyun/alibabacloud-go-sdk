@@ -59,5 +59,10 @@ func (s *ListIntentResponse) SetBody(v *ListIntentResponseBody) *ListIntentRespo
 }
 
 func (s *ListIntentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *UpdatePerspectiveResponse) SetBody(v *UpdatePerspectiveResponseBody) *U
 }
 
 func (s *UpdatePerspectiveResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

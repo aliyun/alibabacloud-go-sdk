@@ -59,5 +59,10 @@ func (s *ListAgentResponse) SetBody(v *ListAgentResponseBody) *ListAgentResponse
 }
 
 func (s *ListAgentResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

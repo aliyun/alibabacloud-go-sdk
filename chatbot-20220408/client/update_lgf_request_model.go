@@ -87,7 +87,12 @@ func (s *UpdateLgfRequest) SetLgfId(v int64) *UpdateLgfRequest {
 }
 
 func (s *UpdateLgfRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LgfDefinition != nil {
+		if err := s.LgfDefinition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateLgfRequestLgfDefinition struct {

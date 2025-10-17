@@ -95,7 +95,16 @@ func (s *ListIntentResponseBody) SetTotalCount(v int32) *ListIntentResponseBody 
 }
 
 func (s *ListIntentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Intents != nil {
+		for _, item := range s.Intents {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntentResponseBodyIntents struct {
@@ -231,7 +240,16 @@ func (s *ListIntentResponseBodyIntents) SetSlotInfos(v []*ListIntentResponseBody
 }
 
 func (s *ListIntentResponseBodyIntents) Validate() error {
-	return dara.Validate(s)
+	if s.SlotInfos != nil {
+		for _, item := range s.SlotInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListIntentResponseBodyIntentsSlotInfos struct {

@@ -59,5 +59,10 @@ func (s *GetInstancePublishTaskStateResponse) SetBody(v *GetInstancePublishTaskS
 }
 
 func (s *GetInstancePublishTaskStateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

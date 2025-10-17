@@ -59,5 +59,10 @@ func (s *UpdateSimQuestionResponse) SetBody(v *UpdateSimQuestionResponseBody) *U
 }
 
 func (s *UpdateSimQuestionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -50,7 +50,16 @@ func (s *ListSimQuestionResponseBody) SetSimQuestions(v []*ListSimQuestionRespon
 }
 
 func (s *ListSimQuestionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SimQuestions != nil {
+		for _, item := range s.SimQuestions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSimQuestionResponseBodySimQuestions struct {

@@ -97,7 +97,16 @@ func (s *SearchDocResponseBody) SetTotalCount(v int32) *SearchDocResponseBody {
 }
 
 func (s *SearchDocResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DocHits != nil {
+		for _, item := range s.DocHits {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDocResponseBodyDocHits struct {
@@ -367,7 +376,16 @@ func (s *SearchDocResponseBodyDocHits) SetUrl(v string) *SearchDocResponseBodyDo
 }
 
 func (s *SearchDocResponseBodyDocHits) Validate() error {
-	return dara.Validate(s)
+	if s.DocTags != nil {
+		for _, item := range s.DocTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SearchDocResponseBodyDocHitsDocTags struct {

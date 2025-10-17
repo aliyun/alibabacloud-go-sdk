@@ -67,7 +67,12 @@ func (s *CreateIntentRequest) SetIntentDefinition(v *CreateIntentRequestIntentDe
 }
 
 func (s *CreateIntentRequest) Validate() error {
-	return dara.Validate(s)
+	if s.IntentDefinition != nil {
+		if err := s.IntentDefinition.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateIntentRequestIntentDefinition struct {
@@ -113,7 +118,16 @@ func (s *CreateIntentRequestIntentDefinition) SetSlotInfos(v []*CreateIntentRequ
 }
 
 func (s *CreateIntentRequestIntentDefinition) Validate() error {
-	return dara.Validate(s)
+	if s.SlotInfos != nil {
+		for _, item := range s.SlotInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateIntentRequestIntentDefinitionSlotInfos struct {

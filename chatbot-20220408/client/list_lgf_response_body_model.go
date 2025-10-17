@@ -95,7 +95,16 @@ func (s *ListLgfResponseBody) SetTotalCount(v int32) *ListLgfResponseBody {
 }
 
 func (s *ListLgfResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Lgfs != nil {
+		for _, item := range s.Lgfs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLgfResponseBodyLgfs struct {

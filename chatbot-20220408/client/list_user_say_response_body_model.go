@@ -95,7 +95,16 @@ func (s *ListUserSayResponseBody) SetUserSays(v []*ListUserSayResponseBodyUserSa
 }
 
 func (s *ListUserSayResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.UserSays != nil {
+		for _, item := range s.UserSays {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserSayResponseBodyUserSays struct {
@@ -182,7 +191,16 @@ func (s *ListUserSayResponseBodyUserSays) SetUserSayId(v int64) *ListUserSayResp
 }
 
 func (s *ListUserSayResponseBodyUserSays) Validate() error {
-	return dara.Validate(s)
+	if s.SlotInfos != nil {
+		for _, item := range s.SlotInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListUserSayResponseBodyUserSaysSlotInfos struct {
