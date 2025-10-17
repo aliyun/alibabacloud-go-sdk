@@ -206,7 +206,16 @@ func (s *DescribeCheckJobsResponseBody) SetTotalRecordCount(v int64) *DescribeCh
 }
 
 func (s *DescribeCheckJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CheckJobs != nil {
+		for _, item := range s.CheckJobs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeCheckJobsResponseBodyCheckJobs struct {

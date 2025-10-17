@@ -206,7 +206,16 @@ func (s *DescribeDtsServiceLogResponseBody) SetTotalRecordCount(v int64) *Descri
 }
 
 func (s *DescribeDtsServiceLogResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ServiceLogContexts != nil {
+		for _, item := range s.ServiceLogContexts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsServiceLogResponseBodyServiceLogContexts struct {

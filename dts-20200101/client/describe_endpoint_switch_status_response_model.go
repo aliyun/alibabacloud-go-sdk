@@ -59,5 +59,10 @@ func (s *DescribeEndpointSwitchStatusResponse) SetBody(v *DescribeEndpointSwitch
 }
 
 func (s *DescribeEndpointSwitchStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

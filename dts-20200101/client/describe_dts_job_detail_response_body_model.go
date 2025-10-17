@@ -1058,7 +1058,65 @@ func (s *DescribeDtsJobDetailResponseBody) SetTaskType(v string) *DescribeDtsJob
 }
 
 func (s *DescribeDtsJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataDeliveryChannelInfo != nil {
+		if err := s.DataDeliveryChannelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDistributedJob != nil {
+		for _, item := range s.SubDistributedJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubSyncJob != nil {
+		for _, item := range s.SubSyncJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodyDataDeliveryChannelInfo struct {
@@ -2654,7 +2712,81 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) SetTaskType(v string
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReverseJob != nil {
+		if err := s.ReverseJob.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobDataEtlStatus struct {
@@ -3388,7 +3520,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) SetSta
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobPrecheckStatusDetail struct {
@@ -4348,7 +4489,76 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) SetTaskTyp
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobDataEtlStatus struct {
@@ -5082,7 +5292,16 @@ func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStat
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPrecheckStatusDetail struct {
@@ -7333,7 +7552,81 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJob) SetTaskType(v string) *Desc
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubSyncJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReverseJob != nil {
+		if err := s.ReverseJob.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobDataEtlStatus struct {
@@ -8067,7 +8360,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) SetStatus(v s
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobPrecheckStatusDetail struct {
@@ -8993,7 +9295,76 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) SetTaskType(v str
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobDataEtlStatus struct {
@@ -9727,7 +10098,16 @@ func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) Set
 }
 
 func (s *DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobDetailResponseBodySubSyncJobReverseJobPrecheckStatusDetail struct {

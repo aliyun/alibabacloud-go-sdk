@@ -331,7 +331,48 @@ func (s *DescribePreCheckStatusResponseBody) SetTotalRecordCount(v int64) *Descr
 }
 
 func (s *DescribePreCheckStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.AnalysisJobProgress != nil {
+		for _, item := range s.AnalysisJobProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FullNetCheckJobStatus != nil {
+		for _, item := range s.FullNetCheckJobStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.JobProgress != nil {
+		for _, item := range s.JobProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NetworkDiagnosisResult != nil {
+		if err := s.NetworkDiagnosisResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubDistributedJobStatus != nil {
+		for _, item := range s.SubDistributedJobStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyAnalysisJobProgress struct {
@@ -719,7 +760,16 @@ func (s *DescribePreCheckStatusResponseBodyAnalysisJobProgress) SetTotal(v int32
 }
 
 func (s *DescribePreCheckStatusResponseBodyAnalysisJobProgress) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs struct {
@@ -1015,7 +1065,16 @@ func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatus) SetTotal(v int
 }
 
 func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatus) Validate() error {
-	return dara.Validate(s)
+	if s.JobProgress != nil {
+		for _, item := range s.JobProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress struct {
@@ -1403,7 +1462,16 @@ func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress) Set
 }
 
 func (s *DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgressLogs struct {
@@ -1888,7 +1956,16 @@ func (s *DescribePreCheckStatusResponseBodyJobProgress) SetTotal(v int32) *Descr
 }
 
 func (s *DescribePreCheckStatusResponseBodyJobProgress) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyJobProgressLogs struct {
@@ -2004,7 +2081,16 @@ func (s *DescribePreCheckStatusResponseBodyNetworkDiagnosisResult) SetModelVersi
 }
 
 func (s *DescribePreCheckStatusResponseBodyNetworkDiagnosisResult) Validate() error {
-	return dara.Validate(s)
+	if s.Diagnosis != nil {
+		for _, item := range s.Diagnosis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis struct {
@@ -2232,7 +2318,16 @@ func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatus) SetTotal(v i
 }
 
 func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatus) Validate() error {
-	return dara.Validate(s)
+	if s.JobProgress != nil {
+		for _, item := range s.JobProgress {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress struct {
@@ -2646,7 +2741,16 @@ func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress) S
 }
 
 func (s *DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress) Validate() error {
-	return dara.Validate(s)
+	if s.Logs != nil {
+		for _, item := range s.Logs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgressLogs struct {

@@ -287,7 +287,22 @@ func (s *ConfigureSynchronizationJobRequest) SetSynchronizationObjects(v string)
 }
 
 func (s *ConfigureSynchronizationJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PartitionKey != nil {
+		if err := s.PartitionKey.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureSynchronizationJobRequestDestinationEndpoint struct {

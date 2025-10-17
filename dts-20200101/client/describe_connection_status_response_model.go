@@ -59,5 +59,10 @@ func (s *DescribeConnectionStatusResponse) SetBody(v *DescribeConnectionStatusRe
 }
 
 func (s *DescribeConnectionStatusResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

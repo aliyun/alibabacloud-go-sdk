@@ -59,5 +59,10 @@ func (s *DescribeSubscriptionInstancesResponse) SetBody(v *DescribeSubscriptionI
 }
 
 func (s *DescribeSubscriptionInstancesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

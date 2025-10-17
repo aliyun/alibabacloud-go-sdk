@@ -348,7 +348,27 @@ func (s *DescribeSubscriptionInstanceStatusResponseBody) SetTaskId(v string) *De
 }
 
 func (s *DescribeSubscriptionInstanceStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionHost != nil {
+		if err := s.SubscriptionHost.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionObject != nil {
+		if err := s.SubscriptionObject.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSubscriptionInstanceStatusResponseBodySourceEndpoint struct {
@@ -533,7 +553,16 @@ func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject) SetSy
 }
 
 func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronousObject != nil {
+		for _, item := range s.SynchronousObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObject struct {
@@ -593,7 +622,12 @@ func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchro
 }
 
 func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObject) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		if err := s.TableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObjectTableList struct {

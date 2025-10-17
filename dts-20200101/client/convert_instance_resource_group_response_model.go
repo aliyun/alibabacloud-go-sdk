@@ -59,5 +59,10 @@ func (s *ConvertInstanceResourceGroupResponse) SetBody(v *ConvertInstanceResourc
 }
 
 func (s *ConvertInstanceResourceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

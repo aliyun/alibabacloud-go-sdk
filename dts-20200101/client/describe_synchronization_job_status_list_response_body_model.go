@@ -155,7 +155,16 @@ func (s *DescribeSynchronizationJobStatusListResponseBody) SetTotalRecordCount(v
 }
 
 func (s *DescribeSynchronizationJobStatusListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronizationJobListStatusList != nil {
+		for _, item := range s.SynchronizationJobListStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList struct {
@@ -196,7 +205,16 @@ func (s *DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListS
 }
 
 func (s *DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronizationDirectionInfoList != nil {
+		for _, item := range s.SynchronizationDirectionInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusListSynchronizationDirectionInfoList struct {

@@ -233,7 +233,22 @@ func (s *ConfigureMigrationJobRequest) SetResourceGroupId(v string) *ConfigureMi
 }
 
 func (s *ConfigureMigrationJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureMigrationJobRequestDestinationEndpoint struct {

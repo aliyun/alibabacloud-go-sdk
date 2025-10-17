@@ -104,7 +104,16 @@ func (s *DescribeSynchronizationJobsResponseBody) SetTotalRecordCount(v int64) *
 }
 
 func (s *DescribeSynchronizationJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronizationInstances != nil {
+		for _, item := range s.SynchronizationInstances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstances struct {
@@ -468,7 +477,60 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstances) SetTag
 }
 
 func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstances) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SynchronizationObjects != nil {
+		for _, item := range s.SynchronizationObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitializationStatus struct {
@@ -844,7 +906,16 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheck
 }
 
 func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckStatusDetail struct {
@@ -1182,7 +1253,25 @@ func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchron
 }
 
 func (s *DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjects) Validate() error {
-	return dara.Validate(s)
+	if s.TableExcludes != nil {
+		for _, item := range s.TableExcludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableIncludes != nil {
+		for _, item := range s.TableIncludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableExcludes struct {

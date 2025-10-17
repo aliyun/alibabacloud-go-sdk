@@ -172,7 +172,12 @@ func (s *ListDedicatedClusterResponseBody) SetTotalRecordCount(v int32) *ListDed
 }
 
 func (s *ListDedicatedClusterResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedClusterStatusList != nil {
+		if err := s.DedicatedClusterStatusList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDedicatedClusterResponseBodyDedicatedClusterStatusList struct {
@@ -197,7 +202,16 @@ func (s *ListDedicatedClusterResponseBodyDedicatedClusterStatusList) SetDedicate
 }
 
 func (s *ListDedicatedClusterResponseBodyDedicatedClusterStatusList) Validate() error {
-	return dara.Validate(s)
+	if s.DedicatedClusterStatus != nil {
+		for _, item := range s.DedicatedClusterStatus {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedClusterStatus struct {

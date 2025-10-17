@@ -121,7 +121,16 @@ func (s *DescribeSubscriptionMetaResponseBody) SetSuccess(v string) *DescribeSub
 }
 
 func (s *DescribeSubscriptionMetaResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SubscriptionMetaList != nil {
+		for _, item := range s.SubscriptionMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSubscriptionMetaResponseBodySubscriptionMetaList struct {

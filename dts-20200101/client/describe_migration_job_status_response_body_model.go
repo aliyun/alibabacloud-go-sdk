@@ -313,7 +313,42 @@ func (s *DescribeMigrationJobStatusResponseBody) SetTaskId(v string) *DescribeMi
 }
 
 func (s *DescribeMigrationJobStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobStatusResponseBodyDataInitializationStatus struct {
@@ -771,7 +806,12 @@ func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatus) SetStatus(v strin
 }
 
 func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		if err := s.Detail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail struct {
@@ -796,7 +836,16 @@ func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail) SetCheckIte
 }
 
 func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail) Validate() error {
-	return dara.Validate(s)
+	if s.CheckItem != nil {
+		for _, item := range s.CheckItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem struct {

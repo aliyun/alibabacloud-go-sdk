@@ -174,7 +174,12 @@ func (s *DescribeMigrationJobDetailRequest) SetResourceGroupId(v string) *Descri
 }
 
 func (s *DescribeMigrationJobDetailRequest) Validate() error {
-	return dara.Validate(s)
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailRequestMigrationMode struct {

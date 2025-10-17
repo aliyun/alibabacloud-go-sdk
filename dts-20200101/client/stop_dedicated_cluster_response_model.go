@@ -59,5 +59,10 @@ func (s *StopDedicatedClusterResponse) SetBody(v *StopDedicatedClusterResponseBo
 }
 
 func (s *StopDedicatedClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

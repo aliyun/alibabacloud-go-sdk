@@ -201,7 +201,12 @@ func (s *CreateSubscriptionInstanceRequest) SetUsedTime(v int32) *CreateSubscrip
 }
 
 func (s *CreateSubscriptionInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSubscriptionInstanceRequestSourceEndpoint struct {

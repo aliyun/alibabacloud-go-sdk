@@ -59,5 +59,10 @@ func (s *DescribeMetricListResponse) SetBody(v *DescribeMetricListResponseBody) 
 }
 
 func (s *DescribeMetricListResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

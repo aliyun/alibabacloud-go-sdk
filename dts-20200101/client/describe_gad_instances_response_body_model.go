@@ -185,7 +185,12 @@ func (s *DescribeGadInstancesResponseBody) SetTotalRecordCount(v int32) *Describ
 }
 
 func (s *DescribeGadInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		if err := s.Instances.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeGadInstancesResponseBodyInstances struct {
@@ -210,7 +215,16 @@ func (s *DescribeGadInstancesResponseBodyInstances) SetInstances(v []*DescribeGa
 }
 
 func (s *DescribeGadInstancesResponseBodyInstances) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGadInstancesResponseBodyInstancesInstances struct {

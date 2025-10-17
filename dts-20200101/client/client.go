@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -148,9 +149,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ConfigureDtsJobResponse
 func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest, runtime *dara.RuntimeOptions) (_result *ConfigureDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Checkpoint) {
@@ -573,9 +576,11 @@ func (client *Client) ConfigureDtsJobAdvance(request *ConfigureDtsJobAdvanceRequ
 //
 // @return ConfigureMigrationJobResponse
 func (client *Client) ConfigureMigrationJobWithOptions(request *ConfigureMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *ConfigureMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -679,9 +684,11 @@ func (client *Client) ConfigureMigrationJob(request *ConfigureMigrationJobReques
 //
 // @return ConfigureMigrationJobAlertResponse
 func (client *Client) ConfigureMigrationJobAlertWithOptions(request *ConfigureMigrationJobAlertRequest, runtime *dara.RuntimeOptions) (_result *ConfigureMigrationJobAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -779,9 +786,11 @@ func (client *Client) ConfigureMigrationJobAlert(request *ConfigureMigrationJobA
 //
 // @return ConfigureSubscriptionResponse
 func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSubscriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Checkpoint) {
@@ -999,9 +1008,11 @@ func (client *Client) ConfigureSubscription(request *ConfigureSubscriptionReques
 //
 // @return ConfigureSubscriptionInstanceResponse
 func (client *Client) ConfigureSubscriptionInstanceWithOptions(request *ConfigureSubscriptionInstanceRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSubscriptionInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1105,9 +1116,11 @@ func (client *Client) ConfigureSubscriptionInstance(request *ConfigureSubscripti
 //
 // @return ConfigureSubscriptionInstanceAlertResponse
 func (client *Client) ConfigureSubscriptionInstanceAlertWithOptions(request *ConfigureSubscriptionInstanceAlertRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSubscriptionInstanceAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1211,9 +1224,11 @@ func (client *Client) ConfigureSubscriptionInstanceAlert(request *ConfigureSubsc
 //
 // @return ConfigureSynchronizationJobResponse
 func (client *Client) ConfigureSynchronizationJobWithOptions(request *ConfigureSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1339,9 +1354,11 @@ func (client *Client) ConfigureSynchronizationJob(request *ConfigureSynchronizat
 //
 // @return ConfigureSynchronizationJobAlertResponse
 func (client *Client) ConfigureSynchronizationJobAlertWithOptions(request *ConfigureSynchronizationJobAlertRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSynchronizationJobAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1439,9 +1456,11 @@ func (client *Client) ConfigureSynchronizationJobAlert(request *ConfigureSynchro
 //
 // @return ConfigureSynchronizationJobReplicatorCompareResponse
 func (client *Client) ConfigureSynchronizationJobReplicatorCompareWithOptions(request *ConfigureSynchronizationJobReplicatorCompareRequest, runtime *dara.RuntimeOptions) (_result *ConfigureSynchronizationJobReplicatorCompareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1527,9 +1546,11 @@ func (client *Client) ConfigureSynchronizationJobReplicatorCompare(request *Conf
 //
 // @return ConvertInstanceResourceGroupResponse
 func (client *Client) ConvertInstanceResourceGroupWithOptions(request *ConvertInstanceResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ConvertInstanceResourceGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -1607,9 +1628,11 @@ func (client *Client) ConvertInstanceResourceGroup(request *ConvertInstanceResou
 //
 // @return CountJobByConditionResponse
 func (client *Client) CountJobByConditionWithOptions(request *CountJobByConditionRequest, runtime *dara.RuntimeOptions) (_result *CountJobByConditionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestDbType) {
@@ -1703,9 +1726,11 @@ func (client *Client) CountJobByCondition(request *CountJobByConditionRequest) (
 //
 // @return CreateConsumerChannelResponse
 func (client *Client) CreateConsumerChannelWithOptions(request *CreateConsumerChannelRequest, runtime *dara.RuntimeOptions) (_result *CreateConsumerChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerGroupName) {
@@ -1787,9 +1812,11 @@ func (client *Client) CreateConsumerChannel(request *CreateConsumerChannelReques
 //
 // @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -1875,9 +1902,11 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 //
 // @return CreateDedicatedClusterMonitorRuleResponse
 func (client *Client) CreateDedicatedClusterMonitorRuleWithOptions(request *CreateDedicatedClusterMonitorRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateDedicatedClusterMonitorRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CpuAlarmThreshold) {
@@ -1975,9 +2004,11 @@ func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicated
 //
 // @return CreateDocParserJobResponse
 func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobRequest, runtime *dara.RuntimeOptions) (_result *CreateDocParserJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FileName) {
@@ -2164,9 +2195,11 @@ func (client *Client) CreateDocParserJobAdvance(request *CreateDocParserJobAdvan
 //
 // @return CreateDtsInstanceResponse
 func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateDtsInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -2328,9 +2361,11 @@ func (client *Client) CreateDtsInstance(request *CreateDtsInstanceRequest) (_res
 //
 // @return CreateJobMonitorRuleResponse
 func (client *Client) CreateJobMonitorRuleWithOptions(request *CreateJobMonitorRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateJobMonitorRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DelayRuleTime) {
@@ -2434,9 +2469,11 @@ func (client *Client) CreateJobMonitorRule(request *CreateJobMonitorRuleRequest)
 //
 // @return CreateMigrationJobResponse
 func (client *Client) CreateMigrationJobWithOptions(request *CreateMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *CreateMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2524,9 +2561,11 @@ func (client *Client) CreateMigrationJob(request *CreateMigrationJobRequest) (_r
 //
 // @return CreateReverseDtsJobResponse
 func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJobRequest, runtime *dara.RuntimeOptions) (_result *CreateReverseDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -2602,9 +2641,11 @@ func (client *Client) CreateReverseDtsJob(request *CreateReverseDtsJobRequest) (
 //
 // @return CreateSubscriptionInstanceResponse
 func (client *Client) CreateSubscriptionInstanceWithOptions(request *CreateSubscriptionInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateSubscriptionInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2698,9 +2739,11 @@ func (client *Client) CreateSubscriptionInstance(request *CreateSubscriptionInst
 //
 // @return CreateSynchronizationJobResponse
 func (client *Client) CreateSynchronizationJobWithOptions(request *CreateSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *CreateSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2818,9 +2861,11 @@ func (client *Client) CreateSynchronizationJob(request *CreateSynchronizationJob
 //
 // @return DeleteConsumerChannelResponse
 func (client *Client) DeleteConsumerChannelWithOptions(request *DeleteConsumerChannelRequest, runtime *dara.RuntimeOptions) (_result *DeleteConsumerChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerGroupId) {
@@ -2894,9 +2939,11 @@ func (client *Client) DeleteConsumerChannel(request *DeleteConsumerChannelReques
 //
 // @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -2974,9 +3021,11 @@ func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (
 //
 // @return DeleteDtsJobResponse
 func (client *Client) DeleteDtsJobWithOptions(request *DeleteDtsJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -3058,9 +3107,11 @@ func (client *Client) DeleteDtsJob(request *DeleteDtsJobRequest) (_result *Delet
 //
 // @return DeleteDtsJobsResponse
 func (client *Client) DeleteDtsJobsWithOptions(request *DeleteDtsJobsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDtsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobIds) {
@@ -3130,9 +3181,11 @@ func (client *Client) DeleteDtsJobs(request *DeleteDtsJobsRequest) (_result *Del
 //
 // @return DeleteMigrationJobResponse
 func (client *Client) DeleteMigrationJobWithOptions(request *DeleteMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3206,9 +3259,11 @@ func (client *Client) DeleteMigrationJob(request *DeleteMigrationJobRequest) (_r
 //
 // @return DeleteSubscriptionInstanceResponse
 func (client *Client) DeleteSubscriptionInstanceWithOptions(request *DeleteSubscriptionInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteSubscriptionInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3282,9 +3337,11 @@ func (client *Client) DeleteSubscriptionInstance(request *DeleteSubscriptionInst
 //
 // @return DeleteSynchronizationJobResponse
 func (client *Client) DeleteSynchronizationJobWithOptions(request *DeleteSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *DeleteSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -3358,9 +3415,11 @@ func (client *Client) DeleteSynchronizationJob(request *DeleteSynchronizationJob
 //
 // @return DescribeChannelAccountResponse
 func (client *Client) DescribeChannelAccountWithOptions(request *DescribeChannelAccountRequest, runtime *dara.RuntimeOptions) (_result *DescribeChannelAccountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -3442,9 +3501,11 @@ func (client *Client) DescribeChannelAccount(request *DescribeChannelAccountRequ
 //
 // @return DescribeCheckJobsResponse
 func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCheckJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckJobId) {
@@ -3526,9 +3587,11 @@ func (client *Client) DescribeCheckJobs(request *DescribeCheckJobsRequest) (_res
 //
 // @return DescribeClusterOperateLogsResponse
 func (client *Client) DescribeClusterOperateLogsWithOptions(request *DescribeClusterOperateLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterOperateLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -3624,9 +3687,11 @@ func (client *Client) DescribeClusterOperateLogs(request *DescribeClusterOperate
 //
 // @return DescribeClusterUsedUtilizationResponse
 func (client *Client) DescribeClusterUsedUtilizationWithOptions(request *DescribeClusterUsedUtilizationRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterUsedUtilizationResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -3722,9 +3787,11 @@ func (client *Client) DescribeClusterUsedUtilization(request *DescribeClusterUse
 //
 // @return DescribeConnectionStatusResponse
 func (client *Client) DescribeConnectionStatusWithOptions(request *DescribeConnectionStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeConnectionStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationEndpointArchitecture) {
@@ -3874,9 +3941,11 @@ func (client *Client) DescribeConnectionStatus(request *DescribeConnectionStatus
 //
 // @return DescribeConsumerChannelResponse
 func (client *Client) DescribeConsumerChannelWithOptions(request *DescribeConsumerChannelRequest, runtime *dara.RuntimeOptions) (_result *DescribeConsumerChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -3958,9 +4027,11 @@ func (client *Client) DescribeConsumerChannel(request *DescribeConsumerChannelRe
 //
 // @return DescribeConsumerGroupResponse
 func (client *Client) DescribeConsumerGroupWithOptions(request *DescribeConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeConsumerGroupResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -4042,9 +4113,11 @@ func (client *Client) DescribeConsumerGroup(request *DescribeConsumerGroupReques
 //
 // @return DescribeDTSIPResponse
 func (client *Client) DescribeDTSIPWithOptions(request *DescribeDTSIPRequest, runtime *dara.RuntimeOptions) (_result *DescribeDTSIPResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestinationEndpointRegion) {
@@ -4114,9 +4187,11 @@ func (client *Client) DescribeDTSIP(request *DescribeDTSIPRequest) (_result *Des
 //
 // @return DescribeDataCheckReportUrlResponse
 func (client *Client) DescribeDataCheckReportUrlWithOptions(request *DescribeDataCheckReportUrlRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataCheckReportUrlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckType) {
@@ -4190,9 +4265,11 @@ func (client *Client) DescribeDataCheckReportUrl(request *DescribeDataCheckRepor
 //
 // @return DescribeDataCheckTableDetailsResponse
 func (client *Client) DescribeDataCheckTableDetailsWithOptions(request *DescribeDataCheckTableDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataCheckTableDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckType) {
@@ -4278,9 +4355,11 @@ func (client *Client) DescribeDataCheckTableDetails(request *DescribeDataCheckTa
 //
 // @return DescribeDataCheckTableDiffDetailsResponse
 func (client *Client) DescribeDataCheckTableDiffDetailsWithOptions(request *DescribeDataCheckTableDiffDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataCheckTableDiffDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckType) {
@@ -4362,9 +4441,11 @@ func (client *Client) DescribeDataCheckTableDiffDetails(request *DescribeDataChe
 //
 // @return DescribeDedicatedClusterResponse
 func (client *Client) DescribeDedicatedClusterWithOptions(request *DescribeDedicatedClusterRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -4434,9 +4515,11 @@ func (client *Client) DescribeDedicatedCluster(request *DescribeDedicatedCluster
 //
 // @return DescribeDedicatedClusterMonitorRuleResponse
 func (client *Client) DescribeDedicatedClusterMonitorRuleWithOptions(request *DescribeDedicatedClusterMonitorRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeDedicatedClusterMonitorRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -4506,9 +4589,11 @@ func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedic
 //
 // @return DescribeDocParserJobResultResponse
 func (client *Client) DescribeDocParserJobResultWithOptions(request *DescribeDocParserJobResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocParserJobResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -4574,9 +4659,11 @@ func (client *Client) DescribeDocParserJobResult(request *DescribeDocParserJobRe
 //
 // @return DescribeDocParserJobStatusResponse
 func (client *Client) DescribeDocParserJobStatusWithOptions(request *DescribeDocParserJobStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDocParserJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -4642,9 +4729,11 @@ func (client *Client) DescribeDocParserJobStatus(request *DescribeDocParserJobSt
 //
 // @return DescribeDtsEtlJobVersionInfoResponse
 func (client *Client) DescribeDtsEtlJobVersionInfoWithOptions(request *DescribeDtsEtlJobVersionInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeDtsEtlJobVersionInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -4722,9 +4811,11 @@ func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVer
 //
 // @return DescribeDtsJobConfigResponse
 func (client *Client) DescribeDtsJobConfigWithOptions(request *DescribeDtsJobConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDtsJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -4804,9 +4895,11 @@ func (client *Client) DescribeDtsJobConfig(request *DescribeDtsJobConfigRequest)
 //
 // @return DescribeDtsJobDetailResponse
 func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeDtsJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceID) {
@@ -4896,9 +4989,11 @@ func (client *Client) DescribeDtsJobDetail(request *DescribeDtsJobDetailRequest)
 //
 // @return DescribeDtsJobsResponse
 func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDtsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -5054,9 +5149,11 @@ func (client *Client) DescribeDtsJobs(request *DescribeDtsJobsRequest) (_result 
 //
 // @return DescribeDtsServiceLogResponse
 func (client *Client) DescribeDtsServiceLogWithOptions(request *DescribeDtsServiceLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDtsServiceLogResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -5154,9 +5251,11 @@ func (client *Client) DescribeDtsServiceLog(request *DescribeDtsServiceLogReques
 //
 // @return DescribeEndpointSwitchStatusResponse
 func (client *Client) DescribeEndpointSwitchStatusWithOptions(request *DescribeEndpointSwitchStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeEndpointSwitchStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -5234,9 +5333,11 @@ func (client *Client) DescribeEndpointSwitchStatus(request *DescribeEndpointSwit
 //
 // @return DescribeEtlJobLogsResponse
 func (client *Client) DescribeEtlJobLogsWithOptions(request *DescribeEtlJobLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEtlJobLogsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -5302,9 +5403,11 @@ func (client *Client) DescribeEtlJobLogs(request *DescribeEtlJobLogsRequest) (_r
 //
 // @return DescribeFullProcessListResponse
 func (client *Client) DescribeFullProcessListWithOptions(request *DescribeFullProcessListRequest, runtime *dara.RuntimeOptions) (_result *DescribeFullProcessListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -5374,9 +5477,11 @@ func (client *Client) DescribeFullProcessList(request *DescribeFullProcessListRe
 //
 // @return DescribeGadInstancesResponse
 func (client *Client) DescribeGadInstancesWithOptions(request *DescribeGadInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeGadInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbEngineTypes) {
@@ -5466,9 +5571,11 @@ func (client *Client) DescribeGadInstances(request *DescribeGadInstancesRequest)
 //
 // @return DescribeInitializationStatusResponse
 func (client *Client) DescribeInitializationStatusWithOptions(request *DescribeInitializationStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeInitializationStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -5550,9 +5657,11 @@ func (client *Client) DescribeInitializationStatus(request *DescribeInitializati
 //
 // @return DescribeJobMonitorRuleResponse
 func (client *Client) DescribeJobMonitorRuleWithOptions(request *DescribeJobMonitorRuleRequest, runtime *dara.RuntimeOptions) (_result *DescribeJobMonitorRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -5618,9 +5727,11 @@ func (client *Client) DescribeJobMonitorRule(request *DescribeJobMonitorRuleRequ
 //
 // @return DescribeMetricListResponse
 func (client *Client) DescribeMetricListWithOptions(request *DescribeMetricListRequest, runtime *dara.RuntimeOptions) (_result *DescribeMetricListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -5724,9 +5835,11 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 //
 // @return DescribeMigrationJobAlertResponse
 func (client *Client) DescribeMigrationJobAlertWithOptions(request *DescribeMigrationJobAlertRequest, runtime *dara.RuntimeOptions) (_result *DescribeMigrationJobAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -5804,9 +5917,11 @@ func (client *Client) DescribeMigrationJobAlert(request *DescribeMigrationJobAle
 //
 // @return DescribeMigrationJobDetailResponse
 func (client *Client) DescribeMigrationJobDetailWithOptions(request *DescribeMigrationJobDetailRequest, runtime *dara.RuntimeOptions) (_result *DescribeMigrationJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -5896,9 +6011,11 @@ func (client *Client) DescribeMigrationJobDetail(request *DescribeMigrationJobDe
 //
 // @return DescribeMigrationJobStatusResponse
 func (client *Client) DescribeMigrationJobStatusWithOptions(request *DescribeMigrationJobStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeMigrationJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -5976,9 +6093,11 @@ func (client *Client) DescribeMigrationJobStatus(request *DescribeMigrationJobSt
 //
 // @return DescribeMigrationJobsResponse
 func (client *Client) DescribeMigrationJobsWithOptions(request *DescribeMigrationJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeMigrationJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6064,9 +6183,11 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 //
 // @return DescribePreCheckCreateGadOrderResultResponse
 func (client *Client) DescribePreCheckCreateGadOrderResultWithOptions(request *DescribePreCheckCreateGadOrderResultRequest, runtime *dara.RuntimeOptions) (_result *DescribePreCheckCreateGadOrderResultResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -6140,9 +6261,11 @@ func (client *Client) DescribePreCheckCreateGadOrderResult(request *DescribePreC
 //
 // @return DescribePreCheckStatusResponse
 func (client *Client) DescribePreCheckStatusWithOptions(request *DescribePreCheckStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribePreCheckStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -6236,9 +6359,11 @@ func (client *Client) DescribePreCheckStatus(request *DescribePreCheckStatusRequ
 //
 // @return DescribeSubscriptionInstanceAlertResponse
 func (client *Client) DescribeSubscriptionInstanceAlertWithOptions(request *DescribeSubscriptionInstanceAlertRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubscriptionInstanceAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6316,9 +6441,11 @@ func (client *Client) DescribeSubscriptionInstanceAlert(request *DescribeSubscri
 //
 // @return DescribeSubscriptionInstanceStatusResponse
 func (client *Client) DescribeSubscriptionInstanceStatusWithOptions(request *DescribeSubscriptionInstanceStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubscriptionInstanceStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6392,9 +6519,11 @@ func (client *Client) DescribeSubscriptionInstanceStatus(request *DescribeSubscr
 //
 // @return DescribeSubscriptionInstancesResponse
 func (client *Client) DescribeSubscriptionInstancesWithOptions(request *DescribeSubscriptionInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubscriptionInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6490,9 +6619,11 @@ func (client *Client) DescribeSubscriptionInstances(request *DescribeSubscriptio
 //
 // @return DescribeSubscriptionMetaResponse
 func (client *Client) DescribeSubscriptionMetaWithOptions(tmpReq *DescribeSubscriptionMetaRequest, runtime *dara.RuntimeOptions) (_result *DescribeSubscriptionMetaResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DescribeSubscriptionMetaShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -6586,9 +6717,11 @@ func (client *Client) DescribeSubscriptionMeta(request *DescribeSubscriptionMeta
 //
 // @return DescribeSyncStatusResponse
 func (client *Client) DescribeSyncStatusWithOptions(request *DescribeSyncStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSyncStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Direction) {
@@ -6662,9 +6795,11 @@ func (client *Client) DescribeSyncStatus(request *DescribeSyncStatusRequest) (_r
 //
 // @return DescribeSynchronizationJobAlertResponse
 func (client *Client) DescribeSynchronizationJobAlertWithOptions(request *DescribeSynchronizationJobAlertRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationJobAlertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6746,9 +6881,11 @@ func (client *Client) DescribeSynchronizationJobAlert(request *DescribeSynchroni
 //
 // @return DescribeSynchronizationJobReplicatorCompareResponse
 func (client *Client) DescribeSynchronizationJobReplicatorCompareWithOptions(request *DescribeSynchronizationJobReplicatorCompareRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationJobReplicatorCompareResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6830,9 +6967,11 @@ func (client *Client) DescribeSynchronizationJobReplicatorCompare(request *Descr
 //
 // @return DescribeSynchronizationJobStatusResponse
 func (client *Client) DescribeSynchronizationJobStatusWithOptions(request *DescribeSynchronizationJobStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationJobStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6914,9 +7053,11 @@ func (client *Client) DescribeSynchronizationJobStatus(request *DescribeSynchron
 //
 // @return DescribeSynchronizationJobStatusListResponse
 func (client *Client) DescribeSynchronizationJobStatusListWithOptions(request *DescribeSynchronizationJobStatusListRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationJobStatusListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -6994,9 +7135,11 @@ func (client *Client) DescribeSynchronizationJobStatusList(request *DescribeSync
 //
 // @return DescribeSynchronizationJobsResponse
 func (client *Client) DescribeSynchronizationJobsWithOptions(request *DescribeSynchronizationJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -7086,9 +7229,11 @@ func (client *Client) DescribeSynchronizationJobs(request *DescribeSynchronizati
 //
 // @return DescribeSynchronizationObjectModifyStatusResponse
 func (client *Client) DescribeSynchronizationObjectModifyStatusWithOptions(request *DescribeSynchronizationObjectModifyStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSynchronizationObjectModifyStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -7166,9 +7311,11 @@ func (client *Client) DescribeSynchronizationObjectModifyStatus(request *Describ
 //
 // @return DescribeTagKeysResponse
 func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -7250,9 +7397,11 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 //
 // @return DescribeTagValuesResponse
 func (client *Client) DescribeTagValuesWithOptions(request *DescribeTagValuesRequest, runtime *dara.RuntimeOptions) (_result *DescribeTagValuesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -7338,9 +7487,11 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 //
 // @return DetachGadInstanceDbMemberResponse
 func (client *Client) DetachGadInstanceDbMemberWithOptions(request *DetachGadInstanceDbMemberRequest, runtime *dara.RuntimeOptions) (_result *DetachGadInstanceDbMemberResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -7420,9 +7571,11 @@ func (client *Client) DetachGadInstanceDbMember(request *DetachGadInstanceDbMemb
 //
 // @return InitDtsRdsInstanceResponse
 func (client *Client) InitDtsRdsInstanceWithOptions(request *InitDtsRdsInstanceRequest, runtime *dara.RuntimeOptions) (_result *InitDtsRdsInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -7510,9 +7663,11 @@ func (client *Client) InitDtsRdsInstance(request *InitDtsRdsInstanceRequest) (_r
 //
 // @return ListDedicatedClusterResponse
 func (client *Client) ListDedicatedClusterWithOptions(request *ListDedicatedClusterRequest, runtime *dara.RuntimeOptions) (_result *ListDedicatedClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OrderColumn) {
@@ -7598,6 +7753,80 @@ func (client *Client) ListDedicatedCluster(request *ListDedicatedClusterRequest)
 
 // Summary:
 //
+// 查询JobStep列表。
+//
+// @param request - ListJobStepRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobStepResponse
+func (client *Client) ListJobStepWithOptions(request *ListJobStepRequest, runtime *dara.RuntimeOptions) (_result *ListJobStepResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DtsJobId) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ZeroEtlJob) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListJobStep"),
+		Version:     dara.String("2020-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListJobStepResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询JobStep列表。
+//
+// @param request - ListJobStepRequest
+//
+// @return ListJobStepResponse
+func (client *Client) ListJobStep(request *ListJobStepRequest) (_result *ListJobStepResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListJobStepResponse{}
+	_body, _err := client.ListJobStepWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags that are bound to specific data migration, data synchronization, or change tracking instances, or queries the instances to which specific tags are bound.
 //
 // Description:
@@ -7610,9 +7839,11 @@ func (client *Client) ListDedicatedCluster(request *ListDedicatedClusterRequest)
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -7694,9 +7925,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // @return ModifyConsumerChannelResponse
 func (client *Client) ModifyConsumerChannelWithOptions(request *ModifyConsumerChannelRequest, runtime *dara.RuntimeOptions) (_result *ModifyConsumerChannelResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsumerGroupId) {
@@ -7782,9 +8015,11 @@ func (client *Client) ModifyConsumerChannel(request *ModifyConsumerChannelReques
 //
 // @return ModifyConsumerGroupPasswordResponse
 func (client *Client) ModifyConsumerGroupPasswordWithOptions(request *ModifyConsumerGroupPasswordRequest, runtime *dara.RuntimeOptions) (_result *ModifyConsumerGroupPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -7878,9 +8113,11 @@ func (client *Client) ModifyConsumerGroupPassword(request *ModifyConsumerGroupPa
 //
 // @return ModifyConsumptionTimestampResponse
 func (client *Client) ModifyConsumptionTimestampWithOptions(request *ModifyConsumptionTimestampRequest, runtime *dara.RuntimeOptions) (_result *ModifyConsumptionTimestampResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -7962,9 +8199,11 @@ func (client *Client) ModifyConsumptionTimestamp(request *ModifyConsumptionTimes
 //
 // @return ModifyDedicatedClusterResponse
 func (client *Client) ModifyDedicatedClusterWithOptions(request *ModifyDedicatedClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyDedicatedClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -8054,9 +8293,11 @@ func (client *Client) ModifyDedicatedCluster(request *ModifyDedicatedClusterRequ
 //
 // @return ModifyDtsJobResponse
 func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ModifyDtsJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -8293,9 +8534,11 @@ func (client *Client) ModifyDtsJobAdvance(request *ModifyDtsJobAdvanceRequest, r
 //
 // @return ModifyDtsJobConfigResponse
 func (client *Client) ModifyDtsJobConfigWithOptions(request *ModifyDtsJobConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -8373,9 +8616,11 @@ func (client *Client) ModifyDtsJobConfig(request *ModifyDtsJobConfigRequest) (_r
 //
 // @return ModifyDtsJobDedicatedClusterResponse
 func (client *Client) ModifyDtsJobDedicatedClusterWithOptions(request *ModifyDtsJobDedicatedClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobDedicatedClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -8459,9 +8704,11 @@ func (client *Client) ModifyDtsJobDedicatedCluster(request *ModifyDtsJobDedicate
 //
 // @return ModifyDtsJobDuLimitResponse
 func (client *Client) ModifyDtsJobDuLimitWithOptions(request *ModifyDtsJobDuLimitRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobDuLimitResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -8545,9 +8792,11 @@ func (client *Client) ModifyDtsJobDuLimit(request *ModifyDtsJobDuLimitRequest) (
 //
 // @return ModifyDtsJobEndpointResponse
 func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpointRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliyunUid) {
@@ -8689,9 +8938,11 @@ func (client *Client) ModifyDtsJobEndpoint(request *ModifyDtsJobEndpointRequest)
 //
 // @return ModifyDtsJobNameResponse
 func (client *Client) ModifyDtsJobNameWithOptions(request *ModifyDtsJobNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -8765,9 +9016,11 @@ func (client *Client) ModifyDtsJobName(request *ModifyDtsJobNameRequest) (_resul
 //
 // @return ModifyDtsJobPasswordResponse
 func (client *Client) ModifyDtsJobPasswordWithOptions(request *ModifyDtsJobPasswordRequest, runtime *dara.RuntimeOptions) (_result *ModifyDtsJobPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -8857,9 +9110,11 @@ func (client *Client) ModifyDtsJobPassword(request *ModifyDtsJobPasswordRequest)
 //
 // @return ModifyDynamicConfigResponse
 func (client *Client) ModifyDynamicConfigWithOptions(request *ModifyDynamicConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDynamicConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigList) {
@@ -8937,9 +9192,11 @@ func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (
 //
 // @return ModifyGadInstanceNameResponse
 func (client *Client) ModifyGadInstanceNameWithOptions(request *ModifyGadInstanceNameRequest, runtime *dara.RuntimeOptions) (_result *ModifyGadInstanceNameResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9005,6 +9262,84 @@ func (client *Client) ModifyGadInstanceName(request *ModifyGadInstanceNameReques
 
 // Summary:
 //
+// 修改增量写入的位点。
+//
+// @param request - ModifyJobStepCheckpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyJobStepCheckpointResponse
+func (client *Client) ModifyJobStepCheckpointWithOptions(request *ModifyJobStepCheckpointRequest, runtime *dara.RuntimeOptions) (_result *ModifyJobStepCheckpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DtsJobId) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !dara.IsNil(request.JobStepId) {
+		query["JobStepId"] = request.JobStepId
+	}
+
+	if !dara.IsNil(request.NewCheckPoint) {
+		query["NewCheckPoint"] = request.NewCheckPoint
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyJobStepCheckpoint"),
+		Version:     dara.String("2020-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyJobStepCheckpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改增量写入的位点。
+//
+// @param request - ModifyJobStepCheckpointRequest
+//
+// @return ModifyJobStepCheckpointResponse
+func (client *Client) ModifyJobStepCheckpoint(request *ModifyJobStepCheckpointRequest) (_result *ModifyJobStepCheckpointResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyJobStepCheckpointResponse{}
+	_body, _err := client.ModifyJobStepCheckpointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the information about a change tracking task.
 //
 // Description:
@@ -9017,9 +9352,11 @@ func (client *Client) ModifyGadInstanceName(request *ModifyGadInstanceNameReques
 //
 // @return ModifySubscriptionResponse
 func (client *Client) ModifySubscriptionWithOptions(request *ModifySubscriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifySubscriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DbList) {
@@ -9113,9 +9450,11 @@ func (client *Client) ModifySubscription(request *ModifySubscriptionRequest) (_r
 //
 // @return ModifySubscriptionObjectResponse
 func (client *Client) ModifySubscriptionObjectWithOptions(request *ModifySubscriptionObjectRequest, runtime *dara.RuntimeOptions) (_result *ModifySubscriptionObjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -9193,9 +9532,11 @@ func (client *Client) ModifySubscriptionObject(request *ModifySubscriptionObject
 //
 // @return ModifySynchronizationObjectResponse
 func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySynchronizationObjectRequest, runtime *dara.RuntimeOptions) (_result *ModifySynchronizationObjectResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -9279,9 +9620,11 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 //
 // @return PreCheckCreateGadOrderResponse
 func (client *Client) PreCheckCreateGadOrderWithOptions(request *PreCheckCreateGadOrderRequest, runtime *dara.RuntimeOptions) (_result *PreCheckCreateGadOrderResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -9383,9 +9726,11 @@ func (client *Client) PreCheckCreateGadOrder(request *PreCheckCreateGadOrderRequ
 //
 // @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BuyCount) {
@@ -9467,9 +9812,11 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 //
 // @return ResetDtsJobResponse
 func (client *Client) ResetDtsJobWithOptions(request *ResetDtsJobRequest, runtime *dara.RuntimeOptions) (_result *ResetDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -9551,9 +9898,11 @@ func (client *Client) ResetDtsJob(request *ResetDtsJobRequest) (_result *ResetDt
 //
 // @return ResetSynchronizationJobResponse
 func (client *Client) ResetSynchronizationJobWithOptions(request *ResetSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *ResetSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -9635,9 +9984,11 @@ func (client *Client) ResetSynchronizationJob(request *ResetSynchronizationJobRe
 //
 // @return ReverseTwoWayDirectionResponse
 func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDirectionRequest, runtime *dara.RuntimeOptions) (_result *ReverseTwoWayDirectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -9707,9 +10058,11 @@ func (client *Client) ReverseTwoWayDirection(request *ReverseTwoWayDirectionRequ
 //
 // @return ShieldPrecheckResponse
 func (client *Client) ShieldPrecheckWithOptions(request *ShieldPrecheckRequest, runtime *dara.RuntimeOptions) (_result *ShieldPrecheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -9779,9 +10132,11 @@ func (client *Client) ShieldPrecheck(request *ShieldPrecheckRequest) (_result *S
 //
 // @return SkipFullJobTableResponse
 func (client *Client) SkipFullJobTableWithOptions(request *SkipFullJobTableRequest, runtime *dara.RuntimeOptions) (_result *SkipFullJobTableResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -9855,9 +10210,11 @@ func (client *Client) SkipFullJobTable(request *SkipFullJobTableRequest) (_resul
 //
 // @return SkipPreCheckResponse
 func (client *Client) SkipPreCheckWithOptions(request *SkipPreCheckRequest, runtime *dara.RuntimeOptions) (_result *SkipPreCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -9939,9 +10296,11 @@ func (client *Client) SkipPreCheck(request *SkipPreCheckRequest) (_result *SkipP
 //
 // @return StartDtsJobResponse
 func (client *Client) StartDtsJobWithOptions(request *StartDtsJobRequest, runtime *dara.RuntimeOptions) (_result *StartDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -10019,9 +10378,11 @@ func (client *Client) StartDtsJob(request *StartDtsJobRequest) (_result *StartDt
 //
 // @return StartDtsJobsResponse
 func (client *Client) StartDtsJobsWithOptions(request *StartDtsJobsRequest, runtime *dara.RuntimeOptions) (_result *StartDtsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobIds) {
@@ -10091,9 +10452,11 @@ func (client *Client) StartDtsJobs(request *StartDtsJobsRequest) (_result *Start
 //
 // @return StartMigrationJobResponse
 func (client *Client) StartMigrationJobWithOptions(request *StartMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *StartMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -10171,9 +10534,11 @@ func (client *Client) StartMigrationJob(request *StartMigrationJobRequest) (_res
 //
 // @return StartReverseWriterResponse
 func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterRequest, runtime *dara.RuntimeOptions) (_result *StartReverseWriterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckPoint) {
@@ -10243,9 +10608,11 @@ func (client *Client) StartReverseWriter(request *StartReverseWriterRequest) (_r
 //
 // @return StartSubscriptionInstanceResponse
 func (client *Client) StartSubscriptionInstanceWithOptions(request *StartSubscriptionInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartSubscriptionInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -10319,9 +10686,11 @@ func (client *Client) StartSubscriptionInstance(request *StartSubscriptionInstan
 //
 // @return StartSynchronizationJobResponse
 func (client *Client) StartSynchronizationJobWithOptions(request *StartSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *StartSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -10399,9 +10768,11 @@ func (client *Client) StartSynchronizationJob(request *StartSynchronizationJobRe
 //
 // @return StopDedicatedClusterResponse
 func (client *Client) StopDedicatedClusterWithOptions(request *StopDedicatedClusterRequest, runtime *dara.RuntimeOptions) (_result *StopDedicatedClusterResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DedicatedClusterId) {
@@ -10479,9 +10850,11 @@ func (client *Client) StopDedicatedCluster(request *StopDedicatedClusterRequest)
 //
 // @return StopDtsJobResponse
 func (client *Client) StopDtsJobWithOptions(request *StopDtsJobRequest, runtime *dara.RuntimeOptions) (_result *StopDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -10559,9 +10932,11 @@ func (client *Client) StopDtsJob(request *StopDtsJobRequest) (_result *StopDtsJo
 //
 // @return StopDtsJobsResponse
 func (client *Client) StopDtsJobsWithOptions(request *StopDtsJobsRequest, runtime *dara.RuntimeOptions) (_result *StopDtsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobIds) {
@@ -10631,9 +11006,11 @@ func (client *Client) StopDtsJobs(request *StopDtsJobsRequest) (_result *StopDts
 //
 // @return StopMigrationJobResponse
 func (client *Client) StopMigrationJobWithOptions(request *StopMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *StopMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -10711,9 +11088,11 @@ func (client *Client) StopMigrationJob(request *StopMigrationJobRequest) (_resul
 //
 // @return SummaryJobDetailResponse
 func (client *Client) SummaryJobDetailWithOptions(request *SummaryJobDetailRequest, runtime *dara.RuntimeOptions) (_result *SummaryJobDetailResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -10803,9 +11182,11 @@ func (client *Client) SummaryJobDetail(request *SummaryJobDetailRequest) (_resul
 //
 // @return SuspendDtsJobResponse
 func (client *Client) SuspendDtsJobWithOptions(request *SuspendDtsJobRequest, runtime *dara.RuntimeOptions) (_result *SuspendDtsJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -10887,9 +11268,11 @@ func (client *Client) SuspendDtsJob(request *SuspendDtsJobRequest) (_result *Sus
 //
 // @return SuspendDtsJobsResponse
 func (client *Client) SuspendDtsJobsWithOptions(request *SuspendDtsJobsRequest, runtime *dara.RuntimeOptions) (_result *SuspendDtsJobsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobIds) {
@@ -10959,9 +11342,11 @@ func (client *Client) SuspendDtsJobs(request *SuspendDtsJobsRequest) (_result *S
 //
 // @return SuspendMigrationJobResponse
 func (client *Client) SuspendMigrationJobWithOptions(request *SuspendMigrationJobRequest, runtime *dara.RuntimeOptions) (_result *SuspendMigrationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -11049,9 +11434,11 @@ func (client *Client) SuspendMigrationJob(request *SuspendMigrationJobRequest) (
 //
 // @return SuspendSynchronizationJobResponse
 func (client *Client) SuspendSynchronizationJobWithOptions(request *SuspendSynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *SuspendSynchronizationJobResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -11139,9 +11526,11 @@ func (client *Client) SuspendSynchronizationJob(request *SuspendSynchronizationJ
 //
 // @return SwitchPhysicalDtsJobToCloudResponse
 func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhysicalDtsJobToCloudRequest, runtime *dara.RuntimeOptions) (_result *SwitchPhysicalDtsJobToCloudResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsInstanceId) {
@@ -11215,9 +11604,11 @@ func (client *Client) SwitchPhysicalDtsJobToCloud(request *SwitchPhysicalDtsJobT
 //
 // @return SwitchSynchronizationEndpointResponse
 func (client *Client) SwitchSynchronizationEndpointWithOptions(request *SwitchSynchronizationEndpointRequest, runtime *dara.RuntimeOptions) (_result *SwitchSynchronizationEndpointResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountId) {
@@ -11317,9 +11708,11 @@ func (client *Client) SwitchSynchronizationEndpoint(request *SwitchSynchronizati
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -11407,9 +11800,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // @return TransferInstanceClassResponse
 func (client *Client) TransferInstanceClassWithOptions(request *TransferInstanceClassRequest, runtime *dara.RuntimeOptions) (_result *TransferInstanceClassResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DtsJobId) {
@@ -11491,9 +11886,11 @@ func (client *Client) TransferInstanceClass(request *TransferInstanceClassReques
 //
 // @return TransferPayTypeResponse
 func (client *Client) TransferPayTypeWithOptions(request *TransferPayTypeRequest, runtime *dara.RuntimeOptions) (_result *TransferPayTypeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
@@ -11599,9 +11996,11 @@ func (client *Client) TransferPayType(request *TransferPayTypeRequest) (_result 
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
@@ -11697,9 +12096,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // @return UpgradeTwoWayResponse
 func (client *Client) UpgradeTwoWayWithOptions(request *UpgradeTwoWayRequest, runtime *dara.RuntimeOptions) (_result *UpgradeTwoWayResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceClass) {
@@ -11789,9 +12190,11 @@ func (client *Client) UpgradeTwoWay(request *UpgradeTwoWayRequest) (_result *Upg
 //
 // @return WhiteIpListResponse
 func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtime *dara.RuntimeOptions) (_result *WhiteIpListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DestAliyunUid) {

@@ -206,7 +206,16 @@ func (s *DescribeClusterOperateLogsResponseBody) SetTotalRecordCount(v int64) *D
 }
 
 func (s *DescribeClusterOperateLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataPoints != nil {
+		for _, item := range s.DataPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeClusterOperateLogsResponseBodyDataPoints struct {

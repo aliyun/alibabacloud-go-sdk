@@ -200,7 +200,12 @@ func (s *DescribePreCheckCreateGadOrderResultResponseBody) SetTaskId(v string) *
 }
 
 func (s *DescribePreCheckCreateGadOrderResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckItems != nil {
+		if err := s.PreCheckItems.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems struct {
@@ -225,7 +230,16 @@ func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) SetPreCh
 }
 
 func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) Validate() error {
-	return dara.Validate(s)
+	if s.PreCheckItems != nil {
+		for _, item := range s.PreCheckItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems struct {

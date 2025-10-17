@@ -155,7 +155,12 @@ func (s *DescribeMigrationJobsResponseBody) SetTotalRecordCount(v int64) *Descri
 }
 
 func (s *DescribeMigrationJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MigrationJobs != nil {
+		if err := s.MigrationJobs.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobs struct {
@@ -180,7 +185,16 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobs) SetMigrationJob(v []*De
 }
 
 func (s *DescribeMigrationJobsResponseBodyMigrationJobs) Validate() error {
-	return dara.Validate(s)
+	if s.MigrationJob != nil {
+		for _, item := range s.MigrationJob {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob struct {
@@ -413,7 +427,52 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob) SetTags(v *
 }
 
 func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitialization != nil {
+		if err := s.DataInitialization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronization != nil {
+		if err := s.DataSynchronization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationObject != nil {
+		if err := s.MigrationObject.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Precheck != nil {
+		if err := s.Precheck.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitialization != nil {
+		if err := s.StructureInitialization.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Tags != nil {
+		if err := s.Tags.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobDataInitialization struct {
@@ -813,7 +872,16 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObje
 }
 
 func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObject) Validate() error {
-	return dara.Validate(s)
+	if s.SynchronousObject != nil {
+		for _, item := range s.SynchronousObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectSynchronousObject struct {
@@ -873,7 +941,12 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObje
 }
 
 func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectSynchronousObject) Validate() error {
-	return dara.Validate(s)
+	if s.TableList != nil {
+		if err := s.TableList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobMigrationObjectSynchronousObjectTableList struct {
@@ -1190,7 +1263,16 @@ func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTags) SetTag(
 }
 
 func (s *DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTags) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobsResponseBodyMigrationJobsMigrationJobTagsTag struct {

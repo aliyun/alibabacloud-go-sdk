@@ -59,5 +59,10 @@ func (s *ResetDtsJobResponse) SetBody(v *ResetDtsJobResponseBody) *ResetDtsJobRe
 }
 
 func (s *ResetDtsJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

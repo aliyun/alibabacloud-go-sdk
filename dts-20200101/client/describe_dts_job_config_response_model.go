@@ -59,5 +59,10 @@ func (s *DescribeDtsJobConfigResponse) SetBody(v *DescribeDtsJobConfigResponseBo
 }
 
 func (s *DescribeDtsJobConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

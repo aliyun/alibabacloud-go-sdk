@@ -155,7 +155,16 @@ func (s *DescribeEtlJobLogsResponseBody) SetSuccess(v bool) *DescribeEtlJobLogsR
 }
 
 func (s *DescribeEtlJobLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.EtlRunningLogs != nil {
+		for _, item := range s.EtlRunningLogs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeEtlJobLogsResponseBodyEtlRunningLogs struct {

@@ -221,7 +221,25 @@ func (s *DescribeDtsJobsResponseBody) SetTotalRecordCount(v int32) *DescribeDtsJ
 }
 
 func (s *DescribeDtsJobsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DtsJobList != nil {
+		for _, item := range s.DtsJobList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EtlDemoList != nil {
+		for _, item := range s.EtlDemoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobList struct {
@@ -1026,7 +1044,100 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetTagList(v []*DescribeDtsJobsR
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) Validate() error {
-	return dara.Validate(s)
+	if s.DataCloudStatus != nil {
+		if err := s.DataCloudStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorDetails != nil {
+		for _, item := range s.ErrorDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FullDataCheckStatus != nil {
+		if err := s.FullDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IncDataCheckStatus != nil {
+		if err := s.IncDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReverseJob != nil {
+		if err := s.ReverseJob.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureDataCheckStatus != nil {
+		if err := s.StructureDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListDataCloudStatus struct {
@@ -2036,7 +2147,16 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus) SetStatus(v string
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListPrecheckStatusDetail struct {
@@ -2842,7 +2962,71 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetStructureInitializa
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ErrorDetails != nil {
+		for _, item := range s.ErrorDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FullDataCheckStatus != nil {
+		if err := s.FullDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.IncDataCheckStatus != nil {
+		if err := s.IncDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureDataCheckStatus != nil {
+		if err := s.StructureDataCheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus struct {
@@ -3663,7 +3847,16 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus) SetStatu
 }
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatusDetail struct {
@@ -4969,7 +5162,71 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoList) SetTagList(v []*DescribeDtsJobs
 }
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoList) Validate() error {
-	return dara.Validate(s)
+	if s.DataEtlStatus != nil {
+		if err := s.DataEtlStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RetryState != nil {
+		if err := s.RetryState.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ReverseJob != nil {
+		if err := s.ReverseJob.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListDataEtlStatus struct {
@@ -5616,7 +5873,16 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) SetStatus(v strin
 }
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListPrecheckStatusDetail struct {
@@ -6195,7 +6461,47 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) SetStructureInitializ
 }
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJob) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationMode != nil {
+		if err := s.MigrationMode.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataInitializationStatus struct {
@@ -6747,7 +7053,16 @@ func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) SetStat
 }
 
 func (s *DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDtsJobsResponseBodyEtlDemoListReverseJobPrecheckStatusDetail struct {

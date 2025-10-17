@@ -59,5 +59,10 @@ func (s *DescribeDtsJobsResponse) SetBody(v *DescribeDtsJobsResponseBody) *Descr
 }
 
 func (s *DescribeDtsJobsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

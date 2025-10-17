@@ -59,5 +59,10 @@ func (s *StartMigrationJobResponse) SetBody(v *StartMigrationJobResponseBody) *S
 }
 
 func (s *StartMigrationJobResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *ModifyDtsJobDedicatedClusterResponse) SetBody(v *ModifyDtsJobDedicatedC
 }
 
 func (s *ModifyDtsJobDedicatedClusterResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

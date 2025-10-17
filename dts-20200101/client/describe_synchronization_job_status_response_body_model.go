@@ -471,7 +471,51 @@ func (s *DescribeSynchronizationJobStatusResponseBody) SetTaskId(v string) *Desc
 }
 
 func (s *DescribeSynchronizationJobStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Performance != nil {
+		if err := s.Performance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SynchronizationObjects != nil {
+		for _, item := range s.SynchronizationObjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobStatusResponseBodyDataInitializationStatus struct {
@@ -877,7 +921,16 @@ func (s *DescribeSynchronizationJobStatusResponseBodyPrecheckStatus) SetStatus(v
 }
 
 func (s *DescribeSynchronizationJobStatusResponseBodyPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobStatusResponseBodyPrecheckStatusDetail struct {
@@ -1215,7 +1268,25 @@ func (s *DescribeSynchronizationJobStatusResponseBodySynchronizationObjects) Set
 }
 
 func (s *DescribeSynchronizationJobStatusResponseBodySynchronizationObjects) Validate() error {
-	return dara.Validate(s)
+	if s.TableExcludes != nil {
+		for _, item := range s.TableExcludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableIncludes != nil {
+		for _, item := range s.TableIncludes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationJobStatusResponseBodySynchronizationObjectsTableExcludes struct {

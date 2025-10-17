@@ -131,7 +131,16 @@ func (s *DescribeSyncStatusResponseBody) SetSyncStatusList(v []*DescribeSyncStat
 }
 
 func (s *DescribeSyncStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SyncStatusList != nil {
+		for _, item := range s.SyncStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSyncStatusResponseBodySyncStatusList struct {

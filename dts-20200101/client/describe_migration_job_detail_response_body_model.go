@@ -193,7 +193,22 @@ func (s *DescribeMigrationJobDetailResponseBody) SetTotalRecordCount(v int64) *D
 }
 
 func (s *DescribeMigrationJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationDetailList != nil {
+		if err := s.DataInitializationDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationDetailList != nil {
+		if err := s.DataSynchronizationDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationDetailList != nil {
+		if err := s.StructureInitializationDetailList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyDataInitializationDetailList struct {
@@ -218,7 +233,16 @@ func (s *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList) Set
 }
 
 func (s *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationDetail != nil {
+		for _, item := range s.DataInitializationDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInitializationDetail struct {
@@ -386,7 +410,16 @@ func (s *DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList) Se
 }
 
 func (s *DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.DataSynchronizationDetail != nil {
+		for _, item := range s.DataSynchronizationDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSynchronizationDetail struct {
@@ -509,7 +542,16 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList) Validate() error {
-	return dara.Validate(s)
+	if s.StructureInitializationDetail != nil {
+		for _, item := range s.StructureInitializationDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetail struct {
@@ -648,7 +690,12 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ConstraintList != nil {
+		if err := s.ConstraintList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintList struct {
@@ -673,7 +720,16 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintList) Validate() error {
-	return dara.Validate(s)
+	if s.StructureInitializationDetail != nil {
+		for _, item := range s.StructureInitializationDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintListStructureInitializationDetail struct {

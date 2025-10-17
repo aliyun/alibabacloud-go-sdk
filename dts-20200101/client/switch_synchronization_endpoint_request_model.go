@@ -149,7 +149,17 @@ func (s *SwitchSynchronizationEndpointRequest) SetSynchronizationJobId(v string)
 }
 
 func (s *SwitchSynchronizationEndpointRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Endpoint != nil {
+		if err := s.Endpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SwitchSynchronizationEndpointRequestEndpoint struct {

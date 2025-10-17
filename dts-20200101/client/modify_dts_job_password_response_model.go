@@ -59,5 +59,10 @@ func (s *ModifyDtsJobPasswordResponse) SetBody(v *ModifyDtsJobPasswordResponseBo
 }
 
 func (s *ModifyDtsJobPasswordResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

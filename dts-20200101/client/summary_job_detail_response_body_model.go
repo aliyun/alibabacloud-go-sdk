@@ -127,7 +127,16 @@ func (s *SummaryJobDetailResponseBody) SetSuccess(v bool) *SummaryJobDetailRespo
 }
 
 func (s *SummaryJobDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProgressSummaryDetails != nil {
+		for _, item := range s.ProgressSummaryDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SummaryJobDetailResponseBodyProgressSummaryDetails struct {

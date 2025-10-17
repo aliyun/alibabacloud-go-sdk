@@ -191,7 +191,27 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBody) SetSuccess(v str
 }
 
 func (s *DescribeSynchronizationObjectModifyStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationStatus != nil {
+		if err := s.DataInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DataSynchronizationStatus != nil {
+		if err := s.DataSynchronizationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrecheckStatus != nil {
+		if err := s.PrecheckStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.StructureInitializationStatus != nil {
+		if err := s.StructureInitializationStatus.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyDataInitializationStatus struct {
@@ -413,7 +433,16 @@ func (s *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus) Se
 }
 
 func (s *DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatus) Validate() error {
-	return dara.Validate(s)
+	if s.Detail != nil {
+		for _, item := range s.Detail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeSynchronizationObjectModifyStatusResponseBodyPrecheckStatusDetail struct {

@@ -191,7 +191,16 @@ func (s *DescribeJobMonitorRuleResponseBody) SetTopics(v []*string) *DescribeJob
 }
 
 func (s *DescribeJobMonitorRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MonitorRules != nil {
+		for _, item := range s.MonitorRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeJobMonitorRuleResponseBodyMonitorRules struct {

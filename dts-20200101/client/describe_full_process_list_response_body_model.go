@@ -215,7 +215,16 @@ func (s *DescribeFullProcessListResponseBody) SetSuccess(v bool) *DescribeFullPr
 }
 
 func (s *DescribeFullProcessListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FullProcessList != nil {
+		for _, item := range s.FullProcessList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeFullProcessListResponseBodyFullProcessList struct {

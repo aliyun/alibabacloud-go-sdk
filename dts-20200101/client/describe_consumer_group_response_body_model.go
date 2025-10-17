@@ -155,7 +155,12 @@ func (s *DescribeConsumerGroupResponseBody) SetTotalRecordCount(v int32) *Descri
 }
 
 func (s *DescribeConsumerGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumerChannels != nil {
+		if err := s.ConsumerChannels.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeConsumerGroupResponseBodyConsumerChannels struct {
@@ -180,7 +185,16 @@ func (s *DescribeConsumerGroupResponseBodyConsumerChannels) SetDescribeConsumerC
 }
 
 func (s *DescribeConsumerGroupResponseBodyConsumerChannels) Validate() error {
-	return dara.Validate(s)
+	if s.DescribeConsumerChannel != nil {
+		for _, item := range s.DescribeConsumerChannel {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel struct {

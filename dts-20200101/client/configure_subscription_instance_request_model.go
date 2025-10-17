@@ -197,7 +197,22 @@ func (s *ConfigureSubscriptionInstanceRequest) SetSubscriptionObject(v string) *
 }
 
 func (s *ConfigureSubscriptionInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionDataType != nil {
+		if err := s.SubscriptionDataType.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionInstance != nil {
+		if err := s.SubscriptionInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigureSubscriptionInstanceRequestSourceEndpoint struct {

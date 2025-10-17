@@ -155,7 +155,16 @@ func (s *DescribeDocParserJobResultResponseBody) SetSuccess(v bool) *DescribeDoc
 }
 
 func (s *DescribeDocParserJobResultResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContentList != nil {
+		for _, item := range s.ContentList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDocParserJobResultResponseBodyContentList struct {

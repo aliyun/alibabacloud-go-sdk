@@ -59,5 +59,10 @@ func (s *CreateDedicatedClusterMonitorRuleResponse) SetBody(v *CreateDedicatedCl
 }
 
 func (s *CreateDedicatedClusterMonitorRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

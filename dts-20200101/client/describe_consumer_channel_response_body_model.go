@@ -172,7 +172,16 @@ func (s *DescribeConsumerChannelResponseBody) SetTotalRecordCount(v int64) *Desc
 }
 
 func (s *DescribeConsumerChannelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumerChannels != nil {
+		for _, item := range s.ConsumerChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeConsumerChannelResponseBodyConsumerChannels struct {

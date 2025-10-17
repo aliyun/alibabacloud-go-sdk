@@ -208,7 +208,16 @@ func (s *DescribeDataCheckTableDiffDetailsResponseBody) SetTbName(v string) *Des
 }
 
 func (s *DescribeDataCheckTableDiffDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DiffDetails != nil {
+		for _, item := range s.DiffDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails struct {

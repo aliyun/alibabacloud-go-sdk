@@ -132,7 +132,34 @@ func (s *DescribeInitializationStatusResponseBody) SetSuccess(v string) *Describ
 }
 
 func (s *DescribeInitializationStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataInitializationDetails != nil {
+		for _, item := range s.DataInitializationDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DataSynchronizationDetails != nil {
+		for _, item := range s.DataSynchronizationDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StructureInitializationDetails != nil {
+		for _, item := range s.StructureInitializationDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInitializationStatusResponseBodyDataInitializationDetails struct {
@@ -520,7 +547,16 @@ func (s *DescribeInitializationStatusResponseBodyStructureInitializationDetails)
 }
 
 func (s *DescribeInitializationStatusResponseBodyStructureInitializationDetails) Validate() error {
-	return dara.Validate(s)
+	if s.Constraints != nil {
+		for _, item := range s.Constraints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInitializationStatusResponseBodyStructureInitializationDetailsConstraints struct {

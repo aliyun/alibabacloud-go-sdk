@@ -313,7 +313,17 @@ func (s *CreateSynchronizationJobRequest) SetNetworkType(v string) *CreateSynchr
 }
 
 func (s *CreateSynchronizationJobRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationEndpoint != nil {
+		if err := s.DestinationEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceEndpoint != nil {
+		if err := s.SourceEndpoint.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateSynchronizationJobRequestDestinationEndpoint struct {

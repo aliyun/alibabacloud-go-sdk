@@ -242,7 +242,16 @@ func (s *DescribeDataCheckTableDetailsResponseBody) SetTotalCount(v int64) *Desc
 }
 
 func (s *DescribeDataCheckTableDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableDetails != nil {
+		for _, item := range s.TableDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDataCheckTableDetailsResponseBodyTableDetails struct {
