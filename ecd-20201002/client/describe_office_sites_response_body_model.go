@@ -50,7 +50,16 @@ func (s *DescribeOfficeSitesResponseBody) SetRequestId(v string) *DescribeOffice
 }
 
 func (s *DescribeOfficeSitesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.OfficeSites != nil {
+		for _, item := range s.OfficeSites {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSites struct {

@@ -122,7 +122,16 @@ func (s *DescribeUserResourcesResponseBody) SetTotalCount(v int32) *DescribeUser
 }
 
 func (s *DescribeUserResourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Resources != nil {
+		for _, item := range s.Resources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserResourcesResponseBodyResources struct {
@@ -761,7 +770,53 @@ func (s *DescribeUserResourcesResponseBodyResources) SetVersion(v string) *Descr
 }
 
 func (s *DescribeUserResourcesResponseBodyResources) Validate() error {
-	return dara.Validate(s)
+	if s.Clients != nil {
+		for _, item := range s.Clients {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopDurationList != nil {
+		for _, item := range s.DesktopDurationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopTimers != nil {
+		for _, item := range s.DesktopTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FotaUpdate != nil {
+		if err := s.FotaUpdate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OsUpdate != nil {
+		if err := s.OsUpdate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserResourcesResponseBodyResourcesClients struct {
@@ -1302,7 +1357,16 @@ func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) SetUpdateCatalogUrl
 }
 
 func (s *DescribeUserResourcesResponseBodyResourcesOsUpdate) Validate() error {
-	return dara.Validate(s)
+	if s.Packages != nil {
+		for _, item := range s.Packages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeUserResourcesResponseBodyResourcesOsUpdatePackages struct {

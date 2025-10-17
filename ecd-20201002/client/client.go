@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -65,9 +66,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return ApproveFotaUpdateResponse
 func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateRequest, runtime *dara.RuntimeOptions) (_result *ApproveFotaUpdateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppVersion) {
@@ -153,9 +156,11 @@ func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_res
 //
 // @return ChangePasswordResponse
 func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, runtime *dara.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -237,9 +242,11 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 //
 // @return DeleteFingerPrintTemplateResponse
 func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteFingerPrintTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -313,9 +320,11 @@ func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTempla
 //
 // @return DescribeDirectoriesResponse
 func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectoriesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDirectoriesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -381,9 +390,11 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 //
 // @return DescribeFingerPrintTemplatesResponse
 func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeFingerPrintTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -449,9 +460,11 @@ func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintT
 //
 // @return DescribeGlobalDesktopsResponse
 func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalDesktopsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGlobalDesktopsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -577,9 +590,11 @@ func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequ
 //
 // @return DescribeOfficeSitesResponse
 func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSitesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOfficeSitesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -637,9 +652,11 @@ func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -697,9 +714,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // @return DescribeSnapshotsResponse
 func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -785,9 +804,11 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 //
 // @return DescribeUserResourcesResponse
 func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccessType) {
@@ -953,9 +974,11 @@ func (client *Client) DescribeUserResources(request *DescribeUserResourcesReques
 //
 // @return EncryptPasswordResponse
 func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest, runtime *dara.RuntimeOptions) (_result *EncryptPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1037,9 +1060,11 @@ func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result 
 //
 // @return GetCloudDriveServiceMountTokenResponse
 func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetCloudDriveServiceMountTokenRequest, runtime *dara.RuntimeOptions) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1113,11 +1138,17 @@ func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServi
 //
 // @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *dara.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessType) {
+		query["AccessType"] = request.AccessType
+	}
+
 	if !dara.IsNil(request.ClientId) {
 		query["ClientId"] = request.ClientId
 	}
@@ -1229,9 +1260,11 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 //
 // @return GetLoginTokenResponse
 func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetLoginTokenShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1371,9 +1404,11 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 //
 // @return IsKeepAliveResponse
 func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtime *dara.RuntimeOptions) (_result *IsKeepAliveResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1439,9 +1474,11 @@ func (client *Client) IsKeepAlive(request *IsKeepAliveRequest) (_result *IsKeepA
 //
 // @return QueryEdsAgentReportConfigResponse
 func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgentReportConfigRequest, runtime *dara.RuntimeOptions) (_result *QueryEdsAgentReportConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -1507,9 +1544,11 @@ func (client *Client) QueryEdsAgentReportConfig(request *QueryEdsAgentReportConf
 //
 // @return RebootDesktopsResponse
 func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, runtime *dara.RuntimeOptions) (_result *RebootDesktopsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1603,9 +1642,11 @@ func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *R
 //
 // @return RefreshLoginTokenResponse
 func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenRequest, runtime *dara.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1683,9 +1724,11 @@ func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_res
 //
 // @return ReportEdsAgentInfoResponse
 func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoRequest, runtime *dara.RuntimeOptions) (_result *ReportEdsAgentInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliUid) {
@@ -1751,9 +1794,11 @@ func (client *Client) ReportEdsAgentInfo(request *ReportEdsAgentInfoRequest) (_r
 //
 // @return ReportSessionStatusResponse
 func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatusRequest, runtime *dara.RuntimeOptions) (_result *ReportSessionStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndUserId) {
@@ -1827,9 +1872,11 @@ func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (
 //
 // @return ResetPasswordResponse
 func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetPasswordResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1911,9 +1958,11 @@ func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *Res
 //
 // @return ResetSnapshotResponse
 func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, runtime *dara.RuntimeOptions) (_result *ResetSnapshotResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -1995,9 +2044,11 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 //
 // @return SendTokenCodeResponse
 func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, runtime *dara.RuntimeOptions) (_result *SendTokenCodeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2079,9 +2130,11 @@ func (client *Client) SendTokenCode(request *SendTokenCodeRequest) (_result *Sen
 //
 // @return SetFingerPrintTemplateResponse
 func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintTemplateRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2167,9 +2220,11 @@ func (client *Client) SetFingerPrintTemplate(request *SetFingerPrintTemplateRequ
 //
 // @return SetFingerPrintTemplateDescriptionResponse
 func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetFingerPrintTemplateDescriptionRequest, runtime *dara.RuntimeOptions) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2251,9 +2306,11 @@ func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintT
 //
 // @return StartDesktopsResponse
 func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StartDesktopsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2343,9 +2400,11 @@ func (client *Client) StartDesktops(request *StartDesktopsRequest) (_result *Sta
 //
 // @return StartRecordContentResponse
 func (client *Client) StartRecordContentWithOptions(request *StartRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StartRecordContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2431,9 +2490,11 @@ func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_r
 //
 // @return StopDesktopsResponse
 func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runtime *dara.RuntimeOptions) (_result *StopDesktopsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2531,9 +2592,11 @@ func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopD
 //
 // @return StopRecordContentResponse
 func (client *Client) StopRecordContentWithOptions(request *StopRecordContentRequest, runtime *dara.RuntimeOptions) (_result *StopRecordContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2611,9 +2674,11 @@ func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_res
 //
 // @return UnbindUserDesktopResponse
 func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopRequest, runtime *dara.RuntimeOptions) (_result *UnbindUserDesktopResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {
@@ -2691,9 +2756,11 @@ func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_res
 //
 // @return VerifyCredentialResponse
 func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialRequest, runtime *dara.RuntimeOptions) (_result *VerifyCredentialResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientId) {

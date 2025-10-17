@@ -47,7 +47,12 @@ func (s *QueryEdsAgentReportConfigResponseBody) SetRequestId(v string) *QueryEds
 }
 
 func (s *QueryEdsAgentReportConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type QueryEdsAgentReportConfigResponseBodyData struct {

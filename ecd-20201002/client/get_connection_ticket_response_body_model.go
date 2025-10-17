@@ -9,6 +9,8 @@ type iGetConnectionTicketResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetP2PToken(v string) *GetConnectionTicketResponseBody
+	GetP2PToken() *string
 	SetRequestId(v string) *GetConnectionTicketResponseBody
 	GetRequestId() *string
 	SetTaskCode(v string) *GetConnectionTicketResponseBody
@@ -24,6 +26,7 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
+	P2PToken *string `json:"P2PToken,omitempty" xml:"P2PToken,omitempty"`
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -52,6 +55,10 @@ func (s GetConnectionTicketResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetConnectionTicketResponseBody) GetP2PToken() *string {
+	return s.P2PToken
+}
+
 func (s *GetConnectionTicketResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -74,6 +81,11 @@ func (s *GetConnectionTicketResponseBody) GetTaskStatus() *string {
 
 func (s *GetConnectionTicketResponseBody) GetTicket() *string {
 	return s.Ticket
+}
+
+func (s *GetConnectionTicketResponseBody) SetP2PToken(v string) *GetConnectionTicketResponseBody {
+	s.P2PToken = &v
+	return s
 }
 
 func (s *GetConnectionTicketResponseBody) SetRequestId(v string) *GetConnectionTicketResponseBody {

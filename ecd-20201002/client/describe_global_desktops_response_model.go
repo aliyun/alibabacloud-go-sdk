@@ -59,5 +59,10 @@ func (s *DescribeGlobalDesktopsResponse) SetBody(v *DescribeGlobalDesktopsRespon
 }
 
 func (s *DescribeGlobalDesktopsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *QueryEdsAgentReportConfigResponse) SetBody(v *QueryEdsAgentReportConfig
 }
 
 func (s *QueryEdsAgentReportConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

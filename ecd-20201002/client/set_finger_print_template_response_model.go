@@ -59,5 +59,10 @@ func (s *SetFingerPrintTemplateResponse) SetBody(v *SetFingerPrintTemplateRespon
 }
 
 func (s *SetFingerPrintTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

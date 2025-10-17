@@ -65,7 +65,16 @@ func (s *DescribeGlobalDesktopsResponseBody) SetRequestId(v string) *DescribeGlo
 }
 
 func (s *DescribeGlobalDesktopsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Desktops != nil {
+		for _, item := range s.Desktops {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktops struct {
@@ -559,7 +568,48 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktops) SetUserCustomName(v string)
 }
 
 func (s *DescribeGlobalDesktopsResponseBodyDesktops) Validate() error {
-	return dara.Validate(s)
+	if s.Clients != nil {
+		for _, item := range s.Clients {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DesktopTimers != nil {
+		for _, item := range s.DesktopTimers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Disks != nil {
+		for _, item := range s.Disks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.FotaUpdate != nil {
+		if err := s.FotaUpdate.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sessions != nil {
+		for _, item := range s.Sessions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsClients struct {

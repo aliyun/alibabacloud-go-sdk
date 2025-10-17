@@ -9,6 +9,8 @@ type iGetConnectionTicketRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessType(v string) *GetConnectionTicketRequest
+	GetAccessType() *string
 	SetClientId(v string) *GetConnectionTicketRequest
 	GetClientId() *string
 	SetClientOS(v string) *GetConnectionTicketRequest
@@ -42,6 +44,7 @@ type iGetConnectionTicketRequest interface {
 }
 
 type GetConnectionTicketRequest struct {
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -98,6 +101,10 @@ func (s GetConnectionTicketRequest) String() string {
 
 func (s GetConnectionTicketRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetConnectionTicketRequest) GetAccessType() *string {
+	return s.AccessType
 }
 
 func (s *GetConnectionTicketRequest) GetClientId() *string {
@@ -158,6 +165,11 @@ func (s *GetConnectionTicketRequest) GetTaskId() *string {
 
 func (s *GetConnectionTicketRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *GetConnectionTicketRequest) SetAccessType(v string) *GetConnectionTicketRequest {
+	s.AccessType = &v
+	return s
 }
 
 func (s *GetConnectionTicketRequest) SetClientId(v string) *GetConnectionTicketRequest {
@@ -236,7 +248,16 @@ func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketReque
 }
 
 func (s *GetConnectionTicketRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetConnectionTicketRequestTag struct {

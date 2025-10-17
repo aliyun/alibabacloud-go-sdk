@@ -50,7 +50,12 @@ func (s *GetCloudDriveServiceMountTokenResponseBody) SetToken(v *GetCloudDriveSe
 }
 
 func (s *GetCloudDriveServiceMountTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Token != nil {
+		if err := s.Token.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetCloudDriveServiceMountTokenResponseBodyToken struct {

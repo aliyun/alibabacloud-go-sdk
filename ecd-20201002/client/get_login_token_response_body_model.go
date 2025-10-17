@@ -341,7 +341,17 @@ func (s *GetLoginTokenResponseBody) SetWindowDisplayMode(v string) *GetLoginToke
 }
 
 func (s *GetLoginTokenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PasswordStrategy != nil {
+		if err := s.PasswordStrategy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RiskVerifyInfo != nil {
+		if err := s.RiskVerifyInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetLoginTokenResponseBodyPasswordStrategy struct {
