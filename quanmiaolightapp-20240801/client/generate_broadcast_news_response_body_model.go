@@ -110,7 +110,12 @@ func (s *GenerateBroadcastNewsResponseBody) SetSuccess(v bool) *GenerateBroadcas
 }
 
 func (s *GenerateBroadcastNewsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateBroadcastNewsResponseBodyData struct {
@@ -181,7 +186,21 @@ func (s *GenerateBroadcastNewsResponseBodyData) SetUsage(v *GenerateBroadcastNew
 }
 
 func (s *GenerateBroadcastNewsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.HotTopicSummaries != nil {
+		for _, item := range s.HotTopicSummaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateBroadcastNewsResponseBodyDataHotTopicSummaries struct {
@@ -278,7 +297,16 @@ func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) SetTextSummary(
 }
 
 func (s *GenerateBroadcastNewsResponseBodyDataHotTopicSummaries) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages struct {

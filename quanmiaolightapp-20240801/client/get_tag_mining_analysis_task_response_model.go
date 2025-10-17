@@ -59,5 +59,10 @@ func (s *GetTagMiningAnalysisTaskResponse) SetBody(v *GetTagMiningAnalysisTaskRe
 }
 
 func (s *GetTagMiningAnalysisTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -62,7 +62,17 @@ func (s *RunHotTopicChatResponseBody) SetRequestId(v string) *RunHotTopicChatRes
 }
 
 func (s *RunHotTopicChatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatResponseBodyHeader struct {
@@ -203,7 +213,17 @@ func (s *RunHotTopicChatResponseBodyPayload) SetUsage(v *RunHotTopicChatResponse
 }
 
 func (s *RunHotTopicChatResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatResponseBodyPayloadOutput struct {
@@ -311,7 +331,34 @@ func (s *RunHotTopicChatResponseBodyPayloadOutput) SetText(v string) *RunHotTopi
 }
 
 func (s *RunHotTopicChatResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.Articles != nil {
+		for _, item := range s.Articles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HotTopicSummaries != nil {
+		for _, item := range s.HotTopicSummaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MultimodalMedias != nil {
+		for _, item := range s.MultimodalMedias {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatResponseBodyPayloadOutputArticles struct {
@@ -554,7 +601,25 @@ func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) SetUrl(v str
 }
 
 func (s *RunHotTopicChatResponseBodyPayloadOutputHotTopicSummaries) Validate() error {
-	return dara.Validate(s)
+	if s.Images != nil {
+		for _, item := range s.Images {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatResponseBodyPayloadOutputHotTopicSummariesImages struct {

@@ -64,7 +64,17 @@ func (s *RunEnterpriseVocAnalysisResponseBody) SetRequestId(v string) *RunEnterp
 }
 
 func (s *RunEnterpriseVocAnalysisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunEnterpriseVocAnalysisResponseBodyHeader struct {
@@ -192,7 +202,17 @@ func (s *RunEnterpriseVocAnalysisResponseBodyPayload) SetUsage(v *RunEnterpriseV
 }
 
 func (s *RunEnterpriseVocAnalysisResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunEnterpriseVocAnalysisResponseBodyPayloadOutput struct {
@@ -237,7 +257,12 @@ func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) SetText(v string) *R
 }
 
 func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.FilterResult != nil {
+		if err := s.FilterResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult struct {
@@ -262,7 +287,16 @@ func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) SetFilte
 }
 
 func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) Validate() error {
-	return dara.Validate(s)
+	if s.FilterResults != nil {
+		for _, item := range s.FilterResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults struct {

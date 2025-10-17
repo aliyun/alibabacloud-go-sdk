@@ -95,7 +95,12 @@ func (s *HotNewsRecommendResponseBody) SetSuccess(v bool) *HotNewsRecommendRespo
 }
 
 func (s *HotNewsRecommendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type HotNewsRecommendResponseBodyData struct {
@@ -120,7 +125,16 @@ func (s *HotNewsRecommendResponseBodyData) SetNews(v []*HotNewsRecommendResponse
 }
 
 func (s *HotNewsRecommendResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type HotNewsRecommendResponseBodyDataNews struct {

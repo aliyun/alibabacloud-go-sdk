@@ -112,7 +112,12 @@ func (s *GetFileContentResponseBody) SetSuccess(v string) *GetFileContentRespons
 }
 
 func (s *GetFileContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFileContentResponseBodyData struct {

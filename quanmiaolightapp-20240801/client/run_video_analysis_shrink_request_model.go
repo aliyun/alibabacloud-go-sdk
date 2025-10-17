@@ -33,6 +33,8 @@ type iRunVideoAnalysisShrinkRequest interface {
 	GetSnapshotInterval() *float64
 	SetSplitInterval(v int32) *RunVideoAnalysisShrinkRequest
 	GetSplitInterval() *int32
+	SetSplitType(v string) *RunVideoAnalysisShrinkRequest
+	GetSplitType() *string
 	SetTaskId(v string) *RunVideoAnalysisShrinkRequest
 	GetTaskId() *string
 	SetTextProcessTasksShrink(v string) *RunVideoAnalysisShrinkRequest
@@ -81,6 +83,10 @@ type RunVideoAnalysisShrinkRequest struct {
 	//
 	// 10
 	SplitInterval *int32 `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	// example:
+	//
+	// fixDuration
+	SplitType *string `json:"splitType,omitempty" xml:"splitType,omitempty"`
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
@@ -155,6 +161,10 @@ func (s *RunVideoAnalysisShrinkRequest) GetSnapshotInterval() *float64 {
 
 func (s *RunVideoAnalysisShrinkRequest) GetSplitInterval() *int32 {
 	return s.SplitInterval
+}
+
+func (s *RunVideoAnalysisShrinkRequest) GetSplitType() *string {
+	return s.SplitType
 }
 
 func (s *RunVideoAnalysisShrinkRequest) GetTaskId() *string {
@@ -250,6 +260,11 @@ func (s *RunVideoAnalysisShrinkRequest) SetSnapshotInterval(v float64) *RunVideo
 
 func (s *RunVideoAnalysisShrinkRequest) SetSplitInterval(v int32) *RunVideoAnalysisShrinkRequest {
 	s.SplitInterval = &v
+	return s
+}
+
+func (s *RunVideoAnalysisShrinkRequest) SetSplitType(v string) *RunVideoAnalysisShrinkRequest {
+	s.SplitType = &v
 	return s
 }
 

@@ -10,6 +10,7 @@ import (
 type Client struct {
 	openapi.Client
 	DisableSDKError *bool
+	EnableValidate  *bool
 }
 
 func NewClient(config *openapiutil.Config) (*Client, error) {
@@ -67,9 +68,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // @return CancelAsyncTaskResponse
 func (client *Client) CancelAsyncTaskWithOptions(workspaceId *string, request *CancelAsyncTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CancelAsyncTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -131,9 +134,11 @@ func (client *Client) CancelAsyncTask(workspaceId *string, request *CancelAsyncT
 //
 // @return ExportAnalysisTagDetailByTaskIdResponse
 func (client *Client) ExportAnalysisTagDetailByTaskIdWithOptions(workspaceId *string, tmpReq *ExportAnalysisTagDetailByTaskIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportAnalysisTagDetailByTaskIdResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ExportAnalysisTagDetailByTaskIdShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -209,9 +214,11 @@ func (client *Client) ExportAnalysisTagDetailByTaskId(workspaceId *string, reque
 //
 // @return GenerateBroadcastNewsResponse
 func (client *Client) GenerateBroadcastNewsWithOptions(workspaceId *string, request *GenerateBroadcastNewsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateBroadcastNewsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Prompt) {
@@ -273,9 +280,11 @@ func (client *Client) GenerateBroadcastNews(workspaceId *string, request *Genera
 //
 // @return GenerateOutputFormatResponse
 func (client *Client) GenerateOutputFormatWithOptions(workspaceId *string, tmpReq *GenerateOutputFormatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GenerateOutputFormatResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GenerateOutputFormatShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -359,9 +368,11 @@ func (client *Client) GenerateOutputFormat(workspaceId *string, request *Generat
 //
 // @return GetEnterpriseVocAnalysisTaskResponse
 func (client *Client) GetEnterpriseVocAnalysisTaskWithOptions(workspaceId *string, request *GetEnterpriseVocAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEnterpriseVocAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -423,9 +434,11 @@ func (client *Client) GetEnterpriseVocAnalysisTask(workspaceId *string, request 
 //
 // @return GetEssayCorrectionTaskResponse
 func (client *Client) GetEssayCorrectionTaskWithOptions(workspaceId *string, request *GetEssayCorrectionTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEssayCorrectionTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -487,9 +500,11 @@ func (client *Client) GetEssayCorrectionTask(workspaceId *string, request *GetEs
 //
 // @return GetFileContentResponse
 func (client *Client) GetFileContentWithOptions(workspaceId *string, request *GetFileContentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFileContentResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileKey) {
@@ -551,9 +566,11 @@ func (client *Client) GetFileContent(workspaceId *string, request *GetFileConten
 //
 // @return GetTagMiningAnalysisTaskResponse
 func (client *Client) GetTagMiningAnalysisTaskWithOptions(workspaceId *string, request *GetTagMiningAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTagMiningAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -665,9 +682,11 @@ func (client *Client) GetVideoAnalysisConfig(workspaceId *string) (_result *GetV
 //
 // @return GetVideoAnalysisTaskResponse
 func (client *Client) GetVideoAnalysisTaskWithOptions(workspaceId *string, request *GetVideoAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetVideoAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -729,9 +748,11 @@ func (client *Client) GetVideoAnalysisTask(workspaceId *string, request *GetVide
 //
 // @return HotNewsRecommendResponse
 func (client *Client) HotNewsRecommendWithOptions(workspaceId *string, request *HotNewsRecommendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *HotNewsRecommendResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Prompt) {
@@ -793,9 +814,11 @@ func (client *Client) HotNewsRecommend(workspaceId *string, request *HotNewsReco
 //
 // @return ListAnalysisTagDetailByTaskIdResponse
 func (client *Client) ListAnalysisTagDetailByTaskIdWithOptions(workspaceId *string, request *ListAnalysisTagDetailByTaskIdRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAnalysisTagDetailByTaskIdResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
@@ -865,9 +888,11 @@ func (client *Client) ListAnalysisTagDetailByTaskId(workspaceId *string, request
 //
 // @return ListHotTopicSummariesResponse
 func (client *Client) ListHotTopicSummariesWithOptions(workspaceId *string, request *ListHotTopicSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListHotTopicSummariesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
@@ -962,9 +987,11 @@ func (client *Client) RunEnterpriseVocAnalysisWithSSE(workspaceId *string, tmpRe
 //
 // @return RunEnterpriseVocAnalysisResponse
 func (client *Client) RunEnterpriseVocAnalysisWithOptions(workspaceId *string, tmpReq *RunEnterpriseVocAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunEnterpriseVocAnalysisResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunEnterpriseVocAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1089,9 +1116,11 @@ func (client *Client) RunEssayCorrectionWithSSE(workspaceId *string, request *Ru
 //
 // @return RunEssayCorrectionResponse
 func (client *Client) RunEssayCorrectionWithOptions(workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunEssayCorrectionResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Answer) {
@@ -1194,9 +1223,11 @@ func (client *Client) RunHotTopicChatWithSSE(workspaceId *string, tmpReq *RunHot
 //
 // @return RunHotTopicChatResponse
 func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *RunHotTopicChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunHotTopicChatResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunHotTopicChatShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1337,9 +1368,11 @@ func (client *Client) RunHotTopicSummaryWithSSE(workspaceId *string, tmpReq *Run
 //
 // @return RunHotTopicSummaryResponse
 func (client *Client) RunHotTopicSummaryWithOptions(workspaceId *string, tmpReq *RunHotTopicSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunHotTopicSummaryResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunHotTopicSummaryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1436,9 +1469,11 @@ func (client *Client) RunMarketingInformationExtractWithSSE(workspaceId *string,
 //
 // @return RunMarketingInformationExtractResponse
 func (client *Client) RunMarketingInformationExtractWithOptions(workspaceId *string, tmpReq *RunMarketingInformationExtractRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunMarketingInformationExtractResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunMarketingInformationExtractShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1535,9 +1570,11 @@ func (client *Client) RunMarketingInformationWritingWithSSE(workspaceId *string,
 //
 // @return RunMarketingInformationWritingResponse
 func (client *Client) RunMarketingInformationWritingWithOptions(workspaceId *string, request *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunMarketingInformationWritingResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
@@ -1644,9 +1681,11 @@ func (client *Client) RunNetworkContentAuditWithSSE(workspaceId *string, tmpReq 
 //
 // @return RunNetworkContentAuditResponse
 func (client *Client) RunNetworkContentAuditWithOptions(workspaceId *string, tmpReq *RunNetworkContentAuditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunNetworkContentAuditResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunNetworkContentAuditShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1759,9 +1798,11 @@ func (client *Client) RunOcrParseWithSSE(workspaceId *string, request *RunOcrPar
 //
 // @return RunOcrParseResponse
 func (client *Client) RunOcrParseWithOptions(workspaceId *string, request *RunOcrParseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunOcrParseResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileKey) {
@@ -1848,9 +1889,11 @@ func (client *Client) RunScriptChatWithSSE(workspaceId *string, request *RunScri
 //
 // @return RunScriptChatResponse
 func (client *Client) RunScriptChatWithOptions(workspaceId *string, request *RunScriptChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunScriptChatResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Prompt) {
@@ -1933,9 +1976,11 @@ func (client *Client) RunScriptContinueWithSSE(workspaceId *string, request *Run
 //
 // @return RunScriptContinueResponse
 func (client *Client) RunScriptContinueWithOptions(workspaceId *string, request *RunScriptContinueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunScriptContinueResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ScriptSummary) {
@@ -2022,9 +2067,11 @@ func (client *Client) RunScriptPlanningWithSSE(workspaceId *string, request *Run
 //
 // @return RunScriptPlanningResponse
 func (client *Client) RunScriptPlanningWithOptions(workspaceId *string, request *RunScriptPlanningRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunScriptPlanningResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdditionalNote) {
@@ -2127,9 +2174,11 @@ func (client *Client) RunScriptRefineWithSSE(workspaceId *string, request *RunSc
 //
 // @return RunScriptRefineResponse
 func (client *Client) RunScriptRefineWithOptions(workspaceId *string, request *RunScriptRefineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunScriptRefineResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -2208,9 +2257,11 @@ func (client *Client) RunStyleWritingWithSSE(workspaceId *string, tmpReq *RunSty
 //
 // @return RunStyleWritingResponse
 func (client *Client) RunStyleWritingWithOptions(workspaceId *string, tmpReq *RunStyleWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunStyleWritingResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunStyleWritingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2319,9 +2370,11 @@ func (client *Client) RunTagMiningAnalysisWithSSE(workspaceId *string, tmpReq *R
 //
 // @return RunTagMiningAnalysisResponse
 func (client *Client) RunTagMiningAnalysisWithOptions(workspaceId *string, tmpReq *RunTagMiningAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunTagMiningAnalysisResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunTagMiningAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2434,9 +2487,11 @@ func (client *Client) RunVideoAnalysisWithSSE(workspaceId *string, tmpReq *RunVi
 //
 // @return RunVideoAnalysisResponse
 func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *RunVideoAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunVideoAnalysisResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2511,6 +2566,10 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 
 	if !dara.IsNil(request.SplitInterval) {
 		body["splitInterval"] = request.SplitInterval
+	}
+
+	if !dara.IsNil(request.SplitType) {
+		body["splitType"] = request.SplitType
 	}
 
 	if !dara.IsNil(request.TaskId) {
@@ -2604,9 +2663,11 @@ func (client *Client) RunVideoAnalysis(workspaceId *string, request *RunVideoAna
 //
 // @return SubmitEnterpriseVocAnalysisTaskResponse
 func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId *string, tmpReq *SubmitEnterpriseVocAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitEnterpriseVocAnalysisTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitEnterpriseVocAnalysisTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2722,9 +2783,11 @@ func (client *Client) SubmitEnterpriseVocAnalysisTask(workspaceId *string, reque
 //
 // @return SubmitEssayCorrectionTaskResponse
 func (client *Client) SubmitEssayCorrectionTaskWithOptions(workspaceId *string, tmpReq *SubmitEssayCorrectionTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitEssayCorrectionTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitEssayCorrectionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2816,9 +2879,11 @@ func (client *Client) SubmitEssayCorrectionTask(workspaceId *string, request *Su
 //
 // @return SubmitTagMiningAnalysisTaskResponse
 func (client *Client) SubmitTagMiningAnalysisTaskWithOptions(workspaceId *string, tmpReq *SubmitTagMiningAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitTagMiningAnalysisTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitTagMiningAnalysisTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2922,9 +2987,11 @@ func (client *Client) SubmitTagMiningAnalysisTask(workspaceId *string, request *
 //
 // @return SubmitVideoAnalysisTaskResponse
 func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tmpReq *SubmitVideoAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SubmitVideoAnalysisTaskResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SubmitVideoAnalysisTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -2999,6 +3066,10 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 
 	if !dara.IsNil(request.SplitInterval) {
 		body["splitInterval"] = request.SplitInterval
+	}
+
+	if !dara.IsNil(request.SplitType) {
+		body["splitType"] = request.SplitType
 	}
 
 	if !dara.IsNil(request.TextProcessTasksShrink) {
@@ -3088,9 +3159,11 @@ func (client *Client) SubmitVideoAnalysisTask(workspaceId *string, request *Subm
 //
 // @return UpdateVideoAnalysisConfigResponse
 func (client *Client) UpdateVideoAnalysisConfigWithOptions(workspaceId *string, request *UpdateVideoAnalysisConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoAnalysisConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AsyncConcurrency) {
@@ -3152,9 +3225,11 @@ func (client *Client) UpdateVideoAnalysisConfig(workspaceId *string, request *Up
 //
 // @return UpdateVideoAnalysisTaskResponse
 func (client *Client) UpdateVideoAnalysisTaskWithOptions(workspaceId *string, request *UpdateVideoAnalysisTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoAnalysisTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -3220,9 +3295,11 @@ func (client *Client) UpdateVideoAnalysisTask(workspaceId *string, request *Upda
 //
 // @return UpdateVideoAnalysisTasksResponse
 func (client *Client) UpdateVideoAnalysisTasksWithOptions(workspaceId *string, tmpReq *UpdateVideoAnalysisTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateVideoAnalysisTasksResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateVideoAnalysisTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3283,10 +3360,12 @@ func (client *Client) UpdateVideoAnalysisTasks(workspaceId *string, request *Upd
 }
 
 func (client *Client) runEnterpriseVocAnalysisWithSSE_opYieldFunc(_yield chan *RunEnterpriseVocAnalysisResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunEnterpriseVocAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunEnterpriseVocAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3374,10 +3453,12 @@ func (client *Client) runEnterpriseVocAnalysisWithSSE_opYieldFunc(_yield chan *R
 }
 
 func (client *Client) runEssayCorrectionWithSSE_opYieldFunc(_yield chan *RunEssayCorrectionResponse, _yieldErr chan error, workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Answer) {
@@ -3443,10 +3524,12 @@ func (client *Client) runEssayCorrectionWithSSE_opYieldFunc(_yield chan *RunEssa
 }
 
 func (client *Client) runHotTopicChatWithSSE_opYieldFunc(_yield chan *RunHotTopicChatResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunHotTopicChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunHotTopicChatShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3550,10 +3633,12 @@ func (client *Client) runHotTopicChatWithSSE_opYieldFunc(_yield chan *RunHotTopi
 }
 
 func (client *Client) runHotTopicSummaryWithSSE_opYieldFunc(_yield chan *RunHotTopicSummaryResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunHotTopicSummaryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunHotTopicSummaryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3613,10 +3698,12 @@ func (client *Client) runHotTopicSummaryWithSSE_opYieldFunc(_yield chan *RunHotT
 }
 
 func (client *Client) runMarketingInformationExtractWithSSE_opYieldFunc(_yield chan *RunMarketingInformationExtractResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunMarketingInformationExtractRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunMarketingInformationExtractShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3676,10 +3763,12 @@ func (client *Client) runMarketingInformationExtractWithSSE_opYieldFunc(_yield c
 }
 
 func (client *Client) runMarketingInformationWritingWithSSE_opYieldFunc(_yield chan *RunMarketingInformationWritingResponse, _yieldErr chan error, workspaceId *string, request *RunMarketingInformationWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ApiKey) {
@@ -3749,10 +3838,12 @@ func (client *Client) runMarketingInformationWritingWithSSE_opYieldFunc(_yield c
 }
 
 func (client *Client) runNetworkContentAuditWithSSE_opYieldFunc(_yield chan *RunNetworkContentAuditResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunNetworkContentAuditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunNetworkContentAuditShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -3828,10 +3919,12 @@ func (client *Client) runNetworkContentAuditWithSSE_opYieldFunc(_yield chan *Run
 }
 
 func (client *Client) runOcrParseWithSSE_opYieldFunc(_yield chan *RunOcrParseResponse, _yieldErr chan error, workspaceId *string, request *RunOcrParseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FileKey) {
@@ -3881,10 +3974,12 @@ func (client *Client) runOcrParseWithSSE_opYieldFunc(_yield chan *RunOcrParseRes
 }
 
 func (client *Client) runScriptChatWithSSE_opYieldFunc(_yield chan *RunScriptChatResponse, _yieldErr chan error, workspaceId *string, request *RunScriptChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Prompt) {
@@ -3930,10 +4025,12 @@ func (client *Client) runScriptChatWithSSE_opYieldFunc(_yield chan *RunScriptCha
 }
 
 func (client *Client) runScriptContinueWithSSE_opYieldFunc(_yield chan *RunScriptContinueResponse, _yieldErr chan error, workspaceId *string, request *RunScriptContinueRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ScriptSummary) {
@@ -3983,10 +4080,12 @@ func (client *Client) runScriptContinueWithSSE_opYieldFunc(_yield chan *RunScrip
 }
 
 func (client *Client) runScriptPlanningWithSSE_opYieldFunc(_yield chan *RunScriptPlanningResponse, _yieldErr chan error, workspaceId *string, request *RunScriptPlanningRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AdditionalNote) {
@@ -4052,10 +4151,12 @@ func (client *Client) runScriptPlanningWithSSE_opYieldFunc(_yield chan *RunScrip
 }
 
 func (client *Client) runScriptRefineWithSSE_opYieldFunc(_yield chan *RunScriptRefineResponse, _yieldErr chan error, workspaceId *string, request *RunScriptRefineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := request.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.TaskId) {
@@ -4097,10 +4198,12 @@ func (client *Client) runScriptRefineWithSSE_opYieldFunc(_yield chan *RunScriptR
 }
 
 func (client *Client) runStyleWritingWithSSE_opYieldFunc(_yield chan *RunStyleWritingResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunStyleWritingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunStyleWritingShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4172,10 +4275,12 @@ func (client *Client) runStyleWritingWithSSE_opYieldFunc(_yield chan *RunStyleWr
 }
 
 func (client *Client) runTagMiningAnalysisWithSSE_opYieldFunc(_yield chan *RunTagMiningAnalysisResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunTagMiningAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunTagMiningAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4251,10 +4356,12 @@ func (client *Client) runTagMiningAnalysisWithSSE_opYieldFunc(_yield chan *RunTa
 }
 
 func (client *Client) runVideoAnalysisWithSSE_opYieldFunc(_yield chan *RunVideoAnalysisResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunVideoAnalysisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
-	_err := tmpReq.Validate()
-	if _err != nil {
-		_yieldErr <- _err
-		return
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
 	}
 	request := &RunVideoAnalysisShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -4329,6 +4436,10 @@ func (client *Client) runVideoAnalysisWithSSE_opYieldFunc(_yield chan *RunVideoA
 
 	if !dara.IsNil(request.SplitInterval) {
 		body["splitInterval"] = request.SplitInterval
+	}
+
+	if !dara.IsNil(request.SplitType) {
+		body["splitType"] = request.SplitType
 	}
 
 	if !dara.IsNil(request.TaskId) {

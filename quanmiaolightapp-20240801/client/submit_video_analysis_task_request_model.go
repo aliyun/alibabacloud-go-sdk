@@ -33,6 +33,8 @@ type iSubmitVideoAnalysisTaskRequest interface {
 	GetSnapshotInterval() *float64
 	SetSplitInterval(v int32) *SubmitVideoAnalysisTaskRequest
 	GetSplitInterval() *int32
+	SetSplitType(v string) *SubmitVideoAnalysisTaskRequest
+	GetSplitType() *string
 	SetTextProcessTasks(v []*SubmitVideoAnalysisTaskRequestTextProcessTasks) *SubmitVideoAnalysisTaskRequest
 	GetTextProcessTasks() []*SubmitVideoAnalysisTaskRequestTextProcessTasks
 	SetVideoCaptionInfo(v *SubmitVideoAnalysisTaskRequestVideoCaptionInfo) *SubmitVideoAnalysisTaskRequest
@@ -81,7 +83,11 @@ type SubmitVideoAnalysisTaskRequest struct {
 	// example:
 	//
 	// 10
-	SplitInterval                  *int32                                            `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	SplitInterval *int32 `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	// example:
+	//
+	// fixDuration
+	SplitType                      *string                                           `json:"splitType,omitempty" xml:"splitType,omitempty"`
 	TextProcessTasks               []*SubmitVideoAnalysisTaskRequestTextProcessTasks `json:"textProcessTasks,omitempty" xml:"textProcessTasks,omitempty" type:"Repeated"`
 	VideoCaptionInfo               *SubmitVideoAnalysisTaskRequestVideoCaptionInfo   `json:"videoCaptionInfo,omitempty" xml:"videoCaptionInfo,omitempty" type:"Struct"`
 	VideoExtraInfo                 *string                                           `json:"videoExtraInfo,omitempty" xml:"videoExtraInfo,omitempty"`
@@ -154,6 +160,10 @@ func (s *SubmitVideoAnalysisTaskRequest) GetSnapshotInterval() *float64 {
 
 func (s *SubmitVideoAnalysisTaskRequest) GetSplitInterval() *int32 {
 	return s.SplitInterval
+}
+
+func (s *SubmitVideoAnalysisTaskRequest) GetSplitType() *string {
+	return s.SplitType
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) GetTextProcessTasks() []*SubmitVideoAnalysisTaskRequestTextProcessTasks {
@@ -248,6 +258,11 @@ func (s *SubmitVideoAnalysisTaskRequest) SetSplitInterval(v int32) *SubmitVideoA
 	return s
 }
 
+func (s *SubmitVideoAnalysisTaskRequest) SetSplitType(v string) *SubmitVideoAnalysisTaskRequest {
+	s.SplitType = &v
+	return s
+}
+
 func (s *SubmitVideoAnalysisTaskRequest) SetTextProcessTasks(v []*SubmitVideoAnalysisTaskRequestTextProcessTasks) *SubmitVideoAnalysisTaskRequest {
 	s.TextProcessTasks = v
 	return s
@@ -289,7 +304,35 @@ func (s *SubmitVideoAnalysisTaskRequest) SetVideoUrl(v string) *SubmitVideoAnaly
 }
 
 func (s *SubmitVideoAnalysisTaskRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FrameSampleMethod != nil {
+		if err := s.FrameSampleMethod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextProcessTasks != nil {
+		for _, item := range s.TextProcessTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoCaptionInfo != nil {
+		if err := s.VideoCaptionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoRoles != nil {
+		for _, item := range s.VideoRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitVideoAnalysisTaskRequestFrameSampleMethod struct {
@@ -426,7 +469,16 @@ func (s *SubmitVideoAnalysisTaskRequestVideoCaptionInfo) SetVideoCaptions(v []*S
 }
 
 func (s *SubmitVideoAnalysisTaskRequestVideoCaptionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VideoCaptions != nil {
+		for _, item := range s.VideoCaptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions struct {
@@ -558,7 +610,16 @@ func (s *SubmitVideoAnalysisTaskRequestVideoRoles) SetUrls(v []*string) *SubmitV
 }
 
 func (s *SubmitVideoAnalysisTaskRequestVideoRoles) Validate() error {
-	return dara.Validate(s)
+	if s.TimeIntervals != nil {
+		for _, item := range s.TimeIntervals {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type SubmitVideoAnalysisTaskRequestVideoRolesTimeIntervals struct {

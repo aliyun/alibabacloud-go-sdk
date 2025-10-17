@@ -33,6 +33,8 @@ type iRunVideoAnalysisRequest interface {
 	GetSnapshotInterval() *float64
 	SetSplitInterval(v int32) *RunVideoAnalysisRequest
 	GetSplitInterval() *int32
+	SetSplitType(v string) *RunVideoAnalysisRequest
+	GetSplitType() *string
 	SetTaskId(v string) *RunVideoAnalysisRequest
 	GetTaskId() *string
 	SetTextProcessTasks(v []*RunVideoAnalysisRequestTextProcessTasks) *RunVideoAnalysisRequest
@@ -81,6 +83,10 @@ type RunVideoAnalysisRequest struct {
 	//
 	// 10
 	SplitInterval *int32 `json:"splitInterval,omitempty" xml:"splitInterval,omitempty"`
+	// example:
+	//
+	// fixDuration
+	SplitType *string `json:"splitType,omitempty" xml:"splitType,omitempty"`
 	// example:
 	//
 	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
@@ -155,6 +161,10 @@ func (s *RunVideoAnalysisRequest) GetSnapshotInterval() *float64 {
 
 func (s *RunVideoAnalysisRequest) GetSplitInterval() *int32 {
 	return s.SplitInterval
+}
+
+func (s *RunVideoAnalysisRequest) GetSplitType() *string {
+	return s.SplitType
 }
 
 func (s *RunVideoAnalysisRequest) GetTaskId() *string {
@@ -253,6 +263,11 @@ func (s *RunVideoAnalysisRequest) SetSplitInterval(v int32) *RunVideoAnalysisReq
 	return s
 }
 
+func (s *RunVideoAnalysisRequest) SetSplitType(v string) *RunVideoAnalysisRequest {
+	s.SplitType = &v
+	return s
+}
+
 func (s *RunVideoAnalysisRequest) SetTaskId(v string) *RunVideoAnalysisRequest {
 	s.TaskId = &v
 	return s
@@ -299,7 +314,35 @@ func (s *RunVideoAnalysisRequest) SetVideoUrl(v string) *RunVideoAnalysisRequest
 }
 
 func (s *RunVideoAnalysisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FrameSampleMethod != nil {
+		if err := s.FrameSampleMethod.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TextProcessTasks != nil {
+		for _, item := range s.TextProcessTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoCaptionInfo != nil {
+		if err := s.VideoCaptionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoRoles != nil {
+		for _, item := range s.VideoRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunVideoAnalysisRequestFrameSampleMethod struct {
@@ -427,7 +470,16 @@ func (s *RunVideoAnalysisRequestVideoCaptionInfo) SetVideoCaptions(v []*RunVideo
 }
 
 func (s *RunVideoAnalysisRequestVideoCaptionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.VideoCaptions != nil {
+		for _, item := range s.VideoCaptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions struct {
@@ -559,7 +611,16 @@ func (s *RunVideoAnalysisRequestVideoRoles) SetUrls(v []*string) *RunVideoAnalys
 }
 
 func (s *RunVideoAnalysisRequestVideoRoles) Validate() error {
-	return dara.Validate(s)
+	if s.TimeIntervals != nil {
+		for _, item := range s.TimeIntervals {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunVideoAnalysisRequestVideoRolesTimeIntervals struct {

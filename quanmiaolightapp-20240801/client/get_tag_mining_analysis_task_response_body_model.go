@@ -112,7 +112,12 @@ func (s *GetTagMiningAnalysisTaskResponseBody) SetSuccess(v bool) *GetTagMiningA
 }
 
 func (s *GetTagMiningAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTagMiningAnalysisTaskResponseBodyData struct {
@@ -170,7 +175,16 @@ func (s *GetTagMiningAnalysisTaskResponseBodyData) SetStatus(v string) *GetTagMi
 }
 
 func (s *GetTagMiningAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Results != nil {
+		for _, item := range s.Results {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTagMiningAnalysisTaskResponseBodyDataResults struct {
@@ -218,7 +232,17 @@ func (s *GetTagMiningAnalysisTaskResponseBodyDataResults) SetPayload(v *GetTagMi
 }
 
 func (s *GetTagMiningAnalysisTaskResponseBodyDataResults) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTagMiningAnalysisTaskResponseBodyDataResultsHeader struct {
@@ -317,7 +341,17 @@ func (s *GetTagMiningAnalysisTaskResponseBodyDataResultsPayload) SetUsage(v *Get
 }
 
 func (s *GetTagMiningAnalysisTaskResponseBodyDataResultsPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTagMiningAnalysisTaskResponseBodyDataResultsPayloadOutput struct {

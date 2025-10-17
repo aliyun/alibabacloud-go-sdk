@@ -173,7 +173,25 @@ func (s *RunEnterpriseVocAnalysisRequest) SetTaskDescription(v string) *RunEnter
 }
 
 func (s *RunEnterpriseVocAnalysisRequest) Validate() error {
-	return dara.Validate(s)
+	if s.FilterTags != nil {
+		for _, item := range s.FilterTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunEnterpriseVocAnalysisRequestFilterTags struct {

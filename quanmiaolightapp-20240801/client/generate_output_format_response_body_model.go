@@ -112,7 +112,12 @@ func (s *GenerateOutputFormatResponseBody) SetSuccess(v bool) *GenerateOutputFor
 }
 
 func (s *GenerateOutputFormatResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GenerateOutputFormatResponseBodyData struct {

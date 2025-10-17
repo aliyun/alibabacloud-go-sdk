@@ -155,7 +155,16 @@ func (s *ListHotTopicSummariesResponseBody) SetTotalCount(v int32) *ListHotTopic
 }
 
 func (s *ListHotTopicSummariesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicSummariesResponseBodyData struct {
@@ -265,7 +274,21 @@ func (s *ListHotTopicSummariesResponseBodyData) SetTextSummary(v string) *ListHo
 }
 
 func (s *ListHotTopicSummariesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.News != nil {
+		for _, item := range s.News {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Summary != nil {
+		if err := s.Summary.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListHotTopicSummariesResponseBodyDataNews struct {
@@ -344,7 +367,16 @@ func (s *ListHotTopicSummariesResponseBodyDataNews) SetUrl(v string) *ListHotTop
 }
 
 func (s *ListHotTopicSummariesResponseBodyDataNews) Validate() error {
-	return dara.Validate(s)
+	if s.Comments != nil {
+		for _, item := range s.Comments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicSummariesResponseBodyDataNewsComments struct {
@@ -397,7 +429,16 @@ func (s *ListHotTopicSummariesResponseBodyDataSummary) SetSummaries(v []*ListHot
 }
 
 func (s *ListHotTopicSummariesResponseBodyDataSummary) Validate() error {
-	return dara.Validate(s)
+	if s.Summaries != nil {
+		for _, item := range s.Summaries {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListHotTopicSummariesResponseBodyDataSummarySummaries struct {

@@ -62,7 +62,17 @@ func (s *RunMarketingInformationWritingResponseBody) SetPayload(v *RunMarketingI
 }
 
 func (s *RunMarketingInformationWritingResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunMarketingInformationWritingResponseBodyHeader struct {
@@ -197,7 +207,17 @@ func (s *RunMarketingInformationWritingResponseBodyPayload) SetUsage(v *RunMarke
 }
 
 func (s *RunMarketingInformationWritingResponseBodyPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunMarketingInformationWritingResponseBodyPayloadOutput struct {

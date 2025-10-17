@@ -110,7 +110,12 @@ func (s *SubmitVideoAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitVideoAna
 }
 
 func (s *SubmitVideoAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SubmitVideoAnalysisTaskResponseBodyData struct {

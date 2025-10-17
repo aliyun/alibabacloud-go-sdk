@@ -59,5 +59,10 @@ func (s *RunVideoAnalysisResponse) SetBody(v *RunVideoAnalysisResponseBody) *Run
 }
 
 func (s *RunVideoAnalysisResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

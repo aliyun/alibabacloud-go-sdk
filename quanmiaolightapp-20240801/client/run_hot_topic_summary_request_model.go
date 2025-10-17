@@ -70,7 +70,12 @@ func (s *RunHotTopicSummaryRequest) SetTopicIds(v []*string) *RunHotTopicSummary
 }
 
 func (s *RunHotTopicSummaryRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StepForCustomSummaryStyleConfig != nil {
+		if err := s.StepForCustomSummaryStyleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunHotTopicSummaryRequestStepForCustomSummaryStyleConfig struct {

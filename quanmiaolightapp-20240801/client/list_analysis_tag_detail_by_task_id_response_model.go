@@ -59,5 +59,10 @@ func (s *ListAnalysisTagDetailByTaskIdResponse) SetBody(v *ListAnalysisTagDetail
 }
 
 func (s *ListAnalysisTagDetailByTaskIdResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

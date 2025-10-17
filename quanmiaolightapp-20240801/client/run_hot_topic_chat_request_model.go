@@ -185,7 +185,21 @@ func (s *RunHotTopicChatRequest) SetTaskId(v string) *RunHotTopicChatRequest {
 }
 
 func (s *RunHotTopicChatRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Messages != nil {
+		for _, item := range s.Messages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.StepForBroadcastContentConfig != nil {
+		if err := s.StepForBroadcastContentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatRequestMessages struct {
@@ -287,7 +301,16 @@ func (s *RunHotTopicChatRequestStepForBroadcastContentConfig) SetTopicCount(v in
 }
 
 func (s *RunHotTopicChatRequestStepForBroadcastContentConfig) Validate() error {
-	return dara.Validate(s)
+	if s.CustomHotValueWeights != nil {
+		for _, item := range s.CustomHotValueWeights {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type RunHotTopicChatRequestStepForBroadcastContentConfigCustomHotValueWeights struct {

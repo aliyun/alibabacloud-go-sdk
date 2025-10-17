@@ -59,5 +59,10 @@ func (s *RunScriptRefineResponse) SetBody(v *RunScriptRefineResponseBody) *RunSc
 }
 
 func (s *RunScriptRefineResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

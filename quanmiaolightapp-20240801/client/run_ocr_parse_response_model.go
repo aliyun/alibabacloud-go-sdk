@@ -59,5 +59,10 @@ func (s *RunOcrParseResponse) SetBody(v *RunOcrParseResponseBody) *RunOcrParseRe
 }
 
 func (s *RunOcrParseResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

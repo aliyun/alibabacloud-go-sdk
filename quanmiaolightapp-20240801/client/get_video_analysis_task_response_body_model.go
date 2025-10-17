@@ -112,7 +112,12 @@ func (s *GetVideoAnalysisTaskResponseBody) SetSuccess(v bool) *GetVideoAnalysisT
 }
 
 func (s *GetVideoAnalysisTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyData struct {
@@ -196,7 +201,22 @@ func (s *GetVideoAnalysisTaskResponseBodyData) SetTaskStatus(v string) *GetVideo
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Header != nil {
+		if err := s.Header.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TaskRunInfo != nil {
+		if err := s.TaskRunInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataHeader struct {
@@ -337,7 +357,17 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayload) SetUsage(v *GetVideoAnalys
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayload) Validate() error {
-	return dara.Validate(s)
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutput struct {
@@ -432,7 +462,46 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) SetVideoTitleGenerat
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutput) Validate() error {
-	return dara.Validate(s)
+	if s.VideoAnalysisResult != nil {
+		if err := s.VideoAnalysisResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoCaptionResult != nil {
+		if err := s.VideoCaptionResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoGenerateResult != nil {
+		if err := s.VideoGenerateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoGenerateResults != nil {
+		for _, item := range s.VideoGenerateResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoMindMappingGenerateResult != nil {
+		if err := s.VideoMindMappingGenerateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoRoleRecognitionResult != nil {
+		if err := s.VideoRoleRecognitionResult.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoTitleGenerateResult != nil {
+		if err := s.VideoTitleGenerateResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult struct {
@@ -493,7 +562,21 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) S
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResult) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoShotAnalysisResults != nil {
+		for _, item := range s.VideoShotAnalysisResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoAnalysisResultUsage struct {
@@ -636,7 +719,16 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) Se
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResult) Validate() error {
-	return dara.Validate(s)
+	if s.VideoCaptions != nil {
+		for _, item := range s.VideoCaptions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoCaptionResultVideoCaptions struct {
@@ -820,7 +912,12 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) S
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResult) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultUsage struct {
@@ -949,7 +1046,12 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults) 
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResults) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoGenerateResultsUsage struct {
@@ -1052,7 +1154,21 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenera
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResult) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VideoMindMappings != nil {
+		for _, item := range s.VideoMindMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultUsage struct {
@@ -1141,7 +1257,16 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenera
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappings) Validate() error {
-	return dara.Validate(s)
+	if s.ChildNodes != nil {
+		for _, item := range s.ChildNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes struct {
@@ -1176,7 +1301,16 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenera
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodes) Validate() error {
-	return dara.Validate(s)
+	if s.ChildNodes != nil {
+		for _, item := range s.ChildNodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoMindMappingGenerateResultVideoMindMappingsChildNodesChildNodes struct {
@@ -1226,7 +1360,16 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionRe
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResult) Validate() error {
-	return dara.Validate(s)
+	if s.VideoRoles != nil {
+		for _, item := range s.VideoRoles {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRoles struct {
@@ -1291,7 +1434,16 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionRe
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRoles) Validate() error {
-	return dara.Validate(s)
+	if s.TimeIntervals != nil {
+		for _, item := range s.TimeIntervals {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoRoleRecognitionResultVideoRolesTimeIntervals struct {
@@ -1397,7 +1549,12 @@ func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResu
 }
 
 func (s *GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResult) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetVideoAnalysisTaskResponseBodyDataPayloadOutputVideoTitleGenerateResultUsage struct {
